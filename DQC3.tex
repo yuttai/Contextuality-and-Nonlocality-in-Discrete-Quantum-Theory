@@ -4,18 +4,16 @@
 %% have to be approached in a quantum theory based on Galois groups,
 %% via COMPUTABLE integer number fields with finite characteristic.
 
-\documentclass[english,12pt]{article}
+\documentclass[english,12pt]{iopart}
 \usepackage{mathrsfs}
 \usepackage{fullpage}
-% \documentclass[english,prl,aps,showpacs,preprint,floatfix,superscriptaddress]{revtex4-1} 
-%\usepackage[T1]{fontenc}
-% \usepackage[latin9]{inputenc}
-% \setcounter{secnumdepth}{3}
 \usepackage{url}
 \usepackage{times}
-
+\usepackage{amstext}
+\usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage{amsmath}
+\usepackage{iopams}
+\usepackage{setstack}
 
 \input{Qcircuit}
 
@@ -37,7 +35,6 @@
 % \newcommand{\mathscr}[1]{{\cal #1}}
 %\renewcommand{\author}[1]{\bf #1 \/}
 \newcommand{\affiliation}[1]{\parbox{5.5in}{\small{\it #1 \/}}}
-\newcommand{\pacs}[1]{\bf #1 \/}
 
 \newcommand{\cardp}[2]{#1 \,\sslash\, #2}
 \newcommand{\braket}[2]{\langle{#1}|{#2}\rangle} 
@@ -183,8 +180,8 @@
 \newcommand{\yutsung}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{purple}{Yu-Tsung says: #1}\end{minipage}}}
 
 \newcommand{\ComplexI}{\text{i}}
-\allowdisplaybreaks
 \newcommand{\fnorm}[1]{\mathsf{N}(#1)}
+\newcommand{\mod}{\mbox{mod }}
 
 \makeatother
 
@@ -216,10 +213,6 @@ Yu-Tsung Tai\\
   Bloomington, IN 47405, U.S.A}\\
 \affiliation{School of Informatics and Computing, Indiana University,
   Bloomington, IN 47405, U.S.A}}
-
-\maketitle
-
-%\date{\today}
 
 \pacs{03.65.-w, 03.65.Ud, 03.65.Ta, 02.10.De}
 
@@ -476,7 +469,7 @@ Our fundamental divergence from CQT is to replace continuous complex
 amplitudes in the field of complex numbers $\C$ by discrete fields
 $\ff{p^{2}}$.  If we restrict ourselves to odd primes with
 $p\equiv 3\mod 4$, the fields $\ff{p}$ are exactly those for which
-$x^2+1$ has no root in the field, and we can adjoin $\ComplexI$ as a
+$x^2+1$ has no root in the field, and we can adjoin $\rmi$ as a
 root of $x^2+1$ to the field $\ff{p}$.  For a given element
 $\alpha \in \ff{p^2}$, we define the equivalent of complex conjugation
 as the map $\alpha\mapsto\alpha^p$, which we may write as
@@ -572,10 +565,11 @@ is not algebraically closed~\cite{DummitFoote2004} so that the solutions
 of the characteristic polynomial may be in an proper extension field
 of $\ff{p^{2}}$. For example, consider a Hermitian matrix 
 \[
-\mathbf{H}_{1}=\begin{pmatrix}-1 & -\ComplexI & 0\\
-\ComplexI & 1 & -\ComplexI\\
-0 & \ComplexI & 1
-\end{pmatrix}
+\mathbf{H}_{1}=\left(\begin{array}{ccc}
+-1 & -\rmi & 0\\
+\rmi & 1 & -\rmi\\
+0 & \rmi & 1
+\end{array}\right)
 \]
 whose characteristic polynomials over $\ff{9}$ are
 \begin{eqnarray*}
@@ -589,18 +583,19 @@ no enough eigenvector is a problem?}\\
 The dimension of an eigenspace may be less than the multiplicity of
 its eigenvalue. For example, consider a Hermitian matrix 
 \[
-\mathbf{H}_{2}=\begin{pmatrix}-1 & -1-\ComplexI\\
--1+\ComplexI & 0
-\end{pmatrix}
+\mathbf{H}_{2}=\left(\begin{array}{cc}
+-1 & -1-\rmi\\
+-1+\rmi & 0
+\end{array}\right)
 \]
 Over $\ff{9}$, its only eigenvalue is $1$ of multiplicity $2$.
 The only eigenspace of $\mathbf{H}_{2}$ is spanned by $\begin{pmatrix}1\\
--1+\ComplexI
+-1+\rmi
 \end{pmatrix}$. The dimension of eigenspace is 1 less than 2 so that $\mathbf{H}_{2}$
 are not diagonalizable over $\ff{9}$. If $\mathbf{H}_{2}$ were an
 observable, $\mathbf{H}_{2}$ would always have the outcome of measurement
 $1$ with the post-measurement state $\begin{pmatrix}1\\
--1+\ComplexI
+-1+\rmi
 \end{pmatrix}$. However, only operator always producing $1$ is the identity operator
 which change no state. Therefore, $\mathbf{H}_{2}$ may not be intuitively
 as an observable.\\
@@ -620,15 +615,16 @@ the corresponding eigenvalue~$\lambda$ of a Hermitian matrix may
 not be in $\ff{p}$.\\
 For example, consider a Hermitian matrix~$\mathbf{H}_{3}$ 
 \[
-\mathbf{H}_{3}=\begin{pmatrix}-1 & -1-\ComplexI\\
--1+\ComplexI & 1-
-\end{pmatrix}
+\mathbf{H}_{3}=\left(\begin{array}{cc}
+-1 & -1-\rmi\\
+-1+\rmi & 1-
+\end{array}\right)
 \]
 Over $\ff{9}$, the eigenvalues and eigenvectors of $\mathbf{H}_{3}$
-are $-1-\ComplexI$ with $\begin{pmatrix}1\\
--1-\ComplexI
-\end{pmatrix}$ and $-1+\ComplexI$ with $\begin{pmatrix}1\\
-1+\ComplexI
+are $-1-\rmi$ with $\begin{pmatrix}1\\
+-1-\rmi
+\end{pmatrix}$ and $-1+\rmi$ with $\begin{pmatrix}1\\
+1+\rmi
 \end{pmatrix}$. It is easy to verify the eigenvalues are not in $\ff{3}$, and the
 eigenvectors are all zero-normed.\\
 If we diagonalize $\mathbf{H}_{3}$ in $\C$, we have the eigenvalues
@@ -639,7 +635,7 @@ a\equiv b\left(\bmod p\right)\Leftrightarrow\pm\sqrt{a}\equiv\pm\sqrt{b}\left(\b
 \]
 then 
 \begin{eqnarray*}
--1\pm\sqrt{2} & \equiv & -1\pm\ComplexI\left(\bmod p\right)
+-1\pm\sqrt{2} & \equiv & -1\pm\rmi\left(\bmod p\right)
 \end{eqnarray*}
 In another word, although the extended modulo $p$ operation respects
 any field operations and roots, it does not respect the complex conjugate
@@ -794,12 +790,11 @@ Note that $\ket{\Psi}$ is invariant under $U_i$. So again by property
 for $i=0,1,2$.  These probability assignments are inconsistent with
 the requirement that the probabilities for orthogonal outcomes add up
 to 1. By property ({\bf i})
-\begin{align*}
-  1&=\dpt\big(\ket{\Psi},\ket{0}\big)+ \dpt\big(\ket{\Psi},\ket{1}\big) + 
-     \dpt\big(\ket{\Psi},\ket{2}\big)+ \dpt \big(\ket{\Psi},\ket{3}\big)\\
-  &=\frac{1}{2}+\frac{1}{2}+\frac{1}{2}+\dpt\big(\ket{\Psi},\ket{3}\big)\\
-  &\geq \frac{3}{2},
-\end{align*}
+\begin{eqnarray*}
+1 & = & \dpt\big(\ket{\Psi},\ket{0}\big)+\dpt\big(\ket{\Psi},\ket{1}\big)+\dpt\big(\ket{\Psi},\ket{2}\big)+\dpt\big(\ket{\Psi},\ket{3}\big)\\
+ & = & \frac{1}{2}+\frac{1}{2}+\frac{1}{2}+\dpt\big(\ket{\Psi},\ket{3}\big)\\
+ & \geq & \frac{3}{2},
+\end{eqnarray*}
 so we have a contradiction. The assumption of a satisfactory map
 $\dpt$ is thus false. $\Box$
 \end{proof}
@@ -1112,12 +1107,12 @@ in 3 dimensions.}
   $p \equiv 3 \mod 4$) with $p > 3$ ~\footnote{\label{fn:p>3}When
     $p=3$, the Kochen-Specker theorem still holds, but the proof is
     longer.}. Suppose $v$ exists, and consider the set of all vectors
-  with entries in $\left\{ 0,\pm1,\pm1\pm\ComplexI\right\} $. Then the
+  with entries in $\left\{ 0,\pm1,\pm1\pm\rmi\right\} $. Then the
   steps in the proof can be read off from Table
   \ref{tab:proof-of-K-S}.  In each cell in Table
   \ref{tab:proof-of-K-S}, the string $xyz$ represents a state vector,
   where $x$, $y$, and $z$ can be \{ $0$, $1$, $\bar{1}\equiv -1,$
-  ${+} \equiv (1+\ComplexI)$, ${-} \equiv (1-\ComplexI)$ \}, and
+  ${+} \equiv (1+\rmi)$, ${-} \equiv (1-\rmi)$ \}, and
 \[
 v\left( xyz \right)= \{\textrm{possible}\, \mbox{\it or\/}\,
 \textrm{impossible} \ , \]
