@@ -1,0 +1,6624 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass iopart
+\begin_preamble
+%% Discrete Quantum Computing/Discrete Quantum Theory
+%%  - third paper, focusing on how fundamental aspects needed by
+%% all quantum mechanical theories (as treated in Asher Peres's book)
+%% have to be approached in a quantum theory based on Galois groups,
+%% via COMPUTABLE integer number fields with finite characteristic.
+
+\usepackage{mathrsfs}
+\usepackage{fullpage}
+\usepackage{url}
+\usepackage{times}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{iopams}
+\usepackage{setstack}
+
+
+\input{Qcircuit}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\usepackage{enumitem}% customizable list environments
+% \newlength{\lyxlabelwidth}      % auxiliary length 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage{dsfont}
+\usepackage[usenames,dvipsnames]{xcolor}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% these went missing?
+% \newcommand{\bra}[1]{\left\langle{#1}\right|}
+% \newcommand{\ket}[1]{\left|{#1}\right\rangle}
+% \newcommand{\mathscr}[1]{{\cal #1}}
+%\renewcommand{\author}[1]{\bf #1 \/}
+
+\newcommand{\cardp}[2]{#1 \,\sslash\, #2}
+\newcommand{\braket}[2]{\langle{#1}|{#2}\rangle} 
+\newcommand{\uf}{U_{\!f}}
+\def\image {\rm Image~}
+\def\ker{\rm ker~}
+\def\coker{\rm coker~}
+\def\ker{\rm ker~}
+\def\dr{\smash{\downharpoonright}}
+\def\ad{{\rm ad~}}
+\def\Q{{\mathbb{Q}}}
+\def\R{{\mathbb{R}}}
+\def\N{{\mathbb{N}}}
+\def\C{{\mathbb{C}}}
+\def\Z{{\mathbb{Z}}}
+\def\del{\partial}
+\def\grad{\nabla}
+\def\proof{{\em Proof:  }}
+\def\ra{\rangle}
+\def\la{\langle}
+\def\rl{\rangle \langle}
+\def\openone{\leavevmode\hbox{\small1\kern-3.8pt\normalsize1}}
+\def\RR{{\rm I\kern-.2emR}}
+\def\tr{{\rm tr}\; }
+\def\fu{\mathfrak{u}}
+\def\fa{\mathfrak{a}}
+\def\fd{\mathfrak{d}}
+\def\fb{\mathfrak{b}}
+\def\fj{\mathfrak{j}}
+\def\fg{\mathfrak{g}}
+\def\fh{\mathfrak{h}}
+\def\fk{\mathfrak{k}}
+\def\fs{\mathfrak{s}}
+\def\fgl{\mathfrak{gl}}
+\def\fsl{\mathfrak{sl}}
+\def\fsu{\mathfrak{su}}
+\def\fsp{\mathfrak{sp}}
+\def\fso{\mathfrak{so}}
+\def\proof{{\em Proof:  }}
+\def\tphi{\tilde{\Phi}}
+\def\ra{\rangle}
+\def\la{\langle}
+\def\rl{\rangle \langle}
+\def\openone{\leavevmode\hbox{\small1\kern-3.8pt\normalsize1}}
+\def\RR{{\rm I\kern-.2emR}}
+\def\tr{{\rm tr}\; }
+\def\ce{{\cal E}}
+\def\cl{{\cal L}}
+\def\cg{{\cal G}}
+\def\cd{{\cal D}}
+\def\cb{{\cal B}}
+\def\cn{{\cal N}}
+\def\ch{{\cal H}}
+\def\cs{{\cal S}}
+\def\ct{{\cal T}}
+\def\cp{{\cal P}}
+\def\cm{{\cal M}}
+\def\cf{{\cal F}}
+\def\ci{{\cal I}}
+\def\ca{{\cal A}}
+\def\calr{{\cal R}}
+\def\cv{{\cal V}}
+\def\cc{{\cal C}}
+\def\rhon{\rho^{\otimes n}}
+\def\on{^{\otimes n}}
+\def\pn{^{(n)}}
+\def\pnp{^{(n)'}}
+\def\id{\frac{I}{d}}
+\def\pthang{\frac{P}{\sqrt{d \tr P^2}}}
+\def\Psirq{\Psi^{RQ}}
+\def\d{^\dagger}
+\def\union{\cup}
+\def\intersection{\cap}
+\newcommand{\QED}{\hspace*{\fill}\mbox{\rule[0pt]{1.5ex}{1.5ex}}}
+\providecommand{\ignore}[1]{}
+
+\newcommand{\scalarZ}{0}
+\newcommand{\scalarO}{1}
+\newcommand{\scalarPlus}{+}
+\newcommand{\scalarTimes}{*}
+\newcommand{\ip}[2]{\langle #1 ~|~ #2 \rangle}
+\newcommand{\usat}{\texttt{UNIQUE-SAT}}
+\newcommand{\boolt}{\textsf{Bool}} 
+\newcommand{\bfalse}{\texttt{\textbf{false}}}
+\newcommand{\btrue}{\texttt{\textbf{true}}}
+\newcommand{\ff}[1]{\mathbb{F}_{#1}}
+\newcommand{\ffz}[1]{{\mathbb{F}^{\ast}_{#1}}}
+%% \newcommand{\ffzd}[1]{\mathbb{F^{d}}_{#1}^{*}}
+%%\newcommand{\ffzd}[1]{{\mathbb{F}^{d}_{#1}}^{\ast}}
+%%\newcommand{\ffzd}[1]{{\mathbb{F}^{d\,\ast}_{#1}}}
+\newcommand{\ffd}[1]{{\mathbb{F}^{d}_{#1}}}
+\newcommand{\ffzd}[1]{{\mathbb{F}^{d\;*}_{#1}}}
+%% \newcommand{\dotprod}{quadratic Hermitian form}}
+\newcommand{\dotprod}{dot product}
+\newcommand{\todo}[1]{\textbf{TODO.~#1}}
+
+\newcommand{\p}[1]{^{(#1)}}
+
+\def\gbar{\overline{\gamma}}
+\def\rev{{\cal R}_{\ca,\rho}}
+
+\def\imod#1{\allowbreak\mkern8mu({\operator@font mod}\,\,#1)}
+
+\newcommand{\half}{\mbox{$\textstyle \frac{1}{2}$} }
+\newcommand{\proj}[1]{\ket{#1}\! \bra{#1}}
+\newcommand{\outerp}[2]{\ket{#1}\! \bra{#2}}
+\newcommand{\inner}[2]{ \langle #1 | #2 \rangle}
+\newcommand{\melement}[2]{ \langle #1 | #2 | #1 \rangle}
+\newcommand{\bitem}{\begin{itemize}}
+\newcommand{\eitem}{\end{itemize}}
+\newcommand{\benum}{\begin{enumerate}}
+\newcommand{\eenum}{\end{enumerate}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\eeqa}{\end{eqnarray}}
+\newtheorem{definition}{}\newtheorem{assertion}{}\newtheorem{theorem}{}\newtheorem{proposition}{}\newtheorem{axiom}{}\newtheorem{lemma}{}\newtheorem{corollary}{}\newtheorem{conjecture}{}\newtheorem{property}{}\newtheorem{fact}{}\newtheorem{remark}{}\newcommand{\bproof}{\begin{proof}}
+\newcommand{\eproof}{\end{proof}}
+\newcommand{\bprop}{\begin{proposition}}
+\newcommand{\eprop}{\end{\proposition}}
+\newcommand{\bdef}{\begin{definition}}
+\newcommand{\zls}{{\mathbb Z}}
+%%% This is our own symbol for "discrete probability"
+%%    - originally "g", try "\pi" for now.
+\newcommand{\dpr}{{\pi}}
+\newcommand{\dpt}{{\tilde{\pi}}}
+\def\round{\mathop{\rm round}\nolimits}
+
+\newcommand{\amr}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{red}{Amr says: #1}\end{minipage}}}
+\newcommand{\gerardo}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{OliveGreen}{Gerardo says: #1}\end{minipage}}}
+\newcommand{\andy}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{blue}{Andy says: #1}\end{minipage}}}
+\newcommand{\yutsung}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{purple}{Yu-Tsung says: #1}\end{minipage}}}
+
+\newcommand{\fnorm}[1]{\mathsf{N}(#1)}
+\newcommand{\mod}{\mbox{mod }}
+
+
+
+\usepackage{babel}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_preamble
+\options 12pt
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 0
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 2
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Contextuality and Nonlocality in 
+\begin_inset Newline newline
+\end_inset
+
+ Discrete Quantum Theory
+\end_layout
+
+\begin_layout Author
+John Gardiner
+\begin_inset Formula $^{1}$
+\end_inset
+
+, Andrew J.
+ Hanson
+\begin_inset Formula $^{2}$
+\end_inset
+
+, Gerardo Ortiz
+\begin_inset Formula $^{3}$
+\end_inset
+
+, Amr Sabry
+\begin_inset Formula $^{1}$
+\end_inset
+
+, Yu-Tsung Tai
+\begin_inset Formula $^{42}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+\begin_inset Formula $^{1}$
+\end_inset
+
+ College of Physical and Mathematical Sciences, Brigham Young University,
+ Provo, UT 84602, U.S.A
+\end_layout
+
+\begin_layout Address
+\begin_inset Formula $^{2}$
+\end_inset
+
+ School of Informatics and Computing, Indiana University, Bloomington, IN
+ 47405, U.S.A
+\end_layout
+
+\begin_layout Address
+\begin_inset Formula $^{3}$
+\end_inset
+
+ Department of Physics, Indiana University, Bloomington, IN 47405, U.S.A
+\end_layout
+
+\begin_layout Address
+\begin_inset Formula $^{4}$
+\end_inset
+
+ Department of Mathematics, Indiana University, Bloomington, IN 47405, U.S.A
+\end_layout
+
+\begin_layout Email
+ortizg@indiana.edu
+\end_layout
+
+\begin_layout PACS
+03.65.-w, 03.65.Ud, 03.65.Ta, 02.10.De
+\end_layout
+
+\begin_layout submitto
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+jpa
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family roman
+Introduction
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+Theories of quantum mechanics based on finite complexified fields can provide
+ novel insights into subtle issues of nonclassical theories.
+ While the study of such discrete quantum theories is motivated by the desire
+ to restrict our physical theories to computable numbers, all such theories
+ are handicapped by the absence of naturally ordered quantities that can
+ be associated with traditional probabilities.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+gerardo{
+\end_layout
+
+\end_inset
+
+This paper is about the measurement process in Discrete Quantum Theories,
+ that is, the process by which one extracts information from a physical
+ system in a hypothetical world characterized by a finite number of resources,
+ albeit arbitrarily large.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+amr{
+\end_layout
+
+\end_inset
+
+I would also start with a statement along the following lines and then using
+ Gerardo's paragraph: Whether Nature is continuous or discrete, any 
+\emph on
+representation
+\emph default
+ of a physical system in a computer or in a laboratory must use finite resources.
+ In the realm of quantum computing, these finite resources must arguably
+ be founded on vector spaces over finite fields that have as many properties
+ of the conventional Hilbert spaces.
+ This paper is about the measurement process in Discrete Quantum Theories,
+ that is, the process by which one extracts information from a physical
+ system in a hypothetical world characterized by a finite number of resources,
+ albeit arbitrarily large.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+Having investigated the geometrical implications and properties of discrete
+ quantum theories in previous work
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "geometry2013,DQT2014"
+
+\end_inset
+
+, we turn here to the study of the measurement process within such theories.
+ Our goal is to rediscover properties of the foundations of standard axiomatic
+ quantum mechanics, including Gleason's theorem, the Kochen-Specker theorem,
+ and Bell's theorem, consistent within the discrete-field context, even
+ while lacking ordered probabilities in the number system.
+ We find for example, that the discrete version of Gleason's theorem motivates
+ a corresponding Born rule.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family roman
+Fundamentals
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+Measurement, considered as the process by which one extracts information
+ from a physical system in a world with finite resources, is a fundamental
+ property of quantum mechanics in our discrete field context that we will
+ study in this paper.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+andy{
+\end_layout
+
+\end_inset
+
+This section needs a clear treatment of 
+\family default
+\shape italic
+contextuality
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\family roman
+\shape default
+, and a mention of the issues for measurement with possibly illegal intermediate
+ states, and degenerate eigenvalues as troublesome special cases.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+gerardo{
+\end_layout
+
+\end_inset
+
+Add a statement 
+\begin_inset Quotes eld
+\end_inset
+
+Here we concentrate on a discrete quantum theory that uses the number systems,
+ but not the cardinal probability adaptation, that we introduced in our
+ previous paper
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DQT2014"
+
+\end_inset
+
+, that used partially transitively-ordered sets to address the question
+ of probabilities.
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+In quantum mechanics, measurement is contextual, meaning that the outcome
+ of an experiment depends not only on the system being measured and the
+ choice of the measured observable, but also on the details of the measurement
+ process.
+ It is also nonlocal, meaning that correlations exist that are inconsistent
+ with causal influences.
+ Classical physics, on the other hand, seems to be local and independent
+ of the context.
+ The introduction of hidden variables, along with several important results
+ proving their inconsistency, have been motivated from the very early days
+ of quantum mechanics by the classical intuition that some (partially unknown)
+ local context might influence the outcome of experiments and thus invalidate
+ traditional quantum theory.
+\end_layout
+
+\begin_layout Paragraph
+
+\family roman
+The Concept of Contextuality and its Role in the Properties of Candidates
+ for Quantum Theories.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+Quantum Physics is contextual, meaning that the outcome of a measurement
+ (or a set of measurements) depends not only on the choice of the measured
+ observable(s) and on the system being measured, but also on the details
+ of the measurement process.
+ To be more precise, as noted by Peres
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "peres1995quantum"
+
+\end_inset
+
+ and Mermin
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MerminPRL1990"
+
+\end_inset
+
+, the result of measuring an observable in a physical system must not depend
+ on whether we measure the observable alone, or along with arbitrary sets
+ of mutually commuting observables.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+Classical Physics, on the other hand, is usually agreed to be independent
+ of the context; that is, we presume that every physical variable has a
+ predetermined value.
+ The motivation for studying the possibility that the probabilistic features
+ of quantum mechanics can be explained by hidden variables is the possibility
+ that a (partially unknown but complete) context influences the outcome
+ of experiments.
+\end_layout
+
+\begin_layout Paragraph
+
+\family roman
+Basic Features We Expect in Quantum Theories.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+To understand how much of conventional measurement theory we can maintain
+ in discrete quantum theories without ordered probabilities, along with
+ the possibility of non-trivial null-norm states, we must critically address
+ three pillars at the foundation of traditional quantum theories.
+ Many of these issues are treated in detail, e.g., in Peres
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "peres1995quantum"
+
+\end_inset
+
+.
+ The issues we shall consider are:
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+\size normal
+Gleason's theorem
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\family roman
+\shape default
+ tells us that for Hilbert spaces of dimension 
+\begin_inset Formula $>2$
+\end_inset
+
+, the Born Rule is the 
+\emph on
+only
+\emph default
+ way to assign consistent probabilities to the statistical prediction of
+ a quantum measurement
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gleason1957"
+
+\end_inset
+
+.
+ This result excludes a very general class of hidden variable theories using
+ continuity and probabilities.
+ In the conventional quantum formalism the Born rule provides the link between
+ the formalism of quantum mechanics and the potential results of experimental
+ observations.
+ In order to achieve similar results with finite fields, we must find a
+ way around the dependence on continuity and ordered probabilities.
+ Replacing continuous-valued probabilities with discrete interval-valued
+ probabilities (e.g., possible and impossible measurement outcomes) provides
+ one route to the desired outcomes.
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+\size normal
+The Kochen-Specker theorem
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\family roman
+\shape default
+ in its classical form employs a complicated array of measurements on a
+ single system along with geometric arguments to exclude additional wide
+ classes of hidden variable theories
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kochenspecker1967"
+
+\end_inset
+
+.
+ The Kochen-Specker theorem does not depend on statistical averages, and
+ it is geometric in spirit.
+ (More succinct approaches can be found, e.g., in Peres
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "peres1995quantum"
+
+\end_inset
+
+.) The freedom from statistical averages in the Kochen-Specker methods suggests
+ that important parts of the result could be independent of ordered probabilitie
+s and thus in fact might possess suitable analogs in finite fields.
+ The key is to understand the implications of contextuality, and here we
+ find that the possibility of valid null intermediate states in discrete
+ quantum theory can disrupt what would seem to be trivial contextuality.
+ To deal with this, we are compelled to explicitly consider, not only the
+ initial and final resources needed to represent the system and the final
+ measurement outcome, but also the resources needed to represent the intermediat
+e steps in a series of experiments.
+ We find that, to preserve the spirit of the Kochen-Specker theorem, we
+ have to explicitly introduce and propagate 
+\emph on
+error states
+\emph default
+ whose representation requires more than the available resources.
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+\size normal
+Bell's theorem
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\family roman
+\shape default
+ reveals the intrinsic non-local nature of correlations in quantum physics,
+ i.e., the nature of entanglement, which has no classical analog
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BellBook1987"
+
+\end_inset
+
+.
+ Bell's original arguments depended on continuity and probability to produce
+ inequalities satisfied by any local realistic theories, as broadly defined
+ by Einstein, thus quantifying nonlocality.
+ Since then, many Bell-type inequalities have been derived for different
+ observable quantities, refined by the incorporation of particular experimental
+ setups.
+ In addition, it was later realized
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GHZ1990,CabelloPRL.86.2001"
+
+\end_inset
+
+ that one can derive Bell-type equalities encoding non-local correlations
+ and, as we will see, it is this version of Bell's theorem that is generalizable
+ to Discrete Quantum Theories.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+All of these basic insights into the structure of traditional quantum mechanics
+ rely on 
+\family default
+\shape italic
+contextuality
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\family roman
+\shape default
+ and 
+\family default
+\shape italic
+nonlocality
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\family roman
+\shape default
+: We will argue in our conclusions that, in discrete quantum theory, we
+ can consistently employ both contextuality, the statement that measurement
+ of a quantum observable does not depend on any given second observable
+ provided it commutes with the first observable, and, nonlocality, which
+ says that spatially separated measurements in a quantum theory can in fact
+ be correlated, counter to classical intuitions.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+andy{
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section*
+
+\family roman
+Internal note: Structure Outline
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size normal
+Critical analysis of measurement in conventional theory.
+
+\family roman
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size normal
+Discrete Vector Space.
+
+\family roman
+\series default
+ 
+\begin_inset Formula $\ffd{p^{2}}\to\ffzd{p^{2}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size normal
+No go theorem.
+
+\family roman
+\series default
+ Cannot use Real numbers in 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size normal
+Post measurement issues.
+
+\family roman
+\series default
+ Requires explicit error states.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size normal
+Show contextuality works.
+
+\family roman
+\series default
+ Prove Gleason, Bell, and Kochen-Specker to conclude that DQT with interval-valu
+ed probabilities and explicit error states is sufficient to retain a quantum
+ theory with contextuality and absence of local hidden variables.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family roman
+Critical Analysis of the Measurement Process in CQT
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+Before discussing the measurement process and the manifestations of nonlocality
+ and contextuality in discrete quantum mechanics, we first review various
+ notations brought forward from conventional quantum theory.
+ Assume that a physical system is represented by a state 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+, and that we wish to measure a physical quantity 
+\begin_inset Formula ${\cal O}$
+\end_inset
+
+ of this system, with corresponding observable 
+\begin_inset Formula ${\mathbf{O}}$
+\end_inset
+
+, whose eigenspectrum is given by 
+\begin_inset Formula 
+\[
+{\mathbf{O}}\left|i\right\rangle =\lambda_{i}\left|i\right\rangle \ .
+\]
+
+\end_inset
+
+Then Born's rule of CQT tells us that the probability of obtaining the eigenvalu
+e 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ as an outcome of the measurement is given by 
+\begin_inset Formula 
+\begin{eqnarray}
+\begin{array}{rcccl}
+{\cal P}_{\Psi}\left(\lambda_{i}\right) & = & {\displaystyle {\frac{\langle\Psi|{P}_{i}|\Psi\rangle}{\ip{\Psi}{\Psi}}}} & = & {\displaystyle {\frac{\ip{\Psi}{i}\ip{i}{\Psi}}{\ip{\Psi}{\Psi}\ip{i}{i}}}}\end{array}\ ,\label{prob1.eq}
+\end{eqnarray}
+
+\end_inset
+
+where 
+\begin_inset Formula ${P}_{i}$
+\end_inset
+
+ is the projector onto the subspace generated by the eigenvector 
+\begin_inset Formula $\left|i\right\rangle $
+\end_inset
+
+.
+ We have until now assumed non-degenerate eigenvalues.
+ If, for some set of states 
+\begin_inset Formula $\{k\}$
+\end_inset
+
+, the eigenvalue 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is degenerate, we account for that by replacing the simple expression for
+ the projector 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ by 
+\begin_inset Formula 
+\[
+P_{\lambda}=\sum_{k=1}^{K_{\lambda}}\frac{\left|k\right\rangle \left\langle k\right|}{\ip{k}{k}}\ ,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $K_{\lambda}$
+\end_inset
+
+ is the degeneracy of the eigenvalue 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% We will assume in the following that this is taken into
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% account, except for particular cases where degeneracy is explicitly
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% involved in distinguishing the behavior of DQT from CQT.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+One other issue that will confront us in the transition from CQT to DQT
+ is the presence of post-measurement states.
+ In CQT, the Von Neumann projective measurement state, immediately after
+ the measurement of 
+\begin_inset Formula ${\cal O}$
+\end_inset
+
+, is given in general by 
+\begin_inset Formula 
+\[
+\frac{P_{\lambda}\ket{\Psi}}{\sqrt{\langle\Psi|{P}_{\lambda}|\Psi\rangle}}\ ,
+\]
+
+\end_inset
+
+where for the non-degenerate case, 
+\begin_inset Formula $P_{\lambda}\to{P}_{i}$
+\end_inset
+
+, and so the resulting state is just 
+\begin_inset Formula $\ket{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%  Here we look at the theorem that says a MIXED MODE
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%  probability theory, with discrete vectors but
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%  real-valued probabilities, is not consistent.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family roman
+States, Observables, and Probability in DQT
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+Following the development in the previous section, we need to carefully
+ define a few notions in order to describe the measurement process in DQT.
+ In the following, we will briefly introduce discrete quantum theory (DQT),
+ as defined in
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "geometry2013,DQT2014"
+
+\end_inset
+
+, and will highlight the main differences and contrasts with conventional
+ quantum theory (CQT).
+ We will start by definining states and observables and then spend the remainder
+ of the section investigating the proper notion of probability in DQT.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family roman
+States in DQT
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+Our fundamental divergence from CQT is to replace continuous complex amplitudes
+ in the field of complex numbers 
+\begin_inset Formula $\C$
+\end_inset
+
+ by discrete fields 
+\begin_inset Formula $\ff{p^{2}}$
+\end_inset
+
+.
+ If we restrict ourselves to odd primes with 
+\begin_inset Formula $p\equiv3\mod4$
+\end_inset
+
+, the fields 
+\begin_inset Formula $\ff{p}$
+\end_inset
+
+ are exactly those for which 
+\begin_inset Formula $x^{2}+1$
+\end_inset
+
+ has no root in the field, and we can adjoin 
+\begin_inset Formula $\rmi$
+\end_inset
+
+ as a root of 
+\begin_inset Formula $x^{2}+1$
+\end_inset
+
+ to the field 
+\begin_inset Formula $\ff{p}$
+\end_inset
+
+.
+ For a given element 
+\begin_inset Formula $\alpha\in\ff{p^{2}}$
+\end_inset
+
+, we define the equivalent of complex conjugation as the map 
+\begin_inset Formula $\alpha\mapsto\alpha^{p}$
+\end_inset
+
+, which we may write as 
+\begin_inset Formula $\alpha^{*}=\alpha^{p}$
+\end_inset
+
+.
+ The resulting extended field is isomorphic to 
+\begin_inset Formula $\ff{p^{2}}$
+\end_inset
+
+ and is a realization of discrete complex numbers suitable for quantum mechanica
+l calculations.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+Let us start by defining a vector space 
+\begin_inset Formula $\ffd{p^{2}}$
+\end_inset
+
+ of 
+\begin_inset Formula $d$
+\end_inset
+
+-dimensional vectors with elements in 
+\begin_inset Formula $\ff{p^{2}}$
+\end_inset
+
+, where the conjugate transpose is defined in the natural way giving us
+ the notion of a dual vector 
+\begin_inset Formula $\bra{\Psi}$
+\end_inset
+
+ for every vector 
+\begin_inset Formula $\ket{\Psi}\in\ffd{p^{2}}$
+\end_inset
+
+ as well as unitary operators.
+ Next we propose the Hermitian dot product defined as the map from 
+\begin_inset Formula $\ffd{p^{2}}\times\ffd{p^{2}}$
+\end_inset
+
+ to 
+\begin_inset Formula $\ff{p^{2}}$
+\end_inset
+
+ given by 
+\begin_inset Formula $(\ket{\Psi},\ket{\Phi})\longmapsto\braket{\Phi}{\Psi}$
+\end_inset
+
+.
+ Notice that this product is technically not an inner product because there
+ are vectors 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ other than the zero vector whose 
+\begin_inset Quotes eld
+\end_inset
+
+norm
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\braket{\Psi}{\Psi}$
+\end_inset
+
+ vanishes.
+ We therefore exclude such cases by moving to the domain 
+\begin_inset Formula $\ffzd{p^{2}}$
+\end_inset
+
+, where the 
+\begin_inset Formula $^{*}$
+\end_inset
+
+ indicates the exclusion of null vectors; that is we consider 
+\begin_inset Formula $\ket{\Psi}\in\ffzd{p^{2}}$
+\end_inset
+
+, where 
+\begin_inset Formula 
+\[
+\ffzd{p^{2}}=\left\{ \ket{\Psi}\in\ffd{p^{2}}\mid\ip{\Psi}{\Psi}\ne0\right\} \ .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+amr{
+\end_layout
+
+\end_inset
+
+we want to emphasize that it is not sufficient to remove these null vectors
+ once and for all at the beginning of time; it is possible to wrap around
+ during calculation (unitary evolution as well as projection to post-measurement
+ state) and produce a null state from a well-defined state.
+ In the rest of the paper (say where exactly) we will arrange for such invalid
+ operations to be detected and dealt with properly.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+gerardo{
+\end_layout
+
+\end_inset
+
+1) When the eigenvalues are non-degenerate there is never a problem; 2)
+ The problem is a manifestation of the lack of resources.
+ Had we used a larger p from the start, this situation would have been avoided.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+andy{
+\end_layout
+
+\end_inset
+
+I definitely agree.
+ Gerardo and I discussed at length whether the decision to 
+\begin_inset Quotes erd
+\end_inset
+
+fix the p in advance
+\begin_inset Quotes erd
+\end_inset
+
+ could be relaxed, and, though that is very complicated, I think that we
+ make a very good connection to the previous paper if we emphasize the role
+ of the size of p and the RESOURCES.
+ Without changing p in the measurement PROCESS, it is still legitimate to
+ state that a glitch in the PROCESS can arguably come directly from the
+ RESOURCES allocated.
+ Then our overall story is that DQT permits the splitting-apart of 
+\begin_inset Quotes eld
+\end_inset
+
+computability
+\begin_inset Quotes erd
+\end_inset
+
+ in quantum theories into state-representation and measurement resources.
+ So I'd say, if anything, such an interpretation needs to be expanded and
+ made very clear.
+ Then the readers of the sequence of papers know exactly who we are and
+ what our narrative implies about computability and quantum theory in general.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+amr{
+\end_layout
+
+\end_inset
+
+Long discussion about whether to allow zero norm states as intermediate
+ values.
+ Also discussion about whether we are computing with states or equivalence
+ classes of states; in the latter case, all zero-norm states should be equivalen
+t.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family roman
+Unitary and Hermitian operators in DQT
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+After we define the state vectors and the Hermitian dot product, we are
+ ready to define unitary and Hermitian operators representing time evolutions
+ and observables, respectively.
+ All unitary operators can represent time-evolution operators.
+ Because a unitary operator
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathbf{U}$
+\end_inset
+
+ preserves norm, a physical state
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ always evolves to another physical state
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathbf{U}\ket{\Psi}$
+\end_inset
+
+ according to 
+\begin_inset Formula $\mathbf{U}$
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+Although some unitary operators might not be induced by a Hamiltonian, we
+ might discuss further in our upcoming papers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+The situation for observables is more delicate.
+ As discussed in section 3, the measurement result of an observable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+ is a real number and a eigenvalue of 
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+; the post-measurment state is a physical state as well as an eigenvector
+ of 
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+.
+ However, a Hermitian operator
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ over 
+\begin_inset Formula $\ff{p^{2}}$
+\end_inset
+
+ may not be qualified for an observable because 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ may not have suitable eigenvalues and eigenvectors to define the measurement
+ precess, or equavalently 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ is not unitarily diagonalizable, for the following reasons: 
+\end_layout
+
+\begin_layout Enumerate
+
+\family roman
+\size normal
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:eigenvalueCount"
+
+\end_inset
+
+
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ may lack of eigenvalues.
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+yutsung{
+\end_layout
+
+\end_inset
+
+No eigenvalue is a problem, but how to clearly say why no enough eigenvalue
+ is a problem?
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ Formally, the total multiplicity of eigenvalues of 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ in 
+\begin_inset Formula $\ff{p^{2}}$
+\end_inset
+
+ may be less than 
+\begin_inset Formula $d$
+\end_inset
+
+, where the multiplicity of an eigenvalue 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is 
+\begin_inset Formula $K_{\lambda}$
+\end_inset
+
+ means that 
+\begin_inset Formula $\left(x-\lambda\right)^{K_{\lambda}}$
+\end_inset
+
+ is a factor of the characteristic polynomial 
+\begin_inset Formula 
+\begin{equation}
+\det\left(\mathbf{A}-x\mathds{1}\right)\textrm{ ,}\label{eq:characteristic}
+\end{equation}
+
+\end_inset
+
+while 
+\begin_inset Formula $\left(x-\lambda\right)^{K_{\lambda}+1}$
+\end_inset
+
+ is not a factor of the characteristic polynomial.
+ This happens because 
+\begin_inset Formula $\ff{p^{2}}$
+\end_inset
+
+ is not algebraically closed
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DummitFoote2004"
+
+\end_inset
+
+ so that the solutions of the characteristic polynomial may be in an proper
+ extension field of 
+\begin_inset Formula $\ff{p^{2}}$
+\end_inset
+
+.
+ For example, consider a Hermitian matrix 
+\begin_inset Formula 
+\[
+\mathbf{H}_{1}=\left(\begin{array}{ccc}
+-1 & -\rmi & 0\\
+\rmi & 1 & -\rmi\\
+0 & \rmi & 1
+\end{array}\right)
+\]
+
+\end_inset
+
+whose characteristic polynomials over 
+\begin_inset Formula $\ff{9}$
+\end_inset
+
+ are 
+\begin_inset Formula 
+\begin{eqnarray*}
+\det\left(\mathbf{H}_{1}-x\mathds{1}\right) & = & 2x^{3}+x^{2}+2
+\end{eqnarray*}
+
+\end_inset
+
+which have no solution in 
+\begin_inset Formula $\ff{9}$
+\end_inset
+
+ so that their total multiplicities are 0 less than 3.
+ In this case, 
+\begin_inset Formula $\mathbf{H}_{1}$
+\end_inset
+
+ should not be an observable because there is no eigenvalue as any measurement
+ result.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\family roman
+\size normal
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:degeneracy"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+yutsung{
+\end_layout
+
+\end_inset
+
+The same.
+ How to say clearly why no enough eigenvector is a problem?
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ The dimension of an eigenspace may be less than the multiplicity of its
+ eigenvalue.
+ For example, consider a Hermitian matrix 
+\begin_inset Formula 
+\[
+\mathbf{H}_{2}=\left(\begin{array}{cc}
+-1 & -1-\rmi\\
+-1+\rmi & 0
+\end{array}\right)
+\]
+
+\end_inset
+
+Over 
+\begin_inset Formula $\ff{9}$
+\end_inset
+
+, its only eigenvalue is 
+\begin_inset Formula $1$
+\end_inset
+
+ of multiplicity 
+\begin_inset Formula $2$
+\end_inset
+
+.
+ The only eigenspace of 
+\begin_inset Formula $\mathbf{H}_{2}$
+\end_inset
+
+ is spanned by 
+\begin_inset Formula $\begin{pmatrix}1\\
+-1+\rmi
+\end{pmatrix}$
+\end_inset
+
+.
+ The dimension of eigenspace is 1 less than 2 so that 
+\begin_inset Formula $\mathbf{H}_{2}$
+\end_inset
+
+ are not diagonalizable over 
+\begin_inset Formula $\ff{9}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\mathbf{H}_{2}$
+\end_inset
+
+ were an observable, 
+\begin_inset Formula $\mathbf{H}_{2}$
+\end_inset
+
+ would always have the outcome of measurement 
+\begin_inset Formula $1$
+\end_inset
+
+ with the post-measurement state 
+\begin_inset Formula $\begin{pmatrix}1\\
+-1+\rmi
+\end{pmatrix}$
+\end_inset
+
+.
+ However, only operator always producing 
+\begin_inset Formula $1$
+\end_inset
+
+ is the identity operator which change no state.
+ Therefore, 
+\begin_inset Formula $\mathbf{H}_{2}$
+\end_inset
+
+ may not be intuitively as an observable.
+\begin_inset Newline newline
+\end_inset
+
+ In order to understand this non-diagonalability, we can diagonalize them
+ in 
+\begin_inset Formula $\C$
+\end_inset
+
+.
+ The eigenvalues of 
+\begin_inset Formula $\mathbf{H}_{2}$
+\end_inset
+
+ in 
+\begin_inset Formula $\C$
+\end_inset
+
+ are 
+\begin_inset Formula $1$
+\end_inset
+
+ and 
+\begin_inset Formula $-2$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+-2 & \equiv & 1\left(\bmod p\right)
+\end{eqnarray*}
+
+\end_inset
+
+In another word, two eigenvalues in 
+\begin_inset Formula $\C$
+\end_inset
+
+ map to only one eigenvalue of multiplicity 
+\begin_inset Formula $2$
+\end_inset
+
+ in 
+\begin_inset Formula $\ff{9}$
+\end_inset
+
+, and the corresponding two eigenspaces with dimension 
+\begin_inset Formula $1$
+\end_inset
+
+ in 
+\begin_inset Formula $\C$
+\end_inset
+
+ map to one eigenspace still with dimension 
+\begin_inset Formula $1$
+\end_inset
+
+ in 
+\begin_inset Formula $\ff{9}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\family roman
+\size normal
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:orthonormal"
+
+\end_inset
+
+Some eigenvectors are zero-norm so that 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ may be diagonalizable, but not unitarily diagonalizable.
+ In this case, the corresponding eigenvalue
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\lambda$
+\end_inset
+
+ of a Hermitian matrix may not be in 
+\begin_inset Formula $\ff{p}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+ For example, consider a Hermitian matrix
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathbf{H}_{3}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\mathbf{H}_{3}=\left(\begin{array}{cc}
+-1 & -1-\rmi\\
+-1+\rmi & 1-
+\end{array}\right)
+\]
+
+\end_inset
+
+Over 
+\begin_inset Formula $\ff{9}$
+\end_inset
+
+, the eigenvalues and eigenvectors of 
+\begin_inset Formula $\mathbf{H}_{3}$
+\end_inset
+
+ are 
+\begin_inset Formula $-1-\rmi$
+\end_inset
+
+ with 
+\begin_inset Formula $\begin{pmatrix}1\\
+-1-\rmi
+\end{pmatrix}$
+\end_inset
+
+ and 
+\begin_inset Formula $-1+\rmi$
+\end_inset
+
+ with 
+\begin_inset Formula $\begin{pmatrix}1\\
+1+\rmi
+\end{pmatrix}$
+\end_inset
+
+.
+ It is easy to verify the eigenvalues are not in 
+\begin_inset Formula $\ff{3}$
+\end_inset
+
+, and the eigenvectors are all zero-normed.
+\begin_inset Newline newline
+\end_inset
+
+ If we diagonalize 
+\begin_inset Formula $\mathbf{H}_{3}$
+\end_inset
+
+ in 
+\begin_inset Formula $\C$
+\end_inset
+
+, we have the eigenvalues of 
+\begin_inset Formula $\mathbf{H}_{3}$
+\end_inset
+
+ in 
+\begin_inset Formula $\C$
+\end_inset
+
+ are 
+\begin_inset Formula $-1\pm\sqrt{2}$
+\end_inset
+
+.
+ If we extend the modulo 
+\begin_inset Formula $p$
+\end_inset
+
+ to algebraic number by 
+\begin_inset Formula 
+\[
+a\equiv b\left(\bmod p\right)\Leftrightarrow\pm\sqrt{a}\equiv\pm\sqrt{b}\left(\bmod p\right)
+\]
+
+\end_inset
+
+then 
+\begin_inset Formula 
+\begin{eqnarray*}
+-1\pm\sqrt{2} & \equiv & -1\pm\rmi\left(\bmod p\right)
+\end{eqnarray*}
+
+\end_inset
+
+In another word, although the extended modulo 
+\begin_inset Formula $p$
+\end_inset
+
+ operation respects any field operations and roots, it does not respect
+ the complex conjugate so that any definition depend on the complex conjugate
+ may not be preserved when we map them into finite fields.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+As long as there exists a non-zero-norm eigenbasis of 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ has an orthonormal eigenbasis
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "grove2002classical"
+
+\end_inset
+
+.
+ Therefore, these are the only reasons that 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ may not be unitarily diagonalizable, or an observable.
+ Besides, some unitary operators are not unitarily diagonalizable as well
+ although they are still time-evolution operators.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+yutsung{
+\end_layout
+
+\end_inset
+
+ I don't know whether there is a relation between the occurrence of zero
+ norm post-measurement states and anomalies in the list of possible observables,
+ especially we have already required any observables must be unitarily diagonali
+zable.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+I am sure I have asked Prof.
+ Lunts 
+\begin_inset Quotes eld
+\end_inset
+
+what we can say for the eigenvalues of Hermitian matrices over finite fields,
+\begin_inset Quotes erd
+\end_inset
+
+ and he seems not sure.
+ I guess I also asked Prof.
+ Thurston the same question, but I am not sure...
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+andy{
+\end_layout
+
+\end_inset
+
+We want to see where the argument of 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+em
+\end_layout
+
+\end_inset
+
+ compatible observables
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ fits in.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family roman
+Considering Continuous Probabilities
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+As seen in the previous section, the CQT Born rule gives a physical meaning
+ to the state vectors, which can be seen as holding the information regarding
+ outcomes of measurements.
+ Given a state 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+, the measurement of a physical quantity will result in one of some number
+ of mutually exclusive outcomes 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+It is worth asking whether the state vectors in DQT can contain probabilistic
+ information about measurement outcomes.
+ When the Born rule is literally translated directly into the finite field
+ framework, i.e., so the quantity 
+\begin_inset Formula ${\cal P}_{\Psi}(\lambda)$
+\end_inset
+
+ is in the field 
+\begin_inset Formula $\ff{p}$
+\end_inset
+
+, then 
+\begin_inset Formula ${\cal P}$
+\end_inset
+
+ can no longer be considered as a probability because it cannot be interpreted
+ as a real number in the interval 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+, or as any other transitively ordered set.
+ Thus in order to get a rule in DQT for extracting information from the
+ state vectors, the Born rule must be modified.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+Thus we are led first to consider the most obvious extension, which is to
+ postulate the existence of a consistent function 
+\begin_inset Formula $\dpt$
+\end_inset
+
+ with outcomes compatible with CQT, that is 
+\begin_inset Formula 
+\[
+\dpt\colon\ffzd{p^{2}}\times\ffzd{p^{2}}\longrightarrow[0,1]\ .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+For the outcomes of this new rule to truly be interpreted as probabilities,
+ the rule 
+\begin_inset Formula $\dpt$
+\end_inset
+
+ must satisfy certain properties.
+ First, probabilities must satisfy a normalization requirement: 
+\end_layout
+
+\begin_layout Description
+
+\family roman
+\size normal
+(i) For any orthonormal basis 
+\begin_inset Formula $\{\ket{i}\}$
+\end_inset
+
+ and any state 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+, 
+\begin_inset Formula ${\displaystyle \sum_{i=0}^{d-1}\dpt(\ket{\Psi},\ket{i})=1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+That is, the sum of probabilities for a complete set of mutually exclusive
+ outcomes must be 1.
+ To motivate the next requirement, consider the state 
+\begin_inset Formula $\alpha\ket{0}+\beta\ket{1}$
+\end_inset
+
+ in the vector space spanned by 
+\begin_inset Formula $\ket{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{1}$
+\end_inset
+
+.
+ We can embed this vector subspace in the larger 
+\begin_inset Formula $d$
+\end_inset
+
+-dimensional space spanned by 
+\begin_inset Formula $\ket{0}$
+\end_inset
+
+, 
+\begin_inset Formula $\ket{1}$
+\end_inset
+
+, \SpecialChar \ldots{}
+, 
+\begin_inset Formula $\ket{d-1}$
+\end_inset
+
+ and view our state in the larger vector space, i.e., view 
+\begin_inset Formula $\alpha\ket{0}+\beta\ket{1}$
+\end_inset
+
+ as 
+\begin_inset Formula $\alpha\ket{0}+\beta\ket{1}+0\ket{2}+\cdots+0\ket{d-1}$
+\end_inset
+
+.
+ The probabilities corresponding to outcomes 
+\begin_inset Formula $\ket{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{1}$
+\end_inset
+
+ should not depend on whether we are viewing the state in the original two-dimen
+sional subspace or the larger one.
+ Thus, in light of property (
+\family default
+\series bold
+i
+\family roman
+\series default
+), the probabilities corresponding to outcomes 
+\begin_inset Formula $\ket{2}$
+\end_inset
+
+, \SpecialChar \ldots{}
+, 
+\begin_inset Formula $\ket{d-1}$
+\end_inset
+
+ should all be zero.
+ This suggests the following necessary condition: 
+\end_layout
+
+\begin_layout Description
+
+\family roman
+\size normal
+(ii) If 
+\begin_inset Formula $\braket{\Phi}{\Psi}=0$
+\end_inset
+
+ then 
+\begin_inset Formula $\dpt(\ket{\Psi},\ket{\Phi})=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+The final property we require of a rule for deriving probabilities is that
+ it be basis independent: 
+\end_layout
+
+\begin_layout Description
+
+\family roman
+\size normal
+(iii) 
+\begin_inset Formula $\dpt(U\ket{\Phi},U\ket{\Psi})=\dpt(\ket{\Phi},\ket{\Psi})$
+\end_inset
+
+ where 
+\begin_inset Formula $U$
+\end_inset
+
+ is any unitary map.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+In CQT, Gleason's theorem
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gleason1957"
+
+\end_inset
+
+ shows that properties similar to these are sufficient to uniquely identify
+ the Born rule as the only consistent rule for defining probabilities from
+ states when 
+\begin_inset Formula $d>2$
+\end_inset
+
+.
+ If we adopt the natural conditions (
+\family default
+\series bold
+i
+\family roman
+\series default
+), (
+\family default
+\series bold
+ii
+\family roman
+\series default
+), and (
+\family default
+\series bold
+iii
+\family roman
+\series default
+) in DQT, we find from the following theorem that a map 
+\begin_inset Formula $\dpt$
+\end_inset
+
+ satisfying these conditions does not exist.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family roman
+A No-Go Theorem
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+We will fill out our arguments by introducing a no-go theorem that explains
+ why it is impossible in DQT to incorporate into Born's rule a continuous
+ real probability in the interval 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{theorem}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "theorem1"
+
+\end_inset
+
+ There is no map 
+\begin_inset Formula $\dpt\colon\ffzd{p^{2}}\times\ffzd{p^{2}}\longrightarrow[0,1]$
+\end_inset
+
+ satisfying properties (
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+bf
+\end_layout
+
+\end_inset
+
+ i
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+), (
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+bf
+\end_layout
+
+\end_inset
+
+ ii
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+), and (
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+bf
+\end_layout
+
+\end_inset
+
+ iii
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+) when 
+\begin_inset Formula $d>3$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{theorem}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
+ Assume such a map 
+\begin_inset Formula $\dpt$
+\end_inset
+
+ satisfying all three properties exists.
+ Consider the state 
+\begin_inset Formula 
+\[
+\ket{\Psi}=\alpha\big(\ket{0}+\ket{1}+\ket{2}+\beta\ket{3}\big)
+\]
+
+\end_inset
+
+expressed in terms of orthonormal vectors, where 
+\begin_inset Formula $\beta\in\ff{p^{2}}$
+\end_inset
+
+ is chosen so that 
+\begin_inset Formula $\left|\beta\right|^{2}=p-1$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha\in\ff{p^{2}}$
+\end_inset
+
+ is a constant such that 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ is normalized.
+ Let 
+\begin_inset Formula $\ket{\Phi}=\ket{1}+\ket{2}+\beta\ket{3}$
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula $\ket{\Phi}$
+\end_inset
+
+ is normalized in 
+\begin_inset Formula $\ff{p}$
+\end_inset
+
+.
+ We can write our original state 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ as 
+\begin_inset Formula $\ket{\Psi}=\alpha\big(\ket{0}+\ket{\Phi}\big)$
+\end_inset
+
+ The vectors 
+\begin_inset Formula $\ket{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{\Phi}$
+\end_inset
+
+ are orthonormal and so are part of some larger orthonormal basis.
+ Thus by properties (
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+bf
+\end_layout
+
+\end_inset
+
+ i
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+) and (
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+bf
+\end_layout
+
+\end_inset
+
+ ii
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+) we have 
+\begin_inset Formula 
+\begin{equation}
+1=\dpt\big(\ket{\Psi},\ket{0}\big)+\dpt\big(\ket{\Psi},\ket{\Phi}\big).\label{prob1}
+\end{equation}
+
+\end_inset
+
+Let 
+\begin_inset Formula $U$
+\end_inset
+
+ be the unitary map that simply permutes the orthonormal vectors 
+\begin_inset Formula $\ket{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{\Phi}$
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ is invariant under 
+\begin_inset Formula $U$
+\end_inset
+
+, so invoking property (
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+bf
+\end_layout
+
+\end_inset
+
+ iii
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+), we have 
+\begin_inset Formula 
+\[
+\dpt\big(\ket{\Psi},\ket{0}\big)=\dpt\big(U\ket{\Psi},U\ket{0}\big)=\dpt\big(\ket{\Psi},\ket{\Phi}\big)\ .
+\]
+
+\end_inset
+
+This along with equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prob1"
+
+\end_inset
+
+) gives 
+\begin_inset Formula 
+\[
+1=\dpt\big(\ket{\Psi},\ket{0}\big)+\dpt\big(\ket{\Psi},\ket{0}\big),
+\]
+
+\end_inset
+
+so 
+\begin_inset Formula 
+\begin{equation}
+\dpt\big(\ket{\Psi},\ket{0}\big)=\dpt\big(\ket{\Psi},\ket{\Phi}\big)=\frac{1}{2}\in[0,1]\ .\label{prob2}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
+\end_layout
+
+\end_inset
+
+For 
+\begin_inset Formula $i=0,1,2$
+\end_inset
+
+ let 
+\begin_inset Formula $U_{i}$
+\end_inset
+
+ be the unitary map that permutes the basis vectors 
+\begin_inset Formula $\ket{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{i}$
+\end_inset
+
+ and acts as the identity for the rest.
+ Note that 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ is invariant under 
+\begin_inset Formula $U_{i}$
+\end_inset
+
+.
+ So again by property (
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+bf
+\end_layout
+
+\end_inset
+
+ iii
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+) we have 
+\begin_inset Formula 
+\[
+\dpt\big(\ket{\Psi},\ket{i}\big)=\dpt\big(U_{i}\ket{\Psi},U_{i}\ket{0}\big)=\dpt\big(\ket{\Psi},\ket{0}\big)=\frac{1}{2}
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $i=0,1,2$
+\end_inset
+
+.
+ These probability assignments are inconsistent with the requirement that
+ the probabilities for orthogonal outcomes add up to 1.
+ By property (
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+bf
+\end_layout
+
+\end_inset
+
+ i
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+) 
+\begin_inset Formula 
+\begin{eqnarray*}
+1 & = & \dpt\big(\ket{\Psi},\ket{0}\big)+\dpt\big(\ket{\Psi},\ket{1}\big)+\dpt\big(\ket{\Psi},\ket{2}\big)+\dpt\big(\ket{\Psi},\ket{3}\big)\\
+ & = & \frac{1}{2}+\frac{1}{2}+\frac{1}{2}+\dpt\big(\ket{\Psi},\ket{3}\big)\\
+ & \geq & \frac{3}{2},
+\end{eqnarray*}
+
+\end_inset
+
+so we have a contradiction.
+ The assumption of a satisfactory map 
+\begin_inset Formula $\dpt$
+\end_inset
+
+ is thus false.
+ 
+\begin_inset Formula $\Box$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+ (It should be pointed out that the argument above explicitly uses states
+ from a vector space of four dimensions or larger, and thus does not hold
+ if the largest vector space one can consider has dimension 
+\begin_inset Formula $d\le3$
+\end_inset
+
+.
+ But it does hold for any system that, for example, contains more than a
+ single qubit.)
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+What are the implications of this theorem? Intuitively one might think that
+ the lack of an order on the field elements is the main obstacle to extracting
+ probabilities from DQT, but the above result shows that this is not the
+ case.
+ Even supplementing the field elements with an ordering does not allow for
+ a rule that satisfies the three properties above.
+ And any other scheme for extracting probabilities from quantum mechanics
+ over a finite field will violate one of the three properties above.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+We next observe that one way out of this dilemma is to define a framework
+ for quantum measurement in DQT that is based not upon probabilities but
+ upon discrete interval-valued probabilities.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+gerardo{
+\end_layout
+
+\end_inset
+
+There is a paper by Mermin, Quantum Mysteries Revisited
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MerminPRL1990"
+
+\end_inset
+
+, that could be used profitably in the next arguments.
+ See also John's paper, section 
+\begin_inset Quotes eld
+\end_inset
+
+GHZ Experiment.
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family roman
+Interval-Valued Probabilities for DQT
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+yutsung{
+\end_layout
+
+\end_inset
+
+ It seems that almost everything currently in this section should move to
+ Section 5, because they are already focus on the measurement process in
+ DQT, especially 
+\begin_inset Formula $\dpr\left(\ket{\Psi},\ket{\Phi}\right)$
+\end_inset
+
+ should be intuitively corresponding to 
+\begin_inset Formula ${\cal P}_{\Psi}\left(\lambda_{i}\right)$
+\end_inset
+
+ in CQT.
+ Or we may combine Section 4.5 and Section 5.1 into one section.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+If we want to keep Section 4.5 and Section 5.1 separately, we may try to focus
+ on the definition of Interval-Valued Probabilities and these algebraic
+ relation, like =, 0, 1, and +.
+ However, the readers may not know why they need these algebraic relation
+ before we define the measurement process...
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+In order to write down the analog of the CQT Born rule and quantum measurement
+ process for DQT, we must explicitly define a corresponding discrete measurement
+ framework.
+ To this end, consider an orthogonal basis 
+\begin_inset Formula $\{\left|i\right\rangle \}$
+\end_inset
+
+ of 
+\begin_inset Formula $\ffzd{p^{2}}$
+\end_inset
+
+.
+ In this basis, two arbitrary vectors can be written in the form 
+\begin_inset Formula 
+\begin{equation}
+\ket{\Psi}=\sum_{i=0}^{d-1}~\alpha_{i}\left|i\right\rangle \ ,\ \ket{\Phi}=\sum_{i=0}^{d-1}~\beta_{i}\left|i\right\rangle ,
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+ elements of the field 
+\begin_inset Formula $\ff{p^{2}}$
+\end_inset
+
+.
+ The Hermitian product in our discrete number system is thus reducible to
+ the form 
+\begin_inset Formula 
+\begin{equation}
+\ip{\Phi}{\Psi}=\sum_{i=0}^{d-1}~{\beta_{i}}^{p}~\alpha_{i}^{\;}\ .\label{innerprod}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% Needed?? ~
+\backslash
+cite{DQT2014}..
+ ~
+\backslash
+cite{grove2002classical}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+These issues are all crucial for DQT because in the discrete domain we do
+ not have transitive ordered probabilities defined on the real numbers.
+ Furthermore, although the physical state 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ before the measurement belongs to 
+\begin_inset Formula $\ffzd{p^{2}}$
+\end_inset
+
+, the post-measurement state may not belong to 
+\begin_inset Formula $\ffzd{p^{2}}$
+\end_inset
+
+ in the case of 
+\family default
+\shape italic
+degenerate eigenvalues
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\family roman
+\shape default
+.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+This leads us to introduce a modified Born's rule, with values in discrete
+ interval-valued probabilities, for the study of the properties that DQT
+ shares with CQT but not with classical theories.
+ It will turn out that in order to accommodate the anomalous situation where
+ post-measurement states do not belong to 
+\begin_inset Formula $\ffzd{p^{2}}$
+\end_inset
+
+, we explicitly detect such invalid intermediate states and cause them to
+ halt the entire computation immediately.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+amr{
+\end_layout
+
+\end_inset
+
+I think the previous two paragraphs could be even more clear if we said
+ the following.
+ First we talk about the no-go theorem and say that we must go to 
+\begin_inset Quotes eld
+\end_inset
+
+interval-valued probabilities.
+\begin_inset Quotes erd
+\end_inset
+
+ Then say we will use two intervals 
+\family default
+\shape italic
+(possible, impossible) 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\family roman
+\shape default
+.
+ Then explain that a measurement operation is a 
+\emph on
+partial function 
+\emph default
+ that takes a current state (non-null vector) and an observable 
+\begin_inset Formula ${\cal O}$
+\end_inset
+
+ and as explained next produces 
+\emph on
+three
+\emph default
+ things when defined.
+ Generally if we measure observable 
+\begin_inset Formula ${\cal O}$
+\end_inset
+
+ of quantum state 
+\begin_inset Formula $\ket{\phi}$
+\end_inset
+
+, then (i) with interval-value probability 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+, (ii) the result of the measurement will be eigenvalue 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+, and (iii) the quantum state will collapse to the state 
+\begin_inset Formula $\ket{\psi}_{i}$
+\end_inset
+
+.
+ In the case the post-measurement state would be null because of wrapping
+ around that might occur with degenerate observables the entire measurement
+ operation is 
+\emph on
+undefined
+\emph default
+.
+ Otherwise the result is the triple of probability, eigenvalue, and post-measure
+ment state.
+ Note that composition of measurement operations is only defined if both
+ measurement operations are defined.
+ In particular, if is possible that two commuting observables 
+\begin_inset Formula ${\cal O}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula ${\cal O}_{2}$
+\end_inset
+
+ could be measured in one order but not the order if one of the intermediate
+ steps is undefined.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+Since discrete quantum theories do not have orderable fields, and thus lack
+ orderable probabilities, we must discover a way to understand how Born's
+ rule could manifest itself in a consistent discrete theory.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+To begin our study of discrete theory, we define a map 
+\begin_inset Formula $\dpr$
+\end_inset
+
+ that will play the role of a discrete Born rule, with the replacement of
+ real-valued probabilities by the two tags 'impossible' and 'possible':
+ 
+\begin_inset Formula 
+\[
+\dpr:\ffzd{p^{2}}\times\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}=\left\{ \text{impossible},\text{possible}\right\} ,
+\]
+
+\end_inset
+
+Thus 
+\begin_inset Formula $\dpr$
+\end_inset
+
+ can be defined in the possibility field 
+\begin_inset Formula $\mathscr{L}_{2}$
+\end_inset
+
+ as 
+\begin_inset Formula 
+\begin{equation}
+\dpr\left(\ket{\Psi},\ket{\Phi}\right)=\left\{ \begin{array}{r@{\textrm{, if }}lcccc}
+\textrm{possible} & \ip{\Psi}{\Phi}\ne0\\
+\textrm{impossible} & \ip{\Psi}{\Phi}=0
+\end{array}\right.\ .\label{eq:modality}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{equation}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+dpr 
+\backslash
+left(
+\backslash
+ket{
+\backslash
+Psi},
+\backslash
+ket{
+\backslash
+Phi}
+\backslash
+right)=
+\backslash
+begin{cases}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+text{possible} & 
+\backslash
+textrm{, if }
+\backslash
+ip{
+\backslash
+Psi}{
+\backslash
+Phi}
+\backslash
+ne 0
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+text{impossible} & 
+\backslash
+textrm{, if }
+\backslash
+ip{
+\backslash
+Psi}{
+\backslash
+Phi}=0
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{cases} 
+\backslash
+ .
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% %
+\backslash
+label{eq:modality}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{equation}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% {
+\backslash
+bf Remark}: The natural occurrence of null-norm intermediate states
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% in examples of two-operator measurement systems used to test
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% contextuality will lead us to the requirement for a three-valued
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% logic, $
+\backslash
+mathscr{L}_{3}$, with a possibility of the value
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+text{inconsistent}$.
+  For clarity of exposition, we employ the
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% two-valued modal logic $
+\backslash
+mathscr{L}_{2}$ until absolutely necessary.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family roman
+Measurement Process in DQT
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family roman
+Basic Measurement
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+amr{
+\end_layout
+
+\end_inset
+
+Adapt the following to DQT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+Assume that a physical system is represented by a state 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+, and that we wish to measure a physical quantity 
+\begin_inset Formula ${\cal O}$
+\end_inset
+
+ of this system, with corresponding observable 
+\begin_inset Formula ${\mathbf{O}}$
+\end_inset
+
+, whose eigenspectrum is given by 
+\begin_inset Formula 
+\[
+{\mathbf{O}}\left|i\right\rangle =\lambda_{i}\left|i\right\rangle \ .
+\]
+
+\end_inset
+
+Then Born's rule of CQT tells us that the probability of obtaining the eigenvalu
+e 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ as an outcome of the measurement is given by 
+\begin_inset Formula 
+\begin{eqnarray}
+\begin{array}{rcccl}
+{\cal P}_{\Psi}\left(\lambda_{i}\right) & = & {\displaystyle {\frac{\langle\Psi|{P}_{i}|\Psi\rangle}{\ip{\Psi}{\Psi}}}} & = & {\displaystyle {\frac{\ip{\Psi}{i}\ip{i}{\Psi}}{\ip{\Psi}{\Psi}\ip{i}{i}}}}\end{array}\ ,\label{prob1.eq}
+\end{eqnarray}
+
+\end_inset
+
+where 
+\begin_inset Formula ${P}_{i}$
+\end_inset
+
+ is the projector onto the subspace generated by the eigenvector 
+\begin_inset Formula $\left|i\right\rangle $
+\end_inset
+
+.
+ We have until now assumed non-degenerate eigenvalues.
+ If, for some set of states 
+\begin_inset Formula $\{k\}$
+\end_inset
+
+, the eigenvalue 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is degenerate, we account for that by replacing the simple expression for
+ the projector 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ by 
+\begin_inset Formula 
+\[
+P_{\lambda}=\sum_{k=1}^{K_{\lambda}}\frac{\left|k\right\rangle \left\langle k\right|}{\ip{k}{k}}\ ,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $K_{\lambda}$
+\end_inset
+
+ is the degeneracy of the eigenvalue 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family roman
+Degeneracy and Post-Measurement States
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+amr{
+\end_layout
+
+\end_inset
+
+Explain that problem and need to deal with errors
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% We will assume in the following that this is taken into
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% account, except for particular cases where degeneracy is explicitly
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% involved in distinguishing the behavior of DQT from CQT.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+One other issue that will confront us in the transition from CQT to DQT
+ is the presence of post-measurement states.
+ In CQT, the Von Neumann projective measurement state, immediately after
+ the measurement of 
+\begin_inset Formula ${\cal O}$
+\end_inset
+
+, is given in general by 
+\begin_inset Formula 
+\[
+\frac{P_{\lambda}\ket{\Psi}}{\sqrt{\langle\Psi|{P}_{\lambda}|\Psi\rangle}}\ ,
+\]
+
+\end_inset
+
+where for the non-degenerate case, 
+\begin_inset Formula $P_{\lambda}\to{P}_{i}$
+\end_inset
+
+, and so the resulting state is just 
+\begin_inset Formula $\ket{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+amr{
+\end_layout
+
+\end_inset
+
+ Assume O1 and O2 are compatible: f([O1.O2],psi) = f([O2.O1],psi)
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+In CQT, f(O1,f(O2,psi)) = f([O1.O2],psi) = f([O2.O1],psi) = f(O2,f(O1,psi))
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+In DQT, it is possible that: f(O1,f(O2,psi)) /= f(O2,f(O1,psi)) because
+ one of them, say f(O1,psi) wraps in the field 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%% Now we need to look at the DQT measurement process
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%  and whether we can get around the limitations.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%Gleason's Theorem and the Born Rule, etc.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family roman
+Contextuality and Non-Locality in DQT
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family roman
+Gleason's Theorem in DQT
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+The Born rule is the 
+\emph on
+only
+\emph default
+ way to assign a probability in conventional quantum theory because of Gleason's
+ theorem.
+ We now show that 
+\begin_inset Formula $\dpr$
+\end_inset
+
+ defined in Eq.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:modality"
+
+\end_inset
+
+) is an example of a properly defined Born rule in the discrete theory because
+ 
+\begin_inset Formula $\dpr$
+\end_inset
+
+ also satisfies the closest analog of Gleason's Theorem that we can construct.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+Following the standard axioms for Gleason's theorem
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "peres1995quantum"
+
+\end_inset
+
+, we introduce discrete axioms that differ in only one significant instance
+ from the classical ones: 
+\begin_inset Formula 
+\begin{eqnarray}
+ & \bullet & \textrm{For any orthogonal basis }\left\{ \left|n\right\rangle \right\} _{n=0}^{d-1}\subset\ffzd{p^{2}}\textrm{, and }\label{enu:total-probability-DQT(I)}\\
+ &  & \ket{\Psi}\in\ffzd{p^{2}}\textrm{, at least one of\ }\dpr\left(\ket{\Psi},\ket{n}\right)=\text{possible.}\nonumber \\
+ & \bullet & \textrm{For any orthogonal basis }\left\{ \left|n\right\rangle \right\} _{n=0}^{d-1}\subset\ffzd{p^{2}}\nonumber \\
+ &  & \textrm{and a particular\ }\ket{n'}\in\left\{ \left|n\right\rangle \right\} _{n=0}^{d-1}\textrm{, }\nonumber \\
+ &  & \dpr\big(\ket{n'},\ket{n'}\big)=\text{possible and\ }\label{enu:particular-vector-DQT(I)}\\
+ &  & \dpr\big(\ket{n'},\ket{n}\big)=\text{impossible for any }n\ne n'\textrm{. }\nonumber \\
+ & \bullet & \textrm{For any vector }\ket{\Psi},\ket{\Phi}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}\backslash\left\{ 0\right\} \textrm{, }\nonumber \\
+ &  & \dpr(\ket{\Psi},\ket{\Phi})=\dpr(\gamma\ket{\Psi},\ket{\Phi})=\dpr(\ket{\Psi},\gamma\ket{\Phi})\textrm{. }\label{enu:parallel-DQT(I)}\\
+ & \bullet & \textrm{For any vector }\ket{\Psi},\ket{\Phi}\in\ffzd{p^{2}}\textrm{, }\nonumber \\
+ &  & \textrm{and }U\textrm{ is a }d\textrm{-by-}d\textrm{ unitary matrix over }\ff{p^{2}}\textrm{, }\label{enu:unitary-DQT(I)}\\
+ &  & \textrm{i.e. , }U^{\dagger}U=I\textrm{, then }\dpr(\ket{\Psi},\ket{\Phi})=\dpr(U\ket{\Psi},U\ket{\Phi})\textrm{. }\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+Because there is no possibility for continuity in the discrete theory, we
+ have substituted the condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:unitary-DQT(I)"
+
+\end_inset
+
+) for the conventional continuity axiom in Gleason's Theorem.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family roman
+The Kochen-Specker Theorem in DQT
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+The essence of the Kochen-Specker theorem is to ask if it is possible, for
+ a fixed 
+\begin_inset Formula $\ket{\Psi}\in\ffzd{p^{2}}$
+\end_inset
+
+, to have another function 
+\begin_inset Formula $v\left(\ket{\Phi}\right)$
+\end_inset
+
+ playing the role of 
+\begin_inset Formula $\dpr\left(\ket{\Psi},\ket{\Phi}\right)$
+\end_inset
+
+ but failing to satisfy any single one of the conditions in the set (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:total-probability-DQT(I)"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:particular-vector-DQT(I)"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:parallel-DQT(I)"
+
+\end_inset
+
+,
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:unitary-DQT(I)"
+
+\end_inset
+
+) and to show that this cannot be true.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{description} 
+\end_layout
+
+\end_inset
+
+
+\family default
+\series bold
+The Theorem 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\family roman
+\series default
+: For 
+\begin_inset Formula $d\ge3$
+\end_inset
+
+, there is no function 
+\begin_inset Formula $v:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\begin{eqnarray}
+ & \bullet & \textrm{For any orthogonal basis }\left\{ \left|n\right\rangle \right\} _{n=0}^{d-1}\subset\ffzd{p^{2}}\textrm{, }\nonumber \\
+ &  & \textrm{exactly one of }\left\{ v\left(\left|n\right\rangle \right)\right\} _{n=0}^{d-1}\text{ is possible.}\label{enu:total-probability-DQT(I)-KS}
+\end{eqnarray}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+end{description}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset Float table
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="6">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+Possible 
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+Impossible
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+The first vector is possible because of
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $001$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $100$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $010$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $110$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $1\bar{1}0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+arbitrary choice of 
+\begin_inset Formula $z$
+\end_inset
+
+ axis
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $101$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $\bar{1}01$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $010$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+arbitrary choice of 
+\begin_inset Formula $x$
+\end_inset
+
+ vs 
+\begin_inset Formula $-x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $011$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $0\bar{1}1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $100$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+arbitrary choice of 
+\begin_inset Formula $y$
+\end_inset
+
+ vs 
+\begin_inset Formula $-y$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $1\bar{1}{-}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $\bar{1}1{-}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $110$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula ${+}0\bar{1}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $0{+}1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+arbitrary choice of 
+\begin_inset Formula $x$
+\end_inset
+
+ vs 
+\begin_inset Formula $y$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $10{-}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula ${+}0\bar{1}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $010$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula ${+}\bar{1}\bar{1}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+orthogonality to 2nd and 3rd vectors
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula ${+}11$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $0\bar{1}1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula ${+}\bar{1}\bar{1}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $\bar{1}0{-}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+orthogonality to 2nd and 3rd vectors
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula ${+}01$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $010$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $\bar{1}0{-}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $\bar{1}\bar{1}{-}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+orthogonality to 2nd and 3rd vectors
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $11{-}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $1\bar{1}0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $\bar{1}\bar{1}{-}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $0{+}\bar{1}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+orthogonality to 2nd and 3rd vectors
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $01{-}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $100$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $0{+}\bar{1}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $\bar{1}{+}\bar{1}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+orthogonality to 2nd and 3rd vectors
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $1{+}1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $\bar{1}01$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $\bar{1}{+}\bar{1}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $0\bar{1}{-}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+orthogonality to 2nd and 3rd vectors
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:proof-of-K-S"
+
+\end_inset
+
+Proof of the Kochen-Specker theorem in DQT(I)(I) in 3 dimensions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
+\end_layout
+
+\end_inset
+
+Following the general structure in
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "peres1995quantum"
+
+\end_inset
+
+, we will prove by contradiction that the theorem holds for primes (with
+ 
+\begin_inset Formula $p\equiv3\mod4$
+\end_inset
+
+) with 
+\begin_inset Formula $p>3$
+\end_inset
+
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset CommandInset label
+LatexCommand label
+name "fn:p>3"
+
+\end_inset
+
+When 
+\begin_inset Formula $p=3$
+\end_inset
+
+, the Kochen-Specker theorem still holds, but the proof is longer.
+\end_layout
+
+\end_inset
+
+.
+ Suppose 
+\begin_inset Formula $v$
+\end_inset
+
+ exists, and consider the set of all vectors with entries in 
+\begin_inset Formula $\left\{ 0,\pm1,\pm1\pm\rmi\right\} $
+\end_inset
+
+.
+ Then the steps in the proof can be read off from Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:proof-of-K-S"
+
+\end_inset
+
+.
+ In each cell in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:proof-of-K-S"
+
+\end_inset
+
+, the string 
+\begin_inset Formula $xyz$
+\end_inset
+
+ represents a state vector, where 
+\begin_inset Formula $x$
+\end_inset
+
+, 
+\begin_inset Formula $y$
+\end_inset
+
+, and 
+\begin_inset Formula $z$
+\end_inset
+
+ can be { 
+\begin_inset Formula $0$
+\end_inset
+
+, 
+\begin_inset Formula $1$
+\end_inset
+
+, 
+\begin_inset Formula $\bar{1}\equiv-1,$
+\end_inset
+
+ 
+\begin_inset Formula ${+}\equiv(1+\rmi)$
+\end_inset
+
+, 
+\begin_inset Formula ${-}\equiv(1-\rmi)$
+\end_inset
+
+ }, and 
+\begin_inset Formula 
+\[
+v\left(xyz\right)=\{\textrm{possible}\,\mbox{{\it or\/}}\,\textrm{impossible}\ ,
+\]
+
+\end_inset
+
+depending on its column.
+ Examining the table from top to the bottom, we will eventually get a contradict
+ion.
+ The set of vectors are invariant under interchanges of the 
+\begin_inset Formula $x$
+\end_inset
+
+, 
+\begin_inset Formula $y$
+\end_inset
+
+, and 
+\begin_inset Formula $z$
+\end_inset
+
+ axess.
+ Hence, we can assume 
+\begin_inset Formula $v\left(100\right)=v\left(010\right)=\textrm{impossible}$
+\end_inset
+
+ and 
+\begin_inset Formula $v\left(001\right)=\textrm{possible}$
+\end_inset
+
+.
+ Furthermore, 
+\begin_inset Formula $110$
+\end_inset
+
+ and 
+\begin_inset Formula $1\bar{1}0$
+\end_inset
+
+ are orthogonal to 
+\begin_inset Formula $001$
+\end_inset
+
+, so that 
+\begin_inset Formula $v\left(110\right)=v\left(1\bar{1}0\right)=\textrm{impossible}$
+\end_inset
+
+.
+ A similar argument may be used to construct the second, third, and fourth
+ rows.
+ After we know enough values of 
+\begin_inset Formula $v\left(\ket{\Psi}\right)$
+\end_inset
+
+, we can find that 
+\begin_inset Formula $10{-}$
+\end_inset
+
+, 
+\begin_inset Formula ${+}0\bar{1}$
+\end_inset
+
+, and 
+\begin_inset Formula $010$
+\end_inset
+
+ is an orthogonal basis, and we already know that 
+\begin_inset Formula $v\left({+}0\bar{1}\right)=v\left(010\right)=\textrm{impossible}$
+\end_inset
+
+, so 
+\begin_inset Formula $v\left(10{-}\right)=\textrm{possible}$
+\end_inset
+
+.
+ Following a similar procedure, we can continue evaluating the entire content
+ of Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:proof-of-K-S"
+
+\end_inset
+
+.
+ We can see that 
+\begin_inset Formula $100$
+\end_inset
+
+, 
+\begin_inset Formula $0{+}1$
+\end_inset
+
+, and 
+\begin_inset Formula $0\bar{1}{-}$
+\end_inset
+
+ form an orthogonal basis, but we already know 
+\begin_inset Formula $v\left(100\right)=v\left(0{+}1\right)=v\left(0\bar{1}{-}\right)=\textrm{impossible}$
+\end_inset
+
+.
+ This contradicts our initial assumptions.
+ Therefore, there is no function 
+\begin_inset Formula $v$
+\end_inset
+
+ satisfying the conditions.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+ Notice that this proof applies for almost all 
+\begin_inset Formula $p$
+\end_inset
+
+, and, despite the exclusive appearance of integers in 
+\begin_inset Formula $\ff{p^{2}}$
+\end_inset
+
+ throughout the computation, there are no occurrences of wrapping back to
+ zero in the number field.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family roman
+Bell's Theorem in DQT
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+We conclude with a discrete quantum theory version of Bell's theorem, showing
+ that non-locality persists in the discrete theory, and no hidden variable
+ theories are consistent with our modal-logic-valued operations.
+ We exploit methods such as those of Greenberger, Horne, and Zeilinger
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GHZ1990"
+
+\end_inset
+
+ that do not rely on inequalities, and so allow us to escape the disadvantages
+ of lack of orderability of discrete field values (see, e.g, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MerminPRL1990,peres1995quantum"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+First, let 
+\begin_inset Formula $\mathbb{O}_{p^{2}}^{d}$
+\end_inset
+
+ be the set of all observables for 
+\begin_inset Formula $\ff{p^{2}}^{d}$
+\end_inset
+
+, and let 
+\begin_inset Formula $\Delta\left(\mathcal{O}\right)$
+\end_inset
+
+ be the set of eigenvalues of an observable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathcal{O}$
+\end_inset
+
+.
+ Then, the Born rule in DQT(I) 
+\begin_inset Formula $\dpr$
+\end_inset
+
+ asserts that given 
+\begin_inset Formula $\ket{\Psi}\in\ffzd{p^{2}}$
+\end_inset
+
+ and an observable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathcal{O}\in\mathbb{O}_{p^{2}}^{d}$
+\end_inset
+
+ whether a eigenvalue
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\lambda\in\Delta\left(\mathcal{O}\right)$
+\end_inset
+
+ is a possible measurement result or not.
+ Hence, a hidden variable theories consistent with 
+\begin_inset Formula $\dpr$
+\end_inset
+
+ can be described by a function
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $w$
+\end_inset
+
+ giving directly the measurement result
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\lambda=w(\ket{\Psi},\mathcal{O})$
+\end_inset
+
+ and satisfying condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:consistent"
+
+\end_inset
+
+).
+ 
+\begin_inset Formula 
+\begin{eqnarray}
+ & \bullet & \textrm{For any }\ket{\Psi}\in\ffzd{p^{2}}\textrm{, }\mathcal{O}\in\mathbb{O}_{p^{2}}^{d}\textrm{, }\nonumber \\
+ &  & w(\ket{\Psi},\mathcal{O})\in\Delta\left(\mathcal{O}\right)\textrm{. Moreover, }\nonumber \\
+ &  & \textrm{if }\mathcal{H}\textrm{ is an eigenspace of }\mathcal{O}\textrm{ corresponding to }w\left(\ket{\Psi},\mathcal{O}\right)\textrm{, }\nonumber \\
+ &  & \textrm{then }\dpr\left(\ket{\Psi},\mathcal{H}\right)=\textrm{possible .}\label{eq:consistent}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+Second, local observables 
+\begin_inset Formula $\mathcal{O}'$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{O}''$
+\end_inset
+
+ are represented by the observables in subspace 
+\begin_inset Formula $\mathbb{O}_{p^{2}}^{d'}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbb{O}_{p^{2}}^{d''}$
+\end_inset
+
+ and be considered as observables in the whole space by applying tensor
+ product, 
+\begin_inset Formula $\mathcal{O}'\otimes Id_{d''}$
+\end_inset
+
+ and 
+\begin_inset Formula $Id_{d'}\otimes\mathcal{O}''$
+\end_inset
+
+.
+ Then, condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:locality"
+
+\end_inset
+
+) 
+\begin_inset Formula 
+\begin{eqnarray}
+ & \bullet & \textrm{For any }d',d''\in\N\textrm{, }d=d'd''\textrm{, }\mathcal{O}'\in\mathbb{O}_{p^{2}}^{d'}\textrm{, }\mathcal{O}''\in\mathbb{O}_{p^{2}}^{d''}\textrm{. }\nonumber \\
+ &  & \textrm{If }\mathcal{H}'\textrm{ is an eigenspace of }\mathcal{O}'\otimes Id_{d''}\textrm{, }\nonumber \\
+ &  & \textrm{and }\mathcal{H}''\textrm{ is an eigenspace of }Id_{d'}\otimes\mathcal{O}''\textrm{, }\nonumber \\
+ &  & \textrm{and }\dpr\left(\ket{\Psi},\mathcal{H}'\right)=\textrm{possible ,}\nonumber \\
+ &  & \textrm{then }w\left(\ket{\Psi},\mathcal{H}''\right)=w\left(\hat{P}_{\mathcal{H}'}\ket{\Psi},\mathcal{H}''\right)\textrm{. }\label{eq:locality}
+\end{eqnarray}
+
+\end_inset
+
+represents locality because we require the measurement result of 
+\begin_inset Formula $Id_{d'}\otimes\mathcal{O}''$
+\end_inset
+
+ should be the same no matter whether we apply the other observable 
+\begin_inset Formula $\mathcal{O}'\otimes Id_{d''}$
+\end_inset
+
+ which may be far away from 
+\begin_inset Formula $Id_{d'}\otimes\mathcal{O}''$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Description
+
+\family roman
+\size normal
+Theorem For 
+\begin_inset Formula $8\mid d$
+\end_inset
+
+, there is no function 
+\begin_inset Formula $w:\ffzd{p^{2}}\times\mathbb{O}_{p^{2}}^{d}\rightarrow\ff{p}$
+\end_inset
+
+ satisfying condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:consistent"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:locality"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
+Suppose the function 
+\begin_inset Formula $w$
+\end_inset
+
+ exists, we are going to construct a contradiction form a (non-normalized)
+ GHZ state
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\ket{\Psi_{4}}=4\ket{000}-4\ket{111}$
+\end_inset
+
+, where 
+\begin_inset Formula $\ket{xyz}$
+\end_inset
+
+ are a three qubit state 
+\begin_inset Formula $\ket{x}\otimes\ket{y}\otimes\ket{y}$
+\end_inset
+
+, 
+\begin_inset Formula $x$
+\end_inset
+
+, 
+\begin_inset Formula $y$
+\end_inset
+
+, 
+\begin_inset Formula $z\in\left\{ 0,1\right\} $
+\end_inset
+
+.
+ Then we consider observables representing the 
+\begin_inset Formula $j$
+\end_inset
+
+-th experimenter measuring the spin along the 
+\begin_inset Formula $\mu$
+\end_inset
+
+-axis, the Pauli operators acting on the 
+\begin_inset Formula $j$
+\end_inset
+
+-th spin
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\sigma_{\mu}^{j}$
+\end_inset
+
+, where 
+\begin_inset Formula $\mu=x,y$
+\end_inset
+
+, and 
+\begin_inset Formula 
+\begin{equation}
+\sigma_{\mu}^{j}=\overbrace{\mathds{1}\otimes\mathds{1}\otimes\cdots\otimes\underbrace{\sigma_{\mu}}_{j^{th}\ \mbox{factor}}\otimes\cdots\otimes\mathds{1}}^{n\ \mbox{factors}}\;,\label{pauli3}
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\[
+\sigma_{x}=\left(\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}\right),\sigma_{y}=\left(\begin{array}{cc}
+0 & -i\\
+i & 0
+\end{array}\right).
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
+\end_layout
+
+\end_inset
+
+Suppose the first experimenter perform measurement on the first qubit along
+ the 
+\begin_inset Formula $x$
+\end_inset
+
+-axis, and the other experiments perform measurement on the other qubits
+ along the 
+\begin_inset Formula $y$
+\end_inset
+
+-axis, their measurements are actually associated with observables 
+\begin_inset Formula $\sigma_{x}^{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{y}^{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $\sigma_{y}^{3}$
+\end_inset
+
+.
+ Because 
+\begin_inset Formula $\sigma_{x}^{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{y}^{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $\sigma_{y}^{3}$
+\end_inset
+
+ are commuting, the product observables
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\sigma_{x}^{1}\sigma_{y}^{2}\sigma_{y}^{3}$
+\end_inset
+
+ used to be considered in the proof in CQT
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MerminPRL1990,peres1995quantum"
+
+\end_inset
+
+.
+ However, as we discussed, we may not guarantee commuting observables are
+ compatible and can be measured simultaneously.
+ Therefore, if we want to consider the product of measurement result 
+\begin_inset Formula $\sigma_{x}^{1}\sigma_{y}^{2}\sigma_{y}^{3}$
+\end_inset
+
+, it is better to consider 
+\begin_inset Formula $3!=6$
+\end_inset
+
+ possible orders of measurements, to do these measurements sequentially,
+ and to multiply the measurement results after the measurement process complete.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
+\end_layout
+
+\end_inset
+
+Assume the first experimenter measures first, and so on.
+ By the definition of 
+\begin_inset Formula $\dpr$
+\end_inset
+
+ and the von Neumann measurement postulate, we can represent the whole process
+ in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:possible-worlds-graph-2"
+
+\end_inset
+
+, where each arrow
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\ket{\Psi}\overset{\lambda}{\rightarrow}\ket{\Psi'}$
+\end_inset
+
+ is from a pre-measurement state
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ to a possible post-measurement state
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\ket{\Psi'}$
+\end_inset
+
+, labeled by the measurement result eigenvalue
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\lambda$
+\end_inset
+
+ on the row labeled by the observable 
+\begin_inset Formula $\mathcal{O}$
+\end_inset
+
+.
+ By the von Neumann measurement postulate, the possible post-measurement
+ state
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\ket{\Psi'}$
+\end_inset
+
+ is 
+\begin_inset Formula $\hat{P}_{\mathcal{O}=\lambda}\ket{\Psi}$
+\end_inset
+
+, where 
+\begin_inset Formula $\hat{P}_{\mathcal{O}=\lambda}$
+\end_inset
+
+ is the projector on the eigenspace of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+ By the condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:consistent"
+
+\end_inset
+
+), the existence of arrow
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\ket{\Psi}\overset{\lambda}{\rightarrow}\ket{\Psi'}$
+\end_inset
+
+ implies that 
+\begin_inset Formula $w\left(\ket{\Psi},\mathcal{O}\right)=\lambda$
+\end_inset
+
+ is possible; conversely, we must have 
+\begin_inset Formula $w\left(\ket{\Psi},\mathcal{O}\right)\ne\lambda$
+\end_inset
+
+ if there is no arrow
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\ket{\Psi}\overset{\lambda}{\rightarrow}\ket{\Psi'}$
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula $\xymatrix@R=0pt{ &  &  &  & \ket{\Psi_{4}}\ar[ddll]_{1}\ar[ddrr]^{-1}\\
+\sigma_{x}^{1}\\
+ &  & \ket{\Psi_{+}}\ar[ddl]_{1}\ar[ddr]^{-1} &  &  &  & \ket{\Psi_{-}}\ar[ddl]_{-1}\ar[ddr]^{1}\\
+\sigma_{y}^{2}\\
+ & \ket{\Psi_{++}}\ar[dd]^{1} &  & \ket{\Psi_{+-}}\ar[dd]^{-1} &  & \ket{\Psi_{--}}\ar[dd]^{1} &  & \ket{\Psi_{-+}}\ar[dd]^{-1}\\
+\sigma_{y}^{3}\\
+ & \ket{\Psi_{+++}} &  & \ket{\Psi_{+--}} &  & \ket{\Psi_{--+}} &  & \ket{\Psi_{-+-}}
+}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+\begin_inset Formula 
+\begin{eqnarray*}
+\ket{\Psi_{+}} & = & \hat{P}_{\sigma_{x}^{1}=1}\ket{\Psi_{4}}\\
+\ket{\Psi_{-}} & = & \hat{P}_{\sigma_{x}^{1}=-1}\ket{\Psi_{4}}\\
+\ket{\Psi_{++}} & = & \hat{P}_{\sigma_{y}^{2}=1}\hat{P}_{\sigma_{x}^{1}=1}\ket{\Psi_{4}}\\
+\ket{\Psi_{+-}} & = & \hat{P}_{\sigma_{y}^{2}=-1}\hat{P}_{\sigma_{x}^{1}=1}\ket{\Psi_{4}}\\
+\ket{\Psi_{-+}} & = & \hat{P}_{\sigma_{y}^{2}=1}\hat{P}_{\sigma_{x}^{1}=-1}\ket{\Psi_{4}}\\
+\ket{\Psi_{--}} & = & \hat{P}_{\sigma_{y}^{2}=-1}\hat{P}_{\sigma_{x}^{1}=-1}\ket{\Psi_{4}}\\
+\ket{\Psi_{+++}} & = & \hat{P}_{\sigma_{y}^{3}=1}\hat{P}_{\sigma_{y}^{2}=1}\hat{P}_{\sigma_{x}^{1}=1}\ket{\Psi_{4}}\\
+\ket{\Psi_{+--}} & = & \hat{P}_{\sigma_{y}^{3}=-1}\hat{P}_{\sigma_{y}^{2}=-1}\hat{P}_{\sigma_{x}^{1}=1}\ket{\Psi_{4}}\\
+\ket{\Psi_{-+-}} & = & \hat{P}_{\sigma_{y}^{3}=-1}\hat{P}_{\sigma_{y}^{2}=1}\hat{P}_{\sigma_{x}^{1}=-1}\ket{\Psi_{4}}\\
+\ket{\Psi_{--+}} & = & \hat{P}_{\sigma_{y}^{3}=1}\hat{P}_{\sigma_{y}^{2}=-1}\hat{P}_{\sigma_{x}^{1}=-1}\ket{\Psi_{4}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:possible-worlds-graph-2"
+
+\end_inset
+
+A measurement series start from a (non-normalized) GHZ state 
+\begin_inset Formula $\ket{\Psi_{4}}$
+\end_inset
+
+, and perform measurement associated with observables 
+\begin_inset Formula $\sigma_{x}^{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{y}^{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $\sigma_{y}^{3}$
+\end_inset
+
+ consecutively.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+After we draw Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:possible-worlds-graph-2"
+
+\end_inset
+
+, by the locality condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:locality"
+
+\end_inset
+
+), we know 
+\begin_inset Formula 
+\[
+w\left(\ket{\Psi_{4}},\sigma_{y}^{2}\right)=w\left(\hat{P}_{\sigma_{x}^{1}=1}\ket{\Psi_{4}},\sigma_{y}^{2}\right)
+\]
+
+\end_inset
+
+and so on.
+ Therefore, no matter what measurement results are in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:possible-worlds-graph-2"
+
+\end_inset
+
+, the product of measurement results always satisfies 
+\begin_inset Formula 
+\begin{equation}
+w\left(\ket{\Psi_{4}},\sigma_{x}^{1}\right)w\left(\ket{\Psi_{4}},\sigma_{y}^{2}\right)w\left(\ket{\Psi_{4}},\sigma_{y}^{3}\right)=1\label{eq:xyy}
+\end{equation}
+
+\end_inset
+
+By the same reason, no matter which measurement order among 
+\begin_inset Formula $\sigma_{x}^{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{y}^{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $\sigma_{y}^{3}$
+\end_inset
+
+, the product of measurement result is always 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ If we apply the similar method on other triad observables, we can get 
+\begin_inset Formula 
+\begin{eqnarray}
+w\left(\ket{\Psi_{4}},\sigma_{y}^{1}\right)w\left(\ket{\Psi_{4}},\sigma_{x}^{2}\right)w\left(\ket{\Psi_{4}},\sigma_{y}^{3}\right) & = & 1\label{eq:yxy}\\
+w\left(\ket{\Psi_{4}},\sigma_{y}^{1}\right)w\left(\ket{\Psi_{4}},\sigma_{y}^{2}\right)w\left(\ket{\Psi_{4}},\sigma_{x}^{3}\right) & = & 1\label{eq:yyx}\\
+w\left(\ket{\Psi_{4}},\sigma_{x}^{1}\right)w\left(\ket{\Psi_{4}},\sigma_{x}^{2}\right)w\left(\ket{\Psi_{4}},\sigma_{x}^{3}\right) & = & -1\label{eq:xxx}
+\end{eqnarray}
+
+\end_inset
+
+However, there is no way to assign 
+\begin_inset Formula $w\left(\ket{\Psi_{4}},\sigma_{\mu}^{j}\right)=1$
+\end_inset
+
+ or 
+\begin_inset Formula $-1$
+\end_inset
+
+ to satisfying the equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:xyy"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:yxy"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:yyx"
+
+\end_inset
+
+), and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:xxx"
+
+\end_inset
+
+).
+ Therefore, there is no function 
+\begin_inset Formula $w$
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family roman
+Conclusions
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+We have shown that by replacing state vectors and continuous probabilities
+ introduced in the conventional quantum mechanical arguments for Gleason's
+ theorem and related theorems invalidating hidden variable theories by vectors
+ in the discrete field 
+\begin_inset Formula $\ffzd{p^{2}}$
+\end_inset
+
+ and a modal logic-valued Born Rule, all the basic properties needed for
+ a quantum theory that is distinct from classical theory, forbidding hidden
+ variables, can be recovered.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+andy{
+\end_layout
+
+\end_inset
+
+Need to close with an assessment of the Mayer-Mermin discussion about the
+ validity of the KS theorem in a world with finite resources and precision.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+References
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "discreteGBKS"
+options "iopart-num"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
