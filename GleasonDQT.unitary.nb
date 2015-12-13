@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[   2163074,      43490]
-NotebookOptionsPosition[   2147312,      43038]
-NotebookOutlinePosition[   2147655,      43053]
-CellTagsIndexPosition[   2147612,      43050]
+NotebookDataLength[   2202416,      44559]
+NotebookOptionsPosition[   2186479,      44102]
+NotebookOutlinePosition[   2186822,      44117]
+CellTagsIndexPosition[   2186779,      44114]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -34462,6 +34462,1070 @@ Cell[BoxData[
 
 Cell[CellGroupData[{
 
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"solveIntervalProbability", "[", 
+   RowBox[{"p_Integer", ",", "d_Integer"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"angleEndStates", "=", 
+       RowBox[{"cAngleEndStates", "[", 
+        RowBox[{"p", ",", "d"}], "]"}]}], ",", 
+      RowBox[{"matrix", "=", 
+       RowBox[{
+        RowBox[{"cProbabilityMatrix", "[", 
+         RowBox[{"p", ",", "d"}], "]"}], "\[LeftDoubleBracket]", "1", 
+        "\[RightDoubleBracket]"}]}], ",", "l", ",", "inequalities", ",", 
+      "\[Pi]AnglesUnder", ",", "\[Pi]AnglesOver"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"l", "=", 
+      RowBox[{"Length", "[", 
+       RowBox[{
+       "angleEndStates", "\[LeftDoubleBracket]", "1", 
+        "\[RightDoubleBracket]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"inequalities", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        FormBox[
+         RowBox[{"0", "\[LessEqual]", 
+          RowBox[{
+           UnderscriptBox["\[Pi]", "_"], "(", 
+           RowBox[{
+            RowBox[{"MatrixForm", "[", 
+             RowBox[{"UnitVector", "[", 
+              RowBox[{"d", ",", "1"}], "]"}], "]"}], ",", 
+            RowBox[{"MatrixForm", "[", 
+             RowBox[{
+             "angle", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+             "]"}]}], ")"}], "\[LessEqual]", 
+          RowBox[{
+           OverscriptBox["\[Pi]", "_"], "(", 
+           RowBox[{
+            RowBox[{"MatrixForm", "[", 
+             RowBox[{"UnitVector", "[", 
+              RowBox[{"d", ",", "1"}], "]"}], "]"}], ",", 
+            RowBox[{"MatrixForm", "[", 
+             RowBox[{
+             "angle", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+             "]"}]}], ")"}], "\[LessEqual]", "1"}],
+         TraditionalForm], ",", 
+        RowBox[{"{", 
+         RowBox[{"angle", ",", "angleEndStates"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\[Pi]AnglesUnder", "=", 
+      RowBox[{
+       RowBox[{
+        FormBox[
+         RowBox[{
+          UnderscriptBox["\[Pi]", "_"], "(", 
+          RowBox[{
+           RowBox[{"MatrixForm", "[", 
+            RowBox[{"UnitVector", "[", 
+             RowBox[{"d", ",", "1"}], "]"}], "]"}], ",", 
+           RowBox[{"MatrixForm", "[", 
+            RowBox[{
+            "#", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+            "]"}]}], ")"}],
+         TraditionalForm], "&"}], "/@", "angleEndStates"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\[Pi]AnglesOver", "=", 
+      RowBox[{
+       RowBox[{
+        FormBox[
+         RowBox[{
+          OverscriptBox["\[Pi]", "_"], "(", 
+          RowBox[{
+           RowBox[{"MatrixForm", "[", 
+            RowBox[{"UnitVector", "[", 
+             RowBox[{"d", ",", "1"}], "]"}], "]"}], ",", 
+           RowBox[{"MatrixForm", "[", 
+            RowBox[{
+            "#", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+            "]"}]}], ")"}],
+         TraditionalForm], "&"}], "/@", "angleEndStates"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"inequalities", "=", 
+      RowBox[{"Join", "[", 
+       RowBox[{"inequalities", ",", 
+        RowBox[{"Table", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Last", "[", "row", "]"}], "\[Equal]", "0"}], ",", 
+            FormBox[
+             RowBox[{
+              RowBox[{
+               RowBox[{"Most", "[", "row", "]"}], ".", "\[Pi]AnglesUnder"}], 
+              "\[Equal]", "0", "\[Equal]", 
+              RowBox[{
+               RowBox[{"Most", "[", "row", "]"}], ".", "\[Pi]AnglesOver"}]}],
+             TraditionalForm], ",", 
+            FormBox[
+             RowBox[{
+              RowBox[{
+               RowBox[{"Most", "[", "row", "]"}], ".", "\[Pi]AnglesUnder"}], 
+              "\[LessEqual]", "1", "\[LessEqual]", 
+              RowBox[{
+               RowBox[{"Most", "[", "row", "]"}], ".", "\[Pi]AnglesOver"}]}],
+             TraditionalForm]}], "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"row", ",", "matrix"}], "}"}]}], "]"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"inequalities", ",", 
+       RowBox[{"Reduce", "[", "inequalities", "]"}]}], "}"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"Print", "[", 
+      RowBox[{"Column", "[", 
+       RowBox[{"#", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+       "]"}], "]"}], ";", 
+     RowBox[{"TraditionalForm", "[", 
+      RowBox[{"#", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+      "]"}]}], ")"}], "&"}], "[", 
+  RowBox[{"solveIntervalProbability", "[", 
+   RowBox[{"3", ",", "2"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.659032957033699*^9, 3.6590329826071615`*^9}, {
+   3.659034859661523*^9, 3.6590348609045944`*^9}, {3.6590348965276318`*^9, 
+   3.659034941532206*^9}, {3.6590353659504814`*^9, 3.6590355680820427`*^9}, {
+   3.65903560824634*^9, 3.659035613862661*^9}, {3.6590356640585318`*^9, 
+   3.659035707984044*^9}, {3.659035739795864*^9, 3.6590359391642675`*^9}, {
+   3.6590361364725523`*^9, 3.6590361464561234`*^9}, {3.6590361775589027`*^9, 
+   3.6590362257386584`*^9}, {3.6590362657349463`*^9, 
+   3.6590363508378134`*^9}, {3.6590364250400577`*^9, 3.659036432959511*^9}, {
+   3.659036519275448*^9, 3.659036524145726*^9}, {3.6590365748726273`*^9, 
+   3.6590365972999105`*^9}, {3.659036639442321*^9, 3.659036647368774*^9}, {
+   3.659036724962212*^9, 3.659036894596915*^9}, 3.659037041484316*^9, {
+   3.659037087737962*^9, 3.659037214764227*^9}, {3.659037424840243*^9, 
+   3.6590375485263176`*^9}, {3.659037597025091*^9, 3.6590376451558447`*^9}, {
+   3.6590376767556515`*^9, 3.659037832866581*^9}, {3.659037868196602*^9, 
+   3.659038290433752*^9}, {3.659038331918125*^9, 3.6590383406156225`*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     RowBox[{"0", "\[LessEqual]", 
+      RowBox[{
+       UnderscriptBox["\[Pi]", "_"], "[", 
+       RowBox[{
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+          TagBox[GridBox[{
+             {"1"},
+             {"0"}
+            },
+            
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
+           Column], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]], ",", 
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+          TagBox[GridBox[{
+             {"1"},
+             {"1"}
+            },
+            
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
+           Column], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]]}], "]"}], "\[LessEqual]", 
+      RowBox[{
+       OverscriptBox["\[Pi]", "_"], "[", 
+       RowBox[{
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+          TagBox[GridBox[{
+             {"1"},
+             {"0"}
+            },
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
+           Column], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]], ",", 
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+          TagBox[GridBox[{
+             {"1"},
+             {"1"}
+            },
+            
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
+           Column], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]]}], "]"}], "\[LessEqual]", "1"}]},
+    {
+     RowBox[{"0", "\[LessEqual]", 
+      RowBox[{
+       UnderscriptBox["\[Pi]", "_"], "[", 
+       RowBox[{
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+          TagBox[GridBox[{
+             {"1"},
+             {"0"}
+            },
+            
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
+           Column], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]], ",", 
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+          TagBox[GridBox[{
+             {"1"},
+             {"0"}
+            },
+            
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
+           Column], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]]}], "]"}], "\[LessEqual]", 
+      RowBox[{
+       OverscriptBox["\[Pi]", "_"], "[", 
+       RowBox[{
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+          TagBox[GridBox[{
+             {"1"},
+             {"0"}
+            },
+            
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
+           Column], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]], ",", 
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+          TagBox[GridBox[{
+             {"1"},
+             {"0"}
+            },
+            
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
+           Column], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]]}], "]"}], "\[LessEqual]", "1"}]},
+    {
+     RowBox[{"0", "\[LessEqual]", 
+      RowBox[{
+       UnderscriptBox["\[Pi]", "_"], "[", 
+       RowBox[{
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+          TagBox[GridBox[{
+             {"1"},
+             {"0"}
+            },
+            
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
+           Column], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]], ",", 
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+          TagBox[GridBox[{
+             {"0"},
+             {"1"}
+            },
+            
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
+           Column], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]]}], "]"}], "\[LessEqual]", 
+      RowBox[{
+       OverscriptBox["\[Pi]", "_"], "[", 
+       RowBox[{
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+          TagBox[GridBox[{
+             {"1"},
+             {"0"}
+            },
+            
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
+           Column], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]], ",", 
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+          TagBox[GridBox[{
+             {"0"},
+             {"1"}
+            },
+            
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
+           Column], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]]}], "]"}], "\[LessEqual]", "1"}]},
+    {
+     RowBox[{
+      RowBox[{
+       UnderscriptBox["\[Pi]", "_"], "[", 
+       RowBox[{
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+          TagBox[GridBox[{
+             {"1"},
+             {"0"}
+            },
+            
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
+           Column], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]], ",", 
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+          TagBox[GridBox[{
+             {"0"},
+             {"1"}
+            },
+            
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
+           Column], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]]}], "]"}], "\[Equal]", "0", "\[Equal]", 
+      RowBox[{
+       OverscriptBox["\[Pi]", "_"], "[", 
+       RowBox[{
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+          TagBox[GridBox[{
+             {"1"},
+             {"0"}
+            },
+            
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
+           Column], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]], ",", 
+        TagBox[
+         RowBox[{"(", "\[NoBreak]", 
+          TagBox[GridBox[{
+             {"0"},
+             {"1"}
+            },
+            
+            GridBoxAlignment->{
+             "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+              "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[0.4]}, 
+                Offset[0.2]}, "RowsIndexed" -> {}}],
+           Column], "\[NoBreak]", ")"}],
+         Function[BoxForm`e$, 
+          MatrixForm[BoxForm`e$]]]}], "]"}]}]},
+    {
+     RowBox[{
+      RowBox[{"2", " ", 
+       RowBox[{
+        UnderscriptBox["\[Pi]", "_"], "[", 
+        RowBox[{
+         TagBox[
+          RowBox[{"(", "\[NoBreak]", 
+           TagBox[GridBox[{
+              {"1"},
+              {"0"}
+             },
+             
+             GridBoxAlignment->{
+              "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.27999999999999997`], {
+                  Offset[0.5599999999999999]}, 
+                 Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {
+                 Offset[0.2], {
+                  Offset[0.4]}, 
+                 Offset[0.2]}, "RowsIndexed" -> {}}],
+            Column], "\[NoBreak]", ")"}],
+          Function[BoxForm`e$, 
+           MatrixForm[BoxForm`e$]]], ",", 
+         TagBox[
+          RowBox[{"(", "\[NoBreak]", 
+           TagBox[GridBox[{
+              {"1"},
+              {"1"}
+             },
+             
+             GridBoxAlignment->{
+              "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.27999999999999997`], {
+                  Offset[0.5599999999999999]}, 
+                 Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {
+                 Offset[0.2], {
+                  Offset[0.4]}, 
+                 Offset[0.2]}, "RowsIndexed" -> {}}],
+            Column], "\[NoBreak]", ")"}],
+          Function[BoxForm`e$, 
+           MatrixForm[BoxForm`e$]]]}], "]"}]}], "\[LessEqual]", "1", 
+      "\[LessEqual]", 
+      RowBox[{"2", " ", 
+       RowBox[{
+        OverscriptBox["\[Pi]", "_"], "[", 
+        RowBox[{
+         TagBox[
+          RowBox[{"(", "\[NoBreak]", 
+           TagBox[GridBox[{
+              {"1"},
+              {"0"}
+             },
+             
+             GridBoxAlignment->{
+              "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.27999999999999997`], {
+                  Offset[0.5599999999999999]}, 
+                 Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {
+                 Offset[0.2], {
+                  Offset[0.4]}, 
+                 Offset[0.2]}, "RowsIndexed" -> {}}],
+            Column], "\[NoBreak]", ")"}],
+          Function[BoxForm`e$, 
+           MatrixForm[BoxForm`e$]]], ",", 
+         TagBox[
+          RowBox[{"(", "\[NoBreak]", 
+           TagBox[GridBox[{
+              {"1"},
+              {"1"}
+             },
+             
+             GridBoxAlignment->{
+              "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.27999999999999997`], {
+                  Offset[0.5599999999999999]}, 
+                 Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {
+                 Offset[0.2], {
+                  Offset[0.4]}, 
+                 Offset[0.2]}, "RowsIndexed" -> {}}],
+            Column], "\[NoBreak]", ")"}],
+          Function[BoxForm`e$, 
+           MatrixForm[BoxForm`e$]]]}], "]"}]}]}]},
+    {
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        UnderscriptBox["\[Pi]", "_"], "[", 
+        RowBox[{
+         TagBox[
+          RowBox[{"(", "\[NoBreak]", 
+           TagBox[GridBox[{
+              {"1"},
+              {"0"}
+             },
+             
+             GridBoxAlignment->{
+              "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.27999999999999997`], {
+                  Offset[0.5599999999999999]}, 
+                 Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {
+                 Offset[0.2], {
+                  Offset[0.4]}, 
+                 Offset[0.2]}, "RowsIndexed" -> {}}],
+            Column], "\[NoBreak]", ")"}],
+          Function[BoxForm`e$, 
+           MatrixForm[BoxForm`e$]]], ",", 
+         TagBox[
+          RowBox[{"(", "\[NoBreak]", 
+           TagBox[GridBox[{
+              {"0"},
+              {"1"}
+             },
+             
+             GridBoxAlignment->{
+              "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.27999999999999997`], {
+                  Offset[0.5599999999999999]}, 
+                 Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {
+                 Offset[0.2], {
+                  Offset[0.4]}, 
+                 Offset[0.2]}, "RowsIndexed" -> {}}],
+            Column], "\[NoBreak]", ")"}],
+          Function[BoxForm`e$, 
+           MatrixForm[BoxForm`e$]]]}], "]"}], "+", 
+       RowBox[{
+        UnderscriptBox["\[Pi]", "_"], "[", 
+        RowBox[{
+         TagBox[
+          RowBox[{"(", "\[NoBreak]", 
+           TagBox[GridBox[{
+              {"1"},
+              {"0"}
+             },
+             
+             GridBoxAlignment->{
+              "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.27999999999999997`], {
+                  Offset[0.5599999999999999]}, 
+                 Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {
+                 Offset[0.2], {
+                  Offset[0.4]}, 
+                 Offset[0.2]}, "RowsIndexed" -> {}}],
+            Column], "\[NoBreak]", ")"}],
+          Function[BoxForm`e$, 
+           MatrixForm[BoxForm`e$]]], ",", 
+         TagBox[
+          RowBox[{"(", "\[NoBreak]", 
+           TagBox[GridBox[{
+              {"1"},
+              {"0"}
+             },
+             
+             GridBoxAlignment->{
+              "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.27999999999999997`], {
+                  Offset[0.5599999999999999]}, 
+                 Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {
+                 Offset[0.2], {
+                  Offset[0.4]}, 
+                 Offset[0.2]}, "RowsIndexed" -> {}}],
+            Column], "\[NoBreak]", ")"}],
+          Function[BoxForm`e$, 
+           MatrixForm[BoxForm`e$]]]}], "]"}]}], "\[LessEqual]", "1", 
+      "\[LessEqual]", 
+      RowBox[{
+       RowBox[{
+        OverscriptBox["\[Pi]", "_"], "[", 
+        RowBox[{
+         TagBox[
+          RowBox[{"(", "\[NoBreak]", 
+           TagBox[GridBox[{
+              {"1"},
+              {"0"}
+             },
+             
+             GridBoxAlignment->{
+              "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.27999999999999997`], {
+                  Offset[0.5599999999999999]}, 
+                 Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {
+                 Offset[0.2], {
+                  Offset[0.4]}, 
+                 Offset[0.2]}, "RowsIndexed" -> {}}],
+            Column], "\[NoBreak]", ")"}],
+          Function[BoxForm`e$, 
+           MatrixForm[BoxForm`e$]]], ",", 
+         TagBox[
+          RowBox[{"(", "\[NoBreak]", 
+           TagBox[GridBox[{
+              {"0"},
+              {"1"}
+             },
+             
+             GridBoxAlignment->{
+              "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.27999999999999997`], {
+                  Offset[0.5599999999999999]}, 
+                 Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {
+                 Offset[0.2], {
+                  Offset[0.4]}, 
+                 Offset[0.2]}, "RowsIndexed" -> {}}],
+            Column], "\[NoBreak]", ")"}],
+          Function[BoxForm`e$, 
+           MatrixForm[BoxForm`e$]]]}], "]"}], "+", 
+       RowBox[{
+        OverscriptBox["\[Pi]", "_"], "[", 
+        RowBox[{
+         TagBox[
+          RowBox[{"(", "\[NoBreak]", 
+           TagBox[GridBox[{
+              {"1"},
+              {"0"}
+             },
+             
+             GridBoxAlignment->{
+              "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.27999999999999997`], {
+                  Offset[0.5599999999999999]}, 
+                 Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {
+                 Offset[0.2], {
+                  Offset[0.4]}, 
+                 Offset[0.2]}, "RowsIndexed" -> {}}],
+            Column], "\[NoBreak]", ")"}],
+          Function[BoxForm`e$, 
+           MatrixForm[BoxForm`e$]]], ",", 
+         TagBox[
+          RowBox[{"(", "\[NoBreak]", 
+           TagBox[GridBox[{
+              {"1"},
+              {"0"}
+             },
+             
+             GridBoxAlignment->{
+              "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+             GridBoxSpacings->{"Columns" -> {
+                 Offset[0.27999999999999997`], {
+                  Offset[0.5599999999999999]}, 
+                 Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+               "Rows" -> {
+                 Offset[0.2], {
+                  Offset[0.4]}, 
+                 Offset[0.2]}, "RowsIndexed" -> {}}],
+            Column], "\[NoBreak]", ")"}],
+          Function[BoxForm`e$, 
+           MatrixForm[BoxForm`e$]]]}], "]"}]}]}]}
+   },
+   DefaultBaseStyle->"Column",
+   GridBoxAlignment->{"Columns" -> {{Left}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Column"]], "Print",
+ CellChangeTimes->{
+  3.6590378341716557`*^9, 3.6590381526068687`*^9, 3.6590382235159245`*^9, {
+   3.659038280008156*^9, 3.659038292357862*^9}, 3.659038341858693*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FractionBox["1", "2"], "\[LessEqual]", 
+    RowBox[{
+     OverscriptBox["\[Pi]", "_"], "(", 
+     RowBox[{
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", 
+        TagBox[GridBox[{
+           {"1"},
+           {"0"}
+          },
+          
+          GridBoxAlignment->{
+           "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.5599999999999999]}, 
+              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}, "RowsIndexed" -> {}}],
+         Column], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]], ",", 
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", 
+        TagBox[GridBox[{
+           {"1"},
+           {"1"}
+          },
+          
+          GridBoxAlignment->{
+           "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.5599999999999999]}, 
+              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}, "RowsIndexed" -> {}}],
+         Column], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]]}], ")"}], "\[LessEqual]", "1"}], "\[And]", 
+   RowBox[{"0", "\[LessEqual]", 
+    RowBox[{
+     UnderscriptBox["\[Pi]", "_"], "(", 
+     RowBox[{
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", 
+        TagBox[GridBox[{
+           {"1"},
+           {"0"}
+          },
+          
+          GridBoxAlignment->{
+           "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.5599999999999999]}, 
+              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}, "RowsIndexed" -> {}}],
+         Column], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]], ",", 
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", 
+        TagBox[GridBox[{
+           {"1"},
+           {"1"}
+          },
+          
+          GridBoxAlignment->{
+           "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.5599999999999999]}, 
+              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}, "RowsIndexed" -> {}}],
+         Column], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]]}], ")"}], "\[LessEqual]", 
+    FractionBox["1", "2"]}], "\[And]", 
+   RowBox[{"0", "\[LessEqual]", 
+    RowBox[{
+     UnderscriptBox["\[Pi]", "_"], "(", 
+     RowBox[{
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", 
+        TagBox[GridBox[{
+           {"1"},
+           {"0"}
+          },
+          
+          GridBoxAlignment->{
+           "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.5599999999999999]}, 
+              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}, "RowsIndexed" -> {}}],
+         Column], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]], ",", 
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", 
+        TagBox[GridBox[{
+           {"1"},
+           {"0"}
+          },
+          
+          GridBoxAlignment->{
+           "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.5599999999999999]}, 
+              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}, "RowsIndexed" -> {}}],
+         Column], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]]}], ")"}], "\[LessEqual]", "1"}], "\[And]", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox["\[Pi]", "_"], "(", 
+     RowBox[{
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", 
+        TagBox[GridBox[{
+           {"1"},
+           {"0"}
+          },
+          
+          GridBoxAlignment->{
+           "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.5599999999999999]}, 
+              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}, "RowsIndexed" -> {}}],
+         Column], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]], ",", 
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", 
+        TagBox[GridBox[{
+           {"1"},
+           {"0"}
+          },
+          
+          GridBoxAlignment->{
+           "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.5599999999999999]}, 
+              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}, "RowsIndexed" -> {}}],
+         Column], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]]}], ")"}], "\[LongEqual]", "1"}], "\[And]", 
+   RowBox[{
+    RowBox[{
+     UnderscriptBox["\[Pi]", "_"], "(", 
+     RowBox[{
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", 
+        TagBox[GridBox[{
+           {"1"},
+           {"0"}
+          },
+          
+          GridBoxAlignment->{
+           "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.5599999999999999]}, 
+              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}, "RowsIndexed" -> {}}],
+         Column], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]], ",", 
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", 
+        TagBox[GridBox[{
+           {"0"},
+           {"1"}
+          },
+          
+          GridBoxAlignment->{
+           "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.5599999999999999]}, 
+              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}, "RowsIndexed" -> {}}],
+         Column], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]]}], ")"}], "\[LongEqual]", "0"}], "\[And]", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox["\[Pi]", "_"], "(", 
+     RowBox[{
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", 
+        TagBox[GridBox[{
+           {"1"},
+           {"0"}
+          },
+          
+          GridBoxAlignment->{
+           "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.5599999999999999]}, 
+              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}, "RowsIndexed" -> {}}],
+         Column], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]], ",", 
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", 
+        TagBox[GridBox[{
+           {"0"},
+           {"1"}
+          },
+          
+          GridBoxAlignment->{
+           "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.5599999999999999]}, 
+              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}, "RowsIndexed" -> {}}],
+         Column], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]]}], ")"}], "\[LongEqual]", "0"}]}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.659037834198657*^9, 3.6590381527868795`*^9, 3.6590382235439262`*^9, {
+   3.6590382800141563`*^9, 3.6590382923628626`*^9}, 3.6590383418766947`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[BoxData[
  RowBox[{
   RowBox[{
@@ -43465,31 +44529,36 @@ Cell[1793195, 33594, 22891, 595, 76, "Output"]
 Cell[CellGroupData[{
 Cell[1816123, 34194, 3893, 92, 290, "Input"],
 Cell[1820019, 34288, 775, 22, 50, "Print"],
-Cell[1820797, 34312, 5353, 147, 135, "Output"]
+Cell[1820797, 34312, 5353, 147, 102, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1826187, 34464, 740, 19, 31, "Input"],
-Cell[CellGroupData[{
-Cell[1826952, 34487, 1247, 29, 80, "Print"],
-Cell[1828202, 34518, 19756, 525, 189, "Print"]
-}, Open  ]],
-Cell[1847973, 35046, 66936, 1775, 272, "Output"]
+Cell[1826187, 34464, 5946, 143, 272, "Input"],
+Cell[1832136, 34609, 23562, 640, 185, "Print"],
+Cell[1855701, 35251, 9616, 272, 95, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1914946, 36826, 739, 19, 31, "Input"],
+Cell[1865354, 35528, 740, 19, 31, "Input"],
 Cell[CellGroupData[{
-Cell[1915710, 36849, 1481, 31, 110, "Print"],
-Cell[1917194, 36882, 29872, 789, 449, "Print"]
+Cell[1866119, 35551, 1247, 29, 80, "Print"],
+Cell[1867369, 35582, 19756, 525, 189, "Print"]
 }, Open  ]],
-Cell[1947081, 37674, 112985, 3006, 468, "Output"]
+Cell[1887140, 36110, 66936, 1775, 272, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2060103, 40685, 738, 19, 31, "Input"],
+Cell[1954113, 37890, 739, 19, 31, "Input"],
 Cell[CellGroupData[{
-Cell[2060866, 40708, 1124, 28, 65, "Print"],
-Cell[2061993, 40738, 15930, 422, 235, "Print"]
+Cell[1954877, 37913, 1481, 31, 110, "Print"],
+Cell[1956361, 37946, 29872, 789, 449, "Print"]
 }, Open  ]],
-Cell[2077938, 41163, 69346, 1871, 346, "Output"]
+Cell[1986248, 38738, 112985, 3006, 468, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2099270, 41749, 738, 19, 31, "Input"],
+Cell[CellGroupData[{
+Cell[2100033, 41772, 1124, 28, 65, "Print"],
+Cell[2101160, 41802, 15930, 422, 235, "Print"]
+}, Open  ]],
+Cell[2117105, 42227, 69346, 1871, 346, "Output"]
 }, Open  ]]
 }, Open  ]]
 }
