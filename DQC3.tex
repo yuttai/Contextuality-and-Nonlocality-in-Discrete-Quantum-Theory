@@ -27,6 +27,21 @@
 \usepackage{color}
 \usepackage{stmaryrd}\usepackage{dsfont}
 \usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{enumitem}		% customizable list environments
+\newlength{\lyxlabelwidth}      % auxiliary length 
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+\ifx\proof\undefined
+\newenvironment{proof}[1][\protect\proofname]{\par
+\normalfont\topsep6\p@\@plus6\p@\relax
+\trivlist
+\itemindent\parindent
+\item[\hskip\labelsep\scshape #1]\ignorespaces
+}{%
+\endtrivlist\@endpefalse
+}
+\providecommand{\proofname}{Proof}
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% these went missing?
@@ -185,6 +200,7 @@
 \makeatother
 
 \usepackage{babel}
+\providecommand{\theoremname}{Theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -742,73 +758,169 @@ We will fill out our arguments by introducing a no-go theorem that
 explains why it is impossible in DQT to incorporate into Born's rule a
 continuous real probability in the interval $[0,1]$.
 
-\begin{theorem}
-\label{theorem1}
-There is no map $\dpt\colon \ffzd{p^2}\times \ffzd{p^2}
-\longrightarrow [0,1]$ satisfying properties ({\bf i}), ({\bf ii}),
-and ({\bf iii}) when $d> 3$.
-\end{theorem}
+\begin{thm}
+\label{theorem1} There is no map $\dpt\colon\ffzd{p^{2}}\times\ffzd{p^{2}}\longrightarrow[0,1]$
+satisfying properties ({\bf i}), ({\bf ii}), and ({\bf iii})
+when $d>3$. \end{thm}
 %
 \begin{proof}
-  Assume such a map $\dpt$ satisfying all three properties exists.
-  Consider the state
+Assume such a map $\dpt$ satisfying all three properties exists.
+Consider the state 
 \[
-\ket{\Psi}=\alpha\big(\ket{0} + \ket{1} + \ket{2} + \beta\ket{3}\big)
+\ket{\Psi}=\alpha\big(\ket{0}+\ket{1}+\ket{2}+\beta\ket{3}\big)
 \]
-expressed in terms of orthonormal vectors, where $\beta\in \ff{p^2}$
-is chosen so that $\left|\beta\right|^2=p-1$ and $\alpha\in\ff{p^2}$
-is a constant such that $\ket{\Psi}$ is normalized.  Let
-$\ket{\Phi}= \ket{1} + \ket{2} + \beta\ket{3}$. Note that $\ket{\Phi}$
-is normalized in $\ff{p}$.  We can write our original state
-$\ket{\Psi}$ as $\ket{\Psi}=\alpha\big(\ket{0}+\ket{\Phi}\big)$ The
-vectors $\ket{0}$ and $\ket{\Phi}$ are orthonormal and so are part of
-some larger orthonormal basis. Thus by properties ({\bf i}) and ({\bf
-  ii}) we have
+expressed in terms of orthonormal vectors, where $\beta\in\ff{p^{2}}$
+is chosen so that $\left|\beta\right|^{2}=p-1$ and $\alpha\in\ff{p^{2}}$
+is a constant such that $\ket{\Psi}$ is normalized. Let $\ket{\Phi}=\ket{1}+\ket{2}+\beta\ket{3}$.
+Note that $\ket{\Phi}$ is normalized in $\ff{p}$. We can write our
+original state $\ket{\Psi}$ as $\ket{\Psi}=\alpha\big(\ket{0}+\ket{\Phi}\big)$
+The vectors $\ket{0}$ and $\ket{\Phi}$ are orthonormal and so are
+part of some larger orthonormal basis. Thus by properties ({\bf
+i}) and ({\bf ii}) we have 
 \begin{equation}
-1= \dpt\big(\ket{\Psi},\ket{0}\big) +  \dpt\big(\ket{\Psi},\ket{\Phi}\big). \label{prob1}
+1=\dpt\big(\ket{\Psi},\ket{0}\big)+\dpt\big(\ket{\Psi},\ket{\Phi}\big).\label{prob1}
 \end{equation}
-Let $U$ be the unitary map that simply permutes the orthonormal
-vectors $\ket{0}$ and $\ket{\Phi}$.  Note that $\ket{\Psi}$ is
-invariant under $U$, so invoking property ({\bf iii}), we have
+Let $U$ be the unitary map that simply permutes the orthonormal vectors
+$\ket{0}$ and $\ket{\Phi}$. Note that $\ket{\Psi}$ is invariant
+under $U$, so invoking property ({\bf iii}), we have 
 \[
-\dpt\big(\ket{\Psi},\ket{0}\big)=\dpt\big(U\ket{\Psi},U\ket{0}\big) = 
-   \dpt\big(\ket{\Psi},\ket{\Phi}\big) \ .
+\dpt\big(\ket{\Psi},\ket{0}\big)=\dpt\big(U\ket{\Psi},U\ket{0}\big)=\dpt\big(\ket{\Psi},\ket{\Phi}\big)\ .
 \]
-This along with equation (\ref{prob1}) gives
+This along with equation (\ref{prob1}) gives 
 \[
-1= \dpt\big(\ket{\Psi},\ket{0}\big) +  \dpt\big(\ket{\Psi},\ket{0}\big),
+1=\dpt\big(\ket{\Psi},\ket{0}\big)+\dpt\big(\ket{\Psi},\ket{0}\big),
 \]
-so
+so 
 \begin{equation}
-\label{prob2}
-\dpt\big(\ket{\Psi},\ket{0}\big)=\dpt\big(\ket{\Psi},
-   \ket{\Phi}\big)=\frac{1}{2} \in [0,1] \ .
+\dpt\big(\ket{\Psi},\ket{0}\big)=\dpt\big(\ket{\Psi},\ket{\Phi}\big)=\frac{1}{2}\in[0,1]\ .\label{prob2}
 \end{equation}
-
-For $i=0,1,2$ let $U_i$ be the unitary map that permutes the basis
-vectors $\ket{0}$ and $\ket{i}$ and acts as the identity for the rest.
-Note that $\ket{\Psi}$ is invariant under $U_i$. So again by property
-({\bf iii}) we have
+\par For $i=0,1,2$ let $U_{i}$ be the unitary map that permutes
+the basis vectors $\ket{0}$ and $\ket{i}$ and acts as the identity
+for the rest. Note that $\ket{\Psi}$ is invariant under $U_{i}$.
+So again by property ({\bf iii}) we have 
 \[
-\dpt\big(\ket{\Psi},\ket{i}\big) =\dpt\big(U_i\ket{\Psi},U_i\ket{0}\big)=
-\dpt\big(\ket{\Psi},\ket{0}\big) = \frac{1}{2}
+\dpt\big(\ket{\Psi},\ket{i}\big)=\dpt\big(U_{i}\ket{\Psi},U_{i}\ket{0}\big)=\dpt\big(\ket{\Psi},\ket{0}\big)=\frac{1}{2}
 \]
-for $i=0,1,2$.  These probability assignments are inconsistent with
-the requirement that the probabilities for orthogonal outcomes add up
-to 1. By property ({\bf i})
+for $i=0,1,2$. These probability assignments are inconsistent with
+the requirement that the probabilities for orthogonal outcomes add
+up to 1. By property ({\bf i}) 
 \begin{eqnarray*}
 1 & = & \dpt\big(\ket{\Psi},\ket{0}\big)+\dpt\big(\ket{\Psi},\ket{1}\big)+\dpt\big(\ket{\Psi},\ket{2}\big)+\dpt\big(\ket{\Psi},\ket{3}\big)\\
  & = & \frac{1}{2}+\frac{1}{2}+\frac{1}{2}+\dpt\big(\ket{\Psi},\ket{3}\big)\\
  & \geq & \frac{3}{2},
 \end{eqnarray*}
-so we have a contradiction. The assumption of a satisfactory map
-$\dpt$ is thus false. $\Box$
+so we have a contradiction. The assumption of a satisfactory map $\dpt$
+is thus false. 
 \end{proof}
 (It should be pointed out that the argument above explicitly uses
 states from a vector space of four dimensions or larger, and thus does
 not hold if the largest vector space one can consider has dimension
 $d\le 3$.  But it does hold for any system that, for example, contains
 more than a single qubit.)
+
+\yutsung{I am going to prove a no-go theorem for $d=3$ here with
+an extra property
+\begin{description}
+\item [{(iv)}] $\dpt(\ket{\Phi},\ket{\Psi})=\dpt(\lambda\ket{\Phi},\ket{\Psi})=\dpt(\ket{\Phi},\lambda\ket{\Psi})$
+where $\lambda\in\ff{p^{2}}^{*}$. 
+\end{description}
+This property means that the phase difference and normalization will
+not effect the probability assignment. Although this property will
+not be used explicitly, considering non-normalized states may simplify
+the proof. 
+\begin{thm}
+\label{theorem1-1} There is no map $\dpt\colon\ffzd{p^{2}}\times\ffzd{p^{2}}\longrightarrow[0,1]$
+satisfying properties ({\bf i}), ({\bf ii}), ({\bf iii}),
+and ({\bf iv}) when $d\ge3$ and $p>3$.\end{thm}
+}
+
+\yutsung{
+\begin{proof}
+Assume such a map $\dpt$ satisfying all four properties exists. Consider
+the orthonormal basis and the non-normalized state 
+\begin{eqnarray*}
+\ket{0} & = & \left(\begin{array}{ccc}
+1 & 0 & 0\end{array}\right)^{T}\\
+\ket{1} & = & \left(\begin{array}{ccc}
+0 & 1 & 0\end{array}\right)^{T}\\
+\ket{2} & = & \left(\begin{array}{ccc}
+0 & 0 & 1\end{array}\right)^{T}\\
+\ket{+} & = & \ket{0}+\ket{1}+\ket{2}\textrm{ ,}
+\end{eqnarray*}
+where $\ket{+}$ is not zero-normed when $p>3$. For $i=1,2$, let
+$\mathbf{U}_{i}$ be the unitary map that permutes the basis vectors
+$\ket{0}$ and $\ket{i}$ and acts as the identity for the rest. Note
+that $\ket{+}$ is invariant under $\mathbf{U}_{i}$. So by property
+({\bf iii}) we have 
+\[
+\dpt\big(\ket{+},\ket{i}\big)=\dpt\big(\mathbf{U}_{i}\ket{+},\mathbf{U}_{i}\ket{0}\big)=\dpt\big(\ket{+},\ket{0}\big)
+\]
+for $i=1,2$. By property ({\bf i}) 
+\begin{eqnarray*}
+\dpt\big(\ket{+},\ket{0}\big)+\dpt\big(\ket{+},\ket{1}\big)+\dpt\big(\ket{+},\ket{2}\big) & = & 1
+\end{eqnarray*}
+so 
+\begin{equation}
+\dpt\big(\ket{+},\ket{i}\big)=\frac{1}{3}\in[0,1]\textrm{ .}\label{prob2-1-1}
+\end{equation}
+
+Let 
+\begin{eqnarray*}
+\mathbf{U}' & = & \left(\begin{array}{ccc}
+\alpha & \alpha & 0\\
+-\alpha & \alpha & 0\\
+0 & 0 & 1
+\end{array}\right)\\
+\ket{\Phi} & = & 2\alpha\ket{0}+\ket{2}=\mathbf{U}'\ket{+}
+\end{eqnarray*}
+where $\alpha\in\ff{p^{2}}$ is chosen so that $2\alpha^{*}\alpha=1$.
+Thus by property ({\bf iii}), we have
+\begin{eqnarray*}
+\dpt\big(\ket{\Phi},\ket{2}\big) & = & \dpt\big(\mathbf{U}'\ket{+},\mathbf{U}'\ket{2}\big)=\dpt\big(\ket{+},\ket{2}\big)\textrm{ .}
+\end{eqnarray*}
+Also, properties ({\bf i}) and ({\bf ii}) imply 
+\begin{eqnarray*}
+1 & = & \dpt\big(\ket{\Phi},\ket{0}\big)+\dpt\big(\ket{\Phi},\ket{2}\big)\textrm{ .}
+\end{eqnarray*}
+This along with equation (\ref{prob2-1-1}) gives 
+\begin{equation}
+\dpt\big(\ket{\Phi},\ket{0}\big)=\frac{2}{3}\in[0,1]\textrm{ .}\label{eq:prob23}
+\end{equation}
+
+\end{proof}
+}
+
+\yutsung{
+\begin{proof}
+Finally, consider 
+\begin{eqnarray*}
+\mathbf{U}'' & = & \left(\begin{array}{ccc}
+1 & 0 & 0\\
+0 & \beta^{*} & 2\alpha\\
+0 & 2\alpha^{*} & \beta
+\end{array}\right)\\
+\ket{\Psi} & = & 2\alpha\left(\ket{0}+\ket{1}\right)+\beta\ket{2}=\mathbf{U}''\ket{\Phi}\textrm{ ,}
+\end{eqnarray*}
+where $\beta\in\ff{p^{2}}$ is chosen so that $\beta^{*}\beta=-1$.
+Because $\ket{\Psi}$ is invariant under $\mathbf{U}_{1}$, invoking
+property ({\bf iii}) with equation (\ref{eq:prob23}), we have
+\begin{eqnarray*}
+ &  & \dpt\big(\ket{\Psi},\ket{1}\big)=\dpt\big(\mathbf{U}_{1}\ket{\Psi},\mathbf{U}_{1}\ket{1}\big)\\
+ & = & \dpt\big(\ket{\Psi},\ket{0}\big)=\dpt\big(\mathbf{U}''\ket{\Phi},\mathbf{U}''\ket{0}\big)\\
+ & = & \dpt\big(\ket{\Phi},\ket{0}\big)=\frac{2}{3}
+\end{eqnarray*}
+These probability assignments are inconsistent with the requirement
+that the probabilities for orthogonal outcomes add up to 1. By property
+({\bf i}) 
+\begin{eqnarray*}
+1 & = & \dpt\big(\ket{\Psi},\ket{0}\big)+\dpt\big(\ket{\Psi},\ket{1}\big)+\dpt\big(\ket{\Psi},\ket{2}\big)\\
+ & = & \frac{2}{3}+\frac{2}{3}+\dpt\big(\ket{\Psi},\ket{2}\big)\\
+ & \geq & \frac{4}{3}\textrm{ ,}
+\end{eqnarray*}
+so we have a contradiction. The assumption of a satisfactory map $\dpt$
+is thus false. 
+\end{proof}
+}
 
 What are the implications of this theorem?  Intuitively one might
 think that the lack of an order on the field elements is the main
