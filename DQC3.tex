@@ -42,6 +42,8 @@
 }
 \providecommand{\proofname}{Proof}
 \fi
+\theoremstyle{definition}
+\newtheorem{problem}[thm]{\protect\problemname}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% these went missing?
@@ -1121,7 +1123,63 @@ because one of them, say f(O1,psi) wraps in the field
 \section{Contextuality and Non-Locality in DQT}
 
 %%%%%%%%%%%%%%%%%
-\subsection{Gleason's Theorem in DQT} The Born rule is the \emph{only}
+\subsection{Gleason's Theorem in DQT} 
+
+Recall the measurement process discussed in section \ref{sec:Critical-Analysis-CQT}.
+Given a physical system represented by a state $\ket{\Psi}$, and
+an observable ${\mathbf{O}}$, whose eigenspectrum is given by 
+\[
+{\mathbf{O}}\left|i\right\rangle =\lambda_{i}\left|i\right\rangle \ .
+\]
+Then the Born rule of CQT tells us that the probability of obtaining
+the eigenvalue $\lambda_{i}$ as an outcome of the measurement is
+given by 
+\begin{eqnarray}
+\begin{array}{rcccl}
+{\cal P}_{\Psi}\left(\ket{i}\right)={\cal P}_{\Psi}\left(\lambda_{i}\right) & = & {\displaystyle {\frac{\langle\Psi|{P}_{i}|\Psi\rangle}{\ip{\Psi}{\Psi}}}} & = & {\displaystyle {\frac{\ip{\Psi}{i}\ip{i}{\Psi}}{\ip{\Psi}{\Psi}\ip{i}{i}}}}=\Tr\left(\frac{\proj{i}}{\ip{i}{i}}\frac{\proj{\Psi}}{\ip{\Psi}{\Psi}}\right)\end{array}\ ,\label{prob1.eq-6}
+\end{eqnarray}
+If the system is a mixed state represented by a density matrix 
+\[
+\rho=\sum_{j}p_{j}\frac{\proj{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}}\textrm{ ,}
+\]
+equation (\ref{prob1.eq-6}) can be extended to 
+\begin{eqnarray}
+{\cal P}_{\rho}\left(\ket{i}\right)={\cal P}_{\rho}\left(\lambda_{i}\right) & = & \Tr\left(\frac{\proj{i}}{\ip{i}{i}}\sum_{j}p_{j}\frac{\proj{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}}\right)=\sum_{i}p_{i}\frac{\ip{\Psi_{j}}{i}\ip{i}{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}\ip{i}{i}}\label{prob1.eq-2}
+\end{eqnarray}
+Let $\C^{d*}=\left\{ \ket{\Psi}\in\C^{d}\mid\ip{\Psi}{\Psi}\ne0\right\} $,
+then ${\cal P}_{\rho}:\C^{d*}\rightarrow\left[0,1\right]$ defines
+a probability which means ${\cal P}_{\rho}$ satisfies 
+\begin{description}
+\item [{(i')}] For any orthonormal basis $\{\ket{i}\}$ and any state $\ket{\Psi}$,
+${\displaystyle \sum_{i=0}^{d-1}{\cal P}_{\rho}\left(\ket{i}\right)=1}$. 
+\end{description}
+Conversely, if an assignment ${\cal P}:\C^{d*}\rightarrow\left[0,1\right]$
+is a probability, i.e., satisfying ({\bf i'}), we can identify
+${\cal P}$ to a mixed state $\rho$ by Gleason's theorem~\cite{Redhead1987-REDINA,gleason1957}\footnote{In order to simplify the statement, we consider consider the probability
+on the state vectors instead of the projectors or closed subspaces
+as in the Gleason's original paper.}.
+\begin{thm}
+(Gleason's Theorem) For $d\ge3$, for any probability ${\cal P}:\C^{d*}\rightarrow\left[0,1\right]$,
+there is a density matrix $\rho$ such that ${\cal P}={\cal P}_{\rho}$.
+\end{thm}
+Consequently, the Born rule is the only reasonable probability assignment,
+and can be deduced by other reasonable axioms~\cite{peres1995quantum}. 
+
+Let's move on to Gleason's Theorem in DQT.
+\begin{problem}
+Can we recover Gleason's Theorem in DQT? or more precisely: 
+\begin{enumerate}
+\item Given an assignment $\hat{{\cal P}}:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
+in DQT, if $\hat{{\cal P}}$ is a probability, i.e., for any orthonormal
+basis $\{\ket{i}\}$, ${\displaystyle \sum_{i=0}^{d-1}\hat{{\cal P}}\left(\ket{i}\right)=1}$,
+can we say something about $\hat{{\cal P}}$?
+\item Can we induce the Born rule by some reasonable axioms?
+\end{enumerate}
+\end{problem}
+In order to answer the first problem, we need to define the mixed
+state in DQT. 
+
+\yutsung{The Born rule is the \emph{only}
 way to assign a probability in conventional quantum theory because of
 Gleason's theorem.  We now show that $\dpr $ defined in
 Eq. (\ref{eq:modality}) is an example of a properly defined Born rule
@@ -1165,7 +1223,7 @@ differ in only one significant instance from the classical ones:
 \end{eqnarray}
 Because there is no possibility for continuity in the discrete theory,
 we have substituted the condition (\ref{enu:unitary-DQT(I)}) for the
-conventional continuity axiom in Gleason's Theorem.
+conventional continuity axiom in Gleason's Theorem.}
 
 %%%%%%%%%%%%%%%%%
 \subsection {The Kochen-Specker Theorem in DQT}
