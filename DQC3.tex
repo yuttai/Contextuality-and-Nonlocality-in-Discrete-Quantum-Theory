@@ -43,7 +43,7 @@
 \providecommand{\proofname}{Proof}
 \fi
 \theoremstyle{definition}
-\newtheorem{problem}[thm]{\protect\problemname}
+\newtheorem{problem}[thm]{Problem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% these went missing?
@@ -436,8 +436,8 @@ can in fact be correlated, counter to classical intuitions.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\label{sec:Critical-Analysis-CQT}Critical Analysis of the Measurement
-Process in CQT}
+\section{\label{sec:Critical-Analysis-CQT}Critical
+Analysis of the Measurement Process in CQT}
 
 Before discussing the measurement process and the manifestations of
 nonlocality and contextuality in discrete quantum mechanics, we first
@@ -754,7 +754,7 @@ $d>2$.  If we adopt the natural conditions ({\bf i}), ({\bf ii}), and
 $\dpt$ satisfying these conditions does not exist.
 
 %%%%%%%%%%%%%%%%%
-\subsection{A No-Go Theorem}
+\subsection{\label{sub:A-No-Go-Theorem}A No-Go Theorem}
 
 We will fill out our arguments by introducing a no-go theorem that
 explains why it is impossible in DQT to incorporate into Born's rule a
@@ -823,8 +823,8 @@ more than a single qubit.)
 \yutsung{I am going to prove a no-go theorem for $d=3$ here with
 an extra property
 \begin{description}
-\item [{(iv)}] $\dpt(\ket{\Phi},\ket{\Psi})=\dpt(\lambda\ket{\Phi},\ket{\Psi})=\dpt(\ket{\Phi},\lambda\ket{\Psi})$
-where $\lambda\in\ff{p^{2}}^{*}$. 
+\item [{(iv)}] $\dpt(\ket{\Phi},\ket{\Psi})=\dpt(\gamma\ket{\Phi},\ket{\Psi})=\dpt(\ket{\Phi},\gamma\ket{\Psi})$
+where $\gamma\in\ff{p^{2}}^{*}$. 
 \end{description}
 This property means that the phase difference and normalization will
 not effect the probability assignment. Although this property will
@@ -943,7 +943,8 @@ probabilities but upon discrete interval-valued probabilities.
   Experiment.''}
 
 %%%%%%%%%%%%%%%%%
-\subsection{Interval-Valued Probabilities for DQT}
+\subsection{\label{sub:Interval-Valued-Probabilities-DQT}Interval-Valued
+Probabilities for DQT}
 
 \yutsung{
 It seems that almost everything currently in this section should move to Section 5, because they are already focus on the measurement process in DQT, especially $\dpr \left(\ket{\Psi},\ket{\Phi}\right)$ should be intuitively corresponding to ${\cal P}_{\Psi}\left(\lambda_{i}\right)$ in CQT. Or we may combine Section 4.5 and Section 5.1 into one section.
@@ -1142,88 +1143,119 @@ If the system is a mixed state represented by a density matrix
 \[
 \rho=\sum_{j}p_{j}\frac{\proj{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}}\textrm{ ,}
 \]
-equation (\ref{prob1.eq-6}) can be extended to 
+the Born rule (\ref{prob1.eq-6}) can be extended to 
 \begin{eqnarray}
 {\cal P}_{\rho}\left(\ket{i}\right)={\cal P}_{\rho}\left(\lambda_{i}\right) & = & \Tr\left(\frac{\proj{i}}{\ip{i}{i}}\sum_{j}p_{j}\frac{\proj{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}}\right)=\sum_{i}p_{i}\frac{\ip{\Psi_{j}}{i}\ip{i}{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}\ip{i}{i}}\label{prob1.eq-2}
 \end{eqnarray}
 Let $\C^{d*}=\left\{ \ket{\Psi}\in\C^{d}\mid\ip{\Psi}{\Psi}\ne0\right\} $,
 then ${\cal P}_{\rho}:\C^{d*}\rightarrow\left[0,1\right]$ defines
 a probability which means ${\cal P}_{\rho}$ satisfies 
-\begin{description}
-\item [{(i')}] For any orthonormal basis $\{\ket{i}\}$ and any state $\ket{\Psi}$,
-${\displaystyle \sum_{i=0}^{d-1}{\cal P}_{\rho}\left(\ket{i}\right)=1}$. 
-\end{description}
+\begin{equation}
+\textrm{For any orthonormal basis }\{\ket{i}\}\textrm{ and any state }\ket{\Psi}\textrm{ , }{\displaystyle \sum_{i=0}^{d-1}{\cal P}_{\rho}\left(\ket{i}\right)=1}\label{eq:total-probability}
+\end{equation}
+
+
 Conversely, if an assignment ${\cal P}:\C^{d*}\rightarrow\left[0,1\right]$
-is a probability, i.e., satisfying ({\bf i'}), we can identify
-${\cal P}$ to a mixed state $\rho$ by Gleason's theorem~\cite{Redhead1987-REDINA,gleason1957}\footnote{In order to simplify the statement, we consider consider the probability
-on the state vectors instead of the projectors or closed subspaces
-as in the Gleason's original paper.}.
+is a probability, i.e., satisfying equation (\ref{eq:total-probability}),
+we can identify ${\cal P}$ to a mixed state $\rho$ by Gleason's
+theorem.
 \begin{thm}
-(Gleason's Theorem) For $d\ge3$, for any probability ${\cal P}:\C^{d*}\rightarrow\left[0,1\right]$,
-there is a density matrix $\rho$ such that ${\cal P}={\cal P}_{\rho}$.
-\end{thm}
-Consequently, the Born rule is the only reasonable probability assignment,
-and can be deduced by other reasonable axioms~\cite{peres1995quantum}. 
-
-Let's move on to Gleason's Theorem in DQT.
-\begin{problem}
-Can we recover Gleason's Theorem in DQT? or more precisely: 
+(Gleason's Theorem) 
 \begin{enumerate}
-\item Given an assignment $\hat{{\cal P}}:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
-in DQT, if $\hat{{\cal P}}$ is a probability, i.e., for any orthonormal
-basis $\{\ket{i}\}$, ${\displaystyle \sum_{i=0}^{d-1}\hat{{\cal P}}\left(\ket{i}\right)=1}$,
-can we say something about $\hat{{\cal P}}$?
-\item Can we induce the Born rule by some reasonable axioms?
+\item For $d\ge3$, for any probability ${\cal P}:\C^{d*}\rightarrow\left[0,1\right]$,
+there is a density matrix $\rho$ such that ${\cal P}={\cal P}_{\rho}$~\cite{Redhead1987-REDINA,gleason1957}.\footnote{In order to simplify the statement, we consider consider the probability
+on the state vectors instead of the projectors or closed subspaces
+as in the Gleason's original paper.}
+\item Consequently, the Born rule (\ref{prob1.eq-6}) is the only reasonable
+probability assignment, and can be deduced by other reasonable axioms~\cite{peres1995quantum}. 
 \end{enumerate}
+\end{thm}
+Let's move on to Gleason's Theorem in DQT. Can we recover Gleason's
+Theorem in DQT? or more precisely: 
+\begin{problem}
+Given an assignment $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
+in DQT, if $\hat{\pi}$ is a probability, i.e., 
+\begin{equation}
+\textrm{For any orthonormal basis }\{\ket{i}\}\textrm{ , }{\displaystyle \bigvee_{i=0}^{d-1}\hat{\pi}\left(\ket{i}\right)=}\textrm{possible , }\label{eq:total-probability-DQT}
+\end{equation}
+can we say something about $\hat{\pi}$?
 \end{problem}
-In order to answer the first problem, we need to define the mixed
-state in DQT. 
-
-\yutsung{The Born rule is the \emph{only}
-way to assign a probability in conventional quantum theory because of
-Gleason's theorem.  We now show that $\dpr $ defined in
-Eq. (\ref{eq:modality}) is an example of a properly defined Born rule
-in the discrete theory because $\dpr $ also satisfies the closest
-analog of Gleason's Theorem that we can construct.
-
-Following the standard axioms for Gleason's
-theorem~\cite{peres1995quantum}, we introduce discrete axioms that
-differ in only one significant instance from the classical ones:
+The answer is no, and the reasons are simple. First, compare the following
+arithmetic equation and Boolean equation.
 \begin{eqnarray}
- & \bullet & \textrm{For any orthogonal basis }\left\{
-  \left| n \right\rangle \right\}
-  _{n=0}^{d-1}\subset\ffzd{p^{2}}\textrm{, and
-  }\label{enu:total-probability-DQT(I)}\\ & &
-  \ket{\Psi}\in\ffzd{p^{2}}\textrm{, at least one of\ }
-  \dpr \left(\ket{\Psi},\ket{n}\right) = \text{possible.}\nonumber \\ &
-  \bullet & \textrm{For any orthogonal basis }
-\left\{  \left| n \right\rangle
-\right\}_{n=0}^{d-1}\subset\ffzd{p^{2}}\nonumber \\ & &
- \textrm{and a particular\ }\ket{n'}\in\left\{ \left| n \right\rangle \right\}
-  _{n=0}^{d-1}\textrm{, }\nonumber \\ & &
-  \dpr\big(\ket{n'},\ket{n'}\big)=\text{possible and\ }
-   \label{enu:particular-vector-DQT(I)}\\ & &
-  \dpr\big(\ket{n'},\ket{n}\big)=\text{impossible for any }n\ne  n'
-   \textrm{. }\nonumber \\ & \bullet & \textrm{For any vector  }
-   \ket{\Psi},\ket{\Phi}\in\ffzd{p^{2}}
-  \textrm{, and  }\gamma\in\ff{p^{2}}\backslash\left\{ 0\right\} 
-  \textrm{, }\nonumber
-  \\ & &
-  \dpr (\ket{\Psi},\ket{\Phi})=\dpr (\gamma\ket{\Psi},\ket{\Phi}) = 
-    \dpr (\ket{\Psi},\gamma\ket{\Phi}) \textrm{. }
-  \label{enu:parallel-DQT(I)}\\
- & \bullet & \textrm{For any vector
-  }\ket{\Psi},\ket{\Phi}\in\ffzd{p^{2}}
-  \textrm{, }\nonumber \\ & &
-  \textrm{and }U\textrm{ is a }d\textrm{-by-}d
-  \textrm{ unitary matrix over }\ff{p^{2}}\textrm{, }
-  \label{enu:unitary-DQT(I)}\\ & &
-  \textrm{i.e. , }U^{\dagger}U=I\textrm{, then  }
-   \dpr (\ket{\Psi},\ket{\Phi})=\dpr (U\ket{\Psi},U\ket{\Phi})\textrm{. }\nonumber
+p_{1}+p_{2}+p_{3} & = & 1\label{eq:arithmetic}\\
+\pi_{1}\vee\pi_{2}\vee\pi_{3} & = & \text{possible}\label{eq:Boolean}
 \end{eqnarray}
-Because there is no possibility for continuity in the discrete theory,
-we have substituted the condition (\ref{enu:unitary-DQT(I)}) for the
-conventional continuity axiom in Gleason's Theorem.}
+When $p_{1}=\frac{1}{2}$, we still have an equality $p_{2}+p_{3}=1$
+for $p_{2}$ and $p_{3}$ because $\left(\mathbb{R},0,+\right)$ is
+a group. In contrast, when $\pi_{1}=\text{possible}$, we know nothing
+about $\pi_{2}$ and $\pi_{3}$ because the semigroup$\left(\mathscr{L}_{2},\text{impossible},\vee\right)$
+is not cancellative, i.e., $a\vee c=b\vee c$ does not imply $a=b$.
+This suggests to study the range of the probability. Consider the
+range has the structure $\left(\underline{\mathscr{L}},\mathscr{L},0,1,\oplus,<\right)$,
+where $\left(\underline{\mathscr{L}},0,\oplus,<\right)$ is the underlying
+commutative ordered semigroup~\cite{clifford1958}, $\mathscr{L}\subseteq\underline{\mathscr{L}}$
+is the allowed range value, $1\in\mathscr{L}'\subseteq\mathscr{L}$
+is another special value, and for all $x\in\mathscr{L}$, we have
+$0<x<1$. For example, $\left(\mathscr{L}_{2},\mathscr{L}_{2},\text{impossible},\text{possible},\vee,<\right)$
+and $\left(\mathbb{R},\left[0,1\right],0,1,+,<\right)$ are two possible
+range of the probability, but we cannot pick $\underline{\mathscr{L}}=\ff{p^{2}}$
+because we cannot define an inequality such that $\left(\ff{p^{2}},0,+,<\right)$
+be an ordered semigroup.
+
+Second, Gleason's theorem relies a lot on the continuous probability~\cite{Redhead1987-REDINA,gleason1957,peres1995quantum},
+but continuity doesn't even make sense in DQT. This fact implies that
+the structure of the domain of the probability, $\ffzd{p^{2}}$, is
+also too weak. In order to think which structure we need, let's check
+which the reasonable property ${\cal P}_{\Psi}:\C^{d*}\rightarrow\left[0,1\right]$
+should have. Despite the total probability is one, ${\cal P}_{\Psi}$
+must have 
+\begin{eqnarray}
+{\cal P}_{\Psi}\left(\ket{i}\right) & = & 0\textrm{ if }\ip{\Psi}{i}=0\label{prob1.eq-6-1}\\
+{\cal P}_{\Psi}\left(\ket{i}\right) & = & {\cal P}_{\Psi}\left(\gamma\ket{i}\right)\textrm{ ,}
+\end{eqnarray}
+where $\gamma\in\C^{*}$. Moreover, the probability must be invariant
+under any rotation, i.e., 
+\begin{equation}
+{\cal P}_{U\Psi}\left(U\ket{i}\right)={\cal P}_{\Psi}\left(\ket{i}\right)\label{eq:rotation}
+\end{equation}
+for any unitary matrix $U$. Because we consider ${\cal P}_{\Psi}$
+and ${\cal P}_{U\Psi}$ together, the first part of Gleason's theorem
+doesn't really make sense, but we can still ask whether there is an
+unique ``Born rule'' satisfying all the conditions. If we add these
+three conditions, our problem becomes
+\begin{problem}
+\label{prob:Gleason's}Is there a structure $\left(\underline{\mathscr{L}},\mathscr{L},0,1,\oplus,<\right)$
+such that $\tilde{\pi}:\ffzd{p^{2}}\times\ffzd{p^{2}}\rightarrow\mathscr{L}$
+satisfying the following conditions is unique for $d\ge3$ and infinitely
+many for $d=2$? 
+\begin{eqnarray}
+ & \bullet & \textrm{For any orthonormal basis }\left\{ \ket{i}\right\} _{n=0}^{d-1}\subset\ffzd{p^{2}}\textrm{, }\label{enu:total-probability-DQT(I)}\\
+ &  & \textrm{ \ensuremath{{\displaystyle \bigoplus_{i=0}^{d-1}\tilde{\pi}\left(\ket{\Psi},\ket{i}\right)=1}} .}\nonumber \\
+ & \bullet & \textrm{If }\braket{\Psi}{i}=0\textrm{ ,}\nonumber \\
+ &  & \textrm{then }\tilde{\pi}\left(\ket{\Psi},\ket{i}\right)=0\textrm{ .}\label{enu:particular-vector-DQT(I)}\\
+ & \bullet & \textrm{For any vector }\ket{\Psi},\ket{i}\in\ffzd{p^{2}}\textrm{, }\nonumber \\
+ &  & \textrm{and }U\textrm{ is a }d\textrm{-by-}d\textrm{ unitary matrix over }\ff{p^{2}}\textrm{, }\label{enu:unitary-DQT(I)}\\
+ &  & \textrm{i.e. , }U^{\dagger}U=I\textrm{, then }\tilde{\pi}(\ket{\Psi},\ket{i})=\tilde{\pi}(U\ket{\Psi},U\ket{i})\textrm{. }\nonumber \\
+ & \bullet & \textrm{For any vector }\ket{\Psi},\ket{i}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}^{*}\textrm{, }\nonumber \\
+ &  & \dpr(\ket{\Psi},\ket{\Phi})=\dpr(\gamma\ket{\Psi},\ket{\Phi})=\dpr(\ket{\Psi},\gamma\ket{\Phi})\textrm{. }\label{enu:parallel-DQT(I)}
+\end{eqnarray}
+
+\end{problem}
+The no-go theorem in section \ref{sub:A-No-Go-Theorem} said the if
+$\left(\underline{\mathscr{L}},\mathscr{L},0,1,\oplus,<\right)=\left(\mathbb{R},\left[0,1\right],0,1,+,<\right)$,
+there is no $\tilde{\pi}:\ffzd{p^{2}}\times\ffzd{p^{2}}\rightarrow\mathscr{L}$
+for $d\ge3$. It is easy to extend the no-go theorem and prove 
+\begin{thm}
+If $\left(\underline{\mathscr{L}},0,\oplus,<\right)$ is a ordered
+group, then there is no $\tilde{\pi}:\ffzd{p^{2}}\times\ffzd{p^{2}}\rightarrow\mathscr{L}$
+satisfying all conditions in problem \ref{prob:Gleason's} for $d\ge3$.
+\end{thm}
+When we consider $\left(\mathscr{L}_{2},\mathscr{L}_{2},\text{impossible},\text{possible},\vee,<\right)$,
+$\dpr$ defined in section \ref{sub:Interval-Valued-Probabilities-DQT}
+satisfies all conditions, but $\dpr$ is not the unique solution because
+of lack of cancellation law. It is still an open question whether
+problem \ref{prob:Gleason's} is true or false in general.
 
 %%%%%%%%%%%%%%%%%
 \subsection {The Kochen-Specker Theorem in DQT}
