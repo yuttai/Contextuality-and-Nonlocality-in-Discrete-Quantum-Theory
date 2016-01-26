@@ -4427,7 +4427,7 @@ status collapsed
 .
  Then explain that a measurement operation is a 
 \emph on
-partial function 
+partial function
 \emph default
  that takes a current state (non-null vector) and an observable 
 \begin_inset Formula ${\cal O}$
@@ -4531,7 +4531,7 @@ Thus
  as 
 \begin_inset Formula 
 \begin{equation}
-\dpr\left(\ket{\Psi},\ket{\Phi}\right)=\left\{ \begin{array}{r@{\textrm{, if }}lcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc}
+\dpr\left(\ket{\Psi},\ket{\Phi}\right)=\left\{ \begin{array}{r@{\textrm{, if }}lcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc}
 \textrm{possible} & \ip{\Psi}{\Phi}\ne0\\
 \textrm{impossible} & \ip{\Psi}{\Phi}=0
 \end{array}\right.\ .\label{eq:modality}
@@ -5192,14 +5192,11 @@ Given a physical system represented by a state
 \end_inset
 
 , whose eigenspectrum is given by 
-\begin_inset Formula 
-\[
-{\mathbf{O}}\left|i\right\rangle =\lambda_{i}\left|i\right\rangle \ .
-\]
-
+\begin_inset Formula ${\mathbf{O}}\left|i\right\rangle =\lambda_{i}\left|i\right\rangle $
 \end_inset
 
-Then the Born rule of CQT tells us that the probability of obtaining the
+.
+ Then the Born rule of CQT tells us that the probability of obtaining the
  eigenvalue 
 \begin_inset Formula $\lambda_{i}$
 \end_inset
@@ -5208,7 +5205,7 @@ Then the Born rule of CQT tells us that the probability of obtaining the
 \begin_inset Formula 
 \begin{eqnarray}
 \begin{array}{rcccl}
-{\cal P}_{\Psi}\left(\ket{i}\right)={\cal P}_{\Psi}\left(\lambda_{i}\right) & = & {\displaystyle {\frac{\langle\Psi|{P}_{i}|\Psi\rangle}{\ip{\Psi}{\Psi}}}} & = & {\displaystyle {\frac{\ip{\Psi}{i}\ip{i}{\Psi}}{\ip{\Psi}{\Psi}\ip{i}{i}}}}=\Tr\left(\frac{\proj{i}}{\ip{i}{i}}\frac{\proj{\Psi}}{\ip{\Psi}{\Psi}}\right)\end{array}\ ,\label{prob1.eq-6}
+{\cal P}_{\Psi}\left(\ket{i}\right) & = & {\cal P}_{\Psi}\left(\lambda_{i}\right) & = & \frac{\ip{\Psi}{i}\ip{i}{\Psi}}{\ip{\Psi}{\Psi}\ip{i}{i}}\end{array}\ ,\label{prob1.eq-6}
 \end{eqnarray}
 
 \end_inset
@@ -5221,41 +5218,18 @@ If the system is a mixed state represented by a density matrix
 
 \end_inset
 
-the Born rule (
+we can extend the Born rule (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prob1.eq-6"
 
 \end_inset
 
-) can be extended to 
+) and get 
 \begin_inset Formula 
 \begin{eqnarray}
-{\cal P}_{\rho}\left(\ket{i}\right)={\cal P}_{\rho}\left(\lambda_{i}\right) & = & \Tr\left(\frac{\proj{i}}{\ip{i}{i}}\sum_{j}p_{j}\frac{\proj{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}}\right)=\sum_{i}p_{i}\frac{\ip{\Psi_{j}}{i}\ip{i}{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}\ip{i}{i}}\label{prob1.eq-2}
+{\cal P}_{\rho}\left(\ket{i}\right)={\cal P}_{\rho}\left(\lambda_{i}\right) & = & \sum_{i}p_{i}\frac{\ip{\Psi_{j}}{i}\ip{i}{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}\ip{i}{i}}\label{prob1.eq-2}
 \end{eqnarray}
-
-\end_inset
-
-
-\family default
-\size default
-Let 
-\begin_inset Formula $\C^{d*}=\left\{ \ket{\Psi}\in\C^{d}\mid\ip{\Psi}{\Psi}\ne0\right\} $
-\end_inset
-
-, then 
-\begin_inset Formula ${\cal P}_{\rho}:\C^{d*}\rightarrow\left[0,1\right]$
-\end_inset
-
- defines a probability which means 
-\begin_inset Formula ${\cal P}_{\rho}$
-\end_inset
-
- satisfies 
-\begin_inset Formula 
-\begin{equation}
-\textrm{For any orthonormal basis }\{\ket{i}\}\textrm{ and any state }\ket{\Psi}\textrm{ , }{\displaystyle \sum_{i=0}^{d-1}{\cal P}_{\rho}\left(\ket{i}\right)=1}\label{eq:total-probability}
-\end{equation}
 
 \end_inset
 
@@ -5263,7 +5237,40 @@ Let
 \end_layout
 
 \begin_layout Standard
-Conversely, if an assignment 
+Let 
+\begin_inset Formula $\C^{*}=\C\backslash\left\{ 0\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $\C^{d*}=\left\{ \ket{\Psi}\in\C^{d}\mid\ip{\Psi}{\Psi}\ne0\right\} $
+\end_inset
+
+ be the set of non-zero vectors.
+ Because normalization and global phase gives the same state, and 
+\begin_inset Formula ${\cal P}_{\rho}:\C^{d*}\rightarrow\left[0,1\right]$
+\end_inset
+
+ should be a state-function, we should have 
+\begin_inset Formula 
+\begin{equation}
+\textrm{For any vector }\ket{i}\in\C^{d*}\textrm{, and }\gamma\in\C^{*}\textrm{ , }{\cal P}_{\rho}(\ket{i})={\cal P}_{\rho}(\gamma\ket{i})\textrm{ .}\label{eq:parallel-DQT(I)}
+\end{equation}
+
+\end_inset
+
+More importantly, 
+\begin_inset Formula ${\cal P}_{\rho}$
+\end_inset
+
+ defines a probability which means 
+\begin_inset Formula 
+\begin{equation}
+\textrm{For any orthonormal basis }\{\ket{i}\}\textrm{ , }{\displaystyle \sum_{i=0}^{d-1}{\cal P}_{\rho}\left(\ket{i}\right)=1}\textrm{ .}\label{eq:total-probability}
+\end{equation}
+
+\end_inset
+
+Conversely, if a state-function 
 \begin_inset Formula ${\cal P}:\C^{d*}\rightarrow\left[0,1\right]$
 \end_inset
 
@@ -5271,6 +5278,13 @@ Conversely, if an assignment
 \family roman
 \size normal
 equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:parallel-DQT(I)"
+
+\end_inset
+
+) and (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:total-probability"
@@ -5304,14 +5318,24 @@ For
 \begin_inset Formula $d\ge3$
 \end_inset
 
-, for any probability 
+, for any state-function 
 \begin_inset Formula ${\cal P}:\C^{d*}\rightarrow\left[0,1\right]$
 \end_inset
 
 
 \family roman
 \size normal
-, there is a density matrix 
+, if
+\family default
+\size default
+ 
+\begin_inset Formula ${\cal P}$
+\end_inset
+
+
+\family roman
+\size normal
+ is a probability, there is a density matrix 
 \begin_inset Formula $\rho$
 \end_inset
 
@@ -5380,37 +5404,103 @@ key "peres1995quantum"
 
 \end_deeper
 \begin_layout Standard
-Let's move on to 
+Notice that every state is an equivalence class of 
+\begin_inset Formula $\C^{d*}$
+\end_inset
+
+, but we cannot really get them directly by a physical measurement.
+ All we can get from a physical measurement is the probability 
+\begin_inset Formula ${\cal P}$
+\end_inset
+
+.
+ An important meaning of Gleason's theorem is that the state space is sufficient
+ enough to produce every probability.
+ Hence, we don't have to introduce a new state to explain the probability
+ got from a measurement.
+ This may be analog to the fact that every algebraic equation over 
+\begin_inset Formula $\C$
+\end_inset
+
+ can be solved in 
+\begin_inset Formula $\C$
+\end_inset
+
+ so that we don't have to introduce new numbers to solve an equation.
+ The other important meaning of Gleason's theorem is that it implies the
+ Born rule 
 \family roman
-Gleason's Theorem in DQT.
- 
+\size normal
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prob1.eq-6"
+
+\end_inset
+
+)
 \family default
-Can we recover 
+\size default
+.
+ This is even more important for building a discrete quantum theory.
+ If we plug in vectors over 
 \family roman
-Gleason's Theorem in DQT? or more precisely: 
+\size normal
+
+\begin_inset Formula $\ff{p^{2}}$
+\end_inset
+
+
+\family default
+\size default
+ into the usual Born rule 
+\family roman
+\size normal
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prob1.eq-6"
+
+\end_inset
+
+), it gives an elements in 
+\begin_inset Formula $\ff{p}$
+\end_inset
+
+ which has no way interpreted as a probability.
+ Everyone who tried to build a quantum theory over finite fields struggled
+ on how to define a reasonable probability.
+ If 
+\family default
+\size default
+Gleason's theorem works in any sense over finite fields, we can have a reasonabl
+e way to induce the Born rule over finite fields.
+\end_layout
+
+\begin_layout Standard
+A naive way to extend 
+\family roman
+Gleason's Theorem in DQT may be as follow.
 \end_layout
 
 \begin_layout Problem
-Given an assignment 
+Given a state-function 
 \begin_inset Formula $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
 \end_inset
 
- in DQT, if 
-\begin_inset Formula $\hat{\pi}$
-\end_inset
-
- is a probability, i.e., 
+ which is also a probability, i.e., 
 \family roman
 \size normal
 
 \begin_inset Formula 
-\begin{equation}
-\textrm{For any orthonormal basis }\{\ket{i}\}\textrm{ , }{\displaystyle \bigvee_{i=0}^{d-1}\hat{\pi}\left(\ket{i}\right)=}\textrm{possible , }\label{eq:total-probability-DQT}
-\end{equation}
+\begin{eqnarray}
+ &  & \textrm{For any vector }\ket{i}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}^{*}\textrm{ , }\hat{\pi}(\ket{i})=\hat{\pi}(\gamma\ket{i})\textrm{ . }\label{eq:parallel-DQT}\\
+ &  & \textrm{For any orthonormal basis }\{\ket{i}\}\textrm{ , }{\displaystyle \bigvee_{i=0}^{d-1}\hat{\pi}\left(\ket{i}\right)=}\textrm{possible . }\label{eq:total-probability-DQT}
+\end{eqnarray}
 
 \end_inset
 
-can we say something about 
+Can we say something about 
 \family default
 \size default
 
@@ -5464,11 +5554,11 @@ When
 \begin_inset Formula $\pi_{3}$
 \end_inset
 
- because the semigroup
+ because 
 \begin_inset Formula $\left(\mathscr{L}_{2},\text{impossible},\vee\right)$
 \end_inset
 
- is not cancellative, i.e., 
+ is a semigroup without cancellative, i.e., 
 \begin_inset Formula $a\vee c=b\vee c$
 \end_inset
 
@@ -5477,13 +5567,21 @@ When
 \end_inset
 
 .
- This suggests to study the range of the probability.
- Consider the range has the structure 
-\begin_inset Formula $\left(\underline{\mathscr{L}},\mathscr{L},0,1,\oplus,<\right)$
+ The difference between 
+\begin_inset Formula $\left(\mathbb{R},0,+\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(\mathscr{L}_{2},\text{impossible},\vee\right)$
+\end_inset
+
+ suggests us to study the range of the probability.
+ A reasonable range should have the structure 
+\begin_inset Formula $\left(\mathscr{L},0,1,\oplus,<\right)$
 \end_inset
 
 , where 
-\begin_inset Formula $\left(\underline{\mathscr{L}},0,\oplus,<\right)$
+\begin_inset Formula $\left(\mathscr{L},0,\oplus,<\right)$
 \end_inset
 
  is the underlying commutative ordered semigroup
@@ -5497,33 +5595,36 @@ key "clifford1958"
 
 \end_inset
 
-, 
-\begin_inset Formula $\mathscr{L}\subseteq\underline{\mathscr{L}}$
+ because the condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:total-probability"
+
 \end_inset
 
- is the allowed range value, 
-\begin_inset Formula $1\in\mathscr{L}'\subseteq\mathscr{L}$
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:total-probability-DQT"
+
 \end_inset
 
- is another special value, and for all 
-\begin_inset Formula $x\in\mathscr{L}$
+) suggests the value of the range should be able to add together.
+ 
+\begin_inset Formula $1\in\mathscr{L}$
 \end_inset
 
-, we have 
-\begin_inset Formula $0<x<1$
-\end_inset
-
-.
+ is another special value to indicate the total probability.
  For example, 
-\begin_inset Formula $\left(\mathscr{L}_{2},\mathscr{L}_{2},\text{impossible},\text{possible},\vee,<\right)$
+\begin_inset Formula $\left(\mathscr{L}_{2},\text{impossible},\text{possible},\vee,<\right)$
 \end_inset
 
  and 
-\begin_inset Formula $\left(\mathbb{R},\left[0,1\right],0,1,+,<\right)$
+\begin_inset Formula $\left(\mathbb{R},0,1,+,<\right)$
 \end_inset
 
  are two possible range of the probability, but we cannot pick 
-\begin_inset Formula $\underline{\mathscr{L}}=\ff{p^{2}}$
+\begin_inset Formula $\mathscr{L}=\ff{p^{2}}$
 \end_inset
 
  because we cannot define an inequality such that 
@@ -5531,6 +5632,7 @@ key "clifford1958"
 \end_inset
 
  be an ordered semigroup.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -5554,7 +5656,8 @@ key "Redhead1987-REDINA,gleason1957,peres1995quantum"
 
 \end_inset
 
-, but continuity doesn't even make sense in DQT.
+.
+ However, continuity doesn't even make sense in DQT.
  
 \family default
 \size default
@@ -5563,7 +5666,7 @@ This fact implies that the structure of the domain of the probability,
 \end_inset
 
 , is also too weak.
- In order to think which structure we need, let's check which the reasonable
+ In order to think which structure we need, we can check which the reasonable
  property 
 \begin_inset Formula ${\cal P}_{\Psi}:\C^{d*}\rightarrow\left[0,1\right]$
 \end_inset
@@ -5579,8 +5682,7 @@ This fact implies that the structure of the domain of the probability,
 
 \begin_inset Formula 
 \begin{eqnarray}
-{\cal P}_{\Psi}\left(\ket{i}\right) & = & 0\textrm{ if }\ip{\Psi}{i}=0\label{prob1.eq-6-1}\\
-{\cal P}_{\Psi}\left(\ket{i}\right) & = & {\cal P}_{\Psi}\left(\gamma\ket{i}\right)\textrm{ ,}
+{\cal P}_{\Psi}\left(\ket{i}\right) & = & 0\textrm{ if }\ip{\Psi}{i}=0\label{prob1.eq-6-1}
 \end{eqnarray}
 
 \end_inset
@@ -5603,7 +5705,7 @@ for any unitary matrix
 \end_inset
 
 .
- Because we consider 
+ Because we consider the probability of two different state 
 \begin_inset Formula ${\cal P}_{\Psi}$
 \end_inset
 
@@ -5611,8 +5713,7 @@ for any unitary matrix
 \begin_inset Formula ${\cal P}_{U\Psi}$
 \end_inset
 
- together, the first part of Gleason's theorem doesn't really make sense,
- but we can still ask whether there is an unique 
+ together, it may be more reasonable to ask whether there is an unique 
 \family default
 \size default
 
@@ -5626,8 +5727,7 @@ Born rule
 \begin_inset Quotes erd
 \end_inset
 
- satisfying all the conditions.
- If we add these three conditions, our problem becomes
+ satisfying all the conditions, and our problem becomes
 \end_layout
 
 \begin_layout Problem
@@ -5638,11 +5738,11 @@ name "prob:Gleason's"
 \end_inset
 
 Is there a structure 
-\begin_inset Formula $\left(\underline{\mathscr{L}},\mathscr{L},0,1,\oplus,<\right)$
+\begin_inset Formula $\left(\mathscr{L},0,1,\oplus,<\right)$
 \end_inset
 
  such that 
-\begin_inset Formula $\tilde{\pi}:\ffzd{p^{2}}\times\ffzd{p^{2}}\rightarrow\mathscr{L}$
+\begin_inset Formula $\tilde{\pi}:\ffzd{p^{2}}\rightarrow\left(\ffzd{p^{2}}\rightarrow\left\{ x\in\mathscr{L}\middle|0\le x\le1\right\} \right)$
 \end_inset
 
  satisfying the following conditions is unique for 
@@ -5653,29 +5753,7 @@ Is there a structure
 \begin_inset Formula $d=2$
 \end_inset
 
-? 
-\family roman
-\size normal
-
-\begin_inset Formula 
-\begin{eqnarray}
- & \bullet & \textrm{For any orthonormal basis }\left\{ \ket{i}\right\} _{n=0}^{d-1}\subset\ffzd{p^{2}}\textrm{, }\label{enu:total-probability-DQT(I)}\\
- &  & \textrm{ {\displaystyle \bigoplus_{i=0}^{d-1}\tilde{\pi}\left(\ket{\Psi},\ket{i}\right)=1} .}\nonumber \\
- & \bullet & \textrm{If }\braket{\Psi}{i}=0\textrm{ ,}\nonumber \\
- &  & \textrm{then }\tilde{\pi}\left(\ket{\Psi},\ket{i}\right)=0\textrm{ .}\label{enu:particular-vector-DQT(I)}\\
- & \bullet & \textrm{For any vector }\ket{\Psi},\ket{i}\in\ffzd{p^{2}}\textrm{, }\nonumber \\
- &  & \textrm{and }U\textrm{ is a }d\textrm{-by-}d\textrm{ unitary matrix over }\ff{p^{2}}\textrm{, }\label{enu:unitary-DQT(I)}\\
- &  & \textrm{i.e. , }U^{\dagger}U=I\textrm{, then }\tilde{\pi}(\ket{\Psi},\ket{i})=\tilde{\pi}(U\ket{\Psi},U\ket{i})\textrm{. }\nonumber \\
- & \bullet & \textrm{For any vector }\ket{\Psi},\ket{i}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}^{*}\textrm{, }\nonumber \\
- &  & \dpr(\ket{\Psi},\ket{\Phi})=\dpr(\gamma\ket{\Psi},\ket{\Phi})=\dpr(\ket{\Psi},\gamma\ket{\Phi})\textrm{. }\label{enu:parallel-DQT(I)}
-\end{eqnarray}
-
-\end_inset
-
-
-\family default
-\size default
-
+?
 \begin_inset Foot
 status open
 
@@ -5688,12 +5766,12 @@ reference "enu:particular-vector-DQT(I)"
 \end_inset
 
 ), another reasonable condition is 
-\begin_inset Formula $\braket{\Psi}{i}=0\Leftrightarrow\tilde{\pi}\left(\ket{\Psi},\ket{i}\right)=0$
+\begin_inset Formula $\braket{\Psi}{i}=0\Leftrightarrow\tilde{\pi}_{\Psi}\left(\ket{i}\right)=0$
 \end_inset
 
 .
  However, when the underlying group 
-\begin_inset Formula $\underline{\mathscr{L}}=\mathscr{L}_{2}$
+\begin_inset Formula $\mathscr{L}=\mathscr{L}_{2}$
 \end_inset
 
 , this condition implies an unique solution for 
@@ -5704,6 +5782,24 @@ reference "enu:particular-vector-DQT(I)"
  This is too strong and is not what we want.
  
 \end_layout
+
+\end_inset
+
+ 
+\family roman
+\size normal
+
+\begin_inset Formula 
+\begin{eqnarray}
+ & \bullet & \textrm{For any orthonormal basis }\left\{ \ket{i}\right\} _{n=0}^{d-1}\subset\ffzd{p^{2}}\textrm{, }\label{enu:total-probability-DQT(I)}\\
+ &  & \textrm{ {\displaystyle \bigoplus_{i=0}^{d-1}\tilde{\pi}_{\Psi}\left(\ket{i}\right)=1} .}\nonumber \\
+ & \bullet & \textrm{If }\braket{\Psi}{i}=0\textrm{ ,}\textrm{then }\tilde{\pi}_{\Psi}\left(\ket{i}\right)=0\textrm{ .}\label{enu:particular-vector-DQT(I)}\\
+ & \bullet & \textrm{For any vector }\ket{\Psi},\ket{i}\in\ffzd{p^{2}}\textrm{, }\nonumber \\
+ &  & \textrm{and }U\textrm{ is a }d\textrm{-by-}d\textrm{ unitary matrix over }\ff{p^{2}}\textrm{, }\label{enu:unitary-DQT(I)}\\
+ &  & \textrm{i.e. , }U^{\dagger}U=I\textrm{, then }\tilde{\pi}_{\Psi}(\ket{i})=\tilde{\pi}_{U\Psi}(U\ket{i})\textrm{. }\nonumber \\
+ & \bullet & \textrm{For any vector }\ket{\Psi},\ket{i}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}^{*}\textrm{, }\nonumber \\
+ &  & \tilde{\pi}_{\Psi}(\ket{i})=\tilde{\pi}_{\Psi}(\gamma\ket{i})\textrm{. }\label{enu:parallel-DQT(I)}
+\end{eqnarray}
 
 \end_inset
 
@@ -5725,11 +5821,11 @@ reference "sub:A-No-Go-Theorem"
 \family default
 \size default
 the if 
-\begin_inset Formula $\left(\underline{\mathscr{L}},\mathscr{L},0,1,\oplus,<\right)=\left(\mathbb{R},\left[0,1\right],0,1,+,<\right)$
+\begin_inset Formula $\left(\mathscr{L},0,1,\oplus,<\right)=\left(\mathbb{R},0,1,+,<\right)$
 \end_inset
 
 , there is no 
-\begin_inset Formula $\tilde{\pi}:\ffzd{p^{2}}\times\ffzd{p^{2}}\rightarrow\mathscr{L}$
+\begin_inset Formula $\tilde{\pi}:\ffzd{p^{2}}\rightarrow\ffzd{p^{2}}\rightarrow\mathscr{L}$
 \end_inset
 
  for 
@@ -5742,11 +5838,11 @@ the if
 
 \begin_layout Theorem
 If 
-\begin_inset Formula $\left(\underline{\mathscr{L}},0,\oplus,<\right)$
+\begin_inset Formula $\left(\mathscr{L},0,\oplus,<\right)$
 \end_inset
 
  is a ordered group, then there is no 
-\begin_inset Formula $\tilde{\pi}:\ffzd{p^{2}}\times\ffzd{p^{2}}\rightarrow\mathscr{L}$
+\begin_inset Formula $\tilde{\pi}:\ffzd{p^{2}}\rightarrow\ffzd{p^{2}}\rightarrow\mathscr{L}$
 \end_inset
 
  satisfying all conditions in problem 
@@ -5765,7 +5861,7 @@ reference "prob:Gleason's"
 
 \begin_layout Standard
 When we consider 
-\begin_inset Formula $\left(\mathscr{L}_{2},\mathscr{L}_{2},\text{impossible},\text{possible},\vee,<\right)$
+\begin_inset Formula $\left(\mathscr{L}_{2},\text{impossible},\text{possible},\vee,<\right)$
 \end_inset
 
 , 
@@ -5798,6 +5894,36 @@ reference "prob:Gleason's"
 \end_inset
 
  is true or false in general.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+yutsung{
+\end_layout
+
+\end_inset
+
+Is that all probability value should be distinct be an reasonable condition?
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
