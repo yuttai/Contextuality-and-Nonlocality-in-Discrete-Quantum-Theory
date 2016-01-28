@@ -4531,7 +4531,7 @@ Thus
  as 
 \begin_inset Formula 
 \begin{equation}
-\dpr\left(\ket{\Psi},\ket{\Phi}\right)=\left\{ \begin{array}{r@{\textrm{, if }}lcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc}
+\dpr\left(\ket{\Psi},\ket{\Phi}\right)=\left\{ \begin{array}{r@{\textrm{, if }}lcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc}
 \textrm{possible} & \ip{\Psi}{\Phi}\ne0\\
 \textrm{impossible} & \ip{\Psi}{\Phi}=0
 \end{array}\right.\ .\label{eq:modality}
@@ -5228,7 +5228,7 @@ reference "prob1.eq-6"
 ) and get 
 \begin_inset Formula 
 \begin{eqnarray}
-{\cal P}_{\rho}\left(\ket{i}\right)={\cal P}_{\rho}\left(\lambda_{i}\right) & = & \sum_{i}p_{i}\frac{\ip{\Psi_{j}}{i}\ip{i}{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}\ip{i}{i}}\label{prob1.eq-2}
+{\cal P}_{\rho}\left(\ket{i}\right)={\cal P}_{\rho}\left(\lambda_{i}\right) & = & \sum_{j}p_{j}{\cal P}_{\Psi_{j}}\left(\ket{i}\right)\label{prob1.eq-2}
 \end{eqnarray}
 
 \end_inset
@@ -5274,27 +5274,7 @@ Conversely, if a state-function
 \begin_inset Formula ${\cal P}:\C^{d*}\rightarrow\left[0,1\right]$
 \end_inset
 
- is a probability, i.e., satisfying 
-\family roman
-\size normal
-equation (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:parallel-DQT(I)"
-
-\end_inset
-
-) and (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:total-probability"
-
-\end_inset
-
-)
-\family default
-\size default
-, we can identify 
+ is a probability, we can identify 
 \begin_inset Formula ${\cal P}$
 \end_inset
 
@@ -5312,13 +5292,12 @@ reference "eq:total-probability"
 (Gleason's Theorem) 
 \end_layout
 
-\begin_deeper
-\begin_layout Enumerate
+\begin_layout Theorem
 For 
 \begin_inset Formula $d\ge3$
 \end_inset
 
-, for any state-function 
+, for any 
 \begin_inset Formula ${\cal P}:\C^{d*}\rightarrow\left[0,1\right]$
 \end_inset
 
@@ -5335,7 +5314,28 @@ For
 
 \family roman
 \size normal
- is a probability, there is a density matrix 
+ is a 
+\family default
+\size default
+state-function 
+\family roman
+\size normal
+and probability, i.e.,
+\family default
+\size default
+
+\begin_inset Formula 
+\begin{eqnarray}
+ &  & \textrm{For any vector }\ket{i}\in\C^{d*}\textrm{, and }\gamma\in\C^{*}\textrm{ , }{\cal P}(\ket{i})={\cal P}(\gamma\ket{i})\textrm{ ,}\label{eq:parallel-DQT(I)-1}\\
+ &  & \textrm{For any orthonormal basis }\{\ket{i}\}\textrm{ , }{\displaystyle \sum_{i=0}^{d-1}{\cal P}\left(\ket{i}\right)=1}\textrm{ ,}\label{eq:total-probability-1}
+\end{eqnarray}
+
+\end_inset
+
+
+\family roman
+\size normal
+there is a density matrix 
 \begin_inset Formula $\rho$
 \end_inset
 
@@ -5350,7 +5350,7 @@ For
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Redhead1987-REDINA,gleason1957"
+key "Redhead1987-REDINA,gleason1957,peres1995quantum"
 
 \end_inset
 
@@ -5372,37 +5372,170 @@ In order to simplify the statement, we consider consider the probability
 
 \end_layout
 
-\begin_layout Enumerate
-Consequently, the Born rule 
-\family roman
-\size normal
-(
+\begin_layout Standard
+In contrast, when 
+\begin_inset Formula $d=2$
+\end_inset
+
+, consider the discontinuous function 
+\begin_inset Formula ${\cal P}:\C^{2*}\rightarrow\left[0,1\right]$
+\end_inset
+
+ by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+cal P}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+left(
+\backslash
+begin{array}{c} 
+\backslash
+alpha_{0}
+\backslash
+
+\backslash
+ 
+\backslash
+alpha_{1} 
+\backslash
+end{array}
+\backslash
+right)=
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cases{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+1 & , if $
+\backslash
+alpha_{0}
+\backslash
+alpha_{1}>0$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frac{1}{2} & , if $
+\backslash
+alpha_{0}
+\backslash
+alpha_{1}=0$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+0 & , if $
+\backslash
+alpha_{0}
+\backslash
+alpha_{1}<0$ } 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula ${\cal P}$
+\end_inset
+
+ satisfies equation (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "prob1.eq-6"
+reference "eq:parallel-DQT(I)-1"
 
 \end_inset
 
-)
-\family default
-\size default
- is the only reasonable probability assignment, and can be deduced by other
- reasonable axioms
-\begin_inset space ~
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:total-probability-1"
+
 \end_inset
 
+) because no matter the sign of 
+\begin_inset Formula $\alpha_{0}\alpha_{1}$
+\end_inset
 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "peres1995quantum,inun.606849520040101"
+, we always have 
+\begin_inset Formula 
+\[
+{\cal P}\left(\begin{array}{c}
+\alpha_{0}\\
+\alpha_{1}
+\end{array}\right)+{\cal P}\left(\begin{array}{c}
+-\alpha_{1}\\
+\alpha_{0}
+\end{array}\right)=1\textrm{ .}
+\]
 
+\end_inset
+
+However, 
+\begin_inset Formula ${\cal P}_{\rho}$
+\end_inset
+
+ is always continuous.
+ Therefore, we can never find a density matrix 
+\family roman
+\size normal
+
+\begin_inset Formula $\rho$
+\end_inset
+
+ such that 
+\begin_inset Formula ${\cal P}={\cal P}_{\rho}$
 \end_inset
 
 .
- 
 \end_layout
 
-\end_deeper
 \begin_layout Standard
 An important meaning of Gleason's theorem is that the state space is sufficient
  enough to produce every possible probability we get from an experiment.
@@ -5432,6 +5565,17 @@ reference "prob1.eq-6"
 )
 \family default
 \size default
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "peres1995quantum,inun.606849520040101"
+
+\end_inset
+
 .
  This is even more important for building a discrete quantum theory.
  If we plug in vectors over 
