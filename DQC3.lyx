@@ -4531,7 +4531,7 @@ Thus
  as 
 \begin_inset Formula 
 \begin{equation}
-\dpr\left(\ket{\Psi},\ket{\Phi}\right)=\left\{ \begin{array}{r@{\textrm{, if }}lcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc}
+\dpr\left(\ket{\Psi},\ket{\Phi}\right)=\left\{ \begin{array}{r@{\textrm{, if }}lcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc}
 \textrm{possible} & \ip{\Psi}{\Phi}\ne0\\
 \textrm{impossible} & \ip{\Psi}{\Phi}=0
 \end{array}\right.\ .\label{eq:modality}
@@ -5377,11 +5377,15 @@ In contrast, when
 \begin_inset Formula $d=2$
 \end_inset
 
-, consider the discontinuous function 
+, consider 
 \begin_inset Formula ${\cal P}:\C^{2*}\rightarrow\left[0,1\right]$
 \end_inset
 
- by 
+ such that if we restrict 
+\begin_inset Formula ${\cal P}$
+\end_inset
+
+ on the real unit circle, we will have a discontinuous function 
 \begin_inset ERT
 status open
 
@@ -5411,13 +5415,17 @@ left(
 \backslash
 begin{array}{c} 
 \backslash
-alpha_{0}
+cos
+\backslash
+theta
 \backslash
 
 \backslash
  
 \backslash
-alpha_{1} 
+sin
+\backslash
+theta 
 \backslash
 end{array}
 \backslash
@@ -5433,39 +5441,34 @@ cases{
 
 \begin_layout Plain Layout
 
+0 & , if $0 
+\backslash
+le 
+\backslash
+theta < 
+\backslash
+frac{
+\backslash
+pi}{2}$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
 1 & , if $
 \backslash
-alpha_{0}
+frac{
 \backslash
-alpha_{1}>0$
+pi}{2} 
 \backslash
-
+le 
 \backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
+theta < 
 \backslash
-frac{1}{2} & , if $
-\backslash
-alpha_{0}
-\backslash
-alpha_{1}=0$
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-0 & , if $
-\backslash
-alpha_{0}
-\backslash
-alpha_{1}<0$ } 
+pi$ } 
 \end_layout
 
 \begin_layout Plain Layout
@@ -5499,19 +5502,21 @@ reference "eq:total-probability-1"
 
 \end_inset
 
-) because no matter the sign of 
-\begin_inset Formula $\alpha_{0}\alpha_{1}$
-\end_inset
-
-, we always have 
+) because we have 
 \begin_inset Formula 
 \[
 {\cal P}\left(\begin{array}{c}
-\alpha_{0}\\
-\alpha_{1}
+\cos\theta\\
+\sin\theta
 \end{array}\right)+{\cal P}\left(\begin{array}{c}
--\alpha_{1}\\
-\alpha_{0}
+-\sin\theta\\
+\cos\theta
+\end{array}\right)={\cal P}\left(\begin{array}{c}
+\cos\theta\\
+\sin\theta
+\end{array}\right)+{\cal P}\left(\begin{array}{c}
+\cos\left(\theta+\frac{\pi}{2}\right)\\
+\sin\left(\theta+\frac{\pi}{2}\right)
 \end{array}\right)=1\textrm{ .}
 \]
 
@@ -5534,9 +5539,533 @@ However,
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Standard
+Although the situation is different between 
+\begin_inset Formula $d=2$
+\end_inset
+
+ and 
+\begin_inset Formula $d\ge3$
+\end_inset
+
+ in CQT, we may not identify a state from a probability in DQT no matter
+ the dimension of the system.
+ In order to clearly state the theorem, we define 
+\begin_inset Formula $\dpr_{\Psi}\left(\ket{i}\right)=\dpr\left(\ket{\Psi},\ket{i}\right)$
+\end_inset
+
+.
+ Then, 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:GleasonDQT"
+
+\end_inset
+
+There exists 
+\begin_inset Formula $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
+\end_inset
+
+ which is a state-function and a probability, i.e., 
+\family roman
+\size normal
+
+\begin_inset Formula 
+\begin{eqnarray}
+ &  & \textrm{For any vector }\ket{i}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}^{*}\textrm{ , }\hat{\pi}(\ket{i})=\hat{\pi}(\gamma\ket{i})\textrm{ . }\label{eq:parallel-DQT}\\
+ &  & \textrm{For any orthonormal basis }\{\ket{i}\}\textrm{ , }{\displaystyle \bigvee_{i=0}^{d-1}\hat{\pi}\left(\ket{i}\right)=}\textrm{possible . }\label{eq:total-probability-DQT}
+\end{eqnarray}
+
+\end_inset
+
+such that for any 
+\begin_inset Formula $\ket{\Psi}\in\ffzd{p^{2}},\dpr_{\Psi}\ne\hat{\pi}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Fix a basis 
+\begin_inset Formula $\{\ket{i}\}_{i=0}^{d-1}$
+\end_inset
+
+.
+ Consider 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+hat{
+\backslash
+pi}}
+\backslash
+left(
+\backslash
+ket{
+\backslash
+Phi}
+\backslash
+right)=
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cases{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textrm{impossible} & , if $
+\backslash
+ip{
+\backslash
+Phi}{0} = 0$ or $
+\backslash
+ip{
+\backslash
+Phi}{0} = 
+\backslash
+ldots = 
+\backslash
+ip{
+\backslash
+Phi}{d-1}
+\backslash
+ne 0$ ; 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textrm{possible} & , otherwise.
+ } 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+It is easy to verify that equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:parallel-DQT"
+
+\end_inset
+
+) hold as follow.
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \hat{\pi}\left(\ket{\Phi}\right)=\textrm{impossible}\\
+ & \Leftrightarrow & \ip{\Phi}{0}=0\textrm{ or }\ip{\Phi}{0}=\ldots=\ip{\Phi}{d-1}\ne0\\
+ & \Leftrightarrow & \gamma\ip{\Phi}{0}=0\textrm{ or }\gamma\ip{\Phi}{0}=\ldots=\gamma\ip{\Phi}{d-1}\ne0\\
+ & \Leftrightarrow & \hat{\pi}\left(\gamma\ket{\Phi}\right)=\textrm{impossible}
+\end{eqnarray*}
+
+\end_inset
+
+For equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:total-probability-DQT"
+
+\end_inset
+
+), because 
+\begin_inset Formula 
+\[
+\textrm{impossible}\lor\textrm{possible}=\textrm{possible ,}
+\]
+
+\end_inset
+
+it is sufficient to prove for any 
+\begin_inset Formula $\ket{\Phi}\in\ffzd{p^{2}}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\hat{\pi}\left(\ket{\Phi}\right)=\textrm{impossible}$
+\end_inset
+
+, there is a 
+\begin_inset Formula $\ket{\Psi}\in\ffzd{p^{2}}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\ip{\Phi}{\Psi}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{\pi}\left(\ket{\Psi}\right)=\textrm{possible}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Case
+When 
+\begin_inset Formula $\ip{\Phi}{0}=0$
+\end_inset
+
+, 
+\begin_inset Formula $\ket{0}$
+\end_inset
+
+ is what we want because 
+\begin_inset Formula $\ip{0}{0}=1\ne0$
+\end_inset
+
+ implies 
+\begin_inset Formula $\hat{\pi}\left(\ket{0}\right)=\textrm{possible}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Case
+When 
+\begin_inset Formula $\ip{\Phi}{0}=\ldots=\ip{\Phi}{d-1}\ne0$
+\end_inset
+
+, let 
+\begin_inset Formula $\alpha=\ip{\Phi}{0}$
+\end_inset
+
+, and consider the state 
+\begin_inset Formula 
+\[
+\ket{\Psi}=\left(\begin{array}{ccccc}
+\alpha & -\alpha & 0 & \ldots & 0\end{array}\right)^{T}\textrm{ .}
+\]
+
+\end_inset
+
+Then, 
+\begin_inset Formula $\ip{\Phi}{\Psi}=\alpha^{*}\alpha-\alpha^{*}\alpha=0$
+\end_inset
+
+.
+ Moreover, 
+\begin_inset Formula $\ket{\Psi}{0}=\alpha^{*}\ne0$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{\Psi}{0}=\alpha^{*}\ne-\alpha^{*}=\ket{\Psi}{1}$
+\end_inset
+
+ implies 
+\begin_inset Formula $\hat{\pi}\left(\ket{\Psi}\right)=\textrm{possible}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+Therefore, equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:total-probability-DQT"
+
+\end_inset
+
+) holds.
+\end_layout
+
+\begin_layout Proof
+The last part of the theorem is to prove 
+\family roman
+\size normal
+that for any 
+\begin_inset Formula $\ket{\Psi}\in\ffzd{p^{2}},\dpr_{\Psi}\ne\hat{\pi}$
+\end_inset
+
+
+\family default
+\size default
+.
+ This part can be established by counting states.
+ 
+\family roman
+\size normal
+For any 
+\begin_inset Formula $\ket{\Psi}\in\ffzd{p^{2}}$
+\end_inset
+
+, 
+\family default
+\size default
+
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{\Psi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\\
+ & = & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\ip{\Psi}{i}=0\right\} \right|\\
+ & < & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\hat{\pi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\QED$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are reasons why there is no Gleason's theorem in DQT.
+ First, given 
+\begin_inset Formula ${\cal P}$
+\end_inset
+
+ in CQT, we search for a mixed state 
+\begin_inset Formula $\rho$
+\end_inset
+
+ such that 
+\family roman
+\size normal
+
+\begin_inset Formula ${\cal P}={\cal P}_{\rho}$
+\end_inset
+
+, but given 
+\family default
+\size default
+
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+ in DQT, we only search for a pure state 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ such that 
+\family roman
+\size normal
+
+\begin_inset Formula $\dpr_{\Psi}=\hat{\pi}$
+\end_inset
+
+.
+ Notice that there are much more mixed states than pure states so that it
+ is likely we cannot find a
+\family default
+\size default
+ny pure state 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ satisfying 
+\family roman
+\size normal
+
+\begin_inset Formula $\dpr_{\Psi}=\hat{\pi}$
+\end_inset
+
+ in DQT.
+ Although this reason is important, theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:GleasonDQT"
+
+\end_inset
+
+ still hold even if we define a mixed state.
+ Assume 
+\family default
+\size default
+
+\begin_inset Formula $\rho$
+\end_inset
+
+ is a mixed state between 
+\begin_inset Formula $\ket{\Psi_{1}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{\Psi_{2}}$
+\end_inset
+
+, then 
+\family roman
+\size normal
+we still have 
+\family default
+\size default
+
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{\rho}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\\
+ & \le & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{\Psi_{1}}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\\
+ & < & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\hat{\pi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|
+\end{eqnarray*}
+
+\end_inset
+
+Therefore, no matter how we define the mixed state, 
+\family roman
+\size normal
+theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:GleasonDQT"
+
+\end_inset
+
+ still hold, and there are some other reasons why theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:GleasonDQT"
+
+\end_inset
+
+ hold.
+\end_layout
+
+\begin_layout Standard
+Second, compare the following arithmetic equation and Boolean equation.
+\begin_inset Formula 
+\begin{eqnarray}
+{\cal P}\left(\ket{0}\right)+{\cal P}\left(\ket{1}\right)+{\cal P}\left(\ket{2}\right) & = & 1\label{eq:arithmetic}\\
+\hat{\pi}\left(\ket{0}\right)\vee\hat{\pi}\left(\ket{1}\right)\vee\hat{\pi}\left(\ket{2}\right) & = & \text{possible}\label{eq:Boolean}
+\end{eqnarray}
+
+\end_inset
+
+When 
+\begin_inset Formula ${\cal P}\left(\ket{0}\right)=\frac{1}{2}$
+\end_inset
+
+, we still have an equality 
+\begin_inset Formula ${\cal P}\left(\ket{1}\right)+{\cal P}\left(\ket{2}\right)=1$
+\end_inset
+
+ for 
+\begin_inset Formula ${\cal P}\left(\ket{1}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula ${\cal P}\left(\ket{2}\right)$
+\end_inset
+
+ because 
+\begin_inset Formula $\left(\mathbb{R},0,+\right)$
+\end_inset
+
+ is a group.
+ In contrast, when 
+\begin_inset Formula $\hat{\pi}\left(\ket{0}\right)=\text{possible}$
+\end_inset
+
+, we know nothing about 
+\begin_inset Formula $\hat{\pi}\left(\ket{1}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{\pi}\left(\ket{2}\right)$
+\end_inset
+
+ because 
+\begin_inset Formula $\left(\mathscr{L}_{2},\text{impossible},\vee\right)$
+\end_inset
+
+ is a semigroup without cancellative, i.e., 
+\begin_inset Formula $a\vee c=b\vee c$
+\end_inset
+
+ does not imply 
+\begin_inset Formula $a=b$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Third, even if we require the range of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ has a group structure, we still may not find 
+\begin_inset Formula $\dpr_{\Psi}=\hat{\pi}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 An important meaning of Gleason's theorem is that the state space is sufficient
  enough to produce every possible probability we get from an experiment.
  Hence, we don't have to worry about whether there is a chance that the
@@ -5612,97 +6141,14 @@ Gleason's theorem works in any sense over finite fields, we can have a reasonabl
 e way to induce the Born rule over finite fields.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 A naive way to extend 
 \family roman
 Gleason's Theorem in DQT may be as follow.
 \end_layout
 
-\begin_layout Problem
-Given a state-function 
-\begin_inset Formula $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
-\end_inset
-
- which is also a probability, i.e., 
-\family roman
-\size normal
-
-\begin_inset Formula 
-\begin{eqnarray}
- &  & \textrm{For any vector }\ket{i}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}^{*}\textrm{ , }\hat{\pi}(\ket{i})=\hat{\pi}(\gamma\ket{i})\textrm{ . }\label{eq:parallel-DQT}\\
- &  & \textrm{For any orthonormal basis }\{\ket{i}\}\textrm{ , }{\displaystyle \bigvee_{i=0}^{d-1}\hat{\pi}\left(\ket{i}\right)=}\textrm{possible . }\label{eq:total-probability-DQT}
-\end{eqnarray}
-
-\end_inset
-
-Can we say something about 
-\family default
-\size default
-
-\begin_inset Formula $\hat{\pi}$
-\end_inset
-
-?
-\end_layout
-
-\begin_layout Standard
-The answer is no, and the reasons are simple.
- First, compare the following arithmetic equation and Boolean equation.
-\begin_inset Formula 
-\begin{eqnarray}
-p_{1}+p_{2}+p_{3} & = & 1\label{eq:arithmetic}\\
-\pi_{1}\vee\pi_{2}\vee\pi_{3} & = & \text{possible}\label{eq:Boolean}
-\end{eqnarray}
-
-\end_inset
-
-When 
-\begin_inset Formula $p_{1}=\frac{1}{2}$
-\end_inset
-
-, we still have an equality 
-\begin_inset Formula $p_{2}+p_{3}=1$
-\end_inset
-
- for 
-\begin_inset Formula $p_{2}$
-\end_inset
-
- and 
-\begin_inset Formula $p_{3}$
-\end_inset
-
- because 
-\begin_inset Formula $\left(\mathbb{R},0,+\right)$
-\end_inset
-
- is a group.
- In contrast, when 
-\begin_inset Formula $\pi_{1}=\text{possible}$
-\end_inset
-
-, we know nothing about 
-\begin_inset Formula $\pi_{2}$
-\end_inset
-
- and 
-\begin_inset Formula $\pi_{3}$
-\end_inset
-
- because 
-\begin_inset Formula $\left(\mathscr{L}_{2},\text{impossible},\vee\right)$
-\end_inset
-
- is a semigroup without cancellative, i.e., 
-\begin_inset Formula $a\vee c=b\vee c$
-\end_inset
-
- does not imply 
-\begin_inset Formula $a=b$
-\end_inset
-
-.
- The difference between 
+\begin_layout Plain Layout
+The answer is no, and The difference between 
 \begin_inset Formula $\left(\mathbb{R},0,+\right)$
 \end_inset
 
@@ -5770,7 +6216,7 @@ reference "eq:total-probability-DQT"
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Second, Gleason's theorem relies a lot on the contin
 \family roman
 \size normal
@@ -5941,7 +6387,7 @@ reference "enu:particular-vector-DQT(I)"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \size normal
@@ -5994,7 +6440,7 @@ reference "prob:Gleason's"
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 When we consider 
 \begin_inset Formula $\left(\mathscr{L}_{2},\text{impossible},\text{possible},\vee,<\right)$
 \end_inset
@@ -6031,7 +6477,7 @@ reference "prob:Gleason's"
  is true or false in general.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \size normal
@@ -6054,6 +6500,11 @@ status collapsed
 \begin_layout Plain Layout
 
 }
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset

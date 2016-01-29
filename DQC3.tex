@@ -42,8 +42,13 @@
 }
 \providecommand{\proofname}{Proof}
 \fi
-\theoremstyle{definition}
-\newtheorem{problem}[thm]{Problem}
+\def\casename{Case. }
+ \newlist{casenv}{enumerate}{4}
+ \setlist[casenv]{leftmargin=*,align=left,widest={iiii}}
+ \setlist[casenv,1]{label={{\itshape\ \casename} \arabic*.},ref=\arabic*}
+ \setlist[casenv,2]{label={{\itshape\ \casename} \roman*.},ref=\roman*}
+ \setlist[casenv,3]{label={{\itshape\ \casename\ \alph*.}},ref=\alph*}
+ \setlist[casenv,4]{label={{\itshape\ \casename} \arabic*.},ref=\arabic*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% these went missing?
@@ -1173,140 +1178,133 @@ there is a density matrix $\rho$ such that ${\cal P}={\cal P}_{\rho}$~\cite{Redh
 on the state vectors instead of the projectors or closed subspaces
 as in the Gleason's original paper.}
 \end{thm}
-In contrast, when $d=2$, consider the discontinuous function ${\cal P}:\C^{2*}\rightarrow\left[0,1\right]$
-by 
+In contrast, when $d=2$, consider ${\cal P}:\C^{2*}\rightarrow\left[0,1\right]$
+such that if we restrict ${\cal P}$ on the real unit circle, we will
+have a discontinuous function 
 \[
 {\cal P}
-\left(\begin{array}{c} \alpha_{0}\\ \alpha_{1} \end{array}\right)=
+\left(\begin{array}{c} \cos\theta\\ \sin\theta \end{array}\right)=
 \cases{ 
-1 & , if $\alpha_{0}\alpha_{1}>0$\\
-\frac{1}{2} & , if $\alpha_{0}\alpha_{1}=0$\\
-0 & , if $\alpha_{0}\alpha_{1}<0$ } 
+0 & , if $0 \le \theta < \frac{\pi}{2}$\\
+1 & , if $\frac{\pi}{2} \le \theta < \pi$ } 
 \]
 ${\cal P}$ satisfies equation (\ref{eq:parallel-DQT(I)-1}) and (\ref{eq:total-probability-1})
-because no matter the sign of $\alpha_{0}\alpha_{1}$, we always have
+because we have 
 \[
 {\cal P}\left(\begin{array}{c}
-\alpha_{0}\\
-\alpha_{1}
+\cos\theta\\
+\sin\theta
 \end{array}\right)+{\cal P}\left(\begin{array}{c}
--\alpha_{1}\\
-\alpha_{0}
+-\sin\theta\\
+\cos\theta
+\end{array}\right)={\cal P}\left(\begin{array}{c}
+\cos\theta\\
+\sin\theta
+\end{array}\right)+{\cal P}\left(\begin{array}{c}
+\cos\left(\theta+\frac{\pi}{2}\right)\\
+\sin\left(\theta+\frac{\pi}{2}\right)
 \end{array}\right)=1\textrm{ .}
 \]
 However, ${\cal P}_{\rho}$ is always continuous. Therefore, we can
-never find a density matrix $\rho$ such that ${\cal P}={\cal P}_{\rho}$.
+never find a density matrix $\rho$ such that ${\cal P}={\cal P}_{\rho}$. 
 
-An important meaning of Gleason's theorem is that the state space
-is sufficient enough to produce every possible probability we get
-from an experiment. Hence, we don't have to worry about whether there
-is a chance that the probability got from a measurement cannot be
-explained by a state, and we need to introduce a new state. This may
-be analog to the fact that every algebraic equation over $\C$ can
-be solved in $\C$ so that we don't have to introduce new numbers
-to solve an equation. The other important meaning of Gleason's theorem
-is that it implies the Born rule (\ref{prob1.eq-6})~\cite{peres1995quantum,inun.606849520040101}.
-This is even more important for building a discrete quantum theory.
-If we plug in vectors over $\ff{p^{2}}$ into the usual Born rule
-(\ref{prob1.eq-6}), it gives an elements in $\ff{p}$ which has no
-way interpreted as a probability. Hence, everyone who tried to build
-a quantum theory over finite fields struggled on how to define a reasonable
-probability. If Gleason's theorem works in any sense over finite fields,
-we can have a reasonable way to induce the Born rule over finite fields.
-
-A naive way to extend Gleason's Theorem in DQT may be as follow.
-\begin{problem}
-Given a state-function $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
-which is also a probability, i.e., 
+Although the situation is different between $d=2$ and $d\ge3$ in
+CQT, we may not identify a state from a probability in DQT no matter
+the dimension of the system. In order to clearly state the theorem,
+we define $\dpr_{\Psi}\left(\ket{i}\right)=\dpr\left(\ket{\Psi},\ket{i}\right)$.
+Then, 
+\begin{thm}
+\label{thm:GleasonDQT}There exists $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
+which is a state-function and a probability, i.e., 
 \begin{eqnarray}
  &  & \textrm{For any vector }\ket{i}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}^{*}\textrm{ , }\hat{\pi}(\ket{i})=\hat{\pi}(\gamma\ket{i})\textrm{ . }\label{eq:parallel-DQT}\\
  &  & \textrm{For any orthonormal basis }\{\ket{i}\}\textrm{ , }{\displaystyle \bigvee_{i=0}^{d-1}\hat{\pi}\left(\ket{i}\right)=}\textrm{possible . }\label{eq:total-probability-DQT}
 \end{eqnarray}
-Can we say something about $\hat{\pi}$?
-\end{problem}
-The answer is no, and the reasons are simple. First, compare the following
-arithmetic equation and Boolean equation.
+such that for any $\ket{\Psi}\in\ffzd{p^{2}},\dpr_{\Psi}\ne\hat{\pi}$.\end{thm}
+\begin{proof}
+Fix a basis $\{\ket{i}\}_{i=0}^{d-1}$. Consider 
+\[
+{\hat{\pi}}\left(\ket{\Phi}\right)=
+\cases{ 
+\textrm{impossible} & , if $\ip{\Phi}{0} = 0$ or $\ip{\Phi}{0} = \ldots = \ip{\Phi}{d-1}\ne 0$ ; \\
+\textrm{possible} & , otherwise. } 
+\]
+It is easy to verify that equation (\ref{eq:parallel-DQT}) hold as
+follow. 
+\begin{eqnarray*}
+ &  & \hat{\pi}\left(\ket{\Phi}\right)=\textrm{impossible}\\
+ & \Leftrightarrow & \ip{\Phi}{0}=0\textrm{ or }\ip{\Phi}{0}=\ldots=\ip{\Phi}{d-1}\ne0\\
+ & \Leftrightarrow & \gamma\ip{\Phi}{0}=0\textrm{ or }\gamma\ip{\Phi}{0}=\ldots=\gamma\ip{\Phi}{d-1}\ne0\\
+ & \Leftrightarrow & \hat{\pi}\left(\gamma\ket{\Phi}\right)=\textrm{impossible}
+\end{eqnarray*}
+For equation (\ref{eq:total-probability-DQT}), because 
+\[
+\textrm{impossible}\lor\textrm{possible}=\textrm{possible ,}
+\]
+it is sufficient to prove for any $\ket{\Phi}\in\ffzd{p^{2}}$ such
+that $\hat{\pi}\left(\ket{\Phi}\right)=\textrm{impossible}$, there
+is a $\ket{\Psi}\in\ffzd{p^{2}}$ such that $\ip{\Phi}{\Psi}=0$ and
+$\hat{\pi}\left(\ket{\Psi}\right)=\textrm{possible}$.
+\begin{casenv}
+\item When $\ip{\Phi}{0}=0$, $\ket{0}$ is what we want because $\ip{0}{0}=1\ne0$
+implies $\hat{\pi}\left(\ket{0}\right)=\textrm{possible}$.
+\item When $\ip{\Phi}{0}=\ldots=\ip{\Phi}{d-1}\ne0$, let $\alpha=\ip{\Phi}{0}$,
+and consider the state 
+\[
+\ket{\Psi}=\left(\begin{array}{ccccc}
+\alpha & -\alpha & 0 & \ldots & 0\end{array}\right)^{T}\textrm{ .}
+\]
+Then, $\ip{\Phi}{\Psi}=\alpha^{*}\alpha-\alpha^{*}\alpha=0$. Moreover,
+$\ket{\Psi}{0}=\alpha^{*}\ne0$ and $\ket{\Psi}{0}=\alpha^{*}\ne-\alpha^{*}=\ket{\Psi}{1}$
+implies $\hat{\pi}\left(\ket{\Psi}\right)=\textrm{possible}$.
+\end{casenv}
+Therefore, equation (\ref{eq:total-probability-DQT}) holds.
+
+The last part of the theorem is to prove that for any $\ket{\Psi}\in\ffzd{p^{2}},\dpr_{\Psi}\ne\hat{\pi}$.
+This part can be established by counting states. For any $\ket{\Psi}\in\ffzd{p^{2}}$,
+\begin{eqnarray*}
+ &  & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{\Psi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\\
+ & = & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\ip{\Psi}{i}=0\right\} \right|\\
+ & < & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\hat{\pi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|
+\end{eqnarray*}
+$\QED$
+\end{proof}
+There are reasons why there is no Gleason's theorem in DQT. First,
+given ${\cal P}$ in CQT, we search for a mixed state $\rho$ such
+that ${\cal P}={\cal P}_{\rho}$, but given $\hat{\pi}$ in DQT, we
+only search for a pure state $\ket{\Psi}$ such that $\dpr_{\Psi}=\hat{\pi}$.
+Notice that there are much more mixed states than pure states so that
+it is likely we cannot find any pure state $\ket{\Psi}$ satisfying
+$\dpr_{\Psi}=\hat{\pi}$ in DQT. Although this reason is important,
+theorem \ref{thm:GleasonDQT} still hold even if we define a mixed
+state. Assume $\rho$ is a mixed state between $\ket{\Psi_{1}}$ and
+$\ket{\Psi_{2}}$, then we still have 
+\begin{eqnarray*}
+ &  & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{\rho}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\\
+ & \le & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{\Psi_{1}}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\\
+ & < & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\hat{\pi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|
+\end{eqnarray*}
+Therefore, no matter how we define the mixed state, theorem \ref{thm:GleasonDQT}
+still hold, and there are some other reasons why theorem \ref{thm:GleasonDQT}
+hold.
+
+Second, compare the following arithmetic equation and Boolean equation.
 \begin{eqnarray}
-p_{1}+p_{2}+p_{3} & = & 1\label{eq:arithmetic}\\
-\pi_{1}\vee\pi_{2}\vee\pi_{3} & = & \text{possible}\label{eq:Boolean}
+{\cal P}\left(\ket{0}\right)+{\cal P}\left(\ket{1}\right)+{\cal P}\left(\ket{2}\right) & = & 1\label{eq:arithmetic}\\
+\hat{\pi}\left(\ket{0}\right)\vee\hat{\pi}\left(\ket{1}\right)\vee\hat{\pi}\left(\ket{2}\right) & = & \text{possible}\label{eq:Boolean}
 \end{eqnarray}
-When $p_{1}=\frac{1}{2}$, we still have an equality $p_{2}+p_{3}=1$
-for $p_{2}$ and $p_{3}$ because $\left(\mathbb{R},0,+\right)$ is
-a group. In contrast, when $\pi_{1}=\text{possible}$, we know nothing
-about $\pi_{2}$ and $\pi_{3}$ because $\left(\mathscr{L}_{2},\text{impossible},\vee\right)$
-is a semigroup without cancellative, i.e., $a\vee c=b\vee c$ does
-not imply $a=b$. The difference between $\left(\mathbb{R},0,+\right)$
-and $\left(\mathscr{L}_{2},\text{impossible},\vee\right)$ suggests
-us to study the range of the probability. A reasonable range should
-have the structure $\left(\mathscr{L},0,1,\oplus,<\right)$, where
-$\left(\mathscr{L},0,\oplus,<\right)$ is the underlying commutative
-ordered semigroup~\cite{clifford1958} because the condition (\ref{eq:total-probability})
-and (\ref{eq:total-probability-DQT}) suggests the value of the range
-should be able to add together. $1\in\mathscr{L}$ is another special
-value to indicate the total probability. For example, $\left(\mathscr{L}_{2},\text{impossible},\text{possible},\vee,<\right)$
-and $\left(\mathbb{R},0,1,+,<\right)$ are two possible range of the
-probability, but we cannot pick $\mathscr{L}=\ff{p^{2}}$ because
-we cannot define an inequality such that $\left(\ff{p^{2}},0,+,<\right)$
-be an ordered semigroup. 
+When ${\cal P}\left(\ket{0}\right)=\frac{1}{2}$, we still have an
+equality ${\cal P}\left(\ket{1}\right)+{\cal P}\left(\ket{2}\right)=1$
+for ${\cal P}\left(\ket{1}\right)$ and ${\cal P}\left(\ket{2}\right)$
+because $\left(\mathbb{R},0,+\right)$ is a group. In contrast, when
+$\hat{\pi}\left(\ket{0}\right)=\text{possible}$, we know nothing
+about $\hat{\pi}\left(\ket{1}\right)$ and $\hat{\pi}\left(\ket{2}\right)$
+because $\left(\mathscr{L}_{2},\text{impossible},\vee\right)$ is
+a semigroup without cancellative, i.e., $a\vee c=b\vee c$ does not
+imply $a=b$. 
 
-Second, Gleason's theorem relies a lot on the continuous probability~\cite{Redhead1987-REDINA,gleason1957,peres1995quantum}.
-However, continuity doesn't even make sense in DQT. This fact implies
-that the structure of the domain of the probability, $\ffzd{p^{2}}$,
-is also too weak. In order to think which structure we need, we can
-check which the reasonable property ${\cal P}_{\Psi}:\C^{d*}\rightarrow\left[0,1\right]$
-should have. Despite the total probability is one, ${\cal P}_{\Psi}$
-must have 
-\begin{eqnarray}
-{\cal P}_{\Psi}\left(\ket{i}\right) & = & 0\textrm{ if }\ip{\Psi}{i}=0\label{prob1.eq-6-1}
-\end{eqnarray}
-where $\gamma\in\C^{*}$. Moreover, the probability must be invariant
-under any rotation, i.e., 
-\begin{equation}
-{\cal P}_{U\Psi}\left(U\ket{i}\right)={\cal P}_{\Psi}\left(\ket{i}\right)\label{eq:rotation}
-\end{equation}
-for any unitary matrix $U$. Because we consider the probability of
-two different state ${\cal P}_{\Psi}$ and ${\cal P}_{U\Psi}$ together,
-it may be more reasonable to ask whether there is an unique ``Born
-rule'' satisfying all the conditions, and our problem becomes
-\begin{problem}
-\label{prob:Gleason's}Is there a structure $\left(\mathscr{L},0,1,\oplus,<\right)$
-such that $\tilde{\pi}:\ffzd{p^{2}}\rightarrow\left(\ffzd{p^{2}}\rightarrow\left\{ x\in\mathscr{L}\middle|0\le x\le1\right\} \right)$
-satisfying the following conditions is unique for $d\ge3$ and infinitely
-many for $d=2$?\footnote{Instead of equation (\ref{enu:particular-vector-DQT(I)}), another
-reasonable condition is $\braket{\Psi}{i}=0\Leftrightarrow\tilde{\pi}_{\Psi}\left(\ket{i}\right)=0$.
-However, when the underlying group $\mathscr{L}=\mathscr{L}_{2}$,
-this condition implies an unique solution for $d=2$. This is too
-strong and is not what we want. } 
-\begin{eqnarray}
- & \bullet & \textrm{For any orthonormal basis }\left\{ \ket{i}\right\} _{n=0}^{d-1}\subset\ffzd{p^{2}}\textrm{, }\label{enu:total-probability-DQT(I)}\\
- &  & \textrm{ \ensuremath{{\displaystyle \bigoplus_{i=0}^{d-1}\tilde{\pi}_{\Psi}\left(\ket{i}\right)=1}} .}\nonumber \\
- & \bullet & \textrm{If }\braket{\Psi}{i}=0\textrm{ ,}\textrm{then }\tilde{\pi}_{\Psi}\left(\ket{i}\right)=0\textrm{ .}\label{enu:particular-vector-DQT(I)}\\
- & \bullet & \textrm{For any vector }\ket{\Psi},\ket{i}\in\ffzd{p^{2}}\textrm{, }\nonumber \\
- &  & \textrm{and }U\textrm{ is a }d\textrm{-by-}d\textrm{ unitary matrix over }\ff{p^{2}}\textrm{, }\label{enu:unitary-DQT(I)}\\
- &  & \textrm{i.e. , }U^{\dagger}U=I\textrm{, then }\tilde{\pi}_{\Psi}(\ket{i})=\tilde{\pi}_{U\Psi}(U\ket{i})\textrm{. }\nonumber \\
- & \bullet & \textrm{For any vector }\ket{\Psi},\ket{i}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}^{*}\textrm{, }\nonumber \\
- &  & \tilde{\pi}_{\Psi}(\ket{i})=\tilde{\pi}_{\Psi}(\gamma\ket{i})\textrm{. }\label{enu:parallel-DQT(I)}
-\end{eqnarray}
-
-\end{problem}
-The no-go theorem in section \ref{sub:A-No-Go-Theorem} said the if
-$\left(\mathscr{L},0,1,\oplus,<\right)=\left(\mathbb{R},0,1,+,<\right)$,
-there is no $\tilde{\pi}:\ffzd{p^{2}}\rightarrow\ffzd{p^{2}}\rightarrow\mathscr{L}$
-for $d\ge3$. It is easy to extend the no-go theorem and prove 
-\begin{thm}
-If $\left(\mathscr{L},0,\oplus,<\right)$ is a ordered group, then
-there is no $\tilde{\pi}:\ffzd{p^{2}}\rightarrow\ffzd{p^{2}}\rightarrow\mathscr{L}$
-satisfying all conditions in problem \ref{prob:Gleason's} for $d\ge3$.
-\end{thm}
-When we consider $\left(\mathscr{L}_{2},\text{impossible},\text{possible},\vee,<\right)$,
-$\dpr$ defined in section \ref{sub:Interval-Valued-Probabilities-DQT}
-satisfies all conditions, but $\dpr$ is not the unique solution because
-of lack of cancellation law. It is still an open question whether
-problem \ref{prob:Gleason's} is true or false in general.
-
-\yutsung{Is that all probability value should be distinct be an reasonable
-condition?}
-
+Third, even if we require the range of $\hat{\pi}$ has a group structure,
+we still may not find $\dpr_{\Psi}=\hat{\pi}$.
 %%%%%%%%%%%%%%%%%
 \subsection {The Kochen-Specker Theorem in DQT}
 The essence of the Kochen-Specker theorem is to ask if it is possible,
