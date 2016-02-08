@@ -4531,7 +4531,7 @@ Thus
  as 
 \begin_inset Formula 
 \begin{equation}
-\dpr\left(\ket{\Psi},\ket{\Phi}\right)=\left\{ \begin{array}{r@{\textrm{, if }}lcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc}
+\dpr\left(\ket{\Psi},\ket{\Phi}\right)=\left\{ \begin{array}{r@{\textrm{, if }}lcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc}
 \textrm{possible} & \ip{\Psi}{\Phi}\ne0\\
 \textrm{impossible} & \ip{\Psi}{\Phi}=0
 \end{array}\right.\ .\label{eq:modality}
@@ -5183,25 +5183,23 @@ reference "sec:Critical-Analysis-CQT"
  
 \family roman
 \size normal
-Given a physical system represented by a state 
-\begin_inset Formula $\ket{\Psi}$
-\end_inset
-
-, and an observable 
+Given an observable 
 \begin_inset Formula ${\mathbf{O}}$
 \end_inset
 
-, whose eigenspectrum is given by 
+ whose eigenspectrum is given by 
 \begin_inset Formula ${\mathbf{O}}\left|i\right\rangle =\lambda_{i}\left|i\right\rangle $
 \end_inset
 
-.
- Then the Born rule of CQT tells us that the probability of obtaining the
- eigenvalue 
-\begin_inset Formula $\lambda_{i}$
+, when we measure 
+\begin_inset Formula ${\mathbf{O}}$
 \end_inset
 
- as an outcome of the measurement is given by 
+ on a system in a state 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+, the probability is given by the Born rule of CQT 
 \begin_inset Formula 
 \begin{eqnarray}
 \begin{array}{rcccl}
@@ -5210,7 +5208,7 @@ Given a physical system represented by a state
 
 \end_inset
 
-If the system is a mixed state represented by a density matrix 
+If the system is in a mixed state represented by a density matrix 
 \begin_inset Formula 
 \[
 \rho=\sum_{j}p_{j}\frac{\proj{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}}\textrm{ ,}
@@ -5218,17 +5216,17 @@ If the system is a mixed state represented by a density matrix
 
 \end_inset
 
-we can extend the Born rule (
+the Born rule (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prob1.eq-6"
 
 \end_inset
 
-) and get 
+) can be extended to 
 \begin_inset Formula 
 \begin{eqnarray}
-{\cal P}_{\rho}\left(\ket{i}\right)={\cal P}_{\rho}\left(\lambda_{i}\right) & = & \sum_{j}p_{j}{\cal P}_{\Psi_{j}}\left(\ket{i}\right)\label{prob.mixed}
+{\cal P}_{\rho}\left(\ket{i}\right)={\cal P}_{\rho}\left(\lambda_{i}\right) & = & \sum_{j}p_{j}{\cal P}_{\Psi_{j}}\left(\ket{i}\right)\textrm{ ,}\label{prob1.eq-2}
 \end{eqnarray}
 
 \end_inset
@@ -5237,7 +5235,30 @@ reference "prob1.eq-6"
 \end_layout
 
 \begin_layout Standard
-Let 
+There are two important properties 
+\begin_inset Formula ${\cal P}_{\rho}:\C^{d*}\rightarrow\left[0,1\right]$
+\end_inset
+
+ should have.
+ First, if we normalize a vector or multiply it by a constant factor, it
+ still represents the same state, and 
+\begin_inset Formula ${\cal P}_{\rho}$
+\end_inset
+
+ is a function of state.
+ Thus, we have 
+\begin_inset Formula ${\cal P}_{\rho}(\ket{i})={\cal P}_{\rho}(\gamma\ket{i})$
+\end_inset
+
+ for any 
+\begin_inset Formula $\gamma\in\C^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{i}\in\C^{d*}$
+\end_inset
+
+, where 
 \begin_inset Formula $\C^{*}=\C\backslash\left\{ 0\right\} $
 \end_inset
 
@@ -5245,40 +5266,57 @@ Let
 \begin_inset Formula $\C^{d*}=\left\{ \ket{\Psi}\in\C^{d}\mid\ip{\Psi}{\Psi}\ne0\right\} $
 \end_inset
 
- be the set of non-zero vectors.
- Because normalization and global phase gives the same state, and 
-\begin_inset Formula ${\cal P}_{\rho}:\C^{d*}\rightarrow\left[0,1\right]$
-\end_inset
-
- should be a state-function, we should have 
-\begin_inset Formula 
-\begin{equation}
-\textrm{For any vector }\ket{i}\in\C^{d*}\textrm{, and }\gamma\in\C^{*}\textrm{ , }{\cal P}_{\rho}(\ket{i})={\cal P}_{\rho}(\gamma\ket{i})\textrm{ .}\label{eq:parallel-DQT(I)}
-\end{equation}
-
-\end_inset
-
-More importantly, 
+ is the set of non-zero vectors.
+ Second, 
 \begin_inset Formula ${\cal P}_{\rho}$
 \end_inset
 
- defines a probability which means 
-\begin_inset Formula 
-\begin{equation}
-\textrm{For any orthonormal basis }\{\ket{i}\}\textrm{ , }{\displaystyle \sum_{i=0}^{d-1}{\cal P}_{\rho}\left(\ket{i}\right)=1}\textrm{ .}\label{eq:total-probability}
-\end{equation}
-
+ defines a probability, and the total probability should be one, i.e., 
+\begin_inset Formula ${\displaystyle \sum_{i=0}^{d-1}{\cal P}_{\rho}\left(\ket{i}\right)=1}$
 \end_inset
 
-Conversely, if a state-function 
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+for any orthonormal basis 
+\begin_inset Formula $\left\{ \ket{i}\right\} $
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Conversely, if 
 \begin_inset Formula ${\cal P}:\C^{d*}\rightarrow\left[0,1\right]$
 \end_inset
 
- is a probability, we can identify 
+ is a function of state and defines a probability, 
 \begin_inset Formula ${\cal P}$
 \end_inset
 
- to a mixed state 
+ can be identified to a mixed state 
 \family roman
 \size normal
 
@@ -5302,37 +5340,27 @@ For
 \begin_inset Formula $d\ge3$
 \end_inset
 
-, for any 
-\begin_inset Formula ${\cal P}:\C^{d*}\rightarrow\left[0,1\right]$
-\end_inset
-
-
+, 
 \family roman
 \size normal
-, if
+if
 \family default
 \size default
  
-\begin_inset Formula ${\cal P}$
+\begin_inset Formula ${\cal P}:\C^{d*}\rightarrow\left[0,1\right]$
 \end_inset
 
-
+ is a function of state and defines a probability
 \family roman
 \size normal
- is a 
-\family default
-\size default
-state-function 
-\family roman
-\size normal
-and probability, i.e.,
+, i.e.,
 \family default
 \size default
 
 \begin_inset Formula 
 \begin{eqnarray}
- &  & \textrm{For any vector }\ket{i}\in\C^{d*}\textrm{, and }\gamma\in\C^{*}\textrm{ , }{\cal P}(\ket{i})={\cal P}(\gamma\ket{i})\textrm{ ,}\label{eq:parallel-DQT(I)-1}\\
- &  & \textrm{For any orthonormal basis }\{\ket{i}\}\textrm{ , }{\displaystyle \sum_{i=0}^{d-1}{\cal P}\left(\ket{i}\right)=1}\textrm{ ,}\label{eq:total-probability-1}
+ &  & {\cal P}(\ket{i})={\cal P}(\gamma\ket{i})\textrm{ for any vector }\ket{i}\in\C^{d*}\textrm{, and }\gamma\in\C^{*}\textrm{ ,}\label{eq:parallel-DQT(I)-1}\\
+ &  & {\displaystyle \sum_{i=0}^{d-1}{\cal P}\left(\ket{i}\right)=1}\textrm{ for any orthonormal basis }\{\ket{i}\}\textrm{ ,}\label{eq:total-probability-1}
 \end{eqnarray}
 
 \end_inset
@@ -5367,9 +5395,9 @@ status open
 
 \family roman
 \size normal
-In order to simplify the statement, we consider consider the probability
- on the state vectors instead of the projectors or closed subspaces as in
- the Gleason's original paper.
+In order to simplify the statement, we consider the probability on the state
+ vectors instead of the projectors or closed subspaces as in the Gleason's
+ original paper.
 \end_layout
 
 \end_inset
@@ -5378,11 +5406,55 @@ In order to simplify the statement, we consider consider the probability
 \end_layout
 
 \begin_layout Standard
-In contrast, when 
+Gleason's theorem requires 
+\begin_inset Formula $d\ge3$
+\end_inset
+
+ because different orthonormal bases may share their vectors.
+ For example, 
+\begin_inset Formula $\left\{ \ket{0},\ket{1},\ket{2}\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $\left\{ \ket{0},\frac{1}{\sqrt{2}}\left(\ket{1}+\ket{2}\right),\frac{1}{\sqrt{2}}\left(\ket{1}-\ket{2}\right)\right\} $
+\end_inset
+
+ share the vector 
+\begin_inset Formula $\ket{0}$
+\end_inset
+
+.
+ This implies 
+\begin_inset Formula ${\cal P}$
+\end_inset
+
+ should be continuous and further proves the theorem.
+ In contrast, when 
 \begin_inset Formula $d=2$
 \end_inset
 
-, consider 
+, there is only one state orthogonal to a given state.
+ Hence, every equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:total-probability-1"
+
+\end_inset
+
+) is either identical or share no common 
+\begin_inset Formula ${\cal P}\left(\ket{i}\right)$
+\end_inset
+
+.
+ Therefore, when we solve the system of linear equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:total-probability-1"
+
+\end_inset
+
+), we can actually solve them individually and get a discontinuous function.
+ For example, 
 \begin_inset Formula ${\cal P}:\C^{2*}\rightarrow\left[0,1\right]$
 \end_inset
 
@@ -5390,7 +5462,7 @@ In contrast, when
 \begin_inset Formula ${\cal P}$
 \end_inset
 
- on the real unit circle, we will have a discontinuous function 
+ on the real unit circle 
 \begin_inset ERT
 status open
 
