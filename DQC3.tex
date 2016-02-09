@@ -1166,7 +1166,7 @@ in the Gleason's original paper.}.
 For $d\ge3$, if ${\cal P}:\C^{d*}\rightarrow\left[0,1\right]$ is
 invariant under scalar multiplication and is a probability, i.e.,
 \begin{eqnarray}
- &  & {\cal P}(\ket{i})={\cal P}(\gamma\ket{i})\textrm{ for any vector }\ket{i}\in\C^{d*}\textrm{, and }\gamma\in\C^{*}\textrm{ ,}\label{eq:parallel-DQT(I)-1}\\
+ &  & {\cal P}(\ket{i})={\cal P}(\gamma\ket{i})\textrm{ for any vector }\ket{i}\in\C^{d*}\textrm{, and }\gamma\in\C^{*}=\C\backslash\left\{ 0\right\} \textrm{ ,}\label{eq:parallel-DQT(I)-1}\\
  &  & {\displaystyle \sum_{i=0}^{d-1}{\cal P}\left(\ket{i}\right)=1}\textrm{ for any orthonormal basis }\{\ket{i}\}\textrm{ ,}\label{eq:total-probability-1}
 \end{eqnarray}
 there is a density matrix $\rho$ such that ${\cal P}={\cal P}_{\rho}$.
@@ -1211,10 +1211,7 @@ matrix $\rho$ satisfies ${\cal P}={\cal P}_{\rho}$.
 
 Although the situation is different between $d=2$ and $d\ge3$ in
 CQT, a probability in DQT cannot be identified with a state despite
-the dimension of the system. In order to clearly state the theorem,
-the discrete Born rule $\dpr\left(\ket{\Psi},\ket{i}\right)$ will
-be written in the curried form $\dpr_{\Psi}\left(\ket{i}\right)$.
-Then, we have 
+the dimension of the system. 
 \begin{thm}
 \label{thm:GleasonDQT}For any $d\ge2$, there exists $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
 which is invariant under scalar multiplication and is a probability,
@@ -1223,7 +1220,9 @@ i.e.,
  &  & \hat{\pi}(\ket{i})=\hat{\pi}(\gamma\ket{i})\textrm{ for any vector }\ket{i}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}^{*}\textrm{ ,}\label{eq:parallel-DQT}\\
  &  & {\displaystyle \bigvee_{i=0}^{d-1}\hat{\pi}\left(\ket{i}\right)=}\textrm{possible for any orthonormal basis }\{\ket{i}\}\textrm{ , }\label{eq:total-probability-DQT}
 \end{eqnarray}
-such that $\dpr_{\Psi}\ne\hat{\pi}$ for any $\ket{\Psi}\in\ffzd{p^{2}}$.\end{thm}
+such that $\dpr_{\Psi}\ne\hat{\pi}$ for any $\ket{\Psi}\in\ffzd{p^{2}}$,
+where $\dpr_{\Psi}\left(\ket{i}\right)=\dpr\left(\ket{\Psi},\ket{i}\right)$
+is the discrete Born rule (\ref{eq:modality}).\end{thm}
 \begin{proof}
 Fix a basis $\{\ket{i}\}_{i=0}^{d-1}$. Consider 
 \[
@@ -1242,13 +1241,14 @@ have
 \end{eqnarray*}
 for any $\gamma\in\ff{p^{2}}^{*}$. For equation (\ref{eq:total-probability-DQT}),
 because $\textrm{impossible}\lor\textrm{possible}=\textrm{possible}$,
-it is sufficient to prove for any $\ket{\Phi}\in\ffzd{p^{2}}$ such
-that $\hat{\pi}\left(\ket{\Phi}\right)=\textrm{impossible}$, there
-is a $\ket{\Psi}\in\ffzd{p^{2}}$ such that $\ip{\Phi}{\Psi}=0$ and
-$\hat{\pi}\left(\ket{\Psi}\right)=\textrm{possible}$.
+it is sufficient to prove the following claim.
+\begin{description}
+\item [{Claim}] For any $\ket{\Phi}\in\ffzd{p^{2}}$ such that $\hat{\pi}\left(\ket{\Phi}\right)=\textrm{impossible}$,
+there is a $\ket{\Psi}\in\ffzd{p^{2}}$ such that $\ip{\Phi}{\Psi}=0$
+and $\hat{\pi}\left(\ket{\Psi}\right)=\textrm{possible}$.\end{description}
 \begin{casenv}
 \item When $\ip{\Phi}{0}=0$, $\ket{0}$ is what we want because $\ip{0}{0}=1\ne0$
-implies $\hat{\pi}\left(\ket{0}\right)=\textrm{possible}$.
+and $\ip{0}{d-1}=0$ implies $\hat{\pi}\left(\ket{0}\right)=\textrm{possible}$.
 \item When $\ip{\Phi}{0}=\ldots=\ip{\Phi}{d-1}\ne0$, let $\alpha=\ip{\Phi}{0}$,
 and consider the state 
 \[
