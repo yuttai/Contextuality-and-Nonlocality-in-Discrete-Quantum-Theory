@@ -1154,74 +1154,76 @@ There are two important properties ${\cal P}_{\rho}:\C^{d*}\rightarrow\left[0,1\
 have, where $\C^{d*}=\left\{ \ket{\Psi}\in\C^{d}\mid\ip{\Psi}{\Psi}\ne0\right\} $
 is the set of non-zero vectors. First, ${\cal P}_{\rho}$ is invariant
 under scalar multiplication because a vector still represents the
-same state if we normalize it or multiply it by a constant factor.
-Second, ${\cal P}_{\rho}$ defines a probability, and the total probability
-should be one, i.e., ${\displaystyle \sum_{i=0}^{d-1}{\cal P}_{\rho}\left(\ket{i}\right)=1}$
-for any orthonormal basis $\left\{ \ket{i}\right\} $. 
+same state if we normalize it or multiply it by a global phase. Second,
+${\cal P}_{\rho}$ is a probability, and the total probability should
+be one. 
 
 Conversely, any ${\cal P}$ with these two properties can be identified
-to a mixed state $\rho$ by Gleason's theorem.
+with a mixed state $\rho$ by Gleason's theorem~\cite{Redhead1987-REDINA,gleason1957,peres1995quantum}\footnote{In order to simplify the statement, we consider the probability on
+the state vectors instead of the projectors or closed subspaces as
+in the Gleason's original paper.}.
 \begin{thm}[Gleason's]
 For $d\ge3$, if ${\cal P}:\C^{d*}\rightarrow\left[0,1\right]$ is
-invariant under scalar multiplication and defines a probability, i.e.,
+invariant under scalar multiplication and is a probability, i.e.,
 \begin{eqnarray}
  &  & {\cal P}(\ket{i})={\cal P}(\gamma\ket{i})\textrm{ for any vector }\ket{i}\in\C^{d*}\textrm{, and }\gamma\in\C^{*}\textrm{ ,}\label{eq:parallel-DQT(I)-1}\\
  &  & {\displaystyle \sum_{i=0}^{d-1}{\cal P}\left(\ket{i}\right)=1}\textrm{ for any orthonormal basis }\{\ket{i}\}\textrm{ ,}\label{eq:total-probability-1}
 \end{eqnarray}
-there is a density matrix $\rho$ such that ${\cal P}={\cal P}_{\rho}$~\cite{Redhead1987-REDINA,gleason1957,peres1995quantum}.\footnote{In order to simplify the statement, we consider the probability on
-the state vectors instead of the projectors or closed subspaces as
-in the Gleason's original paper.}
+there is a density matrix $\rho$ such that ${\cal P}={\cal P}_{\rho}$.
 \end{thm}
 Gleason's theorem requires $d\ge3$ because different orthonormal
 bases may share their vectors. For example, $\left\{ \ket{0},\ket{1},\ket{2}\right\} $
 and $\left\{ \ket{0},\frac{1}{\sqrt{2}}\left(\ket{1}+\ket{2}\right),\frac{1}{\sqrt{2}}\left(\ket{1}-\ket{2}\right)\right\} $
-share the vector $\ket{0}$. In contrast, when $d=2$, there is only
-one state orthogonal to a given state. Hence, every equation (\ref{eq:total-probability-1})
-is either identical or share no common ${\cal P}\left(\ket{i}\right)$.
-Therefore, when we solve the system of linear equation (\ref{eq:total-probability-1}),
-we can actually solve them individually and get a discontinuous function.
-For example, ${\cal P}:\C^{2*}\rightarrow\left[0,1\right]$ such that
-if we restrict ${\cal P}$ on the real unit circle 
+share the vector $\ket{0}$. In contrast, when $d=2$, two orthonormal
+bases are either identical or completely different after we use equation
+(\ref{eq:parallel-DQT(I)-1}) to identify ${\cal P}\left(\ket{i}\right)$
+and ${\cal P}(\gamma\ket{i})$. Therefore, when we solve the system
+of linear equation (\ref{eq:total-probability-1}), we actually solve
+them individually and may get a discontinuous solution. For example,
+consider 
 \[
 {\cal P}
-\left(\begin{array}{c} \cos\theta\\ \sin\theta \end{array}\right)=
+\left(\begin{array}{c} \cos\theta\\ \sin\theta\rme^{\rmi\gamma} \end{array}\right)=
 \cases{ 
 0 & , if $0 \le \theta < \frac{\pi}{2}$\\
 1 & , if $\frac{\pi}{2} \le \theta < \pi$ } 
 \]
 ${\cal P}$ satisfies equation (\ref{eq:parallel-DQT(I)-1}) and (\ref{eq:total-probability-1})
 because we have 
-\[
-{\cal P}\left(\begin{array}{c}
+\begin{eqnarray*}
+ &  & {\cal P}\left(\begin{array}{c}
 \cos\theta\\
-\sin\theta
+\sin\theta\rme^{\rmi\gamma}
 \end{array}\right)+{\cal P}\left(\begin{array}{c}
--\sin\theta\\
+-\sin\theta\rme^{-\rmi\gamma}\\
 \cos\theta
-\end{array}\right)={\cal P}\left(\begin{array}{c}
+\end{array}\right)\\
+ & = & {\cal P}\left(\begin{array}{c}
 \cos\theta\\
-\sin\theta
+\sin\theta\rme^{\rmi\gamma}
 \end{array}\right)+{\cal P}\left(\begin{array}{c}
 \cos\left(\theta+\frac{\pi}{2}\right)\\
-\sin\left(\theta+\frac{\pi}{2}\right)
+\sin\left(\theta+\frac{\pi}{2}\right)\rme^{\rmi\gamma}
 \end{array}\right)=1\textrm{ .}
-\]
-However, ${\cal P}_{\rho}$ is always continuous. Therefore, we can
-never find a density matrix $\rho$ such that ${\cal P}={\cal P}_{\rho}$. 
+\end{eqnarray*}
+However, ${\cal P}_{\rho}$ is always continuous. Therefore, no density
+matrix $\rho$ satisfies ${\cal P}={\cal P}_{\rho}$. 
 
 Although the situation is different between $d=2$ and $d\ge3$ in
-CQT, we may not identify a state from a probability in DQT no matter
+CQT, a probability in DQT cannot be identified with a state despite
 the dimension of the system. In order to clearly state the theorem,
-we define $\dpr_{\Psi}\left(\ket{i}\right)=\dpr\left(\ket{\Psi},\ket{i}\right)$.
-Then, 
+the discrete Born rule $\dpr\left(\ket{\Psi},\ket{i}\right)$ will
+be written in the curried form $\dpr_{\Psi}\left(\ket{i}\right)$.
+Then, we have 
 \begin{thm}
-\label{thm:GleasonDQT}There exists $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
-which is a state-function and a probability, i.e., 
+\label{thm:GleasonDQT}For any $d\ge2$, there exists $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
+which is invariant under scalar multiplication and is a probability,
+i.e., 
 \begin{eqnarray}
- &  & \textrm{For any vector }\ket{i}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}^{*}\textrm{ , }\hat{\pi}(\ket{i})=\hat{\pi}(\gamma\ket{i})\textrm{ . }\label{eq:parallel-DQT}\\
- &  & \textrm{For any orthonormal basis }\{\ket{i}\}\textrm{ , }{\displaystyle \bigvee_{i=0}^{d-1}\hat{\pi}\left(\ket{i}\right)=}\textrm{possible . }\label{eq:total-probability-DQT}
+ &  & \hat{\pi}(\ket{i})=\hat{\pi}(\gamma\ket{i})\textrm{ for any vector }\ket{i}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}^{*}\textrm{ ,}\label{eq:parallel-DQT}\\
+ &  & {\displaystyle \bigvee_{i=0}^{d-1}\hat{\pi}\left(\ket{i}\right)=}\textrm{possible for any orthonormal basis }\{\ket{i}\}\textrm{ , }\label{eq:total-probability-DQT}
 \end{eqnarray}
-such that for any $\ket{\Psi}\in\ffzd{p^{2}},\dpr_{\Psi}\ne\hat{\pi}$.\end{thm}
+such that $\dpr_{\Psi}\ne\hat{\pi}$ for any $\ket{\Psi}\in\ffzd{p^{2}}$.\end{thm}
 \begin{proof}
 Fix a basis $\{\ket{i}\}_{i=0}^{d-1}$. Consider 
 \[
@@ -1230,18 +1232,16 @@ Fix a basis $\{\ket{i}\}_{i=0}^{d-1}$. Consider
 \textrm{impossible} & , if $\ip{\Phi}{0} = 0$ or $\ip{\Phi}{0} = \ldots = \ip{\Phi}{d-1}\ne 0$ ; \\
 \textrm{possible} & , otherwise. } 
 \]
-It is easy to verify that equation (\ref{eq:parallel-DQT}) hold as
-follow. 
+$\hat{\pi}$ satisfies equation (\ref{eq:parallel-DQT}) because we
+have 
 \begin{eqnarray*}
  &  & \hat{\pi}\left(\ket{\Phi}\right)=\textrm{impossible}\\
  & \Leftrightarrow & \ip{\Phi}{0}=0\textrm{ or }\ip{\Phi}{0}=\ldots=\ip{\Phi}{d-1}\ne0\\
  & \Leftrightarrow & \gamma\ip{\Phi}{0}=0\textrm{ or }\gamma\ip{\Phi}{0}=\ldots=\gamma\ip{\Phi}{d-1}\ne0\\
  & \Leftrightarrow & \hat{\pi}\left(\gamma\ket{\Phi}\right)=\textrm{impossible}
 \end{eqnarray*}
-For equation (\ref{eq:total-probability-DQT}), because 
-\[
-\textrm{impossible}\lor\textrm{possible}=\textrm{possible ,}
-\]
+for any $\gamma\in\ff{p^{2}}^{*}$. For equation (\ref{eq:total-probability-DQT}),
+because $\textrm{impossible}\lor\textrm{possible}=\textrm{possible}$,
 it is sufficient to prove for any $\ket{\Phi}\in\ffzd{p^{2}}$ such
 that $\hat{\pi}\left(\ket{\Phi}\right)=\textrm{impossible}$, there
 is a $\ket{\Psi}\in\ffzd{p^{2}}$ such that $\ip{\Phi}{\Psi}=0$ and

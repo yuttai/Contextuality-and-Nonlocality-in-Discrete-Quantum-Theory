@@ -4531,7 +4531,7 @@ Thus
  as 
 \begin_inset Formula 
 \begin{equation}
-\dpr\left(\ket{\Psi},\ket{\Phi}\right)=\left\{ \begin{array}{r@{\textrm{, if }}lcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc}
+\dpr\left(\ket{\Psi},\ket{\Phi}\right)=\left\{ \begin{array}{r@{\textrm{, if }}lcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc}
 \textrm{possible} & \ip{\Psi}{\Phi}\ne0\\
 \textrm{impossible} & \ip{\Psi}{\Phi}=0
 \end{array}\right.\ .\label{eq:modality}
@@ -5245,44 +5245,12 @@ There are two important properties
 \end_inset
 
  is invariant under scalar multiplication because a vector still represents
- the same state if we normalize it or multiply it by a constant factor.
+ the same state if we normalize it or multiply it by a global phase.
  Second, 
 \begin_inset Formula ${\cal P}_{\rho}$
 \end_inset
 
- defines a probability, and the total probability should be one, i.e., 
-\begin_inset Formula ${\displaystyle \sum_{i=0}^{d-1}{\cal P}_{\rho}\left(\ket{i}\right)=1}$
-\end_inset
-
- 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-for any orthonormal basis 
-\begin_inset Formula $\left\{ \ket{i}\right\} $
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-.
+ is a probability, and the total probability should be one.
  
 \end_layout
 
@@ -5291,14 +5259,40 @@ Conversely, any
 \begin_inset Formula ${\cal P}$
 \end_inset
 
- with these two properties can be identified to a mixed state 
+ with these two properties can be identified with a mixed state 
 \family roman
 \size normal
 
 \begin_inset Formula $\rho$
 \end_inset
 
- by Gleason's theorem.
+ by Gleason's theorem
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Redhead1987-REDINA,gleason1957,peres1995quantum"
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+In order to simplify the statement, we consider the probability on the state
+ vectors instead of the projectors or closed subspaces as in the Gleason's
+ original paper.
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Theorem
@@ -5325,7 +5319,7 @@ if
 \begin_inset Formula ${\cal P}:\C^{d*}\rightarrow\left[0,1\right]$
 \end_inset
 
- is invariant under scalar multiplication and defines a probability
+ is invariant under scalar multiplication and is a probability
 \family roman
 \size normal
 , i.e.,
@@ -5351,33 +5345,7 @@ there is a density matrix
 \begin_inset Formula ${\cal P}={\cal P}_{\rho}$
 \end_inset
 
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Redhead1987-REDINA,gleason1957,peres1995quantum"
-
-\end_inset
-
 .
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-
-\family roman
-\size normal
-In order to simplify the statement, we consider the probability on the state
- vectors instead of the projectors or closed subspaces as in the Gleason's
- original paper.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5403,16 +5371,20 @@ Gleason's theorem requires
 \begin_inset Formula $d=2$
 \end_inset
 
-, there is only one state orthogonal to a given state.
- Hence, every equation (
+, two orthonormal bases are either identical or completely different after
+ we use equation (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:total-probability-1"
+reference "eq:parallel-DQT(I)-1"
 
 \end_inset
 
-) is either identical or share no common 
+) to identify 
 \begin_inset Formula ${\cal P}\left(\ket{i}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula ${\cal P}(\gamma\ket{i})$
 \end_inset
 
 .
@@ -5423,16 +5395,8 @@ reference "eq:total-probability-1"
 
 \end_inset
 
-), we can actually solve them individually and get a discontinuous function.
- For example, 
-\begin_inset Formula ${\cal P}:\C^{2*}\rightarrow\left[0,1\right]$
-\end_inset
-
- such that if we restrict 
-\begin_inset Formula ${\cal P}$
-\end_inset
-
- on the real unit circle 
+), we actually solve them individually and may get a discontinuous solution.
+ For example, consider 
 \begin_inset ERT
 status open
 
@@ -5472,7 +5436,13 @@ theta
 \backslash
 sin
 \backslash
-theta 
+theta
+\backslash
+rme^{
+\backslash
+rmi
+\backslash
+gamma} 
 \backslash
 end{array}
 \backslash
@@ -5551,21 +5521,22 @@ reference "eq:total-probability-1"
 
 ) because we have 
 \begin_inset Formula 
-\[
-{\cal P}\left(\begin{array}{c}
+\begin{eqnarray*}
+ &  & {\cal P}\left(\begin{array}{c}
 \cos\theta\\
-\sin\theta
+\sin\theta\rme^{\rmi\gamma}
 \end{array}\right)+{\cal P}\left(\begin{array}{c}
--\sin\theta\\
+-\sin\theta\rme^{-\rmi\gamma}\\
 \cos\theta
-\end{array}\right)={\cal P}\left(\begin{array}{c}
+\end{array}\right)\\
+ & = & {\cal P}\left(\begin{array}{c}
 \cos\theta\\
-\sin\theta
+\sin\theta\rme^{\rmi\gamma}
 \end{array}\right)+{\cal P}\left(\begin{array}{c}
 \cos\left(\theta+\frac{\pi}{2}\right)\\
-\sin\left(\theta+\frac{\pi}{2}\right)
+\sin\left(\theta+\frac{\pi}{2}\right)\rme^{\rmi\gamma}
 \end{array}\right)=1\textrm{ .}
-\]
+\end{eqnarray*}
 
 \end_inset
 
@@ -5574,14 +5545,14 @@ However,
 \end_inset
 
  is always continuous.
- Therefore, we can never find a density matrix 
+ Therefore, no density matrix 
 \family roman
 \size normal
 
 \begin_inset Formula $\rho$
 \end_inset
 
- such that 
+ satisfies 
 \begin_inset Formula ${\cal P}={\cal P}_{\rho}$
 \end_inset
 
@@ -5598,14 +5569,18 @@ Although the situation is different between
 \begin_inset Formula $d\ge3$
 \end_inset
 
- in CQT, we may not identify a state from a probability in DQT no matter
+ in CQT, a probability in DQT cannot be identified with a state despite
  the dimension of the system.
- In order to clearly state the theorem, we define 
-\begin_inset Formula $\dpr_{\Psi}\left(\ket{i}\right)=\dpr\left(\ket{\Psi},\ket{i}\right)$
+ In order to clearly state the theorem, the discrete Born rule 
+\begin_inset Formula $\dpr\left(\ket{\Psi},\ket{i}\right)$
+\end_inset
+
+ will be written in the curried form 
+\begin_inset Formula $\dpr_{\Psi}\left(\ket{i}\right)$
 \end_inset
 
 .
- Then, 
+ Then, we have 
 \end_layout
 
 \begin_layout Theorem
@@ -5615,24 +5590,38 @@ name "thm:GleasonDQT"
 
 \end_inset
 
-There exists 
+For any 
+\begin_inset Formula $d\ge2$
+\end_inset
+
+, there exists 
 \begin_inset Formula $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
 \end_inset
 
- which is a state-function and a probability, i.e., 
+ which is invariant under scalar multiplication and is a probability
+\family roman
+\size normal
+, i.e.,
+\family default
+\size default
+ 
 \family roman
 \size normal
 
 \begin_inset Formula 
 \begin{eqnarray}
- &  & \textrm{For any vector }\ket{i}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}^{*}\textrm{ , }\hat{\pi}(\ket{i})=\hat{\pi}(\gamma\ket{i})\textrm{ . }\label{eq:parallel-DQT}\\
- &  & \textrm{For any orthonormal basis }\{\ket{i}\}\textrm{ , }{\displaystyle \bigvee_{i=0}^{d-1}\hat{\pi}\left(\ket{i}\right)=}\textrm{possible . }\label{eq:total-probability-DQT}
+ &  & \hat{\pi}(\ket{i})=\hat{\pi}(\gamma\ket{i})\textrm{ for any vector }\ket{i}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}^{*}\textrm{ ,}\label{eq:parallel-DQT}\\
+ &  & {\displaystyle \bigvee_{i=0}^{d-1}\hat{\pi}\left(\ket{i}\right)=}\textrm{possible for any orthonormal basis }\{\ket{i}\}\textrm{ , }\label{eq:total-probability-DQT}
 \end{eqnarray}
 
 \end_inset
 
-such that for any 
-\begin_inset Formula $\ket{\Psi}\in\ffzd{p^{2}},\dpr_{\Psi}\ne\hat{\pi}$
+such that 
+\begin_inset Formula $\dpr_{\Psi}\ne\hat{\pi}$
+\end_inset
+
+ for any 
+\begin_inset Formula $\ket{\Psi}\in\ffzd{p^{2}}$
 \end_inset
 
 .
@@ -5731,15 +5720,18 @@ textrm{possible} & , otherwise.
 
 \end_inset
 
-It is easy to verify that equation (
+
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+ satisfies equation (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:parallel-DQT"
 
 \end_inset
 
-) hold as follow.
- 
+) because we have 
 \begin_inset Formula 
 \begin{eqnarray*}
  &  & \hat{\pi}\left(\ket{\Phi}\right)=\textrm{impossible}\\
@@ -5750,7 +5742,12 @@ reference "eq:parallel-DQT"
 
 \end_inset
 
-For equation (
+for any 
+\begin_inset Formula $\gamma\in\ff{p^{2}}^{*}$
+\end_inset
+
+.
+ For equation (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:total-probability-DQT"
@@ -5758,14 +5755,10 @@ reference "eq:total-probability-DQT"
 \end_inset
 
 ), because 
-\begin_inset Formula 
-\[
-\textrm{impossible}\lor\textrm{possible}=\textrm{possible ,}
-\]
-
+\begin_inset Formula $\textrm{impossible}\lor\textrm{possible}=\textrm{possible}$
 \end_inset
 
-it is sufficient to prove for any 
+, it is sufficient to prove for any 
 \begin_inset Formula $\ket{\Phi}\in\ffzd{p^{2}}$
 \end_inset
 
