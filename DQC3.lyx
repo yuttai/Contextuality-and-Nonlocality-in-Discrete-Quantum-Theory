@@ -5222,7 +5222,7 @@ reference "prob1.eq-6"
 ) can be extended to 
 \begin_inset Formula 
 \begin{eqnarray}
-{\cal P}_{\rho}\left(\ket{i}\right)={\cal P}_{\rho}\left(\lambda_{i}\right) & = & \sum_{j}p_{j}{\cal P}_{\Psi_{j}}\left(\ket{i}\right)\textrm{ ,}\label{prob1.eq-2}
+{\cal P}_{\rho}\left(\ket{i}\right)={\cal P}_{\rho}\left(\lambda_{i}\right) & = & \sum_{j}p_{j}{\cal P}_{\Psi_{j}}\left(\ket{i}\right)\textrm{ ,}\label{prob.mixed}
 \end{eqnarray}
 
 \end_inset
@@ -5890,13 +5890,13 @@ For any
 \size default
 
 \begin_inset Formula 
-\begin{eqnarray}
- &  & \left|\dpr_{\Psi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\nonumber \\
- & = & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{\Psi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\nonumber \\
- & = & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\ip{\Psi}{i}=0\right\} \right|\label{eq:zero-count}\\
- & < & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\hat{\pi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\nonumber \\
- & = & \left|\hat{\pi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\nonumber 
-\end{eqnarray}
+\begin{eqnarray*}
+ &  & \left|\dpr_{\Psi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\\
+ & = & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{\Psi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\\
+ & = & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\ip{\Psi}{i}=0\right\} \right|\\
+ & < & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\hat{\pi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\\
+ & = & \left|\hat{\pi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|
+\end{eqnarray*}
 
 \end_inset
 
@@ -6005,9 +6005,9 @@ we still have
 \size default
 
 \begin_inset Formula 
-\[
-\left|\dpr_{\rho}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\le\left|\dpr_{\Psi_{1}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|<\left|\hat{\pi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\textrm{ .}
-\]
+\begin{equation}
+\left|\dpr_{\rho}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\le\left|\dpr_{\Psi_{1}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|<\left|\hat{\pi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\textrm{ .}\label{eq:zero-count}
+\end{equation}
 
 \end_inset
 
@@ -6019,16 +6019,15 @@ We can always pick
 \begin_inset Formula $\left|\hat{\pi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|$
 \end_inset
 
- is larger because we have 
-\begin_inset Formula $x\lor\textrm{possible}=\textrm{possible}$
+ is larger because we have the annihilation law 
+\begin_inset Formula 
+\[
+x\lor\textrm{possible}=\textrm{possible for all }x\in\mathscr{L}_{2}\textrm{ .}
+\]
+
 \end_inset
 
- no matter whether 
-\begin_inset Formula $x$
-\end_inset
-
- is possible or impossible.
- More precisely, compare the following arithmetic equation and Boolean equation.
+More precisely, compare the following arithmetic equation and Boolean equation.
 \begin_inset Formula 
 \begin{eqnarray}
 {\cal P}\left(\ket{0}\right)+{\cal P}\left(\ket{1}\right)+{\cal P}\left(\ket{2}\right) & = & 1\label{eq:arithmetic}\\
@@ -6144,11 +6143,11 @@ If the problem is that the range of
 \noun default
 \color inherit
  
-\begin_inset Formula $\left(\mathscr{L},0,\uplus\right)$
+\begin_inset Formula $\left(\mathscr{L},0,\oplus\right)$
 \end_inset
 
  is an abelian group.
- By the fundamental theorem of abelian group
+ By the fundamental theorem of finitely generated abelian group
 \begin_inset space ~
 \end_inset
 
@@ -6164,7 +6163,7 @@ key "DummitFoote2004"
 \end_inset
 
  must be isomorphic to 
-\begin_inset Formula $\mathbb{Z}_{d_{1}}\oplus\ldots\oplus\mathbb{Z}_{d_{k}}\oplus\mathbb{Z}^{b}$
+\begin_inset Formula $\mathbb{Z}_{d_{1}}\times\ldots\times\mathbb{Z}_{d_{k}}\times\mathbb{Z}^{b}$
 \end_inset
 
 , where 
@@ -6180,16 +6179,57 @@ key "DummitFoote2004"
 \end_inset
 
 , and 
-\begin_inset Formula $\oplus$
+\begin_inset Formula $\times$
 \end_inset
 
- is the direct sum of the abelian groups.
- Moreover, we want 
-\begin_inset Formula $\left(\mathscr{L},0,\uplus\right)$
+ is the direct product of the abelian groups.
+ However, if 
+\begin_inset Formula $\mathscr{L}$
 \end_inset
 
- to have a sense of probability.
- 
+ has any finite cyclic subgroups, we may have 
+\begin_inset Formula $\hat{\pi}\left(\ket{0}\right)\ne0$
+\end_inset
+
+, but 
+\begin_inset Formula $d_{1}\hat{\pi}\left(\ket{0}\right)=0$
+\end_inset
+
+.
+ This contradicts the idea that 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+ can be understood as a probability.
+ Therefore, we must have 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $\mathscr{L}\cong\mathbb{Z}^{b}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Problem
@@ -6200,7 +6240,7 @@ name "thm:GleasonDQT-group"
 \end_inset
 
 Is there a group 
-\begin_inset Formula $\left(\mathscr{L},0,\oplus\right)$
+\begin_inset Formula $\left(\mathscr{L},0,\oplus\right)\cong\mathbb{Z}^{b}$
 \end_inset
 
  with a special element 
@@ -6235,27 +6275,26 @@ reference "prob.mixed"
 \end_layout
 
 \begin_layout Itemize
-For 
-\begin_inset Formula $d\ge3$
-\end_inset
-
-, for any 
 \begin_inset Formula $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}$
 \end_inset
 
- satisfying 
+ satisfies 
 \family roman
 \size normal
 
 \begin_inset Formula 
 \begin{eqnarray}
- &  & \textrm{For any vector }\ket{i}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}^{*}\textrm{ , }\hat{\pi}(\ket{i})=\hat{\pi}(\gamma\ket{i})\textrm{ . }\label{eq:parallel-DQT-1}\\
- &  & \textrm{For any orthonormal basis }\{\ket{i}\}\textrm{ , }{\displaystyle \bigoplus_{i=0}^{d-1}\hat{\pi}\left(\ket{i}\right)=}1\textrm{ .}\label{eq:total-probability-DQT-1}
+ &  & \hat{\pi}(\ket{i})=\hat{\pi}(\gamma\ket{i})\textrm{ for any vector }\ket{i}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}^{*}\textrm{ , }\label{eq:parallel-DQT-1}\\
+ &  & {\displaystyle \bigoplus_{i=0}^{d-1}\hat{\pi}\left(\ket{i}\right)=}1\textrm{ for any orthonormal basis }\{\ket{i}\}\textrm{ . }\label{eq:total-probability-DQT-1}
 \end{eqnarray}
 
 \end_inset
 
-There is a mixed state 
+For 
+\begin_inset Formula $d\ge3$
+\end_inset
+
+, there is a mixed state 
 \family default
 \size default
 
@@ -6269,12 +6308,68 @@ There is a mixed state
 \begin_inset Formula $\hat{\pi}=\tilde{\pi}_{\rho}$
 \end_inset
 
+; for 
+\begin_inset Formula $d=2$
+\end_inset
+
+, there is a 
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+ corresponding to no mixed state 
+\family default
+\size default
+
+\begin_inset Formula $\rho$
+\end_inset
+
+
+\family roman
+\size normal
 .
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-When 
+For 
+\begin_inset Formula $d=2$
+\end_inset
+
+, we can easily construct 
+\family roman
+\size normal
+a 
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+
+\family default
+\size default
+ satisfying equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:zero-count"
+
+\end_inset
+
+) and 
+\family roman
+\size normal
+corresponding to no mixed state 
+\family default
+\size default
+
+\begin_inset Formula $\rho$
+\end_inset
+
+
+\family roman
+\size normal
+.
+
+\family default
+\size default
+ When 
 \begin_inset Formula $d=3$
 \end_inset
 
@@ -6282,59 +6377,40 @@ When
 \begin_inset Formula $p=7$
 \end_inset
 
-, we have verified that we no longer have the freedom to assign impossible
- more than any reasonable probability assignment.
- Therefore, we cannot find a similar counterexample for problem 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "thm:GleasonDQT-group"
+, we have verified the only 
+\family roman
+\size normal
 
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+ is 
+\begin_inset Formula $\hat{\pi}\left(\ket{i}\right)=\hat{\pi}\left(\ket{j}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $3\hat{\pi}\left(\ket{i}\right)=1$
+\end_inset
+
+ for all 
+\begin_inset Formula $\ket{i},\ket{j}\in\ffzd{p^{2}}$
 \end_inset
 
 .
- However, even if there is a group 
-\begin_inset Formula $\left(\mathscr{L},0,\oplus\right)$
+ Therefore, we don't have enough 
+\begin_inset Formula $\hat{\pi}$
 \end_inset
 
- satisfying problem 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "thm:GleasonDQT-group"
-
+ to corresponding to even pure states.
+ We believe the same situation happens for other 
+\begin_inset Formula $d\ge3$
 \end_inset
 
-, the corresponding Born rule 
-\begin_inset Formula $\tilde{\pi}_{\rho}:\ffzd{p^{2}}\rightarrow\mathscr{L}$
-\end_inset
+ and 
+\family default
+\size default
 
- is not 
-\family roman
-\size normal
-basis independent, i.e., we will not have 
-\begin_inset Formula 
-\begin{equation}
-\tilde{\pi}_{U\rho}\left(U\ket{i}\right)=\tilde{\pi}_{\rho}\left(\ket{i}\right)\label{eq:rotation-1}
-\end{equation}
-
-\end_inset
-
-for all unitary matrix 
-\begin_inset Formula $U$
-\end_inset
-
-, mixed state 
-\begin_inset Formula $\rho$
-\end_inset
-
-, and pure state 
-\begin_inset Formula $\ket{i}\in\ffzd{p^{2}}$
-\end_inset
-
-, and the proof is similar to the one of the no-go theorem in section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:A-No-Go-Theorem"
-
+\begin_inset Formula $p\ge7$
 \end_inset
 
 .
@@ -6343,29 +6419,30 @@ reference "sub:A-No-Go-Theorem"
 
 \begin_layout Standard
 
+\family roman
+\size normal
+We don't know whether 
+\family default
+\size default
+
+\begin_inset Formula $\mathscr{L}$
+\end_inset
+
+
+\family roman
+\size normal
+ can
+\family default
+\size default
+ be a non-Boolean commutative semigroup, but not yet a group.
+ 
 \family roman
 \size normal
 In summary, there are some difficulties to establish corresponding Gleason's
  theorem in DQT no matter how we set the conditions.
- However, Gleason's theorem gives an idea how to fine 
-\begin_inset Quotes eld
-\end_inset
-
-the
-\begin_inset Quotes erd
-\end_inset
-
- reasonable Born rule in a discrete quantum theory, and we hope we may find
- one in the future.
  
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\size normal
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 An important meaning of Gleason's theorem is that the state space is sufficient
