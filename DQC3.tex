@@ -1270,26 +1270,27 @@ This part can be established by counting states. For any $\ket{\Psi}\in\ffzd{p^{
 \end{eqnarray*}
 $\QED$
 \end{proof}
-There are reasons why there is no Gleason's theorem in DQT. First,
-given ${\cal P}$ in CQT, we search for a mixed state $\rho$ such
-that ${\cal P}={\cal P}_{\rho}$, but given $\hat{\pi}$ in DQT, we
-only search for a pure state $\ket{\Psi}$ such that $\dpr_{\Psi}=\hat{\pi}$.
+It is easy to identify the reasons why theorem \ref{thm:GleasonDQT}
+is different from Gleason's theorem in CQT, but it is hard to find
+the correct conditions to get the corresponding Gleason's theorem
+in DQT. Given ${\cal P}$ in CQT, we search for a mixed state $\rho$
+such that ${\cal P}={\cal P}_{\rho}$, but given $\hat{\pi}$ in DQT,
+we only search for a pure state $\ket{\Psi}$ such that $\dpr_{\Psi}=\hat{\pi}$.
 Notice that there are much more mixed states than pure states so that
 it is likely we cannot find any pure state $\ket{\Psi}$ satisfying
-$\dpr_{\Psi}=\hat{\pi}$ in DQT. Although this reason is important,
-theorem \ref{thm:GleasonDQT} still hold even if we define a mixed
-state. Assume $\rho$ is a mixed state between $\ket{\Psi_{1}}$ and
-$\ket{\Psi_{2}}$, then we still have 
-\begin{eqnarray*}
- &  & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{\rho}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\\
- & \le & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{\Psi_{1}}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\\
- & < & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\hat{\pi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|
-\end{eqnarray*}
-Therefore, no matter how we define the mixed state, theorem \ref{thm:GleasonDQT}
-still hold, and there are some other reasons why theorem \ref{thm:GleasonDQT}
-hold.
+$\dpr_{\Psi}=\hat{\pi}$ in DQT. 
 
-Second, compare the following arithmetic equation and Boolean equation.
+Lacking the notion of mixed state is not the only reason why theorem
+\ref{thm:GleasonDQT} is hold. Even if we find a way to define a mixed
+state, if $\rho$ is a mixed state between $\ket{\Psi_{1}}$ and $\ket{\Psi_{2}}$,
+then we still have 
+\[
+\left|\dpr_{\rho}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\le\left|\dpr_{\Psi_{1}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|<\left|\hat{\pi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\textrm{ .}
+\]
+We can always pick $\hat{\pi}$ such that $\left|\hat{\pi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|$
+is larger because we have $x\lor\textrm{possible}=\textrm{possible}$
+no matter whether $x$ is possible or impossible. More precisely,
+compare the following arithmetic equation and Boolean equation.
 \begin{eqnarray}
 {\cal P}\left(\ket{0}\right)+{\cal P}\left(\ket{1}\right)+{\cal P}\left(\ket{2}\right) & = & 1\label{eq:arithmetic}\\
 \hat{\pi}\left(\ket{0}\right)\vee\hat{\pi}\left(\ket{1}\right)\vee\hat{\pi}\left(\ket{2}\right) & = & \text{possible}\label{eq:Boolean}
@@ -1301,11 +1302,18 @@ because $\left(\mathbb{R},0,+\right)$ is a group. In contrast, when
 $\hat{\pi}\left(\ket{0}\right)=\text{possible}$, we know nothing
 about $\hat{\pi}\left(\ket{1}\right)$ and $\hat{\pi}\left(\ket{2}\right)$
 because $\left(\mathscr{L}_{2},\text{impossible},\vee\right)$ is
-a semigroup without cancellative, i.e., $a\vee c=b\vee c$ does not
-imply $a=b$. 
+a commutative semigroup without cancellative, i.e., $a\vee c=b\vee c$
+does not imply $a=b$. 
 
-If the problem is that the range of $\hat{\pi}$ is only a semigroup,
-we may want to consider the range of $\hat{\pi}$ to be a group.
+If the problem is that the range of $\hat{\pi}$ is only a commutative
+semigroup, we may want to consider $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}$
+, and $\left(\mathscr{L},0,\uplus\right)$ is an abelian group. By
+the fundamental theorem of abelian group~\cite{DummitFoote2004},
+$\mathscr{L}$ must be isomorphic to $\mathbb{Z}_{d_{1}}\oplus\ldots\oplus\mathbb{Z}_{d_{k}}\oplus\mathbb{Z}^{b}$,
+where $\mathbb{Z}_{d_{1}},\ldots,\mathbb{Z}_{d_{k}}$ are finite cyclic
+subgroups, $\mathbb{Z}^{b}$ is the free abelian group with rank $b$,
+and $\oplus$ is the direct sum of the abelian groups. Moreover, we
+want $\left(\mathscr{L},0,\uplus\right)$ to have a sense of probability. 
 \begin{problem}
 \label{thm:GleasonDQT-group}Is there a group $\left(\mathscr{L},0,\oplus\right)$
 with a special element $1\in\mathscr{L}$ and $1\ne0$ satisfying

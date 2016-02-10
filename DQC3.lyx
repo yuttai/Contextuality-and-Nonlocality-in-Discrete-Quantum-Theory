@@ -4531,7 +4531,7 @@ Thus
  as 
 \begin_inset Formula 
 \begin{equation}
-\dpr\left(\ket{\Psi},\ket{\Phi}\right)=\left\{ \begin{array}{r@{\textrm{, if }}lcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc}
+\dpr\left(\ket{\Psi},\ket{\Phi}\right)=\left\{ \begin{array}{r@{\textrm{, if }}lcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc}
 \textrm{possible} & \ip{\Psi}{\Phi}\ne0\\
 \textrm{impossible} & \ip{\Psi}{\Phi}=0
 \end{array}\right.\ .\label{eq:modality}
@@ -5890,11 +5890,13 @@ For any
 \size default
 
 \begin_inset Formula 
-\begin{eqnarray*}
- &  & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{\Psi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\\
- & = & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\ip{\Psi}{i}=0\right\} \right|\\
- & < & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\hat{\pi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|
-\end{eqnarray*}
+\begin{eqnarray}
+ &  & \left|\dpr_{\Psi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\nonumber \\
+ & = & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{\Psi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\nonumber \\
+ & = & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\ip{\Psi}{i}=0\right\} \right|\label{eq:zero-count}\\
+ & < & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\hat{\pi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\nonumber \\
+ & = & \left|\hat{\pi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\nonumber 
+\end{eqnarray}
 
 \end_inset
 
@@ -5906,8 +5908,16 @@ For any
 \end_layout
 
 \begin_layout Standard
-There are reasons why there is no Gleason's theorem in DQT.
- First, given 
+It is easy to identify the reasons why theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:GleasonDQT"
+
+\end_inset
+
+ is different from Gleason's theorem in CQT, but it is hard to find the
+ correct conditions to get the corresponding Gleason's theorem in DQT.
+ Given 
 \begin_inset Formula ${\cal P}$
 \end_inset
 
@@ -5957,15 +5967,22 @@ ny pure state
 \end_inset
 
  in DQT.
- Although this reason is important, theorem 
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+Lacking the notion of mixed state is not the only reason why theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:GleasonDQT"
 
 \end_inset
 
- still hold even if we define a mixed state.
- Assume 
+ is hold.
+ Even if we find a way to define a mixed state, if 
 \family default
 \size default
 
@@ -5988,36 +6005,30 @@ we still have
 \size default
 
 \begin_inset Formula 
-\begin{eqnarray*}
- &  & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{\rho}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\\
- & \le & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{\Psi_{1}}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\\
- & < & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\hat{\pi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|
-\end{eqnarray*}
+\[
+\left|\dpr_{\rho}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\le\left|\dpr_{\Psi_{1}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|<\left|\hat{\pi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\textrm{ .}
+\]
 
 \end_inset
 
-Therefore, no matter how we define the mixed state, 
-\family roman
-\size normal
-theorem 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "thm:GleasonDQT"
-
+We can always pick 
+\begin_inset Formula $\hat{\pi}$
 \end_inset
 
- still hold, and there are some other reasons why theorem 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "thm:GleasonDQT"
-
+ such that 
+\begin_inset Formula $\left|\hat{\pi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|$
 \end_inset
 
- hold.
-\end_layout
+ is larger because we have 
+\begin_inset Formula $x\lor\textrm{possible}=\textrm{possible}$
+\end_inset
 
-\begin_layout Standard
-Second, compare the following arithmetic equation and Boolean equation.
+ no matter whether 
+\begin_inset Formula $x$
+\end_inset
+
+ is possible or impossible.
+ More precisely, compare the following arithmetic equation and Boolean equation.
 \begin_inset Formula 
 \begin{eqnarray}
 {\cal P}\left(\ket{0}\right)+{\cal P}\left(\ket{1}\right)+{\cal P}\left(\ket{2}\right) & = & 1\label{eq:arithmetic}\\
@@ -6063,7 +6074,7 @@ When
 \begin_inset Formula $\left(\mathscr{L}_{2},\text{impossible},\vee\right)$
 \end_inset
 
- is a semigroup without cancellative, i.e., 
+ is a commutative semigroup without cancellative, i.e., 
 \begin_inset Formula $a\vee c=b\vee c$
 \end_inset
 
@@ -6104,7 +6115,11 @@ If the problem is that the range of
 \uwave default
 \noun default
 \color inherit
- is only a semigroup, we may want to consider the range of 
+ is only a commutative semigroup, we may want to consider 
+\begin_inset Formula $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}$
+\end_inset
+
+ 
 \family roman
 \series medium
 \shape up
@@ -6116,11 +6131,7 @@ If the problem is that the range of
 \uwave off
 \noun off
 \color none
-
-\begin_inset Formula $\hat{\pi}$
-\end_inset
-
- to
+, and
 \family default
 \series default
 \shape default
@@ -6132,7 +6143,53 @@ If the problem is that the range of
 \uwave default
 \noun default
 \color inherit
- be a group.
+ 
+\begin_inset Formula $\left(\mathscr{L},0,\uplus\right)$
+\end_inset
+
+ is an abelian group.
+ By the fundamental theorem of abelian group
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DummitFoote2004"
+
+\end_inset
+
+, 
+\begin_inset Formula $\mathscr{L}$
+\end_inset
+
+ must be isomorphic to 
+\begin_inset Formula $\mathbb{Z}_{d_{1}}\oplus\ldots\oplus\mathbb{Z}_{d_{k}}\oplus\mathbb{Z}^{b}$
+\end_inset
+
+, where 
+\begin_inset Formula $\mathbb{Z}_{d_{1}},\ldots,\mathbb{Z}_{d_{k}}$
+\end_inset
+
+ are finite cyclic subgroups, 
+\begin_inset Formula $\mathbb{Z}^{b}$
+\end_inset
+
+ is the free abelian group with rank 
+\begin_inset Formula $b$
+\end_inset
+
+, and 
+\begin_inset Formula $\oplus$
+\end_inset
+
+ is the direct sum of the abelian groups.
+ Moreover, we want 
+\begin_inset Formula $\left(\mathscr{L},0,\uplus\right)$
+\end_inset
+
+ to have a sense of probability.
+ 
 \end_layout
 
 \begin_layout Problem
