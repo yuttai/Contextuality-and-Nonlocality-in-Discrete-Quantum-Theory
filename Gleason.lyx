@@ -1,0 +1,1700 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass iopart
+\begin_preamble
+%% Discrete Quantum Computing/Discrete Quantum Theory
+%%  - third paper, focusing on how fundamental aspects needed by
+%% all quantum mechanical theories (as treated in Asher Peres's book)
+%% have to be approached in a quantum theory based on Galois groups,
+%% via COMPUTABLE integer number fields with finite characteristic.
+
+\usepackage{mathrsfs}
+\usepackage{fullpage}
+\usepackage{url}
+\usepackage{times}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{iopams}
+\usepackage{setstack}
+
+
+\input{Qcircuit}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\usepackage{enumitem}% customizable list environments
+% \newlength{\lyxlabelwidth}      % auxiliary length 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage{dsfont}
+\usepackage[usenames,dvipsnames]{xcolor}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% these went missing?
+% \newcommand{\bra}[1]{\left\langle{#1}\right|}
+% \newcommand{\ket}[1]{\left|{#1}\right\rangle}
+% \newcommand{\mathscr}[1]{{\cal #1}}
+%\renewcommand{\author}[1]{\bf #1 \/}
+\newcommand{\affiliation}[1]{\parbox{5.5in}{\small{\it #1 \/}}}
+
+\newcommand{\cardp}[2]{#1 \,\sslash\, #2}
+\newcommand{\braket}[2]{\langle{#1}|{#2}\rangle} 
+\newcommand{\uf}{U_{\!f}}
+\def\image {\rm Image~}
+\def\ker{\rm ker~}
+\def\coker{\rm coker~}
+\def\ker{\rm ker~}
+\def\dr{\smash{\downharpoonright}}
+\def\ad{{\rm ad~}}
+\def\Q{{\mathbb{Q}}}
+\def\R{{\mathbb{R}}}
+\def\N{{\mathbb{N}}}
+\def\C{{\mathbb{C}}}
+\def\Z{{\mathbb{Z}}}
+\def\del{\partial}
+\def\grad{\nabla}
+\def\proof{{\em Proof:  }}
+\def\ra{\rangle}
+\def\la{\langle}
+\def\rl{\rangle \langle}
+\def\openone{\leavevmode\hbox{\small1\kern-3.8pt\normalsize1}}
+\def\RR{{\rm I\kern-.2emR}}
+\def\tr{{\rm tr}\; }
+\def\fu{\mathfrak{u}}
+\def\fa{\mathfrak{a}}
+\def\fd{\mathfrak{d}}
+\def\fb{\mathfrak{b}}
+\def\fj{\mathfrak{j}}
+\def\fg{\mathfrak{g}}
+\def\fh{\mathfrak{h}}
+\def\fk{\mathfrak{k}}
+\def\fs{\mathfrak{s}}
+\def\fgl{\mathfrak{gl}}
+\def\fsl{\mathfrak{sl}}
+\def\fsu{\mathfrak{su}}
+\def\fsp{\mathfrak{sp}}
+\def\fso{\mathfrak{so}}
+\def\proof{{\em Proof:  }}
+\def\tphi{\tilde{\Phi}}
+\def\ra{\rangle}
+\def\la{\langle}
+\def\rl{\rangle \langle}
+\def\openone{\leavevmode\hbox{\small1\kern-3.8pt\normalsize1}}
+\def\RR{{\rm I\kern-.2emR}}
+\def\tr{{\rm tr}\; }
+\def\ce{{\cal E}}
+\def\cl{{\cal L}}
+\def\cg{{\cal G}}
+\def\cd{{\cal D}}
+\def\cb{{\cal B}}
+\def\cn{{\cal N}}
+\def\ch{{\cal H}}
+\def\cs{{\cal S}}
+\def\ct{{\cal T}}
+\def\cp{{\cal P}}
+\def\cm{{\cal M}}
+\def\cf{{\cal F}}
+\def\ci{{\cal I}}
+\def\ca{{\cal A}}
+\def\calr{{\cal R}}
+\def\cv{{\cal V}}
+\def\cc{{\cal C}}
+\def\rhon{\rho^{\otimes n}}
+\def\on{^{\otimes n}}
+\def\pn{^{(n)}}
+\def\pnp{^{(n)'}}
+\def\id{\frac{I}{d}}
+\def\pthang{\frac{P}{\sqrt{d \tr P^2}}}
+\def\Psirq{\Psi^{RQ}}
+\def\d{^\dagger}
+\def\union{\cup}
+\def\intersection{\cap}
+\newcommand{\QED}{\hspace*{\fill}\mbox{\rule[0pt]{1.5ex}{1.5ex}}}
+\providecommand{\ignore}[1]{}
+
+\newcommand{\scalarZ}{0}
+\newcommand{\scalarO}{1}
+\newcommand{\scalarPlus}{+}
+\newcommand{\scalarTimes}{*}
+\newcommand{\ip}[2]{\langle #1 ~|~ #2 \rangle}
+\newcommand{\usat}{\texttt{UNIQUE-SAT}}
+\newcommand{\boolt}{\textsf{Bool}} 
+\newcommand{\bfalse}{\texttt{\textbf{false}}}
+\newcommand{\btrue}{\texttt{\textbf{true}}}
+\newcommand{\ff}[1]{\mathbb{F}_{#1}}
+\newcommand{\ffz}[1]{{\mathbb{F}^{\ast}_{#1}}}
+%% \newcommand{\ffzd}[1]{\mathbb{F^{d}}_{#1}^{*}}
+%%\newcommand{\ffzd}[1]{{\mathbb{F}^{d}_{#1}}^{\ast}}
+%%\newcommand{\ffzd}[1]{{\mathbb{F}^{d\,\ast}_{#1}}}
+\newcommand{\ffd}[1]{{\mathbb{F}^{d}_{#1}}}
+\newcommand{\ffzd}[1]{{\mathbb{F}^{d\;*}_{#1}}}
+%% \newcommand{\dotprod}{quadratic Hermitian form}}
+\newcommand{\dotprod}{dot product}
+\newcommand{\todo}[1]{\textbf{TODO.~#1}}
+
+\newcommand{\p}[1]{^{(#1)}}
+
+\def\gbar{\overline{\gamma}}
+\def\rev{{\cal R}_{\ca,\rho}}
+
+\def\imod#1{\allowbreak\mkern8mu({\operator@font mod}\,\,#1)}
+
+\newcommand{\half}{\mbox{$\textstyle \frac{1}{2}$} }
+\newcommand{\proj}[1]{\ket{#1}\! \bra{#1}}
+\newcommand{\outerp}[2]{\ket{#1}\! \bra{#2}}
+\newcommand{\inner}[2]{ \langle #1 | #2 \rangle}
+\newcommand{\melement}[2]{ \langle #1 | #2 | #1 \rangle}
+\newcommand{\bitem}{\begin{itemize}}
+\newcommand{\eitem}{\end{itemize}}
+\newcommand{\benum}{\begin{enumerate}}
+\newcommand{\eenum}{\end{enumerate}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\eeqa}{\end{eqnarray}}
+\newtheorem{definition}{}\newtheorem{assertion}{}\newtheorem{theorem}{}\newtheorem{proposition}{}\newtheorem{axiom}{}\newtheorem{lemma}{}\newtheorem{corollary}{}\newtheorem{conjecture}{}\newtheorem{property}{}\newtheorem{fact}{}\newtheorem{remark}{}\newcommand{\bproof}{\begin{proof}}
+\newcommand{\eproof}{\end{proof}}
+\newcommand{\bprop}{\begin{proposition}}
+\newcommand{\eprop}{\end{\proposition}}
+\newcommand{\bdef}{\begin{definition}}
+\newcommand{\zls}{{\mathbb Z}}
+%%% This is our own symbol for "discrete probability"
+%%    - originally "g", try "\pi" for now.
+\newcommand{\dpr}{{\pi}}
+\newcommand{\dpt}{{\tilde{\pi}}}
+\def\round{\mathop{\rm round}\nolimits}
+
+\newcommand{\amr}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{red}{Amr says: #1}\end{minipage}}}
+\newcommand{\gerardo}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{OliveGreen}{Gerardo says: #1}\end{minipage}}}
+\newcommand{\andy}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{blue}{Andy says: #1}\end{minipage}}}
+\newcommand{\yutsung}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{purple}{Yu-Tsung says: #1}\end{minipage}}}
+
+\newcommand{\fnorm}[1]{\mathsf{N}(#1)}
+\newcommand{\mod}{\mbox{mod }}
+
+
+
+\usepackage{babel}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_preamble
+\use_default_options false
+\begin_modules
+enumitem
+theorems-std
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 0
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 2
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style iopart-num
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Finding Gleason's Theorem in Discrete Quantum Theory
+\end_layout
+
+\begin_layout Author
+John Gardiner
+\begin_inset Formula $^{1}$
+\end_inset
+
+, Andrew J.
+ Hanson
+\begin_inset Formula $^{2}$
+\end_inset
+
+, Gerardo Ortiz
+\begin_inset Formula $^{3}$
+\end_inset
+
+, Amr Sabry
+\begin_inset Formula $^{2}$
+\end_inset
+
+, Yu-Tsung Tai
+\begin_inset Formula $^{4,2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+\begin_inset Formula $^{1}$
+\end_inset
+
+ Department of Physics and Astronomy, University of California, Los Angeles,
+ CA 90095, USA
+\end_layout
+
+\begin_layout Address
+\begin_inset Formula $^{2}$
+\end_inset
+
+ School of Informatics and Computing, Indiana University, Bloomington, IN
+ 47405, USA
+\end_layout
+
+\begin_layout Address
+\begin_inset Formula $^{3}$
+\end_inset
+
+ Department of Physics, Indiana University, Bloomington, IN 47405, USA
+\end_layout
+
+\begin_layout Address
+\begin_inset Formula $^{4}$
+\end_inset
+
+ Department of Mathematics, Indiana University, Bloomington, IN 47405, USA
+\end_layout
+
+\begin_layout Email
+ortizg@indiana.edu
+\end_layout
+
+\begin_layout Abstract
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout PACS
+03.65.-w, 03.65.Ud, 03.65.Ta, 02.10.De
+\end_layout
+
+\begin_layout Keywords
+Gleason's theorem
+\end_layout
+
+\begin_layout submitto
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+jpa
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family roman
+Introduction
+\end_layout
+
+\begin_layout Section
+
+\family roman
+Gleason's Theorem in CQT
+\end_layout
+
+\begin_layout Standard
+Recall the measurement process in CQT discussed in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Critical-Analysis-CQT"
+
+\end_inset
+
+.
+ 
+\family roman
+\size normal
+When we measure an observable 
+\begin_inset Formula ${\mathbf{O}}$
+\end_inset
+
+ with 
+\begin_inset Formula ${\mathbf{O}}\left|i\right\rangle =\lambda_{i}\left|i\right\rangle $
+\end_inset
+
+ on a system in a state 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+, the probability is given by the Born rule of CQT 
+\begin_inset Formula 
+\begin{eqnarray}
+\begin{array}{rcccl}
+{\cal P}_{\Psi}\left(\ket{i}\right) & = & {\cal P}_{\Psi}\left(\lambda_{i}\right) & = & \frac{\ip{\Psi}{i}\ip{i}{\Psi}}{\ip{\Psi}{\Psi}\ip{i}{i}}\end{array}\ ,\label{prob1.eq-6}
+\end{eqnarray}
+
+\end_inset
+
+If the system is in a mixed state represented by a density matrix 
+\begin_inset Formula 
+\begin{equation}
+\rho=\sum_{j}p_{j}\frac{\proj{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}}\textrm{ ,}
+\end{equation}
+
+\end_inset
+
+the Born rule (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prob1.eq-6"
+
+\end_inset
+
+) can be extended to 
+\begin_inset Formula 
+\begin{eqnarray}
+{\cal P}_{\rho}\left(\ket{i}\right)={\cal P}_{\rho}\left(\lambda_{i}\right) & = & \sum_{j}p_{j}{\cal P}_{\Psi_{j}}\left(\ket{i}\right)\textrm{ ,}\label{prob.mixed}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are two important properties 
+\begin_inset Formula ${\cal P}_{\rho}:\C^{d*}\rightarrow\left[0,1\right]$
+\end_inset
+
+ have, where 
+\begin_inset Formula $\C^{d*}=\left\{ \ket{\Psi}\in\C^{d}\mid\ip{\Psi}{\Psi}\ne0\right\} $
+\end_inset
+
+ is the set of non-zero vectors.
+ First, 
+\begin_inset Formula ${\cal P}_{\rho}$
+\end_inset
+
+ is invariant under scalar multiplication because a vector still represents
+ the same state if we normalize it or multiply it by a global phase.
+ Second, 
+\begin_inset Formula ${\cal P}_{\rho}$
+\end_inset
+
+ is a probability, and the total probability should be one.
+ 
+\end_layout
+
+\begin_layout Standard
+Conversely, any 
+\begin_inset Formula ${\cal P}$
+\end_inset
+
+ with these two properties can be identified with a mixed state 
+\family roman
+\size normal
+
+\begin_inset Formula $\rho$
+\end_inset
+
+ by Gleason's theorem
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Redhead1987-REDINA,gleason1957,peres1995quantum"
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+In order to simplify the statement, we consider the probability on the state
+ vectors instead of the projectors or closed subspaces as in the Gleason's
+ original paper.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Gleason's
+\end_layout
+
+\end_inset
+
+For 
+\begin_inset Formula $d\ge3$
+\end_inset
+
+, 
+\family roman
+\size normal
+if
+\family default
+\size default
+ 
+\begin_inset Formula ${\cal P}:\C^{d*}\rightarrow\left[0,1\right]$
+\end_inset
+
+ is invariant under scalar multiplication and is a probability
+\family roman
+\size normal
+, i.e.,
+\family default
+\size default
+
+\begin_inset Formula 
+\begin{eqnarray}
+ &  & {\cal P}(\ket{i})={\cal P}(\gamma\ket{i})\textrm{ for any vector }\ket{i}\in\C^{d*}\textrm{, and }\gamma\in\C^{*}=\C\backslash\left\{ 0\right\} \textrm{ ,}\label{eq:parallel-DQT(I)-1}\\
+ &  & {\displaystyle \sum_{i=0}^{d-1}{\cal P}\left(\ket{i}\right)=1}\textrm{ for any orthonormal basis }\{\ket{i}\}\textrm{ ,}\label{eq:total-probability-1}
+\end{eqnarray}
+
+\end_inset
+
+
+\family roman
+\size normal
+there is a density matrix 
+\begin_inset Formula $\rho$
+\end_inset
+
+ such that 
+\begin_inset Formula ${\cal P}={\cal P}_{\rho}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Gleason's theorem requires 
+\begin_inset Formula $d\ge3$
+\end_inset
+
+ because different orthonormal bases may share their vectors.
+ For example, 
+\begin_inset Formula $\left\{ \ket{0},\ket{1},\ket{2}\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $\left\{ \ket{0},\frac{1}{\sqrt{2}}\left(\ket{1}+\ket{2}\right),\frac{1}{\sqrt{2}}\left(\ket{1}-\ket{2}\right)\right\} $
+\end_inset
+
+ share the vector 
+\begin_inset Formula $\ket{0}$
+\end_inset
+
+.
+ In contrast, when 
+\begin_inset Formula $d=2$
+\end_inset
+
+, two orthonormal bases are either identical or completely different after
+ we use equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:parallel-DQT(I)-1"
+
+\end_inset
+
+) to identify 
+\begin_inset Formula ${\cal P}\left(\ket{i}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula ${\cal P}(\gamma\ket{i})$
+\end_inset
+
+.
+ Therefore, when we solve the system of linear equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:total-probability-1"
+
+\end_inset
+
+), we actually solve them individually and may get a discontinuous solution.
+ For example, consider 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+cal P}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+left(
+\backslash
+begin{array}{c} 
+\backslash
+cos
+\backslash
+theta
+\backslash
+
+\backslash
+ 
+\backslash
+sin
+\backslash
+theta
+\backslash
+rme^{
+\backslash
+rmi
+\backslash
+gamma} 
+\backslash
+end{array}
+\backslash
+right)=
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cases{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+0 & , if $0 
+\backslash
+le 
+\backslash
+theta < 
+\backslash
+frac{
+\backslash
+pi}{2}$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+1 & , if $
+\backslash
+frac{
+\backslash
+pi}{2} 
+\backslash
+le 
+\backslash
+theta < 
+\backslash
+pi$ } 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula ${\cal P}$
+\end_inset
+
+ satisfies equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:parallel-DQT(I)-1"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:total-probability-1"
+
+\end_inset
+
+) because we have 
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & {\cal P}\left(\begin{array}{c}
+\cos\theta\\
+\sin\theta\rme^{\rmi\gamma}
+\end{array}\right)+{\cal P}\left(\begin{array}{c}
+-\sin\theta\rme^{-\rmi\gamma}\\
+\cos\theta
+\end{array}\right)\\
+ & = & {\cal P}\left(\begin{array}{c}
+\cos\theta\\
+\sin\theta\rme^{\rmi\gamma}
+\end{array}\right)+{\cal P}\left(\begin{array}{c}
+\cos\left(\theta+\frac{\pi}{2}\right)\\
+\sin\left(\theta+\frac{\pi}{2}\right)\rme^{\rmi\gamma}
+\end{array}\right)=1\textrm{ .}
+\end{eqnarray*}
+
+\end_inset
+
+However, 
+\begin_inset Formula ${\cal P}_{\rho}$
+\end_inset
+
+ is always continuous.
+ Therefore, no density matrix 
+\family roman
+\size normal
+
+\begin_inset Formula $\rho$
+\end_inset
+
+ satisfies 
+\begin_inset Formula ${\cal P}={\cal P}_{\rho}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+
+\family roman
+First Attempt
+\end_layout
+
+\begin_layout Standard
+Although the situation is different between 
+\begin_inset Formula $d=2$
+\end_inset
+
+ and 
+\begin_inset Formula $d\ge3$
+\end_inset
+
+ in CQT, a probability in DQT cannot be identified with a state despite
+ the dimension of the system.
+ 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:GleasonDQT"
+
+\end_inset
+
+For any 
+\begin_inset Formula $d\ge2$
+\end_inset
+
+, there exists 
+\begin_inset Formula $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
+\end_inset
+
+ which is invariant under scalar multiplication and is a probability
+\family roman
+\size normal
+, i.e.,
+\family default
+\size default
+ 
+\family roman
+\size normal
+
+\begin_inset Formula 
+\begin{eqnarray}
+ &  & \hat{\pi}(\ket{i})=\hat{\pi}(\gamma\ket{i})\textrm{ for any vector }\ket{i}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}^{*}\textrm{ ,}\label{eq:parallel-DQT}\\
+ &  & {\displaystyle \bigvee_{i=0}^{d-1}\hat{\pi}\left(\ket{i}\right)=}\textrm{possible for any orthonormal basis }\{\ket{i}\}\textrm{ , }\label{eq:total-probability-DQT}
+\end{eqnarray}
+
+\end_inset
+
+such that 
+\begin_inset Formula $\dpr_{\Psi}\ne\hat{\pi}$
+\end_inset
+
+ for any 
+\begin_inset Formula $\ket{\Psi}\in\ffzd{p^{2}}$
+\end_inset
+
+, where 
+\family default
+\size default
+
+\begin_inset Formula $\dpr_{\Psi}\left(\ket{i}\right)=\dpr\left(\ket{\Psi},\ket{i}\right)$
+\end_inset
+
+ is the discrete Born rule (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:modality"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Proof
+Fix a basis 
+\begin_inset Formula $\{\ket{i}\}_{i=0}^{d-1}$
+\end_inset
+
+.
+ Consider 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+hat{
+\backslash
+pi}}
+\backslash
+left(
+\backslash
+ket{
+\backslash
+Phi}
+\backslash
+right)=
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cases{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textrm{impossible} & , if $
+\backslash
+ip{
+\backslash
+Phi}{0} = 0$ or $
+\backslash
+ip{
+\backslash
+Phi}{0} = 
+\backslash
+ldots = 
+\backslash
+ip{
+\backslash
+Phi}{d-1}
+\backslash
+ne 0$ ; 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textrm{possible} & , otherwise.
+ } 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+ satisfies equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:parallel-DQT"
+
+\end_inset
+
+) because we have 
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \hat{\pi}\left(\ket{\Phi}\right)=\textrm{impossible}\\
+ & \Leftrightarrow & \ip{\Phi}{0}=0\textrm{ or }\ip{\Phi}{0}=\ldots=\ip{\Phi}{d-1}\ne0\\
+ & \Leftrightarrow & \gamma\ip{\Phi}{0}=0\textrm{ or }\gamma\ip{\Phi}{0}=\ldots=\gamma\ip{\Phi}{d-1}\ne0\\
+ & \Leftrightarrow & \hat{\pi}\left(\gamma\ket{\Phi}\right)=\textrm{impossible}
+\end{eqnarray*}
+
+\end_inset
+
+for any 
+\begin_inset Formula $\gamma\in\ff{p^{2}}^{*}$
+\end_inset
+
+.
+ For equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:total-probability-DQT"
+
+\end_inset
+
+), because 
+\begin_inset Formula $\textrm{impossible}\lor\textrm{possible}=\textrm{possible}$
+\end_inset
+
+, it is sufficient to prove the following claim.
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Claim For any 
+\begin_inset Formula $\ket{\Phi}\in\ffzd{p^{2}}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\hat{\pi}\left(\ket{\Phi}\right)=\textrm{impossible}$
+\end_inset
+
+, there is a 
+\begin_inset Formula $\ket{\Psi}\in\ffzd{p^{2}}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\ip{\Phi}{\Psi}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{\pi}\left(\ket{\Psi}\right)=\textrm{possible}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Case
+When 
+\begin_inset Formula $\ip{\Phi}{0}=0$
+\end_inset
+
+, 
+\begin_inset Formula $\ket{0}$
+\end_inset
+
+ is what we want because 
+\begin_inset Formula $\ip{0}{0}=1\ne0$
+\end_inset
+
+ and 
+\begin_inset Formula $\ip{0}{d-1}=0$
+\end_inset
+
+ implies 
+\begin_inset Formula $\hat{\pi}\left(\ket{0}\right)=\textrm{possible}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Case
+When 
+\begin_inset Formula $\ip{\Phi}{0}=\ldots=\ip{\Phi}{d-1}\ne0$
+\end_inset
+
+, let 
+\begin_inset Formula $\alpha=\ip{\Phi}{0}$
+\end_inset
+
+, and consider the state 
+\begin_inset Formula 
+\[
+\ket{\Psi}=\left(\begin{array}{ccccc}
+\alpha & -\alpha & 0 & \ldots & 0\end{array}\right)^{T}\textrm{ .}
+\]
+
+\end_inset
+
+Then, 
+\begin_inset Formula $\ip{\Phi}{\Psi}=\alpha^{*}\alpha-\alpha^{*}\alpha=0$
+\end_inset
+
+.
+ Moreover, 
+\begin_inset Formula $\ket{\Psi}{0}=\alpha^{*}\ne0$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{\Psi}{0}=\alpha^{*}\ne-\alpha^{*}=\ket{\Psi}{1}$
+\end_inset
+
+ implies 
+\begin_inset Formula $\hat{\pi}\left(\ket{\Psi}\right)=\textrm{possible}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+Therefore, equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:total-probability-DQT"
+
+\end_inset
+
+) holds.
+\end_layout
+
+\begin_layout Proof
+The last part of the theorem is to prove 
+\family roman
+\size normal
+that for any 
+\begin_inset Formula $\ket{\Psi}\in\ffzd{p^{2}},\dpr_{\Psi}\ne\hat{\pi}$
+\end_inset
+
+
+\family default
+\size default
+.
+ This part can be established by counting states.
+ 
+\family roman
+\size normal
+For any 
+\begin_inset Formula $\ket{\Psi}\in\ffzd{p^{2}}$
+\end_inset
+
+, 
+\family default
+\size default
+
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \left|\dpr_{\Psi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\\
+ & = & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{\Psi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\\
+ & = & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\ip{\Psi}{i}=0\right\} \right|\\
+ & < & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\hat{\pi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\\
+ & = & \left|\hat{\pi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $\QED$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is easy to identify the reasons why theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:GleasonDQT"
+
+\end_inset
+
+ is different from Gleason's theorem in CQT, but it is hard to find the
+ correct conditions to get the corresponding Gleason's theorem in DQT.
+ Given 
+\begin_inset Formula ${\cal P}$
+\end_inset
+
+ in CQT, we search for a mixed state 
+\begin_inset Formula $\rho$
+\end_inset
+
+ such that 
+\family roman
+\size normal
+
+\begin_inset Formula ${\cal P}={\cal P}_{\rho}$
+\end_inset
+
+, but given 
+\family default
+\size default
+
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+ in DQT, we only search for a pure state 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ such that 
+\family roman
+\size normal
+
+\begin_inset Formula $\dpr_{\Psi}=\hat{\pi}$
+\end_inset
+
+.
+ Notice that there are much more mixed states than pure states so that it
+ is likely we cannot find a
+\family default
+\size default
+ny pure state 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ satisfying 
+\family roman
+\size normal
+
+\begin_inset Formula $\dpr_{\Psi}=\hat{\pi}$
+\end_inset
+
+ in DQT.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+Lacking the notion of mixed state is not the only reason why theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:GleasonDQT"
+
+\end_inset
+
+ is hold.
+ Even if we find a way to define a mixed state, if 
+\family default
+\size default
+
+\begin_inset Formula $\rho$
+\end_inset
+
+ is a mixed state between 
+\begin_inset Formula $\ket{\Psi_{1}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{\Psi_{2}}$
+\end_inset
+
+, then 
+\family roman
+\size normal
+we still have 
+\family default
+\size default
+
+\begin_inset Formula 
+\begin{equation}
+\left|\dpr_{\rho}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\le\left|\dpr_{\Psi_{1}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|<\left|\hat{\pi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\textrm{ .}\label{eq:zero-count}
+\end{equation}
+
+\end_inset
+
+We can always pick 
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\left|\hat{\pi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|$
+\end_inset
+
+ is larger because we have the annihilation law 
+\begin_inset Formula 
+\[
+x\lor\textrm{possible}=\textrm{possible for all }x\in\mathscr{L}_{2}\textrm{ .}
+\]
+
+\end_inset
+
+More precisely, compare the following arithmetic equation and Boolean equation.
+\begin_inset Formula 
+\begin{eqnarray}
+{\cal P}\left(\ket{0}\right)+{\cal P}\left(\ket{1}\right)+{\cal P}\left(\ket{2}\right) & = & 1\label{eq:arithmetic}\\
+\hat{\pi}\left(\ket{0}\right)\vee\hat{\pi}\left(\ket{1}\right)\vee\hat{\pi}\left(\ket{2}\right) & = & \text{possible}\label{eq:Boolean}
+\end{eqnarray}
+
+\end_inset
+
+When 
+\begin_inset Formula ${\cal P}\left(\ket{0}\right)=\frac{1}{2}$
+\end_inset
+
+, we still have an equality 
+\begin_inset Formula ${\cal P}\left(\ket{1}\right)+{\cal P}\left(\ket{2}\right)=1$
+\end_inset
+
+ for 
+\begin_inset Formula ${\cal P}\left(\ket{1}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula ${\cal P}\left(\ket{2}\right)$
+\end_inset
+
+ because 
+\begin_inset Formula $\left(\mathbb{R},0,+\right)$
+\end_inset
+
+ is a group.
+ In contrast, when 
+\begin_inset Formula $\hat{\pi}\left(\ket{0}\right)=\text{possible}$
+\end_inset
+
+, we know nothing about 
+\begin_inset Formula $\hat{\pi}\left(\ket{1}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{\pi}\left(\ket{2}\right)$
+\end_inset
+
+ because 
+\begin_inset Formula $\left(\mathscr{L}_{2},\text{impossible},\vee\right)$
+\end_inset
+
+ is a commutative semigroup without cancellative, i.e., 
+\begin_inset Formula $a\vee c=b\vee c$
+\end_inset
+
+ does not imply 
+\begin_inset Formula $a=b$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+
+\family roman
+Second Attempt
+\end_layout
+
+\begin_layout Standard
+If the problem is that the range of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ is only a commutative semigroup, we may want to consider 
+\begin_inset Formula $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}$
+\end_inset
+
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+, and
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset Formula $\left(\mathscr{L},0,\oplus\right)$
+\end_inset
+
+ is an abelian group.
+ By the fundamental theorem of finitely generated abelian group
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DummitFoote2004"
+
+\end_inset
+
+, 
+\begin_inset Formula $\mathscr{L}$
+\end_inset
+
+ must be isomorphic to 
+\begin_inset Formula $\mathbb{Z}_{d_{1}}\times\ldots\times\mathbb{Z}_{d_{k}}\times\mathbb{Z}^{b}$
+\end_inset
+
+, where 
+\begin_inset Formula $\mathbb{Z}_{d_{1}},\ldots,\mathbb{Z}_{d_{k}}$
+\end_inset
+
+ are finite cyclic subgroups, 
+\begin_inset Formula $\mathbb{Z}^{b}$
+\end_inset
+
+ is the free abelian group with rank 
+\begin_inset Formula $b$
+\end_inset
+
+, and 
+\begin_inset Formula $\times$
+\end_inset
+
+ is the direct product of the abelian groups.
+ However, if 
+\begin_inset Formula $\mathscr{L}$
+\end_inset
+
+ has any finite cyclic subgroups, we may have 
+\begin_inset Formula $\hat{\pi}\left(\ket{0}\right)\ne0$
+\end_inset
+
+, but 
+\begin_inset Formula $d_{1}\hat{\pi}\left(\ket{0}\right)=0$
+\end_inset
+
+.
+ This contradicts the idea that 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+ can be understood as a probability.
+ Therefore, we must have 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $\mathscr{L}\cong\mathbb{Z}^{b}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Problem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:GleasonDQT-group"
+
+\end_inset
+
+Is there a group 
+\begin_inset Formula $\left(\mathscr{L},0,\oplus\right)\cong\mathbb{Z}^{b}$
+\end_inset
+
+ with a special element 
+\begin_inset Formula $1\in\mathscr{L}$
+\end_inset
+
+ and 
+\begin_inset Formula $1\ne0$
+\end_inset
+
+ satisfying the following statement? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+There is a way to define a mixed state 
+\begin_inset Formula $\rho$
+\end_inset
+
+ and a corresponding Born rule 
+\begin_inset Formula $\tilde{\pi}_{\rho}:\ffzd{p^{2}}\rightarrow\mathscr{L}$
+\end_inset
+
+ in a sense of equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prob.mixed"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}$
+\end_inset
+
+ satisfies 
+\family roman
+\size normal
+
+\begin_inset Formula 
+\begin{eqnarray}
+ &  & \hat{\pi}(\ket{i})=\hat{\pi}(\gamma\ket{i})\textrm{ for any vector }\ket{i}\in\ffzd{p^{2}}\textrm{, and }\gamma\in\ff{p^{2}}^{*}\textrm{ , }\label{eq:parallel-DQT-1}\\
+ &  & {\displaystyle \bigoplus_{i=0}^{d-1}\hat{\pi}\left(\ket{i}\right)=}1\textrm{ for any orthonormal basis }\{\ket{i}\}\textrm{ . }\label{eq:total-probability-DQT-1}
+\end{eqnarray}
+
+\end_inset
+
+For 
+\begin_inset Formula $d\ge3$
+\end_inset
+
+, there is a mixed state 
+\family default
+\size default
+
+\begin_inset Formula $\rho$
+\end_inset
+
+ such that
+\family roman
+\size normal
+ 
+\begin_inset Formula $\hat{\pi}=\tilde{\pi}_{\rho}$
+\end_inset
+
+; for 
+\begin_inset Formula $d=2$
+\end_inset
+
+, there is a 
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+ corresponding to no mixed state 
+\family default
+\size default
+
+\begin_inset Formula $\rho$
+\end_inset
+
+
+\family roman
+\size normal
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+For 
+\begin_inset Formula $d=2$
+\end_inset
+
+, we can easily construct 
+\family roman
+\size normal
+a 
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+
+\family default
+\size default
+ satisfying equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:zero-count"
+
+\end_inset
+
+) and 
+\family roman
+\size normal
+corresponding to no mixed state 
+\family default
+\size default
+
+\begin_inset Formula $\rho$
+\end_inset
+
+
+\family roman
+\size normal
+.
+
+\family default
+\size default
+ When 
+\begin_inset Formula $d=3$
+\end_inset
+
+ and 
+\begin_inset Formula $p=7$
+\end_inset
+
+, we have verified the only 
+\family roman
+\size normal
+
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+ is 
+\begin_inset Formula $\hat{\pi}\left(\ket{i}\right)=\hat{\pi}\left(\ket{j}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $3\hat{\pi}\left(\ket{i}\right)=1$
+\end_inset
+
+ for all 
+\begin_inset Formula $\ket{i},\ket{j}\in\ffzd{p^{2}}$
+\end_inset
+
+.
+ Therefore, we don't have enough 
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+ to corresponding to even pure states.
+ We believe the same situation happens for other 
+\begin_inset Formula $d\ge3$
+\end_inset
+
+ and 
+\family default
+\size default
+
+\begin_inset Formula $p\ge7$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+We don't know whether 
+\family default
+\size default
+
+\begin_inset Formula $\mathscr{L}$
+\end_inset
+
+
+\family roman
+\size normal
+ can
+\family default
+\size default
+ be a non-Boolean commutative semigroup, but not yet a group.
+ 
+\family roman
+\size normal
+In summary, there are some difficulties to establish corresponding Gleason's
+ theorem in DQT no matter how we set the conditions.
+ 
+\end_layout
+
+\begin_layout Section
+
+\family roman
+Third Attempt?
+\end_layout
+
+\begin_layout Section*
+
+\family roman
+References
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "discreteGBKS"
+options "iopart-num"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
