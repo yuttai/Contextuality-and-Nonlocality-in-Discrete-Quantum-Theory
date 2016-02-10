@@ -848,7 +848,7 @@ position=Position[Most[row],Except[0],{1},Heads->False];
 If[position=={},
 If[Last[row]==0,Break[],AppendTo[output,\!\(TraditionalForm\`0 == Last[row]\)]],
 AppendTo[output,
-Row[Join[{\!\(TraditionalForm\`row[\([position[\([1, 1]\)]]\)] \[Pi]\ MatrixForm[unitNormVectorsRepresentative[\([position[\([1, 1]\)]]\)]]\)},Flatten[{Switch[row[[#[[1]]]],1,"+",-1,"-",_,NumberForm[row[[#[[1]]]],0,NumberSigns->{"-","+"}]],\!\(TraditionalForm\`\[Pi]\ MatrixForm[unitNormVectorsRepresentative[\([#[\([1]\)]]\)]]\)}&/@Rest[position]],{"\[Equal]",Last[row]}]]]],
+Row[Join[{\!\(TraditionalForm\`row[\([position[\([1, 1]\)]]\)] \[Pi]\ MatrixForm[unitNormVectorsRepresentative[\([position[\([1, 1]\)]]\)]]\)},Flatten[{Switch[row[[#[[1]]]],1,"\"+\"",-1,"\"-\"",_,NumberForm[row[[#[[1]]]],0,NumberSigns->{"\"-\"","\"+\""}]],\!\(TraditionalForm\`\[Pi]\ MatrixForm[unitNormVectorsRepresentative[\([#[\([1]\)]]\)]]\)}&/@Rest[position]],{"\"\[Equal]\"",Last[row]}]]]],
 {row,reducedForm}];
 output]
 Column[cGleasonPrint[cGleasonAbelianGroup[3,2],3,2]]
@@ -867,3 +867,4 @@ Print[AbsoluteTiming[MatrixRank[cGleasonAbelianGroup[p,3]]]];
 Print[AbsoluteTiming[cPossibleZeroCount[p,3]]];
 Print[AbsoluteTiming[cMaxZeroCount[p,3]]];
 Print[Column[cGleasonPrint[cGleasonAbelianGroup[p,3],p,3]]]];
+Print[];
