@@ -1323,20 +1323,45 @@ Let us start by defining a vector space
 \end_inset
 
 .
- Next we propose the Hermitian dot product defined as the map from 
-\begin_inset Formula $\ffd{p^{2}}\times\ffd{p^{2}}$
+ If we consider an orthogonal basis 
+\begin_inset Formula $\{\left|i\right\rangle \}$
 \end_inset
 
- to 
+ of 
+\begin_inset Formula $\ffzd{p^{2}}$
+\end_inset
+
+, and write two arbitrary vectors in the form 
+\begin_inset Formula 
+\begin{equation}
+\ket{\Psi}=\sum_{i=0}^{d-1}~\alpha_{i}\left|i\right\rangle \ ,\ \ket{\Phi}=\sum_{i=0}^{d-1}~\beta_{i}\left|i\right\rangle ,
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+ elements of the field 
 \begin_inset Formula $\ff{p^{2}}$
 \end_inset
 
- given by 
-\begin_inset Formula $(\ket{\Psi},\ket{\Phi})\longmapsto\braket{\Phi}{\Psi}$
+.
+ The Hermitian product in our discrete number system is thus reducible to
+ the form 
+\begin_inset Formula 
+\begin{equation}
+\ip{\Phi}{\Psi}=\sum_{i=0}^{d-1}~{\beta_{i}}^{p}~\alpha_{i}^{\;}\ .\label{innerprod}
+\end{equation}
+
 \end_inset
 
-.
- Notice that this product is technically not an inner product because there
+Notice that this product is technically not an inner product because there
  are vectors 
 \begin_inset Formula $\ket{\Psi}$
 \end_inset
@@ -1970,590 +1995,523 @@ name "sub:Interval-Valued-Probabilities-DQT"
 
 \end_inset
 
-Interval-Valued Probabilities and Measurement Process
+Interval-Valued Probabilities and the Discrete Born Rule
 \end_layout
 
 \begin_layout Standard
-Our first difficulty starts from the Born rule (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prob1.eq-6"
-
-\end_inset
-
-).and (
+If we directly apply the Born rule (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "prob1.eq-6-1"
 
 \end_inset
 
-) because 
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\size normal
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-yutsung{
-\end_layout
-
-\end_inset
-
- It seems that almost everything currently in this section should move to
- Section 5, because they are already focus on the measurement process in
- DQT, especially 
-\begin_inset Formula $\dpr\left(\ket{\Psi},\ket{\Phi}\right)$
-\end_inset
-
- should be intuitively corresponding to 
-\begin_inset Formula ${\cal P}_{\Psi}\left(\lambda_{i}\right)$
-\end_inset
-
- in CQT.
- Or we may combine Section 4.5 and Section 5.1 into one section.
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\size normal
-If we want to keep Section 4.5 and Section 5.1 separately, we may try to focus
- on the definition of Interval-Valued Probabilities and these algebraic
- relation, like =, 0, 1, and +.
- However, the readers may not know why they need these algebraic relation
- before we define the measurement process...
+) in DQT, it yields a value in finite fields which can never be interpreted
+ as a probability.
  
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
 \family roman
 \size normal
-In order to write down the analog of the CQT Born rule and quantum measurement
- process for DQT, we must explicitly define a corresponding discrete measurement
- framework.
- To this end, consider an orthogonal basis 
-\begin_inset Formula $\{\left|i\right\rangle \}$
-\end_inset
-
- of 
-\begin_inset Formula $\ffzd{p^{2}}$
-\end_inset
-
-.
- In this basis, two arbitrary vectors can be written in the form 
+In order to write down the analog of the CQT Born rule for DQT, we observe
+ 
 \begin_inset Formula 
 \begin{equation}
-\ket{\Psi}=\sum_{i=0}^{d-1}~\alpha_{i}\left|i\right\rangle \ ,\ \ket{\Phi}=\sum_{i=0}^{d-1}~\beta_{i}\left|i\right\rangle ,
+\ip{\Psi}{i}=0\Leftrightarrow{\cal P}_{\Psi}\left(\ket{i}\right)=0\textrm{ ,}\label{prob.zero}
 \end{equation}
 
 \end_inset
 
-with 
-\begin_inset Formula $\alpha_{i}$
+and the probability zero effectively means impossible.
+ Follow this idea, we can define a coarse 
+\family default
+\size default
+Born rule (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prob1.eq-6-1"
+
 \end_inset
 
- and 
-\begin_inset Formula $\beta_{i}$
-\end_inset
+) in CQT, 
+\family roman
+\size normal
 
- elements of the field 
-\begin_inset Formula $\ff{p^{2}}$
-\end_inset
-
-.
- The Hermitian product in our discrete number system is thus reducible to
- the form 
 \begin_inset Formula 
 \begin{equation}
-\ip{\Phi}{\Psi}=\sum_{i=0}^{d-1}~{\beta_{i}}^{p}~\alpha_{i}^{\;}\ .\label{innerprod}
+\hat{{\cal P}}_{\Psi}\left(\ket{i}\right)=\left\{ \begin{array}{r@{\textrm{, if }}l}
+\textrm{possible} & \ip{\Psi}{\Phi}\ne0\\
+\textrm{impossible} & \ip{\Psi}{\Phi}=0
+\end{array}\right.\ ,\label{eq:modality-CQT}
 \end{equation}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\size normal
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%% Needed?? ~
-\backslash
-cite{DQT2014}..
- ~
-\backslash
-cite{grove2002classical}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\size normal
-These issues are all crucial for DQT because in the discrete domain we do
- not have transitive ordered probabilities defined on the real numbers.
- Furthermore, although the physical state 
-\begin_inset Formula $\ket{\Psi}$
-\end_inset
-
- before the measurement belongs to 
-\begin_inset Formula $\ffzd{p^{2}}$
-\end_inset
-
-, the post-measurement state may not belong to 
-\begin_inset Formula $\ffzd{p^{2}}$
-\end_inset
-
- in the case of 
-\family default
-\shape italic
-degenerate eigenvalues
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
-
-\family roman
-\shape default
-.
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\size normal
-This leads us to introduce a modified Born's rule, with values in discrete
- interval-valued probabilities, for the study of the properties that DQT
- shares with CQT but not with classical theories.
- It will turn out that in order to accommodate the anomalous situation where
- post-measurement states do not belong to 
-\begin_inset Formula $\ffzd{p^{2}}$
-\end_inset
-
-, we explicitly detect such invalid intermediate states and cause them to
- halt the entire computation immediately.
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\size normal
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-amr{
-\end_layout
-
-\end_inset
-
-I think the previous two paragraphs could be even more clear if we said
- the following.
- First we talk about the no-go theorem and say that we must go to 
-\begin_inset Quotes eld
-\end_inset
-
-interval-valued probabilities.
-\begin_inset Quotes erd
-\end_inset
-
- Then say we will use two intervals 
-\family default
-\shape italic
-(possible, impossible) 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
-
-\family roman
-\shape default
-.
- Then explain that a measurement operation is a 
-\emph on
-partial function
-\emph default
- that takes a current state (non-null vector) and an observable 
-\begin_inset Formula ${\cal O}$
-\end_inset
-
- and as explained next produces 
-\emph on
-three
-\emph default
- things when defined.
- Generally if we measure observable 
-\begin_inset Formula ${\cal O}$
-\end_inset
-
- of quantum state 
-\begin_inset Formula $\ket{\phi}$
-\end_inset
-
-, then (i) with interval-value probability 
-\begin_inset Formula $p_{i}$
-\end_inset
-
-, (ii) the result of the measurement will be eigenvalue 
-\begin_inset Formula $\lambda_{i}$
-\end_inset
-
-, and (iii) the quantum state will collapse to the state 
-\begin_inset Formula $\ket{\psi}_{i}$
-\end_inset
-
-.
- In the case the post-measurement state would be null because of wrapping
- around that might occur with degenerate observables the entire measurement
- operation is 
-\emph on
-undefined
-\emph default
-.
- Otherwise the result is the triple of probability, eigenvalue, and post-measure
-ment state.
- Note that composition of measurement operations is only defined if both
- measurement operations are defined.
- In particular, if is possible that two commuting observables 
-\begin_inset Formula ${\cal O}_{1}$
+where 
+\series medium
+\shape up
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+impossible and possible means the probability is in 
+\begin_inset Formula $\left\{ 0\right\} $
 \end_inset
 
  and 
-\begin_inset Formula ${\cal O}_{2}$
+\begin_inset Formula $\left(0,1\right]$
 \end_inset
 
- could be measured in one order but not the order if one of the intermediate
- steps is undefined.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+, respectively.
+ Because we collapse an interval of probability into one value, 
+\begin_inset Formula $\hat{{\cal P}}_{\Psi}:\C^{d*}\rightarrow\mathscr{L}_{2}=\left\{ \text{impossible},\text{possible}\right\} $
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\size normal
-Since discrete quantum theories do not have orderable fields, and thus lack
- orderable probabilities, we must discover a way to understand how Born's
- rule could manifest itself in a consistent discrete theory.
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\size normal
-To begin our study of discrete theory, we define a map 
-\begin_inset Formula $\dpr$
-\end_inset
-
- that will play the role of a discrete Born rule, with the replacement of
- real-valued probabilities by the two tags 'impossible' and 'possible':
- 
+ is called a interval-valued probability with a natural inclusion 
 \begin_inset Formula 
 \[
-\dpr:\ffzd{p^{2}}\times\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}=\left\{ \text{impossible},\text{possible}\right\} ,
+\iota\left(x\right)=\left\{ \begin{array}{r@{\textrm{, if }}l}
+\textrm{possible} & x\in\left(0,1\right]\\
+\textrm{impossible} & x\in\left\{ 0\right\} 
+\end{array}\right.\textrm{ .}
 \]
 
 \end_inset
 
-Thus 
+The addition for the usual probability is analog to the logical-or 
+\begin_inset Formula $\lor$
+\end_inset
+
+, and we also have logical-and 
+\begin_inset Formula $\land$
+\end_inset
+
+ with both rules in table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Three-valued-logic-truth"
+
+\end_inset
+
+.
+ Then, we can define the 
+\series default
+\shape default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+coarse 
+\family default
+\size default
+Born rule (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prob1.eq-6-1"
+
+\end_inset
+
+) for a mixed state 
+\family roman
+\size normal
+
+\begin_inset Formula $\rho=\sum_{j}p_{j}\frac{\proj{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}}$
+\end_inset
+
+,
+\family default
+\size default
+ 
+\family roman
+\size normal
+
+\begin_inset Formula 
+\begin{eqnarray}
+\hat{{\cal P}}_{\rho}\left(\ket{i}\right) & = & \bigvee_{j}\left(\iota\left(p_{j}\right)\land\hat{{\cal P}}_{\Psi_{j}}\left(\ket{i}\right)\right)\textrm{ .}\label{modality.mixed-CQT}
+\end{eqnarray}
+
+\end_inset
+
+
+\family default
+\size default
+Furthermore, 
+\begin_inset Formula $\hat{{\cal P}}_{\rho}:\C^{d*}\rightarrow\mathscr{L}_{2}$
+\end_inset
+
+ is invariant under scalar multiplication and has an analog of total probability
+\family roman
+\size normal
+ one, i.e.,
+\family default
+\size default
+
+\begin_inset Formula 
+\begin{eqnarray}
+ &  & \hat{{\cal P}}_{\rho}(\ket{i})=\hat{{\cal P}}_{\rho}(\gamma\ket{i})\textrm{ for any vector }\ket{i}\in\C^{d*}\textrm{, and }\gamma\in\C^{*}=\C\backslash\left\{ 0\right\} \textrm{ ,}\label{eq:modality-parallel-CQT}\\
+ &  & {\displaystyle \bigvee_{i=0}^{d-1}\hat{{\cal P}}_{\rho}\left(\ket{i}\right)=\textrm{possible}}\textrm{ for any orthonormal basis }\{\ket{i}\}\textrm{ .}\label{eq:total-modality-CQT}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Three-valued-logic-truth"
+
+\end_inset
+
+Truth value tables
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\land$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{possible}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{impossible}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{possible}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{possible}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{impossible}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{impossible}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{impossible}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{impossible}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\vee$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{possible}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{impossible}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{possible}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{possible}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{possible}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{impossible}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{possible}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{impossible}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Although the original Born rule (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prob1.eq-6-1"
+
+\end_inset
+
+) cannot be applied to DQT, 
+\family roman
+\size normal
+the coarse 
+\family default
+\size default
+Born rule (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prob1.eq-6-1"
+
+\end_inset
+
+) can be applied to DQT, and give us a discrete Born rule 
+\family roman
+\size normal
+
+\begin_inset Formula 
+\begin{eqnarray}
+\dpr & : & \ffzd{p^{2}}\rightarrow\left(\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}\right),\nonumber \\
+\dpr_{\Psi}\left(\ket{i}\right) & = & \left\{ \begin{array}{r@{\textrm{, if }}lcc}
+\textrm{possible} & \ip{\Psi}{\Phi}\ne0\\
+\textrm{impossible} & \ip{\Psi}{\Phi}=0
+\end{array}\right.\ .\label{eq:modality-DQT}
+\end{eqnarray}
+
+\end_inset
+
+
+\family default
+\size default
+The discrete Born rule 
 \begin_inset Formula $\dpr$
 \end_inset
 
- can be defined in the possibility field 
-\begin_inset Formula $\mathscr{L}_{2}$
-\end_inset
+ has the desirable properties we want.
+ For example, it is invariant under scalar multiplication and has an analog
+ of total probability
+\family roman
+\size normal
+ one, i.e.,
+\family default
+\size default
 
- as 
 \begin_inset Formula 
-\begin{equation}
-\dpr\left(\ket{\Psi},\ket{\Phi}\right)=\left\{ \begin{array}{r@{\textrm{, if }}lcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc}
-\textrm{possible} & \ip{\Psi}{\Phi}\ne0\\
-\textrm{impossible} & \ip{\Psi}{\Phi}=0
-\end{array}\right.\ .\label{eq:modality}
-\end{equation}
+\begin{eqnarray}
+ &  & \dpr_{\Psi}(\ket{i})=\dpr_{\Psi}(\gamma\ket{i})\textrm{ for any vector }\ket{i}\in\C^{d*}\textrm{, and }\gamma\in\C^{*}=\C\backslash\left\{ 0\right\} \textrm{ ,}\label{eq:modality-parallel-DQT}\\
+ &  & {\displaystyle \bigvee_{i=0}^{d-1}\dpr_{\Psi}\left(\ket{i}\right)=\textrm{possible}}\textrm{ for any orthonormal basis }\{\ket{i}\}\textrm{ .}\label{eq:total-modality-DQT}
+\end{eqnarray}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\size normal
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-begin{equation}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-dpr 
-\backslash
-left(
-\backslash
-ket{
-\backslash
-Psi},
-\backslash
-ket{
-\backslash
-Phi}
-\backslash
-right)=
-\backslash
-begin{cases}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-text{possible} & 
-\backslash
-textrm{, if }
-\backslash
-ip{
-\backslash
-Psi}{
-\backslash
-Phi}
-\backslash
-ne 0
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-text{impossible} & 
-\backslash
-textrm{, if }
-\backslash
-ip{
-\backslash
-Psi}{
-\backslash
-Phi}=0
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-end{cases} 
-\backslash
- .
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% %
-\backslash
-label{eq:modality}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-end{equation}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\size normal
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% {
-\backslash
-bf Remark}: The natural occurrence of null-norm intermediate states
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% in examples of two-operator measurement systems used to test
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% contextuality will lead us to the requirement for a three-valued
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% logic, $
-\backslash
-mathscr{L}_{3}$, with a possibility of the value
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% $
-\backslash
-text{inconsistent}$.
-  For clarity of exposition, we employ the
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% two-valued modal logic $
-\backslash
-mathscr{L}_{2}$ until absolutely necessary.
-\end_layout
-
-\end_inset
-
-
+For the problem of mixed states, we will address it after we discuss not
+ Gleason's theorem I.
 \end_layout
 
 \begin_layout Subsection
 
 \family roman
-No Corresponding Gleason's Theorem for First Attempt
+Not Gleason's Theorem I
 \end_layout
 
 \begin_layout Standard
