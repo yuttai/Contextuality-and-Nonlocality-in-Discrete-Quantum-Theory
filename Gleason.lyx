@@ -1983,7 +1983,13 @@ name "sec:First-Attempt"
 
 \end_inset
 
-First Attempt
+First Attempt: Interval-Valued Probabilities 
+\family default
+
+\begin_inset Formula $\mathscr{L}_{2}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -2050,7 +2056,7 @@ begin{equation}
 
 
 \backslash
-hat{{
+bar{{
 \backslash
 cal P}}_{
 \backslash
@@ -2138,7 +2144,7 @@ impossible and possible means the probability is in
 
 , respectively.
  Because we collapse an interval into one value, 
-\begin_inset Formula $\hat{{\cal P}}_{\Psi}:\C^{d*}\rightarrow\mathscr{L}_{2}=\left\{ \text{impossible},\text{possible}\right\} $
+\begin_inset Formula $\bar{{\cal P}}_{\Psi}:\C^{d*}\rightarrow\mathscr{L}_{2}=\left\{ \text{impossible},\text{possible}\right\} $
 \end_inset
 
  is called an interval-valued probability with a natural inclusion
@@ -2292,7 +2298,7 @@ Born rule for a mixed state
 
 \begin_inset Formula 
 \begin{eqnarray}
-\hat{{\cal P}}_{\rho}\left(\ket{i}\right) & = & \bigvee_{j}\left(\iota\left(p_{j}\right)\land\hat{{\cal P}}_{\Psi_{j}}\left(\ket{i}\right)\right)\textrm{ .}\label{modality.mixed-CQT}
+\bar{{\cal P}}_{\rho}\left(\ket{i}\right) & = & \bigvee_{j}\left(\iota\left(p_{j}\right)\land\bar{{\cal P}}_{\Psi_{j}}\left(\ket{i}\right)\right)\textrm{ .}\label{modality.mixed-CQT}
 \end{eqnarray}
 
 \end_inset
@@ -2301,7 +2307,7 @@ Born rule for a mixed state
 \family default
 \size default
 Furthermore, 
-\begin_inset Formula $\hat{{\cal P}}_{\rho}:\C^{d*}\rightarrow\mathscr{L}_{2}$
+\begin_inset Formula $\bar{{\cal P}}_{\rho}:\C^{d*}\rightarrow\mathscr{L}_{2}$
 \end_inset
 
  is invariant under scalar multiplication and has an analog of total probability
@@ -2313,8 +2319,8 @@ Furthermore,
 
 \begin_inset Formula 
 \begin{eqnarray}
- &  & \hat{{\cal P}}_{\rho}(\ket{i})=\hat{{\cal P}}_{\rho}(\gamma\ket{i})\textrm{ for any vector }\ket{i}\in\C^{d*}\textrm{, and }\gamma\in\C^{*}=\C\backslash\left\{ 0\right\} \textrm{ ,}\label{eq:modality-parallel-CQT}\\
- &  & {\displaystyle \bigvee_{i=0}^{d-1}\hat{{\cal P}}_{\rho}\left(\ket{i}\right)=\textrm{possible}}\textrm{ for any orthonormal basis }\{\ket{i}\}\textrm{ .}\label{eq:total-modality-CQT}
+ &  & \bar{{\cal P}}_{\rho}(\ket{i})=\bar{{\cal P}}_{\rho}(\gamma\ket{i})\textrm{ for any vector }\ket{i}\in\C^{d*}\textrm{, and }\gamma\in\C^{*}=\C\backslash\left\{ 0\right\} \textrm{ ,}\label{eq:modality-parallel-CQT}\\
+ &  & {\displaystyle \bigvee_{i=0}^{d-1}\bar{{\cal P}}_{\rho}\left(\ket{i}\right)=\textrm{possible}}\textrm{ for any orthonormal basis }\{\ket{i}\}\textrm{ .}\label{eq:total-modality-CQT}
 \end{eqnarray}
 
 \end_inset
@@ -2860,7 +2866,7 @@ name "thm:GleasonDQT"
 \end_inset
 
 Fix an orthonormal basis 
-\begin_inset Formula $\left\{ \ket{0},\ket{1},\ldots,\ket{d-1}\right\} $
+\begin_inset Formula $\left\{ \ket{0},\ket{1},\ldots,\ket{d-1}\right\} \subset\ffzd{p^{2}}$
 \end_inset
 
  with 
@@ -3172,16 +3178,27 @@ for any
 \family default
 \size default
  by counting states.
- First, 
-\begin_inset Formula $\dpr_{\Psi}\left(\ket{i}\right)=\dpr_{U\ket{\Psi}}\left(U\ket{i}\right)$
+ The number of states 
+\begin_inset Formula $f$
 \end_inset
 
- for any unitary matrix 
-\begin_inset Formula $U$
+ maps to impossible is denoted by 
+\begin_inset Formula $\left|f^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|$
 \end_inset
 
-.
- Hence, 
+ for any function
+\begin_inset Formula $f:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
+\end_inset
+
+, i.e, 
+\begin_inset Formula 
+\[
+\left|f^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|=\left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|f\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\textrm{ .}
+\]
+
+\end_inset
+
+First, 
 \family roman
 \size normal
 
@@ -3194,37 +3211,59 @@ for any
  will always map the same number of states to impossible, i.e., 
 \begin_inset Formula 
 \begin{eqnarray*}
- &  & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{\Psi}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\\
+ &  & \left|\dpr_{\Psi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\\
  & = & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{U\ket{\Psi}}\left(U\ket{i}\right)=\textrm{impossible}\right\} \right|\\
- & = & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\dpr_{\ket{0}}\left(\ket{i}\right)=\textrm{impossible}\right\} \right|
+ & = & \left|\dpr_{\ket{0}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|
 \end{eqnarray*}
 
 \end_inset
 
-if we pick 
-\begin_inset Formula $U\ket{\Psi}=\ket{0}$
+because 
+\begin_inset Formula $\dpr_{\Psi}\left(\ket{i}\right)=\dpr_{U\ket{\Psi}}\left(U\ket{i}\right)$
+\end_inset
+
+ for any unitary matrix 
+\begin_inset Formula $U$
 \end_inset
 
 .
- Second, we denote 
-\begin_inset Formula $\left\{ \ket{i}\in\ffzd{p^{2}}\middle|f\left(\ket{i}\right)=\textrm{impossible}\right\} $
-\end_inset
-
-let 
-\begin_inset Formula $f^{-1}\left(\left\{ \textrm{impossible}\right\} \right)$
-\end_inset
-
- denotes .
- Then, 
+ Second, 
 \family roman
 \size normal
-we have 
+whenever 
+\begin_inset Formula $\dpr_{\Psi}$
+\end_inset
+
+
+\family default
+\size default
+ map a state 
+\begin_inset Formula $\ket{i}$
+\end_inset
+
+ to impossible, 
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+ always maps 
+\begin_inset Formula $\ket{i}$
+\end_inset
+
+ to impossible as well, but 
+\begin_inset Formula $\hat{\pi}$
+\end_inset
+
+ also maps other states to to impossible.
+ Therefore, we have
+\family roman
+\size normal
+ 
 \family default
 \size default
 
 \begin_inset Formula 
 \begin{eqnarray*}
- &  & \left|\dpr_{\Psi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|=\left|\dpr_{\ket{0}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\\
+ &  & \left|\dpr_{\ket{0}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\\
  & = & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\ip{i}{0}=0\right\} \right|\\
  & < & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\ip{i}{0}=0\textrm{ or }\ip{i}{0}=\ip{i}{1}\ne0\right\} \right|\\
  & = & \left|\hat{\pi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|
@@ -3253,11 +3292,7 @@ for any
 \begin_layout Standard
 Why not Gleason's theorem I differs from Gleason's theorem? One of the reasons
  is lacking the definition of mixed states.
- Given 
-\begin_inset Formula ${\cal P}$
-\end_inset
-
- in CQT, we search for a mixed state 
+ Gleason's theorem in CQT searches for a mixed state 
 \begin_inset Formula $\rho$
 \end_inset
 
@@ -3268,14 +3303,10 @@ Why not Gleason's theorem I differs from Gleason's theorem? One of the reasons
 \begin_inset Formula ${\cal P}={\cal P}_{\rho}$
 \end_inset
 
-, but given 
+, but 
 \family default
 \size default
-
-\begin_inset Formula $\hat{\pi}$
-\end_inset
-
- in DQT, we only search for a pure state 
+not Gleason's theorem I only searches for a pure state 
 \begin_inset Formula $\ket{\Psi}$
 \end_inset
 
@@ -3287,11 +3318,11 @@ Why not Gleason's theorem I differs from Gleason's theorem? One of the reasons
 \end_inset
 
 .
- Notice that there are much more mixed states than pure states so that it
- is likely we cannot find a
+ Because the mixed states are more than the pure states, we may not find
+ a
 \family default
 \size default
-ny pure state 
+ pure state 
 \begin_inset Formula $\ket{\Psi}$
 \end_inset
 
@@ -3310,15 +3341,14 @@ ny pure state
 
 \family roman
 \size normal
-Lacking the notion of mixed state is not the only reason why theorem 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "thm:GleasonDQT"
-
-\end_inset
-
- is hold.
- Even if we find a way to define a mixed state, if 
+N
+\family default
+\size default
+ot Gleason's theorem I
+\family roman
+\size normal
+ is still hold even if we find a way to define a mixed state.
+ If 
 \family default
 \size default
 
@@ -3347,15 +3377,172 @@ we still have
 
 \end_inset
 
-We can always pick 
-\begin_inset Formula $\hat{\pi}$
+In fact, we may replace the 
+\begin_inset Formula $\dpr$
 \end_inset
 
- such that 
-\begin_inset Formula $\left|\hat{\pi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|$
+ by the coarse Born rule 
+\begin_inset Formula $\bar{{\cal P}}$
 \end_inset
 
- is larger because we have the annihilation law 
+ in CQT, and get 
+\family roman
+not Gleason's Theorem for coarse Born rule in CQT with exactly the same
+ proof.
+ 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+Not Gleason's Theorem I for coarse Born rule in CQT
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:NotGleasonICQT"
+
+\end_inset
+
+Fix an orthonormal basis 
+\begin_inset Formula $\left\{ \ket{0},\ket{1},\ldots,\ket{d-1}\right\} \subset\C^{d*}$
+\end_inset
+
+ with 
+\begin_inset Formula $d\ge2$
+\end_inset
+
+, and consider 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hat{{
+\backslash
+cal P}}
+\backslash
+left(
+\backslash
+ket{i}
+\backslash
+right)=
+\backslash
+cases{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+textrm{impossible} & , if $
+\backslash
+ip{i}{0} = 0$ or $
+\backslash
+ip{i}{0} = 
+\backslash
+ip{i}{1}
+\backslash
+ne 0$ ; 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+textrm{possible}   & , otherwise.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\hat{{\cal P}}:\C^{d*}\rightarrow\mathscr{L}_{2}$
+\end_inset
+
+ is invariant under scalar multiplication
+\family roman
+\size normal
+ and
+\family default
+\size default
+ is an interval-valued probability
+\family roman
+\size normal
+.
+ However, 
+\begin_inset Formula $\bar{{\cal P}}_{\rho}\ne\hat{{\cal P}}$
+\end_inset
+
+ 
+\family default
+\size default
+for any mixed state 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+Therefore, not Gleason's theorem I's are hold essentially
+\family default
+ because we have some freedom to assign 
+\begin_inset Formula $\hat{\pi}\left(\ket{i}\right)=\textrm{impossible}$
+\end_inset
+
+ for some 
+\begin_inset Formula $\ket{i}$
+\end_inset
+
+.
+ This is further because of the range 
+\begin_inset Formula $\mathscr{L}_{2}$
+\end_inset
+
+ has the annihilation law 
 \begin_inset Formula 
 \[
 x\lor\textrm{possible}=\textrm{possible for all }x\in\mathscr{L}_{2}\textrm{ .}
@@ -3409,15 +3596,7 @@ When
 \begin_inset Formula $\left(\mathscr{L}_{2},\text{impossible},\vee\right)$
 \end_inset
 
- is a commutative semigroup without cancellative, i.e., 
-\begin_inset Formula $a\vee c=b\vee c$
-\end_inset
-
- does not imply 
-\begin_inset Formula $a=b$
-\end_inset
-
-.
+ is a commutative semigroup with the annihilation law.
  
 \end_layout
 
@@ -3430,7 +3609,7 @@ name "sec:Second-Attempt"
 
 \end_inset
 
-Second Attempt
+Second Attempt: Abelian Group
 \end_layout
 
 \begin_layout Standard
@@ -3809,7 +3988,7 @@ References
 \size normal
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "discreteGBKS"
+bibfiles "Contextuality-and-Nonlocality-in-Discrete-Quantum-Theory/discreteGBKS"
 options "iopart-num"
 
 \end_inset
