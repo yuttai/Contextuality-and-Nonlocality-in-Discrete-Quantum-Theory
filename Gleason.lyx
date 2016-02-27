@@ -971,14 +971,14 @@ The above assignment is only one probability, but the Born rule gives a
 \end_inset
 
 If the system is in a mixed state represented by a density matrix 
-\begin_inset Formula $\rho=\sum_{j}p_{j}\frac{\proj{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}}$
+\begin_inset Formula $\rho=\sum_{j}q_{j}\frac{\proj{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}}$
 \end_inset
 
 , the Born rule can be extended to define its probability based on the probabili
 ty of pure states 
 \begin_inset Formula 
 \begin{eqnarray}
-\tilde{{\cal P}}_{\rho}\left(\ket{\Phi}\right) & = & \sum_{j}p_{j}\tilde{{\cal P}}_{\Psi_{j}}\left(\ket{\Phi}\right)\textrm{ .}\label{BornRule.mixed}
+\tilde{{\cal P}}_{\rho}\left(\ket{\Phi}\right) & = & \sum_{j}q_{j}\tilde{{\cal P}}_{\Psi_{j}}\left(\ket{\Phi}\right)\textrm{ .}\label{BornRule.mixed}
 \end{eqnarray}
 
 \end_inset
@@ -1713,7 +1713,7 @@ end{equation}
 \family roman
 \size normal
 For a mixed state represented by a density matrix 
-\begin_inset Formula $\rho=\sum_{j}p_{j}\frac{\proj{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}}$
+\begin_inset Formula $\rho=\sum_{j}q_{j}\frac{\proj{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}}$
 \end_inset
 
 , 
@@ -1729,7 +1729,7 @@ its an interval-valued probability
  
 \begin_inset Formula 
 \begin{eqnarray}
-\bar{{\cal P}}_{\rho}\left(\ket{\Phi}\right) & = & \bigvee_{j}\left(\iota\left(p_{j}\right)\land\bar{{\cal P}}_{\Psi_{j}}\left(\ket{\Phi}\right)\right)\textrm{ .}\label{modality.mixed-CQT}
+\bar{{\cal P}}_{\rho}\left(\ket{\Phi}\right) & = & \bigvee_{j}\left(\iota\left(q_{j}\right)\land\bar{{\cal P}}_{\Psi_{j}}\left(\ket{\Phi}\right)\right)\textrm{ .}\label{modality.mixed-CQT}
 \end{eqnarray}
 
 \end_inset
@@ -5037,7 +5037,7 @@ status open
 \backslash
 hat{{
 \backslash
-cal P}}
+cal P}}_{1}
 \backslash
 left(
 \backslash
@@ -5098,27 +5098,24 @@ textrm{possible}   & , otherwise;
 
 \end_inset
 
-
 where 
 \begin_inset Formula $\ket{+}=\sum_{i=0}^{d-1}\ket{i}$
 \end_inset
 
  and 
-\begin_inset Formula $\lambda\in\C^{d*}$
+\begin_inset Formula $\lambda\in\C^{*}$
 \end_inset
 
 .
- 
-\lang english
-Then, 
-\begin_inset Formula $\hat{{\cal P}}$
+ Then, 
+\begin_inset Formula $\hat{{\cal P}}_{1}$
 \end_inset
 
  is an interval-valued probability
 \family roman
 \size normal
 , but 
-\begin_inset Formula $\bar{{\cal P}}_{\rho}\ne\hat{{\cal P}}$
+\begin_inset Formula $\bar{{\cal P}}_{\rho}\ne\hat{{\cal P}}_{1}$
 \end_inset
 
  
@@ -5138,7 +5135,7 @@ mixed state
 \end_layout
 
 \begin_layout Proof
-\begin_inset Formula $\hat{{\cal P}}$
+\begin_inset Formula $\hat{{\cal P}}_{1}$
 \end_inset
 
  trivially satisfies equation (
@@ -5170,7 +5167,7 @@ reference "eq:total-interval-valued-probability-CQT"
 \end_inset
 
  such that 
-\begin_inset Formula $\left\{ \hat{{\cal P}}\left(\ket{i'}\right)\right\} $
+\begin_inset Formula $\left\{ \hat{{\cal P}}_{1}\left(\ket{i'}\right)\right\} $
 \end_inset
 
  are all impossible.
@@ -5197,7 +5194,7 @@ reference "eq:total-interval-valued-probability-CQT"
 
 .
  Because 
-\begin_inset Formula $\hat{{\cal P}}\left(\ket{\left(d-1\right)'}\right)=\textrm{impossible}$
+\begin_inset Formula $\hat{{\cal P}}_{1}\left(\ket{\left(d-1\right)'}\right)=\textrm{impossible}$
 \end_inset
 
 , we have two cases.
@@ -5247,7 +5244,7 @@ Therefore, our assumption is wrong so that for any orthonormal basis
 \end_inset
 
  at least one of 
-\begin_inset Formula $\left\{ \hat{{\cal P}}\left(\ket{i'}\right)\right\} $
+\begin_inset Formula $\left\{ \hat{{\cal P}}_{1}\left(\ket{i'}\right)\right\} $
 \end_inset
 
  is possible.
@@ -5259,7 +5256,7 @@ For the last part of the theorem, we will prove
 \family roman
 \size normal
 
-\begin_inset Formula $\bar{\pi}_{\Psi}\ne\hat{\pi}$
+\begin_inset Formula $\bar{{\cal P}}_{\rho}\ne\hat{{\cal P}}_{1}$
 \end_inset
 
  
@@ -5268,15 +5265,19 @@ For the last part of the theorem, we will prove
 for any 
 \family roman
 \size normal
-
-\begin_inset Formula $\ket{\Psi}\in\ffzd{p^{2}}$
+mixed state 
+\begin_inset Formula $\rho=\sum_{j}q_{j}\frac{\proj{\Psi_{j}}}{\ip{\Psi_{j}}{\Psi_{j}}}$
 \end_inset
 
 
 \family default
 \size default
  by counting states.
- The number of states 
+ To simplify the notation, for any function
+\begin_inset Formula $f:\C^{d*}\rightarrow\mathscr{L}_{2}$
+\end_inset
+
+, the number of states which 
 \begin_inset Formula $f$
 \end_inset
 
@@ -5284,23 +5285,41 @@ for any
 \begin_inset Formula $\left|f^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|$
 \end_inset
 
- for any function
-\begin_inset Formula $f:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
-\end_inset
-
 , i.e, 
 \begin_inset Formula 
 \[
-\left|f^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|=\left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|f\left(\ket{i}\right)=\textrm{impossible}\right\} \right|\textrm{ .}
+\left|f^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|=\left|\left\{ \ket{\Phi}\in\C^{d*}\middle|f\left(\ket{\Phi}\right)=\textrm{impossible}\right\} \right|\textrm{ .}
 \]
 
 \end_inset
 
-First, 
+First, because 
+\begin_inset Formula $q_{j}>0$
+\end_inset
+
+ for all 
+\begin_inset Formula $j$
+\end_inset
+
+, 
+\begin_inset Formula $\iota\left(q_{j}\right)$
+\end_inset
+
+ is always possible so that 
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \left|\bar{{\cal P}}_{\rho}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\\
+ & = & \left|\left\{ \ket{\Phi}\in\C^{d*}\middle|\forall j,\bar{{\cal P}}_{\Psi_{j}}\left(\ket{\Phi}\right)=\textrm{impossible}\right\} \right|\\
+ & \le & \left|\bar{{\cal P}}_{\Psi_{0}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\textrm{ .}
+\end{eqnarray*}
+
+\end_inset
+
+Second, 
 \family roman
 \size normal
 
-\begin_inset Formula $\bar{\pi}_{\Psi}$
+\begin_inset Formula $\bar{{\cal P}}_{\Psi_{0}}$
 \end_inset
 
 
@@ -5309,15 +5328,15 @@ First,
  will always map the same number of states to impossible, i.e., 
 \begin_inset Formula 
 \begin{eqnarray*}
- &  & \left|\bar{\pi}_{\Psi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\\
- & = & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\bar{\pi}_{U\ket{\Psi}}\left(U\ket{i}\right)=\textrm{impossible}\right\} \right|\\
- & = & \left|\bar{\pi}_{\ket{0}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|
+ &  & \left|\bar{{\cal P}}_{\Psi_{0}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\\
+ & = & \left|\left\{ \ket{\Phi}\in\C^{d*}\middle|\bar{{\cal P}}_{U\ket{\Psi_{0}}}\left(U\ket{\Phi}\right)=\textrm{impossible}\right\} \right|\\
+ & = & \left|\bar{{\cal P}}_{\ket{0}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|
 \end{eqnarray*}
 
 \end_inset
 
 because 
-\begin_inset Formula $\bar{\pi}_{\Psi}\left(\ket{i}\right)=\bar{\pi}_{U\ket{\Psi}}\left(U\ket{i}\right)$
+\begin_inset Formula $\bar{{\cal P}}_{\Psi_{0}}\left(\ket{\Phi}\right)=\bar{{\cal P}}_{U\ket{\Psi_{0}}}\left(U\ket{\Phi}\right)$
 \end_inset
 
  for any unitary matrix 
@@ -5325,30 +5344,30 @@ because
 \end_inset
 
 .
- Second, 
+ Third, 
 \family roman
 \size normal
 whenever 
-\begin_inset Formula $\bar{\pi}_{\Psi}$
+\begin_inset Formula $\bar{{\cal P}}_{\ket{0}}$
 \end_inset
 
 
 \family default
 \size default
  map a state 
-\begin_inset Formula $\ket{i}$
+\begin_inset Formula $\ket{\Phi}$
 \end_inset
 
  to impossible, 
-\begin_inset Formula $\hat{\pi}$
+\begin_inset Formula $\hat{{\cal P}}_{1}$
 \end_inset
 
  always maps 
-\begin_inset Formula $\ket{i}$
+\begin_inset Formula $\ket{\Phi}$
 \end_inset
 
  to impossible as well, but 
-\begin_inset Formula $\hat{\pi}$
+\begin_inset Formula $\hat{{\cal P}}_{1}$
 \end_inset
 
  also maps other states to to impossible.
@@ -5361,26 +5380,15 @@ whenever
 
 \begin_inset Formula 
 \begin{eqnarray*}
- &  & \left|\bar{\pi}_{\ket{0}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\\
- & = & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\ip{i}{0}=0\right\} \right|\\
- & < & \left|\left\{ \ket{i}\in\ffzd{p^{2}}\middle|\ip{i}{0}=0\textrm{ or }\ip{i}{0}=\ip{i}{1}\ne0\right\} \right|\\
- & = & \left|\hat{\pi}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|
+ &  & \left|\bar{{\cal P}}_{\ket{0}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\\
+ & = & \left|\left\{ \ket{\Phi}\in\C^{d*}\middle|\ip{\Phi}{0}=0\right\} \right|\\
+ & < & \left|\left\{ \ket{\Phi}\in\C^{d*}\middle|\ip{\Phi}{0}=0\textrm{ or }\ip{\Phi}=\lambda\ket{+}\textrm{ for some }\lambda\in\C^{*}\right\} \right|\\
+ & = & \left|\hat{{\cal P}}_{1}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\textrm{ .}
 \end{eqnarray*}
 
 \end_inset
 
 
-\family roman
-\size normal
-for any 
-\begin_inset Formula $\ket{\Psi}\in\ffzd{p^{2}}$
-\end_inset
-
-
-\family default
-\size default
-.
- 
 \begin_inset Formula $\QED$
 \end_inset
 
