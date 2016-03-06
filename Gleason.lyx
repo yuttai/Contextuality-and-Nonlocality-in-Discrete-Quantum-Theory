@@ -5055,7 +5055,7 @@ frac{
 \backslash
 left
 \backslash
-lceil nx
+lceil n x
 \backslash
 right
 \backslash
@@ -5065,7 +5065,7 @@ frac{
 \backslash
 left
 \backslash
-lceil nx
+lceil n x
 \backslash
 right
 \backslash
@@ -5098,6 +5098,8 @@ right
 }
 \backslash
 textrm{ ,} 
+\backslash
+label{eq:iota}
 \end_layout
 
 \begin_layout Plain Layout
@@ -5156,7 +5158,7 @@ key "GrahamKnuthPatashnik1994"
 the addition and multiplication should be redefined by 
 \begin_inset Formula 
 \begin{eqnarray}
-I_{1}+I_{2} & = & \left\{ a+b\middle|a\in I_{1},b\in I_{2}\right\} \cap\left[0,1\right]\textrm{ ;}\\
+I_{1}+I_{2} & = & \left\{ a+b\middle|a\in I_{1},b\in I_{2}\right\} \cap\left[0,1\right]\textrm{ ;}\label{eq:interval-add}\\
 I_{1}\cdot I_{2} & = & \left\{ a\cdot b\middle|a\in I_{1},b\in I_{2}\right\} \subseteq\left[0,1\right]\textrm{ .}
 \end{eqnarray}
 
@@ -5388,17 +5390,6 @@ status open
 
 \begin_layout Plain Layout
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
 
 \backslash
 yutsung{
@@ -5406,26 +5397,12 @@ yutsung{
 
 \end_inset
 
-
 Need to be verified.
-\lang english
-
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
 }
 \end_layout
 
@@ -5819,9 +5796,9 @@ reference "eq:total-interval-valued-probability-CQT-2"
 
 , 
 \begin_inset Formula 
-\[
+\begin{equation}
 1\in{\displaystyle \sum_{i=0}^{d-1}\hat{{\cal P}}_{1}\left(\ket{i'}\right)}\textrm{ .}
-\]
+\end{equation}
 
 \end_inset
 
@@ -5840,9 +5817,9 @@ If
 
 , then 
 \begin_inset Formula 
-\[
+\begin{equation}
 1\in{\displaystyle \sum_{i=0}^{d-1}\bar{{\cal P}}_{\ket{0}}\left(\ket{i'}\right)}={\displaystyle \sum_{i=0}^{d-1}\hat{{\cal P}}_{1}\left(\ket{i'}\right)}\textrm{ .}
-\]
+\end{equation}
 
 \end_inset
 
@@ -5862,19 +5839,47 @@ If
 \begin_inset Formula $\ket{0'}=\lambda_{0}\ket{\Phi_{0}}$
 \end_inset
 
+.
+ By apply equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:total-probability-CQT"
 
+\end_inset
+
+) on the conventional Born rule 
+\begin_inset Formula $\tilde{{\cal P}}_{\ket{0}}$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\begin{equation}
+\sum_{i=1}^{d-1}\tilde{{\cal P}}_{\ket{0}}\left(\ket{i'}\right)=1-\tilde{{\cal P}}_{\ket{0}}\left(\ket{0'}\right)\overset{\left(\ref{BornRule.pure}\right)}{=}1-\frac{\ip{0}{0'}\ip{0'}{0}}{\ip{0}{0}\ip{0'}{0'}}\overset{\left(\ref{eq:hatcalP1}\right)}{=}1-\frac{1}{2n}\label{eq:sum}
+\end{equation}
+
+\end_inset
+
+Hence, 
+\begin_inset Formula 
+\begin{equation}
+\sum_{i=1}^{d-1}\frac{1}{n}\left\lceil n\tilde{{\cal P}}_{\ket{0}}\left(\ket{i'}\right)\right\rceil \ge\frac{1}{n}\left\lceil n\sum_{i=1}^{d-1}\tilde{{\cal P}}_{\ket{0}}\left(\ket{i'}\right)\right\rceil \overset{\left(\ref{eq:sum}\right)}{=}\frac{1}{n}\left\lceil n-\frac{1}{2}\right\rceil =1\label{eq:inequality}
+\end{equation}
+
+\end_inset
+
+Thus, 
 \begin_inset Formula 
 \[
-{\displaystyle \sum_{i=0}^{d-1}\hat{{\cal P}}_{1}\left(\ket{i'}\right)}
+\max{\displaystyle \sum_{i=0}^{d-1}\hat{{\cal P}}_{1}\left(\ket{i'}\right)}\overset{\left(\ref{eq:hatcalP1}\right)}{=}\max{\displaystyle \sum_{i=1}^{d-1}\bar{{\cal P}}_{\ket{0}}\left(\ket{i'}\right)}\overset{\left(\ref{eq:interval-add}\right)}{=}\min\left\{ 1,\sum_{i=1}^{d-1}\max\bar{{\cal P}}_{\ket{0}}\left(\ket{i'}\right)\right\} \overset{\left(\ref{eq:iota}\right)}{=}\min\left\{ 1,\sum_{i=1}^{d-1}\frac{1}{n}\left\lceil n\tilde{{\cal P}}_{\ket{0}}\left(\ket{i'}\right)\right\rceil \right\} \overset{\left(\ref{eq:inequality}\right)}{=}1
 \]
 
 \end_inset
 
- 
+Therefore, 
 \begin_inset Formula 
-\[
+\begin{equation}
 1\in{\displaystyle \sum_{i=0}^{d-1}\hat{{\cal P}}_{1}\left(\ket{i'}\right)}\textrm{ .}
-\]
+\end{equation}
 
 \end_inset
 
@@ -5882,77 +5887,6 @@ If
 \end_layout
 
 \end_deeper
-\begin_layout Proof
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Assume there is an orthonormal basis 
-\begin_inset Formula $\left\{ \ket{i'}\right\} _{i=0}^{d-1}$
-\end_inset
-
- such that 
-\begin_inset Formula $\left\{ \hat{{\cal P}}_{1}\left(\ket{i'}\right)\right\} _{i=0}^{d-1}$
-\end_inset
-
- are all impossible.
- Because 
-\begin_inset Formula $\left\{ \ket{i'}\right\} _{i=0}^{d-1}$
-\end_inset
-
- is an orthonormal basis, at most one of them parallel to 
-\begin_inset Formula $\ket{+}$
-\end_inset
-
-.
- WLOG, 
-\begin_inset Formula $\ket{1'},\ldots,\ket{\left(d-1\right)'}$
-\end_inset
-
- are all not parallel to 
-\begin_inset Formula $\ket{+}$
-\end_inset
-
- so we have 
-\begin_inset Formula $\ip{1'}{0}=\ldots=\ip{\left(d-1\right)'}{0}=0$
-\end_inset
-
-.
- Because 
-\begin_inset Formula $\left\{ \ket{i'}\right\} _{i=0}^{d-1}$
-\end_inset
-
- is an orthonormal basis, 
-\begin_inset Formula $\ket{0'}$
-\end_inset
-
- must parallel to 
-\begin_inset Formula $\ket{0}$
-\end_inset
-
-, and then 
-\begin_inset Formula $\hat{{\cal P}}_{1}\left(\ket{0'}\right)=\hat{{\cal P}}_{1}\left(\ket{0}\right)=\textrm{possible}$
-\end_inset
-
-.
- A contradiction! Therefore, our assumption is wrong so that for any orthonormal
- basis 
-\begin_inset Formula $\left\{ \ket{i'}\right\} $
-\end_inset
-
- at least one of 
-\begin_inset Formula $\left\{ \hat{{\cal P}}_{1}\left(\ket{i'}\right)\right\} $
-\end_inset
-
- is possible.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Proof
 We will prove 
 \family roman
