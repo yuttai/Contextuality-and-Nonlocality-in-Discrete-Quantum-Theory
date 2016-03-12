@@ -2725,23 +2725,36 @@ Furthermore, given any mixed state
 
 \family default
 \size default
-, the interval-valued Born rule gives an interval-valued probability of
- 
+, the interval-valued Born rule of 
 \begin_inset Formula $\ket{\Phi}\in\C^{d*}$
 \end_inset
 
- by 
+ is given by 
 \family roman
 \size normal
 
 \begin_inset Formula 
 \begin{equation}
-\bar{{\cal P}}_{\rho}\left(\ket{\Phi}\right)=\iota\left(\tilde{{\cal P}}_{\rho}\left(\ket{\Phi}\right)\right)\textrm{ .}\label{eq:interval-valued-Born-rule}
+\bar{{\cal P}}_{\rho}\left(\ket{\Phi}\right)=\iota\left(\tilde{{\cal P}}_{\rho}\left(\ket{\Phi}\right)\right)\textrm{ ,}\label{eq:interval-valued-Born-rule}
 \end{equation}
 
 \end_inset
 
-We may notice two things.
+
+\family default
+\size default
+which is an interval-valued probability because of equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:interval-add-1"
+
+\end_inset
+
+).
+
+\family roman
+\size normal
+ We may notice two things.
  When we only consider a pure state 
 \family default
 \size default
@@ -2784,7 +2797,7 @@ reference "BornRule.mixed"
 
 \begin_inset Formula 
 \begin{eqnarray}
-\iota\left(\tilde{{\cal P}}_{\rho}\left(\ket{\Phi}\right)\right) & \subseteq & \sum_{j}\iota\left(q_{j}\right)\cdot\iota\left(\tilde{{\cal P}}_{\Psi_{j}}\left(\ket{\Phi}\right)\right)\textrm{ .}\label{BornRule.mixed-1}
+\bar{{\cal P}}_{\rho}\left(\ket{\Phi}\right) & \subseteq & \sum_{j}\iota\left(q_{j}\right)\cdot\bar{{\cal P}}_{\Psi_{j}}\left(\ket{\Phi}\right)\textrm{ .}\label{BornRule.mixed-1}
 \end{eqnarray}
 
 \end_inset
@@ -2946,8 +2959,11 @@ reference "thm:NotGleason-1"
 
 \end_inset
 
- shows that Gleason's theorem is not hold when we consider interval-valued
- probability.
+ shows that 
+\begin_inset Formula $\hat{{\cal P}}_{1}$
+\end_inset
+
+ cannot correspond to any mixed states.
  
 \end_layout
 
@@ -3953,7 +3969,7 @@ If
 , then 
 \begin_inset Formula 
 \begin{equation}
-1\in{\displaystyle \sum_{i=0}^{d-1}\bar{{\cal P}}_{\ket{0}}\left(\ket{i'}\right)}={\displaystyle \sum_{i=0}^{d-1}\hat{{\cal P}}_{1}\left(\ket{i'}\right)}\textrm{ .}
+1\in{\displaystyle \sum_{i=0}^{d-1}\bar{{\cal P}}_{\ket{0}}\left(\ket{i'}\right)}\overset{\left(\ref{eq:hatcalP1}\right)}{=}{\displaystyle \sum_{i=0}^{d-1}\hat{{\cal P}}_{1}\left(\ket{i'}\right)}\textrm{ .}
 \end{equation}
 
 \end_inset
@@ -3996,7 +4012,7 @@ reference "eq:total-probability-hatcalP1"
 \begin{eqnarray}
  &  & \max{\displaystyle \sum_{i=0}^{d-1}\hat{{\cal P}}_{1}\left(\ket{i'}\right)}\\
  & \overset{\left(\ref{eq:hatcalP1}\right)}{=} & \max{\displaystyle \sum_{i=1}^{d-1}\bar{{\cal P}}_{\ket{0}}\left(\ket{i'}\right)}\\
- & \overset{\left(\ref{eq:interval-add}\right)}{=} & \min\left\{ 1,\sum_{i=1}^{d-1}\max\bar{{\cal P}}_{\ket{0}}\left(\ket{i'}\right)\right\} \\
+ & \overset{\left(\ref{eq:interval-add-right}\right)}{=} & \min\left\{ 1,\sum_{i=1}^{d-1}\max\bar{{\cal P}}_{\ket{0}}\left(\ket{i'}\right)\right\} \\
  & \overset{\left(\ref{eq:iota}\right)}{=} & \min\left\{ 1,\sum_{i=1}^{d-1}\frac{1}{n}\left\lceil n\tilde{{\cal P}}_{\ket{0}}\left(\ket{i'}\right)\right\rceil \right\} \\
  & = & 1\textrm{ .}
 \end{eqnarray}
@@ -4007,7 +4023,7 @@ The last equality holds because
 \begin_inset Formula 
 \begin{eqnarray}
  &  & \sum_{i=1}^{d-1}\frac{1}{n}\left\lceil n\tilde{{\cal P}}_{\ket{0}}\left(\ket{i'}\right)\right\rceil \\
- & \ge & \frac{1}{n}\left\lceil n\sum_{i=1}^{d-1}\tilde{{\cal P}}_{\ket{0}}\left(\ket{i'}\right)\right\rceil \\
+ & \overset{\left(\ref{eq:ceiling-add}\right)}{\ge} & \frac{1}{n}\left\lceil n\sum_{i=1}^{d-1}\tilde{{\cal P}}_{\ket{0}}\left(\ket{i'}\right)\right\rceil \\
  & \overset{\left(\ref{eq:total-probability-CQT}\right)}{=} & \frac{1}{n}\left\lceil n\left(1-\tilde{{\cal P}}_{\ket{0}}\left(\ket{0'}\right)\right)\right\rceil \\
  & \overset{\left(\ref{BornRule.pure}\right)}{=} & \frac{1}{n}\left\lceil n\left(1-\frac{\ip{0}{0'}\ip{0'}{0}}{\ip{0}{0}\ip{0'}{0'}}\right)\right\rceil \\
  & \overset{\left(\ref{eq:hatcalP1}\right)}{=} & \frac{1}{n}\left\lceil n-\frac{1}{2}\right\rceil =1\textrm{ .}
@@ -4045,7 +4061,7 @@ mixed state
 \begin_inset Formula $f:\C^{d*}\rightarrow\mathscr{L}$
 \end_inset
 
-, let 
+, recall 
 \begin_inset Formula $\left|f^{-1}\left(\left\{ \left\{ 0\right\} \right\} \right)\right|$
 \end_inset
 
@@ -4070,12 +4086,16 @@ mixed state
 \begin_inset Formula $\iota\left(q_{j}\right)$
 \end_inset
 
- is always possible so that 
+ is never 
+\begin_inset Formula $\left\{ 0\right\} $
+\end_inset
+
+ so that 
 \begin_inset Formula 
 \begin{eqnarray}
- &  & \left|\bar{{\cal P}}_{\rho}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\nonumber \\
- & = & \left|\left\{ \ket{\Phi}\in\C^{d*}\middle|\forall j,\bar{{\cal P}}_{\Psi_{j}}\left(\ket{\Phi}\right)=\textrm{impossible}\right\} \right|\\
- & \le & \left|\bar{{\cal P}}_{\Psi_{0}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\textrm{ .}\nonumber 
+ &  & \left|\bar{{\cal P}}_{\rho}^{-1}\left(\left\{ \left\{ 0\right\} \right\} \right)\right|\nonumber \\
+ & = & \left|\left\{ \ket{\Phi}\in\C^{d*}\middle|\forall j,\bar{{\cal P}}_{\Psi_{j}}\left(\ket{\Phi}\right)=\left\{ 0\right\} \right\} \right|\\
+ & \le & \left|\bar{{\cal P}}_{\Psi_{0}}^{-1}\left(\left\{ \left\{ 0\right\} \right\} \right)\right|\textrm{ .}\nonumber 
 \end{eqnarray}
 
 \end_inset
