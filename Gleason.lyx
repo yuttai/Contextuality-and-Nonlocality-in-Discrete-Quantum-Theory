@@ -971,12 +971,43 @@ One-to-one correspondence by Gleason's theorem
 \begin_inset Text
 
 \begin_layout Plain Layout
-No 
-\begin_inset Formula $\check{\mathcal{P}}:\C^{d*}\rightarrow\check{\mathscr{L}}$
+If 
+\begin_inset Formula $\frac{1}{d}\in\check{\mathscr{L}}$
 \end_inset
 
- by Gleason's theorem
-\begin_inset Formula $^{\mathrm{a}}$
+, only 
+\begin_inset Formula $\check{\mathcal{P}}_{0}$
+\end_inset
+
+; 
+\begin_inset Newline newline
+\end_inset
+
+if 
+\begin_inset Formula $\frac{1}{d}\notin\check{\mathscr{L}}$
+\end_inset
+
+, no 
+\begin_inset Formula $\check{\mathcal{P}}$
+\end_inset
+
+, 
+\begin_inset Newline newline
+\end_inset
+
+for 
+\begin_inset Formula $d\ge3$
+\end_inset
+
+ by Corollary 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cor:Finite-Value-Probility"
+
+\end_inset
+
+.
+\begin_inset Formula $^{a}$
 \end_inset
 
 
@@ -1458,14 +1489,18 @@ No probability by analog of Kochen-Specker theorem
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Formula $^{\mathrm{a}}$
+\begin_inset Formula $^{a}$
 \end_inset
 
-For 
-\begin_inset Formula $\mathscr{L}=\left\{ 0,1\right\} $
+No 
+\begin_inset Formula $\check{\mathcal{P}}:\C^{d*}\rightarrow\left\{ 0,1\right\} $
 \end_inset
 
-, by Kochen-Specker theorem in particular.
+ for 
+\begin_inset Formula $d\ge3$
+\end_inset
+
+ by the Kochen-Specker theorem
 \end_layout
 
 \begin_layout Plain Layout
@@ -2210,12 +2245,47 @@ key "Redhead1987-REDINA"
 
 , Gleason's theorem asserts that a quantum probability distribution must
  be a continuous function.
- Therefore, there is no finite value quantum probability distribution no
- matter what 
-\begin_inset Formula $\check{\mathscr{L}}$
+ Therefore, if there is a finite value quantum probability distribution,
+ it must be constant function.
+\end_layout
+
+\begin_layout Corollary
+\begin_inset CommandInset label
+LatexCommand label
+name "cor:Finite-Value-Probility"
+
 \end_inset
 
- is, and we we must consider another way to discretize probability.
+For 
+\begin_inset Formula $d\ge3$
+\end_inset
+
+, if 
+\begin_inset Formula $\frac{1}{d}\in\check{\mathscr{L}}$
+\end_inset
+
+, the only probability 
+\begin_inset Formula $\check{\mathcal{P}}_{0}:\C^{d*}\rightarrow\check{\mathscr{L}}$
+\end_inset
+
+ is 
+\begin_inset Formula $\check{\mathcal{P}}_{0}\left(\ket{\Phi}\right)=\frac{1}{d}$
+\end_inset
+
+ for all 
+\begin_inset Formula $\ket{\Phi}\in\C^{d*}$
+\end_inset
+
+; otherwise, there is no probability 
+\begin_inset Formula $\check{\mathcal{P}}:\C^{d*}\rightarrow\check{\mathscr{L}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Because we cannot even discuss probability by only consider finite values,
+ and we we must consider another way to discretize probability.
 \end_layout
 
 \begin_layout Standard
@@ -3011,7 +3081,7 @@ One of the key step in the proof is counting states.
 \end_inset
 
 .
- We further found 
+ Actually 
 \begin_inset Formula $\hat{{\cal P}}_{1}$
 \end_inset
 
@@ -3032,19 +3102,49 @@ for
 \end_inset
 
 .
- As long as some of 
-\begin_inset Formula ${\displaystyle \hat{{\cal P}}\left(\ket{i}\right)}$
+ Equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:total-probability-CQT"
+
 \end_inset
 
- add up to one in equation (
+) requires 
+\begin_inset Formula $\tilde{{\cal P}}_{\ket{0}}\left(\lambda\ket{\Phi_{0}}\right)$
+\end_inset
+
+ to not be zero, while equation (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:total-interval-valued-probability-CQT-2"
 
 \end_inset
 
-), we don't give a lot of information.
- 
+) allows 
+\begin_inset Formula $\hat{{\cal P}}_{1}\left(\lambda\ket{\Phi_{0}}\right)$
+\end_inset
+
+ to be 
+\begin_inset Formula $\left\{ 0\right\} $
+\end_inset
+
+ because 
+\begin_inset Formula $1\in{\displaystyle \sum_{i=1}^{d-1}\hat{{\cal P}}_{1}\left(\ket{i'}\right)}$
+\end_inset
+
+, i.e., the remaining part of the summation has already added up to one.
+ In this case, equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:total-interval-valued-probability-CQT-2"
+
+\end_inset
+
+) does not gives a real constrain on the value of 
+\begin_inset Formula $\hat{{\cal P}}_{1}\left(\lambda\ket{\Phi_{0}}\right)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -3060,23 +3160,44 @@ Discrete Quantum Theory with Interval-Valued Probabilities
 \end_layout
 
 \begin_layout Standard
-Recall that we introduced 
-\begin_inset Formula $\mathscr{L}_{2}$
+One of the problem when we discretize quantum theory over finite fields
+ is to define an analog to the Born rule.
+ Although the conventional one
+\begin_inset space ~
 \end_inset
 
- because the interval-valued Born rule can be directly applied to 
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "BornRule.pure"
+
+\end_inset
+
+) cannot be applied directly, one property of interval-valued Born rule
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:modality-CQT-2"
+
+\end_inset
+
+) should still be valid, and can be use to define a interval-valued Born
+ rule with only two intervals 
+\begin_inset Formula $\mathscr{L}_{2}=\left\{ \left\{ 0\right\} ,\left(0,1\right]\right\} $
+\end_inset
+
+.
+ Therefore, we will first introduce 
 \family roman
-discrete quantum theory
-\family default
- (DQT).
- We will introduce 
-\family roman
-discrete quantum theory with interval-valued probability, and attempt to
- consider the same problem on 
+discrete quantum theory (DQT) with interval-valued probability, and attempt
+ to consider the same problem on 
 \begin_inset Formula $\left[0,1\right]$
 \end_inset
 
- in the next section.
+-valued and finite value probability in the following sections.
 \end_layout
 
 \begin_layout Standard
@@ -3229,7 +3350,7 @@ norm
 \begin_inset Formula $^{*}$
 \end_inset
 
- indicates the exclusion of null vectors; that is we consider 
+ indicates the exclusion of null vectors; that is, we consider 
 \begin_inset Formula $\ket{\Psi}\in\ffzd{p^{2}}$
 \end_inset
 
@@ -3257,35 +3378,7 @@ norm
 \uwave off
 \noun off
 \color none
-Then, the interval-valued probability 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-
-\begin_inset Formula $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
-\end_inset
-
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- and 
+Then, the interval-valued probability and 
 \family default
 \series default
 \shape default
@@ -3314,8 +3407,54 @@ for pure states
 \uwave off
 \noun off
 \color none
- can be defined exactly the same as its counterpart.
- Follow the same argument, we know the same 
+ are almost the same as its conventional counterpart.
+ Except we have to define them directly because we do not have 
+\begin_inset Formula $\iota:\left[0,1\right]\rightarrow\hat{\mathscr{L}}$
+\end_inset
+
+ to push everything onto the interval-value probability anymore.
+ The interval-valued probability 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+is a function 
+\begin_inset Formula $\hat{\pi}:\ffzd{p^{2}}\rightarrow\mathscr{L}_{2}$
+\end_inset
+
+ satisfying 
+\begin_inset Formula 
+\begin{eqnarray}
+ &  & \left(0,1\right]={\displaystyle \sum_{i=0}^{d-1}\hat{{\cal \pi}}\left(\ket{i}\right)}\textrm{ for any orthonormal basis }\left\{ \ket{i}\right\} _{i=0}^{d-1}\textrm{ .}\label{eq:total-interval-valued-probability-DQT}\\
+ &  & \hat{\pi}\left(\ket{\Phi}\right)=\hat{\pi}\left(\lambda\ket{\Phi}\right)\textrm{ for }\lambda\in\ff{p^{2}}^{*}=\ff{p^{2}}\backslash\left\{ 0\right\} \textrm{ and }\ket{\Phi}\in\ffzd{p^{2}}\textrm{ .}\label{eq:parallel-interval-valued-DQT}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Follow the same argument, we know the same 
 \begin_inset Formula $\hat{\pi}_{1}$
 \end_inset
 
@@ -4058,19 +4197,11 @@ mixed state
 \size default
  by counting states.
  For any function 
-\begin_inset Formula $f:\C^{d*}\rightarrow\mathscr{L}$
-\end_inset
-
-, recall 
-\begin_inset Formula $\left|f^{-1}\left(\left\{ \left\{ 0\right\} \right\} \right)\right|$
-\end_inset
-
- be the number of states which 
 \begin_inset Formula $f$
 \end_inset
 
- maps to 
-\begin_inset Formula $\left\{ 0\right\} $
+, recall 
+\begin_inset Formula $f^{-1}\left(S\right)=\left\{ x\middle|f(x)\in S\right\} $
 \end_inset
 
 .
@@ -4093,9 +4224,9 @@ mixed state
  so that 
 \begin_inset Formula 
 \begin{eqnarray}
- &  & \left|\bar{{\cal P}}_{\rho}^{-1}\left(\left\{ \left\{ 0\right\} \right\} \right)\right|\nonumber \\
- & = & \left|\left\{ \ket{\Phi}\in\C^{d*}\middle|\forall j,\bar{{\cal P}}_{\Psi_{j}}\left(\ket{\Phi}\right)=\left\{ 0\right\} \right\} \right|\\
- & \le & \left|\bar{{\cal P}}_{\Psi_{0}}^{-1}\left(\left\{ \left\{ 0\right\} \right\} \right)\right|\textrm{ .}\nonumber 
+ &  & \left|\bar{{\cal P}}_{\rho}^{-1}\left(\left\{ \left\{ 0\right\} \right\} \right)\right|\overset{\left(\ref{eq:interval-valued-Born-rule}\right)}{=}\left|\tilde{{\cal P}}_{\rho}^{-1}\left(\left\{ 0\right\} \right)\right|\nonumber \\
+ & \overset{\left(\ref{BornRule.mixed}\right)}{=} & \left|\left\{ \ket{\Phi}\in\C^{d*}\middle|\forall j,\tilde{{\cal P}}_{\Psi_{j}}\left(\ket{\Phi}\right)=0\right\} \right|\\
+ & \le & \left|\tilde{{\cal P}}_{\Psi_{0}}^{-1}\left(\left\{ 0\right\} \right)\right|\overset{\left(\ref{eq:interval-valued-Born-rule}\right)}{=}\left|\bar{{\cal P}}_{\Psi_{0}}^{-1}\left(\left\{ \left\{ 0\right\} \right\} \right)\right|\textrm{ .}\nonumber 
 \end{eqnarray}
 
 \end_inset
@@ -4110,13 +4241,15 @@ Second,
 
 \family default
 \size default
- will always map the same number of states to impossible, i.e., 
+ will always map the same number of states to 
+\begin_inset Formula $\left\{ 0\right\} $
+\end_inset
+
+, i.e., 
 \begin_inset Formula 
-\begin{eqnarray}
- &  & \left|\bar{{\cal P}}_{\Psi_{0}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\nonumber \\
- & = & \left|\left\{ \ket{\Phi}\in\C^{d*}\middle|\bar{{\cal P}}_{U\ket{\Psi_{0}}}\left(U\ket{\Phi}\right)=\textrm{impossible}\right\} \right|\\
- & = & \left|\bar{{\cal P}}_{\ket{0}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\nonumber 
-\end{eqnarray}
+\begin{equation}
+\left|\bar{{\cal P}}_{\Psi_{0}}^{-1}\left(\left\{ \left\{ 0\right\} \right\} \right)\right|=\left|\left\{ \ket{\Phi}\in\C^{d*}\middle|\bar{{\cal P}}_{U\ket{\Psi_{0}}}\left(U\ket{\Phi}\right)=\left\{ 0\right\} \right\} \right|=\left|\bar{{\cal P}}_{\ket{0}}^{-1}\left(\left\{ \left\{ 0\right\} \right\} \right)\right|
+\end{equation}
 
 \end_inset
 
@@ -4147,7 +4280,11 @@ whenever
 \begin_inset Formula $\ket{\Phi}$
 \end_inset
 
- to impossible, 
+ to 
+\begin_inset Formula $\left\{ 0\right\} $
+\end_inset
+
+, 
 \begin_inset Formula $\hat{{\cal P}}_{1}$
 \end_inset
 
@@ -4155,11 +4292,19 @@ whenever
 \begin_inset Formula $\ket{\Phi}$
 \end_inset
 
- to impossible as well, but 
+ to 
+\begin_inset Formula $\left\{ 0\right\} $
+\end_inset
+
+ as well, but 
 \begin_inset Formula $\hat{{\cal P}}_{1}$
 \end_inset
 
- also maps other states to impossible.
+ also maps other states to 
+\begin_inset Formula $\left\{ 0\right\} $
+\end_inset
+
+.
  Therefore, we have
 \family roman
 \size normal
@@ -4169,10 +4314,10 @@ whenever
 
 \begin_inset Formula 
 \begin{eqnarray}
- &  & \left|\bar{{\cal P}}_{\ket{0}}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\nonumber \\
- & = & \left|\left\{ \ket{\Phi}\in\C^{d*}\middle|\ip{\Phi}{0}=0\right\} \right|\\
+ &  & \left|\bar{{\cal P}}_{\ket{0}}^{-1}\left(\left\{ \left\{ 0\right\} \right\} \right)\right|\nonumber \\
+ & \overset{\left(\ref{eq:modality-CQT-2}\right)}{=} & \left|\left\{ \ket{\Phi}\in\C^{d*}\middle|\ip{\Phi}{0}=0\right\} \right|\\
  & < & \left|\left\{ \ket{\Phi}\in\C^{d*}\middle|\ip{\Phi}{0}=0\textrm{ or }\ket{\Phi}=\lambda\ket{\ket{\Phi_{0}}}\textrm{ for some }\lambda\in\C^{*}\right\} \right|\nonumber \\
- & = & \left|\hat{{\cal P}}_{1}^{-1}\left(\left\{ \textrm{impossible}\right\} \right)\right|\textrm{ .}\nonumber 
+ & \overset{\left(\ref{eq:hatcalP1}\right)}{=} & \left|\hat{{\cal P}}_{1}^{-1}\left(\left\{ \left\{ 0\right\} \right\} \right)\right|\textrm{ .}\nonumber 
 \end{eqnarray}
 
 \end_inset
