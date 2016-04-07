@@ -1,0 +1,198 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\theoremstyle{remark}
+\newtheorem{example}{Example}
+\newcommand{\pmeas}{\ensuremath{\mathbb{P}}}
+
+\begin{document}
+\title{Probability}
+\author{}
+\date{\today}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Classical Conventional Probability Spaces}
+
+Textbook probability theory is defined using the notions of
+\emph{sample spaces}, \emph{events}, and \emph{measures}.
+
+%%%%%
+\subsection{Sample Space $\Omega$} 
+
+In this paper, we will only consider \textbf{finite} sample spaces. We
+therefore define a sample space $\Omega$ as a non-empty finite set.
+
+\begin{example}[A Classical Sample Space.]
+Consider an experiment that tosses three coins. A possible outcome of
+the experiment is $HHT$ which means that the fist and second coins
+landed with ``heads'' as the face-up side and that the third coin
+landed with ``tails'' as the face-up side. There are clearly a total
+of eight possible outcomes, and this collection constitutes the sample
+space:
+\[
+\Omega_C = \{ HHH, HHT, HTH, HTT, THH, THT, TTH, TTT \}
+\]
+\end{example}
+
+\begin{example}[A Quantum Sample Space.]
+Consider a quantum system composed of three electrons. By the
+postulates of quantum mechanics, an experiment designed to measure
+whether the spin of each electron along the $x$ axis is left ($L$) or
+right ($R$) can only result in one of eight outcomes:
+\[
+\Omega_H = \{ LLL, LLR, LRL, LRR, RLL, RLR, RRL, RRR \}
+\]
+\end{example}
+
+%%%%%
+\subsection{Events $\mathcal{F}$} 
+
+The space of events $\mathcal{F}$ associated with a sample space
+$\Omega$ is $2^\Omega$, the powerset of $\Omega$. In other words,
+every subset of $\Omega$ is a possible event.
+
+\begin{example}[Some classical events.] 
+The following are events associated with $\Omega_C$:
+\begin{itemize}
+\item $E_0$, exactly zero coins are $H$, is the set $\{ TTT \}$.
+\item $E_1$, exactly one coin is $H$, is the set $\{ HTT, THT, TTH \}$. 
+\item $E_2$, exactly two coins are $H$, is the set $\{ HHT, HTH, THH \}$.
+\item $E_3$, exactly three coins are $H$, is the set $\{ HHH \}$. 
+\item $E_{>0}$, at least one coin is $H$, is the set $\{ HHH, HHT, HTH, HTT, THH, THT, TTH \}$. 
+\end{itemize}
+As the examples illustrate, events are \emph{indirect} questions built from elementary elements of the sample space using logical connectives. Also
+note that some events may be disjoint and that some events may be
+expressed as combinations of other events. For example, we have
+$E_{>0} = E_1 \cup E_2 \cup E_3$ and each of these four events is
+disjoint from event $E_0$.
+\end{example}
+
+\begin{example}[Some quantum events.] 
+The following are events associated with $\Omega_H$:
+\begin{itemize}
+\item $F_0$, exactly zero electrons are spinning $L$, is the set $\{ RRR \}$.
+\item $F_1$, exactly one electron is spinning $L$, is the set $\{ LRR, RLR, RRL \}$. 
+\item $F_2$, exactly two electrons are spinning $L$, is the set $\{ LLR, LRL, RLL \}$.
+\item $F_3$, exactly three electrons are spinning $L$, is the set $\{ LLL \}$. 
+\item $F_{>0}$, at least one electron is spinning $L$, is the set $\{ LLL, LLR, LRL, LRR, RLL, RLR, RRL \}$. 
+\end{itemize}
+As the examples illustrate, quantum events are, at first glance,
+similar to classical events. There are however some subtle
+differences that we point out in the next section.
+\end{example}
+
+%%%%%
+\subsection{Measures $\mathbb{P}$} 
+
+The last ingredient of a probability space is a probability measure
+$\mathbb{P} : \mathcal{F} \rightarrow [0,1]$ that assigns to each
+event a real number in the closed interval $[0,1]$ subject to the
+following conditions:
+\begin{itemize}
+\item $\mathbb{P}(\Omega) = 1$, and 
+\item For any collection of pairwise disjoint events $A_i$, we have 
+$\mathbb{P}(\bigcup_i A_i) = \Sigma_i ~\mathbb{P}(A_i)$.
+\end{itemize}
+
+\begin{example}[Classical probability measure]
+There are $2^8$ events associated with $\Omega_C$. A possible probability measure for
+these events is:
+\[\begin{array}{c}
+\mathbb{P}(E) = \left\{ \begin{array}{ll} 
+  1 & \mbox{if}~E = \Omega \\
+  0 & \mbox{otherwise} 
+  \end{array}\right.
+\end{array}\]
+A more interesting measure is defined recursively as follows:
+\renewcommand\arraystretch{1.4}
+\[\begin{array}{rcl}
+\mathbb{P}(\emptyset) &=& 0 \\
+\mathbb{P}(\{ HHH \} \cup E) &=& \frac{1}{5} + \mathbb{P}(E) \\
+\mathbb{P}(\{ HHT \} \cup E) &=& \mathbb{P}(E) \\
+\mathbb{P}(\{ HTH \} \cup E) &=& \frac{3}{10} + \mathbb{P}(E) \\
+\mathbb{P}(\{ HTT \} \cup E) &=& \mathbb{P}(E) \\
+\mathbb{P}(\{ THH \} \cup E) &=& \frac{1}{5} + \mathbb{P}(E) \\
+\mathbb{P}(\{ THT \} \cup E) &=& \mathbb{P}(E) \\
+\mathbb{P}(\{ TTH \} \cup E) &=& \frac{3}{10} + \mathbb{P}(E) \\
+\mathbb{P}(\{ TTT \} \cup E) &=& \mathbb{P}(E) 
+\end{array}\]
+Because this is a \emph{classical} situation, the probability
+assignments can be understood \emph{locally} and
+\emph{non-contextually}. In other words, we can reason about each coin
+separately and perform experiments on it ignoring the rest of the
+context. If we were to perform such experiments we may find that for
+the first coin, the probability of either outcome
+$H$ or $T$ is $\frac{1}{2}$; for coin two, the probabilities are
+skewed a little with the probability of outcome $H$ being
+$\frac{2}{5}$ and the probability of outcome $T$ being $\frac{3}{5}$; and that
+coin 3 is a fake double-headed coin where the probability of
+outcome $H$ is 1 and the probability of outcome $T$ is 0. The reader
+may check that these local observations are consistent with the
+probability measure above. 
+\end{example}
+
+\begin{example}[Quantum probability measure]
+Like in the classical case, there are $2^8$ events. But as Mermin
+explains in a simple example (Quantum Mysteries Revisited), here is a
+possible probability measure: 
+\[\begin{array}{rcl}
+\mathbb{P}(S) &=& \left.\{ \begin{array}{ll}
+  1/8 & \mbox{if there is an odd number of $L$} \\
+  \ldots
+  \end{array}\right.
+\end{array}\]
+Interestingly and paradoxically, it is \emph{not} possible to analyze
+each electron independently and assign a consistent probability to
+each one locally and non-contextually. 
+\end{example}
+
+%%%%
+\subsection{Finite Precision of Measurements}
+
+In a laboratory setting or a computational setting, there are neither
+uncountable entities nor uncomputable entities. We are thus looking at
+alternative probability spaces which do not depend on the real numbers
+and revisit the mysteries of quantum mechanics in that
+setting. In other words, is it possible that at least part of the quantum mysteries related to probability and measurement are due to the reliance on uncomputable probability values? 
+
+Following previous work on probability, we will replace the
+closed interval $[0,1]$ by the \emph{finite set} $S = \{
+\textbf{possible}, \textbf{impossible} \}$ and adapt the definition of
+probability measure as follows.
+
+A set-valued probability measure $\mathbb{P} : \mathcal{F} \rightarrow
+S$ assigns to each event either the tag \textbf{possible} or the tag
+\textbf{impossible} subject to the following conditions:
+\begin{itemize}
+\item $\mathbb{P}(\Omega) = \textbf{possible}$, and 
+\item For any collection of pairwise disjoint events $A_i$, we have 
+$\mathbb{P}(\bigcup_i A_i) = \textbf{possible}$ if any event $A_i$ is
+\textbf{possible} and \textbf{impossible} otherwise. 
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conventional Quantum Mechanics}
+
+Attempting to modify the probability measure to be set-valued, while keeping the rest of the mathematical framework of quantum mechanics intact leads to a contradiction. More precisely, it is not possible to maintain 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
+Probability space (restricted to finite sample spaces)
+
+* Sample space Ω (arbitrary finite non-empty set)
+* Set of events F: pick 2^Ω
+* Probability measure (real-valued): P : F → [0,1] such that:
+  * For any collection of pairwise disjoint Aᵢ ∈ F, we have P ( ∪ᵢ Aᵢ) = ∑ᵢ P(Aᵢ) 
+  * P(Ω) = 1
+
+
+Set-value probability measures. Change the last bullet to:
+* P : F → 2^(ℝⁿ) such that: ...
+
+
