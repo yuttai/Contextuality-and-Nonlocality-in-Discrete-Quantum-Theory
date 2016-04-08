@@ -7,6 +7,10 @@
 \newtheorem{example}{Example}
 \newcommand{\pmeas}{\ensuremath{\mathbb{P}}}
 
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\yutsung}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{purple}{Yu-Tsung says: #1}\end{minipage}}}
+
 \begin{document}
 \title{Probability}
 \author{}
@@ -106,6 +110,12 @@ these events is:
   0 & \mbox{otherwise} 
   \end{array}\right.
 \end{array}\]
+\yutsung{ Actually, the above $\mathbb{P}$ is not a probability
+because 
+\[
+\mathbb{P}\left(\Omega\right)=1\ne0+0=\mathbb{P}\left(\left\{ HHH\right\} \right)+\mathbb{P}\left(\Omega\backslash\left\{ HHH\right\} \right)
+\]
+} \\
 A more interesting measure is defined recursively as follows:
 \renewcommand\arraystretch{1.4}
 \[\begin{array}{rcl}
@@ -119,6 +129,21 @@ A more interesting measure is defined recursively as follows:
 \mathbb{P}(\{ TTH \} \cup E) &=& \frac{3}{10} + \mathbb{P}(E) \\
 \mathbb{P}(\{ TTT \} \cup E) &=& \mathbb{P}(E) 
 \end{array}\]
+\yutsung{It seems more clear to write like this: 
+\[
+\begin{array}{rcl}
+\mathbb{P}(\{HHH\}) & = & \frac{1}{5}\\
+\mathbb{P}(\{HHT\}) & = & 0\\
+\mathbb{P}(\{HTH\}) & = & \frac{3}{10}\\
+\mathbb{P}(\{HTT\}) & = & 0\\
+\mathbb{P}(\{THH\}) & = & \frac{1}{5}\\
+\mathbb{P}(\{THT\}) & = & 0\\
+\mathbb{P}(\{TTH\}) & = & \frac{3}{10}\\
+\mathbb{P}(\{TTT\}) & = & 0\\
+\mathbb{P}(E) & = & \sum_{\omega\in E}\mathbb{P}(\left\{ \omega\right\} )
+\end{array}
+\]
+} \\
 Because this is a \emph{classical} situation, the probability
 assignments can be understood \emph{locally} and
 \emph{non-contextually}. In other words, we can reason about each coin
