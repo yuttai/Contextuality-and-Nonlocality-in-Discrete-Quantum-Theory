@@ -1,11 +1,17 @@
 \documentclass{article}
 \usepackage{fullpage}
+\usepackage{bbm}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{multicol}
 
 \theoremstyle{remark}
 \newtheorem{example}{Example}
-\newcommand{\pmeas}{\ensuremath{\mathbb{P}}}
+\newcommand{\events}{\ensuremath{\mathcal{F}}}
+\newcommand{\qevents}{\ensuremath{\mathcal{A}}}
+\newcommand{\pmeas}{\ensuremath{\mu}}
+\newcommand{\Hilb}{\mathcal{H}}
+\newcommand{\pr}[2]{\langle #1, #2 \rangle}
 
 \usepackage{color}
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -18,11 +24,122 @@
 \maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Classical Conventional Probability Spaces}
+\section{Probability Spaces} 
 
-Textbook probability theory is defined using the notions of
-\emph{sample spaces}, \emph{events}, and
-\emph{measures}~\cite{GrahamKnuthPatashnik1994,inun.425605319950101,rohatgi2011introduction}.
+%%%%%
+\subsection{Classical Probability Spaces}
+ 
+Textbook probability
+theory~\cite{inun.425605319950101,GrahamKnuthPatashnik1994,rohatgi2011introduction}
+is defined using the notions of a \emph{sample space} $\Omega$, a
+space of \emph{events}~$\events$, and a \emph{probability
+  measure}~$\pmeas$. In this paper, we will only consider
+\emph{finite} sample spaces: we therefore define a sample space
+$\Omega$ as an arbitrary non-empty finite set and the space of events
+$\events$ as, $2^\Omega$, the powerset of $\Omega$. A \emph{probability
+measure} is a function $\pmeas : \events \rightarrow [0,1]$ such that:
+\begin{itemize}
+\item $\pmeas(\Omega) = 1$, and 
+\item for a collection of pairwise disjoint events $E_i$, we have
+  $\pmeas(\bigcup E_i) = \sum \pmeas(E_i)$. 
+\end{itemize}
+
+\begin{example}[Two coin experiment] Consider an experiment that
+  tosses two coins. We have four possible outcomes that constitute the
+  sample space $\Omega = \{ HH, HT, TH, TT \}$. The event that the
+  first coin is ``heads'' is $\{ HH, HT \}$; the event that the two
+  coins land on opposite sides is $\{ HT, TH \}$; the event that at
+  least one coin is tails is $\{ HT, TH, TT\}$. Depending on the
+  assumptions regarding the coins, we can define several probability
+  measures. Here is a possible one:
+\[\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{rcl}
+\pmeas(\emptyset) &=& 0 \\
+\pmeas(\{ HH \}) &=& 1/3 \\
+\pmeas(\{ HT \}) &=& 0 \\
+\pmeas(\{ TH \}) &=& 2/3 \\
+\pmeas(\{ TT \}) &=& 0 \\
+\pmeas(\{  HH, HT \}) &=& 1/3 \\
+\pmeas(\{  HH, TH \}) &=& 1 \\
+\pmeas(\{  HH , TT \}) &=& 1/3 
+\end{array} & \begin{array}{rcl}
+\pmeas(\{  HT, TH \}) &=& 2/3 \\
+\pmeas(\{  HT , TT \}) &=& 0 \\
+\pmeas(\{  TH , TT \}) &=& 2/3 \\
+\pmeas(\{  HH, HT, TH \}) &=& 1 \\
+\pmeas(\{  HH, HT, TT \}) &=& 1/3 \\
+\pmeas(\{  HH, TH, TT \}) &=& 1 \\
+\pmeas(\{  HT, TH, TT \}) &=& 2/3 \\
+\pmeas(\{  HH, HT, TH, TT \}) &=& 1
+\end{array}
+\end{array}\]
+\end{example}
+
+%%%%%
+\subsection{Quantum Probability Spaces}
+
+A classical model decides the occurrence or non-occurence of all
+events simultaneously which is inconsistent with quantum
+mechanics. Indeed, in the quantum world, there are (non-commuting)
+events which cannot happen simultaneously. To accommodate this
+situation, we completely abandon the sample space $\Omega$ and define
+and reason directly about events. Thus a quantum probability space
+will consist of just two components: a set of events $\qevents$ and a
+probability measure $\phi : \qevents \rightarrow [0,1]$. These
+components are defined as follows.
+
+We first assume an ambient Hilbert space $\Hilb$ and define the set of
+events $\qevents$ as \emph{projections} on $\Hilb$. Similarly to the
+classical case, a probability measure is a function
+$\phi : \qevents \rightarrow [0,1]$ satisfying:
+\begin{itemize}
+\item $\phi(\mathbbm{1}) = 1$, and
+\item for all $A \in \qevents$, we have $\phi(A^*A) \geq 0$.
+\end{itemize}
+
+As an example, let $P_1, P_2, \ldots, P_k$ be mutually orthogonal
+projections on $\Hilb$ with sum $\mathbbm{1}$ and define the event
+space $\qevents$ to be the linear span of these operators:
+\[
+\qevents = \{ \sum_{j=1}^k \lambda_jP_j ~|~ \lambda_i, \ldots, \lambda_k \in \mathbb{C} \}. 
+\]
+Each state $\psi$ of the Hilbert space induces a probability measure
+$\phi_\psi : \qevents \rightarrow [0,1]$ defined as follows:
+\[
+\phi_\psi(A) = \langle \psi ~|~ A\psi \rangle
+\]
+
+%%%%%
+\subsection{Plan}
+
+We see that a quantum probability space embeds several infinite
+precision assumptions, both in the Hilbert space itself and in the
+range of the probability measure. We will now study the consequences
+of restricting each occurrence of $\mathbb{R}$ or $\mathbb{C}$ to some
+finite structure. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{plain}
+\bibliography{discreteGBKS}
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+Probability space (restricted to finite sample spaces)
+
+* Sample space Ω (arbitrary finite non-empty set)
+* Set of events F: pick 2^Ω
+* Probability measure (real-valued): P : F → [0,1] such that:
+  * For any collection of pairwise disjoint Aᵢ ∈ F, we have P ( ∪ᵢ Aᵢ) = ∑ᵢ P(Aᵢ) 
+  * P(Ω) = 1
+
+
+Set-value probability measures. Change the last bullet to:
+* P : F → 2^(ℝⁿ) such that: ...
 
 %%%%%
 \subsection{Sample Space $\Omega$} 
@@ -320,6 +437,84 @@ $\mathbb{P}(\bigcup_i A_i) = \textbf{possible}$ if any event $A_i$ is
 \textbf{possible} and \textbf{impossible} otherwise. 
 \end{itemize}
 
+We begin by reviewing the conventional presentation of classical
+probability spaces and then give an alternative formulation that is
+``quantum-like'' but still classical. We conclude this section with a
+definition of quantum probability spaces given as a modest
+generalization of the alternative classical definition. 
+
+%%%%%
+\subsection{Conventional Classical Probability Spaces}
+
+Textbook probability
+theory~\cite{inun.425605319950101,GrahamKnuthPatashnik1994,rohatgi2011introduction}
+is defined using the notions of a \emph{sample space} $\Omega$, a
+space of \emph{events}~$\events$, and a \emph{probability
+  measure}~$\pmeas$. In this paper, we will only consider
+\emph{finite} sample spaces: we therefore define a sample space
+$\Omega$ as an arbitrary non-empty finite set and the space of events
+$\events$ as, $2^\Omega$, the powerset of $\Omega$. A \emph{probability
+measure} is a function $\pmeas : \events \rightarrow [0,1]$ such that:
+\begin{itemize}
+\item $\pmeas(\Omega) = 1$, and 
+\item for a collection of pairwise disjoint events $E_i$, we have
+  $\pmeas(\bigcup E_i) = \sum \pmeas(E_i)$. 
+\end{itemize}
+
+\begin{example}[Two coin experiment] Consider an experiment that
+  tosses two coins. We have four possible outcomes that constitute the
+  sample space $\Omega = \{ HH, HT, TH, TT \}$. The event that the
+  first coin is ``heads'' is $\{ HH, HT \}$; the event that the two
+  coins land on opposite sides is $\{ HT, TH \}$; the event that at
+  least one coin is tails is $\{ HT, TH, TT\}$. Depending on the
+  assumptions regarding the coins, we can define several probability
+  measures. Here is a possible one:
+\[\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{rcl}
+\pmeas(\emptyset) &=& 0 \\
+\pmeas(\{ HH \}) &=& 1/3 \\
+\pmeas(\{ HT \}) &=& 0 \\
+\pmeas(\{ TH \}) &=& 2/3 \\
+\pmeas(\{ TT \}) &=& 0 \\
+\pmeas(\{  HH, HT \}) &=& 1/3 \\
+\pmeas(\{  HH, TH \}) &=& 1 \\
+\pmeas(\{  HH , TT \}) &=& 1/3 
+\end{array} & \begin{array}{rcl}
+\pmeas(\{  HT, TH \}) &=& 2/3 \\
+\pmeas(\{  HT , TT \}) &=& 0 \\
+\pmeas(\{  TH , TT \}) &=& 2/3 \\
+\pmeas(\{  HH, HT, TH \}) &=& 1 \\
+\pmeas(\{  HH, HT, TT \}) &=& 1/3 \\
+\pmeas(\{  HH, TH, TT \}) &=& 1 \\
+\pmeas(\{  HT, TH, TT \}) &=& 2/3 \\
+\pmeas(\{  HH, HT, TH, TT \}) &=& 1
+\end{array}
+\end{array}\]
+\end{example}
+
+%%%%%
+\subsection{Alternative Definition of Classical Probability Spaces}
+
+In the conventional presentation, we have viewed the space of events
+$2^\Omega$ are the powerset of $\Omega$. We can equivalently view
+$2^\Omega$ as the space of functions from $\Omega$ to the set
+$2 = \{0,1\}$. For example, the event $\{HT,TH\}$ is the function $e$
+such that:
+\[
+e (HH) = 0, \quad e (HT) = 1, \quad e (TH) = 1, \quad e (TT) = 0 
+\]
+We will in fact do a sweeping generalization and view events as
+functions from $\Omega$ to $\mathbb{C}$, the set of complex
+numbers. This accommodates the previous events such as $e$ and allows
+many more events such as event $e'$ below:
+\[
+e' (HH) = \sqrt{2} + i \sqrt{3}, \quad e' (HT) = 1, \quad e' (TH) = \pi, \quad e' (TT) = 0 
+\]
+The events are not going to be completely arbitrary functions,
+however. We will insist on some conditions:...
+
+This generalization
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conventional Quantum Mechanics}
 
@@ -331,27 +526,3 @@ Attempting to modify the probability measure to be set-valued, while keeping the
 \section{Discrete Quantum Theory}
 
 The next question to ask is therefore whether the infinite precision of probability amplitudes is itself justified. If all measurements are finite and all probabilities are computable, then it is plausible that the internal mathematical representation of quantum states should also be based on countable computable entities. 
-
-\ldots
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\bibliographystyle{plain}
-\bibliography{discreteGBKS}
-
-\end{document}
-
-
-Probability space (restricted to finite sample spaces)
-
-* Sample space Ω (arbitrary finite non-empty set)
-* Set of events F: pick 2^Ω
-* Probability measure (real-valued): P : F → [0,1] such that:
-  * For any collection of pairwise disjoint Aᵢ ∈ F, we have P ( ∪ᵢ Aᵢ) = ∑ᵢ P(Aᵢ) 
-  * P(Ω) = 1
-
-
-Set-value probability measures. Change the last bullet to:
-* P : F → 2^(ℝⁿ) such that: ...
-
-
