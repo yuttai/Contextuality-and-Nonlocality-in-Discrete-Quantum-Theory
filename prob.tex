@@ -12,6 +12,10 @@
 \newcommand{\pmeas}{\ensuremath{\mu}}
 \newcommand{\Hilb}{\mathcal{H}}
 \newcommand{\pr}[2]{\langle #1, #2 \rangle}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle#1|}
+\newcommand{\ip}[2]{\langle #1 | #2 \rangle}
+\newcommand{\proj}[1]{|#1 \rangle\langle #1 |}
 
 \usepackage{color}
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -103,11 +107,20 @@ space $\qevents$ to be the linear span of these operators:
 \[
 \qevents = \{ \sum_{j=1}^k \lambda_jP_j ~|~ \lambda_i, \ldots, \lambda_k \in \mathbb{C} \}. 
 \]
-Each state $\psi$ of the Hilbert space induces a probability measure
-$\phi_\psi : \qevents \rightarrow [0,1]$ defined as follows:
+Each state $\ket{\psi}$ of the Hilbert space induces a probability
+measure $\phi_\psi : \qevents \rightarrow [0,1]$ defined as follows:
 \[
-\phi_\psi(A) = \langle \psi ~|~ A\psi \rangle
+\phi_\psi(A) = \ip{\psi}{A\ket{\psi}}
 \]
+
+Concrete example: consider the two qubit Hilbert space with
+computational bases $\ket{0}$ and $\ket{1}$ and consider
+the following families of projections:
+\begin{itemize}
+\item Family I: $\proj{0}$, $\proj{1}$
+\item Family II: $\proj{+}$, $\proj{-}$
+\end{itemize}
+and consider the two states \ldots
 
 %%%%%
 \subsection{Plan}
