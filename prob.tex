@@ -1,13 +1,14 @@
 \documentclass{article}
 \usepackage{fullpage}
 \usepackage{bbm}
+\usepackage{bbold}
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{multicol}
 
 \theoremstyle{remark}
 \newtheorem{example}{Example}
-\newcommand{\events}{\ensuremath{\mathcal{F}}}
+\newcommand{\events}{\ensuremath{\mathcal{A}}}
 \newcommand{\qevents}{\ensuremath{\mathcal{A}}}
 \newcommand{\pmeas}{\ensuremath{\mu}}
 \newcommand{\Hilb}{\mathcal{H}}
@@ -16,6 +17,8 @@
 \newcommand{\bra}[1]{\langle#1|}
 \newcommand{\ip}[2]{\langle #1 | #2 \rangle}
 \newcommand{\proj}[1]{|#1 \rangle\langle #1 |}
+\newcommand{\ps}{\texttt{+}}
+\newcommand{\ms}{\texttt{-}}
 
 \usepackage{color}
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -82,112 +85,148 @@ measure} is a function $\pmeas : \events \rightarrow [0,1]$ such that:
 %%%%%
 \subsection{Quantum Probability Spaces}
 
-A classical model decides the occurrence or non-occurence of all
-events simultaneously which is inconsistent with quantum
-mechanics. Indeed, in the quantum world, there are (non-commuting)
-events which cannot happen simultaneously. To accommodate this
-situation, we completely abandon the sample space $\Omega$ and define
-and reason directly about events. Thus a quantum probability space
-will consist of just two components: a set of events $\qevents$ and a
-probability measure $\phi : \qevents \rightarrow [0,1]$. These
-components are defined as follows~\cite{Maassen2010,Swart2013}.
+The mathematical framework above assumes that one has complete
+knowledge of the events and their relationships. But even in many
+classical situations, the structure of the event space is only
+partially known and the precise dependence of two events on each other
+cannot be determined with certainty. In the quantum case, this partial
+knowledge is compounded by the fact that not all quantum events can be
+observed simultaneously.  Indeed, in the quantum world, there are
+non-commuting events which cannot even happen simultaneously. To
+accommodate these more complex situations, we completely abandon the
+sample space~$\Omega$ and define and reason directly about
+events. Thus a quantum probability space will consist of just two
+components: a set of events $\qevents$ and a probability measure
+$\mu : \qevents \rightarrow [0,1]$. We give an example before giving
+the formal definition.
 
-We first assume an ambient Hilbert space $\Hilb$ and define the set of
-events $\qevents$ as \emph{projections} on $\Hilb$. Similarly to the
-classical case, a probability measure is a function
-$\phi : \qevents \rightarrow [0,1]$ satisfying:
-\begin{itemize}
-\item $\phi(\mathbbm{1}) = 1$, and
-\item for all $A \in \qevents$, we have $\phi(A^*A) \geq 0$.
-\end{itemize}
-\yutsung{If we follow \cite{Maassen2010,Swart2013}, then we also
-need 
-\begin{itemize}
-\item $\phi$ can be extended to a linear functional~$\phi:alg\left(\qevents\right)\rightarrow\mathbb{C}$,
-where $alg\left(\qevents\right)$ is the minimal $*$-algebra generated
-by $\qevents$.
-\end{itemize}
-Also, 
-\begin{itemize}
-\item for all $A\in\qevents$, we have $\phi(A^{*}A)\geq0$. 
-\end{itemize}
-should be 
-\begin{itemize}
-\item for all $A\in alg\left(\qevents\right)$, we have $\phi(A^{*}A)\geq0$. 
-\end{itemize}
-because we have $\phi(A^{*}A)=\phi(A^{2})=\phi(A)$ if $A$ is a projection.}\\
-As an example, let $P_1, P_2, \ldots, P_k$ be mutually orthogonal
-projections on $\Hilb$ with sum $\mathbbm{1}$ and define the event
-space $\qevents$ to be the linear span of these operators:
+Consider the two-qubit Hilbert space with computational basis
+$\ket{0}$ and $\ket{1}$ and states:
+\[
+\ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}, \qquad\ket{\ms}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}\,.
+\]
+A possible space of events is the set
+$\{ \mathbb{0}, \proj{0}, \proj{1}, \mathbb{1}\}$ consisting of the
+projection operators $\proj{0}$ and $\proj{1}$ as well as the empty
+projection $\mathbb{0}$ and the unit projection
+$\mathbb{1} = \proj{0}+\proj{1}$. Each event is interpreted as a
+possible post-measurement of a quantum system as follows: given some
+arbitrary current quantum $\ket{\psi}$ to be measured, the event
+$\proj{0}$ states that the post-measurement state will be $\ket{0}$;
+the event $\proj{1}$ states that the post-measurement state will be
+$\ket{1}$; the event $\mathbb{1}$ states that the post-measurement
+state will be a linear combination of $\ket{0}$ and $\ket{1}$; and the
+event $\mathbb{0}$ states that the post-measurement state will be the
+empty state. Clearly irrespective of the current state $\ket{\psi}$
+and irrespective of the particular experiment, the probability of
+event $\mathbb{0}$ will always be 0 (it is an impossible event) and
+the probability of event $\mathbb{1}$ will always be 1 (it is a
+certain event). The probabilities attached to other events will depend
+on the particular state in question. If the state is $\ket{0}$, the
+probability of event $\proj{0}$ is 1 and the probability of event
+$\proj{1}$ is 0. If the state is $\ket{\ps}$, the probability of both
+events $\proj{0}$ and $\proj{1}$ will be $\frac{1}{2}$. The same
+Hilbert space setup admits other possible spaces of events. For
+example, another space of events could be
+$\{ \mathbb{0}, \proj{\ps}, \proj{\ms}, \mathbb{1}\}$. Using that
+space of events, the state $\ket{0}$ maps both events $\proj{\ps}$ and
+$\proj{\ms}$ to the probability $\frac{1}{2}$.
+
+% \begin{itemize}
+% \item Family I: $\proj{0}$, $\proj{1}$ 
+% \item Family II: $\proj{\ps}$, $\proj{\ms}$
+% \end{itemize}
+% In family I, all operators can be expressed as $\left\{ \lambda_{1}\proj{0}+\lambda_{2}\proj{1}~\middle|~\lambda_{1},\lambda_{2}\in\mathbb{C}\right\} $.
+% In order to identify projectors among them, we need to solve the following
+% two equations.
+% \begin{eqnarray*}
+% \lambda_{1}\proj{0}+\lambda_{2}\proj{1} & = & \left(\lambda_{1}\proj{0}+\lambda_{2}\proj{1}\right)^{*}=\lambda_{1}^{*}\proj{0}+\lambda_{2}^{*}\proj{1}\\
+% \lambda_{1}\proj{0}+\lambda_{2}\proj{1} & = & \left(\lambda_{1}\proj{0}+\lambda_{2}\proj{1}\right)^{2}=\lambda_{1}^{2}\proj{0}+\lambda_{2}^{2}\proj{1}
+% \end{eqnarray*}
+% Therefore, we actually have $\lambda_{1},\lambda_{2}\in\left\{ 0,1\right\} $,
+% and there are only four projections: $0$, $\proj{0}$, $\proj{1}$,
+% and $\mathbb{1}=\proj{0}+\proj{1}$. Then, $\mu_{\ket{\ps}}$ and
+% $\mu_{\ket{\ms}}$ of each projections are 
+% \[
+% \begin{array}{c@{\qquad\qquad}c}
+% \begin{array}{rcl}
+% \mu_{\ket{\ps}}(0) & = & 0\\
+% \mu_{\ket{\ps}}(\proj{0}) & = & 1/2\\
+% \mu_{\ket{\ps}}(\proj{1}) & = & 1/2\\
+% \mu_{\ket{\ps}}(\mathbb{1}) & = & 1
+% \end{array} & \begin{array}{rcl}
+% \mu_{\ket{\ms}}(0) & = & 0\\
+% \mu_{\ket{\ms}}(\proj{0}) & = & 1/2\\
+% \mu_{\ket{\ms}}(\proj{1}) & = & 1/2\\
+% \mu_{\ket{\ms}}(\mathbb{1}) & = & 1
+% \end{array}\end{array}
+% \]
+% Similarly, $\mu_{\ket{\ps}}$ and $\mu_{\ket{\ms}}$ gives two probability
+% for family II as well.
+% \[
+% \begin{array}{c@{\qquad\qquad}c}
+% \begin{array}{rcl}
+% \mu_{\ket{\ps}}(0) & = & 0\\
+% \mu_{\ket{\ps}}(\proj{+}) & = & 1\\
+% \mu_{\ket{\ps}}(\proj{\ms}) & = & 0\\
+% \mu_{\ket{\ps}}(\mathbb{1}) & = & 1
+% \end{array} & \begin{array}{rcl}
+% \mu_{\ket{\ms}}(0) & = & 0\\
+% \mu_{\ket{\ms}}(\proj{\ps}) & = & 0\\
+% \mu_{\ket{\ms}}(\proj{\ms}) & = & 1\\
+% \mu_{\ket{\ms}}(\mathbb{1}) & = & 1
+% \end{array}\end{array}
+% \]
+
+We now formalize a \emph{quantum probability space} as
+follows~\cite{Maassen2010,Swart2013}. We first assume an ambient
+Hilbert space $\Hilb$ and define the set of events $\qevents$ as all
+linear combinations of \emph{projections} on $\Hilb$. Specifically,
+let $P_1, P_2, \ldots, P_k$ be mutually orthogonal projections on
+$\Hilb$ with sum $\mathbb{1}$ and define the event space $\qevents$ to
+be the linear span of these operators:
 \[
 \qevents=\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{1},\ldots,\lambda_{k}\in\mathbb{C}\right\} .
 \]
-\yutsung{$\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{1},\ldots,\lambda_{k}\in\mathbb{C}\right\} $
-is the minimal $*$-algebra generated by $P_{1},P_{2},\ldots,P_{k}$,
-but it contains all possible observables $P_{1},P_{2},\ldots,P_{k}$
-can generate (and something more) not just projections. For example,
-$2\mathbbm{1}\in\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{1},\ldots,\lambda_{k}\in\mathbb{C}\right\} $.}\\
-Each state $\ket{\psi}$ of the Hilbert space induces a probability
-measure $\phi_\psi : \qevents \rightarrow [0,1]$ defined as follows:
+Each quantum state $\ket{\psi}$ induces a probability measure
+$\mu_\psi : \qevents \rightarrow [0,1]$ on the space of events
+defined as follows:
 \[
-\phi_\psi(A) = \ip{\psi}{A\psi}
+\mu_\psi(A) = \ip{\psi}{A\psi}
 \]
-\yutsung{So $\phi_{\psi}$ maps the projections generated by $P_{1},P_{2},\ldots,P_{k}$
-to $[0,1]$, and maps $\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{1},\ldots,\lambda_{k}\in\mathbb{C}\right\} $
-to $\mathbb{C}$...}\\
-
-
-Concrete example: consider the two qubit Hilbert space with computational
-bases $\ket{0}$ and $\ket{1}$. First, consider the two states 
-\[
-\ket{+}=\frac{\ket{0}+\ket{1}}{\sqrt{2}},\ket{-}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}
-\]
-and consider the following families of projections: 
+Similarlly to the classical case, this probability measure satisfies:
 \begin{itemize}
-\item Family I: $\proj{0}$, $\proj{1}$ 
-\item Family II: $\proj{+}$, $\proj{-}$
+\item $\mu(\mathbb{1}) = 1$, and
+\item for all $A \in \qevents$, we have $\mu(A^*A) \geq 0$.
 \end{itemize}
-In family I, all operators can be expressed as $\left\{ \lambda_{1}\proj{0}+\lambda_{2}\proj{1}~\middle|~\lambda_{1},\lambda_{2}\in\mathbb{C}\right\} $.
-In order to identify projectors among them, we need to solve the following
-two equations.
-\begin{eqnarray*}
-\lambda_{1}\proj{0}+\lambda_{2}\proj{1} & = & \left(\lambda_{1}\proj{0}+\lambda_{2}\proj{1}\right)^{*}=\lambda_{1}^{*}\proj{0}+\lambda_{2}^{*}\proj{1}\\
-\lambda_{1}\proj{0}+\lambda_{2}\proj{1} & = & \left(\lambda_{1}\proj{0}+\lambda_{2}\proj{1}\right)^{2}=\lambda_{1}^{2}\proj{0}+\lambda_{2}^{2}\proj{1}
-\end{eqnarray*}
-Therefore, we actually have $\lambda_{1},\lambda_{2}\in\left\{ 0,1\right\} $,
-and there are only four projections: $0$, $\proj{0}$, $\proj{1}$,
-and $\mathbbm{1}=\proj{0}+\proj{1}$. Then, $\phi_{\ket{+}}$ and
-$\phi_{\ket{-}}$ of each projections are 
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\phi_{\ket{+}}(0) & = & 0\\
-\phi_{\ket{+}}(\proj{0}) & = & 1/2\\
-\phi_{\ket{+}}(\proj{1}) & = & 1/2\\
-\phi_{\ket{+}}(\mathbbm{1}) & = & 1
-\end{array} & \begin{array}{rcl}
-\phi_{\ket{-}}(0) & = & 0\\
-\phi_{\ket{-}}(\proj{0}) & = & 1/2\\
-\phi_{\ket{-}}(\proj{1}) & = & 1/2\\
-\phi_{\ket{-}}(\mathbbm{1}) & = & 1
-\end{array}\end{array}
-\]
-Similarly, $\phi_{\ket{+}}$ and $\phi_{\ket{-}}$ gives two probability
-for family II as well.
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\phi_{\ket{+}}(0) & = & 0\\
-\phi_{\ket{+}}(\proj{+}) & = & 1\\
-\phi_{\ket{+}}(\proj{-}) & = & 0\\
-\phi_{\ket{+}}(\mathbbm{1}) & = & 1
-\end{array} & \begin{array}{rcl}
-\phi_{\ket{-}}(0) & = & 0\\
-\phi_{\ket{-}}(\proj{+}) & = & 0\\
-\phi_{\ket{-}}(\proj{-}) & = & 1\\
-\phi_{\ket{-}}(\mathbbm{1}) & = & 1
-\end{array}\end{array}
-\]
+
+% \yutsung{If we follow \cite{Maassen2010,Swart2013}, then we also
+% need 
+% \begin{itemize}
+% \item $\mu$ can be extended to a linear functional~$\mu:alg\left(\qevents\right)\rightarrow\mathbb{C}$,
+% where $alg\left(\qevents\right)$ is the minimal $*$-algebra generated
+% by $\qevents$.
+% \end{itemize}
+% Also, 
+% \begin{itemize}
+% \item for all $A\in\qevents$, we have $\mu(A^{*}A)\geq0$. 
+% \end{itemize}
+% should be 
+% \begin{itemize}
+% \item for all $A\in alg\left(\qevents\right)$, we have $\mu(A^{*}A)\geq0$. 
+% \end{itemize}
+% because we have $\mu(A^{*}A)=\mu(A^{2})=\mu(A)$ if $A$ is a projection.}\\
+
+% \yutsung{$\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{1},\ldots,\lambda_{k}\in\mathbb{C}\right\} $
+% is the minimal $*$-algebra generated by $P_{1},P_{2},\ldots,P_{k}$,
+% but it contains all possible observables $P_{1},P_{2},\ldots,P_{k}$
+% can generate (and something more) not just projections. For example,
+% $2\mathbb{1}\in\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{1},\ldots,\lambda_{k}\in\mathbb{C}\right\} $.}\\
+
+% \yutsung{So $\mu_{\psi}$ maps the projections generated by $P_{1},P_{2},\ldots,P_{k}$
+% to $[0,1]$, and maps $\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{1},\ldots,\lambda_{k}\in\mathbb{C}\right\} $
+% to $\mathbb{C}$...}\\
+
 
 %%%%%
 \subsection{Plan}
