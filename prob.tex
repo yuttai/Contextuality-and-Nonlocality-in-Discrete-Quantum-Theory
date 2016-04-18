@@ -20,6 +20,7 @@
 \usepackage{color}
 \usepackage[usenames,dvipsnames]{xcolor}
 \newcommand{\yutsung}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{purple}{Yu-Tsung says: #1}\end{minipage}}}
+\newcommand{\ffzd}[1]{{\mathbb{F}^{d\;*}_{#1}}}
 
 \begin{document}
 \title{Probability}
@@ -202,13 +203,37 @@ Several assumptions are woven in the definition of a quantum probability space:
 \end{itemize}
 
 In the remainder of the paper, we examine each of these assumptions
-and consider variations motivated by computation in a world with
-limited resources. In particular, we will consider a variant of the
-Hilbert space over finite fields; we will consider set-valued
-probability measures; we will consider ways other than the Born rule
-in which a state can induce a probability measure, and we will consider
-probability measures that may come from information beyond the quantum
-states.
+and consider variations motivated by computation in a world with limited
+resources. In particular, we will consider a variant of the Hilbert
+space over finite fields~$\mathbb{F}_{p^{2}}^{d}$. Instead of $\left[0,1\right]$,
+we will consider set-valued probability measures, in particular $\left\{ 0\right\} $,
+impossible, and $\left(0,\infty\right)$, possible. Surprisingly,
+some combinations of space and probability will result in no probability
+measure or an unique probability measure. In these cases, there is
+no need to discuss whether there is a Born rule, because we do not
+have enough probability to correspond to every state.
+
+If there may be more than one probability measure, we will discuss
+whether there is a Born rule to generate a probability measure from
+a state. When the space is $\mathbb{C}^{d}$, we will try to induced
+a Born rule from the conventional Born rule; when the space is $\mathbb{F}_{p^{2}}^{d}$,
+there is no natural way to induce a probability measure from a state,
+so we will set some conditions a Born~$\tilde{\pi}$ should have:
+\begin{itemize}
+\item Given a pure state $\ket{\Psi}\in\ffzd{p^{2}}$, a Born-rule~$\tilde{\pi}$
+should give a probability~$\tilde{\pi}_{\Psi}$;
+\item $\ip{\Psi}{\Phi}=0\Leftrightarrow\tilde{\pi}_{\Psi}\left(\ket{\Phi}\right)=\tilde{0}$,
+where $\tilde{0}$ is $0$ while considering $\left[0,1\right]$ and
+$\tilde{0}$ is impossible while considering $\left\{ \textrm{impossible},\textrm{possible}\right\} $.
+\item $\tilde{\pi}_{\Psi}\left(\ket{\Phi}\right)=\tilde{\pi}_{\mathbf{U}\ket{\Psi}}\left(\mathbf{U}\ket{\Phi}\right)\textrm{ ,}$where
+$\ket{\Psi},\ket{\Phi}\in\ffzd{p^{2}}$ and $\mathbf{U}$ is any unitary
+map, i.e., $\mathbf{U}^{\dagger}\mathbf{U}=\mathbbm{1}$. 
+\end{itemize}
+Notice that when the space is $\mathbb{C}^{d}$, every Born rule we
+consider will satisfy these three conditions.
+
+Finally, if there is a Born rule, we will see whether every probability
+measure is induced by a state, and establish Gleason's theorem.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
