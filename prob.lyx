@@ -11,7 +11,8 @@
 
 
 \theoremstyle{remark}
-\newtheorem{example}{}\newcommand{\events}{\ensuremath{\mathcal{F}}}
+\newtheorem{example}{Example}
+\newcommand{\events}{\ensuremath{\mathcal{F}}}
 \newcommand{\qevents}{\ensuremath{\mathcal{A}}}
 \newcommand{\pmeas}{\ensuremath{\mu}}
 \newcommand{\Hilb}{\mathcal{H}}
@@ -485,6 +486,49 @@ key "Maassen2010,Swart2013"
 \end_layout
 
 \begin_layout Standard
+Also, 
+\end_layout
+
+\begin_layout Itemize
+for all 
+\begin_inset Formula $A\in\qevents$
+\end_inset
+
+, we have 
+\begin_inset Formula $\phi(A^{*}A)\geq0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+should be 
+\end_layout
+
+\begin_layout Itemize
+for all 
+\begin_inset Formula $A\in alg\left(\qevents\right)$
+\end_inset
+
+, we have 
+\begin_inset Formula $\phi(A^{*}A)\geq0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+because we have 
+\begin_inset Formula $\phi(A^{*}A)=\phi(A^{2})=\phi(A)$
+\end_inset
+
+ if 
+\begin_inset Formula $A$
+\end_inset
+
+ is a projection.
 \begin_inset ERT
 status open
 
@@ -518,7 +562,7 @@ As an example, let
  to be the linear span of these operators: 
 \begin_inset Formula 
 \[
-\qevents=\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{i},\ldots,\lambda_{k}\in\mathbb{C}\right\} .
+\qevents=\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{1},\ldots,\lambda_{k}\in\mathbb{C}\right\} .
 \]
 
 \end_inset
@@ -537,7 +581,7 @@ yutsung{
 \end_inset
 
 
-\begin_inset Formula $\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{i},\ldots,\lambda_{k}\in\mathbb{C}\right\} $
+\begin_inset Formula $\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{1},\ldots,\lambda_{k}\in\mathbb{C}\right\} $
 \end_inset
 
  is the minimal 
@@ -554,7 +598,7 @@ yutsung{
 
  can generate (and something more) not just projections.
  For example, 
-\begin_inset Formula $2\mathbbm{1}\in\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{i},\ldots,\lambda_{k}\in\mathbb{C}\right\} $
+\begin_inset Formula $2\mathbbm{1}\in\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{1},\ldots,\lambda_{k}\in\mathbb{C}\right\} $
 \end_inset
 
 .
@@ -614,7 +658,7 @@ So
 \end_inset
 
 , and maps 
-\begin_inset Formula $\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{i},\ldots,\lambda_{k}\in\mathbb{C}\right\} $
+\begin_inset Formula $\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{1},\ldots,\lambda_{k}\in\mathbb{C}\right\} $
 \end_inset
 
  to 
@@ -649,7 +693,16 @@ Concrete example: consider the two qubit Hilbert space with computational
 \begin_inset Formula $\ket{1}$
 \end_inset
 
- and consider the following families of projections: 
+.
+ First, consider the two states 
+\begin_inset Formula 
+\[
+\ket{+}=\frac{\ket{0}+\ket{1}}{\sqrt{2}},\ket{-}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}
+\]
+
+\end_inset
+
+and consider the following families of projections: 
 \end_layout
 
 \begin_layout Itemize
@@ -673,11 +726,100 @@ Family II:
 \begin_inset Formula $\proj{-}$
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
-and consider the two states \SpecialChar \ldots{}
+In family I, all operators can be expressed as 
+\begin_inset Formula $\left\{ \lambda_{1}\proj{0}+\lambda_{2}\proj{1}~\middle|~\lambda_{1},\lambda_{2}\in\mathbb{C}\right\} $
+\end_inset
+
+.
+ In order to identify projectors among them, we need to solve the following
+ two equations.
+\begin_inset Formula 
+\begin{eqnarray*}
+\lambda_{1}\proj{0}+\lambda_{2}\proj{1} & = & \left(\lambda_{1}\proj{0}+\lambda_{2}\proj{1}\right)^{*}=\lambda_{1}^{*}\proj{0}+\lambda_{2}^{*}\proj{1}\\
+\lambda_{1}\proj{0}+\lambda_{2}\proj{1} & = & \left(\lambda_{1}\proj{0}+\lambda_{2}\proj{1}\right)^{2}=\lambda_{1}^{2}\proj{0}+\lambda_{2}^{2}\proj{1}
+\end{eqnarray*}
+
+\end_inset
+
+Therefore, we actually have 
+\begin_inset Formula $\lambda_{1},\lambda_{2}\in\left\{ 0,1\right\} $
+\end_inset
+
+, and there are only four projections: 
+\begin_inset Formula $0$
+\end_inset
+
+, 
+\begin_inset Formula $\proj{0}$
+\end_inset
+
+, 
+\begin_inset Formula $\proj{1}$
+\end_inset
+
+, and 
+\begin_inset Formula $\mathbbm{1}=\proj{0}+\proj{1}$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula $\phi_{\ket{+}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi_{\ket{-}}$
+\end_inset
+
+ of each projections are 
+\begin_inset Formula 
+\[
+\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{rcl}
+\phi_{\ket{+}}(0) & = & 0\\
+\phi_{\ket{+}}(\proj{0}) & = & 1/2\\
+\phi_{\ket{+}}(\proj{1}) & = & 1/2\\
+\phi_{\ket{+}}(\mathbbm{1}) & = & 1
+\end{array} & \begin{array}{rcl}
+\phi_{\ket{-}}(0) & = & 0\\
+\phi_{\ket{-}}(\proj{0}) & = & 1/2\\
+\phi_{\ket{-}}(\proj{1}) & = & 1/2\\
+\phi_{\ket{-}}(\mathbbm{1}) & = & 1
+\end{array}\end{array}
+\]
+
+\end_inset
+
+Similarly, 
+\begin_inset Formula $\phi_{\ket{+}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi_{\ket{-}}$
+\end_inset
+
+ gives two probability for family II as well.
+\begin_inset Formula 
+\[
+\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{rcl}
+\phi_{\ket{+}}(0) & = & 0\\
+\phi_{\ket{+}}(\proj{+}) & = & 1\\
+\phi_{\ket{+}}(\proj{-}) & = & 0\\
+\phi_{\ket{+}}(\mathbbm{1}) & = & 1
+\end{array} & \begin{array}{rcl}
+\phi_{\ket{-}}(0) & = & 0\\
+\phi_{\ket{-}}(\proj{+}) & = & 0\\
+\phi_{\ket{-}}(\proj{-}) & = & 1\\
+\phi_{\ket{-}}(\mathbbm{1}) & = & 1
+\end{array}\end{array}
+\]
+
+\end_inset
+
 
 \end_layout
 
