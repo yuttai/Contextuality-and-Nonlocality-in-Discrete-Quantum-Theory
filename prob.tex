@@ -26,6 +26,7 @@
 \usepackage{color}
 \usepackage[usenames,dvipsnames]{xcolor}
 \newcommand{\yutsung}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{purple}{Yu-Tsung says: #1}\end{minipage}}}
+\newcommand{\amr}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{green}{Amr says: #1}\end{minipage}}}
 \newcommand{\ffzd}[1]{{\mathbb{F}^{d\;*}_{#1}}}
 \def\C{{\mathbb{C}}}
 \newcommand{\ff}[1]{\mathbb{F}_{#1}}
@@ -111,41 +112,37 @@ $\ket{0}$ and $\ket{1}$ and states:
 \[
 \ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}, \qquad\ket{\ms}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}\,.
 \]
-A possible space of events is the set
-$\{ \mathbb{0}, \proj{0}, \proj{1}, \mathbb{1}\}$ consisting of the
-projection operators $\proj{0}$ and $\proj{1}$ as well as the empty
-projection $\mathbb{0}$ and the unit projection
-$\mathbb{1} = \proj{0}+\proj{1}$. Each event is interpreted as a
-possible post-measurement state of a quantum system as follows: given some
-arbitrary current quantum $\ket{\psi}$ to be measured, the event
-$\proj{0}$ states that the post-measurement state will be $\ket{0}$;
-the event $\proj{1}$ states that the post-measurement state will be
-$\ket{1}$; the event $\mathbb{1}$ states that the post-measurement
-state will be a linear combination of $\ket{0}$ and $\ket{1}$; and the
-event $\mathbb{0}$ states that the post-measurement state will be the
-empty state. \\
-\yutsung{How about replacing the above sentence by something like: 
-\begin{quote}
-Each event is interpreted as a possible post-measurement state of
-a quantum system if that event occurs as follows~\cite{Abramsky2013}:
-...... and the event $\mathbb{0}$ does not to state the post-measurement
-state because it never occurs. 
-\end{quote}
-}\\
-Clearly irrespective of the current state $\ket{\psi}$
-and irrespective of the particular experiment, the probability of
-event $\mathbb{0}$ will always be 0 (it is an impossible event) and
-the probability of event $\mathbb{1}$ will always be 1 (it is a
-certain event). The probabilities attached to other events will depend
-on the particular state in question. If the state is $\ket{0}$, the
-probability of event $\proj{0}$ is 1 and the probability of event
-$\proj{1}$ is 0. If the state is $\ket{\ps}$, the probability of both
-events $\proj{0}$ and $\proj{1}$ will be $\frac{1}{2}$. The same
-Hilbert space setup admits other possible spaces of events. For
-example, another space of events could be
-$\{ \mathbb{0}, \proj{\ps}, \proj{\ms}, \mathbb{1}\}$. Using that
-space of events, the state $\ket{0}$ maps both events $\proj{\ps}$ and
-$\proj{\ms}$ to the probability $\frac{1}{2}$.
+The set of events associated with this Hilbert space consists of all
+projections including the empty projection $\mathbb{0}$ and the unit
+projection $\mathbb{1} = \proj{0}+\proj{1}$:
+\[ 
+\{ \mathbb{0}, \proj{0}, \proj{1}, \proj{\ps}, \proj{\ms}, \ldots, \mathbb{1}\}
+\]
+Each event is interpreted as a possible post post-measurement state of
+a quantum system as follows: given some arbitrary current quantum
+$\ket{\psi}$ to be measured, the event $\proj{0}$ states that the
+post-measurement state will be $\ket{0}$; the event $\proj{1}$ states
+that the post-measurement state will be $\ket{1}$; the event
+$\proj{\ps}$ states that the post-measurement state will be
+$\ket{\ps}$; the event $\proj{\ms}$ states that the post-measurement
+state will be $\ket{\ms}$; the event $\mathbb{1}$ states that the
+post-measurement state will be a linear combination of $\ket{0}$ and
+$\ket{1}$; and the event $\mathbb{0}$ states that the post-measurement
+state will be the empty state.
+
+Clearly irrespective of the current state $\ket{\psi}$ and
+irrespective of the particular experiment, the probability of event
+$\mathbb{0}$ will always be 0 (it is an impossible event) and the
+probability of event $\mathbb{1}$ will always be 1 (it is a certain
+event). The probabilities attached to other events will depend on the
+particular state in question. If the state is $\ket{0}$, the
+probability of event $\proj{0}$ is 1; the probability of event
+$\proj{1}$ is 0; the probability of event $\proj{\ps}$ is
+$\frac{1}{2}$; and the probability of event $\proj{\ms}$ is
+$\frac{1}{2}$. If the state is $\ket{\ps}$, the probability of both
+events $\proj{0}$ and $\proj{1}$ will be $\frac{1}{2}$; the
+probability of event $\proj{\ps}$ is 1; and the probability of event
+$\proj{\ms}$ is 0. 
 
 % \begin{itemize}
 % \item Family I: $\proj{0}$, $\proj{1}$ 
@@ -196,24 +193,22 @@ $\proj{\ms}$ to the probability $\frac{1}{2}$.
 We now formalize a \emph{quantum probability space} as
 follows~\cite{Maassen2010,Swart2013}. We first assume an ambient
 Hilbert space~$\Hilb$ and define the set of events $\qevents$ as all
-linear combinations of \emph{projections} on~$\Hilb$. Specifically,
-let $P_1, P_2, \ldots, P_k$ be mutually orthogonal projections on
-$\Hilb$ with sum $\mathbb{1}$ and define the event space $\qevents$ to
-be the linear span of these operators:
-\[
-\qevents=\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{1},\ldots,\lambda_{k}\in\mathbb{C}\right\} .
-\]
-Each quantum state $\ket{\psi}$ induces a probability measure
-$\mu_\psi : \qevents \rightarrow [0,1]$ on the space of events
-defined as follows:
+\emph{projections} on~$\Hilb$. Each quantum state $\ket{\psi}$ induces
+a probability measure $\mu_\psi : \qevents \rightarrow [0,1]$ on the
+space of events defined as follows:
 \[
 \mu_\psi(A) = \ip{\psi}{A\psi}
 \]
-Similarly to the classical case, this probability measure satisfies: 
+Similarly to the classical case, this probability measure must satisfy:
 \begin{itemize}
 \item $\mu(\mathbb{1})=1$, and 
-\item for all $A\in\qevents$, we have $\mu(A^{*}A)\geq0$. 
+\item for a collection of pairwise orthogonal $A_i$, we have
+  $\mu(\sum_i A_i) = \sum_i \mu(A_i)$. 
+
+\amr{CHECK because sum of
+    projections may not be a projection}
 \end{itemize}
+
 \yutsung{The following is the diagram for quantum probability objects
 and their corresponding physical meaning (in parentheses):
 \[
