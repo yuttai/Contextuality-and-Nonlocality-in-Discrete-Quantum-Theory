@@ -7,6 +7,7 @@
 \usepackage{multicol}
 \usepackage{array}
 \usepackage{mathrsfs}
+\usepackage[all]{xy}
 
 \theoremstyle{remark}
 \newtheorem{example}{Example}
@@ -208,11 +209,23 @@ defined as follows:
 \[
 \mu_\psi(A) = \ip{\psi}{A\psi}
 \]
-Similarlly to the classical case, this probability measure satisfies:
+Similarly to the classical case, this probability measure satisfies: 
 \begin{itemize}
-\item $\mu(\mathbb{1}) = 1$, and
-\item for all $A \in \qevents$, we have $\mu(A^*A) \geq 0$.
+\item $\mu(\mathbb{1})=1$, and 
+\item for all $A\in\qevents$, we have $\mu(A^{*}A)\geq0$. 
 \end{itemize}
+\yutsung{The following is the diagram for quantum probability objects
+and their corresponding physical meaning (in parentheses):
+\[
+\xymatrix{\textrm{projections (\textrm{events})}\ar[d]^{\mu_{\psi}\textrm{(probability)}} & \subsetneq & \textrm{Hermitian operators (observables)}\ar[d]^{\mu_{\psi}\textrm{(expectation value)}} & \subsetneq & \textrm{all operators in a }*\textrm{-algebra(?)}\ar[d]^{\mu_{\psi}\textrm{(?)}}\\
+\left[0,1\right] & \subsetneq & \mathbb{R} & \subsetneq & \mathbb{C}
+}
+\]
+Although the above paragraph claimed $\qevents$ is a set of events,
+``all linear combinations of \emph{projections}'' and $\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{1},\ldots,\lambda_{k}\in\mathbb{C}\right\} $
+gives all operators in a $*$-algebra. Therefore, I got confused you
+want $\qevents$ be ``the set of all events'' or ``the set of all
+operators in a $*$-algebra''...}
 
 % \yutsung{If we follow \cite{Maassen2010,Swart2013}, then we also
 % need 
@@ -257,21 +270,23 @@ Gleason's theorem~\cite{gleason1957,peres1995quantum,Redhead1987-REDINA}.
 In the remainder of the paper, we examine each of these assumptions
 and consider variations motivated by computation in a world with limited
 resources. In particular, we will consider a variant of the Hilbert
-space over finite fields~$\mathbb{F}_{p^{2}}^{d}$~\cite{HansonOrtizSabryEtAl2015,DQT2014,geometry2013}.
-Instead of $\left[0,1\right]$, we will consider set-valued probability
-measures~\cite{Artstein1972,PuriRalescu1983}, in particular $\left\{ 0\right\} $,
-impossible, and $\left(0,\infty\right)$, possible. Surprisingly,
-some combinations of space and probability will result in no probability
-measure or an unique probability measure. In these cases, there is
-no need to discuss whether there is a Born rule, because we do not
-have enough probability to correspond to every state.
+space over finite fields~$\mathbb{F}_{p^{2}}^{d}$~\cite{HansonOrtizSabryEtAl2015,DQT2014,geometry2013}. 
+
+For the probability values, we will consider set-valued probability
+measures~\cite{Artstein1972,PuriRalescu1983}, in particular $\mathscr{L}_{2}=\left\{ \textrm{impossible},\textrm{possible}\right\} $,
+where impossible is a singleton set,$\left\{ 0\right\} $, and possible
+is an open interval, $\left(0,\infty\right)$. Surprisingly, some
+combinations of space and probability will result in an unique probability
+measure. In these cases, there is no need to discuss whether there
+is a Born rule, because we do not have enough probability to correspond
+to every state.
 
 If there may be more than one probability measure, we will discuss
 whether there is a Born rule to generate a probability measure from
 a state. When the space is $\mathbb{C}^{d}$, we will try to induced
-a Born rule from the conventional Born rule; when the space is $\mathbb{F}_{p^{2}}^{d}$,
+a Born rule from the conventional Born rule. When the space is $\mathbb{F}_{p^{2}}^{d}$,
 there is no natural way to induce a probability measure from a state,
-so we will set some conditions a Born~$\tilde{\pi}$ should have: 
+so we will set some conditions for a Born rule~$\tilde{\pi}$: 
 \begin{itemize}
 \item Given a pure state $\ket{\Psi}\in\ffzd{p^{2}}$, a Born-rule~$\tilde{\pi}$
 should give a probability~$\tilde{\pi}_{\Psi}$; 
@@ -296,19 +311,21 @@ The results can be summarized in the following table:\\
 State space $\Hilb$ & Probability values & How many probability measure? & Is there a nature Born rule? & How many possible Born rule if there is no nature one? & How many probability measure not come from any possible Born rules?\tabularnewline
 \hline 
 \hline 
-$\C^{2*}$ & $\left[0,1\right]$  & $\ge2$ & Yes &  & $\ge1$\tabularnewline
+$\C^{2}$ & $\left[0,1\right]$  & $\ge2$ & Yes &  & $\ge1$\tabularnewline
 \hline 
-$\C^{d*}$ for $d\ge3$ & $\left[0,1\right]$  & $\ge2$ & Yes &  & $0$\tabularnewline
+$\C^{d}$ for $d\ge3$ & $\left[0,1\right]$  & $\ge2$ & Yes &  & $0$\tabularnewline
 \hline 
-$\C^{d*}$ & $\mathscr{L}_{2}$ & $\ge2$ & Yes &  & $\ge1$\tabularnewline
+$\C^{d}$ & $\mathscr{L}_{2}$ & $\ge2$ & Yes &  & $\ge1$\tabularnewline
 \hline 
-$\ff{3^{2}}^{d*}$ for $3\ge d\ge2$ & $\left[0,1\right]$  & $\ge2$ & No & $1$ & $\ge1$\tabularnewline
+$\ff{3^{2}}^{d}$ for $3\ge d\ge2$ & $\left[0,1\right]$  & $\ge2$ & No & $1$ & $\ge1$\tabularnewline
 \hline 
-$\ff{p^{2}}^{2*}$ for $p\ge7$ & $\left[0,1\right]$  & $\ge2$ & No & $\infty$ & $\ge1$\tabularnewline
+$\ff{p^{2}}^{2}$ for $p\ge7$ & $\left[0,1\right]$  & $\ge2$ & No & $\infty$ & $\ge1$\tabularnewline
 \hline 
-$\ff{7^{2}}^{3*}$ & $\left[0,1\right]$  & $1$ & No & $0$ & \tabularnewline
+$\ff{7^{2}}^{3}$ & $\left[0,1\right]$  & $1$ & No & $0$ & \tabularnewline
 \hline 
-$\ffzd{p^{2}}$for $d\ge3$ except $d=p=3$ & $\left[0,1\right]$  & $\ge1$ & No & $0$ & \tabularnewline
+$\ffzd{p^{2}}$for $d\ge3$ except $d=p=3$ & $\left[0,1\right]$  & $\ge1$ 
+
+(Whether $\ge2$ or $1$?) & No & $0$ & \tabularnewline
 \hline 
 $\ffzd{p^{2}}$ & $\mathscr{L}_{2}$ & $\ge2$ & No & $1$ & $\ge1$\tabularnewline
 \hline 
