@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX file created by tex2lyx 2.2
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin C:/Users/Yu-Tsung/workspace/Contextuality-and-Nonlocality-in-Discrete-Quantum-Theory/
 \textclass article
 \begin_preamble
 \usepackage{fullpage}
@@ -9,11 +11,13 @@
 \usepackage{bbold}
 \usepackage{amsthm}
 \usepackage{multicol}
+\usepackage{array}
+\usepackage{mathrsfs}
+\usepackage[all]{xy}
 
 
 \theoremstyle{remark}
-\newtheorem{example}{Example}
-\newcommand{\events}{\ensuremath{\mathcal{A}}}
+\newtheorem{example}{Example}\newcommand{\events}{\ensuremath{\mathcal{A}}}
 \newcommand{\qevents}{\ensuremath{\mathcal{A}}}
 \newcommand{\pmeas}{\ensuremath{\mu}}
 \newcommand{\Hilb}{\mathcal{H}}
@@ -28,9 +32,12 @@
 \usepackage{color}
 \usepackage[usenames,dvipsnames]{xcolor}
 \newcommand{\yutsung}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{purple}{Yu-Tsung says: #1}\end{minipage}}}
+\newcommand{\amr}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{green}{Amr says: #1}\end{minipage}}}
 \newcommand{\ffzd}[1]{{\mathbb{F}^{d\;*}_{#1}}}
 \def\C{{\mathbb{C}}}
 \newcommand{\ff}[1]{\mathbb{F}_{#1}}
+
+
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -38,16 +45,16 @@
 \language_package none
 \inputencoding auto
 \fontencoding default
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -102,12 +109,16 @@
 Probability
 \end_layout
 
+\begin_layout Author
+
+\end_layout
+
 \begin_layout Date
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 today
@@ -123,12 +134,16 @@ today
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -141,12 +156,16 @@ Probability Spaces
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 %%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -161,11 +180,13 @@ Classical Probability Spaces
 \begin_layout Standard
 Textbook probability theory
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "inun.425605319950101,GrahamKnuthPatashnik1994,rohatgi2011introduction"
 
 \end_inset
@@ -184,6 +205,7 @@ events
 \emph default
 
 \begin_inset space ~
+
 \end_inset
 
 
@@ -196,14 +218,14 @@ probability measure
 \emph default
 
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset Formula $\pmeas$
 \end_inset
 
-.
- In this paper, we will only consider 
+. In this paper, we will only consider 
 \emph on
 finite
 \emph default
@@ -216,27 +238,27 @@ finite
 \end_inset
 
  as, 
-\begin_inset Formula $2^{\Omega}$
+\begin_inset Formula $2^\Omega$
 \end_inset
 
 , the powerset of 
 \begin_inset Formula $\Omega$
 \end_inset
 
-.
- A 
+. A 
 \emph on
 probability measure
 \emph default
  is a function 
-\begin_inset Formula $\pmeas:\events\rightarrow[0,1]$
+\begin_inset Formula $\pmeas : \events \rightarrow [0,1]$
 \end_inset
 
  such that: 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\pmeas(\Omega)=1$
+
+\begin_inset Formula $\pmeas(\Omega) = 1$
 \end_inset
 
 , and 
@@ -244,23 +266,22 @@ probability measure
 
 \begin_layout Itemize
 for a collection of pairwise disjoint events 
-\begin_inset Formula $E_{i}$
+\begin_inset Formula $E_i$
 \end_inset
 
 , we have 
-\begin_inset Formula $\pmeas(\bigcup E_{i})=\sum\pmeas(E_{i})$
+\begin_inset Formula $\pmeas(\bigcup E_i) = \sum \pmeas(E_i)$
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 begin{example}
@@ -268,13 +289,11 @@ begin{example}
 
 \end_inset
 
-[Two coin experiment] Consider an experiment that tosses two coins.
- We have four possible outcomes that constitute the sample space 
-\begin_inset Formula $\Omega=\{HH,HT,TH,TT\}$
+[Two coin experiment] Consider an experiment that tosses two coins. We have four possible outcomes that constitute the sample space 
+\begin_inset Formula $\Omega = \{ HH, HT, TH, TT \}$
 \end_inset
 
-.
- The event that the first coin is 
+. The event that the first coin is 
 \begin_inset Quotes eld
 \end_inset
 
@@ -283,45 +302,39 @@ heads
 \end_inset
 
  is 
-\begin_inset Formula $\{HH,HT\}$
+\begin_inset Formula $\{ HH, HT \}$
 \end_inset
 
 ; the event that the two coins land on opposite sides is 
-\begin_inset Formula $\{HT,TH\}$
+\begin_inset Formula $\{ HT, TH \}$
 \end_inset
 
 ; the event that at least one coin is tails is 
-\begin_inset Formula $\{HT,TH,TT\}$
+\begin_inset Formula $\{ HT, TH, TT\}$
 \end_inset
 
-.
- Depending on the assumptions regarding the coins, we can define several
- probability measures.
- Here is a possible one: 
-\begin_inset Formula 
-\[
-\begin{array}{c@{\qquad\qquad}c}
+. Depending on the assumptions regarding the coins, we can define several probability measures. Here is a possible one: 
+\begin_inset Formula \[\begin{array}{c@{\qquad\qquad}c}
 \begin{array}{rcl}
-\pmeas(\emptyset) & = & 0\\
-\pmeas(\{HH\}) & = & 1/3\\
-\pmeas(\{HT\}) & = & 0\\
-\pmeas(\{TH\}) & = & 2/3\\
-\pmeas(\{TT\}) & = & 0\\
-\pmeas(\{HH,HT\}) & = & 1/3\\
-\pmeas(\{HH,TH\}) & = & 1\\
-\pmeas(\{HH,TT\}) & = & 1/3
+\pmeas(\emptyset) &=& 0 \\
+\pmeas(\{ HH \}) &=& 1/3 \\
+\pmeas(\{ HT \}) &=& 0 \\
+\pmeas(\{ TH \}) &=& 2/3 \\
+\pmeas(\{ TT \}) &=& 0 \\
+\pmeas(\{  HH, HT \}) &=& 1/3 \\
+\pmeas(\{  HH, TH \}) &=& 1 \\
+\pmeas(\{  HH , TT \}) &=& 1/3 
 \end{array} & \begin{array}{rcl}
-\pmeas(\{HT,TH\}) & = & 2/3\\
-\pmeas(\{HT,TT\}) & = & 0\\
-\pmeas(\{TH,TT\}) & = & 2/3\\
-\pmeas(\{HH,HT,TH\}) & = & 1\\
-\pmeas(\{HH,HT,TT\}) & = & 1/3\\
-\pmeas(\{HH,TH,TT\}) & = & 1\\
-\pmeas(\{HT,TH,TT\}) & = & 2/3\\
-\pmeas(\{HH,HT,TH,TT\}) & = & 1
-\end{array}\end{array}
-\]
-
+\pmeas(\{  HT, TH \}) &=& 2/3 \\
+\pmeas(\{  HT , TT \}) &=& 0 \\
+\pmeas(\{  TH , TT \}) &=& 2/3 \\
+\pmeas(\{  HH, HT, TH \}) &=& 1 \\
+\pmeas(\{  HH, HT, TT \}) &=& 1/3 \\
+\pmeas(\{  HH, TH, TT \}) &=& 1 \\
+\pmeas(\{  HT, TH, TT \}) &=& 2/3 \\
+\pmeas(\{  HH, HT, TH, TT \}) &=& 1
+\end{array}
+\end{array}\]
 \end_inset
 
 
@@ -329,7 +342,6 @@ heads
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{example}
@@ -341,12 +353,16 @@ end{example}
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 %%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -359,36 +375,24 @@ Quantum Probability Spaces
 \end_layout
 
 \begin_layout Standard
-The mathematical framework above assumes that one has complete knowledge
- of the events and their relationships.
- But even in many classical situations, the structure of the event space
- is only partially known and the precise dependence of two events on each
- other cannot be determined with certainty.
- In the quantum case, this partial knowledge is compounded by the fact that
- not all quantum events can be observed simultaneously.
- Indeed, in the quantum world, there are non-commuting events which cannot
- even happen simultaneously.
- To accommodate these more complex situations, we completely abandon the
- sample space
+The mathematical framework above assumes that one has complete knowledge of the events and their relationships. But even in many classical situations, the structure of the event space is only partially known and the precise dependence of two events on each other cannot be determined with certainty. In the quantum case, this partial knowledge is compounded by the fact that not all quantum events can be observed simultaneously. Indeed, in the quantum world, there are non-commuting events which cannot even happen simultaneously. To accommodate these more complex situations, we completely abandon the sample space
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset Formula $\Omega$
 \end_inset
 
- and define and reason directly about events.
- Thus a quantum probability space will consist of just two components: a
- set of events 
+ and define and reason directly about events. Thus a quantum probability space will consist of just two components: a set of events 
 \begin_inset Formula $\qevents$
 \end_inset
 
  and a probability measure 
-\begin_inset Formula $\mu:\qevents\rightarrow[0,1]$
+\begin_inset Formula $\mu : \qevents \rightarrow [0,1]$
 \end_inset
 
-.
- We give an example before giving the formal definition.
+. We give an example before giving the formal definition.
 \end_layout
 
 \begin_layout Standard
@@ -401,36 +405,26 @@ Consider the two-qubit Hilbert space with computational basis
 \end_inset
 
  and states: 
-\begin_inset Formula 
-\[
-\ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}},\qquad\ket{\ms}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}\,.
+\begin_inset Formula \[
+\ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}, \qquad\ket{\ms}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}\,.
 \]
-
 \end_inset
 
-A possible space of events is the set 
-\begin_inset Formula $\{\mathbb{0},\proj{0},\proj{1},\mathbb{1}\}$
-\end_inset
-
- consisting of the projection operators 
-\begin_inset Formula $\proj{0}$
-\end_inset
-
- and 
-\begin_inset Formula $\proj{1}$
-\end_inset
-
- as well as the empty projection 
+The set of events associated with this Hilbert space consists of all projections including the empty projection 
 \begin_inset Formula $\mathbb{0}$
 \end_inset
 
  and the unit projection 
-\begin_inset Formula $\mathbb{1}=\proj{0}+\proj{1}$
+\begin_inset Formula $\mathbb{1} = \proj{0}+\proj{1}$
 \end_inset
 
-.
- Each event is interpreted as a possible post-measurement state of a quantum
- system as follows: given some arbitrary current quantum 
+: 
+\begin_inset Formula \[ 
+\{ \mathbb{0}, \proj{0}, \proj{1}, \proj{\ps}, \proj{\ms}, \ldots, \mathbb{1}\}
+\]
+\end_inset
+
+Each event is interpreted as a possible post post-measurement state of a quantum system as follows: given some arbitrary current quantum 
 \begin_inset Formula $\ket{\psi}$
 \end_inset
 
@@ -451,11 +445,26 @@ A possible space of events is the set
 \end_inset
 
 ; the event 
+\begin_inset Formula $\proj{\ps}$
+\end_inset
+
+ states that the post-measurement state will be 
+\begin_inset Formula $\ket{\ps}$
+\end_inset
+
+; the event 
+\begin_inset Formula $\proj{\ms}$
+\end_inset
+
+ states that the post-measurement state will be 
+\begin_inset Formula $\ket{\ms}$
+\end_inset
+
+; the event 
 \begin_inset Formula $\mathbb{1}$
 \end_inset
 
- states that the post-measurement state will be a linear combination of
- 
+ states that the post-measurement state will be a linear combination of 
 \begin_inset Formula $\ket{0}$
 \end_inset
 
@@ -468,81 +477,22 @@ A possible space of events is the set
 \end_inset
 
  states that the post-measurement state will be the empty state.
- 
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-yutsung{
-\end_layout
-
-\end_inset
-
-How about replacing the above sentence by something like: 
-\end_layout
-
-\begin_layout Quote
-Each event is interpreted as a possible post-measurement state of a quantum
- system if that event occurs as follows
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Abramsky2013"
-
-\end_inset
-
-: ......
- and the event 
-\begin_inset Formula $\mathbb{0}$
-\end_inset
-
- does not to state the post-measurement state because it never occurs.
- 
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
 Clearly irrespective of the current state 
 \begin_inset Formula $\ket{\psi}$
 \end_inset
 
- and irrespective of the particular experiment, the probability of event
- 
+ and irrespective of the particular experiment, the probability of event 
 \begin_inset Formula $\mathbb{0}$
 \end_inset
 
- will always be 0 (it is an impossible event) and the probability of event
- 
+ will always be 0 (it is an impossible event) and the probability of event 
 \begin_inset Formula $\mathbb{1}$
 \end_inset
 
- will always be 1 (it is a certain event).
- The probabilities attached to other events will depend on the particular
- state in question.
- If the state is 
+ will always be 1 (it is a certain event). The probabilities attached to other events will depend on the particular state in question. If the state is 
 \begin_inset Formula $\ket{0}$
 \end_inset
 
@@ -550,12 +500,27 @@ Clearly irrespective of the current state
 \begin_inset Formula $\proj{0}$
 \end_inset
 
- is 1 and the probability of event 
+ is 1; the probability of event 
 \begin_inset Formula $\proj{1}$
 \end_inset
 
- is 0.
- If the state is 
+ is 0; the probability of event 
+\begin_inset Formula $\proj{\ps}$
+\end_inset
+
+ is 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+; and the probability of event 
+\begin_inset Formula $\proj{\ms}$
+\end_inset
+
+ is 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+. If the state is 
 \begin_inset Formula $\ket{\ps}$
 \end_inset
 
@@ -571,43 +536,32 @@ Clearly irrespective of the current state
 \begin_inset Formula $\frac{1}{2}$
 \end_inset
 
-.
- The same Hilbert space setup admits other possible spaces of events.
- For example, another space of events could be 
-\begin_inset Formula $\{\mathbb{0},\proj{\ps},\proj{\ms},\mathbb{1}\}$
-\end_inset
-
-.
- Using that space of events, the state 
-\begin_inset Formula $\ket{0}$
-\end_inset
-
- maps both events 
+; the probability of event 
 \begin_inset Formula $\proj{\ps}$
 \end_inset
 
- and 
+ is 1; and the probability of event 
 \begin_inset Formula $\proj{\ms}$
 \end_inset
 
- to the probability 
-\begin_inset Formula $\frac{1}{2}$
-\end_inset
-
-.
+ is 0.
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 begin{itemize}
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -615,7 +569,6 @@ begin{itemize}
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 item Family I: $
@@ -625,6 +578,10 @@ proj{0}$, $
 proj{1}$ 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -632,7 +589,6 @@ proj{1}$
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 item Family II: $
@@ -646,17 +602,8 @@ proj{
 ms}$
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
 
-% 
-\backslash
-end{itemize}
 \end_layout
 
 \end_inset
@@ -666,7 +613,22 @@ end{itemize}
 status collapsed
 
 \begin_layout Plain Layout
+% 
+\backslash
+end{itemize}
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 % In family I, all operators can be expressed as $
 \backslash
 left
@@ -696,6 +658,10 @@ right
 } $.
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -703,19 +669,11 @@ right
 status collapsed
 
 \begin_layout Plain Layout
-
 % In order to identify projectors among them, we need to solve the following
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
 
-% two equations.
 \end_layout
 
 \end_inset
@@ -725,12 +683,29 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+% two equations.
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 % 
 \backslash
 begin{eqnarray*}
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -738,7 +713,6 @@ begin{eqnarray*}
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 lambda_{1}
@@ -774,6 +748,10 @@ proj{1}
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -781,7 +759,6 @@ proj{1}
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 lambda_{1}
@@ -813,17 +790,8 @@ lambda_{2}^{2}
 proj{1}
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
 
-% 
-\backslash
-end{eqnarray*}
 \end_layout
 
 \end_inset
@@ -833,7 +801,22 @@ end{eqnarray*}
 status collapsed
 
 \begin_layout Plain Layout
+% 
+\backslash
+end{eqnarray*}
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 % Therefore, we actually have $
 \backslash
 lambda_{1},
@@ -851,19 +834,8 @@ right
 } $,
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
 
-% and there are only four projections: $0$, $
-\backslash
-proj{0}$, $
-\backslash
-proj{1}$,
 \end_layout
 
 \end_inset
@@ -873,15 +845,31 @@ proj{1}$,
 status collapsed
 
 \begin_layout Plain Layout
+% and there are only four projections: $0$, $
+\backslash
+proj{0}$, $
+\backslash
+proj{1}$,
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 % and $
 \backslash
 mathbb{1}=
 \backslash
 proj{0}+
 \backslash
-proj{1}$.
- Then, $
+proj{1}$. Then, $
 \backslash
 mu_{
 \backslash
@@ -890,6 +878,10 @@ ket{
 ps}}$ and
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -897,7 +889,6 @@ ps}}$ and
 status collapsed
 
 \begin_layout Plain Layout
-
 % $
 \backslash
 mu_{
@@ -907,17 +898,8 @@ ket{
 ms}}$ of each projections are 
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
 
-% 
-\backslash
-[
 \end_layout
 
 \end_inset
@@ -927,7 +909,22 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+% 
+\backslash
+[
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 % 
 \backslash
 begin{array}{c@{
@@ -937,17 +934,8 @@ qquad
 qquad}c}
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
 
-% 
-\backslash
-begin{array}{rcl}
 \end_layout
 
 \end_inset
@@ -957,7 +945,22 @@ begin{array}{rcl}
 status collapsed
 
 \begin_layout Plain Layout
+% 
+\backslash
+begin{array}{rcl}
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 % 
 \backslash
 mu_{
@@ -971,6 +974,10 @@ ps}}(0) & = & 0
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -978,7 +985,6 @@ ps}}(0) & = & 0
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 mu_{
@@ -994,6 +1000,10 @@ proj{0}) & = & 1/2
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1001,7 +1011,6 @@ proj{0}) & = & 1/2
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 mu_{
@@ -1017,6 +1026,10 @@ proj{1}) & = & 1/2
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1024,7 +1037,6 @@ proj{1}) & = & 1/2
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 mu_{
@@ -1036,19 +1048,8 @@ ps}}(
 mathbb{1}) & = & 1
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
 
-% 
-\backslash
-end{array} & 
-\backslash
-begin{array}{rcl}
 \end_layout
 
 \end_inset
@@ -1058,7 +1059,24 @@ begin{array}{rcl}
 status collapsed
 
 \begin_layout Plain Layout
+% 
+\backslash
+end{array} & 
+\backslash
+begin{array}{rcl}
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 % 
 \backslash
 mu_{
@@ -1072,6 +1090,10 @@ ms}}(0) & = & 0
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1079,7 +1101,6 @@ ms}}(0) & = & 0
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 mu_{
@@ -1095,6 +1116,10 @@ proj{0}) & = & 1/2
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1102,7 +1127,6 @@ proj{0}) & = & 1/2
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 mu_{
@@ -1118,6 +1142,10 @@ proj{1}) & = & 1/2
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1125,7 +1153,6 @@ proj{1}) & = & 1/2
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 mu_{
@@ -1137,19 +1164,8 @@ ms}}(
 mathbb{1}) & = & 1
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
 
-% 
-\backslash
-end{array}
-\backslash
-end{array}
 \end_layout
 
 \end_inset
@@ -1159,12 +1175,33 @@ end{array}
 status collapsed
 
 \begin_layout Plain Layout
+% 
+\backslash
+end{array}
+\backslash
+end{array}
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 % 
 \backslash
 ]
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1172,7 +1209,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 % Similarly, $
 \backslash
 mu_{
@@ -1188,15 +1224,8 @@ ket{
 ms}}$ gives two probability
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
 
-% for family II as well.
 \end_layout
 
 \end_inset
@@ -1206,12 +1235,29 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+% for family II as well.
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 % 
 \backslash
 [
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1219,7 +1265,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 begin{array}{c@{
@@ -1229,17 +1274,8 @@ qquad
 qquad}c}
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
 
-% 
-\backslash
-begin{array}{rcl}
 \end_layout
 
 \end_inset
@@ -1249,7 +1285,22 @@ begin{array}{rcl}
 status collapsed
 
 \begin_layout Plain Layout
+% 
+\backslash
+begin{array}{rcl}
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 % 
 \backslash
 mu_{
@@ -1263,6 +1314,10 @@ ps}}(0) & = & 0
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1270,7 +1325,6 @@ ps}}(0) & = & 0
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 mu_{
@@ -1286,6 +1340,10 @@ proj{+}) & = & 1
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1293,7 +1351,6 @@ proj{+}) & = & 1
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 mu_{
@@ -1311,6 +1368,10 @@ ms}) & = & 0
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1318,7 +1379,6 @@ ms}) & = & 0
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 mu_{
@@ -1330,19 +1390,8 @@ ps}}(
 mathbb{1}) & = & 1
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
 
-% 
-\backslash
-end{array} & 
-\backslash
-begin{array}{rcl}
 \end_layout
 
 \end_inset
@@ -1352,7 +1401,24 @@ begin{array}{rcl}
 status collapsed
 
 \begin_layout Plain Layout
+% 
+\backslash
+end{array} & 
+\backslash
+begin{array}{rcl}
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 % 
 \backslash
 mu_{
@@ -1366,6 +1432,10 @@ ms}}(0) & = & 0
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1373,7 +1443,6 @@ ms}}(0) & = & 0
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 mu_{
@@ -1391,6 +1460,10 @@ ps}) & = & 0
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1398,7 +1471,6 @@ ps}) & = & 0
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 mu_{
@@ -1416,6 +1488,10 @@ ms}) & = & 1
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1423,7 +1499,6 @@ ms}) & = & 1
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 mu_{
@@ -1435,19 +1510,8 @@ ms}}(
 mathbb{1}) & = & 1
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
 
-% 
-\backslash
-end{array}
-\backslash
-end{array}
 \end_layout
 
 \end_inset
@@ -1457,7 +1521,24 @@ end{array}
 status collapsed
 
 \begin_layout Plain Layout
+% 
+\backslash
+end{array}
+\backslash
+end{array}
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 % 
 \backslash
 ]
@@ -1475,18 +1556,20 @@ quantum probability space
 \emph default
  as follows
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Maassen2010,Swart2013"
 
 \end_inset
 
-.
- We first assume an ambient Hilbert space
+. We first assume an ambient Hilbert space
 \begin_inset space ~
+
 \end_inset
 
 
@@ -1497,63 +1580,38 @@ key "Maassen2010,Swart2013"
 \begin_inset Formula $\qevents$
 \end_inset
 
- as all linear combinations of 
+ as all 
 \emph on
 projections
 \emph default
  on
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset Formula $\Hilb$
 \end_inset
 
-.
- Specifically, let 
-\begin_inset Formula $P_{1},P_{2},\ldots,P_{k}$
-\end_inset
-
- be mutually orthogonal projections on 
-\begin_inset Formula $\Hilb$
-\end_inset
-
- with sum 
-\begin_inset Formula $\mathbb{1}$
-\end_inset
-
- and define the event space 
-\begin_inset Formula $\qevents$
-\end_inset
-
- to be the linear span of these operators: 
-\begin_inset Formula 
-\[
-\qevents=\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{1},\ldots,\lambda_{k}\in\mathbb{C}\right\} .
-\]
-
-\end_inset
-
-Each quantum state 
+. Each quantum state 
 \begin_inset Formula $\ket{\psi}$
 \end_inset
 
  induces a probability measure 
-\begin_inset Formula $\mu_{\psi}:\qevents\rightarrow[0,1]$
+\begin_inset Formula $\mu_\psi : \qevents \rightarrow [0,1]$
 \end_inset
 
  on the space of events defined as follows: 
-\begin_inset Formula 
-\[
-\mu_{\psi}(A)=\ip{\psi}{A\psi}
+\begin_inset Formula \[
+\mu_\psi(A) = \ip{\psi}{A\psi}
 \]
-
 \end_inset
 
-Similarly to the classical case, this probability measure satisfies: 
+Similarly to the classical case, this probability measure must satisfy: 
 \end_layout
 
 \begin_layout Itemize
+
 \begin_inset Formula $\mu(\mathbb{1})=1$
 \end_inset
 
@@ -1561,24 +1619,51 @@ Similarly to the classical case, this probability measure satisfies:
 \end_layout
 
 \begin_layout Itemize
-for all 
-\begin_inset Formula $A\in\qevents$
+for a collection of pairwise orthogonal 
+\begin_inset Formula $A_i$
 \end_inset
 
 , we have 
-\begin_inset Formula $\mu(A^{*}A)\geq0$
+\begin_inset Formula $\mu(\sum_i A_i) = \sum_i \mu(A_i)$
 \end_inset
 
 .
- 
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
+
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
+\backslash
+amr{
+\end_layout
+
+\end_inset
+
+CHECK because sum of projections may not be a projection
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 yutsung{
@@ -1586,15 +1671,12 @@ yutsung{
 
 \end_inset
 
-The following is the diagram for quantum probability objects and their correspon
-ding physical meaning (in parentheses):
-\begin_inset Formula 
-\[
+The following is the diagram for quantum probability objects and their corresponding physical meaning (in parentheses): 
+\begin_inset Formula \[
 \xymatrix{\textrm{projections (\textrm{events})}\ar[d]^{\mu_{\psi}\textrm{(probability)}} & \subsetneq & \textrm{Hermitian operators (observables)}\ar[d]^{\mu_{\psi}\textrm{(expectation value)}} & \subsetneq & \textrm{all operators in a }*\textrm{-algebra(?)}\ar[d]^{\mu_{\psi}\textrm{(?)}}\\
 \left[0,1\right] & \subsetneq & \mathbb{R} & \subsetneq & \mathbb{C}
 }
 \]
-
 \end_inset
 
 Although the above paragraph claimed 
@@ -1613,46 +1695,15 @@ projections
 \begin_inset Quotes erd
 \end_inset
 
-
  and 
-\lang english
-
 \begin_inset Formula $\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{1},\ldots,\lambda_{k}\in\mathbb{C}\right\} $
 \end_inset
 
- gives 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-all operators in a 
+ gives all operators in a 
 \begin_inset Formula $*$
 \end_inset
 
--algebra
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-.
- 
-Therefore, I got confused you want 
-\lang english
-
+-algebra. Therefore, I got confused you want 
 \begin_inset Formula $\qevents$
 \end_inset
 
@@ -1668,44 +1719,19 @@ the set of all events
 \begin_inset Quotes eld
 \end_inset
 
-the set of all operators in 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-a 
+the set of all operators in a 
 \begin_inset Formula $*$
 \end_inset
 
 -algebra
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-
 \begin_inset Quotes erd
 \end_inset
 
 ...
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -1715,11 +1741,11 @@ status open
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 yutsung{If we follow 
@@ -1727,15 +1753,8 @@ yutsung{If we follow
 cite{Maassen2010,Swart2013}, then we also
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
 
-% need 
 \end_layout
 
 \end_inset
@@ -1745,12 +1764,29 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+% need 
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 % 
 \backslash
 begin{itemize}
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1758,7 +1794,6 @@ begin{itemize}
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 item $
@@ -1778,6 +1813,10 @@ rightarrow
 mathbb{C}$,
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1785,7 +1824,6 @@ mathbb{C}$,
 status collapsed
 
 \begin_layout Plain Layout
-
 % where $alg
 \backslash
 left(
@@ -1795,6 +1833,10 @@ qevents
 right)$ is the minimal $*$-algebra generated
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1802,12 +1844,15 @@ right)$ is the minimal $*$-algebra generated
 status collapsed
 
 \begin_layout Plain Layout
-
 % by $
 \backslash
 qevents$.
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1815,21 +1860,13 @@ qevents$.
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 end{itemize}
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
 
-% Also, 
 \end_layout
 
 \end_inset
@@ -1839,12 +1876,29 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+% Also, 
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 % 
 \backslash
 begin{itemize}
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1852,7 +1906,6 @@ begin{itemize}
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 item for all $A
@@ -1863,8 +1916,11 @@ qevents$, we have $
 \backslash
 mu(A^{*}A)
 \backslash
-geq0$.
- 
+geq0$. 
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1874,21 +1930,13 @@ geq0$.
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 end{itemize}
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
 
-% should be 
 \end_layout
 
 \end_inset
@@ -1898,12 +1946,29 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+% should be 
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 % 
 \backslash
 begin{itemize}
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1911,7 +1976,6 @@ begin{itemize}
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 item for all $A
@@ -1926,8 +1990,11 @@ right)$, we have $
 \backslash
 mu(A^{*}A)
 \backslash
-geq0$.
- 
+geq0$. 
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1937,12 +2004,15 @@ geq0$.
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 end{itemize}
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1950,7 +2020,6 @@ end{itemize}
 status collapsed
 
 \begin_layout Plain Layout
-
 % because we have $
 \backslash
 mu(A^{*}A)=
@@ -1970,11 +2039,11 @@ mu(A)$ if $A$ is a projection.}
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 yutsung{$
@@ -2004,6 +2073,10 @@ right
 } $
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -2011,12 +2084,15 @@ right
 status collapsed
 
 \begin_layout Plain Layout
-
 % is the minimal $*$-algebra generated by $P_{1},P_{2},
 \backslash
 ldots,P_{k}$,
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -2024,22 +2100,13 @@ ldots,P_{k}$,
 status collapsed
 
 \begin_layout Plain Layout
-
 % but it contains all possible observables $P_{1},P_{2},
 \backslash
 ldots,P_{k}$
 \end_layout
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
 
-% can generate (and something more) not just projections.
- For example,
 \end_layout
 
 \end_inset
@@ -2049,7 +2116,20 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+% can generate (and something more) not just projections. For example,
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 % $2
 \backslash
 mathbb{1}
@@ -2091,11 +2171,11 @@ right
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 % 
 \backslash
 yutsung{So $
@@ -2107,6 +2187,10 @@ psi}$ maps the projections generated by $P_{1},P_{2},
 ldots,P_{k}$
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -2114,7 +2198,6 @@ ldots,P_{k}$
 status collapsed
 
 \begin_layout Plain Layout
-
 % to $[0,1]$, and maps $
 \backslash
 left
@@ -2142,6 +2225,10 @@ right
 } $
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -2149,7 +2236,6 @@ right
 status collapsed
 
 \begin_layout Plain Layout
-
 % to $
 \backslash
 mathbb{C}$...}
@@ -2165,12 +2251,16 @@ mathbb{C}$...}
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 %%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -2183,8 +2273,7 @@ Plan
 \end_layout
 
 \begin_layout Standard
-Several assumptions are woven in the definition of a quantum probability
- space: 
+Several assumptions are woven in the definition of a quantum probability space: 
 \end_layout
 
 \begin_layout Itemize
@@ -2206,11 +2295,13 @@ the real interval
 \begin_layout Itemize
 the fact that each state induces a probability measure, i.e., the Born rule
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Born1984,Mermin2007"
 
 \end_inset
@@ -2219,28 +2310,26 @@ key "Born1984,Mermin2007"
 \end_layout
 
 \begin_layout Itemize
-the fact that every probability measure is induced by a state, i.e., Gleason's
- theorem
+the fact that every probability measure is induced by a state, i.e., Gleason's theorem
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "gleason1957,peres1995quantum,Redhead1987-REDINA"
 
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Standard
-In the remainder of the paper, we examine each of these assumptions and
- consider variations motivated by computation in a world with limited resources.
- In particular, we will consider a variant of the Hilbert space over finite
- fields
+In the remainder of the paper, we examine each of these assumptions and consider variations motivated by computation in a world with limited resources. In particular, we will consider a variant of the Hilbert space over finite fields
 \begin_inset space ~
+
 \end_inset
 
 
@@ -2249,27 +2338,30 @@ In the remainder of the paper, we examine each of these assumptions and
 
 
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "HansonOrtizSabryEtAl2015,DQT2014,geometry2013"
 
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Standard
 For the probability values, we will consider set-valued probability measures
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Artstein1972,PuriRalescu1983"
 
 \end_inset
@@ -2286,28 +2378,21 @@ key "Artstein1972,PuriRalescu1983"
 \begin_inset Formula $\left(0,\infty\right)$
 \end_inset
 
-.
- Surprisingly, some combinations of space and probability will result in
- an unique probability measure.
- In these cases, there is no need to discuss whether there is a Born rule,
- because we do not have enough probability to correspond to every state.
+. Surprisingly, some combinations of space and probability will result in an unique probability measure. In these cases, there is no need to discuss whether there is a Born rule, because we do not have enough probability to correspond to every state.
 \end_layout
 
 \begin_layout Standard
-If there may be more than one probability measure, we will discuss whether
- there is a Born rule to generate a probability measure from a state.
- When the space is 
+If there may be more than one probability measure, we will discuss whether there is a Born rule to generate a probability measure from a state. When the space is 
 \begin_inset Formula $\mathbb{C}^{d}$
 \end_inset
 
-, we will try to induced a Born rule from the conventional Born rule.
- When the space is 
+, we will try to induced a Born rule from the conventional Born rule. When the space is 
 \begin_inset Formula $\mathbb{F}_{p^{2}}^{d}$
 \end_inset
 
-, there is no natural way to induce a probability measure from a state,
- so we will set some conditions for a Born rule
+, there is no natural way to induce a probability measure from a state, so we will set some conditions for a Born rule
 \begin_inset space ~
+
 \end_inset
 
 
@@ -2324,6 +2409,7 @@ Given a pure state
 
 , a Born-rule
 \begin_inset space ~
+
 \end_inset
 
 
@@ -2332,6 +2418,7 @@ Given a pure state
 
  should give a probability
 \begin_inset space ~
+
 \end_inset
 
 
@@ -2342,6 +2429,7 @@ Given a pure state
 \end_layout
 
 \begin_layout Itemize
+
 \begin_inset Formula $\ip{\Psi}{\Phi}=0\Leftrightarrow\tilde{\pi}_{\Psi}\left(\ket{\Phi}\right)=\tilde{0}$
 \end_inset
 
@@ -2365,11 +2453,11 @@ Given a pure state
 \begin_inset Formula $\mathscr{L}_{2}=\left\{ \textrm{impossible},\textrm{possible}\right\} $
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Itemize
+
 \begin_inset Formula $\tilde{\pi}_{\Psi}\left(\ket{\Phi}\right)=\tilde{\pi}_{\mathbf{U}\ket{\Psi}}\left(\mathbf{U}\ket{\Phi}\right)\textrm{ ,}$
 \end_inset
 
@@ -2385,8 +2473,7 @@ where
 \begin_inset Formula $\mathbf{U}^{\dagger}\mathbf{U}=\mathbbm{1}$
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Standard
@@ -2398,9 +2485,7 @@ Notice that when the space is
 \end_layout
 
 \begin_layout Standard
-Finally, if there is a Born rule, we will see whether every probability
- measure is induced by a state, and establish Gleason's theorem.
- Notice that Gleason's theorem only hold when 
+Finally, if there is a Born rule, we will see whether every probability measure is induced by a state, and establish Gleason's theorem. Notice that Gleason's theorem only hold when 
 \begin_inset Formula $d\ge3$
 \end_inset
 
@@ -2413,7 +2498,6 @@ Finally, if there is a Born rule, we will see whether every probability
 \end_inset
 
  are different.
- 
 \end_layout
 
 \begin_layout Standard
@@ -2421,10 +2505,10 @@ The results can be summarized in the following table:
 \begin_inset Newline newline
 \end_inset
 
-
-\begin_inset Tabular
+ 
+\begin_inset Tabular 
 <lyxtabular version="3" rows="9" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle" tabularwidth="0pt">
 <column alignment="left" valignment="middle" width="15col%">
 <column alignment="left" valignment="middle" width="15col%">
 <column alignment="left" valignment="middle" width="15col%">
@@ -2435,12 +2519,12 @@ The results can be summarized in the following table:
 <cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 State space 
 \begin_inset Formula $\Hilb$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2448,8 +2532,8 @@ State space
 <cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-Probability values
+\begin_layout Standard
+Probability values 
 \end_layout
 
 \end_inset
@@ -2457,8 +2541,8 @@ Probability values
 <cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-How many probability measure?
+\begin_layout Standard
+How many probability measure? 
 \end_layout
 
 \end_inset
@@ -2466,8 +2550,8 @@ How many probability measure?
 <cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-Is there a nature Born rule?
+\begin_layout Standard
+Is there a nature Born rule? 
 \end_layout
 
 \end_inset
@@ -2475,8 +2559,8 @@ Is there a nature Born rule?
 <cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-How many possible Born rule if there is no nature one?
+\begin_layout Standard
+How many possible Born rule if there is no nature one? 
 \end_layout
 
 \end_inset
@@ -2484,7 +2568,7 @@ How many possible Born rule if there is no nature one?
 <cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 How many probability measure not come from any possible Born rules?
 \end_layout
 
@@ -2495,11 +2579,12 @@ How many probability measure not come from any possible Born rules?
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\C^{2}$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2507,7 +2592,8 @@ How many probability measure not come from any possible Born rules?
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\left[0,1\right]$
 \end_inset
 
@@ -2519,11 +2605,12 @@ How many probability measure not come from any possible Born rules?
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\ge2$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2531,8 +2618,8 @@ How many probability measure not come from any possible Born rules?
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-Yes
+\begin_layout Standard
+Yes 
 \end_layout
 
 \end_inset
@@ -2540,16 +2627,13 @@ Yes
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\ge1$
 \end_inset
 
@@ -2563,7 +2647,8 @@ Yes
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\C^{d}$
 \end_inset
 
@@ -2571,7 +2656,7 @@ Yes
 \begin_inset Formula $d\ge3$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2579,7 +2664,8 @@ Yes
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\left[0,1\right]$
 \end_inset
 
@@ -2591,11 +2677,12 @@ Yes
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\ge2$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2603,8 +2690,8 @@ Yes
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-Yes
+\begin_layout Standard
+Yes 
 \end_layout
 
 \end_inset
@@ -2612,16 +2699,13 @@ Yes
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $0$
 \end_inset
 
@@ -2635,11 +2719,12 @@ Yes
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\C^{d}$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2647,11 +2732,12 @@ Yes
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\mathscr{L}_{2}$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2659,11 +2745,12 @@ Yes
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\ge2$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2671,8 +2758,8 @@ Yes
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-Yes
+\begin_layout Standard
+Yes 
 \end_layout
 
 \end_inset
@@ -2680,16 +2767,13 @@ Yes
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\ge1$
 \end_inset
 
@@ -2703,7 +2787,8 @@ Yes
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\ff{3^{2}}^{d}$
 \end_inset
 
@@ -2711,7 +2796,7 @@ Yes
 \begin_inset Formula $3\ge d\ge2$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2719,7 +2804,8 @@ Yes
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\left[0,1\right]$
 \end_inset
 
@@ -2731,11 +2817,12 @@ Yes
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\ge2$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2743,8 +2830,8 @@ Yes
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-No
+\begin_layout Standard
+No 
 \end_layout
 
 \end_inset
@@ -2752,11 +2839,12 @@ No
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $1$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2764,7 +2852,8 @@ No
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\ge1$
 \end_inset
 
@@ -2778,7 +2867,8 @@ No
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\ff{p^{2}}^{2}$
 \end_inset
 
@@ -2786,7 +2876,7 @@ No
 \begin_inset Formula $p\ge7$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2794,7 +2884,8 @@ No
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\left[0,1\right]$
 \end_inset
 
@@ -2806,11 +2897,12 @@ No
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\ge2$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2818,8 +2910,8 @@ No
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-No
+\begin_layout Standard
+No 
 \end_layout
 
 \end_inset
@@ -2827,11 +2919,12 @@ No
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\infty$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2839,7 +2932,8 @@ No
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\ge1$
 \end_inset
 
@@ -2853,11 +2947,12 @@ No
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\ff{7^{2}}^{3}$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2865,7 +2960,8 @@ No
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\left[0,1\right]$
 \end_inset
 
@@ -2877,11 +2973,12 @@ No
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $1$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2889,8 +2986,8 @@ No
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-No
+\begin_layout Standard
+No 
 \end_layout
 
 \end_inset
@@ -2898,21 +2995,18 @@ No
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $0$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
+<cell alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \end_inset
 </cell>
@@ -2921,7 +3015,8 @@ No
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\ffzd{p^{2}}$
 \end_inset
 
@@ -2933,7 +3028,7 @@ for
 \begin_inset Formula $d=p=3$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2941,7 +3036,8 @@ for
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\left[0,1\right]$
 \end_inset
 
@@ -2953,14 +3049,15 @@ for
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\ge1$
 \end_inset
 
- 
+
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 (Whether 
 \begin_inset Formula $\ge2$
 \end_inset
@@ -2969,7 +3066,7 @@ for
 \begin_inset Formula $1$
 \end_inset
 
-?)
+?) 
 \end_layout
 
 \end_inset
@@ -2977,8 +3074,8 @@ for
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-No
+\begin_layout Standard
+No 
 \end_layout
 
 \end_inset
@@ -2986,21 +3083,18 @@ No
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $0$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
+<cell alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \end_inset
 </cell>
@@ -3009,11 +3103,12 @@ No
 <cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\ffzd{p^{2}}$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -3021,11 +3116,12 @@ No
 <cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\mathscr{L}_{2}$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -3033,11 +3129,12 @@ No
 <cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\ge2$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -3045,8 +3142,8 @@ No
 <cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-No
+\begin_layout Standard
+No 
 \end_layout
 
 \end_inset
@@ -3054,11 +3151,12 @@ No
 <cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $1$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -3066,7 +3164,8 @@ No
 <cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Formula $\ge1$
 \end_inset
 
@@ -3084,11 +3183,11 @@ No
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end_layout
 
@@ -3098,6 +3197,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+ 
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "discreteGBKS"
