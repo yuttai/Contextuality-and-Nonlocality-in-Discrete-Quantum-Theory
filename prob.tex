@@ -43,23 +43,23 @@
 %%%%%
 \subsection{Classical Probability Spaces}
  
-Textbook probability
+Probability
 theory~\cite{inun.425605319950101,GrahamKnuthPatashnik1994,rohatgi2011introduction}
 is defined using the notions of a \emph{sample space} $\Omega$, a
 space of \emph{events}~$\events$, and a \emph{probability
   measure}~$\pmeas$. In this paper, we will only consider
 \emph{finite} sample spaces: we therefore define a sample space
-$\Omega$ as an arbitrary non-empty finite set and the space of events
-$\events$ as, $2^\Omega$, the powerset of $\Omega$. A \emph{probability
-measure} is a function $\pmeas : \events \rightarrow [0,1]$ such that:
+$\Omega$ as an arbitrary non-empty finite set, the space of events
+$\events$ as $2^\Omega$, the powerset of $\Omega$, and the \emph{probability
+measure} as a function $\pmeas : \events \rightarrow [0,1]$ such that:
 \begin{itemize}
 \item $\pmeas(\Omega) = 1$, and 
-\item for a collection of pairwise disjoint events $E_i$, we have
-  $\pmeas(\bigcup E_i) = \sum \pmeas(E_i)$. 
+\item for a collection of pairwise disjoint events $E_i$, the probability
+measures are additive $\pmeas(\bigcup E_i) = \sum \pmeas(E_i)$. 
 \end{itemize}
 
-\begin{example}[Two coin experiment] Consider an experiment that
-  tosses two coins. We have four possible outcomes that constitute the
+\emph{Example of a problem on a finite sample space} (Two coin experiment)
+Consider an experiment that tosses two coins. We have four possible outcomes that constitute the
   sample space $\Omega = \{ HH, HT, TH, TT \}$. The event that the
   first coin is ``heads'' is $\{ HH, HT \}$; the event that the two
   coins land on opposite sides is $\{ HT, TH \}$; the event that at
@@ -87,7 +87,8 @@ measure} is a function $\pmeas : \events \rightarrow [0,1]$ such that:
 \pmeas(\{  HH, HT, TH, TT \}) &=& 1
 \end{array}
 \end{array}\]
-\end{example}
+Note that the probability measure for disjoint events such as $\{ HT \}$ and
+$\{ TH \}$ do indeed add.
 
 %%%%%
 \subsection{Quantum Probability Spaces}
@@ -100,9 +101,9 @@ cannot be determined with certainty. In the quantum case, this partial
 knowledge is compounded by the fact that not all quantum events can be
 observed simultaneously.  Indeed, in the quantum world, there are
 non-commuting events which cannot even happen simultaneously. To
-accommodate these more complex situations, we completely abandon the
+accommodate these more complex situations, we abandon the
 sample space~$\Omega$ and define and reason directly about
-events. Thus a quantum probability space will consist of just two
+events. A quantum probability space consist of just two
 components: a set of events $\qevents$ and a probability measure
 $\mu : \qevents \rightarrow [0,1]$. We give an example before giving
 the formal definition.
@@ -119,7 +120,7 @@ projection $\mathbb{1} = \proj{0}+\proj{1}$:
 \{ \mathbb{0}, \proj{0}, \proj{1}, \proj{\ps}, \proj{\ms}, \ldots, \mathbb{1}\}
 \]
 Each event is interpreted as a possible post post-measurement state of
-a quantum system as follows: given some arbitrary current quantum
+a quantum system as follows: given some arbitrary current quantum state
 $\ket{\psi}$ to be measured, the event $\proj{0}$ states that the
 post-measurement state will be $\ket{0}$; the event $\proj{1}$ states
 that the post-measurement state will be $\ket{1}$; the event
@@ -130,7 +131,7 @@ post-measurement state will be a linear combination of $\ket{0}$ and
 $\ket{1}$; and the event $\mathbb{0}$ states that the post-measurement
 state will be the empty state.
 
-Clearly irrespective of the current state $\ket{\psi}$ and
+Irrespective of the current state $\ket{\psi}$ and
 irrespective of the particular experiment, the probability of event
 $\mathbb{0}$ will always be 0 (it is an impossible event) and the
 probability of event $\mathbb{1}$ will always be 1 (it is a certain
@@ -139,8 +140,8 @@ particular state in question. If the state is $\ket{0}$, the
 probability of event $\proj{0}$ is 1; the probability of event
 $\proj{1}$ is 0; the probability of event $\proj{\ps}$ is
 $\frac{1}{2}$; and the probability of event $\proj{\ms}$ is
-$\frac{1}{2}$. If the state is $\ket{\ps}$, the probability of both
-events $\proj{0}$ and $\proj{1}$ will be $\frac{1}{2}$; the
+$\frac{1}{2}$. If the state is $\ket{\ps}$, the probability of each
+event $\proj{0}$ and $\proj{1}$ will be $\frac{1}{2}$; the
 probability of event $\proj{\ps}$ is 1; and the probability of event
 $\proj{\ms}$ is 0. 
 
@@ -193,9 +194,9 @@ $\proj{\ms}$ is 0.
 We now formalize a \emph{quantum probability space} as
 follows~\cite{Maassen2010,Swart2013}. We first assume an ambient
 Hilbert space~$\Hilb$ and define the set of events $\qevents$ as all
-\emph{projections} on~$\Hilb$. Each quantum state $\ket{\psi}$ induces
+\emph{projections} on~$\Hilb$. Each quantum state $\ket{\psi}\in\Hilb$ induces
 a probability measure $\mu_\psi : \qevents \rightarrow [0,1]$ on the
-space of events defined as follows:
+space of events defined for any event $A\in\qevents$ as follows:
 \[
 \mu_\psi(A) = \ip{\psi}{A\psi}
 \]
@@ -273,8 +274,8 @@ Born rule~\cite{Born1984,Mermin2007};
 Gleason's theorem~\cite{gleason1957,peres1995quantum,Redhead1987-REDINA}. 
 \end{itemize}
 In the remainder of the paper, we examine each of these assumptions
-and consider variations motivated by computation in a world with limited
-resources. In particular, we will consider a variant of the Hilbert
+and consider variations motivated by computation of numerical quantities in a
+world with limited resources. In particular, we will consider a variant of the Hilbert
 space over finite fields~$\mathbb{F}_{p^{2}}^{d}$~\cite{HansonOrtizSabryEtAl2015,DQT2014,geometry2013}. 
 
 For the probability values, we will consider set-valued probability
