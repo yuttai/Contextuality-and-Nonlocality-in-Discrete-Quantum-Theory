@@ -201,9 +201,9 @@ on $\Hilb$ and consider $\mu_{\psi}:\mathcal{A}\rightarrow\C$~\cite{Maassen2010,
 When an operator $A\in\mathcal{A}$ is Hermitian, $\mu_{\psi}\left(A\right)$
 is the expectation value of $A$. We does not take this approach because
 we want to focus only on probability. }: 
-\[
-\mu_{\psi}(E)=\frac{\ip{\psi}{E\psi}}{\ip{\psi}{\psi}}
-\]
+\begin{equation}
+\mu_{\psi}(E)=\frac{\ip{\psi}{E\psi}}{\ip{\psi}{\psi}}\label{eq:Born}
+\end{equation}
 Similarly to the classical case, this probability measure must satisfy:
 \begin{itemize}
 \item $\mu(\mathbb{1})=1$, and 
@@ -260,73 +260,59 @@ Several assumptions are woven in the definition of a quantum probability space:
 \item the Hilbert space $\Hilb$;
 \item the real interval $[0,1]$; 
 \item the fact that each state induces a probability measure, i.e., the
-Born rule~\cite{Born1984,Mermin2007}; 
+Born rule (\ref{eq:Born})~\cite{Born1984,Mermin2007}; 
 \item the fact that every probability measure is induced by a state, i.e.,
 Gleason's theorem~\cite{gleason1957,peres1995quantum,Redhead1987-REDINA}. 
 \end{itemize}
 In the remainder of the paper, we examine each of these assumptions
-and consider variations motivated by computation of numerical quantities in a
-world with limited resources. In particular, we will consider a variant of the Hilbert
-space over finite fields~$\mathbb{F}_{p^{2}}^{d}$~\cite{HansonOrtizSabryEtAl2015,DQT2014,geometry2013}. 
+and consider variations motivated by computation of numerical quantities
+in a world with limited resources. In particular, we will consider
+a variant of the Hilbert space over finite fields~$\mathbb{F}_{p^{2}}^{d}$~\cite{HansonOrtizSabryEtAl2015,DQT2014,geometry2013}.
 
 For the probability values, we will consider set-valued probability
 measures~\cite{Artstein1972,PuriRalescu1983}, in particular $\mathscr{L}_{2}=\left\{ \textrm{impossible},\textrm{possible}\right\} $,
 where impossible is a singleton set,$\left\{ 0\right\} $, and possible
-is an open interval, $\left(0,\infty\right)$. Surprisingly, some
-combinations of space and probability will result in an unique probability
-measure. In these cases, there is no need to discuss whether there
-is a Born rule, because we do not have enough probability to correspond
-to every state.
+is an open interval, $\left(0,\infty\right)$. 
 
 If there may be more than one probability measure, we will discuss
-whether there is a Born rule to generate a probability measure from
-a state. When the space is $\mathbb{C}^{d}$, we will try to induced
-a Born rule from the conventional Born rule. When the space is $\mathbb{F}_{p^{2}}^{d}$,
-there is no natural way to induce a probability measure from a state,
-so we will set some conditions for a Born rule~$\tilde{\pi}$: 
+whether we will keep using the Born rule (\ref{eq:Born}) or there
+is another formula $\tilde{\mu}$ such that $\tilde{\mu}_{\psi}$
+is a probability measure for all $\ket{\psi}\in\Hilb\backslash\left\{ 0\right\} $.
+
+Then, Gleason's theorem states given a probability measure $\mu$
+there is a mixed state $\ket{\psi}$ such that $\mu=\mu_{\psi}$,
+i.e., the Born rule is surjective\footnote{If we extend the domain of $\mu_{\psi}$ including the mixed states.}.
+For any other formula~$\tilde{\mu}$, we can ask whether $\tilde{\mu}$
+is surjective as well.
+
+Obveriously, we don't want arbirarily assign a state~$\ket{\psi}\in\Hilb\backslash\left\{ 0\right\} $
+with a proabability measure $\tilde{\mu}_{\psi}$, for example, assigning
+every state to the same probability measure. We want $\tilde{\mu}_{\psi}$
+satisfying the following properties with some physical meaning:
 \begin{itemize}
-\item Given a pure state $\ket{\Psi}\in\ffzd{p^{2}}$, a Born-rule~$\tilde{\pi}$
-should give a probability~$\tilde{\pi}_{\Psi}$; 
-\item $\ip{\Psi}{\Phi}=0\Leftrightarrow\tilde{\pi}_{\Psi}\left(\ket{\Phi}\right)=\tilde{0}$,
+\item $\ip{\psi}{\phi}=0\Leftrightarrow\tilde{\mu}_{\psi}\left(\proj{\phi}\right)=\tilde{0}$,
 where $\tilde{0}$ is $0$ for $\left[0,1\right]$ and $\tilde{0}$
 is impossible for $\mathscr{L}_{2}=\left\{ \textrm{impossible},\textrm{possible}\right\} $. 
-\item $\tilde{\pi}_{\Psi}\left(\ket{\Phi}\right)=\tilde{\pi}_{\mathbf{U}\ket{\Psi}}\left(\mathbf{U}\ket{\Phi}\right)\textrm{ ,}$where
-$\ket{\Psi},\ket{\Phi}\in\ffzd{p^{2}}$ and $\mathbf{U}$ is any unitary
-map, i.e., $\mathbf{U}^{\dagger}\mathbf{U}=\mathbbm{1}$. 
+\item $\tilde{\mu}_{\psi}\left(\proj{\phi}\right)=\tilde{\mu}_{\mathbf{U}\ket{\psi}}\left(\mathbf{U}\proj{\phi}\mathbf{U}^{\dagger}\right)\textrm{ ,}$where
+$\ket{\psi},\ket{\phi}$ are states and $\mathbf{U}$ is any unitary
+map, i.e., $\mathbf{U}^{\dagger}\mathbf{U}=\mathbb{1}$. 
 \end{itemize}
-Notice that when the space is $\mathbb{C}^{d}$, every Born rule we
-consider will satisfy these three conditions.
-
-Finally, if there is a Born rule, we will see whether every probability
-measure is induced by a state, and establish Gleason's theorem. Notice
-that Gleason's theorem only hold when $d\ge3$ in CQT so that we may
-expect the situation for $d\ge3$ and $d=2$ are different. 
-
-The results can be summarized in the following table:\\
-\begin{tabular}{>{\raggedright}m{0.15\columnwidth}>{\raggedright}m{0.15\columnwidth}>{\raggedright}m{0.15\columnwidth}>{\raggedright}m{0.15\columnwidth}>{\raggedright}m{0.15\columnwidth}>{\raggedright}m{0.15\columnwidth}}
+And the results can be summarized in the following table:\\
+\center{ %
+\begin{tabular}{>{\raggedright}m{0.2\columnwidth}>{\raggedright}m{0.2\columnwidth}>{\raggedright}m{0.2\columnwidth}>{\raggedright}m{0.2\columnwidth}}
 \hline 
-State space $\Hilb$ & Probability values & How many probability measure? & Is there a nature Born rule? & How many possible Born rule if there is no nature one? & How many probability measure not come from any possible Born rules?\tabularnewline
+State space $\Hilb$  & Probability values  & Is there a $\tilde{\mu}$ satisfying the given conditions?  & Is the $\tilde{\mu}$ surjective?\tabularnewline
 \hline 
 \hline 
-$\C^{2}$ & $\left[0,1\right]$  & $\ge2$ & Yes &  & $\ge1$\tabularnewline
+$\C^{d}$ for $d\ge3$  & $\left[0,1\right]$  & Yes  & Yes\tabularnewline
 \hline 
-$\C^{d}$ for $d\ge3$ & $\left[0,1\right]$  & $\ge2$ & Yes &  & $0$\tabularnewline
+$\C^{d}$  & $\mathscr{L}_{2}$  & Yes  & No\tabularnewline
 \hline 
-$\C^{d}$ & $\mathscr{L}_{2}$ & $\ge2$ & Yes &  & $\ge1$\tabularnewline
+$\ffzd{p^{2}}$for $d\ge3$ except $d=p=3$  & $\left[0,1\right]$  & No  & \tabularnewline
 \hline 
-$\ff{3^{2}}^{d}$ for $3\ge d\ge2$ & $\left[0,1\right]$  & $\ge2$ & No & $1$ & $\ge1$\tabularnewline
+$\ffzd{p^{2}}$  & $\mathscr{L}_{2}$  & Yes & No\tabularnewline
 \hline 
-$\ff{p^{2}}^{2}$ for $p\ge7$ & $\left[0,1\right]$  & $\ge2$ & No & $\infty$ & $\ge1$\tabularnewline
-\hline 
-$\ff{7^{2}}^{3}$ & $\left[0,1\right]$  & $1$ & No & $0$ & \tabularnewline
-\hline 
-$\ffzd{p^{2}}$for $d\ge3$ except $d=p=3$ & $\left[0,1\right]$  & $\ge1$ 
-
-(Whether $\ge2$ or $1$?) & No & $0$ & \tabularnewline
-\hline 
-$\ffzd{p^{2}}$ & $\mathscr{L}_{2}$ & $\ge2$ & No & $1$ & $\ge1$\tabularnewline
-\hline 
-\end{tabular}
+\end{tabular}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
