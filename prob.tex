@@ -165,7 +165,7 @@ components: a set of events $\qevents$ and a probability measure
 $\mu : \qevents \rightarrow [0,1]$. We give an example before giving
 the formal definition.
 
-Consider the two-qubit Hilbert space with computational basis
+Consider the one-qubit Hilbert space with computational basis
 $\ket{0}$ and $\ket{1}$ and states:
 \[
 \ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}, \qquad\ket{\ms}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}\,.
@@ -176,7 +176,7 @@ projection $\mathbb{1} = \proj{0}+\proj{1}$:
 \[ 
 \{ \mathbb{0}, \proj{0}, \proj{1}, \proj{\ps}, \proj{\ms}, \ldots, \mathbb{1}\}
 \]
-Each event is interpreted as a possible post post-measurement state of
+Each event is interpreted as a possible post-measurement state of
 a quantum system as follows: given some arbitrary current quantum state
 $\ket{\psi}$ to be measured, the event $\proj{0}$ states that the
 post-measurement state will be $\ket{0}$; the event $\proj{1}$ states
@@ -188,19 +188,46 @@ post-measurement state will be a linear combination of $\ket{0}$ and
 $\ket{1}$; and the event $\mathbb{0}$ states that the post-measurement
 state will be the empty state.
 
-Irrespective of the current state $\ket{\psi}$ and
-irrespective of the particular experiment, the probability of event
-$\mathbb{0}$ will always be 0 (it is an impossible event) and the
-probability of event $\mathbb{1}$ will always be 1 (it is a certain
-event). The probabilities attached to other events will depend on the
-particular state in question. If the state is $\ket{0}$, the
-probability of event $\proj{0}$ is 1; the probability of event
-$\proj{1}$ is 0; the probability of event $\proj{\ps}$ is
-$\frac{1}{2}$; and the probability of event $\proj{\ms}$ is
-$\frac{1}{2}$. If the state is $\ket{\ps}$, the probability of each
-event $\proj{0}$ and $\proj{1}$ will be $\frac{1}{2}$; the
-probability of event $\proj{\ps}$ is 1; and the probability of event
-$\proj{\ms}$ is 0. 
+In classical probability space, two particular coins can define a
+probability measure on every event. Similarly, a quantum system can
+define a quantum probability measure on its event. The difference
+is that only orthogonal events can test together. For example, asking
+whether event~$\mathbb{1}$ occurs is the same as asking whether
+event~$\proj{0}$ or event~$\proj{1}$ occurs simultaniously. However,
+we can never ask whether event~$\proj{0}$ or event~$\proj{-}$
+occurs simultaniously. Similarly to the classical case, a \emph{quantum
+probability space}~\cite{BirkhoffVonNeumann1936,gleason1957,Redhead1987-REDINA,DBLP:journals/corr/abs-0910-2393,Maassen2010}
+can be summarized into the following two rules\footnote{Recently, people extend the domain of $\mu$ to all operators~$\mathcal{A}$
+on $\Hilb$ and consider $\mu:\mathcal{A}\rightarrow\C$~\cite{Maassen2010,Swart2013}.
+When an operator $A\in\mathcal{A}$ is Hermitian, $\mu\left(A\right)$
+is the expectation value of $A$. We does not take this approach because
+we want to focus only on probability. }: 
+\begin{itemize}
+\item $\mu(\mathbb{1})=1$, and 
+\item for a collection of pairwise orthogonal $E_{i}$, we have $\mu\left(\sum_{i}E_{i}\right)=\sum_{i}\mu\left(E_{i}\right)$. 
+\end{itemize}
+\begin{example}{[}One-qubit Hilbert space{]} Consider an experiment
+that with a qubit. The events are discribed previously. Depending on
+the systems, we can define different quantum probability measures.
+Here is a possible one: 
+\[
+\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{rcl}
+\mu_{0}\left(\mathbb{0}\right) & = & 0\\
+\mu_{0}\left(\proj{0}\right) & = & 1\\
+\mu_{0}\left(\proj{1}\right) & = & 0\\
+ & \vdots
+\end{array} & \begin{array}{rcl}
+\mu_{0}\left(\mathbb{1}\right) & = & 1\\
+\mu_{0}\left(\proj{\ps}\right) & = & 1/2\\
+\mu_{0}\left(\proj{\ms}\right) & = & 1/2\\
+ & \vdots
+\end{array}\end{array}
+\]
+The assignment satisfies the two constraints for quantum probability
+measures: the probability of $\mathbb{1}$ is 1, and the probability
+of every summation of orthogonal events (e.g., $\proj{0}+\proj{1}$)
+is the sum of the individual probabilities. \end{example}
 
 % \begin{itemize}
 % \item Family I: $\proj{0}$, $\proj{1}$ 
@@ -275,24 +302,6 @@ as in Abramsky~\cite{DBLP:journals/corr/abs-0910-2393}. Personally,
 I prefer Abramsky's approach, because normalizing a state in DQT is
 messier than in CQT, and we have already considered states whose norm
 is not one in our previous paper~\cite{DQT2014}.}\\
-Our previous examples can be verified in terms of $\mu_{\psi}$. Because
-$\proj{0}$ and $\proj{-}$ are non-commutative, their total probabilities
-are not a probability of an event
-\begin{eqnarray*}
-\mu_{0}(\proj{0})+\mu_{0}(\proj{-}) & = & \frac{3}{2}>1\textrm{ .}
-\end{eqnarray*}
-When events are orthogonal, i.e., commutative, they can be measured
-together and their probability is additive: 
-\[
-\mu_{0}(\proj{0})+\mu_{0}(\proj{1})=\mu_{0}(\proj{+})+\mu_{0}(\proj{-})=1=\mu_{0}(\mathbb{1})\textrm{ .}
-\]
-Similarly to the classical case, the total probability is one and
-the orthogonal additivity can be summarized into the following two
-rules:
-\begin{itemize}
-\item $\mu(\mathbb{1})=1$, and 
-\item for a collection of pairwise orthogonal $E_{i}$, we have $\mu(\sum_{i}E_{i})=\sum_{i}\mu(E_{i})$.
-\end{itemize}
 These two conditions define quantum probability measures. Recall that
 the Born rule (\ref{eq:Born}) induces a probability measure from
 a state. Naturally, we may ask: is every probability measure induced
