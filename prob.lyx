@@ -37,6 +37,7 @@
 \def\C{{\mathbb{C}}}
 \newcommand{\ff}[1]{\mathbb{F}_{#1}}
 \newcommand{\melement}[2]{ \langle #1 | #2 | #1 \rangle}
+\newcommand{\Tr}{\mathop{\mathrm{Tr}}\nolimits}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -1929,7 +1930,7 @@ Although it seems that we need an infinite long table to specify the quantum
 \end_inset
 
  induces a probability measure 
-\begin_inset Formula $\mu_{\psi}:\qevents\rightarrow[0,1]$
+\begin_inset Formula $\tilde{\mu}_{\psi}:\qevents\rightarrow[0,1]$
 \end_inset
 
  on the space of events defined for any event 
@@ -1950,11 +1951,146 @@ key "Born1984,Mermin2007"
 : 
 \begin_inset Formula 
 \begin{equation}
-\mu_{\psi}(E)=\frac{\melement{\psi}{E}}{\ip{\psi}{\psi}}\label{eq:Born}
+\tilde{\mu}_{\psi}(E)=\frac{\melement{\psi}{E}}{\ip{\psi}{\psi}}\label{eq:Born}
 \end{equation}
 
 \end_inset
 
+The Born rule satisfies the following properties:
+\end_layout
+
+\begin_layout Itemize
+It can be extend to mixed states.
+ Given 
+\family roman
+\size normal
+a mixed state represented by a density matrix 
+\begin_inset Formula $\rho=\sum_{j=1}^{N}q_{j}\frac{\proj{\psi_{j}}}{\ip{\psi_{j}}{\psi_{j}}}$
+\end_inset
+
+, where 
+\begin_inset Formula $\sum_{j=1}^{N}q_{j}=1$
+\end_inset
+
+, i.e., 
+\begin_inset Formula $\Tr\left(\rho\right)=1$
+\end_inset
+
+, then the Born rule can be extended to 
+\begin_inset Formula $\rho$
+\end_inset
+
+ by 
+\begin_inset Formula 
+\begin{eqnarray}
+\tilde{\mu}_{\rho}\left(E\right) & = & \Tr\left(\rho E\right)=\sum_{j=1}^{N}q_{j}\tilde{\mu}_{\Psi_{j}}\left(E\right)\textrm{ .}\label{BornRule.mixed}
+\end{eqnarray}
+
+\end_inset
+
+Notice that 
+\begin_inset Formula $\left(\left\{ 1,\ldots,N\right\} ,2^{\left\{ 1,\ldots,N\right\} },\pmeas\left(J\right)=\sum_{j\in J}q_{j}\right)$
+\end_inset
+
+ is a classical probability space.
+ Therefore, when we discretize the Hilbert space later, we may need to discretiz
+e this probability space as well.
+\family default
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+yutsung{
+\end_layout
+
+\end_inset
+
+Check!!!
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\tilde{\mu}_{\rho}$
+\end_inset
+
+ is a probability measure for all mixed state
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\ip{\psi}{\phi}=0\Leftrightarrow\tilde{\mu}_{\psi}\left(\proj{\phi}\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\tilde{\mu}_{\psi}\left(E\right)=\tilde{\mu}_{\mathbf{U}\ket{\psi}}\left(\mathbf{U}E\mathbf{U}^{\dagger}\right)\textrm{ ,}$
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{U}$
+\end_inset
+
+ is any unitary map, i.e., 
+\begin_inset Formula $\mathbf{U}^{\dagger}\mathbf{U}=\mathbb{1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+yutsung{
+\end_layout
+
+\end_inset
+
+...I think I need to check these properties identify an unique Born rule in
+ CQT or something...
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Naturally, we may ask: is every probability measure induced from a state
  by the Born rule? The answer is yes by Gleason's theorem when the dimension
 \begin_inset space ~
