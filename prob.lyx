@@ -7,6 +7,7 @@
 \textclass article
 \begin_preamble
 \usepackage{fullpage}
+\usepackage{url}
 \usepackage{bbm}
 \usepackage{bbold}
 \usepackage{amsthm}
@@ -14,10 +15,25 @@
 \usepackage{array}
 \usepackage{mathrsfs}
 \usepackage[all]{xy}
+\usepackage{wesa}
 
 
-\theoremstyle{remark}
-\newtheorem{example}{Example}\newcommand{\events}{\ensuremath{\mathcal{E}}}
+
+\newtheoremstyle{indented}
+  {3pt}% space before
+  {3pt}% space after
+  {\addtolength{\@totalleftmargin}{3.5em}
+   \addtolength{\linewidth}{-3.5em}
+   \parshape 1 3.5em \linewidth}% body font
+  {}% indent
+  {\bfseries}% header font
+  {.}% punctuation
+  {.5em}% after theorem header
+  {}% header specification (empty for default)
+
+\theoremstyle{indented}
+%% \theoremstyle{remark}
+\newtheorem{example}{Example}\newtheorem{definition}{Definition}\newcommand{\events}{\ensuremath{\mathcal{E}}}
 \newcommand{\qevents}{\ensuremath{\mathcal{E}}}
 \newcommand{\pmeas}{\ensuremath{\mu}}
 \newcommand{\Hilb}{\mathcal{H}}
@@ -28,6 +44,8 @@
 \newcommand{\proj}[1]{|#1 \rangle\langle #1 |}
 \newcommand{\ps}{\texttt{+}}
 \newcommand{\ms}{\texttt{-}}
+\newcommand{\poss}{{\mbox{\wesa{possible}}}}
+\newcommand{\imposs}{{\mbox{\wesa{impossible}}}}
 
 \usepackage{color}
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -37,14 +55,18 @@
 \def\C{{\mathbb{C}}}
 \newcommand{\ff}[1]{\mathbb{F}_{#1}}
 \newcommand{\melement}[2]{ \langle #1 | #2 | #1 \rangle}
+\newcommand{\expect}[2]{ \langle #1 | #2 | #1 \rangle}
 \newcommand{\Tr}{\mathop{\mathrm{Tr}}\nolimits}
 \end_preamble
 \use_default_options false
+\begin_modules
+theorems-std
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package none
 \inputencoding auto
-\fontencoding default
+\fontencoding T1
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -109,6 +131,10 @@
 Probability
 \end_layout
 
+\begin_layout Author
+
+\end_layout
+
 \begin_layout Date
 \begin_inset ERT
 status collapsed
@@ -123,6 +149,10 @@ today
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+ 
 \end_layout
 
 \begin_layout Standard
@@ -163,7 +193,7 @@ key "inun.425605319950101,GrahamKnuthPatashnik1994,rohatgi2011introduction"
 
 \end_inset
 
- collects necessary conditions for reasoning coherently about collections
+ specifies the necessary conditions for reasoning coherently about collections
  of uncertain events.
  It consists of a 
 \emph on
@@ -223,7 +253,7 @@ finite
 \begin_inset Formula $\events$
 \end_inset
 
-, the 
+, a 
 \emph on
 probability measure
 \emph default
@@ -273,30 +303,28 @@ begin{example}
 \end_inset
 
 .
- The event that the first coin is 
-\begin_inset Quotes eld
-\end_inset
-
-heads
-\begin_inset Quotes erd
-\end_inset
-
- is 
+ There are 16 total events including for example the event 
 \begin_inset Formula $\{HH,HT\}$
 \end_inset
 
-; the event that the two coins land on opposite sides is 
+ that the first coin is 
+\begin_inset Quotes eld
+\end_inset
+
+heads,
+\begin_inset Quotes erd
+\end_inset
+
+ the event 
 \begin_inset Formula $\{HT,TH\}$
 \end_inset
 
-; the event that at least one coin is tails is 
+ that the two coins land on opposite sides, and the event 
 \begin_inset Formula $\{HT,TH,TT\}$
 \end_inset
 
-.
- Depending on the assumptions regarding the coins, we can define several
- probability measures.
- Here is a possible one: 
+ that at least one coin is tails.
+ Here is a possible probability measure for these events: 
 \begin_inset Formula 
 \[
 \begin{array}{c@{\qquad\qquad}c}
@@ -326,11 +354,34 @@ heads
 The assignment satisfies the two constraints for probability measures: the
  probability of the entire sample space is 1, and the probability of every
  collection of disjoint events (e.g., 
-\begin_inset Formula $\{HT\}\cup\{TH\}$
+\begin_inset Formula $\{HT,TH\}=\{HT\}\cup\{TH\}$
 \end_inset
 
 ) is the sum of the individual probabilities.
+ The probability of collections of non-disjoint events (e.g., 
+\begin_inset Formula $\{HT,TH,TT\}=\{HT,TH\}\cup\{TH,TT\}$
+\end_inset
+
+) may add to something different than the probabilities of the individual
+ events.
+ It is useful to think that this probability measure is completely induced
+ by the two coins and their characteristics in the sense that each pair
+ of coins induces a measure, and each measure must correspond to some pair
+ of coins.
  
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+qed
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -372,11 +423,63 @@ In a strict computational or experimental setting, one may question the
 \begin_inset Formula $\frac{\pi}{4}$
 \end_inset
 
- which can be computed but with increasingly large resources as the precision
+ which can only be computed with increasingly large resources as the precision
  increases.
- Therefore it is more appropriate in such situations to consider probability
- measures mapping events to a finite set of elements computable with a fixed
- set of resources
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+yutsung{
+\end_layout
+
+\end_inset
+
+Check the meaning of the 
+\begin_inset Quotes eld
+\end_inset
+
+computing 
+\begin_inset Formula $\frac{\pi}{4}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, because Bailey Borwein Plouffe formula can computing the 
+\begin_inset Formula $n$
+\end_inset
+
+th binary digit of 
+\begin_inset Formula $\pi$
+\end_inset
+
+ using base 16 directly.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ Therefore, in a resource-aware setting, it is more appropriate to consider
+ probability measures that map events to a finite set of elements computable
+ with a fixed set of resources
 \begin_inset space ~
 \end_inset
 
@@ -390,7 +493,7 @@ key "Artstein1972,PuriRalescu1983"
 .
  The simplest such set, and the one we will consider exclusively in this
  paper, is the set 
-\begin_inset Formula $\mathscr{L}_{2}=\left\{ \textrm{impossible},\textrm{possible}\right\} $
+\begin_inset Formula $\mathscr{L}_{2}=\left\{ \imposs,\poss\right\} $
 \end_inset
 
  together with the operation 
@@ -398,20 +501,53 @@ key "Artstein1972,PuriRalescu1983"
 \end_inset
 
  where 
-\begin_inset Formula $x\vee y=\textrm{impossible}$
+\begin_inset Formula $x\vee y=\imposs$
 \end_inset
 
  if and only if 
-\begin_inset Formula $x=y=\textrm{impossible}$
+\begin_inset Formula $x=y=\imposs$
 \end_inset
 
 .
- In relation to the first definition, one can interpret impossible as the
- closed interval 
+ In relation to the first definition, one can interpret 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+imposs
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+as the closed interval 
 \begin_inset Formula $[0,0]$
 \end_inset
 
-, possible as the open interval 
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+poss
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+as the half-open interval 
 \begin_inset Formula $(0,1]$
 \end_inset
 
@@ -420,7 +556,7 @@ key "Artstein1972,PuriRalescu1983"
 \end_inset
 
  as the addition of intervals.
- The definition of a probability measure in this case is modifed as being
+ The definition of a probability measure in this case is modified as being
  a function 
 \begin_inset Formula $\pmeas:\events\rightarrow\mathscr{L}_{2}$
 \end_inset
@@ -429,7 +565,7 @@ key "Artstein1972,PuriRalescu1983"
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\pmeas(\Omega)=\textrm{possible}$
+\begin_inset Formula $\pmeas(\Omega)=\poss$
 \end_inset
 
 , and 
@@ -461,32 +597,45 @@ begin{example}
 
 \end_inset
 
-[Two-coin probability space with finite set-valued probability measure.]
+[Two-coin probability space with finite set-valued probability measure]
  Under the new set-valued requirement, the probability measure in the first
  example becomes: 
 \begin_inset Formula 
 \[
 \begin{array}{c@{\qquad\qquad}c}
 \begin{array}{rcl}
-\pmeas(\emptyset) & = & \textrm{impossible}\\
-\pmeas(\{HH\}) & = & \textrm{possible}\\
-\pmeas(\{HT\}) & = & \textrm{impossible}\\
-\pmeas(\{TH\}) & = & \textrm{possible}\\
-\pmeas(\{TT\}) & = & \textrm{impossible}\\
-\pmeas(\{HH,HT\}) & = & \textrm{possible}\\
-\pmeas(\{HH,TH\}) & = & \textrm{possible}\\
-\pmeas(\{HH,TT\}) & = & \textrm{possible}
+\pmeas(\emptyset) & = & \imposs\\
+\pmeas(\{HH\}) & = & \poss\\
+\pmeas(\{HT\}) & = & \imposs\\
+\pmeas(\{TH\}) & = & \poss\\
+\pmeas(\{TT\}) & = & \imposs\\
+\pmeas(\{HH,HT\}) & = & \poss\\
+\pmeas(\{HH,TH\}) & = & \poss\\
+\pmeas(\{HH,TT\}) & = & \poss
 \end{array} & \begin{array}{rcl}
-\pmeas(\{HT,TH\}) & = & \textrm{possible}\\
-\pmeas(\{HT,TT\}) & = & \textrm{impossible}\\
-\pmeas(\{TH,TT\}) & = & \textrm{possible}\\
-\pmeas(\{HH,HT,TH\}) & = & \textrm{possible}\\
-\pmeas(\{HH,HT,TT\}) & = & \textrm{possible}\\
-\pmeas(\{HH,TH,TT\}) & = & \textrm{possible}\\
-\pmeas(\{HT,TH,TT\}) & = & \textrm{possible}\\
-\pmeas(\{HH,HT,TH,TT\}) & = & \textrm{possible}
+\pmeas(\{HT,TH\}) & = & \poss\\
+\pmeas(\{HT,TT\}) & = & \imposs\\
+\pmeas(\{TH,TT\}) & = & \poss\\
+\pmeas(\{HH,HT,TH\}) & = & \poss\\
+\pmeas(\{HH,HT,TT\}) & = & \poss\\
+\pmeas(\{HH,TH,TT\}) & = & \poss\\
+\pmeas(\{HT,TH,TT\}) & = & \poss\\
+\pmeas(\{HH,HT,TH,TT\}) & = & \poss
 \end{array}\end{array}
 \]
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+qed
+\end_layout
 
 \end_inset
 
@@ -504,6 +653,21 @@ end{example}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+We will return to finite set-valued probability measures in Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:?"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -531,13 +695,11 @@ Quantum Probability Spaces
 \begin_layout Standard
 The mathematical framework above assumes that one has complete knowledge
  of the events and their relationships.
- But even in many classical situations, the structure of the event space
+ However, in many practical situations, the structure of the event space
  is only partially known and the precise dependence of two events on each
- other cannot be determined with certainty.
+ other cannot, a priori, be determined with certainty.
  In the quantum case, this partial knowledge is compounded by the fact that
- not all quantum events can be observed simultaneously.
- Indeed, in the quantum world, there are non-commuting events which cannot
- even happen simultaneously.
+ there exist non-commuting events which cannot happen simultaneously.
  To accommodate these more complex situations, we abandon the sample space
 \begin_inset space ~
 \end_inset
@@ -546,9 +708,9 @@ The mathematical framework above assumes that one has complete knowledge
 \begin_inset Formula $\Omega$
 \end_inset
 
- and define and reason directly about events.
- A quantum probability space consist of just two components: a set of events
- 
+ and reason directly about events.
+ A quantum probability space therefore consist of just two components: a
+ set of events 
 \begin_inset Formula $\qevents$
 \end_inset
 
@@ -561,49 +723,61 @@ The mathematical framework above assumes that one has complete knowledge
 \end_layout
 
 \begin_layout Standard
-Consider the one-qubit Hilbert space with computational basis 
-\begin_inset Formula $\ket{0}$
-\end_inset
+\begin_inset ERT
+status collapsed
 
- and 
-\begin_inset Formula $\ket{1}$
-\end_inset
+\begin_layout Plain Layout
 
- and states: 
-\begin_inset Formula 
-\[
-\ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}},\qquad\ket{\ms}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}\,.
-\]
+
+\backslash
+begin{example}
+\end_layout
 
 \end_inset
 
-The set of events associated with this Hilbert space consists of all projections
- including the empty projection 
+[One-qubit quantum probability space] Consider a one-qubit Hilbert space
+ with states 
+\begin_inset Formula $\alpha\ket{0}+\beta\ket{1}$
+\end_inset
+
+ such that 
+\begin_inset Formula $|\alpha|^{2}+|\beta|^{2}=1$
+\end_inset
+
+.
+ The set of events associated with this Hilbert space consists of the empty
+ projection
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\mathbb{0}$
 \end_inset
 
- and the unit projection 
-\begin_inset Formula $\mathbb{1}=\proj{0}+\proj{1}$
+ together with projection operators 
+\begin_inset Formula $\proj{\psi}$
 \end_inset
 
-: 
-\begin_inset Formula 
-\[
-\{\mathbb{0},\proj{0},\proj{1},\proj{\ps},\proj{\ms},\ldots,\mathbb{1}\}
-\]
-
-\end_inset
-
-Each event is interpreted as a possible post-measurement state of a quantum
- system as follows: given some arbitrary current quantum state 
+ for each state 
 \begin_inset Formula $\ket{\psi}$
 \end_inset
 
- to be measured, the event 
+.
+ Each event is interpreted as a possible post-measurement state of a quantum
+ system in current state 
+\begin_inset Formula $\ket{\phi}$
+\end_inset
+
+.
+ For example, the event 
 \begin_inset Formula $\proj{0}$
 \end_inset
 
- states that the post-measurement state will be 
+ indicates that the post-measurement state will be
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\ket{0}$
 \end_inset
 
@@ -611,7 +785,11 @@ Each event is interpreted as a possible post-measurement state of a quantum
 \begin_inset Formula $\proj{1}$
 \end_inset
 
- states that the post-measurement state will be 
+ indicates that the post-measurement state will be
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\ket{1}$
 \end_inset
 
@@ -619,24 +797,20 @@ Each event is interpreted as a possible post-measurement state of a quantum
 \begin_inset Formula $\proj{\ps}$
 \end_inset
 
- states that the post-measurement state will be 
+ where 
+\begin_inset Formula $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$
+\end_inset
+
+ indicates that the post-measurement state will be 
 \begin_inset Formula $\ket{\ps}$
 \end_inset
 
 ; the event 
-\begin_inset Formula $\proj{\ms}$
+\begin_inset Formula $\mathbb{1}=\proj{0}+\proj{1}$
 \end_inset
 
- states that the post-measurement state will be 
-\begin_inset Formula $\ket{\ms}$
-\end_inset
-
-; the event 
-\begin_inset Formula $\mathbb{1}$
-\end_inset
-
- states that the post-measurement state will be a linear combination of
- 
+ indicates that the post-measurement state will be a linear combination
+ of 
 \begin_inset Formula $\ket{0}$
 \end_inset
 
@@ -649,61 +823,92 @@ Each event is interpreted as a possible post-measurement state of a quantum
 \end_inset
 
  states that the post-measurement state will be the empty state.
-\end_layout
-
-\begin_layout Standard
-In classical probability space, two particular coins can define a probability
- measure on every event.
- Similarly, a quantum system can define a quantum probability measure on
- its event.
- The difference is that only orthogonal events can test together.
- For example, asking whether event
-\begin_inset space ~
+ As in the classical case, a probability measure maps events to 
+\begin_inset Formula $[0,1]$
 \end_inset
 
+: here is a partial specification of a possible measure: 
+\begin_inset Formula 
+\[
+\begin{array}{rcl}
+\mu\left(\mathbb{0}\right)=0,\quad\mu\left(\mathbb{1}\right)=1,\quad\mu\left(\proj{0}\right)=1,\quad\mu\left(\proj{1}\right)=0,\quad\mu\left(\proj{\ps}\right)=1/2,\quad\ldots\end{array}
+\]
 
+\end_inset
+
+Note that, similarly to the classical case, the probability of 
 \begin_inset Formula $\mathbb{1}$
 \end_inset
 
- occurs is the same as asking whether event
-\begin_inset space ~
+ is 1 and the probability of collections of orthogonal events (e.g., 
+\begin_inset Formula $\proj{0}+\proj{1}$
 \end_inset
 
-
+) is the sum of the individual probabilities.
+ In contrast, a collection of non-orthogonal events (e.g., 
 \begin_inset Formula $\proj{0}$
 \end_inset
 
- or event
-\begin_inset space ~
+ and 
+\begin_inset Formula $\proj{\ps}$
+\end_inset
+
+) is not itself an event.
+ In the classical example, we argued that each probability measure is uniquely
+ determined by two actual coins.
+ A similar (but much more subtle) argument is valid also in the quantum
+ case.
+ By postulates of quantum mechanics and Gleason's theorem, it turns out
+ that for large enough quantum systems, each probability measure is uniquely
+ determined by an actual quantum state.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+qed
+\end_layout
+
 \end_inset
 
 
-\begin_inset Formula $\proj{1}$
-\end_inset
+\begin_inset ERT
+status collapsed
 
- occurs simultaniously.
- However, we can never ask whether event
-\begin_inset space ~
-\end_inset
+\begin_layout Plain Layout
 
 
-\begin_inset Formula $\proj{0}$
-\end_inset
+\backslash
+end{example}
+\end_layout
 
- or event
-\begin_inset space ~
 \end_inset
 
 
-\begin_inset Formula $\proj{-}$
+\end_layout
+
+\begin_layout Standard
+To properly explain the previous example and generalize to arbitrary quantum
+ systems, we formally define a quantum probability space as follows.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{definition}
+\end_layout
+
 \end_inset
 
- occurs simultaniously.
- Similarly to the classical case, a 
-\emph on
-quantum probability space
-\emph default
-
+[Quantum Probability Space
 \begin_inset space ~
 \end_inset
 
@@ -714,16 +919,29 @@ key "BirkhoffVonNeumann1936,gleason1957,Redhead1987-REDINA,DBLP:journals/corr/ab
 
 \end_inset
 
- can be summarized into the following two rules
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Recently, people extend the domain of 
-\begin_inset Formula $\mu$
+] Given a Hilbert space 
+\begin_inset Formula $\Hilb$
 \end_inset
 
- to all operators
+, a 
+\emph on
+quantum probability space
+\emph default
+ consists of a set of events 
+\begin_inset Formula $\events$
+\end_inset
+
+ and a probability measure 
+\begin_inset Formula $\mu:\events\rightarrow[0,1]$
+\end_inset
+
+ such that:
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+It is possible to define a more general space of events consisting of all
+ operators
 \begin_inset space ~
 \end_inset
 
@@ -770,7 +988,51 @@ key "Maassen2010,Swart2013"
 
 \end_inset
 
-: 
+ 
+\end_layout
+
+\begin_layout Itemize
+The set of events consists of the empty projection 
+\begin_inset Formula $\mathbb{0}$
+\end_inset
+
+ together with projection operators 
+\begin_inset Formula $\proj{\psi}$
+\end_inset
+
+ for each state 
+\begin_inset Formula $\ket{\psi}$
+\end_inset
+
+,
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+yutsung{
+\end_layout
+
+\end_inset
+
+and the sum of the orthogonal events recursively.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -781,7 +1043,11 @@ key "Maassen2010,Swart2013"
 \end_layout
 
 \begin_layout Itemize
-for a collection of pairwise orthogonal 
+for projections expressible as sums 
+\begin_inset Formula $\sum_{i}E_{i}$
+\end_inset
+
+ of necessarily orthogonal events 
 \begin_inset Formula $E_{i}$
 \end_inset
 
@@ -801,45 +1067,12 @@ status collapsed
 
 
 \backslash
-begin{example}
+qed
 \end_layout
 
 \end_inset
 
-[One-qubit Hilbert space] Consider an experiment that with a qubit.
- The events are discribed previously.
- Depending on the systems, we can define different quantum probability measures.
- Here is a possible one: 
-\begin_inset Formula 
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\mu_{0}\left(\mathbb{0}\right) & = & 0\\
-\mu_{0}\left(\proj{0}\right) & = & 1\\
-\mu_{0}\left(\proj{1}\right) & = & 0\\
- & \vdots
-\end{array} & \begin{array}{rcl}
-\mu_{0}\left(\mathbb{1}\right) & = & 1\\
-\mu_{0}\left(\proj{\ps}\right) & = & 1/2\\
-\mu_{0}\left(\proj{\ms}\right) & = & 1/2\\
- & \vdots
-\end{array}\end{array}
-\]
 
-\end_inset
-
-The assignment satisfies the two constraints for quantum probability measures:
- the probability of 
-\begin_inset Formula $\mathbb{1}$
-\end_inset
-
- is 1, and the probability of every summation of orthogonal events (e.g.,
- 
-\begin_inset Formula $\proj{0}+\proj{1}$
-\end_inset
-
-) is the sum of the individual probabilities.
- 
 \begin_inset ERT
 status collapsed
 
@@ -847,7 +1080,7 @@ status collapsed
 
 
 \backslash
-end{example}
+end{definition}
 \end_layout
 
 \end_inset
@@ -861,9 +1094,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-% 
-\backslash
-begin{itemize}
+%%%%%
 \end_layout
 
 \begin_layout Plain Layout
@@ -873,24 +1104,114 @@ begin{itemize}
 \end_inset
 
 
-\begin_inset ERT
+\end_layout
+
+\begin_layout Subsection
+Quantum Probability Measures
+\end_layout
+
+\begin_layout Standard
+For a given set of events 
+\begin_inset Formula $\events$
+\end_inset
+
+, there are many possible probability measures 
+\begin_inset Formula $\mu:\events\rightarrow[0,1]$
+\end_inset
+
+.
+ The Born rule, a postulate of quantum mechanics, states that each quantum
+ state 
+\begin_inset Formula $\ket{\phi}$
+\end_inset
+
+ induces a probability measure 
+\begin_inset Formula $\mu_{\phi}$
+\end_inset
+
+ as follows: 
+\begin_inset Formula 
+\[
+\mu_{\phi}(E)=\ip{\phi}{E\phi}
+\]
+
+\end_inset
+
+Conversely, Gleason's theorem states that given a probability measure 
+\begin_inset Formula $\mu$
+\end_inset
+
+, there exist a quantum state 
+\begin_inset Formula $\ket{\phi}$
+\end_inset
+
+ that induces such a measure using the Born rule.
+ The theorem is only valid in Hilbert spaces with dimension 
+\begin_inset Formula $d\geq3$
+\end_inset
+
+.
+ It is instructive to study counterexamples in 
+\begin_inset Formula $d=2$
+\end_inset
+
+, i.e., the case of a one-qubit system.
+ Consider five states 
+\begin_inset Formula $\ket{\psi_{0}}$
+\end_inset
+
+ to 
+\begin_inset Formula $\ket{\psi_{4}}$
+\end_inset
+
+ that form five orthogonal bases 
+\begin_inset Formula $\{\ket{\psi_{0}},\ket{\psi_{1}}\}$
+\end_inset
+
+, 
+\begin_inset Formula $\{\ket{\psi_{1}},\ket{\psi_{2}}\}$
+\end_inset
+
+, 
+\begin_inset Formula $\{\ket{\psi_{2}},\ket{\psi_{3}}\}$
+\end_inset
+
+, 
+\begin_inset Formula $\{\ket{\psi_{3}},\ket{\psi_{4}}\}$
+\end_inset
+
+, and 
+\begin_inset Formula $\{\ket{\psi_{4}},\ket{\psi_{0}}\}$
+\end_inset
+
+ and consider the probability measure defined as follows.
+ For all 
+\begin_inset Formula $i\in\{0,1,2,3,4\}$
+\end_inset
+
+, we have 
+\begin_inset Formula $\mu_{X}(\proj{\psi_{i}})=1/2$
+\end_inset
+
+.
+ For each orthogonal basis, the probability is 1 as desired and yet it is
+ impossible to find a single quantum state that realizes such a probability
+ measure (see 
+\begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-% 
-\backslash
-item Family I: $
-\backslash
-proj{0}$, $
-\backslash
-proj{1}$ 
+http://tph.tuwien.ac.at/~svozil/publ/2006-gleason.pdf
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
+)
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -899,1002 +1220,20 @@ status collapsed
 
 \begin_layout Plain Layout
 
-% 
-\backslash
-item Family II: $
-\backslash
-proj{
-\backslash
-ps}$, $
-\backslash
-proj{
-\backslash
-ms}$
-\end_layout
 
-\begin_layout Plain Layout
-
+\backslash
+amr{
 \end_layout
 
 \end_inset
 
-
+the rest needs cleaning up and perhaps does not even belong in this section
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-% 
-\backslash
-end{itemize}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% In family I, all operators can be expressed as $
-\backslash
-left
-\backslash
-{ 
-\backslash
-lambda_{1}
-\backslash
-proj{0}+
-\backslash
-lambda_{2}
-\backslash
-proj{1}~
-\backslash
-middle|~
-\backslash
-lambda_{1},
-\backslash
-lambda_{2}
-\backslash
-in
-\backslash
-mathbb{C}
-\backslash
-right
-\backslash
-} $.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% In order to identify projectors among them, we need to solve the following
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% two equations.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-begin{eqnarray*}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-lambda_{1}
-\backslash
-proj{0}+
-\backslash
-lambda_{2}
-\backslash
-proj{1} & = & 
-\backslash
-left(
-\backslash
-lambda_{1}
-\backslash
-proj{0}+
-\backslash
-lambda_{2}
-\backslash
-proj{1}
-\backslash
-right)^{*}=
-\backslash
-lambda_{1}^{*}
-\backslash
-proj{0}+
-\backslash
-lambda_{2}^{*}
-\backslash
-proj{1}
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-lambda_{1}
-\backslash
-proj{0}+
-\backslash
-lambda_{2}
-\backslash
-proj{1} & = & 
-\backslash
-left(
-\backslash
-lambda_{1}
-\backslash
-proj{0}+
-\backslash
-lambda_{2}
-\backslash
-proj{1}
-\backslash
-right)^{2}=
-\backslash
-lambda_{1}^{2}
-\backslash
-proj{0}+
-\backslash
-lambda_{2}^{2}
-\backslash
-proj{1}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-end{eqnarray*}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Therefore, we actually have $
-\backslash
-lambda_{1},
-\backslash
-lambda_{2}
-\backslash
-in
-\backslash
-left
-\backslash
-{ 0,1
-\backslash
-right
-\backslash
-} $,
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% and there are only four projections: $0$, $
-\backslash
-proj{0}$, $
-\backslash
-proj{1}$,
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% and $
-\backslash
-mathbb{1}=
-\backslash
-proj{0}+
-\backslash
-proj{1}$.
- Then, $
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ps}}$ and
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% $
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ms}}$ of each projections are 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-[
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-begin{array}{c@{
-\backslash
-qquad
-\backslash
-qquad}c}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-begin{array}{rcl}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ps}}(0) & = & 0
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ps}}(
-\backslash
-proj{0}) & = & 1/2
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ps}}(
-\backslash
-proj{1}) & = & 1/2
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ps}}(
-\backslash
-mathbb{1}) & = & 1
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-end{array} & 
-\backslash
-begin{array}{rcl}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ms}}(0) & = & 0
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ms}}(
-\backslash
-proj{0}) & = & 1/2
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ms}}(
-\backslash
-proj{1}) & = & 1/2
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ms}}(
-\backslash
-mathbb{1}) & = & 1
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-end{array}
-\backslash
-end{array}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-]
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Similarly, $
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ps}}$ and $
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ms}}$ gives two probability
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% for family II as well.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-[
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-begin{array}{c@{
-\backslash
-qquad
-\backslash
-qquad}c}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-begin{array}{rcl}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ps}}(0) & = & 0
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ps}}(
-\backslash
-proj{+}) & = & 1
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ps}}(
-\backslash
-proj{
-\backslash
-ms}) & = & 0
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ps}}(
-\backslash
-mathbb{1}) & = & 1
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-end{array} & 
-\backslash
-begin{array}{rcl}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ms}}(0) & = & 0
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ms}}(
-\backslash
-proj{
-\backslash
-ps}) & = & 0
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ms}}(
-\backslash
-proj{
-\backslash
-ms}) & = & 1
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-mu_{
-\backslash
-ket{
-\backslash
-ms}}(
-\backslash
-mathbb{1}) & = & 1
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-end{array}
-\backslash
-end{array}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-]
+}
 \end_layout
 
 \end_inset
@@ -1909,11 +1248,11 @@ Although it seems that we need an infinite long table to specify the quantum
 \end_inset
 
 
-\begin_inset Formula $\mu_{0}$
+\begin_inset Formula $\mu$
 \end_inset
 
 , our 
-\begin_inset Formula $\mu_{0}$
+\begin_inset Formula $\mu$
 \end_inset
 
  is actually given by a simple formula
@@ -1956,15 +1295,12 @@ key "Born1984,Mermin2007"
 
 \end_inset
 
-The Born rule satisfies the following properties:
+The Born rule satisfies the following properties: 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 It can be extend to mixed states.
- Given 
-\family roman
-\size normal
-a mixed state represented by a density matrix 
+ Given a mixed state represented by a density matrix 
 \begin_inset Formula $\rho=\sum_{j=1}^{N}q_{j}\frac{\proj{\psi_{j}}}{\ip{\psi_{j}}{\psi_{j}}}$
 \end_inset
 
@@ -1995,36 +1331,10 @@ Notice that
  is a classical probability space.
  Therefore, when we discretize the Hilbert space later, we may need to discretiz
 e this probability space as well.
-\family default
-\size default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-yutsung{
+ 
 \end_layout
 
-\end_inset
-
-Check!!!
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
+\begin_layout Enumerate
 \begin_inset Formula $\tilde{\mu}_{\rho}$
 \end_inset
 
@@ -2037,16 +1347,18 @@ status collapsed
 \end_inset
 
 .
+ 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 \begin_inset Formula $\ip{\psi}{\phi}=0\Leftrightarrow\tilde{\mu}_{\psi}\left(\proj{\phi}\right)=0$
 \end_inset
 
 .
+ 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 \begin_inset Formula $\tilde{\mu}_{\psi}\left(E\right)=\tilde{\mu}_{\mathbf{U}\ket{\psi}}\left(\mathbf{U}E\mathbf{U}^{\dagger}\right)\textrm{ ,}$
 \end_inset
 
@@ -2063,34 +1375,6 @@ where
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-yutsung{
-\end_layout
-
-\end_inset
-
-...I think I need to check these properties identify an unique Born rule in
- CQT or something...
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Naturally, we may ask: is every probability measure induced from a state
  by the Born rule? The answer is yes by Gleason's theorem when the dimension
 \begin_inset space ~
@@ -2100,7 +1384,7 @@ Naturally, we may ask: is every probability measure induced from a state
 \begin_inset Formula $\ge3$
 \end_inset
 
- and extend the domain of the Born rule to mixed state
+
 \begin_inset space ~
 \end_inset
 
@@ -2112,6 +1396,120 @@ key "gleason1957,peres1995quantum,Redhead1987-REDINA"
 \end_inset
 
 .
+ Furthermore, a simple corollary of Gleason's theorem can show the Born
+ rule is the unique function satisfying conditions 1.
+ to 3.
+\end_layout
+
+\begin_layout Corollary
+The Born rule is the unique function satisfying conditions 1.
+ to 3.
+\end_layout
+
+\begin_layout Proof
+Assume there is another function 
+\begin_inset Formula $\tilde{\mu}'$
+\end_inset
+
+ such that 
+\begin_inset Formula $\tilde{\mu}'_{\rho}$
+\end_inset
+
+ is a quantum probability measure for all mixed state
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+ We are going to prove 
+\begin_inset Formula $\tilde{\mu}'=\tilde{\mu}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Fix a pure normalized state 
+\begin_inset Formula $\phi$
+\end_inset
+
+, 
+\begin_inset Formula $\tilde{\mu}'_{\phi}$
+\end_inset
+
+ is a quantum probability measure by condition 2.
+ By Gleason's theorem, there is a mixed state 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\rho'$
+\end_inset
+
+, such that 
+\begin_inset Formula $\tilde{\mu}'_{\phi}\left(E\right)=\Tr\left(\rho'E\right)=\sum_{j=1}^{N}q_{j}\tilde{\mu}_{\psi_{j}}\left(E\right)$
+\end_inset
+
+ for all event 
+\begin_inset Formula $E$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Consider the event 
+\begin_inset Formula $E'=\mathbb{1}-\proj{\phi}$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\begin{eqnarray*}
+0 & \overset{\textrm{Condition 3}}{=} & \tilde{\mu}_{\phi}\left(E'\right)\\
+ & = & \sum_{j=1}^{N}q_{j}\tilde{\mu}_{\psi_{j}}\left(E'\right)
+\end{eqnarray*}
+
+\end_inset
+
+Because 
+\begin_inset Formula $q_{j}>0$
+\end_inset
+
+, we have 
+\begin_inset Formula $\tilde{\mu}_{\psi_{j}}\left(E\right)=0$
+\end_inset
+
+, i.e., 
+\begin_inset Formula $\psi_{j}$
+\end_inset
+
+ is orthogonal to a co-dimension-
+\begin_inset Formula $1$
+\end_inset
+
+ subspace 
+\begin_inset Formula $E'$
+\end_inset
+
+.
+ However, the only subspace orthogonal to 
+\begin_inset Formula $E'$
+\end_inset
+
+ is span by 
+\begin_inset Formula $\ket{\phi}$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $\tilde{\mu}'_{\phi}=\tilde{\mu}_{\phi}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -2122,195 +1520,12 @@ status collapsed
 
 
 \backslash
-yutsung{
+amr{
 \end_layout
 
 \end_inset
 
-There are three ways to charactize a quantum probability: 
-\end_layout
-
-\begin_layout Enumerate
-The above two conditions as Gleason did.
- 
-\end_layout
-
-\begin_layout Enumerate
-As a linear functional on a * algebra.
- 
-\end_layout
-
-\begin_layout Enumerate
-As induced by a state vector by the Born rule (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:Born"
-
-\end_inset
-
-).
- 
-\end_layout
-
-\begin_layout Standard
-According to equation (37) in section 4 Quantum Probability in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Maassen2010"
-
-\end_inset
-
-, the equalivance between 1.
- and 2.
- only hold for 
-\begin_inset Formula $d\ge3$
-\end_inset
-
- because of Gleason' theorem.
- Therefore, it seems hard to get insight for how to handle Gleason's theorem
- by *-algebra formulism...
-\end_layout
-
-\begin_layout Standard
-The equalivance between 2.
- and 3.
- can be found in Proposition 4.1.1 in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Swart2013"
-
-\end_inset
-
-.
- Here, the Born rule
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mu_{\psi}(E)$
-\end_inset
-
- is replaced by a faithful pseudotrace 
-\begin_inset Formula $\tau$
-\end_inset
-
- and 
-\begin_inset Formula $\mu_{\psi}(E)=\tau\left(\proj{\psi}E\right)$
-\end_inset
-
-.
- The faithful pseudotrace is defined in section 5.2 Decomposition of algebra
- with a list of conditions.
- The problem is:
-\end_layout
-
-\begin_layout Itemize
-Lemma 5.2.1 proved there exists a faith pseudotrace, but said nothing about
- uniqueness.
- Therefore, these conditions may not uniquely determine the Born rule?
-\end_layout
-
-\begin_layout Itemize
-We don't formulate thing in algrebra...
- So although we may have an analog or something, we cannot quite sure our
- conditions will be exactly the same as theirs.
- 
-\end_layout
-
-\begin_layout Standard
-If we admit the above, then the condition (a) to (c) and 
-\begin_inset Formula $\tau\left(AB\right)=\tau\left(BA\right)$
-\end_inset
-
- implies 
-\end_layout
-
-\begin_layout Itemize
-Our map 
-\begin_inset Formula $\tilde{\mu}:\Hilb\rightarrow\qevents\rightarrow[0,1]$
-\end_inset
-
- should satisfy 
-\begin_inset Formula $\tilde{\mu}_{\psi}$
-\end_inset
-
- is a probability measure for all 
-\begin_inset Formula $\ket{\psi}\in\Hilb\backslash\left\{ 0\right\} $
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-The condition (a) and (d) implies
-\end_layout
-
-\begin_layout Itemize
-Our map 
-\begin_inset Formula $\tilde{\mu}$
-\end_inset
-
- satisfy 
-\begin_inset Formula $\ip{\psi}{\phi}=0\Leftrightarrow\tilde{\mu}_{\psi}\left(\proj{\phi}\right)=\tilde{0}$
-\end_inset
-
-, where 
-\begin_inset Formula $\tilde{0}$
-\end_inset
-
- is 
-\begin_inset Formula $0$
-\end_inset
-
- for 
-\begin_inset Formula $\left[0,1\right]$
-\end_inset
-
- and 
-\begin_inset Formula $\tilde{0}$
-\end_inset
-
- is impossible for 
-\begin_inset Formula $\mathscr{L}_{2}=\left\{ \textrm{impossible},\textrm{possible}\right\} $
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\tau\left(AB\right)=\tau\left(BA\right)$
-\end_inset
-
- also implies
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\tilde{\mu}_{\psi}\left(\proj{\phi}\right)=\tilde{\mu}_{\mathbf{U}\ket{\psi}}\left(\mathbf{U}\proj{\phi}\mathbf{U}^{\dagger}\right)\textrm{ ,}$
-\end_inset
-
-where 
-\begin_inset Formula $\ket{\psi},\ket{\phi}$
-\end_inset
-
- are states and 
-\begin_inset Formula $\mathbf{U}$
-\end_inset
-
- is any unitary map, i.e., 
-\begin_inset Formula $\mathbf{U}^{\dagger}\mathbf{U}=\mathbb{1}$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-Besides, the condition (a) also gives the probability of mixed states form
- pure states...
- OK...
- it seems that I know what I am going to type for DQT, but I think I need
- to sort them out before type them...
+give example non-commuting events
 \begin_inset ERT
 status collapsed
 
@@ -2330,527 +1545,28 @@ status collapsed
 
 \begin_layout Plain Layout
 
-% 
-\backslash
-yutsung{If we follow 
-\backslash
-cite{Maassen2010,Swart2013}, then we also
-\end_layout
 
-\begin_layout Plain Layout
-
+\backslash
+yutsung{
 \end_layout
 
 \end_inset
 
+Isn't 
+\begin_inset Formula $\proj{0}$
+\end_inset
 
+ and 
+\begin_inset Formula $\proj{\ps}$
+\end_inset
+
+ an example in the example of One-qubit quantum probability space.
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-% need 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-begin{itemize}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-item $
-\backslash
-mu$ can be extended to a linear functional~$
-\backslash
-mu:alg
-\backslash
-left(
-\backslash
-qevents
-\backslash
-right)
-\backslash
-rightarrow
-\backslash
-mathbb{C}$,
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% where $alg
-\backslash
-left(
-\backslash
-qevents
-\backslash
-right)$ is the minimal $*$-algebra generated
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% by $
-\backslash
-qevents$.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-end{itemize}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Also, 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-begin{itemize}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-item for all $A
-\backslash
-in
-\backslash
-qevents$, we have $
-\backslash
-mu(A^{*}A)
-\backslash
-geq0$.
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-end{itemize}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% should be 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-begin{itemize}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-item for all $A
-\backslash
-in alg
-\backslash
-left(
-\backslash
-qevents
-\backslash
-right)$, we have $
-\backslash
-mu(A^{*}A)
-\backslash
-geq0$.
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-end{itemize}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% because we have $
-\backslash
-mu(A^{*}A)=
-\backslash
-mu(A^{2})=
-\backslash
-mu(A)$ if $A$ is a projection.}
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-yutsung{$
-\backslash
-left
-\backslash
-{ 
-\backslash
-sum_{j=1}^{k}
-\backslash
-lambda_{j}P_{j}~
-\backslash
-middle|~
-\backslash
-lambda_{1},
-\backslash
-ldots,
-\backslash
-lambda_{k}
-\backslash
-in
-\backslash
-mathbb{C}
-\backslash
-right
-\backslash
-} $
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% is the minimal $*$-algebra generated by $P_{1},P_{2},
-\backslash
-ldots,P_{k}$,
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% but it contains all possible observables $P_{1},P_{2},
-\backslash
-ldots,P_{k}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% can generate (and something more) not just projections.
- For example,
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% $2
-\backslash
-mathbb{1}
-\backslash
-in
-\backslash
-left
-\backslash
-{ 
-\backslash
-sum_{j=1}^{k}
-\backslash
-lambda_{j}P_{j}~
-\backslash
-middle|~
-\backslash
-lambda_{1},
-\backslash
-ldots,
-\backslash
-lambda_{k}
-\backslash
-in
-\backslash
-mathbb{C}
-\backslash
-right
-\backslash
-} $.}
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% 
-\backslash
-yutsung{So $
-\backslash
-mu_{
-\backslash
-psi}$ maps the projections generated by $P_{1},P_{2},
-\backslash
-ldots,P_{k}$
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% to $[0,1]$, and maps $
-\backslash
-left
-\backslash
-{ 
-\backslash
-sum_{j=1}^{k}
-\backslash
-lambda_{j}P_{j}~
-\backslash
-middle|~
-\backslash
-lambda_{1},
-\backslash
-ldots,
-\backslash
-lambda_{k}
-\backslash
-in
-\backslash
-mathbb{C}
-\backslash
-right
-\backslash
-} $
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% to $
-\backslash
-mathbb{C}$...}
-\backslash
-
-\backslash
-
+}
 \end_layout
 
 \end_inset
@@ -2916,7 +1632,7 @@ Instead of real-valued probability measures producing results in the uncountable
 \begin_inset Formula $[0,1]$
 \end_inset
 
-, we will consider finite set-valued probablitity measures
+, we will consider finite set-valued probability measures
 \begin_inset space ~
 \end_inset
 
@@ -3200,7 +1916,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-% Obveriously, we don't want arbirarily assign a state~$
+% Obviously, we don't want arbitrarily assign a state~$
 \backslash
 ket{
 \backslash
@@ -3233,7 +1949,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-% with a proabability measure $
+% with a probability measure $
 \backslash
 tilde{
 \backslash
@@ -3380,9 +2096,9 @@ left
 \backslash
 { 
 \backslash
-textrm{impossible},
+imposs,
 \backslash
-textrm{possible}
+poss
 \backslash
 right
 \backslash
@@ -3867,7 +2583,7 @@ All Continuous or All Discrete
 \begin_layout Standard
 Before we turn to the main part of the paper, we quickly dismiss the possibility
  of having one but not the other of the discrete variations.
- Speficially, it is impossible to maintain the Hllbert space and have a
+ Specifically, it is impossible to maintain the Hilbert space and have a
  finite set-valued probability measure and it is also impossible to have
  a vector space constructed over a finite field with a real-valued probability
  measure.
@@ -3904,8 +2620,8 @@ However, there is a
 \begin_inset Formula 
 \[
 \hat{\mu}_{1}\left(E\right)=\begin{cases}
-\textrm{impossible} & \textrm{, if }E=\proj{+};\\
-\bar{\mu}_{0}(E) & \textrm{, otherwise.}
+\imposs & \textrm{, if }E=\proj{+};\\
+\bar{\mu}(E) & \textrm{, otherwise.}
 \end{cases}
 \]
 
@@ -3959,6 +2675,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+ 
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "discreteGBKS"

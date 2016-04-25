@@ -54,6 +54,10 @@
 \newcommand{\melement}[2]{ \langle #1 | #2 | #1 \rangle}
 \newcommand{\expect}[2]{ \langle #1 | #2 | #1 \rangle}
 \newcommand{\Tr}{\mathop{\mathrm{Tr}}\nolimits}
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+\theoremstyle{plain}
+\newtheorem{cor}[thm]{Corollary}
 
 \begin{document}
 \title{Probability}
@@ -323,8 +327,32 @@ $\mathbf{U}$ is any unitary map, i.e., $\mathbf{U}^{\dagger}\mathbf{U}=\mathbb{1
 
 Naturally, we may ask: is every probability measure induced from a
 state by the Born rule? The answer is yes by Gleason's theorem when
-the dimension~$\ge3$ and extend the domain of the Born rule to mixed
-state~\cite{gleason1957,peres1995quantum,Redhead1987-REDINA}.
+the dimension~$\ge3$~\cite{gleason1957,peres1995quantum,Redhead1987-REDINA}.
+Furthermore, a simple corollary of Gleason's theorem can show the
+Born rule is the unique function satisfying conditions 1. to 3.
+\begin{cor}
+The Born rule is the unique function satisfying conditions 1. to 3.
+\end{cor}
+\begin{proof}
+Assume there is another function $\tilde{\mu}'$ such that $\tilde{\mu}'_{\rho}$
+is a quantum probability measure for all mixed state~$\rho$. We
+are going to prove $\tilde{\mu}'=\tilde{\mu}$.
+
+Fix a pure normalized state $\phi$, $\tilde{\mu}'_{\phi}$ is a quantum
+probability measure by condition 2. By Gleason's theorem, there is
+a mixed state ~$\rho'$, such that $\tilde{\mu}'_{\phi}\left(E\right)=\Tr\left(\rho'E\right)=\sum_{j=1}^{N}q_{j}\tilde{\mu}_{\psi_{j}}\left(E\right)$
+for all event $E$. 
+
+Consider the event $E'=\mathbb{1}-\proj{\phi}$, we have 
+\begin{eqnarray*}
+0 & \overset{\textrm{Condition 3}}{=} & \tilde{\mu}_{\phi}\left(E'\right)\\
+ & = & \sum_{j=1}^{N}q_{j}\tilde{\mu}_{\psi_{j}}\left(E'\right)
+\end{eqnarray*}
+Because $q_{j}>0$, we have $\tilde{\mu}_{\psi_{j}}\left(E\right)=0$,
+i.e., $\psi_{j}$ is orthogonal to a co-dimension-$1$ subspace $E'$.
+However, the only subspace orthogonal to $E'$ is span by $\ket{\phi}$.
+Hence, $\tilde{\mu}'_{\phi}=\tilde{\mu}_{\phi}$.
+\end{proof}
 
 \amr{give example non-commuting events}
 
