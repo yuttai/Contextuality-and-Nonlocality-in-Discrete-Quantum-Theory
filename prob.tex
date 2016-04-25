@@ -9,9 +9,12 @@
 \usepackage{mathrsfs}
 \usepackage[all]{xy}
 \usepackage{amsmath}
+\usepackage{wesa}
+\usepackage[T1]{fontenc}
 
 \theoremstyle{remark}
 \newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
 \newcommand{\qevents}{\ensuremath{\mathcal{E}}}
 \newcommand{\pmeas}{\ensuremath{\mu}}
@@ -23,6 +26,8 @@
 \newcommand{\proj}[1]{|#1 \rangle\langle #1 |}
 \newcommand{\ps}{\texttt{+}}
 \newcommand{\ms}{\texttt{-}}
+\newcommand{\poss}{{\mbox{\wesa{possible}}}}
+\newcommand{\imposs}{{\mbox{\wesa{impossible}}}}
 
 \usepackage{color}
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -45,14 +50,14 @@
  
 A \emph{probability
   space}~\cite{inun.425605319950101,GrahamKnuthPatashnik1994,rohatgi2011introduction}
-collects necessary conditions for reasoning coherently about
+specifies the necessary conditions for reasoning coherently about
 collections of uncertain events. It consists of a \emph{sample space}
 $\Omega$, a space of \emph{events}~$\events$, and a \emph{probability
   measure}~$\pmeas$. In this paper, we will only consider
 \emph{finite} sets of events: we therefore define a sample space
 $\Omega$ as an arbitrary non-empty finite set and the space of events
 $\events$ as $2^\Omega$, the powerset of $\Omega$. Given the set of
-events $\events$, the \emph{probability measure} is a function
+events $\events$, a \emph{probability measure} is a function
 $\pmeas : \events \rightarrow [0,1]$ such that:
 \begin{itemize}
 \item $\pmeas(\Omega) = 1$, and 
@@ -63,12 +68,12 @@ $\pmeas : \events \rightarrow [0,1]$ such that:
 \begin{example}[Two-coin probability space]
   Consider an experiment that tosses two coins. We have four possible
   outcomes that constitute the sample space
-  $\Omega = \{ HH, HT, TH, TT \}$. The event that the first coin is
-  ``heads'' is $\{ HH, HT \}$; the event that the two coins land on
-  opposite sides is $\{ HT, TH \}$; the event that at least one coin
-  is tails is $\{ HT, TH, TT\}$. Depending on the assumptions
-  regarding the coins, we can define several probability
-  measures. Here is a possible one:
+  $\Omega = \{ HH, HT, TH, TT \}$. There are 16 total events including
+  for example the event $\{ HH, HT \}$ that the first coin is
+  ``heads,'' the event $\{ HT, TH \}$ that the two coins land on
+  opposite sides, and the event $\{ HT, TH, TT\}$ that at least one
+  coin is tails. Here is a possible probability measure for these
+  events:
 \[\begin{array}{c@{\qquad\qquad}c}
 \begin{array}{rcl}
 \pmeas(\emptyset) &=& 0 \\
@@ -93,7 +98,14 @@ $\pmeas : \events \rightarrow [0,1]$ such that:
 The assignment satisfies the two constraints for probability measures:
 the probability of the entire sample space is 1, and the probability
 of every collection of disjoint events (e.g.,
-$\{ HT \} \cup \{ TH \}$) is the sum of the individual probabilities.
+$\{ HT, TH \} = \{ HT \} \cup \{ TH \}$) is the sum of the individual
+probabilities. The probability of collections of non-disjoint events
+(e.g., $\{ HT, TH, TT \} = \{ HT, TH \} \cup \{ TH , TT \}$) may add
+to something different than the probabilities of the individual
+events. It is useful to think that this probability measure is
+completely induced by the two coins and their characteristics in the
+sense that each pair of coins induces a measure, and each measure must
+correspond to some pair of coins.
 \end{example}
 
 In a strict computational or experimental setting, one may question
@@ -102,49 +114,46 @@ and uncomputable real interval $[0,1]$. This interval includes numbers
 like $0.h_1h_2h_3\ldots$ where $h_i$ is 1 or 0 depending on whether
 Turing machine $M_i$ halts or not. Such numbers cannot be
 computed. This interval also includes numbers like $\frac{\pi}{4}$
-which can be computed but with increasingly large resources as the
-precision increases. Therefore it is more appropriate in such
-situations to consider probability measures mapping events to a finite
-set of elements computable with a fixed set of
-resources~\cite{Artstein1972,PuriRalescu1983}. The
-simplest such set, and the one we will consider exclusively in this
-paper, is the set
-$\mathscr{L}_{2}=\left\{
-  \textrm{impossible},\textrm{possible}\right\}$
-together with the operation $\vee$ where
-$x \vee y=\textrm{impossible}$ if and only if
-$x=y=\textrm{impossible}$. In relation to the first definition, one
-can interpret impossible as the closed interval $[0,0]$, possible as the
-open interval $(0,1]$, and $\vee$ as the addition of intervals. The
-definition of a probability measure in this case is modifed as being a
-function $\pmeas : \events \rightarrow \mathscr{L}_{2}$ such that:
+which can only be computed with increasingly large resources as the
+precision increases. Therefore, in a resource-aware setting, it is
+more appropriate to consider probability measures that map events to a
+finite set of elements computable with a fixed set of
+resources~\cite{Artstein1972,PuriRalescu1983}. The simplest such set,
+and the one we will consider exclusively in this paper, is the set
+$\mathscr{L}_{2}=\left\{ \imposs, \poss\right\}$ together with the
+operation $\vee$ where $x \vee y=\imposs$ if and only if
+$x=y=\imposs$. In relation to the first definition, one can interpret
+\imposs\ as the closed interval $[0,0]$, \poss\ as the open interval
+$(0,1]$, and $\vee$ as the addition of intervals. The definition of a
+probability measure in this case is modified as being a function
+$\pmeas : \events \rightarrow \mathscr{L}_{2}$ such that:
 \begin{itemize}
-\item $\pmeas(\Omega) = \textrm{possible}$, and 
+\item $\pmeas(\Omega) = \poss$, and
 \item for a collection $E_i$,  of pairwise disjoint events, $\pmeas(\bigcup E_i) = \bigvee \pmeas(E_i)$.
 \end{itemize}
 
 \begin{example}[Two-coin probability space with finite set-valued
-  probability measure.] Under the new set-valued requirement, the
+  probability measure] Under the new set-valued requirement, the
   probability measure in the first example becomes:
 \[\begin{array}{c@{\qquad\qquad}c}
 \begin{array}{rcl}
-\pmeas(\emptyset) &=& \textrm{impossible} \\
-\pmeas(\{ HH \}) &=& \textrm{possible} \\
-\pmeas(\{ HT \}) &=& \textrm{impossible} \\
-\pmeas(\{ TH \}) &=& \textrm{possible} \\
-\pmeas(\{ TT \}) &=& \textrm{impossible} \\
-\pmeas(\{  HH, HT \}) &=& \textrm{possible} \\
-\pmeas(\{  HH, TH \}) &=& \textrm{possible} \\
-\pmeas(\{  HH , TT \}) &=& \textrm{possible} \\
+\pmeas(\emptyset) &=& \imposs \\
+\pmeas(\{ HH \}) &=& \poss \\
+\pmeas(\{ HT \}) &=& \imposs \\
+\pmeas(\{ TH \}) &=& \poss \\
+\pmeas(\{ TT \}) &=& \imposs \\
+\pmeas(\{  HH, HT \}) &=& \poss \\
+\pmeas(\{  HH, TH \}) &=& \poss \\
+\pmeas(\{  HH , TT \}) &=& \poss \\
 \end{array} & \begin{array}{rcl}
-\pmeas(\{  HT, TH \}) &=& \textrm{possible} \\
-\pmeas(\{  HT , TT \}) &=& \textrm{impossible} \\
-\pmeas(\{  TH , TT \}) &=& \textrm{possible} \\
-\pmeas(\{  HH, HT, TH \}) &=& \textrm{possible} \\
-\pmeas(\{  HH, HT, TT \}) &=& \textrm{possible} \\
-\pmeas(\{  HH, TH, TT \}) &=& \textrm{possible} \\
-\pmeas(\{  HT, TH, TT \}) &=& \textrm{possible} \\
-\pmeas(\{  HH, HT, TH, TT \}) &=& \textrm{possible} 
+\pmeas(\{  HT, TH \}) &=& \poss \\
+\pmeas(\{  HT , TT \}) &=& \imposs \\
+\pmeas(\{  TH , TT \}) &=& \poss \\
+\pmeas(\{  HH, HT, TH \}) &=& \poss \\
+\pmeas(\{  HH, HT, TT \}) &=& \poss \\
+\pmeas(\{  HH, TH, TT \}) &=& \poss \\
+\pmeas(\{  HT, TH, TT \}) &=& \poss \\
+\pmeas(\{  HH, HT, TH, TT \}) &=& \poss 
 \end{array}
 \end{array}\]
 \end{example}
@@ -153,83 +162,118 @@ function $\pmeas : \events \rightarrow \mathscr{L}_{2}$ such that:
 \section{Quantum Probability Spaces}
 
 The mathematical framework above assumes that one has complete
-knowledge of the events and their relationships. But even in many
-classical situations, the structure of the event space is only
+knowledge of the events and their relationships. However, in many
+practical situations, the structure of the event space is only
 partially known and the precise dependence of two events on each other
-cannot be determined with certainty. In the quantum case, this partial
-knowledge is compounded by the fact that not all quantum events can be
-observed simultaneously.  Indeed, in the quantum world, there are
-non-commuting events which cannot even happen simultaneously. To
-accommodate these more complex situations, we abandon the
-sample space~$\Omega$ and define and reason directly about
-events. A quantum probability space consist of just two
-components: a set of events $\qevents$ and a probability measure
+cannot, a priori, be determined with certainty. In the quantum case,
+this partial knowledge is compounded by the fact that there exist
+non-commuting events which cannot happen simultaneously. To
+accommodate these more complex situations, we abandon the sample
+space~$\Omega$ and reason directly about events. A quantum probability
+space therefore consist of just two components: a set of events
+$\qevents$ and a probability measure
 $\mu : \qevents \rightarrow [0,1]$. We give an example before giving
 the formal definition.
 
-Consider the one-qubit Hilbert space with computational basis
-$\ket{0}$ and $\ket{1}$ and states:
-\[
-\ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}, \qquad\ket{\ms}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}\,.
-\]
-The set of events associated with this Hilbert space consists of all
-projections including the empty projection $\mathbb{0}$ and the unit
-projection $\mathbb{1} = \proj{0}+\proj{1}$:
-\[ 
-\{ \mathbb{0}, \proj{0}, \proj{1}, \proj{\ps}, \proj{\ms}, \ldots, \mathbb{1}\}
-\]
-Each event is interpreted as a possible post-measurement state of
-a quantum system as follows: given some arbitrary current quantum state
-$\ket{\psi}$ to be measured, the event $\proj{0}$ states that the
-post-measurement state will be $\ket{0}$; the event $\proj{1}$ states
-that the post-measurement state will be $\ket{1}$; the event
-$\proj{\ps}$ states that the post-measurement state will be
-$\ket{\ps}$; the event $\proj{\ms}$ states that the post-measurement
-state will be $\ket{\ms}$; the event $\mathbb{1}$ states that the
-post-measurement state will be a linear combination of $\ket{0}$ and
-$\ket{1}$; and the event $\mathbb{0}$ states that the post-measurement
-state will be the empty state.
+\begin{example}[One-qubit quantum probability space] 
+  Consider a one-qubit Hilbert space with states
+  $\alpha \ket{0} + \beta \ket{1}$ such that
+  $|\alpha|^2 + |\beta|^2 = 1$. The set of events associated with this
+  Hilbert space consists of the empty projection~$\mathbb{0}$ together 
+  with projection operators $\proj{\psi}$ for each state $\ket{\psi}$.
+  Each event is interpreted as a possible post-measurement state of a
+  quantum system in current state $\ket{\phi}$. For example, the event
+  $\proj{0}$ indicates that the post-measurement state will
+  be~$\ket{0}$; the event $\proj{1}$ indicates that the
+  post-measurement state will be~$\ket{1}$; the event $\proj{\ps}$
+  where $\ket{\ps} = \frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$ indicates
+  that the post-measurement state will be $\ket{\ps}$; the event
+  $\mathbb{1} = \proj{0}+\proj{1}$ indicates that the post-measurement
+  state will be a linear combination of $\ket{0}$ and $\ket{1}$; and
+  the event $\mathbb{0}$ states that the post-measurement state will
+  be the empty state. As in the classical case, a probability measure
+  maps events to $[0,1]$: here is a partial specification of a
+  possible measure:
+\[\begin{array}{rcl}
+\mu\left(\mathbb{0}\right) = 0, \quad
+\mu\left(\mathbb{1}\right) =  1, \quad
+\mu\left(\proj{0}\right) = 1, \quad
+\mu\left(\proj{1}\right) = 0, \quad
+\mu\left(\proj{\ps}\right) = 1/2, \ldots
+\end{array}\]
+Note that, similarly to the classical case, the probability of
+$\mathbb{1}$ is 1 and the probability of collections of orthogonal
+events (e.g., $\proj{0}+\proj{1}$) is the sum of the individual
+probabilities. In contrast, a collection of non-orthogonal events
+(e.g., $\proj{0}$ and $\proj{\ps}$) is not itself an event.
+In the classical example, we argued that each probability measure is
+uniquely determined by two actual coins. A similar (but much more
+subtle) argument is valid also in the quantum case. By postulates of
+quantum mechanics and Gleason's theorem, it turns out that for large
+enough quantum systems, each probability measure is uniquely
+determined by an actual quantum state.
+\end{example}
 
-In classical probability space, two particular coins can define a
-probability measure on every event. Similarly, a quantum system can
-define a quantum probability measure on its event. The difference
-is that only orthogonal events can test together. For example, asking
-whether event~$\mathbb{1}$ occurs is the same as asking whether
-event~$\proj{0}$ or event~$\proj{1}$ occurs simultaniously. However,
-we can never ask whether event~$\proj{0}$ or event~$\proj{-}$
-occurs simultaniously. Similarly to the classical case, a \emph{quantum
-probability space}~\cite{BirkhoffVonNeumann1936,gleason1957,Redhead1987-REDINA,DBLP:journals/corr/abs-0910-2393,Maassen2010}
-can be summarized into the following two rules\footnote{Recently, people extend the domain of $\mu$ to all operators~$\mathcal{A}$
-on $\Hilb$ and consider $\mu:\mathcal{A}\rightarrow\C$~\cite{Maassen2010,Swart2013}.
-When an operator $A\in\mathcal{A}$ is Hermitian, $\mu\left(A\right)$
-is the expectation value of $A$. We does not take this approach because
-we want to focus only on probability. }: 
+To properly explain the previous example and generalize to arbitrary
+quantum systems, we formally define a quantum probability space as
+follows.
+
+\begin{definition}[Quantum Probability Space~\cite{BirkhoffVonNeumann1936,gleason1957,Redhead1987-REDINA,DBLP:journals/corr/abs-0910-2393,Maassen2010}]
+  Given a Hilbert space $\Hilb$, a \emph{quantum probability space}
+  consists of a set of events $\events$ and a probability measure
+  $\mu$ such that:\footnote {It is possible to define a more general
+    space of events consisting of all operators~$\mathcal{A}$ on
+    $\Hilb$ and consider
+    $\mu:\mathcal{A}\rightarrow\C$~\cite{Maassen2010,Swart2013}.  When
+    an operator $A\in\mathcal{A}$ is Hermitian, $\mu\left(A\right)$ is
+    the expectation value of $A$. We does not take this approach
+    because we want to focus only on probability. }
 \begin{itemize}
+\item The set of events contains the empty projection $\mathbb{0}$
+  together with projection operators $\proj{\psi}$ for each state
+  $\ket{\psi}$,
 \item $\mu(\mathbb{1})=1$, and 
-\item for a collection of pairwise orthogonal $E_{i}$, we have $\mu\left(\sum_{i}E_{i}\right)=\sum_{i}\mu\left(E_{i}\right)$. 
+\item for projections expressible as sums $\sum_{i}E_{i}$ of
+  necessarily orthogonal events $E_i$, we have
+  $\mu\left(\sum_{i}E_{i}\right)=\sum_{i}\mu\left(E_{i}\right)$.
 \end{itemize}
-\begin{example}{[}One-qubit Hilbert space{]} Consider an experiment
-that with a qubit. The events are discribed previously. Depending on
-the systems, we can define different quantum probability measures.
-Here is a possible one: 
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\mu_{0}\left(\mathbb{0}\right) & = & 0\\
-\mu_{0}\left(\proj{0}\right) & = & 1\\
-\mu_{0}\left(\proj{1}\right) & = & 0\\
- & \vdots
-\end{array} & \begin{array}{rcl}
-\mu_{0}\left(\mathbb{1}\right) & = & 1\\
-\mu_{0}\left(\proj{\ps}\right) & = & 1/2\\
-\mu_{0}\left(\proj{\ms}\right) & = & 1/2\\
- & \vdots
-\end{array}\end{array}
-\]
-The assignment satisfies the two constraints for quantum probability
-measures: the probability of $\mathbb{1}$ is 1, and the probability
-of every summation of orthogonal events (e.g., $\proj{0}+\proj{1}$)
-is the sum of the individual probabilities. \end{example}
+\end{definition}
+
+\newpage
+\amr{the rest needs cleaning up and perhaps does not even belong in
+  this section}
+
+Although it seems that we need an infinite
+long table to specify the quantum probability measure~$\mu$, our $\mu$
+is actually given by a simple formula~$\melement{0}{E}$. In general,
+Born discovered each quantum state
+$\ket{\psi}\in\Hilb\backslash\left\{ 0\right\} $ induces a probability
+measure $\tilde{\mu}_{\psi}:\qevents\rightarrow[0,1]$ on the space of
+events defined for any event $E\in\qevents$ as
+follows~\cite{Born1984,Mermin2007}:
+\begin{equation}
+\tilde{\mu}_{\psi}(E)=\frac{\melement{\psi}{E}}{\ip{\psi}{\psi}}\label{eq:Born}
+\end{equation}
+The Born rule satisfies the following properties:
+\begin{itemize}
+\item It can be extend to mixed states. Given a mixed state represented
+by a density matrix $\rho=\sum_{j=1}^{N}q_{j}\frac{\proj{\psi_{j}}}{\ip{\psi_{j}}{\psi_{j}}}$,
+where $\sum_{j=1}^{N}q_{j}=1$, i.e., $\Tr\left(\rho\right)=1$, then
+the Born rule can be extended to $\rho$ by 
+\begin{eqnarray}
+\tilde{\mu}_{\rho}\left(E\right) & = & \Tr\left(\rho E\right)=\sum_{j=1}^{N}q_{j}\tilde{\mu}_{\Psi_{j}}\left(E\right)\textrm{ .}\label{BornRule.mixed}
+\end{eqnarray}
+Notice that $\left(\left\{ 1,\ldots,N\right\} ,2^{\left\{ 1,\ldots,N\right\} },\pmeas\left(J\right)=\sum_{j\in J}q_{j}\right)$
+is a classical probability space. Therefore, when we discretize the
+Hilbert space later, we may need to discretize this probability space
+as well.\yutsung{Check!!!}
+\item $\tilde{\mu}_{\rho}$ is a probability measure for all mixed state~$\rho$.
+\item $\ip{\psi}{\phi}=0\Leftrightarrow\tilde{\mu}_{\psi}\left(\proj{\phi}\right)=0$.
+\item $\tilde{\mu}_{\psi}\left(E\right)=\tilde{\mu}_{\mathbf{U}\ket{\psi}}\left(\mathbf{U}E\mathbf{U}^{\dagger}\right)\textrm{ ,}$where
+$\mathbf{U}$ is any unitary map, i.e., $\mathbf{U}^{\dagger}\mathbf{U}=\mathbb{1}$. 
+\end{itemize}
+\yutsung{...I think I need to check these properties identify an
+unique Born rule in CQT or something...}
 
 % \begin{itemize}
 % \item Family I: $\proj{0}$, $\proj{1}$ 
@@ -278,7 +322,7 @@ is the sum of the individual probabilities. \end{example}
 % \]
 
 Although it seems that we need an infinite long table to specify the
-quantum probability measure~$\mu_{0}$, our $\mu_{0}$ is actually
+quantum probability measure~$\mu$, our $\mu$ is actually
 given by a simple formula~$\melement{0}{E}$. In general, Born discovered
 each quantum state $\ket{\psi}\in\Hilb\backslash\left\{ 0\right\} $
 induces a probability measure $\tilde{\mu}_{\psi}:\qevents\rightarrow[0,1]$
@@ -312,18 +356,18 @@ state by the Born rule? The answer is yes by Gleason's theorem when
 the dimension~$\ge3$ and extend the domain of the Born rule to mixed
 state~\cite{gleason1957,peres1995quantum,Redhead1987-REDINA}.
 
-\yutsung{There are three ways to charactize a quantum probability: 
+\yutsung{There are three ways to characterize a quantum probability: 
 \begin{enumerate}
 \item The above two conditions as Gleason did. 
 \item As a linear functional on a {*} algebra. 
 \item As induced by a state vector by the Born rule (\ref{eq:Born}). 
 \end{enumerate}
 According to equation (37) in section 4 Quantum Probability in \cite{Maassen2010},
-the equalivance between 1. and 2. only hold for $d\ge3$ because of
+the equivalence between 1. and 2. only hold for $d\ge3$ because of
 Gleason' theorem. Therefore, it seems hard to get insight for how
-to handle Gleason's theorem by {*}-algebra formulism...
+to handle Gleason's theorem by {*}-algebra formalism...
 
-The equalivance between 2. and 3. can be found in Proposition 4.1.1
+The equivalence between 2. and 3. can be found in Proposition 4.1.1
 in \cite{Swart2013}. Here, the Born rule~$\mu_{\psi}(E)$ is replaced
 by a faithful pseudotrace $\tau$ and $\mu_{\psi}(E)=\tau\left(\proj{\psi}E\right)$.
 The faithful pseudotrace is defined in section 5.2 Decomposition of
@@ -332,7 +376,7 @@ algebra with a list of conditions. The problem is:
 \item Lemma 5.2.1 proved there exists a faith pseudotrace, but said nothing
 about uniqueness. Therefore, these conditions may not uniquely determine
 the Born rule?
-\item We don't formulate thing in algrebra... So although we may have an
+\item We don't formulate thing in algebra... So although we may have an
 analog or something, we cannot quite sure our conditions will be exactly
 the same as theirs. 
 \end{itemize}
@@ -346,7 +390,7 @@ The condition (a) and (d) implies
 \begin{itemize}
 \item Our map $\tilde{\mu}$ satisfy $\ip{\psi}{\phi}=0\Leftrightarrow\tilde{\mu}_{\psi}\left(\proj{\phi}\right)=\tilde{0}$,
 where $\tilde{0}$ is $0$ for $\left[0,1\right]$ and $\tilde{0}$
-is impossible for $\mathscr{L}_{2}=\left\{ \textrm{impossible},\textrm{possible}\right\} $. 
+is impossible for $\mathscr{L}_{2}=\left\{ \imposs,\poss\right\} $. 
 \end{itemize}
 $\tau\left(AB\right)=\tau\left(BA\right)$ also implies
 \begin{itemize}
@@ -385,6 +429,8 @@ type for DQT, but I think I need to sort them out before type them...}
 % to $[0,1]$, and maps $\left\{ \sum_{j=1}^{k}\lambda_{j}P_{j}~\middle|~\lambda_{1},\ldots,\lambda_{k}\in\mathbb{C}\right\} $
 % to $\mathbb{C}$...}\\
 
+\amr{give example non-commuting events}
+
 
 %%%%%
 \subsection{Plan}
@@ -399,7 +445,7 @@ a world with limited resources:
   fields~\cite{HansonOrtizSabryEtAl2015,DQT2014,geometry2013}.
 \item Instead of real-valued probability measures producing results in
   the uncountable and uncomputable interval $[0,1]$, we will consider
-  finite set-valued probablitity measures~\cite{Artstein1972,PuriRalescu1983}.
+  finite set-valued probability measures~\cite{Artstein1972,PuriRalescu1983}.
 \end{itemize}
 We will then ask if it is possible to construct variants of quantum
 probability spaces under these conditions. The main question is
@@ -434,14 +480,14 @@ single state? Specifically,
 % For any other formula~$\tilde{\mu}$, we can ask whether $\tilde{\mu}$
 % is surjective as well.
 
-% Obveriously, we don't want arbirarily assign a state~$\ket{\psi}\in\Hilb\backslash\left\{ 0\right\} $
-% with a proabability measure $\tilde{\mu}_{\psi}$, for example, assigning
+% Obviously, we don't want arbitrarily assign a state~$\ket{\psi}\in\Hilb\backslash\left\{ 0\right\} $
+% with a probability measure $\tilde{\mu}_{\psi}$, for example, assigning
 % every state to the same probability measure. We want $\tilde{\mu}_{\psi}$
 % satisfying the following properties with some physical meaning:
 % \begin{itemize}
 % \item $\ip{\psi}{\phi}=0\Leftrightarrow\tilde{\mu}_{\psi}\left(\proj{\phi}\right)=\tilde{0}$,
 % where $\tilde{0}$ is $0$ for $\left[0,1\right]$ and $\tilde{0}$
-% is impossible for $\mathscr{L}_{2}=\left\{ \textrm{impossible},\textrm{possible}\right\} $. 
+% is impossible for $\mathscr{L}_{2}=\left\{ \imposs,\poss\right\} $. 
 % \item $\tilde{\mu}_{\psi}\left(\proj{\phi}\right)=\tilde{\mu}_{\mathbf{U}\ket{\psi}}\left(\mathbf{U}\proj{\phi}\mathbf{U}^{\dagger}\right)\textrm{ ,}$where
 % $\ket{\psi},\ket{\phi}$ are states and $\mathbf{U}$ is any unitary
 % map, i.e., $\mathbf{U}^{\dagger}\mathbf{U}=\mathbb{1}$. 
@@ -468,7 +514,7 @@ single state? Specifically,
 
 Before we turn to the main part of the paper, we quickly dismiss the
 possibility of having one but not the other of the discrete
-variations. Speficially, it is impossible to maintain the Hllbert
+variations. Specifically, it is impossible to maintain the Hilbert
 space and have a finite set-valued probability measure and it is also
 impossible to have a vector space constructed over a finite field with
 a real-valued probability measure. 
@@ -479,8 +525,8 @@ a real-valued probability measure.
 However, there is a $\mathscr{L}_{2}$-valued probability measure
 \[
 \hat{\mu}_{1}\left(E\right)=\begin{cases}
-\textrm{impossible} & \textrm{, if }E=\proj{+};\\
-\bar{\mu}_{0}(E) & \textrm{, otherwise.}
+\imposs & \textrm{, if }E=\proj{+};\\
+\bar{\mu}(E) & \textrm{, otherwise.}
 \end{cases}
 \]
 such that $\hat{\mu}_{1}\ne\bar{\mu}_{\psi}$ for all mixed state
