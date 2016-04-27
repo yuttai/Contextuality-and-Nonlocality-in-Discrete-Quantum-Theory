@@ -44,6 +44,8 @@
 \newcommand{\ms}{\texttt{-}}
 \newcommand{\poss}{{\mbox{\wesa{possible}}}}
 \newcommand{\imposs}{{\mbox{\wesa{impossible}}}}
+\newcommand{\likely}{{\mbox{\wesa{likely}}}}
+\newcommand{\unlikely}{{\mbox{\wesa{unlikely}}}}
 
 \usepackage{color}
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -79,7 +81,7 @@ $\pmeas : \events \rightarrow [0,1]$ such that:
 \begin{itemize}
 \item $\pmeas(\Omega) = 1$, and 
 \item for a collection $E_i$,  of pairwise disjoint events, 
-  $\pmeas(\bigcup E_i) = \sum \pmeas(E_i)$.
+  $\pmeas(\bigcup_i E_i) = \sum_i \pmeas(E_i)$.
 \end{itemize}
 
 \begin{example}[Two-coin probability space]
@@ -123,6 +125,8 @@ events. It is useful to think that this probability measure is
 completely induced by the two coins in question and their
 characteristics in the sense that each pair of coins induces a
 measure, and each measure must correspond to some pair of coins.
+In this example, the probability measure is induced by a weighted first coin and
+a double-headed second coin.
 \qed\end{example}
 
 In a strict computational or experimental setting, one may question
@@ -150,7 +154,8 @@ definition of a probability measure in this case is modified as being
 a function $\pmeas : \events \rightarrow \mathscr{L}_{2}$ such that:
 \begin{itemize}
 \item $\pmeas(\Omega) = \poss$, and
-\item for a collection $E_i$,  of pairwise disjoint events, $\pmeas(\bigcup E_i) = \bigvee \pmeas(E_i)$.
+\item for a collection $E_i$,  of pairwise disjoint events, $\pmeas(\bigcup_i
+E_i) = \bigvee_i \pmeas(E_i)$.
 \end{itemize}
 
 \begin{example}[Two-coin probability space with finite set-valued
@@ -177,7 +182,13 @@ a function $\pmeas : \events \rightarrow \mathscr{L}_{2}$ such that:
 \pmeas(\{  HH, HT, TH, TT \}) &=& \poss 
 \end{array}
 \end{array}\]
+Compare to the first example, we can still get the information that the second
+coin is double-headed, although we loss the information that the first coin is
+weighted.
 \qed\end{example}
+
+If we consider set with more values, the probability measure may give us more
+information about the coins.
 
 We will return to finite set-valued probability measures in Sec.~\ref{sec:?}.
 
