@@ -46,6 +46,7 @@
 \newcommand{\imposs}{{\mbox{\wesa{impossible}}}}
 \newcommand{\likely}{{\mbox{\wesa{likely}}}}
 \newcommand{\unlikely}{{\mbox{\wesa{unlikely}}}}
+\newcommand{\necess}{{\mbox{\wesa{necessary}}}}
 \newcommand{\overflow}{{\mbox{\wesa{overflow}}}}
 
 \usepackage{color}
@@ -125,9 +126,9 @@ to something different than the probabilities of the individual
 events. It is useful to think that this probability measure is
 completely induced by the two coins in question and their
 characteristics in the sense that each pair of coins induces a
-measure, and each measure must correspond to some pair of coins.
-In this example, the probability measure is induced by a weighted first coin and
-a double-headed second coin.
+measure, and each measure must correspond to some pair of coins.  In
+this example, the first coin is twice as likely to be tails than heads
+and the second coin is double-headed.  
 \qed\end{example}
 
 In a strict computational or experimental setting, one may question
@@ -143,16 +144,21 @@ precision increases.
 % using base 16 directly.}
 Therefore, in a resource-aware setting, it is more appropriate to
 consider probability measures that map events to a finite set of
-elements computable with a fixed set of
-resources~\cite{Artstein1972,PuriRalescu1983}. The simplest such set,
+elements computable with a fixed set of resources. We will consider
+two approaches: set-valued probability
+measures~\cite{Artstein1972,PuriRalescu1983} and interval-valued
+probability measures~\cite{JamisonLodwick2004,Weichselberger2000}.
+
+\paragraph*{Set-valued Probability Measures.} The simplest such set,
 and the one we will consider exclusively in this paper, is the set
 $\mathscr{L}_{2}=\left\{ \imposs, \poss\right\}$ together with the
 operation $\vee$ where $x \vee y=\imposs$ if and only if
-$x=y=\imposs$. In relation to the first definition, one can interpret
-\imposs\ as the closed interval $[0,0]$, \poss\ as the half-open
-interval $(0,1]$, and $\vee$ as the addition of intervals. The
-definition of a probability measure in this case is modified as being
-a function $\pmeas : \events \rightarrow \mathscr{L}_{2}$ such that:
+$x=y=\imposs$. In relation to the conventional definition, one can
+interpret \imposs\ as the closed interval $[0,0]$, \poss\ as the
+half-open interval $(0,1]$, and $\vee$ as the addition of
+intervals. The definition of a probability measure in this case is
+modified as being a function
+$\pmeas : \events \rightarrow \mathscr{L}_{2}$ such that:
 \begin{itemize}
 \item $\pmeas(\Omega) = \poss$, and
 \item for a collection $E_i$,  of pairwise disjoint events, $\pmeas(\bigcup_i
@@ -183,23 +189,82 @@ E_i) = \bigvee_i \pmeas(E_i)$.
 \pmeas(\{  HH, HT, TH, TT \}) &=& \poss 
 \end{array}
 \end{array}\]
-Compare to the first example, we can still get the information that the second
-coin is double-headed, although we loss the information that the first coin is
-weighted.
+Despite the fact that we lost all numeric information, the probability
+measure still reveals that the second coin is double-headed. We have
+however lost the information regarding the bias in the first
+coin. This information can be recovered with a more refined
+probability measure as we show next. 
 \qed\end{example}
 
-If we consider set with more values, the probability measure may give
-us more information about the coins. For example, despite $\imposs$
-and $\poss$, we may also adopt three more values: $\unlikely$\ as
-the interval~$\left(0,\frac{1}{2}\right]$, $\likely$\ as the interval~$\left(\frac{1}{2},1\right]$,
-and $\overflow$\ as the empty set~$\emptyset$ which means the
-total probability may be excessed than one. In particular, $\likely\vee\likely=\overflow$
-because the probability of two disjoint events should not both bigger
-than $\frac{1}{2}$. The complete rule for operator~$\vee$ on $\mathscr{L}_{5}=\left\{ \imposs,\poss,\unlikely,\likely,\overflow\right\} $
-is defined in table~\ref{tab:The-operator-on}, or more abstractly,
-we define $(a,b]\vee(c,d]=(a+c,b+d]\cap[0,1]$. The definition of
-a probability measure can be modified as a function $\pmeas:\events\rightarrow\mathscr{L}_{5}$
-such that: 
+\paragraph*{Interval-valued probability measures.} In this case, we
+split the $[0,1]$ interval into a collection of closed sub-intervals
+obeying certain restrictions to be described at the end of the
+section. To illustrate the main ideas, we first consider a simple
+example. 
+
+\begin{example}[Two-coin probability space with four intervals]
+We split the interval in the following four closed sub-intervals:
+\begin{itemize}
+\item $[0,0]$ which we call \imposs, 
+\item $[0,\frac{1}{2}]$ which we call \unlikely, 
+\item $[\frac{1}{2},1]$ which we call \likely, and 
+\item $[1,1]$ which we call \necess.
+\end{itemize}
+The probability measure in this case becomes:
+\[
+\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{rcl}
+\pmeas(\emptyset) & = & \imposs\\
+\pmeas(\{HH\}) & = & \unlikely\\
+\pmeas(\{HT\}) & = & \imposs\\
+\pmeas(\{TH\}) & = & \likely\\
+\pmeas(\{TT\}) & = & \imposs\\
+\pmeas(\{HH,HT\}) & = & \unlikely\\
+\pmeas(\{HH,TH\}) & = & \necess\\
+\pmeas(\{HH,TT\}) & = & \unlikely
+\end{array} & \begin{array}{rcl}
+\pmeas(\{HT,TH\}) & = & \likely\\
+\pmeas(\{HT,TT\}) & = & \imposs\\
+\pmeas(\{TH,TT\}) & = & \likely\\
+\pmeas(\{HH,HT,TH\}) & = & \necess\\
+\pmeas(\{HH,HT,TT\}) & = & \unlikely\\
+\pmeas(\{HH,TH,TT\}) & = & \necess\\
+\pmeas(\{HT,TH,TT\}) & = & \likely\\
+\pmeas(\{HH,HT,TH,TT\}) & = & \necess
+\end{array}\end{array}
+\]
+Not only does this probability measure reveal that the second coin is
+double-headed but it also reveals that the first coin is more likely
+to be heads than tails, despite the absence of numeric information.
+\qed\end{example}
+
+\newpage
+
+We will return to finite set-valued probability measures in Sec.~\ref{sec:?}.
+
+\[\begin{array}{rclrcll}
+\imposs \vee x &=& x \vee \imposs &=& x \\
+\necess \vee x &=& x \vee \necess  &=& \necess \\
+\unlikely \vee \likely &=& \likely \vee \unlikely &=& \necess
+\end{array}\]
+
+
+If we consider set
+with more values, the probability measure may give us more information
+about the coins. For example, despite $\imposs$ and $\poss$, we may
+also adopt three more values: $\unlikely$\ as the
+interval~$\left(0,\frac{1}{2}\right]$, $\likely$\ as the
+interval~$\left(\frac{1}{2},1\right]$, and $\overflow$\ as the empty
+set~$\emptyset$ which means the total probability may be excessed than
+one. In particular, $\likely\vee\likely=\overflow$ because the
+probability of two disjoint events should not both bigger than
+$\frac{1}{2}$. The complete rule for operator~$\vee$ on
+$\mathscr{L}_{5}=\left\{
+  \imposs,\poss,\unlikely,\likely,\overflow\right\} $
+is defined in table~\ref{tab:The-operator-on}, or more abstractly, we
+define $(a,b]\vee(c,d]=(a+c,b+d]\cap[0,1]$. The definition of a
+probability measure can be modified as a function
+$\pmeas:\events\rightarrow\mathscr{L}_{5}$ such that:
 \begin{itemize}
 \item $\pmeas(\Omega)\in\left\{ \poss,\likely\right\} $ or equivalently
 $1\in\pmeas(\Omega)$, and 
@@ -226,35 +291,10 @@ $\overflow$ & $\overflow$ & $\overflow$ & $\overflow$ & $\overflow$ & $\overflow
 
 \caption{\label{tab:The-operator-on}The operator~$\vee$ on $\mathscr{L}_{5}=\left\{ \imposs,\poss,\unlikely,\likely,\overflow\right\} $}
 \end{table}
-\begin{example}{[}Two-coin probability space with $\mathscr{L}_{5}$-valued
-probability measure{]} Under the new $\mathscr{L}_{5}$-valued requirement,
-the probability measure in the first example becomes: 
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\pmeas(\emptyset) & = & \imposs\\
-\pmeas(\{HH\}) & = & \unlikely\\
-\pmeas(\{HT\}) & = & \imposs\\
-\pmeas(\{TH\}) & = & \likely\\
-\pmeas(\{TT\}) & = & \imposs\\
-\pmeas(\{HH,HT\}) & = & \unlikely\\
-\pmeas(\{HH,TH\}) & = & \likely\\
-\pmeas(\{HH,TT\}) & = & \unlikely
-\end{array} & \begin{array}{rcl}
-\pmeas(\{HT,TH\}) & = & \likely\\
-\pmeas(\{HT,TT\}) & = & \imposs\\
-\pmeas(\{TH,TT\}) & = & \likely\\
-\pmeas(\{HH,HT,TH\}) & = & \likely\\
-\pmeas(\{HH,HT,TT\}) & = & \unlikely\\
-\pmeas(\{HH,TH,TT\}) & = & \likely\\
-\pmeas(\{HT,TH,TT\}) & = & \likely\\
-\pmeas(\{HH,HT,TH,TT\}) & = & \likely
-\end{array}\end{array}
-\]
-In this example, we can get the information that the first coin is
-weighted and the second coin is double-headed. \qed\end{example}
 
-We will return to finite set-valued probability measures in Sec.~\ref{sec:?}.
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Quantum Probability Spaces}
