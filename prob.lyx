@@ -48,6 +48,7 @@
 \newcommand{\imposs}{{\mbox{\wesa{impossible}}}}
 \newcommand{\likely}{{\mbox{\wesa{likely}}}}
 \newcommand{\unlikely}{{\mbox{\wesa{unlikely}}}}
+\newcommand{\necess}{{\mbox{\wesa{necessary}}}}
 \newcommand{\overflow}{{\mbox{\wesa{overflow}}}}
 
 \usepackage{color}
@@ -368,8 +369,8 @@ The assignment satisfies the two constraints for probability measures: the
  by the two coins in question and their characteristics in the sense that
  each pair of coins induces a measure, and each measure must correspond
  to some pair of coins.
- In this example, the probability measure is induced by a weighted first
- coin and a double-headed second coin.
+ In this example, the first coin is twice as likely to be tails than heads
+ and the second coin is double-headed.
  
 \begin_inset ERT
 status collapsed
@@ -483,7 +484,8 @@ status collapsed
 
 Therefore, in a resource-aware setting, it is more appropriate to consider
  probability measures that map events to a finite set of elements computable
- with a fixed set of resources
+ with a fixed set of resources.
+ We will consider two approaches: set-valued probability measures
 \begin_inset space ~
 \end_inset
 
@@ -494,8 +496,26 @@ key "Artstein1972,PuriRalescu1983"
 
 \end_inset
 
+ and interval-valued probability measures
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "JamisonLodwick2004,Weichselberger2000"
+
+\end_inset
+
 .
- The simplest such set, and the one we will consider exclusively in this
+\end_layout
+
+\begin_layout Paragraph*
+Set-valued Probability Measures.
+\end_layout
+
+\begin_layout Standard
+The simplest such set, and the one we will consider exclusively in this
  paper, is the set 
 \begin_inset Formula $\mathscr{L}_{2}=\left\{ \imposs,\poss\right\} $
 \end_inset
@@ -513,9 +533,9 @@ key "Artstein1972,PuriRalescu1983"
 \end_inset
 
 .
- In relation to the first definition, one can interpret 
+ In relation to the conventional definition, one can interpret 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -536,7 +556,7 @@ as the closed interval
 
 , 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -630,741 +650,11 @@ begin{example}
 
 \end_inset
 
-Compare to the first example, we can still get the information that the
- second coin is double-headed, although we loss the information that the
- first coin is weighted.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-qed
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{example}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-If we consider set with more values, the probability measure may give us
- more information about the coins.
- For example, despite 
-\begin_inset Formula $\imposs$
-\end_inset
-
- and 
-\begin_inset Formula $\poss$
-\end_inset
-
-, we may also adopt three more values: 
-\begin_inset Formula $\unlikely$
-\end_inset
-
-
-\begin_inset space \space{}
-\end_inset
-
-as the interval
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\left(0,\frac{1}{2}\right]$
-\end_inset
-
-, 
-\begin_inset Formula $\likely$
-\end_inset
-
-
-\begin_inset space \space{}
-\end_inset
-
-as the interval
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\left(\frac{1}{2},1\right]$
-\end_inset
-
-, and 
-\begin_inset Formula $\overflow$
-\end_inset
-
-
-\begin_inset space \space{}
-\end_inset
-
-as the empty set
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\emptyset$
-\end_inset
-
- which means the total probability may be excessed than one.
- In particular, 
-\begin_inset Formula $\likely\vee\likely=\overflow$
-\end_inset
-
- because the probability of two disjoint events should not both bigger than
- 
-\begin_inset Formula $\frac{1}{2}$
-\end_inset
-
-.
- The complete rule for operator
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\vee$
-\end_inset
-
- on 
-\begin_inset Formula $\mathscr{L}_{5}=\left\{ \imposs,\poss,\unlikely,\likely,\overflow\right\} $
-\end_inset
-
- is defined in table
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:The-operator-on"
-
-\end_inset
-
-, or more abstractly, we define 
-\begin_inset Formula $(a,b]\vee(c,d]=(a+c,b+d]\cap[0,1]$
-\end_inset
-
-.
- The definition of a probability measure can be modified as a function 
-\begin_inset Formula $\pmeas:\events\rightarrow\mathscr{L}_{5}$
-\end_inset
-
- such that: 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\pmeas(\Omega)\in\left\{ \poss,\likely\right\} $
-\end_inset
-
- or equivalently 
-\begin_inset Formula $1\in\pmeas(\Omega)$
-\end_inset
-
-, and 
-\end_layout
-
-\begin_layout Itemize
-for a collection 
-\begin_inset Formula $E_{i}$
-\end_inset
-
-, of pairwise disjoint events, 
-\begin_inset Formula $\pmeas(\bigcup_{i}E_{i})=\bigvee_{i}\pmeas(E_{i})$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-center{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="6">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\vee$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\imposs$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\poss$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\unlikely$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\likely$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\overflow$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\imposs$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\imposs$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\poss$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\unlikely$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\likely$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\overflow$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\poss$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\poss$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\poss$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\poss$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\likely$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\overflow$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\unlikely$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\unlikely$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\poss$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\poss$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\likely$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\overflow$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\likely$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\likely$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\likely$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\likely$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\overflow$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\overflow$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\overflow$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\overflow$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\overflow$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\overflow$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\overflow$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\overflow$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:The-operator-on"
-
-\end_inset
-
-The operator
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\vee$
-\end_inset
-
- on 
-\begin_inset Formula $\mathscr{L}_{5}=\left\{ \imposs,\poss,\unlikely,\likely,\overflow\right\} $
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{example}
-\end_layout
-
-\end_inset
-
-[Two-coin probability space with 
-\begin_inset Formula $\mathscr{L}_{5}$
-\end_inset
-
--valued probability measure] Under the new 
-\begin_inset Formula $\mathscr{L}_{5}$
-\end_inset
-
--valued requirement, the probability measure in the first example becomes:
- 
-\begin_inset Formula 
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\pmeas(\emptyset) & = & \imposs\\
-\pmeas(\{HH\}) & = & \unlikely\\
-\pmeas(\{HT\}) & = & \imposs\\
-\pmeas(\{TH\}) & = & \likely\\
-\pmeas(\{TT\}) & = & \imposs\\
-\pmeas(\{HH,HT\}) & = & \unlikely\\
-\pmeas(\{HH,TH\}) & = & \likely\\
-\pmeas(\{HH,TT\}) & = & \unlikely
-\end{array} & \begin{array}{rcl}
-\pmeas(\{HT,TH\}) & = & \likely\\
-\pmeas(\{HT,TT\}) & = & \imposs\\
-\pmeas(\{TH,TT\}) & = & \likely\\
-\pmeas(\{HH,HT,TH\}) & = & \likely\\
-\pmeas(\{HH,HT,TT\}) & = & \unlikely\\
-\pmeas(\{HH,TH,TT\}) & = & \likely\\
-\pmeas(\{HT,TH,TT\}) & = & \likely\\
-\pmeas(\{HH,HT,TH,TT\}) & = & \likely
-\end{array}\end{array}
-\]
-
-\end_inset
-
-In this example, we can get the information that the first coin is weighted
- and the second coin is double-headed.
+Despite the fact that we lost all numeric information, the probability measure
+ still reveals that the second coin is double-headed.
+ We have however lost the information regarding the bias in the first coin.
+ This information can be recovered with a more refined probability measure
+ as we show next.
  
 \begin_inset ERT
 status collapsed
@@ -1407,6 +697,539 @@ reference "sec:?"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Paragraph*
+Interval-valued probability measures.
+\end_layout
+
+\begin_layout Standard
+In this case, we split the 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+ interval into a collection of closed sub-intervals obeying certain restrictions
+ to be described at the end of the section.
+ To illustrate the main ideas, we first consider a simple example.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{example}
+\end_layout
+
+\end_inset
+
+[Two-coin probability space with four intervals] We split the interval in
+ the following four closed sub-intervals: 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $[0,0]$
+\end_inset
+
+ which we call 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+imposs
+\end_layout
+
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $[0,\frac{1}{2}]$
+\end_inset
+
+ which we call 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+unlikely
+\end_layout
+
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $[\frac{1}{2},1]$
+\end_inset
+
+ which we call 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+likely
+\end_layout
+
+\end_inset
+
+, and 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $[1,1]$
+\end_inset
+
+ which we call 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+necess
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The probability measure in this case becomes: 
+\begin_inset Formula 
+\[
+\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{rcl}
+\pmeas(\emptyset) & = & \imposs\\
+\pmeas(\{HH\}) & = & \unlikely\\
+\pmeas(\{HT\}) & = & \imposs\\
+\pmeas(\{TH\}) & = & \likely\\
+\pmeas(\{TT\}) & = & \imposs\\
+\pmeas(\{HH,HT\}) & = & \unlikely\\
+\pmeas(\{HH,TH\}) & = & \necess\\
+\pmeas(\{HH,TT\}) & = & \unlikely
+\end{array} & \begin{array}{rcl}
+\pmeas(\{HT,TH\}) & = & \likely\\
+\pmeas(\{HT,TT\}) & = & \imposs\\
+\pmeas(\{TH,TT\}) & = & \likely\\
+\pmeas(\{HH,HT,TH\}) & = & \necess\\
+\pmeas(\{HH,HT,TT\}) & = & \unlikely\\
+\pmeas(\{HH,TH,TT\}) & = & \necess\\
+\pmeas(\{HT,TH,TT\}) & = & \likely\\
+\pmeas(\{HH,HT,TH,TT\}) & = & \necess
+\end{array}\end{array}
+\]
+
+\end_inset
+
+Not only does this probability measure reveal that the second coin is double-hea
+ded but it also reveals that the first coin is more likely to be heads than
+ tails, despite the absence of numeric information.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+qed
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{example}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In interval-valued probability measures, if 
+\begin_inset Formula $\mu\left(E\right)=\left[a,b\right]$
+\end_inset
+
+, the left-endpoint
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $a$
+\end_inset
+
+ called belief denotes the strength of the evidence that 
+\begin_inset Formula $E$
+\end_inset
+
+ happens, and the right-endpoint
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $b$
+\end_inset
+
+ called plausibility denotes the strength of the evidence that contradicts
+ 
+\begin_inset Formula $E$
+\end_inset
+
+.
+ If we define 
+\begin_inset Formula $1-\left[a,b\right]=\left[1-b,1-a\right]$
+\end_inset
+
+, then we intuitively have 
+\begin_inset Formula 
+\begin{eqnarray*}
+\pmeas\left(\emptyset\right) & = & \imposs\\
+\pmeas\left(\Omega\right) & = & \necess\\
+\pmeas\left(\Omega\backslash E\right) & = & 1-\pmeas\left(E\right)
+\end{eqnarray*}
+
+\end_inset
+
+Next, if we define 
+\begin_inset Formula $\sum_{i}\left[a_{i},b_{i}\right]=\left[\sum_{i}a_{i},\sum_{i}b_{i}\right]$
+\end_inset
+
+, then 
+\end_layout
+
+\begin_layout Itemize
+for a collection 
+\begin_inset Formula $E_{i}$
+\end_inset
+
+ of pairwise disjoint events, we have 
+\begin_inset Formula $\pmeas\left(\bigcup_{i}E_{i}\right)\subseteq\sum_{i}\pmeas\left(E_{i}\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Notice that the equality may not hold in general This statement says that
+ the evidences of 
+\begin_inset Formula $\bigcup_{i}E_{i}$
+\end_inset
+
+ is at least as strong as putting all the evidences of 
+\begin_inset Formula $E_{i}$
+\end_inset
+
+ together, but some evidence may only be acquired for 
+\begin_inset Formula $\bigcup_{i}E_{i}$
+\end_inset
+
+ as the whole.
+ Therefore, 
+\begin_inset Formula $\pmeas\left(\bigcup_{i}E_{i}\right)$
+\end_inset
+
+ is a subset of 
+\begin_inset Formula $\sum_{i}\pmeas\left(E_{i}\right)$
+\end_inset
+
+, but may not equal.
+ In our example, 
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \pmeas(\{HH,TH\})=\necess=[1,1]\\
+ & \subseteq & \left[\frac{1}{2},\frac{3}{2}\right]=\left[0,\frac{1}{2}\right]+\left[\frac{1}{2},1\right]=\unlikely+\likely=\pmeas(\{HH\})+\pmeas(\{TH\})\textrm{ .}
+\end{eqnarray*}
+
+\end_inset
+
+However, 
+\begin_inset Formula $\pmeas(\{HH,TH\})$
+\end_inset
+
+ is a proper subset of 
+\begin_inset Formula $\pmeas(\{HH\})+\pmeas(\{TH\})$
+\end_inset
+
+ because if we check the complement of 
+\begin_inset Formula $\{HH,TH\}$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \pmeas(\{HH,TH\})=1-\pmeas(\{HT,TT\})=1-\imposs=\necess\textrm{ ,}
+\end{eqnarray*}
+
+\end_inset
+
+and 
+\begin_inset Formula $\pmeas(\{HT,TT\})=\imposs$
+\end_inset
+
+ cannot be used to reasoning the probability of 
+\begin_inset Formula $\{HH\}$
+\end_inset
+
+ and 
+\begin_inset Formula $\{TH\}$
+\end_inset
+
+ individually.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+yutsung{
+\end_layout
+
+\end_inset
+
+Although this is clearer than the previous one, I keep some intervals instead
+ write everything in 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+imposs
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+unlikely
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+likely
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+necess
+\end_layout
+
+\end_inset
+
+.
+ The biggest point is the addition rule
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\sum_{i}\left[a_{i},b_{i}\right]=\left[\sum_{i}a_{i},\sum_{i}b_{i}\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+This rule without 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+overflow
+\end_layout
+
+\end_inset
+
+ will be push complexity to 
+\begin_inset Quotes eld
+\end_inset
+
+we may abort computing probability when....
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It seems more concisely than a table among 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+imposs
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+unlikely
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+likely
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+necess
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+However, if you prefer as less interval as possible, I may try to replace
+ them by 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+imposs
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+unlikely
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+likely
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+necess
+\end_layout
+
+\end_inset
+
+...
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

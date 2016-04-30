@@ -196,6 +196,8 @@ coin. This information can be recovered with a more refined
 probability measure as we show next. 
 \qed\end{example}
 
+We will return to finite set-valued probability measures in Sec.~\ref{sec:?}.
+
 \paragraph*{Interval-valued probability measures.} In this case, we
 split the $[0,1]$ interval into a collection of closed sub-intervals
 obeying certain restrictions to be described at the end of the
@@ -238,63 +240,51 @@ double-headed but it also reveals that the first coin is more likely
 to be heads than tails, despite the absence of numeric information.
 \qed\end{example}
 
-\newpage
-
-We will return to finite set-valued probability measures in Sec.~\ref{sec:?}.
-
-\[\begin{array}{rclrcll}
-\imposs \vee x &=& x \vee \imposs &=& x \\
-\necess \vee x &=& x \vee \necess  &=& \necess \\
-\unlikely \vee \likely &=& \likely \vee \unlikely &=& \necess
-\end{array}\]
-
-
-If we consider set
-with more values, the probability measure may give us more information
-about the coins. For example, despite $\imposs$ and $\poss$, we may
-also adopt three more values: $\unlikely$\ as the
-interval~$\left(0,\frac{1}{2}\right]$, $\likely$\ as the
-interval~$\left(\frac{1}{2},1\right]$, and $\overflow$\ as the empty
-set~$\emptyset$ which means the total probability may be excessed than
-one. In particular, $\likely\vee\likely=\overflow$ because the
-probability of two disjoint events should not both bigger than
-$\frac{1}{2}$. The complete rule for operator~$\vee$ on
-$\mathscr{L}_{5}=\left\{
-  \imposs,\poss,\unlikely,\likely,\overflow\right\} $
-is defined in table~\ref{tab:The-operator-on}, or more abstractly, we
-define $(a,b]\vee(c,d]=(a+c,b+d]\cap[0,1]$. The definition of a
-probability measure can be modified as a function
-$\pmeas:\events\rightarrow\mathscr{L}_{5}$ such that:
+In interval-valued probability measures, if $\mu\left(E\right)=\left[a,b\right]$,
+the left-endpoint~$a$ called belief denotes the strength of the
+evidence that $E$ happens, and the right-endpoint~$b$ called plausibility
+denotes the strength of the evidence that contradicts $E$. If we
+define $1-\left[a,b\right]=\left[1-b,1-a\right]$, then we intuitively
+have 
+\begin{eqnarray*}
+\pmeas\left(\emptyset\right) & = & \imposs\\
+\pmeas\left(\Omega\right) & = & \necess\\
+\pmeas\left(\Omega\backslash E\right) & = & 1-\pmeas\left(E\right)
+\end{eqnarray*}
+Next, if we define $\sum_{i}\left[a_{i},b_{i}\right]=\left[\sum_{i}a_{i},\sum_{i}b_{i}\right]$,
+then 
 \begin{itemize}
-\item $\pmeas(\Omega)\in\left\{ \poss,\likely\right\} $ or equivalently
-$1\in\pmeas(\Omega)$, and 
-\item for a collection $E_{i}$, of pairwise disjoint events, $\pmeas(\bigcup_{i}E_{i})=\bigvee_{i}\pmeas(E_{i})$. 
+\item for a collection $E_{i}$ of pairwise disjoint events, we have $\pmeas\left(\bigcup_{i}E_{i}\right)\subseteq\sum_{i}\pmeas\left(E_{i}\right)$. 
 \end{itemize}
-\begin{table}
-\center{%
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline 
-$\vee$ & $\imposs$ & $\poss$ & $\unlikely$ & $\likely$ & $\overflow$\tabularnewline
-\hline 
-\hline 
-$\imposs$ & $\imposs$ & $\poss$ & $\unlikely$ & $\likely$ & $\overflow$\tabularnewline
-\hline 
-$\poss$ & $\poss$ & $\poss$ & $\poss$ & $\likely$ & $\overflow$\tabularnewline
-\hline 
-$\unlikely$ & $\unlikely$ & $\poss$ & $\poss$ & $\likely$ & $\overflow$\tabularnewline
-\hline 
-$\likely$ & $\likely$ & $\likely$ & $\likely$ & $\overflow$ & $\overflow$\tabularnewline
-\hline 
-$\overflow$ & $\overflow$ & $\overflow$ & $\overflow$ & $\overflow$ & $\overflow$\tabularnewline
-\hline 
-\end{tabular}}
+Notice that the equality may not hold in general This statement says
+that the evidences of $\bigcup_{i}E_{i}$ is at least as strong as
+putting all the evidences of $E_{i}$ together, but some evidence
+may only be acquired for $\bigcup_{i}E_{i}$ as the whole. Therefore,
+$\pmeas\left(\bigcup_{i}E_{i}\right)$ is a subset of $\sum_{i}\pmeas\left(E_{i}\right)$,
+but may not equal. In our example, 
+\begin{eqnarray*}
+ &  & \pmeas(\{HH,TH\})=\necess=[1,1]\\
+ & \subseteq & \left[\frac{1}{2},\frac{3}{2}\right]=\left[0,\frac{1}{2}\right]+\left[\frac{1}{2},1\right]=\unlikely+\likely=\pmeas(\{HH\})+\pmeas(\{TH\})\textrm{ .}
+\end{eqnarray*}
+However, $\pmeas(\{HH,TH\})$ is a proper subset of $\pmeas(\{HH\})+\pmeas(\{TH\})$
+because if we check the complement of $\{HH,TH\}$, we have 
+\begin{eqnarray*}
+ &  & \pmeas(\{HH,TH\})=1-\pmeas(\{HT,TT\})=1-\imposs=\necess\textrm{ ,}
+\end{eqnarray*}
+and $\pmeas(\{HT,TT\})=\imposs$ cannot be used to reasoning the probability
+of $\{HH\}$ and $\{TH\}$ individually. 
 
-\caption{\label{tab:The-operator-on}The operator~$\vee$ on $\mathscr{L}_{5}=\left\{ \imposs,\poss,\unlikely,\likely,\overflow\right\} $}
-\end{table}
-
-
-
-
+\yutsung{Although this is clearer than the previous one, I keep some
+intervals instead write everything in \imposs, \unlikely, \likely,
+and \necess. The biggest point is the addition rule~$\sum_{i}\left[a_{i},b_{i}\right]=\left[\sum_{i}a_{i},\sum_{i}b_{i}\right]$:
+\begin{itemize}
+\item This rule without \overflow will be push complexity to ``we may abort
+computing probability when....''
+\item It seems more concisely than a table among \imposs, \unlikely, \likely,
+and \necess.
+\end{itemize}
+However, if you prefer as less interval as possible, I may try to
+replace them by \imposs, \unlikely, \likely, and \necess...}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Quantum Probability Spaces}
