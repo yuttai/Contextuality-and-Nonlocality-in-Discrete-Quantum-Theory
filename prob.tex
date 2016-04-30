@@ -240,9 +240,9 @@ the absence of any numeric information.
 The probability measure above can be understood in reference to
 Ex.~\ref{ex1} by mapping each numeric value to the smallest interval
 containing it. The probability measure appears quite intuitive from
-that perspective. However, if we attempt to understand the probability
-measure independently of Ex.~\ref{ex1} we would hard pressed to
-justify the following assignments:
+that perspective. However, we also must be able to understand the
+probability measure independently of Ex.~\ref{ex1} and in particular
+justify how combinations such as
 \[ 
 \pmeas(\{HH\}) = \unlikely, \quad\pmeas(\{TH\}) = \likely, \quad
 \pmeas(\{HH\}\cup\{TH\}) = \necess 
@@ -250,16 +250,73 @@ justify the following assignments:
 which assert that an \unlikely-event whose probability is in the range
 $[0,\frac{1}{2}]$ and a \likely-event whose probability is in the
 range $[\frac{1}{2},1]$ combine to a \necess-event whose probability
-is in the range $[1,1]$! To understand this mystery, it is important
-to investigate the mathematical definition of interval-valued
-probabilities in detail. 
+is in the range $[1,1]$! To understand this mystery, we look at
+another more general example and then give the formal mathematical
+definition of interval-valued probabilities. 
+
+\amr{See A Simple View of the Dempster-Shafer Theory of Evidence and 
+  its Implication for the Rule of Combination Lotfi A. Zadeh, AAAI,
+  1986}
+
+\begin{example}[Dempster-Shafer Theory of Evidence] We have five
+  employees whose precise age is not known. All is give is a range for
+  each employee:
+\[\begin{array}{rcl}
+\textrm{Age}(M_1) &=& [22,26] \\
+\textrm{Age}(M_2) &=& [20,22] \\
+\textrm{Age}(M_3) &=& [30,35] \\
+\textrm{Age}(M_4) &=& [20,22] \\
+\textrm{Age}(M_5) &=& [28,30] 
+\end{array}\]
+What is the probability that an employee's age is in the range
+$[20,25]$. Looking at the data, it is \emph{possible} for $M_1$'s age
+to be within the range, it is \emph{not possible} for $M_3$'s age to
+be within the range, and it is \emph{certain} or \emph{necessary} that
+$M_4$'s age is in the range. Clearly saying that an event is
+\emph{necessary} is equivalent to saying that its complement is
+\emph{not possible}. Aggregating the results for the five employees,
+we can calculate that is necessary that 2 employees have their ages
+within the range, and it is possible that 3 employees have their ages
+within the range. We express this formally as saying that the
+probability of the event is $[0.4,0.6]$. Now consider another event
+asking whether the ages are some other disjoint range
+$[26,40]$. Reasoning in a similar way we calculate that the
+probability for this event is $[0.4,0.6]$. Now let's take the two events
+together and ask about the possibility of the ages to be in the range
+$[20,40]$. Clearly that probability must be $[1,1]$ as every
+employee's age is in that range. The way to calculate this probability
+from the individual probabilities of the events is as follows: 
+\begin{itemize}
+\item \amr{can you try to fix this... perhaps it is not consistent
+    with the interval-valued formalization but it is really nice if we
+    can make it work}
+\end{itemize}
+\qed\end{example}
 
 In interval-valued probability measures, if the probability of an
 event $E$ is $[a,b]$, we think of the left-endpoint~$a$ as
 representing the strength of the evidence that supports $E$, and the
 right-endpoint~$b$ as the strength of the evidence that contradicts
-$E$. If we define $1-\left[a,b\right]=\left[1-b,1-a\right]$, then we
-intuitively have
+$E$. 
+
+
+Thus if we have an event $E$ with probability $[a,b]$ where
+$a=0.1$ and $b=0.7$, we have that:
+\begin{itemize}
+\item the strength of evidence supporting $E$ is 0.1; since either $E$
+  or its complement must happen, we conclude that there is 0.9
+  evidence supporting the complement of $E$; 
+\item the strength of evidence contradicting $E$ is 0.7; again since
+  either $E$ or its complement must happen, we conclude that there is
+  0.3 evidence contradicting the complement of $E$.
+\end{itemize}
+
+Turning things around, the strength of evidence that contradicts
+$E$ is evidence supporting the complement of $E$
+
+The complement of $E$ must therefore have probability
+$\left[1-b,1-a\right]$ which we abbreviate $1-\left[a,b\right]$:
+
 \begin{eqnarray*}
 \pmeas\left(\emptyset\right) & = & \imposs\\
 \pmeas\left(\Omega\right) & = & \necess\\
