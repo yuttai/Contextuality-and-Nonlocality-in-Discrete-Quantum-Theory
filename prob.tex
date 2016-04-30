@@ -61,7 +61,7 @@
 \newcommand{\Tr}{\mathop{\mathrm{Tr}}\nolimits}
 
 \begin{document}
-\title{Probability}
+\title{Discrete Probability for Discrete Quantum Computing}
 \author{}
 \date{\today}
 \maketitle
@@ -82,19 +82,18 @@ events $\events$, a \emph{probability measure} is a function
 $\pmeas : \events \rightarrow [0,1]$ such that:
 \begin{itemize}
 \item $\pmeas(\Omega) = 1$, and 
-\item for a collection $E_i$,  of pairwise disjoint events, 
+\item for a collection $E_i$ of pairwise disjoint events, 
   $\pmeas(\bigcup_i E_i) = \sum_i \pmeas(E_i)$.
 \end{itemize}
 
-\begin{example}[Two-coin probability space]
+\begin{example}[Two-coin probability space]\label{ex1}
   Consider an experiment that tosses two coins. We have four possible
   outcomes that constitute the sample space
   $\Omega = \{ HH, HT, TH, TT \}$. There are 16 total events including
-  for example the event $\{ HH, HT \}$ that the first coin is
-  ``heads,'' the event $\{ HT, TH \}$ that the two coins land on
-  opposite sides, and the event $\{ HT, TH, TT\}$ that at least one
-  coin is tails. Here is a possible probability measure for these
-  events:
+  for example the event $\{ HH, HT \}$ that the first coin lands heads
+  up, the event $\{ HT, TH \}$ that the two coins land on opposite
+  sides, and the event $\{ HT, TH, TT\}$ that at least one coin lands
+  tails up. Here is a possible probability measure for these events:
 \[\begin{array}{c@{\qquad\qquad}c}
 \begin{array}{rcl}
 \pmeas(\emptyset) &=& 0 \\
@@ -126,9 +125,10 @@ to something different than the probabilities of the individual
 events. It is useful to think that this probability measure is
 completely induced by the two coins in question and their
 characteristics in the sense that each pair of coins induces a
-measure, and each measure must correspond to some pair of coins.  In
-this example, the first coin is twice as likely to be tails than heads
-and the second coin is double-headed.  
+measure, and each measure must correspond to some pair of coins.  The
+measure above is induced by two coins such that the first coin is
+twice as likely to land tails up than heads up and the second coin is
+double-headed.  
 \qed\end{example}
 
 In a strict computational or experimental setting, one may question
@@ -149,25 +149,24 @@ two approaches: set-valued probability
 measures~\cite{Artstein1972,PuriRalescu1983} and interval-valued
 probability measures~\cite{Dempster1967,Weichselberger2000,JamisonLodwick2004}.
 
-\paragraph*{Set-valued Probability Measures.} The simplest such set,
-and the one we will consider exclusively in this paper, is the set
-$\mathscr{L}_{2}=\left\{ \imposs, \poss\right\}$ together with the
-operation $\vee$ where $x \vee y=\imposs$ if and only if
+\paragraph*{Set-valued Probability Measures.} The simplest such set is
+the set $\mathscr{L}_{2}=\left\{ \imposs, \poss\right\}$ together with
+the operation $\vee$ where $x \vee y=\imposs$ if and only if
 $x=y=\imposs$. In relation to the conventional definition, one can
 interpret \imposs\ as the closed interval $[0,0]$, \poss\ as the
 half-open interval $(0,1]$, and $\vee$ as the addition of
 intervals. The definition of a probability measure in this case is
-modified as being a function
-$\pmeas : \events \rightarrow \mathscr{L}_{2}$ such that:
+modified to a function $\pmeas : \events \rightarrow \mathscr{L}_{2}$
+such that:
 \begin{itemize}
 \item $\pmeas(\Omega) = \poss$, and
-\item for a collection $E_i$,  of pairwise disjoint events, $\pmeas(\bigcup_i
+\item for a collection $E_i$ of pairwise disjoint events, $\pmeas(\bigcup_i
 E_i) = \bigvee_i \pmeas(E_i)$.
 \end{itemize}
 
 \begin{example}[Two-coin probability space with finite set-valued
-  probability measure] Under the new set-valued requirement, the
-  probability measure in the first example becomes:
+  probability measure] \label{ex2} Under the new set-valued
+  requirement, the probability measure in the first example becomes:
 \[\begin{array}{c@{\qquad\qquad}c}
 \begin{array}{rcl}
 \pmeas(\emptyset) &=& \imposs \\
@@ -189,21 +188,21 @@ E_i) = \bigvee_i \pmeas(E_i)$.
 \pmeas(\{  HH, HT, TH, TT \}) &=& \poss 
 \end{array}
 \end{array}\]
-Despite the fact that we lost all numeric information, the probability
-measure still reveals that the second coin is double-headed. We have
-however lost the information regarding the bias in the first
-coin. This information can be recovered with a more refined
-probability measure as we show next. 
+Despite the fact that we have lost all numeric information, the
+probability measure still reveals that the second coin is
+double-headed. We have however lost the information regarding the bias
+in the first coin. This information can be recovered with a more
+refined probability measure as we show next.  
 \qed\end{example}
 
 \paragraph*{Interval-valued probability measures.} In this case, we
 split the $[0,1]$ interval into a collection of overlapping closed
 sub-intervals obeying certain restrictions to be described at the end
-of the section. To illustrate the main ideas, we first consider a
-simple example.
+of the section. First we illustrate the main ideas using a simple
+example. 
 
-\begin{example}[Two-coin probability space with four intervals]
-We split the interval in the following four closed sub-intervals:
+\begin{example}[Two-coin probability space with four intervals] \label{ex3}
+We split the unit interval $[0,1]$ in the following four closed sub-intervals:
 \begin{itemize}
 \item $[0,0]$ which we call \imposs, 
 \item $[0,\frac{1}{2}]$ which we call \unlikely, 
@@ -234,16 +233,33 @@ Using these new values, the probability measure becomes:
 \end{array}\end{array}
 \]
 Not only does this probability measure reveal that the second coin is
-double-headed but it also reveals that the first coin is more likely
-to be tails than heads, despite the absence of numeric information.
+double-headed but it also reveals the bias in the first coin, again despite
+the absence of any numeric information.  
 \qed\end{example}
 
-In interval-valued probability measures, if $\mu\left(E\right)=\left[a,b\right]$,
-the left-endpoint~$a$ called belief denotes the strength of the
-evidence that $E$ happens, and the right-endpoint~$b$ called plausibility
-denotes the strength of the evidence that contradicts $E$. If we
-define $1-\left[a,b\right]=\left[1-b,1-a\right]$, then we intuitively
-have 
+The probability measure above can be understood in reference to
+Ex.~\ref{ex1} by mapping each numeric value to the smallest interval
+containing it. The probability measure appears quite intuitive from
+that perspective. However, if we attempt to understand the probability
+measure independently of Ex.~\ref{ex1} we would hard pressed to
+justify the following assignments:
+\[ 
+\pmeas(\{HH\}) = \unlikely, \quad\pmeas(\{TH\}) = \likely, \quad
+\pmeas(\{HH\}\cup\{TH\}) = \necess 
+\]
+which assert that an \unlikely-event whose probability is in the range
+$[0,\frac{1}{2}]$ and a \likely-event whose probability is in the
+range $[\frac{1}{2},1]$ combine to a \necess-event whose probability
+is in the range $[1,1]$! To understand this mystery, it is important
+to investigate the mathematical definition of interval-valued
+probabilities in detail. 
+
+In interval-valued probability measures, if the probability of an
+event $E$ is $[a,b]$, we think of the left-endpoint~$a$ as
+representing the strength of the evidence that supports $E$, and the
+right-endpoint~$b$ as the strength of the evidence that contradicts
+$E$. If we define $1-\left[a,b\right]=\left[1-b,1-a\right]$, then we
+intuitively have
 \begin{eqnarray*}
 \pmeas\left(\emptyset\right) & = & \imposs\\
 \pmeas\left(\Omega\right) & = & \necess\\
@@ -928,9 +944,9 @@ measure} is a function $\pmeas : \events \rightarrow [0,1]$ such that:
 \begin{example}[Two coin experiment] Consider an experiment that
   tosses two coins. We have four possible outcomes that constitute the
   sample space $\Omega = \{ HH, HT, TH, TT \}$. The event that the
-  first coin is ``heads'' is $\{ HH, HT \}$; the event that the two
+  first coin lands heads up is $\{ HH, HT \}$; the event that the two
   coins land on opposite sides is $\{ HT, TH \}$; the event that at
-  least one coin is tails is $\{ HT, TH, TT\}$. Depending on the
+  least one coin lands tails up is $\{ HT, TH, TT\}$. Depending on the
   assumptions regarding the coins, we can define several probability
   measures. Here is a possible one:
 \[\begin{array}{c@{\qquad\qquad}c}
