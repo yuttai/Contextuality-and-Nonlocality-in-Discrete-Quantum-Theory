@@ -263,11 +263,11 @@ definition of interval-valued probabilities.
   employees whose precise age is not known. All is given is a range for
   each employee:
 \[\begin{array}{rcl}
-\textrm{Age}(M_1) &\in& [22,26] \\
-\textrm{Age}(M_2) &\in& [20,22] \\
-\textrm{Age}(M_3) &\in& [30,35] \\
-\textrm{Age}(M_4) &\in& [20,22] \\
-\textrm{Age}(M_5) &\in& [28,30] 
+\textrm{Age}(M_{1}) & \in & [22,26]=D_{1}\\
+\textrm{Age}(M_{2}) & \in & [20,22]=D_{2}\\
+\textrm{Age}(M_{3}) & \in & [30,35]=D_{3}\\
+\textrm{Age}(M_{4}) & \in & [20,22]=D_{4}\\
+\textrm{Age}(M_{5}) & \in & [28,30]=D_{5}
 \end{array}\]
 What is the probability that an employee's age is in the range
 $[20,25]$? Looking at the data, it is \emph{possible} for $M_1$'s age
@@ -291,6 +291,21 @@ from the individual probabilities of the events is as follows:
 \item \amr{can you try to fix this... perhaps it is not consistent
     with the interval-valued formalization but it is really nice if we
     can make it work}
+\item Because ages are all integers, and we only consider ages from 20 to
+40. Hence, the sample space~$\Omega$ can be $\left\{ 20,21,\ldots,39,40\right\} $,
+and the set of events are $2^{\Omega}$ as usual.\\
+\yutsung{I have numerically verified if we set $\Omega=\left\{ 20,22,25,26,28,30,35,40\right\} $,
+and the answer should be the same as $\left\{ 20,21,\ldots,39,40\right\} $
+because only end-points should matter in the question... I will numerically
+verify $\left\{ 20,21,\ldots,39,40\right\} $, or prove they are the
+same later...} 
+\item Given a event~$E\subseteq\Omega$, the probability of $E$ can be
+defined by 
+\[
+\pmeas(E)=\left[\frac{1}{5}\left|\left\{ i\middle|D_{i}\cap E\ne\emptyset\right\} \right|,\frac{1}{5}\left|\left\{ i\middle|D_{i}\subseteq E\right\} \right|\right]\textrm{ ,}
+\]
+where $\left|A\right|$ is the number of elements in $A$. Then, we
+can verify that $\pmeas$ in an interval-value probability measure.
 \end{itemize}
 \qed\end{example}
 
