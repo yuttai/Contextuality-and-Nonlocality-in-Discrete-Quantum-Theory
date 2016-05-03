@@ -69,6 +69,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Classical Probability Spaces}
  
+We review the conventional presentation of probability spaces and then
+discuss several variations that avoid using the real interval $[0,1]$.
+
+%%%
+\subsection{Real-Valued Probability Spaces}
+
 A \emph{probability
   space}~\cite{inun.425605319950101,GrahamKnuthPatashnik1994,rohatgi2011introduction}
 specifies the necessary conditions for reasoning coherently about
@@ -114,22 +120,22 @@ $\pmeas : \events \rightarrow [0,1]$ such that:
 \pmeas(\{  HT, TH, TT \}) &=& 2/3 \\
 \pmeas(\{  HH, HT, TH, TT \}) &=& 1
 \end{array}
-\end{array}\]
-The assignment satisfies the two constraints for probability measures:
-the probability of the entire sample space is 1, and the probability
-of every collection of disjoint events (e.g.,
-$\{ HT, TH \} = \{ HT \} \cup \{ TH \}$) is the sum of the individual
-probabilities. The probability of collections of non-disjoint events
-(e.g., $\{ HT, TH, TT \} = \{ HT, TH \} \cup \{ TH , TT \}$) may add
-to something different than the probabilities of the individual
-events. It is useful to think that this probability measure is
-completely induced by the two coins in question and their
-characteristics in the sense that each pair of coins induces a
-measure, and each measure must correspond to some pair of coins.  The
-measure above is induced by two coins such that the first coin is
-twice as likely to land tails up than heads up and the second coin is
-double-headed.  
-\qed\end{example}
+  \end{array}\]
+  The assignment satisfies the two constraints for probability measures:
+  the probability of the entire sample space is 1, and the probability
+  of every collection of disjoint events (e.g.,
+  $\{ HT \} \cup \{ TH \} = \{ HT, TH \}$) is the sum of the individual
+  probabilities. The probability of collections of non-disjoint events
+  (e.g., $\{ HT, TH \} \cup \{ TH , TT \} = \{ HT, TH, TT \}$) may add
+  to something different than the probabilities of the individual
+  events. It is useful to think that this probability measure is
+  completely induced by the two coins in question and their
+  characteristics in the sense that each pair of coins induces a
+  measure, and each measure must correspond to some pair of coins.  The
+  measure above is induced by two coins such that the first coin is
+  twice as likely to land tails up than heads up and the second coin is
+  double-headed.  
+  \qed\end{example}
 
 In a strict computational or experimental setting, one may question
 the reliance of the definition of probability space on the uncountable
@@ -150,15 +156,21 @@ measures~\cite{Artstein1972,PuriRalescu1983} and interval-valued
 probability
 measures~\cite{Dempster1967,Zadeh1986,Weichselberger2000,JamisonLodwick2004}.
 
-\paragraph*{Set-valued Probability Measures.} The simplest such set is
-the set $\mathscr{L}_{2}=\left\{ \imposs, \poss\right\}$ together with
-the operation $\vee$ where $x \vee y=\imposs$ if and only if
-$x=y=\imposs$. In relation to the conventional definition, one can
-interpret \imposs\ as the closed interval $[0,0]$, \poss\ as the
-half-open interval $(0,1]$, and $\vee$ as the addition of
-intervals. The definition of a probability measure in this case is
-modified to a function $\pmeas : \events \rightarrow \mathscr{L}_{2}$
-such that:
+%%%%%
+\subsection{Set-valued Probability Measures}  
+
+Instead of using every point in the real interval $[0,1]$ we can
+partition the interval into disjoint sets and only consider
+probability measures up to set membership. The simplest such situation
+is to partition the interval $[0,1]$ into $\{0\}$ (which we will call
+$\imposs$) and the half-open interval $(0,1]$ (which we will call
+$\poss$). The addition that was used to aggregate probabilities is now
+abstracted to $\vee$ such that $x \vee y=\imposs$ if and only if
+$x=y=\imposs$. We will call the resulting set
+$\left\{ \imposs, \poss\right\}$ together with the with associated
+operation $\vee$, the set $\mathscr{L}_{2}$. The definition of a
+probability measure in this case is modified to a function
+$\pmeas : \events \rightarrow \mathscr{L}_{2}$ such that:
 \begin{itemize}
 \item $\pmeas(\Omega) = \poss$, and
 \item for a collection $E_i$ of pairwise disjoint events, $\pmeas(\bigcup_i
@@ -196,11 +208,13 @@ in the first coin. This information can be recovered with a more
 refined probability measure as we show next.  
 \qed\end{example}
 
-\paragraph*{Interval-valued probability measures.} In this case, we
-split the $[0,1]$ interval into a collection of overlapping closed
-sub-intervals obeying certain restrictions to be described at the end
-of the section. First we illustrate the main ideas using a simple
-example. 
+%%%%%
+\subsection{Interval-valued probability measures}  
+
+In this case, we split the $[0,1]$ interval into a collection of
+overlapping closed sub-intervals obeying certain restrictions to be
+described at the end of the section. First we illustrate the main
+ideas using a simple example.
 
 \begin{example}[Two-coin probability space with four intervals] \label{ex3}
 We split the unit interval $[0,1]$ in the following four closed sub-intervals:
