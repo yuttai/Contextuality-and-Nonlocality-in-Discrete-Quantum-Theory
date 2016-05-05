@@ -157,98 +157,70 @@ probability
 measures~\cite{Dempster1967,Zadeh1986,Weichselberger2000,JamisonLodwick2004}.
 
 %%%%%
-\subsection{Set-valued Probability Measures}  
+\subsection{Set-valued Probability Measures}
 
 Instead of using every point in the real interval $[0,1]$ we can
-partition the interval into disjoint sets and only consider
-probability measures up to set membership. The simplest such situation
-is to partition the interval $[0,1]$ into $\{0\}$ (which we will call
-$\imposs$) and the half-open interval $(0,1]$ (which we will call
-$\poss$). The addition that was used to aggregate probabilities is now
-abstracted to $\vee$ such that $x \vee y=\imposs$ if and only if
-$x=y=\imposs$. We will call the resulting set
-$\left\{ \imposs, \poss\right\}$ together with the with associated
-operation $\vee$, the set $\mathscr{L}_{2}$. The definition of a
-probability measure in this case is modified to a function
-$\pmeas : \events \rightarrow \mathscr{L}_{2}$ such that:
+consider subsets~$\mathscr{L}$ of $[0,1]$ and only consider probability
+measures up to set membership with intuitive addition\footnote{Notice that the set-valued measure in~\cite{Artstein1972,PuriRalescu1983},
+only require $I_{1}+I_{2}=\left\{ a_{1}+a_{2}\middle|a_{1}\in I_{1},a_{2}\in I_{2}\right\} $
+because they focused on measure theory. In probability thoery, $2\in\pmeas\left(E\right)$
+doesn't really make sense so that we consider intersect $[0,1]$ in
+our definition.} 
+\[
+I_{1}+I_{2}=\left\{ a_{1}+a_{2}\middle|a_{1}\in I_{1},a_{2}\in I_{2}\right\} \cap[0,1]\textrm{ .}
+\]
+Then, a probability measure in this case is modified to a function
+$\pmeas:\events\rightarrow\mathscr{L}$ such that: 
 \begin{itemize}
-\item $\pmeas(\Omega) = \poss$, and
-\item for a collection $E_i$ of pairwise disjoint events, $\pmeas(\bigcup_i
-E_i) = \bigvee_i \pmeas(E_i)$.
+\item $1\in\pmeas(\Omega)$, and 
+\item for a collection $E_{i}$ of pairwise disjoint events, $\pmeas(\bigcup_{i}E_{i})=\sum_{i}\pmeas(E_{i})$. 
 \end{itemize}
+The simplest such situation is to partition the interval $[0,1]$
+into $\{0\}$ (which we will call $\imposs$) and the half-open interval
+$(0,1]$ (which we will call $\poss$). We will call the resulting
+set $\left\{ \imposs,\poss\right\} $, the set $\mathscr{L}_{2}$. 
 
-\begin{example}[Two-coin probability space with finite set-valued
-  probability measure] \label{ex2} Under the new set-valued
-  requirement, the probability measure in the first example becomes:
-\[\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\pmeas(\emptyset) &=& \imposs \\
-\pmeas(\{ HH \}) &=& \poss \\
-\pmeas(\{ HT \}) &=& \imposs \\
-\pmeas(\{ TH \}) &=& \poss \\
-\pmeas(\{ TT \}) &=& \imposs \\
-\pmeas(\{  HH, HT \}) &=& \poss \\
-\pmeas(\{  HH, TH \}) &=& \poss \\
-\pmeas(\{  HH , TT \}) &=& \poss \\
-\end{array} & \begin{array}{rcl}
-\pmeas(\{  HT, TH \}) &=& \poss \\
-\pmeas(\{  HT , TT \}) &=& \imposs \\
-\pmeas(\{  TH , TT \}) &=& \poss \\
-\pmeas(\{  HH, HT, TH \}) &=& \poss \\
-\pmeas(\{  HH, HT, TT \}) &=& \poss \\
-\pmeas(\{  HH, TH, TT \}) &=& \poss \\
-\pmeas(\{  HT, TH, TT \}) &=& \poss \\
-\pmeas(\{  HH, HT, TH, TT \}) &=& \poss 
-\end{array}
-\end{array}\]
-Despite the fact that we have lost all numeric information, the
-probability measure still reveals that the second coin is
-double-headed. We have however lost the information regarding the bias
-in the first coin. This information can be recovered with a more
-refined probability measure as we show next.  
-\qed\end{example}
-
-If we consider set with more values, the probability measure may give
-us more information about the coins. For example, despite $\imposs$
-and $\poss$, we may also adopt three more values: $\unlikely$\ as
-the interval~$\left(0,\frac{1}{2}\right]$, $\likely$\ as the interval~$\left(\frac{1}{2},1\right]$,
-and $\overflow$\ as the empty set~$\emptyset$ which means the
-total probability may be excessed than one. In particular, $\likely\vee\likely=\overflow$
-because the probability of two disjoint events should not both bigger
-than $\frac{1}{2}$. The complete rule for operator~$\vee$ on $\mathscr{L}_{5}=\left\{ \imposs,\poss,\unlikely,\likely,\overflow\right\} $
-is defined in table~\ref{tab:The-operator-on}, or more abstractly,
-we define $(a,b]\vee(c,d]=(a+c,b+d]\cap[0,1]$. The definition of
-a probability measure can be modified as a function $\pmeas:\events\rightarrow\mathscr{L}_{5}$
-such that: 
-\begin{itemize}
-\item $\pmeas(\Omega)\in\left\{ \poss,\likely\right\} $ or equivalently
-$1\in\pmeas(\Omega)$, and 
-\item for a collection $E_{i}$, of pairwise disjoint events, $\pmeas(\bigcup_{i}E_{i})=\bigvee_{i}\pmeas(E_{i})$. 
-\end{itemize}
-\begin{table}
-\center{%
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline 
-$\vee$ & $\imposs$ & $\poss$ & $\unlikely$ & $\likely$ & $\overflow$\tabularnewline
-\hline 
-\hline 
-$\imposs$ & $\imposs$ & $\poss$ & $\unlikely$ & $\likely$ & $\overflow$\tabularnewline
-\hline 
-$\poss$ & $\poss$ & $\poss$ & $\poss$ & $\likely$ & $\overflow$\tabularnewline
-\hline 
-$\unlikely$ & $\unlikely$ & $\poss$ & $\poss$ & $\likely$ & $\overflow$\tabularnewline
-\hline 
-$\likely$ & $\likely$ & $\likely$ & $\likely$ & $\overflow$ & $\overflow$\tabularnewline
-\hline 
-$\overflow$ & $\overflow$ & $\overflow$ & $\overflow$ & $\overflow$ & $\overflow$\tabularnewline
-\hline 
-\end{tabular}}
-
-\caption{\label{tab:The-operator-on}The operator~$\vee$ on $\mathscr{L}_{5}=\left\{ \imposs,\poss,\unlikely,\likely,\overflow\right\} $}
-\end{table}
-\begin{example}{[}Two-coin probability space with $\mathscr{L}_{5}$-valued
-probability measure{]} Under the new $\mathscr{L}_{5}$-valued requirement,
+\begin{example}{[}Two-coin probability space with finite set-valued
+probability measure{]} \label{ex2} Under the new set-valued requirement,
 the probability measure in the first example becomes: 
+\[
+\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{rcl}
+\pmeas(\emptyset) & = & \imposs\\
+\pmeas(\{HH\}) & = & \poss\\
+\pmeas(\{HT\}) & = & \imposs\\
+\pmeas(\{TH\}) & = & \poss\\
+\pmeas(\{TT\}) & = & \imposs\\
+\pmeas(\{HH,HT\}) & = & \poss\\
+\pmeas(\{HH,TH\}) & = & \poss\\
+\pmeas(\{HH,TT\}) & = & \poss
+\end{array} & \begin{array}{rcl}
+\pmeas(\{HT,TH\}) & = & \poss\\
+\pmeas(\{HT,TT\}) & = & \imposs\\
+\pmeas(\{TH,TT\}) & = & \poss\\
+\pmeas(\{HH,HT,TH\}) & = & \poss\\
+\pmeas(\{HH,HT,TT\}) & = & \poss\\
+\pmeas(\{HH,TH,TT\}) & = & \poss\\
+\pmeas(\{HT,TH,TT\}) & = & \poss\\
+\pmeas(\{HH,HT,TH,TT\}) & = & \poss
+\end{array}\end{array}
+\]
+Despite the fact that we have lost all numeric information, the probability
+measure still reveals that the second coin is double-headed. We have
+however lost the information regarding the bias in the first coin.
+This information can be recovered with a more refined probability
+measure as we show next. \qed\end{example}
+
+Although $\mathscr{L}_{2}$-valued probability measure is quite intuitive,
+set-valued probability measure is not that intuitive if we extend
+to more values. For example, consider the following three \emph{overlapping}
+closed sub-intervals: $[0,0]$ is still call \imposs, $[0,\frac{1}{2}]$
+which we call \unlikely, ad $[\frac{1}{2},1]$ which we call \likely.
+The following example is a set-valued probability measure corresponding
+to the probability measure in the first example.
+
+\begin{example}\label{Two-coin-set-valued-again}{[}Two-coin probability
+space with set-valued probability measure, again{]} 
 \[
 \begin{array}{c@{\qquad\qquad}c}
 \begin{array}{rcl}
@@ -272,27 +244,81 @@ the probability measure in the first example becomes:
 \end{array}\end{array}
 \]
 In this example, we can get the information that the first coin is
-weighted and the second coin is double-headed. \qed\end{example}
+weighted and the second coin is double-headed. However, we may notice
+that the set-valued probability of the whole space~$\{HH,HT,TH,TT\}$
+are different between these two examples. This problem can be fixed
+when we moved on to the next section. \qed\end{example}
 
 We will return to finite set-valued probability measures in Sec.~\ref{sec:?}.
 
 %%%%%
-\subsection{Interval-valued probability measures}  
 
-A natural generalization of the disjoint set-valued measure above is
-to allow the sets to overlap. In this case, we split the interval
-$[0,1]$ in a collection of \emph{overlapping} closed
-sub-intervals. First we illustrate the main ideas using a simple
-example.
 
-\begin{example}[Two-coin probability space with four
-  intervals] \label{ex3} We split the unit interval $[0,1]$ in the
-  following four closed sub-intervals: $[0,0]$ which we call \imposs,
-  $[0,\frac{1}{2}]$ which we call \unlikely, $[\frac{1}{2},1]$ which
-  we call \likely, and $[1,1]$ which we call \necess.  Using these new
-  values, we can modify the probability measure of Ex.~\ref{ex1} by
-  mapping each numeric value to the smallest sub-interval containing
-  it to get the following:
+\subsection{Interval-valued probability measures}
+
+The singleton closed interval $[0,0]$ is a required spacial value
+for empty set, and a natural generalization is to consider another
+special closed interval $[1,1]$ which we call \necess for the whole
+space. In general, if the probability of an event $E$ is $[a,b]$,
+we think of the left-endpoint~$a$ as representing the strength of
+the evidence that supports $E$, and the right-endpoint~$b$ as the
+strength of the evidence that contradicts $E$.
+
+Thus if we have an event $E$ with probability $[a,b]$ where $a=0.1$
+and $b=0.7$, we have that: 
+\begin{itemize}
+\item the strength of evidence supporting $E$ is 0.1; since either $E$
+or its complement must happen, we conclude that there is 0.9 evidence
+supporting the complement of $E$; 
+\item the strength of evidence contradicting $E$ is 0.7; again since either
+$E$ or its complement must happen, we conclude that there is 0.3
+evidence contradicting the complement of $E$. 
+\end{itemize}
+\yutsung{Do we use the law of excluded middle here? You remind me
+Agda : ) Did Homotopy Type Theory people said anything about the probability?}\\
+Turning things around, the strength of evidence that contradicts $E$
+is evidence supporting the complement of $E$. The complement of $E$
+must therefore have probability $\left[1-b,1-a\right]$ which we abbreviate
+$1-\left[a,b\right]$, so the probability measure $\pmeas$ should
+satisfy:
+\begin{itemize}
+\item $\pmeas(\emptyset)=[0,0]$, 
+\item $\pmeas(\Omega)=[1,1]$, and 
+\item $\pmeas\left(\Omega\backslash E\right)=1-\pmeas\left(E\right)$
+\end{itemize}
+However, if we want $\pmeas(\Omega)=[1,1]$, and the probability assignment
+for singlton sets $\pmeas(\{HH\})=\unlikely$, $\pmeas(\{HT\})=\imposs$,
+$\pmeas(\{TH\})=\likely$, and $\pmeas(\{TT\})=\imposs$ as in example~\ref{Two-coin-set-valued-again},
+we only have $\pmeas(\Omega)\subsetneq\pmeas(\{HH\})+\pmeas(\{HT\})+\pmeas(\{TH\})+\pmeas(\{TT\})$.
+In general, we only require
+\begin{itemize}
+\item for a collection $E_{i}$ of pairwise disjoint events, we have $\pmeas\left(\bigcup_{i}E_{i}\right)\subseteq\sum_{i}\pmeas\left(E_{i}\right)$. 
+\end{itemize}
+This statement means that the evidences of $\bigcup_{i}E_{i}$ is
+at least as strong as putting all the evidences of $E_{i}$ together,
+but some evidence may only be acquired for $\bigcup_{i}E_{i}$ as
+the whole. Therefore, $\pmeas\left(\bigcup_{i}E_{i}\right)$ is a
+subset of $\sum_{i}\pmeas\left(E_{i}\right)$, but may not equal.
+In our example, 
+\begin{eqnarray*}
+ &  & \pmeas(\{HH\})+\pmeas(\{HT\})+\pmeas(\{TH\})+\pmeas(\{TT\})\\
+ & = & \imposs+\unlikely+\imposs+\likely\\
+ & = & \left[0,0\right]+\left[0,\frac{1}{2}\right]+\left[0,0\right]+\left[\frac{1}{2},1\right]=\left[\frac{1}{2},\frac{3}{2}\right]
+\end{eqnarray*}
+The above equation told us $\pmeas(\Omega)\subseteq\left[\frac{1}{2},\frac{3}{2}\right]$.
+However, because of $\pmeas(\emptyset)=\imposs$, we have $\pmeas\left(\Omega\right)=1-\pmeas\left(\emptyset\right)=\necess$,
+but $\pmeas(\emptyset)=\imposs$ cannot be used to reasoning the probability
+of $\{HH\}$, $\{HT\}$, $\{TH\}$ and $\{TT\}$ individually. The
+full probability assignment is shown in the following example. 
+
+\begin{example}{[}Two-coin probability space with four intervals{]}
+\label{ex3} We split the unit interval $[0,1]$ in the following
+four closed sub-intervals: $[0,0]$ which we call \imposs, $[0,\frac{1}{2}]$
+which we call \unlikely, $[\frac{1}{2},1]$ which we call \likely,
+and $[1,1]$ which we call \necess. Using these new values, we can
+modify the probability measure of Ex.~\ref{ex1} by mapping each
+numeric value to the smallest sub-interval containing it to get the
+following: 
 \[
 \begin{array}{c@{\qquad\qquad}c}
 \begin{array}{rcl}
@@ -315,51 +341,9 @@ example.
 \pmeas(\{HH,HT,TH,TT\}) & = & \necess
 \end{array}\end{array}
 \]
-This probability measure is more informative than the one in
-Ex.~\ref{ex2}: not only does it reveal that the second coin is
-double-headed but it also reveals the bias in the first coin.
-\qed\end{example}
-
-The probability measure above appears quite intuitive but it is not
-really evident that it is well-defined. For example, how do we justify
-the following combination of assignments:
-\[ 
-\pmeas(\{HH\}) = \unlikely, \quad\pmeas(\{TH\}) = \likely, \quad
-\pmeas(\{HH\}\cup\{TH\}) = \necess 
-\]
-which assert that an \unlikely-event whose probability is in the range
-$[0,\frac{1}{2}]$ and a \likely-event whose probability is in the
-range $[\frac{1}{2},1]$ combine to a \necess-event whose probability
-is in the range $[1,1]$. To understand the calculation, we provide the
-formal definition of a probability measure in this case.
-
-Fix a collection $\mathscr{I}$ of closed sub-intervals of $[0,1]$ that
-must include $[0,0]$ and $[1,1]$. An $\mathscr{I}$--interval-valued
-probability measure is a function
-$\mu : \events \rightarrow \mathscr{I}$ such that:
-\begin{itemize}
-\item $\mu(\emptyset) = [0,0]$, 
-\item $\mu(\Omega) = [1,1]$, and 
-\item for any mutually disjoint events $E_1$, $E_2$, $E_3$, and $E_4$
-  where $\pmeas(E_i) = [l_i,h_i]$ and where
-  $E_1 \cup E_2 \cup E_3 \cup E_4 = \Omega$, we have:
-\[
-\pmeas(\{E_1\cup E_2\}) \subseteq
-  [\max(l_1+l_2 , 1-(h_3+h_4)), \min(h_1+h_2 , 1-(l_3+l_4))]
-\]
-We view the events $E_1$ and $E_2$ as providing evidence for the
-combined event $E_1\cup E_2$: their values set positive bounds on the
-resulting interval. But as $E_3 \cup E_4$ is the complement of
-$E_1 \cup E_2$, the events $E_3$ and $E_4$ provide negative bounds on
-the resulting interval. The calculated interval may not be in our
-fixed set $\mathscr{I}$ of chosen intervals so we embed it in the
-smallest existing interval.
-\end{itemize}
-
-
-
-
-
+This probability measure is more informative than the one in Ex.~\ref{ex2}:
+not only does it reveal that the second coin is double-headed but
+it also reveals the bias in the first coin. \qed\end{example}
 
 % to think of the above combination in the context of the evidence
 % against the events established by the dual events. Writing in terms of
