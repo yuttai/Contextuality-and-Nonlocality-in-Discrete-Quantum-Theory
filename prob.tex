@@ -13,21 +13,21 @@
 \usepackage{wesa}
 \usepackage[T1]{fontenc}
 
-\makeatletter
-\newtheoremstyle{indented}
-  {3pt}% space before
-  {3pt}% space after
-  {\addtolength{\@totalleftmargin}{3.5em}
-   \addtolength{\linewidth}{-3.5em}
-   \parshape 1 3.5em \linewidth}% body font
-  {}% indent
-  {\bfseries}% header font
-  {.}% punctuation
-  {.5em}% after theorem header
-  {}% header specification (empty for default)
-\makeatother
-\theoremstyle{indented}
-%% \theoremstyle{remark}
+% \makeatletter
+% \newtheoremstyle{indented}
+%   {3pt}% space before
+%   {3pt}% space after
+%   {\addtolength{\@totalleftmargin}{3.5em}
+%    \addtolength{\linewidth}{-3.5em}
+%    \parshape 1 3.5em \linewidth}% body font
+%   {}% indent
+%   {\bfseries}% header font
+%   {.}% punctuation
+%   {.5em}% after theorem header
+%   {}% header specification (empty for default)
+% \makeatother
+% \theoremstyle{indented}
+\theoremstyle{remark}
 \newtheorem{example}{Example}
 \newtheorem{definition}{Definition}
 \newtheorem{cor}{Corollary}
@@ -61,30 +61,36 @@
 \newcommand{\Tr}{\mathop{\mathrm{Tr}}\nolimits}
 
 \begin{document}
-\title{Discrete Probability for Discrete Quantum Computing}
+\title{Discrete Probability for Discrete Quantum Theories}
 \author{}
 \date{\today}
 \maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Classical Probability Spaces}
- 
-We review the conventional presentation of probability spaces and then
-discuss several variations that avoid using the real interval $[0,1]$.
+  
+A \emph{probability space} specifies the necessary conditions for
+reasoning coherently about collections of uncertain events.  We review
+the conventional presentation of probability spaces and then discuss
+several variations that avoid using the real interval $[0,1]$.
 
 %%%
 \subsection{Real-Valued Probability Spaces}
 
-A \emph{probability
-  space}~\cite{inun.425605319950101,GrahamKnuthPatashnik1994,rohatgi2011introduction}
-specifies the necessary conditions for reasoning coherently about
-collections of uncertain events. It consists of a \emph{sample space}
-$\Omega$, a space of \emph{events}~$\events$, and a \emph{probability
-  measure}~$\pmeas$. In this paper, we will only consider
-\emph{finite} sets of events: we therefore define a sample space
-$\Omega$ as an arbitrary non-empty finite set and the space of events
-$\events$ as $2^\Omega$, the powerset of $\Omega$. Given the set of
-events $\events$, a \emph{probability measure} is a function
+The conventional definition of a probability
+space~\cite{inun.425605319950101,GrahamKnuthPatashnik1994,rohatgi2011introduction}
+builds upon the real numbers. In more detail, a probability space
+consists of a \emph{sample space} $\Omega$, a space of
+\emph{events}~$\events$, and a \emph{probability measure}~$\pmeas$
+mapping events in $\events$ to the real interval $[0,1]$. In this
+paper, we will only consider \emph{finite} sets of events: we
+therefore restrict our attention to non-empty finite sets $\Omega$ as
+the sample space. The space of events $\events$ includes every
+possible subset of $\Omega$: it is the powerset~$2^\Omega$. Given the
+set of events $\events$, a \emph{probability measure} is a function
 $\pmeas : \events \rightarrow [0,1]$ such that:
 \begin{itemize}
 \item $\pmeas(\Omega) = 1$, and 
@@ -148,37 +154,63 @@ precision increases.
 % \yutsung{Check the meaning of the ``computing $\frac{\pi}{4}$'', because
 % Bailey Borwein Plouffe formula can computing the $n$th binary digit of $\pi$ 
 % using base 16 directly.}
-Therefore, in a resource-aware setting, it is more appropriate to
-consider probability measures that map events to a finite set of
-elements computable with a fixed set of resources. We will consider
-two approaches: set-valued probability
-measures~\cite{Artstein1972,PuriRalescu1983} and interval-valued
-probability
+Therefore, in a resource-aware computational or experimental setting,
+it is more appropriate to consider probability measures that map
+events to a finite set of elements computable with a fixed set of
+resources. We will consider two approaches from the literature:
+set-valued probability measures~\cite{Artstein1972,PuriRalescu1983}
+and interval-valued probability
 measures~\cite{Dempster1967,Zadeh1986,Weichselberger2000,JamisonLodwick2004}.
 
 %%%%%
 \subsection{Set-valued Probability Measures}
 
-Instead of using every point in the real interval $[0,1]$ we can
-consider subsets~$\mathscr{L}$ of $[0,1]$ and only consider probability
-measures up to set membership with intuitive addition\footnote{Notice that the set-valued measure in~\cite{Artstein1972,PuriRalescu1983},
-only require $I_{1}+I_{2}=\left\{ a_{1}+a_{2}\middle|a_{1}\in I_{1},a_{2}\in I_{2}\right\} $
-because they focused on measure theory. In probability thoery, $2\in\pmeas\left(E\right)$
-doesn't really make sense so that we consider intersect $[0,1]$ in
-our definition.} 
+Instead of using every point in the real interval $[0,1]$ as a
+potential value for a probability measure, we can lump points together
+in sets and consider probability measures up to set membership. The
+simplest such situation is to partition the interval $[0,1]$ into two
+sets: the set $\{0\}$ (which we will call $\imposs$) and the set
+containing all the points in the half-open interval $(0,1]$ (which we
+will call $\poss$). We will call the resulting collection
+$\left\{ \imposs,\poss\right\} $, the collection $\mathscr{L}_{2}$. To
+completely specify a probability space, we also need to specify how to
+``add'' the probabilities in $\mathscr{L}_2$. Given two subsets of the
+real interval, $I_1$ and $I_2$, the general formula for adding them
+is:\footnote{Notice that the set-valued measure
+  in~\cite{Artstein1972,PuriRalescu1983}, only require
+  $I_{1}+I_{2}=\left\{ a_{1}+a_{2}\middle|a_{1}\in I_{1},a_{2}\in
+    I_{2}\right\} $
+  because they focused on measure theory. In probability theory,
+  $2\in\pmeas\left(E\right)$ doesn't really make sense so that we
+  consider intersect $[0,1]$ in our definition.}
 \[
-I_{1}+I_{2}=\left\{ a_{1}+a_{2}\middle|a_{1}\in I_{1},a_{2}\in I_{2}\right\} \cap[0,1]\textrm{ .}
+I_{1} \vee I_{2}=\left\{ x+y~\middle|~ x \in I_{1}, y \in I_{2}\right\} ~\cap~ [0,1]\textrm{ .}
 \]
-Then, a probability measure in this case is modified to a function
-$\pmeas:\events\rightarrow\mathscr{L}$ such that: 
+In the case of $\mathscr{L}_2$, this reduces to $x \vee y = \imposs$
+iff $x = y = \imposs$.
+
+\amr{
+From Puri and Ralescu's paper: Fix $n=1$ (only 1-dimension). Conditions on $\mu$:
+\begin{itemize}
+\item $\mu(E) \neq \emptyset$ for every $E \in \events$, 
+\item $1 \in \mu(\Omega)$, 
+\item for every disjoint family $A_i$ we have, $\mu(\bigcup_i A_i) =
+  \sum_i \mu(A_i)$
+\end{itemize}
+where the sum of subsets of $\mathbb{R}$ (not $\mathbb{R}^n$ as in the
+paper) is as follows. Let $X$ and $Y$ be subsets of $\mathbb{R}$, then
+$X + Y = \{ x + y ~|~ x \in X, y \in Y \}$
+}
+
+
+
+
+To summarize, an $\mathscr{L}$-valued probability is a function
+$\pmeas:\events\rightarrow\mathscr{L}$ such that:
 \begin{itemize}
 \item $1\in\pmeas(\Omega)$, and 
-\item for a collection $E_{i}$ of pairwise disjoint events, $\pmeas(\bigcup_{i}E_{i})=\sum_{i}\pmeas(E_{i})$. 
+\item for a collection $E_{i}$ of pairwise disjoint events, $\pmeas(\bigcup_{i}E_{i})=\bigvee_i\pmeas(E_{i})$. 
 \end{itemize}
-The simplest such situation is to partition the interval $[0,1]$
-into $\{0\}$ (which we will call $\imposs$) and the half-open interval
-$(0,1]$ (which we will call $\poss$). We will call the resulting
-set $\left\{ \imposs,\poss\right\} $, the set $\mathscr{L}_{2}$. 
 
 \begin{example}{[}Two-coin probability space with finite set-valued
 probability measure{]} \label{ex2} Under the new set-valued requirement,
@@ -287,7 +319,7 @@ satisfy:
 \item $\pmeas\left(\Omega\backslash E\right)=1-\pmeas\left(E\right)$
 \end{itemize}
 However, if we want $\pmeas(\Omega)=[1,1]$, and the probability assignment
-for singlton sets $\pmeas(\{HH\})=\unlikely$, $\pmeas(\{HT\})=\imposs$,
+for singleton sets $\pmeas(\{HH\})=\unlikely$, $\pmeas(\{HT\})=\imposs$,
 $\pmeas(\{TH\})=\likely$, and $\pmeas(\{TT\})=\imposs$ as in example~\ref{Two-coin-set-valued-again},
 we only have $\pmeas(\Omega)\subsetneq\pmeas(\{HH\})+\pmeas(\{HT\})+\pmeas(\{TH\})+\pmeas(\{TT\})$.
 In general, we only require
@@ -436,7 +468,7 @@ it also reveals the bias in the first coin. \qed\end{example}
 % the necessity and possibility of refuting each event. For the event
 % that some employee's age is \emph{not} in the range $\{20,21,22\}$ we
 % have a probability $[\frac{1}{3},\frac{1}{3}]$ because it is necessary
-% that $A_1$ is not in that range. Similary, the event that some employee's age is
+% that $A_1$ is not in that range. Similarly, the event that some employee's age is
 % \emph{not} in the range $\{23,24\}$ is
 % $[\frac{2}{3},\frac{2}{3}]$. Thus although the positive evidence for
 % necessity 
