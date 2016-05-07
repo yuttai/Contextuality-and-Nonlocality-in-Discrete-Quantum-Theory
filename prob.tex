@@ -169,7 +169,10 @@ measures~\cite{Dempster1967,Zadeh1986,Weichselberger2000,JamisonLodwick2004}.
 Suppose we drop a needle of length $\ell$ onto a floor made of equally
 spaced parallel lines a distance $\ell$ apart. It is a known fact that
 the probability of the needle crossing a line is
-$\frac{2}{\pi} = 0.6366197723675814$. We analyze this situation in the
+$\frac{2}{\pi} = 0.6366197723675814$. 
+\\
+\yutsung{Add $\ldots$ at the end? }\\
+We analyze this situation in the
 mathematical framework of probability spaces paying special attention
 to the resources needed to estimate the probability computationally or
 experimentally.
@@ -178,7 +181,9 @@ To formalize the experiment, we consider an experimental setup
 consisting of a collection of $N$ identical needles of length
 $\ell$. We throw the $N$ needles and observe the number $X$ of needles
 that cross a line. The sample space can be expressed as the set
-$(X|-)^N$ of sequences of characters of length $N$ where each
+$(X|-)^N$ \\
+\yutsung{Use more physical or mathematical notation?}\\
+of sequences of characters of length $N$ where each
 character is either $X$ to indicate a needle crossing a line or $-$ to
 indicate a needle not crossing a line. If $N=3$, the event that
 exactly 2 needles cross lines is $\{-XX,X-X,XX-\}$: it has
@@ -188,7 +193,10 @@ needles out of the $N$ total needles cross lines is $\frac{M}{N}$.
 In an actual experiment with 500 needles, it was found that 321
 crossed a line which gives a probability of $0.642$. In a larger
 experiment with $3408$ needles, the probability was
-$0.6366197193098592$. Comparing the values to the idealized
+$0.6366197193098592$. 
+\\
+\yutsung{Add $\ldots$ at the end? }\\
+Comparing the values to the idealized
 mathematical value, we see that the observed probability approaches
 $\frac{2}{\pi}$ but only if \emph{larger and larger resources} are
 expended. 
@@ -249,7 +257,88 @@ From Puri and Ralescu's paper: Fix $n=1$ (only 1-dimension). Conditions on $\mu$
 where the sum of subsets of $\mathbb{R}$ (not $\mathbb{R}^n$ as in the
 paper) is as follows. Let $X$ and $Y$ be subsets of $\mathbb{R}$, then
 $X + Y = \{ x + y ~|~ x \in X, y \in Y \}$
-}
+}\\
+\yutsung{Actually, using $X+Y=\{x+y~|~x\in X,y\in Y\}$ directly
+might be more confusing than I thought... Because our example will
+be follows:
+
+For $\{0\}=\imposs$ and $(0,\infty)=\poss$, it will become
+\[
+\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{rcl}
+\pmeas(\emptyset) & = & \{0\}\\
+\pmeas(\{HH\}) & = & (0,\infty)\\
+\pmeas(\{HT\}) & = & \{0\}\\
+\pmeas(\{TH\}) & = & (0,\infty)\\
+\pmeas(\{TT\}) & = & \{0\}\\
+\pmeas(\{HH,HT\}) & = & (0,\infty)\\
+\pmeas(\{HH,TH\}) & = & (0,\infty)\\
+\pmeas(\{HH,TT\}) & = & (0,\infty)
+\end{array} & \begin{array}{rcl}
+\pmeas(\{HT,TH\}) & = & (0,\infty)\\
+\pmeas(\{HT,TT\}) & = & \{0\}\\
+\pmeas(\{TH,TT\}) & = & (0,\infty)\\
+\pmeas(\{HH,HT,TH\}) & = & (0,\infty)\\
+\pmeas(\{HH,HT,TT\}) & = & (0,\infty)\\
+\pmeas(\{HH,TH,TT\}) & = & (0,\infty)\\
+\pmeas(\{HT,TH,TT\}) & = & (0,\infty)\\
+\pmeas(\{HH,HT,TH,TT\}) & = & (0,\infty)
+\end{array}\end{array}
+\]
+
+For $\{0\}=\imposs$ and $(0,1]=\poss$, it will become the following
+and gives an extra-value~$(0,2]$.
+\[
+\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{rcl}
+\pmeas(\emptyset) & = & \{0\}\\
+\pmeas(\{HH\}) & = & (0,1]\\
+\pmeas(\{HT\}) & = & \{0\}\\
+\pmeas(\{TH\}) & = & (0,1]\\
+\pmeas(\{TT\}) & = & \{0\}\\
+\pmeas(\{HH,HT\}) & = & (0,1]\\
+\pmeas(\{HH,TH\}) & = & (0,2]\\
+\pmeas(\{HH,TT\}) & = & (0,1]
+\end{array} & \begin{array}{rcl}
+\pmeas(\{HT,TH\}) & = & (0,1]\\
+\pmeas(\{HT,TT\}) & = & \{0\}\\
+\pmeas(\{TH,TT\}) & = & (0,1]\\
+\pmeas(\{HH,HT,TH\}) & = & (0,2]\\
+\pmeas(\{HH,HT,TT\}) & = & (0,1]\\
+\pmeas(\{HH,TH,TT\}) & = & (0,2]\\
+\pmeas(\{HT,TH,TT\}) & = & (0,1]\\
+\pmeas(\{HH,HT,TH,TT\}) & = & (0,2]
+\end{array}\end{array}
+\]
+
+For $\{0\}=\imposs$, $[0,\frac{1}{2}]=\unlikely$, and $[\frac{1}{2},1]=\likely$,
+it will become the following and gives an extra-value~$[\frac{1}{2},\frac{3}{2}]$.
+\[
+\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{rcl}
+\pmeas(\emptyset) & = & \{0\}\\
+\pmeas(\{HH\}) & = & [0,\frac{1}{2}]\\
+\pmeas(\{HT\}) & = & \{0\}\\
+\pmeas(\{TH\}) & = & [\frac{1}{2},1]\\
+\pmeas(\{TT\}) & = & \{0\}\\
+\pmeas(\{HH,HT\}) & = & [0,\frac{1}{2}]\\
+\pmeas(\{HH,TH\}) & = & [\frac{1}{2},\frac{3}{2}]\\
+\pmeas(\{HH,TT\}) & = & [0,\frac{1}{2}]
+\end{array} & \begin{array}{rcl}
+\pmeas(\{HT,TH\}) & = & [\frac{1}{2},1]\\
+\pmeas(\{HT,TT\}) & = & \{0\}\\
+\pmeas(\{TH,TT\}) & = & [\frac{1}{2},1]\\
+\pmeas(\{HH,HT,TH\}) & = & [\frac{1}{2},\frac{3}{2}]\\
+\pmeas(\{HH,HT,TT\}) & = & [0,\frac{1}{2}]\\
+\pmeas(\{HH,TH,TT\}) & = & [\frac{1}{2},\frac{3}{2}]\\
+\pmeas(\{HT,TH,TT\}) & = & [\frac{1}{2},1]\\
+\pmeas(\{HH,HT,TH,TT\}) & = & [\frac{1}{2},\frac{3}{2}]
+\end{array}\end{array}
+\]
+
+Actually, this approach is more natural to me when I think in measure
+theory, but I guess the readers might be confused if write in this
+way?}
 
 
 
