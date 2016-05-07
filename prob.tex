@@ -46,7 +46,7 @@
 \newcommand{\imposs}{{\mbox{\wesa{impossible}}}}
 \newcommand{\likely}{{\mbox{\wesa{likely}}}}
 \newcommand{\unlikely}{{\mbox{\wesa{unlikely}}}}
-\newcommand{\necess}{{\mbox{\wesa{necessary}}}}
+\newcommand{\necess}{{\mbox{\wesa{certain}}}}
 \newcommand{\overflow}{{\mbox{\wesa{overflow}}}}
 
 \usepackage{color}
@@ -61,7 +61,7 @@
 \newcommand{\Tr}{\mathop{\mathrm{Tr}}\nolimits}
 
 \begin{document}
-\title{Discrete Probability for Discrete Quantum Theories}
+\title{Interval Probability for Fuzzy Quantum Theories}
 \author{}
 \date{\today}
 \maketitle
@@ -69,13 +69,32 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
   
+Fuzzy quantum mechanics:
+\begin{itemize}
+\item \url{http://cds.cern.ch/record/518511/files/0107054.pdf}
+\item \url{http://link.springer.com/chapter/10.1007%2F978-3-642-35644-5_18#page-1}
+\item \url{http://link.springer.com/chapter/10.1007%2F978-3-540-93802-6_20#page-1}
+\item \url{http://www.du.edu/nsm/departments/mathematics/media/documents/preprints/m0412.pdf}
+\item \url{http://www.space-lab.ru/files/pages/PIRT_VII-XII/pages/text/PIRT_X/Bobola.pdf}
+\item \url{http://www.vub.ac.be/CLEA/aerts/publications/1993LiptovskyJan.pdf}
+\end{itemize}
+
+\noindent Pseudo-randomness:
+\begin{itemize}
+\item
+  \url{https://people.csail.mit.edu/silvio/Selected%20Scientific%20Papers/Pseudo%20Randomness/How_To_Generate_Cryptographically_Strong_Sequences_Of_Pseudo-Random_Bits.pdf}:
+  ``the randomness of an event is relative to a specific model of
+  computation with a specified amount of computing resources.''
+\item Another version \url{https://pdfs.semanticscholar.org/3e9c/5f6f48d9ef426655dc799e9b287d754e86c1.pdf}
+\end{itemize}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Classical Probability Spaces}
   
 A \emph{probability space} specifies the necessary conditions for
 reasoning coherently about collections of uncertain events.  We review
 the conventional presentation of probability spaces and then discuss
-several variations that avoid using the real interval $[0,1]$.
+the hidden issue of computational and experimental resources. 
 
 %%%
 \subsection{Real-Valued Probability Spaces}
@@ -98,7 +117,7 @@ $\pmeas : \events \rightarrow [0,1]$ such that:
   $\pmeas(\bigcup_i E_i) = \sum_i \pmeas(E_i)$.
 \end{itemize}
 
-\begin{example}[Two-coin probability space]\label{ex1}
+\begin{example}[Two-coins experiment]\label{ex1}
   Consider an experiment that tosses two coins. We have four possible
   outcomes that constitute the sample space
   $\Omega = \{ HH, HT, TH, TT \}$. There are 16 total events including
@@ -157,10 +176,10 @@ precision increases.
 Therefore, in a resource-aware computational or experimental setting,
 it is more appropriate to consider probability measures that map
 events to a finite set of elements computable with a fixed set of
-resources. We expand on this observation and then consider two
-approaches from the literature: set-valued probability
-measures~\cite{Artstein1972,PuriRalescu1983} and interval-valued
-probability
+resources. We expand on this observation and then consider 
+%% two approaches from the literature: set-valued probability
+%% measures~\cite{Artstein1972,PuriRalescu1983} and 
+interval-valued probability
 measures~\cite{Dempster1967,Zadeh1986,Weichselberger2000,JamisonLodwick2004}.
 
 %%%%%
@@ -168,43 +187,42 @@ measures~\cite{Dempster1967,Zadeh1986,Weichselberger2000,JamisonLodwick2004}.
  
 Suppose we drop a needle of length $\ell$ onto a floor made of equally
 spaced parallel lines a distance $\ell$ apart. It is a known fact that
-the probability of the needle crossing a line is
-$\frac{2}{\pi} = 0.6366197723675814$. 
-\\
-\yutsung{Add $\ldots$ at the end? }\\
-We analyze this situation in the
-mathematical framework of probability spaces paying special attention
-to the resources needed to estimate the probability computationally or
-experimentally.
+the probability of the needle crossing a line converges to
+$\frac{2}{\pi} = 0.6366197723675814$.
+%% \yutsung{Add $\ldots$ at the end? }\\
+We analyze this situation in the mathematical framework of probability
+spaces paying special attention to the resources needed to estimate
+the probability computationally or experimentally.
 
 To formalize the experiment, we consider an experimental setup
 consisting of a collection of $N$ identical needles of length
 $\ell$. We throw the $N$ needles and observe the number $X$ of needles
 that cross a line. The sample space can be expressed as the set
-$(X|-)^N$ \\
-\yutsung{Use more physical or mathematical notation?}\\
-of sequences of characters of length $N$ where each
-character is either $X$ to indicate a needle crossing a line or $-$ to
-indicate a needle not crossing a line. If $N=3$, the event that
-exactly 2 needles cross lines is $\{-XX,X-X,XX-\}$: it has
+$(X|-)^N$
+%% \yutsung{Use more physical or mathematical notation?}\\
+of sequences of characters of length $N$ where each character is
+either $X$ to indicate a needle crossing a line or $-$ to indicate a
+needle not crossing a line. If $N=3$, the event that exactly 2 needles
+cross lines is $\{-XX,X-X,XX-\}$: it has
 probability~$\frac{2}{3}$. Generally, the event that exactly $M$
-needles out of the $N$ total needles cross lines is $\frac{M}{N}$. 
+needles out of the $N$ total needles cross lines is $\frac{M}{N}$.
 
 In an actual experiment with 500 needles, it was found that 321
 crossed a line which gives a probability of $0.642$. In a larger
-experiment with $3408$ needles, the probability was
-$0.6366197193098592$. 
-\\
-\yutsung{Add $\ldots$ at the end? }\\
-Comparing the values to the idealized
-mathematical value, we see that the observed probability approaches
-$\frac{2}{\pi}$ but only if \emph{larger and larger resources} are
-expended. 
+experiment with $3408$ needles, the probability was calculated to be
+$0.6366197193098592$.
+%% \yutsung{Add $\ldots$ at the end? }\\
+Comparing the values to the idealized mathematical value, we see that
+the observed probability approaches $\frac{2}{\pi}$ but only if
+\emph{larger and larger resources} are expended.
 
 These resource considerations thus lead us to replace the real
 interval $[0,1]$ with rational numbers up to a certain precision.  The
 intuition is that the precision depends on the amount of resources
-allocated for the measurement process.
+allocated for the measurement process. There is clearly a connection
+between the number of needles and the achievable precision: in the
+hypothetical experiment with 3 needles, it is not sensible to retain
+100 digits in the expansion of $\frac{2}{3}$.
 
 There is however another more subtle source of unbounded computational
 power in the experiment. We are assuming that we can always determine
@@ -213,282 +231,322 @@ the the floor have thickness, their distance apart is not exactly
 $\ell$. and the needles lengths are not all equal and are not all
 absolutely equal to $\ell$. These perturbations make the events
 ``fuzzy.'' For example, instead of talking about the idealized event
-that exactly $M$ needles cross lines, we might instead talk about the
-event that $M-\delta$ needles evidently cross lines and $M+\delta'$
-needles plausibly cross lines. This fuzzy notion of events leads us to
-consider intervals of probability reflecting the certainty of the
-event and its plausibility. 
+that exactly $M$ needles cross lines which would require the most
+expensive needles built to the most precise accuracy, laser precision
+for drawing lines on the floor, and the most powerful microscopes to
+determine if a needle does cross a line, we might instead talk about
+the event that $M-\delta$ needles evidently cross lines and
+$M+\delta'$ needles plausibly cross lines for some acceptable
+approximations $\delta$ and $\delta'$. This fuzzy notion of events
+leads us to consider intervals of probability reflecting the certainty
+of the event and its plausibility. In the hypothetical experiment with
+3 needles, assume that one needle clearly crossed a line and another
+was close enough to plausibly be considered as crossing the line: we
+would express the probability in this case as the interval
+$[\frac{1}{3},\frac{2}{3}]$ expressing that we are certain that the
+event has probability at least $\frac{1}{3}$ but it is possible that
+it would have probability $\frac{2}{3}$.
 
-%%%%%
-\subsection{Set-valued Probability Measures}
+% %%%%%
+% \subsection{Set-valued Probability Measures}
  
-Instead of using every point in the real interval $[0,1]$ as a
-potential value for a probability measure, we can lump points together
-in sets and consider probability measures up to set membership. The
-simplest such situation is to partition the interval $[0,1]$ into two
-sets: the set $\{0\}$ (which we will call $\imposs$) and the set
-containing all the points in the half-open interval $(0,1]$ (which we
-will call $\poss$). We will call the resulting collection
-$\left\{ \imposs,\poss\right\} $, the collection $\mathscr{L}_{2}$. To
-completely specify a probability space, we also need to specify how to
-``add'' the probabilities in $\mathscr{L}_2$. Given two subsets of the
-real interval, $I_1$ and $I_2$, the general formula for adding them
-is:\footnote{Notice that the set-valued measure
-  in~\cite{Artstein1972,PuriRalescu1983}, only require
-  $I_{1}+I_{2}=\left\{ a_{1}+a_{2}\middle|a_{1}\in I_{1},a_{2}\in
-    I_{2}\right\} $
-  because they focused on measure theory. In probability theory,
-  $2\in\pmeas\left(E\right)$ doesn't really make sense so that we
-  consider intersect $[0,1]$ in our definition.}
-\[
-I_{1} \vee I_{2}=\left\{ x+y~\middle|~ x \in I_{1}, y \in I_{2}\right\} ~\cap~ [0,1]\textrm{ .}
-\]
-In the case of $\mathscr{L}_2$, this reduces to $x \vee y = \imposs$
-iff $x = y = \imposs$.
+% Instead of using every point in the real interval $[0,1]$ as a
+% potential value for a probability measure, we can lump points together
+% in sets and consider probability measures up to set membership. The
+% simplest such situation is to partition the interval $[0,1]$ into two
+% sets: the set $\{0\}$ (which we will call $\imposs$) and the set
+% containing all the points in the half-open interval $(0,1]$ (which we
+% will call $\poss$). We will call the resulting collection
+% $\left\{ \imposs,\poss\right\} $, the collection $\mathscr{L}_{2}$. To
+% completely specify a probability space, we also need to specify how to
+% ``add'' the probabilities in $\mathscr{L}_2$. Given two subsets of the
+% real interval, $I_1$ and $I_2$, the general formula for adding them
+% is:\footnote{Notice that the set-valued measure
+%   in~\cite{Artstein1972,PuriRalescu1983}, only require
+%   $I_{1}+I_{2}=\left\{ a_{1}+a_{2}\middle|a_{1}\in I_{1},a_{2}\in
+%     I_{2}\right\} $
+%   because they focused on measure theory. In probability theory,
+%   $2\in\pmeas\left(E\right)$ doesn't really make sense so that we
+%   consider intersect $[0,1]$ in our definition.}
+% \[
+% I_{1} \vee I_{2}=\left\{ x+y~\middle|~ x \in I_{1}, y \in I_{2}\right\} ~\cap~ [0,1]\textrm{ .}
+% \]
+% In the case of $\mathscr{L}_2$, this reduces to $x \vee y = \imposs$
+% iff $x = y = \imposs$.
 
-\amr{
-From Puri and Ralescu's paper: Fix $n=1$ (only 1-dimension). Conditions on $\mu$:
-\begin{itemize}
-\item $\mu(E) \neq \emptyset$ for every $E \in \events$, 
-\item $1 \in \mu(\Omega)$, 
-\item for every disjoint family $A_i$ we have, $\mu(\bigcup_i A_i) =
-  \sum_i \mu(A_i)$
-\end{itemize}
-where the sum of subsets of $\mathbb{R}$ (not $\mathbb{R}^n$ as in the
-paper) is as follows. Let $X$ and $Y$ be subsets of $\mathbb{R}$, then
-$X + Y = \{ x + y ~|~ x \in X, y \in Y \}$
-}\\
-\yutsung{Actually, using $X+Y=\{x+y~|~x\in X,y\in Y\}$ directly
-might be more confusing than I thought... Because our example will
-be follows:
+% \amr{
+% From Puri and Ralescu's paper: Fix $n=1$ (only 1-dimension). Conditions on $\mu$:
+% \begin{itemize}
+% \item $\mu(E) \neq \emptyset$ for every $E \in \events$, 
+% \item $1 \in \mu(\Omega)$, 
+% \item for every disjoint family $A_i$ we have, $\mu(\bigcup_i A_i) =
+%   \sum_i \mu(A_i)$
+% \end{itemize}
+% where the sum of subsets of $\mathbb{R}$ (not $\mathbb{R}^n$ as in the
+% paper) is as follows. Let $X$ and $Y$ be subsets of $\mathbb{R}$, then
+% $X + Y = \{ x + y ~|~ x \in X, y \in Y \}$
+% }\\
+% \yutsung{Actually, using $X+Y=\{x+y~|~x\in X,y\in Y\}$ directly
+% might be more confusing than I thought... Because our example will
+% be follows:
 
-For $\{0\}=\imposs$ and $(0,\infty)=\poss$, it will become
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\pmeas(\emptyset) & = & \{0\}\\
-\pmeas(\{HH\}) & = & (0,\infty)\\
-\pmeas(\{HT\}) & = & \{0\}\\
-\pmeas(\{TH\}) & = & (0,\infty)\\
-\pmeas(\{TT\}) & = & \{0\}\\
-\pmeas(\{HH,HT\}) & = & (0,\infty)\\
-\pmeas(\{HH,TH\}) & = & (0,\infty)\\
-\pmeas(\{HH,TT\}) & = & (0,\infty)
-\end{array} & \begin{array}{rcl}
-\pmeas(\{HT,TH\}) & = & (0,\infty)\\
-\pmeas(\{HT,TT\}) & = & \{0\}\\
-\pmeas(\{TH,TT\}) & = & (0,\infty)\\
-\pmeas(\{HH,HT,TH\}) & = & (0,\infty)\\
-\pmeas(\{HH,HT,TT\}) & = & (0,\infty)\\
-\pmeas(\{HH,TH,TT\}) & = & (0,\infty)\\
-\pmeas(\{HT,TH,TT\}) & = & (0,\infty)\\
-\pmeas(\{HH,HT,TH,TT\}) & = & (0,\infty)
-\end{array}\end{array}
-\]
+% For $\{0\}=\imposs$ and $(0,\infty)=\poss$, it will become
+% \[
+% \begin{array}{c@{\qquad\qquad}c}
+% \begin{array}{rcl}
+% \pmeas(\emptyset) & = & \{0\}\\
+% \pmeas(\{HH\}) & = & (0,\infty)\\
+% \pmeas(\{HT\}) & = & \{0\}\\
+% \pmeas(\{TH\}) & = & (0,\infty)\\
+% \pmeas(\{TT\}) & = & \{0\}\\
+% \pmeas(\{HH,HT\}) & = & (0,\infty)\\
+% \pmeas(\{HH,TH\}) & = & (0,\infty)\\
+% \pmeas(\{HH,TT\}) & = & (0,\infty)
+% \end{array} & \begin{array}{rcl}
+% \pmeas(\{HT,TH\}) & = & (0,\infty)\\
+% \pmeas(\{HT,TT\}) & = & \{0\}\\
+% \pmeas(\{TH,TT\}) & = & (0,\infty)\\
+% \pmeas(\{HH,HT,TH\}) & = & (0,\infty)\\
+% \pmeas(\{HH,HT,TT\}) & = & (0,\infty)\\
+% \pmeas(\{HH,TH,TT\}) & = & (0,\infty)\\
+% \pmeas(\{HT,TH,TT\}) & = & (0,\infty)\\
+% \pmeas(\{HH,HT,TH,TT\}) & = & (0,\infty)
+% \end{array}\end{array}
+% \]
 
-For $\{0\}=\imposs$ and $(0,1]=\poss$, it will become the following
-and gives an extra-value~$(0,2]$.
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\pmeas(\emptyset) & = & \{0\}\\
-\pmeas(\{HH\}) & = & (0,1]\\
-\pmeas(\{HT\}) & = & \{0\}\\
-\pmeas(\{TH\}) & = & (0,1]\\
-\pmeas(\{TT\}) & = & \{0\}\\
-\pmeas(\{HH,HT\}) & = & (0,1]\\
-\pmeas(\{HH,TH\}) & = & (0,2]\\
-\pmeas(\{HH,TT\}) & = & (0,1]
-\end{array} & \begin{array}{rcl}
-\pmeas(\{HT,TH\}) & = & (0,1]\\
-\pmeas(\{HT,TT\}) & = & \{0\}\\
-\pmeas(\{TH,TT\}) & = & (0,1]\\
-\pmeas(\{HH,HT,TH\}) & = & (0,2]\\
-\pmeas(\{HH,HT,TT\}) & = & (0,1]\\
-\pmeas(\{HH,TH,TT\}) & = & (0,2]\\
-\pmeas(\{HT,TH,TT\}) & = & (0,1]\\
-\pmeas(\{HH,HT,TH,TT\}) & = & (0,2]
-\end{array}\end{array}
-\]
+% For $\{0\}=\imposs$ and $(0,1]=\poss$, it will become the following
+% and gives an extra-value~$(0,2]$.
+% \[
+% \begin{array}{c@{\qquad\qquad}c}
+% \begin{array}{rcl}
+% \pmeas(\emptyset) & = & \{0\}\\
+% \pmeas(\{HH\}) & = & (0,1]\\
+% \pmeas(\{HT\}) & = & \{0\}\\
+% \pmeas(\{TH\}) & = & (0,1]\\
+% \pmeas(\{TT\}) & = & \{0\}\\
+% \pmeas(\{HH,HT\}) & = & (0,1]\\
+% \pmeas(\{HH,TH\}) & = & (0,2]\\
+% \pmeas(\{HH,TT\}) & = & (0,1]
+% \end{array} & \begin{array}{rcl}
+% \pmeas(\{HT,TH\}) & = & (0,1]\\
+% \pmeas(\{HT,TT\}) & = & \{0\}\\
+% \pmeas(\{TH,TT\}) & = & (0,1]\\
+% \pmeas(\{HH,HT,TH\}) & = & (0,2]\\
+% \pmeas(\{HH,HT,TT\}) & = & (0,1]\\
+% \pmeas(\{HH,TH,TT\}) & = & (0,2]\\
+% \pmeas(\{HT,TH,TT\}) & = & (0,1]\\
+% \pmeas(\{HH,HT,TH,TT\}) & = & (0,2]
+% \end{array}\end{array}
+% \]
 
-For $\{0\}=\imposs$, $[0,\frac{1}{2}]=\unlikely$, and $[\frac{1}{2},1]=\likely$,
-it will become the following and gives an extra-value~$[\frac{1}{2},\frac{3}{2}]$.
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\pmeas(\emptyset) & = & \{0\}\\
-\pmeas(\{HH\}) & = & [0,\frac{1}{2}]\\
-\pmeas(\{HT\}) & = & \{0\}\\
-\pmeas(\{TH\}) & = & [\frac{1}{2},1]\\
-\pmeas(\{TT\}) & = & \{0\}\\
-\pmeas(\{HH,HT\}) & = & [0,\frac{1}{2}]\\
-\pmeas(\{HH,TH\}) & = & [\frac{1}{2},\frac{3}{2}]\\
-\pmeas(\{HH,TT\}) & = & [0,\frac{1}{2}]
-\end{array} & \begin{array}{rcl}
-\pmeas(\{HT,TH\}) & = & [\frac{1}{2},1]\\
-\pmeas(\{HT,TT\}) & = & \{0\}\\
-\pmeas(\{TH,TT\}) & = & [\frac{1}{2},1]\\
-\pmeas(\{HH,HT,TH\}) & = & [\frac{1}{2},\frac{3}{2}]\\
-\pmeas(\{HH,HT,TT\}) & = & [0,\frac{1}{2}]\\
-\pmeas(\{HH,TH,TT\}) & = & [\frac{1}{2},\frac{3}{2}]\\
-\pmeas(\{HT,TH,TT\}) & = & [\frac{1}{2},1]\\
-\pmeas(\{HH,HT,TH,TT\}) & = & [\frac{1}{2},\frac{3}{2}]
-\end{array}\end{array}
-\]
+% For $\{0\}=\imposs$, $[0,\frac{1}{2}]=\unlikely$, and $[\frac{1}{2},1]=\likely$,
+% it will become the following and gives an extra-value~$[\frac{1}{2},\frac{3}{2}]$.
+% \[
+% \begin{array}{c@{\qquad\qquad}c}
+% \begin{array}{rcl}
+% \pmeas(\emptyset) & = & \{0\}\\
+% \pmeas(\{HH\}) & = & [0,\frac{1}{2}]\\
+% \pmeas(\{HT\}) & = & \{0\}\\
+% \pmeas(\{TH\}) & = & [\frac{1}{2},1]\\
+% \pmeas(\{TT\}) & = & \{0\}\\
+% \pmeas(\{HH,HT\}) & = & [0,\frac{1}{2}]\\
+% \pmeas(\{HH,TH\}) & = & [\frac{1}{2},\frac{3}{2}]\\
+% \pmeas(\{HH,TT\}) & = & [0,\frac{1}{2}]
+% \end{array} & \begin{array}{rcl}
+% \pmeas(\{HT,TH\}) & = & [\frac{1}{2},1]\\
+% \pmeas(\{HT,TT\}) & = & \{0\}\\
+% \pmeas(\{TH,TT\}) & = & [\frac{1}{2},1]\\
+% \pmeas(\{HH,HT,TH\}) & = & [\frac{1}{2},\frac{3}{2}]\\
+% \pmeas(\{HH,HT,TT\}) & = & [0,\frac{1}{2}]\\
+% \pmeas(\{HH,TH,TT\}) & = & [\frac{1}{2},\frac{3}{2}]\\
+% \pmeas(\{HT,TH,TT\}) & = & [\frac{1}{2},1]\\
+% \pmeas(\{HH,HT,TH,TT\}) & = & [\frac{1}{2},\frac{3}{2}]
+% \end{array}\end{array}
+% \]
 
-Actually, this approach is more natural to me when I think in measure
-theory, but I guess the readers might be confused if write in this
-way?}
-
-
+% Actually, this approach is more natural to me when I think in measure
+% theory, but I guess the readers might be confused if write in this
+% way?}
 
 
-To summarize, an $\mathscr{L}$-valued probability is a function
-$\pmeas:\events\rightarrow\mathscr{L}$ such that:
-\begin{itemize}
-\item $1\in\pmeas(\Omega)$, and 
-\item for a collection $E_{i}$ of pairwise disjoint events, $\pmeas(\bigcup_{i}E_{i})=\bigvee_i\pmeas(E_{i})$. 
-\end{itemize}
 
-\begin{example}{[}Two-coin probability space with finite set-valued
-probability measure{]} \label{ex2} Under the new set-valued requirement,
-the probability measure in the first example becomes: 
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\pmeas(\emptyset) & = & \imposs\\
-\pmeas(\{HH\}) & = & \poss\\
-\pmeas(\{HT\}) & = & \imposs\\
-\pmeas(\{TH\}) & = & \poss\\
-\pmeas(\{TT\}) & = & \imposs\\
-\pmeas(\{HH,HT\}) & = & \poss\\
-\pmeas(\{HH,TH\}) & = & \poss\\
-\pmeas(\{HH,TT\}) & = & \poss
-\end{array} & \begin{array}{rcl}
-\pmeas(\{HT,TH\}) & = & \poss\\
-\pmeas(\{HT,TT\}) & = & \imposs\\
-\pmeas(\{TH,TT\}) & = & \poss\\
-\pmeas(\{HH,HT,TH\}) & = & \poss\\
-\pmeas(\{HH,HT,TT\}) & = & \poss\\
-\pmeas(\{HH,TH,TT\}) & = & \poss\\
-\pmeas(\{HT,TH,TT\}) & = & \poss\\
-\pmeas(\{HH,HT,TH,TT\}) & = & \poss
-\end{array}\end{array}
-\]
-Despite the fact that we have lost all numeric information, the probability
-measure still reveals that the second coin is double-headed. We have
-however lost the information regarding the bias in the first coin.
-This information can be recovered with a more refined probability
-measure as we show next. \qed\end{example}
 
-Although $\mathscr{L}_{2}$-valued probability measure is quite intuitive,
-set-valued probability measure is not that intuitive if we extend
-to more values. For example, consider the following three \emph{overlapping}
-closed sub-intervals: $[0,0]$ is still call \imposs, $[0,\frac{1}{2}]$
-which we call \unlikely, ad $[\frac{1}{2},1]$ which we call \likely.
-The following example is a set-valued probability measure corresponding
-to the probability measure in the first example.
+% To summarize, an $\mathscr{L}$-valued probability is a function
+% $\pmeas:\events\rightarrow\mathscr{L}$ such that:
+% \begin{itemize}
+% \item $1\in\pmeas(\Omega)$, and 
+% \item for a collection $E_{i}$ of pairwise disjoint events, $\pmeas(\bigcup_{i}E_{i})=\bigvee_i\pmeas(E_{i})$. 
+% \end{itemize}
 
-\begin{example}\label{Two-coin-set-valued-again}{[}Two-coin probability
-space with set-valued probability measure, again{]} 
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\pmeas(\emptyset) & = & \imposs\\
-\pmeas(\{HH\}) & = & \unlikely\\
-\pmeas(\{HT\}) & = & \imposs\\
-\pmeas(\{TH\}) & = & \likely\\
-\pmeas(\{TT\}) & = & \imposs\\
-\pmeas(\{HH,HT\}) & = & \unlikely\\
-\pmeas(\{HH,TH\}) & = & \likely\\
-\pmeas(\{HH,TT\}) & = & \unlikely
-\end{array} & \begin{array}{rcl}
-\pmeas(\{HT,TH\}) & = & \likely\\
-\pmeas(\{HT,TT\}) & = & \imposs\\
-\pmeas(\{TH,TT\}) & = & \likely\\
-\pmeas(\{HH,HT,TH\}) & = & \likely\\
-\pmeas(\{HH,HT,TT\}) & = & \unlikely\\
-\pmeas(\{HH,TH,TT\}) & = & \likely\\
-\pmeas(\{HT,TH,TT\}) & = & \likely\\
-\pmeas(\{HH,HT,TH,TT\}) & = & \likely
-\end{array}\end{array}
-\]
-In this example, we can get the information that the first coin is
-weighted and the second coin is double-headed. However, we may notice
-that the set-valued probability of the whole space~$\{HH,HT,TH,TT\}$
-are different between these two examples. This problem can be fixed
-when we moved on to the next section. \qed\end{example}
+% \begin{example}{[}Two-coin probability space with finite set-valued
+% probability measure{]} \label{ex2} Under the new set-valued requirement,
+% the probability measure in the first example becomes: 
+% \[
+% \begin{array}{c@{\qquad\qquad}c}
+% \begin{array}{rcl}
+% \pmeas(\emptyset) & = & \imposs\\
+% \pmeas(\{HH\}) & = & \poss\\
+% \pmeas(\{HT\}) & = & \imposs\\
+% \pmeas(\{TH\}) & = & \poss\\
+% \pmeas(\{TT\}) & = & \imposs\\
+% \pmeas(\{HH,HT\}) & = & \poss\\
+% \pmeas(\{HH,TH\}) & = & \poss\\
+% \pmeas(\{HH,TT\}) & = & \poss
+% \end{array} & \begin{array}{rcl}
+% \pmeas(\{HT,TH\}) & = & \poss\\
+% \pmeas(\{HT,TT\}) & = & \imposs\\
+% \pmeas(\{TH,TT\}) & = & \poss\\
+% \pmeas(\{HH,HT,TH\}) & = & \poss\\
+% \pmeas(\{HH,HT,TT\}) & = & \poss\\
+% \pmeas(\{HH,TH,TT\}) & = & \poss\\
+% \pmeas(\{HT,TH,TT\}) & = & \poss\\
+% \pmeas(\{HH,HT,TH,TT\}) & = & \poss
+% \end{array}\end{array}
+% \]
+% Despite the fact that we have lost all numeric information, the probability
+% measure still reveals that the second coin is double-headed. We have
+% however lost the information regarding the bias in the first coin.
+% This information can be recovered with a more refined probability
+% measure as we show next. \qed\end{example}
 
-We will return to finite set-valued probability measures in Sec.~\ref{sec:?}.
+% Although $\mathscr{L}_{2}$-valued probability measure is quite intuitive,
+% set-valued probability measure is not that intuitive if we extend
+% to more values. For example, consider the following three \emph{overlapping}
+% closed sub-intervals: $[0,0]$ is still call \imposs, $[0,\frac{1}{2}]$
+% which we call \unlikely, ad $[\frac{1}{2},1]$ which we call \likely.
+% The following example is a set-valued probability measure corresponding
+% to the probability measure in the first example.
+
+% \begin{example}\label{Two-coin-set-valued-again}{[}Two-coin probability
+% space with set-valued probability measure, again{]} 
+% \[
+% \begin{array}{c@{\qquad\qquad}c}
+% \begin{array}{rcl}
+% \pmeas(\emptyset) & = & \imposs\\
+% \pmeas(\{HH\}) & = & \unlikely\\
+% \pmeas(\{HT\}) & = & \imposs\\
+% \pmeas(\{TH\}) & = & \likely\\
+% \pmeas(\{TT\}) & = & \imposs\\
+% \pmeas(\{HH,HT\}) & = & \unlikely\\
+% \pmeas(\{HH,TH\}) & = & \likely\\
+% \pmeas(\{HH,TT\}) & = & \unlikely
+% \end{array} & \begin{array}{rcl}
+% \pmeas(\{HT,TH\}) & = & \likely\\
+% \pmeas(\{HT,TT\}) & = & \imposs\\
+% \pmeas(\{TH,TT\}) & = & \likely\\
+% \pmeas(\{HH,HT,TH\}) & = & \likely\\
+% \pmeas(\{HH,HT,TT\}) & = & \unlikely\\
+% \pmeas(\{HH,TH,TT\}) & = & \likely\\
+% \pmeas(\{HT,TH,TT\}) & = & \likely\\
+% \pmeas(\{HH,HT,TH,TT\}) & = & \likely
+% \end{array}\end{array}
+% \]
+% In this example, we can get the information that the first coin is
+% weighted and the second coin is double-headed. However, we may notice
+% that the set-valued probability of the whole space~$\{HH,HT,TH,TT\}$
+% are different between these two examples. This problem can be fixed
+% when we moved on to the next section. \qed\end{example}
+
+% We will return to finite set-valued probability measures in Sec.~\ref{sec:?}.
 
 %%%%%
-
-
 \subsection{Interval-valued probability measures}
 
-The singleton closed interval $[0,0]$ is a required spacial value
-for empty set, and a natural generalization is to consider another
-special closed interval $[1,1]$ which we call \necess for the whole
-space. In general, if the probability of an event $E$ is $[a,b]$,
-we think of the left-endpoint~$a$ as representing the strength of
-the evidence that supports $E$, and the right-endpoint~$b$ as the
-strength of the evidence that contradicts $E$.
+We begin with an analysis explaining how to combine intervals of
+probability. Specifically if we have an event $E_1$ with an interval
+of probability $[l_1,r_1]$ and another disjoint event $E_2$ with an
+interval of probability $[l_2,r_2]$, what is the interval probability
+of the event $E_1 \cup E_2$. The answer is somewhat subtle: although
+it is possible to use the sum of the intervals $[l_1+l_2,r_1+r_2]$ as
+the combined probability, one can do find a much tighter interval if
+information \emph{against} the event (i.e., information about the dual
+event) is also taken into consideration.
 
-Thus if we have an event $E$ with probability $[a,b]$ where $a=0.1$
-and $b=0.7$, we have that: 
-\begin{itemize}
-\item the strength of evidence supporting $E$ is 0.1; since either $E$
-or its complement must happen, we conclude that there is 0.9 evidence
-supporting the complement of $E$; 
-\item the strength of evidence contradicting $E$ is 0.7; again since either
-$E$ or its complement must happen, we conclude that there is 0.3
-evidence contradicting the complement of $E$. 
-\end{itemize}
-\yutsung{Do we use the law of excluded middle here? You remind me
-Agda : ) Did Homotopy Type Theory people said anything about the probability?}\\
-Turning things around, the strength of evidence that contradicts $E$
-is evidence supporting the complement of $E$. The complement of $E$
-must therefore have probability $\left[1-b,1-a\right]$ which we abbreviate
-$1-\left[a,b\right]$, so the probability measure $\pmeas$ should
-satisfy:
+For a general event $E$ with probability $[l,r]$, the strength of
+evidence that contradicts $E$ is evidence supporting the complement of
+$E$. The complement of $E$ must therefore have probability
+$\left[1-r,1-l\right]$ which we abbreviate $1-\left[l,r\right]$. Given
+a collection of intervals $\mathscr{I}$, an
+$\mathscr{I}$--interval-valued probability measure is a function
+$\pmeas : \events \rightarrow \mathscr{I}$ such that:
 \begin{itemize}
 \item $\pmeas(\emptyset)=[0,0]$, 
-\item $\pmeas(\Omega)=[1,1]$, and 
-\item $\pmeas\left(\Omega\backslash E\right)=1-\pmeas\left(E\right)$
+\item $\pmeas(\Omega)=[1,1]$, 
+\item $\pmeas\left(\Omega\backslash E\right)=1-\pmeas\left(E\right)$,
+  and 
+\item for a collection $E_{i}$ of pairwise disjoint events, we have
+  $\pmeas\left(\bigcup_{i}E_{i}\right)\subseteq\sum_{i}\pmeas\left(E_{i}\right)$
+  where the summation on the right is the summation of intervals that
+  sums the endpoints.
 \end{itemize}
-However, if we want $\pmeas(\Omega)=[1,1]$, and the probability assignment
-for singleton sets $\pmeas(\{HH\})=\unlikely$, $\pmeas(\{HT\})=\imposs$,
-$\pmeas(\{TH\})=\likely$, and $\pmeas(\{TT\})=\imposs$ as in example~\ref{Two-coin-set-valued-again},
-we only have $\pmeas(\Omega)\subsetneq\pmeas(\{HH\})+\pmeas(\{HT\})+\pmeas(\{TH\})+\pmeas(\{TT\})$.
-In general, we only require
-\begin{itemize}
-\item for a collection $E_{i}$ of pairwise disjoint events, we have $\pmeas\left(\bigcup_{i}E_{i}\right)\subseteq\sum_{i}\pmeas\left(E_{i}\right)$. 
-\end{itemize}
-This statement means that the evidences of $\bigcup_{i}E_{i}$ is
-at least as strong as putting all the evidences of $E_{i}$ together,
-but some evidence may only be acquired for $\bigcup_{i}E_{i}$ as
-the whole. Therefore, $\pmeas\left(\bigcup_{i}E_{i}\right)$ is a
-subset of $\sum_{i}\pmeas\left(E_{i}\right)$, but may not equal.
-In our example, 
-\begin{eqnarray*}
- &  & \pmeas(\{HH\})+\pmeas(\{HT\})+\pmeas(\{TH\})+\pmeas(\{TT\})\\
- & = & \imposs+\unlikely+\imposs+\likely\\
- & = & \left[0,0\right]+\left[0,\frac{1}{2}\right]+\left[0,0\right]+\left[\frac{1}{2},1\right]=\left[\frac{1}{2},\frac{3}{2}\right]
-\end{eqnarray*}
-The above equation told us $\pmeas(\Omega)\subseteq\left[\frac{1}{2},\frac{3}{2}\right]$.
-However, because of $\pmeas(\emptyset)=\imposs$, we have $\pmeas\left(\Omega\right)=1-\pmeas\left(\emptyset\right)=\necess$,
-but $\pmeas(\emptyset)=\imposs$ cannot be used to reasoning the probability
-of $\{HH\}$, $\{HT\}$, $\{TH\}$ and $\{TT\}$ individually. The
-full probability assignment is shown in the following example. 
 
-\begin{example}{[}Two-coin probability space with four intervals{]}
-\label{ex3} We split the unit interval $[0,1]$ in the following
-four closed sub-intervals: $[0,0]$ which we call \imposs, $[0,\frac{1}{2}]$
-which we call \unlikely, $[\frac{1}{2},1]$ which we call \likely,
-and $[1,1]$ which we call \necess. Using these new values, we can
-modify the probability measure of Ex.~\ref{ex1} by mapping each
-numeric value to the smallest sub-interval containing it to get the
-following: 
+% The singleton closed interval $[0,0]$ is a required special value
+% for empty set, and a natural generalization is to consider another
+% special closed interval $[1,1]$ which we call \necess\ for the whole
+% space. In general, if the probability of an event $E$ is $[a,b]$,
+% we think of the left-endpoint~$a$ as representing the strength of
+% the evidence that supports $E$, and the right-endpoint~$b$ as the
+% strength of the evidence that contradicts $E$.
+
+% Thus if we have an event $E$ with probability $[a,b]$ where $a=0.1$
+% and $b=0.7$, we have that: 
+% \begin{itemize}
+% \item the strength of evidence supporting $E$ is 0.1; since either $E$
+% or its complement must happen, we conclude that there is 0.9 evidence
+% supporting the complement of $E$; 
+% \item the strength of evidence contradicting $E$ is 0.7; again since either
+% $E$ or its complement must happen, we conclude that there is 0.3
+% evidence contradicting the complement of $E$. 
+% \end{itemize}
+%% \yutsung{Do we use the law of excluded middle here? You remind me
+%% Agda : ) Did Homotopy Type Theory people said anything about the probability?}\\
+
+% Turning things around, the strength of evidence that contradicts $E$
+% is evidence supporting the complement of $E$. The complement of $E$
+% must therefore have probability $\left[1-b,1-a\right]$ which we
+% abbreviate $1-\left[a,b\right]$, so the probability measure $\pmeas$
+% should satisfy:
+% \begin{itemize}
+% \item $\pmeas(\emptyset)=[0,0]$, 
+% \item $\pmeas(\Omega)=[1,1]$, and 
+% \item $\pmeas\left(\Omega\backslash E\right)=1-\pmeas\left(E\right)$
+% \end{itemize}
+% However, if we want $\pmeas(\Omega)=[1,1]$, and the probability assignment
+% for singleton sets $\pmeas(\{HH\})=\unlikely$, $\pmeas(\{HT\})=\imposs$,
+% $\pmeas(\{TH\})=\likely$, and $\pmeas(\{TT\})=\imposs$ as in example~\ref{Two-coin-set-valued-again},
+% we only have $\pmeas(\Omega)\subsetneq\pmeas(\{HH\})+\pmeas(\{HT\})+\pmeas(\{TH\})+\pmeas(\{TT\})$.
+% In general, we only require
+% \begin{itemize}
+% \item for a collection $E_{i}$ of pairwise disjoint events, we have $\pmeas\left(\bigcup_{i}E_{i}\right)\subseteq\sum_{i}\pmeas\left(E_{i}\right)$. 
+% \end{itemize}
+% This statement means that the evidences of $\bigcup_{i}E_{i}$ is
+% at least as strong as putting all the evidences of $E_{i}$ together,
+% but some evidence may only be acquired for $\bigcup_{i}E_{i}$ as
+% the whole. Therefore, $\pmeas\left(\bigcup_{i}E_{i}\right)$ is a
+% subset of $\sum_{i}\pmeas\left(E_{i}\right)$, but may not equal.
+% In our example, 
+% \begin{eqnarray*}
+%  &  & \pmeas(\{HH\})+\pmeas(\{HT\})+\pmeas(\{TH\})+\pmeas(\{TT\})\\
+%  & = & \imposs+\unlikely+\imposs+\likely\\
+%  & = & \left[0,0\right]+\left[0,\frac{1}{2}\right]+\left[0,0\right]+\left[\frac{1}{2},1\right]=\left[\frac{1}{2},\frac{3}{2}\right]
+% \end{eqnarray*}
+% The above equation told us $\pmeas(\Omega)\subseteq\left[\frac{1}{2},\frac{3}{2}\right]$.
+% However, because of $\pmeas(\emptyset)=\imposs$, we have $\pmeas\left(\Omega\right)=1-\pmeas\left(\emptyset\right)=\necess$,
+% but $\pmeas(\emptyset)=\imposs$ cannot be used to reasoning the probability
+% of $\{HH\}$, $\{HT\}$, $\{TH\}$ and $\{TT\}$ individually. The
+% full probability assignment is shown in the following example. 
+
+The reason the last condition is expressed using $\subseteq$ is best
+explained using a small example.
+
+\begin{example}[Two-coin experiment with interval probability]
+  \label{ex3} We split the unit interval $[0,1]$ in the following four
+  closed sub-intervals: $[0,0]$ which we call \imposs,
+  $[0,\frac{1}{2}]$ which we call \unlikely, $[\frac{1}{2},1]$ which
+  we call \likely, and $[1,1]$ which we call \necess. Using these new
+  values, we can modify the probability measure of Ex.~\ref{ex1} by
+  mapping each numeric value to the smallest sub-interval containing
+  it to get the following:
 \[
 \begin{array}{c@{\qquad\qquad}c}
 \begin{array}{rcl}
@@ -511,9 +569,27 @@ following:
 \pmeas(\{HH,HT,TH,TT\}) & = & \necess
 \end{array}\end{array}
 \]
-This probability measure is more informative than the one in Ex.~\ref{ex2}:
-not only does it reveal that the second coin is double-headed but
-it also reveals the bias in the first coin. \qed\end{example}
+Despite the absence of any numeric information, the probability
+measure is quite informative: it reveals that the second coin is
+double-headed and that the first coin is biased. To understand the
+$\subseteq$-condition, consider the following calculation:
+\begin{eqnarray*}
+ &  & \pmeas(\{HH\})+\pmeas(\{HT\})+\pmeas(\{TH\})+\pmeas(\{TT\})\\
+ & = & \imposs+\unlikely+\imposs+\likely\\
+ & = & \left[0,0\right]+\left[0,\frac{1}{2}\right]+\left[0,0\right]+\left[\frac{1}{2},1\right]=\left[\frac{1}{2},\frac{3}{2}\right]
+\end{eqnarray*}
+If we were to equate $\pmeas(\Omega)$ with the sum of the individual
+probabilities we would get that
+$\pmeas(\Omega) = \left[\frac{1}{2},\frac{3}{2}\right]$. However,
+using the fact that $\pmeas(\emptyset)=\imposs$, we have
+$\pmeas\left(\Omega\right)=1-\pmeas\left(\emptyset\right)=\necess=[1,1]$. This
+interval is tighter and a better estimate for the probability of the
+event $\Omega$ and of course it is contained in
+$[\frac{1}{2},\frac{3}{2}]$. However it is only possible to exploit
+the information about the complement when all four events are
+combined. Thus the $\subseteq$-condition allows us to get an estimate
+for the combined event from each of its constituents and then gather
+more evidence knowing the aggregate event.\qed\end{example}
 
 % to think of the above combination in the context of the evidence
 % against the events established by the dual events. Writing in terms of
@@ -540,16 +616,10 @@ it also reveals the bias in the first coin. \qed\end{example}
 % C=HT
 % D=TT
 
-
 % To calculate the probability of $\{HH\}\cup\{TH\}$ we gather 
 % evidence not only from the events $\{HH\}$ and $\{TH\}$, but also from 
 % the dual events $\{HT,TH,TT\}$ and $\{HH,HT,TT\}$. The minimal
 % probability for $\{HH\}\cup\{TH\}$ is\max(
-
-
-
-
-
 
 % To understand this mystery, we look at
 % another more general example and then give the formal mathematical
@@ -611,15 +681,9 @@ it also reveals the bias in the first coin. \qed\end{example}
 % $[\frac{2}{3},\frac{2}{3}]$. Thus although the positive evidence for
 % necessity 
 
-
-
-
-
 % \qed\end{example}
 
 % \newpage
-
-
 
 % \begin{example}[Dempster-Shafer Theory of Evidence] We have five
 %   employees whose precise age is not known. All is given is a range for
@@ -703,7 +767,6 @@ it also reveals the bias in the first coin. \qed\end{example}
 % representing the strength of the evidence that supports $E$, and the
 % right-endpoint~$b$ as the strength of the evidence that contradicts
 % $E$. 
-
 
 % Thus if we have an event $E$ with probability $[a,b]$ where
 % $a=0.1$ and $b=0.7$, we have that:
