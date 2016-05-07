@@ -157,14 +157,50 @@ precision increases.
 Therefore, in a resource-aware computational or experimental setting,
 it is more appropriate to consider probability measures that map
 events to a finite set of elements computable with a fixed set of
-resources. We will consider two approaches from the literature:
-set-valued probability measures~\cite{Artstein1972,PuriRalescu1983}
-and interval-valued probability
+resources. We expand on this observation and then consider two
+approaches from the literature: set-valued probability
+measures~\cite{Artstein1972,PuriRalescu1983} and interval-valued
+probability
 measures~\cite{Dempster1967,Zadeh1986,Weichselberger2000,JamisonLodwick2004}.
 
 %%%%%
-\subsection{Set-valued Probability Measures}
+\subsection{Buffon's Needle Problem}
+ 
+Suppose we drop a needle of length $\ell$ onto a floor made of equally
+spaced parallel lines a distance $\ell$ apart. It is a known fact that
+the probability of the needle crossing a line is
+$\frac{2}{\pi} = 0.6366197723675814$. We analyze this situation in the
+mathematical framework of probability spaces paying special attention
+to the resources needed to estimate the probability computationally or
+experimentally.
 
+To formalize the experiment, we consider an experimental setup
+consisting of a collection of $N$ identical needles of length
+$\ell$. We throw the $N$ needles and observe the number $X$ of needles
+that cross a line. The sample space can be expressed as the set
+$(X|-)^N$ of sequences of characters of length $N$ where each
+character is either $X$ to indicate a needle crossing a line or $-$ to
+indicate a needle not crossing a line. If $N=3$, the event that
+exactly 2 needles cross lines is $\{-XX,X-X,XX-\}$: it has
+probability~$\frac{2}{3}$. Generally, the event that exactly $M$
+needles out of the $N$ total needles cross lines is $\frac{M}{N}$. 
+
+In an actual experiment with 500 needles, it was found that 321
+crossed a line which gives a probability of $0.642$. In a larger
+experiment with $3408$ needles, the probability was
+$0.6366197193098592$. Comparing the values to the idealized
+mathematical value, we see that the observed probability approaches
+$\frac{2}{\pi}$ but only if \emph{larger and larger resources} are
+expended.
+
+These resource considerations thus lead us to replace the real
+interval $[0,1]$ with intervals of confidence which contain the
+probability. The intuition is that the precision of the interval will
+depend on the amount of resources allocated for the measurement. 
+
+%%%%%
+\subsection{Set-valued Probability Measures}
+ 
 Instead of using every point in the real interval $[0,1]$ as a
 potential value for a probability measure, we can lump points together
 in sets and consider probability measures up to set membership. The
