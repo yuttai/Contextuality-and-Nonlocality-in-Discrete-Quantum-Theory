@@ -48,7 +48,7 @@
 \newcommand{\imposs}{{\mbox{\wesa{impossible}}}}
 \newcommand{\likely}{{\mbox{\wesa{likely}}}}
 \newcommand{\unlikely}{{\mbox{\wesa{unlikely}}}}
-\newcommand{\necess}{{\mbox{\wesa{necessary}}}}
+\newcommand{\necess}{{\mbox{\wesa{certain}}}}
 \newcommand{\overflow}{{\mbox{\wesa{overflow}}}}
 
 \usepackage{color}
@@ -129,7 +129,11 @@
 \begin_body
 
 \begin_layout Title
-Discrete Probability for Discrete Quantum Theories
+Interval Probability for Fuzzy Quantum Theories
+\end_layout
+
+\begin_layout Author
+
 \end_layout
 
 \begin_layout Date
@@ -146,6 +150,10 @@ today
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+ 
 \end_layout
 
 \begin_layout Standard
@@ -168,6 +176,138 @@ status collapsed
 
 \begin_layout Section
 Introduction
+\end_layout
+
+\begin_layout Standard
+Fuzzy quantum mechanics: 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://cds.cern.ch/record/518511/files/0107054.pdf
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://link.springer.com/chapter/10.1007%2F978-3-642-35644-5_18#page-1
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://link.springer.com/chapter/10.1007%2F978-3-540-93802-6_20#page-1
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.du.edu/nsm/departments/mathematics/media/documents/preprints/m0412.pdf
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.space-lab.ru/files/pages/PIRT_VII-XII/pages/text/PIRT_X/Bobola.pdf
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.vub.ac.be/CLEA/aerts/publications/1993LiptovskyJan.pdf
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+Pseudo-randomness: 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://people.csail.mit.edu/silvio/Selected%20Scientific%20Papers/Pseudo%20Randomn
+ess/How_To_Generate_Cryptographically_Strong_Sequences_Of_Pseudo-Random_Bits.pdf
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Quotes eld
+\end_inset
+
+the randomness of an event is relative to a specific model of computation
+ with a specified amount of computing resources.
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Another version 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://pdfs.semanticscholar.org/3e9c/5f6f48d9ef426655dc799e9b287d754e86c1.pdf
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard
@@ -200,11 +340,7 @@ probability space
  specifies the necessary conditions for reasoning coherently about collections
  of uncertain events.
  We review the conventional presentation of probability spaces and then
- discuss several variations that avoid using the real interval 
-\begin_inset Formula $[0,1]$
-\end_inset
-
-.
+ discuss the hidden issue of computational and experimental resources.
 \end_layout
 
 \begin_layout Standard
@@ -358,7 +494,7 @@ begin{example}
 
 \end_inset
 
-[Two-coin probability space]
+[Two-coins experiment]
 \begin_inset CommandInset label
 LatexCommand label
 name "ex1"
@@ -544,19 +680,39 @@ status collapsed
 Therefore, in a resource-aware computational or experimental setting, it
  is more appropriate to consider probability measures that map events to
  a finite set of elements computable with a fixed set of resources.
- We expand on this observation and then consider two approaches from the
- literature: set-valued probability measures
-\begin_inset space ~
+ We expand on this observation and then consider 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% two approaches from the literature: set-valued probability
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Artstein1972,PuriRalescu1983"
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% measures~
+\backslash
+cite{Artstein1972,PuriRalescu1983} and 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
- and interval-valued probability measures
+interval-valued probability measures
 \begin_inset space ~
 \end_inset
 
@@ -602,46 +758,44 @@ Suppose we drop a needle of length
 \end_inset
 
  apart.
- It is a known fact that the probability of the needle crossing a line is
- 
+ It is a known fact that the probability of the needle crossing a line converges
+ to 
 \begin_inset Formula $\frac{2}{\pi}=0.6366197723675814$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Buffon1777"
+
 \end_inset
 
 .
  
-\begin_inset Newline newline
-\end_inset
-
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
+%% 
+\backslash
+yutsung{Add $
+\backslash
+ldots$ at the end? }
+\backslash
 
 \backslash
-yutsung{
+
 \end_layout
-
-\end_inset
-
-Add 
-\begin_inset Formula $\ldots$
-\end_inset
-
- at the end? 
-\begin_inset ERT
-status collapsed
 
 \begin_layout Plain Layout
 
-}
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newline newline
 \end_inset
 
 We analyze this situation in the mathematical framework of probability spaces
@@ -674,35 +828,24 @@ To formalize the experiment, we consider an experimental setup consisting
 \end_inset
 
  
-\begin_inset Newline newline
-\end_inset
-
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
+%% 
+\backslash
+yutsung{Use more physical or mathematical notation?}
+\backslash
 
 \backslash
-yutsung{
+
 \end_layout
-
-\end_inset
-
-Use more physical or mathematical notation?
-\begin_inset ERT
-status collapsed
 
 \begin_layout Plain Layout
 
-}
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newline newline
 \end_inset
 
 of sequences of characters of length 
@@ -731,7 +874,7 @@ of sequences of characters of length
 \end_inset
 
 
-\begin_inset Formula $\frac{2}{3}$
+\begin_inset Formula $\frac{3}{8}$
 \end_inset
 
 .
@@ -761,16 +904,26 @@ In an actual experiment with 500 needles, it was found that 321 crossed
 \begin_inset Formula $3408$
 \end_inset
 
- needles, the probability was 
+ needles, the probability was calculated to be 
 \begin_inset Formula $0.6366197193098592$
 \end_inset
 
-.
- 
-\begin_inset Newline newline
+
+\begin_inset space ~
 \end_inset
 
 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lazzarini1901,Uspenskyothers1937"
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+ 
 \begin_inset ERT
 status collapsed
 
@@ -783,11 +936,32 @@ yutsung{
 
 \end_inset
 
-Add 
-\begin_inset Formula $\ldots$
+ May I confirm how many times needle cross the line within 
+\begin_inset Formula $3408$
 \end_inset
 
- at the end? 
+ needles? Because 
+\begin_inset Formula $\frac{2169}{3408}$
+\end_inset
+
+ is almost 
+\begin_inset Formula $0.6364436619718310$
+\end_inset
+
+, and 
+\begin_inset Formula $\frac{2170}{3408}$
+\end_inset
+
+ is almost 
+\begin_inset Formula $0.6367370892018779$
+\end_inset
+
+, both of them are not close to 
+\begin_inset Formula $0.6366197193098592$
+\end_inset
+
+ enough\SpecialChar ldots
+
 \begin_inset ERT
 status collapsed
 
@@ -802,7 +976,138 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
-Comparing the values to the idealized mathematical value, we see that the
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+amr{
+\end_layout
+
+\end_inset
+
+ There are several articles and papers on the experiment.
+ I got these values from wikipedia and mathworld.
+ We need to get precise references and cite the papers describing the experiment
+s.
+ The actual values don't matter though.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+yutsung{
+\end_layout
+
+\end_inset
+
+ Although I don't know Italian, it seems that Lazzarini
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lazzarini1901"
+
+\end_inset
+
+ used the needle with length 2.5, and the length among lines is 3.
+ When he tossed needles 3408 times, he got 1808 crossing, and 
+\begin_inset Formula 
+\[
+\pi\approx\frac{2\cdot2.5\cdot3408}{3\cdot1808}=\frac{355}{113}\approx3.1415929
+\]
+
+\end_inset
+
+However, his paper was be criticized in Wikipedia, because 
+\begin_inset Formula $\frac{355}{113}$
+\end_inset
+
+ is the best rational approximation of 
+\begin_inset Formula $\pi$
+\end_inset
+
+ for small intergers.
+ How can his experiment just gave this number?
+\end_layout
+
+\begin_layout Standard
+Uspensky
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Uspenskyothers1937"
+
+\end_inset
+
+ and Buffon
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Buffon1777"
+
+\end_inset
+
+ are books.
+ I will check out 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Uspenskyothers1937"
+
+\end_inset
+
+ on Sunday, and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Buffon1777"
+
+\end_inset
+
+ on Monday...
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ Comparing the values to the idealized mathematical value, we see that the
  observed probability approaches 
 \begin_inset Formula $\frac{2}{\pi}$
 \end_inset
@@ -823,6 +1128,13 @@ These resource considerations thus lead us to replace the real interval
  with rational numbers up to a certain precision.
  The intuition is that the precision depends on the amount of resources
  allocated for the measurement process.
+ There is clearly a connection between the number of needles and the achievable
+ precision: in the hypothetical experiment with 3 needles, it is not sensible
+ to retain 100 digits in the expansion of 
+\begin_inset Formula $\frac{2}{\pi}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -862,7 +1174,10 @@ fuzzy.
 \begin_inset Formula $M$
 \end_inset
 
- needles cross lines, we might instead talk about the event that 
+ needles cross lines which would require the most expensive needles built
+ to the most precise accuracy, laser precision for drawing lines on the
+ floor, and the most powerful microscopes to determine if a needle does
+ cross a line, we might instead talk about the event that 
 \begin_inset Formula $M-\delta$
 \end_inset
 
@@ -870,144 +1185,31 @@ fuzzy.
 \begin_inset Formula $M+\delta'$
 \end_inset
 
- needles plausibly cross lines.
- This fuzzy notion of events leads us to consider intervals of probability
- reflecting the certainty of the event and its plausibility.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%%%%%
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Set-valued Probability Measures
-\end_layout
-
-\begin_layout Standard
-Instead of using every point in the real interval 
-\begin_inset Formula $[0,1]$
-\end_inset
-
- as a potential value for a probability measure, we can lump points together
- in sets and consider probability measures up to set membership.
- The simplest such situation is to partition the interval 
-\begin_inset Formula $[0,1]$
-\end_inset
-
- into two sets: the set 
-\begin_inset Formula $\{0\}$
-\end_inset
-
- (which we will call 
-\begin_inset Formula $\imposs$
-\end_inset
-
-) and the set containing all the points in the half-open interval 
-\begin_inset Formula $(0,1]$
-\end_inset
-
- (which we will call 
-\begin_inset Formula $\poss$
-\end_inset
-
-).
- We will call the resulting collection 
-\begin_inset Formula $\left\{ \imposs,\poss\right\} $
-\end_inset
-
-, the collection 
-\begin_inset Formula $\mathscr{L}_{2}$
-\end_inset
-
-.
- To completely specify a probability space, we also need to specify how
- to 
-\begin_inset Quotes eld
-\end_inset
-
-add
-\begin_inset Quotes erd
-\end_inset
-
- the probabilities in 
-\begin_inset Formula $\mathscr{L}_{2}$
-\end_inset
-
-.
- Given two subsets of the real interval, 
-\begin_inset Formula $I_{1}$
+ needles plausibly cross lines for some acceptable approximations 
+\begin_inset Formula $\delta$
 \end_inset
 
  and 
-\begin_inset Formula $I_{2}$
+\begin_inset Formula $\delta'$
 \end_inset
 
-, the general formula for adding them is:
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Notice that the set-valued measure in
-\begin_inset space ~
+.
+ This fuzzy notion of events leads us to consider intervals of probability
+ reflecting the certainty of the event and its plausibility.
+ In the hypothetical experiment with 3 needles, assume that one needle clearly
+ crossed a line and another was close enough to plausibly be considered
+ as crossing the line: we would express the probability in this case as
+ the interval 
+\begin_inset Formula $[\frac{1}{3},\frac{2}{3}]$
 \end_inset
 
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Artstein1972,PuriRalescu1983"
-
-\end_inset
-
-, only require 
-\begin_inset Formula $I_{1}+I_{2}=\left\{ a_{1}+a_{2}\middle|a_{1}\in I_{1},a_{2}\in I_{2}\right\} $
-\end_inset
-
- because they focused on measure theory.
- In probability theory, 
-\begin_inset Formula $2\in\pmeas\left(E\right)$
-\end_inset
-
- doesn't really make sense so that we consider intersect 
-\begin_inset Formula $[0,1]$
-\end_inset
-
- in our definition.
-\end_layout
-
-\end_inset
-
+ expressing that we are certain that the event has probability at least
  
-\begin_inset Formula 
-\[
-I_{1}\vee I_{2}=\left\{ x+y~\middle|~x\in I_{1},y\in I_{2}\right\} ~\cap~[0,1]\textrm{ .}
-\]
-
+\begin_inset Formula $\frac{1}{3}$
 \end_inset
 
-In the case of 
-\begin_inset Formula $\mathscr{L}_{2}$
-\end_inset
-
-, this reduces to 
-\begin_inset Formula $x\vee y=\imposs$
-\end_inset
-
- iff 
-\begin_inset Formula $x=y=\imposs$
+ but it is possible that it would have probability 
+\begin_inset Formula $\frac{2}{3}$
 \end_inset
 
 .
@@ -1019,94 +1221,478 @@ status collapsed
 
 \begin_layout Plain Layout
 
+% %%%%%
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+subsection{Set-valued Probability Measures}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Instead of using every point in the real interval $[0,1]$ as a
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% potential value for a probability measure, we can lump points together
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% in sets and consider probability measures up to set membership.
+ The
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% simplest such situation is to partition the interval $[0,1]$ into two
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% sets: the set $
+\backslash
+{0
+\backslash
+}$ (which we will call $
+\backslash
+imposs$) and the set
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% containing all the points in the half-open interval $(0,1]$ (which we
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% will call $
+\backslash
+poss$).
+ We will call the resulting collection
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+left
+\backslash
+{ 
+\backslash
+imposs,
+\backslash
+poss
+\backslash
+right
+\backslash
+} $, the collection $
+\backslash
+mathscr{L}_{2}$.
+ To
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% completely specify a probability space, we also need to specify how to
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% ``add'' the probabilities in $
+\backslash
+mathscr{L}_2$.
+ Given two subsets of the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% real interval, $I_1$ and $I_2$, the general formula for adding them
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% is:
+\backslash
+footnote{Notice that the set-valued measure
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   in~
+\backslash
+cite{Artstein1972,PuriRalescu1983}, only require
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   $I_{1}+I_{2}=
+\backslash
+left
+\backslash
+{ a_{1}+a_{2}
+\backslash
+middle|a_{1}
+\backslash
+in I_{1},a_{2}
+\backslash
+in
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%     I_{2}
+\backslash
+right
+\backslash
+} $
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   because they focused on measure theory.
+ In probability theory,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   $2
+\backslash
+in
+\backslash
+pmeas
+\backslash
+left(E
+\backslash
+right)$ doesn't really make sense so that we
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   consider intersect $[0,1]$ in our definition.}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% I_{1} 
+\backslash
+vee I_{2}=
+\backslash
+left
+\backslash
+{ x+y~
+\backslash
+middle|~ x 
+\backslash
+in I_{1}, y 
+\backslash
+in I_{2}
+\backslash
+right
+\backslash
+} ~
+\backslash
+cap~ [0,1]
+\backslash
+textrm{ .}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% In the case of $
+\backslash
+mathscr{L}_2$, this reduces to $x 
+\backslash
+vee y = 
+\backslash
+imposs$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% iff $x = y = 
+\backslash
+imposs$.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
 \backslash
 amr{
 \end_layout
 
-\end_inset
-
- From Puri and Ralescu's paper: Fix 
-\begin_inset Formula $n=1$
-\end_inset
-
- (only 1-dimension).
- Conditions on 
-\begin_inset Formula $\mu$
-\end_inset
-
-: 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\mu(E)\neq\emptyset$
-\end_inset
-
- for every 
-\begin_inset Formula $E\in\events$
-\end_inset
-
-, 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $1\in\mu(\Omega)$
-\end_inset
-
-, 
-\end_layout
-
-\begin_layout Itemize
-for every disjoint family 
-\begin_inset Formula $A_{i}$
-\end_inset
-
- we have, 
-\begin_inset Formula $\mu(\bigcup_{i}A_{i})=\sum_{i}\mu(A_{i})$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-where the sum of subsets of 
-\begin_inset Formula $\mathbb{R}$
-\end_inset
-
- (not 
-\begin_inset Formula $\mathbb{R}^{n}$
-\end_inset
-
- as in the paper) is as follows.
- Let 
-\begin_inset Formula $X$
-\end_inset
-
- and 
-\begin_inset Formula $Y$
-\end_inset
-
- be subsets of 
-\begin_inset Formula $\mathbb{R}$
-\end_inset
-
-, then 
-\begin_inset Formula $X+Y=\{x+y~|~x\in X,y\in Y\}$
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
 
-}
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newline newline
 \end_inset
 
 
@@ -1115,280 +1701,2806 @@ status collapsed
 
 \begin_layout Plain Layout
 
+% From Puri and Ralescu's paper: Fix $n=1$ (only 1-dimension).
+ Conditions on $
+\backslash
+mu$:
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+item $
+\backslash
+mu(E) 
+\backslash
+neq 
+\backslash
+emptyset$ for every $E 
+\backslash
+in 
+\backslash
+events$, 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+item $1 
+\backslash
+in 
+\backslash
+mu(
+\backslash
+Omega)$, 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+item for every disjoint family $A_i$ we have, $
+\backslash
+mu(
+\backslash
+bigcup_i A_i) =
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   
+\backslash
+sum_i 
+\backslash
+mu(A_i)$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% where the sum of subsets of $
+\backslash
+mathbb{R}$ (not $
+\backslash
+mathbb{R}^n$ as in the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% paper) is as follows.
+ Let $X$ and $Y$ be subsets of $
+\backslash
+mathbb{R}$, then
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $X + Y = 
+\backslash
+{ x + y ~|~ x 
+\backslash
+in X, y 
+\backslash
+in Y 
+\backslash
+}$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% }
+\backslash
 
 \backslash
-yutsung{
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
 
-Actually, using 
-\begin_inset Formula $X+Y=\{x+y~|~x\in X,y\in Y\}$
-\end_inset
 
- directly might be more confusing than I thought...
- Because our example will be follows:
-\end_layout
-
-\begin_layout Standard
-For 
-\begin_inset Formula $\{0\}=\imposs$
-\end_inset
-
- and 
-\begin_inset Formula $(0,\infty)=\poss$
-\end_inset
-
-, it will become
-\begin_inset Formula 
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\pmeas(\emptyset) & = & \{0\}\\
-\pmeas(\{HH\}) & = & (0,\infty)\\
-\pmeas(\{HT\}) & = & \{0\}\\
-\pmeas(\{TH\}) & = & (0,\infty)\\
-\pmeas(\{TT\}) & = & \{0\}\\
-\pmeas(\{HH,HT\}) & = & (0,\infty)\\
-\pmeas(\{HH,TH\}) & = & (0,\infty)\\
-\pmeas(\{HH,TT\}) & = & (0,\infty)
-\end{array} & \begin{array}{rcl}
-\pmeas(\{HT,TH\}) & = & (0,\infty)\\
-\pmeas(\{HT,TT\}) & = & \{0\}\\
-\pmeas(\{TH,TT\}) & = & (0,\infty)\\
-\pmeas(\{HH,HT,TH\}) & = & (0,\infty)\\
-\pmeas(\{HH,HT,TT\}) & = & (0,\infty)\\
-\pmeas(\{HH,TH,TT\}) & = & (0,\infty)\\
-\pmeas(\{HT,TH,TT\}) & = & (0,\infty)\\
-\pmeas(\{HH,HT,TH,TT\}) & = & (0,\infty)
-\end{array}\end{array}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-For 
-\begin_inset Formula $\{0\}=\imposs$
-\end_inset
-
- and 
-\begin_inset Formula $(0,1]=\poss$
-\end_inset
-
-, it will become the following and gives an extra-value
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $(0,2]$
-\end_inset
-
-.
-\begin_inset Formula 
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\pmeas(\emptyset) & = & \{0\}\\
-\pmeas(\{HH\}) & = & (0,1]\\
-\pmeas(\{HT\}) & = & \{0\}\\
-\pmeas(\{TH\}) & = & (0,1]\\
-\pmeas(\{TT\}) & = & \{0\}\\
-\pmeas(\{HH,HT\}) & = & (0,1]\\
-\pmeas(\{HH,TH\}) & = & (0,2]\\
-\pmeas(\{HH,TT\}) & = & (0,1]
-\end{array} & \begin{array}{rcl}
-\pmeas(\{HT,TH\}) & = & (0,1]\\
-\pmeas(\{HT,TT\}) & = & \{0\}\\
-\pmeas(\{TH,TT\}) & = & (0,1]\\
-\pmeas(\{HH,HT,TH\}) & = & (0,2]\\
-\pmeas(\{HH,HT,TT\}) & = & (0,1]\\
-\pmeas(\{HH,TH,TT\}) & = & (0,2]\\
-\pmeas(\{HT,TH,TT\}) & = & (0,1]\\
-\pmeas(\{HH,HT,TH,TT\}) & = & (0,2]
-\end{array}\end{array}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-For 
-\begin_inset Formula $\{0\}=\imposs$
-\end_inset
-
-, 
-\begin_inset Formula $[0,\frac{1}{2}]=\unlikely$
-\end_inset
-
-, and 
-\begin_inset Formula $[\frac{1}{2},1]=\likely$
-\end_inset
-
-, it will become the following and gives an extra-value
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $[\frac{1}{2},\frac{3}{2}]$
-\end_inset
-
-.
-\begin_inset Formula 
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\pmeas(\emptyset) & = & \{0\}\\
-\pmeas(\{HH\}) & = & [0,\frac{1}{2}]\\
-\pmeas(\{HT\}) & = & \{0\}\\
-\pmeas(\{TH\}) & = & [\frac{1}{2},1]\\
-\pmeas(\{TT\}) & = & \{0\}\\
-\pmeas(\{HH,HT\}) & = & [0,\frac{1}{2}]\\
-\pmeas(\{HH,TH\}) & = & [\frac{1}{2},\frac{3}{2}]\\
-\pmeas(\{HH,TT\}) & = & [0,\frac{1}{2}]
-\end{array} & \begin{array}{rcl}
-\pmeas(\{HT,TH\}) & = & [\frac{1}{2},1]\\
-\pmeas(\{HT,TT\}) & = & \{0\}\\
-\pmeas(\{TH,TT\}) & = & [\frac{1}{2},1]\\
-\pmeas(\{HH,HT,TH\}) & = & [\frac{1}{2},\frac{3}{2}]\\
-\pmeas(\{HH,HT,TT\}) & = & [0,\frac{1}{2}]\\
-\pmeas(\{HH,TH,TT\}) & = & [\frac{1}{2},\frac{3}{2}]\\
-\pmeas(\{HT,TH,TT\}) & = & [\frac{1}{2},1]\\
-\pmeas(\{HH,HT,TH,TT\}) & = & [\frac{1}{2},\frac{3}{2}]
-\end{array}\end{array}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Actually, this approach is more natural to me when I think in measure theory,
- but I guess the readers might be confused if write in this way?
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
+% 
+\backslash
+yutsung{Actually, using $X+Y=
+\backslash
+{x+y~|~x
+\backslash
+in X,y
+\backslash
+in Y
+\backslash
+}$ directly
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% might be more confusing than I thought...
+ Because our example will
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% be follows:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% For $
+\backslash
+{0
+\backslash
+}=
+\backslash
+imposs$ and $(0,
+\backslash
+infty)=
+\backslash
+poss$, it will become
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{array}{c@{
+\backslash
+qquad
+\backslash
+qquad}c}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{array}{rcl}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+emptyset) & = & 
+\backslash
+{0
+\backslash
 }
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-To summarize, an 
-\begin_inset Formula $\mathscr{L}$
-\end_inset
-
--valued probability is a function 
-\begin_inset Formula $\pmeas:\events\rightarrow\mathscr{L}$
-\end_inset
-
- such that: 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $1\in\pmeas(\Omega)$
-\end_inset
-
-, and 
-\end_layout
-
-\begin_layout Itemize
-for a collection 
-\begin_inset Formula $E_{i}$
-\end_inset
-
- of pairwise disjoint events, 
-\begin_inset Formula $\pmeas(\bigcup_{i}E_{i})=\bigvee_{i}\pmeas(E_{i})$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
+\backslash
 
 \backslash
-begin{example}
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
 
-[Two-coin probability space with finite set-valued probability measure]
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "ex2"
 
-\end_inset
-
- Under the new set-valued requirement, the probability measure in the first
- example becomes: 
-\begin_inset Formula 
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\pmeas(\emptyset) & = & \imposs\\
-\pmeas(\{HH\}) & = & \poss\\
-\pmeas(\{HT\}) & = & \imposs\\
-\pmeas(\{TH\}) & = & \poss\\
-\pmeas(\{TT\}) & = & \imposs\\
-\pmeas(\{HH,HT\}) & = & \poss\\
-\pmeas(\{HH,TH\}) & = & \poss\\
-\pmeas(\{HH,TT\}) & = & \poss
-\end{array} & \begin{array}{rcl}
-\pmeas(\{HT,TH\}) & = & \poss\\
-\pmeas(\{HT,TT\}) & = & \imposs\\
-\pmeas(\{TH,TT\}) & = & \poss\\
-\pmeas(\{HH,HT,TH\}) & = & \poss\\
-\pmeas(\{HH,HT,TT\}) & = & \poss\\
-\pmeas(\{HH,TH,TT\}) & = & \poss\\
-\pmeas(\{HT,TH,TT\}) & = & \poss\\
-\pmeas(\{HH,HT,TH,TT\}) & = & \poss
-\end{array}\end{array}
-\]
-
-\end_inset
-
-Despite the fact that we have lost all numeric information, the probability
- measure still reveals that the second coin is double-headed.
- We have however lost the information regarding the bias in the first coin.
- This information can be recovered with a more refined probability measure
- as we show next.
- 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
+% 
+\backslash
+pmeas(
+\backslash
+{HH
+\backslash
+}) & = & (0,
+\backslash
+infty)
+\backslash
 
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT
+\backslash
+}) & = & 
+\backslash
+{0
+\backslash
+}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{TH
+\backslash
+}) & = & (0,
+\backslash
+infty)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{TT
+\backslash
+}) & = & 
+\backslash
+{0
+\backslash
+}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT
+\backslash
+}) & = & (0,
+\backslash
+infty)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,TH
+\backslash
+}) & = & (0,
+\backslash
+infty)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,TT
+\backslash
+}) & = & (0,
+\backslash
+infty)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{array} & 
+\backslash
+begin{array}{rcl}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT,TH
+\backslash
+}) & = & (0,
+\backslash
+infty)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT,TT
+\backslash
+}) & = & 
+\backslash
+{0
+\backslash
+}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{TH,TT
+\backslash
+}) & = & (0,
+\backslash
+infty)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT,TH
+\backslash
+}) & = & (0,
+\backslash
+infty)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT,TT
+\backslash
+}) & = & (0,
+\backslash
+infty)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,TH,TT
+\backslash
+}) & = & (0,
+\backslash
+infty)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT,TH,TT
+\backslash
+}) & = & (0,
+\backslash
+infty)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT,TH,TT
+\backslash
+}) & = & (0,
+\backslash
+infty)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{array}
+\backslash
+end{array}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% For $
+\backslash
+{0
+\backslash
+}=
+\backslash
+imposs$ and $(0,1]=
+\backslash
+poss$, it will become the following
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% and gives an extra-value~$(0,2]$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{array}{c@{
+\backslash
+qquad
+\backslash
+qquad}c}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{array}{rcl}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+emptyset) & = & 
+\backslash
+{0
+\backslash
+}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH
+\backslash
+}) & = & (0,1]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT
+\backslash
+}) & = & 
+\backslash
+{0
+\backslash
+}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{TH
+\backslash
+}) & = & (0,1]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{TT
+\backslash
+}) & = & 
+\backslash
+{0
+\backslash
+}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT
+\backslash
+}) & = & (0,1]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,TH
+\backslash
+}) & = & (0,2]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,TT
+\backslash
+}) & = & (0,1]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{array} & 
+\backslash
+begin{array}{rcl}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT,TH
+\backslash
+}) & = & (0,1]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT,TT
+\backslash
+}) & = & 
+\backslash
+{0
+\backslash
+}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{TH,TT
+\backslash
+}) & = & (0,1]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT,TH
+\backslash
+}) & = & (0,2]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT,TT
+\backslash
+}) & = & (0,1]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,TH,TT
+\backslash
+}) & = & (0,2]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT,TH,TT
+\backslash
+}) & = & (0,1]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT,TH,TT
+\backslash
+}) & = & (0,2]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{array}
+\backslash
+end{array}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% For $
+\backslash
+{0
+\backslash
+}=
+\backslash
+imposs$, $[0,
+\backslash
+frac{1}{2}]=
+\backslash
+unlikely$, and $[
+\backslash
+frac{1}{2},1]=
+\backslash
+likely$,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% it will become the following and gives an extra-value~$[
+\backslash
+frac{1}{2},
+\backslash
+frac{3}{2}]$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{array}{c@{
+\backslash
+qquad
+\backslash
+qquad}c}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{array}{rcl}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+emptyset) & = & 
+\backslash
+{0
+\backslash
+}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH
+\backslash
+}) & = & [0,
+\backslash
+frac{1}{2}]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT
+\backslash
+}) & = & 
+\backslash
+{0
+\backslash
+}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{TH
+\backslash
+}) & = & [
+\backslash
+frac{1}{2},1]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{TT
+\backslash
+}) & = & 
+\backslash
+{0
+\backslash
+}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT
+\backslash
+}) & = & [0,
+\backslash
+frac{1}{2}]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,TH
+\backslash
+}) & = & [
+\backslash
+frac{1}{2},
+\backslash
+frac{3}{2}]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,TT
+\backslash
+}) & = & [0,
+\backslash
+frac{1}{2}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{array} & 
+\backslash
+begin{array}{rcl}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT,TH
+\backslash
+}) & = & [
+\backslash
+frac{1}{2},1]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT,TT
+\backslash
+}) & = & 
+\backslash
+{0
+\backslash
+}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{TH,TT
+\backslash
+}) & = & [
+\backslash
+frac{1}{2},1]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT,TH
+\backslash
+}) & = & [
+\backslash
+frac{1}{2},
+\backslash
+frac{3}{2}]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT,TT
+\backslash
+}) & = & [0,
+\backslash
+frac{1}{2}]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,TH,TT
+\backslash
+}) & = & [
+\backslash
+frac{1}{2},
+\backslash
+frac{3}{2}]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT,TH,TT
+\backslash
+}) & = & [
+\backslash
+frac{1}{2},1]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT,TH,TT
+\backslash
+}) & = & [
+\backslash
+frac{1}{2},
+\backslash
+frac{3}{2}]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{array}
+\backslash
+end{array}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Actually, this approach is more natural to me when I think in measure
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% theory, but I guess the readers might be confused if write in this
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% way?}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% To summarize, an $
+\backslash
+mathscr{L}$-valued probability is a function
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+pmeas:
+\backslash
+events
+\backslash
+rightarrow
+\backslash
+mathscr{L}$ such that:
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+item $1
+\backslash
+in
+\backslash
+pmeas(
+\backslash
+Omega)$, and 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+item for a collection $E_{i}$ of pairwise disjoint events, $
+\backslash
+pmeas(
+\backslash
+bigcup_{i}E_{i})=
+\backslash
+bigvee_i
+\backslash
+pmeas(E_{i})$.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{example}{[}Two-coin probability space with finite set-valued
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% probability measure{]} 
+\backslash
+label{ex2} Under the new set-valued requirement,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% the probability measure in the first example becomes: 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{array}{c@{
+\backslash
+qquad
+\backslash
+qquad}c}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{array}{rcl}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+emptyset) & = & 
+\backslash
+imposs
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH
+\backslash
+}) & = & 
+\backslash
+poss
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT
+\backslash
+}) & = & 
+\backslash
+imposs
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{TH
+\backslash
+}) & = & 
+\backslash
+poss
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{TT
+\backslash
+}) & = & 
+\backslash
+imposs
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT
+\backslash
+}) & = & 
+\backslash
+poss
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,TH
+\backslash
+}) & = & 
+\backslash
+poss
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,TT
+\backslash
+}) & = & 
+\backslash
+poss
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{array} & 
+\backslash
+begin{array}{rcl}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT,TH
+\backslash
+}) & = & 
+\backslash
+poss
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT,TT
+\backslash
+}) & = & 
+\backslash
+imposs
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{TH,TT
+\backslash
+}) & = & 
+\backslash
+poss
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT,TH
+\backslash
+}) & = & 
+\backslash
+poss
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT,TT
+\backslash
+}) & = & 
+\backslash
+poss
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,TH,TT
+\backslash
+}) & = & 
+\backslash
+poss
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT,TH,TT
+\backslash
+}) & = & 
+\backslash
+poss
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT,TH,TT
+\backslash
+}) & = & 
+\backslash
+poss
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{array}
+\backslash
+end{array}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Despite the fact that we have lost all numeric information, the probability
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% measure still reveals that the second coin is double-headed.
+ We have
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% however lost the information regarding the bias in the first coin.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% This information can be recovered with a more refined probability
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% measure as we show next.
+ 
 \backslash
 qed
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
 \backslash
 end{example}
 \end_layout
@@ -1399,152 +4511,766 @@ end{example}
 \end_layout
 
 \begin_layout Standard
-Although 
-\begin_inset Formula $\mathscr{L}_{2}$
-\end_inset
-
--valued probability measure is quite intuitive, set-valued probability measure
- is not that intuitive if we extend to more values.
- For example, consider the following three 
-\emph on
-overlapping
-\emph default
- closed sub-intervals: 
-\begin_inset Formula $[0,0]$
-\end_inset
-
- is still call 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-
+% Although $
 \backslash
-imposs
+mathscr{L}_{2}$-valued probability measure is quite intuitive,
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
 
-, 
-\begin_inset Formula $[0,\frac{1}{2}]$
-\end_inset
 
- which we call 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
+% set-valued probability measure is not that intuitive if we extend
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% to more values.
+ For example, consider the following three 
+\backslash
+emph{overlapping}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% closed sub-intervals: $[0,0]$ is still call 
+\backslash
+imposs, $[0,
+\backslash
+frac{1}{2}]$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% which we call 
+\backslash
+unlikely, ad $[
+\backslash
+frac{1}{2},1]$ which we call 
+\backslash
+likely.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% The following example is a set-valued probability measure corresponding
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% to the probability measure in the first example.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{example}
+\backslash
+label{Two-coin-set-valued-again}{[}Two-coin probability
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% space with set-valued probability measure, again{]} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{array}{c@{
+\backslash
+qquad
+\backslash
+qquad}c}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{array}{rcl}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+emptyset) & = & 
+\backslash
+imposs
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH
+\backslash
+}) & = & 
+\backslash
+unlikely
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT
+\backslash
+}) & = & 
+\backslash
+imposs
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{TH
+\backslash
+}) & = & 
+\backslash
+likely
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{TT
+\backslash
+}) & = & 
+\backslash
+imposs
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT
+\backslash
+}) & = & 
+\backslash
+unlikely
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,TH
+\backslash
+}) & = & 
+\backslash
+likely
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,TT
+\backslash
+}) & = & 
 \backslash
 unlikely
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
-, ad 
-\begin_inset Formula $[\frac{1}{2},1]$
-\end_inset
 
- which we call 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
+% 
+\backslash
+end{array} & 
+\backslash
+begin{array}{rcl}
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT,TH
+\backslash
+}) & = & 
+\backslash
+likely
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT,TT
+\backslash
+}) & = & 
+\backslash
+imposs
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{TH,TT
+\backslash
+}) & = & 
+\backslash
+likely
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT,TH
+\backslash
+}) & = & 
+\backslash
+likely
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT,TT
+\backslash
+}) & = & 
+\backslash
+unlikely
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,TH,TT
+\backslash
+}) & = & 
+\backslash
+likely
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HT,TH,TT
+\backslash
+}) & = & 
+\backslash
+likely
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pmeas(
+\backslash
+{HH,HT,TH,TT
+\backslash
+}) & = & 
 \backslash
 likely
 \end_layout
 
-\end_inset
+\begin_layout Plain Layout
 
-.
- The following example is a set-valued probability measure corresponding
- to the probability measure in the first example.
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-
+% 
 \backslash
-begin{example}
+end{array}
+\backslash
+end{array}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "Two-coin-set-valued-again"
-
-\end_inset
-
-[Two-coin probability space with set-valued probability measure, again]
- 
-\begin_inset Formula 
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\pmeas(\emptyset) & = & \imposs\\
-\pmeas(\{HH\}) & = & \unlikely\\
-\pmeas(\{HT\}) & = & \imposs\\
-\pmeas(\{TH\}) & = & \likely\\
-\pmeas(\{TT\}) & = & \imposs\\
-\pmeas(\{HH,HT\}) & = & \unlikely\\
-\pmeas(\{HH,TH\}) & = & \likely\\
-\pmeas(\{HH,TT\}) & = & \unlikely
-\end{array} & \begin{array}{rcl}
-\pmeas(\{HT,TH\}) & = & \likely\\
-\pmeas(\{HT,TT\}) & = & \imposs\\
-\pmeas(\{TH,TT\}) & = & \likely\\
-\pmeas(\{HH,HT,TH\}) & = & \likely\\
-\pmeas(\{HH,HT,TT\}) & = & \unlikely\\
-\pmeas(\{HH,TH,TT\}) & = & \likely\\
-\pmeas(\{HT,TH,TT\}) & = & \likely\\
-\pmeas(\{HH,HT,TH,TT\}) & = & \likely
-\end{array}\end{array}
-\]
-
-\end_inset
-
-In this example, we can get the information that the first coin is weighted
- and the second coin is double-headed.
- However, we may notice that the set-valued probability of the whole space
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\{HH,HT,TH,TT\}$
-\end_inset
-
- are different between these two examples.
- This problem can be fixed when we moved on to the next section.
- 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
+% 
+\backslash
+]
+\end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% In this example, we can get the information that the first coin is
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% weighted and the second coin is double-headed.
+ However, we may notice
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% that the set-valued probability of the whole space~$
+\backslash
+{HH,HT,TH,TT
+\backslash
+}$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% are different between these two examples.
+ This problem can be fixed
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% when we moved on to the next section.
+ 
 \backslash
 qed
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
 \backslash
 end{example}
 \end_layout
@@ -1555,18 +5281,19 @@ end{example}
 \end_layout
 
 \begin_layout Standard
-We will return to finite set-valued probability measures in Sec.
-\begin_inset space ~
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% We will return to finite set-valued probability measures in Sec.~
+\backslash
+ref{sec:?}.
+\end_layout
+
 \end_inset
 
 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:?"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -1576,6 +5303,10 @@ status collapsed
 \begin_layout Plain Layout
 
 %%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1588,149 +5319,52 @@ Interval-valued probability measures
 \end_layout
 
 \begin_layout Standard
-The singleton closed interval 
-\begin_inset Formula $[0,0]$
+We begin with an analysis explaining how to combine intervals of probability.
+ Specifically if we have an event 
+\begin_inset Formula $E_{1}$
 \end_inset
 
- is a required spacial value for empty set, and a natural generalization
- is to consider another special closed interval 
-\begin_inset Formula $[1,1]$
+ with an interval of probability 
+\begin_inset Formula $[l_{1},r_{1}]$
 \end_inset
 
- which we call 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-necess
-\end_layout
-
+ and another disjoint event 
+\begin_inset Formula $E_{2}$
 \end_inset
 
- for the whole space.
- In general, if the probability of an event 
-\begin_inset Formula $E$
+ with an interval of probability 
+\begin_inset Formula $[l_{2},r_{2}]$
 \end_inset
 
- is 
-\begin_inset Formula $[a,b]$
-\end_inset
-
-, we think of the left-endpoint
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $a$
-\end_inset
-
- as representing the strength of the evidence that supports 
-\begin_inset Formula $E$
-\end_inset
-
-, and the right-endpoint
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $b$
-\end_inset
-
- as the strength of the evidence that contradicts 
-\begin_inset Formula $E$
+, what is the interval probability of the event 
+\begin_inset Formula $E_{1}\cup E_{2}$
 \end_inset
 
 .
+ The answer is somewhat subtle: although it is possible to use the sum of
+ the intervals 
+\begin_inset Formula $[l_{1}+l_{2},r_{1}+r_{2}]$
+\end_inset
+
+ as the combined probability, one can do find a much tighter interval if
+ information 
+\emph on
+against
+\emph default
+ the event (i.e., information about the dual event) is also taken into considerati
+on.
 \end_layout
 
 \begin_layout Standard
-Thus if we have an event 
+For a general event 
 \begin_inset Formula $E$
 \end_inset
 
  with probability 
-\begin_inset Formula $[a,b]$
+\begin_inset Formula $[l,r]$
 \end_inset
 
- where 
-\begin_inset Formula $a=0.1$
-\end_inset
-
- and 
-\begin_inset Formula $b=0.7$
-\end_inset
-
-, we have that: 
-\end_layout
-
-\begin_layout Itemize
-the strength of evidence supporting 
-\begin_inset Formula $E$
-\end_inset
-
- is 0.1; since either 
-\begin_inset Formula $E$
-\end_inset
-
- or its complement must happen, we conclude that there is 0.9 evidence supporting
- the complement of 
-\begin_inset Formula $E$
-\end_inset
-
-; 
-\end_layout
-
-\begin_layout Itemize
-the strength of evidence contradicting 
-\begin_inset Formula $E$
-\end_inset
-
- is 0.7; again since either 
-\begin_inset Formula $E$
-\end_inset
-
- or its complement must happen, we conclude that there is 0.3 evidence contradict
-ing the complement of 
-\begin_inset Formula $E$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-yutsung{
-\end_layout
-
-\end_inset
-
-Do we use the law of excluded middle here? You remind me Agda : ) Did Homotopy
- Type Theory people said anything about the probability?
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
- Turning things around, the strength of evidence that contradicts 
+, the strength of evidence that contradicts 
 \begin_inset Formula $E$
 \end_inset
 
@@ -1744,18 +5378,27 @@ status collapsed
 \end_inset
 
  must therefore have probability 
-\begin_inset Formula $\left[1-b,1-a\right]$
+\begin_inset Formula $\left[1-r,1-l\right]$
 \end_inset
 
  which we abbreviate 
-\begin_inset Formula $1-\left[a,b\right]$
+\begin_inset Formula $1-\left[l,r\right]$
 \end_inset
 
-, so the probability measure 
-\begin_inset Formula $\pmeas$
+.
+ Given a collection of intervals 
+\begin_inset Formula $\mathscr{I}$
 \end_inset
 
- should satisfy: 
+, an 
+\begin_inset Formula $\mathscr{I}$
+\end_inset
+
+–interval-valued probability measure is a function 
+\begin_inset Formula $\pmeas:\events\rightarrow\mathscr{I}$
+\end_inset
+
+ such that: 
 \end_layout
 
 \begin_layout Itemize
@@ -1769,54 +5412,14 @@ status collapsed
 \begin_inset Formula $\pmeas(\Omega)=[1,1]$
 \end_inset
 
-, and 
+, 
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $\pmeas\left(\Omega\backslash E\right)=1-\pmeas\left(E\right)$
 \end_inset
 
- 
-\end_layout
-
-\begin_layout Standard
-However, if we want 
-\begin_inset Formula $\pmeas(\Omega)=[1,1]$
-\end_inset
-
-, and the probability assignment for singleton sets 
-\begin_inset Formula $\pmeas(\{HH\})=\unlikely$
-\end_inset
-
-, 
-\begin_inset Formula $\pmeas(\{HT\})=\imposs$
-\end_inset
-
-, 
-\begin_inset Formula $\pmeas(\{TH\})=\likely$
-\end_inset
-
 , and 
-\begin_inset Formula $\pmeas(\{TT\})=\imposs$
-\end_inset
-
- as in example
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Two-coin-set-valued-again"
-
-\end_inset
-
-, we only have 
-\begin_inset Formula $\pmeas(\Omega)\subsetneq\pmeas(\{HH\})+\pmeas(\{HT\})+\pmeas(\{TH\})+\pmeas(\{TT\})$
-\end_inset
-
-.
- In general, we only require 
 \end_layout
 
 \begin_layout Itemize
@@ -1828,78 +5431,1123 @@ for a collection
 \begin_inset Formula $\pmeas\left(\bigcup_{i}E_{i}\right)\subseteq\sum_{i}\pmeas\left(E_{i}\right)$
 \end_inset
 
-.
+ where the summation on the right is the summation of intervals that sums
+ the endpoints.
  
 \end_layout
 
 \begin_layout Standard
-This statement means that the evidences of 
-\begin_inset Formula $\bigcup_{i}E_{i}$
-\end_inset
+\begin_inset ERT
+status collapsed
 
- is at least as strong as putting all the evidences of 
-\begin_inset Formula $E_{i}$
-\end_inset
+\begin_layout Plain Layout
 
- together, but some evidence may only be acquired for 
-\begin_inset Formula $\bigcup_{i}E_{i}$
-\end_inset
+% The singleton closed interval $[0,0]$ is a required special value
+\end_layout
 
- as the whole.
- Therefore, 
-\begin_inset Formula $\pmeas\left(\bigcup_{i}E_{i}\right)$
-\end_inset
+\begin_layout Plain Layout
 
- is a subset of 
-\begin_inset Formula $\sum_{i}\pmeas\left(E_{i}\right)$
-\end_inset
-
-, but may not equal.
- In our example, 
-\begin_inset Formula 
-\begin{eqnarray*}
- &  & \pmeas(\{HH\})+\pmeas(\{HT\})+\pmeas(\{TH\})+\pmeas(\{TT\})\\
- & = & \imposs+\unlikely+\imposs+\likely\\
- & = & \left[0,0\right]+\left[0,\frac{1}{2}\right]+\left[0,0\right]+\left[\frac{1}{2},1\right]=\left[\frac{1}{2},\frac{3}{2}\right]
-\end{eqnarray*}
+\end_layout
 
 \end_inset
 
-The above equation told us 
-\begin_inset Formula $\pmeas(\Omega)\subseteq\left[\frac{1}{2},\frac{3}{2}\right]$
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% for empty set, and a natural generalization is to consider another
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
-.
- However, because of 
-\begin_inset Formula $\pmeas(\emptyset)=\imposs$
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% special closed interval $[1,1]$ which we call 
+\backslash
+necess
+\backslash
+ for the whole
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
-, we have 
-\begin_inset Formula $\pmeas\left(\Omega\right)=1-\pmeas\left(\emptyset\right)=\necess$
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% space.
+ In general, if the probability of an event $E$ is $[a,b]$,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
-, but 
-\begin_inset Formula $\pmeas(\emptyset)=\imposs$
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% we think of the left-endpoint~$a$ as representing the strength of
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
- cannot be used to reasoning the probability of 
-\begin_inset Formula $\{HH\}$
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% the evidence that supports $E$, and the right-endpoint~$b$ as the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
-, 
-\begin_inset Formula $\{HT\}$
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% strength of the evidence that contradicts $E$.
+\end_layout
+
 \end_inset
 
-, 
-\begin_inset Formula $\{TH\}$
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Thus if we have an event $E$ with probability $[a,b]$ where $a=0.1$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
- and 
-\begin_inset Formula $\{TT\}$
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% and $b=0.7$, we have that: 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
- individually.
- The full probability assignment is shown in the following example.
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+item the strength of evidence supporting $E$ is 0.1; since either $E$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% or its complement must happen, we conclude that there is 0.9 evidence
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% supporting the complement of $E$; 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+item the strength of evidence contradicting $E$ is 0.7; again since either
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $E$ or its complement must happen, we conclude that there is 0.3
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% evidence contradicting the complement of $E$.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% 
+\backslash
+yutsung{Do we use the law of excluded middle here? You remind me
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% Agda : ) Did Homotopy Type Theory people said anything about the probability?
+}
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Turning things around, the strength of evidence that contradicts $E$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% is evidence supporting the complement of $E$.
+ The complement of $E$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% must therefore have probability $
+\backslash
+left[1-b,1-a
+\backslash
+right]$ which we
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% abbreviate $1-
+\backslash
+left[a,b
+\backslash
+right]$, so the probability measure $
+\backslash
+pmeas$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% should satisfy:
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+item $
+\backslash
+pmeas(
+\backslash
+emptyset)=[0,0]$, 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+item $
+\backslash
+pmeas(
+\backslash
+Omega)=[1,1]$, and 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+item $
+\backslash
+pmeas
+\backslash
+left(
+\backslash
+Omega
+\backslash
+backslash E
+\backslash
+right)=1-
+\backslash
+pmeas
+\backslash
+left(E
+\backslash
+right)$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% However, if we want $
+\backslash
+pmeas(
+\backslash
+Omega)=[1,1]$, and the probability assignment
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% for singleton sets $
+\backslash
+pmeas(
+\backslash
+{HH
+\backslash
+})=
+\backslash
+unlikely$, $
+\backslash
+pmeas(
+\backslash
+{HT
+\backslash
+})=
+\backslash
+imposs$,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+pmeas(
+\backslash
+{TH
+\backslash
+})=
+\backslash
+likely$, and $
+\backslash
+pmeas(
+\backslash
+{TT
+\backslash
+})=
+\backslash
+imposs$ as in example~
+\backslash
+ref{Two-coin-set-valued-again},
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% we only have $
+\backslash
+pmeas(
+\backslash
+Omega)
+\backslash
+subsetneq
+\backslash
+pmeas(
+\backslash
+{HH
+\backslash
+})+
+\backslash
+pmeas(
+\backslash
+{HT
+\backslash
+})+
+\backslash
+pmeas(
+\backslash
+{TH
+\backslash
+})+
+\backslash
+pmeas(
+\backslash
+{TT
+\backslash
+})$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% In general, we only require
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+item for a collection $E_{i}$ of pairwise disjoint events, we have $
+\backslash
+pmeas
+\backslash
+left(
+\backslash
+bigcup_{i}E_{i}
+\backslash
+right)
+\backslash
+subseteq
+\backslash
+sum_{i}
+\backslash
+pmeas
+\backslash
+left(E_{i}
+\backslash
+right)$.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% This statement means that the evidences of $
+\backslash
+bigcup_{i}E_{i}$ is
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% at least as strong as putting all the evidences of $E_{i}$ together,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% but some evidence may only be acquired for $
+\backslash
+bigcup_{i}E_{i}$ as
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% the whole.
+ Therefore, $
+\backslash
+pmeas
+\backslash
+left(
+\backslash
+bigcup_{i}E_{i}
+\backslash
+right)$ is a
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% subset of $
+\backslash
+sum_{i}
+\backslash
+pmeas
+\backslash
+left(E_{i}
+\backslash
+right)$, but may not equal.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% In our example, 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{eqnarray*}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%  &  & 
+\backslash
+pmeas(
+\backslash
+{HH
+\backslash
+})+
+\backslash
+pmeas(
+\backslash
+{HT
+\backslash
+})+
+\backslash
+pmeas(
+\backslash
+{TH
+\backslash
+})+
+\backslash
+pmeas(
+\backslash
+{TT
+\backslash
+})
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%  & = & 
+\backslash
+imposs+
+\backslash
+unlikely+
+\backslash
+imposs+
+\backslash
+likely
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%  & = & 
+\backslash
+left[0,0
+\backslash
+right]+
+\backslash
+left[0,
+\backslash
+frac{1}{2}
+\backslash
+right]+
+\backslash
+left[0,0
+\backslash
+right]+
+\backslash
+left[
+\backslash
+frac{1}{2},1
+\backslash
+right]=
+\backslash
+left[
+\backslash
+frac{1}{2},
+\backslash
+frac{3}{2}
+\backslash
+right]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{eqnarray*}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% The above equation told us $
+\backslash
+pmeas(
+\backslash
+Omega)
+\backslash
+subseteq
+\backslash
+left[
+\backslash
+frac{1}{2},
+\backslash
+frac{3}{2}
+\backslash
+right]$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% However, because of $
+\backslash
+pmeas(
+\backslash
+emptyset)=
+\backslash
+imposs$, we have $
+\backslash
+pmeas
+\backslash
+left(
+\backslash
+Omega
+\backslash
+right)=1-
+\backslash
+pmeas
+\backslash
+left(
+\backslash
+emptyset
+\backslash
+right)=
+\backslash
+necess$,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% but $
+\backslash
+pmeas(
+\backslash
+emptyset)=
+\backslash
+imposs$ cannot be used to reasoning the probability
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% of $
+\backslash
+{HH
+\backslash
+}$, $
+\backslash
+{HT
+\backslash
+}$, $
+\backslash
+{TH
+\backslash
+}$ and $
+\backslash
+{TT
+\backslash
+}$ individually.
+ The
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% full probability assignment is shown in the following example.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The reason the last condition is expressed using 
+\begin_inset Formula $\subseteq$
+\end_inset
+
+ is best explained using a small example.
 \end_layout
 
 \begin_layout Standard
@@ -1915,7 +6563,7 @@ begin{example}
 
 \end_inset
 
-[Two-coin probability space with four intervals] 
+[Two-coin experiment with interval probability] 
 \begin_inset CommandInset label
 LatexCommand label
 name "ex3"
@@ -2034,20 +6682,60 @@ reference "ex1"
 
 \end_inset
 
-This probability measure is more informative than the one in Ex.
-\begin_inset space ~
+Despite the absence of any numeric information, the probability measure
+ is quite informative: it reveals that the second coin is double-headed
+ and that the first coin is biased.
+ To understand the 
+\begin_inset Formula $\subseteq$
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "ex2"
+-condition, consider the following calculation: 
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \pmeas(\{HH\})+\pmeas(\{HT\})+\pmeas(\{TH\})+\pmeas(\{TT\})\\
+ & = & \imposs+\unlikely+\imposs+\likely\\
+ & = & \left[0,0\right]+\left[0,\frac{1}{2}\right]+\left[0,0\right]+\left[\frac{1}{2},1\right]=\left[\frac{1}{2},\frac{3}{2}\right]
+\end{eqnarray*}
 
 \end_inset
 
-: not only does it reveal that the second coin is double-headed but it also
- reveals the bias in the first coin.
- 
+If we were to equate 
+\begin_inset Formula $\pmeas(\Omega)$
+\end_inset
+
+ with the sum of the individual probabilities we would get that 
+\begin_inset Formula $\pmeas(\Omega)=\left[\frac{1}{2},\frac{3}{2}\right]$
+\end_inset
+
+.
+ However, using the fact that 
+\begin_inset Formula $\pmeas(\emptyset)=\imposs$
+\end_inset
+
+, we have 
+\begin_inset Formula $\pmeas\left(\Omega\right)=1-\pmeas\left(\emptyset\right)=\necess=[1,1]$
+\end_inset
+
+.
+ This interval is tighter and a better estimate for the probability of the
+ event 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ and of course it is contained in 
+\begin_inset Formula $[\frac{1}{2},\frac{3}{2}]$
+\end_inset
+
+.
+ However it is only possible to exploit the information about the complement
+ when all four events are combined.
+ Thus the 
+\begin_inset Formula $\subseteq$
+\end_inset
+
+-condition allows us to get an estimate for the combined event from each
+ of its constituents and then gather more evidence knowing the aggregate
+ event.
 \begin_inset ERT
 status collapsed
 
@@ -6368,6 +11056,70 @@ status collapsed
 
 \begin_layout Section
 Quantum Probability Spaces
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+amr{
+\end_layout
+
+\end_inset
+
+ The idea will be the following.
+ First describe quantum probability spaces conventionally.
+ Then talk about the following: 
+\end_layout
+
+\begin_layout Itemize
+the dimension of the Hilbert space is a parameter that is like the number
+ of needles; it gives an upper bound on the accuracy of the numbers that
+ are relevant in expressing probabilities 
+\end_layout
+
+\begin_layout Itemize
+the intervals will come from two things: the fact that states can only be
+ prepared to a certain accuracy so when we say the state is 
+\begin_inset Formula $\ket{\psi}$
+\end_inset
+
+ we really mean a neighborhood of states close to 
+\begin_inset Formula $\ket{\psi}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+similarly when we do an experiment with 
+\begin_inset Formula $\proj{\phi}$
+\end_inset
+
+ we are really testing a family of projections that are near 
+\begin_inset Formula $\proj{\phi}$
+\end_inset
+
+; this fuziness will cause the probability to only be specifiable as intervals
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
