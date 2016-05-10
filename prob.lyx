@@ -61,6 +61,8 @@
 \newcommand{\melement}[2]{ \langle #1 | #2 | #1 \rangle}
 \newcommand{\expect}[2]{ \langle #1 | #2 | #1 \rangle}
 \newcommand{\Tr}{\mathop{\mathrm{Tr}}\nolimits}
+\newcommand{\gerardo}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{OliveGreen}{Gerardo says: #1}\end{minipage}}}
+\newcommand{\andy}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{blue}{Andy says: #1}\end{minipage}}}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -818,13 +820,13 @@ To formalize the experiment, we consider an experimental setup consisting
 \begin_inset Formula $N$
 \end_inset
 
- needles and observe the number 
+ needles one needle at a time, and observe the number 
 \begin_inset Formula $X$
 \end_inset
 
  of needles that cross a line.
  The sample space can be expressed as the set 
-\begin_inset Formula $(X|-)^{N}$
+\begin_inset Formula $\{X,-\}^{N}$
 \end_inset
 
  
@@ -865,11 +867,15 @@ of sequences of characters of length
 \begin_inset Formula $N=3$
 \end_inset
 
-, the event that exactly 2 needles cross lines is 
+, the event that exactly 2 needles cross lines
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\{-XX,X-X,XX-\}$
 \end_inset
 
-: it has probability
+ has probability
 \begin_inset space ~
 \end_inset
 
@@ -1093,6 +1099,7 @@ key "Buffon1777"
 \end_inset
 
  on Monday...
+ 
 \begin_inset ERT
 status collapsed
 
@@ -5351,8 +5358,8 @@ We begin with an analysis explaining how to combine intervals of probability.
 \emph on
 against
 \emph default
- the event (i.e., information about the dual event) is also taken into considerati
-on.
+ the event (i.e., information about the complement event) is also taken into
+ consideration.
 \end_layout
 
 \begin_layout Standard
@@ -6757,6 +6764,119 @@ status collapsed
 
 \backslash
 end{example}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+gerardo{
+\end_layout
+
+\end_inset
+
+Set-valued is a particular case?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+yutsung{
+\end_layout
+
+\end_inset
+
+Set-valued is not a particular case of interval-valued probability.
+ In particular, the rule they respect are different.
+ A real-valued probability measure 
+\family default
+\size default
+
+\begin_inset Formula $\pmeas:\events\rightarrow[0,1]$
+\end_inset
+
+ should satisfy the following two rules:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\pmeas(\Omega)=1$
+\end_inset
+
+, and 
+\end_layout
+
+\begin_layout Enumerate
+for a collection 
+\begin_inset Formula $E_{i}$
+\end_inset
+
+ of pairwise disjoint events, 
+\begin_inset Formula $\pmeas(\bigcup_{i}E_{i})=\sum_{i}\pmeas(E_{i})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+When the range of 
+\begin_inset Formula $\pmeas$
+\end_inset
+
+ is not only a real number, these conditions cannot be both reserved.
+ The set-valued probability measure preserves Condition 2 and modifies Condition
+ 1.
+ The interval-valued probability measure preserves Condition 1 and modifies
+ Condition 2.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+It seems hard to make a consistent story with the general set-valued probability
+ measure framework (except possible/impossible?), so we just comment out
+ set-valued probability measure here...
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \end_inset
@@ -11123,13 +11243,47 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+amr{
+\end_layout
+
+\end_inset
+
+ We can use DQC if we have some kind of topology (distances).
+ The idea will be that we want to prepare state PSI but because of errors
+ etc we prepare a close state.
+ Well the next closest state will be the next state in our discrete grid.
+ I am sure that a state that's very close to PSI can involve some wrapping
+ around.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 The mathematical framework above assumes that one has complete knowledge
- of the events and their relationships.
+ of the events and their relationships, and moreover, there exists a predetermin
+ed set of properties.
  However, in many practical situations, the structure of the event space
  is only partially known and the precise dependence of two events on each
  other cannot, a priori, be determined with certainty.
- In the quantum case, this partial knowledge is compounded by the fact that
- there exist non-commuting events which cannot happen simultaneously.
+ In the quantum framework, this partial knowledge is compounded by the fact
+ that there exist non-commuting events which cannot happen simultaneously.
  To accommodate these more complex situations, we abandon the sample space
 \begin_inset space ~
 \end_inset
@@ -11172,6 +11326,10 @@ begin{example}
 
  such that 
 \begin_inset Formula $|\alpha|^{2}+|\beta|^{2}=1$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha,\beta\in\C$
 \end_inset
 
 .
