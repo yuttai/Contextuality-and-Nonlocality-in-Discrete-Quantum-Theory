@@ -188,10 +188,9 @@ measures~\cite{Dempster1967,Zadeh1986,Weichselberger2000,JamisonLodwick2004}.
 \subsection{Buffon's Needle Problem}
  
 Suppose we drop a needle of length $\ell$ onto a floor made of equally
-spaced parallel lines a distance $\ell$ apart. It is a known fact that
+spaced parallel lines a distance $h$ apart. It is a known fact that
 the probability of the needle crossing a line converges to
-$\frac{2}{\pi} = 0.6366197723675814$~\cite{Buffon1777}.
-%% \yutsung{Add $\ldots$ at the end? }\\
+$\frac{2\ell}{\pi h}$~\cite{Buffon1777,DeMorgan1872,Hall1873,Uspensky1937}.
 We analyze this situation in the mathematical framework of probability
 spaces paying special attention to the resources needed to estimate
 the probability computationally or experimentally.
@@ -201,47 +200,22 @@ consisting of a collection of $N$ identical needles of length
 $\ell$. We throw the $N$ needles one needle at a time, and observe the number
 $X$ of needles that cross a line. The sample space can be expressed as the set
 $\{X,-\}^N$
-%% \yutsung{Use more physical or mathematical notation?}\\
 of sequences of characters of length $N$ where each character is
 either $X$ to indicate a needle crossing a line or $-$ to indicate a
-needle not crossing a line. If $N=3$, the event that exactly 2 needles
-cross lines~$\{-XX,X-X,XX-\}$ has
-probability~$\frac{3}{8}$. Generally, the event that exactly $M$
-needles out of the $N$ total needles cross lines is $\frac{M}{N}$.
+needle not crossing a line. If $N=3$, the probability of the event that exactly
+2 needles cross lines~$\{-XX,X-X,XX-\}$ can be 
+estimated by the relative frequency~$\frac{3}{8}$. Generally, the probability of
+the event that exactly $M$ needles out of the $N$ total needles cross lines can
+be estimated by the relative frequency~$\frac{M}{N}$.
 
-In an actual experiment with 500 needles, it was found that 321
-crossed a line which gives a probability of $0.642$. In a larger
-experiment with $3408$ needles, the probability was calculated to be
-$0.6366197193098592$~\cite{Lazzarini1901,Uspenskyothers1937}.\\
-\yutsung{
-May I confirm how many times needle cross the line within $3408$ needles?
-Because $\frac{2169}{3408}$ is almost $0.6364436619718310$, and
-$\frac{2170}{3408}$ is almost $0.6367370892018779$, both of them are not
-close to $0.6366197193098592$ enough\ldots 
-}\\
-\amr{
-There are several articles and papers on the experiment. I got these
-values from wikipedia and mathworld. We need to get precise references
-and cite the papers describing the experiments. The actual values
-don't matter though.
-}\\
-\yutsung{
-Although I don't know Italian, it seems that Lazzarini~\cite{Lazzarini1901}
-used the needle with length 2.5, and the length among lines is 3.
-When he tossed needles 3408 times, he got 1808 crossing, and 
-\[
-\pi\approx\frac{2\cdot2.5\cdot3408}{3\cdot1808}=\frac{355}{113}\approx3.1415929
-\]
-However, his paper was be criticized in Wikipedia, because $\frac{355}{113}$
-is the best rational approximation of $\pi$ for small intergers.
-How can his experiment just gave this number?
-
-Uspensky~\cite{Uspenskyothers1937} and Buffon~\cite{Buffon1777}
-are books. I will check out \cite{Uspenskyothers1937} on Sunday,
-and \cite{Buffon1777} on Monday...
-}\\
-Comparing the values to the idealized mathematical value, we see that
-the observed probability approaches $\frac{2}{\pi}$ but only if
+In an actual experiment with $500$ needles and the ratio
+$\frac{\ell}{h}=0.75$~\cite{Hall1873}, it was found that $236$ 
+crossed a line so the relative frequency is $0.472$ comparing 
+the values to the idealized mathematical probability $0.4775\ldots$. In a larger 
+experiment with $5000$ needles and the ratio $\frac{\ell}{h}=0.8$~\cite{Uspensky1937}, 
+the relative frequency was calculated to be $0.5064$ comparing 
+the values to the idealized mathematical probability $0.5093\ldots$. We see that 
+the observed probability approaches $\frac{2\ell}{\pi h}$ but only if
 \emph{larger and larger resources} are expended.
 
 These resource considerations thus lead us to replace the real
@@ -250,7 +224,7 @@ intuition is that the precision depends on the amount of resources
 allocated for the measurement process. There is clearly a connection
 between the number of needles and the achievable precision: in the
 hypothetical experiment with 3 needles, it is not sensible to retain
-100 digits in the expansion of $\frac{2}{\pi}$.
+100 digits in the expansion of $\frac{2\ell}{\pi h}$.
 
 There is however another more subtle source of unbounded computational
 power in the experiment. We are assuming that we can always determine
@@ -267,13 +241,14 @@ the event that $M-\delta$ needles evidently cross lines and
 $M+\delta'$ needles plausibly cross lines for some acceptable
 approximations $\delta$ and $\delta'$. This fuzzy notion of events
 leads us to consider intervals of probability reflecting the certainty
-of the event and its plausibility. In the hypothetical experiment with
-3 needles, assume that one needle clearly crossed a line and another
+of the event and its plausibility. In an actual experiment with
+$3204$ needles and the ratio $\frac{\ell}{h}=0.6$~\cite{DeMorgan1872}, 
+there are $1213$ needles clearly crossed a line and $11$ ones
 was close enough to plausibly be considered as crossing the line: we
 would express the probability in this case as the interval
-$[\frac{1}{3},\frac{2}{3}]$ expressing that we are certain that the
-event has probability at least $\frac{1}{3}$ but it is possible that
-it would have probability $\frac{2}{3}$.
+$\left[\frac{1213}{3204},\frac{1234}{3204}\right]$ expressing that we are
+certain that the event has probability at least $\frac{1213}{3204}$ but it is possible that
+it would have probability $\frac{1234}{3204}$.
 
 % %%%%%
 % \subsection{Set-valued Probability Measures}
