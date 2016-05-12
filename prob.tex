@@ -96,7 +96,7 @@ Fuzzy quantum mechanics:
 A \emph{probability space} specifies the necessary conditions for
 reasoning coherently about collections of uncertain events.  We review
 the conventional presentation of probability spaces and then discuss
-the hidden issue of computational and experimental resources. 
+the computational resources needed to estimate probabilities.
 
 %%%
 \subsection{Real-Valued Probability Spaces}
@@ -177,15 +177,19 @@ precision increases.
 % using base 16 directly.}
 Therefore, in a resource-aware computational or experimental setting,
 it is more appropriate to consider probability measures that map
-events to a finite set of elements computable with a fixed set of
-resources. We expand on this observation and then consider 
+events to a set of elements computable with a fixed set of
+resources. We expand on this observation and then consider
 %% two approaches from the literature: set-valued probability
 %% measures~\cite{Artstein1972,PuriRalescu1983} and 
 interval-valued probability
-measures~\cite{Dempster1967,Zadeh1986,Weichselberger2000,JamisonLodwick2004}.
+measures~\cite{Dempster1967,Zadeh1986,Weichselberger2000,JamisonLodwick2004}
+in detail.\footnote{There is another possible approach that can be
+  used to split the real interval $[0,1]$ into a collection of
+  subsets~\cite{Artstein1972,PuriRalescu1983} \amr{need to explain the
+    connection and why we are not using it.}}
 
 %%%%%
-\subsection{Buffon's Needle Problem}
+\subsection{Calculating Probabilities: Buffon's Needle Problem}
  
 Suppose we drop a needle of length $\ell$ onto a floor made of equally
 spaced parallel lines a distance $h$ apart. It is a known fact that
@@ -209,46 +213,48 @@ the event that exactly $M$ needles out of the $N$ total needles cross lines can
 be estimated by $\frac{M}{N}$.
 
 In an actual experiment with $500$ needles and the ratio
-$\frac{\ell}{h}=0.75$~\cite{Hall1873}, it was found that $236$ 
-crossed a line so the relative frequency is $0.472$ comparing 
-the values to the idealized mathematical probability $0.4774\ldots$. In a larger 
-experiment with $5000$ needles and the ratio $\frac{\ell}{h}=0.8$~\cite{Uspensky1937}, 
-the relative frequency was calculated to be $0.5064$ comparing 
-the values to the idealized mathematical probability $0.5092\ldots$. We see that 
-the observed probability approaches $\frac{2\ell}{\pi h}$ but only if
-\emph{larger and larger resources} are expended.
+$\frac{\ell}{h}=0.75$~\cite{Hall1873}, it was found that $236$ crossed
+a line which is a relative frequency of $0.472$ whereas the idealized
+mathematical probability is $0.4774\ldots$. In a larger experiment
+with $5000$ needles and the ratio
+$\frac{\ell}{h}=0.8$~\cite{Uspensky1937}, the relative frequency was
+calculated to be $0.5064$ whereas the idealized mathematical
+probability is $0.5092\ldots$. We see that the observed probability
+approaches $\frac{2\ell}{\pi h}$ but only if \emph{larger and larger
+  resources} are expended. These resource considerations suggest that
+it is possible to replace the real interval $[0,1]$ with rational
+numbers up to a certain precision related to the particular experiment
+in question.  There is clearly a connection between the number of
+needles and the achievable precision: in the hypothetical experiment
+with 3 needles, it is not sensible to retain 100 digits in the
+expansion of $\frac{2\ell}{\pi h}$.
 
-These resource considerations thus lead us to replace the real
-interval $[0,1]$ with rational numbers up to a certain precision.  The
-intuition is that the precision depends on the amount of resources
-allocated for the measurement process. There is clearly a connection
-between the number of needles and the achievable precision: in the
-hypothetical experiment with 3 needles, it is not sensible to retain
-100 digits in the expansion of $\frac{2\ell}{\pi h}$.
-
-There is however another more subtle source of unbounded computational
-power in the experiment. We are assuming that we can always determine
-with certainty whether a needle is crossing a line. But ``lines'' on
-the the floor have thickness, their distance apart is not exactly
-$h$. and the needles lengths are not all equal and are not all
-absolutely equal to $\ell$. These perturbations make the events
-``fuzzy.'' For example, instead of talking about the idealized event
-that exactly $M$ needles cross lines which would require the most
-expensive needles built to the most precise accuracy, laser precision
-for drawing lines on the floor, and the most powerful microscopes to
-determine if a needle does cross a line, we might instead talk about
-the event that $M-\delta$ needles evidently cross lines and
-$M+\delta'$ needles plausibly cross lines for some acceptable
-approximations $\delta$ and $\delta'$. This fuzzy notion of events
-leads us to consider intervals of probability reflecting the certainty
-of the event and its plausibility. In another experiment with
-$3204$ needles and the ratio $\frac{\ell}{h}=0.6$~\cite{DeMorgan1872}, 
-there are $1213$ needles clearly crossed a line and $11$ ones
-was close enough to plausibly be considered as crossing the line: we
-would express the probability in this case as the interval
-$\left[\frac{1213}{3204},\frac{1224}{3204}\right]$ expressing that we are
-certain that the event has probability at least $\frac{1213}{3204}$ but it is possible that
-it would have probability $\frac{1224}{3204}$.
+There is however another more subtle assumption of unbounded
+computational power in the experiment. We are assuming that we can
+always determine with certainty whether a needle is crossing a
+line. But ``lines'' on the the floor have thickness, their distance
+apart is not exactly $h$. and the needles lengths are not all equal
+and are not all absolutely equal to $\ell$. These perturbations make
+the events ``fuzzy.'' Thus, in an experiment with limited resources,
+it is not possible to talk about the idealized event that exactly $M$
+needles cross lines as this would require the most expensive needles
+built to the most precise accuracy, laser precision for drawing lines
+on the floor, and the most powerful microscopes to determine if a
+needle does cross a line. Instead we might talk about the event that
+$M-\delta$ needles evidently cross lines and $M+\delta'$ needles
+plausibly cross lines where $\delta$ and $\delta'$ are
+resource-dependent approximations. This fuzzy notion of events leads
+to probabilities being only calculable within intervals of confidence
+reflecting the certainty of events and their plausibility. This is
+indeed consistent with published experiments: in an experiment with
+$3204$ needles and the ratio $\frac{\ell}{h}=0.6$~\cite{DeMorgan1872},
+$1213$ needles clearly crossed a line and $11$ needles were close
+enough to plausibly be considered as crossing the line: we would
+express the probability in this case as the interval
+$\left[\frac{1213}{3204},\frac{1224}{3204}\right]$ expressing that we
+are certain that the event has probability at least
+$\frac{1213}{3204}$ but it is possible that it would have probability
+$\frac{1224}{3204}$.
 
 % %%%%%
 % \subsection{Set-valued Probability Measures}
@@ -455,19 +461,17 @@ it would have probability $\frac{1224}{3204}$.
 %%%%%
 \subsection{Interval-valued probability measures}
 
-We begin with an analysis explaining how to combine intervals of
-probability. Specifically if we have an event $E_1$ with an interval
-of probability $[l_1,r_1]$ and another disjoint event $E_2$ with an
-interval of probability $[l_2,r_2]$, what is the interval probability
-of the event $E_1 \cup E_2$. The answer is somewhat subtle: although
-it is possible to use the sum of the intervals $[l_1+l_2,r_1+r_2]$ as
-the combined probability, one can do find a much tighter interval if
-information \emph{against} the event (i.e., information about the complement
-event) is also taken into consideration.
-
-For a general event $E$ with probability $[l,r]$, the strength of
-evidence that contradicts $E$ is evidence supporting the complement of
-$E$. The complement of $E$ must therefore have probability
+As motivated above, an event $E_1$ may have an interval of probability
+$[l_1,r_1]$. Assume that another disjoint event $E_2$ has interval
+probability $[l_2,r_2]$, what is the interval probability of the event
+$E_1 \cup E_2$. The answer is somewhat subtle: although it is possible
+to use the sum of the intervals $[l_1+l_2,r_1+r_2]$ as the combined
+probability, one can do find a much tighter interval if information
+\emph{against} the event (i.e., information about the complement
+event) is also taken into consideration. Formally, for a general event
+$E$ with probability $[l,r]$, the strength of evidence that
+contradicts $E$ is evidence supporting the complement of $E$. The
+complement of $E$ must therefore have probability
 $\left[1-r,1-l\right]$ which we abbreviate $1-\left[l,r\right]$. Given
 a collection of intervals $\mathscr{I}$, an
 $\mathscr{I}$--interval-valued probability measure is a function
@@ -539,8 +543,8 @@ $\pmeas : \events \rightarrow \mathscr{I}$ such that:
 % of $\{HH\}$, $\{HT\}$, $\{TH\}$ and $\{TT\}$ individually. The
 % full probability assignment is shown in the following example. 
 
-The reason the last condition is expressed using $\subseteq$ is best
-explained using a small example.
+\noindent The reason the last condition is expressed using $\subseteq$
+is best explained using a small example.
 
 \begin{example}[Two-coin experiment with interval probability]
   \label{ex3} We split the unit interval $[0,1]$ in the following four
@@ -594,20 +598,20 @@ combined. Thus the $\subseteq$-condition allows us to get an estimate
 for the combined event from each of its constituents and then gather
 more evidence knowing the aggregate event.\qed\end{example}
 
-\gerardo{Set-valued is a particular case?}
+% \gerardo{Set-valued is a particular case?}
 
-\yutsung{Set-valued is not a particular case of interval-valued probability
-because their rules are different. A set-valued probability measure
-should satisfy: 
-\begin{enumerate}
-\item $1\in\pmeas(\Omega)$, and 
-\item for a collection $E_{i}$ of pairwise disjoint events, $\pmeas(\bigcup_{i}E_{i})=\sum_{i}\pmeas(E_{i})$. 
-\end{enumerate}
-which are completely opposite to the interval-valued probability measures. 
+% \yutsung{Set-valued is not a particular case of interval-valued probability
+% because their rules are different. A set-valued probability measure
+% should satisfy: 
+% \begin{enumerate}
+% \item $1\in\pmeas(\Omega)$, and 
+% \item for a collection $E_{i}$ of pairwise disjoint events, $\pmeas(\bigcup_{i}E_{i})=\sum_{i}\pmeas(E_{i})$. 
+% \end{enumerate}
+% which are completely opposite to the interval-valued probability measures. 
 
-It seems hard to make a consistent story with the general set-valued
-probability measure framework (maybe except possible/impossible?),
-so we just comment out set-valued probability measure here...}
+% It seems hard to make a consistent story with the general set-valued
+% probability measure framework (maybe except possible/impossible?),
+% so we just comment out set-valued probability measure here...}
 
 % to think of the above combination in the context of the evidence
 % against the events established by the dual events. Writing in terms of
@@ -835,42 +839,17 @@ so we just comment out set-valued probability measure here...}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Quantum Probability Spaces}
 
-\amr{
-The idea will be the following. First describe quantum probability
-spaces conventionally. Then talk about the following:
-\begin{itemize}
-\item the dimension of the Hilbert space is a parameter that is like
-  the number of needles; it gives an upper bound on the accuracy of
-  the numbers that are relevant in expressing probabilities
-\item the intervals will come from two things: the fact that states
-  can only be prepared to a certain accuracy so when we say the state
-  is $\ket{\psi}$ we really mean a neighborhood of states close to $\ket{\psi}$
-\item similarly when we do an experiment with $\proj{\phi}$ we are
-  really testing a family of projections that are near $\proj{\phi}$;
-  this fuziness will cause the probability to only be specifiable as intervals
-\end{itemize}
-}
-
-\amr{
-We can use DQC if we have some kind of topology (distances). The idea
-will be that we want to prepare state PSI but because of errors etc we
-prepare a close state. Well the next closest state will be the next
-state in our discrete grid. I am sure that a state that's very close
-to PSI can involve some wrapping around.
-}
-
-The mathematical framework above assumes that one has complete
-knowledge of the events and their relationships, and moreover, there exists a
-predetermined set of properties.
-However, in many practical situations, the structure of the event space is only
-partially known and the precise dependence of two events on each other
-cannot, a priori, be determined with certainty. In the quantum framework,
-this partial knowledge is compounded by the fact that there exist
-non-commuting events which cannot happen simultaneously. To
-accommodate these more complex situations, we abandon the sample
-space~$\Omega$ and reason directly about events. A quantum probability
-space therefore consists of just two components: a set of events
-$\qevents$ and a probability measure
+The mathematical framework above assumes that there exists a
+predetermined set of events that are independent of the particular
+experiment. However, in many practical situations, the structure of
+the event space is only partially known and the precise dependence of
+two events on each other cannot, a priori, be determined with
+certainty. In the quantum framework, this partial knowledge is
+compounded by the fact that there exist non-commuting events which
+cannot happen simultaneously. To accommodate these more complex
+situations, we abandon the sample space~$\Omega$ and reason directly
+about events. A quantum probability space therefore consists of just
+two components: a set of events $\qevents$ and a probability measure
 $\mu : \qevents \rightarrow [0,1]$. We give an example before giving
 the formal definition.
 
@@ -902,8 +881,8 @@ the formal definition.
 Note that, similarly to the classical case, the probability of
 $\mathbb{1}$ is 1 and the probability of collections of orthogonal
 events (e.g., $\proj{0}+\proj{1}$) is the sum of the individual
-probabilities. In contrast, a collection of non-orthogonal events
-(e.g., $\proj{0}$ and $\proj{\ps}$) is not itself an event.
+probabilities. A collection of non-orthogonal events
+(e.g., $\proj{0}$ and $\proj{\ps}$) is however not even a valid event.
 In the classical example, we argued that each probability measure is
 uniquely determined by two actual coins. A similar (but much more
 subtle) argument is valid also in the quantum case. By postulates of
@@ -918,13 +897,13 @@ define a quantum probability space.
 
 \begin{definition}[Projection Operators; Orthogonality
 ~\cite{10.2307/2308516,Redhead1987-REDINA,peres1995quantum,Swart2013}]
-Given a Hilbert space $\Hilb$, an event, formally called elementary quantum
-test~\cite{peres1995quantum}, can be represented as a projection operator
-$P:\Hilb\rightarrow\Hilb$ onto a linear subspace~$S$ of $\Hilb$. The set of all
-events can be defined recursively as follow:
-\footnote {``Projection'' is sometimes called
-``orthogonal projection" or ``self-adjoint projection" to
-emphasize $P^{\dagger} = P$~\cite{Maassen2010}.}
+Given a Hilbert space $\Hilb$, an event is an \emph{elementary quantum
+  test}~\cite{peres1995quantum}, which mathematically is represented
+as a projection operator $P:\Hilb\rightarrow\Hilb$ onto a linear
+subspace~$S$ of $\Hilb$. The set of all events can be defined
+recursively as follow: \footnote {``Projection'' is sometimes called
+  ``orthogonal projection" or ``self-adjoint projection" to emphasize
+  $P^{\dagger} = P$~\cite{Maassen2010}.}
 \begin{itemize}
 \item $\mathbb{0}$ is a projection.
 \item For any vector $\ket{\psi}\in \Hilb$,
@@ -1014,7 +993,30 @@ probability is 1 as desired and yet it is impossible to find a single
 quantum state that realizes such a probability
 measure (see \url{http://tph.tuwien.ac.at/~svozil/publ/2006-gleason.pdf})
 
-\newpage
+\amr{
+The idea will be the following. First describe quantum probability
+spaces conventionally. Then talk about the following:
+\begin{itemize}
+\item the dimension of the Hilbert space is a parameter that is like
+  the number of needles; it gives an upper bound on the accuracy of
+  the numbers that are relevant in expressing probabilities
+\item the intervals will come from two things: the fact that states
+  can only be prepared to a certain accuracy so when we say the state
+  is $\ket{\psi}$ we really mean a neighborhood of states close to $\ket{\psi}$
+\item similarly when we do an experiment with $\proj{\phi}$ we are
+  really testing a family of projections that are near $\proj{\phi}$;
+  this fuziness will cause the probability to only be specifiable as intervals
+\end{itemize}
+}
+
+\amr{
+We can use DQC if we have some kind of topology (distances). The idea
+will be that we want to prepare state PSI but because of errors etc we
+prepare a close state. Well the next closest state will be the next
+state in our discrete grid. I am sure that a state that's very close
+to PSI can involve some wrapping around.
+}
+
 \amr{the rest needs cleaning up and perhaps does not even belong in
   this section}
 
