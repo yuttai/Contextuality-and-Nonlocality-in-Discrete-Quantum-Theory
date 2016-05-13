@@ -966,30 +966,36 @@ If the projections $P_1$ and $P_2$ commute then $P_1P_2$ is also
 \subsection{Quantum Probability Measures}
 
 For a given set of events $\events$, there are many possible probability
-measures $\mu:\events\rightarrow[0,1]$. The Born rule~\cite{Born1984,Mermin2007},
+measures $\mu:\events\rightarrow[0,1]$. The Born rule~\cite{Born1984,Mermin2007,RiederSvozil2007},
 a postulate of quantum mechanics, states that each pure quantum state
 $\ket{\phi}$ induces a probability measure $\mu_{\phi}$ as follows:
 \[
 \mu_{\phi}(E)=\ip{\phi}{E\phi}
 \]
-Moreover, the Born rule can be extended to a mixed state~$\rho$.
-If the density matrix of a mixed state~$\rho$ can be expressed as
-a convex combination of pure states, i.e., $\rho=\sum_{j=1}^{N}q_{j}\proj{\psi_{j}}$,
-where $\sum_{j=1}^{N}q_{j}=1$, then the probability measure induced
-by $\rho$ can be expressed as a convex combination as well~\cite{peres1995quantum,544199}:
+
+Moreover, the Born rule can be extended to a mixed state. Suppose
+we want to prepare a quantum system. As we discussed in classical
+probability, our ability of preparing a state might not be prefect.
+If we want to prepare $\ket{\phi}$, we may turn out preparing a set
+of state~$\ket{\phi_{j}}$ each with probability~$q_{j}$, then
+the state of the system can be expressed as a density matrix~$\rho=\sum_{j}q_{j}\proj{\phi_{j}}$,
+where $\sum_{j}q_{j}=1$. It is natural that the quantum probability
+measure introduced by $\rho$ is the combination of $\mu_{\phi_{j}}$
+with respect to probability $q_{j}$~\cite{peres1995quantum,544199,RiederSvozil2007}:
 \begin{eqnarray}
-\mu_{\rho}\left(E\right) & = & \Tr\left(\rho E\right)=\sum_{j=1}^{N}q_{j}\mu_{\psi_{j}}\left(E\right)\textrm{ .}\label{BornRule.mixed}
+\mu_{\rho}\left(E\right) & = & \Tr\left(\rho E\right)=\sum_{j=1}^{N}q_{j}\mu_{\phi_{j}}\left(E\right)\textrm{ .}\label{BornRule.mixed}
 \end{eqnarray}
 
 Conversely, Gleason's theorem states that given a probability measure
 $\mu$, there exist a mixed state~$\rho$ that induces such a measure
-using the Born rule. The theorem is only valid in Hilbert spaces with
-dimension $d\geq3$. It is instructive to study counterexamples in
-$d=2$, i.e., the case of a one-qubit system. 
+using the Born rule~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
+The theorem is only valid in Hilbert spaces with dimension $d\geq3$.
+It is instructive to study counterexamples in $d=2$, i.e., the case
+of a one-qubit system.
 
-\begin{example}[One-qubit quantum probability measure] 
-Consider a quantum probability
-measure~$\mu:\events\rightarrow[0,1]$ defined as follow:
+\begin{example}[One-qubit quantum probability measure] Consider
+a quantum probability measure~$\mu:\events\rightarrow[0,1]$ defined
+as follow: 
 \[
 \mu(E)=\begin{cases}
 1 & \textrm{, if }E=\proj{\ps}\textrm{ ;}\\
@@ -998,20 +1004,17 @@ measure~$\mu:\events\rightarrow[0,1]$ defined as follow:
 \end{cases}
 \]
 On one hand, $\mu$ is a probability measure. Because $\mu$ is almost
-the same as $\mu_{\ket{0}}$ which is a probability measure, we only
-need to check $E=\proj{\ps}$ and $E=\proj{\ms}$. $\proj{\ps}$ and
-$\proj{\ms}$ are only orthogonal to each other, and we have 
+the same as a probability measure~$\mu_{\ket{0}}$, we only need
+to check the orthogonal pair~$\proj{\ps}$ and $\proj{\ms}$: 
 \[
-\mu(\proj{\ps})+\mu(\proj{\ms})=1+0=1
+\mu(\proj{\ps})+\mu(\proj{\ms})=1+0=1\textrm{ .}
 \]
-which satisfies the conditions as a probability measure. On the other
-hand, $\mu$ cannot be induced by any mixed state because 
+On the other hand, $\mu$ cannot be induced by any mixed state because
 \[
 \mu(\proj{\ps})=\mu(\proj{0})=1\textrm{ .}
 \]
 However, $\mu_{\rho}(E)=1$ if and only if $\rho$ represents a pure
-state and $\rho=E$.
-\qed\end{example}
+state and $\rho=E$. \qed\end{example}
 
 \amr{
 The idea will be the following. First describe quantum probability
