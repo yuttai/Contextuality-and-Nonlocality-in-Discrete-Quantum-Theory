@@ -63,6 +63,7 @@
 \newcommand{\Tr}{\mathop{\mathrm{Tr}}\nolimits}
 \newcommand{\gerardo}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{OliveGreen}{Gerardo says: #1}\end{minipage}}}
 \newcommand{\andy}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{blue}{Andy says: #1}\end{minipage}}}
+\usepackage{tensor}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -132,6 +133,10 @@
 
 \begin_layout Title
 Interval Probability for Fuzzy Quantum Theories
+\end_layout
+
+\begin_layout Author
+
 \end_layout
 
 \begin_layout Date
@@ -472,10 +477,27 @@ for a collection
 \end_inset
 
  of pairwise disjoint events, 
-\begin_inset Formula $\pmeas(\bigcup_{i}E_{i})=\sum_{i}\pmeas(E_{i})$
+\begin_inset Formula $\pmeas(\bigcup_{i}E_{i})=\tensor*[_{\mathbb{R}}]{\sum}{_{i}}\pmeas(E_{i})$
+\end_inset
+
+, where 
+\begin_inset Formula $a_{1}\tensor*[_{\mathbb{R}}]{+}{}a_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tensor*[_{\mathbb{R}}]{\sum}{_{i}}a_{i}$
+\end_inset
+
+ explicitly specify 
+\begin_inset Formula $a_{i}\in\mathbb{R}$
 \end_inset
 
 .
+ We may drop the preposing 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ when there is no confusion.
  
 \end_layout
 
@@ -793,7 +815,7 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-Calculating Probabilities: Buffon's Needle Problem
+Measuring Probabilities: Buffon's Needle Problem
 \end_layout
 
 \begin_layout Standard
@@ -5303,11 +5325,19 @@ for a collection
 \end_inset
 
  of pairwise disjoint events, we have 
-\begin_inset Formula $\pmeas\left(\bigcup_{i}E_{i}\right)\subseteq\sum_{i}\pmeas\left(E_{i}\right)$
+\begin_inset Formula $\pmeas\left(\bigcup_{i}E_{i}\right)\subseteq\tensor*[_{I}]{\sum}{_{i}}\pmeas\left(E_{i}\right)$
 \end_inset
 
- where the summation on the right is the summation of intervals that sums
- the endpoints.
+, where 
+\begin_inset Formula $\tensor*[_{I}]{\sum}{_{i}}[l_{i},r_{i}]=\left[\tensor*[_{\mathbb{R}}]{\sum}{_{i}}l_{i},\tensor*[_{\mathbb{R}}]{\sum}{_{i}}r_{i}\right]$
+\end_inset
+
+.
+ We may drop the preposing 
+\begin_inset Formula $I$
+\end_inset
+
+ when summands are clear intervals.
  
 \end_layout
 
@@ -11480,12 +11510,16 @@ key "Maassen2010"
 \end_layout
 
 \begin_layout Itemize
-For any vector 
-\begin_inset Formula $\ket{\psi}\in\Hilb$
+For any pure state
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\ket{\psi}$
 \end_inset
 
 , 
-\begin_inset Formula $\frac{\proj{\psi}}{\ip{\psi}{\psi}}$
+\begin_inset Formula $P=\proj{\psi}$
 \end_inset
 
  is a projection.
@@ -11568,7 +11602,7 @@ end{definition}
 \end_layout
 
 \begin_layout Standard
-Notice that the preceding definition exhaust all possible projection operators.
+Notice that the preceding definition exhausts all possible projection operators.
  Because every linear subspace
 \begin_inset space ~
 \end_inset
@@ -12023,11 +12057,18 @@ for mutually orthogonal projections
 \end_inset
 
 , we have 
-\begin_inset Formula $\mu\left(\sum_{i}E_{i}\right)=\sum_{i}\mu\left(E_{i}\right)$
+\begin_inset Formula $\mu\left(\tensor*[_{O}]{\sum}{_{i}}E_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i}}\mu\left(E_{i}\right)$
 \end_inset
 
-.
- 
+, where 
+\begin_inset Formula $\tensor*[_{O}]{\sum}{_{i}}$
+\end_inset
+
+ specifies that we add operators, and the preposing 
+\begin_inset Formula $O$
+\end_inset
+
+ may be dropped when summands are clearly operators.
 \end_layout
 
 \begin_layout Standard
@@ -13897,6 +13938,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+ 
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "discreteGBKS"

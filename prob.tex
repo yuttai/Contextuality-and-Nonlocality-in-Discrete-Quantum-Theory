@@ -61,6 +61,7 @@
 \newcommand{\Tr}{\mathop{\mathrm{Tr}}\nolimits}
 \newcommand{\gerardo}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{OliveGreen}{Gerardo says: #1}\end{minipage}}}
 \newcommand{\andy}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{blue}{Andy says: #1}\end{minipage}}}
+\usepackage{tensor}
 
 \begin{document}
 \title{Interval Probability for Fuzzy Quantum Theories}
@@ -115,8 +116,10 @@ set of events $\events$, a \emph{probability measure} is a function
 $\pmeas : \events \rightarrow [0,1]$ such that:
 \begin{itemize}
 \item $\pmeas(\Omega) = 1$, and 
-\item for a collection $E_i$ of pairwise disjoint events, 
-  $\pmeas(\bigcup_i E_i) = \sum_i \pmeas(E_i)$.
+\item for a collection $E_{i}$ of pairwise disjoint events, $\pmeas(\bigcup_{i}E_{i})=\tensor*[_{\mathbb{R}}]{\sum}{_{i}}\pmeas(E_{i})$,
+where $a_{1}\tensor*[_{\mathbb{R}}]{+}{}a_{2}$ and $\tensor*[_{\mathbb{R}}]{\sum}{_{i}}a_{i}$
+explicitly specify $a_{i}\in\mathbb{R}$. We may drop the preposing
+$\mathbb{R}$ when there is no confusion. 
 \end{itemize}
 
 \begin{example}[Two-coins experiment]\label{ex1}
@@ -189,7 +192,7 @@ in detail.\footnote{There is another possible approach that can be
     connection and why we are not using it.}}
 
 %%%%%
-\subsection{Calculating Probabilities: Buffon's Needle Problem}
+\subsection{Measuring Probabilities: Buffon's Needle Problem}
  
 Suppose we drop a needle of length $\ell$ onto a floor made of equally
 spaced parallel lines a distance $h$ apart. It is a known fact that
@@ -481,10 +484,9 @@ $\pmeas : \events \rightarrow \mathscr{I}$ such that:
 \item $\pmeas(\Omega)=[1,1]$, 
 \item $\pmeas\left(\Omega\backslash E\right)=1-\pmeas\left(E\right)$,
   and 
-\item for a collection $E_{i}$ of pairwise disjoint events, we have
-  $\pmeas\left(\bigcup_{i}E_{i}\right)\subseteq\sum_{i}\pmeas\left(E_{i}\right)$
-  where the summation on the right is the summation of intervals that
-  sums the endpoints.
+\item for a collection $E_{i}$ of pairwise disjoint events, we have $\pmeas\left(\bigcup_{i}E_{i}\right)\subseteq\tensor*[_{I}]{\sum}{_{i}}\pmeas\left(E_{i}\right)$,
+where $\tensor*[_{I}]{\sum}{_{i}}[l_{i},r_{i}]=\left[\tensor*[_{\mathbb{R}}]{\sum}{_{i}}l_{i},\tensor*[_{\mathbb{R}}]{\sum}{_{i}}r_{i}\right]$.
+We may drop the preposing $I$ when summands are clear intervals. 
 \end{itemize}
 
 % The singleton closed interval $[0,0]$ is a required special value
@@ -905,8 +907,7 @@ events can be defined recursively as follow:
 emphasize $P^{\dagger} = P$~\cite{Maassen2010}.}
 \begin{itemize}
 \item $\mathbb{0}$ is a projection.
-\item For any vector $\ket{\psi}\in \Hilb$,
-  $\frac{\proj{\psi}}{\ip{\psi}{\psi}}$ is a projection.
+\item For any pure state~$\ket{\psi}$, $P=\proj{\psi}$ is a projection. 
 \item Projection operators $P_1$ and $P_2$ are orthogonal if $P_1P_2 =
   P_2P_1 = \mathbb{0}$. The sum of two orthogonal projections~$P_1 +
   P_2$ is also a projection. Moreover, if $P_1$ and $P_2$ project onto
@@ -916,7 +917,7 @@ emphasize $P^{\dagger} = P$~\cite{Maassen2010}.}
 \end{itemize}
 \end{definition}
 
-Notice that the preceding definition exhaust all possible projection operators.
+Notice that the preceding definition exhausts all possible projection operators.
 Because every linear subspace~$S$ has an orthonormal basis~$\{\ket{\psi_j}\}$,
 the projection onto $S$ can always expressed as $\sum_j\proj{\psi_j}$.
 As operators, we can also multiply projections together. 
@@ -957,8 +958,9 @@ If the projections $P_1$ and $P_2$ commute then $P_1P_2$ is also
 \item The set of events consists of all projections as in
   definition~\ref{def:Projection};
 \item $\mu(\mathbb{1})=1$, and 
-\item for mutually orthogonal projections $E_i$, we have
-  $\mu\left(\sum_{i}E_{i}\right)=\sum_{i}\mu\left(E_{i}\right)$.
+\item for mutually orthogonal projections $E_{i}$, we have $\mu\left(\tensor*[_{O}]{\sum}{_{i}}E_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i}}\mu\left(E_{i}\right)$,
+where $\tensor*[_{O}]{\sum}{_{i}}$ specifies that we add operators,
+and the preposing $O$ may be dropped when summands are clearly operators.
 \end{itemize}
 \qed\end{definition}
 
