@@ -912,41 +912,19 @@ emphasize $P^{\dagger} = P$~\cite{Maassen2010}.}
 \item For any pure state~$\ket{\psi}$, $\proj{\psi}$ is a projection
 operator. 
 \item Projection operators $P_1$ and $P_2$ are orthogonal if $P_1P_2 =
-  P_2P_1 = \mathbb{0}$. The sum of two orthogonal projections~$P_1 +
-  P_2$ is also a projection. 
-\item Conversely, every projection~$P$ can be expressed as $\sum_{j}\proj{\psi_{j}}$,
+  P_2P_1 = \mathbb{0}$. The sum of two orthogonal projections~$P_{1}\tensor*[_{\mathscr{O}}]{+}{}P_{2}$
+is also a projection, where the preposing subscript $\mathscr{O}$
+means $\tensor*[_{\mathscr{O}}]{+}{}$ is an operation between operators,
+and may be dropped when summands are clearly operators. 
+\item For any pure state~$\ket{\psi}$, $\proj{\psi}$ is a projection
+operator. Conversely, every projection~$P$ can be expressed as $\sum_{j}\proj{\psi_{j}}$,
 where $P$ actually projects onto the linear subspace~$S$ which
 has an orthonormal basis~$\{\ket{\psi_{j}}\}$. 
 \end{itemize}
 \end{definition}
 
-Comparing to the classical events, the empty set~$\emptyset$ corresponds
-to the empty projection~$\mathbb{0}$, the event of whole sample
-space~$\Omega$ corresponds to the identity projection~$\mathbb{1}$.
-
-As operators, we can also multiply projections together. 
-
-\begin{definition}[Commutativity~\cite{peres1995quantum}]
-Projection operators $P_1$ and $P_2$ commute if $P_1P_2 =
-  P_2P_1$;
-If the projections $P_1$ and $P_2$ commute then $P_1P_2$ is also
-  a projection. Moreover, if $P_1$ and $P_2$ project onto
-  subspaces $S_1$ and $S_2$ respectively, then $P_1P_2$ will project onto the
-  intersection of $S_1$ and $S_2$, i.e., $S_1 \cap S_2$.
-\end{definition}
-
-% \amr{ 
-%   Projections include $\mathbb{0}, \proj{\psi}$ and $P_1 + P_2$ and
-%   $P_1 . P_2$ if $P_1$ and $P_2$ commute.
-%   When we write an event as $\sum E_i$ we are implicitly assuming they
-%   are commutative.
-%   Orthogonal implies commutative but not vice-versa
-% }
-% \yutsung{
-%   I checked \\
-%   \url{http://math.stackexchange.com/questions/1146893/on-the-sum-of-projection-operators}.\\
-%   Actually, they said $P_1 P_2 = P_2 P_1 = 0$, and the last $= 0$ is orthogonal.
-% }
+Based on the set of events, we can define the quantum probability
+space.
 
 \begin{definition}[Quantum Probability Space~\cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010}]
   Given a Hilbert space $\Hilb$, a \emph{quantum probability space}
@@ -967,6 +945,32 @@ where $\tensor*[_{O}]{\sum}{_{i}}$ specifies that we add operators,
 and the preposing $O$ may be dropped when summands are clearly operators.
 \end{itemize}
 \qed\end{definition}
+
+Comparing to the classical probability space, the empty set~$\emptyset$
+corresponds to the empty projection~$\mathbb{0}$ and the event of
+whole sample space~$\Omega$ corresponds to the identity projection~$\mathbb{1}$.
+In contrast, the union~$\cup$ of any two events always gives an
+event classically, the operator addition~$\tensor*[_{\mathscr{O}}]{+}{}$
+of two projections may not be a projection. As the result, the equation
+$\pmeas(E_{1}\cup E_{2})=\pmeas(E_{1})\tensor*[_{\mathbb{R}}]{+}{}\pmeas(E_{2})$
+is always defined, and it is true when $E_{1}$ and $E_{2}$ are disjoint;
+however, $\mu\left(E_{1}\tensor*[_{\mathscr{O}}]{+}{}E_{2}\right)=\mu(E_{1})\tensor*[_{\mathbb{R}}]{+}{}\mu(E_{2})$
+is always true whenever the left-handed side is defined. Whether equation
+is defined also effects the further properties of quantum probability
+space.
+
+\begin{definition}{[}Orthogonal Complement; Commutativity~\cite{peres1995quantum}{]} 
+\begin{itemize}
+\item If $P$ is a projection operator, then $\mathbb{1}\tensor*[_{O}]{-}{}P$
+is also a projection operator.
+\end{itemize}
+Projection operators $P_1$ and $P_2$ commute if $P_1P_2 =
+  P_2P_1$;
+If the projections $P_1$ and $P_2$ commute then $P_1P_2$ is also
+  a projection. Moreover, if $P_1$ and $P_2$ project onto
+  subspaces $S_1$ and $S_2$ respectively, then $P_1P_2$ will project onto the
+  intersection of $S_1$ and $S_2$, i.e., $S_1 \cap S_2$.
+\end{definition}
 
 %%%%%
 \subsection{Quantum Probability Measures}
