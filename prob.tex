@@ -908,7 +908,7 @@ events can be defined recursively as follow:
 ``orthogonal projection" or ``self-adjoint projection" to
 emphasize $P^{\dagger} = P$~\cite{Maassen2010}.}
 \begin{itemize}
-\item $\mathbb{0}$ and $\mathbb{1}$ are a projection. 
+\item $\mathbb{0}$ is a projection. 
 \item For any pure state~$\ket{\psi}$, $\proj{\psi}$ is a projection
 operator. 
 \item Projection operators $P_1$ and $P_2$ are orthogonal if $P_1P_2 =
@@ -916,12 +916,12 @@ operator.
 is also a projection, where the preposing subscript $\mathscr{O}$
 means $\tensor*[_{\mathscr{O}}]{+}{}$ is an operation between operators,
 and may be dropped when summands are clearly operators. 
-\item For any pure state~$\ket{\psi}$, $\proj{\psi}$ is a projection
-operator. Conversely, every projection~$P$ can be expressed as $\sum_{j}\proj{\psi_{j}}$,
+\item Conversely, every projection~$P$ can be expressed as
+$\tensor*[_{\mathscr{O}}]{\sum}{_j}\proj{\psi_{j}}$,
 where $P$ actually projects onto the linear subspace~$S$ which
 has an orthonormal basis~$\{\ket{\psi_{j}}\}$. 
 \end{itemize}
-\end{definition}
+\qed\end{definition}
 
 Based on the set of events, we can define the quantum probability
 space.
@@ -937,12 +937,9 @@ space.
     the expectation value of $A$. We does not take this approach
     because we want to focus only on probability. }
 \begin{itemize}
-\item The set of events consists of all projections as in
-  definition~\ref{def:Projection};
 \item $\mu(\mathbb{1})=1$, and 
-\item for mutually orthogonal projections $E_{i}$, we have $\mu\left(\tensor*[_{O}]{\sum}{_{i}}E_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i}}\mu\left(E_{i}\right)$,
-where $\tensor*[_{O}]{\sum}{_{i}}$ specifies that we add operators,
-and the preposing $O$ may be dropped when summands are clearly operators.
+\item for mutually orthogonal projections $E_{i}$, we have 
+$\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i}}E_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i}}\mu\left(E_{i}\right)$.
 \end{itemize}
 \qed\end{definition}
 
@@ -950,9 +947,9 @@ Comparing to the classical probability space, the empty set~$\emptyset$
 corresponds to the empty projection~$\mathbb{0}$ and the event of
 whole sample space~$\Omega$ corresponds to the identity projection~$\mathbb{1}$.
 In contrast, the union~$\cup$ of any two events always gives an
-event classically, the operator addition~$\tensor*[_{\mathscr{O}}]{+}{}$
-of two projections may not be a projection. As the result, the equation
-$\pmeas(E_{1}\cup E_{2})=\pmeas(E_{1})\tensor*[_{\mathbb{R}}]{+}{}\pmeas(E_{2})$
+event classically, but the operator addition~$\tensor*[_{\mathscr{O}}]{+}{}$
+of two projections may not be a projection. As the result, the classical
+condition~$\pmeas(E_{1}\cup E_{2})=\pmeas(E_{1})\tensor*[_{\mathbb{R}}]{+}{}\pmeas(E_{2})$
 is always defined, and it is true when $E_{1}$ and $E_{2}$ are disjoint;
 however, $\mu\left(E_{1}\tensor*[_{\mathscr{O}}]{+}{}E_{2}\right)=\mu(E_{1})\tensor*[_{\mathbb{R}}]{+}{}\mu(E_{2})$
 is always true whenever the left-handed side is defined. Whether equation
@@ -961,8 +958,10 @@ space.
 
 \begin{definition}{[}Orthogonal Complement; Commutativity~\cite{peres1995quantum}{]} 
 \begin{itemize}
-\item If $P$ is a projection operator, then $\mathbb{1}\tensor*[_{O}]{-}{}P$
-is also a projection operator.
+\item If $P$ is a projection operator, then $\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P$
+is also a projection operator. It is orthogonal to $P$, $\mu\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=1\tensor*[_{\mathbb{R}}]{-}{}\mu\left(P\right)$,
+and it corresponds to the complement event~$\Omega\backslash E$
+in classical probability.
 \end{itemize}
 Projection operators $P_1$ and $P_2$ commute if $P_1P_2 =
   P_2P_1$;
@@ -970,7 +969,7 @@ If the projections $P_1$ and $P_2$ commute then $P_1P_2$ is also
   a projection. Moreover, if $P_1$ and $P_2$ project onto
   subspaces $S_1$ and $S_2$ respectively, then $P_1P_2$ will project onto the
   intersection of $S_1$ and $S_2$, i.e., $S_1 \cap S_2$.
-\end{definition}
+\qed\end{definition}
 
 %%%%%
 \subsection{Quantum Probability Measures}
