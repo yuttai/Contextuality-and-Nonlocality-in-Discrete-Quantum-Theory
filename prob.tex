@@ -475,14 +475,16 @@ event) is also taken into consideration. Formally, for a general event
 $E$ with probability $[l,r]$, the evidence that
 contradicts $E$ is an evidence supporting the complement of $E$. The
 complement of $E$ must therefore have probability
-$\left[1-r,1-l\right]$ which we abbreviate $1-\left[l,r\right]$. Given
+$\left[1-r,1-l\right]$ which we abbreviate $1\tensor*[_{\mathscr{I}}]{-}{}\left[l,r\right]$,
+where the preposing $\mathscr{I}$ specifies we subtracts intervals,
+and may be dropped clearly by content. Given
 a collection of intervals $\mathscr{I}$, an
 $\mathscr{I}$--interval-valued probability measure is a function
 $\pmeas : \events \rightarrow \mathscr{I}$ such that:
 \begin{itemize}
 \item $\pmeas(\emptyset)=[0,0]$, 
 \item $\pmeas(\Omega)=[1,1]$, 
-\item $\pmeas\left(\Omega\backslash E\right)=1-\pmeas\left(E\right)$,
+\item $\pmeas\left(\Omega\backslash E\right)=1\tensor*[_{\mathscr{I}}]{-}{}\pmeas\left(E\right)$,
   and 
 \item for a collection $E_{i}$ of pairwise disjoint events, we have $\pmeas\left(\bigcup_{i}E_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i}}\pmeas\left(E_{i}\right)$,
 where $\tensor*[_{\mathscr{I}}]{\sum}{_{i}}[l_{i},r_{i}]=\left[\tensor*[_{\mathbb{R}}]{\sum}{_{i}}l_{i},\tensor*[_{\mathbb{R}}]{\sum}{_{i}}r_{i}\right]$.
@@ -906,20 +908,22 @@ events can be defined recursively as follow:
 ``orthogonal projection" or ``self-adjoint projection" to
 emphasize $P^{\dagger} = P$~\cite{Maassen2010}.}
 \begin{itemize}
-\item $\mathbb{0}$ is a projection.
-\item For any pure state~$\ket{\psi}$, $P=\proj{\psi}$ is a projection. 
+\item $\mathbb{0}$ and $\mathbb{1}$ are a projection. 
+\item For any pure state~$\ket{\psi}$, $\proj{\psi}$ is a projection
+operator. 
 \item Projection operators $P_1$ and $P_2$ are orthogonal if $P_1P_2 =
   P_2P_1 = \mathbb{0}$. The sum of two orthogonal projections~$P_1 +
-  P_2$ is also a projection. Moreover, if $P_1$ and $P_2$ project onto
-  subspaces $S_1$ and $S_2$ respectively, then $P_1 + P_2$ will project onto the
-  linear span of $S_1$ and $S_2$, i.e., $\left\{\ket{\psi_1} + \ket{\psi_2}
-  \middle| \ket{\psi_1}\in S_1 \textrm{ and } \ket{\psi_2}\in S_2 \right\}$.
+  P_2$ is also a projection. 
+\item Conversely, every projection~$P$ can be expressed as $\sum_{j}\proj{\psi_{j}}$,
+where $P$ actually projects onto the linear subspace~$S$ which
+has an orthonormal basis~$\{\ket{\psi_{j}}\}$. 
 \end{itemize}
 \end{definition}
 
-Notice that the preceding definition exhausts all possible projection operators.
-Because every linear subspace~$S$ has an orthonormal basis~$\{\ket{\psi_j}\}$,
-the projection onto $S$ can always expressed as $\sum_j\proj{\psi_j}$.
+Comparing to the classical events, the empty set~$\emptyset$ corresponds
+to the empty projection~$\mathbb{0}$, the event of whole sample
+space~$\Omega$ corresponds to the identity projection~$\mathbb{1}$.
+
 As operators, we can also multiply projections together. 
 
 \begin{definition}[Commutativity~\cite{peres1995quantum}]
