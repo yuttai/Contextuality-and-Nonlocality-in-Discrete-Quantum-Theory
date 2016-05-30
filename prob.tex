@@ -91,6 +91,42 @@ Fuzzy quantum mechanics:
 \item Another version \url{https://pdfs.semanticscholar.org/3e9c/5f6f48d9ef426655dc799e9b287d754e86c1.pdf}
 \end{itemize}
 
+%%%%%
+\subsection{Plan}
+
+In the remainder of the paper, we consider variations of quantum
+probability spaces motivated by computation of numerical quantities in
+a world with limited resources:
+\begin{itemize}
+\item Instead of the Hilbert space $\Hilb$ (constructed over the
+  uncountable and uncomputable complex numbers $\mathbb{C}$), we will
+  consider variants constructed over finite
+  fields~\cite{HansonOrtizSabryEtAl2015,DQT2014,geometry2013}.
+\item Instead of real-valued probability measures producing results in
+  the uncountable and uncomputable interval $[0,1]$, we will consider
+  finite set-valued probability measures~\cite{Artstein1972,PuriRalescu1983}.
+\end{itemize}
+We will then ask if it is possible to construct variants of quantum
+probability spaces under these conditions. The main question is
+related to the definition of probability measures: is it possible to
+still define a probability measure as a function that depends on a
+single state? Specifically,
+\begin{itemize}
+\item given a state $\ket{\psi}$, is there a probability measure
+  mapping events to probabilities that only depends on $\ket{\psi}$?
+  In the conventional quantum probability space, the answer is yes by
+  the Born rule~\cite{Born1984,Mermin2007} and the map is given by:
+  $E \mapsto \ip{\psi}{E\psi}$.
+\item given a probability measure $\mu$
+  mapping each event $E$
+  to a probability, is there a \emph{unique} state $\psi$
+  such that $\mu(E)
+  =
+  \ip{\psi}{E\psi}$? In the conventional case, the answer is yes by
+  Gleason's
+  theorem~\cite{gleason1957,peres1995quantum,Redhead1987-REDINA}.
+\end{itemize}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Classical Probability Spaces}
   
@@ -501,7 +537,8 @@ $\mathscr{I}$--interval-valued probability measure is a function
 $\pmeas : \events \rightarrow \mathscr{I}$ such
 that~\cite{JamisonLodwick2004}:\footnote{Notice that the belief function defined by Dempster~\cite{Dempster1967}
 and Shafer~\cite{Shafer1976} is a special case of the interval-valued
-probability measures.}
+probability measures. Depending on how quantum interval probability goes, this
+section may be specialized to Dempster and Shafer only.}
 \begin{itemize}
 \item $\pmeas(\emptyset)=[0,0]$, 
 \item $\pmeas(\Omega)=[1,1]$, 
@@ -920,6 +957,8 @@ To properly explain the previous example and generalize to arbitrary
 quantum systems, we formally discuss projection operators and then
 define a quantum probability space. 
 
+\subsection{Quantum Events}
+
 \begin{definition}[Projection Operators;
 Orthogonality~\cite{10.2307/2308516,Redhead1987-REDINA,peres1995quantum,Griffiths2003,Swart2013}]
 \label{def:Projection} Given a Hilbert space $\Hilb$, an event\footnote{An event
@@ -990,119 +1029,119 @@ operator if and only if they commute. This corresponds to the classical intersec
 between events. 
 \end{itemize}
 \qed\end{definition}
-\yutsung{The definition of independence is different from different
-sources:
-\begin{enumerate}
-\item In Swart's~\cite{Swart2013}, given a $*$-algebra~$\mathscr{A}$,
-two commuting sub-$*$-algebra $\mathscr{A}_{1}$ and $\mathscr{A}_{2}$ are \emph{logically
-independent} if for all probability measure~$\mu_{1}$ on $\mathscr{A}_{1}$ and
-$\mu_{2}$ on $\mathscr{A}_{2}$, there is an unique probability measure~$\mu$
-on the smallest sub-$*$-algebra of $\mathscr{A}$ containing both
-$\mathscr{A}_{1}$ and $\mathscr{A}_{2}$ such that $\mu\left(A_{1}
-A_{2}\right)=\mu_{1}\left(A_{1}\right)\mu_{2}\left(A_{2}\right)$
-for all $A_{1}\in\mathscr{A}_{1}$ and $A_{2}\in\mathscr{A}_{2}$. If two
-sub-$*$-algebra $\mathscr{A}_{1}$ and $\mathscr{A}_{2}$ are logically
-independent, the smallest sub-$*$-algebra containing both $\mathscr{A}_{1}$ and
-$\mathscr{A}_{2}$ is denoted by $\mathscr{A}_{1}\otimes\mathscr{A}_{2}$, and
-its probability measure~$\mu$ is denoted by $\mu_{1}\otimes\mu_{2}$\\
-Then, Swart proved the Bell inequality on logically independence $*$-algebras
-with a product state which gives a clear physical meaning. However, this
-only defines the independence of algebras instead of events.
-\item In Yuan's~\cite{Yuan2012}, given a $\mu$ on a $*$-algebra~$\mathscr{A}$,
-two sub-$*$-algebra $\mathscr{A}_{1}$ and $\mathscr{A}_{2}$ are \emph{independent}
-if $\mu\left(A_{1}A_{2}\right)=\mu\left(A_{1}\right)\mu\left(A_{2}\right)$
-for all $A_{1}\in\mathscr{A}_{1}$ and $A_{2}\in\mathscr{A}_{2}$.
-The same problem as the previous one: this defines the
-independent of algebras, but not events. Morever, I haven't found a clear
-physical meaning of this definition, yet\ldots
-\item In order to understand the definition of independence in~\cite{GuehneKleinmannCabelloEtAl2010},
-we need to first understand their notation because they focused on the
-hidden-variable (HV) models. Let $\lambda$ is the HV, $A_{i}$ is
-the measurement of the observable~$A$ at the position $i$ in the
-sequence. For example, $A_{1}B_{2}C_{3}$ denotes the sequence of
-measuring $A$ first, then $B$, and finally $C$. Given a fixed $\lambda$, we
-assume the outcome of an observable is deterministic. For example, the
-outcome of $B_{2}$ from the preceding sequence is denoted by $v\left(B_{2}\middle|A_{1}B_{2}C_{3}\right)$.
-Then, the outcome of $A$ is \emph{independent} of whether $B$ is measured
-before or after $A$ is $v\left(A_{1}\right)=v\left(A_{2}\middle|B_{1}A_{2}\right)$.\\
-If the outcomes of compatible observables are independent for any
-HV~$\lambda$, the HV model is non-contextual. (Notice that they have their own
-definition of ``compatible observables'' for their HV model\ldots)\\
-Compare to the previous definitions, this definition is appealing
-in a sense that projection operators are special cases of observables,
-and this definition has a physical meaning related to contextuality.
-However, before adopting their definition, we need to reformulate
-the definition to the usual quantum model....
-\item For the definition we used last time, given a quantum probability
-measure~$\mu:\events\rightarrow[0,1]$, two commuting projections
-$P_{1}$ and $P_{2}$ are \emph{independent} if
-$\mu\left(P_{1}P_{2}\right)=\mu\left(P_{1}\right)\mu\left(P_{2}\right)$.
-We have two examples:
-\end{enumerate}
-}
+% \yutsung{The definition of independence is different from different
+% sources:
+% \begin{enumerate}
+% \item In Swart's~\cite{Swart2013}, given a $*$-algebra~$\mathscr{A}$,
+% two commuting sub-$*$-algebra $\mathscr{A}_{1}$ and $\mathscr{A}_{2}$ are \emph{logically
+% independent} if for all probability measure~$\mu_{1}$ on $\mathscr{A}_{1}$ and
+% $\mu_{2}$ on $\mathscr{A}_{2}$, there is an unique probability measure~$\mu$
+% on the smallest sub-$*$-algebra of $\mathscr{A}$ containing both
+% $\mathscr{A}_{1}$ and $\mathscr{A}_{2}$ such that $\mu\left(A_{1}
+% A_{2}\right)=\mu_{1}\left(A_{1}\right)\mu_{2}\left(A_{2}\right)$
+% for all $A_{1}\in\mathscr{A}_{1}$ and $A_{2}\in\mathscr{A}_{2}$. If two
+% sub-$*$-algebra $\mathscr{A}_{1}$ and $\mathscr{A}_{2}$ are logically
+% independent, the smallest sub-$*$-algebra containing both $\mathscr{A}_{1}$ and
+% $\mathscr{A}_{2}$ is denoted by $\mathscr{A}_{1}\otimes\mathscr{A}_{2}$, and
+% its probability measure~$\mu$ is denoted by $\mu_{1}\otimes\mu_{2}$\\
+% Then, Swart proved the Bell inequality on logically independence $*$-algebras
+% with a product state which gives a clear physical meaning. However, this
+% only defines the independence of algebras instead of events.
+% \item In Yuan's~\cite{Yuan2012}, given a $\mu$ on a $*$-algebra~$\mathscr{A}$,
+% two sub-$*$-algebra $\mathscr{A}_{1}$ and $\mathscr{A}_{2}$ are \emph{independent}
+% if $\mu\left(A_{1}A_{2}\right)=\mu\left(A_{1}\right)\mu\left(A_{2}\right)$
+% for all $A_{1}\in\mathscr{A}_{1}$ and $A_{2}\in\mathscr{A}_{2}$.
+% The same problem as the previous one: this defines the
+% independent of algebras, but not events. Morever, I haven't found a clear
+% physical meaning of this definition, yet\ldots
+% \item In order to understand the definition of independence in~\cite{GuehneKleinmannCabelloEtAl2010},
+% we need to first understand their notation because they focused on the
+% hidden-variable (HV) models. Let $\lambda$ is the HV, $A_{i}$ is
+% the measurement of the observable~$A$ at the position $i$ in the
+% sequence. For example, $A_{1}B_{2}C_{3}$ denotes the sequence of
+% measuring $A$ first, then $B$, and finally $C$. Given a fixed $\lambda$, we
+% assume the outcome of an observable is deterministic. For example, the
+% outcome of $B_{2}$ from the preceding sequence is denoted by $v\left(B_{2}\middle|A_{1}B_{2}C_{3}\right)$.
+% Then, the outcome of $A$ is \emph{independent} of whether $B$ is measured
+% before or after $A$ is $v\left(A_{1}\right)=v\left(A_{2}\middle|B_{1}A_{2}\right)$.\\
+% If the outcomes of compatible observables are independent for any
+% HV~$\lambda$, the HV model is non-contextual. (Notice that they have their own
+% definition of ``compatible observables'' for their HV model\ldots)\\
+% Compare to the previous definitions, this definition is appealing
+% in a sense that projection operators are special cases of observables,
+% and this definition has a physical meaning related to contextuality.
+% However, before adopting their definition, we need to reformulate
+% the definition to the usual quantum model....
+% \item For the definition we used last time, given a quantum probability
+% measure~$\mu:\events\rightarrow[0,1]$, two commuting projections
+% $P_{1}$ and $P_{2}$ are \emph{independent} if
+% $\mu\left(P_{1}P_{2}\right)=\mu\left(P_{1}\right)\mu\left(P_{2}\right)$.
+% We have two examples:
+% \end{enumerate}
+% }
+% 
+% \yutsung{\begin{example}[Independence of product state] Consider
+% the 2-qubit Hilbert space with a probability measure~$\mu\left(P\right)=\melement{\ps\ps}{P}$
+% with the following projections:
+% \[
+% \begin{array}{rcl}
+% P_{1}=\proj{00}+\proj{01},\quad P_{2}=\proj{00}+\proj{10},\quad P_{3}=\proj{10}+\proj{11},\quad P_{4}=\proj{00}\end{array}
+% \]
+% and their probabilities: 
+% \[
+% \begin{array}{rcl}
+% \mu\left(\mathbb{0}\right)=0,\quad\mu\left(P_{1}\right)=1/2,\quad\mu\left(P_{2}\right)=1/2,\quad\mu\left(P_{3}\right)=1/2,\quad\mu\left(P_{4}\right)=1/4\textrm{ .}\end{array}
+% \]
+% On one hand, $P_{1}$ and $P_{3}$ are complement to each other so
+% we have
+% \begin{eqnarray*}
+% \mu\left(P_{1}\right)+\mu\left(P_{3}\right) & = & \frac{1}{2}+\frac{1}{2}=1\\
+% \mu\left(P_{1}\right)\mu\left(P_{3}\right) & = & \frac{1}{4}\ne0=\mu\left(\mathbb{0}\right)=\mu\left(P_{1}P_{3}\right)
+% \end{eqnarray*}
+% Therefore, $P_{1}$ and $P_{3}$ commute, but are not independent. On
+% the other hand, $P_{1}$ also commutes with $P_{2}$, and
+% \begin{eqnarray*}
+% \mu\left(P_{1}\right)\mu\left(P_{2}\right) & = & \frac{1}{4}=\mu\left(P_{4}\right)=\mu\left(P_{1}P_{2}\right)
+% \end{eqnarray*}
+% so that $P_{1}$ and $P_{2}$ are independent.\qed\end{example}
+% 
+% \begin{example}[Independence of any states] In general, for any orthonormal
+% basis~$\left\{ \ket{\psi_{j}}\right\} _{j=0}^{3}$, we can always
+% pick 
+% \[
+% \begin{array}{rcl}
+% P_{1}=\proj{\psi_{0}}+\proj{\psi_{1}},\quad P_{2}=\proj{\psi_{0}}+\proj{\psi_{2}},\quad P_{3}=\proj{\psi_{0}}\textrm{ .}\end{array}
+% \]
+% With the probability measure~$\mu\left(P\right)=\melement{\psi}{P}$,
+% where $\ket{\psi}=\frac{1}{2}\sum_{j=0}^{3}\ket{\psi_{j}}$, their
+% probabilities are
+% \[
+% \begin{array}{rcl}
+% \mu\left(P_{1}\right)=1/2,\quad\mu\left(P_{2}\right)=1/2,\quad\mu\left(P_{3}\right)=1/4\textrm{ ,}\end{array}
+% \]
+% and we have
+% \begin{eqnarray*}
+% \mu\left(P_{1}\right)\mu\left(P_{2}\right) & = & \frac{1}{4}=\mu\left(P_{3}\right)=\mu\left(P_{1}P_{2}\right)\textrm{ .}
+% \end{eqnarray*}
+% In particular, the following four Bell states form an orthonormal
+% basis~\cite{CabelloPRL.86.2001}: 
+% \[
+% \ket{\phi^{\pm}} = \frac{1}{\sqrt{2}}\left(\ket{00}\pm\ket{11}\right),\quad
+% \ket{\psi^{\pm}} = \frac{1}{\sqrt{2}}\left(\ket{01}\pm\ket{10}\right)\textrm{ .}
+% \]
+% Their sum is also a Bell state~
+% \[
+% \ket{\psi}=\frac{1}{2}\left(\ket{\phi^{+}}+\ket{\phi^{-}}+\ket{\psi^{+}}+\ket{\psi^{-}}\right)=\frac{1}{\sqrt{2}}\left(\ket{00}+\ket{01}\right)\textrm{ .}
+% \]
+% Thus, $\proj{\phi^{+}}+\proj{\psi^{+}}$ and $\proj{\phi^{+}}+\proj{\psi^{-}}$
+% are independent projections with respect to the probability
+% measure~$\mu\left(P\right)=\melement{\psi}{P}$.\qed\end{example}}
 
-\yutsung{\begin{example}[Independence of product state] Consider
-the 2-qubit Hilbert space with a probability measure~$\mu\left(P\right)=\melement{\ps\ps}{P}$
-with the following projections:
-\[
-\begin{array}{rcl}
-P_{1}=\proj{00}+\proj{01},\quad P_{2}=\proj{00}+\proj{10},\quad P_{3}=\proj{10}+\proj{11},\quad P_{4}=\proj{00}\end{array}
-\]
-and their probabilities: 
-\[
-\begin{array}{rcl}
-\mu\left(\mathbb{0}\right)=0,\quad\mu\left(P_{1}\right)=1/2,\quad\mu\left(P_{2}\right)=1/2,\quad\mu\left(P_{3}\right)=1/2,\quad\mu\left(P_{4}\right)=1/4\textrm{ .}\end{array}
-\]
-On one hand, $P_{1}$ and $P_{3}$ are complement to each other so
-we have
-\begin{eqnarray*}
-\mu\left(P_{1}\right)+\mu\left(P_{3}\right) & = & \frac{1}{2}+\frac{1}{2}=1\\
-\mu\left(P_{1}\right)\mu\left(P_{3}\right) & = & \frac{1}{4}\ne0=\mu\left(\mathbb{0}\right)=\mu\left(P_{1}P_{3}\right)
-\end{eqnarray*}
-Therefore, $P_{1}$ and $P_{3}$ commute, but are not independent. On
-the other hand, $P_{1}$ also commutes with $P_{2}$, and
-\begin{eqnarray*}
-\mu\left(P_{1}\right)\mu\left(P_{2}\right) & = & \frac{1}{4}=\mu\left(P_{4}\right)=\mu\left(P_{1}P_{2}\right)
-\end{eqnarray*}
-so that $P_{1}$ and $P_{2}$ are independent.\qed\end{example}
-
-\begin{example}[Independence of any states] In general, for any orthonormal
-basis~$\left\{ \ket{\psi_{j}}\right\} _{j=0}^{3}$, we can always
-pick 
-\[
-\begin{array}{rcl}
-P_{1}=\proj{\psi_{0}}+\proj{\psi_{1}},\quad P_{2}=\proj{\psi_{0}}+\proj{\psi_{2}},\quad P_{3}=\proj{\psi_{0}}\textrm{ .}\end{array}
-\]
-With the probability measure~$\mu\left(P\right)=\melement{\psi}{P}$,
-where $\ket{\psi}=\frac{1}{2}\sum_{j=0}^{3}\ket{\psi_{j}}$, their
-probabilities are
-\[
-\begin{array}{rcl}
-\mu\left(P_{1}\right)=1/2,\quad\mu\left(P_{2}\right)=1/2,\quad\mu\left(P_{3}\right)=1/4\textrm{ ,}\end{array}
-\]
-and we have
-\begin{eqnarray*}
-\mu\left(P_{1}\right)\mu\left(P_{2}\right) & = & \frac{1}{4}=\mu\left(P_{3}\right)=\mu\left(P_{1}P_{2}\right)\textrm{ .}
-\end{eqnarray*}
-In particular, the following four Bell states form an orthonormal
-basis~\cite{CabelloPRL.86.2001}: 
-\[
-\ket{\phi^{\pm}} = \frac{1}{\sqrt{2}}\left(\ket{00}\pm\ket{11}\right),\quad
-\ket{\psi^{\pm}} = \frac{1}{\sqrt{2}}\left(\ket{01}\pm\ket{10}\right)\textrm{ .}
-\]
-Their sum is also a Bell state~
-\[
-\ket{\psi}=\frac{1}{2}\left(\ket{\phi^{+}}+\ket{\phi^{-}}+\ket{\psi^{+}}+\ket{\psi^{-}}\right)=\frac{1}{\sqrt{2}}\left(\ket{00}+\ket{01}\right)\textrm{ .}
-\]
-Thus, $\proj{\phi^{+}}+\proj{\psi^{+}}$ and $\proj{\phi^{+}}+\proj{\psi^{-}}$
-are independent projections with respect to the probability
-measure~$\mu\left(P\right)=\melement{\psi}{P}$.\qed\end{example}
-
-The definition of independence is interesting, and we definitely need
-to discuss it when we want to discuss Bell's theorem and the Kochen-Specker
-theorem. However, the definition diverges, and none of the source I have checked 
-support our definition, yet. We may need to check more papers to find a source
-to support our definition or to find the majority definition (if there is one)...}
+\footnote{\yutsung{The definition of independence is interesting, and we
+definitely need to discuss it when we want to discuss Bell's theorem and the Kochen-Specker
+theorem. However, the definition diverges. So we just leave it so far, and we
+will go back if we really need it. (Maybe when discussing repeating
+experiments?)}}
 
 %%%%%
 \subsection{Quantum Probability Measures}
@@ -1157,6 +1196,12 @@ On the other hand, $\mu$ cannot be induced by any mixed state because
 \]
 However, $\mu_{\rho}(E)=1$ if and only if $\rho$ represents a pure
 state and $\rho=E$. \qed\end{example}
+
+\subsection{Measuring Quantum Probabilities}
+\amr{preparation fuzzy, device fuzzy, Meyer~\cite{PhysRevLett.83.3751}}
+
+\subsection{Quantum Interval-valued Probabilities Measures}
+\cite{Vourdas2014, Vourdas2015}
 
 \amr{
 The idea will be the following. First describe quantum probability
@@ -1242,41 +1287,6 @@ However, the only subspace orthogonal to $E'$ is span by $\ket{\phi}$.
 Hence, $\tilde{\mu}'_{\phi}=\tilde{\mu}_{\phi}$.
 \end{proof}
 
-%%%%%
-\subsection{Plan}
-
-In the remainder of the paper, we consider variations of quantum
-probability spaces motivated by computation of numerical quantities in
-a world with limited resources:
-\begin{itemize}
-\item Instead of the Hilbert space $\Hilb$ (constructed over the
-  uncountable and uncomputable complex numbers $\mathbb{C}$), we will
-  consider variants constructed over finite
-  fields~\cite{HansonOrtizSabryEtAl2015,DQT2014,geometry2013}.
-\item Instead of real-valued probability measures producing results in
-  the uncountable and uncomputable interval $[0,1]$, we will consider
-  finite set-valued probability measures~\cite{Artstein1972,PuriRalescu1983}.
-\end{itemize}
-We will then ask if it is possible to construct variants of quantum
-probability spaces under these conditions. The main question is
-related to the definition of probability measures: is it possible to
-still define a probability measure as a function that depends on a
-single state? Specifically,
-\begin{itemize}
-\item given a state $\ket{\psi}$, is there a probability measure
-  mapping events to probabilities that only depends on $\ket{\psi}$?
-  In the conventional quantum probability space, the answer is yes by
-  the Born rule~\cite{Born1984,Mermin2007} and the map is given by:
-  $E \mapsto \ip{\psi}{E\psi}$.
-\item given a probability measure $\mu$
-  mapping each event $E$
-  to a probability, is there a \emph{unique} state $\psi$
-  such that $\mu(E)
-  =
-  \ip{\psi}{E\psi}$? In the conventional case, the answer is yes by
-  Gleason's
-  theorem~\cite{gleason1957,peres1995quantum,Redhead1987-REDINA}.
-\end{itemize}
 
 
 % If there may be more than one probability measure, we will discuss
