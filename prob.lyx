@@ -319,6 +319,153 @@ status collapsed
 
 \begin_layout Plain Layout
 
+%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Plan
+\end_layout
+
+\begin_layout Standard
+In the remainder of the paper, we consider variations of quantum probability
+ spaces motivated by computation of numerical quantities in a world with
+ limited resources: 
+\end_layout
+
+\begin_layout Itemize
+Instead of the Hilbert space 
+\begin_inset Formula $\Hilb$
+\end_inset
+
+ (constructed over the uncountable and uncomputable complex numbers 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+), we will consider variants constructed over finite fields
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "HansonOrtizSabryEtAl2015,DQT2014,geometry2013"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Instead of real-valued probability measures producing results in the uncountable
+ and uncomputable interval 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+, we will consider finite set-valued probability measures
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Artstein1972,PuriRalescu1983"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We will then ask if it is possible to construct variants of quantum probability
+ spaces under these conditions.
+ The main question is related to the definition of probability measures:
+ is it possible to still define a probability measure as a function that
+ depends on a single state? Specifically, 
+\end_layout
+
+\begin_layout Itemize
+given a state 
+\begin_inset Formula $\ket{\psi}$
+\end_inset
+
+, is there a probability measure mapping events to probabilities that only
+ depends on 
+\begin_inset Formula $\ket{\psi}$
+\end_inset
+
+? In the conventional quantum probability space, the answer is yes by the
+ Born rule
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Born1984,Mermin2007"
+
+\end_inset
+
+ and the map is given by: 
+\begin_inset Formula $E\mapsto\ip{\psi}{E\psi}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+given a probability measure 
+\begin_inset Formula $\mu$
+\end_inset
+
+ mapping each event 
+\begin_inset Formula $E$
+\end_inset
+
+ to a probability, is there a 
+\emph on
+unique
+\emph default
+ state 
+\begin_inset Formula $\psi$
+\end_inset
+
+ such that 
+\begin_inset Formula $\mu(E)=\ip{\psi}{E\psi}$
+\end_inset
+
+? In the conventional case, the answer is yes by Gleason's theorem
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gleason1957,peres1995quantum,Redhead1987-REDINA"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end_layout
 
@@ -816,9 +963,9 @@ Measuring Probabilities: Buffon's Needle Problem
 \end_layout
 
 \begin_layout Standard
-In previous section, we assume the probability of each event is known a
- priori.
- In reality, we seldom know much about events, but we assume each event
+In previous section, the probability of each event is known a priori.
+ In reality, we seldom know much about events, but we could still assume
+ each event
 \begin_inset space ~
 \end_inset
 
@@ -835,11 +982,40 @@ In previous section, we assume the probability of each event is known a
 \end_inset
 
 .
- 
+ If we want to know the probability
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\pmeas(E)$
 \end_inset
 
- could be approximated by the relative frequency
+, we could run 
+\begin_inset Formula $N$
+\end_inset
+
+ independent trials.
+ Let 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ denote whether the event
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $E$
+\end_inset
+
+ occurs in the 
+\begin_inset Formula $i$
+\end_inset
+
+-th trial or not, then 
+\begin_inset Formula $\pmeas(E)$
+\end_inset
+
+ could be approximated to given accuracy by the relative frequency
 \begin_inset space ~
 \end_inset
 
@@ -847,27 +1023,19 @@ In previous section, we assume the probability of each event is known a
 \begin_inset Formula $\frac{1}{N}\sum_{i}x_{i}$
 \end_inset
 
-, where 
-\begin_inset Formula $x_{i}$
-\end_inset
-
- is the outcome of 
-\begin_inset Formula $i$
-\end_inset
-
--th trial within total 
+ with the probability converging to one as 
 \begin_inset Formula $N$
 \end_inset
 
- independent trials.
- This fact is called by the law of large numbers
+ goes to infinity.
+ This fact is called the law of large numbers
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Bernoulli1713,Kolmogorov1950,Uspensky1937,Shafer1976,544199"
+key "Bernoulli2006,Kolmogorov1950,Uspensky1937,Shafer1976,544199"
 
 \end_inset
 
@@ -5414,6 +5582,8 @@ key "Shafer1976"
 \end_inset
 
  is a special case of the interval-valued probability measures.
+ Depending on how quantum interval probability goes, this section may be
+ specialized to Dempster and Shafer only.
 \end_layout
 
 \end_inset
@@ -11482,8 +11652,12 @@ end{example}
 
 \begin_layout Standard
 To properly explain the previous example and generalize to arbitrary quantum
- systems, we formally discuss projection operators and then define a quantum
- probability space.
+ systems, we formally discuss projection operators, define quantum probability
+ measures, and extend to quantum interval-valued probability.
+\end_layout
+
+\begin_layout Subsection
+Quantum Events
 \end_layout
 
 \begin_layout Standard
@@ -12111,6 +12285,2257 @@ status collapsed
 
 \begin_layout Plain Layout
 
+% 
+\backslash
+yutsung{The definition of independence is different from different
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% sources:
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+item In Swart's~
+\backslash
+cite{Swart2013}, given a $*$-algebra~$
+\backslash
+mathscr{A}$,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% two commuting sub-$*$-algebra $
+\backslash
+mathscr{A}_{1}$ and $
+\backslash
+mathscr{A}_{2}$ are 
+\backslash
+emph{logically
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% independent} if for all probability measure~$
+\backslash
+mu_{1}$ on $
+\backslash
+mathscr{A}_{1}$ and
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+mu_{2}$ on $
+\backslash
+mathscr{A}_{2}$, there is an unique probability measure~$
+\backslash
+mu$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% on the smallest sub-$*$-algebra of $
+\backslash
+mathscr{A}$ containing both
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+mathscr{A}_{1}$ and $
+\backslash
+mathscr{A}_{2}$ such that $
+\backslash
+mu
+\backslash
+left(A_{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% A_{2}
+\backslash
+right)=
+\backslash
+mu_{1}
+\backslash
+left(A_{1}
+\backslash
+right)
+\backslash
+mu_{2}
+\backslash
+left(A_{2}
+\backslash
+right)$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% for all $A_{1}
+\backslash
+in
+\backslash
+mathscr{A}_{1}$ and $A_{2}
+\backslash
+in
+\backslash
+mathscr{A}_{2}$.
+ If two
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% sub-$*$-algebra $
+\backslash
+mathscr{A}_{1}$ and $
+\backslash
+mathscr{A}_{2}$ are logically
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% independent, the smallest sub-$*$-algebra containing both $
+\backslash
+mathscr{A}_{1}$ and
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+mathscr{A}_{2}$ is denoted by $
+\backslash
+mathscr{A}_{1}
+\backslash
+otimes
+\backslash
+mathscr{A}_{2}$, and
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% its probability measure~$
+\backslash
+mu$ is denoted by $
+\backslash
+mu_{1}
+\backslash
+otimes
+\backslash
+mu_{2}$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Then, Swart proved the Bell inequality on logically independence $*$-algebras
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% with a product state which gives a clear physical meaning.
+ However, this
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% only defines the independence of algebras instead of events.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+item In Yuan's~
+\backslash
+cite{Yuan2012}, given a $
+\backslash
+mu$ on a $*$-algebra~$
+\backslash
+mathscr{A}$,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% two sub-$*$-algebra $
+\backslash
+mathscr{A}_{1}$ and $
+\backslash
+mathscr{A}_{2}$ are 
+\backslash
+emph{independent}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% if $
+\backslash
+mu
+\backslash
+left(A_{1}A_{2}
+\backslash
+right)=
+\backslash
+mu
+\backslash
+left(A_{1}
+\backslash
+right)
+\backslash
+mu
+\backslash
+left(A_{2}
+\backslash
+right)$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% for all $A_{1}
+\backslash
+in
+\backslash
+mathscr{A}_{1}$ and $A_{2}
+\backslash
+in
+\backslash
+mathscr{A}_{2}$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% The same problem as the previous one: this defines the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% independent of algebras, but not events.
+ Morever, I haven't found a clear
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% physical meaning of this definition, yet
+\backslash
+ldots
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+item In order to understand the definition of independence in~
+\backslash
+cite{GuehneKleinmannCabelloEtAl2010},
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% we need to first understand their notation because they focused on the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% hidden-variable (HV) models.
+ Let $
+\backslash
+lambda$ is the HV, $A_{i}$ is
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% the measurement of the observable~$A$ at the position $i$ in the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% sequence.
+ For example, $A_{1}B_{2}C_{3}$ denotes the sequence of
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% measuring $A$ first, then $B$, and finally $C$.
+ Given a fixed $
+\backslash
+lambda$, we
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% assume the outcome of an observable is deterministic.
+ For example, the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% outcome of $B_{2}$ from the preceding sequence is denoted by $v
+\backslash
+left(B_{2}
+\backslash
+middle|A_{1}B_{2}C_{3}
+\backslash
+right)$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Then, the outcome of $A$ is 
+\backslash
+emph{independent} of whether $B$ is measured
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% before or after $A$ is $v
+\backslash
+left(A_{1}
+\backslash
+right)=v
+\backslash
+left(A_{2}
+\backslash
+middle|B_{1}A_{2}
+\backslash
+right)$.
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% If the outcomes of compatible observables are independent for any
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% HV~$
+\backslash
+lambda$, the HV model is non-contextual.
+ (Notice that they have their own
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% definition of ``compatible observables'' for their HV model
+\backslash
+ldots)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Compare to the previous definitions, this definition is appealing
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% in a sense that projection operators are special cases of observables,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% and this definition has a physical meaning related to contextuality.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% However, before adopting their definition, we need to reformulate
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% the definition to the usual quantum model....
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+item For the definition we used last time, given a quantum probability
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% measure~$
+\backslash
+mu:
+\backslash
+events
+\backslash
+rightarrow[0,1]$, two commuting projections
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $P_{1}$ and $P_{2}$ are 
+\backslash
+emph{independent} if
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+mu
+\backslash
+left(P_{1}P_{2}
+\backslash
+right)=
+\backslash
+mu
+\backslash
+left(P_{1}
+\backslash
+right)
+\backslash
+mu
+\backslash
+left(P_{2}
+\backslash
+right)$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% We have two examples:
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{enumerate}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+yutsung{
+\backslash
+begin{example}[Independence of product state] Consider
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% the 2-qubit Hilbert space with a probability measure~$
+\backslash
+mu
+\backslash
+left(P
+\backslash
+right)=
+\backslash
+melement{
+\backslash
+ps
+\backslash
+ps}{P}$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% with the following projections:
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{array}{rcl}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% P_{1}=
+\backslash
+proj{00}+
+\backslash
+proj{01},
+\backslash
+quad P_{2}=
+\backslash
+proj{00}+
+\backslash
+proj{10},
+\backslash
+quad P_{3}=
+\backslash
+proj{10}+
+\backslash
+proj{11},
+\backslash
+quad P_{4}=
+\backslash
+proj{00}
+\backslash
+end{array}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% and their probabilities: 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{array}{rcl}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+mu
+\backslash
+left(
+\backslash
+mathbb{0}
+\backslash
+right)=0,
+\backslash
+quad
+\backslash
+mu
+\backslash
+left(P_{1}
+\backslash
+right)=1/2,
+\backslash
+quad
+\backslash
+mu
+\backslash
+left(P_{2}
+\backslash
+right)=1/2,
+\backslash
+quad
+\backslash
+mu
+\backslash
+left(P_{3}
+\backslash
+right)=1/2,
+\backslash
+quad
+\backslash
+mu
+\backslash
+left(P_{4}
+\backslash
+right)=1/4
+\backslash
+textrm{ .}
+\backslash
+end{array}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% On one hand, $P_{1}$ and $P_{3}$ are complement to each other so
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% we have
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{eqnarray*}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+mu
+\backslash
+left(P_{1}
+\backslash
+right)+
+\backslash
+mu
+\backslash
+left(P_{3}
+\backslash
+right) & = & 
+\backslash
+frac{1}{2}+
+\backslash
+frac{1}{2}=1
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+mu
+\backslash
+left(P_{1}
+\backslash
+right)
+\backslash
+mu
+\backslash
+left(P_{3}
+\backslash
+right) & = & 
+\backslash
+frac{1}{4}
+\backslash
+ne0=
+\backslash
+mu
+\backslash
+left(
+\backslash
+mathbb{0}
+\backslash
+right)=
+\backslash
+mu
+\backslash
+left(P_{1}P_{3}
+\backslash
+right)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{eqnarray*}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Therefore, $P_{1}$ and $P_{3}$ commute, but are not independent.
+ On
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% the other hand, $P_{1}$ also commutes with $P_{2}$, and
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{eqnarray*}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+mu
+\backslash
+left(P_{1}
+\backslash
+right)
+\backslash
+mu
+\backslash
+left(P_{2}
+\backslash
+right) & = & 
+\backslash
+frac{1}{4}=
+\backslash
+mu
+\backslash
+left(P_{4}
+\backslash
+right)=
+\backslash
+mu
+\backslash
+left(P_{1}P_{2}
+\backslash
+right)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{eqnarray*}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% so that $P_{1}$ and $P_{2}$ are independent.
+\backslash
+qed
+\backslash
+end{example}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{example}[Independence of any states] In general, for any orthonormal
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% basis~$
+\backslash
+left
+\backslash
+{ 
+\backslash
+ket{
+\backslash
+psi_{j}}
+\backslash
+right
+\backslash
+} _{j=0}^{3}$, we can always
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% pick 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{array}{rcl}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% P_{1}=
+\backslash
+proj{
+\backslash
+psi_{0}}+
+\backslash
+proj{
+\backslash
+psi_{1}},
+\backslash
+quad P_{2}=
+\backslash
+proj{
+\backslash
+psi_{0}}+
+\backslash
+proj{
+\backslash
+psi_{2}},
+\backslash
+quad P_{3}=
+\backslash
+proj{
+\backslash
+psi_{0}}
+\backslash
+textrm{ .}
+\backslash
+end{array}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% With the probability measure~$
+\backslash
+mu
+\backslash
+left(P
+\backslash
+right)=
+\backslash
+melement{
+\backslash
+psi}{P}$,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% where $
+\backslash
+ket{
+\backslash
+psi}=
+\backslash
+frac{1}{2}
+\backslash
+sum_{j=0}^{3}
+\backslash
+ket{
+\backslash
+psi_{j}}$, their
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% probabilities are
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{array}{rcl}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+mu
+\backslash
+left(P_{1}
+\backslash
+right)=1/2,
+\backslash
+quad
+\backslash
+mu
+\backslash
+left(P_{2}
+\backslash
+right)=1/2,
+\backslash
+quad
+\backslash
+mu
+\backslash
+left(P_{3}
+\backslash
+right)=1/4
+\backslash
+textrm{ ,}
+\backslash
+end{array}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% and we have
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{eqnarray*}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+mu
+\backslash
+left(P_{1}
+\backslash
+right)
+\backslash
+mu
+\backslash
+left(P_{2}
+\backslash
+right) & = & 
+\backslash
+frac{1}{4}=
+\backslash
+mu
+\backslash
+left(P_{3}
+\backslash
+right)=
+\backslash
+mu
+\backslash
+left(P_{1}P_{2}
+\backslash
+right)
+\backslash
+textrm{ .}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{eqnarray*}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% In particular, the following four Bell states form an orthonormal
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% basis~
+\backslash
+cite{CabelloPRL.86.2001}: 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+ket{
+\backslash
+phi^{
+\backslash
+pm}} = 
+\backslash
+frac{1}{
+\backslash
+sqrt{2}}
+\backslash
+left(
+\backslash
+ket{00}
+\backslash
+pm
+\backslash
+ket{11}
+\backslash
+right),
+\backslash
+quad
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+ket{
+\backslash
+psi^{
+\backslash
+pm}} = 
+\backslash
+frac{1}{
+\backslash
+sqrt{2}}
+\backslash
+left(
+\backslash
+ket{01}
+\backslash
+pm
+\backslash
+ket{10}
+\backslash
+right)
+\backslash
+textrm{ .}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Their sum is also a Bell state~
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+ket{
+\backslash
+psi}=
+\backslash
+frac{1}{2}
+\backslash
+left(
+\backslash
+ket{
+\backslash
+phi^{+}}+
+\backslash
+ket{
+\backslash
+phi^{-}}+
+\backslash
+ket{
+\backslash
+psi^{+}}+
+\backslash
+ket{
+\backslash
+psi^{-}}
+\backslash
+right)=
+\backslash
+frac{1}{
+\backslash
+sqrt{2}}
+\backslash
+left(
+\backslash
+ket{00}+
+\backslash
+ket{01}
+\backslash
+right)
+\backslash
+textrm{ .}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Thus, $
+\backslash
+proj{
+\backslash
+phi^{+}}+
+\backslash
+proj{
+\backslash
+psi^{+}}$ and $
+\backslash
+proj{
+\backslash
+phi^{+}}+
+\backslash
+proj{
+\backslash
+psi^{-}}$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% are independent projections with respect to the probability
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% measure~$
+\backslash
+mu
+\backslash
+left(P
+\backslash
+right)=
+\backslash
+melement{
+\backslash
+psi}{P}$.
+\backslash
+qed
+\backslash
+end{example}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 
 \backslash
 yutsung{
@@ -12118,666 +14543,24 @@ yutsung{
 
 \end_inset
 
-The definition of independence is different from different sources: 
-\end_layout
-
-\begin_layout Enumerate
-In Swart's
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Swart2013"
-
-\end_inset
-
-, given a 
-\begin_inset Formula $*$
-\end_inset
-
--algebra
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mathscr{A}$
-\end_inset
-
-, two commuting sub-
-\begin_inset Formula $*$
-\end_inset
-
--algebra 
-\begin_inset Formula $\mathscr{A}_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $\mathscr{A}_{2}$
-\end_inset
-
- are 
-\emph on
-logically independent
-\emph default
- if for all probability measure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mu_{1}$
-\end_inset
-
- on 
-\begin_inset Formula $\mathscr{A}_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $\mu_{2}$
-\end_inset
-
- on 
-\begin_inset Formula $\mathscr{A}_{2}$
-\end_inset
-
-, there is an unique probability measure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mu$
-\end_inset
-
- on the smallest sub-
-\begin_inset Formula $*$
-\end_inset
-
--algebra of 
-\begin_inset Formula $\mathscr{A}$
-\end_inset
-
- containing both 
-\begin_inset Formula $\mathscr{A}_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $\mathscr{A}_{2}$
-\end_inset
-
- such that 
-\begin_inset Formula $\mu\left(A_{1}A_{2}\right)=\mu_{1}\left(A_{1}\right)\mu_{2}\left(A_{2}\right)$
-\end_inset
-
- for all 
-\begin_inset Formula $A_{1}\in\mathscr{A}_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $A_{2}\in\mathscr{A}_{2}$
-\end_inset
-
-.
- If two sub-
-\begin_inset Formula $*$
-\end_inset
-
--algebra 
-\begin_inset Formula $\mathscr{A}_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $\mathscr{A}_{2}$
-\end_inset
-
- are logically independent, the smallest sub-
-\begin_inset Formula $*$
-\end_inset
-
--algebra containing both 
-\begin_inset Formula $\mathscr{A}_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $\mathscr{A}_{2}$
-\end_inset
-
- is denoted by 
-\begin_inset Formula $\mathscr{A}_{1}\otimes\mathscr{A}_{2}$
-\end_inset
-
-, and its probability measure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mu$
-\end_inset
-
- is denoted by 
-\begin_inset Formula $\mu_{1}\otimes\mu_{2}$
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
- Then, Swart proved the Bell inequality on logically independence 
-\begin_inset Formula $*$
-\end_inset
-
--algebras with a product state which gives a clear physical meaning.
- However, this only defines the independence of algebras instead of events.
- 
-\end_layout
-
-\begin_layout Enumerate
-In Yuan's
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Yuan2012"
-
-\end_inset
-
-, given a 
-\begin_inset Formula $\mu$
-\end_inset
-
- on a 
-\begin_inset Formula $*$
-\end_inset
-
--algebra
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mathscr{A}$
-\end_inset
-
-, two sub-
-\begin_inset Formula $*$
-\end_inset
-
--algebra 
-\begin_inset Formula $\mathscr{A}_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $\mathscr{A}_{2}$
-\end_inset
-
- are 
-\emph on
-independent
-\emph default
- if 
-\begin_inset Formula $\mu\left(A_{1}A_{2}\right)=\mu\left(A_{1}\right)\mu\left(A_{2}\right)$
-\end_inset
-
- for all 
-\begin_inset Formula $A_{1}\in\mathscr{A}_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $A_{2}\in\mathscr{A}_{2}$
-\end_inset
-
-.
- The same problem as the previous one: this defines the independent of algebras,
- but not events.
- Morever, I haven't found a clear physical meaning of this definition, yet\SpecialChar ldots
-
-\end_layout
-
-\begin_layout Enumerate
-In order to understand the definition of independence in
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "GuehneKleinmannCabelloEtAl2010"
-
-\end_inset
-
-, we need to first understand their notation because they focused on the
- hidden-variable (HV) models.
- Let 
-\begin_inset Formula $\lambda$
-\end_inset
-
- is the HV, 
-\begin_inset Formula $A_{i}$
-\end_inset
-
- is the measurement of the observable
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $A$
-\end_inset
-
- at the position 
-\begin_inset Formula $i$
-\end_inset
-
- in the sequence.
- For example, 
-\begin_inset Formula $A_{1}B_{2}C_{3}$
-\end_inset
-
- denotes the sequence of measuring 
-\begin_inset Formula $A$
-\end_inset
-
- first, then 
-\begin_inset Formula $B$
-\end_inset
-
-, and finally 
-\begin_inset Formula $C$
-\end_inset
-
-.
- Given a fixed 
-\begin_inset Formula $\lambda$
-\end_inset
-
-, we assume the outcome of an observable is deterministic.
- For example, the outcome of 
-\begin_inset Formula $B_{2}$
-\end_inset
-
- from the preceding sequence is denoted by 
-\begin_inset Formula $v\left(B_{2}\middle|A_{1}B_{2}C_{3}\right)$
-\end_inset
-
-.
- Then, the outcome of 
-\begin_inset Formula $A$
-\end_inset
-
- is 
-\emph on
-independent
-\emph default
- of whether 
-\begin_inset Formula $B$
-\end_inset
-
- is measured before or after 
-\begin_inset Formula $A$
-\end_inset
-
- is 
-\begin_inset Formula $v\left(A_{1}\right)=v\left(A_{2}\middle|B_{1}A_{2}\right)$
-\end_inset
-
-.
-\begin_inset Newline newline
-\end_inset
-
- If the outcomes of compatible observables are independent for any HV
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\lambda$
-\end_inset
-
-, the HV model is non-contextual.
- (Notice that they have their own definition of 
-\begin_inset Quotes eld
-\end_inset
-
-compatible observables
-\begin_inset Quotes erd
-\end_inset
-
- for their HV model\SpecialChar ldots
-)
-\begin_inset Newline newline
-\end_inset
-
- Compare to the previous definitions, this definition is appealing in a
- sense that projection operators are special cases of observables, and this
- definition has a physical meaning related to contextuality.
- However, before adopting their definition, we need to reformulate the definitio
-n to the usual quantum model....
- 
-\end_layout
-
-\begin_layout Enumerate
-For the definition we used last time, given a quantum probability measure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mu:\events\rightarrow[0,1]$
-\end_inset
-
-, two commuting projections 
-\begin_inset Formula $P_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $P_{2}$
-\end_inset
-
- are 
-\emph on
-independent
-\emph default
- if 
-\begin_inset Formula $\mu\left(P_{1}P_{2}\right)=\mu\left(P_{1}\right)\mu\left(P_{2}\right)$
-\end_inset
-
-.
- We have two examples: 
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-yutsung{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{example}
-\end_layout
-
-\end_inset
-
-[Independence of product state] Consider the 2-qubit Hilbert space with
- a probability measure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mu\left(P\right)=\melement{\ps\ps}{P}$
-\end_inset
-
- with the following projections: 
-\begin_inset Formula 
-\[
-\begin{array}{rcl}
-P_{1}=\proj{00}+\proj{01},\quad P_{2}=\proj{00}+\proj{10},\quad P_{3}=\proj{10}+\proj{11},\quad P_{4}=\proj{00}\end{array}
-\]
-
-\end_inset
-
-and their probabilities: 
-\begin_inset Formula 
-\[
-\begin{array}{rcl}
-\mu\left(\mathbb{0}\right)=0,\quad\mu\left(P_{1}\right)=1/2,\quad\mu\left(P_{2}\right)=1/2,\quad\mu\left(P_{3}\right)=1/2,\quad\mu\left(P_{4}\right)=1/4\textrm{ .}\end{array}
-\]
-
-\end_inset
-
-On one hand, 
-\begin_inset Formula $P_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $P_{3}$
-\end_inset
-
- are complement to each other so we have 
-\begin_inset Formula 
-\begin{eqnarray*}
-\mu\left(P_{1}\right)+\mu\left(P_{3}\right) & = & \frac{1}{2}+\frac{1}{2}=1\\
-\mu\left(P_{1}\right)\mu\left(P_{3}\right) & = & \frac{1}{4}\ne0=\mu\left(\mathbb{0}\right)=\mu\left(P_{1}P_{3}\right)
-\end{eqnarray*}
-
-\end_inset
-
-Therefore, 
-\begin_inset Formula $P_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $P_{3}$
-\end_inset
-
- commute, but are not independent.
- On the other hand, 
-\begin_inset Formula $P_{1}$
-\end_inset
-
- also commutes with 
-\begin_inset Formula $P_{2}$
-\end_inset
-
-, and 
-\begin_inset Formula 
-\begin{eqnarray*}
-\mu\left(P_{1}\right)\mu\left(P_{2}\right) & = & \frac{1}{4}=\mu\left(P_{4}\right)=\mu\left(P_{1}P_{2}\right)
-\end{eqnarray*}
-
-\end_inset
-
-so that 
-\begin_inset Formula $P_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $P_{2}$
-\end_inset
-
- are independent.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-qed
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{example}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{example}
-\end_layout
-
-\end_inset
-
-[Independence of any states] In general, for any orthonormal basis
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\left\{ \ket{\psi_{j}}\right\} _{j=0}^{3}$
-\end_inset
-
-, we can always pick 
-\begin_inset Formula 
-\[
-\begin{array}{rcl}
-P_{1}=\proj{\psi_{0}}+\proj{\psi_{1}},\quad P_{2}=\proj{\psi_{0}}+\proj{\psi_{2}},\quad P_{3}=\proj{\psi_{0}}\textrm{ .}\end{array}
-\]
-
-\end_inset
-
-With the probability measure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mu\left(P\right)=\melement{\psi}{P}$
-\end_inset
-
-, where 
-\begin_inset Formula $\ket{\psi}=\frac{1}{2}\sum_{j=0}^{3}\ket{\psi_{j}}$
-\end_inset
-
-, their probabilities are 
-\begin_inset Formula 
-\[
-\begin{array}{rcl}
-\mu\left(P_{1}\right)=1/2,\quad\mu\left(P_{2}\right)=1/2,\quad\mu\left(P_{3}\right)=1/4\textrm{ ,}\end{array}
-\]
-
-\end_inset
-
-and we have 
-\begin_inset Formula 
-\begin{eqnarray*}
-\mu\left(P_{1}\right)\mu\left(P_{2}\right) & = & \frac{1}{4}=\mu\left(P_{3}\right)=\mu\left(P_{1}P_{2}\right)\textrm{ .}
-\end{eqnarray*}
-
-\end_inset
-
-In particular, the following four Bell states form an orthonormal basis
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "CabelloPRL.86.2001"
-
-\end_inset
-
-: 
-\begin_inset Formula 
-\[
-\ket{\phi^{\pm}}=\frac{1}{\sqrt{2}}\left(\ket{00}\pm\ket{11}\right),\quad\ket{\psi^{\pm}}=\frac{1}{\sqrt{2}}\left(\ket{01}\pm\ket{10}\right)\textrm{ .}
-\]
-
-\end_inset
-
-Their sum is also a Bell state
-\begin_inset space ~
-\end_inset
-
- 
-\begin_inset Formula 
-\[
-\ket{\psi}=\frac{1}{2}\left(\ket{\phi^{+}}+\ket{\phi^{-}}+\ket{\psi^{+}}+\ket{\psi^{-}}\right)=\frac{1}{\sqrt{2}}\left(\ket{00}+\ket{01}\right)\textrm{ .}
-\]
-
-\end_inset
-
-Thus, 
-\begin_inset Formula $\proj{\phi^{+}}+\proj{\psi^{+}}$
-\end_inset
-
- and 
-\begin_inset Formula $\proj{\phi^{+}}+\proj{\psi^{-}}$
-\end_inset
-
- are independent projections with respect to the probability measure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mu\left(P\right)=\melement{\psi}{P}$
-\end_inset
-
-.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-qed
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{example}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 The definition of independence is interesting, and we definitely need to
  discuss it when we want to discuss Bell's theorem and the Kochen-Specker
  theorem.
- However, the definition diverges, and none of the source I have checked
- support our definition, yet.
- We may need to check more papers to find a source to support our definition
- or to find the majority definition (if there is one)...
+ However, the definition diverges.
+ So we just leave it so far, and we will go back if we really need it in
+ this paper.
+ (Maybe when discussing repeating experiments?)
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
 }
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13074,6 +14857,204 @@ status collapsed
 
 \backslash
 end{example}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Measuring Quantum Probabilities
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+amr{
+\end_layout
+
+\end_inset
+
+preparation fuzzy, device fuzzy, Meyer
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PhysRevLett.83.3751"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Quantum Interval-valued Probabilities Measures
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+yutsung{
+\end_layout
+
+\end_inset
+
+Vourdas' first paper
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Vourdas2014"
+
+\end_inset
+
+ is interesting and highly readable until section IV.
+ However, I don't understand since the second sentence in section IV:
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\mathfrak{d}\left(H_{1},H_{2}\middle|\rho\right)\ge0$
+\end_inset
+
+, then 
+\begin_inset Formula $p\left(H_{1}\middle|\rho\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $p\left(H_{2}\middle|\rho\right)$
+\end_inset
+
+ are lower probabilities.
+ Also, according to Eq.
+ (22), in this case 
+\begin_inset Formula $\mathfrak{d}\left(H_{1}^{\perp},H_{2}^{\perp}\middle|\rho\right)\le0$
+\end_inset
+
+, and therefore the 
+\begin_inset Formula $p\left(H_{1}^{\perp}\middle|\rho\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $p\left(H_{2}^{\perp}\middle|\rho\right)$
+\end_inset
+
+ are upper probabilities.
+\end_layout
+
+\begin_layout Standard
+I assume Vourdas means that 
+\begin_inset Formula $p\left(H_{1}\middle|\rho\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $p\left(H_{1}^{\perp}\middle|\rho\right)$
+\end_inset
+
+ are the lower and upper probability respectively for measuring subspace
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $H_{1}$
+\end_inset
+
+ on the system
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+ Consider the simplest example the subspace 
+\begin_inset Formula $H_{1}$
+\end_inset
+
+ is the zero space 
+\begin_inset Formula $\mathcal{O}$
+\end_inset
+
+ which commutes with every other subspaces, so 
+\begin_inset Formula $\mathfrak{d}\left(\mathcal{O},H_{2}\middle|\rho\right)=0$
+\end_inset
+
+.
+ Then, for measuring 
+\begin_inset Formula $\mathcal{O}$
+\end_inset
+
+ on 
+\begin_inset Formula $\rho$
+\end_inset
+
+, the lower and upper probabilities are 
+\begin_inset Formula $p\left(\mathcal{O}\middle|\rho\right)=0$
+\end_inset
+
+ and 
+\begin_inset Formula $p\left(\mathcal{O}^{\perp}\middle|\rho\right)=p\left(\mathcal{I}\middle|\rho\right)=1$
+\end_inset
+
+, respectively.
+ The lower probability is 
+\begin_inset Formula $0$
+\end_inset
+
+ makes sense, but I don't understand why the upper probability is 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Because both the lower and upper probabilities of the empty set are 
+\begin_inset Formula $0$
+\end_inset
+
+ in classical Dempster-Shafer theory.
+\end_layout
+
+\begin_layout Standard
+Start reading 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Vourdas2015"
+
+\end_inset
+
+...
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \end_inset
@@ -13520,153 +15501,6 @@ end{proof}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%%%%%
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Plan
-\end_layout
-
-\begin_layout Standard
-In the remainder of the paper, we consider variations of quantum probability
- spaces motivated by computation of numerical quantities in a world with
- limited resources: 
-\end_layout
-
-\begin_layout Itemize
-Instead of the Hilbert space 
-\begin_inset Formula $\Hilb$
-\end_inset
-
- (constructed over the uncountable and uncomputable complex numbers 
-\begin_inset Formula $\mathbb{C}$
-\end_inset
-
-), we will consider variants constructed over finite fields
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "HansonOrtizSabryEtAl2015,DQT2014,geometry2013"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
-Instead of real-valued probability measures producing results in the uncountable
- and uncomputable interval 
-\begin_inset Formula $[0,1]$
-\end_inset
-
-, we will consider finite set-valued probability measures
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Artstein1972,PuriRalescu1983"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-We will then ask if it is possible to construct variants of quantum probability
- spaces under these conditions.
- The main question is related to the definition of probability measures:
- is it possible to still define a probability measure as a function that
- depends on a single state? Specifically, 
-\end_layout
-
-\begin_layout Itemize
-given a state 
-\begin_inset Formula $\ket{\psi}$
-\end_inset
-
-, is there a probability measure mapping events to probabilities that only
- depends on 
-\begin_inset Formula $\ket{\psi}$
-\end_inset
-
-? In the conventional quantum probability space, the answer is yes by the
- Born rule
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Born1984,Mermin2007"
-
-\end_inset
-
- and the map is given by: 
-\begin_inset Formula $E\mapsto\ip{\psi}{E\psi}$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
-given a probability measure 
-\begin_inset Formula $\mu$
-\end_inset
-
- mapping each event 
-\begin_inset Formula $E$
-\end_inset
-
- to a probability, is there a 
-\emph on
-unique
-\emph default
- state 
-\begin_inset Formula $\psi$
-\end_inset
-
- such that 
-\begin_inset Formula $\mu(E)=\ip{\psi}{E\psi}$
-\end_inset
-
-? In the conventional case, the answer is yes by Gleason's theorem
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "gleason1957,peres1995quantum,Redhead1987-REDINA"
-
-\end_inset
-
-.
- 
 \end_layout
 
 \begin_layout Standard
