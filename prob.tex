@@ -1225,12 +1225,39 @@ is then analog to $\Tr\left(\rho\mathfrak{D}\left(S_{1},S_{2}\right)\right)$
 given the density matrix~$\rho$ since the non-additivity operator~$\mathfrak{D}\left(S_{1},S_{2}\right)$
 is non-zero when $S_{1}$ and $S_{2}$ does not commute. 
 
-A special feature of this theory is that it discusses the relation
-between non-commuting subspaces while the real-valued quantum probability
-measures in definition~\ref{def:QuantumProbabilitySpace} only depend
-on orthogonal (or commuting) subspaces. Thinking a physical process
-which put two non-commuting spaces together... Maybe two directions
-of the first spin in the two-spin system?
+Interestingly, this theory discussed the relation between non-commuting
+subspaces while the real-valued quantum probability measures in definition~\ref{def:QuantumProbabilitySpace}
+only depend on orthogonal (or commuting) subspaces. In order to understand
+the intuition, let's go through the simplest example. 
+
+\begin{example}{[}Two-qubit quantum probability space{]} Consider
+a two-qubit Hilbert space with the following subspaces:
+\begin{eqnarray*}
+S_{00} & = & \mathrm{span}\left(\left\{ \ket{0}\otimes\ket{0}\right\} \right)\\
+S_{0+} & = & \mathrm{span}\left(\left\{ \ket{0}\otimes\ket{+}\right\} \right)\\
+S_{00}\wedge S_{0+} & = & \mathcal{O}=\left\{ 0\right\} \\
+S_{00}\vee S_{0+} & = & \mathrm{span}\left(\left\{ \ket{0}\right\} \right)\otimes\C^{2}
+\end{eqnarray*}
+ Then, their projection and non-additivity operators are 
+\begin{eqnarray*}
+\Pi\left(S_{00}\right) & = & \proj{0}\otimes\proj{0}\\
+\Pi\left(S_{0+}\right) & = & \proj{0}\otimes\proj{+}\\
+\Pi\left(S_{00}\wedge S_{0+}\right) & = & \mathbb{0}\otimes\mathbb{0}\\
+\Pi\left(S_{00}\vee S_{0+}\right) & = & \proj{0}\otimes\mathbb{1}\\
+\mathfrak{D}\left(S_{1},S_{2}\right) & = & \proj{0}\otimes\left(-\sigma_{x}-\sigma_{z}\right)
+\end{eqnarray*}
+We also consider the density matrix $\rho=a\proj{0}\otimes\proj{0}+\left(1-a\right)\proj{0}\otimes\proj{1}$
+for $a\in\left[0,1\right]$. According to the Born rule, their probabilities
+are
+\begin{eqnarray*}
+\Tr\left(\rho\Pi\left(S_{00}\right)\right) & = & a\\
+\Tr\left(\rho\Pi\left(S_{0+}\right)\right) & = & \frac{1}{2}\left[a+\left(1-a\right)\right]=\frac{1}{2}\\
+\Tr\left(\rho\Pi\left(S_{00}\wedge S_{0+}\right)\right) & = & 0\\
+\Tr\left(\rho\Pi\left(S_{00}\vee S_{0+}\right)\right) & = & a+\left(1-a\right)=1
+\end{eqnarray*}
+and the non-additivity quantity~$\Tr\left(\rho\mathfrak{D}\left(S_{1},S_{2}\right)\right)=\frac{1}{2}\left[-a+\left(1-a\right)\right]=\frac{1}{2}-a$.
+However, I still don't have much intuition on why the probabilities
+should have what kind of relations?\qed\end{example}
 
 However, his section VI is confusing. For example, the second sentence
 in section IV: 

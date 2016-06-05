@@ -15050,9 +15050,8 @@ where
 \end_layout
 
 \begin_layout Standard
-A special feature of this theory is that it discusses the relation between
- non-commuting subspaces while the real-valued quantum probability measures
- in definition
+Interestingly, this theory discussed the relation between non-commuting
+ subspaces while the real-valued quantum probability measures in definition
 \begin_inset space ~
 \end_inset
 
@@ -15064,8 +15063,104 @@ reference "def:QuantumProbabilitySpace"
 \end_inset
 
  only depend on orthogonal (or commuting) subspaces.
- Thinking a physical process which put two non-commuting spaces together...
- Maybe two directions of the first spin in the two-spin system?
+ In order to understand the intuition, let's go through the simplest example.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{example}
+\end_layout
+
+\end_inset
+
+[Two-qubit quantum probability space] Consider a two-qubit Hilbert space
+ with the following subspaces:
+\begin_inset Formula 
+\begin{eqnarray*}
+S_{00} & = & \mathrm{span}\left(\left\{ \ket{0}\otimes\ket{0}\right\} \right)\\
+S_{0+} & = & \mathrm{span}\left(\left\{ \ket{0}\otimes\ket{+}\right\} \right)\\
+S_{00}\wedge S_{0+} & = & \mathcal{O}=\left\{ 0\right\} \\
+S_{00}\vee S_{0+} & = & \mathrm{span}\left(\left\{ \ket{0}\right\} \right)\otimes\C^{2}
+\end{eqnarray*}
+
+\end_inset
+
+ Then, their projection and non-additivity operators are 
+\begin_inset Formula 
+\begin{eqnarray*}
+\Pi\left(S_{00}\right) & = & \proj{0}\otimes\proj{0}\\
+\Pi\left(S_{0+}\right) & = & \proj{0}\otimes\proj{+}\\
+\Pi\left(S_{00}\wedge S_{0+}\right) & = & \mathbb{0}\otimes\mathbb{0}\\
+\Pi\left(S_{00}\vee S_{0+}\right) & = & \proj{0}\otimes\mathbb{1}\\
+\mathfrak{D}\left(S_{1},S_{2}\right) & = & \proj{0}\otimes\left(-\sigma_{x}-\sigma_{z}\right)
+\end{eqnarray*}
+
+\end_inset
+
+We also consider the density matrix 
+\begin_inset Formula $\rho=a\proj{0}\otimes\proj{0}+\left(1-a\right)\proj{0}\otimes\proj{1}$
+\end_inset
+
+ for 
+\begin_inset Formula $a\in\left[0,1\right]$
+\end_inset
+
+.
+ According to the Born rule, their probabilities are
+\begin_inset Formula 
+\begin{eqnarray*}
+\Tr\left(\rho\Pi\left(S_{00}\right)\right) & = & a\\
+\Tr\left(\rho\Pi\left(S_{0+}\right)\right) & = & \frac{1}{2}\left[a+\left(1-a\right)\right]=\frac{1}{2}\\
+\Tr\left(\rho\Pi\left(S_{00}\wedge S_{0+}\right)\right) & = & 0\\
+\Tr\left(\rho\Pi\left(S_{00}\vee S_{0+}\right)\right) & = & a+\left(1-a\right)=1
+\end{eqnarray*}
+
+\end_inset
+
+and the non-additivity quantity
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\Tr\left(\rho\mathfrak{D}\left(S_{1},S_{2}\right)\right)=\frac{1}{2}\left[-a+\left(1-a\right)\right]=\frac{1}{2}-a$
+\end_inset
+
+.
+ However, I still don't have much intuition on why the probabilities should
+ have what kind of relations?
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+qed
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{example}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
