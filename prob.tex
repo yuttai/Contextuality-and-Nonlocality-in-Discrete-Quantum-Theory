@@ -229,7 +229,8 @@ in detail.\footnote{There is another possible approach that can be
     connection and why we are not using it.}}
 
 %%%%%
-\subsection{Measuring Probabilities: Buffon's Needle Problem}
+\subsection{Measuring Probabilities: Buffon's Needle
+Problem\label{subsec:Measuring-Probabilities:-Buffon}}
  
 In previous section, the probability of each event is known
 a priori. In reality, we seldom know much about events, but we could still assume
@@ -1207,38 +1208,45 @@ state and $\rho=E$. \qed\end{example}
 %%%%%
 \subsection{Quantum Interval-valued Probabilities Measures}
 
-\yutsung{In \cite{Vourdas2014,Vourdas2015}, Vourdas made a comparison
-between the additivity property of Kolmogorov probabilities 
-\[
-\delta\left(E_{1},E_{2}\right)=\pmeas\left(E_{1}\vee E_{2}\right)-\pmeas\left(E_{1}\right)-\pmeas\left(E_{2}\right)+\pmeas\left(E_{1}\wedge E_{2}\right)=0
-\]
-and its quantum counterpart 
-\[
-\Tr\left(\rho\mathfrak{D}\left(S_{1},S_{2}\right)\right)=\Tr\left(\rho\Pi\left(S_{1}\vee S_{2}\right)\right)-\Tr\left(\rho\Pi\left(S_{1}\right)\right)-\Tr\left(\rho\Pi\left(S_{2}\right)\right)+\Tr\left(\rho\Pi\left(S_{1}\wedge S_{2}\right)\right)\textrm{ ,}
-\]
-where $S_{1}$ and $S_{2}$ are arbitrary linear spaces, and $\Pi$
-maps a linear space to its projection operator. While $\delta\left(E_{1},E_{2}\right)$
+\yutsung{In \cite{Vourdas2014,Vourdas2015}, Vourdas started from
+the additivity property of Kolmogorov probabilities 
+\begin{equation}
+\delta\left(E_{1},E_{2}\right)=\pmeas\left(E_{1}\vee E_{2}\right)-\pmeas\left(E_{1}\right)-\pmeas\left(E_{2}\right)+\pmeas\left(E_{1}\wedge E_{2}\right)=0\label{eq:Kolmogorov}
+\end{equation}
+which is intuitive because the relative frequencies of disjoint events
+should be additive if the measurement is accurate. While $\delta\left(E_{1},E_{2}\right)$
 is always zero for Kolmogorov probabilities, the additivity property
 of the Dempster-Shafer theory is relaxed to $\delta\left(E_{1},E_{2}\right)\ge0$
 for the lower probability or belief and $\delta\left(E_{1},E_{2}\right)\le0$
-for the upper probability or plausibility. The sign of $\delta\left(E_{1},E_{2}\right)$
-is then analog to the sign of $\Tr\left(\rho\mathfrak{D}\left(S_{1},S_{2}\right)\right)$
-given the density matrix~$\rho$ since the non-additivity operator~$\mathfrak{D}\left(S_{1},S_{2}\right)$
+for the upper probability or plausibility. This modification is also
+intuitive because the imprecision of whether an event happens or not
+is taken into account, but we can still decide whether an instance
+belongs to different events concurrently. 
+
+Vourdas observed that equation (\ref{eq:Kolmogorov}) is similar to
+\[
+\mathfrak{D}\left(S_{1},S_{2}\right)=\Pi\left(S_{1}\vee S_{2}\right)-\Pi\left(S_{1}\right)-\Pi\left(S_{2}\right)+\Pi\left(S_{1}\wedge S_{2}\right)\textrm{ ,}
+\]
+where $S_{1}$ and $S_{2}$ are arbitrary linear subspaces, and $\Pi$
+maps a linear subspace to its projection operator. After apply the
+Born rule on both sides, we get an equation about the probabilities
+\begin{equation}
+\Tr\left(\rho\mathfrak{D}\left(S_{1},S_{2}\right)\right)=\Tr\left(\rho\Pi\left(S_{1}\vee S_{2}\right)\right)-\Tr\left(\rho\Pi\left(S_{1}\right)\right)-\Tr\left(\rho\Pi\left(S_{2}\right)\right)+\Tr\left(\rho\Pi\left(S_{1}\wedge S_{2}\right)\right)\textrm{ .}\label{eq:quantum-additivity}
+\end{equation}
+Given the density matrix~$\rho$, the sign of $\Tr\left(\rho\mathfrak{D}\left(S_{1},S_{2}\right)\right)$
+is then analog to the sign of $\delta\left(E_{1},E_{2}\right)$ since
+the non-additivity operator~$\mathfrak{D}\left(S_{1},S_{2}\right)$
 is non-zero when $S_{1}$ and $S_{2}$ does not commute so that $\Tr\left(\rho\mathfrak{D}\left(S_{1},S_{2}\right)\right)$
-is not always zero.
-
-The Kolmogorov's $\delta\left(E_{1},E_{2}\right)=0$ is intuitive
-because the relative frequencies of disjoint events should be additive
-if the measurement is accurate. In the Dempster-Shafer theory, the
-additivity property is modified because the imprecision of whether
-an event happens or not is taken into account, but we can still decide
-whether an instance belongs to different events concurrently. Applying
-this idea to quantum, if we runs $N$ independent Stern-Galech 
-
-Interestingly, this theory discussed the relation between non-commuting
-subspaces while the real-valued quantum probability measures in definition~\ref{def:QuantumProbabilitySpace}
-only depend on orthogonal (or commuting) subspaces. In order to understand
-the intuition, let's go through the simplest example. 
+is not always zero. Vourdas then considered the pair $\Tr\left(\rho\Pi\left(S_{1}\right)\right)$
+and $\Tr\left(\rho\Pi\left(S_{2}\right)\right)$ are lower or upper
+probabilities depending on the sign of $\Tr\left(\rho\mathfrak{D}\left(S_{1},S_{2}\right)\right)$.
+Although Vourdas' idea is clear, the approach does not exactly fit
+the idea. First, when we measure a physical quantity, we consider
+the eigenspaces of an observable which always commute. According to
+Vourdas' definition, $\Tr\left(\rho\Pi\left(S_{1}\right)\right)$
+is then always an Kolmogorov probability within one measurement process.
+Second, if we adopt the frequency interpretation as in section \ref{subsec:Measuring-Probabilities:-Buffon},
+consider the following two-qubit example.
 
 \begin{example}[Two-qubit quantum probability space] Consider
 a two-qubit Hilbert space with the following subspaces:
@@ -1248,6 +1256,9 @@ S_{0+} & = & \mathrm{span}\left(\left\{ \ket{0}\otimes\ket{+}\right\} \right)\\
 S_{00}\wedge S_{0+} & = & \mathcal{O}=\left\{ 0\right\} \\
 S_{00}\vee S_{0+} & = & \mathrm{span}\left(\left\{ \ket{0}\right\} \right)\otimes\C^{2}
 \end{eqnarray*}
+We can implement the first qubit by the spin of a particle and the
+second qubit in path 
+
  Then, their projection and non-additivity operators are 
 \begin{eqnarray*}
 \Pi\left(S_{00}\right) & = & \proj{0}\otimes\proj{0}\\
