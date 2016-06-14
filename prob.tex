@@ -1204,26 +1204,26 @@ state and $\rho=E$. \qed\end{example}
 %%%%%
 \subsection{Measuring Quantum Probabilities}
 
-Similar to the classical case, to know the quantum probability for
-each event, we can apply the law of large number, and measure the
-relative frequency. For example, Stern and Gerlach found a silver
-atoms beam deflected in a highly inhomogeneous magnetic field~\cite{Stern1988,peres1995quantum,544199,Griffiths2003}.
+Similar to the classical case, by applying the law of large number,
+quantum probabilities can be estimated by relative frequencies as
+well.. For example, Stern and Gerlach found a beam of silver atoms
+deflects in a highly inhomogeneous magnetic field~\cite{Stern1988,peres1995quantum,544199,Griffiths2003}.
 Ideally, if the local field strength directs to the $z$-axis, and
-all particles have the same velocity, three spots will be produced
-corresponding to $\ket{0}$ and $\ket{1}$. In reality, we need a
-lot of resource to keep the local field of strength directing to the
-$z$-axis, to keep the atoms having similar velocity, and to point
-out the position each particle landed on. 
+all particles have the same velocity, two spots will be produced corresponding
+to $\ket{0}$ and $\ket{1}$. In reality, we need a lot of resource
+to keep the local field of strength directing to the $z$-axis, to
+keep the atoms having almost the same velocity, and to point out the
+exact position each particle landed on. 
 
 If the field of strength does not perfectly direct to the $z$-axis,
-we does not really test the quantum event we want to test, and we
-will go back to this problem when we introduce the discrete quantum
-theory later. Even if the field of strength is perfectly direct to
-the $z$-axis, the variant of velocity makes spots broader and more
-washed out. Together with the precision limit of the detector, it
-may sometimes hard to decide a particle corresponding to which state.
-For higher spins, this bounded resource even limits the ability of
-entangled systems to exhibit the violation of Bell's inequalities~\cite{CostaHarriganRudolphEtAl2009}.
+we does not really test the quantum event we want to test. This problem
+will be handled later when we introduce the discrete quantum theory.
+Even if the field of strength is perfectly direct to the $z$-axis,
+the variant velocity makes spots broader and more washed out. Together
+with the precision limit of the detector, it may sometimes be hard
+to decide a particle corresponding to which state. For higher spins,
+the bounded resource even limits the ability of entangled systems
+to exhibit the violation of Bell's inequalities~\cite{CostaHarriganRudolphEtAl2009}.
 Similar to Buffon's needles, this kind of fuzziness can be taken into
 account by associating each quantum event with an interval-valued
 probability~$\left[l,r\right]$. 
@@ -1231,23 +1231,47 @@ probability~$\left[l,r\right]$.
 \amr{preparation fuzzy, device fuzzy, Meyer~\cite{PhysRevLett.83.3751}}
 
 %%%%%
+
+
 \subsection{Quantum Interval-valued Probabilities Measures}
 
+As mentioned above, each quantum event~$P$ will be associated with
+an interval-valued probability~$\left[l,r\right]$. Notice that whenever
+the magnetic field of the Stern-Gerlach is fixed, i.e., an complete
+set of orthogonal projections are picked, measuring the spin is up
+or down is exactly the same as tossing a coin. In another word, if
+somebody claimed she is tossing a coin behind a veil, and only show
+the resulting heads or tails, we cannot distinguish whether she has
+really tossed a coin, or she has run an Stern-Gerlach experiment,
+and show us the head, the tail, or the side of coin if the silver
+atoms is spin up, spin down, or just hit the middle. Therefore, applying
+interval
 
-
-\amr{
-The idea will be the following. First describe quantum probability
-spaces conventionally. Then talk about the following:
+\begin{definition}[Quantum Interval-valued Probability Measure]\label{def:QuantumInterval-valuedProbability}
+Given a Hilbert space $\Hilb$ with the set of quantum events~$\events$,
+a \emph{quantum interval-valued probability measure} is a function
+$\mu:\events\rightarrow[0,1]$ such that:
 \begin{itemize}
-\item the dimension of the Hilbert space is a parameter that is like
-  the number of needles; it gives an upper bound on the accuracy of
-  the numbers that are relevant in expressing probabilities
-\item the intervals will come from two things: the fact that states
-  can only be prepared to a certain accuracy so when we say the state
-  is $\ket{\psi}$ we really mean a neighborhood of states close to $\ket{\psi}$
-\item similarly when we do an experiment with $\proj{\phi}$ we are
-  really testing a family of projections that are near $\proj{\phi}$;
-  this fuziness will cause the probability to only be specifiable as intervals
+\item $\mu(\mathbb{0})=\left[0,0\right]$, 
+\item $\mu(\mathbb{1})=\left[1,1\right]$, 
+\item $\mu\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=1\tensor*[_{\mathscr{I}}]{-}{}\mu\left(P\right)$,
+and 
+\item for mutually orthogonal projections $P_{i}$, we have $\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i}}\mu\left(P_{i}\right)$. 
+\end{itemize}
+\qed\end{definition}
+
+\amr{ The idea will be the following. First describe quantum probability
+spaces conventionally. Then talk about the following: 
+\begin{itemize}
+\item the dimension of the Hilbert space is a parameter that is like the
+number of needles; it gives an upper bound on the accuracy of the
+numbers that are relevant in expressing probabilities 
+\item the intervals will come from two things: the fact that states can
+only be prepared to a certain accuracy so when we say the state is
+$\ket{\psi}$ we really mean a neighborhood of states close to $\ket{\psi}$ 
+\item similarly when we do an experiment with $\proj{\phi}$ we are really
+testing a family of projections that are near $\proj{\phi}$; this
+fuziness will cause the probability to only be specifiable as intervals 
 \end{itemize}
 }
 
