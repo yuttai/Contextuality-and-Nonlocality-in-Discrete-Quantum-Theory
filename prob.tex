@@ -1040,12 +1040,12 @@ between events.
 \qed\end{definition}
 
 In order to motivate the definition of quantum interval-valued probability
-measures later, here is an equivalent definition of quantum probability
+measures later, we provide an equivalent definition of quantum probability
 measures.
 
-\begin{lemma}Given a Hilbert space $\Hilb$, a function~$\mu:\events\rightarrow[0,1]$
-is a probability measure if and only if $\mu$ satisfies the following
-conditions:
+\begin{lemma}\label{lem:quantumProbabilityMeasure}Given a Hilbert
+space $\Hilb$, a function~$\mu:\events\rightarrow[0,1]$ is a probability
+measure if and only if $\mu$ satisfies the following conditions:
 \begin{itemize}
 \item $\mu(\mathbb{0})=0$, 
 \item $\mu(\mathbb{1})=1$, 
@@ -1175,9 +1175,10 @@ experiments?)}}
 For a given set of events $\events$, there are many possible probability
 measures $\mu:\events\rightarrow[0,1]$. The Born rule~\cite{Born1983,Mermin2007,RiederSvozil2007},
 a postulate of quantum mechanics, states that each pure quantum state
-$\ket{\phi}$ induces a probability measure $\mu_{\phi}$ as follows:
+$\ket{\phi}$ induces a probability measure $\tilde{\mu}_{\phi}$
+as follows: 
 \[
-\mu_{\phi}(E)=\ip{\phi}{E\phi}
+\tilde{\mu}_{\phi}(E)=\ip{\phi}{E\phi}
 \]
 
 Moreover, the Born rule can be extended to a mixed state. Suppose
@@ -1187,20 +1188,27 @@ If we want to prepare $\ket{\phi}$, we may turn out preparing a set
 of state~$\ket{\phi_{j}}$ each with probability~$q_{j}$. Then,
 the state of the system can be expressed as a density matrix~$\rho=\sum_{j}q_{j}\proj{\phi_{j}}$,
 where $\sum_{j}q_{j}=1$. It is natural that the quantum probability
-measure introduced by $\rho$ is the combination of $\mu_{\phi_{j}}$
+measure introduced by $\rho$ is the combination of $\tilde{\mu}_{\phi_{j}}$
 with respect to probability $q_{j}$~\cite{peres1995quantum,544199,RiederSvozil2007}:
 \begin{eqnarray}
-\mu_{\rho}\left(E\right) & = & \Tr\left(\rho E\right)=\sum_{j=1}^{N}q_{j}\mu_{\phi_{j}}\left(E\right)\textrm{ .}\label{BornRule.mixed}
+\tilde{\mu}_{\rho}\left(E\right) & = & \Tr\left(\rho E\right)=\sum_{j=1}^{N}q_{j}\tilde{\mu}_{\phi_{j}}\left(E\right)\textrm{ .}\label{BornRule.mixed}
 \end{eqnarray}
 
-Conversely, Gleason's theorem states that given a probability measure
-$\mu$, there exist a mixed state~$\rho$ that induces such a measure
-using the Born rule~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
-The theorem is only valid in Hilbert spaces with dimension $d\geq3$.
-It is instructive to study counterexamples in $d=2$, i.e., the case
-of a one-qubit system.
+Conversely, in Hilbert spaces of dimension $d\geq3$, Gleason's theorem
+states that given a probability measure $\mu$, there exist a mixed
+state~$\rho$ that induces such a measure using the Born rule~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
+By applying Gleason's theorem, we can extend lemma~\ref{lem:quantumProbabilityMeasure}
+to the following corollary.
 
-\begin{example}[One-qubit quantum probability measure] Consider
+\begin{cor}\label{cor:Gleason's}Given a Hilbert space $\Hilb$,
+for any function~$\mu:\events\rightarrow[0,1]$ satisfies the conditions
+listed in lemma~\ref{lem:quantumProbabilityMeasure}, there exist
+an unique mixed state~$\rho$ such that $\mu=\tilde{\mu}_{\rho}$.\end{cor}
+
+It is instructive to study counterexamples when $d=2$, i.e., the
+case of a one-qubit system.
+
+\begin{example}{[}One-qubit quantum probability measure{]} Consider
 a quantum probability measure~$\mu:\events\rightarrow[0,1]$ defined
 as follow: 
 \[
@@ -1211,8 +1219,8 @@ as follow:
 \end{cases}
 \]
 On one hand, $\mu$ is a probability measure. Because $\mu$ is almost
-the same as a probability measure~$\mu_{\ket{0}}$, we only need
-to check the orthogonal pair~$\proj{\ps}$ and $\proj{\ms}$: 
+the same as a probability measure~$\tilde{\mu}_{\ket{0}}$, we only
+need to check the orthogonal pair~$\proj{\ps}$ and $\proj{\ms}$:
 \[
 \mu(\proj{\ps})+\mu(\proj{\ms})=1+0=1\textrm{ .}
 \]
@@ -1220,8 +1228,8 @@ On the other hand, $\mu$ cannot be induced by any mixed state because
 \[
 \mu(\proj{\ps})=\mu(\proj{0})=1\textrm{ .}
 \]
-However, $\mu_{\rho}(E)=1$ if and only if $\rho$ represents a pure
-state and $\rho=E$. \qed\end{example}
+However, $\tilde{\mu}_{\rho}(E)=1$ if and only if $\rho$ represents
+a pure state and $\rho=E$. \qed\end{example}
 
 %%%%%
 \subsection{Measuring Quantum Probabilities}
@@ -1282,6 +1290,12 @@ and
 \item for mutually orthogonal projections $P_{i}$, we have $\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i}}\mu\left(P_{i}\right)$. 
 \end{itemize}
 \qed\end{definition}
+
+Notice that if the last condition is replaced by equal sign, these
+conditions will be exactly the same as the conditions in lemma~\ref{lem:quantumProbabilityMeasure}
+which is equivalent to the Born rule as in corollary~\ref{cor:Gleason's}.
+Therefore, it is reasonable to believe these conditions should be
+equivalent to a interval-valued Born rule.
 
 \amr{ The idea will be the following. First describe quantum probability
 spaces conventionally. Then talk about the following: 
