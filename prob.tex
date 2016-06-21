@@ -64,6 +64,8 @@
 \newcommand{\gerardo}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{OliveGreen}{Gerardo says: #1}\end{minipage}}}
 \newcommand{\andy}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{blue}{Andy says: #1}\end{minipage}}}
 \usepackage{tensor}
+\newcommand{\rme}{\mathrm{e}}
+\newcommand{\rmi}{\mathrm{i}}
 
 \begin{document}
 \title{Interval Probability for Fuzzy Quantum Theories}
@@ -1328,7 +1330,7 @@ where $\iota:\left[0,1\right]\rightarrow\mathscr{I}$ is defined by
 \unknown & \textrm{, otherwise.}
 \end{cases}
 \]
-$\iota$ has two interested properties 
+$\iota$ has two interesting properties 
 \begin{eqnarray*}
 \iota\left(\mathbb{1}\tensor*[_{\mathbb{R}}]{-}{}x\right) & = & 1\tensor*[_{\mathscr{I}}]{-}{}\iota\left(x\right)\\
 \iota\left(\sideset{_{\mathbb{R}}}{_{i}}\sum x_{i}\right) & \subseteq & \sideset{_{\mathscr{I}}}{_{i}}\sum\iota\left(x_{i}\right)\textrm{ ,}
@@ -1345,6 +1347,51 @@ there is no natural way to map from $\frac{1}{2}$, as both $\frac{1}{2}\in\left[
 and $\frac{1}{2}\in\left[\frac{1}{2},1\right]=\likely$. However,
 we still can find a quantum interval-valued probability measure corresponding
 to a quantum probability measure as in the following example. 
+
+\begin{example}[One-qubit quantum interval-valued probability measure]
+Given a two dimensional Hilbert space, a vector $\ket{\psi}$ can
+be normalized and written in $\left(\begin{array}{c}
+\cos\theta\\
+\rme^{\rmi\gamma}\sin\theta
+\end{array}\right)$, where $0\le\theta\le\frac{\pi}{2}$ and $0\le\gamma\le2\pi$. Consider
+a quantum interval-valued probability measure~$\tensor*[_{\mathscr{I}}]{\mu}{}:\events\rightarrow\mathscr{I}$
+defined by 
+\begin{eqnarray*}
+\tensor*[_{\mathscr{I}}]{\mu}{}(\mathbb{0}) & = & \imposs\textrm{ ,}\\
+\tensor*[_{\mathscr{I}}]{\mu}{}(\mathbb{1}) & = & \necess\textrm{ ,}\\
+\tensor*[_{\mathscr{I}}]{\mu}{}(\proj{\psi}) & = & \begin{cases}
+\necess & \textrm{, if }\theta=0\textrm{ ;}\\
+\likely & \textrm{, if }0<\theta<\frac{\pi}{4}\textrm{ ;}\\
+\likely & \textrm{, if }\theta=\frac{\pi}{4}\textrm{ and }0\le\gamma<\pi\textrm{ ;}\\
+\unlikely & \textrm{, if }\theta=\frac{\pi}{4}\textrm{ and }\pi\le\gamma<2\pi\textrm{ ;}\\
+\unlikely & \textrm{, if }\frac{\pi}{4}<\theta<\frac{\pi}{2}\textrm{ ;}\\
+\imposs & \textrm{, if }\theta=\frac{\pi}{2}\textrm{ .}
+\end{cases}
+\end{eqnarray*}
+Let $\ket{\psi^{\perp}}$ be the state perpendicular to $\ket{\psi}$.
+Then, the vector representation of $\ket{\psi^{\perp}}$ can be simplified
+as 
+\[
+\left(\begin{array}{c}
+-\rme^{\rmi\gamma}\sin\theta\\
+\cos\theta
+\end{array}\right)=-\rme^{\rmi\gamma}\left(\begin{array}{c}
+\cos\left(\frac{\pi}{2}-\theta\right)\\
+\rme^{\rmi\left(\pi-\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)
+\end{array}\right)
+\]
+so we have
+\[
+\tensor*[_{\mathscr{I}}]{\mu}{}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi}\right)=\tensor*[_{\mathscr{I}}]{\mu}{}\left(\proj{\psi^{\perp}}\right)=1\tensor*[_{\mathscr{I}}]{-}{}\tensor*[_{\mathscr{I}}]{\mu}{}\left(\proj{\psi}\right)\textrm{ .}
+\]
+Hence, $\tensor*[_{\mathscr{I}}]{\mu}{}$ is a quantum $\mathscr{I}$-interval-valued
+probability measure. Notice that for all projection~$E$, $\tensor*[_{\left[0,1\right]}]{\tilde{\mu}}{_{\ket{0}}}(E)\in\tensor*[_{\mathscr{I}}]{\mu}{}(E)$
+implies that $\tensor*[_{\mathscr{I}}]{\mu}{}(E)$ is one of quantum
+$\mathscr{I}$-interval-valued probability measures corresponding
+to $\tensor*[_{\left[0,1\right]}]{\tilde{\mu}}{_{\ket{0}}}(E)$. However,
+$\tensor*[_{\left[0,1\right]}]{\tilde{\mu}}{_{\ket{0}}}(E)$ can correspond
+to infinity many quantum $\mathscr{I}$-interval-valued probability
+measures by twisting the definition involving $\gamma$.\qed\end{example}
 
 Even if there is a natural map from quantum probability measures to
 quantum interval-valued probability measures, there are also some
