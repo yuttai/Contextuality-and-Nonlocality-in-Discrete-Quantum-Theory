@@ -548,8 +548,8 @@ section may be specialized to Dempster and Shafer only.}
 \begin{itemize}
 \item $\pmeas(\emptyset)=[0,0]$, 
 \item $\pmeas(\Omega)=[1,1]$, 
-\item $\pmeas\left(\Omega\backslash E\right)=1\tensor*[_{\mathscr{I}}]{-}{}\pmeas\left(E\right)$,
-  and 
+\item for any event $E$, $\pmeas\left(\Omega\backslash
+E\right)=1\tensor*[_{\mathscr{I}}]{-}{}\pmeas\left(E\right)$, and 
 \item for a collection $E_{i}$ of pairwise disjoint events, we have $\pmeas\left(\bigcup_{i}E_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i}}\pmeas\left(E_{i}\right)$,
 where $\tensor*[_{\mathscr{I}}]{\sum}{_{i}}[l_{i},r_{i}]=\left[\tensor*[_{\mathbb{R}}]{\sum}{_{i}}l_{i},\tensor*[_{\mathbb{R}}]{\sum}{_{i}}r_{i}\right]$.
 We may drop the preposing $\mathscr{I}$ when summands are clearly intervals. 
@@ -997,18 +997,22 @@ space.
 Space~\cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010}]\label{def:QuantumProbabilitySpace}
   Given a Hilbert space $\Hilb$, a \emph{quantum probability space}
   consists of a set of events $\events$ and a probability measure
-  $\mu : \events \rightarrow [0,1]$ such that:\footnote {It is
-    possible to define a more general space of events consisting of
+  $\tensor*[_{[0,1]}]{\mu}{} : \events \rightarrow [0,1]$ such
+  that:\footnote {It is possible to define a more general space of events consisting of
     all operators~$\mathcal{A}$ on $\Hilb$ and consider
     $\mu:\mathcal{A}\rightarrow\C$~\cite{Maassen2010,Swart2013}.  When
     an operator $A\in\mathcal{A}$ is Hermitian, $\mu\left(A\right)$ is
     the expectation value of $A$. We does not take this approach
     because we want to focus only on probability. }
 \begin{itemize}
-\item $\mu(\mathbb{1})=1$, and 
+\item $\tensor*[_{[0,1]}]{\mu}{}(\mathbb{1})=1$, and 
 \item for mutually orthogonal projections $P_{i}$, we have 
-$\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i}}\mu\left(P_{i}\right)$.
+$\tensor*[_{[0,1]}]{\mu}{}\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i}}\tensor*[_{[0,1]}]{\mu}{}\left(P_{i}\right)$.
 \end{itemize}
+Notice that the preposing $[0,1]$ indicates the range of
+$\tensor*[_{[0,1]}]{\mu}{}$. We will only prepose the range of a
+probability measure whenever we need to compare the ranges of different
+probability measures later. 
 \qed\end{definition}
 
 Comparing to the classical probability space, the empty set~$\emptyset$
@@ -1024,8 +1028,8 @@ is always true whenever the left-handed side is defined. Whether an equation
 is defined also effects the further properties of quantum probability
 space.
 
-\begin{definition}[Ideal Measurement; Complement; Commutativity;
-Complete Set~\cite{Swart2013,peres1995quantum,Griffiths2003}]~ 
+\begin{definition}[Ideal Measurement; Complement;
+Commutativity~\cite{Swart2013,peres1995quantum,Griffiths2003}]~
 \begin{itemize}
 \item A set of mutually orthogonal projections $P_{i}$ is called an \emph{ideal
 measurement} if it is a partition of the identity, i.e.,
@@ -1052,9 +1056,10 @@ measure if and only if $\mu$ satisfies the following conditions:
 \begin{itemize}
 \item $\mu(\mathbb{0})=0$, 
 \item $\mu(\mathbb{1})=1$, 
-\item $\mu\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=1\tensor*[_{\mathbb{R}}]{-}{}\mu\left(P\right)$,
-and 
-\item for mutually orthogonal projections $P_{i}$, we have $\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i}}\mu\left(P_{i}\right)$. 
+\item for any projection $P$,
+$\mu\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=1\tensor*[_{\mathbb{R}}]{-}{}\mu\left(P\right)$, and 
+\item for a set of mutually orthogonal projections $P_{i}$, we have
+$\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i}}\mu\left(P_{i}\right)$.
 \end{itemize}
 \qed\end{lemma}
 
@@ -1284,15 +1289,19 @@ ideal measurement, and get the following definition.
 \begin{definition}[Quantum Interval-valued Probability Measure]\label{def:QuantumInterval-valuedProbability}
 Given a Hilbert space $\Hilb$ with the set of quantum events~$\events$,
 and a collection of intervals~$\mathscr{I}$, a \emph{quantum $\mathscr{I}$-interval-valued
-probability measure} is a function~$\mu:\events\rightarrow\mathscr{I}$
+probability measure} is a function~$\tensor*[_{\mathscr{I}}]{\mu}{}:\events\rightarrow\mathscr{I}$
 such that: 
 \begin{itemize}
-\item $\mu(\mathbb{0})=\left[0,0\right]$, 
-\item $\mu(\mathbb{1})=\left[1,1\right]$, 
-\item $\mu\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=1\tensor*[_{\mathscr{I}}]{-}{}\mu\left(P\right)$,
-and 
-\item for mutually orthogonal projections $P_{i}$, we have $\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i}}\mu\left(P_{i}\right)$. 
+\item $\tensor*[_{\mathscr{I}}]{\mu}{}(\mathbb{0})=\left[0,0\right]$, 
+\item $\tensor*[_{\mathscr{I}}]{\mu}{}(\mathbb{1})=\left[1,1\right]$, 
+\item for any projection $P$,
+$\tensor*[_{\mathscr{I}}]{\mu}{}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=1\tensor*[_{\mathscr{I}}]{-}{}\tensor*[_{\mathscr{I}}]{\mu}{}\left(P\right)$, and
+\item for a set of mutually orthogonal projections $P_{i}$, we have
+$\tensor*[_{\mathscr{I}}]{\mu}{}\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i}}\tensor*[_{\mathscr{I}}]{\mu}{}\left(P_{i}\right)$.
 \end{itemize}
+As before, we will only define a quantum interval-valued probability measure
+with preposing $\mathscr{I}$ when we want to compare a quantum probability
+measure and a quantum interval-valued probability measure.
 \qed\end{definition}
 
 Notice that if the last condition is replaced by the equal sign, these
