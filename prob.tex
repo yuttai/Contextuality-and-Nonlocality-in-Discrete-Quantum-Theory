@@ -990,6 +990,29 @@ has an orthonormal basis~$\{\ket{\psi_{j}}\}$.
 \end{itemize}
 \qed\end{definition}
 
+Based on quantum events are projection operators, operations and properties of
+quntum events can be written in terms of those of operators.
+
+\begin{definition}[Ideal Measurement; Complement;
+Commutativity~\cite{Swart2013,peres1995quantum,Griffiths2003}]~
+\begin{itemize}
+\item A set of mutually orthogonal projections $P_{i}$ is called an \emph{ideal
+measurement} if it is a partition of the identity, i.e.,
+$\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}=\mathbb{1}$.
+\item If $P$ is a projection operator, then $\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P$
+is also a projection operator, called \emph{complement}. It is orthogonal to $P$,
+and corresponds to the complement event~$\Omega\backslash E$
+in classical probability.
+\item Projection operators $P_{1}$ and $P_{2}$ \emph{commute} if $P_{1}P_{2}=P_{2}P_{1}$.
+The product of two projection operators~$P_{1}P_{2}$ is also a projection
+operator if and only if they commute. This corresponds to the classical intersection
+between events. 
+\end{itemize}
+\qed\end{definition}
+
+%%%%%
+\subsection{Quantum Probability Measures}
+
 Based on the set of events, we can define the quantum probability
 space.
 
@@ -1027,24 +1050,6 @@ however, $\mu\left(P_{1}\tensor*[_{\mathscr{O}}]{+}{}P_{2}\right)=\mu(P_{1})\ten
 is always true whenever the left-handed side is defined. Whether an equation
 is defined also effects the further properties of quantum probability
 space.
-
-\begin{definition}[Ideal Measurement; Complement;
-Commutativity~\cite{Swart2013,peres1995quantum,Griffiths2003}]~
-\begin{itemize}
-\item A set of mutually orthogonal projections $P_{i}$ is called an \emph{ideal
-measurement} if it is a partition of the identity, i.e.,
-$\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}=\mathbb{1}$.
-\item If $P$ is a projection operator, then $\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P$
-is also a projection operator, called \emph{complement}. It is orthogonal to $P$, has
-probability~$\mu\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=1\tensor*[_{\mathbb{R}}]{-}{}\mu\left(P\right)$, 
-and corresponds to the complement event~$\Omega\backslash E$
-in classical probability.
-\item Projection operators $P_{1}$ and $P_{2}$ \emph{commute} if $P_{1}P_{2}=P_{2}P_{1}$.
-The product of two projection operators~$P_{1}P_{2}$ is also a projection
-operator if and only if they commute. This corresponds to the classical intersection
-between events. 
-\end{itemize}
-\qed\end{definition}
 
 In order to motivate the definition of quantum interval-valued probability
 measures later, we provide an equivalent definition of quantum probability
@@ -1177,21 +1182,18 @@ theorem. However, the definition diverges. So we just leave it so far, and we
 will go back if we really need it in this paper. (Maybe when discussing repeating
 experiments?)}}
 
-%%%%%
-\subsection{Quantum Probability Measures}
-
 For a given set of events $\events$, there are many possible probability
 measures $\mu:\events\rightarrow[0,1]$. The Born rule~\cite{Born1983,Mermin2007,RiederSvozil2007},
-a postulate of quantum mechanics, states that each pure quantum state
-$\ket{\phi}$ induces a probability measure $\mu^B_{\phi}$
-as follows: 
+a postulate of quantum mechanics, states that each pure normalized
+($\ip{\phi}{\phi}=1$) quantum state $\ket{\phi}$ induces a probability measure
+$\mu^B_{\phi}$ as follows: 
 \[
 \mu^B_{\phi}(P)=\ip{\phi}{P\phi}
 \]
 
 Moreover, the Born rule can be extended to a mixed state. Suppose
 we want to prepare a quantum system. As we discussed in classical
-probability, our ability of preparing a state might not be prefect.
+probability, our ability of preparing a state might not be perfect.
 If we want to prepare $\ket{\phi}$, we may turn out preparing a set
 of state~$\ket{\phi_{j}}$ each with probability~$q_{j}$. Then,
 the state of the system can be expressed as a density matrix~$\rho=\sum_{j}q_{j}\proj{\phi_{j}}$,
@@ -1208,8 +1210,8 @@ state~$\rho$ that induces such a measure using the Born rule~\cite{gleason1957,R
 By applying Gleason's theorem, we can extend lemma~\ref{lem:quantumProbabilityMeasure}
 to the following corollary.
 
-\begin{cor}\label{cor:Gleason's}Given a Hilbert space $\Hilb$,
-for any function~$\mu:\events\rightarrow[0,1]$ satisfying the conditions
+\begin{cor}\label{cor:Gleason's}Given a Hilbert space $\Hilb$ of dimension
+$d\geq3$, for any function~$\mu:\events\rightarrow[0,1]$ satisfying the conditions
 listed in lemma~\ref{lem:quantumProbabilityMeasure}, there exist
 an unique mixed state~$\rho$ such that $\mu=\mu^B_{\rho}$.\end{cor}
 
