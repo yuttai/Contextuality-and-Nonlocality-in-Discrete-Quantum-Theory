@@ -212,10 +212,15 @@ Although specifying a probability for every event looks complex, a
 probability measure can be simply constructed by $\pmeas(E)=\tensor*[_{\mathbb{R}}]{\sum}{_{\omega\in E}}\rho(\omega)$,
 where $\rho:\Omega\rightarrow[0,1]$ and $\tensor*[_{\mathbb{R}}]{\sum}{_{\omega\in\Omega}}\rho(\omega)=1$.
 Furthermore, every probability measure~$\pmeas$ can be written in
-this form for an unique $\rho$~\cite{Kolmogorov1950,Swart2013}
-which is called the probability distribution~\cite{GrahamKnuthPatashnik1994}
-or the Radon-Nikodym derivative of $\pmeas$ with respect to the counting
-measure~\cite{Nikodym1930,Torchinsky1994}. 
+this form for an unique $\rho$~\cite{Kolmogorov1950,Swart2013}.
+This fact is a special case of the the Radon-Nikodym theorem, and
+$\rho$ is called the Radon-Nikodym derivative of $\pmeas$ with respect
+to the counting measure~\cite{Nikodym1930,Folland2013}. For example,
+the Radon-Nikodym derivative of $\pmeas$ in example~\ref{ex1} is:
+\[
+\begin{array}{rcl}
+\rho\left(HH\right)=1/3,\quad\rho\left(HT\right)=0,\quad\rho\left(TH\right)=2/3,\quad\rho\left(TT\right)=0\textrm{ .}\end{array}
+\]
 
 In a strict computational or experimental setting, one may question
 the reliance of the definition of probability space on the uncountable
@@ -674,6 +679,8 @@ the information about the complement when all four events are
 combined. Thus the $\subseteq$-condition allows us to get an estimate
 for the combined event from each of its constituents and then gather
 more evidence knowing the aggregate event.\qed\end{example}
+\footnote{\yutsung{The Radon-Nikodym Theorem for interval-valued
+probability?\cite{GilboaSchmeidler1994}?}}
 
 % \gerardo{Set-valued is a particular case?}
 
@@ -1183,31 +1190,29 @@ theorem. However, the definition diverges. So we just leave it so far, and we
 will go back if we really need it in this paper. (Maybe when discussing repeating
 experiments?)}}
 
-Another difference between classical and quantum probability space. For a
-given set of events $\events$, there are many possible probability measures $\mu:\events\rightarrow[0,1]$. The Born rule~\cite{Born1983,Mermin2007,RiederSvozil2007},
-a postulate of quantum mechanics, states that each pure normalized
-($\ip{\phi}{\phi}=1$) quantum state $\ket{\phi}$ induces a probability measure
-$\mu^B_{\phi}$ as follows: 
+Like a classical probability measure can be easily defined by its
+Radon-Nikodym derivative, a quantum probability measure can be easily
+constructed by states according to the Born rule~\cite{Born1983,Mermin2007,RiederSvozil2007}.
+For each pure normalized ($\ip{\phi}{\phi}=1$) quantum state $\ket{\phi}$,
+the Born rule induces a probability measure $\mu_{\phi}^{B}$ as follows:
 \[
-\mu^B_{\phi}(P)=\ip{\phi}{P\phi}
+\mu_{\phi}^{B}(P)=\ip{\phi}{P\phi}\textrm{ .}
 \]
 
 Moreover, the Born rule can be extended to a mixed state. Suppose
-we want to prepare a quantum system. As we discussed in classical
-probability, our ability of preparing a state might not be perfect.
-If we want to prepare $\ket{\phi}$, we may turn out preparing a set
-of state~$\ket{\phi_{j}}$ each with probability~$q_{j}$. Then,
+we prepares a set of state~$\ket{\phi_{j}}$ each with probability~$q_{j}$,
 the state of the system can be expressed as a density matrix~$\rho=\sum_{j}q_{j}\proj{\phi_{j}}$,
 where $\sum_{j}q_{j}=1$. It is natural that the quantum probability
-measure introduced by $\rho$ is the combination of $\mu^B_{\phi_{j}}$
+measure introduced by $\rho$ is the combination of $\mu_{\phi_{j}}^{B}$
 with respect to probability $q_{j}$~\cite{peres1995quantum,544199,RiederSvozil2007}:
 \begin{eqnarray}
-\mu^B_{\rho}\left(P\right) & = & \Tr\left(\rho P\right)=\sum_{j=1}^{N}q_{j}\mu^B_{\phi_{j}}\left(P\right)\textrm{ .}\label{BornRule.mixed}
+\mu_{\rho}^{B}\left(P\right) & = & \Tr\left(\rho P\right)=\sum_{j=1}^{N}q_{j}\mu_{\phi_{j}}^{B}\left(P\right)\textrm{ .}\label{BornRule.mixed}
 \end{eqnarray}
 
-Conversely, in Hilbert spaces of dimension $d\geq3$, Gleason's theorem
-states that given a probability measure $\mu$, there exist a mixed
-state~$\rho$ that induces such a measure using the Born rule~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
+The generalized Radon-Nikodym theorem is called Gleason's theorem
+which states that, in Hilbert spaces of dimension $d\geq3$, given
+a probability measure $\mu$, there exist a mixed state~$\rho$ that
+induces such a measure using the Born rule~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
 By applying Gleason's theorem, we can extend lemma~\ref{lem:quantumProbabilityMeasure}
 to the following corollary.
 
