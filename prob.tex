@@ -1362,6 +1362,43 @@ where $x$ and $\sideset{_{\mathbb{R}}}{_{i}}\sum x_{i}\in\left[0,1\right]$.
 By applying these two properties, it is easy to verify $\bar{\mu}$
 is a quantum \emph{$\mathscr{I}$}-interval-valued probability measure.\qed\end{example}
 
+Although $\iota:\left[0,1\right]\rightarrow\mathscr{I}$ maps every
+quantum probability measure to a quantum interval-valued probability
+measure, there is a quantum \emph{$\mathscr{I}$}-interval-valued
+probability measure which does not come from a quantum probability
+measure. 
+
+\begin{example}[Three-dimensional quantum interval-valued probability
+measure] Given a three dimensional Hilbert space with an orthonormal
+basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $. Consider\emph{
+$\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $}, and $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$
+as before. Let 
+\begin{eqnarray*}
+\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps}) & = & \imposs\textrm{ ,}\\
+\bar{\mu}(\mathbb{1})=\bar{\mu}(1-\proj{0})=\bar{\mu}(1-\proj{\ps}) & = & \necess\textrm{ ,}\\
+\bar{\mu}(P) & = & \unknown\textrm{, otherwise. }
+\end{eqnarray*}
+To verify $\bar{\mu}$ is a quantum interval-valued probability measure,
+it is sufficient to check $\bar{\mu}\left(\proj{\psi_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{\psi_{2}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)$
+for orthogonal $\ket{\psi_{1}}$ and $\ket{\psi_{2}}$. This is easily
+verified by enumerating all possible cases. 
+
+$\bar{\mu}$ cannot correspond to any quantum probability measure.
+Suppose $\bar{\mu}(P)=\iota\left(\mu(P)\right)$ for some $\mu:\events\rightarrow\left[0,1\right]$.
+We must have 
+\begin{equation}
+\mu(\proj{0})=\mu(\proj{\ps})=0\textrm{ .}\label{eq:probability-zero-on-states}
+\end{equation}
+By Gleason's theorem, there is a mixed state~$\rho=\sum_{j}q_{j}\proj{\phi_{j}}$
+such that $\mu\left(P\right)=\sum_{j=1}^{N}q_{j}\ip{\phi_{j}}{P\phi_{j}}$,
+where $\sum_{j}q_{j}=1$ and $q_{j}>0$. By
+equation (\ref{eq:probability-zero-on-states}),
+we have $\rho=\proj{2}$. However, 
+\[
+\iota\left(\mu(\proj{2})\right)=\necess\ne\unknown=\bar{\mu}(P)\textrm{ .}
+\]
+\qed\end{example}
+
 Notice that in the above two examples, quantum interval-valued probability
 measures are all come from quantum probability measures because the
 numbers in $\left[0,1\right]$ can be mapped to the chosen intervals~$\mathscr{I}$
@@ -1415,45 +1452,6 @@ to $\mu^B_{\ket{0}}(P)$. However,
 $\mu^B_{\ket{0}}(P)$ can correspond
 to infinity many quantum $\mathscr{I}$-interval-valued probability
 measures by twisting the definition involving $\gamma$.\qed\end{example}
-
-We have enough examples for quantum interval-valued probability measure,
-it is instructive to understand the conditions by studying a measure
-which is not a quantum interval-valued probability measure.
-
-\begin{example}[Not three-dimensional quantum interval-valued probability
-measure] Given a three dimensional Hilbert space with an orthonormal
-basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $. Consider\emph{
-$\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $}, and $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$
-as before. Let
-\begin{eqnarray*}
-\bar{\mu}(\mathbb{0}) & = & \imposs\textrm{ ,}\\
-\bar{\mu}(\mathbb{1}) & = & \necess\textrm{ ,}\\
-\bar{\mu}(\proj{0}) & = & \necess\textrm{ ,}\\
-\bar{\mu}(\proj{\ps}) & = & \necess\textrm{ ,}\\
-\bar{\mu}(\proj{\psi}) & = & \imposs\textrm{, for }\ip{\psi}{0}=0\textrm{ or }\ip{\psi}{\ps}=0\textrm{ ,}\\
-\bar{\mu}(1-\proj{0}) & = & \imposs\textrm{ ,}\\
-\bar{\mu}(1-\proj{\ps}) & = & \imposs\textrm{ ,}\\
-\bar{\mu}(1-\proj{\psi}) & = & \necess\textrm{, for }\ip{\psi}{0}=0\textrm{ or }\ip{\psi}{\ps}=0\textrm{ ,}\\
-\bar{\mu}(P) & = & \unknown\textrm{, otherwise. }
-\end{eqnarray*}
-$\bar{\mu}$ is not a quantum interval-valued probability measure. To verify
-this fact, we first consider an orthonormal basis
-\begin{eqnarray*}
-\ket{\psi_{0}} & = & \frac{1}{\sqrt{2}}\ket{1}+\frac{1}{\sqrt{2}}\ket{2}\\
-\ket{\psi_{1}} & = & \frac{1}{\sqrt{3}}\ket{0}-\frac{1}{\sqrt{3}}\ket{1}+\frac{1}{\sqrt{3}}\ket{2}\\
-\ket{\psi_{2}} & = & \sqrt{\frac{2}{3}}\ket{0}+\frac{1}{\sqrt{6}}\ket{1}-\frac{1}{\sqrt{6}}\ket{2}
-\end{eqnarray*}
-However, 
-
-\begin{eqnarray*}
- &  & \bar{\mu}\left(\proj{\psi_{0}}+\proj{\psi_{1}}\right)=\bar{\mu}\left(1-\proj{\psi_{2}}\right)=\unknown\\
- & \nsubseteq & \imposs+\imposs=\bar{\mu}\left(\proj{\psi_{1}}\right)+\bar{\mu}\left(\proj{\psi_{2}}\right)\textrm{ .}
-\end{eqnarray*}
-\qed\end{example}
-
-\yutsung{For \emph{$\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $},
-are there any quantum interval-valued probability measures do not
-come from quantum probability measures?}
 
 \amr{
 We can use DQC if we have some kind of topology (distances). The idea
