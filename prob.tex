@@ -1023,12 +1023,6 @@ in classical probability.
 The product of two projection operators~$P_{1}P_{2}$ is also a projection
 operator if and only if they commute. This corresponds to the classical intersection
 between events. 
-\item For projection operators $P_{1}$ and $P_{2}$, we define $P_{1}\tensor*[_{\mathscr{O}}]{\ge}{}P_{2}$
-if $P_{1}\tensor*[_{\mathscr{O}}]{-}{}P_{2}$ is a projection operator;
-and $P_{1}\tensor*[_{\mathscr{O}}]{>}{}P_{2}$ if $P_{1}\tensor*[_{\mathscr{O}}]{\ge}{}P_{2}$
-and $P_{1}\ne P_{2}$. Also, let $S_{i}$ be the linear subspace $P_{i}$
-project onto, then $P_{1}\tensor*[_{\mathscr{O}}]{\ge}{}P_{2}$ if
-and only if $S_{1}\supseteq S_{2}$.\yutsung{Need to verify!}
 \end{itemize}
 \qed\end{definition}
 
@@ -1371,33 +1365,32 @@ measure.
 \begin{example}[Three-dimensional quantum interval-valued probability
 measure] Given a three dimensional Hilbert space with an orthonormal
 basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $. Consider\emph{
-$\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $}, and $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$
-as before. Let 
+$\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $}, $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$,
+and $\ket{\ps'}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{2})$. Let 
 \begin{eqnarray*}
-\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps}) & = & \imposs\textrm{ ,}\\
-\bar{\mu}(\mathbb{1})=\bar{\mu}(1-\proj{0})=\bar{\mu}(1-\proj{\ps}) & = & \necess\textrm{ ,}\\
+\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'}) & = & \imposs\textrm{ ,}\\
+\bar{\mu}(\mathbb{1})=\bar{\mu}(1-\proj{0})=\bar{\mu}(1-\proj{\ps})=\bar{\mu}(1-\proj{\ps'}) & = & \necess\textrm{ ,}\\
 \bar{\mu}(P) & = & \unknown\textrm{, otherwise. }
 \end{eqnarray*}
 To verify $\bar{\mu}$ is a quantum interval-valued probability measure,
 it is sufficient to check $\bar{\mu}\left(\proj{\psi_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{\psi_{2}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)$
 for orthogonal $\ket{\psi_{1}}$ and $\ket{\psi_{2}}$. This is easily
-verified by enumerating all possible cases. 
+verified by enumerating all possible cases.
 
 $\bar{\mu}$ cannot correspond to any quantum probability measure.
 Suppose $\bar{\mu}(P)=\iota\left(\mu(P)\right)$ for some $\mu:\events\rightarrow\left[0,1\right]$.
 We must have 
 \begin{equation}
-\mu(\proj{0})=\mu(\proj{\ps})=0\textrm{ .}\label{eq:probability-zero-on-states}
+\mu(\proj{0})=\mu(\proj{\ps})=\mu(\proj{\ps'})=0\textrm{ .}\label{eq:probability-zero-on-states}
 \end{equation}
 By Gleason's theorem, there is a mixed state~$\rho=\sum_{j}q_{j}\proj{\phi_{j}}$
 such that $\mu\left(P\right)=\sum_{j=1}^{N}q_{j}\ip{\phi_{j}}{P\phi_{j}}$,
-where $\sum_{j}q_{j}=1$ and $q_{j}>0$. By
-equation (\ref{eq:probability-zero-on-states}),
-we have $\rho=\proj{2}$. However, 
+where $\sum_{j}q_{j}=1$ and $q_{j}>0$. However, no pure state~$\ket{\phi}$
+satisfies
 \[
-\iota\left(\mu(\proj{2})\right)=\necess\ne\unknown=\bar{\mu}(P)\textrm{ .}
+\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0
 \]
-\qed\end{example}
+so that no quantum probability measure~$\mu$ such that $\bar{\mu}(P)=\iota\left(\mu(P)\right)$.\qed\end{example}
 
 Notice that in the above two examples, quantum interval-valued probability
 measures are all come from quantum probability measures because the
@@ -1452,6 +1445,11 @@ to $\mu^B_{\ket{0}}(P)$. However,
 $\mu^B_{\ket{0}}(P)$ can correspond
 to infinity many quantum $\mathscr{I}$-interval-valued probability
 measures by twisting the definition involving $\gamma$.\qed\end{example}
+
+\yutsung{Is there a quantum interval-value probability measure which
+corresponds to no quantum probability measure for $\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $?
+This is still important because \emph{$\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $}
+is way to small for a general case.}
 
 \amr{
 We can use DQC if we have some kind of topology (distances). The idea
@@ -1627,47 +1625,6 @@ $\ket{\psi}$.
 \bibliographystyle{unsrt}
 \bibliography{discreteGBKS}
 
-
-\appendix
-
-\section{Proof of Quantum Interval-valued Probability Measures}
-
-In order to simplify the notation, consider the following definition
-for interval-valued probability measures.
-
-\begin{definition}Given a Hilbert space~$\Hilb$ with the set of
-quantum events~$\events$, a collection of intervals~$\mathscr{I}$,
-and a quantum $\mathscr{I}$-interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$.
-Let $l:\events\rightarrow\left[0,1\right]$ and $r:\events\rightarrow\left[0,1\right]$
-such that $\left[l\left(P\right),r\left(P\right)\right]=\bar{\mu}\left(P\right)$.\qed\end{definition}
-
-Before we prove our results, we need the following lemmas.
-
-\begin{lemma}Given a Hilbert space~$\Hilb$ with the set of quantum
-events~$\events$, a collection of intervals~$\mathscr{I}$, and
-a quantum $\mathscr{I}$-interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$.
-For projection operators $P_{1}$ and $P_{2}$, if $P_{1}\tensor*[_{\mathscr{O}}]{\ge}{}P_{2}$,
-then $\bar{\mu}\left(P_{1}\right)\tensor*[_{\mathscr{I}}]{\ge}{}\bar{\mu}\left(P_{2}\right)$,
-where $\left[l_{1},r_{1}\right]\tensor*[_{\mathscr{I}}]{\ge}{}\left[l_{2},r_{2}\right]$
-if and only if $l_{1}\tensor*[_{\mathbb{R}}]{\ge}{}l_{2}$ and $r_{1}\tensor*[_{\mathbb{R}}]{\ge}{}r_{2}$.
-The preposing $\mathbb{R}$ represents its an inequality of real numbers
-as usual.\qed\end{lemma}
-
-\begin{proof}
-
-\begin{eqnarray*}
- &  & P_{1}\tensor*[_{\mathscr{O}}]{\ge}{}P_{2}\\
- & \Rightarrow & \bar{\mu}\left(P_{1}\right)\subseteq\bar{\mu}\left(P_{1}\tensor*[_{\mathscr{O}}]{-}{}P_{2}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(P_{2}\right)\\
- & \Rightarrow & l\left(P_{1}\right)\tensor*[_{\mathbb{R}}]{\ge}{}l\left(P_{1}\tensor*[_{\mathscr{O}}]{-}{}P_{2}\right)\tensor*[_{\mathbb{R}}]{+}{}l\left(P_{2}\right)\tensor*[_{\mathbb{R}}]{\ge}{}l\left(P_{2}\right)
-\end{eqnarray*}
-Similarly, 
-\begin{eqnarray*}
- &  & \mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P_{1}\tensor*[_{\mathscr{O}}]{\le}{}\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P_{2}\\
- & \Rightarrow & 1\tensor*[_{\mathbb{R}}]{-}{}r\left(P_{1}\right)=l\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P_{1}\right)\tensor*[_{\mathbb{R}}]{\le}{}l\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P_{2}\right)=1\tensor*[_{\mathbb{R}}]{-}{}r\left(P_{2}\right)\\
- & \Rightarrow & r\left(P_{1}\right)\tensor*[_{\mathbb{R}}]{\ge}{}r\left(P_{2}\right)
-\end{eqnarray*}
-
-\end{proof}
 \end{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
