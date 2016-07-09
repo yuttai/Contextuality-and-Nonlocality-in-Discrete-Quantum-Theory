@@ -253,7 +253,10 @@ dropped when there is no ambiguity.
   \qed\end{example}
 
 Although specifying a probability for every event looks complex, a
-probability measure can be simply constructed by $\pmeas(E)=\tensor*[_{\mathbb{R}}]{\sum}{_{\omega\in E}}\rho(\omega)$,
+probability measure can be simply constructed by 
+\begin{equation}
+\pmeas(E)=\tensor*[_{\mathbb{R}}]{\sum}{_{\omega\in E}}\rho(\omega)\textrm{ ,}\label{eq:Radon-Nikodym}
+\end{equation}
 where $\rho:\Omega\rightarrow[0,1]$ and $\tensor*[_{\mathbb{R}}]{\sum}{_{\omega\in\Omega}}\rho(\omega)=1$.
 Furthermore, every probability measure~$\pmeas$ can be written in
 this form for an unique $\rho$~\cite{Kolmogorov1950,Swart2013}.
@@ -1234,9 +1237,8 @@ theorem. However, the definition diverges. So we just leave it so far, and we
 will go back if we really need it in this paper. (Maybe when discussing repeating
 experiments?)}}
 
-Like a classical probability measure can be easily defined by its
-Radon-Nikodym derivative, a quantum probability measure can be easily
-constructed by states according to the Born rule~\cite{Born1983,Mermin2007,RiederSvozil2007}.
+A quantum probability measure can be easily constructed by states
+according to the Born rule~\cite{Born1983,Mermin2007,RiederSvozil2007}.
 For each pure normalized ($\ip{\phi}{\phi}=1$) quantum state $\ket{\phi}$,
 the Born rule induces a probability measure $\mu_{\phi}^{B}$ as follows:
 \[
@@ -1252,6 +1254,19 @@ with respect to probability $q_{j}$~\cite{peres1995quantum,544199,RiederSvozil20
 \begin{eqnarray}
 \mu_{\rho}^{B}\left(P\right) & = & \Tr\left(\rho P\right)=\sum_{j=1}^{N}q_{j}\mu_{\phi_{j}}^{B}\left(P\right)\textrm{ .}\label{BornRule.mixed}
 \end{eqnarray}
+
+Actually, constructing a quantum probability measures from a density
+matrix~$\rho$ is similar to defining a classical probability measure
+by its Radon-Nikodym derivative. This can be seen more easily if we
+pick an orthonormal basis~$\left\{ \ket{\psi_{j}}\right\} _{j=1}^{d}$
+such that $P=\tensor*[_{\mathscr{O}}]{\sum}{_{\psi_{j}\in S}}\proj{\psi_{j}}$,
+where $S$ is the linear subspace $P$ projects onto. Then, a density
+matrix~$\rho$ can also be represented in the same basis, i.e., $\rho=\sum_{i=1}^{d}\sum_{j=1}^{d}r_{ij}\proj{\psi_{j}}$,
+and the Born rule becomes
+\begin{eqnarray}
+\mu_{\rho}^{B}\left(P\right) & = & \Tr\left(\rho P\right)=\sum_{\psi_{j}\in S}r_{jj}\textrm{ ,}\label{BornRule.mixed-1}
+\end{eqnarray}
+which is basically the same as equation (\ref{eq:Radon-Nikodym}).
 
 The generalized Radon-Nikodym theorem is called Gleason's theorem
 which states that, in Hilbert spaces of dimension $d\geq3$, given
