@@ -1421,14 +1421,14 @@ measure, there is a quantum \emph{$\mathscr{I}$}-interval-valued
 probability measure which does not come from a quantum probability
 measure. 
 
-\begin{example}[Three-dimensional quantum interval-valued probability
-measure] Given a three dimensional Hilbert space with an orthonormal
-basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $. Consider\emph{
-$\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $}, $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$,
-and $\ket{\ps'}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{2})$. Let 
+\begin{example}[Three-dimensional quantum three-value interval-valued
+probability measure]\label{Three-dimensional-three-value} Given
+a three dimensional Hilbert space with an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
+Consider\emph{ $\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $}
+and $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$. Let 
 \begin{eqnarray*}
-\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'}) & = & \imposs\textrm{ ,}\\
-\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})=\bar{\mu}(\mathbb{1}-\proj{\ps'}) & = & \necess\textrm{ ,}\\
+\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps}) & = & \imposs\textrm{ ,}\\
+\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps}) & = & \necess\textrm{ ,}\\
 \bar{\mu}(P) & = & \unknown\textrm{, otherwise. }
 \end{eqnarray*}
 To verify $\bar{\mu}$ is a quantum interval-valued probability measure,
@@ -1440,16 +1440,16 @@ $\bar{\mu}$ cannot correspond to any quantum probability measure.
 Suppose $\bar{\mu}(P)=\iota\left(\mu(P)\right)$ for some $\mu:\events\rightarrow\left[0,1\right]$.
 We must have 
 \begin{equation}
-\mu(\proj{0})=\mu(\proj{\ps})=\mu(\proj{\ps'})=0\textrm{ .}\label{eq:probability-zero-on-states}
+\mu(\proj{0})=\mu(\proj{\ps})=0\textrm{ .}\label{eq:probability-zero-on-states}
 \end{equation}
 By Gleason's theorem, there is a mixed state~$\rho=\sum_{j}q_{j}\proj{\phi_{j}}$
 such that $\mu\left(P\right)=\sum_{j=1}^{N}q_{j}\ip{\phi_{j}}{P\phi_{j}}$,
-where $\sum_{j}q_{j}=1$ and $q_{j}>0$. However, no pure state~$\ket{\phi}$
+where $\sum_{j}q_{j}=1$ and $q_{j}>0$. The only pure state~$\ket{\phi}$
 satisfies
 \[
-\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0
+\ip{\phi}{0}=\ip{\phi}{\ps}=0
 \]
-so that no quantum probability measure~$\mu$ such that $\bar{\mu}(P)=\iota\left(\mu(P)\right)$.\qed\end{example}
+is $\ket{2}$, but clearly $\bar{\mu}(P)\ne\iota\left(\mu_{\ket{2}}^{B}(P)\right)$.\qed\end{example}
 
 Notice that in the above two examples, quantum interval-valued probability
 measures are all come from quantum probability measures because the
@@ -1458,14 +1458,14 @@ naturally. This is not always the case. For example, if $\mathscr{I}=\left\{ \im
 there is no natural way to map from $\frac{1}{2}$, as both $\frac{1}{2}\in\left[0,\frac{1}{2}\right]=\unlikely$
 and $\frac{1}{2}\in\left[\frac{1}{2},1\right]=\likely$. However,
 we still can find a quantum interval-valued probability measure corresponding
-to a quantum probability measure as in the following example. 
+to a quantum probability measure as in the following example.
 
 \begin{example}[One-qubit quantum interval-valued probability measure]
 Given a two dimensional Hilbert space, a vector $\ket{\psi}$ can
 be normalized and written in $\left(\begin{array}{c}
 \cos\theta\\
 \rme^{\rmi\gamma}\sin\theta
-\end{array}\right)$, where $0\le\theta\le\frac{\pi}{2}$ and $0\le\gamma\le2\pi$. Consider
+\end{array}\right)$, where $0\le\theta\le\frac{\pi}{2}$ and $0\le\gamma<2\pi$. Consider
 a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
 defined by 
 \begin{eqnarray*}
@@ -1492,23 +1492,83 @@ as
 \rme^{\rmi\left(\pi-\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)
 \end{array}\right)
 \]
-so we have
+so we have 
 \[
 \bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi}\right)=\bar{\mu}\left(\proj{\psi^{\perp}}\right)=1\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(\proj{\psi}\right)\textrm{ .}
 \]
-Hence, $\bar{\mu}$ is a quantum $\mathscr{I}$-interval-valued
-probability measure. Notice that for all projection~$P$, $\mu^B_{\ket{0}}(P)\in\bar{\mu}(P)$
-implies that $\bar{\mu}(P)$ is one of quantum
-$\mathscr{I}$-interval-valued probability measures corresponding
-to $\mu^B_{\ket{0}}(P)$. However,
-$\mu^B_{\ket{0}}(P)$ can correspond
-to infinity many quantum $\mathscr{I}$-interval-valued probability
-measures by twisting the definition involving $\gamma$.\qed\end{example}
+Hence, $\bar{\mu}$ is a quantum $\mathscr{I}$-interval-valued probability
+measure. Notice that for all projection~$P$, $\mu_{\ket{0}}^{B}(P)\in\bar{\mu}(P)$
+implies that $\bar{\mu}(P)$ is one of quantum $\mathscr{I}$-interval-valued
+probability measures corresponding to $\mu_{\ket{0}}^{B}(P)$. However,
+$\mu_{\ket{0}}^{B}(P)$ can correspond to infinity many quantum $\mathscr{I}$-interval-valued
+probability measures by twisting the definition involving $\gamma$.\qed\end{example}
 
-\yutsung{Is there a quantum interval-value probability measure which
-corresponds to no quantum probability measure for $\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $?
-This is still important because \emph{$\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $}
-is way to small for a general case.}
+We are going to provide an quantum 4-value interval-valued probability
+measures corresponding to no quantum probability measure, i.e., $\mu_{\rho}^{B}(P)\notin\bar{\mu}(P)$.
+In general, we believe this kind of quantum $\mathscr{I}$-interval-valued
+probability measure exists for any finite set of interval~$\mathscr{I}$.
+
+\begin{example}[Three-dimensional quantum 4-value interval-valued
+probability measure] Given a three dimensional Hilbert space with
+an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
+Consider\emph{ }$\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
+$\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$, $\ket{\ms}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})$,
+and a quantum $\mathscr{I}$-interval-valued probability measure~$\bar{\mu}$
+defined as follow:
+\begin{enumerate}
+\item $\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$
+and $\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})=\necess$.
+\item When $\ket{\psi}$ is parallel to $\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
+or $-\rme^{\rmi\gamma}\sin\theta\ket{\ms}+\cos\theta\ket{2}$, where
+$0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, we define $\bar{\mu}(\proj{\psi})=\likely$
+and $\bar{\mu}(\mathbb{1}-\proj{\psi})=\unlikely$.
+\item Otherwise, $\bar{\mu}(\proj{\psi})=\unlikely$ and $\bar{\mu}(\mathbb{1}-\proj{\psi})=\likely$.
+\end{enumerate}
+$\bar{\mu}$ cannot correspond to any quantum probability measure
+because of the exact same reason as in example~\ref{Three-dimensional-three-value}.
+Before we verify that $\bar{\mu}$ is a quantum interval-valued probability
+measure, we need a notation for cross product. For $\ket{\psi}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}=\begin{pmatrix}\alpha_{0}\\
+\alpha_{1}\\
+\alpha_{2}
+\end{pmatrix}$ and $\ket{\phi}=\beta_{0}\ket{0}+\beta_{1}\ket{1}+\beta_{2}\ket{2}=\begin{pmatrix}\beta_{0}\\
+\beta_{1}\\
+\beta_{2}
+\end{pmatrix}$, their cross product is defined as follow.
+\[
+\ket{\psi\times\phi}=\ket{\psi}\times\ket{\phi}=\begin{vmatrix}\alpha_{1}^{*} & \beta_{1}^{*}\\
+\alpha_{2}^{*} & \beta_{2}^{*}
+\end{vmatrix}\ket{0}+\begin{vmatrix}\alpha_{2}^{*} & \beta_{2}^{*}\\
+\alpha_{0}^{*} & \beta_{0}^{*}
+\end{vmatrix}\ket{1}+\begin{vmatrix}\alpha_{0}^{*} & \beta_{0}^{*}\\
+\alpha_{1}^{*} & \beta_{1}^{*}
+\end{vmatrix}\ket{2}\textrm{ ,}
+\]
+where $\begin{vmatrix}\alpha & \beta\\
+\alpha' & \beta'
+\end{vmatrix}=\alpha\beta'-\alpha'\beta$. Notice that we put the complex conjugate in the cross product, so
+that the result of cross product is orthogonal to $\ket{\psi}$ and
+$\ket{\phi}$. 
+\begin{eqnarray*}
+\ip{\psi\times\phi}{\psi} & = & \left(\alpha_{1}\beta_{2}-\alpha_{2}\beta_{1}\right)\alpha_{0}+\left(\alpha_{2}\beta_{0}-\alpha_{0}\beta_{2}\right)\alpha_{1}+\left(\alpha_{0}\beta_{1}-\alpha_{1}\beta_{0}\right)\alpha_{2}=0\textrm{ ,}\\
+\ip{\psi\times\phi}{\phi} & = & \left(\alpha_{1}\beta_{2}-\alpha_{2}\beta_{1}\right)\beta_{0}+\left(\alpha_{2}\beta_{0}-\alpha_{0}\beta_{2}\right)\beta_{1}+\left(\alpha_{0}\beta_{1}-\alpha_{1}\beta_{0}\right)\beta_{2}=0\textrm{ .}
+\end{eqnarray*}
+Also, even if $\ket{\psi}$ and $\ket{\phi}$ are normalized, their
+cross product~$\ket{\psi\times\phi}$ need not be normalized as usual.
+
+To verify $\bar{\mu}$ is a quantum interval-valued probability measure,
+it is sufficient to check $\bar{\mu}\left(\proj{\psi_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{\psi_{2}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)$
+for orthogonal $\ket{\psi_{1}}$ and $\ket{\psi_{2}}$. We can enumerate
+all possible cases as follow. 
+\begin{enumerate}
+\item When $\ket{\psi_{1}}$ is $\ket{0}$, then $\ket{\psi_{2}}$ must
+be parallel to $\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
+for $0\le\theta\le\frac{\pi}{2}$ and $0\le\gamma<2\pi$. Then, 
+\begin{eqnarray*}
+ &  & \bar{\mu}\left(\proj{\psi_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{\psi_{2}}\right)\\
+ & = & \bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}\times\psi_{2}}\right)
+\end{eqnarray*}
+\end{enumerate}
+\qed\end{example}
 
 \amr{
 We can use DQC if we have some kind of topology (distances). The idea
