@@ -16675,15 +16675,32 @@ begin{example}
 \end_layout
 
 \begin_layout Enumerate
-Let 
-\begin_inset Formula $\ket{\psi\left(\theta,\gamma\right)}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
+Consider the states orthogonal to 
+\begin_inset Formula $\ket{0}$
 \end_inset
 
  and 
-\begin_inset Formula $\ket{\phi\left(\theta,\gamma\right)}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
+\begin_inset Formula $\ket{\ps}$
+\end_inset
+
+, 
+\begin_inset Formula $\ket{0_{\theta,\gamma}^{\perp}}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{\ps_{\theta,\gamma}^{\perp}}=\rme^{\rmi\gamma}\sin\theta\ket{\ms}+\cos\theta\ket{2}$
 \end_inset
 
 , where 
+\begin_inset Formula $0\le\theta\le\frac{\pi}{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $0\le\gamma<2\pi$
+\end_inset
+
+.
+ Half of those states need special treatment, i.e., when where 
 \begin_inset Formula $0\le\theta<\frac{\pi}{2}$
 \end_inset
 
@@ -16691,13 +16708,12 @@ Let
 \begin_inset Formula $0\le\gamma<\pi$
 \end_inset
 
-.
- we define 
-\begin_inset Formula $\bar{\mu}(\proj{\psi\left(\theta,\gamma\right)})=\ket{\phi\left(\theta,\gamma\right)}=\likely$
+, we define 
+\begin_inset Formula $\bar{\mu}(\proj{0_{\theta,\gamma}^{\perp}})=\ket{\ps_{\theta,\gamma}^{\perp}}=\likely$
 \end_inset
 
  and 
-\begin_inset Formula $\bar{\mu}(\mathbb{1}-\proj{\psi\left(\theta,\gamma\right)})=\bar{\mu}(\mathbb{1}-\proj{\phi\left(\theta,\gamma\right)})=\unlikely$
+\begin_inset Formula $\bar{\mu}(\mathbb{1}-\proj{0_{\theta,\gamma}^{\perp}})=\bar{\mu}(\mathbb{1}-\proj{\ps_{\theta,\gamma}^{\perp}})=\unlikely$
 \end_inset
 
 .
@@ -16817,13 +16833,14 @@ To verify
 \end_inset
 
  is a quantum interval-valued probability measure, it is sufficient to check
- 
 \begin_inset Formula 
-\begin{eqnarray*}
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{3}}\right) & \subseteq & \bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}}\right) & \subseteq & \bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{2}}\right) & \subseteq & \bar{\mu}\left(\proj{\psi_{3}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{1}}\right)
-\end{eqnarray*}
+\begin{equation}
+\begin{aligned}\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}}\right) & \subseteq\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)\\
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{2}}\right) & \subseteq\bar{\mu}\left(\proj{\psi_{3}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{1}}\right)\\
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{3}}\right) & \subseteq\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)
+\end{aligned}
+\label{eq:non-additive-vectors}
+\end{equation}
 
 \end_inset
 
@@ -16832,7 +16849,8 @@ To verify
 \end_inset
 
 .
- We can enumerate all possible cases as follow.
+ We are going to enumerate all possible orthonormal bases to verify the
+ equations.
  
 \end_layout
 
@@ -16849,23 +16867,27 @@ When
 \begin_inset Formula $\ket{\psi_{2}}$
 \end_inset
 
- must be parallel to 
-\begin_inset Formula $\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
+ and 
+\begin_inset Formula $\ket{\psi_{3}}$
 \end_inset
 
- for 
-\begin_inset Formula $0\le\theta\le\frac{\pi}{2}$
+ must be 
+\begin_inset Formula $\ket{0_{\theta,\gamma}^{\perp}}$
+\end_inset
+
+ for some 
+\begin_inset Formula $\theta$
 \end_inset
 
  and 
-\begin_inset Formula $0\le\gamma<2\pi$
+\begin_inset Formula $\gamma$
 \end_inset
 
 .
- Then,
+ Because of 
 \begin_inset Formula 
 \[
-\ket{\psi_{1}}\times\ket{\psi_{2}}=\begin{pmatrix}1\\
+\ket{0}\times\ket{0_{\theta,\gamma}^{\perp}}=\begin{pmatrix}1\\
 0\\
 0
 \end{pmatrix}\times\begin{pmatrix}0\\
@@ -16874,71 +16896,47 @@ When
 \end{pmatrix}=\begin{pmatrix}0\\
 -\cos\theta\\
 \rme^{-\rmi\gamma}\sin\theta
-\end{pmatrix}=\rme^{-\rmi\gamma}\begin{pmatrix}0\\
-\rme^{\rmi\left(\pi+\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)\\
-\cos\left(\frac{\pi}{2}-\theta\right)
-\end{pmatrix}
+\end{pmatrix}=\rme^{-\rmi\gamma}\ket{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}
 \]
 
 \end_inset
 
-WLOG, we can pick 
-\begin_inset Formula $\ket{\psi_{2}}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
-\end_inset
-
- for 
-\begin_inset Formula $0\le\theta<\frac{\pi}{2}$
+the pair 
+\begin_inset Formula $\ket{\psi_{2}}=\ket{0_{\theta,\gamma}^{\perp}}$
 \end_inset
 
  and 
-\begin_inset Formula $0\le\gamma<\pi$
+\begin_inset Formula $\ket{\psi_{3}}=\ket{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}$
 \end_inset
 
-, and 
-\begin_inset Formula $\ket{\psi_{3}}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
-\end_inset
-
- for 
-\begin_inset Formula $0\le\theta<\frac{\pi}{2}$
-\end_inset
-
- and 
-\begin_inset Formula $0\le\gamma<\pi$
-\end_inset
-
- 
-\begin_inset Formula 
-\[
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}\times\psi_{2}}\right)=\likely=\imposs\tensor*[_{\mathscr{I}}]{+}{}\likely=\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}}\right)=\necess\subseteq\likely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{1}\times\psi_{2}}\right)
-\]
-
-\end_inset
-
-If (
+ for (
 \begin_inset Formula $0<\theta<\frac{\pi}{2}$
 \end_inset
 
  and 
-\begin_inset Formula $\pi\le\gamma<2\pi$
+\begin_inset Formula $0\le\gamma<\pi$
 \end_inset
 
 ) or 
-\begin_inset Formula $\theta=\frac{\pi}{2}$
+\begin_inset Formula $\theta=0$
 \end_inset
 
- , then 
+ enumerate all possible orthonormal bases.
+ Equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:non-additive-vectors"
+
+\end_inset
+
+) can be verified as follow.
+ 
 \begin_inset Formula 
-\[
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}\times\psi_{2}}\right)=\unlikely=\imposs\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)
-\]
+\begin{eqnarray*}
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0}\right)=\necess & \subseteq & \likely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)\\
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\theta,\gamma}^{\perp}}\right)=\unlikely & = & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\imposs=\bar{\mu}\left(\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0}\right)\\
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)=\likely & = & \imposs\tensor*[_{\mathscr{I}}]{+}{}\likely=\bar{\mu}\left(\proj{0}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)
+\end{eqnarray*}
 
 \end_inset
 
@@ -16961,22 +16959,93 @@ reference "eq:non-additive-vectors"
 \end_layout
 
 \begin_layout Enumerate
-When 
-\begin_inset Formula $\proj{\psi_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{\psi_{2}}=\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0}$
+The next simplest case is 
+\begin_inset Formula $\ket{0}\notin\mathcal{B}$
 \end_inset
 
-, then Similarly, when 
-\begin_inset Formula $\proj{\psi_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{\psi_{2}}=\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\ps}$
+, 
+\begin_inset Formula $\ket{\ps}\notin\mathcal{B}$
 \end_inset
 
-, equation (
+, 
+\begin_inset Formula $\ket{0_{\theta,\gamma}^{\perp}}\notin\mathcal{B}$
+\end_inset
+
+, and 
+\begin_inset Formula $\ket{\ps_{\theta,\gamma}^{\perp}}\notin\mathcal{B}$
+\end_inset
+
+ for 
+\begin_inset Formula $0\le\theta<\frac{\pi}{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $0\le\gamma<\pi$
+\end_inset
+
+, i.e., the 
+\begin_inset Quotes eld
+\end_inset
+
+otherwise
+\begin_inset Quotes erd
+\end_inset
+
+ case.
+ Then, equation (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:non-additive-vectors"
 
 \end_inset
 
-) holds.
+) can only be verified once.
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}}\right)=\likely & \subseteq & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+When 
+\begin_inset Formula $\ket{0}\notin\mathcal{B}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{0_{\theta,\gamma}^{\perp}}\in\mathcal{B}$
+\end_inset
+
+ for 
+\begin_inset Formula $0\le\theta<\frac{\pi}{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $0\le\gamma<\pi$
+\end_inset
+
+, we want to prove 
+\begin_inset Formula $\ket{\ps}\notin\mathcal{B}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{\ps_{\theta,\gamma}^{\perp}}\notin\mathcal{B}$
+\end_inset
+
+ for 
+\begin_inset Formula $0\le\theta<\frac{\pi}{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $0\le\gamma<\pi$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard

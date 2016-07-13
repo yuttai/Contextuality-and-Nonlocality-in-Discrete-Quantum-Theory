@@ -1508,8 +1508,8 @@ measures corresponding to no quantum probability measure, i.e., $\mu_{\rho}^{B}(
 In general, we believe this kind of quantum $\mathscr{I}$-interval-valued
 probability measure exists for any finite set of interval~$\mathscr{I}$.
 
-\begin{example}{[}Three-dimensional quantum 4-value interval-valued
-probability measure{]} Given a three dimensional Hilbert space with
+\begin{example}[Three-dimensional quantum 4-value interval-valued
+probability measure] Given a three dimensional Hilbert space with
 an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
 Consider\emph{ }$\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
 $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$, $\ket{\ms}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})$,
@@ -1518,11 +1518,12 @@ defined as follow:
 \begin{enumerate}
 \item $\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$
 and $\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})=\necess$.
-\item Let $\ket{\psi\left(\theta,\gamma\right)}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
-and $\ket{\phi\left(\theta,\gamma\right)}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$,
-where $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$. we define
-$\bar{\mu}(\proj{\psi\left(\theta,\gamma\right)})=\ket{\phi\left(\theta,\gamma\right)}=\likely$
-and $\bar{\mu}(\mathbb{1}-\proj{\psi\left(\theta,\gamma\right)})=\bar{\mu}(\mathbb{1}-\proj{\phi\left(\theta,\gamma\right)})=\unlikely$.
+\item Consider the states orthogonal to $\ket{0}$ and $\ket{\ps}$, $\ket{0_{\theta,\gamma}^{\perp}}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
+and $\ket{\ps_{\theta,\gamma}^{\perp}}=\rme^{\rmi\gamma}\sin\theta\ket{\ms}+\cos\theta\ket{2}$,
+where $0\le\theta\le\frac{\pi}{2}$ and $0\le\gamma<2\pi$. Half of
+those states need special treatment, i.e., when where $0\le\theta<\frac{\pi}{2}$
+and $0\le\gamma<\pi$, we define $\bar{\mu}(\proj{0_{\theta,\gamma}^{\perp}})=\ket{\ps_{\theta,\gamma}^{\perp}}=\likely$
+and $\bar{\mu}(\mathbb{1}-\proj{0_{\theta,\gamma}^{\perp}})=\bar{\mu}(\mathbb{1}-\proj{\ps_{\theta,\gamma}^{\perp}})=\unlikely$.
 \item Otherwise, $\bar{\mu}(\proj{\psi})=\unlikely$ and $\bar{\mu}(\mathbb{1}-\proj{\psi})=\likely$.
 \end{enumerate}
 $\bar{\mu}$ cannot correspond to any quantum probability measure
@@ -1557,20 +1558,23 @@ Also, even if $\ket{\psi}$ and $\ket{\phi}$ are normalized, their
 cross product~$\ket{\psi\times\phi}$ need not be normalized as usual.
 
 To verify $\bar{\mu}$ is a quantum interval-valued probability measure,
-it is sufficient to check 
-\begin{eqnarray*}
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{3}}\right) & \subseteq & \bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}}\right) & \subseteq & \bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{2}}\right) & \subseteq & \bar{\mu}\left(\proj{\psi_{3}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{1}}\right)
-\end{eqnarray*}
+it is sufficient to check
+\begin{equation}
+\begin{aligned}\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}}\right) & \subseteq\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)\\
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{2}}\right) & \subseteq\bar{\mu}\left(\proj{\psi_{3}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{1}}\right)\\
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{3}}\right) & \subseteq\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)
+\end{aligned}
+\label{eq:non-additive-vectors}
+\end{equation}
  for every orthonormal basis $\mathcal{B}=\left\{ \ket{\psi_{1}},\ket{\psi_{2}},\ket{\psi_{3}}\right\} $.
-We can enumerate all possible cases as follow. 
+We are going to enumerate all possible orthonormal bases to verify
+the equations. 
 \begin{enumerate}
-\item When $\ket{\psi_{1}}$ is $\ket{0}$, then $\ket{\psi_{2}}$ must
-be parallel to $\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
-for $0\le\theta\le\frac{\pi}{2}$ and $0\le\gamma<2\pi$. Then,
+\item When $\ket{\psi_{1}}$ is $\ket{0}$, then $\ket{\psi_{2}}$ and $\ket{\psi_{3}}$
+must be $\ket{0_{\theta,\gamma}^{\perp}}$ for some $\theta$ and
+$\gamma$. Because of 
 \[
-\ket{\psi_{1}}\times\ket{\psi_{2}}=\begin{pmatrix}1\\
+\ket{0}\times\ket{0_{\theta,\gamma}^{\perp}}=\begin{pmatrix}1\\
 0\\
 0
 \end{pmatrix}\times\begin{pmatrix}0\\
@@ -1579,30 +1583,31 @@ for $0\le\theta\le\frac{\pi}{2}$ and $0\le\gamma<2\pi$. Then,
 \end{pmatrix}=\begin{pmatrix}0\\
 -\cos\theta\\
 \rme^{-\rmi\gamma}\sin\theta
-\end{pmatrix}=\rme^{-\rmi\gamma}\begin{pmatrix}0\\
-\rme^{\rmi\left(\pi+\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)\\
-\cos\left(\frac{\pi}{2}-\theta\right)
-\end{pmatrix}
+\end{pmatrix}=\rme^{-\rmi\gamma}\ket{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}
 \]
-WLOG, we can pick $\ket{\psi_{2}}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
-for $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, and $\ket{\psi_{3}}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
-for $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$ 
-\[
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}\times\psi_{2}}\right)=\likely=\imposs\tensor*[_{\mathscr{I}}]{+}{}\likely=\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)
-\]
-\[
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}}\right)=\necess\subseteq\likely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{1}\times\psi_{2}}\right)
-\]
-If ($0<\theta<\frac{\pi}{2}$ and $\pi\le\gamma<2\pi$) or $\theta=\frac{\pi}{2}$
-, then 
-\[
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}\times\psi_{2}}\right)=\unlikely=\imposs\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)
-\]
+the pair $\ket{\psi_{2}}=\ket{0_{\theta,\gamma}^{\perp}}$ and $\ket{\psi_{3}}=\ket{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}$
+for ($0<\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$) or $\theta=0$
+enumerate all possible orthonormal bases. Equation (\ref{eq:non-additive-vectors})
+can be verified as follow. 
+\begin{eqnarray*}
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0}\right)=\necess & \subseteq & \likely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)\\
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\theta,\gamma}^{\perp}}\right)=\unlikely & = & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\imposs=\bar{\mu}\left(\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0}\right)\\
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)=\likely & = & \imposs\tensor*[_{\mathscr{I}}]{+}{}\likely=\bar{\mu}\left(\proj{0}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)
+\end{eqnarray*}
 Similarly, when $\ket{\psi_{1}}$ is $\ket{\ps}$, equation (\ref{eq:non-additive-vectors})
 holds.
-\item When $\proj{\psi_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{\psi_{2}}=\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0}$,
-then Similarly, when $\proj{\psi_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{\psi_{2}}=\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\ps}$,
-equation (\ref{eq:non-additive-vectors}) holds.
+\item The next simplest case is $\ket{0}\notin\mathcal{B}$, $\ket{\ps}\notin\mathcal{B}$,
+$\ket{0_{\theta,\gamma}^{\perp}}\notin\mathcal{B}$, and $\ket{\ps_{\theta,\gamma}^{\perp}}\notin\mathcal{B}$
+for $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, i.e., the ``otherwise''
+case. Then, equation (\ref{eq:non-additive-vectors}) can only be
+verified once. 
+\begin{eqnarray*}
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}}\right)=\likely & \subseteq & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)
+\end{eqnarray*}
+\item When $\ket{0}\notin\mathcal{B}$ and $\ket{0_{\theta,\gamma}^{\perp}}\in\mathcal{B}$
+for $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, we want to
+prove $\ket{\ps}\notin\mathcal{B}$ and $\ket{\ps_{\theta,\gamma}^{\perp}}\notin\mathcal{B}$
+for $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$. 
 \end{enumerate}
 \qed\end{example}
 
