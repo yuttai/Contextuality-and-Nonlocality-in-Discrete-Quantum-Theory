@@ -12,6 +12,7 @@
 \usepackage{amsmath}
 \usepackage{wesa}
 \usepackage[T1]{fontenc}
+\usepackage{graphicx}
 
 % \makeatletter
 % \newtheoremstyle{indented}
@@ -1422,7 +1423,7 @@ probability measure which does not come from a quantum probability
 measure. 
 
 \begin{example}[Three-dimensional quantum three-value interval-valued
-probability measure]\label{Three-dimensional-three-value} Given
+probability measure]\label{ex:three-dimensional-three-value} Given
 a three dimensional Hilbert space with an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
 Consider\emph{ $\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $}
 and $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$. Let 
@@ -1485,11 +1486,11 @@ Then, the vector representation of $\ket{\psi^{\perp}}$ can be simplified
 as 
 \[
 \left(\begin{array}{c}
--\rme^{\rmi\gamma}\sin\theta\\
+-\rme^{-\rmi\gamma}\sin\theta\\
 \cos\theta
-\end{array}\right)=-\rme^{\rmi\gamma}\left(\begin{array}{c}
+\end{array}\right)=-\rme^{-\rmi\gamma}\left(\begin{array}{c}
 \cos\left(\frac{\pi}{2}-\theta\right)\\
-\rme^{\rmi\left(\pi-\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)
+\rme^{\rmi\left(\pi+\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)
 \end{array}\right)
 \]
 so we have 
@@ -1509,8 +1510,8 @@ In general, we believe this kind of quantum $\mathscr{I}$-interval-valued
 probability measure exists for any finite set of interval~$\mathscr{I}$.
 
 \begin{example}[Three-dimensional quantum 4-value interval-valued
-probability measure] Given a three dimensional Hilbert space with
-an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
+probability measure]\label{ex:three-dimensional-4-value} Given
+a three dimensional Hilbert space with an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
 Consider\emph{ }$\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
 $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$, $\ket{\ms}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})$,
 and a quantum $\mathscr{I}$-interval-valued probability measure~$\bar{\mu}$
@@ -1518,8 +1519,9 @@ defined as follow:
 \begin{enumerate}
 \item $\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$
 and $\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})=\necess$.
-\item Consider the states orthogonal to $\ket{0}$ and $\ket{\ps}$, $\ket{0_{\theta,\gamma}^{\perp}}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
-and $\ket{\ps_{\theta,\gamma}^{\perp}}=\rme^{\rmi\gamma}\sin\theta\ket{\ms}+\cos\theta\ket{2}$,
+\item Consider the states orthogonal to $\ket{0}$ and $\ket{\ps}$ respectively,
+$\ket{0_{\theta,\gamma}^{\perp}}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
+and $\ket{\ps_{\theta,\gamma}^{\perp}}=-\rme^{\rmi\gamma}\sin\theta\ket{\ms}+\cos\theta\ket{2}$,
 where $0\le\theta\le\frac{\pi}{2}$ and $0\le\gamma<2\pi$. Half of
 those states need special treatment, i.e., when where $0\le\theta<\frac{\pi}{2}$
 and $0\le\gamma<\pi$, we define $\bar{\mu}(\proj{0_{\theta,\gamma}^{\perp}})=\ket{\ps_{\theta,\gamma}^{\perp}}=\likely$
@@ -1527,7 +1529,7 @@ and $\bar{\mu}(\mathbb{1}-\proj{0_{\theta,\gamma}^{\perp}})=\bar{\mu}(\mathbb{1}
 \item Otherwise, $\bar{\mu}(\proj{\psi})=\unlikely$ and $\bar{\mu}(\mathbb{1}-\proj{\psi})=\likely$.
 \end{enumerate}
 $\bar{\mu}$ cannot correspond to any quantum probability measure
-because of the exact same reason as in example~\ref{Three-dimensional-three-value}.
+because of the exact same reason as in example~\ref{ex:three-dimensional-three-value}.
 Before we verify that $\bar{\mu}$ is a quantum interval-valued probability
 measure, we need a notation for cross product. For $\ket{\psi}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}=\begin{pmatrix}\alpha_{0}\\
 \alpha_{1}\\
@@ -1568,7 +1570,20 @@ it is sufficient to check
 \end{equation}
  for every orthonormal basis $\mathcal{B}=\left\{ \ket{\psi_{1}},\ket{\psi_{2}},\ket{\psi_{3}}\right\} $.
 We are going to enumerate all possible orthonormal bases to verify
-the equations. 
+the equations, and case 1 and 2 are illustrated in figure~\ref{fig:three-dimensional-4-value}.
+\begin{figure}
+\includegraphics{\string"Three-dimensional quantum 4-value interval-valued probability measure\string".pdf}\caption{\label{fig:three-dimensional-4-value}This figure illustrates case
+1 and 2 in $\mathbb{R}^{3}$ in example~\ref{ex:three-dimensional-4-value}.
+The red and green dotted vector are $\ket{0}$ and $\ket{\ps}$ respectively.
+All possible vectors of $\ket{0_{\theta,\gamma}^{\perp}}$ and $\ket{\ps_{\theta,\gamma}^{\perp}}$
+are drawn in the red and green circles, respectively. Within the circles,
+a vector~$\ket{\psi}$ in dotted part means $\bar{\mu}(\proj{\psi})=\likely$;
+otherwise, $\bar{\mu}(\proj{\psi})=\unlikely$. The gray vector is
+a generic vector~$\ket{0_{\theta,\gamma}^{\perp}}$, and the red
+and green solid vectors are normalized $\ket{0}\times\ket{0_{\theta,\gamma}^{\perp}}$
+and $\ket{\ps}\times\ket{0_{\theta,\gamma}^{\perp}}$, respectively.}
+\end{figure}
+
 \begin{enumerate}
 \item When $\ket{\psi_{1}}$ is $\ket{0}$, then $\ket{\psi_{2}}$ and $\ket{\psi_{3}}$
 must be $\ket{0_{\theta,\gamma}^{\perp}}$ for some $\theta$ and
@@ -1583,6 +1598,9 @@ $\gamma$. Because of
 \end{pmatrix}=\begin{pmatrix}0\\
 -\cos\theta\\
 \rme^{-\rmi\gamma}\sin\theta
+\end{pmatrix}=\rme^{-\rmi\gamma}\begin{pmatrix}0\\
+\rme^{\rmi\left(\pi+\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)\\
+\cos\left(\frac{\pi}{2}-\theta\right)
 \end{pmatrix}=\rme^{-\rmi\gamma}\ket{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}
 \]
 the pair $\ket{\psi_{2}}=\ket{0_{\theta,\gamma}^{\perp}}$ and $\ket{\psi_{3}}=\ket{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}$
@@ -1596,25 +1614,48 @@ can be verified as follow.
 \end{eqnarray*}
 Similarly, when $\ket{\psi_{1}}$ is $\ket{\ps}$, equation (\ref{eq:non-additive-vectors})
 holds.
-\item The next simplest case is $\ket{0}\notin\mathcal{B}$, $\ket{\ps}\notin\mathcal{B}$,
-$\ket{0_{\theta,\gamma}^{\perp}}\notin\mathcal{B}$, and $\ket{\ps_{\theta,\gamma}^{\perp}}\notin\mathcal{B}$
-for $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, i.e., the ``otherwise''
-case. Then, equation (\ref{eq:non-additive-vectors}) can only be
-verified once. 
-\begin{eqnarray*}
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}}\right)=\likely & \subseteq & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)
-\end{eqnarray*}
-\item When $\ket{0}\notin\mathcal{B}$ and $\ket{0_{\theta,\gamma}^{\perp}}\in\mathcal{B}$
+\item When $\ket{0}\notin\mathcal{B}$ and $\ket{\psi_{1}}=\ket{0_{\theta,\gamma}^{\perp}}$
 for $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, we want to
-prove $\ket{\ps}\notin\mathcal{B}$ and $\ket{\ps_{\theta,\gamma}^{\perp}}\notin\mathcal{B}$
-for $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$. Therefore,
-let $\ket{\psi_{1}}=\ket{0_{\theta,\gamma}^{\perp}}$ and arbitrary
-$\ket{\psi_{2}}$ and $\ket{\psi_{3}}$, we have
+prove $\bar{\mu}\left(\proj{\psi_{2}}\right)=\bar{\mu}\left(\proj{\psi_{3}}\right)=\unlikely$.
+Then, we have
 \begin{eqnarray*}
 \bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\theta,\gamma}^{\perp}}\right)=\unlikely & \subseteq & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)\\
 \bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{2}}\right)=\likely & \subseteq & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\likely=\bar{\mu}\left(\proj{\psi_{3}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)
 \end{eqnarray*}
-In order to verify 
+In order to verify $\bar{\mu}\left(\proj{\psi_{2}}\right)=\bar{\mu}\left(\proj{\psi_{3}}\right)=\unlikely$,
+it is sufficient to prove that $\ket{\ps_{\theta',\gamma'}^{\perp}}\in\mathcal{B}$
+implies ($0<\theta'<\frac{\pi}{2}$ and $\pi\le\gamma'<2\pi$) or
+$\theta'=\frac{\pi}{2}$. Recall $\ip{\ps}{\ps_{\theta',\gamma'}^{\perp}}=0$.
+Hence, if $\ket{\ps_{\theta',\gamma'}^{\perp}}\in\mathcal{B}$, we
+have $\ket{\ps_{\theta',\gamma'}^{\perp}}$ parallel to $\ket{\ps}\times\ket{0_{\theta,\gamma}^{\perp}}$.
+\[
+\ket{\ps}\times\ket{0_{\theta,\gamma}^{\perp}}=\begin{pmatrix}1\\
+1\\
+0
+\end{pmatrix}\times\begin{pmatrix}0\\
+\rme^{\rmi\gamma}\sin\theta\\
+\cos\theta
+\end{pmatrix}=\begin{pmatrix}\cos\theta\\
+-\cos\theta\\
+\rme^{-\rmi\gamma}\sin\theta
+\end{pmatrix}=\rme^{-\rmi\gamma}\begin{pmatrix}-\rme^{\rmi\left(\pi+\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)\\
+\rme^{\rmi\left(\pi+\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)\\
+\cos\left(\frac{\pi}{2}-\theta\right)
+\end{pmatrix}=\rme^{-\rmi\gamma}\ket{\ps_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}
+\]
+Because of $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, we have
+($0<\theta'=\frac{\pi}{2}-\theta<\frac{\pi}{2}$ and $\pi\le\gamma'=\pi+\gamma<2\pi$)
+or $\theta'=\frac{\pi}{2}-\theta=\frac{\pi}{2}$. Similarly, when
+$\ket{\psi_{1}}$ is $\ket{\ps_{\theta,\gamma}^{\perp}}$ and $\ket{\ps}\notin\mathcal{B}$,
+equation (\ref{eq:non-additive-vectors}) holds.
+\item Finally, when $\ket{0}\notin\mathcal{B}$, $\ket{\ps}\notin\mathcal{B}$,
+$\ket{0_{\theta,\gamma}^{\perp}}\notin\mathcal{B}$, and $\ket{\ps_{\theta,\gamma}^{\perp}}\notin\mathcal{B}$
+for $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, i.e., the ``otherwise''
+case. Then, equation (\ref{eq:non-additive-vectors}) can easily be
+verified. 
+\begin{eqnarray*}
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}}\right)=\likely & \subseteq & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)
+\end{eqnarray*}
 \end{enumerate}
 \qed\end{example}
 
