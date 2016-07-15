@@ -33,7 +33,8 @@
 % \makeatother
 % \theoremstyle{indented}
 \theoremstyle{remark}
-\newtheorem{example}{Example}\newtheorem{definition}{Definition}\newtheorem{cor}{Corollary}\newtheorem{lemma}{Lemma}\newcommand{\events}{\ensuremath{\mathcal{E}}}
+\newtheorem{example}{Example}\newtheorem{definition}{Definition}\newtheorem{cor}{Corollary}\newtheorem{lemma}{Lemma}\newtheorem{thm}{Theorem}
+\newcommand{\events}{\ensuremath{\mathcal{E}}}
 \newcommand{\qevents}{\ensuremath{\mathcal{E}}}
 \newcommand{\pmeas}{\ensuremath{\mu}}
 \newcommand{\Hilb}{\mathcal{H}}
@@ -881,7 +882,7 @@ Although specifying a probability for every event looks complex, a probability
  measure can be simply constructed by 
 \begin_inset Formula 
 \begin{equation}
-\pmeas(E)=\tensor*[_{\mathbb{R}}]{\sum}{_{\omega\in E}}\rho(\omega)\textrm{ ,}\label{eq:Radon-Nikodym}
+\pmeas(E)=\sideset{_{\mathbb{R}}}{_{\omega\in E}}\sum\rho(\omega)\textrm{ ,}\label{eq:Radon-Nikodym}
 \end{equation}
 
 \end_inset
@@ -895,31 +896,7 @@ where
 \end_inset
 
 .
- Furthermore, every probability measure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\pmeas$
-\end_inset
-
- can be written in this form for an unique 
-\begin_inset Formula $\rho$
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Kolmogorov1950,Swart2013"
-
-\end_inset
-
-.
- This fact is a special case of the the Radon-Nikodym theorem, and 
+ 
 \begin_inset Formula $\rho$
 \end_inset
 
@@ -927,19 +904,88 @@ key "Kolmogorov1950,Swart2013"
 \begin_inset Formula $\pmeas$
 \end_inset
 
- with respect to the counting measure
+ with respect to the counting measure, and the Radon-Nikodym theorem states
+ that the converse is also true.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{thm}
+\end_layout
+
+\end_inset
+
+[Radon-Nikodym theorem for finite probability space
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Nikodym1930,Folland2013"
+key "Nikodym1930,Kolmogorov1950,Folland2013,Swart2013"
 
 \end_inset
 
-.
- For example, the Radon-Nikodym derivative of 
+] For every probability measure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\pmeas$
+\end_inset
+
+, there exists an unique Radon-Nikodym derivative
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\rho$
+\end_inset
+
+ with respect to the counting measure such that equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Radon-Nikodym"
+
+\end_inset
+
+) holds.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+qed
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{thm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For example, the Radon-Nikodym derivative of 
 \begin_inset Formula $\pmeas$
 \end_inset
 
@@ -15260,7 +15306,9 @@ key "peres1995quantum,544199,RiederSvozil2007"
 \end_layout
 
 \begin_layout Standard
-Actually, constructing a quantum probability measures from a density matrix
+Recall that the Radon-Nikodym theorem claims every probability measure has
+ an unique Radon-Nikodym derivative with respect to the counting measure.
+ When we generalize the Radon-Nikodym theorem to quantum, the mixed state
 \begin_inset space ~
 \end_inset
 
@@ -15268,61 +15316,7 @@ Actually, constructing a quantum probability measures from a density matrix
 \begin_inset Formula $\rho$
 \end_inset
 
- is similar to defining a classical probability measure by its Radon-Nikodym
- derivative.
- This can be seen more easily if we pick an orthonormal basis
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\left\{ \ket{\psi_{j}}\right\} _{j=1}^{d}$
-\end_inset
-
- such that 
-\begin_inset Formula $P=\tensor*[_{\mathscr{O}}]{\sum}{_{\ket{\psi_{j}}\in S}}\proj{\psi_{j}}$
-\end_inset
-
-, where 
-\begin_inset Formula $S$
-\end_inset
-
- is the linear subspace 
-\begin_inset Formula $P$
-\end_inset
-
- projects onto.
- Then, a density matrix
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\rho$
-\end_inset
-
- can also be represented in the same basis, i.e., 
-\begin_inset Formula $\rho=\sum_{i=1}^{d}\sum_{j=1}^{d}r_{ij}\ket{\psi_{i}}\bra{\psi_{j}}$
-\end_inset
-
-, and the Born rule becomes
-\begin_inset Formula 
-\begin{eqnarray}
-\mu_{\rho}^{B}\left(P\right) & = & \Tr\left(\rho P\right)=\sum_{\ket{\psi_{j}}\in S}r_{jj}\textrm{ ,}\label{BornRule.mixed-1}
-\end{eqnarray}
-
-\end_inset
-
-which is basically the same as equation (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:Radon-Nikodym"
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Standard
-The generalized Radon-Nikodym theorem is called Gleason's theorem
+ can be considered as the Radon-Nikodym derivative with respect to the trace
 \begin_inset space ~
 \end_inset
 
@@ -15333,11 +15327,11 @@ key "HollandJr1970,Redhead1987-REDINA,Jaeger2007"
 
 \end_inset
 
- which states that, in Hilbert spaces of dimension 
+, and gives Gleason's theorem: in Hilbert spaces of dimension 
 \begin_inset Formula $d\geq3$
 \end_inset
 
-, given a probability measure 
+, given a quantum probability measure 
 \begin_inset Formula $\mu$
 \end_inset
 
@@ -15422,7 +15416,7 @@ reference "lem:quantumProbabilityMeasure"
 
 \end_inset
 
-, there exist an unique mixed state
+, there exists an unique mixed state
 \begin_inset space ~
 \end_inset
 
