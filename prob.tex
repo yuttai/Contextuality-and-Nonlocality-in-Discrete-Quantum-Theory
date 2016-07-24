@@ -1277,8 +1277,9 @@ theorem. However, the definition diverges. So we just leave it so far, and we
 will go back if we really need it in this paper. (Maybe when discussing repeating
 experiments?)}}
 
-A quantum probability measure can be easily constructed by states
-according to the Born rule~\cite{Born1983,Mermin2007,RiederSvozil2007}.
+Recall that classical probability measure can be constructed from
+its Radon-Nikodym derivative. Similarly, a quantum probability measure
+can be easily constructed by states according to the Born rule~\cite{Born1983,Mermin2007,RiederSvozil2007}.
 For each pure normalized ($\ip{\phi}{\phi}=1$) quantum state $\ket{\phi}$,
 the Born rule induces a probability measure $\mu_{\phi}^{B}$ as follows:
 \[
@@ -1295,14 +1296,23 @@ with respect to probability $q_{j}$~\cite{peres1995quantum,544199,RiederSvozil20
 \mu_{\rho}^{B}\left(P\right) & = & \Tr\left(\rho P\right)=\sum_{j=1}^{N}q_{j}\mu_{\phi_{j}}^{B}\left(P\right)\textrm{ .}\label{BornRule.mixed}
 \end{eqnarray}
 
-Recall that the Radon-Nikodym theorem claims every probability measure
-has an unique Radon-Nikodym derivative with respect to the counting
-measure. When we generalize the Radon-Nikodym theorem to quantum,
-the mixed state~$\rho$ can be considered as the Radon-Nikodym derivative
-with respect to the trace~\cite{HollandJr1970,Redhead1987-REDINA,Jaeger2007},
-and gives Gleason's theorem: in Hilbert spaces of dimension $d\geq3$,
-given a quantum probability measure $\mu$, there exist a mixed state~$\rho$
-that induces such a measure using the Born rule~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
+Notice that the mixed state~$\rho$ is really a generalization of
+Radon-Nikodym derivative if we pick a basis~$\left\{ \ket{\psi_{j}}\right\} _{j=1}^{d}$
+such that $P=\tensor*[_{\mathscr{O}}]{\sum}{_{\ket{\psi_{j}}\in S}}\proj{\psi_{j}}$,
+where $S$ is the linear subspace $P$ projects onto. By representing
+the density matrix~$\rho$ in the same basis, i.e., $\rho=\sum_{i=1}^{d}\sum_{j=1}^{d}r_{ij}\ket{\psi_{i}}\bra{\psi_{j}}$,
+the Born rule becomes
+\begin{eqnarray}
+\mu_{\rho}^{B}\left(P\right) & = & \Tr\left(\rho P\right)=\sum_{\ket{\psi_{j}}\in S}r_{jj}\textrm{ ,}\label{BornRule.mixed-1}
+\end{eqnarray}
+ which is basically the same as equation (\ref{eq:Radon-Nikodym}).
+
+Then, the Radon-Nikodym theorem is generalized quantum~\cite{HollandJr1970,Redhead1987-REDINA,Jaeger2007}.
+If the mixed state~$\rho$ is considered as the Radon-Nikodym derivative
+with respect to the trace, we have Gleason's theorem: in Hilbert spaces
+of dimension $d\geq3$, given a quantum probability measure $\mu$,
+there exist a mixed state~$\rho$ that induces such a measure using
+the Born rule~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
 By applying Gleason's theorem, we can extend lemma~\ref{lem:quantumProbabilityMeasure}
 to the following corollary.
 
@@ -1321,21 +1331,21 @@ as follow:
 \mu(P)=\begin{cases}
 1 & \textrm{, if }P=\proj{\ps}\textrm{ ;}\\
 0 & \textrm{, if }P=\proj{\ms}\textrm{ ;}\\
-\mu^B_{\ket{0}}(P) & \textrm{, otherwise.}
+\mu_{\ket{0}}^{B}(P) & \textrm{, otherwise.}
 \end{cases}
 \]
-On one hand, $\mu$ is a quantum probability measure. Because $\mu$ is almost
-the same as a quantum probability measure~$\mu^B_{\ket{0}}$, we only
-need to check the orthogonal pair~$\proj{\ps}$ and $\proj{\ms}$:
+On one hand, $\mu$ is a quantum probability measure. Because $\mu$
+is almost the same as a quantum probability measure~$\mu_{\ket{0}}^{B}$,
+we only need to check the orthogonal pair~$\proj{\ps}$ and $\proj{\ms}$:
 \[
 \mu(\proj{\ps})+\mu(\proj{\ms})=1+0=1\textrm{ .}
 \]
 On the other hand, $\mu$ cannot be induced by any mixed state because
 \[
-\mu(\proj{\ps})=\mu(\proj{0})=1\textrm{ .}
+\mu(\proj{\ps})=\mu(\proj{0})=1\textrm{ ,}
 \]
-However, $\mu^B_{\rho}(P)=1$ if and only if $\rho$ represents
-a pure state and $\rho=P$. \qed\end{example}
+and $\mu_{\rho}^{B}(P)=1$ if and only if $\rho$ represents a pure
+state and $\rho=P$. \qed\end{example}
 
 %%%%%
 \subsection{Measuring Quantum Probabilities}
