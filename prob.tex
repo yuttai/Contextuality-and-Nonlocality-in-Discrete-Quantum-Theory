@@ -748,11 +748,16 @@ which is not as simple as the original Radon-Nikodym derivative~\cite{GilboaSchm
 Although there is no easy Radon-Nikodym theorem, an interval-valued
 probability measure can still be understood by its relation with real-valued
 probability measures, like we constructed example~\ref{ex3} from
-example~\ref{ex1}. In general, a \emph{core} of an interval-valued
-probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$ is
-a set of real-valued probability measures~$\pmeas:\events\rightarrow[0,1]$
-such that $\pmeas\left(E\right)\in\bar{\mu}\left(E\right)$ for all
-$E\in\events$~\cite{GilboaSchmeidler1994,Marinacci1999,Teran2014}.
+example~\ref{ex1}. In general, this idea can be generalized to the
+following definition of core.
+
+\begin{definition}[Core of Interval-valued Probability Measure~\cite{GilboaSchmeidler1994,Marinacci1999,Teran2014}]\label{def:CoreInterval-valuedProbability}
+A \emph{core} of an interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+is the set 
+\[
+\mathrm{core}\left(\bar{\mu}\right)=\left\{ \pmeas:\events\rightarrow[0,1]\textrm{ probability measure}\middle|\pmeas\left(E\right)\in\bar{\mu}\left(E\right)\forall E\in\events\right\} \textrm{ .}
+\]
+\qed\end{definition}
 
 \yutsung{The following theorem proved that a wide variety of interval-valued
 probability measures can be associated with real-valued probability
@@ -1114,7 +1119,7 @@ between events.
 \qed\end{definition}
 
 %%%%%
-\subsection{Quantum Probability Measures}
+\subsection{Quantum Real-valued Probability Measures}
 
 \begin{definition}[Quantum Probability
 Measure~\cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010}]\label{def:QuantumProbabilitySpace}
@@ -1412,20 +1417,9 @@ with preposing $\mathscr{I}$ when we want to compare a quantum probability
 measure and a quantum interval-valued probability measure.
 \qed\end{definition}
 
-Notice that if the last condition is replaced by the equal sign, these
-conditions will be exactly the same as the conditions in lemma~\ref{lem:quantumProbabilityMeasure}
-which is equivalent to the Born rule as in corollary~\ref{cor:Gleason's}.
-Therefore, it is reasonable to believe these conditions should be
-equivalent to a interval-valued Born rule. 
-
-When we pick $\mathscr{I}=\left\{ \left[x,x\right]\middle|x\in\left[0,1\right]\right\} $,
-for any quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$,
-we can define a corresponding quantum \emph{$\mathscr{I}$}-interval-valued
-probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-by $\bar{\mu}\left(P\right)=\left[\mu\left(P\right),\mu\left(P\right)\right]$.
-In this sense, every usual quantum probability measure can be considered
-as a quantum interval-valued probability measure. There are more interesting
-examples as we now show.
+Similar to the classical interval-valued probability measure, a quantum
+interval-valued probability measure can be constructed from a real-valued
+one. 
 
 \begin{example}[Quantum three-value interval-valued probability
 measure] We consider three intervals\emph{ }$\left[0,0\right]$,
@@ -1456,11 +1450,34 @@ where $x$ and $\sideset{_{\mathbb{R}}}{_{i}}\sum x_{i}\in\left[0,1\right]$.
 By applying these two properties, it is easy to verify $\bar{\mu}$
 is a quantum \emph{$\mathscr{I}$}-interval-valued probability measure.\qed\end{example}
 
-Although $\iota:\left[0,1\right]\rightarrow\mathscr{I}$ maps every
-quantum probability measure to a quantum interval-valued probability
-measure, there is a quantum \emph{$\mathscr{I}$}-interval-valued
-probability measure which does not come from a quantum probability
-measure. 
+When a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+constructed from a real-valued one~$\mu:\events\rightarrow\left[0,1\right]$,
+we should say $\mu$ is in the core of $\bar{\mu}$ according to the
+following definition of core.
+
+\begin{definition}[Core of Quantum Interval-valued Probability
+Measure]\label{def:CoreQuantumInterval-valuedProbability} A \emph{core}
+of a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+is the set 
+\[
+\mathrm{core}\left(\bar{\mu}\right)=\left\{ \mu:\events\rightarrow[0,1]\textrm{ quantum probability measure}\middle|\mu\left(P\right)\in\bar{\mu}\left(P\right)\forall P\in\events\right\} \textrm{ .}
+\]
+\qed\end{definition}
+
+Because the classical interval-valued probability measure has no easy
+Radon-Nikodym theorem, the quantum one should not have a easy Gleason's
+theorem. Nevertheless, the core of $\bar{\mu}$ provides an instructive
+way to understand $\bar{\mu}$, and the core may exist even without
+a natural $\iota:\left[0,1\right]\rightarrow\mathscr{I}$ as in the
+example~\ref{ex:One-qubit-quantum-interval} in appendix. However,
+in contrast to the classical case, we have the following theorem.
+
+\begin{thm}\label{def:EmptyCoreQuantumInterval-valuedProbability}
+There is a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+such that $\mathrm{core}\left(\bar{\mu}\right)=\emptyset$.\qed\end{thm}
+
+This theorem can be proved by the following example, and a more sophisticated
+example is example~\ref{ex:three-dimensional-4-value} in appendix. 
 
 \begin{example}[Three-dimensional quantum three-value interval-valued
 probability measure]\label{ex:three-dimensional-three-value} Given
@@ -1492,16 +1509,23 @@ satisfies
 \]
 is $\ket{2}$, but clearly $\bar{\mu}(P)\ne\iota\left(\mu_{\ket{2}}^{B}(P)\right)$.\qed\end{example}
 
-Notice that in the above two examples, quantum interval-valued probability
-measures are all come from quantum probability measures because the
-numbers in $\left[0,1\right]$ can be mapped to the chosen intervals~$\mathscr{I}$
-naturally. This is not always the case. For example, if $\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\printbibliography
+
+\appendix
+
+\section{Examples for Quantum Interval-valued Probability Measures}
+
+The following example verify the core of a quantum interval-valued
+probability measure is nonempty even if there is no natural correspondence.
+For example, if $\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
 there is no natural way to map from $\frac{1}{2}$, as both $\frac{1}{2}\in\left[0,\frac{1}{2}\right]=\unlikely$
 and $\frac{1}{2}\in\left[\frac{1}{2},1\right]=\likely$. However,
 we still can find a quantum interval-valued probability measure corresponding
 to a quantum probability measure as in the following example.
 
-\begin{example}[One-qubit quantum interval-valued probability measure]
+\begin{example}[One-qubit quantum interval-valued probability measure]\label{ex:One-qubit-quantum-interval}
 Given a two dimensional Hilbert space, a vector $\ket{\psi}$ can
 be normalized and written in $\left(\begin{array}{c}
 \cos\theta\\
@@ -1698,179 +1722,6 @@ verified.
 \end{eqnarray*}
 \end{enumerate}
 \qed\end{example}
-
-\amr{
-We can use DQC if we have some kind of topology (distances). The idea
-will be that we want to prepare state PSI but because of errors etc we
-prepare a close state. Well the next closest state will be the next
-state in our discrete grid. I am sure that a state that's very close
-to PSI can involve some wrapping around.
-}
-
-\yutsung{About continuity, one of the confusion comes from the subtle
-correspondence between the measurement processes and observables.
-Consider the following observables and their measurement processes:
-\begin{itemize}
-\item For any $x\in\mathbb{R}$, consider the observable operator~$\mathbf{O}_{x}=\proj{1}+x\proj{-1}$.
-Except $x=1$, given the system in the state~$\ket{\phi}$, we can
-denote the measurement process for $\mathbf{O}_{x}$ by ${\cal O}_{x}$:
-\begin{enumerate}
-\item With probability~$\mu_{\phi}\left(\proj{1}\right)$, return the measurement
-result~$1$ with the post-measurement state~$\ket{1}$;
-\item With probability~$\mu_{\phi}\left(\proj{0}\right)$, return the measurement
-result~$0$ with the post-measurement state~$\ket{0}$;
-\item With probability~$\mu_{\phi}\left(\proj{-1}\right)$, return the
-measurement result~$x$ with the post-measurement state~$\ket{-1}$.
-\end{enumerate}
-\item The observable operator~$\mathbf{J}_{z}^{2}=\proj{1}+\proj{-1}$,
-and its measurement process~${\cal J}_{z}^{2}$:
-\begin{enumerate}
-\item With probability~$\mu_{\phi}\left(\proj{1}+\proj{-1}\right)$, return
-the measurement result~$1$ with the post-measurement state~$\ket{1}\ip{1}{\phi}+\ket{-1}\ip{-1}{\phi}$;
-\item With probability~$\mu_{\phi}\left(\proj{0}\right)$, return the measurement
-result~$0$ with the post-measurement state~$\ket{0}$.
-\end{enumerate}
-\end{itemize}
-As an operator, it is clear that $\lim_{x\rightarrow1}\mathbf{O}_{x}=\mathbf{J}_{z}^{2}$,
-and we should have $\lim_{x\rightarrow1}{\cal O}_{x}={\cal O}_{1}$
-for the measurement process. However, it is not obvious why ${\cal O}_{1}={\cal J}_{z}^{2}$.
-Although they have the same probability for the measurement results,
-but their post-measurement states are different. This might be a defect
-of representing a measurement process as an observable. As $\mathbf{O}_{1}=\mathbf{J}_{z}^{2}$,
-there is no observable corresponding to the measurement process~${\cal O}_{1}$.}
-
-\amr{the rest needs cleaning up and perhaps does not even belong in
-  this section}
-
-Although it seems that we need an infinite long table to specify the
-quantum probability measure~$\mu$, our $\mu$ is actually
-given by a simple formula~$\melement{0}{P}$. In general, Born discovered
-each quantum state $\ket{\psi}\in\Hilb\backslash\left\{ 0\right\} $
-induces a probability measure $\mu^B_{\psi}:\qevents\rightarrow[0,1]$
-on the space of events defined for any event $P\in\qevents$ as follows~\cite{Born1983,Mermin2007}:
-\begin{equation}
-\mu^B_{\psi}(P)=\frac{\melement{\psi}{P}}{\ip{\psi}{\psi}}\label{eq:Born}
-\end{equation}
-The Born rule satisfies the following properties:
-\begin{itemize}
-\item It can be extend to mixed states. Given a mixed state represented
-by a density matrix $\rho=\sum_{j=1}^{N}q_{j}\frac{\proj{\psi_{j}}}{\ip{\psi_{j}}{\psi_{j}}}$,
-where $\sum_{j=1}^{N}q_{j}=1$, i.e., $\Tr\left(\rho\right)=1$, then
-the Born rule can be extended to $\rho$ by 
-\begin{eqnarray}
-\mu^B_{\rho}\left(P\right) & = & \Tr\left(\rho P\right)=\sum_{j=1}^{N}q_{j}\mu^B_{\Psi_{j}}\left(P\right)\textrm{ .}\label{BornRule.mixed}
-\end{eqnarray}
-Notice that $\left(\left\{ 1,\ldots,N\right\} ,2^{\left\{ 1,\ldots,N\right\} },\pmeas\left(J\right)=\sum_{j\in J}q_{j}\right)$
-is a classical probability space. Therefore, when we discretize the
-Hilbert space later, we may need to discretize this probability space
-as well.
-\item $\mu^B_{\rho}$ is a probability measure for all mixed state~$\rho$.
-\item $\ip{\psi}{\phi}=0\Leftrightarrow\mu^B_{\psi}\left(\proj{\phi}\right)=0$.
-\item $\mu^B_{\psi}\left(P\right)=\mu^B_{\mathbf{U}\ket{\psi}}\left(\mathbf{U}P\mathbf{U}^{\dagger}\right)\textrm{ ,}$where
-$\mathbf{U}$ is any unitary map, i.e., $\mathbf{U}^{\dagger}\mathbf{U}=\mathbb{1}$. 
-\end{itemize}
-
-Naturally, we may ask: is every probability measure induced from a
-state by the Born rule? The answer is yes by Gleason's theorem when
-the dimension~$\ge3$~\cite{gleason1957,peres1995quantum,Redhead1987-REDINA}.
-Furthermore, a simple corollary of Gleason's theorem can show the
-Born rule is the unique function satisfying conditions 1. to 3.
-\begin{cor}
-The Born rule is the unique function satisfying conditions 1. to 3.
-\end{cor}
-\begin{proof}
-Assume there is another function $\mu^{\prime B}$ such that $\mu^{\prime B}_{\rho}$
-is a quantum probability measure for all mixed state~$\rho$. We
-are going to prove $\mu^{\prime B}=\mu^B$.
-
-Fix a pure normalized state $\phi$, $\mu^{\prime B}_{\phi}$ is a quantum
-probability measure by condition 2. By Gleason's theorem, there is
-a mixed state ~$\rho'$, such that $\mu^{\prime B}_{\phi}\left(P\right)=\Tr\left(\rho'P\right)=\sum_{j=1}^{N}q_{j}\mu^B_{\psi_{j}}\left(P\right)$
-for all event $P$. 
-
-Consider the event $P'=\mathbb{1}-\proj{\phi}$, we have 
-\begin{eqnarray*}
-0 & \overset{\textrm{Condition 3}}{=} & \mu^B_{\phi}\left(P'\right)\\
- & = & \sum_{j=1}^{N}q_{j}\mu^B_{\psi_{j}}\left(P'\right)
-\end{eqnarray*}
-Because $q_{j}>0$, we have $\mu^B_{\psi_{j}}\left(P\right)=0$,
-i.e., $\psi_{j}$ is orthogonal to a co-dimension-$1$ subspace $P'$.
-However, the only subspace orthogonal to $P'$ is span by $\ket{\phi}$.
-Hence, $\mu^{\prime B}_{\phi}=\mu^B_{\phi}$.
-\end{proof}
-
-
-
-% If there may be more than one probability measure, we will discuss
-% whether we will keep using the Born rule (\ref{eq:Born}) or there
-% is another formula $\mu^B$ such that $\mu^B_{\psi}$
-% is a probability measure for all $\ket{\psi}\in\Hilb\backslash\left\{ 0\right\} $.
-
-% Then, Gleason's theorem states given a probability measure $\mu$
-% there is a mixed state $\ket{\psi}$ such that $\mu=\mu_{\psi}$,
-% i.e., the Born rule is surjective\footnote{If we extend the domain of $\mu_{\psi}$ including the mixed states.}.
-% For any other formula~$\mu^B$, we can ask whether $\mu^B$
-% is surjective as well.
-
-% Obviously, we don't want arbitrarily assign a state~$\ket{\psi}\in\Hilb\backslash\left\{ 0\right\} $
-% with a probability measure $\mu^B_{\psi}$, for example, assigning
-% every state to the same probability measure. We want $\mu^B_{\psi}$
-% satisfying the following properties with some physical meaning:
-% \begin{itemize}
-% \item $\ip{\psi}{\phi}=0\Leftrightarrow\mu^B_{\psi}\left(\proj{\phi}\right)=\tilde{0}$,
-% where $\tilde{0}$ is $0$ for $\left[0,1\right]$ and $\tilde{0}$
-% is impossible for $\mathscr{L}_{2}=\left\{ \imposs,\poss\right\} $. 
-% \item $\mu^B_{\psi}\left(\proj{\phi}\right)=\mu^B_{\mathbf{U}\ket{\psi}}\left(\mathbf{U}\proj{\phi}\mathbf{U}^{\dagger}\right)\textrm{ ,}$where
-% $\ket{\psi},\ket{\phi}$ are states and $\mathbf{U}$ is any unitary
-% map, i.e., $\mathbf{U}^{\dagger}\mathbf{U}=\mathbb{1}$. 
-% \end{itemize}
-% And the results can be summarized in the following table:\\
-% \center{ %
-% \begin{tabular}{>{\raggedright}m{0.2\columnwidth}>{\raggedright}m{0.2\columnwidth}>{\raggedright}m{0.2\columnwidth}>{\raggedright}m{0.2\columnwidth}}
-% \hline 
-% State space $\Hilb$  & Probability values  & Is there a $\mu^B$ satisfying the given conditions?  & Is the $\mu^B$ surjective?\tabularnewline
-% \hline 
-% \hline 
-% $\C^{d}$ for $d\ge3$  & $\left[0,1\right]$  & Yes  & Yes\tabularnewline
-% \hline 
-% $\C^{d}$  & $\mathscr{L}_{2}$  & Yes  & No\tabularnewline
-% \hline 
-% $\ffzd{p^{2}}$for $d\ge3$ except $d=p=3$  & $\left[0,1\right]$  & No  & \tabularnewline
-% \hline 
-% $\ffzd{p^{2}}$  & $\mathscr{L}_{2}$  & Yes & No\tabularnewline
-% \hline 
-% \end{tabular}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{All Continuous or All Discrete}
-
-Before we turn to the main part of the paper, we quickly dismiss the
-possibility of having one but not the other of the discrete
-variations. Specifically, it is impossible to maintain the Hilbert
-space and have a finite set-valued probability measure and it is also
-impossible to have a vector space constructed over a finite field with
-a real-valued probability measure. 
-
-%%%
-\subsection{Hilbert Space with Finite Set-Valued Probability Measure}
-
-However, there is a $\mathscr{L}_{2}$-valued probability measure
-\[
-\hat{\mu}_{1}\left(P\right)=\begin{cases}
-\imposs & \textrm{, if }P=\proj{+};\\
-\bar{\mu}(P) & \textrm{, otherwise.}
-\end{cases}
-\]
-such that $\hat{\mu}_{1}\ne\bar{\mu}_{\psi}$ for all mixed state
-$\ket{\psi}$.
-
-%%%
-\subsection{Discrete Vector Space with Real-Valued Probability Measure}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\printbibliography
 
 \end{document}
 
