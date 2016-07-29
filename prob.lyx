@@ -7550,7 +7550,7 @@ key "Shapley1965,GilboaSchmeidler1994"
 \end_inset
 
  and 
-\begin_inset Formula $l\left(E_{1}\cup E_{2}\right)+l\left(E_{1}\cap E_{2}\right)\ge l\left(E_{1}\right)+l\left(E_{2}\right)$
+\begin_inset Formula $l\left(E_{1}\cup E_{2}\right)\ge l\left(E_{1}\right)\tensor*[_{\mathbb{R}}]{+}{}l\left(E_{2}\right)\tensor*[_{\mathbb{R}}]{-}{}l\left(E_{1}\cap E_{2}\right)$
 \end_inset
 
  for all 
@@ -16284,10 +16284,14 @@ for any projection
 \end_inset
 
 , 
-\begin_inset Formula $\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=1\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(P\right)$
+\begin_inset Formula 
+\begin{equation}
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=1\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(P\right)\textrm{ ,}\label{eq:QuantumInterval-valuedProbability-Complement}
+\end{equation}
+
 \end_inset
 
-, and 
+
 \end_layout
 
 \begin_layout Itemize
@@ -16296,11 +16300,43 @@ for a set of mutually orthogonal projections
 \end_inset
 
 , we have 
-\begin_inset Formula $\bar{\mu}\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i}}\bar{\mu}\left(P_{i}\right)$
+\begin_inset Formula 
+\begin{equation}
+\bar{\mu}\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i}}\bar{\mu}\left(P_{i}\right)\textrm{ .}\label{eq:QuantumInterval-valuedProbability-Inclusion}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Formula $\bar{\mu}\left(P\right)=\left[l\left(P\right),r\left(P\right)\right]$
 \end_inset
 
 .
- 
+ Then, 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ is called convex if 
+\begin_inset Formula $l\left(P_{1}P_{2}\right)\ge l\left(P_{1}\right)\tensor*[_{\mathbb{R}}]{+}{}l\left(P_{2}\right)\tensor*[_{\mathbb{R}}]{-}{}l\left(P_{1}\tensor*[_{\mathscr{O}}]{\vee}{}P_{2}\right)$
+\end_inset
+
+ for all commuting 
+\begin_inset Formula $P_{1},P_{2}\in\events$
+\end_inset
+
+.
+ We may further define a quantum Dempster-Shafer probability measure, and
+ a quantum Dempster-Shafer probability measure is always convex.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -16699,7 +16735,7 @@ name "def:EmptyCoreQuantumInterval-valuedProbability"
 
 \end_inset
 
- There is a quantum interval-valued probability measure
+ There is a (convex) quantum interval-valued probability measure
 \begin_inset space ~
 \end_inset
 
@@ -16809,8 +16845,31 @@ To verify
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
- is a quantum interval-valued probability measure, it is sufficient to check
- 
+ is a quantum interval-valued probability measure, first notice that 
+\begin_inset Formula $\bar{\mu}\left(\proj{P_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{P_{2}}\right)\subseteq\bar{\mu}\left(\proj{P_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{P_{2}}\right)$
+\end_inset
+
+ implies equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:QuantumInterval-valuedProbability-Inclusion"
+
+\end_inset
+
+) by induction.
+ Second, equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:QuantumInterval-valuedProbability-Complement"
+
+\end_inset
+
+) implies 
+\begin_inset Formula $\bar{\mu}\left(\mathbb{1}\right)\subseteq\bar{\mu}\left(\proj{P}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)$
+\end_inset
+
+.
+ Therefore, it is sufficient to check 
 \begin_inset Formula $\bar{\mu}\left(\proj{\psi_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{\psi_{2}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)$
 \end_inset
 
@@ -16823,7 +16882,18 @@ To verify
 \end_inset
 
 .
- This is easily verified by enumerating all possible cases.
+ This is easily verified by enumerating all possible cases
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+This is the internal note for the detail of the proof, and can be safely
+ removed from the published version.
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard

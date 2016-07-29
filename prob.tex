@@ -767,7 +767,7 @@ measures.
 Every convex interval-valued probability measure has a nonempty core,
 where an interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
 is convex if $\bar{\mu}\left(E\right)=\left[l\left(E\right),r\left(E\right)\right]$
-and $l\left(E_{1}\cup E_{2}\right)+l\left(E_{1}\cap E_{2}\right)\ge l\left(E_{1}\right)+l\left(E_{2}\right)$
+and $l\left(E_{1}\cup E_{2}\right)\ge l\left(E_{1}\right)\tensor*[_{\mathbb{R}}]{+}{}l\left(E_{2}\right)\tensor*[_{\mathbb{R}}]{-}{}l\left(E_{1}\cap E_{2}\right)$
 for all $E_{1},E_{2}\in\events$.\qed\end{thm}
 
 In particular, Dempster-Shafer probability measures are all convex
@@ -1409,14 +1409,23 @@ such that:
 \begin{itemize}
 \item $\bar{\mu}(\mathbb{0})=\left[0,0\right]$, 
 \item $\bar{\mu}(\mathbb{1})=\left[1,1\right]$, 
-\item for any projection $P$,
-$\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=1\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(P\right)$, and
-\item for a set of mutually orthogonal projections $P_{i}$, we have
-$\bar{\mu}\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i}}\bar{\mu}\left(P_{i}\right)$.
+\item for any projection $P$, 
+\begin{equation}
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=1\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(P\right)\textrm{ ,}\label{eq:QuantumInterval-valuedProbability-Complement}
+\end{equation}
+\item for a set of mutually orthogonal projections $P_{i}$, we have 
+\begin{equation}
+\bar{\mu}\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i}}\bar{\mu}\left(P_{i}\right)\textrm{ .}\label{eq:QuantumInterval-valuedProbability-Inclusion}
+\end{equation}
+\footnote{Let $\bar{\mu}\left(P\right)=\left[l\left(P\right),r\left(P\right)\right]$.
+Then, $\bar{\mu}$ is called convex if $l\left(P_{1}P_{2}\right)\ge l\left(P_{1}\right)\tensor*[_{\mathbb{R}}]{+}{}l\left(P_{2}\right)\tensor*[_{\mathbb{R}}]{-}{}l\left(P_{1}\tensor*[_{\mathscr{O}}]{\vee}{}P_{2}\right)$
+for all commuting $P_{1},P_{2}\in\events$. We may further define
+a quantum Dempster-Shafer probability measure, and a quantum Dempster-Shafer
+probability measure is always convex.}
 \end{itemize}
-As before, we will only define a quantum interval-valued probability measure
-with preposing $\mathscr{I}$ when we want to compare a quantum probability
-measure and a quantum interval-valued probability measure.
+As before, we will only define a quantum interval-valued probability
+measure with preposing $\mathscr{I}$ when we want to compare a quantum
+probability measure and a quantum interval-valued probability measure.
 \qed\end{definition}
 
 Similar to the classical interval-valued probability measure, a quantum
@@ -1475,7 +1484,7 @@ example~\ref{ex:One-qubit-quantum-interval} in appendix. However,
 in contrast to the classical case, we have the following theorem.
 
 \begin{thm}\label{def:EmptyCoreQuantumInterval-valuedProbability}
-There is a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+There is a (convex) quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
 such that $\mathrm{core}\left(\bar{\mu}\right)=\emptyset$.\qed\end{thm}
 
 This theorem can be proved by the following example, and a more sophisticated
@@ -1492,9 +1501,14 @@ and $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$. Let
 \bar{\mu}(P) & = & \unknown\textrm{, otherwise. }
 \end{eqnarray*}
 To verify $\bar{\mu}$ is a quantum interval-valued probability measure,
-it is sufficient to check $\bar{\mu}\left(\proj{\psi_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{\psi_{2}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)$
+first notice that $\bar{\mu}\left(\proj{P_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{P_{2}}\right)\subseteq\bar{\mu}\left(\proj{P_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{P_{2}}\right)$
+implies equation (\ref{eq:QuantumInterval-valuedProbability-Inclusion})
+by induction. Second, equation (\ref{eq:QuantumInterval-valuedProbability-Complement})
+implies $\bar{\mu}\left(\mathbb{1}\right)\subseteq\bar{\mu}\left(\proj{P}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)$.
+Therefore, it is sufficient to check $\bar{\mu}\left(\proj{\psi_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{\psi_{2}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)$
 for orthogonal $\ket{\psi_{1}}$ and $\ket{\psi_{2}}$. This is easily
-verified by enumerating all possible cases.
+verified by enumerating all possible cases\footnote{This is the internal note for the detail of the proof, and can be
+safely removed from the published version.}.
 
 $\bar{\mu}$ cannot correspond to any quantum probability measure.
 Suppose $\bar{\mu}(P)=\iota\left(\mu(P)\right)$ for some $\mu:\events\rightarrow\left[0,1\right]$.
