@@ -608,11 +608,8 @@ which we abbreviate $1\tensor*[_{\mathscr{I}}]{-}{}\left[l,r\right]$,
 where the preposing $\mathscr{I}$ specifies we subtracts intervals.
 Given a collection of intervals $\mathscr{I}$, an $\mathscr{I}$\textendash interval-valued
 probability measure is a function $\bar{\mu}:\events\rightarrow\mathscr{I}$
-such that~\cite{JamisonLodwick2004}:\footnote{The lower probability (belief) and the upper probability (plausibility)
-defined by Dempster~\cite{Dempster1967} and Shafer~\cite{Shafer1976}
-is a special case of the left-end and the right-end of the interval-valued
-probability measure. The right-end of the interval-valued probability
-measure is a special case of capacity~\cite{Choquet1954,Graf1980,Goodman2013}.
+such that~\cite{JamisonLodwick2004}:\footnote{The right-end of the interval-valued probability measure is a special
+case of (sub-additive) capacity~\cite{Choquet1954,Graf1980,Goodman2013}.
 The left-end of the interval-valued probability measure is a special
 case of game~\cite{Shapley1965}.} 
 \begin{itemize}
@@ -620,9 +617,13 @@ case of game~\cite{Shapley1965}.}
 \item $\bar{\mu}(\Omega)=[1,1]$, 
 \item for any event $E$, $\bar{\mu}\left(\Omega\backslash
 E\right)=1\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(E\right)$, and 
-\item for a collection $E_{i}$ of pairwise disjoint events, we have $\bar{\mu}\left(\bigcup_{i}E_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i}}\bar{\mu}\left(E_{i}\right)$,
+\item for a collection $E_{i}$ of pairwise disjoint events, we have 
+\begin{equation}
+\bar{\mu}\left(\bigcup_{i}E_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i}}\bar{\mu}\left(E_{i}\right)\textrm{ ,}\label{eq:subsetInterval-valuedProbabilityMeasure}
+\end{equation}
 where $\tensor*[_{\mathscr{I}}]{\sum}{_{i}}[l_{i},r_{i}]=\left[\tensor*[_{\mathbb{R}}]{\sum}{_{i}}l_{i},\tensor*[_{\mathbb{R}}]{\sum}{_{i}}r_{i}\right]$.
-We may drop the preposing $\mathscr{I}$ when summands are clearly intervals. 
+We may drop the preposing $\mathscr{I}$ when summands are clearly
+intervals. 
 \end{itemize}
 
 % The singleton closed interval $[0,0]$ is a required special value
@@ -681,8 +682,18 @@ We may drop the preposing $\mathscr{I}$ when summands are clearly intervals.
 % of $\{HH\}$, $\{HT\}$, $\{TH\}$ and $\{TT\}$ individually. The
 % full probability assignment is shown in the following example. 
 
-\noindent We will explain why the last condition is expressed using
-$\subseteq$ by a small example.
+An interval-valued probability measure can satisfy extra conditions.
+It is called \emph{convex} or \emph{2-monotone} if $\bar{\mu}\left(E_{1}\cup E_{2}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(E_{1}\cap E_{2}\right)\subseteq\bar{\mu}\left(E_{1}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(E_{2}\right)$
+for all $E_{1},E_{2}\in\events$~\cite{Shapley1965,GilboaSchmeidler1994,Marinacci1999,Teran2014}.
+For example, a special case of convex interval-valued probability
+measures consists the lower probability (belief) as the left-end and
+the upper probability (plausibility) as the right-end~\cite{GilboaSchmeidler1994,Marinacci1999,Goodman2013,Teran2014}.
+They are defined by Dempster~\cite{Dempster1967} and Shafer~\cite{Shafer1976}
+and play an important role in the theory of non-additive belief.\footnote{\yutsung{If we want to use convex, we need to explain the physical
+meaning of convex interval-valued probability measures...?}}
+
+We will explain why equation (\ref{eq:subsetInterval-valuedProbabilityMeasure})
+is expressed using $\subseteq$ by a small example.
 
 \begin{example}[Two-coin experiment with interval probability]
   \label{ex3} We split the unit interval $[0,1]$ in the following four
@@ -745,9 +756,9 @@ which is not as simple as the original Radon-Nikodym derivative~\cite{GilboaSchm
 
 Although there is no easy Radon-Nikodym theorem, an interval-valued
 probability measure can still be understood by its relation with real-valued
-probability measures, like we constructed example~\ref{ex3} from
-example~\ref{ex1}. In general, this idea can be generalized to the
-following definition of core.
+probability measures, like constructing example~\ref{ex3} from example~\ref{ex1}.
+In general, this idea can be generalized to the following definition
+of core.
 
 \begin{definition}[Core of Interval-valued Probability Measure~\cite{GilboaSchmeidler1994,Marinacci1999,Teran2014}]\label{def:CoreInterval-valuedProbability}
 A \emph{core}\footnote{The core is also called a structure~\cite{Weichselberger2000}.}
@@ -758,21 +769,17 @@ is the set
 \]
 \qed\end{definition}
 
-\yutsung{The following theorem proved that a wide variety of interval-valued
-probability measures can be associated with real-valued probability
-measures.
+\yutsung{Because the physical meaning of convex is still not clear,
+it would be better if we can find or prove a theorem which removes
+``convex'' in the theorem. However, the literature contradicts to
+each other so at least I need to trace an example to see which one
+is correct, or neither proved the theorem we want.
 
-\begin{thm}[Shapley~\cite{Shapley1965,GilboaSchmeidler1994}]
-Every convex interval-valued probability measure has a nonempty core,
-where an interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-is convex if $\bar{\mu}\left(E_{1}\cup E_{2}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(E_{1}\cap E_{2}\right)\ge\bar{\mu}\left(E_{1}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(E_{2}\right)$
-for all $E_{1},E_{2}\in\events$.\qed\end{thm}
+First, \cite{JamisonLodwick2004} shows a kind of equivalence between
+interval-valued probability measures and clouds. 
 
-In particular, Dempster-Shafer probability measures are all convex
-and have nonempty cores. 
-
-It seems general interval-valued probability measures must have a
-core. Following are proving plan: 
+On one hand, a combination of the following two theorems show interval-valued
+probability measures is likely to have a core.
 
 \begin{thm}[Neumaier~\cite{Neumaier2003}] For every cloud $\mathbf{x}$
 over $\mathbb{M}$ there exists a random variable $x$ with values
@@ -781,8 +788,10 @@ in $\mathbb{M}$ contained in $\mathbf{x}$.\qed\end{thm}
 \begin{example}[A cloud defines an $R$-probability field~\cite{Lodwick2008}]
 ...\qed\end{example}
 
-Next need to verify every interval-valued probability measures must
-define a cloud...}
+On the other hand, \cite{Destercke2008a} proved some clouds has no
+core.
+
+Verifying the example to see who is right...}
 
 % \gerardo{Set-valued is a particular case?}
 
