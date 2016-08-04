@@ -682,15 +682,6 @@ intervals.
 % of $\{HH\}$, $\{HT\}$, $\{TH\}$ and $\{TT\}$ individually. The
 % full probability assignment is shown in the following example. 
 
-An interval-valued probability measure can satisfy extra conditions.
-It is called \emph{convex} or \emph{2-monotone} if $\bar{\mu}\left(E_{1}\cup E_{2}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(E_{1}\cap E_{2}\right)\subseteq\bar{\mu}\left(E_{1}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(E_{2}\right)$
-for all $E_{1},E_{2}\in\events$~\cite{Shapley1965,GilboaSchmeidler1994,Marinacci1999,Teran2014}.
-For example, a special case of convex interval-valued probability
-measures consists the Dempster-Shafer belief function as the left-end
-and the Dempster-Shafer plausibility as the right-end, which plays
-an important role in the theory of non-additive belief~\cite{Dempster1967,Shafer1976,GilboaSchmeidler1994,Marinacci1999,Goodman2013,Teran2014}.\footnote{\yutsung{If we want to use convex, we need to explain the physical
-meaning of convex interval-valued probability measures...?}}
-
 We will explain why equation (\ref{eq:subsetInterval-valuedProbabilityMeasure})
 is expressed using $\subseteq$ by a small example.
 
@@ -761,19 +752,34 @@ probability measure in example~\ref{ex3}. Conversely, the interval-valued
 probability measure in example~\ref{ex3} could be understood by
 the real-valued probability measure and its Radon-Nikodym derivative
 in example~\ref{ex1}. The relation between example~\ref{ex1} and
-\ref{ex3} can be abstracted into the definition of core.
+\ref{ex3} can be abstracted into the definition of core. Besides
+of core, we also define another property which will be used later.
 
-\begin{definition}[Core of Interval-valued Probability Measure~\cite{GilboaSchmeidler1994,Marinacci1999,Teran2014}]\label{def:CoreInterval-valuedProbability}
-A \emph{core}\footnote{The core is also called a structure~\cite{Weichselberger2000}.}
+\begin{definition}~
+\begin{itemize}
+\item A \emph{core}\footnote{The core is also called a structure~\cite{Weichselberger2000}.}
 of an interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-is the set
+is the set~\cite{GilboaSchmeidler1994,Marinacci1999,Teran2014}
 \[
 \mathrm{core}\left(\bar{\mu}\right)=\left\{ \pmeas:\events\rightarrow[0,1]\textrm{ probability measure}\middle|\pmeas\left(E\right)\in\bar{\mu}\left(E\right)\forall E\in\events\right\} \textrm{ .}
 \]
+\item An interval-valued probability measure is called \emph{convex} or
+\emph{2-monotone} if $\bar{\mu}\left(E_{1}\cup E_{2}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(E_{1}\cap E_{2}\right)\subseteq\bar{\mu}\left(E_{1}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(E_{2}\right)$
+for all $E_{1},E_{2}\in\events$~\cite{Shapley1965,GilboaSchmeidler1994,Marinacci1999,Teran2014}.\footnote{\yutsung{If we want to use convex, we need to explain the physical
+meaning of convex interval-valued probability measures...? If there
+is a good explanation, we may only consider convex interval-valued
+probability measures, and replace the definition in the beginning...?}}
+\end{itemize}
 \qed\end{definition}
 
-Then, a wide variety of interval-valued probability measures can be
-associated with real-valued probability measures.
+It is common to consider convex interval-valued probability measures.
+For example, a special case of convex interval-valued probability
+measures consists the Dempster-Shafer belief function as the left-end
+and the Dempster-Shafer plausibility as the right-end, which plays
+an important role in the theory of non-additive belief~\cite{Dempster1967,Shafer1976,GilboaSchmeidler1994,Marinacci1999,Goodman2013,Teran2014}.
+Further more, convex interval-valued probability measures have good
+properties because they can always be associated with real-valued
+probability measures.
 
 \begin{thm}[Shapley~\cite{Shapley1965,GilboaSchmeidler1994}]
 Every convex interval-valued probability measure has a nonempty core.\qed\end{thm}
@@ -1444,12 +1450,8 @@ such that:
 \end{equation}
 \item for a set of mutually orthogonal projections $P_{i}$, we have 
 \begin{equation}
-\bar{\mu}\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i}}\bar{\mu}\left(P_{i}\right)\textrm{ .}\label{eq:QuantumInterval-valuedProbability-Inclusion}
+\bar{\mu}\left(\sideset{_{\mathscr{O}}}{_{i}}\sum P_{i}\right)\subseteq\sideset{_{\mathscr{I}}}{_{i}}\sum\bar{\mu}\left(P_{i}\right)\textrm{ .}\label{eq:QuantumInterval-valuedProbability-Inclusion}
 \end{equation}
-\footnote{$\bar{\mu}$ is called convex if $\bar{\mu}\left(P_{1}\tensor*[_{\mathscr{O}}]{\vee}{}P_{2}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(P_{1}P_{2}\right)\ge\bar{\mu}\left(P_{1}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(P_{2}\right)$
-for all commuting $P_{1},P_{2}\in\events$. We may further define
-a quantum Dempster-Shafer probability measure, and a quantum Dempster-Shafer
-probability measure is always convex.}
 \end{itemize}
 As before, we will only define a quantum interval-valued probability
 measure with preposing $\mathscr{I}$ when we want to compare a quantum
@@ -1489,30 +1491,28 @@ where $x$ and $\sideset{_{\mathbb{R}}}{_{i}}\sum x_{i}\in\left[0,1\right]$.
 By applying these two properties, it is easy to verify $\bar{\mu}$
 is a quantum \emph{$\mathscr{I}$}-interval-valued probability measure.\qed\end{example}
 
-When a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-constructed from a real-valued one~$\mu:\events\rightarrow\left[0,1\right]$,
-we should say $\mu$ is in the core of $\bar{\mu}$ according to the
-following definition of core.
+Similar to classical interval-valued probability measures which have
+no easy Radon-Nikodym theorem, quantum interval-valued probability
+measures have no easy Gleason's theorem. We can further define core
+and convex for quantum interval-valued probability measures. Surprisingly,
+a convex quantum interval-valued probability measure may have a empty
+core, i.e., it cannot correspond to a quantum real-valued probability
+measure or a mixed state.
 
-\begin{definition}[Core of Quantum Interval-valued Probability
-Measure]\label{def:CoreQuantumInterval-valuedProbability} A \emph{core}
-of a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+\begin{definition}~
+\begin{itemize}
+\item A \emph{core} of a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
 is the set 
 \[
 \mathrm{core}\left(\bar{\mu}\right)=\left\{ \mu:\events\rightarrow[0,1]\textrm{ quantum probability measure}\middle|\mu\left(P\right)\in\bar{\mu}\left(P\right)\forall P\in\events\right\} \textrm{ .}
 \]
+\item $\bar{\mu}$ is called convex if $\bar{\mu}\left(P_{1}\tensor*[_{\mathscr{O}}]{\vee}{}P_{2}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(P_{1}P_{2}\right)\ge\bar{\mu}\left(P_{1}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(P_{2}\right)$
+for all commuting $P_{1},P_{2}\in\events$. 
+\end{itemize}
 \qed\end{definition}
 
-Because the classical interval-valued probability measure has no easy
-Radon-Nikodym theorem, the quantum one should not have a easy Gleason's
-theorem. Nevertheless, the core of $\bar{\mu}$ provides an instructive
-way to understand $\bar{\mu}$, and the core may exist even without
-a natural $\iota:\left[0,1\right]\rightarrow\mathscr{I}$ as in the
-example~\ref{ex:One-qubit-quantum-interval} in appendix. However,
-in contrast to the classical case, we have the following theorem.
-
 \begin{thm}\label{def:EmptyCoreQuantumInterval-valuedProbability}
-There is a (convex) quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+There is a convex quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
 such that $\mathrm{core}\left(\bar{\mu}\right)=\emptyset$.\qed\end{thm}
 
 This theorem can be proved by the following example, and a more sophisticated
@@ -1529,13 +1529,22 @@ and $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$. Let
 \bar{\mu}(P) & = & \unknown\textrm{, otherwise. }
 \end{eqnarray*}
 To verify $\bar{\mu}$ is a quantum interval-valued probability measure,
-first notice that $\bar{\mu}\left(\proj{P_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{P_{2}}\right)\subseteq\bar{\mu}\left(\proj{P_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{P_{2}}\right)$
+first notice that 
+\[
+\bar{\mu}\left(\proj{P_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{P_{2}}\right)\subseteq\bar{\mu}\left(\proj{P_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{P_{2}}\right)
+\]
 implies equation (\ref{eq:QuantumInterval-valuedProbability-Inclusion})
 by induction. Second, equation (\ref{eq:QuantumInterval-valuedProbability-Complement})
-implies $\bar{\mu}\left(\mathbb{1}\right)\subseteq\bar{\mu}\left(\proj{P}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)$.
-Therefore, it is sufficient to check $\bar{\mu}\left(\proj{\psi_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{\psi_{2}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)$
+implies 
+\[
+\bar{\mu}\left(\mathbb{1}\right)\subseteq\bar{\mu}\left(\proj{P}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)\textrm{ .}
+\]
+Therefore, it is sufficient to check 
+\[
+\bar{\mu}\left(\proj{\psi_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{\psi_{2}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)
+\]
 for orthogonal $\ket{\psi_{1}}$ and $\ket{\psi_{2}}$. This is easily
-verified by enumerating all possible cases\footnote{This is the internal note for the detail of the proof, and can be
+verified by enumerating all possible cases\footnote{This is the internal note for the details of the proof, and can be
 safely removed from the published version.}.
 
 $\bar{\mu}$ cannot correspond to any quantum probability measure.
@@ -1623,12 +1632,12 @@ In general, we believe this kind of quantum $\mathscr{I}$-interval-valued
 probability measure exists for any finite set of interval~$\mathscr{I}$.
 
 \begin{example}[Three-dimensional quantum 4-value interval-valued
-probability measure]\label{ex:three-dimensional-4-value} Given
+probability measure]\label{ex:three-dimensional-4-value} \footnote{\yutsung{Need to verify this example is convex!}}Given
 a three dimensional Hilbert space with an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
 Consider\emph{ }$\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
 $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$, $\ket{\ms}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})$,
 and a quantum $\mathscr{I}$-interval-valued probability measure~$\bar{\mu}$
-defined as follow:
+defined as follow: 
 \begin{enumerate}
 \item $\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$
 and $\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})=\necess$.
