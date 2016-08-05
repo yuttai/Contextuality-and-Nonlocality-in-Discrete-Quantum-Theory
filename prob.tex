@@ -755,16 +755,14 @@ in example~\ref{ex1}. The relation between example~\ref{ex1} and
 \ref{ex3} can be abstracted into the definition of core. Besides
 of core, we also define another property which will be used later.
 
-\begin{definition}~
+\begin{definition}~Given an interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$:
 \begin{itemize}
 \item A \emph{core}\footnote{The core is also called a structure~\cite{Weichselberger2000}.}
-of an interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-is the set~\cite{GilboaSchmeidler1994,Marinacci1999,Teran2014}
+of $\bar{\mu}$ is the set~\cite{GilboaSchmeidler1994,Marinacci1999,Teran2014}
 \[
 \mathrm{core}\left(\bar{\mu}\right)=\left\{ \pmeas:\events\rightarrow[0,1]\textrm{ probability measure}\middle|\pmeas\left(E\right)\in\bar{\mu}\left(E\right)\forall E\in\events\right\} \textrm{ .}
 \]
-\item An interval-valued probability measure is called \emph{convex} or
-\emph{2-monotone} if $\bar{\mu}\left(E_{1}\cup E_{2}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(E_{1}\cap E_{2}\right)\subseteq\bar{\mu}\left(E_{1}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(E_{2}\right)$
+\item $\bar{\mu}$ is called \emph{convex} or \emph{2-monotone} if $\bar{\mu}\left(E_{1}\cup E_{2}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(E_{1}\cap E_{2}\right)\subseteq\bar{\mu}\left(E_{1}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(E_{2}\right)$
 for all $E_{1},E_{2}\in\events$~\cite{Shapley1965,GilboaSchmeidler1994,Marinacci1999,Teran2014}.\footnote{\yutsung{If we want to use convex, we need to explain the physical
 meaning of convex interval-valued probability measures...? If there
 is a good explanation, we may only consider convex interval-valued
@@ -781,7 +779,7 @@ Further more, convex interval-valued probability measures have good
 properties because they can always be associated with real-valued
 probability measures.
 
-\begin{thm}[Shapley~\cite{Shapley1965,GilboaSchmeidler1994}]
+\begin{thm}[Shapley~\cite{Shapley1965,GilboaSchmeidler1994}]\label{thm:Shapley}
 Every convex interval-valued probability measure has a nonempty core.\qed\end{thm}
 
 \yutsung{Because the physical meaning of convex is still not clear,
@@ -1493,21 +1491,23 @@ is a quantum \emph{$\mathscr{I}$}-interval-valued probability measure.\qed\end{e
 
 Similar to classical interval-valued probability measures which have
 no easy Radon-Nikodym theorem, quantum interval-valued probability
-measures have no easy Gleason's theorem. We can further define core
-and convex for quantum interval-valued probability measures. Surprisingly,
-a convex quantum interval-valued probability measure may have a empty
-core, i.e., it cannot correspond to a quantum real-valued probability
-measure or a mixed state.
+measures have no easy Gleason's theorem. Although we could define
+core and convex for quantum interval-valued probability measures,
+in contrast to theorem~\ref{thm:Shapley}, a convex quantum interval-valued
+probability measure may have a empty core, i.e., it cannot correspond
+to a quantum real-valued probability measure or a mixed state.
 
-\begin{definition}~
+\begin{definition}~Given a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$:
 \begin{itemize}
-\item A \emph{core} of a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-is the set 
+\item A \emph{core} of $\bar{\mu}$ is the set 
 \[
 \mathrm{core}\left(\bar{\mu}\right)=\left\{ \mu:\events\rightarrow[0,1]\textrm{ quantum probability measure}\middle|\mu\left(P\right)\in\bar{\mu}\left(P\right)\forall P\in\events\right\} \textrm{ .}
 \]
-\item $\bar{\mu}$ is called convex if $\bar{\mu}\left(P_{1}\tensor*[_{\mathscr{O}}]{\vee}{}P_{2}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(P_{1}P_{2}\right)\ge\bar{\mu}\left(P_{1}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(P_{2}\right)$
-for all commuting $P_{1},P_{2}\in\events$. 
+\item $\bar{\mu}$ is called convex if 
+\begin{equation}
+\bar{\mu}\left(P_{1}\tensor*[_{\mathscr{O}}]{\vee}{}P_{2}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(P_{1}P_{2}\right)\subseteq\bar{\mu}\left(P_{1}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(P_{2}\right)\label{eq:QuantumInterval-valuedProbability-Convex}
+\end{equation}
+ for all commuting $P_{1},P_{2}\in\events$. 
 \end{itemize}
 \qed\end{definition}
 
@@ -1543,9 +1543,28 @@ Therefore, it is sufficient to check
 \[
 \bar{\mu}\left(\proj{\psi_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{\psi_{2}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)
 \]
-for orthogonal $\ket{\psi_{1}}$ and $\ket{\psi_{2}}$. This is easily
-verified by enumerating all possible cases\footnote{This is the internal note for the details of the proof, and can be
-safely removed from the published version.}.
+for orthogonal $\ket{\psi_{1}}$ and $\ket{\psi_{2}}$. This equation
+always holds because we always have $\unknown\subseteq\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)$.
+
+Next, we need to verify that $\bar{\mu}$ is convex. First, for orthogonal
+projections $P_{1}$ and $P_{2}$, equation (\ref{eq:QuantumInterval-valuedProbability-Inclusion})
+implies equation (\ref{eq:QuantumInterval-valuedProbability-Convex}).
+Second, when $P_{1}=P_{2}+P_{3}$, equation (\ref{eq:QuantumInterval-valuedProbability-Convex})
+holds trivially. Hence, we only need to verify the case which $P_{1}=\proj{\psi_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{\psi_{3}}$
+and $P_{2}=\proj{\psi_{2}}\tensor*[_{\mathscr{O}}]{+}{}\proj{\psi_{3}}$,
+where $\left\{ \ket{\psi_{1}},\ket{\psi_{2}},\ket{\psi_{3}}\right\} $
+is an orthonormal basis. Because we have 
+\begin{eqnarray*}
+\bar{\mu}\left(P_{1}\tensor*[_{\mathscr{O}}]{\vee}{}P_{2}\right) & = & \bar{\mu}\left(\mathbb{1}\right)=\necess\\
+\bar{\mu}\left(P_{1}P_{2}\right) & = & \bar{\mu}\left(\proj{\psi_{3}}\right)\subseteq\unknown
+\end{eqnarray*}
+and $\left\{ \bar{\mu}\left(P_{1}\right),\bar{\mu}\left(P_{2}\right)\right\} $
+is either $\left\{ \bar{\mu}\left(\necess\right),\bar{\mu}\left(\unknown\right)\right\} $
+or $\left\{ \bar{\mu}\left(\unknown\right),\bar{\mu}\left(\unknown\right)\right\} $.
+Therefore, we have
+\[
+\bar{\mu}\left(P_{1}\tensor*[_{\mathscr{O}}]{\vee}{}P_{2}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(P_{1}P_{2}\right)\subseteq\bar{\mu}\left(P_{1}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(P_{2}\right)\textrm{ .}
+\]
 
 $\bar{\mu}$ cannot correspond to any quantum probability measure.
 Suppose $\bar{\mu}(P)=\iota\left(\mu(P)\right)$ for some $\mu:\events\rightarrow\left[0,1\right]$.
