@@ -1507,17 +1507,17 @@ to a quantum real-valued probability measure or a mixed state.
 There is a convex quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
 such that $\mathrm{core}\left(\bar{\mu}\right)=\emptyset$.\qed\end{thm}
 
-This theorem can be proved by the following example, and a more sophisticated
-example is example~\ref{ex:three-dimensional-4-value} in appendix. 
+This theorem can be proved by the following example. 
 
-\begin{example}[Three-dimensional quantum three-value interval-valued
-probability measure]\label{ex:three-dimensional-three-value} Given
+\begin{example}{[}Three-dimensional quantum three-value interval-valued
+probability measure{]}\label{ex:three-dimensional-three-value} Given
 a three dimensional Hilbert space with an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
 Consider\emph{ $\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $}
-and $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$. Let 
+and $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$, and $\ket{\ps'}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{2})$.
+Let 
 \begin{eqnarray*}
-\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps}) & = & \imposs\textrm{ ,}\\
-\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps}) & = & \necess\textrm{ ,}\\
+\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'}) & = & \imposs\textrm{ ,}\\
+\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})=\bar{\mu}(\mathbb{1}-\proj{\ps'}) & = & \necess\textrm{ ,}\\
 \bar{\mu}(P) & = & \unknown\textrm{, otherwise. }
 \end{eqnarray*}
 To verify $\bar{\mu}$ is a quantum interval-valued probability measure,
@@ -1531,7 +1531,8 @@ implies
 \[
 \bar{\mu}\left(\mathbb{1}\right)\subseteq\bar{\mu}\left(\proj{P}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)\textrm{ .}
 \]
-Therefore, it is sufficient to check 
+Therefore, to prove equation (\ref{eq:QuantumInterval-valuedProbability-Inclusion}),
+it is sufficient to check 
 \[
 \bar{\mu}\left(\proj{\psi_{1}}\tensor*[_{\mathscr{O}}]{+}{}\proj{\psi_{2}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)
 \]
@@ -1555,19 +1556,20 @@ is either $\necess\tensor*[_{\mathscr{I}}]{+}{}\unknown$ or $\unknown\tensor*[_{
 Therefore, we have$\bar{\mu}\left(P_{1}\tensor*[_{\mathscr{O}}]{\vee}{}P_{2}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(P_{1}P_{2}\right)\subseteq\bar{\mu}\left(P_{1}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(P_{2}\right)$.
 
 $\bar{\mu}$ cannot correspond to any quantum probability measure.
-Suppose $\mu(P)\in\bar{\mu}(P)$ for some $\mu:\events\rightarrow\left[0,1\right]$.
+Suppose $\mu(P)\in\bar{\mu}(P)$ for some quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$.
 We must have 
 \begin{equation}
-\mu(\proj{0})=\mu(\proj{\ps})=0\textrm{ .}\label{eq:probability-zero-on-states}
+\mu(\proj{0})=\mu(\proj{\ps})=\mu(\proj{\ps'})=0\textrm{ .}\label{eq:probability-zero-on-states}
 \end{equation}
 By Gleason's theorem, there is a mixed state~$\rho=\sum_{j}q_{j}\proj{\phi_{j}}$
 such that $\mu\left(P\right)=\sum_{j=1}^{N}q_{j}\ip{\phi_{j}}{P\phi_{j}}$,
-where $\sum_{j}q_{j}=1$ and $q_{j}>0$. The only pure state~$\ket{\phi}$
-satisfies 
+where $\sum_{j}q_{j}=1$ and $q_{j}>0$. However, no pure state~$\ket{\phi}$
+satisfies
 \[
-\ip{\phi}{0}=\ip{\phi}{\ps}=0
+\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0
 \]
-is $\ket{2}$, but clearly $\bar{\mu}(P)\ne\iota\left(\mu_{\ket{2}}^{B}(P)\right)$.\qed\end{example}
+so that we have $\mu(P)\notin\bar{\mu}(P)$ for all quantum probability
+measure~$\mu$.\qed\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1577,216 +1579,6 @@ is $\ket{2}$, but clearly $\bar{\mu}(P)\ne\iota\left(\mu_{\ket{2}}^{B}(P)\right)
 \end{comment}
 
 \printbibliography
-
-\appendix
-
-\section{Examples for Quantum Interval-valued Probability Measures}
-
-The following example verify the core of a quantum interval-valued
-probability measure is nonempty even if there is no natural correspondence.
-For example, if $\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
-there is no natural way to map from $\frac{1}{2}$, as both $\frac{1}{2}\in\left[0,\frac{1}{2}\right]=\unlikely$
-and $\frac{1}{2}\in\left[\frac{1}{2},1\right]=\likely$. However,
-we still can find a quantum interval-valued probability measure corresponding
-to a quantum probability measure as in the following example.
-
-\begin{example}[One-qubit quantum interval-valued probability measure]\label{ex:One-qubit-quantum-interval}
-Given a two dimensional Hilbert space, a vector $\ket{\psi}$ can
-be normalized and written in $\left(\begin{array}{c}
-\cos\theta\\
-\rme^{\rmi\gamma}\sin\theta
-\end{array}\right)$, where $0\le\theta\le\frac{\pi}{2}$ and $0\le\gamma<2\pi$. Consider
-a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-defined by 
-\begin{eqnarray*}
-\bar{\mu}(\mathbb{0}) & = & \imposs\textrm{ ,}\\
-\bar{\mu}(\mathbb{1}) & = & \necess\textrm{ ,}\\
-\bar{\mu}(\proj{\psi}) & = & \begin{cases}
-\necess & \textrm{, if }\theta=0\textrm{ ;}\\
-\likely & \textrm{, if }0<\theta<\frac{\pi}{4}\textrm{ ;}\\
-\likely & \textrm{, if }\theta=\frac{\pi}{4}\textrm{ and }0\le\gamma<\pi\textrm{ ;}\\
-\unlikely & \textrm{, if }\theta=\frac{\pi}{4}\textrm{ and }\pi\le\gamma<2\pi\textrm{ ;}\\
-\unlikely & \textrm{, if }\frac{\pi}{4}<\theta<\frac{\pi}{2}\textrm{ ;}\\
-\imposs & \textrm{, if }\theta=\frac{\pi}{2}\textrm{ .}
-\end{cases}
-\end{eqnarray*}
-Let $\ket{\psi^{\perp}}$ be the state perpendicular to $\ket{\psi}$.
-Then, the vector representation of $\ket{\psi^{\perp}}$ can be simplified
-as 
-\[
-\left(\begin{array}{c}
--\rme^{-\rmi\gamma}\sin\theta\\
-\cos\theta
-\end{array}\right)=-\rme^{-\rmi\gamma}\left(\begin{array}{c}
-\cos\left(\frac{\pi}{2}-\theta\right)\\
-\rme^{\rmi\left(\pi+\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)
-\end{array}\right)
-\]
-so we have 
-\[
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi}\right)=\bar{\mu}\left(\proj{\psi^{\perp}}\right)=1\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(\proj{\psi}\right)\textrm{ .}
-\]
-Hence, $\bar{\mu}$ is a quantum $\mathscr{I}$-interval-valued probability
-measure. Notice that for all projection~$P$, $\mu_{\ket{0}}^{B}(P)\in\bar{\mu}(P)$
-implies that $\bar{\mu}(P)$ is one of quantum $\mathscr{I}$-interval-valued
-probability measures corresponding to $\mu_{\ket{0}}^{B}(P)$. However,
-$\mu_{\ket{0}}^{B}(P)$ can correspond to infinity many quantum $\mathscr{I}$-interval-valued
-probability measures by twisting the definition involving $\gamma$.\qed\end{example}
-
-We are going to provide an quantum 4-value interval-valued probability
-measures corresponding to no quantum probability measure, i.e., $\mu_{\rho}^{B}(P)\notin\bar{\mu}(P)$.
-In general, we believe this kind of quantum $\mathscr{I}$-interval-valued
-probability measure exists for any finite set of interval~$\mathscr{I}$.
-
-\begin{example}[Three-dimensional quantum 4-value interval-valued
-probability measure]\label{ex:three-dimensional-4-value} \footnote{\yutsung{Need to verify this example is convex!}}Given
-a three dimensional Hilbert space with an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
-Consider\emph{ }$\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
-$\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$, $\ket{\ms}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})$,
-and a quantum $\mathscr{I}$-interval-valued probability measure~$\bar{\mu}$
-defined as follow: 
-\begin{enumerate}
-\item $\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$
-and $\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})=\necess$.
-\item Consider the states orthogonal to $\ket{0}$ and $\ket{\ps}$ respectively,
-$\ket{0_{\theta,\gamma}^{\perp}}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
-and $\ket{\ps_{\theta,\gamma}^{\perp}}=-\rme^{\rmi\gamma}\sin\theta\ket{\ms}+\cos\theta\ket{2}$,
-where $0\le\theta\le\frac{\pi}{2}$ and $0\le\gamma<2\pi$. Half of
-those states need special treatment, i.e., when where $0\le\theta<\frac{\pi}{2}$
-and $0\le\gamma<\pi$, we define $\bar{\mu}(\proj{0_{\theta,\gamma}^{\perp}})=\ket{\ps_{\theta,\gamma}^{\perp}}=\likely$
-and $\bar{\mu}(\mathbb{1}-\proj{0_{\theta,\gamma}^{\perp}})=\bar{\mu}(\mathbb{1}-\proj{\ps_{\theta,\gamma}^{\perp}})=\unlikely$.
-\item Otherwise, $\bar{\mu}(\proj{\psi})=\unlikely$ and $\bar{\mu}(\mathbb{1}-\proj{\psi})=\likely$.
-\end{enumerate}
-$\bar{\mu}$ cannot correspond to any quantum probability measure
-because of the exact same reason as in example~\ref{ex:three-dimensional-three-value}.
-Before we verify that $\bar{\mu}$ is a quantum interval-valued probability
-measure, we need a notation for cross product. For $\ket{\psi}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}=\begin{pmatrix}\alpha_{0}\\
-\alpha_{1}\\
-\alpha_{2}
-\end{pmatrix}$ and $\ket{\phi}=\beta_{0}\ket{0}+\beta_{1}\ket{1}+\beta_{2}\ket{2}=\begin{pmatrix}\beta_{0}\\
-\beta_{1}\\
-\beta_{2}
-\end{pmatrix}$, their cross product is defined as follow.
-\[
-\ket{\psi\times\phi}=\ket{\psi}\times\ket{\phi}=\begin{vmatrix}\alpha_{1}^{*} & \beta_{1}^{*}\\
-\alpha_{2}^{*} & \beta_{2}^{*}
-\end{vmatrix}\ket{0}+\begin{vmatrix}\alpha_{2}^{*} & \beta_{2}^{*}\\
-\alpha_{0}^{*} & \beta_{0}^{*}
-\end{vmatrix}\ket{1}+\begin{vmatrix}\alpha_{0}^{*} & \beta_{0}^{*}\\
-\alpha_{1}^{*} & \beta_{1}^{*}
-\end{vmatrix}\ket{2}\textrm{ ,}
-\]
-where $\begin{vmatrix}\alpha & \beta\\
-\alpha' & \beta'
-\end{vmatrix}=\alpha\beta'-\alpha'\beta$. Notice that we put the complex conjugate in the cross product, so
-that the result of cross product is orthogonal to $\ket{\psi}$ and
-$\ket{\phi}$. 
-\begin{eqnarray*}
-\ip{\psi\times\phi}{\psi} & = & \left(\alpha_{1}\beta_{2}-\alpha_{2}\beta_{1}\right)\alpha_{0}+\left(\alpha_{2}\beta_{0}-\alpha_{0}\beta_{2}\right)\alpha_{1}+\left(\alpha_{0}\beta_{1}-\alpha_{1}\beta_{0}\right)\alpha_{2}=0\textrm{ ,}\\
-\ip{\psi\times\phi}{\phi} & = & \left(\alpha_{1}\beta_{2}-\alpha_{2}\beta_{1}\right)\beta_{0}+\left(\alpha_{2}\beta_{0}-\alpha_{0}\beta_{2}\right)\beta_{1}+\left(\alpha_{0}\beta_{1}-\alpha_{1}\beta_{0}\right)\beta_{2}=0\textrm{ .}
-\end{eqnarray*}
-Also, even if $\ket{\psi}$ and $\ket{\phi}$ are normalized, their
-cross product~$\ket{\psi\times\phi}$ need not be normalized as usual.
-
-To verify $\bar{\mu}$ is a quantum interval-valued probability measure,
-it is sufficient to check
-\begin{equation}
-\begin{aligned}\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}}\right) & \subseteq\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{2}}\right) & \subseteq\bar{\mu}\left(\proj{\psi_{3}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{1}}\right)\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{3}}\right) & \subseteq\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)
-\end{aligned}
-\label{eq:non-additive-vectors}
-\end{equation}
- for every orthonormal basis $\mathcal{B}=\left\{ \ket{\psi_{1}},\ket{\psi_{2}},\ket{\psi_{3}}\right\} $.
-We are going to enumerate all possible orthonormal bases to verify
-the equations, and case 1 and 2 are illustrated in figure~\ref{fig:three-dimensional-4-value}.
-\begin{figure}
-\includegraphics{\string"Three-dimensional quantum 4-value interval-valued probability measure\string".pdf}\caption{\label{fig:three-dimensional-4-value}This figure illustrates case
-1 and 2 in $\mathbb{R}^{3}$ in example~\ref{ex:three-dimensional-4-value}.
-The red and green dotted vector are $\ket{0}$ and $\ket{\ps}$ respectively.
-All possible vectors of $\ket{0_{\theta,\gamma}^{\perp}}$ and $\ket{\ps_{\theta,\gamma}^{\perp}}$
-are drawn in the red and green circles, respectively. Within the circles,
-a vector~$\ket{\psi}$ in dotted part means $\bar{\mu}(\proj{\psi})=\likely$;
-otherwise, $\bar{\mu}(\proj{\psi})=\unlikely$. The gray vector is
-a generic vector~$\ket{0_{\theta,\gamma}^{\perp}}$, and the red
-and green solid vectors are normalized $\ket{0}\times\ket{0_{\theta,\gamma}^{\perp}}$
-and $\ket{\ps}\times\ket{0_{\theta,\gamma}^{\perp}}$, respectively.}
-\end{figure}
-
-\begin{enumerate}
-\item When $\ket{\psi_{1}}$ is $\ket{0}$, then $\ket{\psi_{2}}$ and $\ket{\psi_{3}}$
-must be $\ket{0_{\theta,\gamma}^{\perp}}$ for some $\theta$ and
-$\gamma$. Because of 
-\[
-\ket{0}\times\ket{0_{\theta,\gamma}^{\perp}}=\begin{pmatrix}1\\
-0\\
-0
-\end{pmatrix}\times\begin{pmatrix}0\\
-\rme^{\rmi\gamma}\sin\theta\\
-\cos\theta
-\end{pmatrix}=\begin{pmatrix}0\\
--\cos\theta\\
-\rme^{-\rmi\gamma}\sin\theta
-\end{pmatrix}=\rme^{-\rmi\gamma}\begin{pmatrix}0\\
-\rme^{\rmi\left(\pi+\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)\\
-\cos\left(\frac{\pi}{2}-\theta\right)
-\end{pmatrix}=\rme^{-\rmi\gamma}\ket{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}
-\]
-the pair $\ket{\psi_{2}}=\ket{0_{\theta,\gamma}^{\perp}}$ and $\ket{\psi_{3}}=\ket{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}$
-for ($0<\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$) or $\theta=0$
-enumerate all possible orthonormal bases. Equation (\ref{eq:non-additive-vectors})
-can be verified as follow. 
-\begin{eqnarray*}
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0}\right)=\necess & \subseteq & \likely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\theta,\gamma}^{\perp}}\right)=\unlikely & = & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\imposs=\bar{\mu}\left(\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0}\right)\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)=\likely & = & \imposs\tensor*[_{\mathscr{I}}]{+}{}\likely=\bar{\mu}\left(\proj{0}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)
-\end{eqnarray*}
-Similarly, when $\ket{\psi_{1}}$ is $\ket{\ps}$, equation (\ref{eq:non-additive-vectors})
-holds.
-\item When $\ket{0}\notin\mathcal{B}$ and $\ket{\psi_{1}}=\ket{0_{\theta,\gamma}^{\perp}}$
-for $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, we want to
-prove $\bar{\mu}\left(\proj{\psi_{2}}\right)=\bar{\mu}\left(\proj{\psi_{3}}\right)=\unlikely$.
-Then, we have
-\begin{eqnarray*}
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\theta,\gamma}^{\perp}}\right)=\unlikely & \subseteq & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{2}}\right)=\likely & \subseteq & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\likely=\bar{\mu}\left(\proj{\psi_{3}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)
-\end{eqnarray*}
-In order to verify $\bar{\mu}\left(\proj{\psi_{2}}\right)=\bar{\mu}\left(\proj{\psi_{3}}\right)=\unlikely$,
-it is sufficient to prove that $\ket{\ps_{\theta',\gamma'}^{\perp}}\in\mathcal{B}$
-implies ($0<\theta'<\frac{\pi}{2}$ and $\pi\le\gamma'<2\pi$) or
-$\theta'=\frac{\pi}{2}$. Recall $\ip{\ps}{\ps_{\theta',\gamma'}^{\perp}}=0$.
-Hence, if $\ket{\ps_{\theta',\gamma'}^{\perp}}\in\mathcal{B}$, we
-have $\ket{\ps_{\theta',\gamma'}^{\perp}}$ parallel to $\ket{\ps}\times\ket{0_{\theta,\gamma}^{\perp}}$.
-\[
-\ket{\ps}\times\ket{0_{\theta,\gamma}^{\perp}}=\begin{pmatrix}1\\
-1\\
-0
-\end{pmatrix}\times\begin{pmatrix}0\\
-\rme^{\rmi\gamma}\sin\theta\\
-\cos\theta
-\end{pmatrix}=\begin{pmatrix}\cos\theta\\
--\cos\theta\\
-\rme^{-\rmi\gamma}\sin\theta
-\end{pmatrix}=\rme^{-\rmi\gamma}\begin{pmatrix}-\rme^{\rmi\left(\pi+\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)\\
-\rme^{\rmi\left(\pi+\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)\\
-\cos\left(\frac{\pi}{2}-\theta\right)
-\end{pmatrix}=\rme^{-\rmi\gamma}\ket{\ps_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}
-\]
-Because of $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, we have
-($0<\theta'=\frac{\pi}{2}-\theta<\frac{\pi}{2}$ and $\pi\le\gamma'=\pi+\gamma<2\pi$)
-or $\theta'=\frac{\pi}{2}-\theta=\frac{\pi}{2}$. Similarly, when
-$\ket{\psi_{1}}$ is $\ket{\ps_{\theta,\gamma}^{\perp}}$ and $\ket{\ps}\notin\mathcal{B}$,
-equation (\ref{eq:non-additive-vectors}) holds.
-\item Finally, when $\ket{0}\notin\mathcal{B}$, $\ket{\ps}\notin\mathcal{B}$,
-$\ket{0_{\theta,\gamma}^{\perp}}\notin\mathcal{B}$, and $\ket{\ps_{\theta,\gamma}^{\perp}}\notin\mathcal{B}$
-for $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, i.e., the ``otherwise''
-case. Then, equation (\ref{eq:non-additive-vectors}) can easily be
-verified. 
-\begin{eqnarray*}
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}}\right)=\likely & \subseteq & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)
-\end{eqnarray*}
-\end{enumerate}
-\qed\end{example}
 
 \end{document}
 
