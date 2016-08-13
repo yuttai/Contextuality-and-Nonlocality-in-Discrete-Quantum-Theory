@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    204348,       4826]
-NotebookOptionsPosition[    198393,       4630]
-NotebookOutlinePosition[    198856,       4651]
-CellTagsIndexPosition[    198783,       4646]
+NotebookDataLength[    200917,       4718]
+NotebookOptionsPosition[    194963,       4522]
+NotebookOutlinePosition[    195426,       4543]
+CellTagsIndexPosition[    195353,       4538]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -3729,20 +3729,26 @@ Cell[BoxData[
            RowBox[{
            "#", ",", "u", ",", "0.5", ",", "v", ",", "0.5", ",", "w", ",", 
             "0.75", ",", "x", ",", "0.5", ",", "y", ",", "0", ",", "z", ",", 
-            "0"}], "]"}], "&"}]}], ",", "\[IndentingNewLine]", "i1", ",", 
-        "i2", ",", "i0", ",", "vc0", ",", "vg0", ",", "vc1", ",", "vg2"}], 
-       "}"}], ",", "\[IndentingNewLine]", 
+            "0"}], "]"}], "&"}]}], ",", "\[IndentingNewLine]", "vc1", ",", 
+        "vg1", ",", "i1", ",", "vg2", ",", "vc2", ",", "i2", ",", "i0", ",", 
+        "vc0", ",", "vg0"}], "}"}], ",", "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"vc1", "=", 
         RowBox[{
         "possibilityDistributionFunction2Capacity", "[", "\[Pi]", "]"}]}], 
        ";", "\[IndentingNewLine]", 
+       RowBox[{"vg1", "=", 
+        RowBox[{"complement", "[", 
+         RowBox[{"X", ",", "vc1"}], "]"}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"i1", "=", 
         RowBox[{"capacity2IntervalValuedProbabilityMeasure", "[", 
          RowBox[{"X", ",", "vc1"}], "]"}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"vg2", "=", 
         RowBox[{"necessityDistributionFunction2Game", "[", 
          RowBox[{"X", ",", "\[Delta]"}], "]"}]}], ";", 
+       RowBox[{"vc2", "=", 
+        RowBox[{"complement", "[", 
+         RowBox[{"X", ",", "vg2"}], "]"}]}], ";", 
        RowBox[{"i2", "=", 
         RowBox[{"game2IntervalValuedProbabilityMeasure", "[", 
          RowBox[{"X", ",", "vg2"}], "]"}]}], ";", 
@@ -3755,23 +3761,59 @@ Cell[BoxData[
        RowBox[{"vg0", "=", 
         RowBox[{"intervalValuedProbabilityMeasure2Game", "[", "i0", "]"}]}], 
        ";", 
-       RowBox[{"{", 
+       RowBox[{"Join", "[", 
         RowBox[{
-         RowBox[{"capacityQ", "[", 
-          RowBox[{"X", ",", "vc1"}], "]"}], ",", 
-         RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
-          RowBox[{"X", ",", "i1"}], "]"}], ",", 
-         RowBox[{"gameQ", "[", 
-          RowBox[{"X", ",", "vg2"}], "]"}], ",", 
-         RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
-          RowBox[{"X", ",", "i2"}], "]"}], ",", 
-         RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
-          RowBox[{"X", ",", "i0"}], "]"}], ",", 
-         RowBox[{"capacityWhy", "[", 
-          RowBox[{"X", ",", "vc0", ",", "vc"}], "]"}], ",", 
-         RowBox[{"gameWhy", "[", 
-          RowBox[{"X", ",", "vg0", ",", "vg"}], "]"}]}], "}"}]}]}], "]"}]}], 
-   "]"}], "//", "Column"}]], "Input",
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"capacityQ", "[", 
+            RowBox[{"X", ",", "vc1"}], "]"}], ",", 
+           RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+            RowBox[{"X", ",", "i1"}], "]"}], ",", 
+           RowBox[{"gameQ", "[", 
+            RowBox[{"X", ",", "vg2"}], "]"}], ",", 
+           RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+            RowBox[{"X", ",", "i2"}], "]"}], ",", 
+           RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+            RowBox[{"X", ",", "i0"}], "]"}], ",", 
+           RowBox[{"capacityWhy", "[", 
+            RowBox[{"X", ",", "vc0", ",", "vc"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"vc0", "/@", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"w", ",", "z"}], "}"}], ",", 
+              RowBox[{"{", "w", "}"}], ",", 
+              RowBox[{"{", "z", "}"}]}], "}"}]}], ",", 
+           RowBox[{"vc1", "/@", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"w", ",", "z"}], "}"}], ",", 
+              RowBox[{"{", "w", "}"}], ",", 
+              RowBox[{"{", "z", "}"}]}], "}"}]}], ",", 
+           RowBox[{"vc2", "/@", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"w", ",", "z"}], "}"}], ",", 
+              RowBox[{"{", "w", "}"}], ",", 
+              RowBox[{"{", "z", "}"}]}], "}"}]}], ",", 
+           RowBox[{"vg2", "/@", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Complement", "[", 
+               RowBox[{"X", ",", 
+                RowBox[{"{", 
+                 RowBox[{"w", ",", "z"}], "}"}]}], "]"}], ",", 
+              RowBox[{"Complement", "[", 
+               RowBox[{"X", ",", 
+                RowBox[{"{", "w", "}"}]}], "]"}], ",", 
+              RowBox[{"Complement", "[", 
+               RowBox[{"X", ",", 
+                RowBox[{"{", "z", "}"}]}], "]"}]}], "}"}]}]}], "}"}]}], 
+        "]"}]}]}], "]"}]}], "]"}], "//", "Column"}]], "Input",
  CellChangeTimes->{{3.670896572566888*^9, 3.6708966077779016`*^9}, {
    3.6709366255395145`*^9, 3.6709366262515554`*^9}, 3.67762957071727*^9, 
    3.6776510327728086`*^9, 3.677677918811778*^9, 3.6776816829298415`*^9, 
@@ -3805,7 +3847,10 @@ Cell[BoxData[
    3.6801122367363157`*^9}, {3.6801132012411304`*^9, 3.680113218221391*^9}, {
    3.680113273344738*^9, 3.6801133154653845`*^9}, {3.680113364261134*^9, 
    3.6801133825064144`*^9}, {3.68011345055996*^9, 3.6801135440938964`*^9}, {
-   3.680113582211982*^9, 3.6801135831419964`*^9}}],
+   3.680113582211982*^9, 3.6801135831419964`*^9}, {3.68011422467935*^9, 
+   3.680114307663125*^9}, {3.6801144616154895`*^9, 3.680114558204473*^9}, {
+   3.680114590107463*^9, 3.6801145975775776`*^9}, {3.6801146285030527`*^9, 
+   3.680114722201992*^9}, {3.6801158124262376`*^9, 3.680115869747118*^9}}],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -3847,172 +3892,18 @@ Cell[BoxData[
        GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
       "Column"]},
     {
-     TagBox[GridBox[{
-        {
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"vg", "[", 
-             RowBox[{"{", 
-              RowBox[{"v", ",", "w", ",", "y", ",", "z"}], "}"}], "]"}], 
-            "\[GreaterEqual]", 
-            RowBox[{
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"v", ",", "w"}], "}"}], "]"}], "+", 
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"y", ",", "z"}], "}"}], "]"}]}]}], ")"}], "\[Equal]", 
-          "False"}]},
-        {
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"vg", "[", 
-             RowBox[{"{", 
-              RowBox[{"u", ",", "v", ",", "w", ",", "y", ",", "z"}], "}"}], 
-             "]"}], "\[GreaterEqual]", 
-            RowBox[{
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"v", ",", "w"}], "}"}], "]"}], "+", 
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"u", ",", "y", ",", "z"}], "}"}], "]"}]}]}], ")"}], 
-          "\[Equal]", "False"}]},
-        {
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"vg", "[", 
-             RowBox[{"{", 
-              RowBox[{"v", ",", "w", ",", "x", ",", "y", ",", "z"}], "}"}], 
-             "]"}], "\[GreaterEqual]", 
-            RowBox[{
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"v", ",", "w"}], "}"}], "]"}], "+", 
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"x", ",", "y", ",", "z"}], "}"}], "]"}]}]}], ")"}], 
-          "\[Equal]", "False"}]},
-        {
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"vg", "[", 
-             RowBox[{"{", 
-              RowBox[{"v", ",", "w", ",", "y", ",", "z"}], "}"}], "]"}], 
-            "\[GreaterEqual]", 
-            RowBox[{
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"v", ",", "w"}], "}"}], "]"}], "+", 
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"y", ",", "z"}], "}"}], "]"}]}]}], ")"}], "\[Equal]", 
-          "False"}]},
-        {
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"vg", "[", 
-             RowBox[{"{", 
-              RowBox[{"u", ",", "v", ",", "w", ",", "y", ",", "z"}], "}"}], 
-             "]"}], "\[GreaterEqual]", 
-            RowBox[{
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"y", ",", "z"}], "}"}], "]"}], "+", 
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"u", ",", "v", ",", "w"}], "}"}], "]"}]}]}], ")"}], 
-          "\[Equal]", "False"}]},
-        {
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"vg", "[", 
-             RowBox[{"{", 
-              RowBox[{"v", ",", "w", ",", "x", ",", "y", ",", "z"}], "}"}], 
-             "]"}], "\[GreaterEqual]", 
-            RowBox[{
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"y", ",", "z"}], "}"}], "]"}], "+", 
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"v", ",", "w", ",", "x"}], "}"}], "]"}]}]}], ")"}], 
-          "\[Equal]", "False"}]},
-        {
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"vg", "[", 
-             RowBox[{"{", 
-              RowBox[{"u", ",", "v", ",", "w", ",", "y", ",", "z"}], "}"}], 
-             "]"}], "\[GreaterEqual]", 
-            RowBox[{
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"y", ",", "z"}], "}"}], "]"}], "+", 
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"u", ",", "v", ",", "w"}], "}"}], "]"}]}]}], ")"}], 
-          "\[Equal]", "False"}]},
-        {
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"vg", "[", 
-             RowBox[{"{", 
-              RowBox[{"u", ",", "v", ",", "w", ",", "y", ",", "z"}], "}"}], 
-             "]"}], "\[GreaterEqual]", 
-            RowBox[{
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"v", ",", "w"}], "}"}], "]"}], "+", 
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"u", ",", "y", ",", "z"}], "}"}], "]"}]}]}], ")"}], 
-          "\[Equal]", "False"}]},
-        {
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"vg", "[", 
-             RowBox[{"{", 
-              RowBox[{"v", ",", "w", ",", "x", ",", "y", ",", "z"}], "}"}], 
-             "]"}], "\[GreaterEqual]", 
-            RowBox[{
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"y", ",", "z"}], "}"}], "]"}], "+", 
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"v", ",", "w", ",", "x"}], "}"}], "]"}]}]}], ")"}], 
-          "\[Equal]", "False"}]},
-        {
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"vg", "[", 
-             RowBox[{"{", 
-              RowBox[{"v", ",", "w", ",", "x", ",", "y", ",", "z"}], "}"}], 
-             "]"}], "\[GreaterEqual]", 
-            RowBox[{
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"v", ",", "w"}], "}"}], "]"}], "+", 
-             RowBox[{"vg", "[", 
-              RowBox[{"{", 
-               RowBox[{"x", ",", "y", ",", "z"}], "}"}], "]"}]}]}], ")"}], 
-          "\[Equal]", "False"}]}
-       },
-       DefaultBaseStyle->"Column",
-       GridBoxAlignment->{"Columns" -> {{Left}}},
-       GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
-      "Column"]}
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0.2500000000000001`", ",", "0.5000000000000002`"}], 
+      "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1", ",", "0.5`"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0.25`", ",", "1"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0.75`", ",", "0"}], "}"}]}
    },
    DefaultBaseStyle->"Column",
    GridBoxAlignment->{"Columns" -> {{Left}}},
@@ -4028,7 +3919,8 @@ Cell[BoxData[
    3.680112234276278*^9, 3.680112238703846*^9}, 3.680113152660384*^9, 
    3.6801132206964293`*^9, 3.6801133178004208`*^9, 3.6801133864739757`*^9, 
    3.6801134241270537`*^9, {3.6801135676567583`*^9, 3.6801135893070908`*^9}, 
-   3.6801139656528716`*^9}]
+   3.6801139656528716`*^9, 3.6801145751147327`*^9, 3.6801146097777653`*^9, 
+   3.6801146563559804`*^9, 3.680114724602029*^9, 3.6801158724671593`*^9}]
 }, Open  ]]
 }, Open  ]],
 
@@ -4645,7 +4537,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"0000352E", 198686, 4640}
+ {"0000352E", 195256, 4532}
  }
 *)
 (*NotebookFileOutline
@@ -4812,19 +4704,19 @@ Cell[162545, 3671, 1101, 19, 46, "Output"]
 }, Open  ]],
 Cell[163661, 3693, 266, 5, 30, "Text"],
 Cell[CellGroupData[{
-Cell[163952, 3702, 5581, 105, 312, "Input"],
-Cell[169536, 3809, 7867, 221, 267, "Output"]
+Cell[163952, 3702, 7467, 150, 392, "Input"],
+Cell[171422, 3854, 2551, 68, 210, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[177452, 4036, 106, 1, 70, "Section"],
+Cell[174022, 3928, 106, 1, 70, "Section"],
 Cell[CellGroupData[{
-Cell[177583, 4041, 2120, 48, 112, "Input"],
-Cell[179706, 4091, 4993, 139, 83, "Output"]
+Cell[174153, 3933, 2120, 48, 112, "Input"],
+Cell[176276, 3983, 4993, 139, 83, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[184736, 4235, 395, 8, 31, "Input"],
-Cell[185134, 4245, 13219, 380, 222, "Output"]
+Cell[181306, 4127, 395, 8, 31, "Input"],
+Cell[181704, 4137, 13219, 380, 189, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
