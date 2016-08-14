@@ -611,13 +611,34 @@ case of game~\cite{Shapley1965}.}
 \begin{itemize}
 \item $\bar{\mu}(\emptyset)=[0,0]$, 
 \item $\bar{\mu}(\Omega)=[1,1]$, 
-\item for any event $E$, $\bar{\mu}\left(\Omega\backslash
-E\right)=1\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(E\right)$, and 
+\item for every collection of pairwise disjoint events $\left\{ E_{i}\right\} ,\left\{ E_{i}'\right\} \subseteq\events$
+with $\Omega=\left(\bigcup_{i}E_{i}\right)\bigcup\left(\bigcup_{i}E_{i}'\right)$,
+we have 
+\[
+\bar{\mu}\left(\bigcup_{i}E_{i}\right)\subseteq\left[\max\left\{ 1-\sideset{_{\mathbb{R}}}{_{i}}\sum r_{i}',\sideset{_{\mathbb{R}}}{_{i}}\sum l_{i}\right\} ,\min\left\{ 1-\sideset{_{\mathbb{R}}}{_{i}}\sum l_{i}',\sideset{_{\mathbb{R}}}{_{i}}\sum r_{i}\right\} \right]\textrm{ ,}
+\]
+where $\bar{\mu}\left(E_{i}\right)=[l_{i},r_{i}]$ and $\bar{\mu}\left(E_{i}'\right)=[l_{i}',r_{i}']$
+for all $i$.
+\end{itemize}
+In order to understand this definition, we tear the last condition
+apart and provide an equivalent definition of interval-valued probability
+measures.
+
+\begin{lemma}\label{lem:classicalProbabilityMeasure}Given a sample
+space~$\Omega$ and its event~$\events$, a function~$\mu:\events\rightarrow[0,1]$
+is a classical interval-valued probability measure if and only if
+$\mu$ satisfies the following conditions: 
+\begin{itemize}
+\item $\bar{\mu}(\emptyset)=[0,0]$, 
+\item $\bar{\mu}(\Omega)=[1,1]$, 
+\item for any event $E$, $\bar{\mu}\left(\Omega\backslash E\right)=1\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(E\right)$,
+and 
 \item for a collection $E_{i}$ of pairwise disjoint events, we have $\bar{\mu}\left(\bigcup_{i}E_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i}}\bar{\mu}\left(E_{i}\right)$,
 where $\tensor*[_{\mathscr{I}}]{\sum}{_{i}}[l_{i},r_{i}]=\left[\tensor*[_{\mathbb{R}}]{\sum}{_{i}}l_{i},\tensor*[_{\mathbb{R}}]{\sum}{_{i}}r_{i}\right]$.
 We may drop the preposing $\mathscr{I}$ when summands are clearly
 intervals. 
 \end{itemize}
+\qed\end{lemma}
 
 % The singleton closed interval $[0,0]$ is a required special value
 % for empty set, and a natural generalization is to consider another
@@ -777,29 +798,23 @@ Every convex interval-valued probability measure has a nonempty core.\qed\end{th
 
 \yutsung{Because the physical meaning of convex is still not clear,
 it would be better if we can find or prove a theorem which removes
-``convex'' in the theorem. However, the literature contradicts to
-each other so at least I need to trace an example to see which one
-is correct, or prove the theorem we want independently...
-
-First, \cite{JamisonLodwick2004} shows a kind of equivalence between
-interval-valued probability measures and clouds. 
-
-On one hand, a combination of the following two theorems show every
-cloud has a core.
-
-\begin{thm}[Neumaier~\cite{Neumaier2003}] For every cloud $\mathbf{x}$
-over $\mathbb{M}$ there exists a random variable $x$ with values
-in $\mathbb{M}$ contained in $\mathbf{x}$.\qed\end{thm}
-
-\begin{example}[A cloud defines an $R$-probability field~\cite{Lodwick2008}]
-...\qed\end{example}
-
-On the other hand, \cite{Destercke2008a} proved some clouds has no
-core.
-
-Verifying the example to see who is right... Also need to confirm
-whether interval-valued probability measures and clouds are really
-the same.}
+``convex'' in the theorem. However, I still have not found an example
+with an empty core or a real-valued probability measure in the core
+of each interval-valued probability measure. What we know:
+\begin{enumerate}
+\item The cloud in \cite{JamisonLodwick2004} cannot induce an interval-valued
+probability measure. Therefore, any results related to clouds cannot
+be used directly.
+\item The definition of interval-valued probability measure in \cite{JamisonLodwick2004}
+is different from any later definition of interval-valued probability
+measure written by Lodwick, including \cite{Lodwick2008}.
+\item About linear programming, the Mathematica program solving the case
+$\left|\Omega\right|=1$ or $2$ gives positive answer. The program
+ceases to respond when outputting $\left|\Omega\right|=3$. Maybe
+I should simplify the program?
+\item Check whether the Shapley value still in the core or not in our setting...?
+\end{enumerate}
+}
 
 % \gerardo{Set-valued is a particular case?}
 
