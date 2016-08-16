@@ -137,7 +137,7 @@
 \begin_body
 
 \begin_layout Title
-Interval Probability for Fuzzy Quantum Theories
+Interval Probability and Measurement for Fuzzy Quantum Theories
 \end_layout
 
 \begin_layout Author
@@ -481,7 +481,7 @@ andy{
 Quantum meeting: the basics of classical and quantum standard and interval
  probabilities are becoming clearer (except need clearer exposition).
  The key step is the replacement of "sum" and "=" in the rule 
-\begin_inset Formula $\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i}}\mu\left(P_{i}\right)$
+\begin_inset Formula $\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{N}}P_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}\mu\left(P_{i}\right)$
 \end_inset
 
  by various logical operations on sets instead of actually summing unit
@@ -599,7 +599,18 @@ A
 probability space
 \emph default
  specifies the necessary conditions for reasoning coherently about collections
- of uncertain events.
+ of uncertain events
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kolmogorov1950,Shafer1976,Griffiths2003,Swart2013"
+
+\end_inset
+
+.
  We review the conventional presentation of probability spaces and then
  discuss the computational resources needed to estimate probabilities.
 \end_layout
@@ -623,22 +634,12 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-Real-Valued Probability Spaces
+Classical Real-Valued Probability Spaces
 \end_layout
 
 \begin_layout Standard
-The conventional definition of a probability space
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Kolmogorov1950,Shafer1976,Griffiths2003,Swart2013"
-
-\end_inset
-
- builds upon the real numbers.
+The conventional definition of a probability space builds upon the field
+ of real numbers.
  In more detail, a probability space consists of a 
 \emph on
 sample space
@@ -703,7 +704,7 @@ finite
 \end_inset
 
 
-\begin_inset Formula $2^{\Omega}$
+\begin_inset Formula $2^{\Omega}=\left\{ E\middle|E\subseteq\Omega\right\} $
 \end_inset
 
 .
@@ -731,15 +732,15 @@ probability measure
 
 \begin_layout Itemize
 for a collection 
-\begin_inset Formula $E_{i}$
+\begin_inset Formula $\left\{ E_{i}\right\} _{i=1}^{N}$
 \end_inset
 
  of pairwise disjoint events, 
-\begin_inset Formula $\pmeas(\bigcup_{i}E_{i})=\tensor*[_{\mathbb{R}}]{\sum}{_{i}}\pmeas(E_{i})$
+\begin_inset Formula $\pmeas(\bigcup_{i=1}^{N}E_{i})=\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}\pmeas(E_{i})$
 \end_inset
 
 , where 
-\begin_inset Formula $\tensor*[_{\mathbb{R}}]{\sum}{_{i}}\pmeas(E_{i})$
+\begin_inset Formula $\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}\pmeas(E_{i})$
 \end_inset
 
  explicitly specifies 
@@ -835,8 +836,8 @@ The assignment satisfies the two constraints for probability measures: the
 
 ) may add to something different than the probabilities of the individual
  events.
- It is useful to think that this probability measure is completely induced
- by the two coins in question and their characteristics in the sense that
+ It is useful to think that this probability measure is completely determined
+ by the two coins in question and their characteristics, in the sense that
  each pair of coins induces a measure, and each measure must correspond
  to some pair of coins.
  The measure above is induced by two coins such that the first coin is twice
@@ -871,8 +872,8 @@ end{example}
 \end_layout
 
 \begin_layout Standard
-Although specifying a probability for every event looks complex, a probability
- measure can be simply constructed by 
+Although specifying a probability measure for every event looks complex,
+ it can be simply constructed by 
 \begin_inset Formula 
 \begin{equation}
 \pmeas(E)=\sideset{_{\mathbb{R}}}{_{\omega\in E}}\sum\rho(\omega)\textrm{ ,}\label{eq:Radon-Nikodym}
@@ -943,7 +944,7 @@ key "Kolmogorov1950,Swart2013"
 \begin_inset Formula $\pmeas$
 \end_inset
 
-, there exists an unique Radon-Nikodym derivative
+, there exists a unique Radon-Nikodym derivative
 \begin_inset space ~
 \end_inset
 
@@ -1209,7 +1210,11 @@ In the previous section, the probability
 
  independent trials.
  Let 
-\begin_inset Formula $x_{i}$
+\begin_inset Formula $x_{i}=1$
+\end_inset
+
+ or 
+\begin_inset Formula $0$
 \end_inset
 
  denote whether the event
@@ -1224,7 +1229,7 @@ In the previous section, the probability
 \begin_inset Formula $i$
 \end_inset
 
--th trial or not, then 
+-th trial or not, respectively, then 
 \begin_inset Formula $\pmeas(E)$
 \end_inset
 
@@ -1233,14 +1238,14 @@ In the previous section, the probability
 \end_inset
 
 
-\begin_inset Formula $\frac{1}{N}\sum_{i}x_{i}$
+\begin_inset Formula $\frac{1}{N}\sum_{i=1}^{N}x_{i}$
 \end_inset
 
  with the probability converging to one as 
 \begin_inset Formula $N$
 \end_inset
 
- goes to infinity.
+ goes to infinity, i.e., .
  This fact is called the law of large numbers
 \begin_inset space ~
 \end_inset
@@ -1303,7 +1308,7 @@ To formalize the experiment, we consider an experimental setup consisting
 \end_inset
 
  needles one needle at a time, and observe the number 
-\begin_inset Formula $X$
+\begin_inset Formula $M$
 \end_inset
 
  of needles that cross a line.
@@ -1568,9 +1573,9 @@ key "Marinacci1999,Teran2014"
 \end_inset
 
 .
- In another word, to get a better approximation of the probability, the
- quality of experimental equipment cannot be compensated by the number of
- independent trials.
+ In other words, to get a better approximation of the probability, the quality
+ of the experimental equipment cannot be compensated by the number of independen
+t trials.
 \end_layout
 
 \begin_layout Standard
@@ -4175,9 +4180,7 @@ status collapsed
 \backslash
 item for a collection $E_{i}$ of pairwise disjoint events, $
 \backslash
-pmeas(
-\backslash
-bigcup_{i}E_{i})=
+pmeas()=
 \backslash
 bigvee_i
 \backslash
@@ -5673,7 +5676,7 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-Interval-valued probability measures
+Classical Interval-valued probability measures
 \end_layout
 
 \begin_layout Standard
@@ -5736,7 +5739,7 @@ against
 \end_inset
 
  which we abbreviate 
-\begin_inset Formula $1\tensor*[_{\mathscr{I}}]{-}{}\left[l,r\right]$
+\begin_inset Formula $\left[1,1\right]\tensor*[_{\mathscr{I}}]{-}{}\left[l,r\right]$
 \end_inset
 
 , where the preposing 
@@ -5769,7 +5772,7 @@ key "JamisonLodwick2004"
 
 :
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 The right-end of the interval-valued probability measure is a special case
@@ -5821,17 +5824,17 @@ key "Shapley1965"
 
 \begin_layout Itemize
 for every collection of pairwise disjoint events 
-\begin_inset Formula $\left\{ E_{i}\right\} ,\left\{ E_{i}'\right\} \subseteq\events$
+\begin_inset Formula $\left\{ E_{i}\right\} _{i=1}^{N},\left\{ E_{i}'\right\} _{i=1}^{N}\subseteq\events$
 \end_inset
 
  with 
-\begin_inset Formula $\Omega=\left(\bigcup_{i}E_{i}\right)\bigcup\left(\bigcup_{i}E_{i}'\right)$
+\begin_inset Formula $\Omega=\left(\bigcup_{i=1}^{N}E_{i}\right)\bigcup\left(\bigcup_{i=1}^{N'}E_{i}'\right)$
 \end_inset
 
 , we have 
 \begin_inset Formula 
 \[
-\bar{\mu}\left(\bigcup_{i}E_{i}\right)\subseteq\left[\max\left\{ 1-\sideset{_{\mathbb{R}}}{_{i}}\sum r_{i}',\sideset{_{\mathbb{R}}}{_{i}}\sum l_{i}\right\} ,\min\left\{ 1-\sideset{_{\mathbb{R}}}{_{i}}\sum l_{i}',\sideset{_{\mathbb{R}}}{_{i}}\sum r_{i}\right\} \right]\textrm{ ,}
+\bar{\mu}\left(\bigcup_{i=1}^{N}E_{i}\right)\subseteq\left[\max\left\{ 1-\sideset{_{\mathbb{R}}}{_{i}}\sum r_{i}',\sideset{_{\mathbb{R}}}{_{i}}\sum l_{i}\right\} ,\min\left\{ 1-\sideset{_{\mathbb{R}}}{_{i}}\sum l_{i}',\sideset{_{\mathbb{R}}}{_{i}}\sum r_{i}\right\} \right]\textrm{ ,}
 \]
 
 \end_inset
@@ -5927,23 +5930,27 @@ for any event
 \end_inset
 
 , 
-\begin_inset Formula $\bar{\mu}\left(\Omega\backslash E\right)=1\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(E\right)$
+\begin_inset Formula $\bar{\mu}\left(\Omega\backslash E\right)=\left[1,1\right]\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(E\right)$
 \end_inset
 
-, and 
+, where 
+\begin_inset Formula $\Omega\backslash E$
+\end_inset
+
+ is the complement event, and 
 \end_layout
 
 \begin_layout Itemize
 for a collection 
-\begin_inset Formula $E_{i}$
+\begin_inset Formula $\left\{ E_{i}\right\} _{i=1}^{N}$
 \end_inset
 
  of pairwise disjoint events, we have 
-\begin_inset Formula $\bar{\mu}\left(\bigcup_{i}E_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i}}\bar{\mu}\left(E_{i}\right)$
+\begin_inset Formula $\bar{\mu}\left(\bigcup_{i=1}^{N}E_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i}}\bar{\mu}\left(E_{i}\right)$
 \end_inset
 
 , where 
-\begin_inset Formula $\tensor*[_{\mathscr{I}}]{\sum}{_{i}}[l_{i},r_{i}]=\left[\tensor*[_{\mathbb{R}}]{\sum}{_{i}}l_{i},\tensor*[_{\mathbb{R}}]{\sum}{_{i}}r_{i}\right]$
+\begin_inset Formula $\tensor*[_{\mathscr{I}}]{\sum}{_{i}}[l_{i},r_{i}]=\left[\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}l_{i},\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}r_{i}\right]$
 \end_inset
 
 .
@@ -6689,8 +6696,6 @@ mu}
 \backslash
 left(
 \backslash
-bigcup_{i}E_{i}
-\backslash
 right)
 \backslash
 subseteq
@@ -6736,9 +6741,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-% This statement means that the evidences of $
-\backslash
-bigcup_{i}E_{i}$ is
+% This statement means that the evidences of $$ is
 \end_layout
 
 \begin_layout Plain Layout
@@ -6768,9 +6771,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-% but some evidence may only be acquired for $
-\backslash
-bigcup_{i}E_{i}$ as
+% but some evidence may only be acquired for $$ as
 \end_layout
 
 \begin_layout Plain Layout
@@ -6793,8 +6794,6 @@ bar{
 mu}
 \backslash
 left(
-\backslash
-bigcup_{i}E_{i}
 \backslash
 right)$ is a
 \end_layout
@@ -7152,7 +7151,7 @@ We will explain why the last condition is expressed using
 \begin_inset Formula $\subseteq$
 \end_inset
 
- by a small example.
+ by the following.
 \end_layout
 
 \begin_layout Standard
@@ -7959,9 +7958,7 @@ item for a collection $E_{i}$ of pairwise disjoint events, $
 \backslash
 bar{
 \backslash
-mu}(
-\backslash
-bigcup_{i}E_{i})=
+mu}()=
 \backslash
 sum_{i}
 \backslash
@@ -11962,8 +11959,6 @@ mu}
 \backslash
 left(
 \backslash
-bigcup_{i}E_{i}
-\backslash
 right)
 \backslash
 subseteq
@@ -12025,9 +12020,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-% that the evidences of $
-\backslash
-bigcup_{i}E_{i}$ is at least as strong as
+% that the evidences of $$ is at least as strong as
 \end_layout
 
 \begin_layout Plain Layout
@@ -12057,9 +12050,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-% may only be acquired for $
-\backslash
-bigcup_{i}E_{i}$ as the whole.
+% may only be acquired for $$ as the whole.
  Therefore,
 \end_layout
 
@@ -12082,8 +12073,6 @@ bar{
 mu}
 \backslash
 left(
-\backslash
-bigcup_{i}E_{i}
 \backslash
 right)$ is a subset of $
 \backslash
@@ -12468,7 +12457,7 @@ The mathematical framework above assumes that there exists a predetermined
 \end_inset
 
 .
- We give an example before giving the formal definition.
+ We present an example before giving the formal definition.
 \end_layout
 
 \begin_layout Standard
@@ -12486,7 +12475,7 @@ begin{example}
 
 [One-qubit quantum probability space] Consider a one-qubit Hilbert space
  with states 
-\begin_inset Formula $\alpha\ket{0}+\beta\ket{1}$
+\begin_inset Formula $\ket{\phi}=\alpha\ket{0}+\beta\ket{1}$
 \end_inset
 
  such that 
@@ -12941,7 +12930,7 @@ A set of projections
 ideal measurement
 \emph default
  if it is a partition of the identity, i.e., 
-\begin_inset Formula $\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}=\mathbb{1}$
+\begin_inset Formula $\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{N}}P_{i}=\mathbb{1}$
 \end_inset
 
 
@@ -13205,7 +13194,7 @@ quantum probability measure
 
  such that:
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 It is possible to define a more general space of events consisting of all
@@ -13219,6 +13208,14 @@ It is possible to define a more general space of events consisting of all
 
  on 
 \begin_inset Formula $\Hilb$
+\end_inset
+
+ and to extend 
+\begin_inset Formula $\mu$
+\end_inset
+
+ linearly to 
+\begin_inset Formula $\mathcal{A}$
 \end_inset
 
  and consider 
@@ -13249,7 +13246,11 @@ key "Maassen2010,Swart2013"
 \begin_inset Formula $A$
 \end_inset
 
-.
+ which could bigger than one because 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is linear.
  We does not take this approach because we want to focus only on probability.
  
 \end_layout
@@ -13272,7 +13273,7 @@ for mutually orthogonal projections
 \end_inset
 
 , we have 
-\begin_inset Formula $\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i}}\mu\left(P_{i}\right)$
+\begin_inset Formula $\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{N}}P_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}\mu\left(P_{i}\right)$
 \end_inset
 
 .
@@ -13385,7 +13386,7 @@ for a set of mutually orthogonal projections
 \end_inset
 
 , we have 
-\begin_inset Formula $\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i}}P_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i}}\mu\left(P_{i}\right)$
+\begin_inset Formula $\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{N}}P_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}\mu\left(P_{i}\right)$
 \end_inset
 
 .
@@ -15838,7 +15839,7 @@ key "Born1983,Mermin2007,RiederSvozil2007"
 
 \begin_layout Standard
 Moreover, the Born rule can be extended to a mixed state.
- When we prepares a state, suppose the probability of preparing state
+ When we prepare a state, suppose the probability of preparing state
 \begin_inset space ~
 \end_inset
 
@@ -16137,7 +16138,7 @@ On one hand,
 \begin_inset Formula $\mu$
 \end_inset
 
- is almost the same as a quantum probability measure
+ is almost the same as the quantum probability measure
 \begin_inset space ~
 \end_inset
 
@@ -16235,7 +16236,7 @@ Measuring Quantum Probabilities
 \end_layout
 
 \begin_layout Standard
-Similar to the classical case, by applying the law of large number, quantum
+Similar to the classical case, by applying the law of large numbers, quantum
  probabilities can be estimated by relative frequencies.
  For example, if we want to know the probability of the spin up in the Stern-Ger
 lach experiment
@@ -16279,7 +16280,7 @@ If the field of strength does not perfectly direct to the
 \begin_inset Formula $z$
 \end_inset
 
--axis, we does not really test the quantum event we want to test.
+-axis, we do not really test the quantum event we want to test.
  This problem will be handled later when we introduce the discrete quantum
  theory.
  Even if the field of strength perfectly directs to the 
@@ -16503,7 +16504,7 @@ for any projection
 , 
 \begin_inset Formula 
 \begin{equation}
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=1\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(P\right)\textrm{ ,}\label{eq:QuantumInterval-valuedProbability-Complement}
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=\left[1,1\right]\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(P\right)\textrm{ ,}\label{eq:QuantumInterval-valuedProbability-Complement}
 \end{equation}
 
 \end_inset
@@ -16706,7 +16707,7 @@ because it provides no information.
 \end_inset
 
  has two interesting properties 
-\begin_inset Formula $\iota\left(\mathbb{1}\tensor*[_{\mathbb{R}}]{-}{}x\right)=1\tensor*[_{\mathscr{I}}]{-}{}\iota\left(x\right)$
+\begin_inset Formula $\iota\left(\mathbb{1}\tensor*[_{\mathbb{R}}]{-}{}x\right)=\left[1,1\right]\tensor*[_{\mathscr{I}}]{-}{}\iota\left(x\right)$
 \end_inset
 
  and 
