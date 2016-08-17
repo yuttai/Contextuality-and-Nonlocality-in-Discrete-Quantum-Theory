@@ -610,11 +610,11 @@ case of game~\cite{Shapley1965}.}
 \begin{itemize}
 \item $\bar{\mu}(\emptyset)=[0,0]$, 
 \item $\bar{\mu}(\Omega)=[1,1]$, 
-\item for every collection of pairwise disjoint events $\left\{ E_{i}\right\} _{i=1}^{N},\left\{ E_{i}'\right\} _{i=1}^{N}\subseteq\events$
+\item for every collection of pairwise disjoint events $\left\{ E_{i}\right\} _{i=1}^{N},\left\{ E_{i}'\right\} _{i=1}^{N'}\subseteq\events$
 with $\Omega=\left(\bigcup_{i=1}^{N}E_{i}\right)\bigcup\left(\bigcup_{i=1}^{N'}E_{i}'\right)$,
 we have 
 \[
-\bar{\mu}\left(\bigcup_{i=1}^{N}E_{i}\right)\subseteq\left[\max\left\{ 1-\sideset{_{\mathbb{R}}}{_{i}}\sum r_{i}',\sideset{_{\mathbb{R}}}{_{i}}\sum l_{i}\right\} ,\min\left\{ 1-\sideset{_{\mathbb{R}}}{_{i}}\sum l_{i}',\sideset{_{\mathbb{R}}}{_{i}}\sum r_{i}\right\} \right]\textrm{ ,}
+\bar{\mu}\left(\bigcup_{i=1}^{N}E_{i}\right)\subseteq\left[\max\left\{ 1-\sideset{_{\mathbb{R}}}{_{i=1}^{N'}}\sum r_{i}',\sideset{_{\mathbb{R}}}{_{i=1}^{N}}\sum l_{i}\right\} ,\min\left\{ 1-\sideset{_{\mathbb{R}}}{_{i=1}^{N'}}\sum l_{i}',\sideset{_{\mathbb{R}}}{_{i=1}^{N}}\sum r_{i}\right\} \right]\textrm{ ,}
 \]
 where $\bar{\mu}\left(E_{i}\right)=[l_{i},r_{i}]$ and $\bar{\mu}\left(E_{i}'\right)=[l_{i}',r_{i}']$
 for all $i$.
@@ -633,8 +633,8 @@ $\mu$ satisfies the following conditions:
 \item for any event $E$, $\bar{\mu}\left(\Omega\backslash E\right)=\left[1,1\right]\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(E\right)$,
 where $\Omega\backslash E$ is the complement event, and 
 \item for a collection $\left\{ E_{i}\right\} _{i=1}^{N}$ of pairwise disjoint
-events, we have $\bar{\mu}\left(\bigcup_{i=1}^{N}E_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i}}\bar{\mu}\left(E_{i}\right)$,
-where $\tensor*[_{\mathscr{I}}]{\sum}{_{i}}[l_{i},r_{i}]=\left[\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}l_{i},\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}r_{i}\right]$.
+events, we have $\bar{\mu}\left(\bigcup_{i=1}^{N}E_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i=1}^{N}}\bar{\mu}\left(E_{i}\right)$,
+where $\tensor*[_{\mathscr{I}}]{\sum}{_{i=1}^{N}}[l_{i},r_{i}]=\left[\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}l_{i},\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}r_{i}\right]$.
 We may drop the preposing $\mathscr{I}$ when summands are clearly
 intervals. 
 \end{itemize}
@@ -1126,21 +1126,22 @@ operator.
 is also a projection operator if and only if they are orthogonal, 
 where the preposing subscript $\mathscr{O}$
 means $\tensor*[_{\mathscr{O}}]{+}{}$ is an operation between operators. 
-\item Conversely, every projection~$P$ can be expressed as
-$\tensor*[_{\mathscr{O}}]{\sum}{_j}\proj{\psi_{j}}$,
+\item Conversely, every projection~$P$ can be expressed as $\tensor*[_{\mathscr{O}}]{\sum}{_{j=1}^{N}}\proj{\psi_{j}}$,
 where $P$ actually projects onto the linear subspace~$S$ which
-has an orthonormal basis~$\{\ket{\psi_{j}}\}$. 
+has an orthonormal basis~$\{\ket{\psi_{j}}\}_{j=1}^{N}$. 
 \end{itemize}
 \qed\end{definition}
 
 Because quantum events are projection operators, operations and properties
 of quantum events can be written in terms of those of operators.
 
-\begin{definition}[Ideal Measurement; Complement; Commutativity]~ 
+\begin{definition}{[}Ideal Measurement; Complement; Commutativity{]}~ 
 \begin{itemize}
-\item A set of projections $P_{i}$ is called an \emph{ideal measurement}
-if it is a partition of the identity, i.e., $\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{N}}P_{i}=\mathbb{1}$~\cite{Swart2013}.
-In this case, projections $P_{i}$ must be mutually orthogonal~\cite{Griffiths2003}.
+\item A set of projections $\left\{ P_{i}\right\} _{i=1}^{N}$ is called
+an \emph{ideal measurement} if it is a partition of the identity,
+i.e., $\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{N}}P_{i}=\mathbb{1}$~\cite{Swart2013}.
+In this case, projections $\left\{ P_{i}\right\} _{i=1}^{N}$ must
+be mutually orthogonal~\cite{Griffiths2003}.
 \item If $P$ is a projection operator, then $\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P$
 is also a projection operator, called \emph{complement}. It is orthogonal
 to $P$, and corresponds to the complement event~$\Omega\backslash E$
@@ -1170,7 +1171,8 @@ $\mu$ is linear. We does not take this approach because we want to
 focus only on probability. } 
 \begin{itemize}
 \item $\mu(\mathbb{1})=1$, and 
-\item for mutually orthogonal projections $P_{i}$, we have $\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{N}}P_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}\mu\left(P_{i}\right)$. 
+\item for mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
+we have $\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{N}}P_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}\mu\left(P_{i}\right)$. 
 \end{itemize}
 \qed\end{definition}
 
@@ -1187,7 +1189,8 @@ conditions:
 \item $\mu(\mathbb{1})=1$, 
 \item for any projection $P$, $\mu\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=1\tensor*[_{\mathbb{R}}]{-}{}\mu\left(P\right)$,
 and 
-\item for a set of mutually orthogonal projections $P_{i}$, we have $\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{N}}P_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}\mu\left(P_{i}\right)$. 
+\item for a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
+we have $\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{N}}P_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}\mu\left(P_{i}\right)$. 
 \end{itemize}
 \qed\end{lemma}
 
@@ -1330,7 +1333,7 @@ the Born rule induces a probability measure $\mu_{\phi}^{B}$ as follows:
 Moreover, the Born rule can be extended to a mixed state. When we
 prepare a state, suppose the probability of preparing state~$\ket{\phi_{j}}$
 is $q_{j}$, the state of the system can be expressed as a density
-matrix~$\rho=\sum_{j}q_{j}\proj{\phi_{j}}$, where $\sum_{j}q_{j}=1$.
+matrix~$\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}$, where $\sum_{j=1}^{N}q_{j}=1$.
 Then, the quantum probability measure introduced by $\rho$ is the
 combination of $\mu_{\phi_{j}}^{B}$ with respect to probability $q_{j}$~\cite{peres1995quantum,544199,RiederSvozil2007}:
 \begin{eqnarray}
@@ -1442,9 +1445,10 @@ such that:
 \begin{equation}
 \bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=\left[1,1\right]\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(P\right)\textrm{ ,}\label{eq:QuantumInterval-valuedProbability-Complement}
 \end{equation}
-\item for a set of mutually orthogonal projections $P_{i}$, we have 
+\item for a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
+we have 
 \begin{equation}
-\bar{\mu}\left(\sideset{_{\mathscr{O}}}{_{i}}\sum P_{i}\right)\subseteq\sideset{_{\mathscr{I}}}{_{i}}\sum\bar{\mu}\left(P_{i}\right)\textrm{ .}\label{eq:QuantumInterval-valuedProbability-Inclusion}
+\bar{\mu}\left(\sideset{_{\mathscr{O}}}{_{i=1}^{N}}\sum P_{i}\right)\subseteq\sideset{_{\mathscr{I}}}{_{i=1}^{N}}\sum\bar{\mu}\left(P_{i}\right)\textrm{ .}\label{eq:QuantumInterval-valuedProbability-Inclusion}
 \end{equation}
 \end{itemize}
 \qed\end{definition}
@@ -1453,8 +1457,8 @@ Similar to the classical interval-valued probability measure, a quantum
 interval-valued probability measure can be constructed from a real-valued
 one. 
 
-\begin{example}[Quantum three-value interval-valued probability
-measure] We consider three intervals\emph{ }$\left[0,0\right]$,
+\begin{example}{[}Quantum three-value interval-valued probability
+measure{]} We consider three intervals\emph{ }$\left[0,0\right]$,
 $\left[1,1\right]$ and \emph{$\left[0,1\right]$}, where $\left[0,0\right]$
 and $\left[1,1\right]$ are called \imposs~and \necess~as before,
 and \emph{$\left[0,1\right]$} is called \unknown~because it provides
@@ -1471,8 +1475,8 @@ is defined by
 \end{cases}
 \]
 $\iota$ has two interesting properties $\iota\left(\mathbb{1}\tensor*[_{\mathbb{R}}]{-}{}x\right)=\left[1,1\right]\tensor*[_{\mathscr{I}}]{-}{}\iota\left(x\right)$
-and $\iota\left(\sideset{_{\mathbb{R}}}{_{i}}\sum x_{i}\right)\subseteq\sideset{_{\mathscr{I}}}{_{i}}\sum\iota\left(x_{i}\right)$,
-where $x$ and $\sideset{_{\mathbb{R}}}{_{i}}\sum x_{i}\in\left[0,1\right]$.
+and $\iota\left(\sideset{_{\mathbb{R}}}{_{i=1}^{N}}\sum x_{i}\right)\subseteq\sideset{_{\mathscr{I}}}{_{i=1}^{N}}\sum\iota\left(x_{i}\right)$,
+where $x$ and $\sideset{_{\mathbb{R}}}{_{i=1}^{N}}\sum x_{i}\in\left[0,1\right]$.
 By applying these two properties, it is easy to verify $\bar{\mu}$
 is a quantum \emph{$\mathscr{I}$}-interval-valued probability measure.\qed\end{example}
 
