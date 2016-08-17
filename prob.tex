@@ -306,13 +306,17 @@ a probability, the exact value of $\pmeas(E)$ may not be known. If
 we want to know its value, we can run $N$ independent trials. Let
 $x_{i}=1$ or $0$ denote whether the event~$E$ occurs in the $i$-th
 trial or not, respectively, then $\pmeas(E)$ could be approximated
-to given accuracy by the relative frequency~$\frac{1}{N}\sum_{i=1}^{N}x_{i}$
+to given accuracy~$\epsilon>0$ by the relative frequency~$\frac{1}{N}\sum_{i=1}^{N}x_{i}$
 with the probability converging to one as $N$ goes to infinity, i.e.,
-. This fact is called the law of large numbers~\cite{Bernoulli2006,Kolmogorov1950,Uspensky1937,Shafer1976,544199}.
+\[
+\forall\epsilon>0,\lim_{N\rightarrow\infty}\pmeas\left(\left|\pmeas(E)-\frac{1}{N}\sum_{i=1}^{N}x_{i}\right|<\epsilon\right)=1\textrm{ .}
+\]
+This fact is called the law of large numbers~\cite{Bernoulli2006,Kolmogorov1950,Uspensky1937,Shafer1976,544199}.
 
 Suppose we drop a needle of length $\ell$ onto a floor made of equally
-spaced parallel lines a distance $h$ apart. It is a known fact that
-the probability of the needle crossing a line is $\frac{2\ell}{\pi h}$~\cite{Buffon1777,DeMorgan1872,Hall1873,Uspensky1937}.
+spaced parallel lines a distance $h$ apart, where $\ell<h$. It is
+a known fact that the probability of the needle crossing a line is
+$\frac{2\ell}{\pi h}$~\cite{Buffon1777,DeMorgan1872,Hall1873,Uspensky1937}.
 We analyze this situation in the mathematical framework of probability
 spaces paying special attention to the resources needed to estimate
 the probability computationally or experimentally.
@@ -1135,7 +1139,7 @@ has an orthonormal basis~$\{\ket{\psi_{j}}\}_{j=1}^{N}$.
 Because quantum events are projection operators, operations and properties
 of quantum events can be written in terms of those of operators.
 
-\begin{definition}{[}Ideal Measurement; Complement; Commutativity{]}~ 
+\begin{definition}[Ideal Measurement; Complement; Commutativity]~ 
 \begin{itemize}
 \item A set of projections $\left\{ P_{i}\right\} _{i=1}^{N}$ is called
 an \emph{ideal measurement} if it is a partition of the identity,
@@ -1457,8 +1461,8 @@ Similar to the classical interval-valued probability measure, a quantum
 interval-valued probability measure can be constructed from a real-valued
 one. 
 
-\begin{example}{[}Quantum three-value interval-valued probability
-measure{]} We consider three intervals\emph{ }$\left[0,0\right]$,
+\begin{example}[Quantum three-value interval-valued probability
+measure] We consider three intervals\emph{ }$\left[0,0\right]$,
 $\left[1,1\right]$ and \emph{$\left[0,1\right]$}, where $\left[0,0\right]$
 and $\left[1,1\right]$ are called \imposs~and \necess~as before,
 and \emph{$\left[0,1\right]$} is called \unknown~because it provides
@@ -1475,8 +1479,8 @@ is defined by
 \end{cases}
 \]
 $\iota$ has two interesting properties $\iota\left(\mathbb{1}\tensor*[_{\mathbb{R}}]{-}{}x\right)=\left[1,1\right]\tensor*[_{\mathscr{I}}]{-}{}\iota\left(x\right)$
-and $\iota\left(\sideset{_{\mathbb{R}}}{_{i=1}^{N}}\sum x_{i}\right)\subseteq\sideset{_{\mathscr{I}}}{_{i=1}^{N}}\sum\iota\left(x_{i}\right)$,
-where $x$ and $\sideset{_{\mathbb{R}}}{_{i=1}^{N}}\sum x_{i}\in\left[0,1\right]$.
+and $\iota\left(\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}x_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i=1}^{N}}\iota\left(x_{i}\right)$,
+where $x$ and $\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}x_{i}\in\left[0,1\right]$.
 By applying these two properties, it is easy to verify $\bar{\mu}$
 is a quantum \emph{$\mathscr{I}$}-interval-valued probability measure.\qed\end{example}
 
