@@ -200,18 +200,35 @@ to the real interval $[0,1]$. In this paper, we will only consider
 \emph{finite} sets of events: we therefore restrict our attention
 to non-empty finite sets $\Omega$ as the sample space. The space
 of events $\events$ includes every possible subset of $\Omega$:
-it is the powerset~$2^{\Omega}=\left\{ E\middle|E\subseteq\Omega\right\} $.
+it is the powerset~$2^{\Omega}=\left\{ E\middle|E\subseteq\Omega\right\} $. 
+
+\begin{definition}[Probability Measure]\label{def:ClassicalProbabilitySpace}
 Given the set of events $\events$, a \emph{probability measure} is
 a function $\pmeas:\events\rightarrow[0,1]$ such that: 
 \begin{itemize}
-\item $\pmeas(\Omega)=1$, and 
+\item $\pmeas(\emptyset)=0$. 
+\item $\pmeas(\Omega)=1$. 
+\item for any event $E$, 
+\begin{equation}
+\pmeas\left(\Omega\backslash E\right)=1\tensor*[_{\mathbb{R}}]{-}{}\pmeas\left(E\right)\textrm{ ,}\label{eq:ClassicalReal-valuedProbability-Complement}
+\end{equation}
+where $\Omega\backslash E$ is the complement event, and $1\tensor*[_{\mathbb{R}}]{-}{}\pmeas\left(E\right)$
+explicitly specifies $1$ and $\pmeas\left(E\right)\in\mathbb{R}$.
+Besides $\mathbb{R}$, we will prepose other symbols later to specify
+the type of operations, and they may be dropped when there is no ambiguity. 
 \item for a collection $\left\{ E_{i}\right\} _{i=1}^{N}$ of pairwise disjoint
-events, $\pmeas(\bigcup_{i=1}^{N}E_{i})=\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}\pmeas(E_{i})$,
-where $\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}\pmeas(E_{i})$ explicitly
-specifies $\pmeas(E_{i})\in\mathbb{R}$. Besides $\mathbb{R}$, we
-will prepose other symbols later to specify the type of operations,
-and they may be dropped when there is no ambiguity. 
+events, $\pmeas(\bigcup_{i=1}^{N}E_{i})=\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}\pmeas(E_{i})$.
+Similar to the above condition, $\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}\pmeas(E_{i})$
+explicitly specifies $\pmeas(E_{i})\in\mathbb{R}$. 
 \end{itemize}
+\qed\end{definition}
+
+Notice that $\pmeas(\emptyset)=0$ and equation~(\ref{eq:ClassicalReal-valuedProbability-Complement})
+can be induced by other conditions. They are listed in here so that
+we can compare definition~\ref{def:ClassicalProbabilitySpace}, lemma~\ref{lem:classicalProbabilityMeasure},
+definition~\ref{def:QuantumProbabilitySpace}, and definition~\ref{def:QuantumInterval-valuedProbability}
+easily. We will compare these lemma and definitions when we try to
+formulate quantum interval-valued probability measures later.
 
 \begin{example}[Two-coins experiment]\label{ex1} Consider an
 experiment that tosses two coins. We have four possible outcomes that
@@ -635,7 +652,7 @@ $\mu$ satisfies the following conditions:
 \item $\bar{\mu}(\emptyset)=[0,0]$, 
 \item $\bar{\mu}(\Omega)=[1,1]$, 
 \item for any event $E$, $\bar{\mu}\left(\Omega\backslash E\right)=\left[1,1\right]\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(E\right)$,
-where $\Omega\backslash E$ is the complement event, and 
+and 
 \item for a collection $\left\{ E_{i}\right\} _{i=1}^{N}$ of pairwise disjoint
 events, we have $\bar{\mu}\left(\bigcup_{i=1}^{N}E_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i=1}^{N}}\bar{\mu}\left(E_{i}\right)$,
 where $\tensor*[_{\mathscr{I}}]{\sum}{_{i=1}^{N}}[l_{i},r_{i}]=\left[\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}l_{i},\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}r_{i}\right]$.
@@ -1100,7 +1117,32 @@ has an orthonormal basis~$\{\ket{\psi_{j}}\}_{j=1}^{N}$.
 \end{itemize}
 \qed\end{definition}
 
-We present an example before giving the formal definition of quantum
+Because quantum events are projection operators, operations and properties
+of quantum events can be written in terms of those of operators.
+
+\begin{definition}[Ideal Measurement; Complement; Commutativity]~ 
+\begin{itemize}
+\item A set of projections $\left\{ P_{i}\right\} _{i=1}^{N}$ is called
+an \emph{ideal measurement} if it is a partition of the identity,
+i.e., $\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{N}}P_{i}=\mathbb{1}$~\cite{Swart2013}.
+In this case, projections $\left\{ P_{i}\right\} _{i=1}^{N}$ must
+be mutually orthogonal~\cite{Griffiths2003}.
+\item If $P$ is a projection operator, then $\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P$
+is also a projection operator, called \emph{complement}. It is orthogonal
+to $P$, and corresponds to the complement event~$\Omega\backslash E$
+in classical probability~\cite{Griffiths2003}. 
+\item Projection operators $P_{1}$ and $P_{2}$ \emph{commute} if $P_{1}P_{2}=P_{2}P_{1}$.
+The product of two projection operators~$P_{1}P_{2}$ is also a projection
+operator if and only if they commute. This corresponds to the classical
+intersection between events~\cite{peres1995quantum,Griffiths2003}. 
+\item For two commuting projection operators $P_{1}$ and $P_{2}$, their
+\emph{disjunction}~$P_{1}\tensor*[_{\mathscr{O}}]{\vee}{}P_{2}$
+is defined to be $P_{1}\tensor*[_{\mathscr{O}}]{+}{}P_{2}\tensor*[_{\mathscr{O}}]{-}{}P_{1}P_{2}$~\cite{Griffiths2003}. 
+\end{itemize}
+\qed\end{definition}
+
+Based on the above definition and properties of quantum events, we
+can present an example before giving the formal definition of quantum
 probability measures.
 
 \begin{example}[One-qubit quantum probability space] Consider
@@ -1138,31 +1180,9 @@ theorem, it turns out that for large enough quantum systems, each
 probability measure is uniquely determined by an actual quantum state.
 \qed\end{example}
 
-Because quantum events are projection operators, operations and properties
-of quantum events can be written in terms of those of operators.
-
-\begin{definition}[Ideal Measurement; Complement; Commutativity]~ 
-\begin{itemize}
-\item A set of projections $\left\{ P_{i}\right\} _{i=1}^{N}$ is called
-an \emph{ideal measurement} if it is a partition of the identity,
-i.e., $\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{N}}P_{i}=\mathbb{1}$~\cite{Swart2013}.
-In this case, projections $\left\{ P_{i}\right\} _{i=1}^{N}$ must
-be mutually orthogonal~\cite{Griffiths2003}.
-\item If $P$ is a projection operator, then $\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P$
-is also a projection operator, called \emph{complement}. It is orthogonal
-to $P$, and corresponds to the complement event~$\Omega\backslash E$
-in classical probability~\cite{Griffiths2003}. 
-\item Projection operators $P_{1}$ and $P_{2}$ \emph{commute} if $P_{1}P_{2}=P_{2}P_{1}$.
-The product of two projection operators~$P_{1}P_{2}$ is also a projection
-operator if and only if they commute. This corresponds to the classical
-intersection between events~\cite{peres1995quantum,Griffiths2003}. 
-\item For two commuting projection operators $P_{1}$ and $P_{2}$, their
-\emph{disjunction}~$P_{1}\tensor*[_{\mathscr{O}}]{\vee}{}P_{2}$
-is defined to be $P_{1}\tensor*[_{\mathscr{O}}]{+}{}P_{2}\tensor*[_{\mathscr{O}}]{-}{}P_{1}P_{2}$~\cite{Griffiths2003}. 
-\end{itemize}
-\qed\end{definition}
-
 %%%%%
+
+
 \subsection{Quantum Real-valued Probability Measures}
 
 \begin{definition}[Quantum Probability Measure~\cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010}]\label{def:QuantumProbabilitySpace}
@@ -1176,38 +1196,28 @@ is the expectation value of $A$ which could bigger than one because
 $\mu$ is linear. We does not take this approach because we want to
 focus only on probability. } 
 \begin{itemize}
-\item $\mu(\mathbb{1})=1$, and 
-\item for mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
-we have $\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{N}}P_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}\mu\left(P_{i}\right)$. 
-\end{itemize}
-\qed\end{definition}
-
-In order to motivate the definition of quantum interval-valued probability
-measures later, we provide an equivalent definition of quantum probability
-measures.
-
-\begin{lemma}\label{lem:quantumProbabilityMeasure}Given a Hilbert
-space $\Hilb$, a function~$\mu:\events\rightarrow[0,1]$ is a quantum
-probability measure if and only if $\mu$ satisfies the following
-conditions: 
-\begin{itemize}
 \item $\mu(\mathbb{0})=0$, 
 \item $\mu(\mathbb{1})=1$, 
-\item for any projection $P$, $\mu\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=1\tensor*[_{\mathbb{R}}]{-}{}\mu\left(P\right)$,
+\item for any projection $P$, 
+\begin{equation}
+\mu\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=1\tensor*[_{\mathbb{R}}]{-}{}\mu\left(P\right)\textrm{ ,}\label{eq:QuantumReal-valuedProbability-Complement}
+\end{equation}
 and 
 \item for a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
 we have $\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{N}}P_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}\mu\left(P_{i}\right)$. 
 \end{itemize}
-\qed\end{lemma}
+\qed\end{definition}
 
-A set of events~$\events$ together with a quantum probability measure
-is called a \emph{quantum probability space}. Comparing to classical
-probability spaces, the empty set~$\emptyset$ corresponds to the
-empty projection~$\mathbb{0}$, and the event of whole space~$\Omega$
-corresponds to the identity projection~$\mathbb{1}$. In contrast,
-the union~$\cup$ of any two events always gives an event classically,
-but the operator addition~$\tensor*[_{\mathscr{O}}]{+}{}$ of two
-projections may not be a projection. As the result, the classical
+Similar to classical definition~\ref{def:ClassicalProbabilitySpace},
+$\mu(\mathbb{0})=0$ and equation~(\ref{eq:QuantumReal-valuedProbability-Complement})
+can be induced by other conditions. A set of events~$\events$ together
+with a quantum probability measure is called a \emph{quantum probability
+space}. Comparing to classical probability spaces, the empty set~$\emptyset$
+corresponds to the empty projection~$\mathbb{0}$, and the event
+of whole space~$\Omega$ corresponds to the identity projection~$\mathbb{1}$.
+In contrast, the union~$\cup$ of any two events always gives an
+event classically, but the operator addition~$\tensor*[_{\mathscr{O}}]{+}{}$
+of two projections may not be a projection. As the result, the classical
 condition~$\pmeas(E_{1}\cup E_{2})=\pmeas(E_{1})\tensor*[_{\mathbb{R}}]{+}{}\pmeas(E_{2})$
 is always defined, and it is true when $E_{1}$ and $E_{2}$ are disjoint;
 however, $\mu\left(P_{1}\tensor*[_{\mathscr{O}}]{+}{}P_{2}\right)=\mu(P_{1})\tensor*[_{\mathbb{R}}]{+}{}\mu(P_{2})$
@@ -1355,19 +1365,19 @@ the Born rule becomes
 \begin{eqnarray}
 \mu_{\rho}^{B}\left(P\right) & = & \Tr\left(\rho P\right)=\sum_{\ket{\psi_{j}}\in S}r_{jj}\textrm{ ,}\label{BornRule.mixed-1}
 \end{eqnarray}
- which is basically the same as equation (\ref{eq:Radon-Nikodym}).
+which is basically the same as equation~(\ref{eq:Radon-Nikodym}).
 
 In this sense, the Radon-Nikodym theorem could be generalized to Gleason's
 theorem~\cite{HollandJr1970,Redhead1987-REDINA,Jaeger2007}: in Hilbert
 spaces of dimension $d\geq3$, given a quantum probability measure
 $\mu$, there exist a mixed state~$\rho$ that induces such a measure
 using the Born rule~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
-By applying Gleason's theorem, we can extend lemma~\ref{lem:quantumProbabilityMeasure}
+By applying Gleason's theorem, we can extend definition~\ref{def:QuantumProbabilitySpace}
 to the following corollary.
 
 \begin{cor}\label{cor:Gleason's}Given a Hilbert space $\Hilb$ of
 dimension $d\geq3$, for any function~$\mu:\events\rightarrow[0,1]$
-satisfying the conditions listed in lemma~\ref{lem:quantumProbabilityMeasure},
+satisfying the conditions listed in definition~\ref{def:QuantumProbabilitySpace},
 there exists an unique mixed state~$\rho$ such that $\mu=\mu_{\rho}^{B}$.\end{cor}
 
 It is instructive to study a counterexample when $d=2$, i.e., the
@@ -1437,7 +1447,17 @@ experiment, and shows us the head, the tail, or the side of coin if
 the silver atoms is spin up, spin down, or just hit the middle, respectively.
 Therefore, we should plug in the definition of interval-valued probability
 measure into the definition of quantum probability space for each
-ideal measurement, and get the following definition.
+ideal measurement.
+
+More specifically, for classical probability measures, definition~\ref{def:ClassicalProbabilitySpace}
+and lemma~\ref{lem:classicalProbabilityMeasure} are almost the same
+except the last condition using the equal sign~$=$ in real-valued
+definition~\ref{def:QuantumProbabilitySpace} and the subset equal
+sign~$\subseteq$ in interval-valued lemma~\ref{lem:classicalProbabilityMeasure}.
+Therefore, for quantum probability measures, replacing the the equal
+sign~$=$ in real-valued definition~\ref{def:QuantumProbabilitySpace}
+by the subset equal sign~$\subseteq$ gives the only reasonable definition
+for quantum interval-valued probability measures as follow.
 
 \begin{definition}[Quantum Interval-valued Probability Measure]\label{def:QuantumInterval-valuedProbability}
 Given a Hilbert space $\Hilb$ with the set of quantum events~$\events$,
