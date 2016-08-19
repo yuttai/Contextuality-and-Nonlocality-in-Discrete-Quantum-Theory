@@ -276,23 +276,22 @@ up than heads up and the second coin is double-headed. \qed\end{example}
 Although specifying a probability measure for every event looks complex,
 it can be simply constructed by 
 \begin{equation}
-\pmeas(E)=\sideset{_{\mathbb{R}}}{_{\omega\in E}}\sum\rho(\omega)\textrm{ ,}\label{eq:Radon-Nikodym}
+\pmeas(E)=\sideset{_{\mathbb{R}}}{_{\omega\in E}}\sum f(\omega)\textrm{ ,}\label{eq:Radon-Nikodym}
 \end{equation}
-where $\rho:\Omega\rightarrow[0,1]$, $\sideset{_{\mathbb{R}}}{_{\omega\in\Omega}}\sum\rho(\omega)=1$,
-and $\rho$ is called the Radon-Nikodym derivative of $\pmeas$ (with
+where $f:\Omega\rightarrow[0,1]$, $\sideset{_{\mathbb{R}}}{_{\omega\in\Omega}}\sum f(\omega)=1$,
+and $f$ is called the Radon-Nikodym derivative of $\pmeas$ (with
 respect to the counting measure)~\cite{Nikodym1930,Folland2013}.
 The converse is also valid and called the Radon-Nikodym theorem.
 
 \begin{thm}[Radon-Nikodym theorem for finite probability space~\cite{Kolmogorov1950,Swart2013}]
 For every probability measure~$\pmeas$, there exists a unique Radon-Nikodym
-derivative~$\rho$ such that equation~(\ref{eq:Radon-Nikodym})
-holds.\qed\end{thm}
+derivative~$f$ such that equation~(\ref{eq:Radon-Nikodym}) holds.\qed\end{thm}
 
 For example, the Radon-Nikodym derivative of $\pmeas$ in example~\ref{ex1}
 is: 
 \[
 \begin{array}{rcl}
-\rho\left(HH\right)=1/3,\quad\rho\left(HT\right)=0,\quad\rho\left(TH\right)=2/3,\quad\rho\left(TT\right)=0\textrm{ .}\end{array}
+f\left(HH\right)=1/3,\quad f\left(HT\right)=0,\quad f\left(TH\right)=2/3,\quad f\left(TT\right)=0\textrm{ .}\end{array}
 \]
 
 In a strict computational or experimental setting, one may question
@@ -776,7 +775,7 @@ to its Radon-Nikodym derivative. So far, the interval-valued Radon-Nikodym
 Theorems are either too restricted to apply to all interval-valued
 probability measures~\cite{Choquet1954,Graf1980,Goodman2013} or
 corresponding an interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-to another set function~$\bar{\rho}:\events\rightarrow\bar{\mathscr{I}}$
+to another set function~$\bar{f}:\events\rightarrow\bar{\mathscr{I}}$
 which is not as simple as the original Radon-Nikodym derivative~\cite{GilboaSchmeidler1994,Goodman2013}.
 
 Although there is no easy Radon-Nikodym theorem, an interval-valued
@@ -1196,13 +1195,12 @@ is the expectation value of $A$ which could bigger than one because
 $\mu$ is linear. We does not take this approach because we want to
 focus only on probability. } 
 \begin{itemize}
-\item $\mu(\mathbb{0})=0$, 
-\item $\mu(\mathbb{1})=1$, 
-\item for any projection $P$, 
+\item $\mu(\mathbb{0})=0$. 
+\item $\mu(\mathbb{1})=1$. 
+\item For any projection $P$, 
 \begin{equation}
-\mu\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=1\tensor*[_{\mathbb{R}}]{-}{}\mu\left(P\right)\textrm{ ,}\label{eq:QuantumReal-valuedProbability-Complement}
+\mu\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=1\tensor*[_{\mathbb{R}}]{-}{}\mu\left(P\right)\textrm{ .}\label{eq:QuantumReal-valuedProbability-Complement}
 \end{equation}
-and 
 \item for a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
 we have $\mu\left(\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{N}}P_{i}\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}\mu\left(P_{i}\right)$. 
 \end{itemize}
@@ -1349,17 +1347,19 @@ the Born rule induces a probability measure $\mu_{\phi}^{B}$ as follows:
 Moreover, the Born rule can be extended to a mixed state. When we
 prepare a state, suppose the probability of preparing state~$\ket{\phi_{j}}$
 is $q_{j}$, the state of the system can be expressed as a density
-matrix~$\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}$, where $\sum_{j=1}^{N}q_{j}=1$.
-Then, the quantum probability measure introduced by $\rho$ is the
-combination of $\mu_{\phi_{j}}^{B}$ with respect to probability $q_{j}$~\cite{peres1995quantum,544199,RiederSvozil2007}:
+matrix~$\rho=\tensor*[_{\mathscr{O}}]{\sum}{_{j=1}^{N}}q_{j}\proj{\phi_{j}}$,
+where $\tensor*[_{\mathbb{R}}]{\sum}{_{j=1}^{N}}q_{j}=1$. Then, the
+quantum probability measure introduced by $\rho$ is the combination
+of $\mu_{\phi_{j}}^{B}$ with respect to probability $q_{j}$~\cite{peres1995quantum,544199,RiederSvozil2007}:
 \begin{eqnarray}
-\mu_{\rho}^{B}\left(P\right) & = & \Tr\left(\rho P\right)=\sum_{j=1}^{N}q_{j}\mu_{\phi_{j}}^{B}\left(P\right)\textrm{ .}\label{BornRule.mixed}
+\mu_{\rho}^{B}\left(P\right) & = & \Tr\left(\rho P\right)=\sideset{_{\mathbb{R}}}{_{j=1}^{N}}\sum q_{j}\mu_{\phi_{j}}^{B}\left(P\right)\textrm{ .}\label{BornRule.mixed}
 \end{eqnarray}
 
 %%%%%
 
 
-\subsection{Measuring Quantum Probabilities: Ideal Case}
+\subsection{Measuring Quantum Probabilities Ideally: Radon-Nikodym and Gleason's
+Theorem}
 
 Similar to the classical case, by applying the law of large numbers,
 quantum probabilities can be estimated by relative frequencies. For
@@ -1380,29 +1380,29 @@ or the side of coin if the silver atoms is spin up, spin down, or
 just hit the middle, respectively.
 
 Mathematically, given a Hilbert space~$\Hilb$ of dimension~$d$,
-if we pick a basis~$\left\{ \ket{\psi_{j}}\right\} _{j=1}^{d}$,
-only consider the events~$\events'$ with the form $P=\tensor*[_{\mathscr{O}}]{\sum}{_{\ket{\psi_{j}}\in S}}\proj{\psi_{j}}$,
-where $S$ is the linear subspace $P$ projects onto, and fix a density
-matrix~$\rho$ representing in the same basis, i.e., $\rho=\sum_{i=1}^{d}\sum_{j=1}^{d}r_{ij}\ket{\psi_{i}}\bra{\psi_{j}}$.
-The tuple~$\left(\left\{ \ket{\psi_{j}}\right\} _{j=1}^{d},\events',\rho\right)$
-is essentially the same as an classical probability space~\cite{Maassen2010}.
+we can pick a orthonormal basis~$\Omega=\left\{ \ket{\psi_{j}}\right\} _{j=1}^{d}$,
+and fix a density matrix~$\rho$ representing in the same basis,
+i.e., $\rho=\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{d}}\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{d}}r_{ij}\ket{\psi_{i}}\bra{\psi_{j}}$.
+Applying the canonical inner product, we can define a Radon-Nikodym
+derivative~$f_{\rho}:\Omega\rightarrow[0,1]$ by
+\begin{equation}
+f_{\rho}\left(\ket{\psi_{j}}\right)=\ip{\psi_{j}}{\rho\psi_{j}}=r_{jj}\textrm{ .}\label{eq:quantum-Radon-Nikodym}
+\end{equation}
+Furthermore, we only consider the quantum events~$\events'$ with
+the form $P=\tensor*[_{\mathscr{O}}]{\sum}{_{\ket{\psi_{j}}\in E}}\proj{\psi_{j}}$,
+where $E\in2^{\Omega}$. The classical probability measure~$\pmeas':2^{\Omega}\rightarrow[0,1]$
+induced by the Radon-Nikodym derivative~$f_{\rho}$ is exactly the
+Born rule of the mixed state~$\rho$~\cite{Maassen2010}, 
+\begin{equation}
+\pmeas'\left(E\right)\overset{\left(\ref{eq:Radon-Nikodym}\right)}{=}\sideset{_{\mathbb{R}}}{_{\ket{\psi_{j}}\in E}}\sum f_{\rho}\left(\ket{\psi_{j}}\right)\overset{\left(\ref{eq:quantum-Radon-Nikodym}\right)}{=}\sideset{_{\mathbb{R}}}{_{\ket{\psi_{j}}\in E}}\sum r_{jj}=\Tr\left(\rho P\right)\overset{\left(\ref{BornRule.mixed}\right)}{=}\mu_{\rho}^{B}\left(P\right)\textrm{ .}\label{BornRule.mixed-1}
+\end{equation}
 
-Notice that the mixed state~$\rho$ is really a generalization of
-Radon-Nikodym derivative if we pick a basis~$\left\{ \ket{\psi_{j}}\right\} _{j=1}^{d}$
-such that $P=\tensor*[_{\mathscr{O}}]{\sum}{_{\ket{\psi_{j}}\in S}}\proj{\psi_{j}}$,
-where $S$ is the linear subspace $P$ projects onto. By representing
-the density matrix~$\rho$ in the same basis, i.e., $\rho=\sum_{i=1}^{d}\sum_{j=1}^{d}r_{ij}\ket{\psi_{i}}\bra{\psi_{j}}$,
-the Born rule becomes
-\begin{eqnarray}
-\mu_{\rho}^{B}\left(P\right) & = & \Tr\left(\rho P\right)=\sum_{\ket{\psi_{j}}\in S}r_{jj}\textrm{ ,}\label{BornRule.mixed-1}
-\end{eqnarray}
-which is basically the same as equation~(\ref{eq:Radon-Nikodym}).
-
-In this sense, the Radon-Nikodym theorem could be generalized to Gleason's
-theorem~\cite{HollandJr1970,Redhead1987-REDINA,Jaeger2007}: in Hilbert
-spaces of dimension $d\geq3$, given a quantum probability measure
-$\mu$, there exist a mixed state~$\rho$ that induces such a measure
-using the Born rule~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
+In this sense, the Radon-Nikodym derivative~$f_{\rho}$ is a special
+case of the mixed state~$\rho$, and the Radon-Nikodym theorem is
+a special case of Gleason's theorem~\cite{HollandJr1970,Redhead1987-REDINA,Jaeger2007}:
+in Hilbert spaces of dimension $d\geq3$, given a quantum probability
+measure $\mu$, there exist a mixed state~$\rho$ that induces such
+a measure using the Born rule~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
 By applying Gleason's theorem, we can extend definition~\ref{def:QuantumProbabilitySpace}
 to the following corollary.
 
@@ -1414,7 +1414,7 @@ there exists an unique mixed state~$\rho$ such that $\mu=\mu_{\rho}^{B}$.\end{co
 It is instructive to study a counterexample when $d=2$, i.e., the
 case of a one-qubit system.
 
-\begin{example}{[}One-qubit quantum probability measure{]} Consider
+\begin{example}[One-qubit quantum probability measure] Consider
 a quantum probability measure~$\mu:\events\rightarrow[0,1]$ defined
 as follow: 
 \[
@@ -1435,36 +1435,30 @@ state and $\rho=P$. \qed\end{example}
 %%%%%
 
 
-\subsection{Measuring Quantum Probabilities: In Reality}
+\subsection{Measuring Quantum Probabilities in Reality: Quantum Interval-valued
+Probability Measures}
 
-In reality, we need a lot of resource to keep the local field of strength
-directing to the $z$-axis precisely, to keep the atoms having almost
-the same velocity, and to point out the exact position each particle
-landed on.
+In reality, a Stern-Gerlach experiment requires a lot of resource
+to keep the local field of strength directing to the $z$-axis precisely,
+to keep the atoms having almost the same velocity, and to point out
+the exact position each particle landed on. If the field of strength
+does not perfectly direct to the $z$-axis, we do not really test
+the quantum event we want to test. This problem will be handled later
+when we introduce the discrete quantum theory. Even if the field of
+strength perfectly directs to the $z$-axis, the variant velocity
+makes spots broader and more washed out. Together with the precision
+limit of the detector, it may sometimes be hard to decide a particle
+corresponding to which state\footnote{\yutsung{Add citations to support the idea... Haven't found suitable
+ones...}
 
-If the field of strength does not perfectly direct to the $z$-axis,
-we do not really test the quantum event we want to test. This problem
-will be handled later when we introduce the discrete quantum theory.
-Even if the field of strength perfectly directs to the $z$-axis,
-the variant velocity makes spots broader and more washed out. Together
-with the precision limit of the detector, it may sometimes be hard
-to decide a particle corresponding to which state\footnote{\yutsung{Add citations to support the idea... Haven't found suitable
-ones...}}. Similar to Buffon's needles, this kind of fuzziness can be taken
-into account by associating each quantum event with an interval-valued
-probability~$\left[l,r\right]$.
+\amr{preparation fuzzy, device fuzzy, Meyer~\cite{PhysRevLett.83.3751}} }. 
 
-\amr{preparation fuzzy, device fuzzy, Meyer~\cite{PhysRevLett.83.3751}}
-
-%%%%%
-
-\subsection{Quantum Interval-valued Probability Measures}
-
-As mentioned above, each quantum event~$P$ will be associated with
-an interval-valued probability~$\left[l,r\right]$. Therefore, we
-should plug in the definition of interval-valued probability measure
-into the definition of quantum probability space for each ideal measurement.
-
-More specifically, for classical probability measures, definition~\ref{def:ClassicalProbabilitySpace}
+Similar to Buffon's needles, this kind of fuzziness can be taken into
+account by associating each quantum event with an interval-valued
+probability~$\left[l,r\right]$. Therefore, we should plug in the
+definition of interval-valued probability measure into the definition
+of quantum probability space for each ideal measurement. More specifically,
+for classical probability measures, definition~\ref{def:ClassicalProbabilitySpace}
 and lemma~\ref{lem:classicalProbabilityMeasure} are almost the same
 except the last condition using the equal sign~$=$ in real-valued
 definition~\ref{def:QuantumProbabilitySpace} and the subset equal
@@ -1480,13 +1474,13 @@ and a collection of intervals~$\mathscr{I}$, a \emph{quantum $\mathscr{I}$-inter
 probability measure} is a function~$\bar{\mu}:\events\rightarrow\mathscr{I}$
 such that: 
 \begin{itemize}
-\item $\bar{\mu}(\mathbb{0})=\left[0,0\right]$, 
-\item $\bar{\mu}(\mathbb{1})=\left[1,1\right]$, 
-\item for any projection $P$, 
+\item $\bar{\mu}(\mathbb{0})=\left[0,0\right]$. 
+\item $\bar{\mu}(\mathbb{1})=\left[1,1\right]$. 
+\item For any projection $P$, 
 \begin{equation}
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=\left[1,1\right]\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(P\right)\textrm{ ,}\label{eq:QuantumInterval-valuedProbability-Complement}
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}P\right)=\left[1,1\right]\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(P\right)\textrm{ .}\label{eq:QuantumInterval-valuedProbability-Complement}
 \end{equation}
-\item for a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
+\item For a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
 we have 
 \begin{equation}
 \bar{\mu}\left(\sideset{_{\mathscr{O}}}{_{i=1}^{N}}\sum P_{i}\right)\subseteq\sideset{_{\mathscr{I}}}{_{i=1}^{N}}\sum\bar{\mu}\left(P_{i}\right)\textrm{ .}\label{eq:QuantumInterval-valuedProbability-Inclusion}
