@@ -40,9 +40,6 @@
 \newcommand{\pmeas}{\ensuremath{\mu}}
 \newcommand{\Hilb}{\mathcal{H}}
 \newcommand{\pr}[2]{\langle #1, #2 \rangle}
-\newcommand{\ket}[1]{|#1\rangle}
-\newcommand{\bra}[1]{\langle#1|}
-\newcommand{\ip}[2]{\langle #1 | #2 \rangle}
 \newcommand{\proj}[1]{|#1 \rangle\langle #1 |}
 \newcommand{\ps}{\texttt{+}}
 \newcommand{\ms}{\texttt{-}}
@@ -61,7 +58,6 @@
 \newcommand{\ffzd}[1]{{\mathbb{F}^{d\;*}_{#1}}}
 \def\C{{\mathbb{C}}}
 \newcommand{\ff}[1]{\mathbb{F}_{#1}}
-\newcommand{\melement}[2]{ \langle #1 | #2 | #1 \rangle}
 \newcommand{\expect}[2]{ \langle #1 | #2 | #1 \rangle}
 \newcommand{\Tr}{\mathop{\mathrm{Tr}}\nolimits}
 \newcommand{\gerardo}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{OliveGreen}{Gerardo says: #1}\end{minipage}}}
@@ -69,6 +65,9 @@
 \usepackage{tensor}
 \newcommand{\rme}{\mathrm{e}}
 \newcommand{\rmi}{\mathrm{i}}
+\usepackage[braket, qm]{qcircuit} 
+\newcommand{\xyR}[1]{\xymatrixrowsep={#1}}
+\newcommand{\xyC}[1]{\xymatrixcolsep={#1}}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -17538,8 +17537,14 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-...
- Then?
+Quantum Computing on Quantum Interval-valued Probability Measures
+\end_layout
+
+\begin_layout Standard
+We give up the idea of representing a quantum state as a density matrix,
+ and compute the quantum state as a quantum interval-valued probability
+ measure directly.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -17548,93 +17553,78 @@ status collapsed
 
 \begin_layout Plain Layout
 
+%%%%%
+\end_layout
 
-\backslash
-yutsung{
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
 
-Because theorem
-\begin_inset space ~
-\end_inset
 
+\end_layout
 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:EmptyCoreQuantumInterval-valuedProbability"
-
-\end_inset
-
- gives a negative result, our original plan was to put the Mermin v.s.
- Meyer debate here, and move on to the discrete quantum probability measure.
- Then, discrete real-valued quantum probability measures are expected to
- fail because of John's proof, and we hope discrete interval-valued quantum
- probability measure can work in some sense?
+\begin_layout Subsection
+Time Evolution and Tensor Product
 \end_layout
 
 \begin_layout Standard
-I just want to confirm whether we want to keep our original plan to move
- on to the discrete quantum probability measure.
- Because we don't really use 
-\begin_inset Formula $\mathbb{C}$
-\end_inset
-
- in example
+In CQT, an time evolution operator
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "ex:three-dimensional-three-value"
-
+\begin_inset Formula $U$
 \end_inset
 
-, I could expect example
+ will map a state
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "ex:three-dimensional-three-value"
+\begin_inset Formula $\ket{\phi}$
+\end_inset
+
+ to 
+\begin_inset Formula $U\ket{\phi}$
+\end_inset
+
+.
+ In this case, its quantum real-valued probability measure after evolution
+ is
+\begin_inset Formula 
+\[
+\mu_{U\ket{\phi}}^{B}\left(P\right)=\ip{\phi}{U^{\dagger}PU\phi}=\mu_{\ket{\phi}}^{B}\left(U^{\dagger}PU\right)\textrm{ .}
+\]
 
 \end_inset
 
- is highly likely to serve as an counterexample for discrete interval-valued
- quantum probability measure...
-\end_layout
-
-\begin_layout Standard
-Some alternatives:
-\end_layout
-
-\begin_layout Enumerate
-The importance of Gleason's theorem is that the Born rule could be deduced
- from other postulates.
- If the Gleason's theorem fails, we may still postulate the Born rule...
- But why? And this method doesn't really solve the problem in discrete quantum
- theories because there is no original Born rule...
-\end_layout
-
-\begin_layout Enumerate
-We may give up the idea of representing a quantum state as a density matrix.
- Actually, quantum probability people think quantum states are functions
+Hence, given a quantum interval-valued probability measure
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Maassen2010,Swart2013,Hamhalter2013"
+\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
+\end_inset
+
+, the quantum interval-valued probability measure after time evolution operator
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $U$
+\end_inset
+
+ is defined as 
+\begin_inset Formula 
+\[
+\bar{\mu}_{U}\left(P\right)=\bar{\mu}\left(U^{\dagger}PU\right)\textrm{ .}
+\]
 
 \end_inset
 
-, and Emanuel (Manny) Knill starts from C*-algebra when we talk about quantum
- measurement.
- Maybe reasoning quantum states as a function in every quantum phenomena
- is doable?
+
 \end_layout
 
 \begin_layout Standard
@@ -17643,7 +17633,64 @@ status collapsed
 
 \begin_layout Plain Layout
 
+%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Quantum Teleportation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement t
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\hspace{1cm}\xyC{.6em}\entrymodifiers={@*=<0em>}\xymatrix@R=0.9em{ & \ar@{.}[dddd] &  & \ar@{.}[dddd] &  & \ar@{.}[dddd] &  & \ar@{.}[dddd]\\
+\lstick{\bar{\mu}} & \qw & \ctrl{1} & \qw & \gate{H} & \qw & \meter & \cw & \cw & \control\cw\\
+ & \qw & \targ & \qw & \qw & \qw & \meter & \cw & \control\cw & \cwx & \ar@{.}[dd]\\
+ & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \gate{X}\cwx & \gate{Z}\cwx & \qw\\
+ & \push{\bar{\mu}_{0}} &  & \push{\bar{\mu}_{1}} &  & \push{\bar{\mu}_{2}} &  & \push{\bar{\mu}_{3}} &  &  & \push{\bar{\mu}_{4}}
 }
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Circuit for Quantum Teleportation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:QuantumTeleportation"
+
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
