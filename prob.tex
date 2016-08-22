@@ -792,7 +792,7 @@ later.
 \begin{definition}~Given an interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$:
 \begin{itemize}
 \item A \emph{core}\footnote{The core is also called a structure~\cite{Weichselberger2000}.}
-of $\bar{\mu}$ is the set $\mathrm{core}\left(\bar{\mu}\right)=\left\{ \pmeas:\events\rightarrow[0,1]\textrm{ probability measure}\middle|\pmeas\left(E\right)\in\bar{\mu}\left(E\right)\forall E\in\events\right\} $
+of $\bar{\mu}$ is the set $\mathrm{core}\left(\bar{\mu}\right)=\left\{ \textrm{probability measure }\pmeas:\events\rightarrow[0,1]\middle|\forall E\in\events.\pmeas\left(E\right)\in\bar{\mu}\left(E\right)\right\} $
 \cite{GilboaSchmeidler1994,Marinacci1999,Teran2014}.
 \item $\bar{\mu}$ is called \emph{convex} or \emph{2-monotone} if $\bar{\mu}\left(E_{1}\cup E_{2}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(E_{1}\cap E_{2}\right)\subseteq\bar{\mu}\left(E_{1}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(E_{2}\right)$
 for all $E_{1},E_{2}\in\events$~\cite{Shapley1965,GilboaSchmeidler1994,Marinacci1999,Teran2014}.\footnote{\yutsung{If we want to use convex, we need to explain the physical
@@ -1109,8 +1109,8 @@ is also a projection operator if and only if they are orthogonal,
 where the preposing subscript $\mathscr{O}$ means $\tensor*[_{\mathscr{O}}]{+}{}$
 is an operation between operators. 
 \item Conversely, every projection~$P$ can be expressed as $\tensor*[_{\mathscr{O}}]{\sum}{_{j=1}^{N}}\proj{\psi_{j}}$,
-where $P$ actually projects onto the linear subspace~$S$ which
-has an orthonormal basis~$\{\ket{\psi_{j}}\}_{j=1}^{N}$. 
+where $P$ actually projects onto the linear subspace~$S$ with an
+orthonormal basis~$\{\ket{\psi_{j}}\}_{j=1}^{N}$. 
 \end{itemize}
 \qed\end{definition}
 
@@ -1142,7 +1142,7 @@ Based on the above definition and properties of quantum events, we
 can present an example before giving the formal definition of quantum
 probability measures.
 
-\begin{example}[One-qubit quantum probability space] Consider
+\begin{example}{[}One-qubit quantum probability space{]} Consider
 a one-qubit Hilbert space with states $\ket{\phi}$, which can be
 expressed as a linear combination of $\ket{0}$ and $\ket{1}$, i.e.,
 $\ket{\phi}=\alpha\ket{0}+\beta\ket{1}$ such that $|\alpha|^{2}+|\beta|^{2}=1$,
@@ -1159,7 +1159,7 @@ indicates that the post-measurement state will be a linear combination
 of $\ket{0}$ and $\ket{1}$; and the empty event $\mathbb{0}$ states
 that the post-measurement state will be the empty state. As in the
 classical case, a probability measure is a function that maps events
-to $[0,1]$: here is a partial specification of a possible probability
+to $[0,1]$. Here is a partial specification of a possible probability
 measure: 
 \[
 \begin{array}{rcl}
@@ -1356,7 +1356,7 @@ of $\mu_{\phi_{j}}^{B}$ with respect to probability $q_{j}$~\cite{peres1995quant
 %%%%%
 
 
-\subsection{Measuring Quantum Probabilities Ideally: Radon-Nikodym and Gleason's
+\subsection{Measuring Quantum Probabilities Ideally: From Radon-Nikodym to Gleason's
 Theorem}
 
 Similar to the classical case, by applying the law of large numbers,
@@ -1380,7 +1380,7 @@ just hit the middle, respectively.
 Mathematically, given a Hilbert space~$\Hilb$ of dimension~$d$,
 we can pick a orthonormal basis~$\Omega=\left\{ \ket{\psi_{j}}\right\} _{j=1}^{d}$,
 and fix a density matrix~$\rho$ representing in the same basis,
-i.e., $\rho=\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{d}}\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{d}}r_{ij}\ket{\psi_{i}}\bra{\psi_{j}}$.
+i.e., $\rho=\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{d}}\tensor*[_{\mathscr{O}}]{\sum}{_{j=1}^{d}}r_{ij}\ket{\psi_{i}}\bra{\psi_{j}}$.
 Applying the canonical inner product, we can define a Radon-Nikodym
 derivative~$f_{\rho}:\Omega\rightarrow[0,1]$ by
 \begin{equation}
@@ -1397,17 +1397,12 @@ Born rule of the mixed state~$\rho$~\cite{Maassen2010},
 
 In this sense, the Radon-Nikodym derivative~$f_{\rho}$ is a special
 case of the mixed state~$\rho$, and the Radon-Nikodym theorem is
-a special case of Gleason's theorem~\cite{HollandJr1970,Redhead1987-REDINA,Jaeger2007}:
-in Hilbert spaces of dimension $d\geq3$, given a quantum probability
-measure $\mu$, there exist a mixed state~$\rho$ that induces such
-a measure using the Born rule~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
-By applying Gleason's theorem, we can extend definition~\ref{def:QuantumProbabilitySpace}
-to the following corollary.
+a special case of Gleason's theorem~\cite{HollandJr1970,Redhead1987-REDINA,Jaeger2007}.
 
-\begin{cor}\label{cor:Gleason's}Given a Hilbert space $\Hilb$ of
-dimension $d\geq3$, for any function~$\mu:\events\rightarrow[0,1]$
-satisfying the conditions listed in definition~\ref{def:QuantumProbabilitySpace},
-there exists an unique mixed state~$\rho$ such that $\mu=\mu_{\rho}^{B}$.\end{cor}
+\begin{thm}{[}Gleason's theorem~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}{]}\label{cor:Gleason's}In
+a Hilbert space $\Hilb$ of dimension $d\geq3$, given a quantum probability
+measure~$\mu:\events\rightarrow[0,1]$, there exists an unique mixed
+state~$\rho$ such that $\mu=\mu_{\rho}^{B}$.\end{thm}
 
 It is instructive to study a counterexample when $d=2$, i.e., the
 case of a one-qubit system.
@@ -1459,12 +1454,12 @@ of quantum probability space for each ideal measurement. More specifically,
 for classical probability measures, definition~\ref{def:ClassicalProbabilitySpace}
 and lemma~\ref{lem:classicalProbabilityMeasure} are almost the same
 except the last condition using the equal sign~$=$ in real-valued
-definition~\ref{def:QuantumProbabilitySpace} and the subset equal
+definition~\ref{def:ClassicalProbabilitySpace} and the subset equal
 sign~$\subseteq$ in interval-valued lemma~\ref{lem:classicalProbabilityMeasure}.
 Therefore, for quantum probability measures, replacing the the equal
 sign~$=$ in real-valued definition~\ref{def:QuantumProbabilitySpace}
 by the subset equal sign~$\subseteq$ gives the only reasonable definition
-for quantum interval-valued probability measures as follow.
+for quantum interval-valued probability measures.
 
 \begin{definition}[Quantum Interval-valued Probability Measure]\label{def:QuantumInterval-valuedProbability}
 Given a Hilbert space $\Hilb$ with the set of quantum events~$\events$,
@@ -1523,7 +1518,7 @@ to a quantum real-valued probability measure or a mixed state.
 
 \begin{definition}~Given a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$:
 \begin{itemize}
-\item A \emph{core} of $\bar{\mu}$ is the set $\mathrm{core}\left(\bar{\mu}\right)=\left\{ \mu:\events\rightarrow[0,1]\textrm{ quantum probability measure}\middle|\mu\left(P\right)\in\bar{\mu}\left(P\right)\forall P\in\events\right\} $.
+\item A \emph{core} of $\bar{\mu}$ is the set $\mathrm{core}\left(\bar{\mu}\right)=\left\{ \textrm{quantum probability measure }\pmeas:\events\rightarrow[0,1]\middle|\forall E\in\events.\pmeas\left(E\right)\in\bar{\mu}\left(E\right)\right\} $.
 \item $\bar{\mu}$ is called convex if 
 \begin{equation}
 \bar{\mu}\left(P_{1}\tensor*[_{\mathscr{O}}]{\vee}{}P_{2}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(P_{1}P_{2}\right)\subseteq\bar{\mu}\left(P_{1}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(P_{2}\right)\label{eq:QuantumInterval-valuedProbability-Convex}
@@ -1601,20 +1596,22 @@ Our original plan was to put the Mermin v.s. Meyer debate here, and
 move on to the discrete quantum probability measure. Then, discrete
 real-valued quantum probability measures are expected to fail because
 of John's proof, and we hope discrete interval-valued Gleason's theorem
-can work in some sense? This story might go to section~\ref{sec:DQT}.
-The problem of this approach is that Because we don't really use $\mathbb{C}$
-in example~\ref{ex:three-dimensional-three-value}, I could expect
-example~\ref{ex:three-dimensional-three-value} is likely to serve
-as an counterexample for discrete interval-valued Gleason's theorem...
+can work in some sense? This story is scratched in section~\ref{sec:DQT}.
+The problem is the discrete version of example~\ref{ex:three-dimensional-three-value}.
+Because we don't really use $\mathbb{C}$ in example~\ref{ex:three-dimensional-three-value},
+the discrete version of example~\ref{ex:three-dimensional-three-value}
+is likely to serve as an counterexample for discrete interval-valued
+Gleason's theorem... Hence, we may need to put some extra-conditions
+to by-pass the discrete version of example~\ref{ex:three-dimensional-three-value}.
 
 Another possible approach is to tell everybody: because Gleason's
 theorem is an accident, the original way to formulate to a quantum
 system as a state vector or density matrix is an accident. If we want
 to do things correct, we should work on quantum (real/interval)-valued
-probability measure directly. This approach might go to section~\ref{sec:QC}.
+probability measure directly. This approach is scratched in section~\ref{sec:QC}.
 The problem of this approach is that we need an concrete example to
 show it is possible to work on quantum (real/interval)-valued probability
-measure directly. More precisely, we might need to verify tensor product
+measure directly. For example, we might need to verify tensor product
 and quantum teleportation works in this model...}
 
 \section{\label{sec:DQT}(One possible approach) Discrete Quantum Theory}
@@ -1625,15 +1622,15 @@ Killed by John... Need to be typed...
 
 \subsection{Discrete Quantum Interval-valued Probability Measures}
 
-Discrete interval-valued Gleason's theorem should be here, but we
-don't know whether it works or not... Might need to put some extra-conditions
-to by-pass the counterexample corresponding to example~\ref{ex:three-dimensional-three-value}.
+Discrete interval-valued Gleason's theorem should be here, but it
+is unlikely to work if the discrete version of example~\ref{ex:three-dimensional-three-value}
+works... Might need to put some extra-conditions to by-pass it...
 
 Following are possible extra-conditions:
 \begin{enumerate}
 \item \emph{$\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $} is
 too small...
-\item $\mu\otimes\mu$ is not a quantum real-valued probability measure,
+\item $\mu\otimes\mu$ might not be a quantum real-valued probability measure,
 where $\mu$ is a non-Born real-valued probability measure for dimension
 2. Maybe embedding the small space into the bigger one could add extra-conditions
 to kill strange interval-valued probability measures?
@@ -1657,9 +1654,9 @@ measure after evolution is
 \[
 \mu_{U\ket{\phi}}^{B}\left(P\right)=\ip{\phi}{U^{\dagger}PU\phi}=\mu_{\ket{\phi}}^{B}\left(U^{\dagger}PU\right)\textrm{ .}
 \]
-Hence, given a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$,
+Hence, given any quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$,
 the quantum interval-valued probability measure after time evolution
-operator~$U$ is defined as 
+operator~$U$ should be defined as 
 \[
 \bar{\mu}_{U}\left(P\right)=\bar{\mu}\left(U^{\dagger}PU\right)\textrm{ .}
 \]
@@ -1675,11 +1672,11 @@ operator~$U$ is defined as
 Is $\bar{\mu}_{1}\otimes\bar{\mu}_{2}$ still a quantum interval-valued
 probability measure?
 
-Might be hard, because $\mu\otimes\mu$ is not a quantum real-valued
+Might be hard, because $\mu\otimes\mu$ might not be a quantum real-valued
 probability measure, where $\mu$ is a non-Born real-valued probability
 measure for dimension 2.
 
-\yutsung{Quantum Fubini Theorem?}
+Quantum Fubini Theorem?
 
 %%%%%
 
@@ -1704,7 +1701,7 @@ In figure~\ref{fig:QuantumTeleportation}, let $\ket{\phi}=\frac{1}{\sqrt{2}}\lef
 
 $\bar{\mu}_{0}=\bar{\mu}_{1}\otimes\mu_{\ket{\phi}}^{B}$. Notice
 that a quantum real-valued probability measure can be considered as
-an special case of quantum interval-valued probability measure.
+an special case of quantum interval-valued probability measure...
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
