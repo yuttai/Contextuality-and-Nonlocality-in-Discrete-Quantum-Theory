@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    604371,      14703]
-NotebookOptionsPosition[    596089,      14443]
-NotebookOutlinePosition[    596553,      14464]
-CellTagsIndexPosition[    596479,      14459]
+NotebookDataLength[    606834,      14742]
+NotebookOptionsPosition[    598508,      14481]
+NotebookOutlinePosition[    598972,      14502]
+CellTagsIndexPosition[    598898,      14497]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -123,7 +123,8 @@ Cell[BoxData["False"], "Output",
    3.6814159266010294`*^9, 3.6814159542664547`*^9}, 3.681416334191003*^9, 
    3.6814163930210857`*^9, 3.6814169398077908`*^9, 3.6814169952078686`*^9, 
    3.6814170386979294`*^9, 3.681417891561125*^9, 3.6814180629513645`*^9, 
-   3.6814181476914835`*^9, 3.6814238922410746`*^9}]
+   3.6814181476914835`*^9, 3.6814238922410746`*^9, 3.681480669264491*^9, 
+   3.6814840931295815`*^9, 3.681484258649624*^9, 3.6814845590442376`*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -205,7 +206,9 @@ Cell[BoxData["False"], "Output",
    3.6814146042550306`*^9, {3.681415926683531*^9, 3.6814159543264556`*^9}, 
    3.6814163342510033`*^9, 3.6814163930810857`*^9, 3.681416939867791*^9, 
    3.6814169952678685`*^9, 3.6814170387479296`*^9, 3.681417891611125*^9, 
-   3.681418063011365*^9, 3.681418147741483*^9, 3.6814238922985754`*^9}]
+   3.681418063011365*^9, 3.681418147741483*^9, 3.6814238922985754`*^9, 
+   3.681480669314492*^9, 3.6814840931870823`*^9, 3.6814842587121243`*^9, 
+   3.6814845591017385`*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -683,6 +686,59 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{
+  RowBox[{"radonNikodymDerivative2Measure", "[", "f_", "]"}], ":=", 
+  RowBox[{"Function", "[", 
+   RowBox[{
+    RowBox[{"{", "S", "}"}], ",", 
+    RowBox[{"Total", "[", 
+     RowBox[{"f", "/@", "S"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6813946172780504`*^9, 3.6813946239531527`*^9}, {
+  3.681395399532565*^9, 3.6813954783287754`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"S", "[", 
+   RowBox[{"N_", ",", "\[Omega]_", ",", "k_"}], "]"}], ":=", 
+  RowBox[{"Select", "[", 
+   RowBox[{"N", ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+      "\[Omega]", "\[LeftDoubleBracket]", "#", "\[RightDoubleBracket]"}], 
+      "\[LessEqual]", "k"}], "&"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"a", "[", 
+   RowBox[{"N_", ",", "v_", ",", "\[Omega]_"}], "]"}], ":=", 
+  RowBox[{"Function", "[", 
+   RowBox[{
+    RowBox[{"{", "i", "}"}], ",", 
+    RowBox[{
+     RowBox[{"v", "[", 
+      RowBox[{"S", "[", 
+       RowBox[{"N", ",", "\[Omega]", ",", 
+        RowBox[{
+        "\[Omega]", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+       "]"}], "]"}], "-", 
+     RowBox[{"v", "[", 
+      RowBox[{"S", "[", 
+       RowBox[{"N", ",", "\[Omega]", ",", 
+        RowBox[{
+         RowBox[{
+         "\[Omega]", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+         "-", "1"}]}], "]"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"aMeasure", "[", 
+   RowBox[{"N_", ",", "v_", ",", "\[Omega]_"}], "]"}], ":=", 
+  RowBox[{"radonNikodymDerivative2Measure", "[", 
+   RowBox[{"a", "[", 
+    RowBox[{"N", ",", "v", ",", "\[Omega]"}], "]"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.681480709990117*^9, 3.6814807306379337`*^9}, {
+   3.6814807629184303`*^9, 3.68148078181872*^9}, 3.6814808200518074`*^9, {
+   3.6814808815802526`*^9, 3.6814809504588103`*^9}, {3.6814809856643515`*^9, 
+   3.6814810320250635`*^9}, {3.6814818922507763`*^9, 3.681481922188736*^9}}],
+
+Cell[BoxData[
+ RowBox[{
   RowBox[{"ShapleyValue", "[", 
    RowBox[{"N_", ",", "v_"}], "]"}], ":=", 
   RowBox[{"Function", "[", 
@@ -747,17 +803,6 @@ Cell[BoxData[
    3.678915111346998*^9, 3.6789151272589083`*^9}, {3.678915161004839*^9, 
    3.678915258711427*^9}, 3.6789162897353983`*^9, {3.6789324970939903`*^9, 
    3.6789327570243545`*^9}, {3.678971840493976*^9, 3.678971840946483*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"radonNikodymDerivative2Measure", "[", "f_", "]"}], ":=", 
-  RowBox[{"Function", "[", 
-   RowBox[{
-    RowBox[{"{", "S", "}"}], ",", 
-    RowBox[{"Total", "[", 
-     RowBox[{"f", "/@", "S"}], "]"}]}], "]"}]}]], "Input",
- CellChangeTimes->{{3.6813946172780504`*^9, 3.6813946239531527`*^9}, {
-  3.681395399532565*^9, 3.6813954783287754`*^9}}],
 
 Cell[CellGroupData[{
 
@@ -837,7 +882,9 @@ Cell[BoxData[
    3.6814146043050313`*^9, {3.6814159267485323`*^9, 3.6814159543814564`*^9}, 
    3.681416334311003*^9, 3.6814163931310854`*^9, 3.6814169399177914`*^9, 
    3.6814169953178687`*^9, 3.6814170388079295`*^9, 3.6814178916711245`*^9, 
-   3.681418063061365*^9, 3.6814181477914834`*^9, 3.6814238923560762`*^9}]
+   3.681418063061365*^9, 3.6814181477914834`*^9, 3.6814238923560762`*^9, 
+   3.6814806693819933`*^9, 3.681484093239583*^9, 3.681484258762125*^9, 
+   3.6814845591667395`*^9}]
 }, Open  ]]
 }, Open  ]],
 
@@ -894,7 +941,8 @@ conflict with this. Please see the Compatibility Guide for details.\"\>"}]], \
    3.681415954478958*^9}, 3.6814163344010034`*^9, 3.681416393241086*^9, 
    3.6814169400177913`*^9, 3.681416995407869*^9, 3.6814170388979297`*^9, 
    3.6814178917611246`*^9, 3.681418063151365*^9, 3.6814181478814836`*^9, 
-   3.6814238924510775`*^9}]
+   3.6814238924510775`*^9, 3.6814806694769945`*^9, 3.681484093334584*^9, 
+   3.6814842588571267`*^9, 3.6814845592642407`*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -917,23 +965,24 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"intervalValuedProbabilityMeasure2Game", "[", "i_", "]"}], ":=", 
+  RowBox[{"IVPM2Game", "[", "i_", "]"}], ":=", 
   RowBox[{
    RowBox[{"interval2LeftEnd", "[", 
     RowBox[{"i", "[", "#", "]"}], "]"}], "&"}]}]], "Input",
  CellChangeTimes->{{3.6782323183966427`*^9, 3.678232322589883*^9}, {
-  3.6798689666941605`*^9, 3.679868970746722*^9}, {3.679869093903614*^9, 
-  3.6798691418168497`*^9}, {3.6798692984167557`*^9, 3.6798693119794636`*^9}, {
-  3.6798693621702347`*^9, 3.6798694413364506`*^9}, {3.6798695565882206`*^9, 
-  3.6798695694334183`*^9}, {3.679869912913694*^9, 3.679869952714305*^9}, {
-  3.6798700733261576`*^9, 3.679870082121293*^9}, {3.6798701400546827`*^9, 
-  3.6798701414747047`*^9}, {3.679870201578128*^9, 3.679870205435687*^9}, {
-  3.6798703253175287`*^9, 3.679870341490277*^9}, {3.6798716099257803`*^9, 
-  3.6798716138083396`*^9}}],
+   3.6798689666941605`*^9, 3.679868970746722*^9}, {3.679869093903614*^9, 
+   3.6798691418168497`*^9}, {3.6798692984167557`*^9, 
+   3.6798693119794636`*^9}, {3.6798693621702347`*^9, 
+   3.6798694413364506`*^9}, {3.6798695565882206`*^9, 
+   3.6798695694334183`*^9}, {3.679869912913694*^9, 3.679869952714305*^9}, {
+   3.6798700733261576`*^9, 3.679870082121293*^9}, {3.6798701400546827`*^9, 
+   3.6798701414747047`*^9}, {3.679870201578128*^9, 3.679870205435687*^9}, {
+   3.6798703253175287`*^9, 3.679870341490277*^9}, {3.6798716099257803`*^9, 
+   3.6798716138083396`*^9}, 3.681484046306362*^9}],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"intervalValuedProbabilityMeasure2Capacity", "[", "i_", "]"}], ":=", 
+  RowBox[{"IVPM2Capacity", "[", "i_", "]"}], ":=", 
   RowBox[{
    RowBox[{"interval2RightEnd", "[", 
     RowBox[{"i", "[", "#", "]"}], "]"}], "&"}]}]], "Input",
@@ -944,7 +993,8 @@ Cell[BoxData[
    3.679869575933518*^9, 3.6798695853936634`*^9}, {3.679870090778926*^9, 
    3.679870097234025*^9}, {3.679870143344733*^9, 3.679870144867257*^9}, {
    3.6798702108732705`*^9, 3.679870214268323*^9}, {3.679870348745388*^9, 
-   3.679870352287943*^9}, {3.6798716198059316`*^9, 3.6798716235109887`*^9}}],
+   3.679870352287943*^9}, {3.6798716198059316`*^9, 3.6798716235109887`*^9}, 
+   3.6814840463113623`*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -959,7 +1009,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"game2IntervalValuedProbabilityMeasure", "[", 
+  RowBox[{"game2IVPM", "[", 
    RowBox[{"S_", ",", "v_"}], "]"}], ":=", 
   RowBox[{
    RowBox[{"Interval", "[", 
@@ -972,11 +1022,11 @@ Cell[BoxData[
    "&"}]}]], "Input",
  CellChangeTimes->{{3.6782323183966427`*^9, 3.678232322589883*^9}, {
    3.678269768308707*^9, 3.6782697749088087`*^9}, {3.6782698071568036`*^9, 
-   3.67826989347563*^9}, 3.67861325545898*^9}],
+   3.67826989347563*^9}, 3.67861325545898*^9, 3.681484046316362*^9}],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"capacity2IntervalValuedProbabilityMeasure", "[", 
+  RowBox[{"capacity2IVPM", "[", 
    RowBox[{"S_", ",", "v_"}], "]"}], ":=", 
   RowBox[{
    RowBox[{"Interval", "[", 
@@ -988,7 +1038,8 @@ Cell[BoxData[
       RowBox[{"v", "[", "#", "]"}]}], "}"}], "]"}], "&"}]}]], "Input",
  CellChangeTimes->{{3.678230709754634*^9, 3.6782307271606293`*^9}, {
    3.678269780718898*^9, 3.678269786978994*^9}, 3.678269825692088*^9, {
-   3.678269898973214*^9, 3.678269917005991*^9}, 3.6786132571400757`*^9}],
+   3.678269898973214*^9, 3.678269917005991*^9}, 3.6786132571400757`*^9, 
+   3.681484046323862*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -1114,7 +1165,7 @@ The equivalence of two definitions are trivial so we omit the proof here.\
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"intervalValuedProbabilityMeasureComplementList", "[", 
+  RowBox[{"IVPMComplementList", "[", 
    RowBox[{"S_", ",", "vl_", ",", "vr_"}], "]"}], ":=", 
   RowBox[{
    RowBox[{
@@ -1127,10 +1178,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{"{", 
-    RowBox[{
-    "intervalValuedProbabilityMeasureList", ",", 
-     "intervalValuedProbabilityMeasureQ", ",", 
-     "intervalValuedProbabilityMeasureWhy"}], "}"}], "=", 
+    RowBox[{"IVPMList", ",", "IVPMQ", ",", "IVPMWhy"}], "}"}], "=", 
    RowBox[{"listQWhy", "[", 
     RowBox[{"Function", "[", 
      RowBox[{
@@ -1141,19 +1189,16 @@ Cell[BoxData[{
         RowBox[{"{", 
          RowBox[{
           RowBox[{"vl", "=", 
-           RowBox[{"intervalValuedProbabilityMeasure2Game", "[", "i", "]"}]}],
-           ",", 
+           RowBox[{"IVPM2Game", "[", "i", "]"}]}], ",", 
           RowBox[{"vr", "=", 
-           RowBox[{
-           "intervalValuedProbabilityMeasure2Capacity", "[", "i", "]"}]}]}], 
-         "}"}], ",", 
+           RowBox[{"IVPM2Capacity", "[", "i", "]"}]}]}], "}"}], ",", 
         RowBox[{"Join", "[", 
          RowBox[{
           RowBox[{"gameList", "[", 
            RowBox[{"S", ",", "vl"}], "]"}], ",", 
           RowBox[{"capacityOtherList", "[", 
            RowBox[{"S", ",", "vr"}], "]"}], ",", 
-          RowBox[{"intervalValuedProbabilityMeasureComplementList", "[", 
+          RowBox[{"IVPMComplementList", "[", 
            RowBox[{"S", ",", "vl", ",", "vr"}], "]"}]}], "]"}]}], "]"}]}], 
      "]"}], "]"}]}], ";"}]}], "Input",
  CellChangeTimes->{{3.670895136354741*^9, 3.6708951831204157`*^9}, {
@@ -1191,7 +1236,7 @@ Cell[BoxData[{
    3.681176672505122*^9}, {3.6811767093706884`*^9, 3.681176848439825*^9}, {
    3.6811770668181796`*^9, 3.681177067318187*^9}, {3.6813368062258797`*^9, 
    3.6813368120072107`*^9}, {3.6813377699730034`*^9, 3.681337801143786*^9}, 
-   3.6814144783105965`*^9}],
+   3.6814144783105965`*^9, {3.6814840463263626`*^9, 3.6814840463313627`*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -1444,7 +1489,8 @@ Cell[BoxData["True"], "Output",
    3.681415954806463*^9, 3.681416334711004*^9, 3.6814163935510864`*^9, 
    3.681416940317792*^9, 3.6814169956978693`*^9, 3.68141703918793*^9, 
    3.6814178920611253`*^9, 3.681418063461365*^9, 3.681418148181484*^9, 
-   3.6814238927510824`*^9}],
+   3.6814238927510824`*^9, 3.6814806697944994`*^9, 3.681484093637089*^9, 
+   3.6814842591621313`*^9, 3.6814845595742455`*^9}],
 
 Cell[BoxData["True"], "Output",
  CellChangeTimes->{{3.6812167085674567`*^9, 3.6812167347103586`*^9}, 
@@ -1463,7 +1509,8 @@ Cell[BoxData["True"], "Output",
    3.681415954806463*^9, 3.681416334711004*^9, 3.6814163935510864`*^9, 
    3.681416940317792*^9, 3.6814169956978693`*^9, 3.68141703918793*^9, 
    3.6814178920611253`*^9, 3.681418063461365*^9, 3.681418148181484*^9, 
-   3.6814238927535825`*^9}]
+   3.6814238927510824`*^9, 3.6814806697944994`*^9, 3.681484093637089*^9, 
+   3.6814842591621313`*^9, 3.6814845595767455`*^9}]
 }, Open  ]],
 
 Cell[BoxData[{
@@ -1584,26 +1631,27 @@ Cell[BoxData[{
 Cell[BoxData[
  RowBox[{"{", "}"}]], "Output",
  CellChangeTimes->CompressedData["
-1:eJwV0H0wFAgYBvA1hxVCOoaSfGyqbUZyzershHXbUlPcma2MzlbqdilfI7Yv
-ScrWjUP6WGtcFutWyaCpbYjSos5iptJRttPJ7CxmJenu0iZ6nz+e+c08M++8
-M493QlrMLxYMBuMy5djzQUe5yMR71cwqhj4qXfpZsYm3pH/4FgzuXepUTFpu
-eDENr8qyFmDoeY31RXLQbdwTCpetWQ+DqzdZlZBlGdbO18hN2+LcYGfQQX+Y
-kZVioyRlvo884LEZ57XwuHvUBhjHnCqsJP/++GwIug68n4PjYeV7qslY4R45
-dOjXaaD8w8gCrEnqZKrI6uVdZyDTK7sATnxXWQ4jleF1sOuN2j1XYuLZNf8+
-d45UWGjvXic5OVyPm2SQn9q+ngz5dZELNLh88oZdRat2wJKlhuL7ZO65N5EP
-yJ756HxYoFMNQInlzn/gY/d6IxSrLvwHAyZKBFaJJl4Tw+hiTXJiNVs8yTxN
-pxBeqm+QriSnwng2XqS+8UMW5PfURorJo83pbhL0+rx1kBXx6sks+Rt/RYCZ
-DGz3r/pCjjjaGXSH6G+j3gx/jvWw7SFfS9PYkGW6twtWpmYmwfADehksrHAq
-g/7Zk0+g/RFHh16y+8dRTzh9kxsIvZxFAthzuvcKZIv1ZVC+8FIFty/j3IEN
-f6ifQtdFo9/2kc9dJEJofJuW/xR6SVpgjFb2FxRs7LPtJzlFNo0G8hm/1ex4
-2MRz9rvQzSXnhy2Fm8n+Jp/GEDK/arVdGNlmJS6Ftkd2h4aTxSzBfugw+38N
-rLEvvBVDfhb5SpPRn/0ylko+Vq36F+aZBxcfJZP9ktJPkO43xm+PJZt4ZvXc
-5HtS7lcU7ZpCe9ZdLfAmuzuqTn5PvvSdnOSSfS250VtJwTf31DAn5+0QTPRp
-vhxF6kNEWhH5U2nEJ5g4Mx2/l1TWt0vgECu4SU6m/qnpKCX5+eJIBbleyRVC
-7sSJ05C1OH75NXInWzkFH2ZdZ1aQo7kHKpTk8YYttbDV/EMnnEmJ00Om9PMY
-PJjdPQ1TDwWaYeZ5raKKZPA73sF9KaLQOtKqjSe+QwazLxlbSYv07afayMqB
-1xdh30gC+z7pxBkNgvMRpS0wtjwu4QEZdfdFCdwlCCyDHt4Fw1A3KzXA+Frj
-BLyiyBO2407yLgkWZcgyYYBWEd5BfgUCPmbe
+1:eJwV0H0wGwYYBvC4IYpiOo7WzEdqbXaH2i46uSGWhu1aNpe2TifbtE3ofJ2S
+fszUtNLuDNW1SZxVEItOHXpter5aC9YJ7toyWum0uFxwUVX2oZGy9/njud/d
+c/fee/f4p2YnHrVhMBgKysnRcVe5yMx70s6qgAFqfc5ZsZn35sjkDRgxtMWt
+grTd9WgJXpHlb8Co81r7i+S415wvFG7dEQIj6nfbVZJVufbuV8ndnyZ7wb7w
+I8EwNz/TQUXKAn/3gSeX3XfCU97xu2Ayc7Gslvzrv4cT0HPspRXORVcfqieT
+hIfk0GVEr4XylakN2JDex1ST9dv6v4dMv4JSOP9+bTWMU8U0wf5pjXeRxMxz
+av/Zeo5U2uhuXyM5hVyf62R4kMa5mYz8YZMHNHq88of95dv3wcotxoo7ZNG5
+6bi75OB6Qgks1avHoMR2/zN4z7vZBMXqC//A0PlKgV2amdfGMHnYk5wk7R5f
+sljbJ4SXmluk75CL0TwHP9LQupIP+YONcWLyRHuOlwS9ofg9yIp9cn+V/JH/
+dqiFDOsJrntNTrk6GfXH6G+rwQK/SPJxHCSfSrPZkGXuPABrs/LSYcxhgwyW
+1bhVweCChfvQ+biryxA58NmML1y6zg2Dfu4iARw8M3QZssWGKijfeKyGe7dy
+bsGWXzQPoOemmbeGyVEPiRCanmeXPIB+kg6YqJP9CQUfDDuOkJxyh1Yj+ZDf
+ZXH9xsxzD7owwCXXJ22FH5EjbQGtkWRJ3btO0WS3nVgBHY8fjIohK1iCr6HL
+6r8NsMG57EYiuSYKlGagP/t6Nou8p97+Nyy2jG8+QWYEpeecJr1/nbs5m2Hm
+WTTWhZekPKg8wTOT9my6UupPDvTWffsh+ThwYYFLDncUJXxCCt7o1MDCwucT
+MC2g/ad40hAp0onIzxWxr2Da8lLKl6SquUcCJ1gRbXIy6w9tr4Lkl4jjlGSI
+iiuE3PnTZyBrc8q2q+R+tmoR/pZ/jVlDzhQdrlGRp1r2NMIuy8d9cDkz2QCZ
+0rVZeKRgYAlmHQuzwLzzOmUdyeD3voBfZYqimki7bp74FhnBvmTqIm1y9n7X
+TdaOPb0Ih6dS2XdIN85MOFyPVXTApOrk1Ltk/O1HlfCAIKwK+viXTkL9qtQI
+UxpN8/CysljYgzvJi3RYnivLg6E6ZUwvObqvc22SHA/RNj4jrdaj3XC5cGUa
+/g9Rl3xT
   "]]
 }, Open  ]],
 
@@ -1885,9 +1933,9 @@ Cell[BoxData[
        RowBox[{
         RowBox[{"capacityQ", "[", 
          RowBox[{"X", ",", "#"}], "]"}], ",", 
-        RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+        RowBox[{"IVPMQ", "[", 
          RowBox[{"X", ",", 
-          RowBox[{"capacity2IntervalValuedProbabilityMeasure", "[", 
+          RowBox[{"capacity2IVPM", "[", 
            RowBox[{"X", ",", "#"}], "]"}]}], "]"}], ",", 
         RowBox[{"DempsterShaferBeliefQ", "[", 
          RowBox[{"X", ",", 
@@ -1910,7 +1958,8 @@ Cell[BoxData[
    3.677677363481001*^9}, {3.677677675271437*^9, 3.677677696531467*^9}, 
    3.6776817136653137`*^9, {3.677682011009881*^9, 3.677682012102398*^9}, {
    3.678614132972171*^9, 3.678614155213443*^9}, {3.678614193577637*^9, 
-   3.678614217386999*^9}, {3.678615365740681*^9, 3.6786153975354996`*^9}}],
+   3.678614217386999*^9}, {3.678615365740681*^9, 3.6786153975354996`*^9}, {
+   3.6814840463413625`*^9, 3.6814840463438625`*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -1920,26 +1969,26 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"True", ",", "False", ",", "False"}], "}"}]}], "}"}]], "Output",
  CellChangeTimes->CompressedData["
-1:eJwdz3lMEwYYBXCmFmq9FlSCQkpJ5oVRkSHWgMUSisCCFdIQFSmKtsVaARUL
-TpkQAQ9YAWFII0cRBiIqOLETBRQ8OCRpNWKqkSNYWrHoqJFtlor73v748vvj
-5SXv84xPipJ85+DgUEh3eUMkL19q4a/catr5v3v2i+HNtJcTsH0k5RtMeNvs
-WEBOp5jZ8KRyxToo3M5lFJLJLk7O5eRUYIwrzFkjWQtNfxxmVpJlz564Q5Vm
-0SrIPi9cD8URTJWGvGMdfgV9Iqfs0LGtJuYyOajfVwLt257dhlnJ777BLmmv
-UzW527UvE/5ddjoXGprqLkE/9/CrkOdRvyRDZuFzvq+wZ5HvuZ3aK2T6YIB7
-A+mmrJt7jdRaWYtht8TmCV+blkfA1qTR/DbSu28ktJ2c3BWZDbujfu+Ha3XR
-Q1Bz4boJcgXnJ+EooziEkUD9TPNiR3Jp+p8CNjlr8pEIjrxtVHqQ0vogJof8
-hTN5DCbqr4RKSU37YVcZWa4/vRq+D3ij+5e8Hc72tpEv13lXfSVVXs7GHjn9
-e3LABms3ebB6yYT4o15wbLgtGlqEqQcgc+dADjScWqiG1womdLCr0Hn+U/JY
-h4UN5+8S+MBowd4Q6GfSFUMGa0gNI9lvqmHJFLcZzhTX66G8w7ioj1T5ykUw
-ePxotp5scJG3wNrj517AHJ6O9Zw09s9uNJKKwVbbgoO05/65bn8yq8dRtJlU
-hP/QyCPLhKvmbCEnuLKLMCx9R2AQGbV061746ciXGsirVd2MIp38likVZJB2
-2pxIZnQu/wxZJsO8VNItUZ78M/m8a+yWWWHh33g4PW4ltQ35QpdDFr5HT0mu
-J5nKqj6xiZyR8WHcn8wxZArDyKx592ohP+XjKzi3qKVoG1kUG9chJmWCsC9w
-9TtrbByp3P5ABnlD/k0lZHe/tvMiqciVhZaSFQyeCP72z4lT0NlX7FZOFp+t
-+gh/yqt3qiArK/dXVJKlAyF10OggeAgb82Jewwt5djP0vNQzAVXqH23wOKe3
-tIp0mfXkL6gI3hN4lRyMC5Y2I/ctMt0jH0si0lvJF8zhAlh2XeLVRg7PGN0I
-V9aUtkCfwNj4dtL+1VAIb/X7qmFa068DMHVLmhFyys1j0LoiW3Sf1IR+OgAD
-7p5JgUlP1UGd5H8OuWU6
+1:eJwdz2tMEwYUBWB0FrpOnUEhTEgpyeYDM2WIrA5WLKEILFghDVEZRRltsXaA
+EwtOmRCBTWEFBJFGHkUYiOhAxTpmwYEPHpK0GjHVWGBYWrHMUTO2USrunv24
++X6cnORcv5SMeMkiFxeXM3Tnt8TxSqU2/rrtlt3/uzdVDK/kPJ6BPRNZb2Ha
+807XMnIhy8qGx5RrN0HhTi6jnMz0dHOvJefDEr1g0ceSjdBy9SCznqx5cM8H
+qjSr1kP2KeEnUBzLVGnIX+zjT2Bg3LwTunY3JZ4nRw1fVUHnjgfXYUHmi7ew
+Xzrk1kh+6TWcD/+uOVEMjR0t52CwT8xFyPNt/SBPZuNzVtQ5C8iX3D7tBTJ3
+NNSnjfRWtiy9RGrtLA84IHH4waeWNbFQlzFZ2k0GDE9E9ZCze+IK4UD8TyNw
+oz5hDGpOX7ZAruDULJxkVEYy0qifb/VwJVfn3hCwySWzd0Rw4nm70peUtoYz
+OeR3nNnDMN1wIUpKanoOesnIWsOJDfBl6DP9v+T1GHaAg3y8KaDhDanydzcP
+yunfYyYHbN7qyxoi01IO+cOp8e4EaBNm74fM3aYiaDy+Ug0vlc3oYX+5+/L7
+5OFeGxsu3yMIhAmCfZEw2KKvhAzWmBrGsZ81wqp5bid8R9xqgPJe86phUhUk
+F8GI6UOFBrLNU94Fm4+cfASLeHrWQ9I88m67mVSM6hzvH6A9t04OhJAFg66i
+z0lFzIftPLJGuP69beQMV3YWRufuCgsn41dv3wdffzPXBHnNqivxpFvwR0oF
+Ga5dsKaTeX1r/oIsi3FZNumdLs/8lnzYP3XNqrDxf769MG0ntW2lQs+vbXzf
+wapiPzKb1Xh0K7k474/pELLImC+MJguW3WyG/KxXT+DSiq6KHWRFUnKvmJQJ
+oufghhf2pGRSufM3GeSNhXRUkQMj2r6zpKJYFlVN1jF4Injmn6PHoXuQ2LuW
+rPyh4RX8oqTVrY6sr0+tqyerTZEt0OwiuA3bSxKfwtMlTiv0Ozc4A1XqzQ54
+hDNU3UB6Lrn3J1RE7A27SI4mR0g7kQdVWG6SdyWxuTryEXO8DNZclvh3k+OL
+Jz+F65qqu2BgWFJKD+l8YyyH10aC1DCn40cTzN6WY4acWusUtK8tFN0iNVGv
+98PQX7/Pghn31eF9ZOoK3byJ9PhM2zJGar1lOljuNfc7/A/sFndq
   "]]
 }, Open  ]],
 
@@ -1977,9 +2026,9 @@ Cell[BoxData[
        RowBox[{
         RowBox[{"capacityQ", "[", 
          RowBox[{"X", ",", "#"}], "]"}], ",", 
-        RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+        RowBox[{"IVPMQ", "[", 
          RowBox[{"X", ",", 
-          RowBox[{"capacity2IntervalValuedProbabilityMeasure", "[", 
+          RowBox[{"capacity2IVPM", "[", 
            RowBox[{"X", ",", "#"}], "]"}]}], "]"}], ",", 
         RowBox[{"DempsterShaferBeliefQ", "[", 
          RowBox[{"X", ",", 
@@ -2000,7 +2049,8 @@ Cell[BoxData[
    3.6776494230407343`*^9, 3.6776494298908396`*^9}, {3.6776496025309916`*^9, 
    3.6776496084485826`*^9}, 3.67764966039438*^9, 3.677651178103013*^9, 
    3.677651298433182*^9, {3.677677680151444*^9, 3.6776777000514717`*^9}, 
-   3.677681717495373*^9, 3.6776820259826107`*^9, 3.6786154120863323`*^9}],
+   3.677681717495373*^9, 3.6776820259826107`*^9, 3.6786154120863323`*^9, {
+   3.6814840463438625`*^9, 3.6814840463463626`*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -2058,7 +2108,8 @@ Cell[BoxData[
    3.681415954931465*^9, 3.681416334801004*^9, 3.6814163936710863`*^9, 
    3.681416940447792*^9, 3.681416995777869*^9, 3.6814170392579303`*^9, 
    3.6814178921811256`*^9, 3.681418063591366*^9, 3.681418148261484*^9, 
-   3.6814238928235836`*^9}]
+   3.6814238928235836`*^9, 3.681480669894501*^9, 3.68148409371209*^9, 
+   3.6814842593296337`*^9, 3.6814845598042493`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2078,7 +2129,7 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"Bel", "[", "S", "]"}], ":=", "1"}], ";", "\[IndentingNewLine]", 
     RowBox[{"i0", "=", 
-     RowBox[{"game2IntervalValuedProbabilityMeasure", "[", 
+     RowBox[{"game2IVPM", "[", 
       RowBox[{"S", ",", "Bel"}], "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"{", 
      RowBox[{
@@ -2086,7 +2137,7 @@ Cell[BoxData[
        RowBox[{"S", ",", 
         RowBox[{"complement", "[", 
          RowBox[{"S", ",", "Bel"}], "]"}]}], "]"}], ",", 
-      RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+      RowBox[{"IVPMQ", "[", 
        RowBox[{"S", ",", "i0"}], "]"}], ",", 
       RowBox[{"DempsterShaferBeliefQ", "[", 
        RowBox[{"S", ",", "Bel", ",", 
@@ -2111,7 +2162,8 @@ Cell[BoxData[
    3.6782700854783835`*^9, 3.678270123891474*^9}, {3.678271191597782*^9, 
    3.678271209008778*^9}, {3.678271389671111*^9, 3.6782713914102106`*^9}, {
    3.6786154262301407`*^9, 3.678615502456501*^9}, {3.6789199662606835`*^9, 
-   3.678920057436898*^9}, {3.681220041004159*^9, 3.6812200493567877`*^9}}],
+   3.678920057436898*^9}, {3.681220041004159*^9, 3.6812200493567877`*^9}, {
+   3.6814840463488626`*^9, 3.6814840463513627`*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -2169,7 +2221,8 @@ Cell[BoxData[
    3.681415954948965*^9, 3.681416334861004*^9, 3.6814163936910863`*^9, 
    3.681416940467792*^9, 3.6814169957878695`*^9, 3.68141703926793*^9, 
    3.681417892191126*^9, 3.6814180636113653`*^9, 3.6814181482814837`*^9, 
-   3.681423892843584*^9}]
+   3.681423892843584*^9, 3.6814806699195013`*^9, 3.681484093824592*^9, 
+   3.6814842593546343`*^9, 3.68148455982675*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2199,11 +2252,10 @@ Cell[BoxData[
          RowBox[{"0", ",", "1"}], "}"}]}], "]"}], "]"}]}], ";", 
     "\[IndentingNewLine]", 
     RowBox[{"v", "=", 
-     RowBox[{"intervalValuedProbabilityMeasure2Game", "[", "i0", "]"}]}], ";",
-     "\[IndentingNewLine]", 
+     RowBox[{"IVPM2Game", "[", "i0", "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"{", 
      RowBox[{
-      RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+      RowBox[{"IVPMQ", "[", 
        RowBox[{"S", ",", "i0"}], "]"}], ",", 
       RowBox[{"DempsterShaferBeliefQ", "[", 
        RowBox[{"S", ",", "v", ",", 
@@ -2235,7 +2287,8 @@ Cell[BoxData[
    3.67897060909367*^9, 3.678970632213702*^9}, {3.678971890029737*^9, 
    3.6789720183967085`*^9}, {3.6789720532997446`*^9, 
    3.6789721137746778`*^9}, {3.6789721560553274`*^9, 3.6789721896758437`*^9}, 
-   3.6812200216913624`*^9, 3.681220052596837*^9}],
+   3.6812200216913624`*^9, 3.681220052596837*^9, {3.6814840463513627`*^9, 
+   3.681484046353863*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -2277,7 +2330,8 @@ Cell[BoxData[
    3.6814159549639654`*^9, 3.6814163348810043`*^9, 3.6814163937110863`*^9, 
    3.681416940477792*^9, 3.6814169958478694`*^9, 3.6814170392879305`*^9, 
    3.6814178922111254`*^9, 3.6814180636213655`*^9, 3.681418148291484*^9, 
-   3.681423892861084*^9}]
+   3.681423892861084*^9, 3.6814806699370017`*^9, 3.681484093844592*^9, 
+   3.6814842593696346`*^9, 3.68148455984925*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2310,11 +2364,10 @@ Cell[BoxData[
          RowBox[{"0", ",", "1"}], "}"}]}], "]"}], "]"}]}], ";", 
     "\[IndentingNewLine]", 
     RowBox[{"v", "=", 
-     RowBox[{"intervalValuedProbabilityMeasure2Game", "[", "i1", "]"}]}], ";",
-     "\[IndentingNewLine]", 
+     RowBox[{"IVPM2Game", "[", "i1", "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"{", 
      RowBox[{
-      RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+      RowBox[{"IVPMQ", "[", 
        RowBox[{"\[CapitalOmega]", ",", "i1"}], "]"}], ",", 
       RowBox[{"convexQ", "[", 
        RowBox[{"\[CapitalOmega]", ",", "v"}], "]"}], ",", 
@@ -2341,7 +2394,7 @@ Cell[BoxData[
    3.6789189107023087`*^9}, {3.6789328748745193`*^9, 
    3.6789328783045244`*^9}, {3.6789722026310425`*^9, 3.678972233146511*^9}, {
    3.6812193705588613`*^9, 3.6812193772889647`*^9}, {3.681219544109027*^9, 
-   3.68121954494654*^9}}],
+   3.68121954494654*^9}, {3.681484046356363*^9, 3.681484046356363*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -2413,7 +2466,8 @@ Cell[BoxData[
    3.6814146048950405`*^9, 3.6814159549964657`*^9, 3.681416334911004*^9, 
    3.6814163937410865`*^9, 3.681416940507792*^9, 3.6814169958678694`*^9, 
    3.68141703935793*^9, 3.681417892231126*^9, 3.6814180636513653`*^9, 
-   3.6814181483714843`*^9, 3.681423892888584*^9}]
+   3.6814181483714843`*^9, 3.681423892888584*^9, 3.681480669967002*^9, 
+   3.681484093877093*^9, 3.681484259397135*^9, 3.681484559890751*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2463,11 +2517,10 @@ Cell[BoxData[
          RowBox[{"\[Mu]", "/@", "A"}], "]"}]}], "}"}], "]"}]}], ";", 
     "\[IndentingNewLine]", 
     RowBox[{"v", "=", 
-     RowBox[{"intervalValuedProbabilityMeasure2Game", "[", "i1", "]"}]}], ";",
-     "\[IndentingNewLine]", 
+     RowBox[{"IVPM2Game", "[", "i1", "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"{", 
      RowBox[{
-      RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+      RowBox[{"IVPMQ", "[", 
        RowBox[{"\[CapitalOmega]", ",", "i1"}], "]"}], ",", 
       RowBox[{"convexQ", "[", 
        RowBox[{"\[CapitalOmega]", ",", "v"}], "]"}], ",", 
@@ -2485,7 +2538,8 @@ Cell[BoxData[
    3.6776779135117707`*^9, 3.677681677229754*^9, 3.677682034445241*^9, {
    3.6776832388042474`*^9, 3.677683242181799*^9}, {3.6784711817166615`*^9, 
    3.6784711847617083`*^9}, {3.6789722627244654`*^9, 3.678972282887275*^9}, 
-   3.6812199256073866`*^9, 3.6812200039085894`*^9}],
+   3.6812199256073866`*^9, 3.6812200039085894`*^9, {3.681484046368863*^9, 
+   3.681484046368863*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -2551,7 +2605,8 @@ Cell[BoxData[
    3.681414604945041*^9, 3.6814159550414667`*^9, 3.681416334951004*^9, 
    3.6814163937810864`*^9, 3.6814169405577917`*^9, 3.6814169959178696`*^9, 
    3.68141703939793*^9, 3.6814178922811255`*^9, 3.6814180637013655`*^9, 
-   3.6814181484114842`*^9, 3.681423892936085*^9}]
+   3.6814181484114842`*^9, 3.681423892936085*^9, 3.681480670017003*^9, 
+   3.681484093919593*^9, 3.6814842594396353`*^9, 3.681484559938752*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2745,11 +2800,10 @@ Cell[BoxData[
      RowBox[{"\[Mu]", "[", 
       RowBox[{"Sort", "[", "A", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"v", "=", 
-     RowBox[{"intervalValuedProbabilityMeasure2Game", "[", "\[Mu]", "]"}]}], 
-    ";", "\[IndentingNewLine]", 
+     RowBox[{"IVPM2Game", "[", "\[Mu]", "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"{", 
      RowBox[{
-      RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+      RowBox[{"IVPMQ", "[", 
        RowBox[{"\[CapitalOmega]", ",", "\[Mu]"}], "]"}], ",", 
       RowBox[{"convexQ", "[", 
        RowBox[{"\[CapitalOmega]", ",", "v"}], "]"}], ",", 
@@ -2781,7 +2835,8 @@ Cell[BoxData[
    3.677683262239607*^9, 3.6776832651171513`*^9}, {3.6784711903442936`*^9, 
    3.678471206712045*^9}, {3.6789727337292*^9, 3.678972785012488*^9}, 
    3.6789728449084077`*^9, {3.678972885566532*^9, 3.6789729703728347`*^9}, {
-   3.6789730060783834`*^9, 3.6789730398264017`*^9}, 3.678973099489818*^9}],
+   3.6789730060783834`*^9, 3.6789730398264017`*^9}, 3.678973099489818*^9, {
+   3.681484046381363*^9, 3.6814840463838634`*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -2853,7 +2908,9 @@ Cell[BoxData[
    3.6814135673241034`*^9, 3.681414604982542*^9, 3.6814159550864673`*^9, 
    3.681416334991004*^9, 3.6814163938310866`*^9, 3.681416940587792*^9, 
    3.6814169959578695`*^9, 3.68141703943793*^9, 3.6814178923211255`*^9, 
-   3.6814180637413654`*^9, 3.6814181484514847`*^9, 3.6814238929760857`*^9}]
+   3.6814180637413654`*^9, 3.6814181484514847`*^9, 3.6814238929760857`*^9, 
+   3.6814806700620036`*^9, 3.681484093959594*^9, 3.6814842594821367`*^9, 
+   3.681484559978753*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3059,11 +3116,10 @@ Cell[BoxData[
      RowBox[{"\[Mu]", "[", 
       RowBox[{"Sort", "[", "A", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"v", "=", 
-     RowBox[{"intervalValuedProbabilityMeasure2Game", "[", "\[Mu]", "]"}]}], 
-    ";", "\[IndentingNewLine]", 
+     RowBox[{"IVPM2Game", "[", "\[Mu]", "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"{", 
      RowBox[{
-      RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+      RowBox[{"IVPMQ", "[", 
        RowBox[{"\[CapitalOmega]", ",", "\[Mu]"}], "]"}], ",", 
       RowBox[{"convexQ", "[", 
        RowBox[{"\[CapitalOmega]", ",", "v"}], "]"}], ",", 
@@ -3080,7 +3136,7 @@ Cell[BoxData[
    3.6776510327728086`*^9, 3.677677918811778*^9, 3.6776816829298415`*^9, 
    3.677682039062812*^9, {3.6776832683822017`*^9, 3.677683271077243*^9}, {
    3.67847121808722*^9, 3.6784712208072615`*^9}, {3.6789730677418303`*^9, 
-   3.6789731145275493`*^9}}],
+   3.6789731145275493`*^9}, {3.6814840463963633`*^9, 3.6814840463988633`*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -3145,7 +3201,8 @@ Cell[BoxData[
    3.6814146050225425`*^9, 3.681415955128968*^9, 3.681416335041004*^9, 
    3.6814163938710866`*^9, 3.681416940637792*^9, 3.6814169959978695`*^9, 
    3.68141703947793*^9, 3.681417892361126*^9, 3.6814180637813654`*^9, 
-   3.6814181484914846`*^9, 3.6814238930210867`*^9}]
+   3.6814181484914846`*^9, 3.6814238930210867`*^9, 3.6814806701095047`*^9, 
+   3.6814840939995947`*^9, 3.6814842595221367`*^9, 3.6814845600212536`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3198,11 +3255,10 @@ Cell[BoxData[
      RowBox[{"\[Mu]", "[", 
       RowBox[{"Sort", "[", "A", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"v", "=", 
-     RowBox[{"intervalValuedProbabilityMeasure2Game", "[", "\[Mu]", "]"}]}], 
-    ";", "\[IndentingNewLine]", 
+     RowBox[{"IVPM2Game", "[", "\[Mu]", "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"{", 
      RowBox[{
-      RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+      RowBox[{"IVPMQ", "[", 
        RowBox[{"\[CapitalOmega]", ",", "\[Mu]"}], "]"}], ",", 
       RowBox[{"convexQ", "[", 
        RowBox[{"\[CapitalOmega]", ",", "v"}], "]"}], ",", 
@@ -3225,7 +3281,8 @@ Cell[BoxData[
    3.677629573587274*^9, 3.6776510354628124`*^9, 3.6776779219017825`*^9, 
    3.677681684907372*^9, 3.677682040832839*^9, {3.6776832735072803`*^9, 
    3.67768327672733*^9}, {3.6784712268598547`*^9, 3.678471229217391*^9}, {
-   3.6789731508981075`*^9, 3.6789731892936974`*^9}}],
+   3.6789731508981075`*^9, 3.6789731892936974`*^9}, {3.6814840464088635`*^9, 
+   3.6814840464113636`*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -3285,7 +3342,9 @@ Cell[BoxData[
    3.6814135673841047`*^9, 3.681414605037543*^9, 3.681415955146468*^9, 
    3.6814163350610046`*^9, 3.6814163938910866`*^9, 3.681416940657792*^9, 
    3.68141699601787*^9, 3.6814170394979305`*^9, 3.6814178923811255`*^9, 
-   3.681418063801366*^9, 3.681418148511484*^9, 3.681423893036087*^9}]
+   3.681418063801366*^9, 3.681418148511484*^9, 3.681423893036087*^9, 
+   3.6814806701320047`*^9, 3.681484094014595*^9, 3.681484259537137*^9, 
+   3.681484560216256*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3364,7 +3423,7 @@ Cell[BoxData[
       RowBox[{"range", "[", 
        RowBox[{"20", ",", "25"}], "]"}], "]"}], "]"}], ";", 
     "\[IndentingNewLine]", 
-    RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+    RowBox[{"IVPMQ", "[", 
      RowBox[{"\[CapitalOmega]", ",", "Resp"}], "]"}]}]}], "]"}]], "Input",
  CellChangeTimes->{{3.671081016725993*^9, 3.6710810193251414`*^9}, {
    3.6710810801516204`*^9, 3.6710811930710793`*^9}, 3.67108122595996*^9, {
@@ -3396,7 +3455,7 @@ Cell[BoxData[
    3.677690543144745*^9, 3.6776905671843867`*^9}, {3.6776909191196175`*^9, 
    3.6776909418332567`*^9}, 3.6776909893665404`*^9, {3.678471235464987*^9, 
    3.678471241965087*^9}, {3.678471277210628*^9, 3.6784712813006907`*^9}, {
-   3.6789732209391837`*^9, 3.67897332488828*^9}}],
+   3.6789732209391837`*^9, 3.67897332488828*^9}, 3.681484046421364*^9}],
 
 Cell[BoxData[
  RowBox[{"Interval", "[", 
@@ -3460,7 +3519,8 @@ Cell[BoxData[
    3.681415955168968*^9, 3.681416335081004*^9, 3.681416393911087*^9, 
    3.6814169406777925`*^9, 3.6814169960378695`*^9, 3.6814170395179305`*^9, 
    3.681417892401126*^9, 3.681418063821366*^9, 3.6814181485314846`*^9, 
-   3.6814238930560875`*^9}],
+   3.6814238930560875`*^9, 3.6814806701545053`*^9, 3.6814840940345955`*^9, 
+   3.6814842595571375`*^9, 3.681484560238757*^9}],
 
 Cell[BoxData["True"], "Output",
  CellChangeTimes->{
@@ -3505,7 +3565,8 @@ Cell[BoxData["True"], "Output",
    3.6814159579140105`*^9, 3.6814163377610083`*^9, 3.6814163966110907`*^9, 
    3.681416943377796*^9, 3.6814169987178736`*^9, 3.6814170421879344`*^9, 
    3.6814178950511293`*^9, 3.6814180665313697`*^9, 3.681418151231488*^9, 
-   3.68142389584613*^9}]
+   3.68142389584613*^9, 3.681480672932048*^9, 3.6814840968421383`*^9, 
+   3.6814842623646803`*^9, 3.6814845630613003`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3570,7 +3631,7 @@ Cell[BoxData[
       RowBox[{"{", 
        RowBox[{"22", ",", "23", ",", "24"}], "}"}], "]"}], "]"}], ";", 
     "\[IndentingNewLine]", 
-    RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+    RowBox[{"IVPMQ", "[", 
      RowBox[{"\[CapitalOmega]", ",", "Resp"}], "]"}]}]}], "]"}]], "Input",
  CellChangeTimes->{{3.671081016725993*^9, 3.6710810193251414`*^9}, {
    3.6710810801516204`*^9, 3.6710811930710793`*^9}, 3.67108122595996*^9, {
@@ -3595,7 +3656,7 @@ Cell[BoxData[
    3.6776779268317895`*^9, 3.677681689792447*^9, 3.6776820444353943`*^9, {
    3.6776832849724565`*^9, 3.6776832881150045`*^9}, {3.6776898981230106`*^9, 
    3.677689901726617*^9}, 3.6776909463728647`*^9, {3.6776909921745453`*^9, 
-   3.6776909935161476`*^9}}],
+   3.6776909935161476`*^9}, 3.681484046423864*^9}],
 
 Cell[CellGroupData[{
 
@@ -3606,27 +3667,27 @@ Cell[BoxData[
     FractionBox["1", "3"], ",", 
     FractionBox["2", "3"]}], "}"}], "]"}]], "Print",
  CellChangeTimes->CompressedData["
-1:eJwV0m9MEwYQBXBcBOqgImSAY5MJSxTQAGEsFKloGwRKEBhpdRFFQaEVFSqa
-gqyrG6BliiKNtjBGKygDgVFmasyAMqGNDHBdJbFhHRsyOiAtatkfYDB19z5c
-fp8ueXl3QblFmXlrXFxcbtAcdB4v+fyAg5Nqui+DgfpYTTVp0ufpr5I/6FLN
-cM9icI0y28HpYxvEFfkOTglr4luYtnVEcYF0qVu/oYYMuTLmhPukha+h1qh1
-u0Y+fTEdCA8tvB8BE85Fu9aSm+WVPo3kmOf4RuhU/8PQkL8P8TbB9A5VKHw4
-F197k7Q/DJuEuSHqNU1klH/5kWbyoPJPJWxjefdCb8lFz1tk6Tn/cujj/t1l
-OB4h1MC8iatdsOz8BwGfCSm/T+DLSlK6P+F+Gxls0b/bQUqWeMxO8rnxji80
-cEuDocS9bS9MCzx6TU+GTR3h9ZOKp6YLMIsbboHVDNskjA+PmYVS6VuLkC32
-TXIVOTiRp0V+buSDs6zEQLLUtkcAVwPCS94jM7cbGZvJgJ/KJDBhNYSXT679
-yuNtIWne6L4dtntlmZdJS0VD5ArpHNY2vSSvM+/ODBfQPbcd/g+++q3RY4T8
-8K+pbVAqjPgYNmc9L4BdV9KqYOKK+ku4VSF6DK2tbV6j5M/zgiC443Z/NHRL
-YibDowmPlfCYcbYBagwZLVC245t7kG/1HYOixQ6/R+QQf1YABfsnL5rJGzJ7
-D1xO8rRAg/yA5xgZEPWF1kau3Itf9Trh4KwrZQzHkTu9q/g7yS2KFm08aVJ1
-euwmZyQOFRznT+zikpW5IzkwuLesBaZ87Xc3k8y1tkpOkpc7K+YKyZzMjr+h
-OOfQ+hLS54FdXEbaLp3QzZ50cJ6crnm2QPaomBl+p6j/SN/qIPLVm6HSWPK2
-a9GzODJ5em0Gj5yv4rTCfTHFVngshnU9jVwenxrIJrvjTP/CTVuKsw+Thc27
-RVDRMNCtJGPn2QYV9ovNyXVk35k7fChbZzsPJfLBdxrJfC7jBTTGeDHUyFP0
-SK0hh9K7W6Fc3mmA5YmDVqgOOj4H2ZeiFmCWuXEFvqEV1jeRzHqRE/qn/7ir
-/RT+sj1fB7VLM71kqkP3aR8ZHZVcC2WDo2F68iNrCgt2hbr0QPvSQG4/ueEJ
-WwGdjLp6OFzr/BXqzvxig2JZih2aR//gf09OfCIogOxpx1loGX3NHST/Bzxj
-b70=
+1:eJwV0n0wGwYYBnDdFelQ5eZjtqZldy3aw5mdqFSbnPo6w1zS7qpVoiTVFtVe
+qGXphpaVVuW6hJkYq1EysV5cr4iVuBq6LHVrzjKdqgyXaBv7wOjH3ueP935/
+vXfPPe/rK8hPzd5gZ2dXT3PEdqLo88NWTqL+thQytRFN1aRem629Sv6kSTTA
+A8t+NfJ0K6efrSsoy7FyilhTP8CknWOyi6Rd3eYtNaT/lQkbPCjJew3Vw2qH
+a+Tj57NMeHTpvWAYfT7MvpbcXlHu3khOOE96Q5vyX0YT+WQkfitM7lQEwHsL
+UbXfkJZ7gdNQ4K/c0EyGepVmtJBH5H/JYTvLrQ+6iS85f0sWn/cqhe6Od6rg
+ZLCwCWZPXe2CJRfe9/lMSPndmS/LScmh6NvtpJ9R+24nKV6Jd1GRz4ZvekAd
+t9gPih3bP4RJzKxrWjJwJiN+gJQ91l+EadwgI6xmmKdhVFD4PJRI3lqG7AKP
+WHuRlRNyRuTpQN49x4phksXmA3y47hNUtI1M3T3M2E76/FIihtHr/vE55Mav
+nd4WkgZvx92wwzXNsEoayxpC1kjbqLr5JXnd5dbcaC7dc9exF/DVH41OY+QH
+f8/sghJh8MewJe1ZLuy6klQJY9aUX8GdMtEDaGprdx0nf1vk+8I9NwbCoEOs
+SxzMin4gh8eH5xtgky6lFUr3fN8DeSaPCSha7vS8T47w5vmQf2j6koH8Umrp
+hauxzkaoqzjsPEH6hH6hNpNrPVHrrietnE3FjNFIcq9bJW8vuUPWqo4i9QqV
+035yTmxVwEne1D4uWS4Yy4R+fSWtMOE7z1uppMDUJj5FVqnKFvLIzNTOf2BB
+5tHNRaT7XUtBCWm+fFIzf8rKeXim5ukS2atwSfE8Tf2HeFT7kq/eDJBEkDfs
+859GknGzG1PiycVKThs8GF5ogsfDWdeTyNXJmcF0sjtS/x/cuqMw/RiZ17Jf
+BGUNg91yMmKRrVNgv9AQV0f2n73Jg9JN5gtQXDH0TiOZw2U8h8Phrgwl8uTf
+VzaRI8ndbbCiQqWDpTFDJqj0PbEA2ZdDl2CaoXENvqEW1jeTLvUiG/RK/nlf
+x2n8ZUeOBqpX5vrIRKvm034yLDSuFkqHxgO15EemBBbsCrDrhZaVQcEAueUh
+WwZtjLp6OFprewQ1Z383wwJpggUaxv/k/UhOfcLPhexZ6zloHH/NHSJVVX4v
+HpHev25rnybv9Bj6YUZA1hP4P3xRgm8=
   "]],
 
 Cell[BoxData[
@@ -3636,53 +3697,53 @@ Cell[BoxData[
     FractionBox["1", "3"], ",", 
     FractionBox["2", "3"]}], "}"}], "]"}]], "Print",
  CellChangeTimes->CompressedData["
-1:eJwV0n9QEwQUB3DsBGYwES7AKJfQnQJ6wBEdQya6HQLjCIjbtBNFmQITFSZ6
-A2nNAnSkKLLTDSK2IAkEYuTN8wJGwnYSP1qTOzlaFBILuA11lAFBau/7x7vP
-X+/ue9/3AkWFGTnrXFxcbtIccp4o/uygg5tivieHLEOMtoo0G3IM18gf9SkW
-uG8pqFqV5eD2coyS8lwHt5g9+R1M3T6svEi61G7cVE0GXx1zwv2ygldQZ9K5
-XScfP5thwcOL74bD+PNRrjXkVkWFTwM55jmxGTo1/zC05B+D/C0wrV0dAh/M
-x9V8RdofhE5BUbBmXSMZ6V92tIk8pPpLBVvZ3j3QW3rJ82uy5Lx/GfRx//4K
-nAjP08KcyWudsPTCewGf5lF+H9aLClJ2IP5eKxk0bni7nZQu85kd5FPTbV9o
-5JUEQal76wcwlXXsuoEMnT7K7yOVj80XYSYvbBxWMWxTMC4seg7KZG8sQY7E
-N9FV7OBGnBH7uZH3z7ETWGSJbZ8QrgWEFb9DZuw0MbaSAT+XSmH8WjA/l1z/
-pcebeaRls/tO2OaVaVkhx8vrI1ZJ55Cu8QV5g3lndiif7rnjyH/w5e8NHsPk
-+39P74CyvPCPYFPm03zYeTW1Eiasar6A25Xih9Da0uo1Qv6yIAyEu271RUG3
-RGYSPBb/UAWPm+bqodaY3gzlu769CwVW3zEoXmr3GyUHBXNCKDwwdclC3pTb
-u+FKouc4NCoOeo6RAZGf62zk6t24Na+TDu6GEsZQLLnbu1Kwm9ymbNbFkWZ1
-h8declbqUMMJweQeHlkhGs6GQT2lzTD5G787GaTI2iI9RV7pKJ8vILMz2p9D
-SfbhjcWkz327pJS0XT6pnzvl4D46U/1kkexWM9P9TlP/Eb5VgeTL10NkMeQt
-18InsWTSzPp0PrlQyW2B+6OLrPB4NPtGKrkyMd2fRXbFmv+FW7YVZR0hC5r2
-iqGyvr9LRcYscIxq7BdZkmrJ3rO3BVC+wXYBShUDbzWQuTzGM2iK9mJokKdw
-VKMlB9O6WqBC0WGEZQkDVqgJPDEPOZcjF2GmpWEVvqbLq2skmXViJ/RP+2lP
-22n8ZVuuHuqWZ3vIFIf+k14yKjKpBsoHRkIN5IfWZDbsDHHphvblflEfuekR
-RwmdjNo6OFTj/A3qz/5qgxJ5sh1aRv4U/EBOfizMh5wZxzk4+vwVb4D8Hz0y
-b9w=
+1:eJwV0n0wGwYYBnDdFelQ5eZjtmrZXYv2cGaHCm2cIs5QF+2uWq0oSbUl1V6o
+ZemGlpVW5dqEmSirScnEenG9IlaSq6HLUrfmLNWpynCibewDox97nz/e+/31
+3j33vK8PtyAtZ52NjU09zSHr8aKvDlpYSfo7YuitiWiqJvWaHM0V8md1kgHu
+XfKtkWZaWH1MraAs18IqCp/4ESZvH5FcIG3qNm6qIf0uj1nhflH+W6jSqeyu
+kk9fTnvDw4sfBcHYc6G2teTWinLXRnLMcdwTWuX/MprIZ0PszTClQ+YP789F
+194g5+8HTEKun3xdMxniUXq0hTwk/UsKFeEuvdBFeNHxO7L4nEcpdLW/WwXH
+g3hNMGfiSicsOf+x15c8yu/q/bqcFB2IvaMgfY2aDztI4TLbSUm+0N1yg9qY
+Yl8otFd8CpO9s69qyICpo+x+UvJUfwFmxAQaYTXDPAmjA8NmoUj03hJkCtzi
+bfkWVvBpvrsdee9seJw3WWzemw7XvAKLtpBpO3WMraTXryVCGLvmx84l13/r
+8D6PNHja74TtzhmGFdJY1hC8SlqHVc2vyWtOt2eG8+ieO468gm/+aHQYIT/5
+e2oHFPGCPoMtGS/yYOfl5EoYtyr/Bm6X8B9CU5vCeZT8fSHdB+662R8K7eKd
+EmB27EMpPKabbYBN2tRWKN71QzfkmNzGIH+pw/0BOcSZTYfpByYvGsjr4vke
+uBLvaITaioOOY6RXyNcqM7naHb3mfMLC2lDMGI4ko1wqOVHkNkmrKprUy5QO
+e8gZoUUGxzkTu2PIcu5IFvTtLWmFid+7304juaY24UmySlk2l09mpXX8AwVZ
+hzcWka735gUlpPnSCfXsSQvr0ema54tkj8wp1f0U9R/sVu1DvnnXXxRB3rQt
+eB5JJkyvT2WTC5WsNrg/rNAEj4WFX0smV8anBjLJrkj9f3DztsLMI2R+yx4+
+lDQMdEnJiAWmVob9QkNCHdl35hYHijeYz0NhxeAHjWRuDOMl1IU5M+TIU/BA
+3kQOpXS1wYoKpRaWxg2aoNzn+BxkXgpZhBmGxlX4jopX30w61fOt0CPll93t
+p/CX7blqqFqe6SWTLOov+sjQkIRaKB4cDdCQ+0yJ4bDT36YHzi8PcPvJTY+Y
+Emhl1NXD4VrrE6g+89gMBeLEeWgY/ZPzEznxeXoeZE5bzkLj6NuYQVJZ5fvq
+Cen52xbFJHm329AHH0dlP4P/A4C1gv4=
   "]]
 }, Open  ]],
 
 Cell[BoxData["True"], "Output",
  CellChangeTimes->CompressedData["
-1:eJwV0X9Q0wUcxnGwVBARUvmRFD+MC0MK7CwWy+CrS6EEcY4iOhGUtjkmEQdi
-Sbgg0DuXMIoBExjDYMjWBgSI/Epk1kGCbOWuo0PIuDHZAaM8VIro8/zx3Ovf
-5+4dcPxj7keODg4O5bQhrSj3iyQbY0jtyodivwillGxh8fsukbNfHRqD7ecD
-S+TJNib88FBmId/GvCiZaIVi7UhZERn76Rb3EjLhwV07NJVmr8I8Wfu6UnKH
-0eILZYFBofCMNnytjBQKz2+uIX3mx71hveWxk5L82i32eZgVdvkl6DurkNWR
-V7qjJ6Fc+b2jinyzVZlST/4tda6ATaFBPbBaVL/xCtkmjCqA94qvX4TCBokS
-HuOqdXC2+/VtEoGN+eVowMqX5JlfD1xrImusN57TkOGiOFctGTrynQfMOHp2
-O7zkrImFW7fyS/tIu/lETD+ZaDYWQUXOLjMcSJuZhHsLImZgr95rCW4XeR9Y
-K7QxzYXpnutIcQl7vy/53vqYBLiasSvXj3zl0E9O/uRAZP5p2O8aEsMnneyb
-nhWQ6w9uCIFdEcljj8l4eW3YMqm1tqlWyGHBTcuQyMYstQj/hWFstcswmbcy
-uxPqBlmJcHjqkQhygxIvwCRjkwLe4GUZYbaoze1nMs2RHwBvdY3uhmKzVzQ8
-Yn0gh3mG1cvQ5JfUAFvknR2w1NXPBIM9Ojxvk0beYgJsPGItHiPL1Q+7YfUf
-HmbodVKw0USmbpHqp8nmFeYft3Qbs0fjMsQmP+Fc5O0h3/a6qn+LlEzqXaJI
-Vfl8BXy6dTJyL9lTPpIKOVH5DVC0c1sbl3R+V3NaTN7uLLZmkJsVuoewui9l
-Uy6ZpJrL/Iysu5rRPiOmzg1lc4vksso93vOUjWGf8JYGkHpuSN4b5Dgra45N
-Pgl2io8hX+jlqKFUlDMOv2XY38SRrD+nB5LJ1ELjE/gbJyf5GKm6u08I5QuG
-FjmZER01WEEuTZmiK8lOHy0P9gos52DBhMGnhpw6t2EBpjU+41RLvvpotFZJ
-Vv3YpoYf/KcbhEW3DOPQ9UK6FWrsuxdhYGbdMuRIT1apyN+ZU3Yo6bgT2Yzf
-C1p+O6lzXLb0kO2Hr33eS1ZXviODlh2jwX3kawmxLFhzdk03vO9vON5PitMi
-y2DKfkUVjLjz1wR0f+reNLzfc3AWvvyhlfcDGXf9fRHU+s9nw8bKNftukv8D
-hV90Dg==
+1:eJwV0X9Q0wUYBnCwlCEipPIjMX7FhSEGdhZzy+CrS6EEcY5CPBEUt/llLuRA
+LAknCHrnEkYxYAJjGAzZ2mANRBgoMutGgmzmrqPDIXFjbgeM8lBJpPf947nP
+3fPXc/eEHPuaecLVxcWlFmJQkgUX0hyEPrO7COUF0aRCsJ3K7rsK2r/fP4pq
+L4WVi9MdRMwBQ04J20G8JxjvQHnK4cpSMPGb9d7lYMrTR07UVJG3jBaKtKsq
+wM1GayAqCguPQs8qY1aKQC730rp6MGB2zB9tsr6gSMEfvBLfQXOjr72PBtol
+okbwek+8BRVLf3GVgZ90SDOawH+F7tVoa1R4L1pHNq25Dmq4ccXo47JbV1Bu
+s0CKHmXKVai95+ONAo6DeHgkZOkiePaPvTdbwXrbnU0KMIZM8lSCUcM/+6D8
+I+dC0avuikR0wwZ2RR/oNB9P6AdTzcZSVJK/zYwOZE1b0F3FtGlUp/ZbQENJ
+/70ruQ6irSTbdxXIK6fvCQS/dEtIQZf52wqCwA/2/0YJBgdii86g/Z6RCWyQ
+4lz7Ngd027c6Eu2mpY++AJPFDdGLoNKmkS2BQ5y7VgPpIBbaua/QaLrcYwgs
+XLJvQVWD1FR0aOI5iTLDUy+jacZWCXqHlWtE80iN1+9glis7BL3XPbId5Zn9
+4tGDtqditFC/fA01BaU1o+3irk60wjPIhEb4dPreB42s+RS05aCtbBSskj/r
+Qeue+JhRv5OcNSYwc71QPQW2LRH/eWU7iJ0KDwMdPM24wtoJfuZ3Q/0pKLCo
+PeJAWdVsNfpmhyV2F9hbNZyJMuKKmlFyy0YNE3T/QnGGB97vKrPxwXUS1TO0
+ri9jbQGYJpvJ+RZsvMHXTvPg5+bKmXlwUead7HvKQdCP+wtDQDUzsnAHOEbN
+naGDLyMoyQnguzqGHBWS+WPoTwT9xySQ+vfUQDqYWWJ8if7JyE8/Csoe7eai
+4jl9uxjkx8cNVoMLE6b4GrArQMlCdRzrebR4XB9QD06cXz2HZrW8RWkAP3w+
+0iAFa3/VyNFDr1WDaOk9/RjqeTnbhiqc2+fRsJzGRZQhPFkrA/8iTjlRQeeD
+2DbcPadka0GV66K1F9QeuPmdDqyr+VyEWjePRPSBH6UkUtH6cyt60Mlg/bF+
+kJcVW4lm7JHUorQH/4yj3m88nkIne/fZ0a2HbazbYNKtr0hUGTybh7bUrNh9
+Fww2hL0aBy/QQlst2Ls91KHaJycm0f8BPnqGlg==
   "]]
 }, Open  ]],
 
@@ -3865,16 +3926,13 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"capacityQ", "[", 
        RowBox[{"\[CapitalOmega]", ",", 
-        RowBox[{
-        "intervalValuedProbabilityMeasure2Capacity", "[", "\[Mu]", "]"}]}], 
-       "]"}], ",", 
-      RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+        RowBox[{"IVPM2Capacity", "[", "\[Mu]", "]"}]}], "]"}], ",", 
+      RowBox[{"IVPMQ", "[", 
        RowBox[{"\[CapitalOmega]", ",", "\[Mu]"}], "]"}], ",", 
       RowBox[{"convexQ", "[", 
        RowBox[{"\[CapitalOmega]", ",", 
-        RowBox[{
-        "intervalValuedProbabilityMeasure2Game", "[", "\[Mu]", "]"}]}], 
-       "]"}]}], "}"}]}]}], "]"}]], "Input",
+        RowBox[{"IVPM2Game", "[", "\[Mu]", "]"}]}], "]"}]}], "}"}]}]}], 
+  "]"}]], "Input",
  CellChangeTimes->{{3.670896572566888*^9, 3.6708966077779016`*^9}, {
    3.6709366255395145`*^9, 3.6709366262515554`*^9}, 3.67762957071727*^9, 
    3.6776510327728086`*^9, 3.677677918811778*^9, 3.6776816829298415`*^9, 
@@ -3885,7 +3943,8 @@ Cell[BoxData[
    3.6781435817482533`*^9, 3.6781436033634896`*^9}, {3.6781526571623373`*^9, 
    3.678152671796174*^9}, {3.678469397735715*^9, 3.678469401897953*^9}, {
    3.6784713048710527`*^9, 3.678471308101103*^9}, {3.678615566938189*^9, 
-   3.6786155838391557`*^9}, {3.6786156585144267`*^9, 3.6786156709891405`*^9}}],
+   3.6786155838391557`*^9}, {3.6786156585144267`*^9, 
+   3.6786156709891405`*^9}, {3.681484046426364*^9, 3.681484046431364*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -3948,7 +4007,8 @@ Cell[BoxData[
    3.68141460810509*^9, 3.6814159581590147`*^9, 3.6814163380110083`*^9, 
    3.681416396851091*^9, 3.6814169436177964`*^9, 3.6814169989678736`*^9, 
    3.681417042437935*^9, 3.68141789529113*^9, 3.68141806677137*^9, 
-   3.681418151481488*^9, 3.681423896113634*^9}]
+   3.681418151481488*^9, 3.681423896113634*^9, 3.6814806731945515`*^9, 
+   3.6814840970996423`*^9, 3.681484262627185*^9, 3.6814845632163024`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4033,15 +4093,14 @@ Cell[BoxData[
       RowBox[{"\[Mu]", "[", 
        RowBox[{"Sort", "[", "A", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
      RowBox[{"v", "=", 
-      RowBox[{"intervalValuedProbabilityMeasure2Game", "[", "\[Mu]", "]"}]}], 
-     ";", "\[IndentingNewLine]", 
+      RowBox[{"IVPM2Game", "[", "\[Mu]", "]"}]}], ";", "\[IndentingNewLine]", 
      RowBox[{"{", 
       RowBox[{
        RowBox[{"gameQ", "[", 
         RowBox[{"\[CapitalOmega]", ",", "v"}], "]"}], ",", 
        RowBox[{"convexQ", "[", 
         RowBox[{"\[CapitalOmega]", ",", "v"}], "]"}], ",", 
-       RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+       RowBox[{"IVPMQ", "[", 
         RowBox[{"\[CapitalOmega]", ",", "\[Mu]"}], "]"}], ",", 
        RowBox[{"consistentQ", "[", 
         RowBox[{"\[CapitalOmega]", ",", "\[Mu]", ",", 
@@ -4066,7 +4125,8 @@ Cell[BoxData[
    3.678230819338902*^9}, {3.6782326910239563`*^9, 3.6782327103910637`*^9}, 
    3.6782328715812836`*^9, {3.6784693856160216`*^9, 3.678469389665253*^9}, {
    3.678471322521324*^9, 3.6784713276989036`*^9}, {3.6784713606819105`*^9, 
-   3.6784713723670893`*^9}, {3.678973361868848*^9, 3.6789733918868093`*^9}}],
+   3.6784713723670893`*^9}, {3.678973361868848*^9, 3.6789733918868093`*^9}, {
+   3.6814840464413643`*^9, 3.6814840464413643`*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -4116,7 +4176,8 @@ Cell[BoxData[
    3.6814146081250896`*^9, 3.6814159581815147`*^9, 3.6814163380310087`*^9, 
    3.681416396881091*^9, 3.6814169436377964`*^9, 3.681416998977874*^9, 
    3.6814170424479346`*^9, 3.6814178953011303`*^9, 3.68141806679137*^9, 
-   3.6814181515014887`*^9, 3.6814238961336346`*^9}]
+   3.6814181515014887`*^9, 3.6814238961336346`*^9, 3.681480673214552*^9, 
+   3.6814840971196423`*^9, 3.681484262644685*^9, 3.681484563236303*^9}]
 }, Open  ]],
 
 Cell["Example 3.14 in Wang & Klir, Fuzzy Measure Theory", "Text",
@@ -4162,7 +4223,7 @@ Cell[BoxData[
      RowBox[{"possibilityDistributionFunction2Capacity", "[", "f", "]"}]}], 
     ";", "\[IndentingNewLine]", 
     RowBox[{"\[Mu]", "=", 
-     RowBox[{"capacity2IntervalValuedProbabilityMeasure", "[", 
+     RowBox[{"capacity2IVPM", "[", 
       RowBox[{"X", ",", "\[Pi]"}], "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"v", "=", 
      RowBox[{"complement", "[", 
@@ -4171,7 +4232,7 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"capacityQ", "[", 
        RowBox[{"X", ",", "\[Pi]"}], "]"}], ",", 
-      RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+      RowBox[{"IVPMQ", "[", 
        RowBox[{"X", ",", "\[Mu]"}], "]"}], ",", 
       RowBox[{"convexQ", "[", 
        RowBox[{"X", ",", "\[Pi]"}], "]"}], ",", 
@@ -4198,7 +4259,8 @@ Cell[BoxData[
    3.6784700482059193`*^9, 3.6784700968727036`*^9}, {3.678470235763647*^9, 
    3.6784703039565477`*^9}, {3.6784703484670935`*^9, 3.678470356991581*^9}, {
    3.678471386242303*^9, 3.6784714239103813`*^9}, 3.6786157380499763`*^9, {
-   3.6789734335799494`*^9, 3.6789735148561983`*^9}}],
+   3.6789734335799494`*^9, 3.6789735148561983`*^9}, {3.681484046453864*^9, 
+   3.6814840464563646`*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -4242,7 +4304,9 @@ Cell[BoxData[
    3.681413570569154*^9, 3.6814146082275915`*^9, 3.6814159582840166`*^9, 
    3.6814163381410084`*^9, 3.681416396981091*^9, 3.681416943747796*^9, 
    3.681416999087874*^9, 3.6814170425479345`*^9, 3.68141789541113*^9, 
-   3.68141806689137*^9, 3.681418151601489*^9, 3.681423896236136*^9}]
+   3.68141806689137*^9, 3.681418151601489*^9, 3.681423896236136*^9, 
+   3.6814806733245535`*^9, 3.6814840972271442`*^9, 3.6814842627471867`*^9, 
+   3.6814845633438044`*^9}]
 }, Open  ]],
 
 Cell["\<\
@@ -4275,7 +4339,7 @@ Cell[BoxData[
           "0"}], "]"}]}], "]"}]}], ",", "\[Mu]"}], "}"}], ",", 
    RowBox[{
     RowBox[{"\[Mu]", "=", 
-     RowBox[{"game2IntervalValuedProbabilityMeasure", "[", 
+     RowBox[{"game2IVPM", "[", 
       RowBox[{"N", ",", "v"}], "]"}]}], ";", 
     RowBox[{"{", 
      RowBox[{
@@ -4283,7 +4347,7 @@ Cell[BoxData[
        RowBox[{"N", ",", "v"}], "]"}], ",", 
       RowBox[{"convexQ", "[", 
        RowBox[{"N", ",", "v"}], "]"}], ",", 
-      RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+      RowBox[{"IVPMQ", "[", 
        RowBox[{"N", ",", "\[Mu]"}], "]"}], ",", 
       RowBox[{"consistentQ", "[", 
        RowBox[{"N", ",", "\[Mu]", ",", 
@@ -4295,7 +4359,7 @@ Cell[BoxData[
   "]"}]], "Input",
  CellChangeTimes->{{3.678973555256819*^9, 3.678973556731841*^9}, {
   3.678973601520029*^9, 3.6789736463182173`*^9}, {3.6789736933314395`*^9, 
-  3.6789737079391637`*^9}}],
+  3.6789737079391637`*^9}, {3.6814840464638643`*^9, 3.6814840464663644`*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -4306,19 +4370,20 @@ Cell[BoxData[
      FractionBox["1", "6"], ",", 
      FractionBox["1", "6"]}], "}"}]}], "}"}]], "Output",
  CellChangeTimes->CompressedData["
-1:eJwd0FtI0wEUBvAp1BZWo6QtkopBCakUUg+W5lySbNFljSkaeJu0TP+loigt
-p1KiRvWwEW2OMgOHsAcvY0nkXEwz0il42xKpaLjW8u/Q2R7UaXW+Hg4/vodz
-PjgiVYXiZhSHw7lBY2nweg/cZiXRju/+sTJWEki8twWntgdixskH8ZFEOFMl
-zYVFE9xyWOu+1QZVXXbT/zz6cBqmWyf5LrLUrBfBNNP2GdjmOS2F68ePGOCx
-6JQXUJnPmOG1vI9v4BfhyRnILC8LJkivMioHWi9vtExhv3DHINT0xHsg36fd
-PUPubNb1+sik/dIIv5yVqLmxY6nkvEWnPE/+au3pTSfv8wZiMsiMU2EDNFX/
-EF8gXcxsMVQKm81wM3jUqiCb2vprGXKI9zRwlzxosoVhbES9t450csOVGrKv
-qcb2k2El+pj2YIisHxDIBXdYiW/28BMRmTuSXH+WDPvrgqmk8cMeuYwczr7U
-DftWNAvwUKPk2VVy0rzkLCAV7s8bcG1NU1BIJhtlpXDxiqvvOTmqzRoxkGbN
-vNRIJnj6lZAbYhshkzMe9xJ9q/wVWCsX8jrIuMq5jldkhe5tN+xqtY1AR+f4
-AszbVxWAJcXnQjA9ZN6Edmd1+2vyT1rDKjSVuMUWMvORVW0ji2R//YPkvMeu
-tZNZu+Q6WM/OJgzhXr8iBTo5vHfwsW5M5SC34i/q4Sqvsx1+E69/hZ9Eiz7Y
-kqRYgtOuoPI9/nEivwxe1/2ugXNhbuYw+Q8dMYfd
+1:eJwd0FtI0wEUBvAp5BarRkkaScWgjFQKqQdLU5ckU7qssUQfnDcycysVRWt5
+o0QX1cNGuDnKDDaNPagbSyKnMs1oTsHrGpKVucz8O3S2B3WzOl8Phx/fwzkf
+HH5+ifhGEIvFktIYa+fn999iBMH93xbtxYxgKfpeAI5v93BHyAeR/mg4WSbM
+hLmjbBmsnLmphPl6q+5/Hn44ARPNYzwHWWRQ82GCbvsMVDpPC+HGscMaeDQ4
+7jmUZMsN8GrWhzfwc/jJSShfWQkbJeclQRnQfGmzcRz7OTt6oaIz0gl57ppd
+k2RIg6rLTcbsE/p5MkZQyA61x5Muo0pynvzV1NmVSN7n9HCTyeRTPg3Ulf9I
+ukA65FN5UBLeYIBbniNmMVmvNFXKyT7O06U75AGdxQdD/YV7qkgb21eqILvr
+Kyw/5YxAzW3xeMnqnjBR2G1G4J469IRPZg7FVp8lfYtVnnhS+363KI0cvJ7e
+AbtXFbPwYJ3g2RVyzLBsk5LimU+bcH1dIc0hY7VpRXDhsqO7mRyuSR3SkAaF
+S6glo5wmCWR7mToozxiJeIG+Nd4qrBSFc1rJiNLp1pdkieptB9Q3WYZgf9vI
+LMzaW7YEC/LOeWGi17AFrbbyllfkn4TaNagrmEkykimPzIUWMjft72Iv6XJa
+a6xk6k6RClYzU1F9uGcSx0Ebi/MOPlbZ8/vJQORFNVzjtLXAL0kbc/Ajf8EN
+G2PEy3DC4ZEM4B8nsovhNdXvCjjtY6cMks0h0YE5sn3g+OuvpOiuywrT9bLv
+8B9NZppN
   "]]
 }, Open  ]],
 
@@ -4372,7 +4437,7 @@ Cell[BoxData[
         RowBox[{"complement", "[", 
          RowBox[{"X", ",", "vc1"}], "]"}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"i1", "=", 
-        RowBox[{"capacity2IntervalValuedProbabilityMeasure", "[", 
+        RowBox[{"capacity2IVPM", "[", 
          RowBox[{"X", ",", "vc1"}], "]"}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"vg2", "=", 
         RowBox[{"necessityDistributionFunction2Game", "[", 
@@ -4381,17 +4446,15 @@ Cell[BoxData[
         RowBox[{"complement", "[", 
          RowBox[{"X", ",", "vg2"}], "]"}]}], ";", 
        RowBox[{"i2", "=", 
-        RowBox[{"game2IntervalValuedProbabilityMeasure", "[", 
+        RowBox[{"game2IVPM", "[", 
          RowBox[{"X", ",", "vg2"}], "]"}]}], ";", 
        RowBox[{"i0", "=", 
         RowBox[{"intersection", "[", 
          RowBox[{"i1", ",", "i2"}], "]"}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"vc0", "=", 
-        RowBox[{
-        "intervalValuedProbabilityMeasure2Capacity", "[", "i0", "]"}]}], ";", 
+        RowBox[{"IVPM2Capacity", "[", "i0", "]"}]}], ";", 
        RowBox[{"vg0", "=", 
-        RowBox[{"intervalValuedProbabilityMeasure2Game", "[", "i0", "]"}]}], 
-       ";", 
+        RowBox[{"IVPM2Game", "[", "i0", "]"}]}], ";", 
        RowBox[{"Join", "[", 
         RowBox[{
          RowBox[{"MapThread", "[", 
@@ -4408,7 +4471,7 @@ Cell[BoxData[
                 RowBox[{"X", ",", "vg"}], "]"}], ",", 
                RowBox[{"convexQ", "[", 
                 RowBox[{"X", ",", "vg"}], "]"}], ",", 
-               RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+               RowBox[{"IVPMQ", "[", 
                 RowBox[{"X", ",", "i"}], "]"}], ",", 
                RowBox[{"consistentQ", "[", 
                 RowBox[{"X", ",", "i", ",", 
@@ -4504,7 +4567,8 @@ Cell[BoxData[
    3.680114590107463*^9, 3.6801145975775776`*^9}, {3.6801146285030527`*^9, 
    3.680114722201992*^9}, {3.6801158124262376`*^9, 3.680115869747118*^9}, {
    3.680146844737816*^9, 3.6801468883578773`*^9}, {3.680146959787977*^9, 
-   3.6801471464182386`*^9}, {3.6801471920583024`*^9, 3.680147256098392*^9}}],
+   3.6801471464182386`*^9}, {3.6801471920583024`*^9, 3.680147256098392*^9}, {
+   3.6814840464763646`*^9, 3.6814840464813647`*^9}}],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -4613,7 +4677,9 @@ Cell[BoxData[
    3.6814135757242327`*^9, 3.6814146134101715`*^9, 3.681415963329094*^9, 
    3.6814163431610155`*^9, 3.681416402011098*^9, 3.6814169487178035`*^9, 
    3.681417004057881*^9, 3.6814170475279417`*^9, 3.6814179003711367`*^9, 
-   3.681418071871377*^9, 3.6814181566214952`*^9, 3.681423901393715*^9}]
+   3.681418071871377*^9, 3.6814181566214952`*^9, 3.681423901393715*^9, 
+   3.6814806784671326`*^9, 3.681484102419724*^9, 3.681484267949766*^9, 
+   3.681484568556384*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4771,7 +4837,7 @@ Cell[BoxData[
      RowBox[{"l", "[", 
       RowBox[{"Sort", "[", "S", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"\[Mu]", "=", 
-     RowBox[{"game2IntervalValuedProbabilityMeasure", "[", 
+     RowBox[{"game2IVPM", "[", 
       RowBox[{"\[CapitalOmega]", ",", "l"}], "]"}]}], ";", 
     "\[IndentingNewLine]", 
     RowBox[{"l1", "=", 
@@ -4788,7 +4854,7 @@ Cell[BoxData[
        RowBox[{"\[CapitalOmega]", ",", "l"}], "]"}], ",", 
       RowBox[{"convexQ", "[", 
        RowBox[{"\[CapitalOmega]", ",", "l"}], "]"}], ",", 
-      RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+      RowBox[{"IVPMQ", "[", 
        RowBox[{"\[CapitalOmega]", ",", "\[Mu]"}], "]"}], ",", 
       RowBox[{"l1", "/@", "\[CapitalOmega]"}], ",", 
       RowBox[{"consistentQ", "[", 
@@ -4812,7 +4878,8 @@ Cell[BoxData[
    3.6813765484340134`*^9}, {3.6813765905221596`*^9, 3.681376653848132*^9}, {
    3.681376748929593*^9, 3.6813767622922983`*^9}, {3.6813944466979303`*^9, 
    3.681394491243614*^9}, {3.681395868043764*^9, 3.681395915129487*^9}, {
-   3.6813959525525618`*^9, 3.681396134285353*^9}}],
+   3.6813959525525618`*^9, 3.681396134285353*^9}, {3.681484046486365*^9, 
+   3.6814840464913645`*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -4839,7 +4906,9 @@ Cell[BoxData[
    3.681413576374243*^9, 3.6814146140426807`*^9, 3.6814159639541035`*^9, 
    3.6814163437910166`*^9, 3.6814164026310987`*^9, 3.6814169493578043`*^9, 
    3.681417004667882*^9, 3.6814170481379423`*^9, 3.6814179009911375`*^9, 
-   3.681418072491378*^9, 3.681418157231497*^9, 3.6814239020362253`*^9}]
+   3.681418072491378*^9, 3.681418157231497*^9, 3.6814239020362253`*^9, 
+   3.681480679122143*^9, 3.681484103072234*^9, 3.6814842685922766`*^9, 
+   3.6814845691963944`*^9}]
 }, Open  ]]
 }, Open  ]],
 
@@ -4852,7 +4921,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"intervalCondition", "[", 
    RowBox[{"\[CapitalOmega]_", ",", "l_", ",", "r_"}], "]"}], ":=", 
-  RowBox[{"intervalValuedProbabilityMeasureList", "[", 
+  RowBox[{"IVPMList", "[", 
    RowBox[{"\[CapitalOmega]", ",", 
     RowBox[{
      RowBox[{"Interval", "[", 
@@ -4983,189 +5052,7 @@ Cell[BoxData[{
          RowBox[{"{", 
           RowBox[{"balancedCondition", "[", 
            RowBox[{"\[CapitalOmega]", ",", "l", ",", "\[Lambda]"}], "]"}], 
-          "}"}]}], "}"}]}], "]"}]}], "]"}]}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"intervalVariables", "[", 
-   RowBox[{"\[CapitalOmega]_", ",", "l_", ",", "r_"}], "]"}], ":=", 
-  RowBox[{"Join", "[", 
-   RowBox[{
-    RowBox[{"l", "/@", 
-     RowBox[{"Subsets", "[", "\[CapitalOmega]", "]"}]}], ",", 
-    RowBox[{"r", "/@", 
-     RowBox[{"Subsets", "[", "\[CapitalOmega]", "]"}]}]}], 
-   "]"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"intervalConditionAnd", "[", 
-   RowBox[{"\[CapitalOmega]_", ",", "l_", ",", "r_"}], "]"}], ":=", 
-  RowBox[{"Simplify", "[", 
-   RowBox[{"ReplacePart", "[", 
-    RowBox[{
-     RowBox[{"intervalCondition", "[", 
-      RowBox[{"\[CapitalOmega]", ",", "l", ",", "r"}], "]"}], ",", 
-     RowBox[{"0", "\[Rule]", "And"}]}], "]"}], "]"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"balancedCollectionWeightsAnd", "[", 
-   RowBox[{"\[CapitalOmega]_", ",", "\[Lambda]_"}], "]"}], ":=", 
-  RowBox[{"Simplify", "[", 
-   RowBox[{"ReplacePart", "[", 
-    RowBox[{
-     RowBox[{"balancedCollectionWeightsList", "[", 
-      RowBox[{"\[CapitalOmega]", ",", "\[Lambda]"}], "]"}], ",", 
-     RowBox[{"0", "\[Rule]", "And"}]}], "]"}], "]"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-  "checkEveryIntervalValuedProbabilityMeasureHasNonemptyCore", "[", 
-   "\[CapitalOmega]_", "]"}], ":=", 
-  RowBox[{"Block", "[", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{"\[Rho]", ",", "l", ",", "r"}], "}"}], ",", 
-    RowBox[{
-     RowBox[{"r", "=", 
-      RowBox[{"complement", "[", 
-       RowBox[{"\[CapitalOmega]", ",", "l"}], "]"}]}], ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{"Resolve", "[", 
-      RowBox[{"ForAll", "[", 
-       RowBox[{
-        RowBox[{"Evaluate", "[", 
-         RowBox[{"l", "/@", 
-          RowBox[{"Subsets", "[", "\[CapitalOmega]", "]"}]}], "]"}], ",", 
-        RowBox[{"intervalConditionAnd", "[", 
-         RowBox[{"\[CapitalOmega]", ",", "l", ",", "r"}], "]"}], ",", 
-        RowBox[{"Exists", "[", 
-         RowBox[{
-          RowBox[{"Evaluate", "[", 
-           RowBox[{"\[Rho]", "/@", "\[CapitalOmega]"}], "]"}], ",", 
-          RowBox[{"coreConditionAnd", "[", 
-           RowBox[{"\[CapitalOmega]", ",", "\[Rho]", ",", "l", ",", "r"}], 
-           "]"}]}], "]"}]}], "]"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-  "findIntervalValuedProbabilityMeasureWithEmptyCore", "[", 
-   "\[CapitalOmega]_", "]"}], ":=", 
-  RowBox[{"Block", "[", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{"\[Rho]", ",", "l", ",", "r"}], "}"}], ",", 
-    RowBox[{
-     RowBox[{"r", "=", 
-      RowBox[{"complement", "[", 
-       RowBox[{"\[CapitalOmega]", ",", "l"}], "]"}]}], ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{"FindInstance", "[", 
-      RowBox[{
-       RowBox[{
-        RowBox[{"intervalConditionAnd", "[", 
-         RowBox[{"\[CapitalOmega]", ",", "l", ",", "r"}], "]"}], "\[And]", 
-        RowBox[{"ForAll", "[", 
-         RowBox[{
-          RowBox[{"Evaluate", "[", 
-           RowBox[{"\[Rho]", "/@", "\[CapitalOmega]"}], "]"}], ",", 
-          RowBox[{"\[Not]", 
-           RowBox[{"coreConditionAnd", "[", 
-            RowBox[{"\[CapitalOmega]", ",", "\[Rho]", ",", "l", ",", "r"}], 
-            "]"}]}]}], "]"}]}], ",", 
-       RowBox[{"Evaluate", "[", 
-        RowBox[{"l", "/@", 
-         RowBox[{"Subsets", "[", "\[CapitalOmega]", "]"}]}], "]"}]}], 
-      "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"checkShapleyValueInCore", "[", "\[CapitalOmega]_", "]"}], ":=", 
-  RowBox[{"Block", "[", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{"l", ",", "r"}], "}"}], ",", 
-    RowBox[{
-     RowBox[{"r", "=", 
-      RowBox[{"complement", "[", 
-       RowBox[{"\[CapitalOmega]", ",", "l"}], "]"}]}], ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{"Resolve", "[", 
-      RowBox[{"ForAll", "[", 
-       RowBox[{
-        RowBox[{"Evaluate", "[", 
-         RowBox[{"l", "/@", 
-          RowBox[{"Subsets", "[", "\[CapitalOmega]", "]"}]}], "]"}], ",", 
-        RowBox[{"intervalConditionAnd", "[", 
-         RowBox[{"\[CapitalOmega]", ",", "l", ",", "r"}], "]"}], ",", 
-        RowBox[{"coreConditionAnd", "[", 
-         RowBox[{"\[CapitalOmega]", ",", 
-          RowBox[{"ShapleyValue", "[", 
-           RowBox[{"\[CapitalOmega]", ",", 
-            RowBox[{
-             RowBox[{"l", "[", 
-              RowBox[{"Sort", "[", "#", "]"}], "]"}], "&"}]}], "]"}], ",", 
-          "l", ",", "r"}], "]"}]}], "]"}], "]"}]}]}], 
-   "]"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-  "findIntervalValuedProbabilityMeasureWithShapleyValueNotInCore", "[", 
-   "\[CapitalOmega]_", "]"}], ":=", 
-  RowBox[{"Block", "[", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{"l", ",", "r"}], "}"}], ",", 
-    RowBox[{
-     RowBox[{"r", "=", 
-      RowBox[{"complement", "[", 
-       RowBox[{"\[CapitalOmega]", ",", "l"}], "]"}]}], ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{"FindInstance", "[", 
-      RowBox[{
-       RowBox[{
-        RowBox[{"intervalConditionAnd", "[", 
-         RowBox[{"\[CapitalOmega]", ",", "l", ",", "r"}], "]"}], "\[And]", 
-        RowBox[{"\[Not]", 
-         RowBox[{"coreConditionAnd", "[", 
-          RowBox[{"\[CapitalOmega]", ",", 
-           RowBox[{"ShapleyValue", "[", 
-            RowBox[{"\[CapitalOmega]", ",", 
-             RowBox[{
-              RowBox[{"l", "[", 
-               RowBox[{"Sort", "[", "#", "]"}], "]"}], "&"}]}], "]"}], ",", 
-           "l", ",", "r"}], "]"}]}]}], ",", 
-       RowBox[{"Evaluate", "[", 
-        RowBox[{"l", "/@", 
-         RowBox[{"Subsets", "[", "\[CapitalOmega]", "]"}]}], "]"}]}], 
-      "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-  "checkEveryIntervalValuedProbabilityMeasureBalanced", "[", 
-   "\[CapitalOmega]_", "]"}], ":=", 
-  RowBox[{"Block", "[", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{"l", ",", "r", ",", "\[Lambda]"}], "}"}], ",", 
-    RowBox[{
-     RowBox[{"r", "=", 
-      RowBox[{"complement", "[", 
-       RowBox[{"\[CapitalOmega]", ",", "l"}], "]"}]}], ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{"Resolve", "[", 
-      RowBox[{"ForAll", "[", 
-       RowBox[{
-        RowBox[{"Evaluate", "[", 
-         RowBox[{"l", "/@", 
-          RowBox[{"Subsets", "[", "\[CapitalOmega]", "]"}]}], "]"}], ",", 
-        RowBox[{"intervalConditionAnd", "[", 
-         RowBox[{"\[CapitalOmega]", ",", "l", ",", "r"}], "]"}], ",", 
-        RowBox[{"ForAll", "[", 
-         RowBox[{
-          RowBox[{"Evaluate", "[", 
-           RowBox[{"\[Lambda]", "/@", 
-            RowBox[{"Subsets", "[", "\[CapitalOmega]", "]"}]}], "]"}], ",", 
-          RowBox[{"balancedCollectionWeightsAnd", "[", 
-           RowBox[{"\[CapitalOmega]", ",", 
-            RowBox[{
-             RowBox[{"\[Lambda]", "[", 
-              RowBox[{"Sort", "[", "#", "]"}], "]"}], "&"}]}], "]"}], ",", 
-          RowBox[{"balancedCondition", "[", 
-           RowBox[{"\[CapitalOmega]", ",", "l", ",", 
-            RowBox[{
-             RowBox[{"\[Lambda]", "[", 
-              RowBox[{"Sort", "[", "#", "]"}], "]"}], "&"}]}], "]"}]}], 
-         "]"}]}], "]"}], "]"}]}]}], "]"}]}]}], "Input",
+          "}"}]}], "}"}]}], "]"}]}], "]"}]}]}]}], "Input",
  CellChangeTimes->{{3.6798686048761024`*^9, 3.6798686244114027`*^9}, {
    3.67987022124343*^9, 3.6798702233134613`*^9}, {3.6798809261994896`*^9, 
    3.6798809336246033`*^9}, {3.6798817980220766`*^9, 3.679881815153056*^9}, {
@@ -5236,7 +5123,166 @@ Cell[BoxData[{
    3.68141741054845*^9, 3.6814174525085087`*^9}, {3.6814177122408733`*^9, 
    3.681417715060878*^9}, {3.6814177854909763`*^9, 3.681417834031044*^9}, {
    3.6814178743711004`*^9, 3.6814178777911053`*^9}, {3.6814180129012947`*^9, 
-   3.6814180467313423`*^9}, {3.68141813074146*^9, 3.681418135931467*^9}}],
+   3.6814180467313423`*^9}, {3.68141813074146*^9, 3.681418135931467*^9}, {
+   3.681482519252907*^9, 3.6814826283620825`*^9}, {3.68148272650859*^9, 
+   3.6814828877210665`*^9}, {3.6814829218465905`*^9, 
+   3.6814830232281475`*^9}, {3.6814830610187283`*^9, 3.681483204635934*^9}, {
+   3.681483253711688*^9, 3.681483266351882*^9}, 3.681483299897397*^9, {
+   3.6814833502431707`*^9, 3.681483363145869*^9}, {3.681483583754257*^9, 
+   3.6814838742237186`*^9}, {3.681483911454291*^9, 3.6814839118617973`*^9}, 
+   3.6814840465013647`*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"intervalVariables", "[", 
+   RowBox[{"\[CapitalOmega]_", ",", "l_", ",", "r_"}], "]"}], ":=", 
+  RowBox[{"Join", "[", 
+   RowBox[{
+    RowBox[{"l", "/@", 
+     RowBox[{"Subsets", "[", "\[CapitalOmega]", "]"}]}], ",", 
+    RowBox[{"r", "/@", 
+     RowBox[{"Subsets", "[", "\[CapitalOmega]", "]"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"intervalConditionAnd", "[", 
+   RowBox[{"\[CapitalOmega]_", ",", "l_", ",", "r_"}], "]"}], ":=", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{"ReplacePart", "[", 
+    RowBox[{
+     RowBox[{"intervalCondition", "[", 
+      RowBox[{"\[CapitalOmega]", ",", "l", ",", "r"}], "]"}], ",", 
+     RowBox[{"0", "\[Rule]", "And"}]}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"balancedCollectionWeightsAnd", "[", 
+   RowBox[{"\[CapitalOmega]_", ",", "\[Lambda]_"}], "]"}], ":=", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{"ReplacePart", "[", 
+    RowBox[{
+     RowBox[{"balancedCollectionWeightsList", "[", 
+      RowBox[{"\[CapitalOmega]", ",", "\[Lambda]"}], "]"}], ",", 
+     RowBox[{"0", "\[Rule]", "And"}]}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"resolvePFindNotP", "[", "P_", "]"}], ":=", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\[Rho]", ",", "l", ",", "r", ",", "\[Lambda]"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Function", "[", 
+       RowBox[{
+        RowBox[{"{", "\[CapitalOmega]", "}"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"r", "=", 
+          RowBox[{"complement", "[", 
+           RowBox[{"\[CapitalOmega]", ",", "l"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Resolve", "[", 
+          RowBox[{"ForAll", "[", 
+           RowBox[{
+            RowBox[{"Evaluate", "[", 
+             RowBox[{"l", "/@", 
+              RowBox[{"Subsets", "[", "\[CapitalOmega]", "]"}]}], "]"}], ",", 
+            RowBox[{"intervalConditionAnd", "[", 
+             RowBox[{"\[CapitalOmega]", ",", "l", ",", "r"}], "]"}], ",", 
+            RowBox[{"P", "[", 
+             RowBox[{
+             "\[CapitalOmega]", ",", "\[Rho]", ",", "l", ",", "r", ",", 
+              "\[Lambda]"}], "]"}]}], "]"}], "]"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Function", "[", 
+       RowBox[{
+        RowBox[{"{", "\[CapitalOmega]", "}"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"r", "=", 
+          RowBox[{"complement", "[", 
+           RowBox[{"\[CapitalOmega]", ",", "l"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"FindInstance", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"intervalConditionAnd", "[", 
+             RowBox[{"\[CapitalOmega]", ",", "l", ",", "r"}], "]"}], "\[And]", 
+            RowBox[{"\[Not]", 
+             RowBox[{"P", "[", 
+              RowBox[{
+              "\[CapitalOmega]", ",", "\[Rho]", ",", "l", ",", "r", ",", 
+               "\[Lambda]"}], "]"}]}]}], ",", 
+           RowBox[{"Evaluate", "[", 
+            RowBox[{"l", "/@", 
+             RowBox[{"Subsets", "[", "\[CapitalOmega]", "]"}]}], "]"}]}], 
+          "]"}]}]}], "]"}]}], "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"checkEveryIVPMHasNonemptyCore", ",", "findIVPMWithEmptyCore"}], 
+    "}"}], "=", 
+   RowBox[{"resolvePFindNotP", "[", 
+    RowBox[{"Function", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\[CapitalOmega]", ",", "\[Rho]", ",", "l", ",", "r", ",", 
+        "\[Lambda]"}], "}"}], ",", 
+      RowBox[{"Exists", "[", 
+       RowBox[{
+        RowBox[{"Evaluate", "[", 
+         RowBox[{"\[Rho]", "/@", "\[CapitalOmega]"}], "]"}], ",", 
+        RowBox[{"coreConditionAnd", "[", 
+         RowBox[{"\[CapitalOmega]", ",", "\[Rho]", ",", "l", ",", "r"}], 
+         "]"}]}], "]"}]}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "checkShapleyValueInCore", ",", "findIVPMWithShapleyValueNotInCore"}], 
+    "}"}], "=", 
+   RowBox[{"resolvePFindNotP", "[", 
+    RowBox[{"Function", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\[CapitalOmega]", ",", "\[Rho]", ",", "l", ",", "r", ",", 
+        "\[Lambda]"}], "}"}], ",", 
+      RowBox[{"coreConditionAnd", "[", 
+       RowBox[{"\[CapitalOmega]", ",", 
+        RowBox[{"ShapleyValue", "[", 
+         RowBox[{"\[CapitalOmega]", ",", 
+          RowBox[{
+           RowBox[{"l", "[", 
+            RowBox[{"Sort", "[", "#", "]"}], "]"}], "&"}]}], "]"}], ",", "l", 
+        ",", "r"}], "]"}]}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"checkEveryIVPMBalanced", ",", "findIVPMNotBalanced"}], "}"}], 
+   "=", 
+   RowBox[{"resolvePFindNotP", "[", 
+    RowBox[{"Function", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\[CapitalOmega]", ",", "\[Rho]", ",", "l", ",", "r", ",", 
+        "\[Lambda]"}], "}"}], ",", 
+      RowBox[{"ForAll", "[", 
+       RowBox[{
+        RowBox[{"Evaluate", "[", 
+         RowBox[{"\[Lambda]", "/@", 
+          RowBox[{"Subsets", "[", "\[CapitalOmega]", "]"}]}], "]"}], ",", 
+        RowBox[{"balancedCollectionWeightsAnd", "[", 
+         RowBox[{"\[CapitalOmega]", ",", 
+          RowBox[{
+           RowBox[{"\[Lambda]", "[", 
+            RowBox[{"Sort", "[", "#", "]"}], "]"}], "&"}]}], "]"}], ",", 
+        RowBox[{"balancedCondition", "[", 
+         RowBox[{"\[CapitalOmega]", ",", "l", ",", 
+          RowBox[{
+           RowBox[{"\[Lambda]", "[", 
+            RowBox[{"Sort", "[", "#", "]"}], "]"}], "&"}]}], "]"}]}], "]"}]}],
+      "]"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6814839137168255`*^9, 3.6814839149968452`*^9}, 
+   3.681484239606831*^9}],
 
 Cell[CellGroupData[{
 
@@ -5245,15 +5291,15 @@ Cell[BoxData[{
   RowBox[{"{", "a", "}"}], "]"}], "\[IndentingNewLine]", 
  RowBox[{"symbolicConditions", "[", 
   RowBox[{"{", "a", "}"}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"checkEveryIntervalValuedProbabilityMeasureHasNonemptyCore", "[", 
+ RowBox[{"checkEveryIVPMHasNonemptyCore", "[", 
   RowBox[{"{", "a", "}"}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"findIntervalValuedProbabilityMeasureWithEmptyCore", "[", 
+ RowBox[{"findIVPMWithEmptyCore", "[", 
   RowBox[{"{", "a", "}"}], "]"}], "\[IndentingNewLine]", 
  RowBox[{"checkShapleyValueInCore", "[", 
   RowBox[{"{", "a", "}"}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"findIntervalValuedProbabilityMeasureWithShapleyValueNotInCore", "[", 
+ RowBox[{"findIVPMWithShapleyValueNotInCore", "[", 
   RowBox[{"{", "a", "}"}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"checkEveryIntervalValuedProbabilityMeasureBalanced", "[", 
+ RowBox[{"checkEveryIVPMBalanced", "[", 
   RowBox[{"{", "a", "}"}], "]"}]}], "Input",
  CellChangeTimes->{{3.680204524270963*^9, 3.680204565634098*^9}, {
    3.6802046381502123`*^9, 3.680204669638196*^9}, {3.6802272116352987`*^9, 
@@ -5267,7 +5313,8 @@ Cell[BoxData[{
    3.6811777773715935`*^9}, {3.681177905141056*^9, 3.681177930631448*^9}, {
    3.681220997019022*^9, 3.6812210000865693`*^9}, {3.681413746251852*^9, 
    3.6814137468143606`*^9}, {3.681413798517655*^9, 3.6814138027102194`*^9}, 
-   3.6814146477156982`*^9, 3.681415561877928*^9}],
+   3.6814146477156982`*^9, 3.681415561877928*^9, {3.681483990398003*^9, 
+   3.6814840044007187`*^9}}],
 
 Cell[BoxData[
  TagBox[
@@ -5336,7 +5383,8 @@ Cell[BoxData[
    3.6814158144018064`*^9, 3.681415963991604*^9, 3.6814163438310165`*^9, 
    3.6814164026710987`*^9, 3.6814169493978043`*^9, 3.681417004857882*^9, 
    3.6814170481779428`*^9, 3.681417901031138*^9, 3.681418072531378*^9, 
-   3.6814181572814965`*^9, 3.681423902078726*^9}],
+   3.6814181572814965`*^9, 3.681423902078726*^9, 3.6814806791846437`*^9, 
+   3.6814841031147346`*^9, 3.681484268642277*^9, 3.681484569246395*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -5412,7 +5460,8 @@ Cell[BoxData[
    3.6814158144018064`*^9, 3.681415963991604*^9, 3.6814163438310165`*^9, 
    3.6814164026710987`*^9, 3.6814169493978043`*^9, 3.681417004857882*^9, 
    3.6814170481779428`*^9, 3.681417901031138*^9, 3.681418072531378*^9, 
-   3.6814181572814965`*^9, 3.6814239020862255`*^9}],
+   3.6814181572814965`*^9, 3.681423902078726*^9, 3.6814806791846437`*^9, 
+   3.6814841031147346`*^9, 3.681484268642277*^9, 3.681484569251395*^9}],
 
 Cell[BoxData["True"], "Output",
  CellChangeTimes->{
@@ -5448,7 +5497,8 @@ Cell[BoxData["True"], "Output",
    3.6814158144018064`*^9, 3.681415963991604*^9, 3.6814163438310165`*^9, 
    3.6814164026710987`*^9, 3.6814169493978043`*^9, 3.681417004857882*^9, 
    3.6814170481779428`*^9, 3.681417901031138*^9, 3.681418072531378*^9, 
-   3.6814181572814965`*^9, 3.681423902113726*^9}],
+   3.6814181572814965`*^9, 3.681423902078726*^9, 3.6814806791846437`*^9, 
+   3.6814841031147346`*^9, 3.681484268642277*^9, 3.6814845692688956`*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -5470,29 +5520,8 @@ ButtonFrame->None, ButtonData:>\\\"paclet:ref/FindInstance\\\", ButtonNote -> \
   3.681415759353461*^9, 3.6814159641066055`*^9, 3.681416343941017*^9, 
   3.6814164027810993`*^9, 3.6814169494978046`*^9, 3.681417004747882*^9, 
   3.6814170482779427`*^9, 3.681417901141138*^9, 3.681418072641378*^9, 
-  3.681418157381497*^9, 3.6814239022012277`*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"FindInstance", "::", "nsmet"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"The methods available to FindInstance are insufficient to \
-find the requested instances or prove they do not exist. \
-\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
-ButtonFrame->None, ButtonData:>\\\"paclet:ref/FindInstance\\\", ButtonNote -> \
-\\\"FindInstance::nsmet\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.6813534356444254`*^9, 3.6813535449686785`*^9, 
-  3.6813536151276913`*^9, 3.681353690515003*^9, 3.6813538995189576`*^9, 
-  3.681357011506062*^9, 3.681357707858165*^9, 3.6813747241434927`*^9, 
-  3.6813955152868433`*^9, 3.681410877680295*^9, 3.6814120836463146`*^9, 
-  3.681412240493724*^9, 3.6814129506846323`*^9, 3.6814131440926027`*^9, 
-  3.681413468585087*^9, 3.681413576529245*^9, 3.681414614187683*^9, 
-  3.681415567295511*^9, 3.6814156052535934`*^9, 3.6814157192728453`*^9, 
-  3.681415759353461*^9, 3.6814159641066055`*^9, 3.681416343941017*^9, 
-  3.6814164027810993`*^9, 3.6814169494978046`*^9, 3.681417004747882*^9, 
-  3.6814170482779427`*^9, 3.681417901141138*^9, 3.681418072641378*^9, 
-  3.681418157381497*^9, 3.6814239022587285`*^9}],
+  3.681418157381497*^9, 3.6814239022012277`*^9, 3.6814806792946453`*^9, 
+  3.6814841031897354`*^9, 3.6814842687347784`*^9, 3.6814845693338966`*^9}],
 
 Cell[BoxData[
  RowBox[{"FindInstance", "[", 
@@ -5563,7 +5592,8 @@ Cell[BoxData[
    3.6814158144018064`*^9, 3.681415963991604*^9, 3.6814163438310165`*^9, 
    3.6814164026710987`*^9, 3.6814169493978043`*^9, 3.681417004857882*^9, 
    3.6814170481779428`*^9, 3.681417901031138*^9, 3.681418072531378*^9, 
-   3.6814181572814965`*^9, 3.681423902263728*^9}],
+   3.6814181572814965`*^9, 3.681423902078726*^9, 3.6814806791846437`*^9, 
+   3.6814841031147346`*^9, 3.681484268642277*^9, 3.6814845693338966`*^9}],
 
 Cell[BoxData["True"], "Output",
  CellChangeTimes->{
@@ -5599,7 +5629,8 @@ Cell[BoxData["True"], "Output",
    3.6814158144018064`*^9, 3.681415963991604*^9, 3.6814163438310165`*^9, 
    3.6814164026710987`*^9, 3.6814169493978043`*^9, 3.681417004857882*^9, 
    3.6814170481779428`*^9, 3.681417901031138*^9, 3.681418072531378*^9, 
-   3.6814181572814965`*^9, 3.6814239022887287`*^9}],
+   3.6814181572814965`*^9, 3.681423902078726*^9, 3.6814806791846437`*^9, 
+   3.6814841031147346`*^9, 3.681484268642277*^9, 3.6814845693388968`*^9}],
 
 Cell[BoxData[
  RowBox[{"{", "}"}]], "Output",
@@ -5636,7 +5667,8 @@ Cell[BoxData[
    3.6814158144018064`*^9, 3.681415963991604*^9, 3.6814163438310165`*^9, 
    3.6814164026710987`*^9, 3.6814169493978043`*^9, 3.681417004857882*^9, 
    3.6814170481779428`*^9, 3.681417901031138*^9, 3.681418072531378*^9, 
-   3.6814181572814965`*^9, 3.6814239023187294`*^9}],
+   3.6814181572814965`*^9, 3.681423902078726*^9, 3.6814806791846437`*^9, 
+   3.6814841031147346`*^9, 3.681484268642277*^9, 3.6814845693413963`*^9}],
 
 Cell[BoxData["True"], "Output",
  CellChangeTimes->{
@@ -5672,7 +5704,8 @@ Cell[BoxData["True"], "Output",
    3.6814158144018064`*^9, 3.681415963991604*^9, 3.6814163438310165`*^9, 
    3.6814164026710987`*^9, 3.6814169493978043`*^9, 3.681417004857882*^9, 
    3.6814170481779428`*^9, 3.681417901031138*^9, 3.681418072531378*^9, 
-   3.6814181572814965`*^9, 3.6814239023462296`*^9}]
+   3.6814181572814965`*^9, 3.681423902078726*^9, 3.6814806791846437`*^9, 
+   3.6814841031147346`*^9, 3.681484268642277*^9, 3.6814845693513966`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -5684,25 +5717,21 @@ Cell[BoxData[{
  RowBox[{"symbolicConditions", "[", 
   RowBox[{"{", 
    RowBox[{"a", ",", "b"}], "}"}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"checkEveryIntervalValuedProbabilityMeasureHasNonemptyCore", "[", 
+ RowBox[{"checkEveryIVPMHasNonemptyCore", "[", 
   RowBox[{"{", 
    RowBox[{"a", ",", "b"}], "}"}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"findIntervalValuedProbabilityMeasureWithEmptyCore", "[", 
+ RowBox[{"findIVPMWithEmptyCore", "[", 
   RowBox[{"{", 
    RowBox[{"a", ",", "b"}], "}"}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"AbsoluteTiming", "[", 
-  RowBox[{"checkShapleyValueInCore", "[", 
-   RowBox[{"{", 
-    RowBox[{"a", ",", "b"}], "}"}], "]"}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"AbsoluteTiming", "[", 
-  RowBox[{
-  "findIntervalValuedProbabilityMeasureWithShapleyValueNotInCore", "[", 
-   RowBox[{"{", 
-    RowBox[{"a", ",", "b"}], "}"}], "]"}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"AbsoluteTiming", "[", 
-  RowBox[{"checkEveryIntervalValuedProbabilityMeasureBalanced", "[", 
-   RowBox[{"{", 
-    RowBox[{"a", ",", "b"}], "}"}], "]"}], "]"}]}], "Input",
+ RowBox[{"checkShapleyValueInCore", "[", 
+  RowBox[{"{", 
+   RowBox[{"a", ",", "b"}], "}"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"findIVPMWithShapleyValueNotInCore", "[", 
+  RowBox[{"{", 
+   RowBox[{"a", ",", "b"}], "}"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"checkEveryIVPMBalanced", "[", 
+  RowBox[{"{", 
+   RowBox[{"a", ",", "b"}], "}"}], "]"}]}], "Input",
  CellChangeTimes->{{3.6798835982801886`*^9, 3.679883598542693*^9}, 
    3.6798836607336483`*^9, {3.6798837702428303`*^9, 3.679883831111265*^9}, {
    3.6798840211766844`*^9, 3.679884031171838*^9}, {3.679884165491401*^9, 
@@ -5717,7 +5746,8 @@ Cell[BoxData[{
    3.6813568082933292`*^9, 3.681356811493815*^9}, {3.681357052265329*^9, 
    3.681357067513239*^9}, {3.681357602354012*^9, 3.681357610305993*^9}, {
    3.681414517158693*^9, 3.681414520996252*^9}, 3.681414656185828*^9, 
-   3.681416370471054*^9}],
+   3.681416370471054*^9, {3.681484007708269*^9, 3.6814840168509097`*^9}, {
+   3.6814845341763554`*^9, 3.6814845444165125`*^9}}],
 
 Cell[BoxData[
  TagBox[
@@ -5823,7 +5853,8 @@ $CellContext`l[{$CellContext`b}] <= 1}, {
    3.681415915258355*^9, 3.6814159642716084`*^9, 3.681416344101017*^9, 
    3.6814164029510994`*^9, 3.6814169496578045`*^9, 3.6814170053578825`*^9, 
    3.6814170484479427`*^9, 3.6814179013011384`*^9, 3.6814180728013783`*^9, 
-   3.681418157541497*^9, 3.68142390236373*^9}],
+   3.681418157541497*^9, 3.68142390236373*^9, 3.6814806794621477`*^9, 
+   3.681484103252237*^9, 3.681484268777279*^9, 3.681484569371397*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -5948,7 +5979,8 @@ Cell[BoxData[
    3.681415915258355*^9, 3.6814159642716084`*^9, 3.681416344101017*^9, 
    3.6814164029510994`*^9, 3.6814169496578045`*^9, 3.6814170053578825`*^9, 
    3.6814170484479427`*^9, 3.6814179013011384`*^9, 3.6814180728013783`*^9, 
-   3.681418157541497*^9, 3.6814239023837304`*^9}],
+   3.681418157541497*^9, 3.68142390236373*^9, 3.6814806794621477`*^9, 
+   3.681484103252237*^9, 3.681484268777279*^9, 3.681484569388897*^9}],
 
 Cell[BoxData["True"], "Output",
  CellChangeTimes->{
@@ -5982,7 +6014,8 @@ Cell[BoxData["True"], "Output",
    3.681415915258355*^9, 3.6814159642716084`*^9, 3.681416344101017*^9, 
    3.6814164029510994`*^9, 3.6814169496578045`*^9, 3.6814170053578825`*^9, 
    3.6814170484479427`*^9, 3.6814179013011384`*^9, 3.6814180728013783`*^9, 
-   3.681418157541497*^9, 3.6814239024187307`*^9}],
+   3.681418157541497*^9, 3.68142390236373*^9, 3.6814806794621477`*^9, 
+   3.681484103252237*^9, 3.681484268777279*^9, 3.6814845694213977`*^9}],
 
 Cell[BoxData[
  RowBox[{"{", "}"}]], "Output",
@@ -6017,11 +6050,10 @@ Cell[BoxData[
    3.681415915258355*^9, 3.6814159642716084`*^9, 3.681416344101017*^9, 
    3.6814164029510994`*^9, 3.6814169496578045`*^9, 3.6814170053578825`*^9, 
    3.6814170484479427`*^9, 3.6814179013011384`*^9, 3.6814180728013783`*^9, 
-   3.681418157541497*^9, 3.6814239025837336`*^9}],
+   3.681418157541497*^9, 3.68142390236373*^9, 3.6814806794621477`*^9, 
+   3.681484103252237*^9, 3.681484268777279*^9, 3.6814845695589*^9}],
 
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"0.03696924591062023`", ",", "True"}], "}"}]], "Output",
+Cell[BoxData["True"], "Output",
  CellChangeTimes->{
   3.6798835997527113`*^9, {3.67988380668589*^9, 3.6798838323937845`*^9}, 
    3.6798840317218466`*^9, 3.6798841689739547`*^9, 3.6798854383984528`*^9, 
@@ -6053,12 +6085,11 @@ Cell[BoxData[
    3.681415915258355*^9, 3.6814159642716084`*^9, 3.681416344101017*^9, 
    3.6814164029510994`*^9, 3.6814169496578045`*^9, 3.6814170053578825`*^9, 
    3.6814170484479427`*^9, 3.6814179013011384`*^9, 3.6814180728013783`*^9, 
-   3.681418157541497*^9, 3.681423902621234*^9}],
+   3.681418157541497*^9, 3.68142390236373*^9, 3.6814806794621477`*^9, 
+   3.681484103252237*^9, 3.681484268777279*^9, 3.6814845695814004`*^9}],
 
 Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"0.03837634432575886`", ",", 
-   RowBox[{"{", "}"}]}], "}"}]], "Output",
+ RowBox[{"{", "}"}]], "Output",
  CellChangeTimes->{
   3.6798835997527113`*^9, {3.67988380668589*^9, 3.6798838323937845`*^9}, 
    3.6798840317218466`*^9, 3.6798841689739547`*^9, 3.6798854383984528`*^9, 
@@ -6090,11 +6121,10 @@ Cell[BoxData[
    3.681415915258355*^9, 3.6814159642716084`*^9, 3.681416344101017*^9, 
    3.6814164029510994`*^9, 3.6814169496578045`*^9, 3.6814170053578825`*^9, 
    3.6814170484479427`*^9, 3.6814179013011384`*^9, 3.6814180728013783`*^9, 
-   3.681418157541497*^9, 3.681423902661235*^9}],
+   3.681418157541497*^9, 3.68142390236373*^9, 3.6814806794621477`*^9, 
+   3.681484103252237*^9, 3.681484268777279*^9, 3.681484569598901*^9}],
 
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"0.03180339692526347`", ",", "True"}], "}"}]], "Output",
+Cell[BoxData["True"], "Output",
  CellChangeTimes->{
   3.6798835997527113`*^9, {3.67988380668589*^9, 3.6798838323937845`*^9}, 
    3.6798840317218466`*^9, 3.6798841689739547`*^9, 3.6798854383984528`*^9, 
@@ -6126,7 +6156,8 @@ Cell[BoxData[
    3.681415915258355*^9, 3.6814159642716084`*^9, 3.681416344101017*^9, 
    3.6814164029510994`*^9, 3.6814169496578045`*^9, 3.6814170053578825`*^9, 
    3.6814170484479427`*^9, 3.6814179013011384`*^9, 3.6814180728013783`*^9, 
-   3.681418157541497*^9, 3.681423902693735*^9}]
+   3.681418157541497*^9, 3.68142390236373*^9, 3.6814806794621477`*^9, 
+   3.681484103252237*^9, 3.681484268777279*^9, 3.6814845696114006`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -6139,7 +6170,7 @@ Cell[BoxData[{
   RowBox[{"{", 
    RowBox[{"a", ",", "b", ",", "c"}], "}"}], "]"}], "\[IndentingNewLine]", 
  RowBox[{"AbsoluteTiming", "[", 
-  RowBox[{"checkEveryIntervalValuedProbabilityMeasureHasNonemptyCore", "[", 
+  RowBox[{"checkEveryIVPMHasNonemptyCore", "[", 
    RowBox[{"{", 
     RowBox[{"a", ",", "b", ",", "c"}], "}"}], "]"}], 
   "]"}], "\[IndentingNewLine]", 
@@ -6149,15 +6180,15 @@ Cell[BoxData[{
     RowBox[{"a", ",", "b", ",", "c"}], "}"}], "]"}], 
   "]"}], "\[IndentingNewLine]", 
  RowBox[{"AbsoluteTiming", "[", 
-  RowBox[{
-  "findIntervalValuedProbabilityMeasureWithShapleyValueNotInCore", "[", 
+  RowBox[{"findIVPMWithShapleyValueNotInCore", "[", 
    RowBox[{"{", 
     RowBox[{"a", ",", "b", ",", "c"}], "}"}], "]"}], "]"}]}], "Input",
  CellChangeTimes->{{3.681148763369191*^9, 3.6811487636441956`*^9}, {
    3.681176463039405*^9, 3.681176465804447*^9}, {3.6813379453830357`*^9, 
    3.6813379517153983`*^9}, 3.681347798344593*^9, {3.681357512560849*^9, 
    3.681357524249893*^9}, {3.68135759301084*^9, 3.681357597441684*^9}, {
-   3.6814145273538494`*^9, 3.68141452934638*^9}, 3.6814163757010612`*^9}],
+   3.6814145273538494`*^9, 3.68141452934638*^9}, 3.6814163757010612`*^9, {
+   3.6814840179934273`*^9, 3.681484019393449*^9}}],
 
 Cell[BoxData[
  TagBox[
@@ -6412,7 +6443,8 @@ $CellContext`c}] <= 1}, {"Game", "Capacity", "Convex"}}]]]], "Output",
  CellChangeTimes->{{3.6814163238509884`*^9, 3.6814163445910177`*^9}, 
    3.6814164034210997`*^9, 3.681416950147805*^9, 3.6814170059078836`*^9, 
    3.6814170489079437`*^9, 3.6814179017511387`*^9, 3.6814180732613792`*^9, 
-   3.6814181580014973`*^9, 3.681423902853738*^9}],
+   3.6814181580014973`*^9, 3.681423902853738*^9, 3.681480679982156*^9, 
+   3.6814841034672403`*^9, 3.681484269174785*^9, 3.6814845697764034`*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -6630,32 +6662,36 @@ Cell[BoxData[
  CellChangeTimes->{{3.6814163238509884`*^9, 3.6814163445910177`*^9}, 
    3.6814164034210997`*^9, 3.681416950147805*^9, 3.6814170059078836`*^9, 
    3.6814170489079437`*^9, 3.6814179017511387`*^9, 3.6814180732613792`*^9, 
-   3.6814181580014973`*^9, 3.6814239029037385`*^9}],
+   3.6814181580014973`*^9, 3.681423902853738*^9, 3.681480679982156*^9, 
+   3.6814841034672403`*^9, 3.681484269174785*^9, 3.6814845698089037`*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"0.7337027320571063`", ",", "True"}], "}"}]], "Output",
+  RowBox[{"0.732884994937525`", ",", "True"}], "}"}]], "Output",
  CellChangeTimes->{{3.6814163238509884`*^9, 3.6814163445910177`*^9}, 
    3.6814164034210997`*^9, 3.681416950147805*^9, 3.6814170059078836`*^9, 
    3.6814170489079437`*^9, 3.6814179017511387`*^9, 3.6814180732613792`*^9, 
-   3.6814181580014973`*^9, 3.681423903621249*^9}],
+   3.6814181580014973`*^9, 3.681423902853738*^9, 3.681480679982156*^9, 
+   3.6814841034672403`*^9, 3.681484269174785*^9, 3.6814845705389147`*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"0.19379100129420496`", ",", "True"}], "}"}]], "Output",
+  RowBox[{"0.14184237282677206`", ",", "True"}], "}"}]], "Output",
  CellChangeTimes->{{3.6814163238509884`*^9, 3.6814163445910177`*^9}, 
    3.6814164034210997`*^9, 3.681416950147805*^9, 3.6814170059078836`*^9, 
    3.6814170489079437`*^9, 3.6814179017511387`*^9, 3.6814180732613792`*^9, 
-   3.6814181580014973`*^9, 3.681423903813752*^9}],
+   3.6814181580014973`*^9, 3.681423902853738*^9, 3.681480679982156*^9, 
+   3.6814841034672403`*^9, 3.681484269174785*^9, 3.6814845706814175`*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"0.1979967250279845`", ",", 
+  RowBox[{"0.0766661487996042`", ",", 
    RowBox[{"{", "}"}]}], "}"}]], "Output",
  CellChangeTimes->{{3.6814163238509884`*^9, 3.6814163445910177`*^9}, 
    3.6814164034210997`*^9, 3.681416950147805*^9, 3.6814170059078836`*^9, 
    3.6814170489079437`*^9, 3.6814179017511387`*^9, 3.6814180732613792`*^9, 
-   3.6814181580014973`*^9, 3.6814239040137553`*^9}]
+   3.6814181580014973`*^9, 3.681423902853738*^9, 3.681480679982156*^9, 
+   3.6814841034672403`*^9, 3.681484269174785*^9, 3.6814845707589183`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -7838,18 +7874,14 @@ $CellContext`c, $CellContext`d}] <=
        1, $CellContext`l[{$CellContext`a}] + $CellContext`l[{$CellContext`b, \
 $CellContext`c, $CellContext`d}] <= 1}, {
       "Game", "Capacity", "Convex"}}]]]], "Output",
- CellChangeTimes->{3.681221373879732*^9, 3.681221452139842*^9, 
-  3.681334672991866*^9, 3.681336868620449*^9, 3.6813379369245524`*^9, 
-  3.681338378251795*^9, 3.6813478163036203`*^9, 3.681349506548694*^9, 
-  3.6813497065991364`*^9, 3.6813529572010603`*^9, 3.6813530282991266`*^9, 
-  3.681353252477949*^9, 3.6813534371985145`*^9, 3.6813536166757803`*^9, 
-  3.681357014238381*^9, 3.6813577111499977`*^9, 3.6813747263285265`*^9, 
-  3.681395517364375*^9, 3.6814108797878275`*^9, 3.6814120859263496`*^9, 
-  3.6814122425737557`*^9, 3.6814134707526207`*^9, 3.6814135786042767`*^9, 
-  3.681414616182714*^9, 3.681415966949149*^9, 3.6814163459610195`*^9, 
-  3.681416404781102*^9, 3.681416951527807*^9, 3.6814170074878855`*^9, 
-  3.681417050247946*^9, 3.681417903071141*^9, 3.681418074601381*^9, 
-  3.6814181593314996`*^9, 3.681423904261259*^9}],
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmVkYGBQA+Ijanvi43NfO06rbMkE0XF75TdNA9I7bk0+Mh1Iv58q
+6zUDSG/h82gE0U7bOWXnAunnfYEfQLSCTjDnPCAtlr9s/nwgXTSpcwWIjvHu
+PwKiraOW3QbR/+aLfgLRFxccn7UQSJ848+QjiPZqPuWwCkh/W7E6fQuQfmT6
+8/luIL1iyd66PUDaNCZoEoiuEL2hvRdI24QFW4Lo0zdYd4PovPh7yfuA9JoD
+dpNB9Kl/M2aB6DOPP9wD0YfmvH8KonXeu78G0SfdHoXuB9LNdsHZIHrp7Fel
+INomhsPlEJBet1Xn712Qf11FV94H0lHqZ/aC6F074x+DaADIrqtZ
+  "]],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -8321,18 +8353,14 @@ Cell[BoxData[
      GridBoxAlignment->{"Columns" -> {{Left}}},
      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
     "Column"]}], "}"}]], "Output",
- CellChangeTimes->{3.681221373879732*^9, 3.681221452139842*^9, 
-  3.681334672991866*^9, 3.681336868620449*^9, 3.6813379369245524`*^9, 
-  3.681338378251795*^9, 3.6813478163036203`*^9, 3.681349506548694*^9, 
-  3.6813497065991364`*^9, 3.6813529572010603`*^9, 3.6813530282991266`*^9, 
-  3.681353252477949*^9, 3.6813534371985145`*^9, 3.6813536166757803`*^9, 
-  3.681357014238381*^9, 3.6813577111499977`*^9, 3.6813747263285265`*^9, 
-  3.681395517364375*^9, 3.6814108797878275`*^9, 3.6814120859263496`*^9, 
-  3.6814122425737557`*^9, 3.6814134707526207`*^9, 3.6814135786042767`*^9, 
-  3.681414616182714*^9, 3.681415966949149*^9, 3.6814163459610195`*^9, 
-  3.681416404781102*^9, 3.681416951527807*^9, 3.6814170074878855`*^9, 
-  3.681417050247946*^9, 3.681417903071141*^9, 3.681418074601381*^9, 
-  3.6814181593314996`*^9, 3.68142390433126*^9}]
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmVkYGBQA+Ijanvi43NfO06rbMkE0XF75TdNA9I7bk0+Mh1Iv58q
+6zUDSG/h82gE0U7bOWXnAunnfYEfQLSCTjDnPCAtlr9s/nwgXTSpcwWIjvHu
+PwKiraOW3QbR/+aLfgLRFxccn7UQSJ848+QjiPZqPuWwCkh/W7E6fQuQfmT6
+8/luIL1iyd66PUDaNCZoEoiuEL2hvRdI24QFW4Lo0zdYd4PovPh7yfuA9JoD
+dpNB9Kl/M2aB6DOPP9wD0YfmvH8KonXeu78G0SfdHoXuB9LNdsHZIHrp7Fel
+INomhsPlEJBet1Xn712Qf11FV94H0lHqZ/aCaCnPpMcgGgDAsKpM
+  "]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -14196,7 +14224,9 @@ $CellContext`c, $CellContext`d, $CellContext`e}] <=
        1, $CellContext`l[{$CellContext`a}] + $CellContext`l[{$CellContext`b, \
 $CellContext`c, $CellContext`d, $CellContext`e}] <= 1}, {
       "Game", "Capacity", "Convex"}}]]]], "Output",
- CellChangeTimes->{3.6814183076817074`*^9, 3.6814239053737764`*^9}]
+ CellChangeTimes->{3.6814183076817074`*^9, 3.6814239053737764`*^9, 
+  3.681480682454694*^9, 3.681484105682274*^9, 3.681484271387319*^9, 
+  3.681484571986437*^9}]
 }, Open  ]]
 }, Open  ]],
 
@@ -14222,7 +14252,7 @@ Cell[BoxData[{
       RowBox[{"possibilityDistributionFunction2Capacity", "[", "f", "]"}]}], 
      ";", "\[IndentingNewLine]", 
      RowBox[{"\[Mu]", "=", 
-      RowBox[{"capacity2IntervalValuedProbabilityMeasure", "[", 
+      RowBox[{"capacity2IVPM", "[", 
        RowBox[{"X", ",", "\[Pi]"}], "]"}]}], ";", "\[IndentingNewLine]", 
      RowBox[{"v", "=", 
       RowBox[{"complement", "[", 
@@ -14232,7 +14262,7 @@ Cell[BoxData[{
        RowBox[{"f", "/@", "X"}], ",", 
        RowBox[{"capacityQ", "[", 
         RowBox[{"X", ",", "\[Pi]"}], "]"}], ",", 
-       RowBox[{"intervalValuedProbabilityMeasureQ", "[", 
+       RowBox[{"IVPMQ", "[", 
         RowBox[{"X", ",", "\[Mu]"}], "]"}], ",", 
        RowBox[{"convexQ", "[", 
         RowBox[{"X", ",", "\[Pi]"}], "]"}], ",", 
@@ -14290,7 +14320,8 @@ Cell[BoxData[{
    3.6789734335799494`*^9, 3.6789735148561983`*^9}, {3.680979012947507*^9, 
    3.6809792577737675`*^9}, {3.6809794179962287`*^9, 3.680979537045557*^9}, {
    3.680986717008037*^9, 3.680986812844509*^9}, {3.6809868846784964`*^9, 
-   3.6809868854595413`*^9}, {3.680997819609456*^9, 3.680997832071169*^9}}],
+   3.6809868854595413`*^9}, {3.680997819609456*^9, 3.680997832071169*^9}, {
+   3.681484046298862*^9, 3.681484046301362*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -14319,7 +14350,9 @@ Cell[BoxData[
    3.681413578626777*^9, 3.681414616272715*^9, 3.681415967056651*^9, 
    3.68141634606102*^9, 3.6814164048711023`*^9, 3.681416951637808*^9, 
    3.681417007637886*^9, 3.6814170503279457`*^9, 3.681417903161141*^9, 
-   3.681418074691381*^9, 3.6814181594214993`*^9, 3.681423905418777*^9}],
+   3.681418074691381*^9, 3.6814181594214993`*^9, 3.681423905418777*^9, 
+   3.681480682504695*^9, 3.681484105727275*^9, 3.68148427143232*^9, 
+   3.6814845720289383`*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -14348,7 +14381,9 @@ Cell[BoxData[
    3.681413578626777*^9, 3.681414616272715*^9, 3.681415967056651*^9, 
    3.68141634606102*^9, 3.6814164048711023`*^9, 3.681416951637808*^9, 
    3.681417007637886*^9, 3.6814170503279457`*^9, 3.681417903161141*^9, 
-   3.681418074691381*^9, 3.6814181594214993`*^9, 3.681423905423777*^9}],
+   3.681418074691381*^9, 3.6814181594214993`*^9, 3.681423905418777*^9, 
+   3.681480682504695*^9, 3.681484105727275*^9, 3.68148427143232*^9, 
+   3.681484572036438*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -14379,7 +14414,9 @@ Cell[BoxData[
    3.681413578626777*^9, 3.681414616272715*^9, 3.681415967056651*^9, 
    3.68141634606102*^9, 3.6814164048711023`*^9, 3.681416951637808*^9, 
    3.681417007637886*^9, 3.6814170503279457`*^9, 3.681417903161141*^9, 
-   3.681418074691381*^9, 3.6814181594214993`*^9, 3.681423905433777*^9}]
+   3.681418074691381*^9, 3.6814181594214993`*^9, 3.681423905418777*^9, 
+   3.681480682504695*^9, 3.681484105727275*^9, 3.68148427143232*^9, 
+   3.681484572046438*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -14413,12 +14450,12 @@ Cell[BoxData[
  RowBox[{"{", 
   RowBox[{
    RowBox[{"{", 
-    RowBox[{"1", ",", "0.9183389293487383`", ",", "0.3385389739022333`"}], 
+    RowBox[{"1", ",", "0.2714948418577505`", ",", "0.1968027611078791`"}], 
     "}"}], ",", "True", ",", "True", ",", "False", ",", "True", ",", 
    RowBox[{"{", 
     RowBox[{
-    "0.48440737300859193`", ",", "0.4027463023573302`", ",", 
-     "0.11284632463407776`"}], "}"}]}], "}"}]], "Output",
+    "0.8314521188864782`", ",", "0.10294696074422874`", ",", 
+     "0.06560092036929302`"}], "}"}]}], "}"}]], "Output",
  CellChangeTimes->{
   3.6809869045816345`*^9, 3.6809972349920177`*^9, 3.680997482191157*^9, {
    3.6809975121918726`*^9, 3.6809975378973427`*^9}, 3.6809975737493935`*^9, 
@@ -14436,7 +14473,8 @@ Cell[BoxData[
    3.6814135786617775`*^9, 3.681415967091652*^9, 3.68141634628102*^9, 
    3.681416404901102*^9, 3.681416951677808*^9, 3.681417007667886*^9, 
    3.6814170503679457`*^9, 3.681417903201141*^9, 3.6814180747313814`*^9, 
-   3.6814181594515*^9, 3.6814239054537773`*^9}]
+   3.6814181594515*^9, 3.6814239054537773`*^9, 3.681480682537195*^9, 
+   3.6814841057647753`*^9, 3.6814842714798203`*^9, 3.681484572063938*^9}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -14452,13 +14490,13 @@ StyleDefinitions->"Default.nb"
 (*CellTagsOutline
 CellTagsIndex->{
  "0000352E"->{
-  Cell[171966, 3688, 386, 28, 29, "Reference",
+  Cell[174963, 3749, 386, 28, 29, "Reference",
    CellTags->"0000352E"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"0000352E", 596382, 14453}
+ {"0000352E", 598801, 14491}
  }
 *)
 (*NotebookFileOutline
@@ -14470,238 +14508,239 @@ Cell[773, 28, 175, 6, 70, "Section"],
 Cell[951, 36, 1138, 30, 72, "Input"],
 Cell[CellGroupData[{
 Cell[2114, 70, 343, 10, 31, "Input"],
-Cell[2460, 82, 3127, 43, 31, "Output"]
+Cell[2460, 82, 3223, 44, 31, "Output"]
 }, Open  ]],
-Cell[5602, 128, 975, 23, 52, "Input"],
+Cell[5698, 129, 975, 23, 52, "Input"],
 Cell[CellGroupData[{
-Cell[6602, 155, 308, 7, 31, "Input"],
-Cell[6913, 164, 3129, 43, 31, "Output"]
+Cell[6698, 156, 308, 7, 31, "Input"],
+Cell[7009, 165, 3231, 45, 31, "Output"]
 }, Open  ]],
-Cell[10057, 210, 3158, 60, 52, "Input"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[13252, 275, 235, 3, 70, "Section"],
-Cell[13490, 280, 524, 9, 49, "Text"],
-Cell[CellGroupData[{
-Cell[14039, 293, 520, 11, 30, "ItemNumbered"],
-Cell[14562, 306, 312, 7, 30, "ItemNumbered"],
-Cell[14877, 315, 799, 16, 30, "ItemNumbered"],
-Cell[15679, 333, 897, 17, 30, "ItemNumbered"],
-Cell[16579, 352, 1372, 35, 49, "ItemNumbered"]
-}, Open  ]],
-Cell[17966, 390, 1688, 50, 72, "Input"],
-Cell[19657, 442, 2538, 44, 52, "Input"]
+Cell[10255, 213, 3158, 60, 52, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22232, 491, 365, 8, 70, "Section"],
-Cell[22600, 501, 524, 9, 49, "Text"],
+Cell[13450, 278, 235, 3, 70, "Section"],
+Cell[13688, 283, 524, 9, 49, "Text"],
 Cell[CellGroupData[{
-Cell[23149, 514, 520, 11, 30, "ItemNumbered"],
-Cell[23672, 527, 312, 7, 30, "ItemNumbered"],
-Cell[23987, 536, 852, 18, 30, "ItemNumbered"]
+Cell[14237, 296, 520, 11, 30, "ItemNumbered"],
+Cell[14760, 309, 312, 7, 30, "ItemNumbered"],
+Cell[15075, 318, 799, 16, 30, "ItemNumbered"],
+Cell[15877, 336, 897, 17, 30, "ItemNumbered"],
+Cell[16777, 355, 1372, 35, 49, "ItemNumbered"]
 }, Open  ]],
-Cell[24854, 557, 3402, 66, 72, "Input"],
-Cell[28259, 625, 3019, 56, 52, "Input"],
-Cell[31281, 683, 3441, 65, 97, "Input"],
-Cell[34725, 750, 374, 9, 31, "Input"],
+Cell[18164, 393, 1688, 50, 72, "Input"],
+Cell[19855, 445, 2538, 44, 52, "Input"]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[35124, 763, 1400, 35, 72, "Input"],
-Cell[36527, 800, 2477, 39, 46, "Output"]
+Cell[22430, 494, 365, 8, 70, "Section"],
+Cell[22798, 504, 524, 9, 49, "Text"],
+Cell[CellGroupData[{
+Cell[23347, 517, 520, 11, 30, "ItemNumbered"],
+Cell[23870, 530, 312, 7, 30, "ItemNumbered"],
+Cell[24185, 539, 852, 18, 30, "ItemNumbered"]
+}, Open  ]],
+Cell[25052, 560, 3402, 66, 72, "Input"],
+Cell[28457, 628, 3019, 56, 52, "Input"],
+Cell[31479, 686, 374, 9, 31, "Input"],
+Cell[31856, 697, 1562, 40, 72, "Input"],
+Cell[33421, 739, 3441, 65, 97, "Input"],
+Cell[CellGroupData[{
+Cell[36887, 808, 1400, 35, 72, "Input"],
+Cell[38290, 845, 2577, 41, 46, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[39053, 845, 197, 2, 70, "Section"],
-Cell[39253, 849, 161, 3, 30, "Text"],
+Cell[40916, 892, 197, 2, 70, "Section"],
+Cell[41116, 896, 161, 3, 30, "Text"],
 Cell[CellGroupData[{
-Cell[39439, 856, 941, 13, 31, "Input"],
-Cell[40383, 871, 1511, 25, 39, "Message"]
+Cell[41302, 903, 941, 13, 31, "Input"],
+Cell[42246, 918, 1609, 26, 39, "Message"]
 }, Open  ]],
-Cell[41909, 899, 350, 7, 31, "Input"],
-Cell[42262, 908, 324, 7, 31, "Input"],
-Cell[42589, 917, 833, 14, 31, "Input"],
-Cell[43425, 933, 806, 13, 31, "Input"],
-Cell[44234, 948, 326, 9, 31, "Input"],
-Cell[44563, 959, 576, 15, 31, "Input"],
-Cell[45142, 976, 598, 14, 31, "Input"],
-Cell[45743, 992, 780, 15, 31, "Input"],
-Cell[46526, 1009, 493, 14, 31, "Input"],
-Cell[47022, 1025, 1166, 22, 78, "Text"],
+Cell[43870, 947, 350, 7, 31, "Input"],
+Cell[44223, 956, 324, 7, 31, "Input"],
+Cell[44550, 965, 839, 15, 31, "Input"],
+Cell[45392, 982, 806, 14, 31, "Input"],
+Cell[46201, 998, 326, 9, 31, "Input"],
+Cell[46530, 1009, 570, 15, 31, "Input"],
+Cell[47103, 1026, 596, 15, 31, "Input"],
+Cell[47702, 1043, 780, 15, 31, "Input"],
+Cell[48485, 1060, 493, 14, 31, "Input"],
+Cell[48981, 1076, 1166, 22, 78, "Text"],
 Cell[CellGroupData[{
-Cell[48213, 1051, 970, 30, 30, "ItemNumbered"],
-Cell[49186, 1083, 329, 8, 30, "ItemNumbered"],
-Cell[49518, 1093, 633, 13, 32, "ItemNumbered"]
+Cell[50172, 1102, 970, 30, 30, "ItemNumbered"],
+Cell[51145, 1134, 329, 8, 30, "ItemNumbered"],
+Cell[51477, 1144, 633, 13, 32, "ItemNumbered"]
 }, Open  ]],
-Cell[50166, 1109, 167, 3, 30, "Text"],
-Cell[50336, 1114, 4173, 79, 132, "Input"],
-Cell[54512, 1195, 3973, 72, 92, "Input"],
-Cell[58488, 1269, 980, 28, 52, "Input"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[59505, 1302, 417, 8, 152, "Section"],
-Cell[59925, 1312, 984, 24, 72, "Input"]
+Cell[52125, 1160, 167, 3, 30, "Text"],
+Cell[52295, 1165, 3977, 73, 92, "Input"],
+Cell[56275, 1240, 3973, 72, 92, "Input"],
+Cell[60251, 1314, 980, 28, 52, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[60946, 1341, 236, 3, 70, "Section"],
-Cell[61185, 1346, 1688, 42, 92, "Input"],
-Cell[CellGroupData[{
-Cell[62898, 1392, 1392, 35, 68, "Input"],
-Cell[64293, 1429, 1228, 17, 31, "Output"],
-Cell[65524, 1448, 1228, 17, 31, "Output"]
-}, Open  ]],
-Cell[66767, 1468, 1946, 45, 112, "Input"],
-Cell[68716, 1515, 711, 18, 31, "Input"],
-Cell[69430, 1535, 926, 22, 52, "Input"]
+Cell[61268, 1347, 417, 8, 152, "Section"],
+Cell[61688, 1357, 984, 24, 72, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[70393, 1562, 166, 2, 70, "Section"],
+Cell[62709, 1386, 236, 3, 70, "Section"],
+Cell[62948, 1391, 1688, 42, 92, "Input"],
 Cell[CellGroupData[{
-Cell[70584, 1568, 528, 13, 52, "Input"],
-Cell[71115, 1583, 1284, 23, 31, "Output"]
+Cell[64661, 1437, 1392, 35, 68, "Input"],
+Cell[66056, 1474, 1326, 18, 31, "Output"],
+Cell[67385, 1494, 1326, 18, 31, "Output"]
 }, Open  ]],
-Cell[72414, 1609, 579, 10, 49, "Text"],
-Cell[CellGroupData[{
-Cell[73018, 1623, 316, 7, 30, "ItemNumbered"],
-Cell[73337, 1632, 303, 7, 30, "ItemNumbered"],
-Cell[73643, 1641, 1394, 37, 34, "ItemNumbered"]
-}, Open  ]],
-Cell[75052, 1681, 1148, 31, 72, "Input"],
-Cell[76203, 1714, 5791, 133, 204, "Input"]
+Cell[68726, 1515, 1946, 45, 112, "Input"],
+Cell[70675, 1562, 711, 18, 31, "Input"],
+Cell[71389, 1582, 926, 22, 52, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[82031, 1852, 95, 1, 70, "Section"],
+Cell[72352, 1609, 166, 2, 70, "Section"],
 Cell[CellGroupData[{
-Cell[82151, 1857, 2606, 55, 192, "Input"],
-Cell[84760, 1914, 1434, 28, 31, "Output"]
+Cell[72543, 1615, 528, 13, 52, "Input"],
+Cell[73074, 1630, 1317, 24, 31, "Output"]
+}, Open  ]],
+Cell[74406, 1657, 579, 10, 49, "Text"],
+Cell[CellGroupData[{
+Cell[75010, 1671, 316, 7, 30, "ItemNumbered"],
+Cell[75329, 1680, 303, 7, 30, "ItemNumbered"],
+Cell[75635, 1689, 1394, 37, 34, "ItemNumbered"]
+}, Open  ]],
+Cell[77044, 1729, 1148, 31, 72, "Input"],
+Cell[78195, 1762, 5791, 133, 204, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[86231, 1947, 2549, 55, 212, "Input"],
-Cell[88783, 2004, 3781, 56, 31, "Output"]
+Cell[84023, 1900, 95, 1, 70, "Section"],
+Cell[CellGroupData[{
+Cell[84143, 1905, 2604, 56, 192, "Input"],
+Cell[86750, 1963, 1466, 28, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[92601, 2065, 2379, 48, 152, "Input"],
-Cell[94983, 2115, 3876, 56, 31, "Output"]
+Cell[88253, 1996, 2547, 56, 212, "Input"],
+Cell[90803, 2054, 3876, 57, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[98896, 2176, 2860, 61, 132, "Input"],
-Cell[101759, 2239, 2603, 40, 46, "Output"]
+Cell[94716, 2116, 2377, 49, 152, "Input"],
+Cell[97096, 2167, 3971, 57, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[104399, 2284, 2699, 59, 132, "Input"],
-Cell[107101, 2345, 4739, 70, 46, "Output"]
+Cell[101104, 2229, 2851, 61, 132, "Input"],
+Cell[103958, 2292, 2698, 41, 46, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[111877, 2420, 2644, 67, 259, "Input"],
-Cell[114524, 2489, 4383, 64, 46, "Output"]
+Cell[106693, 2338, 2684, 58, 112, "Input"],
+Cell[109380, 2398, 4831, 71, 46, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[118944, 2558, 8522, 225, 452, "Input"],
-Cell[127469, 2785, 4871, 70, 46, "Output"]
+Cell[114248, 2474, 2633, 67, 239, "Input"],
+Cell[116884, 2543, 4477, 65, 46, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[132377, 2860, 7608, 222, 595, "Input"],
-Cell[139988, 3084, 4320, 63, 46, "Output"]
+Cell[121398, 2613, 8513, 225, 432, "Input"],
+Cell[129914, 2840, 4971, 72, 46, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[144345, 3152, 3229, 75, 259, "Input"],
-Cell[147577, 3229, 3957, 58, 46, "Output"]
+Cell[134922, 2917, 7597, 221, 575, "Input"],
+Cell[142522, 3140, 4420, 64, 46, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[151571, 3292, 4967, 106, 224, "Input"],
-Cell[156541, 3400, 4251, 62, 40, "Print"],
-Cell[160795, 3464, 3078, 43, 31, "Output"]
+Cell[146979, 3209, 3222, 75, 239, "Input"],
+Cell[150204, 3286, 4055, 60, 46, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[163910, 3512, 3851, 85, 204, "Input"],
+Cell[154296, 3351, 4961, 106, 224, "Input"],
+Cell[159260, 3459, 4349, 63, 40, "Print"],
+Cell[163612, 3524, 3176, 44, 31, "Output"]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[167786, 3601, 1422, 28, 40, "Print"],
-Cell[169211, 3631, 1422, 28, 40, "Print"]
+Cell[166825, 3573, 3845, 85, 204, "Input"],
+Cell[CellGroupData[{
+Cell[170695, 3662, 1450, 28, 40, "Print"],
+Cell[172148, 3692, 1450, 28, 40, "Print"]
 }, Open  ]],
-Cell[170648, 3662, 1303, 23, 31, "Output"]
+Cell[173613, 3723, 1335, 23, 31, "Output"]
 }, Open  ]],
-Cell[171966, 3688, 386, 28, 29, "Reference",
+Cell[174963, 3749, 386, 28, 29, "Reference",
  CellTags->"0000352E"],
 Cell[CellGroupData[{
-Cell[172377, 3720, 6161, 167, 555, "Input"],
-Cell[178541, 3889, 4327, 61, 31, "Output"]
+Cell[175374, 3781, 6096, 165, 535, "Input"],
+Cell[181473, 3948, 4425, 62, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[182905, 3955, 4774, 113, 292, "Input"],
-Cell[187682, 4070, 3227, 48, 46, "Output"]
+Cell[185935, 4015, 4766, 113, 272, "Input"],
+Cell[190704, 4130, 3321, 49, 46, "Output"]
 }, Open  ]],
-Cell[190924, 4121, 135, 1, 30, "Text"],
+Cell[194040, 4182, 135, 1, 30, "Text"],
 Cell[CellGroupData[{
-Cell[191084, 4126, 3303, 74, 252, "Input"],
-Cell[194390, 4202, 2868, 42, 31, "Output"]
+Cell[194200, 4187, 3299, 75, 232, "Input"],
+Cell[197502, 4264, 2972, 44, 31, "Output"]
 }, Open  ]],
-Cell[197273, 4247, 161, 3, 30, "Text"],
+Cell[200489, 4311, 161, 3, 30, "Text"],
 Cell[CellGroupData[{
-Cell[197459, 4254, 1565, 43, 92, "Input"],
-Cell[199027, 4299, 1065, 22, 46, "Output"]
+Cell[200675, 4318, 1559, 43, 52, "Input"],
+Cell[202237, 4363, 1094, 23, 46, "Output"]
 }, Open  ]],
-Cell[200107, 4324, 266, 5, 30, "Text"],
+Cell[203346, 4389, 266, 5, 30, "Text"],
 Cell[CellGroupData[{
-Cell[200398, 4333, 8447, 173, 432, "Input"],
-Cell[208848, 4508, 4875, 107, 147, "Output"]
+Cell[203637, 4398, 8344, 172, 432, "Input"],
+Cell[211984, 4572, 4973, 109, 147, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[213760, 4620, 7050, 194, 1055, "Input"],
-Cell[220813, 4816, 1274, 25, 46, "Output"]
+Cell[216994, 4686, 7046, 195, 1035, "Input"],
+Cell[224043, 4883, 1374, 27, 46, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[222136, 4847, 106, 1, 70, "Section"],
-Cell[222245, 4850, 17331, 388, 692, "Input"],
+Cell[225466, 4916, 106, 1, 70, "Section"],
+Cell[225575, 4919, 10763, 213, 312, "Input"],
+Cell[236341, 5134, 5780, 150, 372, "Input"],
 Cell[CellGroupData[{
-Cell[239601, 5242, 1778, 27, 152, "Input"],
-Cell[241382, 5271, 3535, 67, 57, "Output"],
-Cell[244920, 5340, 3729, 74, 57, "Output"],
-Cell[248652, 5416, 2452, 34, 31, "Output"],
-Cell[251107, 5452, 1222, 20, 21, "Message"],
-Cell[252332, 5474, 1222, 20, 21, "Message"],
-Cell[253557, 5496, 3554, 69, 33, "Output"],
-Cell[257114, 5567, 2454, 34, 31, "Output"],
-Cell[259571, 5603, 2468, 35, 31, "Output"],
-Cell[262042, 5640, 2454, 34, 31, "Output"]
+Cell[242146, 5288, 1718, 28, 152, "Input"],
+Cell[243867, 5318, 3631, 68, 57, "Output"],
+Cell[247501, 5388, 3823, 75, 57, "Output"],
+Cell[251327, 5465, 2550, 35, 31, "Output"],
+Cell[253880, 5502, 1321, 21, 21, "Message"],
+Cell[255204, 5525, 3652, 70, 33, "Output"],
+Cell[258859, 5597, 2550, 35, 31, "Output"],
+Cell[261412, 5634, 2564, 36, 31, "Output"],
+Cell[263979, 5672, 2550, 35, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[264533, 5679, 2194, 40, 152, "Input"],
-Cell[266730, 5721, 4599, 104, 132, "Output"],
-Cell[271332, 5827, 5318, 123, 102, "Output"],
-Cell[276653, 5952, 2295, 32, 31, "Output"],
-Cell[278951, 5986, 2309, 33, 31, "Output"],
-Cell[281263, 6021, 2357, 34, 31, "Output"],
-Cell[283623, 6057, 2373, 35, 31, "Output"],
-Cell[285999, 6094, 2357, 34, 31, "Output"]
+Cell[266566, 5712, 2052, 37, 152, "Input"],
+Cell[268621, 5751, 4693, 105, 132, "Output"],
+Cell[273317, 5858, 5409, 124, 102, "Output"],
+Cell[278729, 5984, 2388, 33, 31, "Output"],
+Cell[281120, 6019, 2398, 34, 31, "Output"],
+Cell[283521, 6055, 2388, 33, 31, "Output"],
+Cell[285912, 6090, 2400, 34, 31, "Output"],
+Cell[288315, 6126, 2388, 33, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[288393, 6133, 1245, 26, 112, "Input"],
-Cell[289641, 6161, 8703, 253, 372, "Output"],
-Cell[298347, 6416, 7514, 216, 177, "Output"],
-Cell[305864, 6634, 364, 6, 31, "Output"],
-Cell[306231, 6642, 365, 6, 31, "Output"],
-Cell[306599, 6650, 382, 7, 31, "Output"]
+Cell[290740, 6164, 1238, 26, 112, "Input"],
+Cell[291981, 6192, 8799, 254, 372, "Output"],
+Cell[300783, 6448, 7608, 217, 177, "Output"],
+Cell[308394, 6667, 459, 7, 31, "Output"],
+Cell[308856, 6676, 461, 7, 31, "Output"],
+Cell[309320, 6685, 476, 8, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[307018, 6662, 440, 9, 52, "Input"],
-Cell[307461, 6673, 42411, 1178, 1302, "Output"],
-Cell[349875, 7853, 17516, 481, 659, "Output"]
+Cell[309833, 6698, 440, 9, 52, "Input"],
+Cell[310276, 6709, 41977, 1174, 1302, "Output"],
+Cell[352256, 7885, 17083, 477, 659, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[367428, 8339, 231, 5, 31, "Input"],
-Cell[367662, 8346, 217102, 5852, 5232, "Output"]
+Cell[369376, 8367, 231, 5, 31, "Input"],
+Cell[369610, 8374, 217196, 5854, 5232, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[584813, 14204, 159, 2, 70, "Section"],
+Cell[586855, 14234, 159, 2, 70, "Section"],
 Cell[CellGroupData[{
-Cell[584997, 14210, 3793, 82, 259, "Input"],
-Cell[588793, 14294, 1537, 27, 46, "Output"],
-Cell[590333, 14323, 1537, 27, 46, "Output"],
-Cell[591873, 14352, 1608, 29, 46, "Output"]
+Cell[587039, 14240, 3787, 83, 259, "Input"],
+Cell[590829, 14325, 1634, 29, 46, "Output"],
+Cell[592466, 14356, 1632, 29, 46, "Output"],
+Cell[594101, 14387, 1703, 31, 46, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[593518, 14386, 944, 23, 72, "Input"],
-Cell[594465, 14411, 1584, 27, 31, "Output"]
+Cell[595841, 14423, 944, 23, 72, "Input"],
+Cell[596788, 14448, 1680, 28, 31, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
