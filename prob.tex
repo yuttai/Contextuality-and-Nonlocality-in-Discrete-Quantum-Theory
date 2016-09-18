@@ -827,9 +827,12 @@ The Bondareva-Shapley theorem can be used to algorithmically decide
 non-empty core because the minimal balanced sets can be generated
 by an algorithm~\cite{Peleg1965}. However, the number of minimal
 balanced sets grows very rapidly with $\left|\Omega\right|$, the
-size of $\Omega$~\cite{Shapley1967,Zhao2008}\footnote{\yutsung{Prove the number of minimal balanced sets grow exponentially?}},
-so that we have only verified every interval-valued probability measure
-has a non-empty core when $\left|\Omega\right|\le5$ so far.
+size of $\Omega$~\cite{Shapley1967,Zhao2008}\footnote{\yutsung{Prove the number of minimal balanced sets grow exponentially
+or more?}}, so that we have only verified every interval-valued probability
+measure has a non-empty core when $\left|\Omega\right|\le5$ so far.\footnote{\yutsung{The program for $\left|\Omega\right|=6$ is running now.
+It seems that it will not blow up the memory, but I still have no
+idea when it will finish, and whether the result will be in our side
+or not...?}}
 
 % \gerardo{Set-valued is a particular case?}
 
@@ -1378,11 +1381,11 @@ just hit the middle, respectively.
 
 Mathematically, to fix the magnetic field of the Stern-Gerlach experiment
 is to pick a orthonormal basis~$\Omega=\left\{ \ket{\psi_{j}}\right\} _{j=1}^{d}$
-for a given Hilbert space~$\Hilb$ of dimension~$d$. If the state
-of the silver atom is represented by a density matrix~$\rho$ written
-in the same basis, i.e., $\rho=\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{d}}\tensor*[_{\mathscr{O}}]{\sum}{_{j=1}^{d}}r_{ij}\ket{\psi_{i}}\bra{\psi_{j}}$.
+for a given Hilbert space~$\Hilb$ of dimension~$d$, and the state
+of the silver atom can be represented by a density matrix~$\rho$
+written in the same basis, i.e., $\rho=\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{d}}\tensor*[_{\mathscr{O}}]{\sum}{_{j=1}^{d}}r_{ij}\ket{\psi_{i}}\bra{\psi_{j}}$.
 As we discussed in the last paragraph, the Born rule of the mixed
-state~$\rho$induces a classical probability measure~$\pmeas':2^{\Omega}\rightarrow[0,1]$
+state~$\rho$ induces a classical probability measure~$\pmeas':2^{\Omega}\rightarrow[0,1]$
 on $\Omega$. Let $E\in2^{\Omega}$ be a classical event and $P=\tensor*[_{\mathscr{O}}]{\sum}{_{\ket{\psi_{j}}\in E}}\proj{\psi_{j}}$
 be the quantum event corresponding to subspace span by $E$, we can
 have
@@ -1390,16 +1393,10 @@ have
 \pmeas'\left(E\right)=\mu_{\rho}^{B}\left(P\right)\overset{\left(\ref{BornRule.mixed}\right)}{=}\Tr\left(\rho P\right)=\sideset{_{\mathbb{R}}}{_{\ket{\psi_{j}}\in E}}\sum r_{jj}\textrm{ .}\label{BornRule.mixed-1}
 \end{equation}
 By equation (\ref{eq:Radon-Nikodym}), the Radon-Nikodym derivative
-of $\pmeas'$ $f:\Omega\rightarrow[0,1]$ is just the diagonal elements
-of $\rho$:
-
-\begin{equation}
-f\left(\ket{\psi_{j}}\right)=r_{jj}\textrm{ .}\label{eq:quantum-Radon-Nikodym}
-\end{equation}
-
-In this sense, the Radon-Nikodym derivative~$f$ is a special case
-of the density matrix~$\rho$, and the Radon-Nikodym theorem is a
-special case of Gleason's theorem~\cite{HollandJr1970,Redhead1987-REDINA,Jaeger2007}.
+of $\pmeas'$ is $f\left(\ket{\psi_{j}}\right)=r_{jj}$, which is
+just the diagonal elements of $\rho$. In this sense, the Radon-Nikodym
+derivative~$f$ is a special case of the density matrix~$\rho$,
+and the Radon-Nikodym theorem is a special case of Gleason's theorem~\cite{HollandJr1970,Redhead1987-REDINA,Jaeger2007}.
 
 \begin{thm}[Gleason's theorem~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}]\label{cor:Gleason's}In
 a Hilbert space $\Hilb$ of dimension $d\geq3$, given a quantum probability
