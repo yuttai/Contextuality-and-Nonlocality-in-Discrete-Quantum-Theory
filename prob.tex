@@ -37,6 +37,7 @@
 \newtheorem{cor}{Corollary}
 \newtheorem{lemma}{Lemma}
 \newtheorem{thm}{Theorem}
+\newtheorem{case}{Case}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
 \newcommand{\qevents}{\ensuremath{\mathcal{E}}}
 \newcommand{\pmeas}{\ensuremath{\mu}}
@@ -829,10 +830,10 @@ by an algorithm~\cite{Peleg1965}. However, the number of minimal
 balanced sets grows very rapidly with $\left|\Omega\right|$, the
 size of $\Omega$~\cite{Shapley1967,Zhao2008}\footnote{\yutsung{Prove the number of minimal balanced sets grow exponentially
 or more?}}, so that we have only verified every interval-valued probability
-measure has a non-empty core when $\left|\Omega\right|\le5$ so far.\footnote{\yutsung{The program for $\left|\Omega\right|=6$ is running now.
-It seems that it will not blow up the memory, but I still have no
-idea when it will finish, and whether the result will be in our side
-or not...?}}
+measure has a non-empty core when $\left|\Omega\right|\le5$ so far.\footnote{\yutsung{The program for $\left|\Omega\right|=6$ blows up the memory
+again, and the symmetric answer doesn't really work. Hence, currently
+only back-track randomized program still searches IVPM with a extremely
+slow speed...}}
 
 % \gerardo{Set-valued is a particular case?}
 
@@ -1385,12 +1386,12 @@ for a given Hilbert space~$\Hilb$ of dimension~$d$, and the state
 of the silver atom can be represented by a density matrix~$\rho$
 written in the same basis, i.e., $\rho=\tensor*[_{\mathscr{O}}]{\sum}{_{i=1}^{d}}\tensor*[_{\mathscr{O}}]{\sum}{_{j=1}^{d}}r_{ij}\ket{\psi_{i}}\bra{\psi_{j}}$.
 As we discussed in the last paragraph, the Born rule of the mixed
-state~$\rho$ induces a classical probability measure~$\pmeas':2^{\Omega}\rightarrow[0,1]$
+state~$\rho$ induces a classical probability measure~$\pmeas^{\Omega}:2^{\Omega}\rightarrow[0,1]$
 on $\Omega$. Let $E\in2^{\Omega}$ be a classical event and $P=\tensor*[_{\mathscr{O}}]{\sum}{_{\ket{\psi_{j}}\in E}}\proj{\psi_{j}}$
 be the quantum event corresponding to subspace span by $E$, we can
 have
 \begin{equation}
-\pmeas'\left(E\right)=\mu_{\rho}^{B}\left(P\right)\overset{\left(\ref{BornRule.mixed}\right)}{=}\Tr\left(\rho P\right)=\sideset{_{\mathbb{R}}}{_{\ket{\psi_{j}}\in E}}\sum r_{jj}\textrm{ .}\label{BornRule.mixed-1}
+\pmeas^{\Omega}\left(E\right)=\mu_{\rho}^{B}\left(P\right)\overset{\left(\ref{BornRule.mixed}\right)}{=}\Tr\left(\rho P\right)=\sideset{_{\mathbb{R}}}{_{\ket{\psi_{j}}\in E}}\sum r_{jj}\textrm{ .}\label{BornRule.mixed-1}
 \end{equation}
 By equation (\ref{eq:Radon-Nikodym}), the Radon-Nikodym derivative
 of $\pmeas'$ is $f\left(\ket{\psi_{j}}\right)=r_{jj}$, which is
@@ -1586,6 +1587,85 @@ where $\tensor*[_{\mathbb{R}}]{\sum}{_{j=1}^{N}}q_{j}=1$ and $q_{j}>0$.
 However, no pure state~$\ket{\phi}$ satisfies $\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0$
 so that we have $\mu(P)\notin\bar{\mu}(P)$ for all quantum probability
 measure~$\mu$.\qed\end{example}
+
+Although theorem~\ref{thm:Shapley} and \ref{def:EmptyCoreQuantumInterval-valuedProbability}
+gives opposite results, their results are consistent. If we pick a
+orthonormal basis~$\Omega=\left\{ \ket{\psi_{j}}\right\} _{j=1}^{d}$,
+let $E\in2^{\Omega}$ be a classical event and $P=\tensor*[_{\mathscr{O}}]{\sum}{_{\ket{\psi_{j}}\in E}}\proj{\psi_{j}}$
+be the quantum event corresponding to subspace span by $E$, we can
+define a classical interval-valued probability measure$\bar{\mu}^{\Omega}\left(E\right)=\bar{\mu}\left(P\right)$.
+There are two cases.
+
+\begin{case}If $\ket{\psi_{1}}$ is either $\ket{0}$, $\ket{\ps}$,
+or $\ket{\ps'}$, then we have
+
+\[
+\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{rcl}
+\bar{\mu}^{\Omega}(\emptyset) & = & \imposs\\
+\bar{\mu}^{\Omega}(\{\ket{\psi_{1}}\}) & = & \imposs\\
+\bar{\mu}^{\Omega}(\{\ket{\psi_{2}}\}) & = & \unknown\\
+\bar{\mu}^{\Omega}(\{\ket{\psi_{3}}\}) & = & \unknown
+\end{array} & \begin{array}{rcl}
+\bar{\mu}^{\Omega}(\{\ket{\psi_{1}},\ket{\psi_{2}}\}) & = & \unknown\\
+\bar{\mu}^{\Omega}(\{\ket{\psi_{3}},\ket{\psi_{1}}\}) & = & \unknown\\
+\bar{\mu}^{\Omega}(\{\ket{\psi_{2}},\ket{\psi_{3}}\}) & = & \necess\\
+\bar{\mu}^{\Omega}(\{\ket{\psi_{1}},\ket{\psi_{2}},\ket{\psi_{3}}\}) & = & \necess
+\end{array}\end{array}
+\]
+It is easy to verify that $\bar{\mu}^{\Omega}$ has an non-empty core,
+and $\pmeas^{\Omega}:2^{\Omega}\rightarrow\left[0,1\right]$ is in
+its core. 
+\[
+\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{rcl}
+\pmeas^{\Omega}(\emptyset) & = & 0\\
+\pmeas^{\Omega}(\{\ket{\psi_{1}}\}) & = & 0\\
+\pmeas^{\Omega}(\{\ket{\psi_{2}}\}) & = & 1/2\\
+\pmeas^{\Omega}(\{\ket{\psi_{3}}\}) & = & 1/2
+\end{array} & \begin{array}{rcl}
+\pmeas^{\Omega}(\{\ket{\psi_{1}},\ket{\psi_{2}}\}) & = & 1/2\\
+\pmeas^{\Omega}(\{\ket{\psi_{3}},\ket{\psi_{1}}\}) & = & 1/2\\
+\pmeas^{\Omega}(\{\ket{\psi_{2}},\ket{\psi_{3}}\}) & = & 1\\
+\pmeas^{\Omega}(\{\ket{\psi_{1}},\ket{\psi_{2}},\ket{\psi_{3}}\}) & = & 1
+\end{array}\end{array}
+\]
+\qed\end{case}
+
+\begin{case}If neither $\ket{0}$, $\ket{\ps}$, nor $\ket{\ps'}$
+is in $\Omega$, then we have
+
+\[
+\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{rcl}
+\bar{\mu}^{\Omega}(\emptyset) & = & \imposs\\
+\bar{\mu}^{\Omega}(\{\ket{\psi_{1}}\}) & = & \unknown\\
+\bar{\mu}^{\Omega}(\{\ket{\psi_{2}}\}) & = & \unknown\\
+\bar{\mu}^{\Omega}(\{\ket{\psi_{3}}\}) & = & \unknown
+\end{array} & \begin{array}{rcl}
+\bar{\mu}^{\Omega}(\{\ket{\psi_{1}},\ket{\psi_{2}}\}) & = & \unknown\\
+\bar{\mu}^{\Omega}(\{\ket{\psi_{3}},\ket{\psi_{1}}\}) & = & \unknown\\
+\bar{\mu}^{\Omega}(\{\ket{\psi_{2}},\ket{\psi_{3}}\}) & = & \unknown\\
+\bar{\mu}^{\Omega}(\{\ket{\psi_{1}},\ket{\psi_{2}},\ket{\psi_{3}}\}) & = & \necess
+\end{array}\end{array}
+\]
+In this case, $\pmeas^{\Omega}:2^{\Omega}\rightarrow\left[0,1\right]$
+defined by the following is in the core of $\bar{\mu}^{\Omega}$.
+\[
+\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{rcl}
+\pmeas^{\Omega}(\emptyset) & = & 0\\
+\pmeas^{\Omega}(\{\ket{\psi_{1}}\}) & = & 1/3\\
+\pmeas^{\Omega}(\{\ket{\psi_{2}}\}) & = & 1/3\\
+\pmeas^{\Omega}(\{\ket{\psi_{3}}\}) & = & 1/3
+\end{array} & \begin{array}{rcl}
+\pmeas^{\Omega}(\{\ket{\psi_{1}},\ket{\psi_{2}}\}) & = & 1/3\\
+\pmeas^{\Omega}(\{\ket{\psi_{3}},\ket{\psi_{1}}\}) & = & 1/3\\
+\pmeas^{\Omega}(\{\ket{\psi_{2}},\ket{\psi_{3}}\}) & = & 1/3\\
+\pmeas^{\Omega}(\{\ket{\psi_{1}},\ket{\psi_{2}},\ket{\psi_{3}}\}) & = & 1
+\end{array}\end{array}
+\]
+\qed\end{case}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
