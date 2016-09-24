@@ -42,8 +42,6 @@
 \newcommand{\qevents}{\ensuremath{\mathcal{E}}}
 \newcommand{\pmeas}{\ensuremath{\mu}}
 \newcommand{\Hilb}{\mathcal{H}}
-\newcommand{\pr}[2]{\langle #1, #2 \rangle}
-\newcommand{\proj}[1]{|#1 \rangle\langle #1 |}
 \newcommand{\ps}{\texttt{+}}
 \newcommand{\ms}{\texttt{-}}
 \newcommand{\poss}{{\mbox{\wesa{possible}}}}
@@ -68,9 +66,14 @@
 \usepackage{tensor}
 \newcommand{\rme}{\mathrm{e}}
 \newcommand{\rmi}{\mathrm{i}}
-\usepackage[braket, qm]{qcircuit} 
+\usepackage[braket]{qcircuit} 
 \newcommand{\xyR}[1]{\xymatrixrowsep={#1}}
 \newcommand{\xyC}[1]{\xymatrixcolsep={#1}}
+\newcommand{\ip}[2]{\ensuremath{\left\langle{#1}\middle\vert{#2}\right\rangle}}
+\newcommand{\melem}[3]{\ensuremath{\left\langle{#1}\middle\vert{#2}\middle\vert{#3}\right\rangle}}
+\newcommand{\op}[2]{\ensuremath{\left\vert{#1}\middle\rangle\middle\langle{#2}\right\vert}}
+\newcommand{\pr}[2]{\ip{#1}{#2}}
+\newcommand{\proj}[1]{\op{#1}{#1}}
 
 \begin{document}
 \title{Interval Probability and Measurement for Fuzzy Quantum Theories}
@@ -1840,10 +1843,12 @@ defined by the following is in the core of $\bar{\mu}^{\Omega}$.
 \section{(The other possible approach keep Section \ref{sec:Quantum-Probability-Spaces}) }
 
 If we compare the counterexample in example~\ref{ex:three-dimensional-three-value}
-and \ref{ex:three-dimensional-4-value}, we found example~\ref{ex:three-dimensional-4-value}
-is not as bad as example~\ref{ex:three-dimensional-three-value}.
-At least, the states map to $\imposs$ are all in the same plane in
-example~\ref{ex:three-dimensional-4-value}. Maybe interval-valued
+and \ref{ex:three-dimensional-4-value}, we find that example~\ref{ex:three-dimensional-three-value}
+really use the property of $\unknown$ so that it cannot hold when
+the intervals are more precise. Also, example~\ref{ex:three-dimensional-4-value}
+is not as bad as example~\ref{ex:three-dimensional-three-value}
+in a sense that the states map to $\imposs$ are all in the same plane
+in example~\ref{ex:three-dimensional-4-value}. Maybe interval-valued
 probability measures will be closer and closer to real-valued probability
 measures if the intervals are more and more precise?
 
@@ -1851,57 +1856,6 @@ measures if the intervals are more and more precise?
 
 
 \subsection{Examples for Quantum Interval-valued Probability Measures}
-
-The following example verify the core of a quantum interval-valued
-probability measure is nonempty even if there is no natural correspondence.
-For example, if $\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
-there is no natural way to map from $\frac{1}{2}$, as both $\frac{1}{2}\in\left[0,\frac{1}{2}\right]=\unlikely$
-and $\frac{1}{2}\in\left[\frac{1}{2},1\right]=\likely$. However,
-we still can find a quantum interval-valued probability measure corresponding
-to a quantum probability measure as in the following example.
-
-\begin{example}[One-qubit quantum interval-valued probability measure]\label{ex:One-qubit-quantum-interval}
-Given a two dimensional Hilbert space, a vector $\ket{\psi}$ can
-be normalized and written in $\left(\begin{array}{c}
-\cos\theta\\
-\rme^{\rmi\gamma}\sin\theta
-\end{array}\right)$, where $0\le\theta\le\frac{\pi}{2}$ and $0\le\gamma<2\pi$. Consider
-a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-defined by 
-\begin{eqnarray*}
-\bar{\mu}(\mathbb{0}) & = & \imposs\textrm{ ,}\\
-\bar{\mu}(\mathbb{1}) & = & \necess\textrm{ ,}\\
-\bar{\mu}(\proj{\psi}) & = & \begin{cases}
-\necess & \textrm{, if }\theta=0\textrm{ ;}\\
-\likely & \textrm{, if }0<\theta<\frac{\pi}{4}\textrm{ ;}\\
-\likely & \textrm{, if }\theta=\frac{\pi}{4}\textrm{ and }0\le\gamma<\pi\textrm{ ;}\\
-\unlikely & \textrm{, if }\theta=\frac{\pi}{4}\textrm{ and }\pi\le\gamma<2\pi\textrm{ ;}\\
-\unlikely & \textrm{, if }\frac{\pi}{4}<\theta<\frac{\pi}{2}\textrm{ ;}\\
-\imposs & \textrm{, if }\theta=\frac{\pi}{2}\textrm{ .}
-\end{cases}
-\end{eqnarray*}
-Let $\ket{\psi^{\perp}}$ be the state perpendicular to $\ket{\psi}$.
-Then, the vector representation of $\ket{\psi^{\perp}}$ can be simplified
-as 
-\[
-\left(\begin{array}{c}
--\rme^{-\rmi\gamma}\sin\theta\\
-\cos\theta
-\end{array}\right)=-\rme^{-\rmi\gamma}\left(\begin{array}{c}
-\cos\left(\frac{\pi}{2}-\theta\right)\\
-\rme^{\rmi\left(\pi+\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)
-\end{array}\right)
-\]
-so we have 
-\[
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi}\right)=\bar{\mu}\left(\proj{\psi^{\perp}}\right)=1\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(\proj{\psi}\right)\textrm{ .}
-\]
-Hence, $\bar{\mu}$ is a quantum $\mathscr{I}$-interval-valued probability
-measure. Notice that for all projection~$P$, $\mu_{\ket{0}}^{B}(P)\in\bar{\mu}(P)$
-implies that $\bar{\mu}(P)$ is one of quantum $\mathscr{I}$-interval-valued
-probability measures corresponding to $\mu_{\ket{0}}^{B}(P)$. However,
-$\mu_{\ket{0}}^{B}(P)$ can correspond to infinity many quantum $\mathscr{I}$-interval-valued
-probability measures by twisting the definition involving $\gamma$.\qed\end{example}
 
 We are going to provide an quantum 4-value interval-valued probability
 measures corresponding to no quantum probability measure, i.e., $\mu_{\rho}^{B}(P)\notin\bar{\mu}(P)$.
@@ -1927,8 +1881,6 @@ and $0\le\gamma<\pi$, we define $\bar{\mu}(\proj{0_{\theta,\gamma}^{\perp}})=\ke
 and $\bar{\mu}(\mathbb{1}-\proj{0_{\theta,\gamma}^{\perp}})=\bar{\mu}(\mathbb{1}-\proj{\ps_{\theta,\gamma}^{\perp}})=\unlikely$. 
 \item Otherwise, $\bar{\mu}(\proj{\psi})=\unlikely$ and $\bar{\mu}(\mathbb{1}-\proj{\psi})=\likely$. 
 \end{enumerate}
-$\bar{\mu}$ cannot correspond to any quantum probability measure
-because of the exact same reason as in example~\ref{ex:three-dimensional-three-value}.
 Before we verify that $\bar{\mu}$ is a quantum interval-valued probability
 measure, we need a notation for cross product. For $\ket{\psi}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}=\begin{pmatrix}\alpha_{0}\\
 \alpha_{1}\\

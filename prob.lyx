@@ -39,8 +39,6 @@
 \newcommand{\qevents}{\ensuremath{\mathcal{E}}}
 \newcommand{\pmeas}{\ensuremath{\mu}}
 \newcommand{\Hilb}{\mathcal{H}}
-\newcommand{\pr}[2]{\langle #1, #2 \rangle}
-\newcommand{\proj}[1]{|#1 \rangle\langle #1 |}
 \newcommand{\ps}{\texttt{+}}
 \newcommand{\ms}{\texttt{-}}
 \newcommand{\poss}{{\mbox{\wesa{possible}}}}
@@ -65,9 +63,14 @@
 \usepackage{tensor}
 \newcommand{\rme}{\mathrm{e}}
 \newcommand{\rmi}{\mathrm{i}}
-\usepackage[braket, qm]{qcircuit} 
+\usepackage[braket]{qcircuit} 
 \newcommand{\xyR}[1]{\xymatrixrowsep={#1}}
 \newcommand{\xyC}[1]{\xymatrixcolsep={#1}}
+\newcommand{\ip}[2]{\ensuremath{\left\langle{#1}\middle\vert{#2}\right\rangle}}
+\newcommand{\melem}[3]{\ensuremath{\left\langle{#1}\middle\vert{#2}\middle\vert{#3}\right\rangle}}
+\newcommand{\op}[2]{\ensuremath{\left\vert{#1}\middle\rangle\middle\langle{#2}\right\vert}}
+\newcommand{\pr}[2]{\ip{#1}{#2}}
+\newcommand{\proj}[1]{\op{#1}{#1}}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -140,10 +143,6 @@ theorems-ams
 
 \begin_layout Title
 Interval Probability and Measurement for Fuzzy Quantum Theories
-\end_layout
-
-\begin_layout Author
-
 \end_layout
 
 \begin_layout Date
@@ -18674,7 +18673,23 @@ reference "ex:three-dimensional-4-value"
 
 \end_inset
 
-, we found example
+, we find that example
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ex:three-dimensional-three-value"
+
+\end_inset
+
+ really use the property of 
+\begin_inset Formula $\unknown$
+\end_inset
+
+ so that it cannot hold when the intervals are more precise.
+ Also, example
 \begin_inset space ~
 \end_inset
 
@@ -18696,8 +18711,7 @@ reference "ex:three-dimensional-three-value"
 
 \end_inset
 
-.
- At least, the states map to 
+ in a sense that the states map to 
 \begin_inset Formula $\imposs$
 \end_inset
 
@@ -18737,206 +18751,6 @@ status collapsed
 
 \begin_layout Subsection
 Examples for Quantum Interval-valued Probability Measures
-\end_layout
-
-\begin_layout Standard
-The following example verify the core of a quantum interval-valued probability
- measure is nonempty even if there is no natural correspondence.
- For example, if 
-\begin_inset Formula $\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $
-\end_inset
-
-, there is no natural way to map from 
-\begin_inset Formula $\frac{1}{2}$
-\end_inset
-
-, as both 
-\begin_inset Formula $\frac{1}{2}\in\left[0,\frac{1}{2}\right]=\unlikely$
-\end_inset
-
- and 
-\begin_inset Formula $\frac{1}{2}\in\left[\frac{1}{2},1\right]=\likely$
-\end_inset
-
-.
- However, we still can find a quantum interval-valued probability measure
- corresponding to a quantum probability measure as in the following example.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{example}
-\end_layout
-
-\end_inset
-
-[One-qubit quantum interval-valued probability measure]
-\begin_inset CommandInset label
-LatexCommand label
-name "ex:One-qubit-quantum-interval"
-
-\end_inset
-
- Given a two dimensional Hilbert space, a vector 
-\begin_inset Formula $\ket{\psi}$
-\end_inset
-
- can be normalized and written in 
-\begin_inset Formula $\left(\begin{array}{c}
-\cos\theta\\
-\rme^{\rmi\gamma}\sin\theta
-\end{array}\right)$
-\end_inset
-
-, where 
-\begin_inset Formula $0\le\theta\le\frac{\pi}{2}$
-\end_inset
-
- and 
-\begin_inset Formula $0\le\gamma<2\pi$
-\end_inset
-
-.
- Consider a quantum interval-valued probability measure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
-\end_inset
-
- defined by 
-\begin_inset Formula 
-\begin{eqnarray*}
-\bar{\mu}(\mathbb{0}) & = & \imposs\textrm{ ,}\\
-\bar{\mu}(\mathbb{1}) & = & \necess\textrm{ ,}\\
-\bar{\mu}(\proj{\psi}) & = & \begin{cases}
-\necess & \textrm{, if }\theta=0\textrm{ ;}\\
-\likely & \textrm{, if }0<\theta<\frac{\pi}{4}\textrm{ ;}\\
-\likely & \textrm{, if }\theta=\frac{\pi}{4}\textrm{ and }0\le\gamma<\pi\textrm{ ;}\\
-\unlikely & \textrm{, if }\theta=\frac{\pi}{4}\textrm{ and }\pi\le\gamma<2\pi\textrm{ ;}\\
-\unlikely & \textrm{, if }\frac{\pi}{4}<\theta<\frac{\pi}{2}\textrm{ ;}\\
-\imposs & \textrm{, if }\theta=\frac{\pi}{2}\textrm{ .}
-\end{cases}
-\end{eqnarray*}
-
-\end_inset
-
-Let 
-\begin_inset Formula $\ket{\psi^{\perp}}$
-\end_inset
-
- be the state perpendicular to 
-\begin_inset Formula $\ket{\psi}$
-\end_inset
-
-.
- Then, the vector representation of 
-\begin_inset Formula $\ket{\psi^{\perp}}$
-\end_inset
-
- can be simplified as 
-\begin_inset Formula 
-\[
-\left(\begin{array}{c}
--\rme^{-\rmi\gamma}\sin\theta\\
-\cos\theta
-\end{array}\right)=-\rme^{-\rmi\gamma}\left(\begin{array}{c}
-\cos\left(\frac{\pi}{2}-\theta\right)\\
-\rme^{\rmi\left(\pi+\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)
-\end{array}\right)
-\]
-
-\end_inset
-
-so we have 
-\begin_inset Formula 
-\[
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi}\right)=\bar{\mu}\left(\proj{\psi^{\perp}}\right)=1\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(\proj{\psi}\right)\textrm{ .}
-\]
-
-\end_inset
-
-Hence, 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- is a quantum 
-\begin_inset Formula $\mathscr{I}$
-\end_inset
-
--interval-valued probability measure.
- Notice that for all projection
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $P$
-\end_inset
-
-, 
-\begin_inset Formula $\mu_{\ket{0}}^{B}(P)\in\bar{\mu}(P)$
-\end_inset
-
- implies that 
-\begin_inset Formula $\bar{\mu}(P)$
-\end_inset
-
- is one of quantum 
-\begin_inset Formula $\mathscr{I}$
-\end_inset
-
--interval-valued probability measures corresponding to 
-\begin_inset Formula $\mu_{\ket{0}}^{B}(P)$
-\end_inset
-
-.
- However, 
-\begin_inset Formula $\mu_{\ket{0}}^{B}(P)$
-\end_inset
-
- can correspond to infinity many quantum 
-\begin_inset Formula $\mathscr{I}$
-\end_inset
-
--interval-valued probability measures by twisting the definition involving
- 
-\begin_inset Formula $\gamma$
-\end_inset
-
-.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-qed
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{example}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -19122,23 +18936,7 @@ Otherwise,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- cannot correspond to any quantum probability measure because of the exact
- same reason as in example
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "ex:three-dimensional-three-value"
-
-\end_inset
-
-.
- Before we verify that 
+Before we verify that 
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
