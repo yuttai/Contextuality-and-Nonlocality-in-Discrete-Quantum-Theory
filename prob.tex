@@ -1860,10 +1860,11 @@ more precise?
 \subsection{Examples for Quantum Interval-valued Probability Measures}
 
 We are going to provide an quantum 4-value interval-valued probability
-measures corresponding to no quantum probability measure, i.e., $\mu_{\rho}^{B}(P)\notin\bar{\mu}(P)$. 
+measures corresponding to no quantum probability measure, i.e., for
+all mixed state~$\rho$ there is a $P\in\events$ such that $\mu_{\rho}^{B}(P)\notin\bar{\mu}(P)$. 
 
 \begin{example}[Three-dimensional quantum 4-value interval-valued
-probability measure]\label{ex:three-dimensional-4-value} \footnote{\yutsung{Need to verify this example is convex!}}Given
+probability measure]\label{ex:three-dimensional-4-value} \footnote{\yutsung{Need to verify whether this example is convex or not.}}Given
 a three dimensional Hilbert space with an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
 Consider\emph{ }$\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
 $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$, $\ket{\ms}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})$,
@@ -1871,36 +1872,35 @@ and a quantum $\mathscr{I}$-interval-valued probability measure~$\bar{\mu}:\even
 defined as follow, where the state vectors corresponding to 1-dimensional
 projector are also illustrated in figure~\ref{fig:three-dimensional-4-value}.
 \begin{enumerate}
-\item We have 
+\item Let 
 \begin{eqnarray*}
 \bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps}) & = & \imposs\\
 \bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0})=\bar{\mu}(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\ps}) & = & \necess\textrm{ ,}
 \end{eqnarray*}
  where $\ket{0}$ and $\ket{\ps}$ is illustrated as the red and green
 dotted vector, respectively.
-\item Consider the states orthogonal to $\ket{0}$ and $\ket{\ps}$ respectively,
-$\ket{0_{\theta,\gamma}^{\perp}}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
+\item Consider the red and green circles in figure~\ref{fig:three-dimensional-4-value}.
+They are the states orthogonal to $\ket{0}$ and $\ket{\ps}$, respectively,
+and can be parametrized as $\ket{0_{\theta,\gamma}^{\perp}}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
 and $\ket{\ps_{\theta,\gamma}^{\perp}}=-\rme^{\rmi\gamma}\sin\theta\ket{\ms}+\cos\theta\ket{2}$,
-where $0\le\theta\le\frac{\pi}{2}$ and $0\le\gamma<2\pi$, as the
-red and green circles in figure~\ref{fig:three-dimensional-4-value}.
-The dotted half of those states need special treatment, i.e., when
-where $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, we define
+where $0\le\theta\le\frac{\pi}{2}$ and $0\le\gamma<2\pi$. The dotted
+half of those states need special treatment, i.e., when where $0\le\theta<\frac{\pi}{2}$
+and $0\le\gamma<\pi$, we define 
 \begin{eqnarray*}
 \bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)=\bar{\mu}\left(\proj{\ps_{\theta,\gamma}^{\perp}}\right) & = & \likely\\
 \bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\theta,\gamma}^{\perp}}\right)=\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\ps_{\theta,\gamma}^{\perp}}\right) & = & \unlikely\textrm{ .}
 \end{eqnarray*}
 \item Otherwise, $\bar{\mu}(\proj{\psi})=\unlikely$ and $\bar{\mu}(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi})=\likely$. 
 \end{enumerate}
-Assume there is a real-valued probability measure satisfying $\mu_{\rho}^{B}(P)\in\bar{\mu}(P)$.
-Because $\mu_{\rho}^{B}(\proj{0})\in\bar{\mu}(\proj{0})=\imposs$
+That $\bar{\mu}$ has an empty core can be proved by contradiction.
+Assume there is a real-valued probability measure satisfying $\mu_{\rho}^{B}(P)\in\bar{\mu}(P)$
+for all $P\in\events$. Because $\mu_{\rho}^{B}(\proj{0})\in\bar{\mu}(\proj{0})=\imposs$
 and $\mu_{\rho}^{B}(\proj{\ps})\in\bar{\mu}(\proj{\ps})=\imposs$,
-we must have is $\mu_{\rho}^{B}(\proj{0})=\mu_{\rho}^{B}(\proj{\ps})=0$
+we must have $\mu_{\rho}^{B}(\proj{0})=\mu_{\rho}^{B}(\proj{\ps})=0$
 so that $\mu_{\rho}^{B}=\mu_{\ket{2}}^{B}$. However, 
 \[
 \mu_{\ket{2}}^{B}(\proj{2})=1\notin\unlikely=\bar{\mu}(\proj{2})\textrm{ .}
 \]
-A contradiction! Hence, we have $\mu(P)\notin\bar{\mu}(P)$ for all
-quantum probability measure~$\mu$.
 
 Before we verify that $\bar{\mu}$ is a quantum interval-valued probability
 measure, we need a notation of cross product. For $\ket{\psi}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}=\begin{pmatrix}\alpha_{0}\\
@@ -1929,7 +1929,8 @@ $\ket{\phi}$.
 \ip{\psi\times\phi}{\phi} & = & \left(\alpha_{1}\beta_{2}-\alpha_{2}\beta_{1}\right)\beta_{0}+\left(\alpha_{2}\beta_{0}-\alpha_{0}\beta_{2}\right)\beta_{1}+\left(\alpha_{0}\beta_{1}-\alpha_{1}\beta_{0}\right)\beta_{2}=0\textrm{ .}
 \end{eqnarray*}
 Also, even if $\ket{\psi}$ and $\ket{\phi}$ are normalized, their
-cross product~$\ket{\psi\times\phi}$ need not be normalized as usual.
+cross product~$\ket{\psi}\times\ket{\phi}$ need not be normalized
+as usual.
 
 Similar to example~\ref{ex:three-dimensional-three-value}, to verify
 $\bar{\mu}$ is a quantum interval-valued probability measure, we
@@ -1944,7 +1945,8 @@ and it is sufficient to check
 \end{equation}
 for every orthonormal basis $\mathcal{B}=\left\{ \ket{\psi_{1}},\ket{\psi_{2}},\ket{\psi_{3}}\right\} $.
 We are going to enumerate all possible orthonormal bases to verify
-the equations, and case 1 and 2 are illustrated in figure~\ref{fig:three-dimensional-4-value}.
+equation~(\ref{eq:non-additive-vectors}), and case 1 and 2 are illustrated
+in figure~\ref{fig:three-dimensional-4-value}. 
 \begin{figure}
 \includegraphics{\string"Three-dimensional quantum 4-value interval-valued probability measure\string".pdf}\caption{\label{fig:three-dimensional-4-value}This figure illustrates case
 1 and 2 in $\mathbb{R}^{3}$ in example~\ref{ex:three-dimensional-4-value}.
@@ -1959,9 +1961,9 @@ and $\ket{\ps}\times\ket{0_{\theta,\gamma}^{\perp}}$, respectively.}
 \end{figure}
 
 \begin{enumerate}
-\item When $\ket{\psi_{1}}$ is $\ket{0}$, then $\ket{\psi_{2}}$ and $\ket{\psi_{3}}$
-must be $\ket{0_{\theta,\gamma}^{\perp}}$ for some $\theta$ and
-$\gamma$. Because of 
+\item When $\ket{\psi_{1}}$ is $\ket{0}$, then either $\ket{\psi_{2}}$
+or $\ket{\psi_{3}}$ must be $\ket{0_{\theta,\gamma}^{\perp}}$ for
+some $\theta$ and $\gamma$. Because of 
 \[
 \ket{0}\times\ket{0_{\theta,\gamma}^{\perp}}=\begin{pmatrix}1\\
 0\\
@@ -1980,7 +1982,7 @@ $\gamma$. Because of
 the pair $\ket{\psi_{2}}=\ket{0_{\theta,\gamma}^{\perp}}$ and $\ket{\psi_{3}}=\ket{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}$
 for ($0<\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$) or $\theta=0$
 enumerate all possible orthonormal bases. Equation (\ref{eq:non-additive-vectors})
-can be verified as follow. 
+can then be verified as follow. 
 \begin{eqnarray*}
 \bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0}\right)=\necess & \subseteq & \likely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)\\
 \bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\theta,\gamma}^{\perp}}\right)=\unlikely & = & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\imposs=\bar{\mu}\left(\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0}\right)\\
