@@ -38,6 +38,7 @@
 \newtheorem{lemma}{Lemma}
 \newtheorem{thm}{Theorem}
 \newtheorem{case}{Case}
+\newtheorem{conjecture}{Conjecture}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
 \newcommand{\qevents}{\ensuremath{\mathcal{E}}}
 \newcommand{\pmeas}{\ensuremath{\mu}}
@@ -836,7 +837,10 @@ or more?}}, so that we have only verified every interval-valued probability
 measure has a non-empty core when $\left|\Omega\right|\le5$ so far.\footnote{\yutsung{The program for $\left|\Omega\right|=6$ blows up the memory
 again, and the symmetric answer doesn't really work. Hence, currently
 only back-track randomized program still searches IVPM with a extremely
-slow speed...}}
+slow speed...}} Based on the previous fact, we have the following conjecture.
+
+\begin{conjecture}Every interval-valued probability measure has a
+nonempty core.\qed\end{conjecture}
 
 % \gerardo{Set-valued is a particular case?}
 
@@ -1591,256 +1595,12 @@ However, no pure state~$\ket{\phi}$ satisfies $\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\
 so that we have $\mu(P)\notin\bar{\mu}(P)$ for all quantum probability
 measure~$\mu$.\qed\end{example}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\yutsung{I think there are three possible approaches to complete
-the story. 
-
-Our original plan was to put the Mermin v.s. Meyer debate here, and
-move on to the discrete quantum probability measure. Then, discrete
-real-valued quantum probability measures are expected to fail because
-of John's proof, and we hope discrete interval-valued Gleason's theorem
-can work in some sense? This story is scratched in section~\ref{sec:DQT}.
-The problem is the discrete version of example~\ref{ex:three-dimensional-three-value}.
-Because we don't really use $\mathbb{C}$ in example~\ref{ex:three-dimensional-three-value},
-the discrete version of example~\ref{ex:three-dimensional-three-value}
-is likely to serve as an counterexample for discrete interval-valued
-Gleason's theorem... Hence, we may need to put some extra-conditions
-to by-pass the discrete version of example~\ref{ex:three-dimensional-three-value}.
-
-Another possible approach is to tell everybody: because Gleason's
-theorem is an accident, the original way to formulate to a quantum
-system as a state vector or density matrix is an accident. If we want
-to do things correct, we should work on quantum (real/interval)-valued
-probability measure directly. This approach is scratched in section~\ref{sec:QC}.
-The problem of this approach is that we need an concrete example to
-show it is possible to work on quantum (real/interval)-valued probability
-measure directly. For example, we might need to verify tensor product
-and quantum teleportation works in this model...
-
-The other approach might be keep going section~\ref{sec:Quantum-Probability-Spaces},
-but try to prove there is a unique interval-valued Born rule with
-extra-conditions. I sketched a possible set of conditions, but haven't
-verified whether it really works or not...}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\label{sec:DQT}(One possible approach) Discrete Quantum Theory}
-
-\subsection{Discrete Quantum Real-valued Probability Measures}
-
-Killed by John... Need to be typed...
-
-\subsection{Discrete Quantum Interval-valued Probability Measures}
-
-Discrete interval-valued Gleason's theorem should be here, but it
-is unlikely to work if the discrete version of example~\ref{ex:three-dimensional-three-value}
-works... Might need to put some extra-conditions to by-pass it...
-
-Following are possible extra-conditions:
-\begin{enumerate}
-\item \emph{$\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $} is
-too small...
-\item $\mu\otimes\mu$ might not be a quantum real-valued probability measure,
-where $\mu$ is a non-Born real-valued probability measure for dimension
-2. Maybe embedding the small space into the bigger one could add extra-conditions
-to kill strange interval-valued probability measures?
-\end{enumerate}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\label{sec:QC}(Another possible approach) Quantum Computing on Quantum
-(Real/Interval)-valued Probability Measures}
-
-We give up the idea of representing a quantum state as a density matrix,
-and compute the quantum state as a quantum (real/interval)-valued
-probability measure directly. 
-
-%%%%%
-
-
-\subsection{Time Evolution}
-
-In CQT, an time evolution operator~$U$ will map a state~$\ket{\phi}$
-to $U\ket{\phi}$. In this case, its quantum real-valued probability
-measure after evolution is
-\[
-\mu_{U\ket{\phi}}^{B}\left(P\right)=\ip{\phi}{U^{\dagger}PU\phi}=\mu_{\ket{\phi}}^{B}\left(U^{\dagger}PU\right)\textrm{ .}
-\]
-Hence, given any quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$,
-the quantum interval-valued probability measure after time evolution
-operator~$U$ should be defined as 
-\[
-\bar{\mu}_{U}\left(P\right)=\bar{\mu}\left(U^{\dagger}PU\right)\textrm{ .}
-\]
-
-%%%%%
-
-
-\subsection{Tensor Product and Partial Measurement}
-
-\[
-\left(\bar{\mu}_{1}\otimes\bar{\mu}_{2}\right)\left(P_{1}\otimes P_{2}\right)=\bar{\mu}_{1}\left(P_{1}\right)\bar{\mu}_{2}\left(P_{2}\right)?
-\]
-Is $\bar{\mu}_{1}\otimes\bar{\mu}_{2}$ still a quantum interval-valued
-probability measure?
-
-Might be hard, because $\mu\otimes\mu$ might not be a quantum real-valued
-probability measure, where $\mu$ is a non-Born real-valued probability
-measure for dimension 2.
-
-Quantum Fubini Theorem?
-
-%%%%%
-
-
-\subsection{Quantum Teleportation}
-
-\begin{figure}[t]
-\[
-\begin{array}{c}
-\hspace{1cm}\xyC{.6em}\entrymodifiers={@*=<0em>}\xymatrix@R=0.9em{ & \ar@{.}[dddd] &  & \ar@{.}[dddd] &  & \ar@{.}[dddd] &  & \ar@{.}[dddd]\\
-\lstick{\bar{\mu}} & \qw & \ctrl{1} & \qw & \gate{H} & \qw & \meter & \cw & \cw & \control\cw\\
- & \qw & \targ & \qw & \qw & \qw & \meter & \cw & \control\cw & \cwx & \ar@{.}[dd]\\
- & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \gate{X}\cwx & \gate{Z}\cwx & \qw\\
- & \push{\bar{\mu}_{0}} &  & \push{\bar{\mu}_{1}} &  & \push{\bar{\mu}_{2}} &  & \push{\bar{\mu}_{3}} &  &  & \push{\bar{\mu}_{4}}
-}
-\end{array}
-\]
-\caption{\label{fig:QuantumTeleportation}Circuit for Quantum Teleportation}
-\end{figure}
-
-In figure~\ref{fig:QuantumTeleportation}, let $\ket{\phi}=\frac{1}{\sqrt{2}}\left(\ket{00}+\ket{11}\right)$.
-
-$\bar{\mu}_{0}=\bar{\mu}_{1}\otimes\mu_{\ket{\phi}}^{B}$. Notice
-that a quantum real-valued probability measure can be considered as
-an special case of quantum interval-valued probability measure...
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{(The other possible approach keep Section \ref{sec:Quantum-Probability-Spaces}) }
-
-%%%%%
-
-
-\subsection{Recover an Interval-valued Born Rule(?)}
-
-Although not all interval-valued probability measure could correspond
-to any real-valued probability measure as in theorem~\ref{def:EmptyCoreQuantumInterval-valuedProbability},
-it does not mean we could not deduce an interval-valued Born rule.
-Notice that Gleason's theorem only says every real-valued probability
-measure can correspond to a mixed state by the Born rule, but does
-not specify the Born rule should be the only rule which corresponds
-a mixed state to a real-valued probability measure. For example, Gleason's
-theorem does not rule out the correspondence $\mu_{\phi}^{\prime B}(P)=\melem{0}{P}{0}$
-which send every state~$\ket{\phi}$ to the same real-valued probability
-measure. If we want to recover the Born rule itself, we need to more
-conditions to specify which state corresponds to which real-valued
-probability measure.
-
-\begin{thm}Consider\emph{ }$\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $.
-There is a unique interval-valued Born rule~$\bar{\mu}^{B}:\left\{ \ket{\phi}\in\Hilb\middle|\ip{\phi}{\phi}=1\right\} \rightarrow\left(\events\rightarrow\mathscr{I}\right)$
-such that:
-\begin{itemize}
-\item For any pure state~$\ket{\phi}$, $\bar{\mu}_{\phi}^{B}$ is an interval-valued
-probability measure.
-\item For any pure state~$\ket{\phi}$, $\bar{\mu}_{\phi}^{B}\left(\proj{\phi}\right)=\necess$.
-\item For any pure state~$\ket{\phi}$, $\bar{\mu}_{\phi}^{B}\left(P\right)=\bar{\mu}_{\mathbf{U}\ket{\phi}}^{B}\left(\mathbf{U}P\mathbf{U}^{\dagger}\right)\textrm{ ,}$where
-$\mathbf{U}$ is any unitary map, i.e., $\mathbf{U}^{\dagger}\mathbf{U}=\mathbb{1}$. 
-\end{itemize}
-\qed\end{thm}
-\begin{proof}
-? 
-\end{proof}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\section{(The other possible approach keep Section \ref{sec:Quantum-Probability-Spaces}) }
-
-%%%%%
-
-
-\subsection{Question the original assumption(?)}
-
-Although theorem~\ref{thm:Shapley} and \ref{def:EmptyCoreQuantumInterval-valuedProbability}
-gives opposite results, their results are consistent. If we pick a
-orthonormal basis~$\Omega=\left\{ \ket{\psi_{j}}\right\} _{j=1}^{d}$,
-let $E\in2^{\Omega}$ be a classical event and $P=\tensor*[_{\mathscr{O}}]{\sum}{_{\ket{\psi_{j}}\in E}}\proj{\psi_{j}}$
-be the quantum event corresponding to subspace span by $E$, we can
-define a classical interval-valued probability measure$\bar{\mu}^{\Omega}\left(E\right)=\bar{\mu}\left(P\right)$.
-There are two cases.
-
-\begin{case}If $\ket{\psi_{1}}$ is either $\ket{0}$, $\ket{\ps}$,
-or $\ket{\ps'}$, then we have
-
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\bar{\mu}^{\Omega}(\emptyset) & = & \imposs\\
-\bar{\mu}^{\Omega}(\{\ket{\psi_{1}}\}) & = & \imposs\\
-\bar{\mu}^{\Omega}(\{\ket{\psi_{2}}\}) & = & \unknown\\
-\bar{\mu}^{\Omega}(\{\ket{\psi_{3}}\}) & = & \unknown
-\end{array} & \begin{array}{rcl}
-\bar{\mu}^{\Omega}(\{\ket{\psi_{1}},\ket{\psi_{2}}\}) & = & \unknown\\
-\bar{\mu}^{\Omega}(\{\ket{\psi_{3}},\ket{\psi_{1}}\}) & = & \unknown\\
-\bar{\mu}^{\Omega}(\{\ket{\psi_{2}},\ket{\psi_{3}}\}) & = & \necess\\
-\bar{\mu}^{\Omega}(\{\ket{\psi_{1}},\ket{\psi_{2}},\ket{\psi_{3}}\}) & = & \necess
-\end{array}\end{array}
-\]
-It is easy to verify that $\bar{\mu}^{\Omega}$ has an non-empty core,
-and $\pmeas^{\Omega}:2^{\Omega}\rightarrow\left[0,1\right]$ is in
-its core. 
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\pmeas^{\Omega}(\emptyset) & = & 0\\
-\pmeas^{\Omega}(\{\ket{\psi_{1}}\}) & = & 0\\
-\pmeas^{\Omega}(\{\ket{\psi_{2}}\}) & = & 1/2\\
-\pmeas^{\Omega}(\{\ket{\psi_{3}}\}) & = & 1/2
-\end{array} & \begin{array}{rcl}
-\pmeas^{\Omega}(\{\ket{\psi_{1}},\ket{\psi_{2}}\}) & = & 1/2\\
-\pmeas^{\Omega}(\{\ket{\psi_{3}},\ket{\psi_{1}}\}) & = & 1/2\\
-\pmeas^{\Omega}(\{\ket{\psi_{2}},\ket{\psi_{3}}\}) & = & 1\\
-\pmeas^{\Omega}(\{\ket{\psi_{1}},\ket{\psi_{2}},\ket{\psi_{3}}\}) & = & 1
-\end{array}\end{array}
-\]
-\qed\end{case}
-
-\begin{case}If neither $\ket{0}$, $\ket{\ps}$, nor $\ket{\ps'}$
-is in $\Omega$, then we have
-
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\bar{\mu}^{\Omega}(\emptyset) & = & \imposs\\
-\bar{\mu}^{\Omega}(\{\ket{\psi_{1}}\}) & = & \unknown\\
-\bar{\mu}^{\Omega}(\{\ket{\psi_{2}}\}) & = & \unknown\\
-\bar{\mu}^{\Omega}(\{\ket{\psi_{3}}\}) & = & \unknown
-\end{array} & \begin{array}{rcl}
-\bar{\mu}^{\Omega}(\{\ket{\psi_{1}},\ket{\psi_{2}}\}) & = & \unknown\\
-\bar{\mu}^{\Omega}(\{\ket{\psi_{3}},\ket{\psi_{1}}\}) & = & \unknown\\
-\bar{\mu}^{\Omega}(\{\ket{\psi_{2}},\ket{\psi_{3}}\}) & = & \unknown\\
-\bar{\mu}^{\Omega}(\{\ket{\psi_{1}},\ket{\psi_{2}},\ket{\psi_{3}}\}) & = & \necess
-\end{array}\end{array}
-\]
-In this case, $\pmeas^{\Omega}:2^{\Omega}\rightarrow\left[0,1\right]$
-defined by the following is in the core of $\bar{\mu}^{\Omega}$.
-\[
-\begin{array}{c@{\qquad\qquad}c}
-\begin{array}{rcl}
-\pmeas^{\Omega}(\emptyset) & = & 0\\
-\pmeas^{\Omega}(\{\ket{\psi_{1}}\}) & = & 1/3\\
-\pmeas^{\Omega}(\{\ket{\psi_{2}}\}) & = & 1/3\\
-\pmeas^{\Omega}(\{\ket{\psi_{3}}\}) & = & 1/3
-\end{array} & \begin{array}{rcl}
-\pmeas^{\Omega}(\{\ket{\psi_{1}},\ket{\psi_{2}}\}) & = & 1/3\\
-\pmeas^{\Omega}(\{\ket{\psi_{3}},\ket{\psi_{1}}\}) & = & 1/3\\
-\pmeas^{\Omega}(\{\ket{\psi_{2}},\ket{\psi_{3}}\}) & = & 1/3\\
-\pmeas^{\Omega}(\{\ket{\psi_{1}},\ket{\psi_{2}},\ket{\psi_{3}}\}) & = & 1
-\end{array}\end{array}
-\]
-\qed\end{case}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{(The other possible approach keep Section \ref{sec:Quantum-Probability-Spaces}) }
+Recall that when approximating the probability classically, the quality
+of the experimental equipment cannot be compensated by the number
+of independent trials. If the precision of the intervals~$\mathscr{I}$
+represents the quality of the quantum experimental equipment, example~\ref{ex:three-dimensional-three-value}
+tells us that we cannot identify a particular state if the experimental
+equipment reveals too little information. 
 
 If we examine our examples more carefully, we find that example~\ref{ex:three-dimensional-three-value}
 really use the property of $\unknown$ so that it cannot hold when
@@ -1854,17 +1614,28 @@ Maybe interval-valued probability measures will be closer and closer
 to real-valued probability measures if the intervals are more and
 more precise?
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{comment}
+\bibliographystyle{plain}
+\bibliography{discreteGBKS}
+\end{comment}
+
+\printbibliography
+
+
+\appendix
 %%%%%
 
 
-\subsection{Examples for Quantum Interval-valued Probability Measures}
+\section{Examples for Quantum Interval-valued Probability Measures}
 
 We are going to provide an quantum 4-value interval-valued probability
 measures corresponding to no quantum probability measure, i.e., for
 all mixed state~$\rho$ there is a $P\in\events$ such that $\mu_{\rho}^{B}(P)\notin\bar{\mu}(P)$. 
 
-\begin{example}[Three-dimensional quantum 4-value interval-valued
-probability measure]\label{ex:three-dimensional-4-value} \footnote{\yutsung{Need to verify whether this example is convex or not.}}Given
+\begin{example}{[}Three-dimensional quantum 4-value interval-valued
+probability measure{]}\label{ex:three-dimensional-4-value} \footnote{\yutsung{Need to verify whether this example is convex or not.}}Given
 a three dimensional Hilbert space with an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
 Consider\emph{ }$\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
 $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$, $\ket{\ms}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})$,
@@ -2034,15 +1805,6 @@ verified.
 \end{eqnarray*}
 \end{enumerate}
 \qed\end{example}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{comment}
-\bibliographystyle{plain}
-\bibliography{discreteGBKS}
-\end{comment}
-
-\printbibliography
 
 \end{document}
 
