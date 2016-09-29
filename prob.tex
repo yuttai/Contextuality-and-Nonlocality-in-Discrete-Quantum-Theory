@@ -652,7 +652,10 @@ $\bar{\mu}$ satisfies the following conditions:
 \begin{itemize}
 \item $\bar{\mu}(\emptyset)=[0,0]$.
 \item $\bar{\mu}(\Omega)=[1,1]$. 
-\item For any event $E$, $\bar{\mu}\left(\Omega\backslash E\right)=\left[1,1\right]\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(E\right)$.
+\item For any event $E$, 
+\begin{equation}
+\bar{\mu}\left(\Omega\backslash E\right)=\left[1,1\right]\tensor*[_{\mathscr{I}}]{-}{}\bar{\mu}\left(E\right)\textrm{ .}\label{eq:ClassicalInterval-valuedProbability-Complement}
+\end{equation}
 \item For a collection $\left\{ E_{i}\right\} _{i=1}^{N}$ of pairwise disjoint
 events, we have $\bar{\mu}\left(\bigcup_{i=1}^{N}E_{i}\right)\subseteq\tensor*[_{\mathscr{I}}]{\sum}{_{i=1}^{N}}\bar{\mu}\left(E_{i}\right)$,
 where $\tensor*[_{\mathscr{I}}]{\sum}{_{i=1}^{N}}[l_{i},r_{i}]=\left[\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}l_{i},\tensor*[_{\mathbb{R}}]{\sum}{_{i=1}^{N}}r_{i}\right]$.
@@ -798,7 +801,27 @@ of $\bar{\mu}$ is the set $\mathrm{core}\left(\bar{\mu}\right)=\left\{ \textrm{p
 \cite{GilboaSchmeidler1994,Marinacci1999,Teran2014}.
 \item $\bar{\mu}$ is called \emph{convex}, \emph{2-monotone}, or\emph{
 supermodular} if $\bar{\mu}\left(E_{1}\cup E_{2}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(E_{1}\cap E_{2}\right)\subseteq\bar{\mu}\left(E_{1}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(E_{2}\right)$
-for all $E_{1},E_{2}\in\events$~\cite{Shapley1965,GilboaSchmeidler1994,Marinacci1999,Teran2014,Grabisch2016}.
+for all $E_{1},E_{2}\in\events$~\cite{Shapley1965,GilboaSchmeidler1994,Marinacci1999,Teran2014,Grabisch2016}.\footnote{\yutsung{In order to simplify the discussion, let $l$ be the left-end
+of an interval-valued probability measure~$\bar{\mu}$. Because of
+equation~(\ref{eq:ClassicalInterval-valuedProbability-Complement}),
+$\bar{\mu}$ is convex if and only if 
+\begin{equation}
+l\left(E_{1}\cup E_{2}\right)+l\left(E_{1}\cap E_{2}\right)\ge l\left(E_{1}\right)+l\left(E_{2}\right)\textrm{ ,}\label{eq:convex-game}
+\end{equation}
+which is a special case of the Dempster-Shafer condition
+\begin{equation}
+l\left(\bigcup_{i=1}^{N}E_{i}\right)\ge\sum_{I\subseteq\left\{ 1,\ldots,N\right\} }\left(-1\right)^{\left|I\right|+1}l\left(\bigcap_{i\in I}E_{i}\right)\textrm{ .}\label{eq:Dempster-Shafer-game}
+\end{equation}
+Therefore, in order to understand the meaning of equation~(\ref{eq:convex-game}),
+we could try to understand meaning of the Dempster-Shafer belief function.
+Unfortunately, when people introduce the Dempster-Shafer theory, they
+usually don't start from equation~(\ref{eq:Dempster-Shafer-game}).
+Instead, they introduce a basic belief assignment~$m\left(E\right)=\sum_{E'\subseteq E}\left(-1\right)^{\left|E\setminus E'\right|}l\left(E'\right)$
+first, and $m\left(E\right)$ expresses the proportion of all relevant
+and available evidence that supports the claim that the actual state
+belongs to $A$ but to no particular subset of $A$. Then, equation~(\ref{eq:Dempster-Shafer-game})
+is equivalent to $m\left(E\right)\ge0$ for all $E$~\cite{Grabisch2016},
+and the later statement is intuitive.}}
 \end{itemize}
 \qed\end{definition}
 
