@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage[ backend=biber,sorting=none]{biblatex}
+\usepackage[ backend=biber,sorting=none,maxbibnames=5]{biblatex}
 \bibliography{discreteGBKS}
 \usepackage{fullpage}
 \usepackage{url}
@@ -817,11 +817,21 @@ we could try to understand meaning of the Dempster-Shafer belief function.
 Unfortunately, when people introduce the Dempster-Shafer theory, they
 usually don't start from equation~(\ref{eq:Dempster-Shafer-game}).
 Instead, they introduce a basic belief assignment~$m\left(E\right)=\sum_{E'\subseteq E}\left(-1\right)^{\left|E\setminus E'\right|}l\left(E'\right)$
-first, and $m\left(E\right)$ expresses the proportion of all relevant
-and available evidence that supports the claim that the actual state
-belongs to $A$ but to no particular subset of $A$. Then, equation~(\ref{eq:Dempster-Shafer-game})
+first, and $m\left(E\right)$ represents the belief committed to the
+event~$E$ and only to it, in the sense that it could not be committed
+to any proper subset of $A$~\cite{Grabisch2016}. Then, equation~(\ref{eq:Dempster-Shafer-game})
 is equivalent to $m\left(E\right)\ge0$ for all $E$~\cite{Grabisch2016},
-and the later statement is intuitive.}}
+and the non-negative of $m\left(E\right)$ is intuitive.
+
+Comparing to the Dempster-Shafer condition~\ref{eq:Dempster-Shafer-game},
+the equivalent condition for convexity is more complex. At least,
+when $l$ is convex, we have 
+\begin{equation}
+m\left(\left\{ \omega_{0},\omega_{1}\right\} \right)\ge0\label{eq:convex-positive}
+\end{equation}
+ for all $\left\{ \omega_{0},\omega_{1}\right\} \subseteq\Omega$,
+although equation~(\ref{eq:convex-positive}) is not strong enough
+to imply $l$ is convex.}}
 \end{itemize}
 \qed\end{definition}
 
@@ -1623,19 +1633,27 @@ of the experimental equipment cannot be compensated by the number
 of independent trials. If the precision of the intervals~$\mathscr{I}$
 represents the quality of the quantum experimental equipment, example~\ref{ex:three-dimensional-three-value}
 tells us that we cannot identify a particular state if the experimental
-equipment reveals too little information. 
+equipment reveals too little information. For example, $\bar{\mu}$
+might correspond to $\ket{2}$ because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$,
+$\ket{1}$ because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps'})=\imposs$,
+or the density matrix~$\frac{\mathbb{1}}{3}$ because $\bar{\mu}(\proj{\phi})\ne\necess$
+for all $\ket{\phi}$. Also, example~\ref{ex:three-dimensional-three-value}
+is no longer valid if our measurement equipment is a little more precise,
+say $\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
+because example~\ref{ex:three-dimensional-three-value} really use
+the property of $\unknown$.
 
-If we examine our examples more carefully, we find that example~\ref{ex:three-dimensional-three-value}
-really use the property of $\unknown$ so that it cannot hold when
-the intervals are more precise; example~\ref{ex:three-dimensional-4-value}
-also cannot work with any interval values more precise than $\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $.
-Also, example~\ref{ex:three-dimensional-4-value} is not as bad as
-example~\ref{ex:three-dimensional-three-value} in a sense that the
-$\imposs$ states are all in the same plane in example~\ref{ex:three-dimensional-4-value}
-while the $\imposs$ states are not in the same plane in example~\ref{ex:three-dimensional-4-value}.
-Maybe interval-valued probability measures will be closer and closer
-to real-valued probability measures if the intervals are more and
-more precise?
+If we consider $\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
+example~\ref{ex:three-dimensional-4-value} in appendix~\ref{sec:Examples-for-QuantumIVPM}
+provides another example with an empty core. Comparing to example~\ref{ex:three-dimensional-three-value},
+example~\ref{ex:three-dimensional-4-value} is closer to the Born
+rule in a sense that it might only correspond to $\ket{2}$ or $\frac{\mathbb{1}}{3}$,
+but not $\ket{1}$, and it is no longer valid for more precise measurement
+equipment as well. In general, we believe if the measurement equipment
+is more and more precise, its interval-valued probability measure
+will be closer and closer to the the Born rule. In the limit case,
+$\mathscr{I}=\left\{ \left\{ a\right\} \middle|a\in\left[0,1\right]\right\} $
+recovers conventional Gleason's theorem and the Born rule.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1651,11 +1669,14 @@ more precise?
 %%%%%
 
 
-\section{Examples for Quantum Interval-valued Probability Measures}
+\section{\label{sec:Examples-for-QuantumIVPM}Examples for Quantum Interval-valued
+Probability Measures}
 
 We are going to provide an quantum 4-value interval-valued probability
 measures corresponding to no quantum probability measure, i.e., for
-all mixed state~$\rho$ there is a $P\in\events$ such that $\mu_{\rho}^{B}(P)\notin\bar{\mu}(P)$. 
+all mixed state~$\rho$ there is a $P\in\events$ such that $\mu_{\rho}^{B}(P)\notin\bar{\mu}(P)$.
+After the example, we will also justify why this example cannot fit
+with more precise intervals.
 
 \begin{example}[Three-dimensional quantum 4-value interval-valued
 probability measure]\label{ex:three-dimensional-4-value} \footnote{\yutsung{Need to verify whether this example is convex or not.}}Given
@@ -1777,21 +1798,25 @@ the pair $\ket{\psi_{2}}=\ket{0_{\theta,\gamma}^{\perp}}$ and $\ket{\psi_{3}}=\k
 for ($0<\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$) or $\theta=0$
 enumerate all possible orthonormal bases. Equation (\ref{eq:non-additive-vectors})
 can then be verified as follow. 
-\begin{eqnarray*}
+\begin{equation}
+\begin{array}{rcl}
 \bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0}\right)=\necess & \subseteq & \likely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)\\
 \bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\theta,\gamma}^{\perp}}\right)=\unlikely & = & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\imposs=\bar{\mu}\left(\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0}\right)\\
 \bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)=\likely & = & \imposs\tensor*[_{\mathscr{I}}]{+}{}\likely=\bar{\mu}\left(\proj{0}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)
-\end{eqnarray*}
+\end{array}\label{eq:case1}
+\end{equation}
 Similarly, when $\ket{\psi_{1}}$ is $\ket{\ps}$, equation (\ref{eq:non-additive-vectors})
 holds. 
 \item When $\ket{0}\notin\mathcal{B}$ and $\ket{\psi_{1}}=\ket{0_{\theta,\gamma}^{\perp}}$
 for $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, we want to
 prove $\bar{\mu}\left(\proj{\psi_{2}}\right)=\bar{\mu}\left(\proj{\psi_{3}}\right)=\unlikely$.
 Then, we have 
-\begin{eqnarray*}
+\begin{equation}
+\begin{array}{rcl}
 \bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\theta,\gamma}^{\perp}}\right)=\unlikely & \subseteq & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)\\
 \bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{2}}\right)=\likely & \subseteq & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\likely=\bar{\mu}\left(\proj{\psi_{3}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)
-\end{eqnarray*}
+\end{array}\label{eq:case2}
+\end{equation}
 In order to verify $\bar{\mu}\left(\proj{\psi_{2}}\right)=\bar{\mu}\left(\proj{\psi_{3}}\right)=\unlikely$,
 it is sufficient to prove that $\ket{\ps_{\theta',\gamma'}^{\perp}}\in\mathcal{B}$
 implies ($0<\theta'<\frac{\pi}{2}$ and $\pi\le\gamma'<2\pi$) or
@@ -1823,9 +1848,9 @@ $\ket{0_{\theta,\gamma}^{\perp}}\notin\mathcal{B}$, and $\ket{\ps_{\theta,\gamma
 for $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, i.e., the ``otherwise''
 case. Then, equation (\ref{eq:non-additive-vectors}) can easily be
 verified. 
-\begin{eqnarray*}
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}}\right)=\likely & \subseteq & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)
-\end{eqnarray*}
+\begin{equation}
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}}\right)=\likely\subseteq\unlikely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)\label{eq:case3}
+\end{equation}
 \end{enumerate}
 \qed\end{example}
 
