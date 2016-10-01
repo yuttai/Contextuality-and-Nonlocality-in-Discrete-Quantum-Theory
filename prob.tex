@@ -871,7 +871,15 @@ or more?}}, so that we have only verified every interval-valued probability
 measure has a non-empty core when $\left|\Omega\right|\le5$ so far.\footnote{\yutsung{The program for $\left|\Omega\right|=6$ blows up the memory
 again, and the symmetric answer doesn't really work. Hence, currently
 only back-track randomized program still searches IVPM with a extremely
-slow speed...}} Based on the previous fact, we have the following conjecture.
+slow speed...
+
+Although the computer simulation supports the idea that every IVPM
+has a nonempty core, if we look the equations. $\bar{\mu}$ is an
+interval-valued probability measure if and only if its left-end~$l$
+satisfies equation~(\ref{eq:convex-game}) when $E_{1}\cap E_{2}=\emptyset$
+or $E_{1}\cup E_{2}=\Omega$. This condition is much weaker than convex,
+and I would be surprise that this condition is strong enough to imply
+a nonempty core.}} Based on the previous fact, we have the following conjecture.
 
 \begin{conjecture}Every interval-valued probability measure has a
 nonempty core.\qed\end{conjecture}
@@ -1800,11 +1808,11 @@ for ($0<\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$) or $\theta=0$
 enumerate all possible orthonormal bases. Equation (\ref{eq:non-additive-vectors})
 can then be verified as follow. 
 \begin{equation}
-\begin{array}{rcl}
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0}\right)=\necess & \subseteq & \likely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\theta,\gamma}^{\perp}}\right)=\unlikely & = & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\imposs=\bar{\mu}\left(\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0}\right)\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)=\likely & = & \imposs\tensor*[_{\mathscr{I}}]{+}{}\likely=\bar{\mu}\left(\proj{0}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)
-\end{array}\label{eq:case1}
+\begin{aligned}\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0}\right)=\necess & \subseteq\likely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)\\
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\theta,\gamma}^{\perp}}\right)=\unlikely & =\unlikely\tensor*[_{\mathscr{I}}]{+}{}\imposs=\bar{\mu}\left(\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0}\right)\\
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)=\likely & =\imposs\tensor*[_{\mathscr{I}}]{+}{}\likely=\bar{\mu}\left(\proj{0}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)
+\end{aligned}
+\label{eq:case1}
 \end{equation}
 Similarly, when $\ket{\psi_{1}}$ is $\ket{\ps}$, equation (\ref{eq:non-additive-vectors})
 holds. 
@@ -1813,10 +1821,10 @@ for $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, we want to
 prove $\bar{\mu}\left(\proj{\psi_{2}}\right)=\bar{\mu}\left(\proj{\psi_{3}}\right)=\unlikely$.
 Then, we have 
 \begin{equation}
-\begin{array}{rcl}
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\theta,\gamma}^{\perp}}\right)=\unlikely & \subseteq & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{2}}\right)=\likely & \subseteq & \unlikely\tensor*[_{\mathscr{I}}]{+}{}\likely=\bar{\mu}\left(\proj{\psi_{3}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)
-\end{array}\label{eq:case2}
+\begin{aligned}\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\theta,\gamma}^{\perp}}\right)=\unlikely & \subseteq\unlikely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)\\
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{2}}\right)=\likely & \subseteq\unlikely\tensor*[_{\mathscr{I}}]{+}{}\likely=\bar{\mu}\left(\proj{\psi_{3}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)
+\end{aligned}
+\label{eq:case2}
 \end{equation}
 In order to verify $\bar{\mu}\left(\proj{\psi_{2}}\right)=\bar{\mu}\left(\proj{\psi_{3}}\right)=\unlikely$,
 it is sufficient to prove that $\ket{\ps_{\theta',\gamma'}^{\perp}}\in\mathcal{B}$
@@ -1853,7 +1861,47 @@ verified.
 \bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}}\right)=\likely\subseteq\unlikely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{3}}\right)\label{eq:case3}
 \end{equation}
 \end{enumerate}
-\qed\end{example}
+\footnote{\yutsung{This example is a little bit too long to human-verify, and
+we need more examples. Maybe we need to write a program for further
+verification.}}\qed\end{example}
+
+\begin{example}[Three-dimensional quantum 4-value interval-valued
+probability measure (Continue)]\label{ex:three-dimensional-4-value-1}
+In order to verify example~\ref{fig:three-dimensional-4-value} cannot
+hold with more precise intervals. Consider $\mathscr{I}=\left\{ \imposs,\left[l_{1},r_{1}\right],\left[1-r_{1},1-l_{1}\right],\necess\right\} $,
+where $\left[l_{1},r_{1}\right]$ and $\left[1-r_{1},1-l_{1}\right]$
+will be used to replace every $\unlikely$ and $\likely$ in example~\ref{fig:three-dimensional-4-value},
+respectively. In order to make the equations corresponding to equation~(\ref{eq:case1}),
+(\ref{eq:case2}), and (\ref{eq:case3}) hold, we could estimate the
+bound of $l_{1}$ and $r_{1}$.
+
+When we replace $\unlikely$ and $\likely$ by $\left[l_{1},r_{1}\right]$
+and $\left[1-r_{1},1-l_{1}\right]$, equation~(\ref{eq:case1}) will
+become
+
+\begin{equation}
+\begin{aligned}\necess & \subseteq\left[1-r_{1},1-l_{1}\right]\tensor*[_{\mathscr{I}}]{+}{}\left[l_{1},r_{1}\right]\\
+\left[l_{1},r_{1}\right] & \subseteq\left[l_{1},r_{1}\right]\tensor*[_{\mathscr{I}}]{+}{}\imposs\\
+\left[1-r_{1},1-l_{1}\right] & \subseteq\imposs\tensor*[_{\mathscr{I}}]{+}{}\left[1-r_{1},1-l_{1}\right]
+\end{aligned}
+\label{eq:case1-1}
+\end{equation}
+which are all tautologies. Equation~(\ref{eq:case2}) will become
+\begin{equation}
+\begin{aligned}\left[l_{1},r_{1}\right] & \subseteq\left[l_{1},r_{1}\right]\tensor*[_{\mathscr{I}}]{+}{}\left[l_{1},r_{1}\right]\\
+\left[1-r_{1},1-l_{1}\right] & \subseteq\left[l_{1},r_{1}\right]\tensor*[_{\mathscr{I}}]{+}{}\left[1-r_{1},1-l_{1}\right]
+\end{aligned}
+\label{eq:case2-1}
+\end{equation}
+which implies $l_{1}=0$. Finally, equation~(\ref{eq:case3}) will
+become
+\begin{equation}
+\left[1-r_{1},1-l_{1}\right]\subseteq\left[l_{1},r_{1}\right]\tensor*[_{\mathscr{I}}]{+}{}\left[l_{1},r_{1}\right]\label{eq:case3-1}
+\end{equation}
+which implies $\frac{1}{2}\le r_{1}\le1$. Therefore, $l_{1}=0$ and
+$r_{1}=\frac{1}{2}$ provides the most precise intervals which make
+example~\ref{fig:three-dimensional-4-value} work, and in this case,
+the intervals are $\left\{ \imposs,\unlikely,\likely,\necess\right\} $.\qed\end{example}
 
 \end{document}
 
