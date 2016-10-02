@@ -807,24 +807,23 @@ of an interval-valued probability measure~$\bar{\mu}$. Because of
 equation~(\ref{eq:ClassicalInterval-valuedProbability-Complement}),
 $\bar{\mu}$ is convex if and only if 
 \begin{equation}
-l\left(E_{1}\cup E_{2}\right)+l\left(E_{1}\cap E_{2}\right)\ge l\left(E_{1}\right)+l\left(E_{2}\right)\textrm{ ,}\label{eq:convex-game}
+l\left(E_{1}\cup E_{2}\right)\tensor*[_{\mathbb{R}}]{+}{}l\left(E_{1}\cap E_{2}\right)\ge l\left(E_{1}\right)\tensor*[_{\mathbb{R}}]{+}{}l\left(E_{2}\right)\textrm{ ,}\label{eq:convex-game}
 \end{equation}
 which is a special case of the Dempster-Shafer condition~\cite{Shafer1976,Grabisch2016}
 \begin{equation}
-l\left(\bigcup_{i=1}^{N}E_{i}\right)\ge\sum_{I\subseteq\left\{ 1,\ldots,N\right\} }\left(-1\right)^{\left|I\right|+1}l\left(\bigcap_{i\in I}E_{i}\right)\textrm{ .}\label{eq:Dempster-Shafer-game}
+l\left(\bigcup_{i=1}^{N}E_{i}\right)\ge\sideset{_{\mathbb{R}}}{_{I\subseteq\left\{ 1,\ldots,N\right\} }}\sum\left(-1\right)^{\left|I\right|+1}l\left(\bigcap_{i\in I}E_{i}\right)\textrm{ .}\label{eq:Dempster-Shafer-game}
 \end{equation}
 Therefore, in order to understand the meaning of equation~(\ref{eq:convex-game}),
 we could try to understand meaning of the Dempster-Shafer belief function.
 Unfortunately, when people introduce the Dempster-Shafer theory, they
 usually don't start from equation~(\ref{eq:Dempster-Shafer-game}).
-Instead, they introduce a basic belief assignment~$m\left(E\right)=\sum_{E'\subseteq E}\left(-1\right)^{\left|E\setminus E'\right|}l\left(E'\right)$
-first, and $m\left(E\right)$ represents the belief committed to the
-event~$E$ and only to it, in the sense that it could not be committed
-to any proper subset of $A$. Then, equation~(\ref{eq:Dempster-Shafer-game})
-is equivalent to $m\left(E\right)\ge0$ for all $E$, and the non-negative
-of $m\left(E\right)$ is intuitive.
+Instead, they introduce a basic belief assignment~$m\left(E\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{E'\subseteq E}}\left(-1\right)^{\left|E\setminus E'\right|}l\left(E'\right)$
+first. $m\left(E\right)$ represents the belief committed to the event~$E$
+and only to it, in the sense that it could not be committed to any
+proper subset of $E$. Then, equation~(\ref{eq:Dempster-Shafer-game})
+is equivalent to $m\left(E\right)\ge0$ for all $E$ which is intuitive.
 
-Comparing to the Dempster-Shafer condition~\ref{eq:Dempster-Shafer-game},
+Comparing to the Dempster-Shafer condition~(\ref{eq:Dempster-Shafer-game}),
 the equivalent condition for convexity is more complex. At least,
 when $l$ is convex, we have 
 \begin{equation}
@@ -869,16 +868,15 @@ of minimal balanced sets grows very rapidly with $\left|\Omega\right|$,
 the size of $\Omega$~\cite{Shapley1967,Zhao2008}\footnote{\yutsung{Prove the number of minimal balanced sets grow exponentially
 or more?}}, so that we have only verified every interval-valued probability
 measure has a non-empty core when $\left|\Omega\right|\le5$ so far.\footnote{\yutsung{The program for $\left|\Omega\right|=6$ blows up the memory
-again, and the symmetric answer doesn't really work. Hence, currently
-only back-track randomized program still searches IVPM with a extremely
-slow speed...
+again. Hence, currently I only run a extremely slow backtrack program
+searching for a IVPM with an empty core...
 
 Although the computer simulation supports the idea that every IVPM
-has a nonempty core, if we look the equations. $\bar{\mu}$ is an
+has a nonempty core, if we look the equations, $\bar{\mu}$ is an
 interval-valued probability measure if and only if its left-end~$l$
 satisfies equation~(\ref{eq:convex-game}) when $E_{1}\cap E_{2}=\emptyset$
 or $E_{1}\cup E_{2}=\Omega$. This condition is much weaker than convex,
-and I would be surprise that this condition is strong enough to imply
+and I will be surprise if this condition is strong enough to imply
 a nonempty core.}} Based on the previous fact, we have the following conjecture.
 
 \begin{conjecture}Every interval-valued probability measure has a

@@ -7839,7 +7839,7 @@ reference "eq:ClassicalInterval-valuedProbability-Complement"
  is convex if and only if 
 \begin_inset Formula 
 \begin{equation}
-l\left(E_{1}\cup E_{2}\right)+l\left(E_{1}\cap E_{2}\right)\ge l\left(E_{1}\right)+l\left(E_{2}\right)\textrm{ ,}\label{eq:convex-game}
+l\left(E_{1}\cup E_{2}\right)\tensor*[_{\mathbb{R}}]{+}{}l\left(E_{1}\cap E_{2}\right)\ge l\left(E_{1}\right)\tensor*[_{\mathbb{R}}]{+}{}l\left(E_{2}\right)\textrm{ ,}\label{eq:convex-game}
 \end{equation}
 
 \end_inset
@@ -7858,7 +7858,7 @@ key "Shafer1976,Grabisch2016"
 
 \begin_inset Formula 
 \begin{equation}
-l\left(\bigcup_{i=1}^{N}E_{i}\right)\ge\sum_{I\subseteq\left\{ 1,\ldots,N\right\} }\left(-1\right)^{\left|I\right|+1}l\left(\bigcap_{i\in I}E_{i}\right)\textrm{ .}\label{eq:Dempster-Shafer-game}
+l\left(\bigcup_{i=1}^{N}E_{i}\right)\ge\sideset{_{\mathbb{R}}}{_{I\subseteq\left\{ 1,\ldots,N\right\} }}\sum\left(-1\right)^{\left|I\right|+1}l\left(\bigcap_{i\in I}E_{i}\right)\textrm{ .}\label{eq:Dempster-Shafer-game}
 \end{equation}
 
 \end_inset
@@ -7893,10 +7893,11 @@ reference "eq:Dempster-Shafer-game"
 \end_inset
 
 
-\begin_inset Formula $m\left(E\right)=\sum_{E'\subseteq E}\left(-1\right)^{\left|E\setminus E'\right|}l\left(E'\right)$
+\begin_inset Formula $m\left(E\right)=\tensor*[_{\mathbb{R}}]{\sum}{_{E'\subseteq E}}\left(-1\right)^{\left|E\setminus E'\right|}l\left(E'\right)$
 \end_inset
 
- first, and 
+ first.
+ 
 \begin_inset Formula $m\left(E\right)$
 \end_inset
 
@@ -7910,7 +7911,7 @@ reference "eq:Dempster-Shafer-game"
 
  and only to it, in the sense that it could not be committed to any proper
  subset of 
-\begin_inset Formula $A$
+\begin_inset Formula $E$
 \end_inset
 
 .
@@ -7933,11 +7934,7 @@ reference "eq:Dempster-Shafer-game"
 \begin_inset Formula $E$
 \end_inset
 
-, and the non-negative of 
-\begin_inset Formula $m\left(E\right)$
-\end_inset
-
- is intuitive.
+ which is intuitive.
 \end_layout
 
 \begin_layout Plain Layout
@@ -7945,14 +7942,14 @@ Comparing to the Dempster-Shafer condition
 \begin_inset space ~
 \end_inset
 
-
+(
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:Dempster-Shafer-game"
 
 \end_inset
 
-, the equivalent condition for convexity is more complex.
+), the equivalent condition for convexity is more complex.
  At least, when 
 \begin_inset Formula $l$
 \end_inset
@@ -8331,15 +8328,14 @@ The program for
 \begin_inset Formula $\left|\Omega\right|=6$
 \end_inset
 
- blows up the memory again, and the symmetric answer doesn't really work.
- Hence, currently only back-track randomized program still searches IVPM
- with a extremely slow speed...
+ blows up the memory again.
+ Hence, currently I only run a extremely slow backtrack program searching
+ for a IVPM with an empty core...
 \end_layout
 
 \begin_layout Plain Layout
 Although the computer simulation supports the idea that every IVPM has a
- nonempty core, if we look the equations.
- 
+ nonempty core, if we look the equations, 
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
@@ -8371,8 +8367,8 @@ reference "eq:convex-game"
 \end_inset
 
 .
- This condition is much weaker than convex, and I would be surprise that
- this condition is strong enough to imply a nonempty core.
+ This condition is much weaker than convex, and I will be surprise if this
+ condition is strong enough to imply a nonempty core.
 \begin_inset ERT
 status open
 
