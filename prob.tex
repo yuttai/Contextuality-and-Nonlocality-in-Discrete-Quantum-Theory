@@ -1664,11 +1664,11 @@ example~\ref{ex:three-dimensional-4-value} in appendix~\ref{sec:Examples-for-Qua
 provides another example with an empty core. Comparing to example~\ref{ex:three-dimensional-three-value},
 example~\ref{ex:three-dimensional-4-value} is closer to the Born
 rule in a sense that it might only correspond to $\ket{2}$ or $\frac{\mathbb{1}}{3}$,
-but not $\ket{1}$, and it is no longer valid for more precise measurement
-equipment as well. In general, we believe if the measurement equipment
-is more and more precise, its interval-valued probability measure
-will be closer and closer to the the Born rule. In the limit case,
-$\mathscr{I}=\left\{ \left\{ a\right\} \middle|a\in\left[0,1\right]\right\} $
+but not $\ket{1}$. Example~\ref{ex:three-dimensional-4-value} is
+also no longer valid for more precise measurement equipment as well.
+In general, we believe if the measurement equipment is more and more
+precise, its interval-valued probability measure will be closer and
+closer to the the Born rule. In the limit case, $\mathscr{I}=\left\{ \left\{ a\right\} \middle|a\in\left[0,1\right]\right\} $
 recovers conventional Gleason's theorem and the Born rule.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1852,7 +1852,7 @@ have $\ket{\ps_{\theta',\gamma'}^{\perp}}$ parallel to $\ket{\ps}\times\ket{0_{\
 \end{pmatrix}=\rme^{-\rmi\gamma}\begin{pmatrix}-\rme^{\rmi\left(\pi+\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)\\
 \rme^{\rmi\left(\pi+\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)\\
 \cos\left(\frac{\pi}{2}-\theta\right)
-\end{pmatrix}=\rme^{-\rmi\gamma}\ket{\ps_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}
+\end{pmatrix}=\sqrt{2}\rme^{-\rmi\gamma}\ket{\ps_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}
 \]
 Because of $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, we have
 ($0<\theta'=\frac{\pi}{2}-\theta<\frac{\pi}{2}$ and $\pi\le\gamma'=\pi+\gamma<2\pi$)
@@ -1946,16 +1946,34 @@ $\mu_{\rho}^{B}$ is continuous, we have $\mu_{\rho}^{B}\left(\proj{0_{\theta,\ga
 Similarly, $\mu_{\rho}^{B}\left(\proj{\ps_{\theta,\gamma}^{\perp}}\right)=\frac{1}{2}$.
 
 Consider a general density matrix~ $\rho=\tensor*[_{\mathscr{O}}]{\sum}{_{i=0}^{2}}\tensor*[_{\mathscr{O}}]{\sum}{_{j=0}^{2}}r_{ij}\ket{i}\bra{j}$.
-Then, we have
+Then, we have 
 \begin{eqnarray*}
 \frac{1}{2} & = & \mu_{\rho}^{B}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)\\
  & \stackrel{\left(\ref{BornRule.mixed}\right)}{=} & \Tr\left(\rho\proj{0_{\theta,\gamma}^{\perp}}\right)\\
  & = & \Tr\left(\left(\sideset{_{\mathscr{O}}}{_{i=0}^{2}}\sum\sideset{_{\mathscr{O}}}{_{j=0}^{2}}\sum r_{ij}\ket{i}\bra{j}\right)\left(\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}\right)\left(\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}\right)^{\dagger}\right)\\
- & = & \Tr\left(\sideset{_{\mathscr{O}}}{_{i=0}^{2}}\sum\left(r_{i1}\rme^{\rmi\gamma}\sin\theta\ket{i}+r_{i2}\cos\theta\ket{i}\right)\left(\rme^{-\rmi\gamma}\sin\theta\bra{1}+\cos\theta\bra{2}\right)\right)\\
+ & = & \Tr\left(\sideset{_{\mathscr{O}}}{_{i=0}^{2}}\sum\left(r_{i1}\rme^{\rmi\gamma}\sin\theta+r_{i2}\cos\theta\right)\ket{i}\left(\rme^{-\rmi\gamma}\sin\theta\bra{1}+\cos\theta\bra{2}\right)\right)\\
  & = & r_{11}\sin^{2}\theta+r_{12}\cos\theta\rme^{-\rmi\gamma}\sin\theta+r_{21}\rme^{\rmi\gamma}\sin\theta\cos\theta+r_{22}\cos^{2}\theta
 \end{eqnarray*}
 Because the above equation holds for all $0\le\theta<\frac{\pi}{2}$
-and $0\le\gamma<\pi$, we must have $r_{12}=r_{21}=0$ and $r_{11}=r_{22}=\frac{1}{2}$.\qed\end{example}
+and $0\le\gamma<\pi$, we must have $r_{12}=r_{21}=0$ and $r_{11}=r_{22}=\frac{1}{2}$.
+We also have
+\begin{eqnarray*}
+\frac{1}{2} & = & \mu_{\rho}^{B}\left(\proj{\ps_{\theta,\gamma}^{\perp}}\right)\\
+ & \stackrel{\left(\ref{BornRule.mixed}\right)}{=} & \Tr\left(\rho\proj{\ps_{\theta,\gamma}^{\perp}}\right)\\
+ & = & \Tr\left(\left(\sideset{_{\mathscr{O}}}{_{i=0}^{2}}\sum\sideset{_{\mathscr{O}}}{_{j=0}^{2}}\sum r_{ij}\ket{i}\bra{j}\right)\left(-\rme^{\rmi\gamma}\sin\theta\ket{\ms}+\cos\theta\ket{2}\right)\left(-\rme^{\rmi\gamma}\sin\theta\ket{\ms}+\cos\theta\ket{2}\right)^{\dagger}\right)\\
+ & = & \Tr\left(\sideset{_{\mathscr{O}}}{_{i=0}^{2}}\sum\left(-\frac{r_{i0}\rme^{\rmi\gamma}\sin\theta}{\sqrt{2}}+\frac{r_{i1}\rme^{\rmi\gamma}\sin\theta}{\sqrt{2}}+r_{i2}\cos\theta\right)\ket{i}\left(-\frac{\rme^{-\rmi\gamma}\sin\theta}{\sqrt{2}}\bra{0}+\frac{\rme^{-\rmi\gamma}\sin\theta}{\sqrt{2}}\bra{1}+\cos\theta\bra{2}\right)\right)\\
+ & = & -\frac{\rme^{-\rmi\gamma}\sin\theta}{\sqrt{2}}\left(-\frac{r_{00}\rme^{\rmi\gamma}\sin\theta}{\sqrt{2}}+\frac{r_{01}\rme^{\rmi\gamma}\sin\theta}{\sqrt{2}}+r_{02}\cos\theta\right)+\frac{\rme^{-\rmi\gamma}\sin\theta}{\sqrt{2}}\left(-\frac{r_{10}\rme^{\rmi\gamma}\sin\theta}{\sqrt{2}}+\frac{\rme^{\rmi\gamma}\sin\theta}{2\sqrt{2}}\right)\\
+ &  & +\cos\theta\left(-\frac{r_{20}\rme^{\rmi\gamma}\sin\theta}{\sqrt{2}}+\frac{\cos\theta}{2}\right)\\
+ & = & \left(\frac{r_{00}\sin^{2}\theta}{2}-\frac{r_{01}\sin^{2}\theta}{2}-\frac{r_{02}\rme^{-\rmi\gamma}\sin\theta\cos\theta}{\sqrt{2}}\right)+\left(-\frac{r_{10}\sin^{2}\theta}{2}+\frac{\sin^{2}\theta}{4}\right)+\left(-\frac{r_{20}\rme^{\rmi\gamma}\cos\theta\sin\theta}{\sqrt{2}}+\frac{\cos^{2}\theta}{2}\right)\\
+ & = & \left(\frac{r_{00}}{2}-\frac{r_{01}}{2}-\frac{r_{10}}{2}+\frac{1}{4}\right)\sin^{2}\theta+\frac{\cos^{2}\theta}{2}-\left(r_{02}\rme^{-\rmi\gamma}+r_{20}\rme^{\rmi\gamma}\right)\frac{\cos\theta\sin\theta}{\sqrt{2}}
+\end{eqnarray*}
+Because of the same reason, we have $r_{02}=r_{20}=0$ and $r_{00}=\frac{1}{2}+r_{01}+r_{10}$.
+Moreover, because $\rho$ is a density matrix, we should have $\Tr\left(\rho\right)=1$
+and $\rho^{\dagger}=\rho$ so that $r_{00}=0$, $r_{01}=-\frac{1}{4}+\rmi b$,
+and $r_{01}=-\frac{1}{4}-\rmi b$, where $b\in\mathbb{R}$. However,
+it is easy to verify that $\rho$ will have a negative eigenvalue.
+This contradicts to the fact that $\rho$ as a a density matrix must
+be a positive operator.\qed\end{example} 
 \end{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
