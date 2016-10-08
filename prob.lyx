@@ -19246,7 +19246,12 @@ end{example}
 \end_layout
 
 \begin_layout Standard
-Although example
+Although it is easier to deduce an interval-valued probability measure has
+ an empty core by considering the state mapped to 
+\begin_inset Formula $\imposs$
+\end_inset
+
+ as in example
 \begin_inset space ~
 \end_inset
 
@@ -19264,24 +19269,10 @@ reference "ex:three-dimensional-4-value"
 
 \end_inset
 
- rely on 
-\begin_inset Formula $\imposs$
-\end_inset
-
- to deduce that an interval-valued probability measure has an empty core,
- it is not necessary.
- The following example is modified from example
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "ex:three-dimensional-4-value"
-
-\end_inset
-
-, but has the property that 
+, it is not the only way to prove an interval-valued probability measure
+ has an empty core.
+ The following family of interval-valued probability measures satisfy that
+ 
 \begin_inset Formula $\bar{\mu}\left(P\right)=\imposs$
 \end_inset
 
@@ -19289,7 +19280,7 @@ reference "ex:three-dimensional-4-value"
 \begin_inset Formula $P=\mathbb{0}$
 \end_inset
 
-.
+, but we can still prove them have empty cores.
 \end_layout
 
 \begin_layout Standard
@@ -19312,15 +19303,40 @@ name "ex:three-dimensional-4-value-2"
 
 \end_inset
 
- Consider
+ Given 
+\begin_inset Formula $r_{0}\in\left[\frac{1}{3},\frac{1}{2}\right]$
+\end_inset
+
+, we are going to construct an interval-valued probability measures for
+ each 
+\begin_inset Formula $r_{0}$
+\end_inset
+
+, and it has an empty core whenever 
+\begin_inset Formula $r_{0}\in\left(\frac{5+2\sqrt{2}}{17},\frac{1}{2}\right]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Consider
 \emph on
  
 \emph default
 
-\begin_inset Formula $\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $
+\begin_inset Formula $\mathscr{I}=\left\{ \imposs,\necess,\left[1-2r_{0},r_{0}\right],\left[1-r_{0},2r_{0}\right],\left[2-4r_{0},1-r_{0}\right],\left[r_{0},4r_{0}-1\right]\right\} $
 \end_inset
 
-, and 
+.
+ This is well-defined since the left-end is less or equal to the right-end
+ whenever 
+\begin_inset Formula $r_{0}\ge\frac{1}{3}$
+\end_inset
+
+.
+ If 
 \begin_inset Formula $\ket{0}$
 \end_inset
 
@@ -19340,8 +19356,12 @@ name "ex:three-dimensional-4-value-2"
 \begin_inset Formula $\ket{\ms}$
 \end_inset
 
+, 
+\begin_inset Formula $\ket{0_{\theta,\gamma}^{\perp}}$
+\end_inset
+
 , and 
-\begin_inset Formula $\bar{\mu}$
+\begin_inset Formula $\ket{\ps_{\theta,\gamma}^{\perp}}$
 \end_inset
 
  are defined as in example
@@ -19355,31 +19375,75 @@ reference "ex:three-dimensional-4-value"
 
 \end_inset
 
- except 
-\begin_inset Formula 
-\begin{eqnarray*}
-\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps}) & = & \unlikely\\
-\bar{\mu}(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0})=\bar{\mu}(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\ps}) & = & \likely\textrm{ .}
-\end{eqnarray*}
-
+, a quantum 
+\begin_inset Formula $\mathscr{I}$
 \end_inset
 
-By following the same as process as in example
+-interval-valued probability measure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
+\end_inset
+
+ can be defined as follow: 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\bar{\mu}(\mathbb{0})=\imposs$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{\mu}(\mathbb{1})=\necess.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+For the dotted half of the red and green circles in figure
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "ex:three-dimensional-4-value"
+reference "fig:three-dimensional-4-value"
 
 \end_inset
 
-, it is easy to verify that 
-\begin_inset Formula $\bar{\mu}$
+, i.e., whenever 
+\begin_inset Formula $0\le\theta<\frac{\pi}{2}$
 \end_inset
 
- is an interval-valued probability measure.
+ and 
+\begin_inset Formula $0\le\gamma<\pi$
+\end_inset
+
+, we define 
+\begin_inset Formula 
+\begin{eqnarray*}
+\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)=\bar{\mu}\left(\proj{\ps_{\theta,\gamma}^{\perp}}\right) & = & \left[r_{0},4r_{0}-1\right]\\
+\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\theta,\gamma}^{\perp}}\right)=\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\ps_{\theta,\gamma}^{\perp}}\right) & = & \left[2-4r_{0},1-r_{0}\right]\textrm{ .}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Otherwise, 
+\begin_inset Formula $\bar{\mu}(\proj{\psi})=\left[1-2r_{0},r_{0}\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{\mu}(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi})=\left[1-r_{0},2r_{0}\right]$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -19406,16 +19470,16 @@ We now prove
 \end_inset
 
 , we have 
-\begin_inset Formula $\mu_{\rho}^{B}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)=\frac{1}{2}$
+\begin_inset Formula $\mu_{\rho}^{B}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)=r_{0}$
 \end_inset
 
 .
  On one hand, 
-\begin_inset Formula $\mu_{\rho}^{B}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)\in\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)=\likely$
+\begin_inset Formula $\mu_{\rho}^{B}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)\in\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)=\left[r_{0},4r_{0}-1\right]$
 \end_inset
 
  implies 
-\begin_inset Formula $\mu_{\rho}^{B}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)\ge\frac{1}{2}$
+\begin_inset Formula $\mu_{\rho}^{B}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)\ge r_{0}$
 \end_inset
 
 .
@@ -19443,11 +19507,11 @@ reference "fig:three-dimensional-4-value"
 \end_inset
 
  such that 
-\begin_inset Formula $\mu_{\rho}^{B}\left(\proj{\psi}\right)\in\bar{\mu}\left(\proj{\psi}\right)=\unlikely$
+\begin_inset Formula $\mu_{\rho}^{B}\left(\proj{\psi}\right)\in\bar{\mu}\left(\proj{\psi}\right)=\left[1-2r_{0},r_{0}\right]$
 \end_inset
 
 , i.e., 
-\begin_inset Formula $\mu_{\rho}^{B}\left(\proj{\psi}\right)\le\frac{1}{2}$
+\begin_inset Formula $\mu_{\rho}^{B}\left(\proj{\psi}\right)\le r_{0}$
 \end_inset
 
 .
@@ -19456,12 +19520,12 @@ reference "fig:three-dimensional-4-value"
 \end_inset
 
  is continuous, we have 
-\begin_inset Formula $\mu_{\rho}^{B}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)=\frac{1}{2}$
+\begin_inset Formula $\mu_{\rho}^{B}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)=r_{0}$
 \end_inset
 
 .
  Similarly, 
-\begin_inset Formula $\mu_{\rho}^{B}\left(\proj{\ps_{\theta,\gamma}^{\perp}}\right)=\frac{1}{2}$
+\begin_inset Formula $\mu_{\rho}^{B}\left(\proj{\ps_{\theta,\gamma}^{\perp}}\right)=r_{0}$
 \end_inset
 
 .
@@ -19480,7 +19544,7 @@ Consider a general density matrix
  Then, we have 
 \begin_inset Formula 
 \begin{eqnarray*}
-\frac{1}{2} & = & \mu_{\rho}^{B}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)\\
+r_{0} & = & \mu_{\rho}^{B}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)\\
  & \stackrel{\left(\ref{BornRule.mixed}\right)}{=} & \Tr\left(\rho\proj{0_{\theta,\gamma}^{\perp}}\right)\\
  & = & \Tr\left(\left(\sideset{_{\mathscr{O}}}{_{i=0}^{2}}\sum\sideset{_{\mathscr{O}}}{_{j=0}^{2}}\sum r_{ij}\ket{i}\bra{j}\right)\left(\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}\right)\left(\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}\right)^{\dagger}\right)\\
  & = & \Tr\left(\sideset{_{\mathscr{O}}}{_{i=0}^{2}}\sum\left(r_{i1}\rme^{\rmi\gamma}\sin\theta+r_{i2}\cos\theta\right)\ket{i}\left(\rme^{-\rmi\gamma}\sin\theta\bra{1}+\cos\theta\bra{2}\right)\right)\\
@@ -19502,21 +19566,21 @@ Because the above equation holds for all
 \end_inset
 
  and 
-\begin_inset Formula $r_{11}=r_{22}=\frac{1}{2}$
+\begin_inset Formula $r_{11}=r_{22}=r_{0}$
 \end_inset
 
 .
  We also have
 \begin_inset Formula 
 \begin{eqnarray*}
-\frac{1}{2} & = & \mu_{\rho}^{B}\left(\proj{\ps_{\theta,\gamma}^{\perp}}\right)\\
+r_{0} & = & \mu_{\rho}^{B}\left(\proj{\ps_{\theta,\gamma}^{\perp}}\right)\\
  & \stackrel{\left(\ref{BornRule.mixed}\right)}{=} & \Tr\left(\rho\proj{\ps_{\theta,\gamma}^{\perp}}\right)\\
  & = & \Tr\left(\left(\sideset{_{\mathscr{O}}}{_{i=0}^{2}}\sum\sideset{_{\mathscr{O}}}{_{j=0}^{2}}\sum r_{ij}\ket{i}\bra{j}\right)\left(-\rme^{\rmi\gamma}\sin\theta\ket{\ms}+\cos\theta\ket{2}\right)\left(-\rme^{\rmi\gamma}\sin\theta\ket{\ms}+\cos\theta\ket{2}\right)^{\dagger}\right)\\
  & = & \Tr\left(\sideset{_{\mathscr{O}}}{_{i=0}^{2}}\sum\left(-\frac{r_{i0}\rme^{\rmi\gamma}\sin\theta}{\sqrt{2}}+\frac{r_{i1}\rme^{\rmi\gamma}\sin\theta}{\sqrt{2}}+r_{i2}\cos\theta\right)\ket{i}\left(-\frac{\rme^{-\rmi\gamma}\sin\theta}{\sqrt{2}}\bra{0}+\frac{\rme^{-\rmi\gamma}\sin\theta}{\sqrt{2}}\bra{1}+\cos\theta\bra{2}\right)\right)\\
- & = & -\frac{\rme^{-\rmi\gamma}\sin\theta}{\sqrt{2}}\left(-\frac{r_{00}\rme^{\rmi\gamma}\sin\theta}{\sqrt{2}}+\frac{r_{01}\rme^{\rmi\gamma}\sin\theta}{\sqrt{2}}+r_{02}\cos\theta\right)+\frac{\rme^{-\rmi\gamma}\sin\theta}{\sqrt{2}}\left(-\frac{r_{10}\rme^{\rmi\gamma}\sin\theta}{\sqrt{2}}+\frac{\rme^{\rmi\gamma}\sin\theta}{2\sqrt{2}}\right)\\
- &  & +\cos\theta\left(-\frac{r_{20}\rme^{\rmi\gamma}\sin\theta}{\sqrt{2}}+\frac{\cos\theta}{2}\right)\\
- & = & \left(\frac{r_{00}\sin^{2}\theta}{2}-\frac{r_{01}\sin^{2}\theta}{2}-\frac{r_{02}\rme^{-\rmi\gamma}\sin\theta\cos\theta}{\sqrt{2}}\right)+\left(-\frac{r_{10}\sin^{2}\theta}{2}+\frac{\sin^{2}\theta}{4}\right)+\left(-\frac{r_{20}\rme^{\rmi\gamma}\cos\theta\sin\theta}{\sqrt{2}}+\frac{\cos^{2}\theta}{2}\right)\\
- & = & \left(\frac{r_{00}}{2}-\frac{r_{01}}{2}-\frac{r_{10}}{2}+\frac{1}{4}\right)\sin^{2}\theta+\frac{\cos^{2}\theta}{2}-\left(r_{02}\rme^{-\rmi\gamma}+r_{20}\rme^{\rmi\gamma}\right)\frac{\cos\theta\sin\theta}{\sqrt{2}}
+ & = & -\frac{\rme^{-\rmi\gamma}\sin\theta}{\sqrt{2}}\left(-\frac{r_{00}\rme^{\rmi\gamma}\sin\theta}{\sqrt{2}}+\frac{r_{01}\rme^{\rmi\gamma}\sin\theta}{\sqrt{2}}+r_{02}\cos\theta\right)\\
+ &  & +\frac{\rme^{-\rmi\gamma}\sin\theta}{\sqrt{2}}\left(-\frac{r_{10}\rme^{\rmi\gamma}\sin\theta}{\sqrt{2}}+\frac{r_{0}\rme^{\rmi\gamma}\sin\theta}{\sqrt{2}}\right)+\cos\theta\left(-\frac{r_{20}\rme^{\rmi\gamma}\sin\theta}{\sqrt{2}}+r_{0}\cos\theta\right)\\
+ & = & \left(\frac{r_{00}\sin^{2}\theta}{2}-\frac{r_{01}\sin^{2}\theta}{2}-\frac{r_{02}\rme^{-\rmi\gamma}\sin\theta\cos\theta}{\sqrt{2}}\right)+\left(-\frac{r_{10}\sin^{2}\theta}{2}+\frac{r_{0}\sin^{2}\theta}{2}\right)+\left(-\frac{r_{20}\rme^{\rmi\gamma}\cos\theta\sin\theta}{\sqrt{2}}+r_{0}\cos^{2}\theta\right)\\
+ & = & \left(\frac{r_{00}}{2}-\frac{r_{01}}{2}-\frac{r_{10}}{2}+\frac{r_{0}}{2}\right)\sin^{2}\theta+r_{0}\cos^{2}\theta-\left(r_{02}\rme^{-\rmi\gamma}+r_{20}\rme^{\rmi\gamma}\right)\frac{\cos\theta\sin\theta}{\sqrt{2}}
 \end{eqnarray*}
 
 \end_inset
@@ -19526,7 +19590,7 @@ Because of the same reason, we have
 \end_inset
 
  and 
-\begin_inset Formula $r_{00}=\frac{1}{2}+r_{01}+r_{10}$
+\begin_inset Formula $r_{00}=r_{0}+r_{01}+r_{10}$
 \end_inset
 
 .
@@ -19535,40 +19599,142 @@ Because of the same reason, we have
 \end_inset
 
  is a density matrix, we should have 
-\begin_inset Formula $\Tr\left(\rho\right)=1$
-\end_inset
-
- and 
 \begin_inset Formula $\rho^{\dagger}=\rho$
 \end_inset
 
- so that 
-\begin_inset Formula $r_{00}=0$
-\end_inset
-
 , 
-\begin_inset Formula $r_{01}=-\frac{1}{4}+\rmi b$
+\begin_inset Formula $\Tr\left(\rho\right)=1$
 \end_inset
 
 , and 
-\begin_inset Formula $r_{01}=-\frac{1}{4}-\rmi b$
+\begin_inset Formula $\rho$
 \end_inset
 
-, where 
+ is a positive operator
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "544199"
+
+\end_inset
+
+.
+ These implies that we can express 
+\begin_inset Formula $r_{01}=a+\rmi b$
+\end_inset
+
+ and 
+\begin_inset Formula $r_{10}=a-\rmi b$
+\end_inset
+
+ for some 
+\begin_inset Formula $a$
+\end_inset
+
+, 
 \begin_inset Formula $b\in\mathbb{R}$
 \end_inset
 
 .
- However, it is easy to verify that 
+ After plugging into 
+\begin_inset Formula $\Tr\left(\rho\right)=1$
+\end_inset
+
+, we have 
+\begin_inset Formula $r_{00}=1-2r_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $r_{01}=\frac{1}{2}-\frac{3}{2}r_{0}+\rmi b$
+\end_inset
+
+, and 
+\begin_inset Formula $r_{01}=\frac{1}{2}-\frac{3}{2}r_{0}-\rmi b$
+\end_inset
+
+.
+ Next, since 
 \begin_inset Formula $\rho$
 \end_inset
 
- will have a negative eigenvalue.
- This contradicts to the fact that 
+ is a positive operator, 
 \begin_inset Formula $\rho$
 \end_inset
 
- as a a density matrix must be a positive operator.
+ should have all non-negative eigenvalues, which are the solutions of the
+ 
+\family roman
+\size normal
+characteristic polynomial
+\family default
+\size default
+
+\begin_inset Formula 
+\begin{eqnarray*}
+0 & = & \det\left(\rho-\lambda\mathbb{1}\right)\\
+ & = & \begin{vmatrix}1-2r_{0}-\lambda & \frac{1}{2}-\frac{3}{2}r_{0}+\rmi b & 0\\
+\frac{1}{2}-\frac{3}{2}r_{0}-\rmi b & r_{0}-\lambda & 0\\
+0 & 0 & r_{0}-\lambda
+\end{vmatrix}\\
+ & = & \left(r_{0}-\lambda\right)\left[\left(1-2r_{0}-\lambda\right)\left(r_{0}-\lambda\right)-\left(\frac{1}{2}-\frac{3}{2}r_{0}+\rmi b\right)\left(\frac{1}{2}-\frac{3}{2}r_{0}-\rmi b\right)\right]\\
+ & = & \left(r_{0}-\lambda\right)\left[\lambda^{2}-\left(1-r_{0}\right)\lambda+r_{0}-2r_{0}^{2}-\frac{1}{4}+\frac{3}{2}r_{0}-\frac{9}{4}r_{0}^{2}-b^{2}\right]\\
+ & = & \left(r_{0}-\lambda\right)\left[\lambda^{2}-\left(1-r_{0}\right)\lambda-\frac{1}{4}+\frac{5}{2}r_{0}-\frac{17}{4}r_{0}^{2}-b^{2}\right]
+\end{eqnarray*}
+
+\end_inset
+
+Hence, the solutions of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ are 
+\begin_inset Formula $r_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $1-r_{0}\pm\sqrt{\left(1-r_{0}\right)^{2}-4\cdot1\cdot\left(-\frac{1}{4}+\frac{5}{2}r_{0}-\frac{17}{4}r_{0}^{2}-b^{2}\right)}$
+\end_inset
+
+.
+ If they are all non-negative, we want 
+\begin_inset Formula 
+\begin{eqnarray*}
+0 & \ge & -4\cdot1\cdot\left(-\frac{1}{4}+\frac{5}{2}r_{0}-\frac{17}{4}r_{0}^{2}-b^{2}\right)\\
+ & = & 1-10r_{0}+17r_{0}^{2}+4b^{2}\\
+ & = & 17\left(r_{0}-\frac{5+\sqrt{25-17\cdot\left(4b^{2}+1\right)}}{17}\right)\left(r_{0}-\frac{5-\sqrt{25-17\cdot\left(4b^{2}+1\right)}}{17}\right)
+\end{eqnarray*}
+
+\end_inset
+
+Therefore, when 
+\begin_inset Formula $r_{0}>\frac{5+2\sqrt{2}}{17}$
+\end_inset
+
+ or 
+\begin_inset Formula $r_{0}<\frac{5-2\sqrt{2}}{17}$
+\end_inset
+
+, no matter which 
+\begin_inset Formula $b\in\mathbb{R}$
+\end_inset
+
+, 
+\begin_inset Formula $\rho$
+\end_inset
+
+ always has a negative eigenvalue.
+ This contradiction implies 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ has an empty core when 
+\begin_inset Formula $r_{0}\in\left(\frac{5+2\sqrt{2}}{17},\frac{1}{2}\right]$
+\end_inset
+
+.
 \begin_inset ERT
 status collapsed
 
