@@ -2105,22 +2105,38 @@ W_{l}\le\tensor*[_{\mathbb{R}}]{\sum}{_{i=0}^{d-1}}f\left(\ket{\psi_{i}}\right)\
  for any orthonormal basis~$\left\{ \ket{\psi_{i}}\right\} _{i=0}^{d-1}$
 of $\mathbb{R}^{d}$.\qed\end{definition}
 
-\begin{definition}\cite{WheedenZygmund1977}~For any continuous
-function~$f:S^{d-1}\rightarrow\mathbb{R}$, the modulus of continuity
-of $f$ is given by $\omega_{f}\left(\delta\right)=\sup_{\left\Vert \ket{\psi}-\ket{\phi}\right\Vert <\delta}\left|f\left(\ket{\psi}\right)-f\left(\ket{\phi}\right)\right|$.\qed\end{definition}
+\begin{definition}\cite{CourantJohn1965,Voevodskyothers2013}~For
+any function~$f$, a function~$\varDelta_{f}:\left(0,\infty\right]\rightarrow\left(0,\infty\right]$
+is a modulus of continuity of $f$ if for every $\epsilon>0$, $\left\Vert \ket{\psi}-\ket{\phi}\right\Vert <\varDelta_{f}\left(\epsilon\right)$
+implies $\left|f\left(\ket{\psi}\right)-f\left(\ket{\phi}\right)\right|<\epsilon$.\qed\end{definition}
+
+Notice that a function $f$ may have more than one modulus of continuity.
+For example, $\varDelta_{f}\left(\epsilon\right)=\frac{\epsilon}{2}$
+and $\epsilon$ are both modulus of continuity of $f\left(\ket{\psi}\right)=\left|\ip{\psi}{0}\right|^{2}$
+on $S^{2}$. Conversely, a function may be a modulus of continuity
+of two different functions. For example, $\varDelta\left(\epsilon\right)=\frac{\epsilon}{2}$
+is a modulus of continuity of both $f\left(\ket{\psi}\right)=\left|\ip{\psi}{0}\right|^{2}$
+and $f\left(\ket{\psi}\right)=\frac{1}{3}$ on $S^{2}$.
 
 \begin{definition}\cite{RichmanBridges1999}~If $f:S^{2}\rightarrow\mathbb{R}$
-is a frame function of weight~$\left(W_{l},W_{r}\right)$, and $\ket{\psi}\in S^{2}$,
-then the \emph{symmetrization} of $f$ with respect to $\ket{\psi}$
-is the function~$g:S^{2}\rightarrow\mathbb{R}$ defined by
+is a approximation frame function of weight~$\left(W_{l},W_{r}\right)$,
+and $\ket{\psi}\in S^{2}$, then the \emph{symmetrization} of $f$
+with respect to $\ket{\psi}$ is the function~$g:S^{2}\rightarrow\mathbb{R}$
+defined by
 \[
 g\left(\ket{\phi}\right)=f\left(\ket{\phi}\right)+f\left(\sigma\ket{\phi}\right)
 \]
 where $\sigma$ is clockwise rotation by $\pi/2$ about $\ket{\psi}$.\qed\end{definition}
 
-The following theorem is an analog to Corollary 22 in \cite{RichmanBridges1999}.
+The following theorem is an analog to Corollary~22 in \cite{RichmanBridges1999}.
+The only significant difference is that we assume the approximation
+frame function is continuous. The approximation frame function might
+not be continuous as in all of our previous example, while the frame
+function in original Gleason's theorem is always continuous. Thus,
+we need to assume the continuity to follow the proof in \cite{RichmanBridges1999}.
 
-\begin{thm}Let $f$ be an bounded continuous frame function of weight~$\left(W_{l},W_{r}\right)$,
+\begin{thm}\label{thm:analogCorollary22RichmanBridges1999}Let $f$
+be an bounded continuous approximation frame function of weight~$\left(W_{l},W_{r}\right)$,
 $m=\inf f$ or $m=\sup f$, and $W=\left(W_{l}+W_{r}\right)/2$. Let
 $Q$ be the quadratic form given by
 \[
@@ -2132,11 +2148,33 @@ For each $\delta>0$, there is $\eta>0$ such that if
 and 
 \item $g$ is the symmetrization of $f$ with respect to $\ket{\psi}$.
 \end{itemize}
-then $\left|Q\left(\ket{\phi}\right)-g\left(\ket{\phi}\right)\right|\le\delta+3\left(W_{r}-W_{l}\right)\left[12\left\lceil \frac{\pi^{2}}{\omega_{f}^{-1}\left(\frac{\delta}{36}\right)}\right\rceil +1\right]$,
+then $\left|Q\left(\ket{\phi}\right)-g\left(\ket{\phi}\right)\right|\le\delta+3\left(W_{r}-W_{l}\right)\left[12\left\lceil \frac{\pi^{2}}{\varDelta_{f}\left(\frac{\delta}{36}\right)}\right\rceil +1\right]$,
 where $\left\lceil x\right\rceil $, ceiling function~\cite{GrahamKnuthPatashnik1994,PurdomBrown1995},
 is the smallest integer not less than $x$.\qed\end{thm}
 
-We can see that for a 
+Since $\delta$ can be arbitrary small in theorem~\ref{thm:analogCorollary22RichmanBridges1999},
+we can get the following corollary.
+
+\begin{cor}Let $f$ be a bounded continuous approximation frame function
+of weight~$\left(W_{l},W_{r}\right)$, $m=\min f=f\left(\ket{\psi}\right)$
+or $m=\max f=f\left(\ket{\psi}\right)$, and $W=\left(W_{l}+W_{r}\right)/2$.
+Let $Q$ be the quadratic form given by
+\[
+Q\left(\ket{\phi}\right)=W-m+\left(3m-W\right)\ip{\psi}{\phi}^{2}=2m\ip{\psi}{\phi}^{2}+\left(W-m\right)\left(1-\ip{\psi}{\phi}^{2}\right)
+\]
+If $g$ is the symmetrization of $f$ with respect to $\ket{\psi}$,
+then $\left|Q\left(\ket{\phi}\right)-g\left(\ket{\phi}\right)\right|\le3\left(W_{r}-W_{l}\right)$.\qed\end{cor}
+
+Corollary~22 in \cite{RichmanBridges1999} is used to prove theorem~23
+which is the final step to prove Gleason's theorem in \cite{RichmanBridges1999}.
+Theorem~23 reads as the following.
+
+\begin{thm}Let $f$ be a bounded frame function on the unit sphere
+in $\mathbb{R}^{3}$, and $\delta>0$. Then there is a quadratic form
+$Q$ on $\mathbb{R}^{3}$ so that $\left|f\left(x\right)-Q\left(x\right)\right|\le3\delta$
+for all $\ket{\phi}$ on the sphere.\qed\end{thm}
+
+Currently, we can only prove the following. 
 
 \end{document}
 
