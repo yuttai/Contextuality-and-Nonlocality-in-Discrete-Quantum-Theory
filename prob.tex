@@ -2105,6 +2105,9 @@ W_{l}\le\tensor*[_{\mathbb{R}}]{\sum}{_{i=0}^{d-1}}f\left(\ket{\psi_{i}}\right)\
  for any orthonormal basis~$\left\{ \ket{\psi_{i}}\right\} _{i=0}^{d-1}$
 of $\mathbb{R}^{d}$.\qed\end{definition}
 
+\begin{definition}\cite{WheedenZygmund1977}~For any function~$f$,
+the modulus of continuity of $f$ is $\omega_{f}\left(\delta\right)=\sup_{\left\Vert \ket{\psi}-\ket{\phi}\right\Vert <\delta}\left|f\left(\ket{\psi}\right)-f\left(\ket{\phi}\right)\right|$.\qed\end{definition}
+
 \begin{definition}\cite{CourantJohn1965,Voevodskyothers2013}~For
 any function~$f$, a function~$\varDelta_{f}:\left(0,\infty\right]\rightarrow\left(0,\infty\right]$
 is a modulus of continuity of $f$ if for every $\epsilon>0$, $\left\Vert \ket{\psi}-\ket{\phi}\right\Vert <\varDelta_{f}\left(\epsilon\right)$
@@ -2137,8 +2140,8 @@ we need to assume the continuity to follow the proof in \cite{RichmanBridges1999
 
 \begin{thm}\label{thm:analogCorollary22RichmanBridges1999}Let $f$
 be an bounded continuous approximation frame function of weight~$\left(W_{l},W_{r}\right)$,
-$m=\inf f$ or $m=\sup f$, and $W=\left(W_{l}+W_{r}\right)/2$. Let
-$Q$ be the quadratic form given by
+$m=\inf f$ or $m=\sup f$, and $W=\frac{W_{l}+W_{r}}{2}$. Let $Q$
+be the quadratic form given by
 \[
 Q\left(\ket{\phi}\right)=W-m+\left(3m-W\right)\ip{\psi}{\phi}^{2}=2m\ip{\psi}{\phi}^{2}+\left(W-m\right)\left(1-\ip{\psi}{\phi}^{2}\right)
 \]
@@ -2157,7 +2160,7 @@ we can get the following corollary.
 
 \begin{cor}Let $f$ be a bounded continuous approximation frame function
 of weight~$\left(W_{l},W_{r}\right)$, $m=\min f=f\left(\ket{\psi}\right)$
-or $m=\max f=f\left(\ket{\psi}\right)$, and $W=\left(W_{l}+W_{r}\right)/2$.
+or $m=\max f=f\left(\ket{\psi}\right)$, and $W=\frac{W_{l}+W_{r}}{2}$.
 Let $Q$ be the quadratic form given by
 \[
 Q\left(\ket{\phi}\right)=W-m+\left(3m-W\right)\ip{\psi}{\phi}^{2}=2m\ip{\psi}{\phi}^{2}+\left(W-m\right)\left(1-\ip{\psi}{\phi}^{2}\right)
@@ -2180,33 +2183,27 @@ Currently, we can only prove the following.
 
 \section{Proofs}
 
+The following theorem is an analog to Lemma~20 in \cite{RichmanBridges1999}. 
+
 \begin{lemma}\label{lemma:analogLemma20RichmanBridges1999}If $f$
 is a nonnegative approximation frame function of weight~$\left(W_{l},W_{r}\right)$,
-and there is a point~$\ket{\psi}\in S^{2}$, then the oscillation
-on any latitude of the symmetrization of $f$ with respect to $\ket{\psi}$
-is?\qed\end{lemma}
+and $\eta=f\left(\ket{0}\right)$, then the oscillation on any latitude
+of the symmetrization of $f$ with respect to $\ket{0}$ is at most
+$2n\eta+4n\left(W_{r}-W_{l}\right)+2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right)$
+for some integer $n\ge2\pi$. The exact $n$ could be computed to
+minimize the oscillation when the function $f$ is given.\qed\end{lemma}
 \begin{proof}
-Consider $\ket{\psi}$ to be the north pole of $S^{2}$. Let $g$
-be the symmetrization of $f$ with respect to $\ket{\psi}$, and $\eta=f\left(\ket{\psi}\right)$.
-Let 
-\begin{eqnarray*}
-\omega_{f}\left(\delta\right) & = & \sup_{\left\Vert \ket{\psi}-\ket{\phi}\right\Vert <\delta}\left|f\left(\ket{\psi}\right)-f\left(\ket{\phi}\right)\right|\\
-\omega_{g}\left(\delta\right) & = & \sup_{\left\Vert \ket{\psi}-\ket{\phi}\right\Vert <\delta}\left|g\left(\ket{\psi}\right)-g\left(\ket{\phi}\right)\right|=2\omega_{f}\left(\delta\right)
-\end{eqnarray*}
-Then, for any latitude $\theta_{0}$, the oscillation of $g$ on the
-polar cap of latitude $2\theta_{0}-\frac{\pi}{2}$ is less than $\omega_{g}\left(2\sin2\theta_{0}\right)=2\omega_{f}\left(2\sin2\theta_{0}\right)$.
-
+Consider $\ket{0}$ to be the north pole of $S^{2}$. Let $g$ be
+the symmetrization of $f$ with respect to $\ket{0}$, then $\omega_{g}\left(\delta\right)=2\omega_{f}\left(\delta\right)$.
 Let $\ket{\phi}$ and $\ket{\phi'}$ be points in the northern hemisphere
-with the same latitude~$\theta$. If $\theta>2\theta_{0}-\frac{\pi}{2}$,
-both $\ket{\phi}$ and $\ket{\phi'}$ are in the polar cap, so $\left|g\left(\ket{\phi}\right)-g\left(\ket{\phi'}\right)\right|<\omega_{g}\left(2\sin2\theta_{0}\right)=2\omega_{f}\left(2\sin2\theta_{0}\right)$.
-Otherwise, consider $\theta\le2\theta_{0}-\frac{\pi}{2}$. Let $a$
-be the difference in longitudes of $\ket{\phi}$ and $\ket{\phi'}$.
-Take $n$ steps along east-west great circles to go from $\ket{\phi'}$
-to a point $\ket{\phi_{s}}$ due south of $\ket{\phi}$. The difference
-in latitude between $\ket{\phi}$ and $\ket{\phi_{s}}$ is at most
-$\frac{a^{2}}{n}$, while, from (Lemma 16 to be typed),
+with the same latitude~$\theta$. Let $a$ be the difference in longitudes
+of $\ket{\phi}$ and $\ket{\phi'}$. Take $n$ steps along east-west
+great circles to go from $\ket{\phi'}$ to a point $\ket{\phi_{s}}$
+due south of $\ket{\phi}$. The difference in latitude between $\ket{\phi}$
+and $\ket{\phi_{s}}$ is at most $\frac{a^{2}}{n}$, while, from (Lemma
+16 to be typed),
 \[
-g\left(\ket{\phi_{s}}\right)\ge g\left(\ket{\phi'}\right)-n\left[2f\left(\ket{\psi}\right)+4\left(W_{r}-W_{l}\right)\right]=g\left(\ket{\phi'}\right)-2n\eta-4n\left(W_{r}-W_{l}\right)
+g\left(\ket{\phi_{s}}\right)\ge g\left(\ket{\phi'}\right)-n\left[2f\left(\ket{\psi}\right)+4\left(W_{r}-W_{l}\right)\right]=g\left(\ket{\phi'}\right)-2n\eta-4n\left(W_{r}-W_{l}\right)\textrm{ .}
 \]
 When the difference in latitude between $\ket{\phi}$ and $\ket{\phi_{s}}$
 is at most $\frac{a^{2}}{n}$, the length between $\ket{\phi}$ and
@@ -2215,7 +2212,25 @@ and hence
 \[
 g\left(\ket{\phi}\right)\ge g\left(\ket{\phi_{s}}\right)-\omega_{g}\left(2-2\cos\left(\frac{a^{2}}{n}\right)\right)\ge g\left(\ket{\phi'}\right)-2n\eta-4n\left(W_{r}-W_{l}\right)-2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right)
 \]
-for $\frac{\pi^{2}}{n}\le\frac{\pi}{2}\Leftrightarrow2\pi\le n$.
+for $\frac{\pi^{2}}{n}\le\frac{\pi}{2}\Leftrightarrow2\pi\le n$.\footnote{\yutsung{We are going to verify this proof by set $W_{r}-W_{l}=0$.
+Since $f$ is continuous in this case, we could solve $n\ge2\pi$
+such that $2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right)\le\frac{\delta}{2}$
+for any $\delta>0$, and then solve $\eta\ge0$ such that $2n\eta\le\frac{\delta}{2}$.}}
+\end{proof}
+The following theorem is an analog to Theorem~21 in \cite{RichmanBridges1999}. 
+
+\begin{thm}\label{thm:analogTheorem21RichmanBridges1999}
+\begin{itemize}
+\item Let $f$ be a nonnegative approximation frame function of weight~$\left(W_{l},W_{r}\right)$,
+$W=\frac{W_{l}+W_{r}}{2}$, $\eta=f\left(\ket{0}\right)$, 
+\item $g$ be the symmetrization of $f$ with respect to $\ket{0}$, and 
+\item $Q\left(\ket{\phi}\right)=W\left(1-\ip{0}{\phi}^{2}\right)$. 
+\end{itemize}
+Then, $\left|Q\left(\ket{\phi}\right)-g\left(\ket{\phi}\right)\right|\le$.\qed\end{thm}
+\begin{proof}
+Consider $\ket{0}$ to be the north pole of $S^{2}$. Note that $g$
+is a nonnegative frame function of weight~$\left(2W_{l},2W_{r}\right)$,
+and that 
 \end{proof}
 
 \end{document}
