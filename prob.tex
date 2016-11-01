@@ -2197,9 +2197,10 @@ Let $\ket{\psi}$ and $\ket{\psi'}$ be points in the northern hemisphere
 with the same latitude~$\theta$. Let $a$ be the difference in longitudes
 of $\ket{\psi}$ and $\ket{\psi'}$. Take $n$ steps along east-west
 great circles to go from $\ket{\psi'}$ to a point $\ket{\psi_{s}}$
-due south of $\ket{\psi}$\footnote{Double check how many step at least from $\ket{\psi'}$ to a point
-$\ket{\psi_{s}}$.}. The difference in latitude between $\ket{\psi}$ and $\ket{\psi_{s}}$
-is at most $\frac{a^{2}}{n}$, while, from Lemma \footnote{Analog to Lemma 16 in \cite{RichmanBridges1999}... To be typed...},
+due south of $\ket{\psi}$\footnote{\yutsung{Double check how many step at least from $\ket{\psi'}$
+to a point $\ket{\psi_{s}}$.}}. The difference in latitude between $\ket{\psi}$ and $\ket{\psi_{s}}$
+is at most $\frac{a^{2}}{n}$, while, from Lemma \footnote{\yutsung{Analog to Lemma 16 in \cite{RichmanBridges1999}... To be
+typed...}},
 \[
 g\left(\ket{\psi_{s}}\right)\ge g\left(\ket{\psi'}\right)-n\left[2f\left(\ket{0}\right)+4\left(W_{r}-W_{l}\right)\right]=g\left(\ket{\psi'}\right)-2n\eta-4n\left(W_{r}-W_{l}\right)\textrm{ .}
 \]
@@ -2217,21 +2218,22 @@ for any $\delta>0$, and then solve $\eta\ge0$ such that $2n\eta\le\frac{\delta}{
 \end{proof}
 The following theorem is an analog to Theorem~21 in \cite{RichmanBridges1999}. 
 
-\begin{thm}\label{thm:analogTheorem21RichmanBridges1999}
+\begin{thm}\label{thm:analogTheorem21RichmanBridges1999}~ 
 \begin{itemize}
-\item Let $f$ be a nonnegative approximation frame function of weight~$\left(W_{l},W_{r}\right)$,
+\item Let $f$ be a continuous\footnote{\yutsung{We need this ``continuous'' to apply Lemma~19 in \cite{RichmanBridges1999},
+and need to rewrite Lemma~19 if we want to take away this ``continuous''...}} nonnegative approximation frame function of weight~$\left(W_{l},W_{r}\right)$,
 $W=\frac{W_{l}+W_{r}}{2}$, $\eta=f\left(\ket{0}\right)$, 
 \item $g$ be the symmetrization of $f$ with respect to $\ket{0}$,
 \item $\ell\left(\ket{\psi}\right)=\ip{0}{\psi}^{2}$ and $Q\left(\ket{\psi}\right)=W\left(1-\ell\left(\ket{\psi}\right)\right)$,
 and 
 \item $\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)=\min_{n\ge2\pi}2n\eta+4n\left(W_{r}-W_{l}\right)+2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right)$.
 \end{itemize}
-Then, $\left|Q\left(\ket{\psi}\right)-g\left(\ket{\psi}\right)\right|\le?$.\qed\end{thm}
+Then, $\left|Q\left(\ket{\psi}\right)-g\left(\ket{\psi}\right)\right|\le9\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)+3\left(W_{r}-W_{l}\right)$.\qed\end{thm}
 \begin{proof}
 Consider $\ket{0}$ to be the north pole of $S^{2}$. Note that $g$
 is a nonnegative frame function of weight~$\left(2W_{l},2W_{r}\right)$,
-and that $W_{l}\le\eta+g\left(\ket{\psi}\right)\le W_{r}$ for all
-$\ket{\psi}$ on the equator. From Lemma~\ref{lemma:analogLemma20RichmanBridges1999},
+and that $W_{l}-\eta\le g\left(\ket{\psi}\right)\le W_{r}-\eta$ for
+all $\ket{\psi}$ on the equator. From Lemma~\ref{lemma:analogLemma20RichmanBridges1999},
 the oscillation of $g$ on latitudes is at most $\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)$.
 
 If $\ket{\psi_{0}}$, $\ket{\psi_{1}}$, and $\ket{\psi_{2}}$ are
@@ -2241,12 +2243,28 @@ then there exist orthogonal vectors~$\ket{\psi_{0}}$, $\ket{\psi_{1}}$,
 and $\ket{\psi_{2}}$ on the closed northern hemisphere such that
 $a_{i}=\ell\left(\ket{\psi_{i}}\right)$.
 
-For any point $\ket{\psi}$ in the closed northern hemisphere, consider 
-
-For each $\varphi$ define $F_{\varphi}$ on $\left[0,1\right]$ by
-setting $F_{\varphi}\left(\ell\left(\ket{\psi}\right)\right)=W-g\left(\ket{\psi}\right)$
-where $\ket{\psi}$ is a point in the closed northern hemisphere with
-longitude~$\varphi$. Then, $\left|F_{\varphi}\left(a_{i}\right)-\left(W-g\left(\ket{\psi_{i}}\right)\right)\right|\le2n\eta+4n\left(W_{r}-W_{l}\right)+2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right)$
+For any point $\ket{\psi}$ in the closed northern hemisphere, consider
+its longitude~$\varphi$, and a function~$F\left(a\right)=W-g\left(\ket{\psi'}\right)$,
+where $\ket{\psi'}$ is a point in the closed northern hemisphere
+with longitude~$\varphi$, and $a=\ell\left(\ket{\psi'}\right)$.
+More specifically, let $\ket{\psi_{i}'}$ be a point in the closed
+northern hemisphere with longitude~$\varphi$ such that $a_{i}=\ell\left(\ket{\psi_{i}'}\right)$.
+Hence, $\ket{\psi_{i}'}$ and $\ket{\psi_{i}}$ are in the same latitude
+so that 
+\[
+\left|F\left(a_{i}\right)-\left(W-g\left(\ket{\psi_{i}}\right)\right)\right|=\left|g\left(\ket{\psi_{i}}\right)-g\left(\ket{\psi_{i}'}\right)\right|\stackrel{\textrm{Lemma }\ref{lemma:analogLemma20RichmanBridges1999}}{\le}\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)\textrm{ .}
+\]
+for all $i$. Whence, 
+\begin{eqnarray*}
+ &  & \left|F\left(a_{0}\right)+F\left(a_{1}\right)+F\left(a_{2}\right)-W\right|\\
+ & \le & \left|F\left(a_{0}\right)+F\left(a_{1}\right)+F\left(a_{2}\right)-3W+g\left(\ket{\psi_{0}}\right)+g\left(\ket{\psi_{1}}\right)+g\left(\ket{\psi_{2}}\right)\right|+\left|2W-\left(g\left(\ket{\psi_{0}}\right)+g\left(\ket{\psi_{1}}\right)+g\left(\ket{\psi_{2}}\right)\right)\right|\\
+ & \le & \sum_{i=0}^{2}\left|F\left(a_{i}\right)-W+g\left(\ket{\psi_{i}}\right)\right|+\frac{2W_{r}-2W_{l}}{2}\\
+ & \le & 3\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)+W_{r}-W_{l}\textrm{ .}
+\end{eqnarray*}
+Therefore, by Lemma~19 in \cite{RichmanBridges1999}, 
+\[
+\left|Q\left(\ket{\psi}\right)-g\left(\ket{\psi}\right)\right|=\left|W-g\left(\ket{\psi}\right)-W\ell\left(\ket{\psi}\right)\right|\le9\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)+3\left(W_{r}-W_{l}\right)\textrm{ .}
+\]
 \end{proof}
 
 \end{document}
