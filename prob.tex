@@ -1706,8 +1706,38 @@ Probability Measures}
 We are going to provide an quantum 4-value interval-valued probability
 measures corresponding to no quantum probability measure, i.e., for
 all mixed state~$\rho$ there is a $P\in\events$ such that $\mu_{\rho}^{B}(P)\notin\bar{\mu}(P)$.
-After the example, we will also justify why this example cannot fit
-with more precise intervals.
+Before the example, we need a notation of cross product.
+
+\begin{definition}For $\ket{\psi}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}=\begin{pmatrix}\alpha_{0}\\
+\alpha_{1}\\
+\alpha_{2}
+\end{pmatrix}$ and $\ket{\phi}=\beta_{0}\ket{0}+\beta_{1}\ket{1}+\beta_{2}\ket{2}=\begin{pmatrix}\beta_{0}\\
+\beta_{1}\\
+\beta_{2}
+\end{pmatrix}$, their cross product is defined as follow: 
+\[
+\ket{\psi\times\phi}=\ket{\psi}\times\ket{\phi}=\begin{vmatrix}\alpha_{1}^{*} & \beta_{1}^{*}\\
+\alpha_{2}^{*} & \beta_{2}^{*}
+\end{vmatrix}\ket{0}+\begin{vmatrix}\alpha_{2}^{*} & \beta_{2}^{*}\\
+\alpha_{0}^{*} & \beta_{0}^{*}
+\end{vmatrix}\ket{1}+\begin{vmatrix}\alpha_{0}^{*} & \beta_{0}^{*}\\
+\alpha_{1}^{*} & \beta_{1}^{*}
+\end{vmatrix}\ket{2}\textrm{ ,}
+\]
+where $\begin{vmatrix}\alpha & \beta\\
+\alpha' & \beta'
+\end{vmatrix}=\alpha\beta'-\alpha'\beta$. \qed\end{definition}
+
+Notice that we put the complex conjugate in the cross product, so
+that the result of cross product is orthogonal to $\ket{\psi}$ and
+$\ket{\phi}$. 
+\begin{eqnarray*}
+\ip{\psi\times\phi}{\psi} & = & \left(\alpha_{1}\beta_{2}-\alpha_{2}\beta_{1}\right)\alpha_{0}+\left(\alpha_{2}\beta_{0}-\alpha_{0}\beta_{2}\right)\alpha_{1}+\left(\alpha_{0}\beta_{1}-\alpha_{1}\beta_{0}\right)\alpha_{2}=0\textrm{ ,}\\
+\ip{\psi\times\phi}{\phi} & = & \left(\alpha_{1}\beta_{2}-\alpha_{2}\beta_{1}\right)\beta_{0}+\left(\alpha_{2}\beta_{0}-\alpha_{0}\beta_{2}\right)\beta_{1}+\left(\alpha_{0}\beta_{1}-\alpha_{1}\beta_{0}\right)\beta_{2}=0\textrm{ .}
+\end{eqnarray*}
+Also, even if $\ket{\psi}$ and $\ket{\phi}$ are normalized, their
+cross product~$\ket{\psi}\times\ket{\phi}$ need not be normalized
+as usual.
 
 \begin{example}[Three-dimensional quantum 4-value interval-valued
 probability measure]\label{ex:three-dimensional-4-value} \footnote{\yutsung{Need to verify whether this example is convex or not.}}Given
@@ -1753,36 +1783,6 @@ so that $\mu_{\rho}^{B}=\mu_{\ket{2}}^{B}$. However,
 \[
 \mu_{\ket{2}}^{B}(\proj{2})=1\notin\unlikely=\bar{\mu}(\proj{2})\textrm{ .}
 \]
-
-Before we verify that $\bar{\mu}$ is a quantum interval-valued probability
-measure, we need a notation of cross product. For $\ket{\psi}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}=\begin{pmatrix}\alpha_{0}\\
-\alpha_{1}\\
-\alpha_{2}
-\end{pmatrix}$ and $\ket{\phi}=\beta_{0}\ket{0}+\beta_{1}\ket{1}+\beta_{2}\ket{2}=\begin{pmatrix}\beta_{0}\\
-\beta_{1}\\
-\beta_{2}
-\end{pmatrix}$, their cross product is defined as follow:
-\[
-\ket{\psi\times\phi}=\ket{\psi}\times\ket{\phi}=\begin{vmatrix}\alpha_{1}^{*} & \beta_{1}^{*}\\
-\alpha_{2}^{*} & \beta_{2}^{*}
-\end{vmatrix}\ket{0}+\begin{vmatrix}\alpha_{2}^{*} & \beta_{2}^{*}\\
-\alpha_{0}^{*} & \beta_{0}^{*}
-\end{vmatrix}\ket{1}+\begin{vmatrix}\alpha_{0}^{*} & \beta_{0}^{*}\\
-\alpha_{1}^{*} & \beta_{1}^{*}
-\end{vmatrix}\ket{2}\textrm{ ,}
-\]
-where $\begin{vmatrix}\alpha & \beta\\
-\alpha' & \beta'
-\end{vmatrix}=\alpha\beta'-\alpha'\beta$. Notice that we put the complex conjugate in the cross product, so
-that the result of cross product is orthogonal to $\ket{\psi}$ and
-$\ket{\phi}$. 
-\begin{eqnarray*}
-\ip{\psi\times\phi}{\psi} & = & \left(\alpha_{1}\beta_{2}-\alpha_{2}\beta_{1}\right)\alpha_{0}+\left(\alpha_{2}\beta_{0}-\alpha_{0}\beta_{2}\right)\alpha_{1}+\left(\alpha_{0}\beta_{1}-\alpha_{1}\beta_{0}\right)\alpha_{2}=0\textrm{ ,}\\
-\ip{\psi\times\phi}{\phi} & = & \left(\alpha_{1}\beta_{2}-\alpha_{2}\beta_{1}\right)\beta_{0}+\left(\alpha_{2}\beta_{0}-\alpha_{0}\beta_{2}\right)\beta_{1}+\left(\alpha_{0}\beta_{1}-\alpha_{1}\beta_{0}\right)\beta_{2}=0\textrm{ .}
-\end{eqnarray*}
-Also, even if $\ket{\psi}$ and $\ket{\phi}$ are normalized, their
-cross product~$\ket{\psi}\times\ket{\phi}$ need not be normalized
-as usual.
 
 Similar to example~\ref{ex:three-dimensional-three-value}, to verify
 $\bar{\mu}$ is a quantum interval-valued probability measure, we
@@ -2108,14 +2108,18 @@ of $\mathbb{R}^{d}$.\qed\end{definition}
 \begin{definition}\cite{WheedenZygmund1977}~For any function~$f$,
 the modulus of continuity of $f$ is $\omega_{f}\left(\delta\right)=\sup_{\left\Vert \ket{\psi}-\ket{\phi}\right\Vert <\delta}\left|f\left(\ket{\psi}\right)-f\left(\ket{\phi}\right)\right|$.\qed\end{definition}
 
+\begin{definition}Given a vector~$\ket{\psi}\in\mathbb{R}^{3}$,
+$\sigma_{\ket{\psi},\theta}$ is rotation by $\theta$ about $\ket{\psi}$.\qed\end{definition}
+
 \begin{definition}\cite{RichmanBridges1999}~If $f:S^{2}\rightarrow\mathbb{R}$
 is a approximation frame function of weight~$\left(W_{l},W_{r}\right)$,
 then the \emph{symmetrization} of $f$ with respect to $\ket{0}$
-is the function~$g:S^{2}\rightarrow\mathbb{R}$ defined by
+is the function~$g_{f,\ket{0}}:S^{2}\rightarrow\mathbb{R}$ defined
+by
 \[
-g\left(\ket{\psi}\right)=f\left(\ket{\psi}\right)+f\left(\sigma\ket{\psi}\right)
+g_{f,\ket{0}}\left(\ket{\psi}\right)=f\left(\ket{\psi}\right)+f\left(\sigma_{\ket{0},\frac{\pi}{2}}\ket{\psi}\right)\textrm{ .}
 \]
-where $\sigma$ is clockwise rotation by $\pi/2$ about $\ket{0}$.\qed\end{definition}
+\qed\end{definition}
 
 The following theorem is an analog to Lemma~20 in \cite{RichmanBridges1999}. 
 
@@ -2159,18 +2163,17 @@ The following theorem is an analog to Theorem~21 in \cite{RichmanBridges1999}.
 \item Let $f$ be a nonnegative continuous\footnote{\yutsung{We need this ``continuous'' to apply Lemma~19 in \cite{RichmanBridges1999},
 and need to rewrite Lemma~19 if we want to take away this ``continuous''...}}approximation frame function of weight~$\left(W_{l},W_{r}\right)$,
 $W=\frac{W_{l}+W_{r}}{2}$, $\eta=f\left(\ket{0}\right)$, 
-\item $g$ be the symmetrization of $f$ with respect to $\ket{0}$,
 \item $\ell\left(\ket{\psi}\right)=\ip{0}{\psi}^{2}$ and $Q\left(\ket{\psi}\right)=W\left(1-\ell\left(\ket{\psi}\right)\right)$,
 and 
 \item $\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)=\min_{n\ge2\pi}2n\eta+4n\left(W_{r}-W_{l}\right)+2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right)$.
 \end{itemize}
-Then, $\left|Q\left(\ket{\psi}\right)-g\left(\ket{\psi}\right)\right|\le9\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)+3\left(W_{r}-W_{l}\right)$.\qed\end{thm}
+Then, $\left|Q\left(\ket{\psi}\right)-g_{f,\ket{0}}\left(\ket{\psi}\right)\right|\le9\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)+3\left(W_{r}-W_{l}\right)$.\qed\end{thm}
 \begin{proof}
-Consider $\ket{0}$ to be the north pole of $S^{2}$. Note that $g$
+Consider $\ket{0}$ to be the north pole of $S^{2}$. Note that $g_{f,\ket{0}}$
 is a nonnegative frame function of weight~$\left(2W_{l},2W_{r}\right)$,
-and that $W_{l}-\eta\le g\left(\ket{\psi}\right)\le W_{r}-\eta$ for
-all $\ket{\psi}$ on the equator. From Lemma~\ref{lemma:analogLemma20RichmanBridges1999},
-the oscillation of $g$ on latitudes is at most $\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)$.
+and that $W_{l}-\eta\le g_{f,\ket{0}}\left(\ket{\psi}\right)\le W_{r}-\eta$
+for all $\ket{\psi}$ on the equator. From Lemma~\ref{lemma:analogLemma20RichmanBridges1999},
+the oscillation of $g_{f,\ket{0}}$ on latitudes is at most $\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)$.
 
 If $\ket{\psi_{0}}$, $\ket{\psi_{1}}$, and $\ket{\psi_{2}}$ are
 orthogonal vectors on the closed northern hemisphere, then $\ell\left(\ket{\psi_{0}}\right)+\ell\left(\ket{\psi_{1}}\right)+\ell\left(\ket{\psi_{2}}\right)=1$.
@@ -2180,7 +2183,7 @@ and $\ket{\psi_{2}}$ on the closed northern hemisphere such that
 $a_{i}=\ell\left(\ket{\psi_{i}}\right)$.
 
 For any point $\ket{\psi}$ in the closed northern hemisphere, consider
-its longitude~$\varphi$, and a function~$F\left(a\right)=W-g\left(\ket{\psi'}\right)$,
+its longitude~$\varphi$, and a function~$F\left(a\right)=W-g_{f,\ket{0}}\left(\ket{\psi'}\right)$,
 where $\ket{\psi'}$ is a point in the closed northern hemisphere
 with longitude~$\varphi$, and $a=\ell\left(\ket{\psi'}\right)$.
 More specifically, let $\ket{\psi_{i}'}$ be a point in the closed
@@ -2188,18 +2191,18 @@ northern hemisphere with longitude~$\varphi$ such that $a_{i}=\ell\left(\ket{\ps
 Hence, $\ket{\psi_{i}'}$ and $\ket{\psi_{i}}$ are in the same latitude
 so that 
 \[
-\left|F\left(a_{i}\right)-\left(W-g\left(\ket{\psi_{i}}\right)\right)\right|=\left|g\left(\ket{\psi_{i}}\right)-g\left(\ket{\psi_{i}'}\right)\right|\stackrel{\textrm{Lemma }\ref{lemma:analogLemma20RichmanBridges1999}}{\le}\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)\textrm{ .}
+\left|F\left(a_{i}\right)-\left(W-g_{f,\ket{0}}\left(\ket{\psi_{i}}\right)\right)\right|=\left|g_{f,\ket{0}}\left(\ket{\psi_{i}}\right)-g_{f,\ket{0}}\left(\ket{\psi_{i}'}\right)\right|\stackrel{\textrm{Lemma }\ref{lemma:analogLemma20RichmanBridges1999}}{\le}\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)\textrm{ .}
 \]
 for all $i$. Whence, 
 \begin{eqnarray*}
  &  & \left|F\left(a_{0}\right)+F\left(a_{1}\right)+F\left(a_{2}\right)-W\right|\\
- & \le & \left|F\left(a_{0}\right)+F\left(a_{1}\right)+F\left(a_{2}\right)-3W+g\left(\ket{\psi_{0}}\right)+g\left(\ket{\psi_{1}}\right)+g\left(\ket{\psi_{2}}\right)\right|+\left|2W-\left(g\left(\ket{\psi_{0}}\right)+g\left(\ket{\psi_{1}}\right)+g\left(\ket{\psi_{2}}\right)\right)\right|\\
- & \le & \sum_{i=0}^{2}\left|F\left(a_{i}\right)-W+g\left(\ket{\psi_{i}}\right)\right|+\frac{2W_{r}-2W_{l}}{2}\\
+ & \le & \left|F\left(a_{0}\right)+F\left(a_{1}\right)+F\left(a_{2}\right)-3W+g_{f,\ket{0}}\left(\ket{\psi_{0}}\right)+g_{f,\ket{0}}\left(\ket{\psi_{1}}\right)+g_{f,\ket{0}}\left(\ket{\psi_{2}}\right)\right|+\left|2W-\left(g_{f,\ket{0}}\left(\ket{\psi_{0}}\right)+g_{f,\ket{0}}\left(\ket{\psi_{1}}\right)+g_{f,\ket{0}}\left(\ket{\psi_{2}}\right)\right)\right|\\
+ & \le & \sum_{i=0}^{2}\left|F\left(a_{i}\right)-W+g_{f,\ket{0}}\left(\ket{\psi_{i}}\right)\right|+\frac{2W_{r}-2W_{l}}{2}\\
  & \le & 3\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)+W_{r}-W_{l}\textrm{ .}
 \end{eqnarray*}
 Therefore, by Lemma~19 in \cite{RichmanBridges1999}, 
 \[
-\left|Q\left(\ket{\psi}\right)-g\left(\ket{\psi}\right)\right|=\left|W-g\left(\ket{\psi}\right)-W\ell\left(\ket{\psi}\right)\right|\le9\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)+3\left(W_{r}-W_{l}\right)\textrm{ .}
+\left|Q\left(\ket{\psi}\right)-g_{f,\ket{0}}\left(\ket{\psi}\right)\right|=\left|W-g_{f,\ket{0}}\left(\ket{\psi}\right)-W\ell\left(\ket{\psi}\right)\right|\le9\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)+3\left(W_{r}-W_{l}\right)\textrm{ .}
 \]
 \end{proof}
 The following theorem is an analog to Corollary~22 in \cite{RichmanBridges1999}. 
@@ -2209,42 +2212,55 @@ The following theorem is an analog to Corollary~22 in \cite{RichmanBridges1999}.
 \item Let $f$ be a bounded continuous approximation frame function of weight~$\left(W_{l},W_{r}\right)$,
 $W=\frac{W_{l}+W_{r}}{2}$, $m=\min_{\ket{\psi}\in S^{2}}f\left(\ket{\psi}\right)$,
 $\eta=f\left(\ket{0}\right)-m$, 
-\item $g$ be the symmetrization of $f$ with respect to $\ket{0}$,
 \item $Q\left(\ket{\psi}\right)=W-m+\left(3m-W\right)\ip{0}{\psi}^{2}=2m\ip{0}{\psi}^{2}+\left(W-m\right)\left(1-\ip{0}{\psi}^{2}\right)$,
 and 
 \item $\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)=\min_{n\ge2\pi}2n\eta+4n\left(W_{r}-W_{l}\right)+2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right)$.
 \end{itemize}
-Then, $\left|Q\left(\ket{\psi}\right)-g\left(\ket{\psi}\right)\right|\le9\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)+3\left(W_{r}-W_{l}\right)$.\qed\end{cor}
+Then, $\left|Q\left(\ket{\psi}\right)-g_{f,\ket{0}}\left(\ket{\psi}\right)\right|\le9\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)+3\left(W_{r}-W_{l}\right)$.\qed\end{cor}
 \begin{proof}
 Clearly, $f'=f-m$ is a nonnegative frame function of weight~$\left(W_{l}',W_{r}'\right)=\left(W_{l}-3m,W_{r}-3m\right)$
 and $W'=\frac{W_{l}'+W_{r}'}{2}=W-3m$. Then, $\eta=f'\left(\ket{0}\right)$
-and $g'=g-2m$ be the symmetrization of $f'$ with respect to $\ket{0}$
-. Let $Q'\left(\ket{\psi}\right)=Q\left(\ket{\psi}\right)-2m=W'\left(1-\ip{0}{\psi}^{2}\right)$,
-and we have $\left|Q\left(\ket{\psi}\right)-g\left(\ket{\psi}\right)\right|=\left|Q'\left(\ket{\psi}\right)-g'\left(\ket{\psi}\right)\right|\le9\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)+3\left(W_{r}-W_{l}\right)$
+and $g_{f',\ket{0}}=g_{f,\ket{0}}-2m$. Let $Q'\left(\ket{\psi}\right)=Q\left(\ket{\psi}\right)-2m=W'\left(1-\ip{0}{\psi}^{2}\right)$,
+and we have $\left|Q\left(\ket{\psi}\right)-g_{f,\ket{0}}\left(\ket{\psi}\right)\right|=\left|Q'\left(\ket{\psi}\right)-g_{f',\ket{0}}\left(\ket{\psi}\right)\right|\le9\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)+3\left(W_{r}-W_{l}\right)$
 from theorem~\ref{thm:analogTheorem21RichmanBridges1999}.
 \end{proof}
 Corollary~22 in \cite{RichmanBridges1999} is used to prove theorem~23
 which is the final step to prove Gleason's theorem in \cite{RichmanBridges1999}.
 Theorem~23 reads as the following.
 
-\begin{thm}Let $f$ be a bounded continuous approximation frame function
-of weight~$\left(W_{l},W_{r}\right)$ on $S^{2}$. Then there is
-a quadratic form $Q$ on $\mathbb{R}^{3}$ so that $\left|f\left(x\right)-Q\left(x\right)\right|\le?$
-for all $\ket{\psi}\in S^{2}$.\qed\end{thm}
+\begin{thm}\label{thm:analogTheorem23RichmanBridges1999}~
+\begin{itemize}
+\item Let $f$ be a bounded continuous approximation frame function of weight~$\left(W_{l},W_{r}\right)$,
+$W=\frac{W_{l}+W_{r}}{2}$, 
+\item $M=\max_{\ket{\psi}\in S^{2}}f\left(\ket{\psi}\right)=f\left(\ket{0}\right)$,
+$m=\min_{\ket{\psi}\in S^{2}}f\left(\ket{\psi}\right)=f\left(\ket{0'}\right)$, 
+\item $\ket{2}=\sigma_{\ket{0}\times\ket{0'},\frac{\pi}{2}}\ket{0}$, $\ket{1}=\ket{2}\times\ket{0}$, 
+\item $Q\left(\ket{\psi}\right)=M\ip{0}{\psi}^{2}+\left(W-M-m\right)\ip{1}{\psi}^{2}+m\ip{2}{\psi}^{2}$,
+and 
+\item $\delta\left(\eta,W_{l},W_{r},\omega_{f}\right)=\min_{n\ge2\pi}2n\eta+4n\left(W_{r}-W_{l}\right)+2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right)$.
+\end{itemize}
+Then, $\left|Q\left(\ket{\psi}\right)-g\left(\ket{\psi}\right)\right|\le?$.\qed\end{thm}
 \begin{proof}
-Let $M=\max_{\ket{\psi}\in S^{2}}f\left(\ket{\psi}\right)=f\left(\ket{0}\right)$
-and $m=\min_{\ket{\psi}\in S^{2}}f\left(\ket{\psi}\right)=f\left(\ket{0'}\right)$.
-Let $\ket{2}$ and $\ket{2'}$ be the images of $\ket{\psi_{M}}$
-and $\ket{\psi_{m}}$ under $90\textdegree$ rotation of the great
-circle joining them. Then 
+Let $\ket{2'}=\sigma_{\ket{0}\times\ket{0'},\frac{\pi}{2}}\ket{0'}$.
+Then 
 \[
-\left|\left(f\left(\ket{\psi_{M}}\right)+f\left(\ket{\psi_{M}'}\right)\right)-\left(f\left(\ket{\psi_{m}}\right)+f\left(\ket{\psi_{m}'}\right)\right)\right|\le W_{r}-W_{l}
+\left|\left(f\left(\ket{0}\right)+f\left(\ket{2}\right)\right)-\left(f\left(\ket{0'}\right)+f\left(\ket{2'}\right)\right)\right|\le W_{r}-W_{l}
 \]
 so
 \[
-f\left(\ket{\psi_{m}'}\right)-f\left(\ket{\psi_{M}'}\right)\ge f\left(\ket{\psi_{M}}\right)-f\left(\ket{\psi_{m}}\right)-\left(W_{r}-W_{l}\right)=M-m-\left(W_{r}-W_{l}\right)
+f\left(\ket{2'}\right)-f\left(\ket{2}\right)\ge f\left(\ket{0}\right)-f\left(\ket{0'}\right)-\left(W_{r}-W_{l}\right)=M-m-\left(W_{r}-W_{l}\right)
 \]
-whence $f\left(\ket{\psi_{M}'}\right)\le m+W_{r}-W_{l}$ and $f\left(\ket{\psi_{m}'}\right)\ge M-\left(W_{r}-W_{l}\right)$.
+whence $f\left(\ket{2}\right)\le m+W_{r}-W_{l}$. Let $\left(x,y,z\right)=\left(\ip{\psi}{0},\ip{\psi}{1},\ip{\psi}{2}\right)$
+denote the coordinates of a point~$\ket{\psi}$ with respect to the
+frame~$\left\{ \ket{i}\right\} _{i=0}^{2}$, then $Q\left(\ket{\psi}\right)=Mx^{2}+\left(W-M-m\right)y^{2}+mz^{2}$. 
+
+Let $f'\left(\ket{\psi}\right)=f\left(\ket{\psi}\right)-Q\left(\ket{\psi}\right)$.
+So 
+\begin{eqnarray*}
+ &  & \left|f'\left(\ket{\psi}\right)+f'\left(\sigma_{\ket{0},\frac{\pi}{2}}\ket{\psi}\right)\right|\\
+ & = & \left|\left(f\left(\ket{\psi}\right)+f\left(\sigma_{\ket{0},\frac{\pi}{2}}\ket{\psi}\right)\right)-\left(Q\left(\ket{\psi}\right)+Q\left(\sigma_{\ket{0},\frac{\pi}{2}}\ket{\psi}\right)\right)\right|\\
+ & = & \left|g_{f,\ket{0}}-\left(Q\left(\ket{\psi}\right)+Q\left(\sigma_{\ket{0},\frac{\pi}{2}}\ket{\psi}\right)\right)\right|
+\end{eqnarray*}
 \end{proof}
 
 \end{document}
