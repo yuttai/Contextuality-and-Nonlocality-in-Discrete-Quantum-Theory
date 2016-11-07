@@ -2129,7 +2129,6 @@ then
 \begin{itemize}
 \item $\theta\left(\ket{\psi}\right)=\arccos\ip{0}{\psi}$ denotes the the
 latitude of $\ket{\psi}$.
-\item $N_{\ket{0}}$ denotes the northern hemisphere.
 \item The great circle on $S^{2}$ is the intersection of $S^{2}$ with
 a plane containing the center of $S^{2}$.
 \item If $0<\theta\left(\ket{\psi}\right)<\frac{\pi}{2}$, there is a unique
@@ -2139,29 +2138,45 @@ denoted by $C\left(\ket{\psi}\right)$.
 \end{itemize}
 \qed\end{definition}
 
-\begin{conjecture}\cite{Hamhalter2013}~Let $\ket{\psi}$ and $\ket{\psi'}$
-be points in $N_{\ket{0}}$ with the latitude~$\theta\left(\ket{\psi}\right)=\theta\left(\ket{\psi'}\right)$.
-Then there exist a finite number~$n$ steps along east-west great
-circles to go from $\ket{\psi'}$ to a point $\ket{\psi_{s}}$ due
-south of $\ket{\psi}$.
+\yutsung{\begin{lemma}\label{lemma:geometricInterludeRichmanBridges1999}\cite{RichmanBridges1999}~Let
+$\ket{\psi}$ and $\ket{\psi'}$ be points in $N_{\ket{0}}$ with
+the latitude~$\theta\left(\ket{\psi}\right)=\theta\left(\ket{\psi'}\right)$.
+Then there exist a finite number~$n\ge\frac{a^{2}}{\theta\left(\ket{\psi}\right)}$
+steps along east-west great circles to go from $\ket{\psi'}$ to a
+point $\ket{\psi_{s}}$ due south of $\ket{\psi}$.\footnote{Verify the details more precisely...}\qed\end{lemma}
 
-The problem is whether number~$n$ could be picked uniformly? Or
-there is a number~$n$ satisfying the given conditions for all latitude?
+Lemma~\ref{lemma:geometricInterludeRichmanBridges1999} is used to
+prove lemma~20 in \cite{RichmanBridges1999}. However, its too week
+to prove lemma~\ref{lemma:analogLemma20RichmanBridges1999} which
+is the analog to lemma~20 in \cite{RichmanBridges1999}. This difference
+is because we could always pick $f\left(p\right)=0$ in lemma~20
+in \cite{RichmanBridges1999}, while we need to deal with the case
+where $\eta$ doesn't approach $0$ in lemma~\ref{lemma:analogLemma20RichmanBridges1999}
+since the maximum and minimum value of a frame function may not occur
+on orthogonal vectors in theorem~\ref{thm:analogTheorem23RichmanBridges1999}.
+In order to prove lemma~\ref{lemma:analogLemma20RichmanBridges1999},
+we need the following geometric conjecture. 
 
-Notice that the proof in \cite{RichmanBridges1999} doesn't require
-the number~$n$ to be picked uniformly because we could always pick
-$f\left(p\right)=0$ in Lemma~20 in \cite{RichmanBridges1999}. However,
-in the corresponding lemma~\ref{lemma:analogLemma20RichmanBridges1999},
-we need to deal with the case where $\eta$ doesn't approach $0$
-because the maximum and minimum value may not be orthogonal in theorem~\ref{thm:analogTheorem23RichmanBridges1999}.\qed\end{conjecture}
+\begin{conjecture}\label{conj:analogGeometricInterludeRichmanBridges1999}There
+exist a nonempty set~$\mathcal{N}\subseteq\mathbb{N}\cap\left[2\pi,\infty\right)$
+such that for all $n\in\mathcal{N}$, if $\ket{\psi}$ and $\ket{\psi'}$
+are points in the northern hemisphere with the latitude~$\theta\left(\ket{\psi}\right)=\theta\left(\ket{\psi'}\right)$,
+then we could takes $n$ steps along east-west great circles to go
+from $\ket{\psi'}$ to a point $\ket{\psi_{s}}$ due south of $\ket{\psi}$.\footnote{Verify the details more precisely...}\qed\end{conjecture}
+
+I don't know whether conjecture~\ref{conj:analogGeometricInterludeRichmanBridges1999}
+is valid or not. However, if it is not valid, we need to require that
+the maximum and minimum value of a frame function occur on orthogonal
+vectors in theorem~\ref{thm:analogTheorem23RichmanBridges1999} twice.
+}
 
 The following theorem is an analog to Lemma~20 in \cite{RichmanBridges1999}. 
 
 \begin{lemma}\label{lemma:analogLemma20RichmanBridges1999}If $f$
 is a nonnegative approximation frame function of weight~$\left(W_{l},W_{r}\right)$,
-and $\eta=f\left(\ket{0}\right)$, then the oscillation on the latitude~$\theta$
+and $\eta=f\left(\ket{0}\right)$, then the oscillation on any latitude
 of the symmetrization of $f$ with respect to $\ket{0}$ is at most
-$\min_{n\ge\max\left\{ 2\pi,\frac{\pi^{2}}{\theta}\right\} }2n\eta+4n\left(W_{r}-W_{l}\right)+2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right)$.
+$\min_{n\in\mathcal{N}}2n\eta+4n\left(W_{r}-W_{l}\right)+2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right)$.
 The exact $n$ could be computed to minimize the oscillation when
 the function $f$ is given.\qed\end{lemma}
 \begin{proof}
@@ -2169,12 +2184,13 @@ Consider $\ket{0}$ to be the north pole of $S^{2}$. Let $g$ be
 the symmetrization of $f$ with respect to $\ket{0}$, then $\omega_{g}\left(\delta\right)=2\omega_{f}\left(\delta\right)$\footnote{\yutsung{Notice that \cite{RichmanBridges1999} derives the modulus
 of continuity~$\omega_{f}\left(\delta\right)$ in their Corollary~18(?).
 Maybe need to upgrade and derive the modulus of continuity in our
-case later.}}. Let $\ket{\psi}$ and $\ket{\psi'}$ be points in $N_{\ket{0}}$
+case later.}}. Let $\ket{\psi}$ and $\ket{\psi'}$ be points in the northern hemisphere
 with $\theta\left(\ket{\psi}\right)=\theta\left(\ket{\psi'}\right)$.
 Let $a$ be the difference in longitudes of $\ket{\psi}$ and $\ket{\psi'}$.
-Take $n\ge\frac{a^{2}}{\theta\left(\ket{\psi}\right)}$ steps along
-East-West great circles to go from $\ket{\psi'}$ to a point $\ket{\psi_{s}}$
-due south of $\ket{\psi}$\footnote{\yutsung{Double check how many step at least from $\ket{\psi'}$
+By conjecture~\ref{conj:analogGeometricInterludeRichmanBridges1999},
+we can take $n\in\mathcal{N}$ steps along East-West great circles
+to go from $\ket{\psi'}$ to a point $\ket{\psi_{s}}$ due south of
+$\ket{\psi}$\footnote{\yutsung{Double check how many step at least from $\ket{\psi'}$
 to a point $\ket{\psi_{s}}$, and the details in the original proof...}}. The difference in latitude between $\ket{\psi}$ and $\ket{\psi_{s}}$
 is at most $\frac{a^{2}}{n}$, while, from Lemma \footnote{\yutsung{Analog to Lemma 16 in \cite{RichmanBridges1999}... To be
 typed...}},
@@ -2202,7 +2218,7 @@ and need to rewrite Lemma~19 if we want to take away this ``continuous''...}}app
 $W=\frac{W_{l}+W_{r}}{2}$, $\eta=f\left(\ket{0}\right)$, 
 \item $\ell\left(\ket{\psi}\right)=\ip{0}{\psi}^{2}$ and $Q\left(\ket{\psi}\right)=W\left(1-\ell\left(\ket{\psi}\right)\right)$,
 and 
-\item $\delta\left(\eta,W_{\Delta},\omega_{f}\right)=\min_{n\ge2\pi}2n\eta+4nW_{\Delta}+2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right)$.
+\item $\delta\left(\eta,W_{\Delta},\omega_{f}\right)=\min_{n\in\mathcal{N}}2n\eta+4nW_{\Delta}+2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right)$.
 \end{itemize}
 Then, $\left|Q\left(\ket{\psi}\right)-g_{f,\ket{0}}\left(\ket{\psi}\right)\right|\le9\delta\left(\eta,W_{r}-W_{l},\omega_{f}\right)+3\left(W_{r}-W_{l}\right)$.\qed\end{thm}
 \begin{proof}
@@ -2251,7 +2267,7 @@ $W=\frac{W_{l}+W_{r}}{2}$, $m=\min_{\ket{\psi}\in S^{2}}f\left(\ket{\psi}\right)
 $\eta=f\left(\ket{0}\right)-m$, 
 \item $Q\left(\ket{\psi}\right)=W-m+\left(3m-W\right)\ip{0}{\psi}^{2}=2m\ip{0}{\psi}^{2}+\left(W-m\right)\left(1-\ip{0}{\psi}^{2}\right)$,
 and 
-\item $\delta\left(\eta,W_{\Delta},\omega_{f}\right)=\min_{n\ge2\pi}2n\eta+4nW_{\Delta}+2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right)$.
+\item $\delta\left(\eta,W_{\Delta},\omega_{f}\right)=\min_{n\in\mathcal{N}}2n\eta+4nW_{\Delta}+2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right)$.
 \end{itemize}
 Then, $\left|Q\left(\ket{\psi}\right)-g_{f,\ket{0}}\left(\ket{\psi}\right)\right|\le9\delta\left(\eta,W_{r}-W_{l},\omega_{f}\right)+3\left(W_{r}-W_{l}\right)$.\qed\end{cor}
 \begin{proof}
@@ -2275,7 +2291,7 @@ $m=\min_{\ket{\psi}\in S^{2}}f\left(\ket{\psi}\right)=f\left(\ket{\bar{0}}\right
 $\ket{1}=\ket{2}\times\ket{0}$, 
 \item $Q\left(\ket{\psi}\right)=M\ip{0}{\psi}^{2}+\left(W-M-m\right)\ip{1}{\psi}^{2}+m\ip{2}{\psi}^{2}$,
 and 
-\item $\delta\left(\eta,W_{\Delta},\omega_{f}\right)=\min_{n\ge2\pi}2n\eta+4nW_{\Delta}+2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right)$.
+\item $\delta\left(\eta,W_{\Delta},\omega_{f}\right)=\min_{n\in\mathcal{N}}2n\eta+4nW_{\Delta}+2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right)$.
 \end{itemize}
 Then, $\left|Q\left(\ket{\psi}\right)-f\left(\ket{\psi}\right)\right|\le27\delta\left(W_{r}-W_{l},W_{r}-W_{l},\omega_{f}\right)+27\delta\left(W_{r}-W_{l},W_{r}-W_{l},\omega_{f'}\right)+18\left(W_{r}-W_{l}\right)$.\qed\end{thm}
 \begin{proof}
@@ -2294,7 +2310,7 @@ frame~$\left\{ \ket{i}\right\} _{i=0}^{2}$, then $Q\left(\ket{\psi}\right)=Mx^{2
 
 Let $f'\left(\ket{\psi}\right)=f\left(\ket{\psi}\right)-Q\left(\ket{\psi}\right)$.
 Then, \footnote{\yutsung{Verify the details. Especially the left-handed or right-handed
-or the coordinate system, and the rotation matrix... >''<}} 
+of the coordinate system, and the rotation matrix... >''<}} 
 \begin{eqnarray*}
 \sigma_{\ket{0},\frac{\pi}{2}}\left(x,y,z\right) & = & \left(x,-z,y\right)\\
 \sigma_{\ket{2},\frac{\pi}{2}}\left(x,y,z\right) & = & \left(-y,x,z\right)
