@@ -50,6 +50,7 @@
 \newtheorem{case}{Case}
 \newtheorem{conjecture}{Conjecture}
 \newtheorem{problem}{Problem}
+\newtheorem{claim}{Claim}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
 \newcommand{\qevents}{\ensuremath{\mathcal{E}}}
 \newcommand{\pmeas}{\ensuremath{\mu}}
@@ -2457,6 +2458,57 @@ $\ket{\phi}$ and $\ket{\psi}\in\mathbb{C}^{d}$.
 \item $\HermitianForm{\phi}{\phi}>0$ for all $\ket{\phi}\in\mathbb{C}^{d}\backslash\left\{ 0\right\} $.
 \end{itemize}
 \qed\end{definition}
+
+\begin{thm}\label{thm:analogTheorem3.5Gleason1957}~
+\begin{itemize}
+\item Let $f:\mathbb{C}S^{2}\rightarrow\mathbb{R}$ be a bounded continuous
+approximation frame function of weight~$\left(W_{l},W_{r}\right)$,
+$W=\frac{W_{l}+W_{r}}{2}$. Recall $f$ could be uniquely extended
+to the whole space~$\mathbb{C}^{3}$ by $f\left(0\right)=0$ and
+$f\left(\ket{\psi}\right)=\left\Vert \ket{\psi}\right\Vert ^{2}f\left(\left\Vert \ket{\psi}\right\Vert ^{-1}\ket{\psi}\right)$
+for nonzero vector~$\ket{\psi}$.
+\end{itemize}
+Then, $\left|Q\left(\ket{\psi}\right)-f\left(\ket{\psi}\right)\right|\le27\delta\left(W_{r}-W_{l},W_{r}-W_{l},\omega_{f}\right)+27\delta\left(W_{r}-W_{l},W_{r}-W_{l},\omega_{f'}\right)+18\left(W_{r}-W_{l}\right)$
+for all $\ket{\psi}\in\mathbb{C}S^{2}$.\qed\end{thm}
+\begin{proof}
+This proof will be separated into two parts. The first part will estimate
+the error between the approximation frame function and the quadratic
+form on every complex two-space. The second part will then verify
+the quadratic forms in the first part could be connected and get a
+quadratic form on the whole space.
+
+\begin{claim}For any pair of vectors~$\ket{\psi_{0}},\ket{\psi_{1}}\in\mathbb{C}S^{2}$. 
+\begin{itemize}
+\item Consider the complex vector space spanned by $\ket{\psi_{0}}$ and
+$\ket{\psi_{1}}$, and $\mathbb{C}S^{1}$ be its unit sphere, i.e.,
+\[
+\left\{ \alpha_{0}\ket{\psi_{0}}+\alpha_{1}\ket{\psi_{1}}\middle|\alpha_{0},\alpha_{1}\in\mathbb{C}\textrm{ and }\left|\alpha_{0}\right|^{2}+\left|\alpha_{1}\right|^{2}=1\right\} \textrm{ .}
+\]
+\item $M=\max_{\ket{\psi}\in\mathbb{C}S^{1}}f\left(\ket{\psi}\right)=f\left(\ket{0}\right)$.
+\item $\ket{1}\in\mathbb{C}S^{1}$ is orthogonal to $\ket{0}$.
+\item $Q\left(\ket{\psi}\right)=M\ip{0}{\psi}^{2}+\left(W-M\right)\ip{1}{\psi}^{2}$.
+\item $f'\left(\ket{\psi}\right)=f\left(\ket{\psi}\right)-Q\left(\ket{\psi}\right)$.
+\item $\delta\left(\eta,W_{\Delta},\omega_{f}\right)=\sup_{\theta\in\left[0,\frac{\pi}{2}\right)}\min\left\{ \min_{n\ge n\left(\theta\right)}2n\eta+4nW_{\Delta}+2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right),2\omega_{f}\left(2\cos\theta\right)\right\} $.
+\end{itemize}
+Then, $\left|Q\left(\ket{\psi}\right)-f\left(\ket{\psi}\right)\right|\le27\delta\left(W_{r}-W_{l},W_{r}-W_{l},\omega_{f}\right)+27\delta\left(W_{r}-W_{l},W_{r}-W_{l},\omega_{f'}\right)+18\left(W_{r}-W_{l}\right)$
+for all $\ket{\psi}\in\mathbb{C}S^{1}$.\qed\end{claim}
+\begin{proof}
+For all $\ket{\psi}\in\mathbb{C}S^{1}$, 
+\begin{eqnarray*}
+ &  & \left|Q\left(\ket{\psi}\right)-f\left(\ket{\psi}\right)\right|\\
+ & = & \left|Q\left(\ket{\psi}\right)-f\left(\ket{0}\ip{0}{\psi}+\ket{1}\ip{1}{\psi}\right)\right|\\
+ & = & \left|Q\left(\frac{\left|\ip{0}{\psi}\right|}{\ip{0}{\psi}}\ket{\psi}\right)-f\left(\frac{\left|\ip{0}{\psi}\right|}{\ip{0}{\psi}}\left(\ket{0}\ip{0}{\psi}+\ket{1}\ip{1}{\psi}\right)\right)\right|\\
+ & = & \left|Q\left(\frac{\left|\ip{0}{\psi}\right|}{\ip{0}{\psi}}\ket{\psi}\right)-f\left(\ket{0}\left|\ip{0}{\psi}\right|+\ket{1}\frac{\left|\ip{0}{\psi}\right|}{\ip{0}{\psi}}\frac{\ip{1}{\psi}}{\left|\ip{1}{\psi}\right|}\left|\ip{1}{\psi}\right|\right)\right|\\
+ & \le & 27\delta\left(W_{r}-W_{l},W_{r}-W_{l},\omega_{f}\right)+27\delta\left(W_{r}-W_{l},W_{r}-W_{l},\omega_{f'}\right)+18\left(W_{r}-W_{l}\right)
+\end{eqnarray*}
+where the last inequality holds because $\ket{1}\frac{\left|\ip{0}{\psi}\right|}{\ip{0}{\psi}}\frac{\ip{1}{\psi}}{\left|\ip{1}{\psi}\right|}\in\mathbb{C}S^{1}$
+is orthogonal to $\ket{0}$, $\bra{0}\left(\frac{\left|\ip{0}{\psi}\right|}{\ip{0}{\psi}}\ket{\psi}\right)=1\in\mathbb{R}$,
+and 
+\[
+\left(\ket{1}\frac{\left|\ip{0}{\psi}\right|}{\ip{0}{\psi}}\frac{\ip{1}{\psi}}{\left|\ip{1}{\psi}\right|}\right)^{\dagger}\left(\frac{\left|\ip{0}{\psi}\right|}{\ip{0}{\psi}}\ket{\psi}\right)=\frac{\ip{\psi}{1}}{\left|\ip{\psi}{1}\right|}\frac{\left|\ip{\psi}{0}\right|}{\ip{\psi}{0}}\bra{1}\frac{\left|\ip{0}{\psi}\right|}{\ip{0}{\psi}}\ket{\psi}\in\mathbb{R}\textrm{ .}
+\]
+\end{proof}
+\end{proof}
 
 \end{document}
 
