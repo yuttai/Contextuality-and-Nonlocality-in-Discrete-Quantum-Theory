@@ -2129,9 +2129,10 @@ $\lambda\in\mathbb{R}\setminus\left\{ 0\right\} $ or $\lambda\in\mathbb{C}\setmi
 \begin{definition}\cite{WheedenZygmund1977}~For any function~$f$,
 the modulus of continuity of $f$ is $\omega_{f}\left(\delta\right)=\sup_{\left\Vert \ket{\psi}-\ket{\phi}\right\Vert <\delta}\left|f\left(\ket{\psi}\right)-f\left(\ket{\phi}\right)\right|$.\qed\end{definition}
 
-\begin{definition}Given a vector~$\ket{\psi}\in\mathbb{R}^{3}$,
-$\sigma_{\ket{\psi},\theta}$ is the clockwise rotation by $\theta$
-about $\ket{\psi}$.\footnote{\yutsung{Write its matrix representation?}}\qed\end{definition}
+\begin{definition}Given a vector~$\ket{\psi}\in\mathbb{C}^{3}$,
+$\sigma_{\ket{\psi}}$ is the clockwise rotation by $\frac{\pi}{2}$
+about $\ket{\psi}$. More explicitly, for any vector~$\ket{\phi}\in\mathbb{C}S^{2}$,
+$\sigma_{\ket{\psi}}\ket{\phi}=\frac{\ket{\psi}\times\ket{\phi}}{\left\Vert \ket{\psi}\times\ket{\phi}\right\Vert }$.\qed\end{definition}
 
 \begin{definition}\cite{RichmanBridges1999}~If $f:S^{2}\rightarrow\mathbb{R}$
 is a approximation frame function of weight~$\left(W_{l},W_{r}\right)$,
@@ -2139,7 +2140,7 @@ then the \emph{symmetrization} of $f$ with respect to $\ket{0}$
 is the function~$g_{f,\ket{0}}:S^{2}\rightarrow\mathbb{R}$ defined
 by
 \[
-g_{f,\ket{0}}\left(\ket{\psi}\right)=f\left(\ket{\psi}\right)+f\left(\sigma_{\ket{0},\frac{\pi}{2}}\ket{\psi}\right)\textrm{ .}
+g_{f,\ket{0}}\left(\ket{\psi}\right)=f\left(\ket{\psi}\right)+f\left(\sigma_{\ket{0}}\ket{\psi}\right)\textrm{ .}
 \]
 \qed\end{definition}
 
@@ -2308,8 +2309,7 @@ Theorem~23 reads as the following.
 frame function of weight~$\left(W_{l},W_{r}\right)$, $W=\frac{W_{l}+W_{r}}{2}$, 
 \item $M=\max_{\ket{\psi}\in S^{2}}f\left(\ket{\psi}\right)=f\left(\ket{0}\right)$,
 $m=\min_{\ket{\psi}\in S^{2}}f\left(\ket{\psi}\right)=f\left(\ket{\bar{0}}\right)$, 
-\item $\ket{2}=\sigma_{\ket{0}\times\ket{\bar{0}},\frac{\pi}{2}}\ket{0}$,
-$\ket{1}=\ket{2}\times\ket{0}$, 
+\item $\ket{2}=\sigma_{\ket{0}\times\ket{\bar{0}}}\ket{0}$, $\ket{1}=\ket{2}\times\ket{0}$, 
 \item $Q\left(\ket{\psi}\right)=M\ip{0}{\psi}^{2}+\left(W-M-m\right)\ip{1}{\psi}^{2}+m\ip{2}{\psi}^{2}$,
 \item $\delta\left(\eta,W_{\Delta},\omega_{f}\right)=\sup_{\theta\in\left[0,\frac{\pi}{2}\right)}\min\left\{ \min_{n\ge n\left(\theta\right)}2n\eta+4nW_{\Delta}+2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right),2\omega_{f}\left(2\cos\theta\right)\right\} $,
 and 
@@ -2318,7 +2318,7 @@ and
 Then, $\left|Q\left(\ket{\psi}\right)-f\left(\ket{\psi}\right)\right|\le27\delta\left(W_{r}-W_{l},W_{r}-W_{l},\omega_{f}\right)+27\delta\left(W_{r}-W_{l},W_{r}-W_{l},\omega_{f'}\right)+18\left(W_{r}-W_{l}\right)$
 for all $\ket{\psi}\in S^{2}$.\qed\end{thm}
 \begin{proof}
-Let $\ket{\bar{2}}=\sigma_{\ket{0}\times\ket{\bar{0}},\frac{\pi}{2}}\ket{\bar{0}}$.
+Let $\ket{\bar{2}}=\sigma_{\ket{0}\times\ket{\bar{0}}}\ket{\bar{0}}$.
 Then 
 \[
 \left|\left(f\left(\ket{0}\right)+f\left(\ket{2}\right)\right)-\left(f\left(\ket{\bar{0}}\right)+f\left(\ket{\bar{2}}\right)\right)\right|\le W_{r}-W_{l}
@@ -2334,20 +2334,20 @@ frame~$\left\{ \ket{i}\right\} _{i=0}^{2}$, then $Q\left(\ket{\psi}\right)=Mx^{2
 Then, \footnote{\yutsung{Verify the details. Especially the left-handed or right-handed
 of the coordinate system, and the rotation matrix... >''<}} 
 \begin{eqnarray*}
-\sigma_{\ket{0},\frac{\pi}{2}}\left(x,y,z\right) & = & \left(x,-z,y\right)\\
-\sigma_{\ket{2},\frac{\pi}{2}}\left(x,y,z\right) & = & \left(-y,x,z\right)
+\sigma_{\ket{0}}\left(x,y,z\right) & = & \left(x,-z,y\right)\\
+\sigma_{\ket{2}}\left(x,y,z\right) & = & \left(-y,x,z\right)
 \end{eqnarray*}
 Note that 
 \begin{eqnarray*}
-Q\left(\ket{\psi}\right)+Q\left(\sigma_{\ket{0},\frac{\pi}{2}}\ket{\psi}\right) & = & 2Mx^{2}+\left(W-M\right)\left(y^{2}+z^{2}\right)\\
-Q\left(\ket{\psi}\right)+Q\left(\sigma_{\ket{2},\frac{\pi}{2}}\ket{\psi}\right) & = & 2mz^{2}+\left(W-m\right)\left(x^{2}+y^{2}\right)
+Q\left(\ket{\psi}\right)+Q\left(\sigma_{\ket{0}}\ket{\psi}\right) & = & 2Mx^{2}+\left(W-M\right)\left(y^{2}+z^{2}\right)\\
+Q\left(\ket{\psi}\right)+Q\left(\sigma_{\ket{2}}\ket{\psi}\right) & = & 2mz^{2}+\left(W-m\right)\left(x^{2}+y^{2}\right)
 \end{eqnarray*}
 which is the same as the quadratic form defined in corollary~\ref{thm:analogCorollary22RichmanBridges1999}.
 Therefore, by corollary~\ref{thm:analogCorollary22RichmanBridges1999},
 we should have 
 \begin{eqnarray*}
-\left|f'\left(\ket{\psi}\right)+f'\left(\sigma_{\ket{0},\frac{\pi}{2}}\ket{\psi}\right)\right| & = & \left|g_{f,\ket{0}}-\left(2Mx^{2}+\left(W-M\right)\left(y^{2}+z^{2}\right)\right)\right|\le9\delta\left(0,W_{r}-W_{l},\omega_{f}\right)+3\left(W_{r}-W_{l}\right)\\
-\left|f'\left(\ket{\psi}\right)+f'\left(\sigma_{\ket{2},\frac{\pi}{2}}\ket{\psi}\right)\right| & = & \left|g_{f,\ket{2}}-\left(2mz^{2}+\left(W-m\right)\left(x^{2}+y^{2}\right)\right)\right|\le9\delta\left(W_{r}-W_{l},W_{r}-W_{l},\omega_{f}\right)+3\left(W_{r}-W_{l}\right)
+\left|f'\left(\ket{\psi}\right)+f'\left(\sigma_{\ket{0}}\ket{\psi}\right)\right| & = & \left|g_{f,\ket{0}}-\left(2Mx^{2}+\left(W-M\right)\left(y^{2}+z^{2}\right)\right)\right|\le9\delta\left(0,W_{r}-W_{l},\omega_{f}\right)+3\left(W_{r}-W_{l}\right)\\
+\left|f'\left(\ket{\psi}\right)+f'\left(\sigma_{\ket{2}}\ket{\psi}\right)\right| & = & \left|g_{f,\ket{2}}-\left(2mz^{2}+\left(W-m\right)\left(x^{2}+y^{2}\right)\right)\right|\le9\delta\left(W_{r}-W_{l},W_{r}-W_{l},\omega_{f}\right)+3\left(W_{r}-W_{l}\right)
 \end{eqnarray*}
 Follow the same procedure in the proof in \cite{RichmanBridges1999}.
 We have
@@ -2482,8 +2482,7 @@ for all $\ket{\psi}\in\mathbb{C}S^{2}$.\qed\end{thm}}
 \begin{itemize}
 \item $M=\max_{\ket{\psi}\in\mathbb{C}S^{2}}f\left(\ket{\psi}\right)=f\left(\ket{0}\right)$,
 $m=\min_{\ket{\psi}\in\mathbb{C}S^{2}}f\left(\ket{\psi}\right)=f\left(\ket{\bar{0}}\right)$, 
-\item $\ket{2}=\sigma_{\ket{0}\times\ket{\bar{0}},\frac{\pi}{2}}\ket{0}$,
-$\ket{1}=\ket{2}\times\ket{0}$, 
+\item $\ket{2}=\sigma_{\ket{0}\times\ket{\bar{0}}}\ket{0}$, $\ket{1}=\ket{2}\times\ket{0}$, 
 \item $Q\left(\ket{\psi}\right)=\bra{\psi}\left[M\proj{0}+\left(W-M-m\right)\proj{1}+m\proj{2}\right]\ket{\psi}$,
 \item $\delta\left(\eta,W_{\Delta},\omega_{f}\right)=\sup_{\theta\in\left[0,\frac{\pi}{2}\right)}\min\left\{ \min_{n\ge n\left(\theta\right)}2n\eta+4nW_{\Delta}+2\omega_{f}\left(2-2\cos\left(\frac{\pi^{2}}{n}\right)\right),2\omega_{f}\left(2\cos\theta\right)\right\} $,
 and 
