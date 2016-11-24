@@ -1,0 +1,138 @@
+In set theory, a function is usually defined as a mapping that relates
+each element in its domain to an element in its range. For example,
+the function $a^b$ where $a$ is a positive natural number and $b$ is a
+natural number denotes the following infinite set whose elements are
+of the form $((a,b),a^b)$ for appropriate values of $a$ and $b$:
+\[
+\{ ((1,0),1), ~((1,1),1),~((2,0),1) ~\ldots~,~((2,3),8),~\ldots~ \}
+\]
+There is no notion of this mapping being ``calculated'' in any sense:
+it just is. One ``knows'' from the mapping that $2^3$ is $8$: no time,
+energy, or any other resource needs to be spent to acquire this
+knowledge.
+
+The mathematical idealization of computation founded on Turing
+machines~\cite{citeulike:321509} or the
+$\lambda$-calculus~\cite{Barendregt:Lambda} maintains this
+understanding of computations as mathematical functions. One can use
+this mathematical framework to reason about computations and as the
+basis for realizing computations on actual physical machines. But
+ultimately, programming practice deviates (sometimes significantly)
+from the set-theoretic view of functions or the mathematical
+idealization of the $\lambda$-calculus. For one thing, an infinite set
+cannot be directly stored in a computer; a function is therefore
+represented using rules which, given enough time, energy, memory, and
+other resources, can be interpreted by a computer to generate any
+particular output on demand. It is these rules that we must now
+discuss in some detail. For concreteness in this section, we express
+them using the notation of the Haskell programming
+language~\cite{peytonjones:h98}.
+
+As a reasonable starting point, the set-theoretic function \textit{pow}
+can be realized in Haskell using the following declaration:
+\begin{quote}
+\begin{verbatim} 
+pow :: Int -> Int -> Int
+pow a 0 = 1
+pow a b = a * pow a (b-1)
+\end{verbatim}
+\end{quote}
+The code fragment declares a function called \verb|pow| that takes two values from the domain of Haskell integers \verb.Int. and returns another Haskell integer whose value is the first input raised to the power of the second input. The definition relies on several pre-defined abstractions provided by Haskell. In an appropriate environment, i.e., a computer with an installed Haskell compiler and runtime system, the function declaration can be used to calculate the value of \verb|pow 2 3|. This calculation will proceed in elementary steps that require time, energy, memory, and other computational resources on the computing platform to produce the result \verb|8|.
+
+It is of course possible to write other definitions that realize the same function, e.g:
+\begin{quote}
+\begin{verbatim} 
+pow' :: Int -> Int -> Int
+pow' a 0 = 1
+pow' a 1 = a
+pow' a b | even b = pow' (a * a) (b `div` 2)
+pow' a b | odd b = a * pow' a (b-1)
+\end{verbatim}
+\end{quote}
+This definition is often much more efficient. Consider for the example the calculation of $2^{9}$ using the two approaches. The first definition induces the following sequence of elementary calculations:
+\begin{quote}
+\begin{verbatim} 
+pow 2 9 = 2 * pow 2 8
+        = 2 * (2 * pow 2 7)  
+        = 2 * (2 * (2 * pow 2 6))  
+        = 2 * (2 * (2 * (2 * pow 2 5)))  
+        = 2 * (2 * (2 * (2 * (2 * pow 2 4)))) 
+        = 2 * (2 * (2 * (2 * (2 * (2 * pow 2 3))))) 
+        = 2 * (2 * (2 * (2 * (2 * (2 * (2 * pow 2 2)))))) 
+        = 2 * (2 * (2 * (2 * (2 * (2 * (2 * (2 * pow 2 1))))))) 
+        = 2 * (2 * (2 * (2 * (2 * (2 * (2 * (2 * (2 * pow 2 0)))))))) 
+        = 2 * (2 * (2 * (2 * (2 * (2 * (2 * (2 * (2 * 1)))))))) 
+        = 2 * (2 * (2 * (2 * (2 * (2 * (2 * (2 * 2)))))))
+        = 2 * (2 * (2 * (2 * (2 * (2 * (2 * 4))))))
+        = 2 * (2 * (2 * (2 * (2 * (2 * 8)))))
+        = 2 * (2 * (2 * (2 * (2 * 16))))
+        = 2 * (2 * (2 * (2 * 32))) 
+        = 2 * (2 * (2 * 64))
+        = 2 * (2 * 128)
+        = 2 * 256
+        = 512
+\end{verbatim}
+\end{quote}
+The second instead induces the following sequence of elementary calculations:
+\begin{quote}
+\begin{verbatim} 
+pow' 2 9 = 2 * pow' 2 8
+         = 2 * pow' (2 * 2) (8 `div` 2) 
+         = 2 * pow' 4 4
+         = 2 * pow' (4 * 4) (4 `div` 2) 
+         = 2 * pow' 16 2 
+         = 2 * pow' (16 * 16) (2 `div` 2) 
+         = 2 * pow' 256 1
+         = 2 * 256
+         = 512
+\end{verbatim}
+\end{quote} 
+
+Despite the mismatches between the idealized set-theoretic function
+and its two Haskell realizations, it is common to consider all three
+definitions to be equivalent at a certain level of
+abstraction. Specifically, if we constrain the \emph{observers} to
+only ask questions regarding the input-output behavior of a function
+(known as the function's \emph{extensional} behavior) then all three
+definitions are indeed equivalent. If we however tolerate observers
+asking questions regarding timing, memory usage, battery consumption,
+or even electromagnetic radiation then the situation is different. For
+the set-theoretic function, these observations are non-sensical. For
+the Haskell functions, we have for example that one execution of
+\verb|pow 2 10000| took 27.31109 ms on a modern laptop while an
+execution of \verb|pow' 2 10000| under similar circumstances only took
+11.72614 ms, less than half the time. The two functions \verb|pow| and
+\verb|pow'| can now be distinguished by observations.
+
+\paragraph*{Observational Equivalence.} There is a well-established
+theory that formalizes equivalence of programs up to
+observations~\cite{Barendregt:Lambda,Milner:1999:CMS:329902}. In the
+conventional application of this theory, the only allowed observations
+are the \emph{extensional} ones, i.e., the input-output relations and
+other ``semantic'' communication among agents. According to this
+conventional situation, the functions \verb|pow| and \verb|pow'| would
+be equivalent. As we have seen, by allowing observations of timing
+behavior, the two functions \verb|pow| and \verb|pow'| can be
+distinguished but formalizing this appears difficult: the precise
+timing depends on the particular compiler, runtime system, processor
+model, available memory, the resolution of the hardware clock, the
+operating system services that manage the hardware clock, and even the
+ambient temperature of the room in which the experiment is set up. In
+more detail, we know that in order to measure the time elapsed during
+the execution of a program, the operating system must execute
+additional code that itself takes time to execute and hence distorts
+the results to some extent. Moreover the precision of the timing
+results is not arbitrary: it is limited by the precision of the
+hardware clock, the speed of the code that must execute to record the
+timing, the exact memory locations in which the timing results are
+stored, and the speed of common operations like addition and
+subtraction that must be performed to calculate the elapsed time. In a
+\emph{classical worldview}, all these factors are acknowledged to
+exist but are not formalized mathematically. Instead, the experimenter
+takes great care to minimize their impact by striving to communicate
+reproducible results consisting of mean execution times under
+carefully managed conditions. Thus, the precise timings are treated as
+an objective (ontic) property of the functions and measurements are
+viewed as operations that simply reveal such properties with minimal
+disturbance.
+
