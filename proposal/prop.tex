@@ -105,17 +105,17 @@ probability spaces in a resource-aware setting and move to our
 proposal which, briefly speaking, aims at recasting quantum
 probability and hence quantum measurement to a corresponding
 resource-aware setting. In particular, we plan on addressing the
-Meyer-Mermin debate~\cite{PhysRevLett.83.3751, Mermin1999, BarrettKent2004}
-on the impact of finite precision
-measurements on the relevance of the Kochen-Specker theorem. We argue
-that no matter what the results are their impact will be
-strong. Positive results that formulate a computable, with clear
-resource bounds, theory of quantum measurement and quantum probability
-would be essential for understanding and realizing quantum
-computation. Any negative results would redirect research that aims at
-realizing quantum computation to other approaches. At an intellectual
-level, the results will solve or clarify several paradoxes in quantum
-mechanics, quantum information, computability, and complexity theory.
+Meyer-Mermin debate~\cite{PhysRevLett.83.3751, Mermin1999,
+  BarrettKent2004} on the impact of finite precision measurements on
+the relevance of the Kochen-Specker theorem. We argue that no matter
+what the results are their impact will be strong. Positive results
+that formulate a computable, with clear resource bounds, theory of
+quantum measurement and quantum probability would be essential for
+understanding and realizing quantum computation. Any negative results
+would redirect research that aims at realizing quantum computation to
+other approaches. At an intellectual level, the results will solve or
+clarify several paradoxes in quantum mechanics, quantum information,
+computability, and complexity theory.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Background I: Classical Probability}
@@ -567,17 +567,17 @@ rest of the development.
   measurements and probabilities, a ``real'' infinitely-precise
   quantum state that is being approximated and that, in principle, can
   be more and more accurately described given more and more
-  resources. The answer will have to be \emph{no} if we are to respect
-  major theorems of quantum mechanics and quantum information. Thus
-  our first radical departure from the classical case will be that the
-  quantum state itself must be fuzzy in some sense to be
-  formalized. In other words, does a Gleason, Bell, or Kochen-Specker
-  theorem still hold in a world with finite resources? 
+  resources. In other words, does a Gleason, Bell, or Kochen-Specker
+  theorem still hold in a world with finite resources?  The answer
+  will have to be \emph{no} if we are to respect these major theorems
+  of quantum mechanics and quantum information. Thus our first radical
+  departure from the conventional case will be that the quantum state
+  itself must be fuzzy in some sense to be formalized.
 
 \item Going further we actually have to concede not just the infinite
   accuracy of the quantum state, but its very existence as a ``real''
   entity that exists independently of measurements and
-  probabilities. The reasons for this radical position are as
+  probabilities. The reasons for this second radical position are as
   follows. First arguments embedded in the proof of the Kochen-Specker
   theorem essentially rule out the existence of a sample space as the
   probabilities of events cannot be consistently expressed using core
@@ -603,7 +603,7 @@ rest of the development.
   a different view of the quantum system that is consistent with their
   previous observations and that allows that observer, independently
   of other observers, to assign beliefs (i.e., probabilities) to
-  future interactions.
+  possible future interactions.
 
 \end{itemize} 
 
@@ -616,10 +616,12 @@ $\lambda$-calculus~\cite{Barendregt:Lambda} viewed a computation as
 realizing a mathematical function. From our perspective, the most
 important consequence of this view is that the properties of the
 computed function existed independently of any observation,
-calculation, or interaction. An agent can only interact with the
-computation by asking questions regarding its input-output behavior
-and although such interaction would reveal fragments of the computed
-function it could not change it or affect it in any way.
+calculation, or interaction. For example, a function is
+\emph{injective} or not independently of any observation. An agent can
+only interact with the computation by asking questions regarding its
+input-output behavior and although such interaction would reveal
+fragments of the computed function and its innate properties it could
+not change it or affect it in any way.
 
 In a series of breakthrough papers that led to his Turing
 Award~\cite{Milner:1993:EIT:151233.151240}, Milner argued that this
@@ -627,33 +629,38 @@ Award~\cite{Milner:1993:EIT:151233.151240}, Milner argued that this
 adequately describe \emph{interactive computations}. Milner explained
 that ``concurrency requires a new conceptual framework'' and ``not
 merely an extension of the repertoire of entities and constructions
-which explain sequential computing.'' He gives the following simple
-but compelling example. Consider the following two programs:
+which explain sequential computing.'' In his Turing Award lecture, he
+gives the following simple but compelling example. Consider the
+following two programs:
 \begin{verbatim}
 Program P1: x := 1 ; x := x + 1 
 Program P2: x := 2
 \end{verbatim}
 As closed systems, these two programs define the same relation, namely
 the one that maps an input memory to an updated memory in which the
-location named \verb|x| is assigned the value \verb|2|. But place the
+location named \verb|x| is assigned the value \verb|2|. An observer
+with the ability of inquire about the value of \verb|x| at the end of
+the computation cannot distinguish the two programs. But place the
 programs in an environment which may involve interactions and the
-equivalence is lost. Concretely, place each of the two programs
-concurrently with the program:
+equivalence is lost. Phrased in physical terms, give the observer the
+additional ability to access the location \verb|x| \emph{during} the
+computation, not just to observe its final value. In computing terms,
+we place each of the two programs \verb|P1| and \verb|P2| concurrently
+with the program:
 \begin{verbatim}
 Program Q: x := 3
 \end{verbatim}
-and we can observe the following. In the combined system of \verb|P1|
-and \verb|Q| running concurrently, the location \verb|x| may end up
-containing \verb|2|, \verb|3|, or \verb|4|. But in the combined system
-of \verb|P2| and \verb|Q| running concurrently, the location~\verb|x|
-can only end up containing \verb|2| or \verb|3|. The lesson, phrased
-in physics terms, is that it is not sensible to think of the properties
-of a system (like \verb|P1| or \verb|P2|) independently of the
-observer (\verb|Q| in this case). Indeed the observation \verb|x=4|
-cannot said to have an independent existence independently from the
-interaction between \verb|P1| and \verb|Q|: it really emerges or is
-created as part of the observation process and is not a pre-existing
-``element of reality''.
+In the combined system of \verb|P1| and \verb|Q| running concurrently,
+the location \verb|x| may end up containing \verb|2|, \verb|3|, or
+\verb|4|. But in the combined system of \verb|P2| and \verb|Q| running
+concurrently, the location~\verb|x| can only end up containing
+\verb|2| or \verb|3|. The lesson, phrased in physics terms, is that it
+is not sensible to think of the properties of a system (like \verb|P1|
+or \verb|P2|) independently of the observer (\verb|Q| in this
+case). Indeed the observation \verb|x=4| cannot said to have an
+existence independently from the interaction between \verb|P1| and
+\verb|Q|: it really emerges or is created as part of the observation
+process and is not a pre-existing ``element of reality''.
 
 This phenomenon is hardly a surprise to computer scientists or
 physicists but embracing it fully does have far reaching
@@ -667,7 +674,15 @@ involve hidden variables or action at a distance. The well-established
 theory of observation of concurrent processes and their
 equivalences~\cite{Hennessy1989} relies on neither.
 
-do quantum version; application to CS and quantum information
+\paragraph*{Research Question.} Is it possible to adapt the theory of
+observation of concurrent processes to the study of quantum states and
+confirm that the observations exhibit the same Bell-like correlations?
+
+\paragraph*{Research Question.} The theory of observation of
+concurrent processes and the theory of measurement in quantum
+mechanics are superficially different. Is it possible to reformulate
+them in a common language to benefit each theory from insights in the
+other?
 
 %%%%%
 \subsection{Proposed Activity II: Quantum Interval-valued Probability Measures}
