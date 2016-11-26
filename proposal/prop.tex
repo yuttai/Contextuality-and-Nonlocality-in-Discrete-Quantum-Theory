@@ -758,14 +758,14 @@ $\iota:\left[0,1\right]\rightarrow\mathscr{I}$ is defined by
 \unknown & \textrm{otherwise.}
 \end{cases}
 \]
-This measure represents the beliefs of an experimenter with no prior
+This measure represents the beliefs of an experimenter with no prior 
 knowledge about the particular quantum system in question. Formally,
 we can ask: what can we deduce about the state of a quantum system
 given an interval-valued quantum probability measure, i.e., given
 observations done with finite resources. In the case the intervals are
 infinitely precise the question reduces to Gleason's theorem which
 states that the state of the quantum system is uniquely determined by
-the probability measure. But surely the less resources are availble,
+the probability measure. But surely the less resources are available,
 the less precise the intervals, and the less we expect to know about
 the state of the system. To formally state and answer this question we
 begin with defining the \emph{core} and \emph{convexity} of a
@@ -809,7 +809,7 @@ counterexample to this statement in the quantum case, i.e., we
 constructed the following convex interval-valued quantum probability
 measure with an empty core.
 
-\begin{example}[Three-dimensional quantum three-value interval-valued
+\begin{example}[Three-dimensional three-interval-valued quantum
   probability measure]\label{ex:three-dimensional-three-value} Given
   a three dimensional Hilbert space with an orthonormal basis
   $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.  Let \emph{
@@ -838,254 +838,107 @@ state~$\ket{\phi}$ can satisfy
 $\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0$; a contradiction.
 \end{example}
 
-\paragraph*{XXX.}
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{measure4.pdf}
+\end{center}
+\caption{\label{fig:three-dimensional-4-value}This figure illustrates
+  cases 1 and 2 of example~\ref{ex:three-dimensional-4-value} plotted
+  in $\mathbb{R}^{3}$. The red and green dotted vectors are $\ket{0}$
+  and $\ket{\ps}$ respectively.  All possible vectors of the subspaces
+  $\ket{0_{\theta,\gamma}^{\perp}}$ and
+  $\ket{\ps_{\theta,\gamma}^{\perp}}$ are drawn in the red and green
+  circles, respectively. Within the circles, a dotted
+  vector~$\ket{\psi}$ means $\bar{\mu}(\proj{\psi})=\likely$;
+  otherwise, $\bar{\mu}(\proj{\psi})=\unlikely$. The gray vector is a
+  generic vector~$\ket{0_{\theta,\gamma}^{\perp}}$, and the red and
+  green solid vectors are normalized
+  $\ket{0}\times\ket{0_{\theta,\gamma}^{\perp}}$ and
+  $\ket{\ps}\times\ket{0_{\theta,\gamma}^{\perp}}$, respectively.}
+\end{figure}
 
-Recall that when approximating the probability classically, the quality
-of the experimental equipment cannot be compensated by the number
-of independent trials. If the precision of the intervals~$\mathscr{I}$
-represents the quality of the quantum experimental equipment, example~\ref{ex:three-dimensional-three-value}
-tells us that we cannot identify a particular state if the experimental
-equipment reveals too little information. For example, $\bar{\mu}$
-might correspond to $\ket{2}$ because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$,
-$\ket{1}$ because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps'})=\imposs$,
-or the density matrix~$\frac{\mathbb{1}}{3}$ because $\bar{\mu}(\proj{\phi})\ne\necess$
-for all $\ket{\phi}$. Also, example~\ref{ex:three-dimensional-three-value}
-is no longer valid if our measurement equipment is a little more precise,
-say $\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
-because example~\ref{ex:three-dimensional-three-value} really use
-the property of $\unknown$.
+Looking closely at the example above, we might think that the
+probability measure $\bar{\mu}$ is induced by the state $\ket{2}$
+because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$, or we
+might think it is induced by the state $\ket{1}$ because
+$\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps'})=\imposs$, or yet we might
+think it is induced by the mixed state $\frac{\mathbb{1}}{3}$ because
+$\bar{\mu}(\proj{\phi})\ne\necess$ for all $\ket{\phi}$. Each of these
+possibilities is compatible with some but not all of the
+observations. All is not lost however: if the observations are made
+more precise, we conjecture that some of the inconsistencies
+disappear. A partial proof of this conjecture is the following example
+which refines the previous probability measure by adding more precise
+intervals. It remains to prove that this refined measure is convex,
+however. 
 
-If we consider
-$\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
-example~\ref{ex:three-dimensional-4-value} provides another example
-with an empty core. Comparing to
-example~\ref{ex:three-dimensional-three-value},
-example~\ref{ex:three-dimensional-4-value} is closer to the Born rule
-in a sense that it might only correspond to $\ket{2}$ or
-$\frac{\mathbb{1}}{3}$, but not
-$\ket{1}$. Example~\ref{ex:three-dimensional-4-value} is also no
-longer valid for more precise measurement equipment as well.  In
-general, we believe if the measurement equipment is more and more
-precise, its interval-valued probability measure will be closer and
-closer to the the Born rule. In the limit case,
-$\mathscr{I}=\left\{ \left\{ a\right\}
-  \middle|a\in\left[0,1\right]\right\} $
-recovers conventional Gleason's theorem and the Born rule.
-
-\begin{example}[Three-dimensional quantum 4-value interval-valued
-probability measure]\label{ex:three-dimensional-4-value} 
-Question: Is this convex? Given a three dimensional Hilbert space with
-an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
-Consider\emph{
-}$\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
-$\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$,
-$\ket{\ms}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})$, and a quantum
-$\mathscr{I}$-interval-valued probability
-measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$ defined as follow,
-where the state vectors corresponding to 1-dimensional projector are
-also illustrated in figure~\ref{fig:three-dimensional-4-value}.
+\begin{example}[Three-dimensional four-interval-valued quantum
+  probability measure]\label{ex:three-dimensional-4-value}
+  Given a three dimensional Hilbert space with an orthonormal basis
+  $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.  Let \emph{
+  }$\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
+  $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$, and
+  $\ket{\ms}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})$. The definition of
+  $\bar{\mu}$ below refers to Fig.~\ref{fig:three-dimensional-4-value}
+  which plots the 1-dimensional projectors:
 \begin{enumerate}
-\item Let 
+\item Let:
 \begin{eqnarray*}
-\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps}) & = & \imposs\\
-\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0})=\bar{\mu}(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\ps}) & = & \necess\textrm{ ,}
+\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps}) 
+  &=& \imposs \\
+\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps}) 
+  &=& \necess
 \end{eqnarray*}
- where $\ket{0}$ and $\ket{\ps}$ is illustrated as the red and green
-dotted vector, respectively.
-\item Consider the red and green circles in figure~\ref{fig:three-dimensional-4-value}.
-They are the states orthogonal to $\ket{0}$ and $\ket{\ps}$, respectively,
-and can be parametrized as $\ket{0_{\theta,\gamma}^{\perp}}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
-and $\ket{\ps_{\theta,\gamma}^{\perp}}=-\rme^{\rmi\gamma}\sin\theta\ket{\ms}+\cos\theta\ket{2}$,
-where $0\le\theta\le\frac{\pi}{2}$ and $0\le\gamma<2\pi$. The dotted
-half of those states need special treatment, i.e., whenever $0\le\theta<\frac{\pi}{2}$
-and $0\le\gamma<\pi$, we define 
+where $\ket{0}$ and $\ket{\ps}$ are plotted as the red and green dotted
+vectors, respectively.
+\item The red and green circles are are the states orthogonal to
+  $\ket{0}$ and $\ket{\ps}$, respectively, and can be parametrized as
+  $\ket{0_{\theta,\gamma}^{\perp}}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
+  and
+  $\ket{\ps_{\theta,\gamma}^{\perp}}=-\rme^{\rmi\gamma}\sin\theta\ket{\ms}+\cos\theta\ket{2}$,
+  where $0\le\theta\le\frac{\pi}{2}$ and $0\le\gamma<2\pi$. The dotted
+  half of those states need special treatment, i.e., whenever
+  $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, we define
 \begin{eqnarray*}
-\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)=\bar{\mu}\left(\proj{\ps_{\theta,\gamma}^{\perp}}\right) & = & \likely\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\theta,\gamma}^{\perp}}\right)=\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\ps_{\theta,\gamma}^{\perp}}\right) & = & \unlikely\textrm{ .}
+\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)=\bar{\mu}\left(\proj{\ps_{\theta,\gamma}^{\perp}}\right)
+  &=& \likely \\
+\bar{\mu}\left(\mathbb{1}-\proj{0_{\theta,\gamma}^{\perp}}\right)=
+  \bar{\mu}\left(\mathbb{1}-\proj{\ps_{\theta,\gamma}^{\perp}}\right) 
+  &=& \unlikely
 \end{eqnarray*}
-\item Otherwise, $\bar{\mu}(\proj{\psi})=\unlikely$ and $\bar{\mu}(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi})=\likely$. 
+\item Otherwise, $\bar{\mu}(\proj{\psi})=\unlikely$ and $\bar{\mu}(\mathbb{1}-\proj{\psi})=\likely$. 
 \end{enumerate}
-That $\bar{\mu}$ has an empty core can be proved by contradiction.
-Assume there is a real-valued probability measure satisfying $\mu_{\rho}^{B}(P)\in\bar{\mu}(P)$
-for all $P\in\events$. Because $\mu_{\rho}^{B}(\proj{0})\in\bar{\mu}(\proj{0})=\imposs$
-and $\mu_{\rho}^{B}(\proj{\ps})\in\bar{\mu}(\proj{\ps})=\imposs$,
-we must have $\mu_{\rho}^{B}(\proj{0})=\mu_{\rho}^{B}(\proj{\ps})=0$
-so that $\mu_{\rho}^{B}=\mu_{\ket{2}}^{B}$. However, 
+It is straightforward but tedious to check that $\bar{\mu}$ is an
+interval-valued quantum probability measure. Although we have not
+verified that $\bar{\mu}$ is convex, the following argument
+establishes that is has an empty core. Assume there is a real-valued
+probability measure satisfying $\mu_{\rho}^{B}(P)\in\bar{\mu}(P)$ for
+all $P\in\events$. Because
+$\mu_{\rho}^{B}(\proj{0})\in\bar{\mu}(\proj{0})=\imposs$ and
+$\mu_{\rho}^{B}(\proj{\ps})\in\bar{\mu}(\proj{\ps})=\imposs$, we must
+have $\mu_{\rho}^{B}(\proj{0})=\mu_{\rho}^{B}(\proj{\ps})=0$ so that
+$\mu_{\rho}^{B}=\mu_{\ket{2}}^{B}$. However,
 \[
 \mu_{\ket{2}}^{B}(\proj{2})=1\notin\unlikely=\bar{\mu}(\proj{2})\textrm{ .}
 \]
-
-Similar to example~\ref{ex:three-dimensional-three-value}, to verify
-$\bar{\mu}$ is a quantum interval-valued probability measure, we
-only need to verify equation~(\ref{eq:QuantumInterval-valuedProbability-Inclusion}),
-and it is sufficient to check 
-\begin{equation}
-\begin{aligned}\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{0}}\right) & \subseteq\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}}\right) & \subseteq\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{0}}\right)\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{2}}\right) & \subseteq\bar{\mu}\left(\proj{\psi_{0}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{1}}\right)
-\end{aligned}
-\label{eq:non-additive-vectors}
-\end{equation}
-for every orthonormal basis~$\mathcal{B}=\left\{ \ket{\psi_{0}},\ket{\psi_{1}},\ket{\psi_{2}}\right\} $.
-We are going to enumerate all possible orthonormal bases to verify
-equation~(\ref{eq:non-additive-vectors}), and case 1 and 2 are illustrated
-in figure~\ref{fig:three-dimensional-4-value}. 
-\begin{center}
-\begin{figure}
-\includegraphics[scale=0.4]{measure4.pdf}
-\caption{\label{fig:three-dimensional-4-value}This figure illustrates case
-1 and 2 in $\mathbb{R}^{3}$ in example~\ref{ex:three-dimensional-4-value}.
-The red and green dotted vector are $\ket{0}$ and $\ket{\ps}$ respectively.
-All possible vectors of $\ket{0_{\theta,\gamma}^{\perp}}$ and $\ket{\ps_{\theta,\gamma}^{\perp}}$
-are drawn in the red and green circles, respectively. Within the circles,
-a vector~$\ket{\psi}$ in dotted part means $\bar{\mu}(\proj{\psi})=\likely$;
-otherwise, $\bar{\mu}(\proj{\psi})=\unlikely$. The gray vector is
-a generic vector~$\ket{0_{\theta,\gamma}^{\perp}}$, and the red
-and green solid vectors are normalized $\ket{0}\times\ket{0_{\theta,\gamma}^{\perp}}$
-and $\ket{\ps}\times\ket{0_{\theta,\gamma}^{\perp}}$, respectively.}
-\end{figure}
-\end{center}
-
-\begin{enumerate}
-\item When $\ket{\psi_{0}}$ is $\ket{0}$, then either $\ket{\psi_{1}}$
-or $\ket{\psi_{2}}$ must be $\ket{0_{\theta,\gamma}^{\perp}}$ for
-some $\theta$ and $\gamma$. Because of 
-\[
-\ket{0}\times\ket{0_{\theta,\gamma}^{\perp}}=\begin{pmatrix}1\\
-0\\
-0
-\end{pmatrix}\times\begin{pmatrix}0\\
-\rme^{\rmi\gamma}\sin\theta\\
-\cos\theta
-\end{pmatrix}=\begin{pmatrix}0\\
--\cos\theta\\
-\rme^{-\rmi\gamma}\sin\theta
-\end{pmatrix}=\rme^{-\rmi\gamma}\begin{pmatrix}0\\
-\rme^{\rmi\left(\pi+\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)\\
-\cos\left(\frac{\pi}{2}-\theta\right)
-\end{pmatrix}=\rme^{-\rmi\gamma}\ket{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}
-\]
-the pair $\ket{\psi_{1}}=\ket{0_{\theta,\gamma}^{\perp}}$ and $\ket{\psi_{2}}=\ket{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}$
-for ($0<\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$) or $\theta=0$
-enumerate all possible orthonormal bases. Equation~(\ref{eq:non-additive-vectors})
-can then be verified as follow. 
-\begin{equation}
-\begin{aligned}\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0}\right)=\necess & \subseteq\likely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\theta,\gamma}^{\perp}}\right)=\unlikely & =\unlikely\tensor*[_{\mathscr{I}}]{+}{}\imposs=\bar{\mu}\left(\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0}\right)\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\right)=\likely & =\imposs\tensor*[_{\mathscr{I}}]{+}{}\likely=\bar{\mu}\left(\proj{0}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)
-\end{aligned}
-\label{eq:case1}
-\end{equation}
-Similarly, when $\ket{\psi_{0}}$ is $\ket{\ps}$, equation~(\ref{eq:non-additive-vectors})
-holds. 
-\item When $\ket{0}\notin\mathcal{B}$ and $\ket{\psi_{0}}=\ket{0_{\theta,\gamma}^{\perp}}$
-for $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, we want to
-prove $\bar{\mu}\left(\proj{\psi_{1}}\right)=\bar{\mu}\left(\proj{\psi_{2}}\right)=\unlikely$.
-Then, we have 
-\begin{equation}
-\begin{aligned}\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{0_{\theta,\gamma}^{\perp}}\right)=\unlikely & \subseteq\unlikely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)\\
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{1}}\right)=\likely & \subseteq\unlikely\tensor*[_{\mathscr{I}}]{+}{}\likely=\bar{\mu}\left(\proj{\psi_{2}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)
-\end{aligned}
-\label{eq:case2}
-\end{equation}
-In order to verify $\bar{\mu}\left(\proj{\psi_{1}}\right)=\bar{\mu}\left(\proj{\psi_{2}}\right)=\unlikely$,
-it is sufficient to prove that if $\ket{\ps_{\theta',\gamma'}^{\perp}}\in\mathcal{B}$,
-then ($0<\theta'<\frac{\pi}{2}$ and $\pi\le\gamma'<2\pi$) or $\theta'=\frac{\pi}{2}$.
-Recall $\ip{\ps}{\ps_{\theta',\gamma'}^{\perp}}=0$. Hence, if $\ket{\ps_{\theta',\gamma'}^{\perp}}\in\mathcal{B}$,
-we have $\ket{\ps_{\theta',\gamma'}^{\perp}}$ parallel to $\ket{\ps}\times\ket{0_{\theta,\gamma}^{\perp}}$.
-\begin{equation}
-\ket{\ps}\times\ket{0_{\theta,\gamma}^{\perp}}=\begin{pmatrix}1\\
-1\\
-0
-\end{pmatrix}\times\begin{pmatrix}0\\
-\rme^{\rmi\gamma}\sin\theta\\
-\cos\theta
-\end{pmatrix}=\begin{pmatrix}\cos\theta\\
--\cos\theta\\
-\rme^{-\rmi\gamma}\sin\theta
-\end{pmatrix}=\rme^{-\rmi\gamma}\begin{pmatrix}-\rme^{\rmi\left(\pi+\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)\\
-\rme^{\rmi\left(\pi+\gamma\right)}\sin\left(\frac{\pi}{2}-\theta\right)\\
-\cos\left(\frac{\pi}{2}-\theta\right)
-\end{pmatrix}=\sqrt{2}\rme^{-\rmi\gamma}\ket{\ps_{\frac{\pi}{2}-\theta,\pi+\gamma}^{\perp}}\label{eq:case2-cross}
-\end{equation}
-Because of $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, we have
-($0<\theta'=\frac{\pi}{2}-\theta<\frac{\pi}{2}$ and $\pi\le\gamma'=\pi+\gamma<2\pi$)
-or $\theta'=\frac{\pi}{2}-\theta=\frac{\pi}{2}$. Similarly, when
-$\ket{\psi_{0}}$ is $\ket{\ps_{\theta,\gamma}^{\perp}}$ and $\ket{\ps}\notin\mathcal{B}$,
-equation~(\ref{eq:non-additive-vectors}) holds. 
-\item Finally, when $\ket{0}\notin\mathcal{B}$, $\ket{\ps}\notin\mathcal{B}$,
-$\ket{0_{\theta,\gamma}^{\perp}}\notin\mathcal{B}$, and $\ket{\ps_{\theta,\gamma}^{\perp}}\notin\mathcal{B}$
-for $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, i.e., the ``otherwise''
-case. Then, equation~(\ref{eq:non-additive-vectors}) can easily
-be verified. 
-\begin{equation}
-\bar{\mu}\left(\mathbb{1}\tensor*[_{\mathscr{O}}]{-}{}\proj{\psi_{0}}\right)=\likely\subseteq\unlikely\tensor*[_{\mathscr{I}}]{+}{}\unlikely=\bar{\mu}\left(\proj{\psi_{1}}\right)\tensor*[_{\mathscr{I}}]{+}{}\bar{\mu}\left(\proj{\psi_{2}}\right)\label{eq:case3}
-\end{equation}
-\end{enumerate}
+This measure however is ``better'' than the previous one in the sense
+that it might only be induced by $\ket{2}$ or the density matrix
+$\frac{\mathbb{1}}{3}$, but not by
+$\ket{1}$. 
 \end{example}
 
-The following example verifies example~\ref{ex:three-dimensional-4-value}
-cannot hold with more precise intervals.
+In general, we conjecture that if the measurement equipment is made
+more and more precise, the corresponding interval-valued probability
+measure will be closer and closer to the Born rule. In the limit case,
+$\mathscr{I}=\left\{ \left\{ a\right\}
+  \middle|a\in\left[0,1\right]\right\}$
+we do indeed recover the conventional Gleason's theorem and the Born
+rule.
 
-\begin{example}[Three-dimensional quantum 4-value interval-valued
-probability measure (Continue)]\label{ex:three-dimensional-4-value-1}
-Consider $\mathscr{I}=\left\{ \imposs,\left[l_{1},r_{1}\right],\left[1\tensor*[_{\mathbb{R}}]{-}{}r_{1},1\tensor*[_{\mathbb{R}}]{-}{}l_{1}\right],\necess\right\} $,
-where $\left[l_{1},r_{1}\right]$ and $\left[1\tensor*[_{\mathbb{R}}]{-}{}r_{1},1\tensor*[_{\mathbb{R}}]{-}{}l_{1}\right]$
-will be used to replace every $\unlikely$ and $\likely$ in example~\ref{ex:three-dimensional-4-value},
-respectively. The bound of $l_{1}$ and $r_{1}$ can then be estimated
-by the equations corresponding to equation~(\ref{eq:case1}), (\ref{eq:case2}),
-and (\ref{eq:case3}).
-
-When we replace $\unlikely$ and $\likely$ by $\left[l_{1},r_{1}\right]$
-and $\left[1\tensor*[_{\mathbb{R}}]{-}{}r_{1},1\tensor*[_{\mathbb{R}}]{-}{}l_{1}\right]$,
-equation~(\ref{eq:case1}) will become
-
-\begin{equation}
-\begin{aligned}\necess & \subseteq\left[1\tensor*[_{\mathbb{R}}]{-}{}r_{1},1\tensor*[_{\mathbb{R}}]{-}{}l_{1}\right]\tensor*[_{\mathscr{I}}]{+}{}\left[l_{1},r_{1}\right]\\
-\left[l_{1},r_{1}\right] & \subseteq\left[l_{1},r_{1}\right]\tensor*[_{\mathscr{I}}]{+}{}\imposs\\
-\left[1\tensor*[_{\mathbb{R}}]{-}{}r_{1},1\tensor*[_{\mathbb{R}}]{-}{}l_{1}\right] & \subseteq\imposs\tensor*[_{\mathscr{I}}]{+}{}\left[1\tensor*[_{\mathbb{R}}]{-}{}r_{1},1\tensor*[_{\mathbb{R}}]{-}{}l_{1}\right]
-\end{aligned}
-\label{eq:case1-1}
-\end{equation}
-which are all tautologies. Equation~(\ref{eq:case2}) will become
-\begin{equation}
-\begin{aligned}\left[l_{1},r_{1}\right] & \subseteq\left[l_{1},r_{1}\right]\tensor*[_{\mathscr{I}}]{+}{}\left[l_{1},r_{1}\right]\\
-\left[1\tensor*[_{\mathbb{R}}]{-}{}r_{1},1\tensor*[_{\mathbb{R}}]{-}{}l_{1}\right] & \subseteq\left[l_{1},r_{1}\right]\tensor*[_{\mathscr{I}}]{+}{}\left[1\tensor*[_{\mathbb{R}}]{-}{}r_{1},1\tensor*[_{\mathbb{R}}]{-}{}l_{1}\right]
-\end{aligned}
-\label{eq:case2-1}
-\end{equation}
-which implies $l_{1}=0$. Finally, equation~(\ref{eq:case3}) will
-become
-\begin{equation}
-\left[1\tensor*[_{\mathbb{R}}]{-}{}r_{1},1\tensor*[_{\mathbb{R}}]{-}{}l_{1}\right]\subseteq\left[l_{1},r_{1}\right]\tensor*[_{\mathscr{I}}]{+}{}\left[l_{1},r_{1}\right]\label{eq:case3-1}
-\end{equation}
-which implies $\frac{1}{2}\le r_{1}\le1$. Therefore, $l_{1}=0$ and
-$r_{1}=\frac{1}{2}$ provides the most precise intervals which make
-example~\ref{ex:three-dimensional-4-value} work, and in this case,
-the intervals are $\left\{ \imposs,\unlikely,\likely,\necess\right\}
-$.
-\end{example}
-
-Although it is easier to deduce an interval-valued probability measure
-has an empty core by considering the state mapped to $\imposs$ as
-in example~\ref{ex:three-dimensional-three-value} and \ref{ex:three-dimensional-4-value},
-it is not the only way to prove an interval-valued probability measure
-has an empty core. The following family of interval-valued probability
-measures satisfy that $\bar{\mu}\left(P\right)=\imposs$ if and only
-if $P=\mathbb{0}$, but we can still prove them have empty cores.
-
-Although it is easier to deduce an interval-valued probability measure
-has an empty core by considering the state mapped to $\imposs$ as
-in example~\ref{ex:three-dimensional-three-value} and \ref{ex:three-dimensional-4-value},
-it is not the only way to prove an interval-valued probability measure
-has an empty core. The following family of interval-valued probability
-measures satisfy that $\bar{\mu}\left(P\right)=\imposs$ if and only
-if $P=\mathbb{0}$, but we can still prove them have empty cores.
-
-\paragraph*{Research Question.} confirm that we get closer and closer
-to Born rule as precision improves; find conditions on interval-valued
-quantum prob. measures that would make sense; precision improves
-implies states get sharper
+\paragraph*{Research Question.} Confirm that as the number and
+precision of the intervals increase the interval-valued quantum
+probability measure converges to the measure induced by the Born
+rule. 
 
 %%%%%
 \subsection{Proposed Activity III: Quantum Information Theorems} 
