@@ -708,12 +708,13 @@ resolution to the same paradoxes (e.g., EPR and Wigner's friend)?
 \subsection{Proposed Activity II: Quantum Interval-valued Probability Measures}
  
 This is the most developed part of our current investigation and is
-presented in great detail. As argued in the previous sections, given
-fixed finite resources, it is only possible to estimate the quantum
-probabilities within an interval of confidence. It is therefore
-natural to propose the notion of an ``interval-valued quantum
-probability measure'' that combines the definitions of conventional
-quantum probability measures with classical interval-probabilities.
+presented in greater detail than the other proposed activities. As
+argued in the previous sections, given fixed finite resources, it is
+only possible to estimate the quantum probabilities within an interval
+of confidence. It is therefore natural to propose the notion of an
+``interval-valued quantum probability measure'' that combines the
+definitions of conventional quantum probability measures with
+classical interval-probabilities.
 
 \begin{definition}[Quantum Interval-valued Probability Measure]\label{def:QuantumInterval-valuedProbability}
   Given a Hilbert space $\Hilb$ with quantum events
@@ -774,7 +775,10 @@ probability measure as follows.
   Given a quantum interval-valued probability
   measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$:
 \begin{itemize}
-\item A \emph{core} of $\bar{\mu}$ is the set $\mathrm{core}\left(\bar{\mu}\right)=\left\{ \textrm{quantum probability measure }\pmeas:\events\rightarrow[0,1]\middle|\forall E\in\events.\pmeas\left(E\right)\in\bar{\mu}\left(E\right)\right\} $.
+\item A \emph{core} of $\bar{\mu}$ is the set
+  $\mathrm{core}\left(\bar{\mu}\right)=\left\{
+    \pmeas:\events\rightarrow[0,1] ~\middle|~ \forall
+    E\in\events.~\pmeas\left(E\right)\in\bar{\mu}\left(E\right)\right\}$.
 \item $\bar{\mu}$ is called convex if 
 \begin{equation}
   \bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\label{eq:QuantumInterval-valuedProbability-Convex}
@@ -783,97 +787,58 @@ probability measure as follows.
 \end{itemize}
 \end{definition}
 
-core: easy
-
-convex: if certain intervals exist then combinations of these
-intervals must also exist so that we can add probabilities etc. in the
-classical case ... theorem but in the quantum case we found a counterexample
-
-It is common to consider convex interval-valued probability measures.
-For example, a special case of convex interval-valued probability
-measures consists the Dempster-Shafer belief function as the left-end
-and the Dempster-Shafer plausibility as the
-right-end~\cite{Dempster1967,Shafer1976,GilboaSchmeidler1994,Goodman1997,Marinacci1999,Teran2014}.
-Dempster-Shafer functions, also called \emph{completely} or
-\emph{totally monotone}, play an important role in the theory of
-non-additive belief.  Furthermore, convex interval-valued probability
-measures have a good property that they can always be associated with
-real-valued probability measures.
+\noindent The core of an interval-valued probability measure is the
+set of real-valued infinitely-precise probability measures it
+approximates. An interval-valued probability measure is convex if
+whenever certain intervals exist then combinations of these intervals
+must also exist, guaranteeing we can add and manipulate probabilities
+coherently. In the classical world, every convex measure has a
+non-empty core, which means that the interval-valued probability
+measure must approximate at least one infinitely-precise measure.
 
 \begin{thm}[Shapley~\cite{Shapley1971}]\label{thm:Shapley}
-Every convex interval-valued probability measure has a nonempty core.\qed\end{thm}
-
-
-
-
-
-\begin{thm}\label{def:EmptyCoreQuantumInterval-valuedProbability}
-There is a convex quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-such that $\mathrm{core}\left(\bar{\mu}\right)=\emptyset$.
+  Every (classical) convex interval-valued probability measure has a
+  non-empty core.
 \end{thm}
 
-This theorem can be proved by the following example. 
+In informal terms, this result states that although measurements done
+with limited resources and poor precision may not uniquely identify
+the true state of the system, there is always at least one system that
+is consistent with the measurements. Surprisingly, we discovered a
+counterexample to this statement in the quantum case, i.e., we
+constructed the following convex interval-valued quantum probability
+measure with an empty core.
 
 \begin{example}[Three-dimensional quantum three-value interval-valued
-probability measure]\label{ex:three-dimensional-three-value} Given
-a three dimensional Hilbert space with an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
-Consider\emph{ $\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $}
-and $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$, and $\ket{\ps'}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{2})$.
-Let 
+  probability measure]\label{ex:three-dimensional-three-value} Given
+  a three dimensional Hilbert space with an orthonormal basis
+  $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.  Let \emph{
+    $\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $},
+  $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$,
+  $\ket{\ps'}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{2})$, and
 \begin{eqnarray*}
-\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'}) & = & \imposs\textrm{ ,}\\
-\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})=\bar{\mu}(\mathbb{1}-\proj{\ps'}) & = & \necess\textrm{ ,}\\
-\bar{\mu}(P) & = & \unknown\textrm{, otherwise. }
+\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'})
+  &=& \imposs\\
+\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})=\bar{\mu}(\mathbb{1}-\proj{\ps'})
+  &=& \necess \\
+\bar{\mu}(P) 
+  &=& \unknown\quad\textrm{otherwise}
 \end{eqnarray*}
-To verify $\bar{\mu}$ is a quantum interval-valued probability
-measure, first notice that
-$\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$
-implies equation
-(\ref{eq:QuantumInterval-valuedProbability-Inclusion}) by
-induction. Second, equation
-(\ref{eq:QuantumInterval-valuedProbability-Complement}) implies
-$\bar{\mu}\left(\mathbb{1}\right)\subseteq\bar{\mu}\left(P\right)+\bar{\mu}\left(\mathbb{1}-P\right)$.
-Therefore, to prove equation
-(\ref{eq:QuantumInterval-valuedProbability-Inclusion}), it is
-sufficient to check
-\[
-\bar{\mu}\left(\proj{\psi_{0}}+\proj{\psi_{1}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{0}}\right)+\bar{\mu}\left(\proj{\psi_{1}}\right)
-\]
-for orthogonal $\ket{\psi_{0}}$ and $\ket{\psi_{1}}$. This equation
-always holds because we always have $\unknown\subseteq\bar{\mu}\left(\proj{\psi_{0}}\right)+\bar{\mu}\left(\proj{\psi_{1}}\right)$.
-
-Next, we need to verify that $\bar{\mu}$ is convex. First, for orthogonal
-projections $P_{0}$ and $P_{1}$, equation (\ref{eq:QuantumInterval-valuedProbability-Inclusion})
-implies equation (\ref{eq:QuantumInterval-valuedProbability-Convex}).
-Second, when $P_{0}=P_{1}+P_{2}$, equation
-(\ref{eq:QuantumInterval-valuedProbability-Convex}) holds trivially.
-Hence, we only need to verify the case which $P_{0}=\proj{\psi_{0}}+\proj{\psi_{2}}$
-and $P_{1}=\proj{\psi_{1}}+\proj{\psi_{2}}$,
-where $\left\{ \ket{\psi_{0}},\ket{\psi_{1}},\ket{\psi_{2}}\right\} $
-is an orthonormal basis. Because we have 
-\begin{eqnarray*}
-\bar{\mu}\left(P_{0}\vee P_{1}\right) & = & \bar{\mu}\left(\mathbb{1}\right)=\necess\\
-\bar{\mu}\left(P_{0}P_{1}\right) & = & \bar{\mu}\left(\proj{\psi_{2}}\right)\subseteq\unknown
-\end{eqnarray*}
-and $\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$
-is either $\necess+\unknown$ or $\unknown+\unknown$.
-Therefore, we have $\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$.
-
-Finally, we will prove that $\bar{\mu}$ cannot correspond to any
-quantum probability measure by contradiction. Suppose $\mu(P)\in\bar{\mu}(P)$
-for some quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$.
-We must have 
-\begin{equation}
-\mu(\proj{0})=\mu(\proj{\ps})=\mu(\proj{\ps'})=0\textrm{ .}\label{eq:probability-zero-on-states}
-\end{equation}
-By Gleason's theorem, there is a mixed
+It is straightforward to verify that $\bar{\mu}$ is a convex quantum
+interval-valued probability measure. Now assume there exists a
+real-valued quantum probability measure $\mu$ such that
+$\mu(P)\in\bar{\mu}(P)$ for every event (projection)~$P$. We derive a
+contradiction as follows. Suppose $\mu(P)\in\bar{\mu}(P)$ then we must
+have $\mu(\proj{0})=\mu(\proj{\ps})=\mu(\proj{\ps'})=0$. By Gleason's
+theorem, there is a mixed
 state~$\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}$ such that
-$\mu\left(P\right)=\sum_{j=1}^{N}q_{j}\ip{\phi_{j}}{P\phi_{j}}$,
-where $\sum_{j=1}^{N}q_{j}=1$ and $q_{j}>0$.  However, no pure
-state~$\ket{\phi}$ satisfies
-$\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0$ so that we have
-$\mu(P)\notin\bar{\mu}(P)$ for all quantum probability measure~$\mu$.
+$\mu\left(P\right)=\sum_{j=1}^{N}q_{j}\ip{\phi_{j}}{P\phi_{j}}$, where
+$\sum_{j=1}^{N}q_{j}=1$ and $q_{j}>0$.  However, no pure
+state~$\ket{\phi}$ can satisfy
+$\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0$; a contradiction.
 \end{example}
+
+\paragraph*{XXX.}
 
 Recall that when approximating the probability classically, the quality
 of the experimental equipment cannot be compensated by the number
@@ -1117,6 +1082,11 @@ has an empty core. The following family of interval-valued probability
 measures satisfy that $\bar{\mu}\left(P\right)=\imposs$ if and only
 if $P=\mathbb{0}$, but we can still prove them have empty cores.
 
+\paragraph*{Research Question.} confirm that we get closer and closer
+to Born rule as precision improves; find conditions on interval-valued
+quantum prob. measures that would make sense; precision improves
+implies states get sharper
+
 %%%%%
 \subsection{Proposed Activity III: Quantum Information Theorems} 
 
@@ -1126,8 +1096,25 @@ and perhaps additionally discrete states in finite fields (try with or without)
 investigate gleason (born), bell, KS, and revisit Mermin-Meyer and
 other debates and paradoxes
 
+\paragraph*{Research Question.} the above is mostly about gleason's 
+theorem; foundational; related theorem richer are bell; and KS; 
+
+\paragraph*{Research Question.} add discrete theory to the story; do
+not assume anything is infinitely precise not even the hypothetical state
+
+\paragraph*{Research Question.} revisit Mermin-Meyer etc with 
+mathematical framework we have with and without discrete theory 
+
+
 %%%%%
 \subsection{Proposed Activity IV: Computational Aspects}
+
+mention aaronson three statements paradox. something is wrong;
+investigate; investigate complexity; p=np; mention usat and mention
+deutsch-josza improvement depends on precision not as dramatic
+
+\paragraph*{Research Question.} 
+
 
 If power of observer is limited with respect to power of quantum state
 then quantum state can always ``fool'' you and get away with things;
