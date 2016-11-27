@@ -237,7 +237,7 @@ $\pmeas(E)$ could be approximated to given accuracy~$\epsilon>0$ by
 the relative frequency~$\frac{1}{N}\sum_{i=1}^{N}x_{i}$ with the
 probability converging to one as $N$ goes to infinity, i.e.,
 \[
-\forall\epsilon>0,\lim_{N\rightarrow\infty}\pmeas\left(\left|\pmeas(E)-\frac{1}{N}\sideset{}{_{i=1}^{N}}\sum x_{i}\right|<\epsilon\right)=1\textrm{ .}
+\forall\epsilon>0,\lim_{N\rightarrow\infty}\pmeas\left(\left|\pmeas(E)-\frac{1}{N}\sum_{i=1}^{N} x_{i}\right|<\epsilon\right)=1\textrm{ .}
 \]
 This fact is called the law of large numbers~\cite{Bernoulli2006,Kolmogorov1950,Uspensky1937,Shafer1976,544199}.
 
@@ -386,7 +386,8 @@ event.
 The mathematical framework of classical probability above assumes that
 there exists a predetermined set of events that are independent of the
 particular experiment --- classical physics is
-non-contextual. However, even in classical situations, the structure
+non-contextual~\cite{kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007}. 
+However, even in classical situations, the structure
 of the event space is often only partially known and the precise
 dependence of two events on each other cannot, a priori, be determined
 with certainty. In the quantum framework, this partial knowledge is
@@ -398,7 +399,7 @@ generalized from plain sets to projection operators. A quantum
 probability space therefore consists of just two components: a set of
 events $\qevents$ often formalized as projection operators and a
 probability measure $\mu:\qevents\rightarrow[0,1]$ formalized using
-the Born rule.
+the Born rule~\cite{Born1983,Mermin2007,Jaeger2007}.
 
 %%%%%
 \subsection{Quantum Events}
@@ -427,8 +428,7 @@ operator.
   called an \emph{ideal measurement} if it is a partition of the
   identity, i.e., $\sum_{i=1}^{N}P_{i}=\mathbb{1}$~\cite{Swart2013}.
   In this case, projections $\left\{ P_{i}\right\} _{i=1}^{N}$ must
-  be mutually orthogonal~\cite{Griffiths2003} and $N$ must correspond
-  to the dimension of the Hilbert space.
+  be mutually orthogonal~\cite{Griffiths2003,Halmos1957}.
 \item If $P$ is a projection operator, then $\mathbb{1}-P$ is also a
   projection operator, called its \emph{complement}. It is orthogonal to
   $P$, and corresponds to the complement event~$\Omega\backslash E$ in
@@ -445,7 +445,8 @@ intersection between events~\cite{peres1995quantum,Griffiths2003}.
 
 \begin{example}[One-qubit quantum probability space] Consider a
   one-qubit Hilbert space with each event interpreted as a possible
-  post-measurement state. For example, the event $\proj{0}$ indicates
+  post-measurement state~\cite{peres1995quantum,Mermin2007,Jaeger2007}. 
+  For example, the event $\proj{0}$ indicates
   that the post-measurement state will be $\ket{0}$; the probability
   of such an event depends on the current state; the event $\proj{1}$
   indicates that the post-measurement state will be $\ket{1}$; the
@@ -497,16 +498,17 @@ we have $\mu\left(\sum_{i=1}^{N}P_{i}\right)=\sum_{i=1}^{N}\mu\left(P_{i}\right)
 
 \noindent A quantum probability measure can be easily constructed if
 one knows the current state of the quantum system by using the Born
-rule~\cite{Born1983,Mermin2007,Jaeger2007}.  Specifically, for each
+rule.  Specifically, for each
 pure normalized quantum state $\ket{\phi}$, the Born rule induces a
 probability measure $\mu_{\phi}^{B}$ defined as
 $\mu_{\phi}^{B}(P)=\ip{\phi}{P\phi}$. The situation generalizes to
 mixed states $\rho = \sum_{j=1}^{N}q_{j}\proj{\phi_{j}}$, where
 $\sum_{j=1}^{N}q_{j}=1$ in which case the generalized Born rule
 induces a probability measure $\mu_{\rho}^{B}$ defined
-as~\cite{peres1995quantum,544199,Jaeger2007}
+as
 $\mu_{\rho}^{B}\left(P\right) = \Tr\left(\rho P\right) =
-\sideset{}{_{j=1}^{N}}\sum q_{j}\mu_{\phi_{j}}^{B}\left(P\right)$.
+\sum_{j=1}^{N}
+q_{j}\mu_{\phi_{j}}^{B}\left(P\right)$~\cite{peres1995quantum,544199,Jaeger2007}.
 Conversely every probability measure must be of this form.
 
 \begin{thm}[Gleason's
@@ -726,8 +728,8 @@ classical interval-probabilities.
   $\bar{\mu}\left(\mathbb{1}-P\right)=\left[1,1\right]-\bar{\mu}\left(P\right)$.
 \item For a set of mutually orthogonal projections
   $\left\{ P_{i}\right\} _{i=1}^{N}$, we have
-  $\bar{\mu}\left(\sideset{}{_{i=1}^{N}}\sum
-    P_{i}\right)\subseteq\sideset{}{_{i=1}^{N}}\sum\bar{\mu}\left(P_{i}\right)$.
+  $\bar{\mu}\left(\sum_{i=1}^{N}
+    P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}\left(P_{i}\right)$.
 \end{itemize}
 \end{definition}
 
