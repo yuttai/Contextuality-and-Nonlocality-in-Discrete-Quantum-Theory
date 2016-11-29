@@ -106,11 +106,28 @@ We will begin by reviewing existing work that recasts classical
 probability spaces in a resource-aware setting and move to our
 proposal which, briefly speaking, aims at recasting quantum
 probability and hence quantum measurement to a corresponding
-resource-aware setting. In particular, we plan on addressing the
-Meyer-Mermin debate~\cite{PhysRevLett.83.3751, Mermin1999,
-  BarrettKent2004} on the impact of finite precision measurements on
-the relevance of the Kochen-Specker
-theorem~\cite{kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007}.
+resource-aware setting.
+
+In particular, the objectives to be achieved include:
+\begin{itemize}
+\item A computational framework for quantum measurement where quantum
+  systems are described in terms of interactive processes. The
+  framework takes care of the resources required (including the ones
+  related to the observer) to determine a given property of the
+  measured system.
+\item Develop a measurement framework based on quantum interval-valued
+  probabilities measures.
+\item Assess the validity of fundamental theorems of quantum
+  mechanics, such as Gleason, Bell, and Kochen-Specker, in a quantum
+  formulation stripped away of infinite resources. We will aim to
+  provide a definite answer to the Meyer-Mermin
+  debate~\cite{PhysRevLett.83.3751, Mermin1999, BarrettKent2004} on
+  the impact of finite precision measurements on the relevance of the
+  Kochen-Specker
+  theorem~\cite{kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007}.
+\item Study the computational complexity of quantum theories and
+  simulations based on discrete (computable) fields.
+\end{itemize}
 We argue that no matter what the results are their impact will be
 strong. Positive results that formulate a computable, with clear
 resource bounds, theory of quantum measurement and quantum probability
@@ -955,7 +972,7 @@ probability measures. Revisit the Meyer-Mermin debate and its
 generalizations in this mathematical framework.
 
 %%%%%
-\subsection{Proposed Activity IV: Computational Aspects}
+\subsection{Proposed Activity IV: Computational and Simulation Aspects}
 
 The marriage of quantum mechanics and computer science first
 envisioned and popularized by Feynman has created an awkward, but
@@ -1069,68 +1086,68 @@ can be simulated; and (ii) to establish connections between quantum
 programming concepts and classical programming concepts.  We plan to
 make our software available for educational and research purposes.
 
-\begin{figure}
-\begin{center}
-  \includegraphics[scale=0.38]{HoughLineData.pdf}
-\end{center}
-  \caption{Curves of possible line parameters determined by noisy
-    data samples on a straight line in 2D space.}
-\label{houghline.fig}
-\end{figure}
+% \begin{figure}
+% \begin{center}
+%   \includegraphics[scale=0.38]{HoughLineData.pdf}
+% \end{center}
+%   \caption{Curves of possible line parameters determined by noisy
+%     data samples on a straight line in 2D space.}
+% \label{houghline.fig}
+% \end{figure}
 
-%%%%%
-\subsection{Proposed Activity V: Applications}
+% %%%%%
+% \subsection{Proposed Activity V: Applications}
 
-A classic evidence-accumulation method known as the Hough
-transform~\cite{BallardGenHough1981}, which is very closely related to
-Bayesian evidence accumulation
-methods~\cite{CrandallEtal2005,CrandallEtal2006}, provides another
-example of how our proposal to define physical theories without exact
-real numbers could be combined with the measurement process. Simply
-described, the Hough transform as an abstraction of Bayesian schemes
-starts with a model of the theory being measured, typically a model
-that would ordinarily be treated {\it after\/} gathering the data by
-applying least squares to choose the optimal parameters.  But in this
-method, instead of thinking of, say, the model of a straight line
-$\hat{\mathbf{n}}\cdot \mathbf{x} = d$ as an equation for the points
-on a line $ \mathbf{x}_{i} = (x_{i},y_{i})$, we think of it as a
-time-accumulating {\it set\/} of equations for the distance $d$ of the
-nearest point on the line and the direction
-$ \hat{\mathbf{n}} = (\cos \theta, \sin \theta)$ from the origin to
-that point (the direction perpendicular to the line).  Thus each point
-of {\it evidence\/}, $(x_{i},y_{i})$, produces an {\it equation in the
-  parameter space\/} that is effectively a plot of all the possible
-values of $d(\theta)$ as a function of the possible angular directions
-$\theta$ pointing to the family of all possible lines.  A typical
-result from a set of errorful (it is impossible to measure real
-numbers, we recall) data measurements of points on a hypothetical
-straight line is shown in Fig.~\ref{houghline.fig}.
+% A classic evidence-accumulation method known as the Hough
+% transform~\cite{BallardGenHough1981}, which is very closely related to
+% Bayesian evidence accumulation
+% methods~\cite{CrandallEtal2005,CrandallEtal2006}, provides another
+% example of how our proposal to define physical theories without exact
+% real numbers could be combined with the measurement process. Simply
+% described, the Hough transform as an abstraction of Bayesian schemes
+% starts with a model of the theory being measured, typically a model
+% that would ordinarily be treated {\it after\/} gathering the data by
+% applying least squares to choose the optimal parameters.  But in this
+% method, instead of thinking of, say, the model of a straight line
+% $\hat{\mathbf{n}}\cdot \mathbf{x} = d$ as an equation for the points
+% on a line $ \mathbf{x}_{i} = (x_{i},y_{i})$, we think of it as a
+% time-accumulating {\it set\/} of equations for the distance $d$ of the
+% nearest point on the line and the direction
+% $ \hat{\mathbf{n}} = (\cos \theta, \sin \theta)$ from the origin to
+% that point (the direction perpendicular to the line).  Thus each point
+% of {\it evidence\/}, $(x_{i},y_{i})$, produces an {\it equation in the
+%   parameter space\/} that is effectively a plot of all the possible
+% values of $d(\theta)$ as a function of the possible angular directions
+% $\theta$ pointing to the family of all possible lines.  A typical
+% result from a set of errorful (it is impossible to measure real
+% numbers, we recall) data measurements of points on a hypothetical
+% straight line is shown in Fig.~\ref{houghline.fig}.
 
-The interesting step for us is now to realize that the {\it parameter
-  curves\/} shown in the figure do not need, or indeed, must not, be
-themselves infinitely precise real numbers, but they must themselves
-incorporate in some way a theory consistent with forbidding absolute
-precision.  In practice, then, the sinusoidal lines in Figure
-\ref{houghline.fig} all become fuzzy, and the accumulation of these
-fuzzy distributions produces peaks of likelihood around the values
-$(d_0, \theta_0)$ that are the optimal choices for the line describing
-the set of data.  Note that even {\it one\/} data point provides
-evidence on a set of hypotheses. The simple analysis we have outlined
-here is easily extended to much more complex situations in higher
-dimensions (see, e.g.,~\cite{BallardGenHough1981}).  Our point here is
-that essentially any physical theory that would ordinarily be
-described by a mathematical model using infinite precision numbers is
-potentially nonsensical from a computational point of view: computer
-scientists know perfectly well, and have been dealing with since the
-time of Turing and Shannon, that every single bit of precision in any
-number has a cost, and that there is not enough energy in the universe
-to compute even one general real number.  Thus the combination of
-physical models that, in some intrinsic fashion, contain only
-computable numbers, with theories of measurement and evidence in the
-fashion of the Hough transform example we have just presented, could
-contain the outline of entirely new ways of understanding what
-mathematical models of the physical world and its measurement actually
-could be.
+% The interesting step for us is now to realize that the {\it parameter
+%   curves\/} shown in the figure do not need, or indeed, must not, be
+% themselves infinitely precise real numbers, but they must themselves
+% incorporate in some way a theory consistent with forbidding absolute
+% precision.  In practice, then, the sinusoidal lines in Figure
+% \ref{houghline.fig} all become fuzzy, and the accumulation of these
+% fuzzy distributions produces peaks of likelihood around the values
+% $(d_0, \theta_0)$ that are the optimal choices for the line describing
+% the set of data.  Note that even {\it one\/} data point provides
+% evidence on a set of hypotheses. The simple analysis we have outlined
+% here is easily extended to much more complex situations in higher
+% dimensions (see, e.g.,~\cite{BallardGenHough1981}).  Our point here is
+% that essentially any physical theory that would ordinarily be
+% described by a mathematical model using infinite precision numbers is
+% potentially nonsensical from a computational point of view: computer
+% scientists know perfectly well, and have been dealing with since the
+% time of Turing and Shannon, that every single bit of precision in any
+% number has a cost, and that there is not enough energy in the universe
+% to compute even one general real number.  Thus the combination of
+% physical models that, in some intrinsic fashion, contain only
+% computable numbers, with theories of measurement and evidence in the
+% fashion of the Hough transform example we have just presented, could
+% contain the outline of entirely new ways of understanding what
+% mathematical models of the physical world and its measurement actually
+% could be.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Broader Impact and Education} 
@@ -1243,10 +1260,10 @@ additional funding from the University to reach a critical mass of
 quantum information researchers.
 
 \paragraph*{Prior Support.} There was no recent NSF support for
-Dr. Ortiz or Dr. Hanson. In the past five years, Prof. Sabry received
-one NSF grant (award number 1217454) titled \emph{Information Effects}
-for the amount of \$275,319.00 with start and end dates of 1 September
-2012 -- 31 August 2016.
+Dr. Ortiz. In the past five years, Dr. Sabry received one NSF grant
+(award number 1217454) titled \emph{Information Effects} for the
+amount of \$275,319.00 with start and end dates of 1 September 2012 --
+31 August 2016.
 
 \paragraph*{Intellectual Merit.} Computing is about processing
 information. Physically speaking, information, like energy, is a
@@ -1297,28 +1314,38 @@ hosting of a visiting scholar.
 
 \paragraph*{Publications.} Several papers were published to report on
 the results. On the foundational side, we have the following papers:
-(1) Computing with Semirings and Weak Rig Groupoids, ESOP, 2016, (2)
-Superstructural Reversible Logic, Workshop on Linearity, 2014, (3)
-Theseus: A High Level Language for Reversible
-Computing. Work-in-Progress report, RC 2014, (4) Discrete Quantum
-Theories, J. Phys. A: Math. Theor. 2014., (5) Geometry of Discrete
-Quantum Computing, J. Phys. A: Math. Theor. 2013., (6) Isomorphic
-Interpreters from Logically Reversible Abstract Machines. RC 2012. On
-the applications side, we have the following papers: (1) Copredication
-in Homotopy Type Theory: A homotopical approach for formal semantics
-of natural languages. Workshop on Natural Language and Computer
-Science, 2016., (2) Contract Monitoring Semantics as Patterns of
-Communication. ICFP, 2015., (3) Extensible Effects: An Alternative to
-Monad Transformers. Haskell Symposium, 2013., (4) Encoding Secure
-Information Flow with Restricted Delegation and Revocation in
-Haskell. Workshop on Functional Programming Concepts in
-Domain-Specific Languages, 2013. In addition to the publications,
-Dr. Sabry and collaborators maintain a public repository with software
-related to the project. Dr. Sabry was also invited to give talks at
-several venues, most notably the Colloquiumfest, University of
-Saskatchewan, Canada, 2014, and the Workshop on Quantum Information
-and Foundations of Quantum Mechanics, University of British Columbia,
-Vancouver, Canada, 2013
+\begin{enumerate}
+\item Computing with Semirings and Weak Rig Groupoids, ESOP, 2016
+\item Superstructural Reversible Logic, Workshop on Linearity, 2014
+\item Theseus: A High Level Language for Reversible
+  Computing. Work-in-Progress report, RC 2014
+\item Discrete Quantum Theories, J. Phys. A: Math. Theor. 2014.
+\item Geometry of Discrete Quantum Computing, J. Phys. A:
+  Math. Theor. 2013.
+\item Isomorphic Interpreters from Logically Reversible Abstract
+  Machines. RC 2012. 
+\end{enumerate}
+On the applications side, we have the following papers: 
+\begin{enumerate}
+\item Copredication in Homotopy Type Theory: A homotopical approach
+  for formal semantics of natural languages. Workshop on Natural
+  Language and Computer Science, 2016.
+\item Contract Monitoring Semantics as Patterns of
+  Communication. ICFP, 2015.
+\item Extensible Effects: An Alternative to Monad
+  Transformers. Haskell Symposium, 2013.
+\item Encoding Secure Information Flow with Restricted Delegation and
+  Revocation in Haskell. Workshop on Functional Programming Concepts
+  in Domain-Specific Languages, 2013
+\end{enumerate}
+In addition to the publications, Dr. Sabry and collaborators maintain
+a public repository with software related to the project. Dr. Sabry
+was also invited to give talks at several venues, most notably:
+\begin{itemize}
+\item Colloquiumfest, University of Saskatchewan, Canada, 2014
+\item Workshop on Quantum Information and Foundations of Quantum
+  Mechanics, University of British Columbia, Vancouver, Canada, 2013
+\end{itemize}
 
 % (d) a listing of the publications resulting from the NSF award (a
 % complete bibliographic citation for each publication must be provided
