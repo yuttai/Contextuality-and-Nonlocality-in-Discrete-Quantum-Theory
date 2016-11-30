@@ -80,28 +80,29 @@ and others, for understanding the very nature of physical processes.
 
 We propose to revisit quantum mechanics, quantum information, and
 quantum computation from this resource-aware perspective. Our initial
-results in that domain showed how subtle the issues can be~\cite{usat}:
-a straightforward replacement of the complex numbers by a finite field
-yields a variant of quantum mechanics in which computationally hard
-problems like UNIQUE-SAT (which decides whether a given Boolean
-formula is unsatisfiable or has exactly one satisfying assignment) can
-be deterministically solved in constant time. To eliminate such
-unrealistic theories requires delicate analysis of the structure of
-the Hilbert space, the process of observation, and the notion of
-probability teasing apart their reliance on the infinitely precise
-real numbers~\cite{geometry2013,DQT2014}. In this proposal, our aim is
-to shift focus from the infinitely-specified but not directly
-observable quantum states, to observable measurable properties of
-quantum systems and their probabilities. Furthermore, we insist that
-our theories of measurement and probability only refer to finitely
-communicable evidence within feasible computational bounds. It follows
-that states, observations, and probabilities all become ``fuzzy'',
-i.e., specified by intervals of confidence that can only increase in
-precision if the available resources increase proportionally. Our
-notion of ``fuzzy quantum mechanics'' is related to existing
+results in that domain showed how subtle the issues can
+be~\cite{usat,geometry2013,DQT2014}: a straightforward replacement of
+the complex numbers by a finite field yields a variant of quantum
+mechanics in which computationally hard problems like UNIQUE-SAT
+(which decides whether a given Boolean formula is unsatisfiable or has
+exactly one satisfying assignment) can be deterministically solved in
+constant time. To eliminate such unrealistic theories requires
+delicate analysis of the structure of the Hilbert space, the process
+of observation, and the notion of probability teasing apart their
+reliance on the infinitely precise real
+numbers~\cite{geometry2013,DQT2014}. In this proposal, our aim is to
+shift focus from the infinitely-specified but not directly observable
+quantum states, to observable measurable properties of quantum systems
+and their probabilities. Furthermore, we insist that our theories of
+measurement and probability only refer to finitely communicable
+evidence within feasible computational bounds. It follows that states,
+observations, and probabilities all become ``fuzzy'', i.e., specified
+by intervals of confidence that can only increase in precision if the
+available resources increase proportionally. Our notion of ``fuzzy
+quantum mechanics'' is related to existing
 work~\cite{GranikCaulfield1996,Pykacz2013,SNL2009,Gudder2005,aerts1993physical}
 but, as will be explained in more detail, is distinguished by its
-computational character.
+unique computational character.
 
 We will begin by reviewing existing work that recasts classical
 probability spaces in a resource-aware setting and move to our
@@ -128,6 +129,10 @@ In particular, the objectives to be achieved include:
   theorem~\cite{kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007}.
 \item Study the computational complexity of quantum theories and
   simulations based on discrete (computable) fields.
+\item Study the problem of finding a complete set of mutually unbiased
+  bases
+  (SIC-POVM)~\cite{1751-8121-45-8-085306,1751-8121-47-33-335302,Caves2002}
+  over finite Galois fields.
 \end{itemize}
 We argue that no matter what the results are their impact will be
 strong. Positive results that formulate a computable, with clear
@@ -137,7 +142,7 @@ computation. Any negative results would redirect research that aims at
 realizing quantum computation to other approaches. At an intellectual
 level, the results have the potential to solve or clarify several
 paradoxes in quantum mechanics, quantum information, computability,
-and complexity theory.
+complexity theory, and perhaps quantum gravity.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Background I: Classical Probability}
@@ -228,7 +233,7 @@ uncomputable real
 interval~$[0,1]$~\cite{Turing_1937,Ziegler2007,weihrauch2012computable}.
 This interval includes numbers like
 $0.h_{1}h_{2}h_{3}\ldots$ where $h_{i}$ is 1 or 0 depending on whether
-Turing machine $M_{i}$ halts or not. Such numbers cannot be
+Turing machine $\mathit{TM}_{i}$ halts or not. Such numbers cannot be
 computed. This interval also includes numbers like $\frac{\pi}{4}$
 which can only be computed with increasingly large resources as the
 precision increases. Therefore, in a resource-aware computational or
@@ -247,15 +252,15 @@ assumed to have a probability, the exact value of $\pmeas(E)$ may not
 be known. According to the \emph{frequency interpretation of
   probability} (which we will revisit when moving to the quantum
 case)~\cite{Venn1876,Hajek2012}, 
-to determine the probability of an event, we run $N$
+to determine the probability of an event, we run $M$
 independent trials which gives us an approximation of the (assumed)
 ``true'' or ``real'' probability. Let $x_{i}$ be 1 or 0 depending on
 whether the event~$E$ occurs in the $i$-th trial or not, then
 $\pmeas(E)$ could be approximated to given accuracy~$\epsilon>0$ by
-the relative frequency~$\frac{1}{N}\sum_{i=1}^{N}x_{i}$ with the
-probability converging to one as $N$ goes to infinity, i.e.,
+the relative frequency~$\frac{1}{M}\sum_{i=1}^{M}x_{i}$ with the
+probability converging to one as $M$ goes to infinity, i.e.,
 \[
-\forall\epsilon>0,\lim_{N\rightarrow\infty}\pmeas\left(\left|\pmeas(E)-\frac{1}{N}\sum_{i=1}^{N} x_{i}\right|<\epsilon\right)=1\textrm{ .}
+\forall\epsilon>0,\lim_{M\rightarrow\infty}\pmeas\left(\left|\pmeas(E)-\frac{1}{M}\sum_{i=1}^{M} x_{i}\right|<\epsilon\right)=1\textrm{ .}
 \]
 This fact is called the law of large numbers~\cite{Bernoulli2006,Kolmogorov1950,Uspensky1937,Shafer1976,544199}.
 
@@ -265,11 +270,11 @@ $h$ apart, where $\ell<h$. It is a known fact that the probability of
 the needle crossing a line is
 $\frac{2\ell}{\pi
   h}$~\cite{Buffon1777,DeMorgan1872,Hall1873,Uspensky1937}.
-Consider an experimental setup consisting of a collection of $N$
-identical needles of length $\ell$. We throw the $N$ needles one
-needle at a time, and observe the number $M$ of needles that cross a
+Consider an experimental setup consisting of a collection of $M$
+identical needles of length $\ell$. We throw the $M$ needles one
+needle at a time, and observe the number $M_c$ of needles that cross a
 line, thus estimating the probability of a needle crossing a line to
-be $\frac{M}{N}$. In an actual experiment with $500$ needles and the
+be $\frac{M_c}{M}$. In an actual experiment with $500$ needles and the
 ratio $\frac{\ell}{h}=0.75$~\cite{Hall1873}, it was found that $236$
 crossed a line so the relative frequency is $0.472$ whereas the
 idealized mathematical probability is $0.4774\ldots$.  In a larger
@@ -293,12 +298,12 @@ the the floor have thickness, their distance apart is not exactly $h$,
 and the needles' lengths are not all absolutely equal to $\ell$.
 These perturbations make the events ``fuzzy.'' Thus, in an experiment
 with limited resources, it is not possible to talk about the idealized
-event that exactly $M$ needles cross lines as this would require the
+event that exactly $M_c$ needles cross lines as this would require the
 most expensive needles built to the most precise accuracy, laser
 precision for drawing lines on the floor, and the most powerful
 microscopes to determine if a needle does cross a line. Instead we
-might talk about the event that $M-\delta$ needles evidently cross
-lines and $M+\delta'$ needles plausibly cross lines where $\delta$ and
+might talk about the event that $M_c-\delta$ needles evidently cross
+lines and $M_c+\delta'$ needles plausibly cross lines where $\delta$ and
 $\delta'$ are resource-dependent approximations. This fuzzy notion of
 events leads to probabilities being only calculable within intervals
 of confidence reflecting the certainty of events and their
@@ -340,9 +345,9 @@ the complement event:
 \item $\bar{\mu}(\Omega)=[1,1]$. 
 \item For any event $E$,
   $\bar{\mu}\left(\Omega\backslash E\right)=\left[1,1\right]-\bar{\mu}\left(E\right)$
-\item For a collection $\left\{ E_{i}\right\} _{i=1}^{N}$ of pairwise
+\item For a collection $\left\{ E_{i}\right\} _{i=1}^{M}$ of pairwise
   disjoint events, we have
-  $\bar{\mu}\left(\bigcup_{i=1}^{N}E_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}\left(E_{i}\right)$.
+  $\bar{\mu}\left(\bigcup_{i=1}^{M}E_{i}\right)\subseteq\sum_{i=1}^{M}\bar{\mu}\left(E_{i}\right)$.
 \end{itemize}
 
 \begin{example}[Two-coin experiment with interval probability]
@@ -588,25 +593,24 @@ rest of the development.
 
 \begin{itemize}
 
-\item If we insist that probabilities cannot be infinitely precise and
-  are bound to be approximations represented by intervals of
-  confidence, then quantum states themselves cannot be infinitely precise
-  because Gleason's theorem is no longer applied. 
-  This raises an important philosophical
-  question with immense practical relevance in the context of quantum
-  computing. The question, which we could largely bypass in the
-  classical case, is whether there is, in the background of all the
-  measurements and probabilities, a ``real'' infinitely-precise
-  quantum state that is being approximated and that, in principle, can
-  be more and more accurately described given more and more
-  resources. In other words, does a Gleason,
-  Bell~\cite{BellBook1987,Redhead1987-REDINA,peres1995quantum,Jaeger2007}, 
-  or Kochen-Specker
-  theorem still hold in a world with finite resources?  The answer
-  will have to be \emph{no} if we are to respect these major theorems
-  of quantum mechanics and quantum information. Thus our first radical
-  departure from the conventional case will be that the quantum state
-  itself must be fuzzy in some sense to be formalized.
+\item If we insist that probabilities cannot be computed to infinite
+  precision and are bound to be approximations represented by
+  intervals of confidence, then quantum states themselves can only be
+  discussed within intervals of confidence. This raises an important
+  philosophical question with immense practical relevance in the
+  context of quantum computing. The question, which we could largely
+  bypass in the classical case, is whether there is, in the background
+  of all the measurements and probabilities, a ``real''
+  infinitely-precise quantum state that is being approximated and
+  that, in principle, can be more and more accurately described given
+  more and more resources. In other words, does a Gleason,
+  Bell~\cite{BellBook1987,Redhead1987-REDINA,peres1995quantum,Jaeger2007},
+  or Kochen-Specker theorem still hold in a world with finite
+  resources?  The answer will have to be \emph{no} if we are to
+  respect these major theorems of quantum mechanics and quantum
+  information. Thus our first radical departure from the conventional
+  case will be that the quantum state itself must be fuzzy in some
+  sense to be formalized.
 
 \item Going further we actually have to concede not just the infinite
   accuracy of the quantum state, but its very existence as a ``real''
@@ -646,15 +650,15 @@ rest of the development.
 
 The early formalization of the process of computing using Turing
 machines~\cite{Turing_1937,blum2012complexity} or the
-$\lambda$-calculus~\cite{Church1932,Barendregt:Lambda} viewed a computation as
-realizing a mathematical function. From our perspective, the most
-important consequence of this view is that the properties of the
-computed function existed independently of any observation,
-calculation, or interaction. For example, a function is
-\emph{injective} or not independently of any observation. An agent can
+$\lambda$-calculus~\cite{Church1932,Barendregt:Lambda} viewed a
+computation as realizing a mathematical function. From our
+perspective, the most important consequence of this view is that the
+properties of the computed function existed independently of any
+observation, calculation, or interaction. For example, a function is
+\emph{injective} or not independent of any observation. An agent can
 only interact with the computation by asking questions regarding its
 input-output behavior and although such interaction would reveal
-fragments of the computed function and its innate properties it could
+fragments of the computed function and its innate properties, it could
 not change it or affect it in any way.
 
 In a series of breakthrough papers that led to his Turing
@@ -1009,7 +1013,7 @@ from deep and careful analyses of the foundations of each field. In
 previous work, we examined the Hilbert space mathematical framework of
 quantum mechanics and teased apart its various aspects that directly
 rely on the infinite-precision real or complex numbers. We note two
-remarkable earlier results:
+remarkable earlier results and an open question:
 \begin{itemize}
 \item UNIQUE-SAT: Schumacher and
   Westmoreland~\cite{Schumacher2012-SCHMQT} argue that much of the
@@ -1058,6 +1062,15 @@ remarkable earlier results:
   power of quantum computing depends on increasingly larger precision
   in the underlying field of numbers.
 
+\item An important special case of a generalized measurement is the
+  symmetric, informationally complete, positive operator valued
+  measure (SIC-POVM), which has applications in quantum
+  cryptography. This problem has been formulated in the context of
+  standard quantum theory where fields are complex numbers.  Although
+  a rigorous proof for the existence of SIC-POVMs for arbitrary
+  Hilbert space dimensions is still missing, it would be illuminating
+  to look for a formulation of the same problem in a discrete quantum
+  theory defined in terms of finite Galois fields.
 \end{itemize}
 
 A long term, ultimate, goal of this research proposal would be to
@@ -1079,7 +1092,7 @@ sizes and observational accuracy. We have established a set of utility
 libraries in Mathematica that supports a wide variety of such
 numerical experiments. Concurrently to this effort, we are also
 building on our previous work~\cite
-{VDS2009,AGVS2007,AGVS2005,VAS2006,finiteQC,Sabry:2003:MQC:871895.871900}
+{VDS2009,AGVS2005,VAS2006,finiteQC,Sabry:2003:MQC:871895.871900}
 to build semantically well-founded implementations of the
 computational models investigated in this proposal.
 
@@ -1096,6 +1109,8 @@ include:
   simulations based on discrete fields. What other (apart from
   UNIQUE-SAT) supernatural algorithms can be implemented in
   computational models based on discrete fields?
+\item Determine, through numerical computations, solutions for
+  SIC-POVM for small vector space dimensions.
 \end{itemize}
 
 % \begin{figure}
@@ -1249,7 +1264,7 @@ the computational framework behind the natural world and the
 computability of physical theory. Our group has been active in several
 areas related to the theory behind quantum computation. Particular
 areas include: mathematical foundations of quantum computation and
-complexity~\cite{AGVS2007,VAS2006}, adiabatic quantum computing,
+complexity~\cite{AGVS2005,VAS2006}, adiabatic quantum computing,
 quantum logic, classical and quantum reversible programming
 languages~\cite{Sabry:2003:MQC:871895.871900}, analog computation and
 its limits, and optical computing. During the past several years, our
@@ -1319,11 +1334,10 @@ its connection to quantum mechanics is at the heart of one of the
 deepest mysteries in the universe. Any progress or theory that
 explains physical principles computationally is likely to change our
 worldview impacting everything from philosophy and religion to all
-conventional sciences. On the development of researchers, the project
-resulted in the graduation of one Ph.D. student with another one
-expected to graduate in Spring 2017, the current supervision of two
-additional Ph.D. students, the graduation of an MS student, and the
-hosting of a visiting scholar.
+conventional sciences. The project resulted in the graduation of one
+Ph.D. student with another one expected to graduate in Spring 2017,
+the current supervision of two additional Ph.D. students, the
+graduation of an MS student, and the hosting of a visiting scholar.
 
 \paragraph*{Publications.} Several papers were published to report on
 the results. On the foundational side, we have the following papers:
