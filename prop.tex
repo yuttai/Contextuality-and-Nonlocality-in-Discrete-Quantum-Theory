@@ -583,155 +583,7 @@ pattern. This example illustrates the case of a fundamental physical
 limitation that not even infinite resources could mitigate.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Proposal: General Plan} 
-
-A major aim of this proposal is to recast quantum probability and
-measurement in a computational resource-aware setting. Our vision is
-to unify the strands above in a novel way as explained in this
-section. We start with some immediate observations that justify the
-rest of the development. 
-
-\begin{itemize}
-
-\item If we insist that probabilities cannot be computed to infinite
-  precision and are bound to be approximations represented by
-  intervals of confidence, then quantum states themselves can only be
-  discussed within intervals of confidence. This raises an important
-  philosophical question with immense practical relevance in the
-  context of quantum computing. The question, which we could largely
-  bypass in the classical case, is whether there is, in the background
-  of all the measurements and probabilities, a ``real''
-  infinitely-precise quantum state that is being approximated and
-  that, in principle, can be more and more accurately described given
-  more and more resources. In other words, does a Gleason,
-  Bell~\cite{BellBook1987,Redhead1987-REDINA,peres1995quantum,Jaeger2007},
-  or Kochen-Specker theorem still hold in a world with finite
-  resources?  The answer will have to be \emph{no} if we are to
-  respect these major theorems of quantum mechanics and quantum
-  information. Thus our first radical departure from the conventional
-  case will be that the quantum state itself must be fuzzy in some
-  sense to be formalized.
-
-\item Going further we actually have to concede not just the infinite
-  accuracy of the quantum state, but its very existence as a ``real''
-  entity that exists independently of measurements and
-  probabilities. The reasons for this second radical position are as
-  follows. First arguments embedded in the proof of the Kochen-Specker
-  theorem essentially rule out the existence of a sample space as the
-  probabilities of events cannot be consistently expressed using core
-  assignments to elements of the sample space. Second, the frequency
-  interpretation of probability which is already problematic in the
-  classical case, becomes untenable in the quantum case. In both
-  cases, but much more in the quantum case, it is much more sensible
-  to interpret probability in the Bayesian sense as ``lack of
-  knowledge''. This, and similar arguments elegantly expressed by
-  recent work on Quantum Bayesianism~\cite{Fuchs2010,VonBaeyer2016,Fuchs2012},
-  suggest that the quantum state is more like an interactive system in
-  computer science parlance. In other words, the state is only
-  determined by its interactions with the environment or observers. A
-  rough but useful analogy in the context of computer science would be
-  a web server: the state of such a system cannot be said to exist
-  independently of the interactions with clients; each interaction
-  with a client determines a future state of the system and may affect
-  future interactions. Crucially, each client may have a
-  \emph{different} view of the web server that is consistent with
-  their own history of interactions. This computational perspective
-  agrees with the philosophical position of QBism~\cite{VonBaeyer2016}
-  that asserts that the quantum state is subjective: each observer has
-  a different view of the quantum system that is consistent with their
-  previous observations and that allows that observer, independently
-  of other observers, to assign beliefs (i.e., probabilities) to
-  possible future interactions.
-
-\end{itemize} 
-
-%%%%
-\subsection{Proposed Activity I: Quantum States as Interactive Processes} 
-
-The early formalization of the process of computing using Turing
-machines~\cite{Turing_1937,blum2012complexity} or the
-$\lambda$-calculus~\cite{Church1932,Barendregt:Lambda} viewed a
-computation as realizing a mathematical function. From our
-perspective, the most important consequence of this view is that the
-properties of the computed function existed independently of any
-observation, calculation, or interaction. For example, a function is
-\emph{injective} or not independent of any observation. An agent can
-only interact with the computation by asking questions regarding its
-input-output behavior and although such interaction would reveal
-fragments of the computed function and its innate properties, it could
-not change it or affect it in any way.
-
-In a series of breakthrough papers that led to his Turing
-Award~\cite{Milner:1993:EIT:151233.151240}, Milner argued that this
-``closed system'' view of computation is too limiting as it cannot
-adequately describe the increasingly pervasive \emph{interactive
-  computations}. Milner explained that ``concurrency requires a new
-conceptual framework'' and ``not merely an extension of the repertoire
-of entities and constructions which explain sequential computing.'' In
-his Turing Award lecture, he gives the following simple but compelling
-example. Consider the following two programs:
-\begin{verbatim}
-Program P1: x := 1; x := x + 1 
-Program P2: x := 2
-\end{verbatim}
-As closed systems, these two programs define the same relation, namely
-the one that maps an input memory to an updated memory in which the
-location named \verb|x| is assigned the value \verb|2|. An observer
-with the ability of inquire about the value of \verb|x| at the end of
-the computation cannot distinguish the two programs. But place the
-programs in an environment which may involve interactions and the
-equivalence is lost. Phrased in physical terms, we give the observer the
-additional ability to access the location \verb|x| \emph{during} the
-computation, not just to observe its final value. In computing terms,
-we place each of the two programs \verb|P1| and \verb|P2| concurrently
-with the program:
-\begin{verbatim}
-Program Q: x := 3
-\end{verbatim}
-In the combined system of \verb|P1| and \verb|Q| running concurrently,
-the location \verb|x| may end up containing \verb|2|, \verb|3|, or
-\verb|4|. But in the combined system of \verb|P2| and \verb|Q| running
-concurrently, the location~\verb|x| can only end up containing
-\verb|2| or \verb|3|. The lesson, phrased in physics terms, is that it
-is not sensible to think of the properties of a system (like \verb|P1|
-or \verb|P2|) independently of the observer (\verb|Q| in this
-case). Indeed the observation \verb|x=4| cannot be said to have an
-existence independently from the interaction between \verb|P1| and
-\verb|Q|: it really emerges or is created as part of the observation
-process and is not a pre-existing ``element of reality''.
-
-This phenomenon is hardly a surprise to computer scientists or
-physicists but embracing it fully does have far-reaching
-consequences. In computer science, the big shift was to abandon the
-idea that a computation has inherent internal meaning, e.g.,
-representing a pure mathematical function. Instead \emph{the meaning
-  of a computational process is its observable behavior.} In this
-computational analogue to the theory of controlled open quantum
-systems, it is not too difficult to imagine that, in the presence of
-multiple interacting observers, the behavior observed by just one
-agent would appear to involve hidden variables or action at a
-distance. The well-established theory of observation of concurrent
-processes and their equivalences~\cite{Hennessy1989} relies on
-neither.
-
-\paragraph*{Research Question.} Is it possible to adapt the theory of
-observation of concurrent processes to the study of quantum states and
-confirm that the observations exhibit the same Bell-like correlations?
-
-\paragraph*{Research Question.} The theory of observation of
-concurrent processes and the theory of measurement in quantum
-mechanics are superficially different. Is it possible to reformulate
-them in a common language to benefit each theory from insights derived
-from the other theory?
-
-\paragraph*{Research Question.} Does the computational and hence
-\emph{testable} hypothesis that the quantum state is nothing but an
-interactive system agree with the QBism perspective providing a
-resolution to the same paradoxes (e.g., EPR~\cite{EPR1935} and Wigner's
-friend~\cite{Wigner1961,Fuchs2010,Fuchs2012})?
-
-%%%%%
-\subsection{Proposed Activity II: Quantum Interval-valued Probability Measures}
+\section{Proposed Activity II: Quantum Interval-valued Probability Measures}
  
 This is the most developed part of our current investigation and is
 presented in greater detail than the other proposed activities. It
@@ -963,8 +815,68 @@ precision of the intervals increase the quantum interval-valued
 probability measure converges to the measure induced by the Born
 rule. 
 
-%%%%%
-\subsection{Proposed Activity III: Quantum Information Theorems} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Proposal: General Plan} 
+
+A major aim of this proposal is to recast quantum probability and
+measurement in a computational resource-aware setting. Our vision is
+to unify the strands above in a novel way as explained in this
+section. We start with some immediate observations that justify the
+rest of the development. 
+
+\begin{itemize}
+
+\item If we insist that probabilities cannot be computed to infinite
+  precision and are bound to be approximations represented by
+  intervals of confidence, then quantum states themselves can only be
+  discussed within intervals of confidence. This raises an important
+  philosophical question with immense practical relevance in the
+  context of quantum computing. The question, which we could largely
+  bypass in the classical case, is whether there is, in the background
+  of all the measurements and probabilities, a ``real''
+  infinitely-precise quantum state that is being approximated and
+  that, in principle, can be more and more accurately described given
+  more and more resources. In other words, does a Gleason,
+  Bell~\cite{BellBook1987,Redhead1987-REDINA,peres1995quantum,Jaeger2007},
+  or Kochen-Specker theorem still hold in a world with finite
+  resources?  The answer will have to be \emph{no} if we are to
+  respect these major theorems of quantum mechanics and quantum
+  information. Thus our first radical departure from the conventional
+  case will be that the quantum state itself must be fuzzy in some
+  sense to be formalized.
+
+\item Going further we actually have to concede not just the infinite
+  accuracy of the quantum state, but its very existence as a ``real''
+  entity that exists independently of measurements and
+  probabilities. The reasons for this second radical position are as
+  follows. First arguments embedded in the proof of the Kochen-Specker
+  theorem essentially rule out the existence of a sample space as the
+  probabilities of events cannot be consistently expressed using core
+  assignments to elements of the sample space. Second, the frequency
+  interpretation of probability which is already problematic in the
+  classical case, becomes untenable in the quantum case. In both
+  cases, but much more in the quantum case, it is much more sensible
+  to interpret probability in the Bayesian sense as ``lack of
+  knowledge''. This, and similar arguments elegantly expressed by
+  recent work on Quantum Bayesianism~\cite{Fuchs2010,VonBaeyer2016,Fuchs2012},
+  suggest that the quantum state is more like an interactive system in
+  computer science parlance. In other words, the state is only
+  determined by its interactions with the environment or observers. A
+  rough but useful analogy in the context of computer science would be
+  a web server: the state of such a system cannot be said to exist
+  independently of the interactions with clients; each interaction
+  with a client determines a future state of the system and may affect
+  future interactions. Crucially, each client may have a
+  \emph{different} view of the web server that is consistent with
+  their own history of interactions. This computational perspective
+  agrees with the philosophical position of QBism~\cite{VonBaeyer2016}
+  that asserts that the quantum state is subjective: each observer has
+  a different view of the quantum system that is consistent with their
+  previous observations and that allows that observer, independently
+  of other observers, to assign beliefs (i.e., probabilities) to
+  possible future interactions.
+
+\end{itemize} 
 
 The previous research question is essentially concerned with the
 status of Gleason's theorem in a world with finite-precision
@@ -975,414 +887,6 @@ follow-up questions.
 of Gleason, Bell, and Kochen-Specker for quantum interval-valued
 probability measures. Revisit the Meyer-Mermin debate and its
 generalizations in this mathematical framework.
-
-%%%%%
-\subsection{Proposed Activity IV: Computational and Simulation Aspects}
-
-The marriage of quantum mechanics and computer science first
-envisioned and popularized by Feynman has created an awkward, but
-opportune, moment. The embarrassing dilemma was concisely described by
-Aaronson as follows~\cite{AaronsonArkhipov2011,BFRDARW2013}. 
-Consider the following three statements:
-\begin{enumerate}
-\item[(A)] Textbook quantum mechanics is correct.
-\item[(B)] There does not exist an efficient classical factoring
-  algorithm.
-\item[(C)] The extended Church-Turing thesis that probabilistic Turing
-  machines can efficiently simulate any physically realizable model of
-  computation is correct~\cite{BernsteinVazirani1997,Kaye2007}.
-\end{enumerate}
-There is overwhelming evidence to support each of these
-statements. The theoretical framework of quantum mechanics (A) has
-withstood decades of experimental confirmation. Entire industries are
-founded on the assumption (B) that algorithms like RSA are secure and
-they also have withstood years of attempted
-attacks~\cite{boneh1999twenty,wiki:RSAFactoring}. Finally the
-entire field of complexity theory in computer science which has also
-withstood years of field testing rests, in essence, on assumption
-(C)~\cite{Aaronson2005,Piccinini2015}. 
-And yet one of these three statements \emph{must be false}! Indeed
-if textbook quantum mechanics is false we concede (A). If it is
-correct Shor's efficient factoring algorithm is realizable. If there
-is a corresponding efficient classical factoring algorithm then we
-concede (B). If not then we concede~(C).
-
-It is unlikely that there will be a simple a resolution to this
-awkward situation. It is more likely that the resolution will emerge
-from deep and careful analyses of the foundations of each field. In
-previous work, we examined the Hilbert space mathematical framework of
-quantum mechanics and teased apart its various aspects that directly
-rely on the infinite-precision real or complex numbers. We note two
-remarkable earlier results and an open question:
-\begin{itemize}
-\item UNIQUE-SAT: Schumacher and
-  Westmoreland~\cite{Schumacher2012-SCHMQT} argue that much of the
-  structure of traditional quantum mechanics is maintained in the
-  presence of finite fields. In particular, they establish that the
-  quantum theory based on the finite field of booleans retains the
-  following characteristics of quantum mechanics: the notions of
-  superposition, interference, entanglement, and mixed states of
-  quantum systems; the time evolution of quantum systems using
-  invertible linear operators; the complementarity of incompatible
-  observables; the exclusion of local hidden variable theories and the
-  impossibility of cloning quantum states; and the presence of natural
-  counterparts of quantum information protocols such as superdense
-  coding and teleportation. However we have argued that this theory is
-  not physically realizable as it allows the solution of
-  computationally difficult problems like
-  UNIQUE-SAT~\cite{Valiant198685} in constant time~\cite{usat}.
-
-\item Deutsch-Jozsa: In a follow-up paper~\cite{DQT2014}, we proposed
-  a variant of quantum mechanics in which the underlying field of
-  complex numbers is replaced by special finite fields with enough
-  structure to model Hermitian products that \emph{locally} behave
-  like inner products. The trick is to recognize that, as the
-  characteristic of the finite field increases, larger and larger
-  regions of the finite field become totally ordered, thereby
-  restoring, with some restrictions, all the usual properties of the
-  inner product needed for conventional quantum mechanics. Using this
-  theory to analyze the Deutsch-Jozsa algorithm reveals that the
-  characteristic of the finite field plays an essential role: as the
-  size of the finite field grows, so does the numerical range of the
-  intermediate and final results of the algorithms being implemented.
-  The theory naturally recovers a deterministic measure of the
-  intrinsic resources required for a given level of complexity; this
-  measure is normally completely hidden in computations with real
-  numbers, and explicitly exposing it is one of the significant
-  achievements of our discrete field analysis of quantum computation.
-  This solves the conundrum that the conventional Deutsch-Jozsa
-  algorithm~\cite{DeutschJozsa1992,Jaeger2007}
-  mysteriously continues to work for larger and larger input
-  functions without any apparent increase in resources.  Our analysis
-  of this problem reveals that as the size of the input increases, it
-  is necessary to increase the size of the finite field and hence the
-  size of the underlying available numeric coefficients.  This
-  observation does not fully explain the power of quantum computing
-  over classical computing, but at least it explains that some of the
-  power of quantum computing depends on increasingly larger precision
-  in the underlying field of numbers.
-
-\item An important special case of a generalized measurement is the
-  symmetric, informationally complete, positive operator valued
-  measure (SIC-POVM), which has applications in quantum
-  cryptography. This problem has been formulated in the context of
-  standard quantum theory where fields are complex numbers.  Although
-  a rigorous proof for the existence of SIC-POVMs for arbitrary
-  Hilbert space dimensions is still missing, it would be illuminating
-  to look for a formulation of the same problem in a discrete quantum
-  theory defined in terms of finite Galois fields.
-\end{itemize}
-
-A long term, ultimate, goal of this research proposal would be to
-combine the various pieces into a coherent computational model of
-quantum mechanics that keeps explicit track of resources needed to
-represent the interactive system representing the quantum state, its
-evolution, the observables, and the probabilities. Such a
-computational model of quantum mechanics would encompass classical
-(reversible) computation and potentially revolutionize quantum
-thinking with finite resources. The explicit manipulation of resources
-enables one of key idea that emerged in our previous work: the
-resources used to represent the quantum system are in principle
-unrelated to the resources available to the various observers. We
-conjecture that this asymmetry may prove key to resolving some of the
-quantum paradoxes.  The nature of quantum mechanics realized in terms
-of discrete fields and finitely-communicable probability estimates is
-amenable to direct computational exploration for reasonable field
-sizes and observational accuracy. We have established a set of utility
-libraries in Mathematica that supports a wide variety of such
-numerical experiments. Concurrently to this effort, we are also
-building on our previous work~\cite
-{VDS2009,AGVS2005,VAS2006,finiteQC,Sabry:2003:MQC:871895.871900}
-to build semantically well-founded implementations of the
-computational models investigated in this proposal.
-
-\paragraph*{Research Questions.} The aim of these implementations
-include:
-\begin{itemize}
-\item Provide an experimental testbed to simulate physical phenomena
-  (e.g.~\cite {OrtizEtAl2001,SommEtAl2002}) that complements the
-  Mathematica libraries in which quantum algorithms can be simulated;
-\item Establish connections between quantum programming concepts and
-  classical programming concepts. We plan to make our software
-  available for educational and research purposes; and 
-\item Analyze the computational complexity of quantum theories and
-  simulations based on discrete fields. What other (apart from
-  UNIQUE-SAT) supernatural algorithms can be implemented in
-  computational models based on discrete fields?
-\item Determine, through numerical computations, solutions for
-  SIC-POVM for small vector space dimensions.
-\end{itemize}
-
-% \begin{figure}
-% \begin{center}
-%   \includegraphics[scale=0.38]{HoughLineData.pdf}
-% \end{center}
-%   \caption{Curves of possible line parameters determined by noisy
-%     data samples on a straight line in 2D space.}
-% \label{houghline.fig}
-% \end{figure}
-
-% %%%%%
-% \subsection{Proposed Activity V: Applications}
-
-% A classic evidence-accumulation method known as the Hough
-% transform~\cite{BallardGenHough1981}, which is very closely related to
-% Bayesian evidence accumulation
-% methods~\cite{CrandallEtal2005,CrandallEtal2006}, provides another
-% example of how our proposal to define physical theories without exact
-% real numbers could be combined with the measurement process. Simply
-% described, the Hough transform as an abstraction of Bayesian schemes
-% starts with a model of the theory being measured, typically a model
-% that would ordinarily be treated {\it after\/} gathering the data by
-% applying least squares to choose the optimal parameters.  But in this
-% method, instead of thinking of, say, the model of a straight line
-% $\hat{\mathbf{n}}\cdot \mathbf{x} = d$ as an equation for the points
-% on a line $ \mathbf{x}_{i} = (x_{i},y_{i})$, we think of it as a
-% time-accumulating {\it set\/} of equations for the distance $d$ of the
-% nearest point on the line and the direction
-% $ \hat{\mathbf{n}} = (\cos \theta, \sin \theta)$ from the origin to
-% that point (the direction perpendicular to the line).  Thus each point
-% of {\it evidence\/}, $(x_{i},y_{i})$, produces an {\it equation in the
-%   parameter space\/} that is effectively a plot of all the possible
-% values of $d(\theta)$ as a function of the possible angular directions
-% $\theta$ pointing to the family of all possible lines.  A typical
-% result from a set of errorful (it is impossible to measure real
-% numbers, we recall) data measurements of points on a hypothetical
-% straight line is shown in Fig.~\ref{houghline.fig}.
-
-% The interesting step for us is now to realize that the {\it parameter
-%   curves\/} shown in the figure do not need, or indeed, must not, be
-% themselves infinitely precise real numbers, but they must themselves
-% incorporate in some way a theory consistent with forbidding absolute
-% precision.  In practice, then, the sinusoidal lines in Figure
-% \ref{houghline.fig} all become fuzzy, and the accumulation of these
-% fuzzy distributions produces peaks of likelihood around the values
-% $(d_0, \theta_0)$ that are the optimal choices for the line describing
-% the set of data.  Note that even {\it one\/} data point provides
-% evidence on a set of hypotheses. The simple analysis we have outlined
-% here is easily extended to much more complex situations in higher
-% dimensions (see, e.g.,~\cite{BallardGenHough1981}).  Our point here is
-% that essentially any physical theory that would ordinarily be
-% described by a mathematical model using infinite precision numbers is
-% potentially nonsensical from a computational point of view: computer
-% scientists know perfectly well, and have been dealing with since the
-% time of Turing and Shannon, that every single bit of precision in any
-% number has a cost, and that there is not enough energy in the universe
-% to compute even one general real number.  Thus the combination of
-% physical models that, in some intrinsic fashion, contain only
-% computable numbers, with theories of measurement and evidence in the
-% fashion of the Hough transform example we have just presented, could
-% contain the outline of entirely new ways of understanding what
-% mathematical models of the physical world and its measurement actually
-% could be.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Broader Impact and Education} 
-
-\noindent (A) {\em Integration of research and education:} Courses on
-advanced computational models and quantum information will be further
-developed at Indiana University to communicate the basic concepts and
-tools discussed in this proposal. Dr. Ortiz taught courses on
-``Quantum information and Computation'' and Dr. Sabry has taught
-courses on ``Quantum Computing'' for graduate students.  Dr.\ Hanson
-has taught courses on scientific visualization and mathematical
-modeling with emphasis on high-dimensional mathematics.  His numerous
-Siggraph course presentations are embodied in his 2006 book {\it
-  Visualizing Quaternions\/}~\cite{Hanson2006}, 
-which remains the definitive treatment
-of the subject for computer science and data analysis applications and
-has sold thousands of copies. As a part of Dr.\ Hanson's commitment to
-exposing and explaining the elements of higher mathematics to the
-public, he has recently led the design of a free iPhone App, {\it
-  4Dice\/}, that for the first time makes available an interactive
-treatment of a correctly imaged simulation of the appearance of a
-hypercube, realizing interactively his YouTube animation of the same
-name.  This framework is now being generalized for a broad family of
-iPhone Apps to permit the hands-on study of high-dimensional
-mathematics.  These courses were highly appreciated by the students as
-noted by their evaluations in making the material extremely accessible
-and interesting.  The PIs plan to engage high school students or
-undergraduates in the implementation of some of the ideas.  The PIs
-have a long standing commitment to K-12 science and math education
-(see also (C) below). The collaborative group efforts will provide
-students, as well as the PIs with a unique learning experience. The
-broadened perspectives gained through those efforts will contribute to
-the PIs effectiveness as teachers and mentors. They also will enable
-to better prepare students and postdocs for productive careers in an
-increasingly competitive global economy. Students and postdocs are
-encouraged to pursue collaborative research leading to a broader
-scientific program. This is highlighted by the PIs students' close
-contact with LANL, the Perimeter Institute, and the Institute for
-Quantum Computing at Waterloo.
-
-\medskip
-\noindent (B) {\em Broadening the participation of underrepresented groups:}
-Indiana University is engaged in attracting women and minorities in all
-ranks. Several programs are aimed at specifically attracting outstanding
-students into physics and computer science, and to expanding the pool of
-candidates for fellowships. Targeted recruitment of minority graduate
-students is facilitated by the Falicov Fellowship established in 2006. In
-recent years, the School of Informatics and Computing has been fortunate to
-hire several women and minorities for faculty positions, and we have been
-working toward increasing the number of women and minorities among our
-student population. To assist with this process, the PIs will encourage women
-and minorities to apply for graduate positions as well as undergraduate
-positions that may be made available by the grant and REU
-supplements. Dr. Ortiz has minority students and Dr. Sabry has graduated a
-female Ph.D. in 2005 and is currently assisting on the Ph.D. committees of
-several others. 
-
-\medskip
-\noindent (C) {\em Enhancing infrastructure and outreach:} Dr. Ortiz
-has pursued broad outreach by giving talks on astronomy/astrophysics
-in the local schools at Bloomington, Indiana, and by an interview in
-the public radio on quantum information. Dr. Ortiz is also guiding a
-high school student in work on interferometry in two and three slit
-experiments. Dr. Ortiz also guides undergraduate research. All source
-code produced by this project will be made freely available via the
-web, and the results will be disseminated via technical reports,
-conference papers, and journal articles.  The software and concepts we
-have developed in the past have been employed by a wide variety of
-commercial and noncommercial users.  Thus, we expect that the
-successful completion of the proposed research will contribute to the
-understanding of quantum and semi quantum computation. The educational
-benefits that will flow from this proposal will extend beyond the
-students of the participating research groups. The knowledge gained
-through participation in the proposed research will further strengthen
-the effectiveness of these outreach activities.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{PI Team and Prior NSF Support} 
-
-\paragraph*{PI Team.} Over the past several years, the PIs, together
-with other IU faculty members and students, have formed a group whose
-main interest is the study of paradigms of computing that either arise
-in nature or are inspired by natural phenomena. The PIs are especially
-interested in how the laws of physics can inspire and guide our
-abstract computational models, as well as exposing new insights into
-the computational framework behind the natural world and the
-computability of physical theory. Our group has been active in several
-areas related to the theory behind quantum computation. Particular
-areas include: mathematical foundations of quantum computation and
-complexity~\cite{AGVS2005,VAS2006}, adiabatic quantum computing,
-quantum logic, classical and quantum reversible programming
-languages~\cite{Sabry:2003:MQC:871895.871900}, analog computation and
-its limits, and optical computing. During the past several years, our
-discussions have revolved around formulating variants of quantum
-mechanics that are computable and that are as close to possible to
-classical computing. Several preliminary results have emerged from our
-collaboration~\cite{usat,finiteQC,geometry2013,DQT2014}, and the group
-is very excited about the potential implications of those
-results. This proposal brings forth a particular aspect of this
-programme related to its applications to problem areas that have
-traditionally been outside the conceptual framework of quantum
-mechanics and programming language research. This proposal, if funded,
-will give our group more recognition within the university which, at
-this point, is committed to generously funding several ``emerging
-areas of research''. With the establishment of a new Intelligent
-Systems Engineering at Indiana University with a focus nanoscale
-sensors and quantum engineering and the recent hires in Physics in
-experimental atomic physics, ion-trap quantum simulation, computation,
-and measurement, the PI group is in an excellent position to receive
-additional funding from the University to reach a critical mass of
-quantum information researchers.
-
-\paragraph*{Prior Support.} There was no recent NSF support for
-Dr. Ortiz. In the past five years, Dr. Sabry received one NSF grant
-(award number 1217454) titled \emph{Information Effects} for the
-amount of \$275,319.00 with start and end dates of 1 September 2012 --
-31 August 2016.
-
-\paragraph*{Intellectual Merit.} Computing is about processing
-information. Physically speaking, information, like energy, is a
-resource that obeys a conservation principle: information can never be
-created nor destroyed; it is just transformed. Traditional models of
-computation, however, have not embraced this conservation of
-information as an explicit principle. Instead this principle appears,
-after the fact, in applications such as information-flow security
-which treats the amount of information released to the environment as
-a possible security leak and such as differential privacy which
-intentionally releases some random information to the user to confuse
-potential attackers. This project has instead embraced the principle
-of conservation of information as a key foundation for the design of
-computational models. In one perspective, computation in these models
-is constructed from reversible transformations that act on topological
-spaces, deforming them, stretching them, and shrinking them but never
-cutting nor glueing. The first main result of this project was the
-design and implementation of a programming language which captures
-these ideas and realizes them in the context of the new foundational
-framework of Homotopy Type Theory. This framework combines ideas from
-mathematics, logic, physics, and computation in a way that accounts
-for a newly-recognized higher-dimensional structure of types. This
-idea enabled us to not only represent programs as reversible
-deformations but also to represent the reversible deformations
-themselves as higher-level programs implementing reversible
-optimizations of the underlying lower-level programs. In a second
-breakthrough, viewing the higher-level programs as distinct proofs of
-reversibility enabled the definition of types whose natural
-cardinality is fractional. Having computations that manipulate
-fractional types opens the door for a rich and novel class of
-applications in which resource creation and resource use are
-separated. This idea brings speedups and convenience in a way that is
-similar to the speedup and convenience brought by the use of credit
-cards to complete transactions without necessarily having the money at
-hand: the monetary resource can be consumed by the merchant and only
-later be reconciled by the buyer.
-
-\paragraph*{Broader Impacts.} The idea of reversible computation and
-its connection to quantum mechanics is at the heart of one of the
-deepest mysteries in the universe. Any progress or theory that
-explains physical principles computationally is likely to change our
-worldview impacting everything from philosophy and religion to all
-conventional sciences. The project resulted in the graduation of one
-Ph.D. student with another one expected to graduate in Spring 2017,
-the current supervision of two additional Ph.D. students, the
-graduation of an MS student, and the hosting of a visiting scholar.
-
-\paragraph*{Publications.} Several papers were published to report on
-the results. On the foundational side, we have the following papers:
-\begin{enumerate}
-\item Computing with Semirings and Weak Rig Groupoids, ESOP, 2016
-\item Superstructural Reversible Logic, Workshop on Linearity, 2014
-\item Theseus: A High Level Language for Reversible
-  Computing. Work-in-Progress report, RC 2014
-\item Discrete Quantum Theories, J. Phys. A: Math. Theor. 2014.
-\item Geometry of Discrete Quantum Computing, J. Phys. A:
-  Math. Theor. 2013.
-\item Isomorphic Interpreters from Logically Reversible Abstract
-  Machines. RC 2012. 
-\end{enumerate}
-On the applications side, we have the following papers: 
-\begin{enumerate}
-\item Copredication in Homotopy Type Theory: A homotopical approach
-  for formal semantics of natural languages. Workshop on Natural
-  Language and Computer Science, 2016.
-\item Contract Monitoring Semantics as Patterns of
-  Communication. ICFP, 2015.
-\item Extensible Effects: An Alternative to Monad
-  Transformers. Haskell Symposium, 2013.
-\item Encoding Secure Information Flow with Restricted Delegation and
-  Revocation in Haskell. Workshop on Functional Programming Concepts
-  in Domain-Specific Languages, 2013
-\end{enumerate}
-In addition to the publications, Dr. Sabry and collaborators maintain
-a public repository with software related to the project. Dr. Sabry
-was also invited to give talks at several venues, most notably:
-\begin{itemize}
-\item Colloquiumfest, University of Saskatchewan, Canada, 2014
-\item Workshop on Quantum Information and Foundations of Quantum
-  Mechanics, University of British Columbia, Vancouver, Canada, 2013
-\end{itemize}
-
-% (d) a listing of the publications resulting from the NSF award (a
-% complete bibliographic citation for each publication must be provided
-% either in this section or in the References Cited section of the
-% proposal); if none, state "No publications were produced under this
-% award."
-
-% (e) evidence of research products and their availability, including,
-% but not limited to: data, publications, samples, physical collections,
-% software, and models, as described in any Data Management Plan; and
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
