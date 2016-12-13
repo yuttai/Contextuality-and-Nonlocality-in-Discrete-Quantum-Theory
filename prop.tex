@@ -43,92 +43,85 @@
 \maketitle 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction} 
+\section{Introduction}
 
 This is a \emph{theoretical} investigation of \emph{experimental}
-physics using \emph{computational} methods. All experiments and
-computations are processes bounded in space, time, energy, and other
-resources. Yet, for centuries, the mathematical formalization of such
-processes has been founded on the infinitely precise real or complex
-numbers. Indeed, almost every description of quantum mechanics,
-quantum computation, or quantum experiments refers to entities such as
-$e$, $\pi$, $\sqrt{2}$, etc. From a computational perspective, such
-numbers do not exist in their entirety ``for free.''  For example, the
-state of the art algorithms for computing the $n$th binary digit of~$\pi$
-require on the order of $O(n\log^{O(1)}(n))$
+physics using \emph{computational} methods. All experiments and computations
+are processes bounded in space, time, energy, and other resources~\cite{Jaeger2007,Piccinini2015}.
+Yet, for centuries, the mathematical formalization of such processes
+has been founded on the infinitely precise real or complex numbers~\cite{Ziegler2007,weihrauch2012computable,blum2012complexity}.
+Our purpose here is to exploit the consequences of replacing infinitely-specified
+quantum probabilities by finite number of intervals used in interval-valued
+probability measures~(IVPM); in particular, we show that a quantum
+interval-valued probability measure may not be induced by a infinitely-precise
+state, but it might be more and more likely to be identified to a
+particular state when the measurement resources increase.
+
+Indeed, almost every description of quantum mechanics, quantum computation,
+or quantum experiments refers to entities such as $\rme$, $\pi$,
+$\sqrt{2}$, etc (see, e.g., \cite{Redhead1987-REDINA,544199,Mermin2007}).
+From a computational perspective, such numbers do not exist in their
+entirety ``for free~\cite{Kent1999,CliftonKent2000}.'' For example,
+the state of the art algorithms for computing the $n$th binary digit
+of~$\pi$ require on the order of $O\left(n\log^{O\left(1\right)}\left(n\right)\right)$
 operations~\cite{journals/moc/BaileyBP97}. In other words, simply
 referring to the $n$th digit of $\pi$ requires more and more resources
-as $n$ gets larger. Taking such resource bounds into consideration is
-what founded computer science as a discipline and is crucial for
-understanding the very nature of computation and, following
-Feynman~\cite{Feynman1982Simulating}, Landauer~\cite{Landauer1996188},
-and others, for understanding the very nature of physical processes.
+as $n$ gets larger. Taking such resource bounds into consideration
+is what founded computer science as a discipline and is crucial for
+understanding the very nature of computation and, following Feynman~\cite{Feynman1982Simulating},
+Landauer~\cite{Landauer1996188}, and others, for understanding the
+very nature of physical processes.
 
-We propose to revisit quantum mechanics, quantum information, and
+We have been revisiting quantum mechanics, quantum information, and
 quantum computation from this resource-aware perspective. Our initial
-results in that domain showed how subtle the issues can
-be~\cite{usat,geometry2013,DQT2014}: a straightforward replacement of
-the complex numbers by a finite field yields a variant of quantum
-mechanics in which computationally hard problems like UNIQUE-SAT
-(which decides whether a given Boolean formula is unsatisfiable or has
-exactly one satisfying assignment) can be deterministically solved in
-constant time. To eliminate such unrealistic theories requires
-delicate analysis of the structure of the Hilbert space, the process
-of observation, and the notion of probability teasing apart their
-reliance on the infinitely precise real
-numbers~\cite{geometry2013,DQT2014}. In this proposal, our aim is to
-shift focus from the infinitely-specified but not directly observable
-quantum states, to observable measurable properties of quantum systems
-and their probabilities. Furthermore, we insist that our theories of
-measurement and probability only refer to finitely communicable
-evidence within feasible computational bounds. It follows that states,
-observations, and probabilities all become ``fuzzy'', i.e., specified
-by intervals of confidence that can only increase in precision if the
-available resources increase proportionally. Our notion of ``fuzzy
-quantum mechanics'' is related to existing
-work~\cite{GranikCaulfield1996,Pykacz2013,SNL2009,Gudder2005,aerts1993physical}
+results in that domain showed how subtle the issues can be~\cite{usat,geometry2013,DQT2014}:
+a straightforward replacement of the complex numbers by a finite field
+yields a variant of quantum mechanics in which computationally hard
+problems like UNIQUE-SAT (which decides whether a given Boolean formula
+is unsatisfiable or has exactly one satisfying assignment~\cite{Valiant198685,Papadimitriou1993,AroraBarak2009})
+can be deterministically solved in constant time. To eliminate such
+unrealistic theories requires delicate analysis of the structure of
+the Hilbert space, the process of observation, and the notion of probability
+teasing apart their reliance on the infinitely precise real numbers~\cite{geometry2013,DQT2014}. 
+
+In this paper, we shift focus from the infinitely-specified but not
+directly observable quantum states, to observable measurable properties
+of quantum systems and their probabilities. Furthermore, we insist
+that our theories of measurement and probability only refer to finitely
+communicable evidence within feasible computational bounds. It follows
+that states, observations, and probabilities all become ``fuzzy'',
+i.e., specified by intervals of confidence that can only increase
+in precision if the available resources increase proportionally. Our
+notion of ``fuzzy quantum mechanics'' is related to existing work~\cite{GranikCaulfield1996,Pykacz2013,SNL2009,Gudder2005,aerts1993physical}
 but, as will be explained in more detail, is distinguished by its
 unique computational character.
 
-We will begin by reviewing existing work that recasts classical
-probability spaces in a resource-aware setting and move to our
-proposal which, briefly speaking, aims at recasting quantum
-probability and hence quantum measurement to a corresponding
-resource-aware setting.
+We will begin by reviewing existing work that recasts classical probability
+spaces in a resource-aware setting and move to aim at recasting quantum
+probability and quantum measurement. In particular, we develop a measurement
+framework based on quantum IVPM. Surprisingly, we found a quantum
+IVPM which can not be induced by a state, while Shapley proved a classical
+convex IVPM can always be induced by a classical ``state''~\cite{Shapley1971,Grabisch2016},
+and Gleason proved a infinitely-specified quantum probabilities measure
+can always be induced by a quantum state~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
+Nevertheless, a quantum IVPM could still correspond to many possible
+states if it is broken into pieces. Our examples also suggest that
+a quantum IVPM could be more and more likely induced by a state while
+the intervals become sharper, i.e., the measurement resources increase.
 
-In particular, the objectives to be achieved include:
-\begin{itemize}
-\item A computational framework for quantum measurement where quantum
-  systems are described in terms of interactive processes. The
-  framework takes care of the resources required (including the ones
-  related to the observer) to determine a given property of the
-  measured system.
-\item Develop a measurement framework based on quantum interval-valued
-  probabilities measures.
-\item Assess the validity of fundamental theorems of quantum
-  mechanics, such as Gleason, Bell, and Kochen-Specker, in a quantum
-  formulation stripped away of infinite resources. We will aim to
-  provide a definite answer to the Meyer-Mermin
-  debate~\cite{PhysRevLett.83.3751, Mermin1999, BarrettKent2004} on
-  the impact of finite precision measurements on the relevance of the
-  Kochen-Specker
-  theorem~\cite{kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007}.
-\item Study the computational complexity of quantum theories and
-  simulations based on discrete (computable) fields.
-\item Study the problem of finding a complete set of mutually unbiased
-  bases
-  (SIC-POVM)~\cite{1751-8121-45-8-085306,1751-8121-47-33-335302,Caves2002}
-  over finite Galois fields.
-\end{itemize}
-We argue that no matter what the results are their impact will be
-strong. Positive results that formulate a computable, with clear
-resource bounds, theory of quantum measurement and quantum probability
-would be essential for understanding and realizing quantum
-computation. Any negative results would redirect research that aims at
-realizing quantum computation to other approaches. At an intellectual
-level, the results have the potential to solve or clarify several
-paradoxes in quantum mechanics, quantum information, computability,
-complexity theory, and perhaps quantum gravity.
+Since Gleason's theorem supports the idea of von Neumann to define
+a state as a density matrix~\cite{Varadarajan2008}, a density matrix
+might not be a adequate imprecise quantum state. Instead, a imprecise
+quantum state might be more like an interactive system suggested by
+Quantum Bayesianism or QBism~\cite{Fuchs2010,VonBaeyer2016,Fuchs2012},
+which would interact differently with different clients. Furthermore,
+the validity the fundamental theorems of quantum mechanics followed
+up by Gleason's theorem, such as Bell~\cite{BellBook1987,Redhead1987-REDINA,peres1995quantum,Jaeger2007}
+and Kochen-Specker~\cite{kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007},
+might need to be reassessed based on our imprecise measurement. Our
+research then might provide a new insight to the old debate among
+Meyer, Mermin, and others about  whether finite precision measurement
+would nullify the Kochen-Specker theorem or not~\cite{PhysRevLett.83.3751,Mermin1999,BarrettKent2004}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Classical Probability}
@@ -802,16 +795,14 @@ rule.
 If we insist that probabilities cannot be computed to infinite precision
 and are bound to be approximations represented by intervals of confidence,
 then quantum states themselves can only be discussed within intervals
-of confidence. Despite the fact that a classical interval-value probability
-measure could always correspond to some classical ``real'' infinitely-precise
-probability measure, we found that there may be no ``real'' infinitely-precise
-quantum state that is being approximated by a quantum interval-value
-probability measure as a whole. However, if we break a quantum interval-valued
-probability measure into pieces, each piece might still be induced
-by some quantum states. Moreover, our examples and Gleason's theorem
-suggests that as the measurement resources increase, an entire interval-valued
-probability measure could more and more likely be identified to a
-particular state as shown in table~\ref{table_long}. 
+of confidence. Despite the fact that classically a IVPM could always
+correspond to a real-valued probability measure, we found that there
+may be no ``real'' infinitely-precise quantum state approximated
+by a quantum IVPM as a whole. However, if a quantum IVPM is decomposed
+into pieces, each piece might still be induced by a quantum state.
+Moreover, our examples and Gleason's theorem summarized in table~\ref{table_long}
+suggests that as the measurement resources increase, an entire quantum
+IVPM could more and more likely be identified to a particular state.
 \begin{table}[ht]
 \center{%
 \begin{tabular}{c|cccc}
@@ -820,7 +811,7 @@ Measurement resources & Lowest & \multicolumn{2}{c}{$\longleftrightarrow$} & Hig
 Count of $\mathscr{I}$ & $3$ & $4$ & \ldots{} & $\infty$\tabularnewline
 $\sup_{\left[l,r\right]\in\mathscr{I}}\left|r-l\right|$ & $1$ & $\frac{1}{2}$ & \ldots{} & $0$\tabularnewline
 Count of $\mathrm{core}\left(\bar{\mu}\right)$ & 0 & 0 &  & 1\tabularnewline
-Count of states might correspond to $\bar{\mu}$ & $3$ & $2$ & \ldots{} & $1$\tabularnewline
+Count of states correspond to pieces of $\bar{\mu}$ & $3$ & $2$ & \ldots{} & $1$\tabularnewline
 \hline 
 How precise we could identify a state? & Coarse & \multicolumn{2}{c}{$\longleftrightarrow$} & Precise\tabularnewline
 \end{tabular}}\caption{Relation between measurement resources and interval-valued probability
@@ -829,33 +820,28 @@ measures}
 \end{table}
 Additional work is in progress on the following research questions:
 \begin{description}
-\item [{Research Question.}] Confirm that there is always an interval-valued
-probability measure with an empty-core if the length of the interval
-is bigger than zero. 
-\item [{Research Question.}] In example~\ref{ex:three-dimensional-three-value}
-and \ref{ex:three-dimensional-4-value}, we pick a possible candidate
-corresponding to an interval-valued probability measure by only considering
-the state whose interval-valued probability is $\necess$. Find a
-general method which could be used to determine whether an interval-valued
-probability measure is closer to the Born rule or not. 
+\item [{Research Question.}] Confirm that there is always a quantum IVPM
+with an empty-core if the length of the intervals is bigger than zero. 
+\item [{Research Question.}] Find a general method to determine how a
+quantum IVPM is close to the Born rule. 
 \item [{Research Question.}] Confirm that as the number and precision
-of the intervals increase the quantum interval-valued probability
-measure converges to the measure induced by the Born rule. 
+of the intervals increase the quantum IVPM converges to the measure
+induced by the Born rule. 
 \item [{Research Question.}] Investigate the status of the theorems of
-Gleason, Bell~\cite{BellBook1987,Redhead1987-REDINA,peres1995quantum,Jaeger2007}
-and Kochen-Specker for quantum interval-valued probability measures.
+Bell and Kochen-Specker for quantum IVPM.
 \end{description}
-Although we tried to induce a quantum interval-valued probability
-measure from a real quantum state, our investigation leaves an open
-question of whether there exists a ``real'' entity that exists independently
-of measurements and probabilities. This idea is consistent with the
-elegantly recent work on Quantum Bayesianism or QBism~\cite{Fuchs2010,VonBaeyer2016,Fuchs2012},
-which suggests that the quantum state is more like an interactive
-system in computer science parlance. Moreover, the quantum state is
-subjective: each observer has a different view of the quantum system
-that is consistent with their previous observations and that allows
-that observer, independently of other observers, to assign beliefs
-(i.e., probabilities) to possible future interactions.
+Although we discussed how a quantum IVPM could be induced from a real
+quantum state, our investigation leaves an open question of whether
+there exists a ``real'' entity that exists independently of measurements
+and probabilities. The possibility of no ``real'' underlying state
+is consistent with the elegantly recent work on Quantum Bayesianism
+or QBism~\cite{Fuchs2010,VonBaeyer2016,Fuchs2012}, which suggests
+that the quantum state is more like an interactive system in computer
+science parlance. In another word, the quantum state is subjective:
+each observer has a different view of the quantum system that is consistent
+with their previous observations and that allows that observer, independently
+of other observers, to assign beliefs (i.e., probabilities) to possible
+future interactions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage{}%
