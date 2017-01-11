@@ -1,20 +1,36 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
+#LyX file created by tex2lyx 2.2
 \lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin unavailable
+\origin C:/Users/Yu-Tsung/workspace/Contextuality-and-Nonlocality-in-Discrete-Quantum-Theory/Rethinking Foundations of Physics 2017/
 \textclass article
 \begin_preamble
+\usepackage{mathrsfs}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newcommand{\lyxaddress}[1]{
+\par {\raggedright #1
+\vspace{1.4em}
+\noindent\par}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage[ backend=biber]{biblatex}
-%\addbibresource{../proposal/prop.bib}
-\addbibresource{C:/Users/Yu-Tsung/workspace/Contextuality-and-Nonlocality-in-Discrete-Quantum-Theory/proposal/prop.bib}
+\addbibresource{../proposal/prop.bib}
+\addbibresource{cites1.bib}
+%%\addbibresource{C:/Users/Yu-Tsung/workspace/Contextuality-and-Nonlocality-in-Discrete-Quantum-Theory/proposal/prop.bib}
+%%\addbibresource{"../proposal/prop.bib"}
+%%\addbibresource{prop.bib}
 \ExecuteBibliographyOptions{sorting=none,maxbibnames=5,doi=false,isbn=false,url=false}
 \usepackage{fullpage}
 \usepackage{amsthm}
 \usepackage{mathrsfs}
 \usepackage{bbold}
 \usepackage{wesa}
+
 
 
 \theoremstyle{remark}
@@ -38,6 +54,10 @@
 \newcommand{\Tr}{\mathop{\mathrm{Tr}}\nolimits}
 \newcommand{\rme}{\mathrm{e}}
 \newcommand{\rmi}{\mathrm{i}}
+
+
+
+
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -58,7 +78,7 @@
 \graphics default
 \default_output_format default
 \output_sync 0
-\bibtex_command biber
+\bibtex_command default
 \index_command default
 \paperfontsize default
 \spacing single
@@ -118,7 +138,7 @@ Department of Mathematics and School of Informatics and Computing
 \begin_inset Newline newline
 \end_inset
 
-Indiana University, Bloomington
+ Indiana University, Bloomington
 \end_layout
 
 \begin_layout Section
@@ -126,23 +146,682 @@ Statement of Motivation
 \end_layout
 
 \begin_layout Standard
-It is widely believed that the Turing machine is equivalent to any reasonable
- computational models.
- Yet, for centuries, the mathematical formalization of physical processes
- has been founded on the infinitely precise real or complex numbers
+Physical processes are ultimately bounded in space, time, energy, and other resources. Yet, for centuries, the mathematical formalization of such processes has been founded on the infinitely precise real or complex numbers. Indeed, physics textbooks casually refer to entities such as 
+\begin_inset Formula $e$
+\end_inset
+
+, 
+\begin_inset Formula $\pi$
+\end_inset
+
+, 
+\begin_inset Formula $\sqrt{2}$
+\end_inset
+
+, etc. From a computational perspective, such numbers do not exist in their entirety 
+\begin_inset Quotes eld
+\end_inset
+
+for free.
+\begin_inset Quotes erd
+\end_inset
+
+ For example, the state of the art algorithms for computing the 
+\begin_inset Formula $n$
+\end_inset
+
+th binary digit of
 \begin_inset space ~
+
+\end_inset
+
+
+\begin_inset Formula $\pi$
+\end_inset
+
+ require on the order of 
+\begin_inset Formula $O(n\log^{O(1)}(n))$
+\end_inset
+
+ operations
+\begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
+key "journals/moc/BaileyBP97"
+
+\end_inset
+
+. In other words, simply referring to the 
+\begin_inset Formula $n$
+\end_inset
+
+th digit of 
+\begin_inset Formula $\pi$
+\end_inset
+
+ requires more and more resources as 
+\begin_inset Formula $n$
+\end_inset
+
+ gets larger. Taking such resource bounds into consideration is what founded computer science as a discipline and is crucial for understanding the very nature of computation and, following Feynman
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "Feynman1982Simulating"
+
+\end_inset
+
+, Landauer
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "Landauer1996188"
+
+\end_inset
+
+, and others, for understanding the very nature of physical processes.
+\end_layout
+
+\begin_layout Quote
+We therefore believe that the foundations of physics must be revisited from a computational perspective that only allows finitely-communicable evidence 
+\emph on
+and
+\emph default
+ accounts for the resources needed to calculate, store, and communicate such evidence. 
+\end_layout
+
+\begin_layout Standard
+\noindent
+This marriage of quantum mechanics and computer science first envisioned and popularized by Feynman has created an awkward, but opportune, moment. The embarrassing dilemma was concisely described by Aaronson as follows
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "AaronsonArkhipov2011,BFRDARW2013"
+
+\end_inset
+
+. Consider the following three statements: 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+(A)
+\end_layout
+
+\end_inset
+
+Textbook quantum mechanics is correct. 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+(B)
+\end_layout
+
+\end_inset
+
+There does not exist an efficient classical factoring algorithm. 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+(C)
+\end_layout
+
+\end_inset
+
+The extended Church-Turing thesis — that probabilistic Turing machines can efficiently simulate any physically realizable model of computation — is correct
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "BernsteinVazirani1997,Kaye2007"
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Standard
+There is overwhelming evidence to support each of these statements. The theoretical framework of quantum mechanics (A) has withstood decades of experimental confirmation. Entire industries are founded on the assumption (B) that algorithms like RSA are secure and they also have withstood years of attempted attacks
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "boneh1999twenty,wiki:RSAFactoring"
+
+\end_inset
+
+. Finally the entire field of complexity theory in computer science which has also withstood years of field testing rests, in essence, on assumption (C)
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "Aaronson2005,Piccinini2015"
+
+\end_inset
+
+. And yet at least one of these three statements 
+\emph on
+must be false
+\emph default
+! Indeed if textbook quantum mechanics is false we concede (A). If it is correct Shor's efficient factoring algorithm is realizable. If there is a corresponding efficient classical factoring algorithm then we concede (B). If not then we concede
+\begin_inset space ~
+
+\end_inset
+
+(C).
+\end_layout
+
+\begin_layout Standard
+It is unlikely that there will be a simple a resolution to this awkward situation. It is more likely that the resolution will emerge from deep and careful analyses of the foundations of each field. As the world-renowned logician Girard states, the foundations of physics and the foundations of logic and computation appear strongly correlated: 
+\end_layout
+
+\begin_layout Quote
+In other terms, what is so good in logic that quantum physics should obey? Can't we imagine that our conceptions about logic are wrong, so wrong that they are unable to cope with the quantum miracle? [\SpecialChar ldots
+] Instead of teaching logic to nature, it is more reasonable to learn from her. Instead of interpreting quantum into logic, we shall interpret logic into quantum
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "MSC:1444836"
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Proposed Question
+\end_layout
+
+\begin_layout Standard
+The meaning of quantum probability
+\end_layout
+
+\begin_layout Standard
+The reality of the quantum state
+\end_layout
+
+\begin_layout Standard
+— next section
+\end_layout
+
+\begin_layout Standard
+The meaning of quantum probability: probability is approximate; intervals; Born; no state when approximation is bad.
+\end_layout
+
+\begin_layout Standard
+quantum state: Bayesian perspective; probability is subjective; hence state is subjective; given previous results that show that state does not exist when you have poor approximations; ?
+\end_layout
+
+\begin_layout Standard
+In contrast to our previous works that assume the current quantum theory is just an approximation to the discrete reality, we now assume the nature really use real numbers. However, these real numbers could not be directly accessed by human who is bounded by finite resources. Therefore, even if the nature might have more computational power than a Turing machine, human might not be able to acquire and use the computational power more than a Turing machine.
+\end_layout
+
+\begin_layout Standard
+In order to model the bounded-resource human observers, we would like the theories of measurement and probability replaced by a subjective probability model, called the interval-valued probability. The question is how quantum mechanics would like with the interval-valued probability.
+\end_layout
+
+\begin_layout Standard
+In particular, based on conventional probability, Gleason's theorem
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "gleason1957,Redhead1987-REDINA,peres1995quantum"
+
+\end_inset
+
+ suggests that idea to define a state as a density matrix
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "Varadarajan2008"
+
+\end_inset
+
+. Since Gleason's theorem could not directly apply on interval-valued probability measures, we would like to ask: How a quantum state looks like with the interval-valued probability? When the number and precision of the intervals increase, would the quantum interval-valued probability measures converge to the quantum probability measure induced by the Born rule
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "Born1983,Mermin2007,Jaeger2007"
+
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Section
+Kick-off Talk
+\end_layout
+
+\begin_layout Standard
+In previous work, we examined the Hilbert space mathematical framework of quantum mechanics and teased apart its various aspects that directly rely on the infinite-precision real or complex numbers. We note two remarkable earlier results and an open question: 
+\end_layout
+
+\begin_layout Itemize
+UNIQUE-SAT: Schumacher and Westmoreland
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "Schumacher2012-SCHMQT"
+
+\end_inset
+
+ argue that much of the structure of traditional quantum mechanics is maintained in the presence of finite fields. In particular, they establish that the quantum theory based on the finite field of booleans retains the following characteristics of quantum mechanics: the notions of superposition, interference, entanglement, and mixed states of quantum systems; the time evolution of quantum systems using invertible linear operators; the complementarity of incompatible observables; the exclusion of local hidden variable theories and the impossibility of cloning quantum states; and the presence of natural counterparts of quantum information protocols such as superdense coding and teleportation. However we have argued that this theory is not physically realizable as it allows the solution of computationally difficult problems like UNIQUE-SAT
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "Valiant198685"
+
+\end_inset
+
+ in constant time
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "usat"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Deutsch-Jozsa: In a follow-up paper
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "DQT2014"
+
+\end_inset
+
+, we proposed a variant of quantum mechanics in which the underlying field of complex numbers is replaced by special finite fields with enough structure to model Hermitian products that 
+\emph on
+locally
+\emph default
+ behave like inner products. The trick is to recognize that, as the characteristic of the finite field increases, larger and larger regions of the finite field become totally ordered, thereby restoring, with some restrictions, all the usual properties of the inner product needed for conventional quantum mechanics. Using this theory to analyze the Deutsch-Jozsa algorithm reveals that the characteristic of the finite field plays an essential role: as the size of the finite field grows, so does the numerical range of the intermediate and final results of the algorithms being implemented. The theory naturally recovers a deterministic measure of the intrinsic resources required for a given level of complexity; this measure is normally completely hidden in computations with real numbers, and explicitly exposing it is one of the significant achievements of our discrete field analysis of quantum computation. This solves the conundrum that the conventional Deutsch-Jozsa algorithm
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "DeutschJozsa1992,Jaeger2007"
+
+\end_inset
+
+ mysteriously continues to work for larger and larger input functions without any apparent increase in resources. Our analysis of this problem reveals that as the size of the input increases, it is necessary to increase the size of the finite field and hence the size of the underlying available numeric coefficients. This observation does not fully explain the power of quantum computing over classical computing, but at least it explains that some of the power of quantum computing depends on increasingly larger precision in the underlying field of numbers.
+\end_layout
+
+\begin_layout Itemize
+An important special case of a generalized measurement is the symmetric, informationally complete, positive operator valued measure (SIC-POVM), which has applications in quantum cryptography. This problem has been formulated in the context of standard quantum theory where fields are complex numbers. Although a rigorous proof for the existence of SIC-POVMs for arbitrary Hilbert space dimensions is still missing, it would be illuminating to look for a formulation of the same problem in a discrete quantum theory defined in terms of finite Galois fields. 
+\end_layout
+
+\begin_layout Standard
+A long term, ultimate, goal of this research proposal would be to combine the various pieces into a coherent computational model of quantum mechanics that keeps explicit track of resources needed to represent the interactive system representing the quantum state, its evolution, the observables, and the probabilities. Such a computational model of quantum mechanics would encompass classical (reversible) computation and potentially revolutionize quantum thinking with finite resources. The explicit manipulation of resources enables one of key idea that emerged in our previous work: the resources used to represent the quantum system are in principle unrelated to the resources available to the various observers. We conjecture that this asymmetry may prove key to resolving some of the quantum paradoxes. The nature of quantum mechanics realized in terms of discrete fields and finitely-communicable probability estimates is amenable to direct computational exploration for reasonable field sizes and observational accuracy. We have established a set of utility libraries in Mathematica that supports a wide variety of such numerical experiments. Concurrently to this effort, we are also building on our previous work
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "VDS2009,AGVS2005,VAS2006,finiteQC,Sabry:2003:MQC:871895.871900"
+
+\end_inset
+
+ to build semantically well-founded implementations of the computational models investigated in this proposal.
+\end_layout
+
+\begin_layout Paragraph*
+Research Questions.
+\end_layout
+
+\begin_layout Standard
+The aim of these implementations include: 
+\end_layout
+
+\begin_layout Itemize
+Provide an experimental testbed to simulate physical phenomena (e.g.
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "OrtizEtAl2001,SommEtAl2002"
+
+\end_inset
+
+) that complements the Mathematica libraries in which quantum algorithms can be simulated; 
+\end_layout
+
+\begin_layout Itemize
+Establish connections between quantum programming concepts and classical programming concepts. We plan to make our software available for educational and research purposes; and 
+\end_layout
+
+\begin_layout Itemize
+Analyze the computational complexity of quantum theories and simulations based on discrete fields. What other (apart from UNIQUE-SAT) supernatural algorithms can be implemented in computational models based on discrete fields? 
+\end_layout
+
+\begin_layout Itemize
+Determine, through numerical computations, solutions for SIC-POVM for small vector space dimensions. 
+\end_layout
+
+\begin_layout Standard
+propose to revisit quantum mechanics, quantum information, quantum computation, and the foundations of physics from this resource-aware perspective.
+\end_layout
+
+\begin_layout Standard
+Soon after the discovery of quantum effects in the early 1900s, it became evident that the quantum world requires a fresh worldview, not merely an extension of the repertoire of entities and constructions which explain classical physics. In the past thirty years, however, the first quantum revolution mostly relied on just that: extensions of classical logics, classical models of computation, and classical analysis of algorithms. Fundamentally, the foundations of logic and computing still embrace, to a large extent, the notion that the truth of a statement is 
+\begin_inset Quotes eld
+\end_inset
+
+absolute
+\begin_inset Quotes erd
+\end_inset
+
+ and independent of any reasoning, understanding, or action, i.e., logical statements are viewed as abstract entities for which it makes no sense to talk about entanglement with an observer: their truth or falsity is absolute and does not depend on the notion of observation. This absolute view of truth and the use of classical logic for reasoning about this absolute truth have both been critiqued for centuries by philosophers and other scientists but it is the advent of quantum science that really devastates this worldview of classical determinism. Indeed, quantum science suggests that the properties of physical systems can only be learned by observers interacting with the system, and that this interaction may entangle the observer with the system and disturb the properties of interest. This suggests that the possibility structure of our universe is not a fixed, Boolean structure, as we supposed classically, but is in fact a non-Boolean structure that changes dynamically
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "bub2006"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We believe that the foundations of physics should be revisited from a logical and computational approach
+\end_layout
+
+\begin_layout Standard
+More directly, world-renowned logician Girard states: Our vision for this revised computational and logic theory builds upon programming abstractions which assume evolving, incomplete, and inconsistent data, and principles for reasoning about programs which are based on finitely communicable evidence between subsystems or systems and observers, rather than absolute truth. The most natural way to achieve this shift in our 
+\begin_inset Quotes eld
+\end_inset
+
+computational thinking
+\begin_inset Quotes erd
+\end_inset
+
+ and to consolidate many of the new promising trends in computational, informational, and logical theory is to design new programming models. For it is indeed a widely accepted thesis that programming languages shape thought processes and design solutions
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "iverson80,johansen-berg01"
+
+\end_inset
+
+. Our approach therefore is to develop new programming models based on both logical foundations and pragmatic considerations, to connect them to current computational, informational, and logical theory, and to make compelling arguments for the models by using them to write several novel and challenging applications.
+\end_layout
+
+\begin_layout Standard
+There is significant IU expertise in logic foundations, including unconventional logics such paraconsistent logics, relevance logic, multivalued logic with Bayesian inference, situation theory, and the Dempster-Shafer theory of belief functions and plausible reasoning, which can handle incomplete, evolving, and inconsistent information in a controlled and discriminating way. There is also significant IU expertise in the design and implementation of programming models, type theories, and semantics that encompass both the classical and quantum worlds. What IU lacks in expertise is an expert that bridges the programming models with actual quantum algorithms: this is a new breed of theoreticians with a strong background in both physics, complexity theory, and cryptography.
+\end_layout
+
+\begin_layout Standard
+Our initial results in that domain showed how subtle the issues can be
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "usat,geometry2013,DQT2014"
+
+\end_inset
+
+: a straightforward replacement of the complex numbers by a finite field yields a variant of quantum mechanics in which computationally hard problems like UNIQUE-SAT (which decides whether a given Boolean formula is unsatisfiable or has exactly one satisfying assignment) can be deterministically solved in constant time. To eliminate such unrealistic theories requires delicate analysis of the structure of the Hilbert space, the process of observation, and the notion of probability teasing apart their reliance on the infinitely precise real numbers
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "geometry2013,DQT2014"
+
+\end_inset
+
+. In this proposal, our aim is to shift focus from the infinitely-specified but not directly observable quantum states, to observable measurable properties of quantum systems and their probabilities. Furthermore, we insist that our theories of measurement and probability only refer to finitely communicable evidence within feasible computational bounds. It follows that states, observations, and probabilities all become 
+\begin_inset Quotes eld
+\end_inset
+
+fuzzy
+\begin_inset Quotes erd
+\end_inset
+
+, i.e., specified by intervals of confidence that can only increase in precision if the available resources increase proportionally. Our notion of 
+\begin_inset Quotes eld
+\end_inset
+
+fuzzy quantum mechanics
+\begin_inset Quotes erd
+\end_inset
+
+ is related to existing work
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "GranikCaulfield1996,Pykacz2013,SNL2009,Gudder2005,aerts1993physical"
+
+\end_inset
+
+ but, as will be explained in more detail, is distinguished by its unique computational character.
+\end_layout
+
+\begin_layout Standard
+We will begin by reviewing existing work that recasts classical probability spaces in a resource-aware setting and move to our proposal which, briefly speaking, aims at recasting quantum probability and hence quantum measurement to a corresponding resource-aware setting.
+\end_layout
+
+\begin_layout Standard
+In particular, the objectives to be achieved include: 
+\end_layout
+
+\begin_layout Itemize
+A computational framework for quantum measurement where quantum systems are described in terms of interactive processes. The framework takes care of the resources required (including the ones related to the observer) to determine a given property of the measured system. 
+\end_layout
+
+\begin_layout Itemize
+Develop a measurement framework based on quantum interval-valued probabilities measures. 
+\end_layout
+
+\begin_layout Itemize
+Assess the validity of fundamental theorems of quantum mechanics, such as Gleason, Bell, and Kochen-Specker, in a quantum formulation stripped away of infinite resources. We will aim to provide a definite answer to the Meyer-Mermin debate
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "PhysRevLett.83.3751, Mermin1999, BarrettKent2004"
+
+\end_inset
+
+ on the impact of finite precision measurements on the relevance of the Kochen-Specker theorem
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007"
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+Study the computational complexity of quantum theories and simulations based on discrete (computable) fields. 
+\end_layout
+
+\begin_layout Itemize
+Study the problem of finding a complete set of mutually unbiased bases (SIC-POVM)
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "1751-8121-45-8-085306,1751-8121-47-33-335302,Caves2002"
+
+\end_inset
+
+ over finite Galois fields. 
+\end_layout
+
+\begin_layout Standard
+We argue that no matter what the results are their impact will be strong. Positive results that formulate a computable, with clear resource bounds, theory of quantum measurement and quantum probability would be essential for understanding and realizing quantum computation. Any negative results would redirect research that aims at realizing quantum computation to other approaches. At an intellectual level, the results have the potential to solve or clarify several paradoxes in quantum mechanics, quantum information, computability, complexity theory, and perhaps quantum gravity.
+\end_layout
+
+\begin_layout Standard
+For centuries, the mathematical formalization of physical processes has been founded on the infinitely precise real or complex numbers
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
 key "Ziegler2007,weihrauch2012computable,blum2012complexity"
 
 \end_inset
 
- which might provide such processes more computational power.
- For example, almost every description of quantum mechanics, quantum computation
-, or quantum experiments refers to entities such as 
+. For example, almost every description of quantum mechanics, quantum computation, or quantum experiments refers to entities such as 
 \begin_inset Formula $\rme$
 \end_inset
 
@@ -157,112 +836,101 @@ key "Ziegler2007,weihrauch2012computable,blum2012complexity"
 , etc (see, e.g., 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Redhead1987-REDINA,544199,Mermin2007"
 
 \end_inset
 
-).
- Whether these models based on real numbers faithfully describe the nature
- or just an approximation is still an open question.
- If they are faithful, how the nature store and compute these real numbers
- to produce our experimental results would be the next natural question.
- There are at least three possibilities:
+). Whether these models based on real numbers faithfully describe the nature or just an approximation is still an open question. If they are faithful, how the nature store and compute these real numbers to produce our experimental results would be the next natural question. There are at least three possibilities: 
 \end_layout
 
 \begin_layout Itemize
 For any computable number
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Turing_1937"
 
 \end_inset
 
-, the nature only store the code of the Turing machine which computes the
- given number, and manipulate these codes directly during the computation
+, the nature only store the code of the Turing machine which computes the given number, and manipulate these codes directly during the computation
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Ziegler2007,weihrauch2012computable"
 
 \end_inset
 
-.
+. 
 \end_layout
 
 \begin_layout Itemize
-The nature stores real numbers on infinitely long Turing machine tapes,
- and handle these numbers by a Turing machine
+The nature stores real numbers on infinitely long Turing machine tapes, and handle these numbers by a Turing machine
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Ziegler2007,weihrauch2012computable"
 
 \end_inset
 
-.
- In another word, the nature stores real numbers as a whole, but compute
- them piecewisely.
+. In another word, the nature stores real numbers as a whole, but compute them piecewisely. 
 \end_layout
 
 \begin_layout Itemize
 The nature stores and computes real numbers as a whole
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Ziegler2007,blum2012complexity"
 
 \end_inset
 
-.
+. 
 \end_layout
 
 \begin_layout Standard
-All these possibilities are not very desirable because they suggest the
- nature might have more computational power than a Turing machine.
- On one hand, if the nature only stores computable numbers by their Turing
- machine codes, the nature might be able to decide whether two Turing machines
- output exactly the same numbers, since this is used to decide whether an
- observable is degenerated or not.
- However, testing whether two Turing machines are output-equivalent is undecidab
-le by Rice's theorem
+All these possibilities are not very desirable because they suggest the nature might have more computational power than a Turing machine. On one hand, if the nature only stores computable numbers by their Turing machine codes, the nature might be able to decide whether two Turing machines output exactly the same numbers, since this is used to decide whether an observable is degenerated or not. However, testing whether two Turing machines are output-equivalent is undecidable by Rice's theorem
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Rice_1953,Ziegler2007,weihrauch2012computable"
 
 \end_inset
 
-, i.e., the nature has more computational power than a Turing machine.
- On the other hand, if the nature stores real numbers as a whole, any particular
- real number could serve as an oracle and give the nature more computational
- power than a Turing machine.
- For example, maybe the mass of the electron in some representation is the
- halting oracle for some representation of Turing machines.
- Then, we could solve the halting problem by just measuring the mass of
- the electron.
- This kind of possibility has been online discussed by Peter Shor and others
+, i.e., the nature has more computational power than a Turing machine. On the other hand, if the nature stores real numbers as a whole, any particular real number could serve as an oracle and give the nature more computational power than a Turing machine. For example, maybe the mass of the electron in some representation is the halting oracle for some representation of Turing machines. Then, we could solve the halting problem by just measuring the mass of the electron. This kind of possibility has been online discussed by Peter Shor and others
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "PhysicsStackExchange16889"
 
 \end_inset
@@ -271,54 +939,49 @@ key "PhysicsStackExchange16889"
 \end_layout
 
 \begin_layout Standard
-Since all possibilities that quantum theory is faithful are not very desirable,
- maybe every description of quantum theory is just an approximation.
- In this case, there is the other possibility:
+Since all possibilities that quantum theory is faithful are not very desirable, maybe every description of quantum theory is just an approximation. In this case, there is the other possibility: 
 \end_layout
 
 \begin_layout Itemize
-The real and complex numbers only exist in our model.
- The nature is essentially discrete, and could be simulated by a Turing
- machine.
+The real and complex numbers only exist in our model. The nature is essentially discrete, and could be simulated by a Turing machine. 
 \end_layout
 
 \begin_layout Standard
-We have followed this approach to study quantum theory over discrete finite
- fields
+We have followed this approach to study quantum theory over discrete finite fields
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "usat,geometry2013,DQT2014"
 
 \end_inset
 
-.
- This yields a variant of quantum mechanics in which computationally hard
- problems like UNIQUE-SAT (which decides whether a given Boolean formula
- is unsatisfiable or has exactly one satisfying assignment
+. This yields a variant of quantum mechanics in which computationally hard problems like UNIQUE-SAT (which decides whether a given Boolean formula is unsatisfiable or has exactly one satisfying assignment
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Valiant198685,Papadimitriou1993,AroraBarak2009"
 
 \end_inset
 
-) can be deterministically solved in constant time.
- We then delicate analysis of the structure of the Hilbert space, the process
- of observation, and the notion of probability by teasing apart their reliance
- on the infinitely precise real numbers
+) can be deterministically solved in constant time. We then delicate analysis of the structure of the Hilbert space, the process of observation, and the notion of probability by teasing apart their reliance on the infinitely precise real numbers
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "geometry2013,DQT2014"
 
 \end_inset
@@ -326,88 +989,13 @@ key "geometry2013,DQT2014"
 .
 \end_layout
 
-\begin_layout Section
-Proposed Question
-\end_layout
-
 \begin_layout Standard
-In contrast to our previous works that assume the current quantum theory
- is just an approximation to the discrete reality, we now assume the nature
- really use real numbers.
- However, these real numbers could not be directly accessed by human who
- is bounded by finite resources.
- Therefore, even if the nature might have more computational power than
- a Turing machine, human might not be able to acquire and use the computational
- power more than a Turing machine.
-\end_layout
-
-\begin_layout Standard
-In order to model the bounded-resource human observers, we would like the
- theories of measurement and probability replaced by a subjective probability
- model, called the interval-valued probability.
- The question is how quantum mechanics would like with the interval-valued
- probability.
-\end_layout
-
-\begin_layout Standard
-In particular, based on conventional probability, Gleason's theorem
+In the kick-off talk, we will begin by reviewing existing work that recasts classical probability spaces in a resource-aware setting and move to aim at recasting quantum probability and quantum measurement. In particular, we develop a measurement framework based on quantum interval-valued probability measures
 \begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "gleason1957,Redhead1987-REDINA,peres1995quantum"
 
 \end_inset
 
- suggests that idea to define a state as a density matrix
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Varadarajan2008"
-
-\end_inset
-
-.
- Since Gleason's theorem could not directly apply on interval-valued probability
- measures, we would like to ask: How a quantum state looks like with the
- interval-valued probability? When the number and precision of the intervals
- increase, would the quantum interval-valued probability measures converge
- to the quantum probability measure induced by the Born rule
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Born1983,Mermin2007,Jaeger2007"
-
-\end_inset
-
-?
-\end_layout
-
-\begin_layout Section
-Kick-off Talk
-\end_layout
-
-\begin_layout Standard
-In the kick-off talk, we will begin by reviewing existing work that recasts
- classical probability spaces in a resource-aware setting and move to aim
- at recasting quantum probability and quantum measurement.
- In particular, we develop a measurement framework based on quantum interval-val
-ued probability measures
-\begin_inset space ~
-\end_inset
-
-(IVPM).
- Surprisingly, we found a quantum IVPM which can not be induced by a state,
- while Shapley proved a classical convex IVPM can always be induced by a
- classical 
+(IVPM). Surprisingly, we found a quantum IVPM which can not be induced by a state, while Shapley proved a classical convex IVPM can always be induced by a classical 
 \begin_inset Quotes eld
 \end_inset
 
@@ -417,33 +1005,31 @@ state
 
 
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Shapley1971,Grabisch2016"
 
 \end_inset
 
-, and Gleason proved a infinitely-specified quantum probabilities measure
- can always be induced by a quantum state
+, and Gleason proved a infinitely-specified quantum probabilities measure can always be induced by a quantum state
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "gleason1957,Redhead1987-REDINA,peres1995quantum"
 
 \end_inset
 
-.
- Nevertheless, a quantum IVPM could still correspond to many possible states
- if it is broken into pieces.
- Our examples also suggest that a quantum IVPM could be more and more likely
- induced by a state while the intervals become sharper, i.e., the measurement
- resources increase.
+. Nevertheless, a quantum IVPM could still correspond to many possible states if it is broken into pieces. Our examples also suggest that a quantum IVPM could be more and more likely induced by a state while the intervals become sharper, i.e., the measurement resources increase.
 \end_layout
 
 \begin_layout Subsection
@@ -455,34 +1041,29 @@ A
 \emph on
 probability space
 \emph default
- specifies the necessary conditions for reasoning coherently about collections
- of uncertain events
+ specifies the necessary conditions for reasoning coherently about collections of uncertain events
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Kolmogorov1950,Shafer1976,Griffiths2003,Swart2013"
 
 \end_inset
 
-.
- We review the conventional presentation of probability spaces and then
- discuss the computational resources needed to estimate probabilities.
+. We review the conventional presentation of probability spaces and then discuss the computational resources needed to estimate probabilities.
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 %%%
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -495,9 +1076,7 @@ Classical Probability Spaces
 \end_layout
 
 \begin_layout Standard
-The conventional definition of a probability space builds upon the field
- of real numbers.
- In more detail, a probability space consists of a 
+The conventional definition of a probability space builds upon the field of real numbers. In more detail, a probability space consists of a 
 \emph on
 sample space
 \emph default
@@ -511,6 +1090,7 @@ events
 \emph default
 
 \begin_inset space ~
+
 \end_inset
 
 
@@ -523,6 +1103,7 @@ probability measure
 \emph default
 
 \begin_inset space ~
+
 \end_inset
 
 
@@ -537,8 +1118,7 @@ probability measure
 \begin_inset Formula $[0,1]$
 \end_inset
 
-.
- We will only consider 
+. We will only consider 
 \emph on
 finite
 \emph default
@@ -546,8 +1126,7 @@ finite
 \begin_inset Formula $\Omega$
 \end_inset
 
- as the sample space.
- The space of events 
+ as the sample space. The space of events 
 \begin_inset Formula $\events$
 \end_inset
 
@@ -557,22 +1136,22 @@ finite
 
 : it is the powerset
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset Formula $2^{\Omega}=\left\{ E~\middle|~E\subseteq\Omega\right\} $
 \end_inset
 
-.
- For future reference, we emphasize that events are the primary notion of
- interest and that the sample space is a convenient artifact that allows
- us to treat events as sets obeying the laws of Boolean algebra
+. For future reference, we emphasize that events are the primary notion of interest and that the sample space is a convenient artifact that allows us to treat events as sets obeying the laws of Boolean algebra
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Boole1948,Redhead1987-REDINA,Griffiths2003"
 
 \end_inset
@@ -581,19 +1160,19 @@ key "Boole1948,Redhead1987-REDINA,Griffiths2003"
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
-begin{definition}[Probability Measure]
+begin{definition}
 \end_layout
 
 \end_inset
 
-
+[Probability Measure]
 \begin_inset CommandInset label
 LatexCommand label
 name "def:ClassicalProbabilitySpace"
@@ -616,6 +1195,7 @@ probability measure
 \end_layout
 
 \begin_layout Itemize
+
 \begin_inset Formula $\pmeas(\emptyset)=0$
 \end_inset
 
@@ -623,6 +1203,7 @@ probability measure
 \end_layout
 
 \begin_layout Itemize
+
 \begin_inset Formula $\pmeas(\Omega)=1$
 \end_inset
 
@@ -658,16 +1239,15 @@ for every collection
 \begin_inset Formula $\pmeas\left(\bigcup_{i=1}^{N}E_{i}\right)=\sum_{i=1}^{N}\pmeas(E_{i})$
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{definition}
@@ -675,38 +1255,35 @@ end{definition}
 
 \end_inset
 
- There is some redundancy in the definition that will be useful when moving
- to quantum probability spaces.
+ There is some redundancy in the definition that will be useful when moving to quantum probability spaces.
 \end_layout
 
 \begin_layout Standard
 \noindent
+
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
-begin{example}[Two-coins experiment]
+begin{example}
 \end_layout
 
 \end_inset
 
-
+[Two-coins experiment]
 \begin_inset CommandInset label
 LatexCommand label
 name "ex1"
 
 \end_inset
 
- Consider an experiment that tosses two coins.
- We have four possible outcomes that constitute the sample space 
+ Consider an experiment that tosses two coins. We have four possible outcomes that constitute the sample space 
 \begin_inset Formula $\Omega=\{HH,HT,TH,TT\}$
 \end_inset
 
-.
- There are 16 total events including the event 
+. There are 16 total events including the event 
 \begin_inset Formula $\{HH,HT\}$
 \end_inset
 
@@ -718,10 +1295,8 @@ name "ex1"
 \begin_inset Formula $\{HT,TH,TT\}$
 \end_inset
 
- that at least one coin lands tails up.
- Here is a possible probability measure for these events: 
-\begin_inset Formula 
-\[
+ that at least one coin lands tails up. Here is a possible probability measure for these events: 
+\begin_inset Formula \[
 \begin{array}{c@{\qquad\qquad}c}
 \begin{array}{rcl}
 \pmeas(\emptyset) & = & 0\\
@@ -743,7 +1318,6 @@ name "ex1"
 \pmeas(\{HH,HT,TH,TT\}) & = & 1
 \end{array}\end{array}
 \]
-
 \end_inset
 
 
@@ -751,7 +1325,6 @@ name "ex1"
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{example}
@@ -764,8 +1337,7 @@ end{example}
 
 \begin_layout Standard
 \noindent
-It is useful to think that this probability measure is completely determined
- by the 
+It is useful to think that this probability measure is completely determined by the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -773,16 +1345,9 @@ reality
 \begin_inset Quotes erd
 \end_inset
 
- of the two coins in question and their characteristics, in the sense that
- each pair of coins induces a measure, and each measure must correspond
- to some pair of coins.
- The measure above would be induced by two particular coins such that the
- first coin is twice as likely to land tails up than heads up and the second
- coin is double-headed.
- In a strict computational or experimental setting, one should question
- the reliance of the definition of probability space on the uncountable
- and uncomputable real interval
+ of the two coins in question and their characteristics, in the sense that each pair of coins induces a measure, and each measure must correspond to some pair of coins. The measure above would be induced by two particular coins such that the first coin is twice as likely to land tails up than heads up and the second coin is double-headed. In a strict computational or experimental setting, one should question the reliance of the definition of probability space on the uncountable and uncomputable real interval
 \begin_inset space ~
+
 \end_inset
 
 
@@ -791,17 +1356,18 @@ reality
 
 
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Turing_1937,Ziegler2007,weihrauch2012computable"
 
 \end_inset
 
-.
- This interval includes numbers like 
+. This interval includes numbers like 
 \begin_inset Formula $0.h_{1}h_{2}h_{3}\ldots$
 \end_inset
 
@@ -813,25 +1379,19 @@ key "Turing_1937,Ziegler2007,weihrauch2012computable"
 \begin_inset Formula $\mathit{TM}_{i}$
 \end_inset
 
- halts or not.
- Such numbers cannot be computed.
- This interval also includes numbers like 
+ halts or not. Such numbers cannot be computed. This interval also includes numbers like 
 \begin_inset Formula $\frac{\pi}{4}$
 \end_inset
 
- which can only be computed with increasingly large resources as the precision
- increases.
- Therefore, in a resource-aware computational or experimental setting, it
- is more appropriate to consider probability measures that map events to
- a set of elements computable with a fixed set of resources.
- We expand on this observation in the next section and then recall its formaliza
-tion using interval-valued probability measures
+ which can only be computed with increasingly large resources as the precision increases. Therefore, in a resource-aware computational or experimental setting, it is more appropriate to consider probability measures that map events to a set of elements computable with a fixed set of resources. We expand on this observation in the next section and then recall its formalization using interval-valued probability measures
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Weichselberger2000,JamisonLodwick2004"
 
 \end_inset
@@ -840,16 +1400,12 @@ key "Weichselberger2000,JamisonLodwick2004"
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 %%%%%
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -871,6 +1427,7 @@ name "subsec:Measuring-Probabilities:-Buffon"
 \begin_layout Standard
 In the previous example, we assumed the probability
 \begin_inset space ~
+
 \end_inset
 
 
@@ -879,30 +1436,30 @@ In the previous example, we assumed the probability
 
  of each event
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset Formula $E$
 \end_inset
 
- is known a priori.
- In reality, although each event is assumed to have a probability, the exact
- value of 
+ is known a priori. In reality, although each event is assumed to have a probability, the exact value of 
 \begin_inset Formula $\pmeas(E)$
 \end_inset
 
- may not be known.
- According to the 
+ may not be known. According to the 
 \emph on
 frequency interpretation of probability
 \emph default
  (which we will revisit when moving to the quantum case)
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Venn1876,Hajek2012"
 
 \end_inset
@@ -927,13 +1484,13 @@ real
 \begin_inset Quotes erd
 \end_inset
 
- probability.
- Let 
+ probability. Let 
 \begin_inset Formula $x_{i}$
 \end_inset
 
  be 1 or 0 depending on whether the event
 \begin_inset space ~
+
 \end_inset
 
 
@@ -950,6 +1507,7 @@ real
 
  could be approximated to given accuracy
 \begin_inset space ~
+
 \end_inset
 
 
@@ -958,6 +1516,7 @@ real
 
  by the relative frequency
 \begin_inset space ~
+
 \end_inset
 
 
@@ -969,20 +1528,20 @@ real
 \end_inset
 
  goes to infinity, i.e., 
-\begin_inset Formula 
-\[
+\begin_inset Formula \[
 \forall\epsilon>0,\lim_{M\rightarrow\infty}\pmeas\left(\left|\pmeas(E)-\frac{1}{M}\sum_{i=1}^{M}x_{i}\right|<\epsilon\right)=1\textrm{ .}
 \]
-
 \end_inset
 
 This fact is called the law of large numbers
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Bernoulli2006,Kolmogorov1950,Uspensky1937,Shafer1976,544199"
 
 \end_inset
@@ -991,8 +1550,7 @@ key "Bernoulli2006,Kolmogorov1950,Uspensky1937,Shafer1976,544199"
 \end_layout
 
 \begin_layout Standard
-Let's look at a concrete example.
- Suppose we drop a needle of length 
+Let's look at a concrete example. Suppose we drop a needle of length 
 \begin_inset Formula $\ell$
 \end_inset
 
@@ -1004,25 +1562,24 @@ Let's look at a concrete example.
 \begin_inset Formula $\ell<h$
 \end_inset
 
-.
- It is a known fact that the probability of the needle crossing a line is
- 
+. It is a known fact that the probability of the needle crossing a line is 
 \begin_inset Formula $\frac{2\ell}{\pi h}$
 \end_inset
 
 
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Buffon1777,DeMorgan1872,Hall1873,Uspensky1937"
 
 \end_inset
 
-.
- Consider an experimental setup consisting of a collection of 
+. Consider an experimental setup consisting of a collection of 
 \begin_inset Formula $M$
 \end_inset
 
@@ -1030,8 +1587,7 @@ key "Buffon1777,DeMorgan1872,Hall1873,Uspensky1937"
 \begin_inset Formula $\ell$
 \end_inset
 
-.
- We throw the 
+. We throw the 
 \begin_inset Formula $M$
 \end_inset
 
@@ -1039,13 +1595,11 @@ key "Buffon1777,DeMorgan1872,Hall1873,Uspensky1937"
 \begin_inset Formula $M_{c}$
 \end_inset
 
- of needles that cross a line, thus estimating the probability of a needle
- crossing a line to be 
+ of needles that cross a line, thus estimating the probability of a needle crossing a line to be 
 \begin_inset Formula $\frac{M_{c}}{M}$
 \end_inset
 
-.
- In an actual experiment with 
+. In an actual experiment with 
 \begin_inset Formula $500$
 \end_inset
 
@@ -1055,11 +1609,13 @@ key "Buffon1777,DeMorgan1872,Hall1873,Uspensky1937"
 
 
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Hall1873"
 
 \end_inset
@@ -1076,8 +1632,7 @@ key "Hall1873"
 \begin_inset Formula $0.4774\ldots$
 \end_inset
 
-.
- In a larger experiment with 
+. In a larger experiment with 
 \begin_inset Formula $5000$
 \end_inset
 
@@ -1087,11 +1642,13 @@ key "Hall1873"
 
 
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Uspensky1937"
 
 \end_inset
@@ -1104,8 +1661,7 @@ key "Uspensky1937"
 \begin_inset Formula $0.5092\ldots$
 \end_inset
 
-.
- We see that the observed probability approaches 
+. We see that the observed probability approaches 
 \begin_inset Formula $\frac{2\ell}{\pi h}$
 \end_inset
 
@@ -1113,17 +1669,11 @@ key "Uspensky1937"
 \emph on
 larger and larger resources
 \emph default
- are expended.
- These resource considerations suggest that it is possible to replace the
- real interval 
+ are expended. These resource considerations suggest that it is possible to replace the real interval 
 \begin_inset Formula $[0,1]$
 \end_inset
 
- with rational numbers up to a certain precision related to the particular
- experiment in question.
- There is clearly a connection between the number of needles and the achievable
- precision: in the hypothetical experiment with 3 needles, it is not sensible
- to retain 100 digits in the expansion of 
+ with rational numbers up to a certain precision related to the particular experiment in question. There is clearly a connection between the number of needles and the achievable precision: in the hypothetical experiment with 3 needles, it is not sensible to retain 100 digits in the expansion of 
 \begin_inset Formula $\frac{2\ell}{\pi h}$
 \end_inset
 
@@ -1131,11 +1681,7 @@ larger and larger resources
 \end_layout
 
 \begin_layout Standard
-There is another more subtle assumption of unbounded computational power
- in the experiment.
- We are assuming that we can always determine with certainty whether a needle
- is crossing a line.
- But 
+There is another more subtle assumption of unbounded computational power in the experiment. We are assuming that we can always determine with certainty whether a needle is crossing a line. But 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1151,8 +1697,7 @@ lines
 \begin_inset Formula $\ell$
 \end_inset
 
-.
- These perturbations make the events 
+. These perturbations make the events 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1160,16 +1705,11 @@ fuzzy.
 \begin_inset Quotes erd
 \end_inset
 
- Thus, in an experiment with limited resources, it is not possible to talk
- about the idealized event that exactly 
+ Thus, in an experiment with limited resources, it is not possible to talk about the idealized event that exactly 
 \begin_inset Formula $M_{c}$
 \end_inset
 
- needles cross lines as this would require the most expensive needles built
- to the most precise accuracy, laser precision for drawing lines on the
- floor, and the most powerful microscopes to determine if a needle does
- cross a line.
- Instead we might talk about the event that 
+ needles cross lines as this would require the most expensive needles built to the most precise accuracy, laser precision for drawing lines on the floor, and the most powerful microscopes to determine if a needle does cross a line. Instead we might talk about the event that 
 \begin_inset Formula $M_{c}-\delta$
 \end_inset
 
@@ -1185,12 +1725,7 @@ fuzzy.
 \begin_inset Formula $\delta'$
 \end_inset
 
- are resource-dependent approximations.
- This fuzzy notion of events leads to probabilities being only calculable
- within intervals of confidence reflecting the certainty of events and their
- plausibility.
- This is indeed consistent with published experiments: in an experiment
- with 
+ are resource-dependent approximations. This fuzzy notion of events leads to probabilities being only calculable within intervals of confidence reflecting the certainty of events and their plausibility. This is indeed consistent with published experiments: in an experiment with 
 \begin_inset Formula $3204$
 \end_inset
 
@@ -1200,11 +1735,13 @@ fuzzy.
 
 
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "DeMorgan1872"
 
 \end_inset
@@ -1217,13 +1754,11 @@ key "DeMorgan1872"
 \begin_inset Formula $11$
 \end_inset
 
- needles were close enough to plausibly be considered as crossing the line:
- we would express the probability in this case as the interval 
+ needles were close enough to plausibly be considered as crossing the line: we would express the probability in this case as the interval 
 \begin_inset Formula $\left[\frac{1213}{3204},\frac{1224}{3204}\right]$
 \end_inset
 
- expressing that we are certain that the event has probability at least
- 
+ expressing that we are certain that the event has probability at least 
 \begin_inset Formula $\frac{1213}{3204}$
 \end_inset
 
@@ -1235,16 +1770,12 @@ key "DeMorgan1872"
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 %%%%%
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -1265,8 +1796,7 @@ As motivated above, an event
 \begin_inset Formula $[l_{1},r_{1}]$
 \end_inset
 
-.
- Assume that another disjoint event 
+. Assume that another disjoint event 
 \begin_inset Formula $E_{2}$
 \end_inset
 
@@ -1278,19 +1808,15 @@ As motivated above, an event
 \begin_inset Formula $E_{1}\cup E_{2}$
 \end_inset
 
-? The answer is somewhat subtle: although it is possible to use the sum
- of the intervals 
+? The answer is somewhat subtle: although it is possible to use the sum of the intervals 
 \begin_inset Formula $[l_{1}+l_{2},r_{1}+r_{2}]$
 \end_inset
 
- as the combined probability, one can find a much tighter interval if informatio
-n 
+ as the combined probability, one can find a much tighter interval if information 
 \emph on
 against
 \emph default
- the event (i.e., information about the complement event) is also taken into
- consideration.
- Formally, for a general event 
+ the event (i.e., information about the complement event) is also taken into consideration. Formally, for a general event 
 \begin_inset Formula $E$
 \end_inset
 
@@ -1306,8 +1832,7 @@ against
 \begin_inset Formula $E$
 \end_inset
 
-.
- The complement of 
+. The complement of 
 \begin_inset Formula $E$
 \end_inset
 
@@ -1319,9 +1844,9 @@ against
 \begin_inset Formula $\left[1,1\right]-\left[l,r\right]$
 \end_inset
 
-.
- Given a sample space
+. Given a sample space
 \begin_inset space ~
+
 \end_inset
 
 
@@ -1330,6 +1855,7 @@ against
 
  and its set of events
 \begin_inset space ~
+
 \end_inset
 
 
@@ -1338,6 +1864,7 @@ against
 
 , a function
 \begin_inset space ~
+
 \end_inset
 
 
@@ -1350,11 +1877,13 @@ against
 
  satisfies the following conditions
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "JamisonLodwick2004"
 
 \end_inset
@@ -1367,19 +1896,19 @@ key "JamisonLodwick2004"
 \end_layout
 
 \begin_layout Itemize
+
 \begin_inset Formula $\bar{\mu}(\emptyset)=[0,0]$
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Itemize
+
 \begin_inset Formula $\bar{\mu}(\Omega)=[1,1]$
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Itemize
@@ -1403,24 +1932,23 @@ For a collection
 \begin_inset Formula $\bar{\mu}\left(\bigcup_{i=1}^{M}E_{i}\right)\subseteq\sum_{i=1}^{M}\bar{\mu}\left(E_{i}\right)$
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
-begin{example}[Two-coin experiment with interval probability]
+begin{example}
 \end_layout
 
 \end_inset
 
-
+[Two-coin experiment with interval probability]
 \begin_inset CommandInset label
 LatexCommand label
 name "ex3"
@@ -1441,7 +1969,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 imposs
 \end_layout
@@ -1457,7 +1984,6 @@ imposs
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 unlikely
@@ -1475,7 +2001,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 likely
 \end_layout
@@ -1492,16 +2017,15 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 necess
 \end_layout
 
 \end_inset
 
-.
- Using these new values, we can modify the probability measure of Ex.
+. Using these new values, we can modify the probability measure of Ex.
 \begin_inset space ~
+
 \end_inset
 
 
@@ -1511,10 +2035,8 @@ reference "ex1"
 
 \end_inset
 
- by mapping each numeric value to the smallest sub-interval containing it
- to get the following: 
-\begin_inset Formula 
-\[
+ by mapping each numeric value to the smallest sub-interval containing it to get the following: 
+\begin_inset Formula \[
 \begin{array}{c@{\qquad\qquad}c}
 \begin{array}{rcl}
 \bar{\mu}(\emptyset) & = & \imposs\\
@@ -1536,24 +2058,18 @@ reference "ex1"
 \bar{\mu}(\{HH,HT,TH,TT\}) & = & \necess
 \end{array}\end{array}
 \]
-
 \end_inset
 
-Despite the absence of infinitely precise numeric information, the probability
- measure is quite informative: it reveals that the second coin is double-headed
- and that the first coin is biased.
- To understand the 
+Despite the absence of infinitely precise numeric information, the probability measure is quite informative: it reveals that the second coin is double-headed and that the first coin is biased. To understand the 
 \begin_inset Formula $\subseteq$
 \end_inset
 
 -condition, consider the following calculation: 
-\begin_inset Formula 
-\begin{eqnarray*}
+\begin_inset Formula \begin{eqnarray*}
 \bar{\mu}(\{HH\})+\bar{\mu}(\{HT\})+\bar{\mu}(\{TH\})+\bar{\mu}(\{TT\}) & = & \imposs+\unlikely+\imposs+\likely\\
  & = & \left[0,0\right]+\left[0,\frac{1}{2}\right]+\left[0,0\right]+\left[\frac{1}{2},1\right]\\
  & = & \left[\frac{1}{2},\frac{3}{2}\right]
 \end{eqnarray*}
-
 \end_inset
 
 If we were to equate 
@@ -1564,8 +2080,7 @@ If we were to equate
 \begin_inset Formula $\bar{\mu}(\Omega)=\left[\frac{1}{2},\frac{3}{2}\right]$
 \end_inset
 
-.
- However, using the fact that 
+. However, using the fact that 
 \begin_inset Formula $\bar{\mu}(\emptyset)=\imposs$
 \end_inset
 
@@ -1573,9 +2088,7 @@ If we were to equate
 \begin_inset Formula $\bar{\mu}\left(\Omega\right)=1-\bar{\mu}\left(\emptyset\right)=\necess=[1,1]$
 \end_inset
 
-.
- This interval is tighter and a better estimate for the probability of the
- event 
+. This interval is tighter and a better estimate for the probability of the event 
 \begin_inset Formula $\Omega$
 \end_inset
 
@@ -1583,22 +2096,15 @@ If we were to equate
 \begin_inset Formula $[\frac{1}{2},\frac{3}{2}]$
 \end_inset
 
-.
- However it is only possible to exploit the information about the complement
- when all four events are combined.
- Thus the 
+. However it is only possible to exploit the information about the complement when all four events are combined. Thus the 
 \begin_inset Formula $\subseteq$
 \end_inset
 
--condition allows us to get an estimate for the combined event from each
- of its constituents and then gather more evidence knowing the aggregate
- event.
- 
+-condition allows us to get an estimate for the combined event from each of its constituents and then gather more evidence knowing the aggregate event. 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{example}
@@ -1610,16 +2116,12 @@ end{example}
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -1632,38 +2134,29 @@ Quantum Probability
 \end_layout
 
 \begin_layout Standard
-The mathematical framework of classical probability above assumes that there
- exists a predetermined set of events that are independent of the particular
- experiment — classical physics is non-contextual
+The mathematical framework of classical probability above assumes that there exists a predetermined set of events that are independent of the particular experiment — classical physics is non-contextual
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007"
 
 \end_inset
 
-.
- However, even in classical situations, the structure of the event space
- is often only partially known and the precise dependence of two events
- on each other cannot, a priori, be determined with certainty.
- In the quantum framework, this partial knowledge is compounded by the fact
- that there exist non-commuting events which cannot happen simultaneously.
- To accommodate these more complex situations, conventional approaches to
- quantum probability abandon the sample space
+. However, even in classical situations, the structure of the event space is often only partially known and the precise dependence of two events on each other cannot, a priori, be determined with certainty. In the quantum framework, this partial knowledge is compounded by the fact that there exist non-commuting events which cannot happen simultaneously. To accommodate these more complex situations, conventional approaches to quantum probability abandon the sample space
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset Formula $\Omega$
 \end_inset
 
- and reason directly about events which are generalized from plain sets
- to projection operators.
- A quantum probability space therefore consists of just two components:
- a set of events 
+ and reason directly about events which are generalized from plain sets to projection operators. A quantum probability space therefore consists of just two components: a set of events 
 \begin_inset Formula $\qevents$
 \end_inset
 
@@ -1673,11 +2166,13 @@ key "kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007"
 
  formalized using the Born rule
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Born1983,Mermin2007,Jaeger2007"
 
 \end_inset
@@ -1686,16 +2181,12 @@ key "Born1983,Mermin2007,Jaeger2007"
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 %%%%%
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -1708,22 +2199,32 @@ Quantum Events
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
-begin{definition}[Projection Operators; Orthogonality~
-\backslash
-cite{10.2307/2308516,Redhead1987-REDINA,peres1995quantum,Griffiths2003,Swart2013}
-]
+begin{definition}
 \end_layout
 
 \end_inset
 
+[Projection Operators; Orthogonality
+\begin_inset space ~
 
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "10.2307/2308516,Redhead1987-REDINA,peres1995quantum,Griffiths2003,Swart2013"
+
+\end_inset
+
+]
 \begin_inset CommandInset label
 LatexCommand label
 name "def:Projection"
@@ -1736,44 +2237,52 @@ name "def:Projection"
 
 , an event (an experimental proposition
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "BirkhoffVonNeumann1936"
 
 \end_inset
 
 , a question
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "10.2307/2308516,Abramsky2012"
 
 \end_inset
 
 , or an elementary quantum test
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "peres1995quantum"
 
 \end_inset
 
 ) is represented as a (self-adjoint or orthogonal
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Griffiths2003,Maassen2010"
 
 \end_inset
@@ -1786,21 +2295,21 @@ key "Griffiths2003,Maassen2010"
 \begin_inset Formula $\Hilb$
 \end_inset
 
-.
- The following define projections and list some of their properties: 
+. The following define projections and list some of their properties: 
 \end_layout
 
 \begin_layout Itemize
+
 \begin_inset Formula $\mathbb{0}$
 \end_inset
 
- is a projection.
- 
+ is a projection. 
 \end_layout
 
 \begin_layout Itemize
 For any pure state
 \begin_inset space ~
+
 \end_inset
 
 
@@ -1811,8 +2320,7 @@ For any pure state
 \begin_inset Formula $\proj{\psi}$
 \end_inset
 
- is a projection operator.
- 
+ is a projection operator. 
 \end_layout
 
 \begin_layout Itemize
@@ -1832,22 +2340,22 @@ orthogonal
 \begin_inset Formula $P_{0}P_{1}=P_{1}P_{0}=\mathbb{0}$
 \end_inset
 
-.
- The sum of two projection operators
+. The sum of two projection operators
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset Formula $P_{0}+P_{1}$
 \end_inset
 
- is also a projection operator if and only if they are orthogonal.
- 
+ is also a projection operator if and only if they are orthogonal. 
 \end_layout
 
 \begin_layout Itemize
 Conversely, every projection
 \begin_inset space ~
+
 \end_inset
 
 
@@ -1864,14 +2372,14 @@ Conversely, every projection
 
  actually projects onto the linear subspace with orthonormal basis
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset Formula $\left\{ \ket{\psi_{j}}\right\} _{j=1}^{N}$
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Itemize
@@ -1889,27 +2397,30 @@ ideal measurement
 
 
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Swart2013"
 
 \end_inset
 
-.
- In this case, projections 
+. In this case, projections 
 \begin_inset Formula $\left\{ P_{i}\right\} _{i=1}^{N}$
 \end_inset
 
  must be mutually orthogonal
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Griffiths2003,Halmos1957"
 
 \end_inset
@@ -1918,8 +2429,7 @@ key "Griffiths2003,Halmos1957"
 \begin_inset Formula $N$
 \end_inset
 
- must be less or equal to the dimension of the Hilbert space.
- 
+ must be less or equal to the dimension of the Hilbert space. 
 \end_layout
 
 \begin_layout Itemize
@@ -1935,13 +2445,13 @@ If
 \emph on
 complement
 \emph default
-.
- It is orthogonal to 
+. It is orthogonal to 
 \begin_inset Formula $P$
 \end_inset
 
 , and corresponds to the complement event
 \begin_inset space ~
+
 \end_inset
 
 
@@ -1950,17 +2460,18 @@ complement
 
  in classical probability
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Griffiths2003"
 
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Itemize
@@ -1980,29 +2491,29 @@ commute
 \begin_inset Formula $P_{0}P_{1}=P_{1}P_{0}$
 \end_inset
 
-.
- The product of two projection operators
+. The product of two projection operators
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset Formula $P_{0}P_{1}$
 \end_inset
 
- is also a projection operator if and only if they commute.
- This corresponds to the classical intersection between events
+ is also a projection operator if and only if they commute. This corresponds to the classical intersection between events
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "peres1995quantum,Griffiths2003"
 
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Itemize
@@ -2020,6 +2531,7 @@ disjunction
 \emph default
 
 \begin_inset space ~
+
 \end_inset
 
 
@@ -2032,25 +2544,26 @@ disjunction
 
 
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Griffiths2003"
 
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{definition}
@@ -2062,32 +2575,32 @@ end{definition}
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
-begin{example}[One-qubit quantum probability space]
+begin{example}
 \end_layout
 
 \end_inset
 
-Consider a one-qubit Hilbert space with each event interpreted as a possible
- post-measurement state
+[One-qubit quantum probability space]Consider a one-qubit Hilbert space with each event interpreted as a possible post-measurement state
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "peres1995quantum,Mermin2007,Jaeger2007"
 
 \end_inset
 
-.
- For example, the event 
+. For example, the event 
 \begin_inset Formula $\proj{0}$
 \end_inset
 
@@ -2095,8 +2608,7 @@ key "peres1995quantum,Mermin2007,Jaeger2007"
 \begin_inset Formula $\ket{0}$
 \end_inset
 
-; the probability of such an event depends on the current state; the event
- 
+; the probability of such an event depends on the current state; the event 
 \begin_inset Formula $\proj{1}$
 \end_inset
 
@@ -2120,8 +2632,7 @@ key "peres1995quantum,Mermin2007,Jaeger2007"
 \begin_inset Formula $\mathbb{1}=\proj{0}+\proj{1}$
 \end_inset
 
- indicates that the post-measurement state will be a linear combination
- of 
+ indicates that the post-measurement state will be a linear combination of 
 \begin_inset Formula $\ket{0}$
 \end_inset
 
@@ -2133,16 +2644,11 @@ key "peres1995quantum,Mermin2007,Jaeger2007"
 \begin_inset Formula $\mathbb{0}$
 \end_inset
 
- states that the post-measurement state will be the empty state and is impossibl
-e.
- As in the classical case, a probability measure is a function that maps
- events to 
+ states that the post-measurement state will be the empty state and is impossible. As in the classical case, a probability measure is a function that maps events to 
 \begin_inset Formula $[0,1]$
 \end_inset
 
-.
- Here is a partial specification of a possible probability measure that
- would be induced by a system whose current state is 
+. Here is a partial specification of a possible probability measure that would be induced by a system whose current state is 
 \begin_inset Formula $\ket{0}$
 \end_inset
 
@@ -2167,8 +2673,7 @@ e.
 \end_inset
 
 , \SpecialChar ldots
-.
- Note that, similarly to the classical case, the probability of 
+. Note that, similarly to the classical case, the probability of 
 \begin_inset Formula $\mathbb{1}$
 \end_inset
 
@@ -2176,8 +2681,7 @@ e.
 \begin_inset Formula $\proj{0}+\proj{1}$
 \end_inset
 
-) is the sum of the individual probabilities.
- A collection of non-orthogonal events (e.g., 
+) is the sum of the individual probabilities. A collection of non-orthogonal events (e.g., 
 \begin_inset Formula $\proj{0}$
 \end_inset
 
@@ -2185,20 +2689,11 @@ e.
 \begin_inset Formula $\proj{\ps}$
 \end_inset
 
-) is however not even a valid event.
- In the classical example, we argued that each probability measure is uniquely
- determined by two actual coins.
- A similar (but much more subtle) argument is valid also in the quantum
- case.
- By postulates of quantum mechanics and Gleason's theorem, it turns out
- that for large enough quantum systems, each probability measure is uniquely
- determined by an actual quantum state as discussed next.
- 
+) is however not even a valid event. In the classical example, we argued that each probability measure is uniquely determined by two actual coins. A similar (but much more subtle) argument is valid also in the quantum case. By postulates of quantum mechanics and Gleason's theorem, it turns out that for large enough quantum systems, each probability measure is uniquely determined by an actual quantum state as discussed next. 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{example}
@@ -2210,16 +2705,12 @@ end{example}
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 %%%%%
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -2232,26 +2723,36 @@ Quantum Probability Measures
 \end_layout
 
 \begin_layout Standard
-Given our setup, the definition of a quantum probability measure is a small
- variation on the classical definition.
+Given our setup, the definition of a quantum probability measure is a small variation on the classical definition.
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
-begin{definition}[Quantum Probability Measure~
-\backslash
-cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010}]
+begin{definition}
 \end_layout
 
 \end_inset
 
+[Quantum Probability Measure
+\begin_inset space ~
 
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010"
+
+\end_inset
+
+]
 \begin_inset CommandInset label
 LatexCommand label
 name "def:QuantumProbabilitySpace"
@@ -2264,6 +2765,7 @@ name "def:QuantumProbabilitySpace"
 
  with its set of events
 \begin_inset space ~
+
 \end_inset
 
 
@@ -2276,6 +2778,7 @@ quantum probability measure
 \emph default
  is a function
 \begin_inset space ~
+
 \end_inset
 
 
@@ -2286,19 +2789,19 @@ quantum probability measure
 \end_layout
 
 \begin_layout Itemize
+
 \begin_inset Formula $\mu(\mathbb{0})=0$
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Itemize
+
 \begin_inset Formula $\mu(\mathbb{1})=1$
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Itemize
@@ -2310,8 +2813,7 @@ For any projection
 \begin_inset Formula $\mu\left(\mathbb{1}-P\right)=1-\mu\left(P\right)$
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Itemize
@@ -2323,16 +2825,15 @@ For a set of mutually orthogonal projections
 \begin_inset Formula $\mu\left(\sum_{i=1}^{N}P_{i}\right)=\sum_{i=1}^{N}\mu\left(P_{i}\right)$
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{definition}
@@ -2345,9 +2846,7 @@ end{definition}
 
 \begin_layout Standard
 \noindent
-A quantum probability measure can be easily constructed if one knows the
- current state of the quantum system by using the Born rule.
- Specifically, for each pure normalized quantum state 
+A quantum probability measure can be easily constructed if one knows the current state of the quantum system by using the Born rule. Specifically, for each pure normalized quantum state 
 \begin_inset Formula $\ket{\phi}$
 \end_inset
 
@@ -2359,8 +2858,7 @@ A quantum probability measure can be easily constructed if one knows the
 \begin_inset Formula $\mu_{\phi}^{B}(P)=\ip{\phi}{P\phi}$
 \end_inset
 
-.
- The situation generalizes to mixed states 
+. The situation generalizes to mixed states 
 \begin_inset Formula $\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}$
 \end_inset
 
@@ -2378,35 +2876,47 @@ A quantum probability measure can be easily constructed if one knows the
 
 
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "peres1995quantum,544199,Jaeger2007"
 
 \end_inset
 
-.
- Conversely every probability measure must be of this form.
+. Conversely every probability measure must be of this form.
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
-begin{thm}[Gleason's theorem~
-\backslash
-cite{gleason1957,Redhead1987-REDINA,peres1995quantum}]
+begin{thm}
 \end_layout
 
 \end_inset
 
+[Gleason's theorem
+\begin_inset space ~
 
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "gleason1957,Redhead1987-REDINA,peres1995quantum"
+
+\end_inset
+
+]
 \begin_inset CommandInset label
 LatexCommand label
 name "cor:Gleason's"
@@ -2423,6 +2933,7 @@ In a Hilbert space
 
 , given a quantum probability measure
 \begin_inset space ~
+
 \end_inset
 
 
@@ -2431,6 +2942,7 @@ In a Hilbert space
 
 , there exists a unique mixed state
 \begin_inset space ~
+
 \end_inset
 
 
@@ -2441,13 +2953,11 @@ In a Hilbert space
 \begin_inset Formula $\mu=\mu_{\rho}^{B}$
 \end_inset
 
-.
- 
+. 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{thm}
@@ -2459,16 +2969,12 @@ end{thm}
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 %%%%%
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -2481,54 +2987,45 @@ Measuring Quantum Probabilities
 \end_layout
 
 \begin_layout Standard
-Similarly to the classical case, it is possible to estimate quantum probabilitie
-s by utilizing the frequentist approach of the previous section, assuming
- identical measurements conditions in each repeated experiment
+Similarly to the classical case, it is possible to estimate quantum probabilities by utilizing the frequentist approach of the previous section, assuming identical measurements conditions in each repeated experiment
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "peres1995quantum"
 
 \end_inset
 
-.
- For instance, if one wants to determine the probability that the spin of
- a given silver atom is 
+. For instance, if one wants to determine the probability that the spin of a given silver atom is 
 \begin_inset Formula $+\hbar/2$
 \end_inset
 
-, a Stern-Gerlach apparatus is built where ideally an inhomogeneous magnetic
- field is generated along, let's say, the quantization axis 
+, a Stern-Gerlach apparatus is built where ideally an inhomogeneous magnetic field is generated along, let's say, the quantization axis 
 \begin_inset Formula $z$
 \end_inset
 
-.
- One then produces a collimated beam of identically prepared (neutral) silver
- atoms that is directed between the poles of the magnet where a predetermined
- field-gradient along the 
+. One then produces a collimated beam of identically prepared (neutral) silver atoms that is directed between the poles of the magnet where a predetermined field-gradient along the 
 \begin_inset Formula $z$
 \end_inset
 
- direction has been established.
- Under appropriate experimental conditions we will observe that the beam,
- after traversing the magnetic-field region, will be deflected towards two
- regions identified by distinguished spots on a detector situated behind
- the apparatus
+ direction has been established. Under appropriate experimental conditions we will observe that the beam, after traversing the magnetic-field region, will be deflected towards two regions identified by distinguished spots on a detector situated behind the apparatus
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Stern1988,peres1995quantum,544199,Griffiths2003"
 
 \end_inset
 
-.
- Each of the two discrete values is associated to either 
+. Each of the two discrete values is associated to either 
 \begin_inset Formula $+\hbar/2$
 \end_inset
 
@@ -2552,8 +3049,7 @@ spin down
 \begin_inset Quotes erd
 \end_inset
 
-, respectively.
- By 
+, respectively. By 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2569,13 +3065,11 @@ spin up
 \begin_inset Quotes erd
 \end_inset
 
- region one can, in principle, estimate the probability that the prepared
- state of the silver atom state has spin 
+ region one can, in principle, estimate the probability that the prepared state of the silver atom state has spin 
 \begin_inset Formula $+\hbar/2$
 \end_inset
 
-.
- Notice that a real experiment does not necessarily represent an 
+. Notice that a real experiment does not necessarily represent an 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2583,56 +3077,42 @@ ideal measurement
 \begin_inset Quotes erd
 \end_inset
 
-.
- For example, not all silver atoms will be identically prepared, or the
- field-gradient could not be large enough to distinguish between the spin
- up and down situations simply producing a large single blot.
- In other words, the closer we get to an ideal measurement the better we
- determine those probabilities at the cost of significantly increasing the
- number of resources.
- It is not very well appreciated in the literature that Bohr attempted to
- argue against the measurability of the spin of a free electron
+. For example, not all silver atoms will be identically prepared, or the field-gradient could not be large enough to distinguish between the spin up and down situations simply producing a large single blot. In other words, the closer we get to an ideal measurement the better we determine those probabilities at the cost of significantly increasing the number of resources. It is not very well appreciated in the literature that Bohr attempted to argue against the measurability of the spin of a free electron
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "Bohr1985,MartensDeMuynck1994,McEvoy2001"
 
 \end_inset
 
-.
- Essentially, Bohr argued (and Mott later on justified his assertion by
- an elegant use of uncertainty relations
+. Essentially, Bohr argued (and Mott later on justified his assertion by an elegant use of uncertainty relations
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "10.2307/j.ctt7ztxn5.15"
 
 \end_inset
 
-) that a Stern-Gerlach experiment could not succeed in establishing the
- spin of an unbound electron because the Lorentz force would blur the detected
- pattern.
- This example illustrates the case of a fundamental physical limitation
- that not even infinite resources could mitigate.
+) that a Stern-Gerlach experiment could not succeed in establishing the spin of an unbound electron because the Lorentz force would blur the detected pattern. This example illustrates the case of a fundamental physical limitation that not even infinite resources could mitigate.
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -2645,10 +3125,7 @@ Quantum Interval-valued Probability Measures
 \end_layout
 
 \begin_layout Standard
-As argued in the previous sections, given fixed finite resources, it is
- only possible to estimate the quantum probabilities within an interval
- of confidence.
- It is therefore natural to propose the notion of a 
+As argued in the previous sections, given fixed finite resources, it is only possible to estimate the quantum probabilities within an interval of confidence. It is therefore natural to propose the notion of a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2656,24 +3133,23 @@ quantum interval-valued probability measure
 \begin_inset Quotes erd
 \end_inset
 
- that combines the definitions of conventional quantum probability measures
- with classical interval-probabilities.
+ that combines the definitions of conventional quantum probability measures with classical interval-probabilities.
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
-begin{definition}[Quantum Interval-valued Probability Measure]
+begin{definition}
 \end_layout
 
 \end_inset
 
-
+[Quantum Interval-valued Probability Measure]
 \begin_inset CommandInset label
 LatexCommand label
 name "def:QuantumInterval-valuedProbability"
@@ -2686,6 +3162,7 @@ name "def:QuantumInterval-valuedProbability"
 
  with quantum events (projections)
 \begin_inset space ~
+
 \end_inset
 
 
@@ -2694,6 +3171,7 @@ name "def:QuantumInterval-valuedProbability"
 
 , and a collection of intervals
 \begin_inset space ~
+
 \end_inset
 
 
@@ -2710,6 +3188,7 @@ quantum
 \emph default
  is a function
 \begin_inset space ~
+
 \end_inset
 
 
@@ -2720,19 +3199,19 @@ quantum
 \end_layout
 
 \begin_layout Itemize
+
 \begin_inset Formula $\bar{\mu}(\mathbb{0})=\left[0,0\right]$
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Itemize
+
 \begin_inset Formula $\bar{\mu}(\mathbb{1})=\left[1,1\right]$
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Itemize
@@ -2744,8 +3223,7 @@ For any projection
 \begin_inset Formula $\bar{\mu}\left(\mathbb{1}-P\right)=\left[1,1\right]-\bar{\mu}\left(P\right)$
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Itemize
@@ -2757,16 +3235,15 @@ For a set of mutually orthogonal projections
 \begin_inset Formula $\bar{\mu}\left(\sum_{i=1}^{N}P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}\left(P_{i}\right)$
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{definition}
@@ -2779,10 +3256,7 @@ end{definition}
 
 \begin_layout Standard
 \noindent
-It is easy to establish that quantum interval-valued probability measures
- generalize conventional quantum probability measures.
- In particular, any quantum probability measure can be recast as an interval-val
-ued measure using the three intervals 
+It is easy to establish that quantum interval-valued probability measures generalize conventional quantum probability measures. In particular, any quantum probability measure can be recast as an interval-valued measure using the three intervals 
 \begin_inset Formula $\left[0,0\right]$
 \end_inset
 
@@ -2812,7 +3286,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 imposs
 \end_layout
@@ -2821,6 +3294,7 @@ imposs
 
 
 \begin_inset space ~
+
 \end_inset
 
 and 
@@ -2828,7 +3302,6 @@ and
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 necess
@@ -2838,6 +3311,7 @@ necess
 
 
 \begin_inset space ~
+
 \end_inset
 
 as before, and 
@@ -2854,7 +3328,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 unknown
 \end_layout
@@ -2863,11 +3336,12 @@ unknown
 
 
 \begin_inset space ~
+
 \end_inset
 
-because it provides no information.
- Given a quantum probability measure
+because it provides no information. Given a quantum probability measure
 \begin_inset space ~
+
 \end_inset
 
 
@@ -2876,6 +3350,7 @@ because it provides no information.
 
 , we define a quantum interval-valued probability measure
 \begin_inset space ~
+
 \end_inset
 
 
@@ -2891,28 +3366,16 @@ because it provides no information.
 \end_inset
 
  is defined by 
-\begin_inset Formula 
-\[
+\begin_inset Formula \[
 \iota(x)=\begin{cases}
 \necess & \textrm{if }x=1\textrm{ ;}\\
 \imposs & \textrm{if }x=0\textrm{ ;}\\
 \unknown & \textrm{otherwise.}
 \end{cases}
 \]
-
 \end_inset
 
-This measure represents the beliefs of an experimenter with no prior knowledge
- about the particular quantum system in question.
- Formally, we can ask: what can we deduce about the state of a quantum system
- given a quantum interval-valued probability measure, i.e., given observations
- done with finite resources.
- In the case the intervals are infinitely precise the question reduces to
- Gleason's theorem which states that the state of the quantum system is
- uniquely determined by the probability measure.
- But surely the less resources are available, the less precise the intervals,
- and the less we expect to know about the state of the system.
- To formally state and answer this question we begin with defining the 
+This measure represents the beliefs of an experimenter with no prior knowledge about the particular quantum system in question. Formally, we can ask: what can we deduce about the state of a quantum system given a quantum interval-valued probability measure, i.e., given observations done with finite resources. In the case the intervals are infinitely precise the question reduces to Gleason's theorem which states that the state of the quantum system is uniquely determined by the probability measure. But surely the less resources are available, the less precise the intervals, and the less we expect to know about the state of the system. To formally state and answer this question we begin with defining the 
 \emph on
 core
 \emph default
@@ -2924,11 +3387,11 @@ convexity
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 begin{definition}
@@ -2938,6 +3401,7 @@ begin{definition}
 
  Given a quantum interval-valued probability measure
 \begin_inset space ~
+
 \end_inset
 
 
@@ -2960,11 +3424,11 @@ core
 \begin_inset Formula $\mathrm{core}\left(\bar{\mu}\right)=\left\{ \pmeas:\events\rightarrow[0,1]~\middle|~\forall E\in\events.~\pmeas\left(E\right)\in\bar{\mu}\left(E\right)\right\} $
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Itemize
+
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
@@ -2976,16 +3440,15 @@ core
 \begin_inset Formula $P_{0},P_{1}\in\events$
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{definition}
@@ -2998,46 +3461,47 @@ end{definition}
 
 \begin_layout Standard
 \noindent
-The core of an interval-valued probability measure is the set of real-valued
- infinitely-precise probability measures it approximates.
- An interval-valued probability measure is convex if whenever certain intervals
- exist then combinations of these intervals must also exist, guaranteeing
- we can add and manipulate probabilities coherently.
- In the classical world, every convex measure has a non-empty core, which
- means that the interval-valued probability measure must approximate at
- least one infinitely-precise measure.
+The core of an interval-valued probability measure is the set of real-valued infinitely-precise probability measures it approximates. An interval-valued probability measure is convex if whenever certain intervals exist then combinations of these intervals must also exist, guaranteeing we can add and manipulate probabilities coherently. In the classical world, every convex measure has a non-empty core, which means that the interval-valued probability measure must approximate at least one infinitely-precise measure.
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
-begin{thm}[Shapley~
-\backslash
-cite{Shapley1971,Grabisch2016}]
+begin{thm}
 \end_layout
 
 \end_inset
 
+[Shapley
+\begin_inset space ~
 
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+after ""
+key "Shapley1971,Grabisch2016"
+
+\end_inset
+
+]
 \begin_inset CommandInset label
 LatexCommand label
 name "thm:Shapley"
 
 \end_inset
 
- Every (classical) convex interval-valued probability measure has a non-empty
- core.
- 
+ Every (classical) convex interval-valued probability measure has a non-empty core. 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{thm}
@@ -3049,30 +3513,23 @@ end{thm}
 \end_layout
 
 \begin_layout Standard
-In informal terms, this result states that although measurements done with
- limited resources and poor precision may not uniquely identify the true
- state of the system, there is always at least one system that is consistent
- with the measurements.
- Surprisingly, we discovered a counterexample to this statement in the quantum
- case, i.e., we constructed the following convex quantum interval-valued probabili
-ty measure with an empty core.
+In informal terms, this result states that although measurements done with limited resources and poor precision may not uniquely identify the true state of the system, there is always at least one system that is consistent with the measurements. Surprisingly, we discovered a counterexample to this statement in the quantum case, i.e., we constructed the following convex quantum interval-valued probability measure with an empty core.
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
-begin{example}[Three-dimensional quantum three-interval-valued probability
- measure]
+begin{example}
 \end_layout
 
 \end_inset
 
-
+[Three-dimensional quantum three-interval-valued probability measure]
 \begin_inset CommandInset label
 LatexCommand label
 name "ex:three-dimensional-three-value"
@@ -3083,8 +3540,7 @@ name "ex:three-dimensional-three-value"
 \begin_inset Formula $\left\{ \ket{0},\ket{1},\ket{2}\right\} $
 \end_inset
 
-.
- Let
+. Let
 \emph on
  
 \begin_inset Formula $\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $
@@ -3101,21 +3557,18 @@ name "ex:three-dimensional-three-value"
 \end_inset
 
 , and 
-\begin_inset Formula 
-\begin{eqnarray*}
+\begin_inset Formula \begin{eqnarray*}
 \bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'}) & = & \imposs\\
 \bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})=\bar{\mu}(\mathbb{1}-\proj{\ps'}) & = & \necess\\
 \bar{\mu}(P) & = & \unknown\quad\textrm{otherwise}
 \end{eqnarray*}
-
 \end_inset
 
 It is straightforward to verify that 
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
- is a convex quantum interval-valued probability measure.
- Now assume there exists a real-valued quantum probability measure 
+ is a convex quantum interval-valued probability measure. Now assume there exists a real-valued quantum probability measure 
 \begin_inset Formula $\mu$
 \end_inset
 
@@ -3125,15 +3578,14 @@ It is straightforward to verify that
 
  for every event (projection)
 \begin_inset space ~
+
 \end_inset
 
 
 \begin_inset Formula $P$
 \end_inset
 
-.
- We derive a contradiction as follows.
- Suppose 
+. We derive a contradiction as follows. Suppose 
 \begin_inset Formula $\mu(P)\in\bar{\mu}(P)$
 \end_inset
 
@@ -3141,9 +3593,9 @@ It is straightforward to verify that
 \begin_inset Formula $\mu(\proj{0})=\mu(\proj{\ps})=\mu(\proj{\ps'})=0$
 \end_inset
 
-.
- By Gleason's theorem, there is a mixed state
+. By Gleason's theorem, there is a mixed state
 \begin_inset space ~
+
 \end_inset
 
 
@@ -3162,9 +3614,9 @@ It is straightforward to verify that
 \begin_inset Formula $q_{j}>0$
 \end_inset
 
-.
- However, no pure state
+. However, no pure state
 \begin_inset space ~
+
 \end_inset
 
 
@@ -3175,13 +3627,11 @@ It is straightforward to verify that
 \begin_inset Formula $\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0$
 \end_inset
 
-; a contradiction.
- 
+; a contradiction. 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{example}
@@ -3193,14 +3643,17 @@ end{example}
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 \align center
-\begin_inset Graphics
+
+\begin_inset Graphics 
 	filename ../proposal/measure4.pdf
 	scale 38
 
@@ -3209,10 +3662,12 @@ status open
  
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:three-dimensional-4-value"
@@ -3221,6 +3676,7 @@ name "fig:three-dimensional-4-value"
 
 This figure illustrates cases 1 and 2 of example
 \begin_inset space ~
+
 \end_inset
 
 
@@ -3234,8 +3690,7 @@ reference "ex:three-dimensional-4-value"
 \begin_inset Formula $\mathbb{R}^{3}$
 \end_inset
 
-.
- The red and green dotted vectors are 
+. The red and green dotted vectors are 
 \begin_inset Formula $\ket{0}$
 \end_inset
 
@@ -3243,8 +3698,7 @@ reference "ex:three-dimensional-4-value"
 \begin_inset Formula $\ket{\ps}$
 \end_inset
 
- respectively.
- All possible real vectors of the subspaces 
+ respectively. All possible real vectors of the subspaces 
 \begin_inset Formula $\ket{0_{\theta,\gamma}^{\perp}}$
 \end_inset
 
@@ -3252,9 +3706,9 @@ reference "ex:three-dimensional-4-value"
 \begin_inset Formula $\ket{\ps_{\theta,\gamma}^{\perp}}$
 \end_inset
 
- are drawn in the red and green circles, respectively.
- Within the circles, a dotted vector
+ are drawn in the red and green circles, respectively. Within the circles, a dotted vector
 \begin_inset space ~
+
 \end_inset
 
 
@@ -3269,9 +3723,9 @@ reference "ex:three-dimensional-4-value"
 \begin_inset Formula $\bar{\mu}(\proj{\psi})=\unlikely$
 \end_inset
 
-.
- The gray vector is a generic vector
+. The gray vector is a generic vector
 \begin_inset space ~
+
 \end_inset
 
 
@@ -3308,8 +3762,7 @@ reference "ex:three-dimensional-4-value"
 \end_layout
 
 \begin_layout Standard
-Looking closely at the example above, we might think that the probability
- measure 
+Looking closely at the example above, we might think that the probability measure 
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
@@ -3341,31 +3794,23 @@ Looking closely at the example above, we might think that the probability
 \begin_inset Formula $\ket{\phi}$
 \end_inset
 
-.
- Each of these possibilities is compatible with some but not all of the
- observations.
- All is not lost however: if the observations are made more precise, we
- conjecture that some of the inconsistencies disappear.
- A partial proof of this conjecture is the following example which refines
- the previous probability measure by adding more precise intervals.
- It remains to prove that this refined measure is convex, however.
+. Each of these possibilities is compatible with some but not all of the observations. All is not lost however: if the observations are made more precise, we conjecture that some of the inconsistencies disappear. A partial proof of this conjecture is the following example which refines the previous probability measure by adding more precise intervals. It remains to prove that this refined measure is convex, however.
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
-begin{example}[Three-dimensional quantum four-interval-valued probability
- measure]
+begin{example}
 \end_layout
 
 \end_inset
 
-
+[Three-dimensional quantum four-interval-valued probability measure]
 \begin_inset CommandInset label
 LatexCommand label
 name "ex:three-dimensional-4-value"
@@ -3376,8 +3821,7 @@ name "ex:three-dimensional-4-value"
 \begin_inset Formula $\left\{ \ket{0},\ket{1},\ket{2}\right\} $
 \end_inset
 
-.
- Let 
+. Let 
 \emph on
  
 \emph default
@@ -3393,13 +3837,13 @@ name "ex:three-dimensional-4-value"
 \begin_inset Formula $\ket{\ms}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})$
 \end_inset
 
-.
- The definition of 
+. The definition of 
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
  below refers to Fig.
 \begin_inset space ~
+
 \end_inset
 
 
@@ -3414,12 +3858,10 @@ reference "fig:three-dimensional-4-value"
 
 \begin_layout Enumerate
 Let: 
-\begin_inset Formula 
-\begin{eqnarray*}
+\begin_inset Formula \begin{eqnarray*}
 \bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps}) & = & \imposs\\
 \bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps}) & = & \necess
 \end{eqnarray*}
-
 \end_inset
 
 where 
@@ -3430,8 +3872,7 @@ where
 \begin_inset Formula $\ket{\ps}$
 \end_inset
 
- are plotted as the red and green dotted vectors, respectively.
- 
+ are plotted as the red and green dotted vectors, respectively. 
 \end_layout
 
 \begin_layout Enumerate
@@ -3459,8 +3900,7 @@ The red and green circles are are the states orthogonal to
 \begin_inset Formula $0\le\gamma<2\pi$
 \end_inset
 
-.
- The dotted half of those states need special treatment, i.e., whenever 
+. The dotted half of those states need special treatment, i.e., whenever 
 \begin_inset Formula $0\le\theta<\frac{\pi}{2}$
 \end_inset
 
@@ -3469,12 +3909,10 @@ The red and green circles are are the states orthogonal to
 \end_inset
 
 , we define 
-\begin_inset Formula 
-\begin{eqnarray*}
+\begin_inset Formula \begin{eqnarray*}
 \bar{\mu}\left(\proj{0_{\theta,\gamma}^{\perp}}\right)=\bar{\mu}\left(\proj{\ps_{\theta,\gamma}^{\perp}}\right) & = & \likely\\
 \bar{\mu}\left(\mathbb{1}-\proj{0_{\theta,\gamma}^{\perp}}\right)=\bar{\mu}\left(\mathbb{1}-\proj{\ps_{\theta,\gamma}^{\perp}}\right) & = & \unlikely
 \end{eqnarray*}
-
 \end_inset
 
 
@@ -3489,8 +3927,7 @@ Otherwise,
 \begin_inset Formula $\bar{\mu}(\mathbb{1}-\proj{\psi})=\likely$
 \end_inset
 
-.
- 
+. 
 \end_layout
 
 \begin_layout Standard
@@ -3498,13 +3935,11 @@ It is straightforward but tedious to check that
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
- is a quantum interval-valued probability measure.
- Although we have not verified that 
+ is a quantum interval-valued probability measure. Although we have not verified that 
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
- is convex, the following argument establishes that is has an empty core.
- Assume there is a real-valued probability measure satisfying 
+ is convex, the following argument establishes that is has an empty core. Assume there is a real-valued probability measure satisfying 
 \begin_inset Formula $\mu_{\rho}^{B}(P)\in\bar{\mu}(P)$
 \end_inset
 
@@ -3512,8 +3947,7 @@ It is straightforward but tedious to check that
 \begin_inset Formula $P\in\events$
 \end_inset
 
-.
- Because 
+. Because 
 \begin_inset Formula $\mu_{\rho}^{B}(\proj{0})\in\bar{\mu}(\proj{0})=\imposs$
 \end_inset
 
@@ -3529,13 +3963,10 @@ It is straightforward but tedious to check that
 \begin_inset Formula $\mu_{\rho}^{B}=\mu_{\ket{2}}^{B}$
 \end_inset
 
-.
- However, 
-\begin_inset Formula 
-\[
+. However, 
+\begin_inset Formula \[
 \mu_{\ket{2}}^{B}(\proj{2})=1\notin\unlikely=\bar{\mu}(\proj{2})\textrm{ .}
 \]
-
 \end_inset
 
 This measure however is 
@@ -3558,13 +3989,11 @@ better
 \begin_inset Formula $\ket{1}$
 \end_inset
 
-.
- 
+. 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{example}
@@ -3576,10 +4005,7 @@ end{example}
 \end_layout
 
 \begin_layout Standard
-In general, we conjecture that if the measurement equipment is made more
- and more precise, the corresponding interval-valued probability measure
- will be closer and closer to the Born rule.
- In the limit case, 
+In general, we conjecture that if the measurement equipment is made more and more precise, the corresponding interval-valued probability measure will be closer and closer to the Born rule. In the limit case, 
 \begin_inset Formula $\mathscr{I}=\left\{ \left\{ a\right\} ~\middle|~a\in\left[0,1\right]\right\} $
 \end_inset
 
@@ -3603,8 +4029,7 @@ Main area of work
 \end_layout
 
 \begin_layout Standard
-Quantum Mechanics and Computing over Finite Fields, Quantum Interval-valued
- Probability
+Quantum Mechanics and Computing over Finite Fields, Quantum Interval-valued Probability
 \end_layout
 
 \begin_layout Subsection
@@ -3620,20 +4045,28 @@ Whether you would like to apply for funding?
 \end_layout
 
 \begin_layout Standard
-I would like to apply for funding, but I haven’t been to Europe before…
- So I don't know the specific amount I need…
+I would like to apply for funding, but I haven’t been to Europe before… So I don't know the specific amount I need…
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Note Comment
 status open
 
-\begin_layout Plain Layout
+\begin_layout Standard
  
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "../proposal/prop"
+bibfiles "../proposal/prop.bib"
 options "plain"
+
+\end_inset
+
+ 
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "cites1.bib"
+options ""
 
 \end_inset
 
@@ -3647,7 +4080,6 @@ options "plain"
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 printbibliography
