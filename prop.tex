@@ -870,21 +870,7 @@ might be induced by the state $\ket{2}$ because $\bar{\mu}(\proj{0})=\bar{\mu}(\
 In general, each two real 1-dimensional projectors~$\proj{\psi_{0}}$
 and $\proj{\psi_{1}}$ mapping to impossible suggests $\bar{\mu}$
 might be induced by the pure state~$\ket{\psi_{0}}\times\ket{\psi_{1}}$
-in the Hilbert space of dimension 3.\footnote{Notice that we only discuss only discuss real 1-dimensional projectors
-in the Hilbert space of dimension 3. In general, we could discuss
-all 1-dimensional projectors in any dimension. However, restricting
-to $\mathbb{R}^{3}$ enable us to use cross product which will simplify
-our discussion a lot, and $\mathbb{R}^{3}$ is easy to visualize and
-imagine. Also, if a quantum IVPM~$\bar{\mu}$ has an empty core when
-restricting to $\mathbb{R}^{3}$, $\bar{\mu}$ has an empty core on
-the original space as well. So restricting on real 1-dimensional projectors
-still provides valid results.
-
-About the cross product, even if $\ket{\psi_{0}}$ and $\ket{\psi_{1}}$
-are normalized, when they are not orthogonal, $\ket{\psi_{0}}\times\ket{\psi_{1}}$
-is not normalized. We will use $\ket{\psi_{0}}\times\ket{\psi_{1}}$
-and the normalized $\ket{\psi_{0}}\times\ket{\psi_{1}}$ interchanged
-when there is no confusion.}
+in the Hilbert space of dimension 3.
 
 Since a quantum IVPM is completely determined by its value on 1-dimensional
 projectors in the Hilbert space of dimension 3, we could define the
@@ -940,8 +926,54 @@ and $3$.
 \end{itemize}
 Conversely, if a function~$\bar{f}:\mathbb{C}S^{2}\rightarrow\mathscr{I}$
 satisfies the above properties, $\bar{f}$ must be an interval-valued
-frame function.\end{lemma}\footnote{\yutsung{{Verify the proof...}}}
+frame function.\end{lemma}\footnote{\yutsung{Verify the proof...}}
 
+\begin{definition}For $\ket{\psi}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}=\begin{pmatrix}\alpha_{0}\\
+\alpha_{1}\\
+\alpha_{2}
+\end{pmatrix}$ and $\ket{\phi}=\beta_{0}\ket{0}+\beta_{1}\ket{1}+\beta_{2}\ket{2}=\begin{pmatrix}\beta_{0}\\
+\beta_{1}\\
+\beta_{2}
+\end{pmatrix}$, their cross product is defined as follow: 
+\[
+\ket{\psi\times\phi}=\ket{\psi}\times\ket{\phi}=\begin{vmatrix}\alpha_{1}^{*} & \beta_{1}^{*}\\
+\alpha_{2}^{*} & \beta_{2}^{*}
+\end{vmatrix}\ket{0}+\begin{vmatrix}\alpha_{2}^{*} & \beta_{2}^{*}\\
+\alpha_{0}^{*} & \beta_{0}^{*}
+\end{vmatrix}\ket{1}+\begin{vmatrix}\alpha_{0}^{*} & \beta_{0}^{*}\\
+\alpha_{1}^{*} & \beta_{1}^{*}
+\end{vmatrix}\ket{2}\textrm{ ,}
+\]
+where $\begin{vmatrix}\alpha & \beta\\
+\alpha' & \beta'
+\end{vmatrix}=\alpha\beta'-\alpha'\beta$. Also, even if $\ket{\psi}$ and $\ket{\phi}$ are normalized, their
+cross product~$\ket{\psi}\times\ket{\phi}$ need not be normalized
+as usual. We will use $\ket{\psi}\times\ket{\phi}$ and $\frac{\ket{\psi}\times\ket{\phi}}{\left\Vert \ket{\psi}\times\ket{\phi}\right\Vert }$
+interchanged when there is no confusion.\qed\end{definition}
+
+\begin{lemma}Given $\ket{\psi}$, $\ket{\phi}$ and $\ket{\varphi}\in\mathbb{C}^{3}$
+such that $\ket{\psi}$ is not parallel to $\ket{\phi}$. Then, $\ket{\varphi}$
+is parallel to $\ket{\psi}\times\ket{\phi}$ if and only if $\ip{\psi}{\varphi}=\ip{\phi}{\varphi}=0$.\end{lemma}
+\begin{proof}
+To prove that $\ket{\varphi}$ is parallel to $\ket{\psi}\times\ket{\phi}\Rightarrow\ip{\psi}{\varphi}=\ip{\phi}{\varphi}=0$,
+we can just verify 
+\begin{eqnarray*}
+\ip{\psi}{\psi\times\phi} & = & \ip{\psi\times\phi}{\psi}^{*}=\left[\left(\alpha_{1}\beta_{2}-\alpha_{2}\beta_{1}\right)\alpha_{0}+\left(\alpha_{2}\beta_{0}-\alpha_{0}\beta_{2}\right)\alpha_{1}+\left(\alpha_{0}\beta_{1}-\alpha_{1}\beta_{0}\right)\alpha_{2}\right]^{*}=0\textrm{ ,}\\
+\ip{\phi}{\psi\times\phi} & = & \ip{\psi\times\phi}{\phi}^{*}=\left[\left(\alpha_{1}\beta_{2}-\alpha_{2}\beta_{1}\right)\beta_{0}+\left(\alpha_{2}\beta_{0}-\alpha_{0}\beta_{2}\right)\beta_{1}+\left(\alpha_{0}\beta_{1}-\alpha_{1}\beta_{0}\right)\beta_{2}\right]^{*}=0\textrm{ .}
+\end{eqnarray*}
+
+To prove the other direction, consider the linear transformation~$T:\mathbb{C}^{3}\rightarrow\mathbb{C}^{2}$
+defined by $T\left(\ket{\varphi}\right)=\begin{pmatrix}\ip{\psi}{\varphi}\\
+\ip{\phi}{\varphi}
+\end{pmatrix}$. Its rank equation~\cite{FraleighBeauregard1995} implies
+\begin{eqnarray*}
+\dim\left(\ker T\right) & = & \mathrm{nullity}\left(T\right)\\
+ & = & \dim\left(\mathrm{domain}T\right)-\mathrm{rank}\left(T\right)\\
+ & = & 3-2=1
+\end{eqnarray*}
+By the other direction of the proof, we have already known $\ket{\psi}\times\ket{\phi}\in\ker T$.
+Therefore, $\ket{\varphi}$ is parallel to $\ket{\psi}\times\ket{\phi}$.
+\end{proof}
 Since interval-valued probability measures~$\bar{\mu}$ and interval-valued
 frame functions~$\bar{f}$ are one-to-one correspondence, studying
 1-dimensional projectors mapping to impossible by $\bar{\mu}$ is
@@ -950,8 +982,8 @@ by $\bar{f}$. These points, denoted by $\bar{f}^{-1}\left(\imposs\right)=\set{\k
 play an important role to understand $\bar{f}$. There are 4 different
 cases when analyzing $\bar{f}^{-1}\left(\imposs\right)$:
 \begin{enumerate}
-\item If another pair of states~$\ket{\psi_{0}'}$ and $\ket{\psi_{1}'}\in\bar{f}^{-1}\left(\imposs\right)$\footnote{\yutsung{{Check when }$\ket{\psi_{0}'}$ and $\ket{\psi_{1}'}$ are
-complex?}} gives different state of cross product~$\ket{\psi_{0}'}\times\ket{\psi_{1}'}$,
+\item If another pair of states~$\ket{\psi_{0}'}$ and $\ket{\psi_{1}'}\in\bar{f}^{-1}\left(\imposs\right)$
+gives different state of cross product~$\ket{\psi_{0}'}\times\ket{\psi_{1}'}$,
 then both $\ket{\psi_{0}}\times\ket{\psi_{1}}$ and $\ket{\psi_{0}'}\times\ket{\psi_{1}'}$
 might induce $\bar{f}$, but neither $f_{\ket{\psi_{0}}\times\ket{\psi_{1}}}^{B}$
 nor $f_{\ket{\psi_{0}'}\times\ket{\psi_{1}'}}^{B}$ in the core of
@@ -986,7 +1018,15 @@ contains some area in $S^{2}$, it must be the situation of case 1.
 Furthermore, the larger the area, the more 1-dimensional projectors
 which is inconsistent with any particular Born rule probability measure.
 Therefore, the area of $\bar{f}^{-1}\left(\imposs\right)$ could indicate
-how much $\bar{f}$ deviate from the Born rule probability measures.
+how much $\bar{f}$ deviate from the Born rule probability measures.\footnote{Notice that we only discuss only discuss real 1-dimensional projectors
+in the Hilbert space of dimension 3. In general, we could discuss
+all 1-dimensional projectors in any dimension. However, restricting
+to $\mathbb{R}^{3}$ enable us to use cross product which will simplify
+our discussion a lot, and $\mathbb{R}^{3}$ is easy to visualize and
+imagine. Also, if a quantum IVPM~$\bar{\mu}$ has an empty core when
+restricting to $\mathbb{R}^{3}$, $\bar{\mu}$ has an empty core on
+the original space as well. So restricting on real 1-dimensional projectors
+still provides valid results.}
 
 In order to simplify the discussion, let's set the center of $\bar{f}^{-1}\left(\imposs\right)$
 as the north pole, and assume $\bar{f}$ maps every state whose latitude
