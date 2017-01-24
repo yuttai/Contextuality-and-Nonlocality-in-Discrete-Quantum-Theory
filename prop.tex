@@ -947,7 +947,7 @@ First, if $\mathbb{0}$ or $\mathbb{1}$ is in $\left\{ P_{i}\right\} _{i=1}^{N}$,
 the statement could be reduced to the case without $\mathbb{0}$,
 or its trivial. Hence, we only need to discuss $\left\{ P_{i}\right\} _{i=1}^{N}$
 containing 1- or 2-dimensional projectors. When $\left\{ P_{i}\right\} _{i=1}^{N}$
-containing 2-dimensional projectors, the definition of $\bar{\mu}$
+containing a 2-dimensional projector, the definition of $\bar{\mu}$
 implies equation~(\ref{eq:quantumIVPMconditions}). When $\left\{ P_{i}\right\} _{i=1}^{N}$
 only containing 1-dimensional projectors, the properties of $\bar{f}$
 implies equation~(\ref{eq:quantumIVPMconditions}).
@@ -973,13 +973,20 @@ where $\begin{vmatrix}\alpha & \beta\\
 \end{vmatrix}=\alpha\beta'-\alpha'\beta$. Also, even if $\ket{\psi}$ and $\ket{\phi}$ are normalized, their
 cross product~$\ket{\psi}\times\ket{\phi}$ need not be normalized
 as usual. We will use $\ket{\psi}\times\ket{\phi}$ and $\frac{\ket{\psi}\times\ket{\phi}}{\left\Vert \ket{\psi}\times\ket{\phi}\right\Vert }$
-interchanged when there is no confusion.\qed\end{definition}
+interchanged when there is no confusion.\end{definition}
+
+\begin{definition}For $\ket{\psi}$ and $\ket{\phi}\in\mathbb{C}^{3}$,
+if $\ket{\psi}=\lambda\ket{\phi}$ for some~$\lambda\ne0$, we call
+$\ket{\psi}$ is parallel to $\ket{\phi}$ denoted by $\ket{\psi}\parallel\ket{\phi}$.
+In this case, $\ket{\psi}$ and $\ket{\phi}$ represent the same physical
+state. ``$\ket{\psi}$ is not parallel to $\ket{\phi}$'' is denoted
+by $\ket{\psi}\nparallel\ket{\phi}$.\end{definition}
 
 \begin{lemma}Given $\ket{\psi}$, $\ket{\phi}$ and $\ket{\varphi}\in\mathbb{C}^{3}$
-such that $\ket{\psi}$ is not parallel to $\ket{\phi}$. Then, $\ket{\varphi}$
-is parallel to $\ket{\psi}\times\ket{\phi}$ if and only if $\ip{\psi}{\varphi}=\ip{\phi}{\varphi}=0$.\end{lemma}
+such that $\ket{\psi}\nparallel\ket{\phi}$. Then, $\ket{\varphi}\parallel\left(\ket{\psi}\times\ket{\phi}\right)$
+if and only if $\ip{\psi}{\varphi}=\ip{\phi}{\varphi}=0$.\end{lemma}
 \begin{proof}
-To prove that $\ket{\varphi}$ is parallel to $\ket{\psi}\times\ket{\phi}\Rightarrow\ip{\psi}{\varphi}=\ip{\phi}{\varphi}=0$,
+To prove that $\ket{\varphi}\parallel\left(\ket{\psi}\times\ket{\phi}\right)\Rightarrow\ip{\psi}{\varphi}=\ip{\phi}{\varphi}=0$,
 we can just verify 
 \begin{eqnarray*}
 \ip{\psi}{\psi\times\phi} & = & \ip{\psi\times\phi}{\psi}^{*}=\left[\left(\alpha_{1}\beta_{2}-\alpha_{2}\beta_{1}\right)\alpha_{0}+\left(\alpha_{2}\beta_{0}-\alpha_{0}\beta_{2}\right)\alpha_{1}+\left(\alpha_{0}\beta_{1}-\alpha_{1}\beta_{0}\right)\alpha_{2}\right]^{*}=0\textrm{ ,}\\
@@ -989,14 +996,14 @@ we can just verify
 To prove the other direction, consider the linear transformation~$T:\mathbb{C}^{3}\rightarrow\mathbb{C}^{2}$
 defined by $T\left(\ket{\varphi}\right)=\begin{pmatrix}\ip{\psi}{\varphi}\\
 \ip{\phi}{\varphi}
-\end{pmatrix}$. Its rank equation~\cite{FraleighBeauregard1995} implies
-\begin{eqnarray*}
-\dim\left(\ker T\right) & = & \mathrm{nullity}\left(T\right)\\
- & = & \dim\left(\mathrm{domain}T\right)-\mathrm{rank}\left(T\right)\\
- & = & 3-2=1
-\end{eqnarray*}
+\end{pmatrix}$. Since $\ket{\psi}\nparallel\ket{\phi}$, we have $\mathrm{rank}\left(T\right)=2$.
+Together with the rank equation~\cite{FraleighBeauregard1995}, we
+have
+\[
+\dim\left(\ker T\right)=\mathrm{nullity}\left(T\right)=3-\mathrm{rank}\left(T\right)=3-2=1\textrm{ .}
+\]
 By the other direction of the proof, we have already known $\ket{\psi}\times\ket{\phi}\in\ker T$.
-Therefore, $\ket{\varphi}$ is parallel to $\ket{\psi}\times\ket{\phi}$.
+Therefore, $\ket{\varphi}\parallel\left(\ket{\psi}\times\ket{\phi}\right)$.
 \end{proof}
 Since interval-valued probability measures~$\bar{\mu}$ and interval-valued
 frame functions~$\bar{f}$ are one-to-one correspondence, studying
@@ -1006,6 +1013,18 @@ by $\bar{f}$. These points, denoted by $\bar{f}^{-1}\left(\imposs\right)=\set{\k
 play an important role to understand $\bar{f}$. There are 4 different
 cases when analyzing $\bar{f}^{-1}\left(\imposs\right)$:
 \begin{enumerate}
+\item $\bar{f}^{-1}\left(\imposs\right)=\emptyset$. If $f_{\phi}^{B}\in\mathrm{core}\left(\bar{f}\right)$
+for some pure state~$\ket{\phi}$, we could say nothing about $\ket{\phi}$.
+\item $\bar{f}^{-1}\left(\imposs\right)=\left\{ \ket{\psi_{0}}\right\} $.
+If $f_{\phi}^{B}\in\mathrm{core}\left(\bar{f}\right)$ for some pure
+state~$\ket{\phi}$, $\ket{\phi}$ could be any state orthogonal
+to $\ket{\psi_{0}}$.
+\item Consider $\left\{ \ket{\psi_{0}},\ket{\psi_{1}}\right\} \subseteq\bar{f}^{-1}\left(\imposs\right)$.
+If $\left(\ket{\psi_{0}}\times\ket{\psi_{1}}\right)\parallel\left(\ket{\psi_{0}'}\times\ket{\psi_{1}'}\right)$
+for any $\left\{ \ket{\psi_{0}'},\ket{\psi_{1}'}\right\} \subseteq\bar{f}^{-1}\left(\imposs\right)$,
+then $\ket{\psi_{0}}\times\ket{\psi_{1}}$ is the only pure state
+which might induce $\bar{f}$. In another word, if $f_{\phi}^{B}\in\mathrm{core}\left(\bar{f}\right)$
+for some pure state~$\ket{\phi}$, then $\ket{\phi}\parallel\left(\ket{\psi_{0}}\times\ket{\psi_{1}}\right)$. 
 \item If another pair of states~$\ket{\psi_{0}'}$ and $\ket{\psi_{1}'}\in\bar{f}^{-1}\left(\imposs\right)$
 gives different state of cross product~$\ket{\psi_{0}'}\times\ket{\psi_{1}'}$,
 then both $\ket{\psi_{0}}\times\ket{\psi_{1}}$ and $\ket{\psi_{0}'}\times\ket{\psi_{1}'}$
@@ -1016,19 +1035,6 @@ inconsistent with $\bar{f}(\proj{\psi_{0}'})=\bar{f}(\proj{\psi_{1}'})=\imposs$
 and $f_{\ket{\psi_{0}'}\times\ket{\psi_{1}'}}^{B}$ is inconsistent
 with $\bar{f}(\proj{\psi_{0}})=\bar{f}(\proj{\psi_{1}})=\imposs$.
 Actually, $\bar{f}$ has an empty core. 
-\item If $\ket{\psi_{0}}\times\ket{\psi_{1}}$ and $\ket{\psi_{0}'}\times\ket{\psi_{1}'}$
-always represent the same state for all $\ket{\psi_{0}'}$ and $\ket{\psi_{1}'}\in\bar{f}^{-1}\left(\imposs\right)$,
-then $\ket{\psi_{0}}\times\ket{\psi_{1}}$ is the only pure state
-which might induce $\bar{f}$. In another word, if $f_{\phi}^{B}\in\mathrm{core}\left(\bar{f}\right)$
-for some pure state~$\ket{\phi}$, then $\ket{\phi}$ and $\ket{\psi_{0}}\times\ket{\psi_{1}}$
-represent the same state. 
-\item $\bar{f}^{-1}\left(\imposs\right)$ may contain only one state~$\ket{\psi_{0}}$.
-In this case, $\ket{\psi_{0}}\times\ket{\psi_{1}}$ is undefined.
-If $f_{\phi}^{B}\in\mathrm{core}\left(\bar{f}\right)$ for some pure
-state~$\ket{\phi}$, $\ket{\phi}$ could be any state orthogonal
-to $\ket{\psi_{0}}$.
-\item $\bar{f}^{-1}\left(\imposs\right)=\emptyset$. If $f_{\phi}^{B}\in\mathrm{core}\left(\bar{f}\right)$
-for some pure state~$\ket{\phi}$, we could say nothing about $\ket{\phi}$.
 \end{enumerate}
 In summary, if we have an idea of $\bar{f}^{-1}\left(\imposs\right)$,
 we could have some idea of the pure states in core.
