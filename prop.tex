@@ -332,7 +332,10 @@ that exploit the complement event:
 \item $\bar{\mu}(\Omega)=[1,1]$. 
 \item For any event $E$, $\bar{\mu}\left(\Omega\backslash E\right)=\left[1,1\right]-\bar{\mu}\left(E\right)$ 
 \item For a collection $\left\{ E_{i}\right\} _{i=1}^{N}$ of pairwise disjoint
-events, we have $\bar{\mu}\left(\bigcup_{i=1}^{N}E_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}\left(E_{i}\right)$. 
+events, we have 
+\begin{equation}
+\bar{\mu}\left(\bigcup_{i=1}^{N}E_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}\left(E_{i}\right)\textrm{ .}\label{eq:classical-include}
+\end{equation}
 \end{itemize}
 
 \begin{example}[Two-coin experiment with interval probability]
@@ -698,20 +701,17 @@ can satisfy $\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0$; a contradiction.
   $\times$ is the usual cross product in $\mathbb{R}^{3}$.}
 \end{figure}
 
-Looking closely at the example above, we might think that the
-probability measure $\bar{\mu}$ is induced by the state $\ket{2}$
-because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$, or we
-might think it is induced by the state $\ket{1}$ because
-$\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps'})=\imposs$, or yet we might
-think it is induced by the mixed state $\frac{\mathbb{1}}{3}$ because
-$\bar{\mu}(\proj{\phi})\ne\necess$ for all $\ket{\phi}$. Each of these
-possibilities is compatible with some but not all of the
-observations. All is not lost however: if the observations are made
-more precise, we conjecture that some of the inconsistencies
+Looking closely at the example above, we might think that the probability
+measure $\bar{\mu}$ is induced by the state $\ket{2}$ because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$,
+or we might think it is induced by the state $\ket{1}$ because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps'})=\imposs$,
+or yet we might think it is induced by the mixed state $\frac{\mathbb{1}}{3}$
+because $\bar{\mu}(\proj{\phi})\ne\necess$ for all $\ket{\phi}$.
+Each of these possibilities is compatible with some but not all of
+the observations. All is not lost however: if the observations are
+made more precise, we conjecture that some of the inconsistencies
 disappear. A partial proof of this conjecture is the following example
-which refines the previous probability measure by adding more precise
-intervals. It remains to prove that this refined measure is convex,
-however. 
+which refines the previous convex probability measure by adding more
+precise intervals.
 
 \begin{example}[Three-dimensional quantum four-interval-valued 
   probability measure]\label{ex:three-dimensional-4-value}
@@ -1062,27 +1062,77 @@ if $\bar{f}\left(\ket{\psi}\right)=\imposs$ for every $\ket{\psi}\in\theta^{-1}\
 then for any $\ket{\psi_{0}}$ and $\ket{\psi_{1}}\in\theta^{-1}\left(\left[0,\theta_{0}\right]\right)$,
 $\bar{f}\left(\ket{\psi_{0}}\right)=\bar{f}\left(\ket{\psi_{1}}\right)$.\end{lemma}
 
-\section{Subset of Commuting Events}
+\section{Quantum and Classical}
 
+\begin{lemma}Given an orthonormal basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$
+for a given Hilbert space~$\Hilb$ of dimension~$d$, and a quantum
+IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$. Then, the function
+$\bar{\mu}^{\Omega}:2^{\Omega}\rightarrow\mathscr{I}$ defined by
+$\bar{\mu}^{\Omega}\left(E\right)=\bar{\mu}\left(\sum_{\ket{j}\in E}\proj{j}\right)$
+is a classical IVPM, where $\sum_{\ket{j}\in\emptyset}\proj{j}$ is
+defined to be $\mathbb{0}$.\end{lemma}
+\begin{proof}
+~
+\begin{itemize}
+\item $\bar{\mu}^{\Omega}(\emptyset)=\bar{\mu}\left(\sum_{\ket{j}\in\emptyset}\proj{j}\right)=\bar{\mu}\left(\mathbb{0}\right)=[0,0]$. 
+\item $\bar{\mu}^{\Omega}(\Omega)=\bar{\mu}\left(\sum_{\ket{j}\in\Omega}\proj{j}\right)=\bar{\mu}\left(\mathbb{1}\right)=[1,1]$. 
+\item For any event $E$, $\bar{\mu}^{\Omega}\left(\Omega\backslash E\right)=\bar{\mu}\left(\sum_{\ket{j}\in\Omega\backslash E}\proj{j}\right)=\bar{\mu}\left(\mathbb{1}-\sum_{\ket{j}\in E}\proj{j}\right)=\bar{\mu}\left(\mathbb{1}\right)-\bar{\mu}\left(\sum_{\ket{j}\in E}\proj{j}\right)=\left[1,1\right]-\bar{\mu}^{\Omega}\left(E\right)$. 
+\item For a collection $\left\{ E_{i}\right\} _{i=1}^{N}$ of pairwise disjoint
+events, we have $\bar{\mu}^{\Omega}\left(\bigcup_{i=1}^{N}E_{i}\right)=\bar{\mu}\left(\sum_{\ket{j}\in\bigcup_{i=1}^{N}E_{i}}\proj{j}\right)=\bar{\mu}\left(\sum_{i=1}^{N}\sum_{\ket{j}\in E_{i}}\proj{j}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}\left(\sum_{\ket{j}\in E_{i}}\proj{j}\right)=\sum_{i=1}^{N}\bar{\mu}\left(E_{i}\right)$. 
+\end{itemize}
+\end{proof}
 \footnote{\yutsung{The Kochen-Specker theorem is about assigning definitely
 value to observables such that the values of commuting observables
 are consistent; the Bell theorem is about entangled states in different
 locations. If our results are more related to commuting observables,
-it is more related to the Kochen-Specker theorem than the Bell theorem...}}
-
-Given an orthonormal basis~$\mathcal{B}=\left\{ \ket{\psi_{1}},\ldots,\ket{\psi_{d}}\right\} $
-of a Hilbert space, the set of projections generated by the basis
-is $\events'=\set{\sum_{\ket{\psi}\in S}\ket{\psi}}{S\subseteq\mathcal{B}}$.
-Because $\left(2^{\mathcal{B}},\emptyset,\mathcal{B},\cup,\cap\right)$
-is isomorphic to $\left(\events',\mathbb{0},\mathbb{1},\vee,\cdot\right)$
-as a Boolean algebra, a quantum IVPM~$\bar{\mu}':\events'\rightarrow\mathscr{I}$
-is essentially a classical IVPM~$\bar{\mu}:2^{\mathcal{B}}\rightarrow\mathscr{I}$.
-By the Shapley theorem, if $\bar{\mu}'$ is convex, it should have
-a non-empty core. 
-
-The problem is: if $\events'$ is only a commuting subset of $\events$,
-does a convex quantum IVPM~$\bar{\mu}':\events'\rightarrow\mathscr{I}$
-always has a non-empty core?
+it is more related to the Kochen-Specker theorem than the Bell theorem...}}\begin{lemma}Given a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$,
+if $\bar{\mu}^{\Omega}:2^{\Omega}\rightarrow\mathscr{I}$ is a classical
+convex IVPM for any orthonormal basis~$\Omega$, then $\bar{\mu}$
+is a quantum convex IVPM.\end{lemma}
+\begin{proof}
+Pick two commuting events~$P_{0},P_{1}\in\events$. Since they are
+commuting, they can be diagonalized by a common orthonormal basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$.
+Since they are projectors, the eigenvalues of them are $0$ or $1$
+so that we can express them as $P_{0}=\sum_{\ket{j}\in E_{0}}\proj{j}$
+and $P_{1}=\sum_{\ket{j}\in E_{1}}\proj{j}$. Then, 
+\begin{eqnarray*}
+ &  & \bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\\
+ & = & \bar{\mu}\left(\left(\sum_{\ket{j}\in E_{0}}\proj{j}\right)\vee\left(\sum_{\ket{j}\in E_{1}}\proj{j}\right)\right)+\bar{\mu}\left(\left(\sum_{\ket{j}\in E_{0}}\proj{j}\right)\left(\sum_{\ket{j}\in E_{1}}\proj{j}\right)\right)\\
+ & = & \bar{\mu}\left(\sum_{\ket{j}\in E_{0}\cup E_{1}}\proj{j}\right)+\bar{\mu}\left(\sum_{\ket{j}\in E_{0}\cap E_{1}}\proj{j}\right)\\
+ & = & \bar{\mu}^{\Omega}\left(E_{0}\cup E_{1}\right)+\bar{\mu}^{\Omega}\left(E_{0}\cap E_{1}\right)\\
+ & \subseteq & \bar{\mu}^{\Omega}\left(E_{0}\right)+\bar{\mu}^{\Omega}\left(E_{1}\right)\\
+ & = & \bar{\mu}\left(\sum_{\ket{j}\in E_{0}}\proj{j}\right)+\bar{\mu}\left(\sum_{\ket{j}\in E_{1}}\proj{j}\right)\\
+ & = & \bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)
+\end{eqnarray*}
+\end{proof}
+\begin{lemma}When the number of elements in $\Omega$ is less than
+or equal to 3, every classical convex IVPM~$\bar{\mu}^{\Omega}:2^{\Omega}\rightarrow\mathscr{I}$.\end{lemma}
+\begin{proof}
+Given two events~$E_{0},E_{1}\subseteq\Omega$, we want to verify
+\begin{equation}
+\bar{\mu}^{\Omega}\left(E_{0}\cup E_{1}\right)+\bar{\mu}^{\Omega}\left(E_{0}\cap E_{1}\right)\subseteq\bar{\mu}^{\Omega}\left(E_{0}\right)+\bar{\mu}^{\Omega}\left(E_{1}\right)\textrm{ .}\label{eq:classical-convex}
+\end{equation}
+When $E_{0}\cap E_{1}=\emptyset$, equation~(\ref{eq:classical-convex})
+is a special case of equation~(\ref{eq:classical-include}). When
+$E_{0}\cup E_{1}=\Omega$, we have $E_{0}^{c}\cap E_{1}^{c}=\emptyset$,
+where $E_{0}^{c}=\Omega\backslash E_{0}$ and $E_{1}^{c}=\Omega\backslash E_{1}$.
+Thus, 
+\begin{eqnarray*}
+ &  & \bar{\mu}^{\Omega}\left(E_{0}^{c}\cup E_{1}^{c}\right)+\bar{\mu}^{\Omega}\left(E_{0}^{c}\cap E_{1}^{c}\right)\subseteq\bar{\mu}^{\Omega}\left(E_{0}^{c}\right)+\bar{\mu}^{\Omega}\left(E_{1}^{c}\right)\\
+ & \Rightarrow & \left[1,1\right]-\bar{\mu}^{\Omega}\left(E_{0}^{c}\cup E_{1}^{c}\right)+\left[1,1\right]-\bar{\mu}^{\Omega}\left(E_{0}^{c}\cap E_{1}^{c}\right)\subseteq\left[1,1\right]-\bar{\mu}^{\Omega}\left(E_{0}^{c}\right)+\left[1,1\right]-\bar{\mu}^{\Omega}\left(E_{1}^{c}\right)\\
+ & \Rightarrow & \bar{\mu}^{\Omega}\left(\Omega\backslash\left(E_{0}^{c}\cup E_{1}^{c}\right)\right)+\bar{\mu}^{\Omega}\left(\Omega\backslash\left(E_{0}^{c}\cap E_{1}^{c}\right)\right)\subseteq\bar{\mu}^{\Omega}\left(\Omega\backslash\left(E_{0}^{c}\right)\right)+\bar{\mu}^{\Omega}\left(\Omega\backslash\left(E_{1}^{c}\right)\right)\\
+ & \Rightarrow & \bar{\mu}^{\Omega}\left(E_{0}\cap E_{1}\right)+\bar{\mu}^{\Omega}\left(E_{0}\cup E_{1}\right)\subseteq\bar{\mu}^{\Omega}\left(E_{0}\right)+\bar{\mu}^{\Omega}\left(E_{1}\right)\textrm{ .}
+\end{eqnarray*}
+When the number of elements in $\Omega$ is less than or equal to
+3, either $E_{0}\cap E_{1}=\emptyset$ or $E_{0}\cup E_{1}=\Omega$
+must happen so that $\bar{\mu}^{\Omega}$is convex.
+\end{proof}
+\begin{thm}Given a Hilbert space~$\Hilb$ of dimension~$3$, every
+quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+is convex.\end{thm}
+\begin{proof}
+The direct consequence of the previous lemmas.
+\end{proof}
 
 \section{Properties of Quantum IVPMs Decided by Their Range}
 
