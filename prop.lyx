@@ -6428,7 +6428,7 @@ The direct consequence of the previous lemmas.
 \end_layout
 
 \begin_layout Section
-Properties of Quantum IVPMs Decided by Their Range
+Quantum IVPMs Whose Core has an Unique Element
 \end_layout
 
 \begin_layout Standard
@@ -6792,12 +6792,12 @@ For any positive odd integer
 \begin_inset Formula $n$
 \end_inset
 
-, consider the collection of intervals
+, the collection of intervals
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Formula $\mathscr{I}_{n}=\left\{ \left[0,0\right],\left[1,1\right]\right\} \cup\set{\left[\frac{k}{n},\frac{k+1}{n}\right]}{k=0,\ldots,n-1}$
+\begin_inset Formula $\mathscr{I}_{n}=\set{\left[\frac{k}{n},\frac{k}{n}\right]}{k=0,\ldots,n}\cup\set{\left[\frac{k}{n},\frac{k+1}{n}\right]}{k=0,\ldots,n-1}$
 \end_inset
 
 , and the
@@ -6836,17 +6836,14 @@ For any positive odd integer
 \begin_inset Formula 
 \[
 \iota_{n}\left(x\right)=\begin{cases}
-\left[0,0\right] & \textrm{, if }x=0\textrm{ ;}\\
-\left[\frac{k}{n},\frac{k+1}{n}\right] & \textrm{, if }\frac{k}{n}<x\le\frac{k+1}{n}<\frac{1}{2}\textrm{ ;}\\
-\left[\frac{1}{2}-\frac{1}{2n},\frac{1}{2}+\frac{1}{2n}\right] & \textrm{, if }\frac{1}{2}-\frac{1}{2n}<x<\frac{1}{2}+\frac{1}{2n}\textrm{ ;}\\
-\left[\frac{k}{n},\frac{k+1}{n}\right] & \textrm{, if }\frac{1}{2}<\frac{k}{n}\le x<\frac{k+1}{n}\textrm{ ;}\\
-\left[1,1\right] & \textrm{, if }x=1\textrm{ .}
+\left[\frac{k}{n},\frac{k}{n}\right] & \textrm{, if }x=\frac{k}{n}\textrm{ ;}\\
+\left[\frac{k}{n},\frac{k+1}{n}\right] & \textrm{, if }\frac{k}{n}<x<\frac{k+1}{n}\textrm{ .}
 \end{cases}
 \]
 
 \end_inset
 
-
+is regular.
 \begin_inset ERT
 status collapsed
 
@@ -6887,11 +6884,11 @@ end{example}
 
 \begin_layout Itemize
 When 
-\begin_inset Formula $x=0$
+\begin_inset Formula $x=\frac{k}{n}$
 \end_inset
 
-, 
-\begin_inset Formula $\iota\left(1-x\right)=\iota\left(1\right)=\left[1,1\right]=\left[1,1\right]-\iota\left(x\right)$
+, we have 
+\begin_inset Formula $\iota\left(1-x\right)=\left[1-\frac{k}{n},1-\frac{k}{n}\right]=\left[1,1\right]-\iota\left(x\right)$
 \end_inset
 
 .
@@ -6899,11 +6896,11 @@ When
 \end_inset
 
 When 
-\begin_inset Formula $\frac{k}{n}<x\le\frac{k+1}{n}<\frac{1}{2}$
+\begin_inset Formula $\frac{k}{n}<x<\frac{k+1}{n}$
 \end_inset
 
 , we have 
-\begin_inset Formula $1-\frac{k}{n}>1-x\ge1-\frac{k+1}{n}>\frac{1}{2}$
+\begin_inset Formula $1-\frac{k}{n}>1-x>1-\frac{k+1}{n}$
 \end_inset
 
  so that 
@@ -6911,26 +6908,6 @@ When
 \end_inset
 
 .
-\begin_inset Newline newline
-\end_inset
-
-When 
-\begin_inset Formula $\frac{1}{2}-\frac{1}{2n}<x<\frac{1}{2}+\frac{1}{2n}$
-\end_inset
-
-, we have 
-\begin_inset Formula $\frac{1}{2}+\frac{1}{2n}>1-x>\frac{1}{2}-\frac{1}{2n}$
-\end_inset
-
- so that 
-\begin_inset Formula $\iota\left(1-x\right)=\left[1-\frac{k+1}{n},1-\frac{k}{n}\right]=\left[1,1\right]-\left[\frac{k}{n},\frac{k+1}{n}\right]=\left[1,1\right]-\iota\left(x\right)$
-\end_inset
-
-.
-\begin_inset Newline newline
-\end_inset
-
-The rest of the cases are true because of symmetry.
 \end_layout
 
 \begin_layout Itemize
@@ -6950,9 +6927,44 @@ It is sufficient to prove the case when
 \begin_inset Formula $\iota\left(x_{1}+x_{2}\right)\subseteq\iota\left(x_{1}\right)+\iota\left(x_{2}\right)$
 \end_inset
 
+, and the rest can be done by the induction.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+When 
+\begin_inset Formula $x_{1}=\frac{k_{1}}{n}$
+\end_inset
+
+, we have 
+\begin_inset Formula $\iota\left(x_{1}+x_{2}\right)=\left[\frac{k_{1}}{n},\frac{k_{1}}{n}\right]+\iota\left(x_{2}\right)=\iota\left(x_{1}\right)+\iota\left(x_{2}\right)$
+\end_inset
+
 .
 \end_layout
 
+\begin_layout Itemize
+When 
+\begin_inset Formula $\frac{k_{1}}{n}<x_{1}<\frac{k_{1}+1}{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{k_{2}}{n}<x_{2}<\frac{k_{2}+1}{n}$
+\end_inset
+
+, we have 
+\begin_inset Formula $\frac{k_{1}+k_{2}}{n}<x_{1}+x_{2}<\frac{k_{1}+k_{2}+2}{n}$
+\end_inset
+
+ 
+\begin_inset Formula $\iota\left(x_{1}+x_{2}\right)\subseteq\left[\frac{k_{1}+k_{2}}{n},\frac{k_{1}+k_{2}+2}{n}\right]=\left[\frac{k_{1}}{n},\frac{k_{1}+1}{n}\right]+\left[\frac{k_{2}}{n},\frac{k_{2}+1}{n}\right]=\iota\left(x_{1}\right)+\iota\left(x_{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \end_deeper
 \end_body
 \end_document
