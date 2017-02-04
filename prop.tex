@@ -599,12 +599,13 @@ classical interval-probabilities.
 \noindent It is easy to establish that quantum interval-valued probability
 measures generalize conventional quantum probability measures. In
 particular, any quantum probability measure can be recast as an interval-valued
-measure using the three intervals $\left[0,0\right]$, $\left[1,1\right]$
-and \emph{$\left[0,1\right]$}, where $\left[0,0\right]$ and $\left[1,1\right]$
-are called \imposs~and \necess~as before, and \emph{$\left[0,1\right]$}
-is called \unknown~because it provides no information. Given a quantum
-probability measure~$\mu:\events\rightarrow\left[0,1\right]$, we
-define a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+measure using arbitrary small intervals as discussed in appendix~\ref{sec:Real-and-Interval}.
+However, to simplify our discussion, we will focus on only three intervals
+$\left[0,0\right]$, $\left[1,1\right]$ and \emph{$\left[0,1\right]$},
+where $\left[0,0\right]$ and $\left[1,1\right]$ are called \imposs~and
+\necess~as before, and \emph{$\left[0,1\right]$} is called \unknown~because
+it provides no information. Given a quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$,
+we define a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
 by $\bar{\mu}(P)=\iota\left(\mu(P)\right)$, where $\iota:\left[0,1\right]\rightarrow\mathscr{I}$
 is defined by 
 \begin{equation}
@@ -614,17 +615,6 @@ is defined by
 \unknown & \textrm{otherwise.}
 \end{cases}\label{eq:homomorphism}
 \end{equation}
-\begin{figure}
-\begin{centering}
-\includegraphics[scale=0.38]{measure3} 
-\par\end{centering}
-\caption{\label{fig:three-dimensional-3-value}This figure illustrates the
-1-dimensional projectors mapped by $\bar{\mu}_{\ket{0}}^{B}(P)=\iota\left(\mu_{\ket{0}}^{B}(P)\right)$
-plotted in $\mathbb{R}^{3}$. The red vector is $\ket{0}$, and $\bar{\mu}_{\ket{0}}^{B}\left(\proj{0}\right)=\necess$.
-$\ket{0}$ is the normal vector of the plane so that for any vector~$\ket{\psi}$
-in the plane, we have $\bar{\mu}_{\ket{0}}^{B}\left(\proj{\psi}\right)=\imposs$.
-For any other vector~$\ket{\psi}$, we have $\bar{\mu}_{\ket{0}}^{B}\left(\proj{\psi}\right)=\unknown$.}
-\end{figure}
 For example, Fig.~\ref{fig:three-dimensional-3-value} plots the
 1-dimensional projectors mapped by $\iota\left(\mu_{\ket{0}}^{B}(P)\right)$.
 This measure represents the beliefs of an experimenter with no prior
@@ -638,16 +628,24 @@ measure. But surely the less resources are available, the less precise
 the intervals, and the less we expect to know about the state of the
 system. To formally state and answer this question we begin with defining
 the \emph{core} and \emph{convexity} of a probability measure as follows.
+\begin{figure}
+\begin{centering}
+\includegraphics[scale=0.38]{measure3} 
+\par\end{centering}
+\caption{\label{fig:three-dimensional-3-value}This figure illustrates the
+1-dimensional projectors mapped by $\bar{\mu}_{\ket{0}}^{B}(P)=\iota\left(\mu_{\ket{0}}^{B}(P)\right)$
+plotted in $\mathbb{R}^{3}$. The red dotted vector is $\ket{0}$,
+and $\bar{\mu}_{\ket{0}}^{B}\left(\proj{0}\right)=\necess$. $\ket{0}$
+is the normal vector of the plane so that we have $\bar{\mu}_{\ket{0}}^{B}\left(\proj{\psi}\right)=\imposs$
+for any vector~$\ket{\psi}$ in the plane. For any other vector~$\ket{\psi}$,
+we have $\bar{\mu}_{\ket{0}}^{B}\left(\proj{\psi}\right)=\unknown$.}
+\end{figure}
 
-\begin{definition}
-  Given a quantum interval-valued probability
-  measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$:
+\begin{definition} Given a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$: 
 \begin{itemize}
 \item A \emph{core} of $\bar{\mu}$ is the set $\mathrm{core}\left(\bar{\mu}\right)=\set{\pmeas:\events\rightarrow[0,1]}{\forall P\in\events.~\pmeas\left(P\right)\in\bar{\mu}\left(P\right)}$. 
-\item $\bar{\mu}$ is called convex if
-  $\bar{\mu}\left(P_{0}\vee
-    P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$
-  for all commuting $P_{0},P_{1}\in\events$.
+\item $\bar{\mu}$ is called convex if $\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$
+for all commuting $P_{0},P_{1}\in\events$. 
 \end{itemize}
 \end{definition}
 
@@ -785,14 +783,29 @@ in the Hilbert space of dimension 3. As we illustrated in figure~\ref{fig:three-
 if $\bar{\mu}$ has a non-empty core, the states mapping to $\imposs$
 is contained in a plane, which contains no area in the sphere. On
 the other hand, if the states mapping to $\imposs$ contain some area
-in the sphere, each plane intersecting the area suggests different
-pure state inducing $\bar{\mu}$. However, as the following example,
-these suggestions contradict with each others, which implies $\bar{\mu}$
-has an empty core. Furthermore, the larger the area, the more state
-vectors which are inconsistent with any particular Born rule probability
-measure. Therefore, the area of the 1-dimensional projectors mapping
-to $\imposs$ could indicate how much $\bar{\mu}$ deviate from the
-Born rule probability measures. 
+in the sphere as in figure~\ref{fig:three-dimensional-3-value-1},
+each plane intersecting the area suggests different pure state inducing
+$\bar{\mu}$. However, these suggestions contradict with each others,
+which implies $\bar{\mu}$ has an empty core. Furthermore, the larger
+the area, the more state vectors which are inconsistent with any particular
+Born rule probability measure. Therefore, the area of the 1-dimensional
+projectors mapping to $\imposs$ could indicate how much $\bar{\mu}$
+deviate from the Born rule probability measures.
+\begin{figure}
+\begin{centering}
+\includegraphics[scale=0.38]{measure3-1} 
+\par\end{centering}
+\caption{\label{fig:three-dimensional-3-value-1}Plotted in $\mathbb{R}^{3}$,
+assume the 1-dimensional projectors whose latitude is higher than
+the green circle maps to $\imposs$ by $\bar{\mu}$, for example $\bar{\mu}\left(\proj{0'}\right)=\bar{\mu}\left(\proj{2'}\right)=\bar{\mu}\left(\proj{\bar{2}}\right)=\imposs$.
+Since $\ket{0'}$ and $\ket{2'}$ are in a plane, $\bar{\mu}$ might
+be induced by its normal vector~$\ket{1'}$. Also, since $\ket{0'}$
+and $\ket{\bar{2}}$ are in a plane, $\bar{\mu}$ might be induced
+by its normal vector~$\ket{\bar{1}}$. However, $\mu_{\ket{1'}}^{B}$
+is inconsistent with $\bar{\mu}\left(\proj{\bar{2}}\right)=\imposs$,
+and $\mu_{\ket{\bar{1}}}^{B}$ is inconsistent with $\bar{\mu}\left(\proj{2'}\right)=\imposs$.
+Therefore, $\bar{\mu}$ has an empty-core.}
+\end{figure}
 
 In general, we conjecture that if the measurement equipment is made
 more and more precise, the corresponding interval-valued probability
@@ -1088,7 +1101,7 @@ if $\bar{f}\left(\ket{\psi}\right)=\imposs$ for every $\ket{\psi}\in\theta^{-1}\
 then for any $\ket{\psi_{0}}$ and $\ket{\psi_{1}}\in\theta^{-1}\left(\left[0,\theta_{0}\right]\right)$,
 $\bar{f}\left(\ket{\psi_{0}}\right)=\bar{f}\left(\ket{\psi_{1}}\right)$.\end{lemma}
 
-\section{Quantum and Classical}
+\section{Quantum and Classical Interval-valued Probability Measures}
 
 \begin{lemma}Given an orthonormal basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$
 for a given Hilbert space~$\Hilb$ of dimension~$d$, and a quantum
@@ -1173,7 +1186,8 @@ quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$ is convex.\end{thm}
 The direct consequence of the previous lemmas.
 \end{proof}
 
-\section{Quantum IVPMs Whose Core has an Unique Element}
+\section{\label{sec:Real-and-Interval}Quantum Real-valued and Interval-valued
+Probability Measures}
 
 \begin{definition}We say a collection of intervals~$\mathscr{I}$
 with a function~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$ is
