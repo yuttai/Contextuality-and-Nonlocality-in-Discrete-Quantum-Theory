@@ -1109,8 +1109,8 @@ contains all states whose latitude is larger than $\theta_{0}$.\end{definition}
 \begin{lemma}\label{lemma:imposs-imply-same-value}Given $\theta_{0}\in\left[0,\frac{\pi}{2}\right]$
 and an interval-valued frame function~$\bar{f}:S^{2}\rightarrow\mathscr{I}$,
 if $\bar{f}\left(\ket{\psi}\right)=\imposs$ for every $\ket{\psi}\in\angle^{-1}\left(\left[\theta_{0},\frac{\pi}{2}\right]\right)$,
-then for any $\ket{\psi_{0}}$ and $\ket{\psi_{1}}\in\angle^{-1}\left(\left[0,\frac{\pi}{2}-\theta_{0}\right]\right)$,
-$\bar{f}\left(\ket{\psi_{0}}\right)=\bar{f}\left(\ket{\psi_{1}}\right)$.\end{lemma}
+then there is $l_{0}\in\left[0,\frac{1}{2}\right]$ such that $\bar{f}\left(\ket{\psi_{0}}\right)=\left[l_{0},1-l_{0}\right]\in\mathscr{I}$
+for any $\ket{\psi_{0}}\in\angle^{-1}\left(\left[0,\frac{\pi}{2}-\theta_{0}\right]\right)$.\end{lemma}
 \begin{proof}
 \begin{figure}
 \begin{centering}
@@ -1125,10 +1125,12 @@ Then, every states above the yellow circle maps to $\imposs$ by $\bar{f}$.
 In particular, $\bar{f}\left(\ket{0}\right)=\bar{f}\left(\ket{0'}\right)=\imposs$.
 Since $\left\{ \ket{0'},\ket{1},\ket{2'}\right\} $ is an orthonormal
 basis, by lemma~\ref{lemma:interval-valued-frame-function}, we have
-\begin{eqnarray*}
-\left[1,1\right]-\bar{f}\left(\ket{1}\right) & \subseteq & \bar{f}\left(\ket{0'}\right)+\bar{f}\left(\ket{2}\right)=\bar{f}\left(\ket{2'}\right)\\
-\left[1,1\right]-\bar{f}\left(\ket{2'}\right) & \subseteq & \bar{f}\left(\ket{0'}\right)+\bar{f}\left(\ket{1}\right)=\bar{f}\left(\ket{1}\right)
-\end{eqnarray*}
+\begin{equation}
+\begin{aligned}\left[1,1\right]-\bar{f}\left(\ket{1}\right) & \subseteq\bar{f}\left(\ket{0'}\right)+\bar{f}\left(\ket{2}\right)=\bar{f}\left(\ket{2'}\right)\\
+\left[1,1\right]-\bar{f}\left(\ket{2'}\right) & \subseteq\bar{f}\left(\ket{0'}\right)+\bar{f}\left(\ket{1}\right)=\bar{f}\left(\ket{1}\right)
+\end{aligned}
+\label{eq:includes}
+\end{equation}
 so that $\bar{f}\left(\ket{2'}\right)=\left[1,1\right]-\bar{f}\left(\ket{1}\right)$.
 By the same reason, for any state~$\ket{\psi}$ in the dotted black
 circle between $\ket{2'}$ and $\ket{2}$, we have $\bar{f}\left(\ket{\psi}\right)=\left[1,1\right]-\bar{f}\left(\ket{1}\right)=\bar{f}\left(\ket{2'}\right)$.
@@ -1145,7 +1147,20 @@ $\bar{f}\left(\ket{2}\right)=\left[1,1\right]-\bar{f}\left(\ket{\bar{1}}\right)=
 In another words, for any $\ket{\psi_{0}}$ and $\ket{\psi_{1}}\in\angle^{-1}\left(\left[0,\theta_{0}\right]\right)$,
 even if $\ket{\psi_{0}}$ and $\ket{\psi_{1}}$ are not in the same
 longitude, then $\bar{f}\left(\ket{\psi_{0}}\right)$ and $\bar{f}\left(\ket{\psi_{1}}\right)$
-are still the same. Thus the lemma is proved.
+are still the same.
+
+Thus, we could plug $\bar{f}\left(\ket{1}\right)=\bar{f}\left(\ket{2'}\right)=\left[l_{0},r_{0}\right]$
+into equation~(\ref{eq:includes}), and get 
+\begin{eqnarray*}
+ &  & \left[1-r_{0},1-l_{0}\right]=\left[1,1\right]-\left[l_{0},r_{0}\right]=\left[l_{0},r_{0}\right]\\
+ & \Rightarrow & l_{0}+r_{0}=1
+\end{eqnarray*}
+Also, we have 
+\begin{eqnarray*}
+ &  & 1\in\bar{f}\left(\ket{0'}\right)+\bar{f}\left(\ket{1}\right)+\bar{f}\left(\ket{2'}\right)=\left[2l_{0},2r_{0}\right]\\
+ & \Rightarrow & l_{0}\le\frac{1}{2}\le r_{0}
+\end{eqnarray*}
+Thus the lemma is proved.
 \end{proof}
 \begin{thm}\label{thm:pi-div-4}Given $\theta_{0}\in\left[0,\frac{\pi}{2}\right]$
 and an interval-valued frame function~$\bar{f}:S^{2}\rightarrow\mathscr{I}$,
@@ -1160,6 +1175,27 @@ for any $\ket{\psi_{1}}\in\angle^{-1}\left(\left[0,\frac{\pi}{2}-\theta_{0}\righ
 $\bar{f}\left(\ket{\psi_{1}}\right)=\bar{f}\left(\ket{\psi_{0}}\right)=\imposs$.
 In another word, $\bar{f}$ maps every state to $\imposs$, and cannot
 be an interval-valued frame function.
+\end{proof}
+\begin{thm}\label{thm:arcsin-one-over-sqrt-three}Given $\theta_{0}\in\left(\frac{\pi}{4},\frac{\pi}{2}-\arcsin\left(\frac{1}{\sqrt{3}}\right)\right]$
+and an interval-valued frame function~$\bar{f}:S^{2}\rightarrow\mathscr{I}$,
+if $\bar{f}\left(\ket{\psi}\right)=\imposs$ for every $\ket{\psi}\in\angle^{-1}\left(\left[\theta_{0},\frac{\pi}{2}\right]\right)$,
+then $\unknown\in\mathscr{I}$.\end{thm}
+\begin{proof}
+\begin{figure}
+\begin{centering}
+\includegraphics[scale=0.38]{real-frame-2} 
+\par\end{centering}
+\caption{\label{fig:three-dimensional-real-frame-2}This figure is used in
+the proof of theorem~\ref{thm:arcsin-one-over-sqrt-three}. The latitude
+of the yellow circle is $\theta_{0}=\frac{\pi}{2}-\frac{\pi}{5}\in\left(\frac{\pi}{4},\frac{\pi}{2}-\arcsin\left(\frac{1}{\sqrt{3}}\right)\right]$,
+and the latitude of the green circle is $\frac{\pi}{5}=\frac{\pi}{2}-\theta_{0}$.}
+\end{figure}
+We could illustrate the situation in figure~\ref{fig:three-dimensional-real-frame-2},
+where the latitude of of the yellow circle is $\theta_{0}$ and the
+latitude of of the green circle is $\frac{\pi}{2}-\theta_{0}$. Therefore,
+$\bar{f}$ should map any state above the yellow circle to $\imposs$
+and any states between the green circle and the equator to the same
+interval, say, $\left[l_{0},1-l_{0}\right]$, where $0\le l_{0}\le\frac{1}{2}$. 
 \end{proof}
 
 \section{Quantum and Classical Interval-valued Probability Measures}
