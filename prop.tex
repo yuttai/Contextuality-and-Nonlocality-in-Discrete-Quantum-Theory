@@ -1106,25 +1106,10 @@ denotes the latitude of $\ket{\psi}$. Conversely, $\angle^{-1}\left(I\right)=\se
 For example, $\angle^{-1}\left(\left[\theta_{0},\frac{\pi}{2}\right]\right)=\set{\ket{\psi}\in S^{2}}{\theta_{0}\le\angle\left(\ket{\psi}\right)\le\frac{\pi}{2}}$
 contains all states whose latitude is larger than $\theta_{0}$.\end{definition}
 
-\begin{thm}\label{thm:pi-div-4}Given $\theta_{0}\in\left[0,\frac{\pi}{2}\right]$,
+\begin{lemma}\label{lemma:imposs-imply-same-value}Given $\theta_{0}\in\left[0,\frac{\pi}{2}\right]$
+and an interval-valued frame function~$\bar{f}:S^{2}\rightarrow\mathscr{I}$,
 if $\bar{f}\left(\ket{\psi}\right)=\imposs$ for every $\ket{\psi}\in\angle^{-1}\left(\left[\theta_{0},\frac{\pi}{2}\right]\right)$,
-then $\theta_{0}>\frac{\pi}{4}$.\end{thm}
-\begin{proof}
-\begin{figure}
-\begin{centering}
-\includegraphics[scale=0.38]{real-frame-2} 
-\par\end{centering}
-\caption{\label{fig:three-dimensional-real-frame-2}This figure is used in
-the proof of theorem~\ref{thm:pi-div-4}.}
-\end{figure}
-We are going to prove by contradiction. Suppose $\theta_{0}\le\frac{\pi}{4}$.
-As illustrated in figure~\ref{fig:three-dimensional-real-frame-2},
-the green circle represent the states whose latitude is $\theta_{0}$
-so that .every state above it maps to $\imposs$, for example, 
-\end{proof}
-\begin{lemma}\label{lemma:imposs-imply-same-value}Given $\theta_{0}\in\left[0,\frac{\pi}{2}\right]$,
-if $\bar{f}\left(\ket{\psi}\right)=\imposs$ for every $\ket{\psi}\in\angle^{-1}\left(\left[\theta_{0},\frac{\pi}{2}\right]\right)$,
-then for any $\ket{\psi_{0}}$ and $\ket{\psi_{1}}\in\angle^{-1}\left(\left[0,\theta_{0}\right]\right)$,
+then for any $\ket{\psi_{0}}$ and $\ket{\psi_{1}}\in\angle^{-1}\left(\left[0,\frac{\pi}{2}-\theta_{0}\right]\right)$,
 $\bar{f}\left(\ket{\psi_{0}}\right)=\bar{f}\left(\ket{\psi_{1}}\right)$.\end{lemma}
 \begin{proof}
 \begin{figure}
@@ -1161,6 +1146,20 @@ In another words, for any $\ket{\psi_{0}}$ and $\ket{\psi_{1}}\in\angle^{-1}\lef
 even if $\ket{\psi_{0}}$ and $\ket{\psi_{1}}$ are not in the same
 longitude, then $\bar{f}\left(\ket{\psi_{0}}\right)$ and $\bar{f}\left(\ket{\psi_{1}}\right)$
 are still the same. Thus the lemma is proved.
+\end{proof}
+\begin{thm}\label{thm:pi-div-4}Given $\theta_{0}\in\left[0,\frac{\pi}{2}\right]$
+and an interval-valued frame function~$\bar{f}:S^{2}\rightarrow\mathscr{I}$,
+if $\bar{f}\left(\ket{\psi}\right)=\imposs$ for every $\ket{\psi}\in\angle^{-1}\left(\left[\theta_{0},\frac{\pi}{2}\right]\right)$,
+then $\theta_{0}>\frac{\pi}{4}$.\end{thm}
+\begin{proof}
+We are going to prove by contradiction. Suppose $\theta_{0}\le\frac{\pi}{4}$,
+we have $\left[\theta_{0},\frac{\pi}{2}\right]\cap\left[0,\frac{\pi}{2}-\theta_{0}\right]=\left[\theta_{0},\frac{\pi}{2}-\theta_{0}\right]\ne\emptyset$.
+Pick any $\ket{\psi_{0}}\in\angle^{-1}\left(\left[\theta_{0},\frac{\pi}{2}-\theta_{0}\right]\right)$,
+we have $\bar{f}\left(\ket{\psi_{0}}\right)=\imposs$. Then, by lemma~\ref{lemma:imposs-imply-same-value},
+for any $\ket{\psi_{1}}\in\angle^{-1}\left(\left[0,\frac{\pi}{2}-\theta_{0}\right]\right)$,
+$\bar{f}\left(\ket{\psi_{1}}\right)=\bar{f}\left(\ket{\psi_{0}}\right)=\imposs$.
+In another word, $\bar{f}$ maps every state to $\imposs$, and cannot
+be an interval-valued frame function.
 \end{proof}
 
 \section{Quantum and Classical Interval-valued Probability Measures}
