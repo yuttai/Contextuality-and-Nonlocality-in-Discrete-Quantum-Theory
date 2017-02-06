@@ -1103,14 +1103,15 @@ is larger than $\theta_{0}$ to impossible.
 \begin{definition}Given a vector~$\ket{\psi}\in S^{2}$ with a specified
 north pole~$\ket{0}\in S^{2}$, then $\angle\left(\ket{\psi}\right)=\arccos\ip{0}{\psi}$
 denotes the latitude of $\ket{\psi}$. Conversely, $\angle^{-1}\left(I\right)=\set{\ket{\psi}\in S^{2}}{\angle\left(\ket{\psi}\right)\in I}$.
-For example, $\angle^{-1}\left(\left[\theta_{0},\frac{\pi}{2}\right]\right)=\set{\ket{\psi}\in S^{2}}{\theta_{0}\le\angle\left(\ket{\psi}\right)\le\frac{\pi}{2}}$
+For example, the north pole has the latitude $0$, the equator has
+the the latitude $\frac{\pi}{2}$, and $\angle^{-1}\left(\left[0,\theta_{0}\right]\right)=\set{\ket{\psi}\in S^{2}}{\theta_{0}\le\angle\left(\ket{\psi}\right)\le\frac{\pi}{2}}$
 contains all states whose latitude is larger than $\theta_{0}$.\end{definition}
 
 \begin{lemma}\label{lemma:imposs-imply-same-value}Given $\theta_{0}\in\left[0,\frac{\pi}{2}\right]$
 and an interval-valued frame function~$\bar{f}:S^{2}\rightarrow\mathscr{I}$,
-if $\bar{f}\left(\ket{\psi}\right)=\imposs$ for every $\ket{\psi}\in\angle^{-1}\left(\left[\theta_{0},\frac{\pi}{2}\right]\right)$,
+if $\bar{f}\left(\ket{\psi}\right)=\imposs$ for every $\ket{\psi}\in\angle^{-1}\left(\left[0,\theta_{0}\right]\right)$,
 then there is $l_{0}\in\left[0,\frac{1}{2}\right]$ such that $\bar{f}\left(\ket{\psi_{0}}\right)=\left[l_{0},1-l_{0}\right]\in\mathscr{I}$
-for any $\ket{\psi_{0}}\in\angle^{-1}\left(\left[0,\frac{\pi}{2}-\theta_{0}\right]\right)$.\end{lemma}
+for any $\ket{\psi_{0}}\in\angle^{-1}\left(\left[\frac{\pi}{2}-\theta_{0},\frac{\pi}{2}\right]\right)$.\end{lemma}
 \begin{proof}
 \begin{figure}
 \begin{centering}
@@ -1144,7 +1145,7 @@ Moreover, the same argument can apply on the great circle which is
 not longitude. Since $\ket{\bar{1}}$ is the normal vector of the
 gray circle which includes $\ket{2}$ and $\ket{\bar{2}}$, we have
 $\bar{f}\left(\ket{2}\right)=\left[1,1\right]-\bar{f}\left(\ket{\bar{1}}\right)=\bar{f}\left(\ket{\bar{2}}\right)$.
-In another words, for any $\ket{\psi_{0}}$ and $\ket{\psi_{1}}\in\angle^{-1}\left(\left[0,\theta_{0}\right]\right)$,
+In another words, for any $\ket{\psi_{0}}$ and $\ket{\psi_{1}}\in\angle^{-1}\left(\left[\frac{\pi}{2}-\theta_{0},\frac{\pi}{2}\right]\right)$,
 even if $\ket{\psi_{0}}$ and $\ket{\psi_{1}}$ are not in the same
 longitude, then $\bar{f}\left(\ket{\psi_{0}}\right)$ and $\bar{f}\left(\ket{\psi_{1}}\right)$
 are still the same.
@@ -1164,21 +1165,18 @@ Thus the lemma is proved.
 \end{proof}
 \begin{thm}\label{thm:pi-div-4}Given $\theta_{0}\in\left[0,\frac{\pi}{2}\right]$
 and an interval-valued frame function~$\bar{f}:S^{2}\rightarrow\mathscr{I}$,
-if $\bar{f}\left(\ket{\psi}\right)=\imposs$ for every $\ket{\psi}\in\angle^{-1}\left(\left[\theta_{0},\frac{\pi}{2}\right]\right)$,
-then $\theta_{0}>\frac{\pi}{4}$.\end{thm}
+if $\bar{f}\left(\ket{\psi}\right)=\imposs$ for every $\ket{\psi}\in\angle^{-1}\left(\left[0,\theta_{0}\right]\right)$,
+then $\theta_{0}<\frac{\pi}{4}$.\end{thm}
 \begin{proof}
-We are going to prove by contradiction. Suppose $\theta_{0}\le\frac{\pi}{4}$,
-we have $\left[\theta_{0},\frac{\pi}{2}\right]\cap\left[0,\frac{\pi}{2}-\theta_{0}\right]=\left[\theta_{0},\frac{\pi}{2}-\theta_{0}\right]\ne\emptyset$.
-Pick any $\ket{\psi_{0}}\in\angle^{-1}\left(\left[\theta_{0},\frac{\pi}{2}-\theta_{0}\right]\right)$,
-we have $\bar{f}\left(\ket{\psi_{0}}\right)=\imposs$. Then, by lemma~\ref{lemma:imposs-imply-same-value},
-for any $\ket{\psi_{1}}\in\angle^{-1}\left(\left[0,\frac{\pi}{2}-\theta_{0}\right]\right)$,
-$\bar{f}\left(\ket{\psi_{1}}\right)=\bar{f}\left(\ket{\psi_{0}}\right)=\imposs$.
-In another word, $\bar{f}$ maps every state to $\imposs$, and cannot
-be an interval-valued frame function.
+We are going to prove by contradiction. Suppose $\theta_{0}\ge\frac{\pi}{4}$,
+we have $\left[0,\theta_{0}\right]\cap\left[\frac{\pi}{2}-\theta_{0},\frac{\pi}{2}\right]=\left[\frac{\pi}{2}-\theta_{0},\theta_{0}\right]\ne\emptyset$.
+Pick any $\ket{\psi_{0}}\in\angle^{-1}\left(\left[\frac{\pi}{2}-\theta_{0},\theta_{0}\right]\right)$,
+by lemma~\ref{lemma:imposs-imply-same-value}, we have $\imposs=\bar{f}\left(\ket{\psi_{0}}\right)=\left[l_{0},1-l_{0}\right]$,
+where $l_{0}\in\left[0,\frac{\pi}{2}\right]$. A contradiction!
 \end{proof}
-\begin{thm}\label{thm:arcsin-one-over-sqrt-three}Given $\theta_{0}\in\left(\frac{\pi}{4},\frac{\pi}{2}-\arcsin\left(\frac{1}{\sqrt{3}}\right)\right]$
+\begin{thm}\label{thm:arcsin-one-over-sqrt-three}Given $\theta_{0}\in\left[\arcsin\left(\frac{1}{\sqrt{3}}\right),\frac{\pi}{4}\right)$
 and an interval-valued frame function~$\bar{f}:S^{2}\rightarrow\mathscr{I}$,
-if $\bar{f}\left(\ket{\psi}\right)=\imposs$ for every $\ket{\psi}\in\angle^{-1}\left(\left[\theta_{0},\frac{\pi}{2}\right]\right)$,
+if $\bar{f}\left(\ket{\psi}\right)=\imposs$ for every $\ket{\psi}\in\angle^{-1}\left(\left[0,\theta_{0}\right]\right)$,
 then $\unknown\in\mathscr{I}$.\end{thm}
 \begin{proof}
 \begin{figure}
@@ -1187,15 +1185,43 @@ then $\unknown\in\mathscr{I}$.\end{thm}
 \par\end{centering}
 \caption{\label{fig:three-dimensional-real-frame-2}This figure is used in
 the proof of theorem~\ref{thm:arcsin-one-over-sqrt-three}. The latitude
-of the yellow circle is $\theta_{0}=\frac{\pi}{2}-\frac{\pi}{5}\in\left(\frac{\pi}{4},\frac{\pi}{2}-\arcsin\left(\frac{1}{\sqrt{3}}\right)\right]$,
-and the latitude of the green circle is $\frac{\pi}{5}=\frac{\pi}{2}-\theta_{0}$.}
+of the yellow circle is $\theta_{0}\in\left[\arcsin\left(\frac{1}{\sqrt{3}}\right),\frac{\pi}{4}\right)$,
+and the latitude of the green circle is $\frac{\pi}{2}-\theta_{0}$.}
 \end{figure}
 We could illustrate the situation in figure~\ref{fig:three-dimensional-real-frame-2},
 where the latitude of of the yellow circle is $\theta_{0}$ and the
 latitude of of the green circle is $\frac{\pi}{2}-\theta_{0}$. Therefore,
 $\bar{f}$ should map any state above the yellow circle to $\imposs$
 and any states between the green circle and the equator to the same
-interval, say, $\left[l_{0},1-l_{0}\right]$, where $0\le l_{0}\le\frac{1}{2}$. 
+interval, say, $\left[l_{0},1-l_{0}\right]$, where $0\le l_{0}\le\frac{1}{2}$
+by lemma~\ref{lemma:imposs-imply-same-value}.
+
+When $\theta_{0}\ge\arcsin\left(\frac{1}{\sqrt{3}}\right)$, the latitude
+of the green circle is $\theta_{0}\le\frac{\pi}{2}-\arcsin\left(\frac{1}{\sqrt{3}}\right)$.
+Now consider three states~$\ket{A}$, $\ket{B}$, and $\ket{C}$
+whose latitude is $\frac{\pi}{2}-\arcsin\left(\frac{1}{\sqrt{3}}\right)$
+so that they are below the green circle, and these three states form
+an equilateral triangle whose center is $H$. Since the latitude of
+this triangle is $\frac{\pi}{2}-\arcsin\left(\frac{1}{\sqrt{3}}\right)$,
+we know $\overline{OH}=\frac{1}{\sqrt{3}}$, where $O$ is the center
+of the sphere. By the Pythagorean theorem, $\overline{HA}=\overline{HB}=\sqrt{\frac{2}{3}}$.
+Notice that $\triangle HAB$ is an isosceles triangle with $\angle AHB=\frac{2\pi}{3}$,
+we have $\overline{AB}=\sqrt{2}$. Since $\overline{OA}=\overline{OB}=1$
+and $\overline{AB}=\sqrt{2}$, $\triangle OAB$ is an isosceles right
+triangle with $\angle AHB=\frac{\pi}{2}$, i.e., $\ket{A}$ and $\ket{B}$
+are orthogonal. Applying the same reason on all $\ket{A}$, $\ket{B}$,
+and $\ket{C}$, $\left\{ \ket{A},\ket{B},\ket{C}\right\} $ is an
+orthonormal basis.
+
+Since $\left\{ \ket{A},\ket{B},\ket{C}\right\} $ is an orthonormal
+basis and $\bar{f}\left(\ket{A}\right)=\bar{f}\left(\ket{B}\right)=\bar{f}\left(\ket{C}\right)=\left[l_{0},1-l_{0}\right]$,
+we have the following inequalities by lemma~\ref{lemma:interval-valued-frame-function}.
+\begin{eqnarray*}
+1\in\left[3l_{0},3-3l_{0}\right] & \Rightarrow & l_{0}\le\frac{1}{3}\\
+\left[1,1\right]-\left[l_{0},1-l_{0}\right]\subseteq\left[2l_{0},2-2l_{0}\right] & \Rightarrow & l_{0}\le0
+\end{eqnarray*}
+Recall that $0\le l_{0}\le\frac{1}{2}$. Therefore, $l_{0}=0$, that
+is, $\unknown=\left[l_{0},1-l_{0}\right]\in\mathscr{I}$.
 \end{proof}
 
 \section{Quantum and Classical Interval-valued Probability Measures}
