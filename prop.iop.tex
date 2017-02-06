@@ -1,10 +1,9 @@
-\documentclass{article}
+\documentclass[english,12pt]{iopart}
 \usepackage[ backend=biber]{biblatex}
 \addbibresource{proposal/prop.bib}
 \ExecuteBibliographyOptions{sorting=none,maxbibnames=5,doi=false,isbn=false,url=false}
 \usepackage{fullpage}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{mathrsfs}
@@ -12,6 +11,8 @@
 \usepackage{wesa}
 \usepackage{graphicx}
 \usepackage{verbatim}
+\usepackage{iopams}
+\usepackage{setstack}
 
 \theoremstyle{remark}
 \newtheorem{example}{Example}
@@ -32,11 +33,8 @@
 \newcommand{\op}[2]{\ensuremath{\left\vert{#1}\middle\rangle\middle\langle{#2}\right\vert}}
 \newcommand{\proj}[1]{\op{#1}{#1}}
 \newcommand{\ps}{\texttt{+}}
-\newcommand{\ms}{\texttt{-}}
+\newcommand{\minus}{\texttt{-}}
 \newcommand{\ip}[2]{\ensuremath{\left\langle{#1}\middle\vert{#2}\right\rangle}}
-\newcommand{\Tr}{\mathop{\mathrm{Tr}}\nolimits}
-\newcommand{\rme}{\mathrm{e}}
-\newcommand{\rmi}{\mathrm{i}}
 
 \usepackage{color}
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -609,11 +607,11 @@ we define a quantum interval-valued probability measure~$\bar{\mu}:\events\right
 by $\bar{\mu}(P)=\iota\left(\mu(P)\right)$, where $\iota:\left[0,1\right]\rightarrow\mathscr{I}$
 is defined by 
 \begin{equation}
-\iota(x)=\begin{cases}
-\necess & \textrm{if }x=1\textrm{ ;}\\
-\imposs & \textrm{if }x=0\textrm{ ;}\\
-\unknown & \textrm{otherwise.}
-\end{cases}\label{eq:homomorphism}
+\iota(x)=\cases{
+\necess & if $x=1$ ;\\
+\imposs & if $x=0$ ;\\
+\unknown & otherwise.
+}\label{eq:homomorphism}
 \end{equation}
 For example, Fig.~\ref{fig:three-dimensional-3-value} plots the
 1-dimensional projectors mapped by $\iota\left(\mu_{\ket{0}}^{B}(P)\right)$.
@@ -730,7 +728,7 @@ precise intervals.
   $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.  Let \emph{
   }$\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $,
   $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$, and
-  $\ket{\ms}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})$. The definition of
+  $\ket{\minus}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})$. The definition of
   $\bar{\mu}$ below refers to Fig.~\ref{fig:three-dimensional-4-value}
   which plots the 1-dimensional projectors:
 \begin{enumerate}
@@ -747,7 +745,7 @@ vectors, respectively.
   $\ket{0}$ and $\ket{\ps}$, respectively, and can be parametrized as
   $\ket{0_{\theta,\gamma}^{\perp}}=\rme^{\rmi\gamma}\sin\theta\ket{1}+\cos\theta\ket{2}$
   and
-  $\ket{\ps_{\theta,\gamma}^{\perp}}=-\rme^{\rmi\gamma}\sin\theta\ket{\ms}+\cos\theta\ket{2}$,
+  $\ket{\ps_{\theta,\gamma}^{\perp}}=-\rme^{\rmi\gamma}\sin\theta\ket{\minus}+\cos\theta\ket{2}$,
   where $0\le\theta\le\frac{\pi}{2}$ and $0\le\gamma<2\pi$. The dotted
   half of those states need special treatment, i.e., whenever
   $0\le\theta<\frac{\pi}{2}$ and $0\le\gamma<\pi$, we define
@@ -991,25 +989,25 @@ implies equation~(\ref{eq:quantumIVPMconditions}). When $\left\{ P_{i}\right\} _
 only containing 1-dimensional projectors, the properties of $\bar{f}$
 implies equation~(\ref{eq:quantumIVPMconditions}).
 \end{proof}
-\begin{definition}For $\ket{\psi}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}=\begin{pmatrix}\alpha_{0}\\
+\begin{definition}For $\ket{\psi}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}=\left(\begin{array}{c}\alpha_{0}\\
 \alpha_{1}\\
 \alpha_{2}
-\end{pmatrix}$ and $\ket{\phi}=\beta_{0}\ket{0}+\beta_{1}\ket{1}+\beta_{2}\ket{2}=\begin{pmatrix}\beta_{0}\\
+\end{array}\right)$ and $\ket{\phi}=\beta_{0}\ket{0}+\beta_{1}\ket{1}+\beta_{2}\ket{2}=\left(\begin{array}{c}\beta_{0}\\
 \beta_{1}\\
 \beta_{2}
-\end{pmatrix}$, their cross product is defined as follow: 
+\end{array}\right)$, their cross product is defined as follow: 
 \[
-\ket{\psi\times\phi}=\ket{\psi}\times\ket{\phi}=\begin{vmatrix}\alpha_{1}^{*} & \beta_{1}^{*}\\
+\ket{\psi\times\phi}=\ket{\psi}\times\ket{\phi}=\left|\begin{array}{cc}\alpha_{1}^{*} & \beta_{1}^{*}\\
 \alpha_{2}^{*} & \beta_{2}^{*}
-\end{vmatrix}\ket{0}+\begin{vmatrix}\alpha_{2}^{*} & \beta_{2}^{*}\\
+\end{array}\right|\ket{0}+\left|\begin{array}{cc}\alpha_{2}^{*} & \beta_{2}^{*}\\
 \alpha_{0}^{*} & \beta_{0}^{*}
-\end{vmatrix}\ket{1}+\begin{vmatrix}\alpha_{0}^{*} & \beta_{0}^{*}\\
+\end{array}\right|\ket{1}+\left|\begin{array}{cc}\alpha_{0}^{*} & \beta_{0}^{*}\\
 \alpha_{1}^{*} & \beta_{1}^{*}
-\end{vmatrix}\ket{2}\textrm{ ,}
+\end{array}\right|\ket{2}\textrm{ ,}
 \]
-where $\begin{vmatrix}\alpha & \beta\\
+where $\left|\begin{array}{cc}\alpha & \beta\\
 \alpha' & \beta'
-\end{vmatrix}=\alpha\beta'-\alpha'\beta$. Also, even if $\ket{\psi}$ and $\ket{\phi}$ are normalized, their
+\end{array}\right|=\alpha\beta'-\alpha'\beta$. Also, even if $\ket{\psi}$ and $\ket{\phi}$ are normalized, their
 cross product~$\ket{\psi}\times\ket{\phi}$ need not be normalized
 as usual. We will use $\ket{\psi}\times\ket{\phi}$ and $\frac{\ket{\psi}\times\ket{\phi}}{\left\Vert \ket{\psi}\times\ket{\phi}\right\Vert }$
 interchanged when there is no confusion.\end{definition}
@@ -1033,9 +1031,9 @@ we can just verify
 \end{eqnarray*}
 
 To prove the other direction, consider the linear transformation~$T:\mathbb{C}^{3}\rightarrow\mathbb{C}^{2}$
-defined by $T\left(\ket{\varphi}\right)=\begin{pmatrix}\ip{\psi}{\varphi}\\
+defined by $T\left(\ket{\varphi}\right)=\left(\begin{array}{c}\ip{\psi}{\varphi}\\
 \ip{\phi}{\varphi}
-\end{pmatrix}$. Since $\ket{\psi}\nparallel\ket{\phi}$, we have $\mathrm{rank}\left(T\right)=2$.
+\end{array}\right)$. Since $\ket{\psi}\nparallel\ket{\phi}$, we have $\mathrm{rank}\left(T\right)=2$.
 Together with the rank equation~\cite{FraleighBeauregard1995}, we
 have
 \[
@@ -1143,9 +1141,9 @@ In particular, $\bar{f}\left(\ket{0}\right)=\bar{f}\left(\ket{0'}\right)=\imposs
 Since $\left\{ \ket{0'},\ket{1},\ket{2'}\right\} $ is an orthonormal
 basis, by lemma~\ref{lemma:interval-valued-frame-function}, we have
 \begin{equation}
-\begin{aligned}\left[1,1\right]-\bar{f}\left(\ket{1}\right) & \subseteq\bar{f}\left(\ket{0'}\right)+\bar{f}\left(\ket{2}\right)=\bar{f}\left(\ket{2'}\right)\\
+\eqalign{\left[1,1\right]-\bar{f}\left(\ket{1}\right) & \subseteq\bar{f}\left(\ket{0'}\right)+\bar{f}\left(\ket{2}\right)=\bar{f}\left(\ket{2'}\right)\\
 \left[1,1\right]-\bar{f}\left(\ket{2'}\right) & \subseteq\bar{f}\left(\ket{0'}\right)+\bar{f}\left(\ket{1}\right)=\bar{f}\left(\ket{1}\right)
-\end{aligned}
+}
 \label{eq:includes}
 \end{equation}
 so that $\bar{f}\left(\ket{2'}\right)=\left[1,1\right]-\bar{f}\left(\ket{1}\right)$.
@@ -1371,10 +1369,10 @@ intervals~$\mathscr{I}_{n}$ and the map~$\iota_{n}:\left[0,1\right]\rightarrow\m
 defined by
 \begin{eqnarray*}
 \mathscr{I}_{n} & = & \set{\left[\frac{k}{n},\frac{k}{n}\right]}{k=0,\ldots,n}\cup\set{\left[\frac{k}{n},\frac{k+1}{n}\right]}{k=0,\ldots,n-1}\\
-\iota_{n}\left(x\right) & = & \begin{cases}
-\left[\frac{k}{n},\frac{k}{n}\right] & \textrm{, if }x=\frac{k}{n}\textrm{ ;}\\
-\left[\frac{k}{n},\frac{k+1}{n}\right] & \textrm{, if }\frac{k}{n}<x<\frac{k+1}{n}
-\end{cases}
+\iota_{n}\left(x\right) & = & \cases{
+\left[\frac{k}{n},\frac{k}{n}\right] & , if $x=\frac{k}{n}$ ;\\
+\left[\frac{k}{n},\frac{k+1}{n}\right] & , if $\frac{k}{n}<x<\frac{k+1}{n}$ .
+}
 \end{eqnarray*}
 is regular.\end{example}
 \begin{proof}
