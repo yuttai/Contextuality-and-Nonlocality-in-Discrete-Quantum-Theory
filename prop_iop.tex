@@ -1260,18 +1260,17 @@ is, $\unknown=\left[l_{0},1-l_{0}\right]\in\mathscr{I}$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Quantum and Classical Interval-valued Probability Measures}
+\section{Between Quantum and Classical}
 
 This section discusses the relation between quantum and classical.
 We first prove that any quantum phenomenon would not be observed if
-we could only access commuting projectors since we can pick a common
-basis to measure mutually commuting observables simultaneously~\cite{Mermin_1993}.
-Based on this fact, we show a quantum IVPM~$\bar{\mu}$ is convex
-if its restriction on any orthonormal basis~$\Omega$, $\bar{\mu}^{\Omega}$,
-is a convex classical IVPM. Together with the fact that every classical
-IVPM~$\bar{\mu}^{\Omega}$ is convex when the number of elements
-in $\Omega\le3$, every quantum IVPM must be convex on a three-dimensional
-Hilbert space. 
+we could only access commuting projectors since commuting projectors
+could be measured simultaneously~\cite{Mermin_1993}. Based on this
+fact, we show a quantum IVPM~$\bar{\mu}$ is convex if its restriction
+on any orthonormal basis~$\Omega$, $\bar{\mu}^{\Omega}$, is a convex
+classical IVPM. Together with the fact that every classical IVPM~$\bar{\mu}^{\Omega}$
+is convex when the number of elements in $\Omega\le3$, every quantum
+IVPM must be convex on a three-dimensional Hilbert space. 
 
 Before diving into the lemmas and proofs, we start from two definitions.
 
@@ -1280,21 +1279,21 @@ $\mathcal{S}\subseteq\events$, we define $\sum_{P\in\mathcal{S}}P=\mathbb{0}$
 when $\mathcal{S}=\emptyset$ since $\mathbb{0}$ is the additive
 identity in operators.\end{definition}
 
-\begin{definition}Given a Hilbert space $\Hilb$ with an orthonormal
-basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$.
+\begin{definition}\label{definition:quantum-classical}Given a Hilbert
+space $\Hilb$ with an orthonormal basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$.
 \begin{itemize}
 \item For any quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$,
 we define $\mu^{\Omega}:2^{\Omega}\rightarrow\left[0,1\right]$ by
 $\mu^{\Omega}\left(E\right)=\mu\left(\sum_{\ket{j}\in E}\proj{j}\right)$.
-\item For any quantum IVPM~$\bar{\mu}:\events\rightarrow\left[0,1\right]$,
+\item For any quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$,
 we define $\bar{\mu}^{\Omega}:2^{\Omega}\rightarrow\mathscr{I}$ by
 $\bar{\mu}^{\Omega}\left(E\right)=\bar{\mu}\left(\sum_{\ket{j}\in E}\proj{j}\right)$.
 \end{itemize}
 \end{definition}
 
-\begin{lemma}$\mu^{\Omega}$ and $\bar{\mu}^{\Omega}$ in the previous
-definition are classical interval-valued and real-valued probability
-measures, respectively.\end{lemma}
+\begin{lemma}\label{lemma:classical-probability-measures}$\mu^{\Omega}$
+and $\bar{\mu}^{\Omega}$ in the previous definition are classical
+real-valued and interval-valued probability measures, respectively.\end{lemma}
 
 \begin{proof}When $\mathscr{I}=\set{\left\{ a\right\} }{a\in\left[0,1\right]}$,
 $\bar{\mu}$ and $\bar{\mu}^{\Omega}$ are essentially quantum and
@@ -1316,6 +1315,45 @@ of pairwise disjoint events, we have
 }\end{equation}
 \end{itemize}
 \end{proof}
+
+\begin{definition}Given a Hilbert space $\Hilb$, $\events'\subseteq\events$
+is called a sub-event if it satisfies the follow conditions.
+\begin{itemize}
+\item $\mathbb{0}\in\events'$.
+\item $\mathbb{1}\in\events'$.
+\item For any projection $P\in\events'$, we have $\mathbb{1}-P\in\events'$.
+\item For a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}\subseteq\events'$,
+we have $\sum_{i=1}^{N}P_{i}\in\events'$.
+\end{itemize}
+By replacing every occurrence of $\events$ by $\events'$ in definition~\ref{def:QuantumProbabilitySpace}
+and \ref{def:QuantumInterval-valuedProbability}, it is straightforward
+to define a quantum real-valued and interval-valued probability measure
+on $\events'$.\end{definition}
+
+\begin{thm}Given a Hilbert space~$\Hilb$ and a mutually commuting
+sub-event~$\events'\subseteq\events$, there is set~$\Omega$ and
+a function~$\tau:\events'\rightarrow2^{\Omega}$ such that:
+\begin{itemize}
+\item If $\mu:\events'\rightarrow\left[0,1\right]$ is a quantum real-valued
+probability measure, then there is a classical real-valued probability
+measure~$\mu':\Omega\rightarrow\left[0,1\right]$ such that $\mu\left(P\right)=\mu'\left(\tau\left(P\right)\right)$
+for all $P\in\events'$.
+\item If $\mu:\events'\rightarrow\mathscr{I}$ is a quantum interval-valued
+probability measure, then there is a classical interval-valued probability
+measure~$\mu':\Omega\rightarrow\mathscr{I}$ such that $\mu\left(P\right)=\mu'\left(\tau\left(P\right)\right)$
+for all $P\in\events'$
+\end{itemize}
+\end{thm}
+
+\begin{proof}Again, it is sufficient to prove the interval-valued
+case. Since $\events'$ is a set of mutually orthogonal projections,
+they can be diagonalized by a common orthonormal basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$.
+Pick arbitrary projector~$P\in\events'$, its eigenvalues are $0$
+or $1$. Let $\tau\left(P\right)\subseteq\Omega$ be the set of eigenvectors
+whose eigenvalues are $1$. Then, we have $P=\sum_{\ket{j}\in\tau\left(P\right)}\proj{j}$.
+By definition~\ref{definition:quantum-classical}, $\mu\left(P\right)=\mu^{\Omega}\left(\tau\left(P\right)\right)$,
+and $\mu^{\Omega}$ is a quantum interval-valued probability measure
+by lemma~\ref{lemma:classical-probability-measures}.\end{proof}
 
 By the previous lemma, given an orthonormal basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$,
 if we only consider the events generated by $\Omega$, $\events^{\Omega}=\set{\sum_{\ket{j}\in E}\proj{j}}{E\subseteq\Omega}$,
