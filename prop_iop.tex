@@ -594,20 +594,22 @@ the definitions of conventional quantum probability measures with
 classical interval-probabilities.
 
 \begin{definition}[Quantum Interval-valued Probability Measure]\label{def:QuantumInterval-valuedProbability}
-  Given a Hilbert space $\Hilb$ with quantum events
-  (projections)~$\events$, and a collection of
-  intervals~$\mathscr{I}$, a \emph{quantum
-    $\mathscr{I}$-interval-valued probability measure} is a
-  function~$\bar{\mu}:\events\rightarrow\mathscr{I}$ such that:
+Given a Hilbert space $\Hilb$ with quantum events (projections)~$\events$,
+and a collection of intervals~$\mathscr{I}$, a \emph{quantum $\mathscr{I}$-interval-valued
+probability measure} is a function~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+such that: 
 \begin{itemize}
 \item $\bar{\mu}(\mathbb{0})=\left[0,0\right]$. 
 \item $\bar{\mu}(\mathbb{1})=\left[1,1\right]$. 
-\item For any projection $P$,
-  $\bar{\mu}\left(\mathbb{1}-P\right)=\left[1,1\right]-\bar{\mu}\left(P\right)$.
-\item For a set of mutually orthogonal projections
-  $\left\{ P_{i}\right\} _{i=1}^{N}$, we have
-  $\bar{\mu}\left(\sum_{i=1}^{N}
-    P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}\left(P_{i}\right)$.
+\item For any projection $P$, 
+\begin{equation}
+\bar{\mu}\left(\mathbb{1}-P\right)=\left[1,1\right]-\bar{\mu}\left(P\right)\textrm{ .}\label{eq:QuantumInterval-valuedProbability-Complement}
+\end{equation}
+\item For a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
+we have 
+\begin{equation}
+\bar{\mu}\left(\sum_{i=1}^{N}P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}\left(P_{i}\right)\textrm{ .}\label{eq:QuantumInterval-valuedProbability-Inclusion}
+\end{equation}
 \end{itemize}
 \end{definition}
 
@@ -1415,8 +1417,9 @@ When the number of elements in $\Omega\le3$, either $E_{0}\cap E_{1}=\emptyset$
 or $E_{0}\cup E_{1}=\Omega$ must happen so that $\bar{\mu}^{\Omega}$
 is convex. \end{proof}
 
-\begin{thm}Given a Hilbert space~$\Hilb$ of dimension~$3$, every
-quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$ is convex.\end{thm}
+\begin{thm}\label{thm:convex-3}Given a Hilbert space~$\Hilb$ of
+dimension~$3$, every quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+is convex.\end{thm}
 
 \begin{proof}The direct consequence of the previous lemmas. \end{proof}
 
@@ -1513,13 +1516,13 @@ so that
 probability measure]\label{ex:three-dimensional-three-value-1} Given
 a three dimensional Hilbert space with an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
 Consider\emph{ $\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $}
-and $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$, and $\ket{\ps'}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{2})$.
+and $\ket{\ps}=\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$.
 Let 
-\begin{eqnarray*}
-\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'}) & = & \imposs\textrm{ ,}\\
-\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})=\bar{\mu}(\mathbb{1}-\proj{\ps'}) & = & \necess\textrm{ ,}\\
-\bar{\mu}(P) & = & \unknown\textrm{, otherwise. }
-\end{eqnarray*}
+\begin{equation}\eqalign{ 
+\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs\textrm{ ,}\\ 
+\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})=\necess\textrm{ ,}\\ 
+\bar{\mu}(P) = \unknown\qquad\textrm{otherwise.} 
+}\end{equation}
 To verify $\bar{\mu}$ is a quantum interval-valued probability measure,
 first notice that $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$
 implies equation (\ref{eq:QuantumInterval-valuedProbability-Inclusion})
@@ -1533,34 +1536,19 @@ it is sufficient to check
 for orthogonal $\ket{\psi_{0}}$ and $\ket{\psi_{1}}$. This equation
 always holds because we always have $\unknown\subseteq\bar{\mu}\left(\proj{\psi_{0}}\right)+\bar{\mu}\left(\proj{\psi_{1}}\right)$.
 
-Next, we need to verify that $\bar{\mu}$ is convex. First, for orthogonal
-projections $P_{0}$ and $P_{1}$, equation (\ref{eq:QuantumInterval-valuedProbability-Inclusion})
-implies equation (\ref{eq:QuantumInterval-valuedProbability-Convex}).
-Second, when $P_{0}=P_{1}+P_{2}$, equation (\ref{eq:QuantumInterval-valuedProbability-Convex})
-holds trivially. Hence, we only need to verify the case which $P_{0}=\proj{\psi_{0}}+\proj{\psi_{2}}$
-and $P_{1}=\proj{\psi_{1}}+\proj{\psi_{2}}$, where $\left\{ \ket{\psi_{0}},\ket{\psi_{1}},\ket{\psi_{2}}\right\} $
-is an orthonormal basis. Because we have 
-\begin{eqnarray*}
-\bar{\mu}\left(P_{0}\vee P_{1}\right) & = & \bar{\mu}\left(\mathbb{1}\right)=\necess\\
-\bar{\mu}\left(P_{0}P_{1}\right) & = & \bar{\mu}\left(\proj{\psi_{2}}\right)\subseteq\unknown
-\end{eqnarray*}
-and $\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$ is
-either $\necess+\unknown$ or $\unknown+\unknown$. Therefore, we
-have $\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$.
+Next, since the dimension of the Hilbert space is three, $\bar{\mu}$
+is convex by theorem~\ref{thm:convex-3}.
 
 Finally, we will prove that $\bar{\mu}$ cannot correspond to any
 quantum probability measure by contradiction. Suppose $\mu(P)\in\bar{\mu}(P)$
 for some quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$.
-We must have 
-\begin{equation}
-\mu(\proj{0})=\mu(\proj{\ps})=\mu(\proj{\ps'})=0\textrm{ .}\label{eq:probability-zero-on-states}
-\end{equation}
-By Gleason's theorem, there is a mixed state~$\rho=\sum_{j=0}^{N-1}q_{j}\proj{\phi_{j}}$
+We must have $\mu(\proj{0})=\mu(\proj{\ps})=0$. By Gleason's theorem,
+there is a mixed state~$\rho=\sum_{j=0}^{N-1}q_{j}\proj{\phi_{j}}$
 such that $\mu\left(P\right)=\sum_{j=0}^{N-1}q_{j}\ip{\phi_{j}}{P\phi_{j}}$,
-where $\sum_{j=0}^{N-1}q_{j}=1$ and $q_{j}>0$. However, no pure
-state~$\ket{\phi}$ satisfies $\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0$
-so that we have $\mu(P)\notin\bar{\mu}(P)$ for all quantum probability
-measure~$\mu$.\qed\end{example}
+where $\sum_{j=0}^{N-1}q_{j}=1$ and $q_{j}>0$. If $\ip{\phi}{0}=\ip{\phi}{\ps}=0$,
+we must have $\ket{\phi}=\ket{2}$, i.e., $\rho=\proj{2}$. However,
+$\mu(\proj{2})=\ip{2}{2}\ip{2}{2}=1\notin\unknown=\bar{\mu}\left(\proj{2}\right)$.
+Therefore, $\bar{\mu}$ has an empty core.\qed\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\newpage{}%
 \begin{comment}
