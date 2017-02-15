@@ -1,7 +1,7 @@
 \documentclass[12pt]{iopart}
 \usepackage[ backend=biber]{biblatex}
 \addbibresource{prop.bib}
-\ExecuteBibliographyOptions{sorting=none,maxbibnames=5,doi=false,isbn=false,url=false}
+\ExecuteBibliographyOptions{sorting=none,maxbibnames=10,doi=false,isbn=false,url=false}
 \usepackage{fullpage}
 \usepackage[utf8]{inputenc}
 \usepackage{amssymb}
@@ -1507,7 +1507,62 @@ so that
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage{}%
+\section{Examples for Quantum Interval-valued Probability Measures\label{sec:Examples-for-QuantumIVPM}}
+
+\begin{example}[Three-dimensional quantum three-value interval-valued
+probability measure]\label{ex:three-dimensional-three-value-1} Given
+a three dimensional Hilbert space with an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
+Consider\emph{ $\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $}
+and $\ket{\ps}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$, and $\ket{\ps'}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{2})$.
+Let 
+\begin{eqnarray*}
+\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'}) & = & \imposs\textrm{ ,}\\
+\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})=\bar{\mu}(\mathbb{1}-\proj{\ps'}) & = & \necess\textrm{ ,}\\
+\bar{\mu}(P) & = & \unknown\textrm{, otherwise. }
+\end{eqnarray*}
+To verify $\bar{\mu}$ is a quantum interval-valued probability measure,
+first notice that $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$
+implies equation (\ref{eq:QuantumInterval-valuedProbability-Inclusion})
+by induction. Second, equation (\ref{eq:QuantumInterval-valuedProbability-Complement})
+implies $\bar{\mu}\left(\mathbb{1}\right)\subseteq\bar{\mu}\left(P\right)+\bar{\mu}\left(\mathbb{1}-P\right)$.
+Therefore, to prove equation (\ref{eq:QuantumInterval-valuedProbability-Inclusion}),
+it is sufficient to check 
+\[
+\bar{\mu}\left(\proj{\psi_{0}}+\proj{\psi_{1}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{0}}\right)+\bar{\mu}\left(\proj{\psi_{1}}\right)
+\]
+for orthogonal $\ket{\psi_{0}}$ and $\ket{\psi_{1}}$. This equation
+always holds because we always have $\unknown\subseteq\bar{\mu}\left(\proj{\psi_{0}}\right)+\bar{\mu}\left(\proj{\psi_{1}}\right)$.
+
+Next, we need to verify that $\bar{\mu}$ is convex. First, for orthogonal
+projections $P_{0}$ and $P_{1}$, equation (\ref{eq:QuantumInterval-valuedProbability-Inclusion})
+implies equation (\ref{eq:QuantumInterval-valuedProbability-Convex}).
+Second, when $P_{0}=P_{1}+P_{2}$, equation (\ref{eq:QuantumInterval-valuedProbability-Convex})
+holds trivially. Hence, we only need to verify the case which $P_{0}=\proj{\psi_{0}}+\proj{\psi_{2}}$
+and $P_{1}=\proj{\psi_{1}}+\proj{\psi_{2}}$, where $\left\{ \ket{\psi_{0}},\ket{\psi_{1}},\ket{\psi_{2}}\right\} $
+is an orthonormal basis. Because we have 
+\begin{eqnarray*}
+\bar{\mu}\left(P_{0}\vee P_{1}\right) & = & \bar{\mu}\left(\mathbb{1}\right)=\necess\\
+\bar{\mu}\left(P_{0}P_{1}\right) & = & \bar{\mu}\left(\proj{\psi_{2}}\right)\subseteq\unknown
+\end{eqnarray*}
+and $\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$ is
+either $\necess+\unknown$ or $\unknown+\unknown$. Therefore, we
+have $\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$.
+
+Finally, we will prove that $\bar{\mu}$ cannot correspond to any
+quantum probability measure by contradiction. Suppose $\mu(P)\in\bar{\mu}(P)$
+for some quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$.
+We must have 
+\begin{equation}
+\mu(\proj{0})=\mu(\proj{\ps})=\mu(\proj{\ps'})=0\textrm{ .}\label{eq:probability-zero-on-states}
+\end{equation}
+By Gleason's theorem, there is a mixed state~$\rho=\sum_{j=0}^{N-1}q_{j}\proj{\phi_{j}}$
+such that $\mu\left(P\right)=\sum_{j=0}^{N-1}q_{j}\ip{\phi_{j}}{P\phi_{j}}$,
+where $\sum_{j=0}^{N-1}q_{j}=1$ and $q_{j}>0$. However, no pure
+state~$\ket{\phi}$ satisfies $\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0$
+so that we have $\mu(P)\notin\bar{\mu}(P)$ for all quantum probability
+measure~$\mu$.\qed\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\newpage{}%
 \begin{comment}
  \bibliographystyle{plain}
 \bibliography{prop}
