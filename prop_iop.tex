@@ -712,9 +712,10 @@ $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$, and
 \bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})=\bar{\mu}(\mathbb{1}-\proj{\ps'})=\necess\textrm{ ,}\\ 
 \bar{\mu}(P) = \unknown\qquad\textrm{otherwise.} 
 }\end{equation}
-It is straightforward to verify that $\bar{\mu}$ is a convex quantum
-interval-valued probability measure. Now assume there exists a real-valued
-quantum probability measure $\mu$ such that $\mu(P)\in\bar{\mu}(P)$
+It is straightforward to verify that $\bar{\mu}$ is a quantum interval-valued
+probability measure by theorem~\ref{thm:interval-valued-frame-function}
+and convex by theorem~\ref{thm:convex-3}. Now assume there exists
+a real-valued quantum probability measure $\mu$ such that $\mu(P)\in\bar{\mu}(P)$
 for every event (projection)~$P$. We derive a contradiction as follows.
 Suppose $\mu(P)\in\bar{\mu}(P)$ then we must have $\mu(\proj{0})=\mu(\proj{\ps})=\mu(\proj{\ps'})=0$.
 By Gleason's theorem, there is a mixed state~$\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}$
@@ -1039,48 +1040,45 @@ if $f$ is the frame function of $\mu$, $\bar{f}$ is the interval-valued
 frame function of $\bar{\mu}$, and $\mu$ is in the core of $\bar{\mu}$,
 then we say $f$ is in the core of $\bar{f}$, and denoted by $f\in\mathrm{core}\left(\bar{f}\right)$.\end{definition}
 
-\begin{lemma}\label{lemma:interval-valued-frame-function}An interval-valued
+\begin{thm}\label{thm:interval-valued-frame-function}An interval-valued
 frame function~$\bar{f}:\mathbb{C}S^{2}\rightarrow\mathscr{I}$ satisfies
 the following properties:
 \begin{itemize}
 \item $\bar{f}\left(\lambda\ket{\psi}\right)=\bar{f}\left(\ket{\psi}\right)$
-for any $\ket{\psi}\in\mathbb{C}S^{2}$ and $\lambda\in\mathbb{C}S^{0}$.
+for any $\ket{\psi}\in\mathbb{C}S^{2}$ and $\lambda\in\mathbb{C}S^{0}$. 
 \item For any orthonormal basis~$\left\{ \ket{\psi_{i}}\right\} _{i=0}^{2}$,
-we have $1\in\sum_{i=0}^{2}\bar{f}\left(\ket{\psi_{i}}\right)$ and
-$\left[1,1\right]-\bar{f}\left(\ket{\psi_{i}}\right)\subseteq\bar{f}\left(\ket{\psi_{j}}\right)+\bar{f}\left(\ket{\psi_{k}}\right)$,
+we have $\left[1,1\right]-\bar{f}\left(\ket{\psi_{i}}\right)\subseteq\bar{f}\left(\ket{\psi_{j}}\right)+\bar{f}\left(\ket{\psi_{k}}\right)$,
 where $i$, $j$, and $k$ are any permutations among $0$, $1$,
-and $2$.
+and $2$. 
 \end{itemize}
 Conversely, if a function~$\bar{f}:\mathbb{C}S^{2}\rightarrow\mathscr{I}$
 satisfies the above properties, $\bar{f}$ must be an interval-valued
-frame function.\end{lemma}
-\begin{proof}
-Given a quantum IVPM~$\bar{\mu}$, it is straightforward to verify
-that its interval-valued frame function~$\bar{f}:\mathbb{C}S^{2}\rightarrow\mathscr{I}$
+frame function.\end{thm}
+
+\begin{proof} Given a quantum IVPM~$\bar{\mu}$, it is straightforward
+to verify that its interval-valued frame function~$\bar{f}:\mathbb{C}S^{2}\rightarrow\mathscr{I}$
 satisfies the above properties.
 
 Conversely, given a function~$\bar{f}:\mathbb{C}S^{2}\rightarrow\mathscr{I}$
 satisfying the above properties, consider $\bar{\mu}:\events\rightarrow\mathscr{I}$
-defined by
+defined by 
 \begin{itemize}
 \item $\bar{\mu}(\mathbb{0})=\left[0,0\right]$ and $\bar{\mu}(\mathbb{1})=\left[1,1\right]$. 
 \item For any $\ket{\psi}\in\mathbb{C}S^{2}$, we have $\bar{\mu}\left(\proj{\psi}\right)=\bar{f}\left(\ket{\psi}\right)$
-and $\bar{\mu}\left(\mathbb{1}-\proj{\psi}\right)=\left[1,1\right]-\bar{f}\left(\ket{\psi}\right)$.
+and $\bar{\mu}\left(\mathbb{1}-\proj{\psi}\right)=\left[1,1\right]-\bar{f}\left(\ket{\psi}\right)$. 
 \end{itemize}
-Since other conditions are trivial, we only need to verify 
+Since other conditions are trivial, we only need to verify equation~(\ref{eq:QuantumInterval-valuedProbability-Inclusion}).
+First notice that $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$
+implies equation~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
+by induction. Second, equation~(\ref{eq:QuantumInterval-valuedProbability-Complement})
+implies $\bar{\mu}\left(\mathbb{1}\right)\subseteq\bar{\mu}\left(P\right)+\bar{\mu}\left(\mathbb{1}-P\right)$.
+Therefore, to prove equation~(\ref{eq:QuantumInterval-valuedProbability-Inclusion}),
+it is sufficient to check 
 \begin{equation}
-\bar{\mu}\left(\sum_{i=1}^{N}P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}\left(P_{i}\right)\label{eq:quantumIVPMconditions}
+\bar{\mu}\left(\proj{\psi_{0}}+\proj{\psi_{1}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{0}}\right)+\bar{\mu}\left(\proj{\psi_{1}}\right)
 \end{equation}
- for any set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$.
-First, if $\mathbb{0}$ or $\mathbb{1}$ is in $\left\{ P_{i}\right\} _{i=1}^{N}$,
-the statement could be reduced to the case without $\mathbb{0}$,
-or its trivial. Hence, we only need to discuss $\left\{ P_{i}\right\} _{i=1}^{N}$
-containing 1- or 2-dimensional projectors. When $\left\{ P_{i}\right\} _{i=1}^{N}$
-containing a 2-dimensional projector, the definition of $\bar{\mu}$
-implies equation~(\ref{eq:quantumIVPMconditions}). When $\left\{ P_{i}\right\} _{i=1}^{N}$
-only containing 1-dimensional projectors, the properties of $\bar{f}$
-implies equation~(\ref{eq:quantumIVPMconditions}).
-\end{proof}
+for orthogonal $\ket{\psi_{0}}$ and $\ket{\psi_{1}}$. This equation
+always holds because the properties of $\bar{f}$.\end{proof}
 \begin{definition}For $\ket{\psi}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}=\left(\begin{array}{c}\alpha_{0}\\
 \alpha_{1}\\
 \alpha_{2}
@@ -1180,7 +1178,7 @@ we could have some idea of the pure states in core.
 \section{Real Interval-valued Frame Functions\label{sec:Real-Interval-valued-Frame}}
 
 In order to simplify the discussion, we call a function~$\bar{f}:S^{2}\rightarrow\mathscr{I}$
-satisfying conditions in lemma~\ref{lemma:interval-valued-frame-function}
+satisfying conditions in theorem~\ref{thm:interval-valued-frame-function}
 a real interval-valued frame function. Obviously, any results in appendix~\ref{sec:Interval-valued-Frame-Functions}
 still hold if we replace every ``complex'' by ``real,'' in particular,
 replace every $\mathbb{C}S^{2}$ by $S^{2}$. Furthermore, since restricting
@@ -1230,18 +1228,18 @@ for any $\ket{\psi_{0}}\in\angle^{-1}\left(\left[\pi / 2-\theta_{0},\pi / 2\righ
 \caption{\label{fig:three-dimensional-real-frame-1}This figure is used in
 the proof of lemma~\ref{lemma:imposs-imply-same-value}.}
 \end{figure}
-\begin{proof}
-We could illustrate the situation in figure~\ref{fig:three-dimensional-real-frame-1}.
+\begin{proof} We could illustrate the situation in figure~\ref{fig:three-dimensional-real-frame-1}.
 Let the yellow circle is the states whose latitude is $\theta_{0}$.
 Then, every states above the yellow circle maps to $\imposs$ by $\bar{f}$.
 In particular, $\bar{f}\left(\ket{0}\right)=\bar{f}\left(\ket{0'}\right)=\imposs$.
 Since $\left\{ \ket{0'},\ket{1},\ket{2'}\right\} $ is an orthonormal
-basis, by lemma~\ref{lemma:interval-valued-frame-function}, we have
-\begin{equation}
-\eqalign{\left[1,1\right]-\bar{f}\left(\ket{1}\right)\subseteq\bar{f}\left(\ket{0'}\right)+\bar{f}\left(\ket{2}\right)=\bar{f}\left(\ket{2'}\right)\\
-\left[1,1\right]-\bar{f}\left(\ket{2'}\right)\subseteq\bar{f}\left(\ket{0'}\right)+\bar{f}\left(\ket{1}\right)=\bar{f}\left(\ket{1}\right)
-}
-\label{eq:includes}
+basis, by theorem~\ref{thm:interval-valued-frame-function}, we have
+
+\begin{equation} 
+\eqalign{\left[1,1\right]-\bar{f}\left(\ket{1}\right)\subseteq\bar{f}\left(\ket{0'}\right)+\bar{f}\left(\ket{2}\right)=\bar{f}\left(\ket{2'}\right)\\ 
+\left[1,1\right]-\bar{f}\left(\ket{2'}\right)\subseteq\bar{f}\left(\ket{0'}\right)+\bar{f}\left(\ket{1}\right)=\bar{f}\left(\ket{1}\right) 
+} 
+\label{eq:includes} 
 \end{equation}
 so that $\bar{f}\left(\ket{2'}\right)=\left[1,1\right]-\bar{f}\left(\ket{1}\right)$.
 By the same reason, for any state~$\ket{\psi}$ in the dotted black
@@ -1326,16 +1324,12 @@ orthonormal basis.
 
 Since $\left\{ \ket{A},\ket{B},\ket{C}\right\} $ is an orthonormal
 basis and $\bar{f}\left(\ket{A}\right)=\bar{f}\left(\ket{B}\right)=\bar{f}\left(\ket{C}\right)=\left[l_{0},1-l_{0}\right]$,
-we have the following inequalities by
-lemma~\ref{lemma:interval-valued-frame-function},
-\begin{equation}\eqalign{
-1\in\left[3l_{0},3-3l_{0}\right] \Rightarrow l_{0}\le\frac{1}{3}\textrm{ ,}\\
-\left[1,1\right]-\left[l_{0},1-l_{0}\right]\subseteq\left[2l_{0},2-2l_{0}\right]
-\Rightarrow l_{0}\le0\textrm{ .}
-}\end{equation}
+we have the following inequalities by theorem~\ref{thm:interval-valued-frame-function},
+\begin{equation}
+\left[1,1\right]-\left[l_{0},1-l_{0}\right]\subseteq\left[2l_{0},2-2l_{0}\right]\Rightarrow l_{0}\le0\textrm{ .}
+\end{equation}
 Recall that $0\le l_{0}\le\frac{1}{2}$. Therefore, $l_{0}=0$, that
-is, $\unknown=\left[l_{0},1-l_{0}\right]\in\mathscr{I}$.
-\end{proof}
+is, $\unknown=\left[l_{0},1-l_{0}\right]\in\mathscr{I}$. \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Between Quantum and Classical}
@@ -1618,20 +1612,58 @@ which plots the 1-dimensional projectors:
 where $\ket{0}$ and $\ket{\ps}$ are plotted as the red and green
 dotted vectors, respectively. 
 \item The red and green circles are are the states orthogonal to $\ket{0}$
-and $\ket{\ps}$, respectively. We define 
-\begin{equation}\eqalign{ 
-\bar{\mu}\left(\proj{\psi}\right)=\likely\textrm{ ,}\\ 
-\bar{\mu}\left(\mathbb{1}-\proj{\psi}\right)=\unlikely\textrm{ ,} 
-}\end{equation}
+and $\ket{\ps}$, respectively. We define $\bar{\mu}\left(\proj{\psi}\right)=\bar{\mu}\left(\mathbb{1}-\proj{\psi}\right)=\midd$,
 where $\ip{\psi}{0}=0$ or $\ip{\psi}{\ps}=0$.
 \item Otherwise, $\bar{\mu}(\proj{\psi})=\unlikely$ and $\bar{\mu}(\mathbb{1}-\proj{\psi})=\likely$. 
 \end{enumerate}
-It is straightforward but tedious to check that $\bar{\mu}$ is a
-quantum interval-valued probability measure, and $\bar{\mu}$ is convex
-by theorem~\ref{thm:convex-3}. The following argument establishes
-that is has an empty core. Assume there is a real-valued probability
-measure satisfying $\mu_{\rho}^{B}(P)\in\bar{\mu}(P)$ for all $P\in\events$.
-Because $\mu_{\rho}^{B}(\proj{0})\in\bar{\mu}(\proj{0})=\imposs$
+By theorem~\ref{thm:interval-valued-frame-function}, to check $\bar{\mu}$
+a quantum interval-valued probability measure is equivalent to check
+$\bar{f}$ satisfying 
+\begin{equation}\eqalign{ 
+\left[1,1\right]-\bar{f}\left(\ket{\psi_0}\right)\subseteq\bar{f}\left(\ket{\psi_1}\right)+\bar{f}\left(\ket{\psi_2}\right)\textrm{ ,}\\
+\left[1,1\right]-\bar{f}\left(\ket{\psi_1}\right)\subseteq\bar{f}\left(\ket{\psi_2}\right)+\bar{f}\left(\ket{\psi_0}\right)\textrm{ ,}\\
+\left[1,1\right]-\bar{f}\left(\ket{\psi_2}\right)\subseteq\bar{f}\left(\ket{\psi_0}\right)+\bar{f}\left(\ket{\psi_1}\right)\textrm{ ,}
+}\label{eq:non-additive-vectors}\end{equation}
+for every orthonormal basis~$\mathcal{B}=\left\{ \ket{\psi_{0}},\ket{\psi_{1}},\ket{\psi_{2}}\right\} $
+where $\bar{f}\left(\ket{\psi}\right)=\bar{\mu}\left(\proj{\psi}\right)$.
+We are going to enumerate all possible orthonormal bases to verify
+equation~(\ref{eq:non-additive-vectors}), and case 1 and 2 are illustrated
+in figure~\ref{fig:three-dimensional-5-value}.
+\begin{enumerate}
+\item When $\ket{\psi_{0}}$ is $\ket{0}$, then $\ip{\psi_{1}}{0}=\ip{\psi_{2}}{0}=0$.
+Equation~(\ref{eq:non-additive-vectors}) can then be verified as
+follow. 
+\begin{equation}\eqalign{ 
+\left[1,1\right]-\bar{f}\left(\ket{0}\right)=\necess\subseteq\midd+\midd=\bar{f}\left(\ket{\psi_1}\right)+\bar{f}\left(\ket{\psi_2}\right)\textrm{ ,}\\
+\left[1,1\right]-\bar{f}\left(\ket{\psi_1}\right)=\midd\subseteq\midd+\imposs=\bar{f}\left(\ket{\psi_2}\right)+\bar{f}\left(\ket{0}\right)\textrm{ ,}
+}\end{equation}
+Similarly, when $\ket{\psi_{0}}$ is $\ket{\ps}$, equation~(\ref{eq:non-additive-vectors})
+holds. 
+\item When $\ket{0}\notin\mathcal{B}$, $\ket{\ps}\notin\mathcal{B}$, $\ip{\psi_{0}}{0}=0$,
+and $\ip{\psi_{1}}{\ps}=0$, we have $\ip{\psi_{2}}{0}\ne0$ and $\ip{\psi_{2}}{\ps}\ne0$.
+Then, we have 
+\begin{equation}\eqalign{ 
+\left[1,1\right]-\bar{f}\left(\ket{\psi_0}\right)=\midd\subseteq\midd+\unlikely=\bar{f}\left(\ket{\psi_1}\right)+\bar{f}\left(\ket{\psi_2}\right)\textrm{ ,}\\
+\left[1,1\right]-\bar{f}\left(\ket{\psi_2}\right)=\likely\subseteq\midd+\midd=\bar{f}\left(\ket{\psi_0}\right)+\bar{f}\left(\ket{\psi_1}\right)\textrm{ .}
+}\end{equation}
+\item When $\ket{0}\notin\mathcal{B}$, $\ket{\ps}\notin\mathcal{B}$, $\ip{\psi_{0}}{0}=0$,
+$\ip{\psi_{1}}{0}\ne0$, $\ip{\psi_{1}}{\ps}\ne0$, $\ip{\psi_{2}}{0}\ne0$
+and $\ip{\psi_{2}}{\ps}\ne0$. Then, we have 
+\begin{equation}\eqalign{ 
+\left[1,1\right]-\bar{f}\left(\ket{\psi_0}\right)=\midd\subseteq\unlikely+\unlikely=\bar{f}\left(\ket{\psi_1}\right)+\bar{f}\left(\ket{\psi_2}\right)\textrm{ ,}\\
+\left[1,1\right]-\bar{f}\left(\ket{\psi_1}\right)=\likely\nsubseteq\unlikely+\midd=\bar{f}\left(\ket{\psi_2}\right)+\bar{f}\left(\ket{\psi_0}\right)\textrm{ .}
+}\end{equation}
+\footnote{\yutsung{{My previous footnote was wrong. }Need to recompute. Sigh...}}
+\item The ``otherwise'' case. Then, equation~(\ref{eq:non-additive-vectors})
+can easily be verified. 
+\begin{equation}
+\left[1,1\right]-\bar{f}\left(\ket{\psi_{0}}\right)=\likely\subseteq\unlikely+\unlikely=\bar{f}\left(\ket{\psi_{1}}\right)+\bar{f}\left(\ket{\psi_{2}}\right)\textrm{ .}
+\end{equation}
+\end{enumerate}
+$\bar{\mu}$ is convex by theorem~\ref{thm:convex-3}. The following
+argument establishes that is has an empty core. Assume there is a
+real-valued probability measure satisfying $\mu_{\rho}^{B}(P)\in\bar{\mu}(P)$
+for all $P\in\events$. Because $\mu_{\rho}^{B}(\proj{0})\in\bar{\mu}(\proj{0})=\imposs$
 and $\mu_{\rho}^{B}(\proj{\ps})\in\bar{\mu}(\proj{\ps})=\imposs$,
 we must have $\mu_{\rho}^{B}(\proj{0})=\mu_{\rho}^{B}(\proj{\ps})=0$
 so that $\mu_{\rho}^{B}=\mu_{\ket{2}}^{B}$. However, 
