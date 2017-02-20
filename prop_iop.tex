@@ -32,6 +32,8 @@
 \newcommand{\unknown}{{\mbox{\wesa{unknown}}}}
 \newcommand{\midd}{{\mbox{\wesa{middle}}}}
 \newcommand{\ket}[1]{{\left\vert{#1}\right\rangle}}
+\newcommand{\fket}[1]{{|#1\rangle}}
+\newcommand{\fproj}[1]{|#1\rangle\langle #1|}
 \newcommand{\op}[2]{\ensuremath{\left\vert{#1}\middle\rangle\middle\langle{#2}\right\vert}}
 \newcommand{\proj}[1]{\op{#1}{#1}}
 \newcommand{\ps}{\texttt{+}}
@@ -69,46 +71,52 @@ probability, discrete quantum theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-Textbook quantum mechanics asserts that, given a quantum system
+Textbook quantum mechanics asserts that, given a quantum spin system
 described by the wavefunction
-$\ket{\psi}=\frac{\sqrt{\pi}}{2}\ket{0}+\frac{\sqrt{4-\pi}}{2}\ket{1}$
-and the observable $I$, the probability of observing $\ket{0}$ is
-$\frac{\pi}{4}$ and the probability of observing $\ket{1}$ is
-$1-\frac{\pi}{4}$. According to the frequency interpretation of
-probability, the above assertion implies that when performing a very
-large number of experiments on quantum systems described by
-wavefunction $\ket{\psi}$, a fraction $\frac{\pi}{4}$ of the
-experiments will result in the observation $\ket{0}$ and the remaining
-fraction $1-\frac{\pi}{4}$ will result in the observation
-$\ket{1}$. 
+$\ket{\psi}=\frac{\sqrt{\pi}}{2}\fket{\ps\frac{1}{2}}+\frac{\sqrt{4-\pi}}{2}\fket{\minus\frac{1}{2}}$
+and the observable $S_z = \frac{\hbar}{2}(\fproj{\ps\frac{1}{2}}-\fproj{\minus\frac{1}{2}})$,
+the probability of observing the eigenvalue $\ps\frac{\hbar}{2}$ (with
+post-measurement state $\fket{\ps\frac{1}{2}}$) is $\frac{\pi}{4}$ and
+the probability of observing $\minus\frac{\hbar}{2}$ (with post-measurement
+state $\fket{\minus\frac{1}{2}}$) is $1-\frac{\pi}{4}$. According to the
+frequency interpretation of probability, the above assertion implies
+that when performing a very large number of experiments on quantum
+systems described by wavefunction $\ket{\psi}$, a fraction
+$\frac{\pi}{4}$ of the experiments will result in the observation
+$\ps\frac{\hbar}{2}$ and the remaining fraction $1-\frac{\pi}{4}$ will
+result in the observation $\fket{\minus\frac{1}{2}}$.
 
 In reality, i.e., in an actual experiment, simulation, or computation,
 bounded by space, time, and energy resources, the situation is much
 fuzzier: (i) we cannot \emph{exactly} prepare the state $\psi$; (ii)
 we cannot \emph{exactly} build a measurement apparatus corresponding
-to observable $I$; and (iii) we cannot prepare \emph{exact} replicas
+to observable $S_z$; and (iii) we cannot prepare \emph{exact} replicas
 of any state. In other words, we can only perform a limited number of
 experiments on quantum systems closely related to wavefunction
 $\ket{\psi}$ and using an apparatus that closely approximates
-observable $I$. Given any fixed resources, these experiments will
+observable $S_z$. Given any fixed resources, these experiments will
 \emph{not} result in the \emph{exact} fraction $\frac{\pi}{4}$ of
-observations $\ket{0}$ and $1-\frac{\pi}{4}$ of observations
-$\ket{1}$. Indeed, the state of the art algorithms for computing the
-$n$th binary digit of~$\pi$ require on the order of
+observations $\ps\frac{\hbar}{2}$ and $1-\frac{\pi}{4}$ of observations
+$\minus\frac{\hbar}{2}$. Indeed, the state of the art algorithms for
+computing the $n$th binary digit of~$\pi$ require on the order of
 $O\left(n\log^{O\left(1\right)}\left(n\right)\right)$
 operations~\cite{journals/moc/BaileyBP97} which means that simply
 referring to the $n$th digit of $\pi$ requires more and more resources
-as $n$ gets larger. 
+as~$n$ gets larger.
 
-All of this is well-known. The question is how seriously does it
-affect the foundations of quantum mechanics? We believe that the
-answer is not evident at all and should be investigated in
-detail. Indeed taking such resource bounds into consideration is what
-founded computer science as a discipline and has become crucial for
+All of this is well-known and holds in both the classical and quantum
+world. In the classical world, these observations are believed to be
+well-understood approximations to an idealized reality. The question
+in the quantum world is more subtle and it is not evident at all that
+it does not alter the very foundations of quantum mechanics. Indeed
+taking such resource bounds into consideration is what founded
+computer science as a discipline and has become crucial for
 understanding the very nature of computation. Following
 Feynman~\cite{Feynman1982Simulating}, Landauer~\cite{Landauer1996188},
 and others, one might argue that this resource-bounded perspective is
 also crucial for understanding the very nature of physical processes.
+
+In previous work, \ldots
 
 \newpage
 
