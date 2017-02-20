@@ -4452,18 +4452,8 @@ Increase the Measurement Resource
 \end_layout
 
 \begin_layout Standard
-We can apply the idea of restricting the event space in example
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "ex:three-dimensional-three-value"
-
-\end_inset
-
-, but instead of commuting sub-event space, we will try to find some subset
+This section extend the idea of restricting the event space, but instead
+ of commuting sub-event space, we will try to find some subset
 \begin_inset space ~
 \end_inset
 
@@ -4476,12 +4466,33 @@ reference "ex:three-dimensional-three-value"
 \end_inset
 
  has an non-empty core.
- The following are three of all possibilities:
+ This could help us understand the core because of the following identity
+\begin_inset Formula 
+\begin{equation}
+\mathrm{core}\left(\bar{\mu}\right)=\bigcap_{\events'\subseteq\events}\mathrm{core}\left(\bar{\mu}|_{\events'}\right)\label{eq:core-intersection}
+\end{equation}
+
+\end_inset
+
+if we know more about the right-hand side of the equation, we can have more
+ idea about the left-hand side.
+ This idea can be applied to example
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ex:three-dimensional-three-value"
+
+\end_inset
+
+, and the following are three of all possibilities:
 \end_layout
 
 \begin_layout Itemize
 When 
-\begin_inset Formula $\events'=\events\backslash\left\{ \proj{\ps'}\right\} $
+\begin_inset Formula $\events_{1}=\events\backslash\left\{ \proj{\ps'}\right\} $
 \end_inset
 
 , because 
@@ -4489,7 +4500,7 @@ When
 \end_inset
 
 , we have 
-\begin_inset Formula $\mathrm{core}\left(\bar{\mu}|_{\events'}\right)=\left\{ \mu_{\ket{2}}^{B}\right\} $
+\begin_inset Formula $\mathrm{core}\left(\bar{\mu}|_{\events_{1}}\right)=\left\{ \mu_{\ket{2}}^{B}\right\} $
 \end_inset
 
 .
@@ -4497,7 +4508,7 @@ When
 
 \begin_layout Itemize
 When 
-\begin_inset Formula $\events'=\events\backslash\left\{ \proj{\ps}\right\} $
+\begin_inset Formula $\events_{2}=\events\backslash\left\{ \proj{\ps}\right\} $
 \end_inset
 
 , because 
@@ -4505,7 +4516,7 @@ When
 \end_inset
 
 , we have 
-\begin_inset Formula $\mathrm{core}\left(\bar{\mu}|_{\events'}\right)=\left\{ \mu_{\ket{1}}^{B}\right\} $
+\begin_inset Formula $\mathrm{core}\left(\bar{\mu}|_{\events_{2}}\right)=\left\{ \mu_{\ket{1}}^{B}\right\} $
 \end_inset
 
 .
@@ -4513,7 +4524,7 @@ When
 
 \begin_layout Itemize
 When 
-\begin_inset Formula $\events'=\events\backslash\left\{ \proj{0},\proj{\ps},\proj{\ps'}\right\} $
+\begin_inset Formula $\events_{3}=\events\backslash\left\{ \proj{0},\proj{\ps},\proj{\ps'}\right\} $
 \end_inset
 
 , because 
@@ -4525,7 +4536,7 @@ When
 \end_inset
 
 , we have 
-\begin_inset Formula $\mu_{\frac{\mathbb{1}}{3}}^{B}\in\mathrm{core}\left(\bar{\mu}|_{\events'}\right)$
+\begin_inset Formula $\mu_{\frac{\mathbb{1}}{3}}^{B}\in\mathrm{core}\left(\bar{\mu}|_{\events_{3}}\right)$
 \end_inset
 
  as well as 
@@ -4533,7 +4544,7 @@ When
 \end_inset
 
  and 
-\begin_inset Formula $\mu_{\ket{1}}^{B}\in\mathrm{core}\left(\bar{\mu}|_{\events'}\right)$
+\begin_inset Formula $\mu_{\ket{1}}^{B}\in\mathrm{core}\left(\bar{\mu}|_{\events_{3}}\right)$
 \end_inset
 
 .
@@ -4542,8 +4553,16 @@ When
 \begin_layout Standard
 Each of these possibilities is compatible with some but not all of the observati
 ons.
- The first two possibilities are particular interesting since each two 1-dimensi
-onal projectors
+ In another word, 
+\begin_inset Formula 
+\begin{equation}
+\mathrm{core}\left(\bar{\mu}\right)=\bigcap_{\events'\subseteq\events}\mathrm{core}\left(\bar{\mu}|_{\events'}\right)\subseteq\mathrm{core}\left(\bar{\mu}|_{\events_{1}}\right)\cap\mathrm{core}\left(\bar{\mu}|_{\events_{2}}\right)=\left\{ \mu_{\ket{2}}^{B}\right\} \cap\left\{ \mu_{\ket{1}}^{B}\right\} =\emptyset\textrm{ .}
+\end{equation}
+
+\end_inset
+
+The first two possibilities are particular interesting since each two 1-dimensio
+nal projectors
 \begin_inset space ~
 \end_inset
 
@@ -4619,23 +4638,51 @@ reference "fig:three-dimensional-3-value"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:three-dimensional-3-value-1"
+reference "fig:three-dimensional-real-frame-1"
 
 \end_inset
 
-, each plane intersecting the area suggests different pure state inducing
- 
-\begin_inset Formula $\bar{\mu}$
+, and this area intersects a plane
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\events'$
+\end_inset
+
+, then 
+\begin_inset Formula $\mathrm{core}\left(\bar{\mu}|_{\events'}\right)=\left\{ \mu_{\ket{\psi}}^{B}\right\} $
+\end_inset
+
+, where 
+\begin_inset Formula $\ket{\psi}$
+\end_inset
+
+ is the normal vector of 
+\begin_inset Formula $\events'$
 \end_inset
 
 .
- However, these suggestions contradict with each others, which implies 
+ Since different planes have different normal vectors, 
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
  has an empty core.
  Furthermore, the larger the area, the more state vectors which are inconsistent
  with any particular Born rule probability measure.
+ In another word, there are more different singleton sets in the right-hand
+ side of equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:core-intersection"
+
+\end_inset
+
+).
  Therefore, the area of the 1-dimensional projectors mapping to 
 \begin_inset Formula $\imposs$
 \end_inset
@@ -4645,125 +4692,6 @@ reference "fig:three-dimensional-3-value-1"
 \end_inset
 
  deviate from the Born rule probability measures.
- 
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename figure3.eps
-	scale 38
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:three-dimensional-3-value-1"
-
-\end_inset
-
-Plotted in 
-\begin_inset Formula $\mathbb{R}^{3}$
-\end_inset
-
-, assume the 1-dimensional projectors whose latitude is higher than the
- green circle maps to 
-\begin_inset Formula $\imposs$
-\end_inset
-
- by 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
-, for example 
-\begin_inset Formula $\bar{\mu}\left(\proj{0'}\right)=\bar{\mu}\left(\proj{2'}\right)=\bar{\mu}\left(\proj{\bar{2}}\right)=\imposs$
-\end_inset
-
-.
- Since 
-\begin_inset Formula $\ket{0'}$
-\end_inset
-
- and 
-\begin_inset Formula $\ket{2'}$
-\end_inset
-
- are in a plane, 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- might be induced by its normal vector
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\ket{1'}$
-\end_inset
-
-.
- Also, since 
-\begin_inset Formula $\ket{0'}$
-\end_inset
-
- and 
-\begin_inset Formula $\ket{\bar{2}}$
-\end_inset
-
- are in a plane, 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- might be induced by its normal vector
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\ket{\bar{1}}$
-\end_inset
-
-.
- However, 
-\begin_inset Formula $\mu_{\ket{1'}}^{B}$
-\end_inset
-
- is inconsistent with 
-\begin_inset Formula $\bar{\mu}\left(\proj{\bar{2}}\right)=\imposs$
-\end_inset
-
-, and 
-\begin_inset Formula $\mu_{\ket{\bar{1}}}^{B}$
-\end_inset
-
- is inconsistent with 
-\begin_inset Formula $\bar{\mu}\left(\proj{2'}\right)=\imposs$
-\end_inset
-
-.
- Therefore, 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- has an empty-core.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4775,11 +4703,7 @@ In this sense, we found that the area of the 1-dimensional projectors mapping
  depends on the maximal length of the intervals, which represents the ability
  of measurement equipment.
  In particular, we have the following results whose details are described
- in appendix
-\begin_inset space ~
-\end_inset
-
-
+ in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Real-Interval-valued-Frame"
@@ -7293,7 +7217,12 @@ reference "lemma:imposs-imply-same-value"
 
 \end_inset
 
-.
+, where every vector above the light green circle maps to 
+\begin_inset Formula $\imposs$
+\end_inset
+
+, and we want to prove that every vector between dark green and light blue
+ maps to the same interval.
 \end_layout
 
 \end_inset

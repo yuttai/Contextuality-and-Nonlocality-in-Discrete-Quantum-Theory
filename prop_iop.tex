@@ -798,23 +798,36 @@ variable theory.
 
 \subsection{Increase the Measurement Resource}
 
-We can apply the idea of restricting the event space in example~\ref{ex:three-dimensional-three-value},
-but instead of commuting sub-event space, we will try to find some
-subset~$\events'\subseteq\events$ such that $\bar{\mu}|_{\events'}$
-has an non-empty core. The following are three of all possibilities:
+This section extend the idea of restricting the event space, but instead
+of commuting sub-event space, we will try to find some subset~$\events'\subseteq\events$
+such that $\bar{\mu}|_{\events'}$ has an non-empty core. This could
+help us understand the core because of the following identity
+\begin{equation}
+\mathrm{core}\left(\bar{\mu}\right)=\bigcap_{\events'\subseteq\events}\mathrm{core}\left(\bar{\mu}|_{\events'}\right)\label{eq:core-intersection}
+\end{equation}
+if we know more about the right-hand side of the equation, we can
+have more idea about the left-hand side. This idea can be applied
+to example~\ref{ex:three-dimensional-three-value}, and the following
+are three of all possibilities:
 \begin{itemize}
-\item When $\events'=\events\backslash\left\{ \proj{\ps'}\right\} $, because
-$\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$, we have $\mathrm{core}\left(\bar{\mu}|_{\events'}\right)=\left\{ \mu_{\ket{2}}^{B}\right\} $.
-\item When $\events'=\events\backslash\left\{ \proj{\ps}\right\} $, because
-$\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps'})=\imposs$, we have $\mathrm{core}\left(\bar{\mu}|_{\events'}\right)=\left\{ \mu_{\ket{1}}^{B}\right\} $.
-\item When $\events'=\events\backslash\left\{ \proj{0},\proj{\ps},\proj{\ps'}\right\} $,
+\item When $\events_{1}=\events\backslash\left\{ \proj{\ps'}\right\} $,
+because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$, we have
+$\mathrm{core}\left(\bar{\mu}|_{\events_{1}}\right)=\left\{ \mu_{\ket{2}}^{B}\right\} $.
+\item When $\events_{2}=\events\backslash\left\{ \proj{\ps}\right\} $,
+because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps'})=\imposs$, we
+have $\mathrm{core}\left(\bar{\mu}|_{\events_{2}}\right)=\left\{ \mu_{\ket{1}}^{B}\right\} $.
+\item When $\events_{3}=\events\backslash\left\{ \proj{0},\proj{\ps},\proj{\ps'}\right\} $,
 because $\bar{\mu}(\proj{\phi})\ne\necess$ for all $\ket{\phi}$,
-we have $\mu_{\frac{\mathbb{1}}{3}}^{B}\in\mathrm{core}\left(\bar{\mu}|_{\events'}\right)$
-as well as $\mu_{\ket{2}}^{B}$ and $\mu_{\ket{1}}^{B}\in\mathrm{core}\left(\bar{\mu}|_{\events'}\right)$.
+we have $\mu_{\frac{\mathbb{1}}{3}}^{B}\in\mathrm{core}\left(\bar{\mu}|_{\events_{3}}\right)$
+as well as $\mu_{\ket{2}}^{B}$ and $\mu_{\ket{1}}^{B}\in\mathrm{core}\left(\bar{\mu}|_{\events_{3}}\right)$.
 \end{itemize}
 Each of these possibilities is compatible with some but not all of
-the observations. The first two possibilities are particular interesting
-since each two 1-dimensional projectors~$\proj{\psi_{0}}$ and $\proj{\psi_{1}}$
+the observations. In another word, 
+\begin{equation}
+\mathrm{core}\left(\bar{\mu}\right)=\bigcap_{\events'\subseteq\events}\mathrm{core}\left(\bar{\mu}|_{\events'}\right)\subseteq\mathrm{core}\left(\bar{\mu}|_{\events_{1}}\right)\cap\mathrm{core}\left(\bar{\mu}|_{\events_{2}}\right)=\left\{ \mu_{\ket{2}}^{B}\right\} \cap\left\{ \mu_{\ket{1}}^{B}\right\} =\emptyset\textrm{ .}
+\end{equation}
+The first two possibilities are particular interesting since each
+two 1-dimensional projectors~$\proj{\psi_{0}}$ and $\proj{\psi_{1}}$
 mapped to $\imposs$ suggests there is a subset~$\events'\subseteq\events$
 such that $\mathrm{core}\left(\bar{\mu}|_{\events'}\right)=\left\{ \mu_{\ket{\psi_{0}}\times\ket{\psi_{1}}}^{B}\right\} $
 in the Hilbert space of dimension 3, where the cross product of complex
@@ -824,34 +837,21 @@ As we illustrated in figure~\ref{fig:three-dimensional-3-value},
 if $\bar{\mu}$ has a non-empty core, the states mapping to $\imposs$
 is contained in a plane, which contains no area in the sphere. On
 the other hand, if the states mapping to $\imposs$ contain some area
-in the sphere as in figure~\ref{fig:three-dimensional-3-value-1},
-each plane intersecting the area suggests different pure state inducing
-$\bar{\mu}$. However, these suggestions contradict with each others,
-which implies $\bar{\mu}$ has an empty core. Furthermore, the larger
-the area, the more state vectors which are inconsistent with any particular
-Born rule probability measure. Therefore, the area of the 1-dimensional
-projectors mapping to $\imposs$ could indicate how much $\bar{\mu}$
-deviate from the Born rule probability measures. 
-\begin{figure}
-\begin{centering}
-\includegraphics[scale=0.38]{figure3} 
-\par\end{centering}
-\caption{\label{fig:three-dimensional-3-value-1}Plotted in $\mathbb{R}^{3}$,
-assume the 1-dimensional projectors whose latitude is higher than
-the green circle maps to $\imposs$ by $\bar{\mu}$, for example $\bar{\mu}\left(\proj{0'}\right)=\bar{\mu}\left(\proj{2'}\right)=\bar{\mu}\left(\proj{\bar{2}}\right)=\imposs$.
-Since $\ket{0'}$ and $\ket{2'}$ are in a plane, $\bar{\mu}$ might
-be induced by its normal vector~$\ket{1'}$. Also, since $\ket{0'}$
-and $\ket{\bar{2}}$ are in a plane, $\bar{\mu}$ might be induced
-by its normal vector~$\ket{\bar{1}}$. However, $\mu_{\ket{1'}}^{B}$
-is inconsistent with $\bar{\mu}\left(\proj{\bar{2}}\right)=\imposs$,
-and $\mu_{\ket{\bar{1}}}^{B}$ is inconsistent with $\bar{\mu}\left(\proj{2'}\right)=\imposs$.
-Therefore, $\bar{\mu}$ has an empty-core.}
-\end{figure}
+in the sphere as in figure~\ref{fig:three-dimensional-real-frame-1},
+and this area intersects a plane~$\events'$, then $\mathrm{core}\left(\bar{\mu}|_{\events'}\right)=\left\{ \mu_{\ket{\psi}}^{B}\right\} $,
+where $\ket{\psi}$ is the normal vector of $\events'$. Since different
+planes have different normal vectors, $\bar{\mu}$ has an empty core.
+Furthermore, the larger the area, the more state vectors which are
+inconsistent with any particular Born rule probability measure. In
+another word, there are more different singleton sets in the right-hand
+side of equation~(\ref{eq:core-intersection}). Therefore, the area
+of the 1-dimensional projectors mapping to $\imposs$ could indicate
+how much $\bar{\mu}$ deviate from the Born rule probability measures.
 
 In this sense, we found that the area of the 1-dimensional projectors
 mapping to $\imposs$ depends on the maximal length of the intervals,
 which represents the ability of measurement equipment. In particular,
-we have the following results whose details are described in appendix~\ref{sec:Real-Interval-valued-Frame}.
+we have the following results whose details are described in \ref{sec:Real-Interval-valued-Frame}. 
 \begin{itemize}
 \item The radius of any disk inside the area of the 1-dimensional projectors
 mapping to $\imposs$ must smaller than $\pi / 4$ (theorem~\ref{thm:pi-div-4}).
@@ -1171,17 +1171,20 @@ For example, the north pole has the latitude $0$, the equator has
 the the latitude $\pi / 2$, and $\angle^{-1}\left(\left[0,\theta_{0}\right]\right)=\set{\ket{\psi}\in S^{2}}{\theta_{0}\le\angle\left(\ket{\psi}\right)\le\pi / 2}$
 contains all states whose latitude is larger than $\theta_{0}$.\end{definition}
 
-\begin{lemma}\label{lemma:imposs-imply-same-value}Given $\theta_{0}\in\left[0,\pi / 2\right]$
-and an interval-valued frame function~$\bar{f}:S^{2}\rightarrow\mathscr{I}$,
+\begin{lemma}\label{lemma:imposs-imply-same-value}Given
+$\theta_{0}\in\left[0,\pi/2\right]$ and an interval-valued frame function~$\bar{f}:S^{2}\rightarrow\mathscr{I}$,
 if $\bar{f}\left(\ket{\psi}\right)=\imposs$ for every $\ket{\psi}\in\angle^{-1}\left(\left[0,\theta_{0}\right]\right)$,
 then there is $l_{0}\in\left[0,\frac{1}{2}\right]$ such that $\bar{f}\left(\ket{\psi_{0}}\right)=\left[l_{0},1-l_{0}\right]\in\mathscr{I}$
-for any $\ket{\psi_{0}}\in\angle^{-1}\left(\left[\pi / 2-\theta_{0},\pi / 2\right]\right)$.\end{lemma}
+for any $\ket{\psi_{0}}\in\angle^{-1}\left(\left[\pi/2-\theta_{0},\pi/2\right]\right)$.\end{lemma}
 \begin{figure}
 \begin{centering}
-\includegraphics[scale=0.38]{figureb1.eps} 
+\includegraphics[scale=0.38]{figureb1} 
 \par\end{centering}
 \caption{\label{fig:three-dimensional-real-frame-1}This figure is used in
-the proof of lemma~\ref{lemma:imposs-imply-same-value}.}
+the proof of lemma~\ref{lemma:imposs-imply-same-value}, where every
+vector above the light green circle maps to $\imposs$, and we want
+to prove that every vector between dark green and light blue maps
+to the same interval.}
 \end{figure}
 \begin{proof} We could illustrate the situation in figure~\ref{fig:three-dimensional-real-frame-1}.
 Let the yellow circle is the states whose latitude is $\theta_{0}$.
