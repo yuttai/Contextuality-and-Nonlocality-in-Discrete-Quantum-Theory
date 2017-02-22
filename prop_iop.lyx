@@ -14,8 +14,11 @@
 \usepackage{mathrsfs}
 \usepackage{bbold}
 \usepackage{wesa}
+\usepackage{graphicx}
+\usepackage{verbatim}
 \usepackage{iopams}
 \usepackage{setstack}
+
 
 \theoremstyle{remark}
 \newtheorem{example}{Example}\newtheorem{definition}{Definition}\newtheorem{thm}{Theorem}\newtheorem{lemma}{Lemma}
@@ -31,6 +34,8 @@
 \newcommand{\unknown}{{\mbox{\wesa{unknown}}}}
 \newcommand{\midd}{{\mbox{\wesa{middle}}}}
 \newcommand{\ket}[1]{{\left\vert{#1}\right\rangle}}
+\newcommand{\fket}[1]{{|#1\rangle}}
+\newcommand{\fproj}[1]{|#1\rangle\langle #1|}
 \newcommand{\op}[2]{\ensuremath{\left\vert{#1}\middle\rangle\middle\langle{#2}\right\vert}}
 \newcommand{\proj}[1]{\op{#1}{#1}}
 \newcommand{\ps}{\texttt{+}}
@@ -61,15 +66,15 @@
 \font_tt_scale 100 100
 \graphics default
 \default_output_format default
-\output_sync 1
-\bibtex_command biber
+\output_sync 0
+\bibtex_command default
 \index_command default
 \paperfontsize 12
 \spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_package amsmath 0
+\use_package amsmath 1
 \use_package amssymb 2
 \use_package cancel 0
 \use_package esint 1
@@ -221,6 +226,232 @@ status collapsed
 
 \begin_layout Section
 Introduction
+\end_layout
+
+\begin_layout Standard
+Textbook quantum mechanics asserts that, given a quantum spin system described
+ by the wavefunction 
+\begin_inset Formula $\ket{\psi}=\frac{\sqrt{\pi}}{2}\fket{\ps\frac{1}{2}}+\frac{\sqrt{4-\pi}}{2}\fket{\minus\frac{1}{2}}$
+\end_inset
+
+ and given the observable 
+\begin_inset Formula $S_{z}=\frac{\hbar}{2}(\fproj{\ps\frac{1}{2}}-\fproj{\minus\frac{1}{2}})$
+\end_inset
+
+, then the probability of observing the eigenvalue 
+\begin_inset Formula $\ps\frac{\hbar}{2}$
+\end_inset
+
+ (with post-measurement state 
+\begin_inset Formula $\fket{\ps\frac{1}{2}}$
+\end_inset
+
+) is 
+\begin_inset Formula $\frac{\pi}{4}$
+\end_inset
+
+ and the probability of observing the eigenvalue 
+\begin_inset Formula $\minus\frac{\hbar}{2}$
+\end_inset
+
+ (with post-measurement state 
+\begin_inset Formula $\fket{\minus\frac{1}{2}}$
+\end_inset
+
+) is 
+\begin_inset Formula $1-\frac{\pi}{4}$
+\end_inset
+
+.
+ According to the frequency interpretation of probability, the above assertion
+ implies that when performing a very large number of experiments on quantum
+ systems described by wavefunction 
+\begin_inset Formula $\ket{\psi}$
+\end_inset
+
+, a fraction 
+\begin_inset Formula $\frac{\pi}{4}$
+\end_inset
+
+ of the experiments will result in the observation 
+\begin_inset Formula $\ps\frac{\hbar}{2}$
+\end_inset
+
+ and the remaining fraction 
+\begin_inset Formula $1-\frac{\pi}{4}$
+\end_inset
+
+ will result in the observation 
+\begin_inset Formula $\minus\frac{\hbar}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In reality, i.e., in an actual experiment, simulation, or computation, bounded
+ by space, time, and energy resources, the situation is much fuzzier: (i)
+ we cannot 
+\emph on
+exactly
+\emph default
+ prepare the state 
+\begin_inset Formula $\ket{\psi}$
+\end_inset
+
+; (ii) we cannot build a measurement apparatus corresponding 
+\emph on
+exactly
+\emph default
+ to observable 
+\begin_inset Formula $S_{z}$
+\end_inset
+
+; and (iii) we cannot prepare 
+\emph on
+exact
+\emph default
+ replicas of any state.
+ In other words, we can only perform a limited number of experiments on
+ quantum systems closely related to wavefunction 
+\begin_inset Formula $\ket{\psi}$
+\end_inset
+
+ and using an apparatus that closely approximates observable 
+\begin_inset Formula $S_{z}$
+\end_inset
+
+.
+ Given any fixed resources, these experiments will 
+\emph on
+not
+\emph default
+ result in the 
+\emph on
+exact
+\emph default
+ fraction 
+\begin_inset Formula $\frac{\pi}{4}$
+\end_inset
+
+ of observations 
+\begin_inset Formula $\ps\frac{\hbar}{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $1-\frac{\pi}{4}$
+\end_inset
+
+ of observations 
+\begin_inset Formula $\minus\frac{\hbar}{2}$
+\end_inset
+
+.
+ In fact, these experiments can be viewed as a method (algorithm) to calculate
+ the value 
+\begin_inset Formula $\pi$
+\end_inset
+
+ and it is known that the state of the art algorithms for computing the
+ 
+\begin_inset Formula $n$
+\end_inset
+
+th binary digit of
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\pi$
+\end_inset
+
+ require on the order of 
+\begin_inset Formula $O\left(n\log^{O\left(1\right)}\left(n\right)\right)$
+\end_inset
+
+ operations
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "journals/moc/BaileyBP97"
+
+\end_inset
+
+.
+ In other words, calculating the 
+\begin_inset Formula $n$
+\end_inset
+
+th digit of 
+\begin_inset Formula $\pi$
+\end_inset
+
+ appears to require more and more physical resources as
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $n$
+\end_inset
+
+ gets larger.
+\end_layout
+
+\begin_layout Standard
+All of this is well-known and holds in both the classical and quantum worlds.
+ In the classical world, these observations are believed to be well-understood
+ approximations to an idealized independent reality that can continuously
+ approached with more and more resources.
+ The question in the quantum world is more subtle; it is not evident at
+ all that this resource-aware perspective does not alter the very foundations
+ of quantum mechanics.
+ Indeed taking such resource bounds into consideration is what founded computer
+ science as a discipline and has become crucial for understanding the very
+ nature of computation.
+ Following Feynman
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Feynman1982Simulating"
+
+\end_inset
+
+, Landauer
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Landauer1996188"
+
+\end_inset
+
+, and others, one might argue that this resource-bounded perspective is
+ also crucial for understanding the very nature of physical processes.
+\end_layout
+
+\begin_layout Standard
+In previous work, we analyzed the wavefunction description of quantum systems
+ from a resource-bounded perspective.
+ Technically, instead of postulating that quantum states are rays in a Hilbert
+ space, i.e., we instead used special finite fields whose size reflected the
+ available resources.
+ \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -956,9 +1187,41 @@ reality
  The measure above would be induced by two particular coins such that the
  first coin is twice as likely to land tails up than heads up and the second
  coin is double-headed.
- In a strict computational or experimental setting, one should question
- the reliance of the definition of probability space on the uncountable
- and uncomputable real interval
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Measuring Probabilities: Buffon's Needle Problem
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Measuring-Probabilities:-Buffon"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In a strict computational or experimental setting, one should question the
+ reliance of the definition of probability space on the uncountable and
+ uncomputable real interval
 \begin_inset space ~
 \end_inset
 
@@ -1014,35 +1277,6 @@ key "Weichselberger2000,JamisonLodwick2004"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%%%%%
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Measuring Probabilities: Buffon's Needle Problem
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Measuring-Probabilities:-Buffon"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1412,37 +1646,16 @@ key "DeMorgan1872"
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-amr{
-\end_layout
-
-\end_inset
-
-Another: the calculus of probabilities requires all probabilities to be
- 
+Another way to re-express the above observations is that the calculus of
+ probabilities requires all probabilities to be 
 \emph on
 coherent
 \emph default
-.
- But given limited resources, a user can only approximate the probabilities
- and the approximation may not be completely coherent in the ideal sense.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
+ (e.g., the probability of the union of two disjoint events is the sum of
+ their probabilities).
+ But given limited resources, the calculation of a probability measure can
+ only be approximate and hence the probabilities cannot be absolutely guaranteed
+ to be coherent in the ideal sense.
 \end_layout
 
 \begin_layout Standard
