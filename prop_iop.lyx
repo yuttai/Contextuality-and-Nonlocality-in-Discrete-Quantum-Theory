@@ -47,6 +47,7 @@
 \newcommand{\amr}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{green}{Amr says: #1}\end{minipage}}}
 \newcommand{\yutsung}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{purple}{Yu-Tsung says: #1}\end{minipage}}}
 \newcommand{\set}[2]{\ensuremath{\left\{ {#1}~\middle|~{#2}\right\} }}
+\def\C{{\mathbb{C}}}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -67,14 +68,14 @@
 \graphics default
 \default_output_format default
 \output_sync 0
-\bibtex_command default
+\bibtex_command biber
 \index_command default
 \paperfontsize 12
 \spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_package amsmath 1
+\use_package amsmath 0
 \use_package amssymb 2
 \use_package cancel 0
 \use_package esint 1
@@ -3246,6 +3247,339 @@ key "10.2307/j.ctt7ztxn5.15"
  pattern.
  This example illustrates the case of a fundamental physical limitation
  that not even infinite resources could mitigate.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Cryptodeterministic Measures
+\end_layout
+
+\begin_layout Standard
+A real or interval-valued probability is a way to model our belief whether
+ an event will happen or not.
+ Classically, when we toss a coin or throw a needle, if we know all the
+ initial condition, we can determine whether an event happens or not for
+ sure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DiaconisHolmesMontgomery2007"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One obvious way to discretize probability is to only consider a finite set
+ of probability values.
+ For example, instead of 
+\begin_inset Formula $\left[0,1\right]$
+\end_inset
+
+, we only consider the probability 
+\begin_inset Formula $\check{\mathscr{L}}$
+\end_inset
+
+ to be two values 
+\begin_inset Formula $\left\{ 0,1\right\} $
+\end_inset
+
+, three values 
+\begin_inset Formula $\left\{ 0,\frac{1}{2},1\right\} $
+\end_inset
+
+, or any finite set 
+\begin_inset Formula $\check{\mathscr{L}}\subset\left[0,1\right]$
+\end_inset
+
+.
+ Then, a 
+\family roman
+finite value
+\family default
+ classical probability distribution is a function 
+\begin_inset Formula $\check{\mathcal{Q}}:\Omega\rightarrow\check{\mathscr{L}}$
+\end_inset
+
+ with 
+\begin_inset Formula 
+\begin{equation}
+\sum_{i=0}^{d-1}\check{\mathcal{Q}}\left(\omega_{i}\right)=1\textrm{ .}
+\end{equation}
+
+\end_inset
+
+For example, a classical probability distribution for a fair coin is 
+\begin_inset Formula $\check{\mathcal{Q}}\left(H\right)=\check{\mathcal{Q}}\left(T\right)=\frac{1}{2}$
+\end_inset
+
+.
+ Because 
+\begin_inset Formula $\check{\mathcal{Q}}$
+\end_inset
+
+ only takes value 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+, we can pick 
+\begin_inset Formula $\check{\mathscr{L}}=\left\{ \frac{1}{2}\right\} $
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+A 
+\family roman
+finite value
+\family default
+ quantum probability distribution 
+\begin_inset Formula $\check{\mathcal{P}}:\C^{d*}\rightarrow\check{\mathscr{L}}$
+\end_inset
+
+ can be defined similarly with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{equation}
+\backslash
+eqalign{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+displaystyle 
+\backslash
+sum_{i=0}^{d-1}
+\backslash
+check{
+\backslash
+mathcal{P}}
+\backslash
+left(
+\backslash
+ket{i}
+\backslash
+right)=1}
+\backslash
+textrm{ for any orthonormal basis }
+\backslash
+left
+\backslash
+{ 
+\backslash
+ket{i}
+\backslash
+right
+\backslash
+} _{i=0}^{d-1}
+\backslash
+textrm{ ;}
+\backslash
+label{eq:total-probability-CQT-1}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+check{
+\backslash
+mathcal{P}}
+\backslash
+left(
+\backslash
+ket{
+\backslash
+Phi}
+\backslash
+right)=
+\backslash
+check{
+\backslash
+mathcal{P}}
+\backslash
+left(
+\backslash
+lambda
+\backslash
+ket{
+\backslash
+Phi}
+\backslash
+right)
+\backslash
+textrm{ for }
+\backslash
+lambda
+\backslash
+in
+\backslash
+C^{*}=
+\backslash
+C
+\backslash
+backslash
+\backslash
+left
+\backslash
+{ 0
+\backslash
+right
+\backslash
+} 
+\backslash
+textrm{ .}
+\backslash
+label{eq:parallel-CQT-1} 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\backslash
+end{equation} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Although it seems that the definition is almost the same as the one in 
+\begin_inset Formula $\left[0,1\right]$
+\end_inset
+
+-valued, actually this lead to the well-known Kochen-Specker theorem.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{thm}[
+\end_layout
+
+\end_inset
+
+Kochen-Specker
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kochenspecker1967,peres1995quantum,Redhead1987-REDINA"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:Kochen-Specker"
+
+\end_inset
+
+For 
+\begin_inset Formula $d\ge3$
+\end_inset
+
+, 
+\family roman
+\size normal
+there is no 
+\family default
+\size default
+
+\begin_inset Formula $\left\{ 0,1\right\} $
+\end_inset
+
+
+\family roman
+\size normal
+-valued 
+\family default
+\size default
+quantum probability distribution
+\family roman
+\size normal
+.
+\family default
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{thm}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

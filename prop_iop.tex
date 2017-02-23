@@ -45,6 +45,7 @@
 \newcommand{\amr}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{green}{Amr says: #1}\end{minipage}}}
 \newcommand{\yutsung}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{purple}{Yu-Tsung says: #1}\end{minipage}}}
 \newcommand{\set}[2]{\ensuremath{\left\{ {#1}~\middle|~{#2}\right\} }}
+\def\C{{\mathbb{C}}}
 
 \begin{document}
 \title{Measurement and Probability in Fuzzy Quantum
@@ -652,8 +653,50 @@ the detected pattern. This example illustrates the case of a fundamental
 physical limitation that not even infinite resources could mitigate.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Cryptodeterministic Measures}
+
+A real or interval-valued probability is a way to model our belief
+whether an event will happen or not. Classically, when we toss a coin
+or throw a needle, if we know all the initial condition, we can determine
+whether an event happens or not for sure~\cite{DiaconisHolmesMontgomery2007}.
+
+\newpage{}
+
+One obvious way to discretize probability is to only consider a finite
+set of probability values. For example, instead of $\left[0,1\right]$,
+we only consider the probability $\check{\mathscr{L}}$ to be two
+values $\left\{ 0,1\right\} $, three values $\left\{ 0,\frac{1}{2},1\right\} $,
+or any finite set $\check{\mathscr{L}}\subset\left[0,1\right]$. Then,
+a finite value classical probability distribution is a function $\check{\mathcal{Q}}:\Omega\rightarrow\check{\mathscr{L}}$
+with 
+\begin{equation}
+\sum_{i=0}^{d-1}\check{\mathcal{Q}}\left(\omega_{i}\right)=1\textrm{ .}
+\end{equation}
+For example, a classical probability distribution for a fair coin
+is $\check{\mathcal{Q}}\left(H\right)=\check{\mathcal{Q}}\left(T\right)=\frac{1}{2}$.
+Because $\check{\mathcal{Q}}$ only takes value $\frac{1}{2}$, we
+can pick $\check{\mathscr{L}}=\left\{ \frac{1}{2}\right\} $. 
+
+A finite value quantum probability distribution $\check{\mathcal{P}}:\C^{d*}\rightarrow\check{\mathscr{L}}$
+can be defined similarly with 
+\begin{equation}\eqalign{ 
+{\displaystyle \sum_{i=0}^{d-1}\check{\mathcal{P}}\left(\ket{i}\right)=1}\textrm{ for any orthonormal basis }\left\{ \ket{i}\right\} _{i=0}^{d-1}\textrm{ ;}\label{eq:total-probability-CQT-1}\\
+\check{\mathcal{P}}\left(\ket{\Phi}\right)=\check{\mathcal{P}}\left(\lambda\ket{\Phi}\right)\textrm{ for }\lambda\in\C^{*}=\C\backslash\left\{ 0\right\} \textrm{ .}\label{eq:parallel-CQT-1} 
+}\end{equation} 
+Although it seems that the definition is almost the same as the one
+in $\left[0,1\right]$-valued, actually this lead to the well-known
+Kochen-Specker theorem.
+
+\begin{thm}[Kochen-Specker~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA}]\label{thm:Kochen-Specker}For
+$d\ge3$, there is no $\left\{ 0,1\right\} $-valued quantum probability
+distribution.\end{thm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \section{Quantum Interval-valued Probability Measures}
- 
+
 As argued in the previous sections, given fixed finite resources,
 it is only possible to estimate the quantum probabilities within an
 interval of confidence. It is therefore natural to propose the notion
