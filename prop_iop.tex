@@ -655,7 +655,7 @@ physical limitation that not even infinite resources could mitigate.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Cryptodeterministic Measures}
+\section{Cryptodeterminism}
 
 Although a real or interval-valued probability measure could be used
 to model whether we believe an event will happen or not, the classical
@@ -679,40 +679,61 @@ disjoint events, $\pmeas\left(\bigcup_{i=1}^{N}E_{i}\right)=\sum_{i=1}^{N}\pmeas
 \end{itemize}
 \end{definition}
 
-\newpage{}
-
-One obvious way to discretize probability is to only consider a finite
-set of probability values. For example, instead of $\left[0,1\right]$,
-we only consider the probability $\check{\mathscr{L}}$ to be two
-values $\left\{ 0,1\right\} $, three values $\left\{ 0,\frac{1}{2},1\right\} $,
-or any finite set $\check{\mathscr{L}}\subset\left[0,1\right]$. Then,
-a finite value classical probability distribution is a function $\check{\mathcal{Q}}:\Omega\rightarrow\check{\mathscr{L}}$
-with 
+\begin{example}[Two-coin experiment with cryptodeterministic measure]\label{ex4}Except
+of the prefect prediction, a cryptodeterministic measure can model
+the belief of an event which has already happened. For example, if
+we toss the coin in example~\ref{ex1}, and see $HH$, our belief
+of which event has happened can be model by the following example.
 \begin{equation}
-\sum_{i=0}^{d-1}\check{\mathcal{Q}}\left(\omega_{i}\right)=1\textrm{ .}
+\begin{array}{c@{\qquad\qquad}c}
+\begin{array}{rcl}
+\bar{\mu}(\emptyset) & = & 0\\
+\bar{\mu}(\{HH\}) & = & 1\\
+\bar{\mu}(\{HT\}) & = & 0\\
+\bar{\mu}(\{TH\}) & = & 0\\
+\bar{\mu}(\{TT\}) & = & 0\\
+\bar{\mu}(\{HH,HT\}) & = & 1\\
+\bar{\mu}(\{HH,TH\}) & = & 1\\
+\bar{\mu}(\{HH,TT\}) & = & 1
+\end{array} & \begin{array}{rcl}
+\bar{\mu}(\{HT,TH\}) & = & 0\\
+\bar{\mu}(\{HT,TT\}) & = & 0\\
+\bar{\mu}(\{TH,TT\}) & = & 0\\
+\bar{\mu}(\{HH,HT,TH\}) & = & 1\\
+\bar{\mu}(\{HH,HT,TT\}) & = & 1\\
+\bar{\mu}(\{HH,TH,TT\}) & = & 1\\
+\bar{\mu}(\{HT,TH,TT\}) & = & 0\\
+\bar{\mu}(\{HH,HT,TH,TT\}) & = & 1
+\end{array}\end{array}
 \end{equation}
-For example, a classical probability distribution for a fair coin
-is $\check{\mathcal{Q}}\left(H\right)=\check{\mathcal{Q}}\left(T\right)=\frac{1}{2}$.
-Because $\check{\mathcal{Q}}$ only takes value $\frac{1}{2}$, we
-can pick $\check{\mathscr{L}}=\left\{ \frac{1}{2}\right\} $. 
+\end{example}
 
-A finite value quantum probability distribution $\check{\mathcal{P}}:\C^{d*}\rightarrow\check{\mathscr{L}}$
-can be defined similarly with 
-\begin{equation}\eqalign{ 
-{\displaystyle \sum_{i=0}^{d-1}\check{\mathcal{P}}\left(\ket{i}\right)=1}\textrm{ for any orthonormal basis }\left\{ \ket{i}\right\} _{i=0}^{d-1}\textrm{ ;}\label{eq:total-probability-CQT-1}\\
-\check{\mathcal{P}}\left(\ket{\Phi}\right)=\check{\mathcal{P}}\left(\lambda\ket{\Phi}\right)\textrm{ for }\lambda\in\C^{*}=\C\backslash\left\{ 0\right\} \textrm{ .}\label{eq:parallel-CQT-1} 
-}\end{equation} 
-Although it seems that the definition is almost the same as the one
-in $\left[0,1\right]$-valued, actually this lead to the well-known
-Kochen-Specker theorem.
+Raised by Einstein, Podolsky, and Rosen~\cite{EPR1935,peres1995quantum},
+it was a famous question whether quantum mechanics have any change
+to be improved and predict perfectly. One of the ``no'' answer was
+due to the Kochen-Specker theorem.
 
-\begin{thm}[Kochen-Specker~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA}]\label{thm:Kochen-Specker}For
-$d\ge3$, there is no $\left\{ 0,1\right\} $-valued quantum probability
-distribution.\end{thm}
+\begin{thm}[Kochen-Specker~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA}]\label{thm:Kochen-Specker}Given
+a Hilbert space of dimension~$d\ge3$, there is no cryptodeterministic
+measure~$\pmeas:\events\rightarrow\left\{ 0,1\right\} $.\end{thm}
+
+Although sharing a lot of similarity, the Kochen-Specker theorem highlight
+the difference between quantum and classical measures. When we think
+a cryptodeterministic measure as a model of pasted events, the Kochen-Specker
+theorem also consistent with the usual interpretation of the quantum
+theory: we should not ask whether an event happened or not if an event
+is incompatible with the event really happened; events compatible
+with the event really happened are the only events which are askable.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Quantum Interval-valued Probability Measures}
+\section{Quantum Interval-valued Probability}
+
+%%%%%
+
+
+\subsection{Quantum Interval-valued Probability Measures}
 
 As argued in the previous sections, given fixed finite resources,
 it is only possible to estimate the quantum probabilities within an
@@ -779,10 +800,29 @@ informative. Since $\iota\left(\mu_{\ket{0}}^{B}(P)\right)=\necess$
 if and only if $P=\proj{0}$, we know the core of $\iota\left(\mu_{\ket{0}}^{B}(P)\right)$
 is exactly $\left\{ \mu_{\ket{0}}^{B}\right\} $. The quantum interval-valued
 probability measure for an experimenter with no prior knowledge should
-be $\bar{\mu}(P)=\unknown$ for every projection~$P$.}} Formally, we can ask: what can we deduce about the state of a quantum
-system given a quantum interval-valued probability measure, i.e.,
-given observations done with finite resources. In the case that the
-intervals are infinitely precise, the question reduces to Gleason's
+be $\bar{\mu}(P)=\unknown$ for every projection~$P$.}} 
+
+Similarly, we can recast the result of cryptodeterminism to quantum
+interval-valued probability measures as well. In another word, for
+any classically event space~$\events$,there is always a classical
+interval-valued probability measure~$\bar{\mu}:\events\rightarrow\left\{ \imposs,\necess\right\} $.
+However, given a Hilbert space of dimension~$d\ge3$, there is no
+quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\left\{ \imposs,\necess\right\} $
+by the Kochen-Specker theorem. The Kochen-Specker theorem provides
+an example that quantum interval-valued probability measures behave
+differently from the classical one, and the convexity and core in
+the next section provides another example that quantum interval-valued
+probability measures behave unexpectedly.
+
+%%%%%
+
+
+\subsection{Convexity and Core}
+
+\noindent Formally, we can ask: what can we deduce about the state
+of a quantum system given a quantum interval-valued probability measure,
+i.e., given observations done with finite resources. In the case that
+the intervals are infinitely precise, the question reduces to Gleason's
 theorem which states that the state of the quantum system is uniquely
 determined by the probability measure. But surely the less resources
 are available, the less precise the intervals, and the less we expect
