@@ -20,6 +20,7 @@
 \newtheorem{definition}{Definition}
 \newtheorem{thm}{Theorem}
 \newtheorem{lemma}{Lemma}
+\newtheorem{cor}{Corollary}
 
 \newcommand{\Hilb}{\mathcal{H}}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
@@ -678,10 +679,10 @@ whether an event will happen or not for sure~\cite{DiaconisHolmesMontgomery2007}
 In another word, Newtonian physics could be modeled by a cryptodeterministic
 measure defined as follow.
 
-\begin{definition}[Cryptodeterministic Measure]\label{def:CryptodeterministicMeasures}Given
-the set of events~$\events$, a \emph{cryptodeterministic measure}
-is a function~$\pmeas:\events\rightarrow\left\{ 0,1\right\} $ such
-that: 
+\begin{definition}[Classical Cryptodeterministic Measure]\label{def:CryptodeterministicMeasures}Given
+the set of events~$\events$, a \emph{classical cryptodeterministic
+measure} is a function~$\pmeas:\events\rightarrow\left\{ 0,1\right\} $
+such that: 
 \begin{itemize}
 \item $\pmeas(\emptyset)=0$, 
 \item $\pmeas(\Omega)=1$, 
@@ -724,7 +725,24 @@ which event has happened can be model by the following example.
 Raised by Einstein, Podolsky, and Rosen~\cite{EPR1935,peres1995quantum},
 it was a famous question whether quantum mechanics have any change
 to be improved and predict unambiguously, rather than probabilistic.
-One of the ``no'' answer was due to the Kochen-Specker theorem.
+One way to formulate this question is to ask whether we can model
+the whole quantum theory by quantum cryptodeterministic measures.
+
+\begin{definition}[Quantum Cryptodeterministic Measure]\label{def:QuantumCryptodeterministicMeasures}Given
+a Hilbert space $\Hilb$ with its set of events~$\events$, a \emph{quantum
+cryptodeterministic measure} is a function~$\pmeas:\events\rightarrow\left\{ 0,1\right\} $
+such that: 
+\begin{itemize}
+\item $\pmeas(\mathbb{0})=0$, 
+\item $\pmeas(\mathbb{1})=1$, 
+\item for every event $P$, $\pmeas\left(\Omega\backslash P\right)=1-\pmeas\left(P\right)$
+where $\Omega\backslash P$ is the complement event of $P$, and 
+\item for every collection $\left\{ P_{i}\right\} _{i=1}^{N}$ of pairwise
+disjoint events, $\pmeas\left(\bigcup_{i=1}^{N}P_{i}\right)=\sum_{i=1}^{N}\pmeas(P_{i})$. 
+\end{itemize}
+\end{definition}
+
+The answer is ``no'' due to the Kochen-Specker theorem.
 
 \begin{thm}[Kochen-Specker~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA}]\label{thm:Kochen-Specker}Given
 a Hilbert space of dimension~$d\ge3$, there is no cryptodeterministic
@@ -821,11 +839,11 @@ any classically event space~$\events$,there is always a classical
 interval-valued probability measure~$\bar{\mu}:\events\rightarrow\left\{ \imposs,\necess\right\} $.
 However, given a Hilbert space of dimension~$d\ge3$, there is no
 quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\left\{ \imposs,\necess\right\} $
-by the Kochen-Specker theorem. The Kochen-Specker theorem provides
-an example that quantum interval-valued probability measures behave
-differently from the classical one, and the convexity and core in
-the next section provides another example that quantum interval-valued
-probability measures behave unexpectedly.
+by corollary~\ref{cor:Kochen-Specker-IVPM} of the Kochen-Specker
+theorem. The Kochen-Specker theorem provides an example that quantum
+interval-valued probability measures behave differently from the classical
+one, and the convexity and core in the next section provides another
+example that quantum interval-valued probability measures behave unexpectedly.
 
 %%%%%
 
@@ -1717,7 +1735,45 @@ so that
 \end{itemize}
 \end{proof}
 
+\begin{cor}\label{cor:Kochen-Specker-IVPM}Given a Hilbert space
+of dimension~$d\ge3$, there is no quantum interval-valued probability
+measure~$\bar{\mu}:\events\rightarrow\left\{ \imposs,\necess\right\} $.\end{cor}
+
+\begin{proof}We are going to prove by contradiction! Suppose there
+is a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\left\{ \imposs,\necess\right\} $.
+Consider $\mu:\events\rightarrow\left[0,1\right]$ defined by
+\begin{equation} 
+\mu(P)=\cases{ 
+0 & if $\bar{\mu}(P)=\imposs$ ;\\ 
+1 & if $\bar{\mu}(P)=\necess$ .
+}\label{cor:Kochen-Specker-IVPM} \end{equation}
+ We are going to verify that $\mu$ is a cryptodeterministic measure
+so that contradicts to the Kochen-Specker theorem.
+\begin{itemize}
+\item Since $\bar{\mu}(\mathbb{0})=\imposs$, we have $\mu(\mathbb{0})=0$.
+\item Since $\bar{\mu}(\mathbb{1})=\necess$, we have $\mu(\mathbb{1})=1$.
+\item For every event $P$, we have 
+\begin{equation}\eqalign{ 
+& \pmeas\left(P\right)=0\\ 
+\Rightarrow & \bar{\mu}(P)=\imposs\\
+\Rightarrow & \bar{\mu}(\Omega\backslash P)=\left[1,1\right]-\imposs=\necess\\
+\Rightarrow & \pmeas\left(\Omega\backslash P\right)=1=1-\pmeas\left(P\right)\textrm{ .}
+}\end{equation}
+Similarly, when $\pmeas\left(P\right)=1$, we also have $\pmeas\left(\Omega\backslash P\right)=1-\pmeas\left(P\right)$.
+\item Given a collection $\left\{ P_{i}\right\} _{i=1}^{N}$ of pairwise
+disjoint events. 
+\begin{itemize}
+\item If $\pmeas\left(\bigcup_{i=1}^{N}P_{i}\right)=1$, then we have $\necess=\bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}(P_{i})$
+so that $\necess=\sum_{i=1}^{N}\bar{\mu}(P_{i})$, i.e., $\sum_{i=1}^{N}\pmeas(P_{i})=1=\pmeas\left(\bigcup_{i=1}^{N}P_{i}\right)$.
+\item If $\pmeas\left(\bigcup_{i=1}^{N}P_{i}\right)=0$, then we have $\imposs=\bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}(P_{i})$
+so that $\imposs=\sum_{i=1}^{N}\bar{\mu}(P_{i})$, i.e., $\sum_{i=1}^{N}\pmeas(P_{i})=0=\pmeas\left(\bigcup_{i=1}^{N}P_{i}\right)$.
+\end{itemize}
+\end{itemize}
+\end{proof}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \section{Examples for Quantum Interval-valued Probability Measures\label{sec:Examples-for-QuantumIVPM}}
 
 \begin{figure}
