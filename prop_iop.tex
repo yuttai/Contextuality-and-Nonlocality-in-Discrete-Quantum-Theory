@@ -1906,8 +1906,15 @@ so that $\mu_{\rho}^{B}=\mu_{\ket{2}}^{B}$. However,
 
 \section{Mermin Square\label{sec:MerminSquare}}
 
-The Kochen-Specker theorem can be proved easily by considering a pair
-of spin $\frac{1}{2}$ system with the following observables~\cite{Mermin1990Simple,peres1995quantum}:
+The Kochen-Specker theorem asserts that there is no function~$v$
+assigning a definitely value to all observables such that
+\begin{equation}\eqalign{ 
+v\left(O_{1}\right)+v\left(O_{2}\right)=v\left(O_{1}+O_{2}\right)\textrm{ and}\\
+v\left(O_{1}\right)v\left(O_{2}\right)=v\left(O_{1}O_{2}\right)
+}\label{eq:Kochen-Specker-Rules}\end{equation}
+if $O_{1}$ and $O_{2}$ are commuting observables. Based on these
+two properties, they first proved that $v$ must send an observable
+to its eigenvalues so that the following observables~\cite{Mermin1990Simple,peres1995quantum}:
 \begin{equation}
 \begin{array}{ccc}
 \mathbb{1}\otimes\sigma_{z} & \sigma_{z}\otimes\mathbb{1} & \sigma_{z}\otimes\sigma_{z}\\
@@ -1915,20 +1922,23 @@ of spin $\frac{1}{2}$ system with the following observables~\cite{Mermin1990Simp
 \sigma_{x}\otimes\sigma_{z} & \sigma_{z}\otimes\sigma_{x} & \sigma_{y}\otimes\sigma_{y}
 \end{array}\label{eq:MerminSquare}
 \end{equation}
-In the original proof, we assign value to each observable, where operators
-in each row and column commutes, and each operator is the product
-of the two others, except in the third column. Because of 
+must be sent to $1$ or $-1$. In each row and column, operators commutes,
+and each operator is the product of the two others, except in the
+third column $\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$.
+Therefore, it is clear impossible to find a function~$v$ such that
 \begin{equation}
-\left(\sigma_{x}\otimes\sigma_{z}\right)\left(\sigma_{z}\otimes\sigma_{x}\right)=\sigma_{y}\otimes\sigma_{y}=-\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)\textrm{ ,}
+\begin{array}{ccc}
+v\left(\mathbb{1}\otimes\sigma_{z}\right) & v\left(\sigma_{z}\otimes\mathbb{1}\right) & v\left(\sigma_{z}\otimes\sigma_{z}\right)\\
+v\left(\sigma_{x}\otimes\mathbb{1}\right) & v\left(\mathbb{1}\otimes\sigma_{x}\right) & v\left(\sigma_{x}\otimes\sigma_{x}\right)\\
+v\left(\sigma_{x}\otimes\sigma_{z}\right) & v\left(\sigma_{z}\otimes\sigma_{x}\right) & v\left(\sigma_{y}\otimes\sigma_{y}\right)
+\end{array}\label{eq:MerminSquare-values}
 \end{equation}
-it is clear impossible to attribute to each operator in equation~(\ref{eq:MerminSquare})
-numerical values, $1$ or $-1$, which obey the same multiplication
-rule as the operators themselves.
+satisfying equation~(\ref{eq:Kochen-Specker-Rules}).
 
 \begin{table}
 \caption{\label{table:commonBasis}Observables and their common eigenbasis.
-In order to unified and simplify notation, we do , and not normalize
-eigenstates, and represent the state~$\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}+\alpha_{3}\ket{3}$
+In order to unified and simplify notation, we do not normalize eigenstates,
+and represent the state~$\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}+\alpha_{3}\ket{3}$
 as $\left(\alpha_{0},\alpha_{1},\alpha_{2},\alpha_{3}\right)$.}
 
 \begin{tabular}{ccc|cccc} 
@@ -1944,9 +1954,13 @@ $\sigma_{z}\otimes\sigma_{z}$ & $\sigma_{x}\otimes\sigma_{x}$ & $\sigma_{y}\otim
 \br 
 \end{tabular} 
 \end{table}
-When we reformulate the above argument in the language of quantum
+Since observables in equation~(\ref{eq:MerminSquare}) are not projectors,
+if we want to reformulate the above argument in the language of quantum
 probability measures, we first need to find the common eigenbasis
-of each row and column as in table~\ref{table:commonBasis}.
+of each row and column, and consider the projectors to each eigenvectors.
+Let $\mathcal{T}_{24}$ denote all eigenstates listed in table~\ref{table:commonBasis}.
+Then, proving the Kochen-Specker theorem is proving there is no function~$\set{\proj{\psi}}{\ket{\psi}\in\mathcal{T}_{24}}$
+to $\left\{ 0,1\right\} $.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}

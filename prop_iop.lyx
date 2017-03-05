@@ -13025,12 +13025,100 @@ name "sec:MerminSquare"
 \end_layout
 
 \begin_layout Standard
-The Kochen-Specker theorem can be proved easily by considering a pair of
- spin 
-\begin_inset Formula $\frac{1}{2}$
+The Kochen-Specker theorem asserts that there is no function
+\begin_inset space ~
 \end_inset
 
- system with the following observables
+
+\begin_inset Formula $v$
+\end_inset
+
+ assigning a definitely value to all observables such that
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{equation}
+\backslash
+eqalign{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+v
+\backslash
+left(O_{1}
+\backslash
+right)+v
+\backslash
+left(O_{2}
+\backslash
+right)=v
+\backslash
+left(O_{1}+O_{2}
+\backslash
+right)
+\backslash
+textrm{ and}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+v
+\backslash
+left(O_{1}
+\backslash
+right)v
+\backslash
+left(O_{2}
+\backslash
+right)=v
+\backslash
+left(O_{1}O_{2}
+\backslash
+right)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\backslash
+label{eq:Kochen-Specker-Rules}
+\backslash
+end{equation}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+if 
+\begin_inset Formula $O_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $O_{2}$
+\end_inset
+
+ are commuting observables.
+ Based on these two properties, they first proved that 
+\begin_inset Formula $v$
+\end_inset
+
+ must send an observable to its eigenvalues so that the following observables
 \begin_inset space ~
 \end_inset
 
@@ -13053,29 +13141,7 @@ key "Mermin1990Simple,peres1995quantum"
 
 \end_inset
 
-In the original proof, we assign value to each observable, where operators
- in each row and column commutes, and each operator is the product of the
- two others, except in the third column.
- Because of 
-\begin_inset Formula 
-\begin{equation}
-\left(\sigma_{x}\otimes\sigma_{z}\right)\left(\sigma_{z}\otimes\sigma_{x}\right)=\sigma_{y}\otimes\sigma_{y}=-\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)\textrm{ ,}
-\end{equation}
-
-\end_inset
-
-it is clear impossible to attribute to each operator in equation
-\begin_inset space ~
-\end_inset
-
-(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:MerminSquare"
-
-\end_inset
-
-) numerical values, 
+must be sent to 
 \begin_inset Formula $1$
 \end_inset
 
@@ -13083,7 +13149,45 @@ reference "eq:MerminSquare"
 \begin_inset Formula $-1$
 \end_inset
 
-, which obey the same multiplication rule as the operators themselves.
+.
+ In each row and column, operators commutes, and each operator is the product
+ of the two others, except in the third column 
+\begin_inset Formula $\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$
+\end_inset
+
+.
+ Therefore, it is clear impossible to find a function
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $v$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccc}
+v\left(\mathbb{1}\otimes\sigma_{z}\right) & v\left(\sigma_{z}\otimes\mathbb{1}\right) & v\left(\sigma_{z}\otimes\sigma_{z}\right)\\
+v\left(\sigma_{x}\otimes\mathbb{1}\right) & v\left(\mathbb{1}\otimes\sigma_{x}\right) & v\left(\sigma_{x}\otimes\sigma_{x}\right)\\
+v\left(\sigma_{x}\otimes\sigma_{z}\right) & v\left(\sigma_{z}\otimes\sigma_{x}\right) & v\left(\sigma_{y}\otimes\sigma_{y}\right)
+\end{array}\label{eq:MerminSquare-values}
+\end{equation}
+
+\end_inset
+
+satisfying equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Kochen-Specker-Rules"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -13103,8 +13207,8 @@ name "table:commonBasis"
 \end_inset
 
 Observables and their common eigenbasis.
- In order to unified and simplify notation, we do , and not normalize eigenstate
-s, and represent the state
+ In order to unified and simplify notation, we do not normalize eigenstates,
+ and represent the state
 \begin_inset space ~
 \end_inset
 
@@ -13351,9 +13455,26 @@ end{tabular}
 
 \end_inset
 
-When we reformulate the above argument in the language of quantum probability
- measures, we first need to find the common eigenbasis of each row and column
- as in table
+Since observables in equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:MerminSquare"
+
+\end_inset
+
+) are not projectors, if we want to reformulate the above argument in the
+ language of quantum probability measures, we first need to find the common
+ eigenbasis of each row and column, and consider the projectors to each
+ eigenvectors.
+ Let 
+\begin_inset Formula $\mathcal{T}_{24}$
+\end_inset
+
+ denote all eigenstates listed in table
 \begin_inset space ~
 \end_inset
 
@@ -13362,6 +13483,19 @@ When we reformulate the above argument in the language of quantum probability
 LatexCommand ref
 reference "table:commonBasis"
 
+\end_inset
+
+.
+ Then, proving the Kochen-Specker theorem is proving there is no function
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\set{\proj{\psi}}{\ket{\psi}\in\mathcal{T}_{24}}$
+\end_inset
+
+ to 
+\begin_inset Formula $\left\{ 0,1\right\} $
 \end_inset
 
 .
