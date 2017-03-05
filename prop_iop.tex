@@ -1573,8 +1573,9 @@ of pairwise disjoint events, we have
 \end{itemize}
 \end{proof}
 
-\begin{definition}Given a Hilbert space $\Hilb$, $\events'\subseteq\events$
-is called a sub-event space if it satisfies the follow conditions.
+\begin{definition}\label{def:sub-event-space}Given a Hilbert space
+$\Hilb$, $\events'\subseteq\events$ is called a sub-event space
+if it satisfies the follow conditions.
 \begin{itemize}
 \item $\mathbb{0}\in\events'$.
 \item $\mathbb{1}\in\events'$.
@@ -1582,10 +1583,10 @@ is called a sub-event space if it satisfies the follow conditions.
 \item For a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}\subseteq\events'$,
 we have $\sum_{i=1}^{N}P_{i}\in\events'$.
 \end{itemize}
-By replacing every occurrence of $\events$ by $\events'$ in definition~\ref{def:QuantumProbabilitySpace}
-and \ref{def:QuantumInterval-valuedProbability}, it is straightforward
-to define a quantum real-valued and interval-valued probability measure
-on $\events'$.\end{definition}
+By replacing every occurrence of $\events$ by $\events'$ in definition~\ref{def:QuantumCryptodeterministicMeasures},
+\ref{def:QuantumProbabilitySpace}, and \ref{def:QuantumInterval-valuedProbability},
+it is straightforward to define a quantum cryptodeterministic, real-valued
+probability, and interval-valued probability measure on $\events'$.\end{definition}
 
 \begin{thm}\label{thm:sub-event-space}Given a Hilbert space~$\Hilb$
 and a mutually commuting sub-event space~$\events'\subseteq\events$,
@@ -1963,19 +1964,38 @@ Let $\mathcal{T}_{24}$ denote all eigenstates listed in table~\ref{table:commonB
 The Kochen-Specker theorem could then be proved by showing there is
 no function~$v:\events'\rightarrow\left\{ 0,1\right\} $ satisfying
 equation~(\ref{eq:Kochen-Specker-Rules}), where 
-\[
-\events'=\set{\sum_{i=1}^{N}\proj{\psi_{i}}}{\textrm{mutually orthogonal }\left\{ \ket{\psi_{i}}\right\} _{i=1}^{N}\subseteq\mathcal{T}_{24}}\textrm{ .}
-\]
+\begin{equation}
+\events'=\set{\sum_{i=1}^{N}\proj{\psi_{i}}}{\textrm{mutually orthogonal }\left\{ \ket{\psi_{i}}\right\} _{i=1}^{N}\subseteq\mathcal{T}_{24}}
+\end{equation}
+which is a sub-event space defined in definition~\ref{def:sub-event-space}.
 This kind of $v$ is actually a quantum cryptodeterministic measure.
-By theorem~\ref{lemma:classical-probability-measures}, the quantum
-cryptodeterministic measure~$v$ exists if and only if there exists
-a frame function~$f:\mathcal{T}_{24}\rightarrow\left\{ 0,1\right\} $
+Since a cryptodeterministic measure are a special case of real-valued
+probability measure, by theorem~\ref{lemma:classical-probability-measures},
+the quantum cryptodeterministic measure~$v$ exists if and only if
+there exists a frame function~$f:\mathcal{T}_{24}\rightarrow\left\{ 0,1\right\} $
 which should at least satisfy
 \begin{equation}\eqalign{ 
 1 = f(1, 0, 0, 0) + f(0, 1, 0, 0) + f(0, 0, 1, 0) + f(0, 0, 0, 1)\textrm{ and}\\
 1 = f(-1, 1, 1, 1) + f(1, -1, 1, 1) + f(1, 1, -1, 1) + f(1, 1, 1, -1)
 }\label{eq:Kernaghan-1}\end{equation}
-because of table~\ref{table:commonBasis}.
+because of table~\ref{table:commonBasis}. $f$ should also satisfy
+the following equations since the vectors in each equation form an
+orthogonal basis~\cite{Kernaghan1994,peres1995quantum}.
+\begin{equation}\eqalign{ 
+1 = f(1, 0, 0, 0) + f(0, 1, 0, 0) + f(0, 0, 1, 1) + f(0, 0, 1, -1)\textrm{ ,}\\
+1 = f(1, 0, 0, 0) + f(0, 0, 1, 0) + f(0, 1, 0, 1) + f(0, 1, 0, -1)\textrm{ ,}\\
+1 = f(1, 0, 0, 0) + f(0, 0, 0, 1) + f(0, 1, 1, 0) + f(0, 1, -1, 0)\textrm{ ,}\\
+1 = f(-1, 1, 1, 1) + f(1, 1, -1, 1) + f(1, 0, 1, 0) + f(0, 1, 0, -1)\textrm{ ,}\\
+1 = f(-1, 1, 1, 1) + f(1, 1, -1, 1) + f(0, 1, 1, 0) + f(1, 0, 0, -1)\textrm{ ,}\\
+1 = f(1, 1, -1, 1) + f(1, 1, 1, -1) + f(0, 0, 1, 1) + f(1, -1, 0, 0)\textrm{ ,}\\
+1 = f(0, 1, -1, 0) + f(1, 0, 0, -1) + f(1, 1, 1, 1) + f(1, -1, -1, 1)\textrm{ ,}\\
+1 = f(0, 0, 1, -1) + f(1, -1, 0, 0) + f(1, 1, 1, 1) + f(1, 1, -1, -1)\textrm{ ,}\\
+1 = f(1, 0, 1, 0) + f(0, 1, 0, 1) + f(1, 1, -1, -1) + f(1, -1, -1, 1)
+}\label{eq:Kernaghan-2}\end{equation}
+In equation~\ref{eq:Kernaghan-1} and \ref{eq:Kernaghan-2}, there
+are odd number of equations, but each $f\left(\alpha_{0},\alpha_{1},\alpha_{2},\alpha_{3}\right)$
+occurs twice. Therefore, there is no frame function~$f:\mathcal{T}_{24}\rightarrow\left\{ 0,1\right\} $
+satisfying equation~\ref{eq:Kernaghan-1} and \ref{eq:Kernaghan-2}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
