@@ -1193,22 +1193,22 @@ $\mathbb{C}S^{d-1}$ has the same structure as $S^{2d-1}$. However,
 different symbols emphasis that they are embedded in different spaces.\end{definition}
 
 \begin{definition}\cite{gleason1957,peres1995quantum,RichmanBridges1999}~For
-any quantum probability measure~$\mu$ on the Hilbert space of dimension
-3, we can define its \emph{frame function}~$f:\mathbb{C}S^{2}\rightarrow\left[0,1\right]$
+any quantum probability measure~$\mu$ on the Hilbert space of dimension~$d$,
+we can define its \emph{frame function}~$f:\mathbb{C}S^{d-1}\rightarrow\left[0,1\right]$
 by $f\left(\ket{\psi}\right)=\mu\left(\proj{\psi}\right)$. For a
 quantum probability measure~$\mu_{\phi}^{B}$ induced by the Born
 rule, its frame function is denoted by $f_{\phi}^{B}$.\end{definition}
 
 \begin{thm}\label{thm:frame-function}\cite{gleason1957,peres1995quantum,RichmanBridges1999}~A
-frame function~$f:\mathbb{C}S^{2}\rightarrow\left[0,1\right]$ satisfies
-the following properties: 
+frame function~$f:\mathbb{C}S^{d-1}\rightarrow\left[0,1\right]$
+satisfies the following properties: 
 \begin{itemize}
 \item $f\left(\lambda\ket{\psi}\right)=f\left(\ket{\psi}\right)$ for any
-$\ket{\psi}\in\mathbb{C}S^{2}$ and $\lambda\in\mathbb{C}S^{0}$. 
+$\ket{\psi}\in\mathbb{C}S^{d-1}$ and $\lambda\in\mathbb{C}S^{0}$. 
 \item For any orthonormal basis~$\left\{ \ket{\psi_{i}}\right\} _{i=0}^{2}$,
 we have $1=\sum_{i=0}^{2}f\left(\ket{\psi_{i}}\right)$. 
 \end{itemize}
-Conversely, if a function~$f:\mathbb{C}S^{2}\rightarrow\left[0,1\right]$
+Conversely, if a function~$f:\mathbb{C}S^{d-1}\rightarrow\left[0,1\right]$
 satisfies the above properties, $f$ must be a frame function.\end{thm}
 
 \begin{definition}For any quantum IVPM~$\bar{\mu}$ on the Hilbert
@@ -1936,14 +1936,15 @@ v\left(\sigma_{x}\otimes\sigma_{z}\right) & v\left(\sigma_{z}\otimes\sigma_{x}\r
 satisfying equation~(\ref{eq:Kochen-Specker-Rules}).
 
 \begin{table}
-\caption{\label{table:commonBasis}Observables and their common eigenbasis.
-In order to unified and simplify notation, we do not normalize eigenstates,
-and represent the state~$\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}+\alpha_{3}\ket{3}$
+\caption{\label{table:commonBasis}In each row, three observables are listed
+in the left column commutes, and their common eigenbasis is listed
+in the right column. In order to unified and simplify notation, we
+do not normalize eigenstates, and represent the state~$\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}+\alpha_{3}\ket{3}$
 as $\left(\alpha_{0},\alpha_{1},\alpha_{2},\alpha_{3}\right)$.}
 
 \begin{tabular}{ccc|cccc} 
 \br 
-\multicolumn{3}{c}{Operators} & \multicolumn{4}{c}{Common eigenbasis} \\
+\multicolumn{3}{c}{Commuting observables} & \multicolumn{4}{c}{Common eigenbasis} \\
 \mr 
 $\mathbb{1}\otimes\sigma_{z}$ & $\sigma_{z}\otimes\mathbb{1}$ & $\sigma_{z}\otimes\sigma_{z}$ & $(1, 0, 0, 0)$ & $(0, 1, 0, 0)$ & $(0, 0, 1, 0)$ & $(0, 0, 0, 1)$ \\
 $\sigma_{x}\otimes\mathbb{1}$ & $\mathbb{1}\otimes\sigma_{x}$ & $\sigma_{x}\otimes\sigma_{x}$ & $(1, 1, 1, 1)$ & $(1, -1, 1, -1)$ & $(1, 1, -1, -1)$ & $(1, -1, -1, 1)$ \\
@@ -1960,15 +1961,21 @@ probability measures, we first need to find the common eigenbasis
 of each row and column, and consider the projections to each eigenvectors.
 Let $\mathcal{T}_{24}$ denote all eigenstates listed in table~\ref{table:commonBasis}.
 The Kochen-Specker theorem could then be proved by showing there is
-no function~$v:\events'\rightarrow\left\{ 0,1\right\} $satisfying
+no function~$v:\events'\rightarrow\left\{ 0,1\right\} $ satisfying
 equation~(\ref{eq:Kochen-Specker-Rules}), where 
 \[
-\events'=\set{\sum_{i=1}^{N}\proj{\psi_{i}}}{\left\{ \ket{\psi_{i}}\right\} _{i=1}^{N}\subseteq\mathcal{T}_{24}\textrm{ is a family of mutually orthogonal projections}}\textrm{ .}
+\events'=\set{\sum_{i=1}^{N}\proj{\psi_{i}}}{\textrm{mutually orthogonal }\left\{ \ket{\psi_{i}}\right\} _{i=1}^{N}\subseteq\mathcal{T}_{24}}\textrm{ .}
 \]
 This kind of $v$ is actually a quantum cryptodeterministic measure.
 By theorem~\ref{lemma:classical-probability-measures}, the quantum
 cryptodeterministic measure~$v$ exists if and only if there exists
-a frame function~$f:\mathcal{T}_{24}\rightarrow\left\{ 0,1\right\} $.
+a frame function~$f:\mathcal{T}_{24}\rightarrow\left\{ 0,1\right\} $
+which should at least satisfy
+\begin{equation}\eqalign{ 
+1 = f(1, 0, 0, 0) + f(0, 1, 0, 0) + f(0, 0, 1, 0) + f(0, 0, 0, 1)\textrm{ and}\\
+1 = f(-1, 1, 1, 1) + f(1, -1, 1, 1) + f(1, 1, -1, 1) + f(1, 1, 1, -1)
+}\label{eq:Kernaghan-1}\end{equation}
+because of table~\ref{table:commonBasis}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
