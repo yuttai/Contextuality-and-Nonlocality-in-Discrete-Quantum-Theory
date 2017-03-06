@@ -1684,63 +1684,66 @@ is convex.\end{thm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Quantum Real-valued and Interval-valued Probability Measures\label{sec:Real-and-Interval}}
 
-\begin{definition}We say a collection of intervals~$\mathscr{I}$
-with a function~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$ is
-regular\footnote{\yutsung{''regular'' is just a random name pop into my mind...}}
-if they satisfies the following properties.
+\begin{definition}We say a pair~$\left(\mathscr{I},\iota\right)$
+is regular\footnote{\yutsung{''regular'' is just a random name pop into my mind...
+
+This whole definition might be rewritten using category theory...
+I would investigate it if it is necessary...}} if $\mathscr{I}$ is a collection of intervals and $\iota:\left[0,1\right]\rightarrow\mathscr{I}$
+is a function satisfying the following properties. 
 \begin{itemize}
-\item $\iota\left(0\right)=\left[0,0\right]$.
+\item $\iota\left(0\right)=\left[0,0\right]$. 
 \item $\iota\left(1\right)=\left[1,1\right]$. 
-\item For any $x\in\left[0,1\right]$, $\iota\left(1-x\right)=\left[1,1\right]-\iota\left(x\right)$.
+\item For any $x\in\left[0,1\right]$, $\iota\left(1-x\right)=\left[1,1\right]-\iota\left(x\right)$. 
 \item For a set $\left\{ x_{i}\right\} _{i=1}^{N}\subseteq\left[0,1\right]$,
-if $\sum_{i=1}^{N}x_{i}\in\left[0,1\right]$, then $\iota\left(\sum_{i=1}^{N}x_{i}\right)\subseteq\sum_{i=1}^{N}\iota\left(x_{i}\right)$.
+if $\sum_{i=1}^{N}x_{i}\in\left[0,1\right]$, then $\iota\left(\sum_{i=1}^{N}x_{i}\right)\subseteq\sum_{i=1}^{N}\iota\left(x_{i}\right)$. 
 \end{itemize}
 \end{definition}
 
-\begin{lemma}Consider a regular collection of intervals~$\mathscr{I}$
-with a function~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$.
+\begin{lemma}Consider a regular pair~$\left(\mathscr{I},\iota\right)$.
 Then, given a quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$,
 a function~$\bar{\mu}:\events\rightarrow\mathscr{I}$ defined by
 $\bar{\mu}(P)=\iota\left(\mu(P)\right)$ is a quantum IVPM.\end{lemma}
+
 \begin{proof}
-~
 \begin{itemize}
 \item $\bar{\mu}(\mathbb{0})=\iota\left(\mu(\mathbb{0})\right)=\iota\left(0\right)=\left[0,0\right]$.
-\item $\bar{\mu}(\mathbb{1})=\iota\left(\mu(\mathbb{1})\right)=\iota\left(1\right)=\left[1,1\right]$. 
-\item For any projection $P$, $\bar{\mu}\left(\mathbb{1}-P\right)=\iota\left(\mu(\mathbb{1}-P)\right)=\iota\left(1-\mu(P)\right)=\left[1,1\right]-\iota\left(\mu(P)\right)=\left[1,1\right]-\bar{\mu}\left(P\right)$. 
+\item $\bar{\mu}(\mathbb{1})=\iota\left(\mu(\mathbb{1})\right)=\iota\left(1\right)=\left[1,1\right]$.
+\item For any projection $P$, $\bar{\mu}\left(\mathbb{1}-P\right)=\iota\left(\mu(\mathbb{1}-P)\right)=\iota\left(1-\mu(P)\right)=\left[1,1\right]-\iota\left(\mu(P)\right)=\left[1,1\right]-\bar{\mu}\left(P\right)$.
 \item For a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
 we have $\sum_{i=1}^{N}\mu\left(P_{i}\right)=\mu\left(\sum_{i=1}^{N}P_{i}\right)\in\left[0,1\right]$
-so that $\bar{\mu}\left(\sum_{i=1}^{N}P_{i}\right)=\iota\left(\mu\left(\sum_{i=1}^{N}P_{i}\right)\right)=\iota\left(\sum_{i=1}^{N}\mu\left(P_{i}\right)\right)\subseteq\sum_{i=1}^{N}\iota\left(\mu\left(P_{i}\right)\right)=\sum_{i=1}^{N}\bar{\mu}\left(P_{i}\right)$. 
+so that $\bar{\mu}\left(\sum_{i=1}^{N}P_{i}\right)=\iota\left(\mu\left(\sum_{i=1}^{N}P_{i}\right)\right)=\iota\left(\sum_{i=1}^{N}\mu\left(P_{i}\right)\right)\subseteq\sum_{i=1}^{N}\iota\left(\mu\left(P_{i}\right)\right)=\sum_{i=1}^{N}\bar{\mu}\left(P_{i}\right)$.
 \end{itemize}
 \end{proof}
-\begin{lemma}Consider regular a collection of intervals~$\mathscr{I}$
-with a function~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$.
+
+\begin{lemma}Consider a regular pair~$\left(\mathscr{I},\iota\right)$.
 Then, there is a quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
 such that $\mathrm{core}\left(\bar{\mu}\right)$ has an unique element.\end{lemma}
-\begin{proof}
-Consider $\bar{\mu}(P)=\iota\left(\mu_{\ket{0}}^{\mathrm{B}}(P)\right)$. Then,
-$\bar{\mu}\left(\proj{0}\right)=\iota\left(\mu_{\ket{0}}^{\mathrm{B}}\left(\proj{0}\right)\right)=\iota\left(1\right)=\left[1,1\right]$,
+
+\begin{proof}Consider $\bar{\mu}(P)=\iota\left(\mu_{\ket{0}}^{\mathrm{\mathrm{B}}}(P)\right)$.
+Then, $\bar{\mu}\left(\proj{0}\right)=\iota\left(\mu_{\ket{0}}^{\mathrm{\mathrm{B}}}\left(\proj{0}\right)\right)=\iota\left(1\right)=\left[1,1\right]$,
 i.e., for any quantum probability measure~$\mu\in\mathrm{core}\left(\bar{\mu}\right)$,
-we have $\mu\left(\proj{0}\right)=1$. Therefore, $\mu=\mu_{\ket{0}}^{\mathrm{B}}$.
-\end{proof}
-\begin{example}For any positive integer~$n$, the collection of
-intervals~$\mathscr{I}_{n}$ and the map~$\iota_{n}:\left[0,1\right]\rightarrow\mathscr{I}_{n}$
-defined by
-\begin{equation}\eqalign{
-\mathscr{I}_{n} = \set{\left[\frac{k}{n},\frac{k}{n}\right]}{k=0,\ldots,n}\cup\set{\left[\frac{k}{n},\frac{k+1}{n}\right]}{k=0,\ldots,n-1}\\
-\iota_{n}\left(x\right) = \cases{
-\left[\frac{k}{n},\frac{k}{n}\right] & , if $x=\frac{k}{n}$ ;\\
-\left[\frac{k}{n},\frac{k+1}{n}\right] & , if $\frac{k}{n}<x<\frac{k+1}{n}$ .
-}
+we have $\mu\left(\proj{0}\right)=1$. Therefore, $\mu=\mu_{\ket{0}}^{\mathrm{\mathrm{B}}}$.\end{proof}
+
+\begin{example}For any positive integer~$n$, there is a regular
+pair~$\left(\mathscr{I}_{n},\iota_{n}\right)$ defined by 
+\begin{equation}\eqalign{ 
+\mathscr{I}_{n} = \set{\left[\frac{k}{n},\frac{k}{n}\right]}{k=0,\ldots,n}\cup\set{\left[\frac{k}{n},\frac{k+1}{n}\right]}{k=0,\ldots,n-1}\\ 
+\iota_{n}\left(x\right) = \cases{ 
+\left[\frac{k}{n},\frac{k}{n}\right] & , if $x=\frac{k}{n}$ ;\\ 
+\left[\frac{k}{n},\frac{k+1}{n}\right] & , if $\frac{k}{n}<x<\frac{k+1}{n}$ . 
+} 
 }\end{equation}
-is regular.\end{example}
-\begin{proof}
-~
+Notice that the usual $\left\{ \necess,\imposs,\unknown\right\} $
+is $\mathscr{I}_{1}$. Also, let $\mathscr{I}_{\infty}=\set{\left\{ x\right\} }{x\in\left[0,1\right]}$
+and $\iota_{\infty}\left(x\right)=\left\{ x\right\} $. Of course,
+$\left(\mathscr{I}_{\infty},\iota_{\infty}\right)$ is a regular pair.\end{example}
+
+\begin{proof} 
 \begin{itemize}
-\item $\iota\left(0\right)=\left[0,0\right]$.
+\item $\iota\left(0\right)=\left[0,0\right]$. 
 \item $\iota\left(1\right)=\left[1,1\right]$. 
-\item When $x=k / n$, we have $\iota\left(1-x\right)=\left[1-k / n,1-k / n\right]=\left[1,1\right]-\iota\left(x\right)$.\\
-When $k / n<x<\left(k+1\right)/n$, we have $1-k / n>1-x>1-\left(k+1\right)/n$
+\item When $x=k/n$, we have $\iota\left(1-x\right)=\left[1-k/n,1-k/n\right]=\left[1,1\right]-\iota\left(x\right)$.\\
+When $k/n<x<\left(k+1\right)/n$, we have $1-k/n>1-x>1-\left(k+1\right)/n$
 so that 
 \begin{equation}
 \iota\left(1-x\right)=\left[1-\frac{k+1}{n},1-\frac{k}{n}\right]=\left[1,1\right]-\left[\frac{k}{n},\frac{k+1}{n}\right]=\left[1,1\right]-\iota\left(x\right)\textrm{ .}
@@ -1749,19 +1752,19 @@ so that
 if $x_{1}+x_{2}\in\left[0,1\right]$, then $\iota\left(x_{1}+x_{2}\right)\subseteq\iota\left(x_{1}\right)+\iota\left(x_{2}\right)$,
 and the rest can be done by the induction. 
 \begin{itemize}
-\item When $x_{1}=k_{1} / n$, we have
+\item When $x_{1}=k_{1}/n$, we have 
 \begin{equation}
 \iota\left(x_{1}+x_{2}\right)=\left[\frac{k_{1}}{n},\frac{k_{1}}{n}\right]+\iota\left(x_{2}\right)=\iota\left(x_{1}\right)+\iota\left(x_{2}\right)\textrm{ .}
 \end{equation}
-\item When $k_{1} / n<x_{1}<\left(k_{1}+1\right)/n$ and $k_{2}/n<x_{2}<\left(k_{2}+1\right)/n$,
-we have
+\item When $k_{1}/n<x_{1}<\left(k_{1}+1\right)/n$ and $k_{2}/n<x_{2}<\left(k_{2}+1\right)/n$,
+we have 
 \begin{equation}
 \frac{k_{1}+k_{2}}{n}<x_{1}+x_{2}<\frac{k_{1}+k_{2}+2}{n}
 \end{equation}
-so that
-\begin{equation}\eqalign{
- & \iota\left(x_{1}+x_{2}\right)\subseteq\left[\frac{k_{1}+k_{2}}{n},\frac{k_{1}+k_{2}+2}{n}\right]\\
- = &\left[\frac{k_{1}}{n},\frac{k_{1}+1}{n}\right]+\left[\frac{k_{2}}{n},\frac{k_{2}+1}{n}\right]=\iota\left(x_{1}\right)+\iota\left(x_{2}\right)\textrm{ .}
+so that 
+\begin{equation}\eqalign{ 
+& \iota\left(x_{1}+x_{2}\right)\subseteq\left[\frac{k_{1}+k_{2}}{n},\frac{k_{1}+k_{2}+2}{n}\right]\\ 
+= &\left[\frac{k_{1}}{n},\frac{k_{1}+1}{n}\right]+\left[\frac{k_{2}}{n},\frac{k_{2}+1}{n}\right]=\iota\left(x_{1}\right)+\iota\left(x_{2}\right)\textrm{ .} 
 }\end{equation}
 \end{itemize}
 \end{itemize}
