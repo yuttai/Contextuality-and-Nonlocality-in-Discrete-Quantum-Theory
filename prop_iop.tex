@@ -2059,14 +2059,51 @@ every quantum probability measure is in the core of $\bar{\mu}$,
 this measure represents the beliefs of an experimenter with no prior
 knowledge about the particular quantum system in question.
 
-\footnote{\yutsung{Find all orthogonal basis of $\mathcal{T}_{24}$ and solve
-the linear equations for Gleason's...}}
+\begin{example}[Four-dimensional quantum three-interval-valued probability
+measure]\label{ex:four-dimensional-three-value}Consider the orthonormal
+basis~$\left\{ \ket{0},\ket{1},\ket{2},\ket{3}\right\} $ as defined
+in table~\ref{table:commonBasis}. Let $\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$,
+$\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$. Then, we can
+define a quantum IVPM~$\bar{\mu}:\events_{24}\rightarrow\mathscr{I}_{1}$
+as follow. 
+\begin{equation}\eqalign{ 
+\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'})=\imposs\textrm{ ,}\\ 
+\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})=\bar{\mu}(\mathbb{1}-\proj{\ps'})=\necess\textrm{ ,}\\ 
+\bar{\mu}(P) = \unknown\qquad\textrm{otherwise.} 
+}\end{equation}
+To verify $\bar{\mu}$ is a quantum IVPM, first notice that $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$
+implies equation (\ref{eq:QuantumInterval-valuedProbability-Inclusion})
+by induction. Second, equation (\ref{eq:QuantumInterval-valuedProbability-Complement})
+implies $\bar{\mu}\left(\mathbb{1}\right)\subseteq\bar{\mu}\left(P\right)+\bar{\mu}\left(\mathbb{1}-P\right)$.
+Therefore, to prove equation (\ref{eq:QuantumInterval-valuedProbability-Inclusion}),
+it is sufficient to check
+\begin{equation}\eqalign{ 
+\bar{\mu}\left(\proj{\psi_{0}}+\proj{\psi_{1}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{0}}\right)+\bar{\mu}\left(\proj{\psi_{1}}\right)\textrm{ ,}\\
+\bar{\mu}\left(\proj{\psi_{0}}+\proj{\psi_{1}}+\proj{\psi_{2}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{0}}\right)+\bar{\mu}\left(\proj{\psi_{1}}+\proj{\psi_{2}}\right)
+}\end{equation}
+for orthogonal $\ket{\psi_{0}}$, $\ket{\psi_{1}}$, and $\ket{\psi_{2}}$.
+This equation always holds because $\unknown$ is a subset of the
+left-hand side of both of the equations.
+
+Second, we will prove that $\bar{\mu}$ cannot correspond to any quantum
+probability measure by contradiction. Suppose $\mu(P)\in\bar{\mu}(P)$
+for some quantum probability measure~$\mu:\events_{24}\rightarrow\left[0,1\right]$.
+We must have 
+\begin{equation}
+\mu(\proj{0})=\mu(\proj{\ps})=\mu(\proj{\ps'})=0\textrm{ .}\label{eq:probability-zero-on-states}
+\end{equation}
+By Gleason's theorem\footnote{\yutsung{Find all orthogonal basis of $\mathcal{T}_{24}$ and solve
+the linear equations for Gleason's...}}, there is a mixed state~$\rho=\sum_{j=0}^{N-1}q_{j}\proj{\phi_{j}}$
+such that $\mu\left(P\right)=\sum_{j=0}^{N-1}q_{j}\ip{\phi_{j}}{P\phi_{j}}$,
+where $\sum_{j=0}^{N-1}q_{j}=1$ and $q_{j}>0$. However, no pure
+state~$\ket{\phi}$ satisfies $\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0$
+so that we have $\mu(P)\notin\bar{\mu}(P)$ for all quantum probability
+measure~$\mu$.\qed\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
  \bibliographystyle{plain}
 \bibliography{prop}
- 
 \end{comment}
 \printbibliography
 
