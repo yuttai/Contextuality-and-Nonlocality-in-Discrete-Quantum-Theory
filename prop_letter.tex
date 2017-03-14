@@ -1,10 +1,34 @@
-\documentclass[12pt]{iopart}
-\usepackage[ backend=biber]{biblatex}
+\documentclass[reprint, aps, prl,superscriptaddress, showpacs,
+showkeys]{revtex4-1} 
+\let\bibhang\relax
+\let\citename\relax
+\let\bibfont\relax
+\let\Citeauthor\relax
+\let\textcite\relax
+\makeatletter
+\DeclareRobustCommand{\MakeUppercase}[1]{{%
+      \def\i{I}\def\j{J}%
+      \def\reserved@a##1##2{\let##1##2\reserved@a}%
+      \expandafter\reserved@a\@uclclist\reserved@b{\reserved@b\@gobble}%
+      \protected@edef\reserved@a{\uppercase{#1}}%
+      \reserved@a
+   }}
+\DeclareRobustCommand{\MakeLowercase}[1]{{%
+      \def\reserved@a##1##2{\let##2##1\reserved@a}%
+      \expandafter\reserved@a\@uclclist\reserved@b{\reserved@b\@gobble}%
+      \protected@edef\reserved@a{\lowercase{#1}}%
+      \reserved@a
+   }}
+\makeatother
+\expandafter\let\csname ver@natbib.sty\endcsname\relax
+\renewcommand{\bibliography}[1]{}
+\usepackage[ backend=biber,style=phys]{biblatex}
 \addbibresource{prop.bib}
 \ExecuteBibliographyOptions{sorting=none,maxbibnames=10,doi=false,isbn=false,url=false}
 \usepackage{fullpage}
 \usepackage[T1,T2A]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{mathrsfs}
@@ -12,8 +36,7 @@
 \usepackage{wesa}
 \usepackage{graphicx}
 \usepackage{verbatim}
-\usepackage{iopams}
-\usepackage{setstack}
+\usepackage{hyperref}
 
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}
@@ -50,29 +73,37 @@
 \def\C{{\mathbb{C}}}
 
 \begin{document}
-\letter{Contextuality and the Born Rule in Fuzzy Quantum Theories}
 
-\author{Andrew J Hanson$^{1}$, Gerardo Ortiz$^{2}$,
-Amr Sabry$^{1}$ and Yu-Tsung Tai$^{3,1}$}
-\address{$^{1}$ School of Informatics and Computing, Indiana
-University, Bloomington, IN 47405, USA}
-\address{$^{2}$ Department of Physics, Indiana University, Bloomington, IN
-47405, USA}
-\address{$^{3}$ Department of Mathematics, Indiana University, Bloomington,
+\title{Contextuality and the Born Rule in Fuzzy Quantum Theories}
+
+\author{Andrew J Hanson}
+\affiliation{School of Informatics and Computing, Indiana University, Bloomington,
 IN 47405, USA}
-\ead{ortizg@indiana.edu}
-\begin{abstract}
-\today
-\end{abstract}
-\pacs{03.65.-w, 03.65.Ta, 02.40.Dr, 02.50.Cw, 02.50.Le}
-\noindent{\it Keywords\/}: {Finite precision measurement, the Born rule, Gleason's theorem, interval-valued
-probability, discrete quantum theory}
 
-\submitto{\jpa}
+\author{Gerardo Ortiz}
+\affiliation{Department of Physics, Indiana University, Bloomington, IN 47405,
+USA}
+
+\author{Amr Sabry}
+\affiliation{School of Informatics and Computing, Indiana University, Bloomington,
+IN 47405, USA}
+
+\author{Yu-Tsung Tai}
+\affiliation{Department of Mathematics, Indiana University, Bloomington, IN 47405,
+USA}
+\affiliation{School of Informatics and Computing, Indiana University, Bloomington,
+IN 47405, USA}
+
+\date{\today }
+
+\pacs{03.65.-w, 03.65.Ta, 02.40.Dr, 02.50.Cw, 02.50.Le}
+
+\keywords{Finite precision measurement, the Born rule, Gleason's
+theorem, interval-valued probability, discrete quantum theory}
+
+\maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction}
-
 Textbook quantum mechanics asserts that, given a quantum spin system
 described by the wave function
 $\ket{\psi}=\frac{\sqrt{\pi}}{2}\fket{\ps\frac{1}{2}}+\frac{\sqrt{4-\pi}}{2}\fket{\minus\frac{1}{2}}$
@@ -136,10 +167,10 @@ resources. \ldots
 The
 Kochen-Specker theorem asserts that there is no function~$v$ assigning
 a definitely value to all observables such that
-\begin{equation}\eqalign{ 
+\begin{eqnarray}
 v\left(O_{1}\right)+v\left(O_{2}\right)=v\left(O_{1}+O_{2}\right)\textrm{ and}\\
 v\left(O_{1}\right)v\left(O_{2}\right)=v\left(O_{1}O_{2}\right)
-}\label{eq:Kochen-Specker-Rules}\end{equation}
+\label{eq:Kochen-Specker-Rules}\end{eqnarray}
 if $O_{1}$ and $O_{2}$ are commuting observables. Suppose that there
 is a function~$v$ satisfying these two properties, it must send
 an observable to its eigenvalues so that the following observables~\cite{Mermin1990Simple,peres1995quantum}:
@@ -169,19 +200,17 @@ in the left column commutes, and their common eigenbasis is listed
 in the right column. In order to unified and simplify notation, we
 do not normalize eigenstates, and represent the state~$\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}+\alpha_{3}\ket{3}$
 as $\left(\alpha_{0},\alpha_{1},\alpha_{2},\alpha_{3}\right)$.}
-
+\begin{ruledtabular}
 \begin{tabular}{ccc|cccc} 
-\br 
 \multicolumn{3}{c}{Commuting observables} & \multicolumn{4}{c}{Common eigenbasis} \\
-\mr 
 $\mathbb{1}\otimes\sigma_{z}$ & $\sigma_{z}\otimes\mathbb{1}$ & $\sigma_{z}\otimes\sigma_{z}$ & $(1, 0, 0, 0)$ & $(0, 1, 0, 0)$ & $(0, 0, 1, 0)$ & $(0, 0, 0, 1)$ \\
 $\sigma_{x}\otimes\mathbb{1}$ & $\mathbb{1}\otimes\sigma_{x}$ & $\sigma_{x}\otimes\sigma_{x}$ & $(1, 1, 1, 1)$ & $(1, -1, 1, -1)$ & $(1, 1, -1, -1)$ & $(1, -1, -1, 1)$ \\
 $\sigma_{x}\otimes\sigma_{z}$ & $\sigma_{z}\otimes\sigma_{x}$ & $\sigma_{y}\otimes\sigma_{y}$ & $(1, 1, 1, -1)$ & $(1, 1, -1, 1)$ & $(1, -1, 1, 1)$ & $(-1, 1, 1, 1)$ \\
 $\mathbb{1}\otimes\sigma_{z}$ & $\sigma_{x}\otimes\mathbb{1}$ & $\sigma_{x}\otimes\sigma_{z}$ & $(1, 0, 1, 0)$ & $(0, 1, 0, 1)$ & $(1, 0, -1, 0)$ & $(0, 1, 0, -1)$ \\
 $\sigma_{z}\otimes\mathbb{1}$ & $\mathbb{1}\otimes\sigma_{x}$ & $\sigma_{z}\otimes\sigma_{x}$ & $(1, 1, 0, 0)$ & $(1, -1, 0, 0)$ & $(0, 0, 1, 1)$ & $(0, 0, 1, -1)$ \\
 $\sigma_{z}\otimes\sigma_{z}$ & $\sigma_{x}\otimes\sigma_{x}$ & $\sigma_{y}\otimes\sigma_{y}$ & $(0, 1, 1, 0)$ & $(0, 1, -1, 0)$ & $(1, 0, 0, 1)$ & $(1, 0, 0, -1)$ \\
-\br 
 \end{tabular} 
+\end{ruledtabular}
 \end{table}
 Since observables in equation~(\ref{eq:MerminSquare}) are not projections,
 if we want to reformulate the above argument in the language of quantum
@@ -201,14 +230,14 @@ probability measure, by theorem~\ref{lemma:classical-probability-measures},
 the quantum cryptodeterministic measure~$v$ exists if and only if
 there exists a frame function~$f:\mathcal{T}_{24}\rightarrow\left\{ 0,1\right\} $
 which should at least satisfy
-\begin{equation}\eqalign{ 
+\begin{eqnarray}
 1 = f(1, 0, 0, 0) + f(0, 1, 0, 0) + f(0, 0, 1, 0) + f(0, 0, 0, 1)\textrm{ and}\\
 1 = f(-1, 1, 1, 1) + f(1, -1, 1, 1) + f(1, 1, -1, 1) + f(1, 1, 1, -1)
-}\label{eq:Kernaghan-1}\end{equation}
+\label{eq:Kernaghan-1}\end{eqnarray}
 because of table~\ref{table:commonBasis}. $f$ should also satisfy
 the following equations since the vectors in each equation form an
 orthogonal basis~\cite{Kernaghan1994,peres1995quantum}:
-\begin{equation}\eqalign{ 
+\begin{eqnarray}
 1 = f(1, 0, 0, 0) + f(0, 1, 0, 0) + f(0, 0, 1, 1) + f(0, 0, 1, -1)\textrm{ ,}\\
 1 = f(1, 0, 0, 0) + f(0, 0, 1, 0) + f(0, 1, 0, 1) + f(0, 1, 0, -1)\textrm{ ,}\\
 1 = f(1, 0, 0, 0) + f(0, 0, 0, 1) + f(0, 1, 1, 0) + f(0, 1, -1, 0)\textrm{ ,}\\
@@ -218,7 +247,7 @@ orthogonal basis~\cite{Kernaghan1994,peres1995quantum}:
 1 = f(0, 1, -1, 0) + f(1, 0, 0, -1) + f(1, 1, 1, 1) + f(1, -1, -1, 1)\textrm{ ,}\\
 1 = f(0, 0, 1, -1) + f(1, -1, 0, 0) + f(1, 1, 1, 1) + f(1, 1, -1, -1)\textrm{ ,}\\
 1 = f(1, 0, 1, 0) + f(0, 1, 0, 1) + f(1, 1, -1, -1) + f(1, -1, -1, 1)\textrm{ .}
-}\label{eq:Kernaghan-2}\end{equation}
+\label{eq:Kernaghan-2}\end{eqnarray}
 In equation~\ref{eq:Kernaghan-1} and \ref{eq:Kernaghan-2}, there
 are odd number of equations, but each $f\left(\alpha_{0},\alpha_{1},\alpha_{2},\alpha_{3}\right)$
 occurs twice. Therefore, there is no frame function~$f:\mathcal{T}_{24}\rightarrow\left\{ 0,1\right\} $
@@ -268,11 +297,11 @@ example, we can add an one extra interval~$\unknown=\left[0,1\right]$
 to $\mathscr{I}_{\mathrm{D}}$, and consider $\mathscr{I}_{1}=\left\{ \imposs,\unknown,\necess\right\} $.
 Let 
 \begin{equation} 
-\iota_1(x)=\cases{ 
-\necess & if $x=1$ ;\\ 
-\imposs & if $x=0$ ;\\ 
-\unknown & otherwise. 
-}\label{eq:homomorphism-1} \end{equation}
+\iota_1(x)=\begin{cases} 
+\necess & \text{ if}x=1\text{ ;}\\ 
+\imposs & \text{ if}x=0\text{ ;}\\ 
+\unknown & \text{ otherwise.}
+\end{cases}\label{eq:homomorphism-1} \end{equation}
 We still have $\mathrm{core}\left(\iota_{1}\circ\mu_{\ket{0}}^{\mathrm{\mathrm{B}}}\right)=\left\{ \mu_{\ket{0}}^{\mathrm{\mathrm{B}}}\right\} $.
 
 Although the quantum IVPM listed above are all well-behaved, there
@@ -287,7 +316,7 @@ measure]\label{ex:four-dimensional-real-value}Consider the frame
 function~$f:\mathcal{T}_{24}\rightarrow\left[0,1\right]$ again.
 Apart from equation~\ref{eq:Kernaghan-1} and \ref{eq:Kernaghan-2},
 $f$ should also satisfy the following equations: 
-\begin{equation}\eqalign{ 
+\begin{eqnarray}
 1 = f(0,0,1,0)+f(0,1,0,0)+f(1,0,0,-1)+f(1,0,0,1)\textrm{ ,}\\ 
 1 = f(0,1,-1,0)+f(0,1,1,0)+f(1,0,0,-1)+f(1,0,0,1)\textrm{ ,}\\ 
 1 = f(0,0,0,1)+f(0,1,0,0)+f(1,0,-1,0)+f(1,0,1,0)\textrm{ ,}\\ 
@@ -301,7 +330,7 @@ $f$ should also satisfy the following equations:
 1 = f(-1,1,1,1)+f(0,1,-1,0)+f(1,0,0,1)+f(1,1,1,-1)\textrm{ ,}\\ 
 1 = f(0,1,0,-1)+f(1,-1,1,-1)+f(1,0,-1,0)+f(1,1,1,1)\textrm{ ,}\\ 
 1 = f(1,-1,-1,1)+f(1,-1,1,-1)+f(1,1,-1,-1)+f(1,1,1,1)\textrm{ .} 
-}\label{eq:non-Kernaghan}\end{equation}
+\label{eq:non-Kernaghan}\end{eqnarray}
 \qed\end{example}
 
 \begin{example}[Four-dimensional quantum three-interval-valued probability
@@ -311,21 +340,21 @@ in table~\ref{table:commonBasis}. Let $\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\s
 $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$. Then, we can
 define a quantum IVPM~$\bar{\mu}:\events_{24}\rightarrow\mathscr{I}_{1}$
 as follow. 
-\begin{equation}\eqalign{ 
+\begin{eqnarray}
 \bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'})=\imposs\textrm{ ,}\\ 
 \bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})=\bar{\mu}(\mathbb{1}-\proj{\ps'})=\necess\textrm{ ,}\\ 
 \bar{\mu}(P) = \unknown\qquad\textrm{otherwise.} 
-}\end{equation}
+\end{eqnarray}
 To verify $\bar{\mu}$ is a quantum IVPM, first notice that $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$
 implies equation (\ref{eq:QuantumInterval-valuedProbability-Inclusion})
 by induction. Second, equation (\ref{eq:QuantumInterval-valuedProbability-Complement})
 implies $\bar{\mu}\left(\mathbb{1}\right)\subseteq\bar{\mu}\left(P\right)+\bar{\mu}\left(\mathbb{1}-P\right)$.
 Therefore, to prove equation (\ref{eq:QuantumInterval-valuedProbability-Inclusion}),
 it is sufficient to check
-\begin{equation}\eqalign{ 
+\begin{eqnarray}
 \bar{\mu}\left(\proj{\psi_{0}}+\proj{\psi_{1}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{0}}\right)+\bar{\mu}\left(\proj{\psi_{1}}\right)\textrm{ ,}\\
 \bar{\mu}\left(\proj{\psi_{0}}+\proj{\psi_{1}}+\proj{\psi_{2}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{0}}\right)+\bar{\mu}\left(\proj{\psi_{1}}+\proj{\psi_{2}}\right)
-}\end{equation}
+\end{eqnarray}
 for orthogonal $\ket{\psi_{0}}$, $\ket{\psi_{1}}$, and $\ket{\psi_{2}}$.
 This equation always holds because $\unknown$ is a subset of the
 left-hand side of both of the equations.
