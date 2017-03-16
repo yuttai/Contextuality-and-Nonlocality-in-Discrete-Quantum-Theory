@@ -1,35 +1,5 @@
 \documentclass[reprint, aps, prl,superscriptaddress, showpacs,
 showkeys]{revtex4-1} 
-% Follow 
-% https://tex.stackexchange.com/questions/37076/is-it-possible-to-load-biblatex-with-a-class-that-has-already-loaded-natbib/37077#37077
-% to put RevTeX with BibLaTeX
-\let\bibhang\relax
-\let\citename\relax
-\let\bibfont\relax
-\let\Citeauthor\relax
-\let\textcite\relax
-\makeatletter
-\DeclareRobustCommand{\MakeUppercase}[1]{{%
-      \def\i{I}\def\j{J}%
-      \def\reserved@a##1##2{\let##1##2\reserved@a}%
-      \expandafter\reserved@a\@uclclist\reserved@b{\reserved@b\@gobble}%
-      \protected@edef\reserved@a{\uppercase{#1}}%
-      \reserved@a
-   }}
-\DeclareRobustCommand{\MakeLowercase}[1]{{%
-      \def\reserved@a##1##2{\let##2##1\reserved@a}%
-      \expandafter\reserved@a\@uclclist\reserved@b{\reserved@b\@gobble}%
-      \protected@edef\reserved@a{\lowercase{#1}}%
-      \reserved@a
-   }}
-\makeatother
-\expandafter\let\csname ver@natbib.sty\endcsname\relax
-\usepackage[ backend=biber,style=phys,%
-articletitle=false,biblabel=brackets,%
-chaptertitle=false,pageranges=false%
-]{biblatex}
-\addbibresource{prop.bib}
-\ExecuteBibliographyOptions{sorting=none,doi=false,isbn=false,url=false}
 \usepackage{fullpage}
 \usepackage[T1,T2A]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -78,7 +48,6 @@ chaptertitle=false,pageranges=false%
 \def\C{{\mathbb{C}}}
 
 \begin{document}
-\renewcommand{\bibliography}[1]{}
 
 \title{Contextuality and the Born rule in fuzzy quantum theories}
 
@@ -402,11 +371,7 @@ so that we have $\mu(P)\notin\bar{\mu}(P)$ for all quantum probability
 measure~$\mu$.\qed\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{comment}
- \bibliographystyle{plain}
 \bibliography{prop}
-\end{comment}
-\printbibliography
 
 \end{document}
 
