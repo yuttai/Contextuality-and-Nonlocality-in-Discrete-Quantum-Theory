@@ -130,13 +130,50 @@ which should satisfy:
 \item $\mu(\mathbb{1})=1$. 
 \item For any projection $P$, $\mu\left(\mathbb{1}-P\right)=1-\mu\left(P\right)$. 
 \item For a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
-we have $\mu\left(\sum_{i=1}^{N}P_{i}\right)=\sum_{i=1}^{N}\mu\left(P_{i}\right)$. 
+we have 
+\begin{equation}
+\mu\left(\sum_{i=1}^{N}P_{i}\right)=\sum_{i=1}^{N}\mu\left(P_{i}\right)\textrm{ .}\label{eq:QuantumProbability-Addition}
+\end{equation}
 \end{itemize}
 Gleason's theorem asserts that there exists a unique mixed state~$\rho$
 such that $\mu=\mu_{\rho}^{\mathrm{\mathrm{B}}}$ in a Hilbert space
 of dimension $d\geq3$.
 
 \paragraph{Quantum Interval-valued Probability Measure (IVPM)}
+
+In order to model the idea of finite precision measurement, we replace
+the range of $\mu$ from the infinity precision~$[0,1]$ to a collection
+of finite number of intervals~$\mathscr{I}$, and consider a quantum
+IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$. It is intuitive
+to consider $\left[0,0\right]$, $\left[1,1\right]\in\mathscr{I}$
+and to define $\left[1,1\right]-\left[l,r\right]=\left[1-r,1-l\right]$
+and $[l_{1},r_{1}]+[l_{2},r_{2}]=[l_{1}+l_{2},r_{1}+r_{2}]$ so that
+$\bar{\mu}$ satisfy
+\begin{itemize}
+\item $\bar{\mu}(\mathbb{0})=\left[0,0\right]$. 
+\item $\bar{\mu}(\mathbb{1})=\left[1,1\right]$. 
+\item For any projection $P$, 
+\begin{equation}
+\bar{\mu}\left(\mathbb{1}-P\right)=\left[1,1\right]-\bar{\mu}\left(P\right)\textrm{ .}\label{eq:QuantumInterval-valuedProbability-Complement}
+\end{equation}
+\item For a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
+we have 
+\begin{equation}
+\bar{\mu}\left(\sum_{i=1}^{N}P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}\left(P_{i}\right)\textrm{ .}\label{eq:QuantumInterval-valuedProbability-Inclusion}
+\end{equation}
+\end{itemize}
+Notice that Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
+relaxes the equality in Eq.~(\ref{eq:QuantumProbability-Addition})
+to inclusion. This becomes intuitive if we compare each terms in two
+sides of Eq.~(\ref{eq:QuantumInterval-valuedProbability-Complement}).
+Although we have $\mathbb{1}=\left(\mathbb{1}-P\right)+P$, but when
+$r>l$, the left-hand side~$\bar{\mu}(\mathbb{1})=\left[1,1\right]$
+is a proper subset of the right-hand side~$\bar{\mu}\left(\mathbb{1}-P\right)+\bar{\mu}\left(P\right)=\left[1+l-r,1+r-l\right]$.
+Then, Gleason's theorem can be expressed as the limit case when the
+collection of intervals are all singletons~$\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$.
+In the next paragraph, we will show the Kochen-Specker theorem is
+another limit case when the collection of intervals are $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $,
+where $\imposs=\left[0,0\right]$ and $\necess=\left[1,1\right]$.
 
 \paragraph{The Kochen-Specker Theorem}
 
