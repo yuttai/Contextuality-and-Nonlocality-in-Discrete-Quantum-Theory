@@ -105,20 +105,37 @@ can be computed from wave function of the system and the measuring
 observable \emph{exactly}. In reality, an actual experiment is bounded
 by space, time, energy, and other resources so that an perfect measurement
 cannot be performed, and real measurements must be finite precision.
+Following Feynman~\citep{Feynman1982Simulating}, Landauer~\citep{Landauer1996188},
+and others, one might argue that this resource-bounded perspective
+is also crucial for understanding the very nature of physical processes.
 However, it is not evident at all that this resource-aware perspective
-does not alter the very foundations of quantum mechanics. Indeed taking
-such resource bounds into consideration is what founded computer science
-as a discipline and has become crucial for understanding the very
-nature of computation. Following Feynman~\citep{Feynman1982Simulating},
-Landauer~\citep{Landauer1996188}, and others, one might argue that
-this resource-bounded perspective is also crucial for understanding
-the very nature of physical processes.
+does not alter the very foundations of quantum mechanics.
 
-In previous work, we analyzed the wave function description of quantum
-systems from a resource-bounded perspective. Technically, instead
-of postulating that quantum states are rays in a Hilbert space, i.e.,
-we instead used special finite fields whose size reflected the available
-resources. \ldots{}
+In conventional quantum theory, when we measure a system described
+by a state~$\ket{\phi}$ with respect to an observable~$\mathbf{O}$,
+the probability of getting a eigenvalue~$\lambda$ is completely
+determined by $\ket{\phi}$ and the eigenspace of $\lambda$, $S_{\lambda}$.
+If we denote the projector to $S_{\lambda}$ as $P_{\lambda}$, the
+probability of getting $\lambda$ can be computed by the Born rule~$\mu_{\phi}^{\mathrm{\mathrm{B}}}\left(P_{\lambda}\right)=\ip{\phi}{P_{\lambda}\phi}$.
+In another word, any state~$\ket{\phi}$ defines a quantum probability
+measure~$\mu_{\phi}^{\mathrm{\mathrm{B}}}:\events\rightarrow[0,1]$,
+where $\events$ is the set of all projectors in a Hilbert space.
+Conversely, given any quantum probability measure~$\mu:\events\rightarrow[0,1]$
+which should satisfy:
+\begin{itemize}
+\item $\mu(\mathbb{0})=0$. 
+\item $\mu(\mathbb{1})=1$. 
+\item For any projection $P$, $\mu\left(\mathbb{1}-P\right)=1-\mu\left(P\right)$. 
+\item For a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
+we have $\mu\left(\sum_{i=1}^{N}P_{i}\right)=\sum_{i=1}^{N}\mu\left(P_{i}\right)$. 
+\end{itemize}
+The Gleason's theorem asserts that there exists a unique mixed state~$\rho$
+such that $\mu=\mu_{\rho}^{\mathrm{\mathrm{B}}}$ in a Hilbert space
+$\Hilb$ of dimension $d\geq3$.
+
+\paragraph{Gleason's Theorem}
+
+\paragraph{The Kochen-Specker Theorem}
 
 The Kochen-Specker theorem asserts that there is no function~$v$
 assigning a definitely value to all observables such that 
