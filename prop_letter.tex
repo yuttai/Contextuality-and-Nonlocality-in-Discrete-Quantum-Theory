@@ -119,45 +119,46 @@ and introduce a new framework: quantum IVPM...\newpage{}
 
 \paragraph{Gleason's Theorem}
 
-In conventional quantum theory, when we measure a property $\mathbf{O}$ of a 
-physical system whose state is represented by a density matrix~$\rho$, the 
-probability to obtain the value $\lambda$ is determined by the Born rule 
-$\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(P_{\lambda}\right)=\Tr\left(\rho P_{\lambda}\right)$,
-where $P_{\lambda}$ denotes the projector onto the eigenspace corresponding 
+In conventional quantum theory, when we measure a property $\mathbf{O}$
+of a physical system whose state is represented by a density matrix~$\rho$,
+the probability to obtain the value $\lambda$ is determined by the
+Born rule $\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(P_{\lambda}\right)=\Tr\left(\rho P_{\lambda}\right)$,
+where $P_{\lambda}$ denotes the projector onto the eigenspace corresponding
 to the eigenvalue $\lambda$ of the Hermitian operator $\mathbf{O}$~\citep{Born1983,peres1995quantum,544199,Jaeger2007}.
 
-In other words, any density matrix~$\rho$ defines a quantum probability
-measure~$\mu_{\rho}^{\mathrm{\mathrm{B}}}:\events\rightarrow[0,1]$,
-where $\events$ is the set of all projectors in a Hilbert space~\citep{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010}.
-Conversely, given any quantum probability measure~$\mu:\events\rightarrow[0,1]$
-which should satisfy:
+In other words, any density matrix~$\rho$ can define a function
+$\mu_{\rho}^{\mathrm{\mathrm{B}}}$ from the set of all projectors
+in a Hilbert space~$\events$ to $[0,1]$. This function~$\mu_{\rho}^{\mathrm{\mathrm{B}}}$
+is called a quantum probability measure because it satisfies the following
+probability axioms~\citep{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010}: 
 \begin{itemize}
-\item $\mu(\mathbb{0})=0$. 
-\item $\mu(\mathbb{1})=1$. 
-\item For any projection $P$, $\mu\left(\mathbb{1}-P\right)=1-\mu\left(P\right)$. 
+\item $\mu_{\rho}^{\mathrm{\mathrm{B}}}(\mathbb{0})=0$. 
+\item $\mu_{\rho}^{\mathrm{\mathrm{B}}}(\mathbb{1})=1$. 
+\item For any projection $P$, $\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\mathbb{1}-P\right)=1-\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(P\right)$. 
 \item For a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
 we have 
 \begin{equation}
-\mu\left(\sum_{i=1}^{N}P_{i}\right)=\sum_{i=1}^{N}\mu\left(P_{i}\right)\textrm{ .}\label{eq:QuantumProbability-Addition}
+\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\sum_{i=1}^{N}P_{i}\right)=\sum_{i=1}^{N}\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(P_{i}\right)\textrm{ .}\label{eq:QuantumProbability-Addition}
 \end{equation}
 \end{itemize}
-Gleason's theorem asserts that there exists a unique mixed state~$\rho$
-such that $\mu=\mu_{\rho}^{\mathrm{\mathrm{B}}}$ in a Hilbert space
-of dimension $d\geq3$~\citep{gleason1957,Redhead1987-REDINA,peres1995quantum}.
+Conversely, given any quantum probability measure~$\mu:\events\rightarrow[0,1]$
+satisfying the above conditions, Gleason's theorem asserts that there
+exists a unique mixed state~$\rho$ such that $\mu=\mu_{\rho}^{\mathrm{\mathrm{B}}}$
+in a Hilbert space of dimension $d\geq3$~\citep{gleason1957,Redhead1987-REDINA,peres1995quantum}.
 
 \paragraph{Quantum Interval-valued Probability Measure (IVPM)}
 
 In order to model the idea of finite precision measurement, we replace
-the range of $\mu$ from the infinity precision~$[0,1]$ to a collection
-of finite number of intervals~$\mathscr{I}$, and consider a quantum
-IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$. It is intuitive
-to consider $\left[0,0\right]$, $\left[1,1\right]\in\mathscr{I}$
+the infinity precision~$[0,1]$ by a collection of finite number
+of intervals~$\mathscr{I}$, and consider quantum IVPMs~$\bar{\mu}:\events\rightarrow\mathscr{I}$.
+It is intuitive to require $\left[0,0\right]$, $\left[1,1\right]\in\mathscr{I}$
 and to define $\left[1,1\right]-\left[l,r\right]=\left[1-r,1-l\right]$
 and 
 \begin{equation}
 [l_{1},r_{1}]+[l_{2},r_{2}]=[l_{1}+l_{2},r_{1}+r_{2}]
 \end{equation}
- so that $\bar{\mu}$ satisfy the follow conditions:
+so that $\bar{\mu}$ satisfy the follow interval-valued probability
+axioms: 
 \begin{itemize}
 \item $\bar{\mu}(\mathbb{0})=\left[0,0\right]$. 
 \item $\bar{\mu}(\mathbb{1})=\left[1,1\right]$. 
@@ -173,22 +174,24 @@ we have
 \end{itemize}
 Notice that Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
 relaxes the equality in Eq.~(\ref{eq:QuantumProbability-Addition})
-to inclusion. This becomes intuitive if we plug in Eq.~(\ref{eq:QuantumInterval-valuedProbability-Complement})
-into Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion}).
-The left-hand side becomes $\bar{\mu}(\mathbb{1})=\left[1,1\right]$,
+to inclusion because the equality is usually too strong to hold. For
+example, if we plug in Eq.~(\ref{eq:QuantumInterval-valuedProbability-Complement})
+into Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion}),
+the left-hand side becomes $\bar{\mu}(\mathbb{1})=\left[1,1\right]$,
 and the right-hand side becomes $\bar{\mu}\left(\mathbb{1}-P\right)+\bar{\mu}\left(P\right)=\left[1+l-r,1+r-l\right]$
 which is a proper superset of $\left[1,1\right]$ when $r>l$.
 
 Although considering IVPM is new for quantum, people have already
-defined classical IVPMs~\cite{JamisonLodwick2004}. We find if we
-restrict on a mutually commuting sub-event space~$\events'\subseteq\events$,
-quantum IVPMs are one-to-one corresponding to the classical ones.
-Despite restricting on the domain of quantum IVPMs, if we pick the
-range as a limiting case, the collection of all singletons~$\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
-then quantum IVPMs becomes real-valued probability measures which
-case Gleason's theorem applies. In the next paragraph, we will show
-the Kochen-Specker theorem~\citep{kochenspecker1967,peres1995quantum,Redhead1987-REDINA} is another limit case when the collection
-of intervals are $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $,
+defined classical IVPMs~\citep{JamisonLodwick2004}. If we restrict
+quantum IVPMs~$\bar{\mu}:\events\rightarrow\mathscr{I}$ on a mutually
+commuting sub-event space~$\events'\subseteq\events$, every restricted
+quantum IVPM~$\bar{\mu}\mid_{\events'}$ is one-to-one corresponding
+to a classical one. 
+
+On the other hand, Gleason's theorem can be expressed as the limit
+case when the collection of intervals are all singletons~$\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$.
+In the next paragraph, we will show the Kochen-Specker theorem~\citep{kochenspecker1967,peres1995quantum,Redhead1987-REDINA}
+is another limit case when the collection of intervals are $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $,
 where $\imposs=\left[0,0\right]$ and $\necess=\left[1,1\right]$.\newpage{}
 
 \paragraph{The Kochen-Specker Theorem}
