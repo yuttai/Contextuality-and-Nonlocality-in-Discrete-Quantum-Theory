@@ -762,10 +762,6 @@ citep{kochenspecker1967,peres1995quantum,Redhead1987-REDINA}
 \end_inset
 
 .
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Paragraph
@@ -1569,9 +1565,19 @@ reference "eq:MerminSquare"
 \end_inset
 
 ) are not projections, if we want to reformulate the above argument in the
- language of quantum probability measures, we first need to find the common
- eigenbasis of each row and column, and consider the projections to each
- eigenvectors.
+ language of quantum IVPMs, we first need to find the common eigenbasis
+ of each row and column, and consider the projections to each eigenvectors
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kernaghan1994,peres1995quantum"
+
+\end_inset
+
+.
  Let 
 \begin_inset Formula $\mathcal{T}_{24}$
 \end_inset
@@ -1611,57 +1617,86 @@ reference "eq:Kochen-Specker-Rules"
 ), where 
 \begin_inset Formula 
 \begin{equation}
-\events_{24}=\set{\sum_{i=1}^{N}\proj{\psi_{i}}}{\textrm{mutually orthogonal }\left\{ \ket{\psi_{i}}\right\} _{i=1}^{N}\subseteq\mathcal{T}_{24}}
+\events_{24}=\set{\sum_{i=1}^{N}\proj{\psi_{i}}}{\begin{gathered}\textrm{mutually orthogonal }\\
+\left\{ \ket{\psi_{i}}\right\} _{i=1}^{N}\subseteq\mathcal{T}_{24}
+\end{gathered}
+}
 \end{equation}
 
 \end_inset
 
-which is a sub-event space defined in definition
+is a sub-event space.
+\end_layout
+
+\begin_layout Standard
+Assume there is a function
 \begin_inset space ~
 \end_inset
 
 
+\begin_inset Formula $v:\events_{24}\rightarrow\left\{ 0,1\right\} $
+\end_inset
+
+ satisfying equation
+\begin_inset space ~
+\end_inset
+
+(
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "def:sub-event-space"
+reference "eq:Kochen-Specker-Rules"
 
+\end_inset
+
+).
+ There must be a quantum IVPM
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}:\events_{24}\rightarrow\mathscr{I}_{\mathrm{D}}$
+\end_inset
+
+ defined by 
+\begin_inset Formula $\bar{\mu}\left(P\right)=\iota_{0}\left(v\left(P\right)\right)$
+\end_inset
+
+, where 
+\begin_inset Formula 
+\begin{equation}
+\iota_{0}\left(x\right)=\begin{cases}
+\necess & \text{ if}x=1\text{ ;}\\
+\imposs & \text{ if}x=0\text{ .}
+\end{cases}\label{eq:homomorphism-0}
+\end{equation}
+
+\end_inset
+
+Hence, there exists an interval-valued frame function
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\bar{f}:\mathcal{T}_{24}\rightarrow\mathscr{I}_{\mathrm{D}}$
+\end_inset
+
+ defined by 
+\begin_inset Formula $\bar{f}\left(\ket{\psi}\right)=\bar{\mu}\left(\proj{\psi}\right)$
 \end_inset
 
 .
- This kind of 
-\begin_inset Formula $v$
-\end_inset
-
- is actually a quantum cryptodeterministic measure.
- Since a cryptodeterministic measure is a special case of real-valued probabilit
-y measure, by theorem
+ Because of Eq.
 \begin_inset space ~
 \end_inset
 
-
+(
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lemma:classical-probability-measures"
+reference "eq:QuantumInterval-valuedProbability-Inclusion"
 
 \end_inset
 
-, the quantum cryptodeterministic measure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $v$
-\end_inset
-
- exists if and only if there exists a frame function
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $f:\mathcal{T}_{24}\rightarrow\left\{ 0,1\right\} $
-\end_inset
-
- which should at least satisfy 
+), we have
 \begin_inset ERT
 status collapsed
 
@@ -1677,17 +1712,35 @@ begin{subequations}
  
 \begin_inset CommandInset label
 LatexCommand label
-name "eq:Kernaghan-1"
+name "eq:Kernaghan"
 
 \end_inset
 
  
 \begin_inset Formula 
 \begin{eqnarray}
-1 & = & f(1,0,0,0)+f(0,1,0,0)+f(0,0,1,0)\nonumber \\*
- &  & +f(0,0,0,1)\textrm{ and}\\
-1 & = & f(-1,1,1,1)+f(1,-1,1,1)+f(1,1,-1,1)\nonumber \\*
- &  & +f(1,1,1,-1)
+\necess & \subseteq & \bar{f}(1,0,0,0)+\bar{f}(0,1,0,0)+\bar{f}(0,0,1,0)\nonumber \\*
+ &  & +\bar{f}(0,0,0,1)\textrm{ ,}\\
+\necess & \subseteq & \bar{f}(-1,1,1,1)+\bar{f}(1,-1,1,1)+\bar{f}(1,1,-1,1)\nonumber \\
+ &  & +\bar{f}(1,1,1,-1)\textrm{ ,}\\
+\necess & \subseteq & \bar{f}(1,0,0,0)+\bar{f}(0,1,0,0)+\bar{f}(0,0,1,1)\nonumber \\
+ &  & +\bar{f}(0,0,1,-1)\textrm{ ,}\\
+\necess & \subseteq & \bar{f}(1,0,0,0)+\bar{f}(0,0,1,0)+\bar{f}(0,1,0,1)\nonumber \\*
+ &  & +\bar{f}(0,1,0,-1)\textrm{ ,}\\
+\necess & \subseteq & \bar{f}(1,0,0,0)+\bar{f}(0,0,0,1)+\bar{f}(0,1,1,0)\nonumber \\*
+ &  & +\bar{f}(0,1,-1,0)\textrm{ ,}\\
+\necess & \subseteq & \bar{f}(-1,1,1,1)+\bar{f}(1,1,-1,1)+\bar{f}(1,0,1,0)\nonumber \\*
+ &  & +\bar{f}(0,1,0,-1)\textrm{ ,}\\
+\necess & \subseteq & \bar{f}(-1,1,1,1)+\bar{f}(1,1,-1,1)+\bar{f}(0,1,1,0)\nonumber \\*
+ &  & +\bar{f}(1,0,0,-1)\textrm{ ,}\\
+\necess & \subseteq & \bar{f}(1,1,-1,1)+\bar{f}(1,1,1,-1)+\bar{f}(0,0,1,1)\nonumber \\*
+ &  & +\bar{f}(1,-1,0,0)\textrm{ ,}\\
+\necess & \subseteq & \bar{f}(0,1,-1,0)+\bar{f}(1,0,0,-1)+\bar{f}(1,1,1,1)\nonumber \\*
+ &  & +\bar{f}(1,-1,-1,1)\textrm{ ,}\\
+\necess & \subseteq & \bar{f}(0,0,1,-1)+\bar{f}(1,-1,0,0)+\bar{f}(1,1,1,1)\nonumber \\*
+ &  & +\bar{f}(1,1,-1,-1)\textrm{ ,}\\
+\necess & \subseteq & \bar{f}(1,0,1,0)+\bar{f}(0,1,0,1)+\bar{f}(1,1,-1,-1)\nonumber \\*
+ &  & +\bar{f}(1,-1,-1,1)\textrm{ .}
 \end{eqnarray}
 
 \end_inset
@@ -1705,107 +1758,22 @@ end{subequations}
 
 \end_inset
 
- because of table
-\begin_inset space ~
+
+\begin_inset Newpage newpage
 \end_inset
 
 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "table:commonBasis"
-
-\end_inset
-
-.
- 
-\begin_inset Formula $f$
-\end_inset
-
- should also satisfy the following equations since the vectors in each equation
- form an orthogonal basis
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Kernaghan1994,peres1995quantum"
-
-\end_inset
-
-: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{subequations}
 \end_layout
 
-\end_inset
-
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "eq:Kernaghan-2"
-
-\end_inset
-
- 
-\begin_inset Formula 
-\begin{eqnarray}
-1 & = & f(1,0,0,0)+f(0,1,0,0)+f(0,0,1,1)\nonumber \\*
- &  & +f(0,0,1,-1)\textrm{ ,}\\
-1 & = & f(1,0,0,0)+f(0,0,1,0)+f(0,1,0,1)\nonumber \\*
- &  & +f(0,1,0,-1)\textrm{ ,}\\
-1 & = & f(1,0,0,0)+f(0,0,0,1)+f(0,1,1,0)\nonumber \\*
- &  & +f(0,1,-1,0)\textrm{ ,}\\
-1 & = & f(-1,1,1,1)+f(1,1,-1,1)+f(1,0,1,0)\nonumber \\*
- &  & +f(0,1,0,-1)\textrm{ ,}\\
-1 & = & f(-1,1,1,1)+f(1,1,-1,1)+f(0,1,1,0)\nonumber \\*
- &  & +f(1,0,0,-1)\textrm{ ,}\\
-1 & = & f(1,1,-1,1)+f(1,1,1,-1)+f(0,0,1,1)\nonumber \\*
- &  & +f(1,-1,0,0)\textrm{ ,}\\
-1 & = & f(0,1,-1,0)+f(1,0,0,-1)+f(1,1,1,1)\nonumber \\*
- &  & +f(1,-1,-1,1)\textrm{ ,}\\
-1 & = & f(0,0,1,-1)+f(1,-1,0,0)+f(1,1,1,1)\nonumber \\*
- &  & +f(1,1,-1,-1)\textrm{ ,}\\
-1 & = & f(1,0,1,0)+f(0,1,0,1)+f(1,1,-1,-1)\nonumber \\*
- &  & +f(1,-1,-1,1)\textrm{ .}
-\end{eqnarray}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{subequations}
-\end_layout
-
-\end_inset
-
- In equation
+\begin_layout Standard
+In equation
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:Kernaghan-1"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:Kernaghan-2"
+reference "eq:Kernaghan"
 
 \end_inset
 
@@ -1829,7 +1797,7 @@ reference "eq:Kernaghan-2"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:Kernaghan-1"
+reference "eq:Kernaghan"
 
 \end_inset
 
@@ -2183,7 +2151,7 @@ Consider the frame function
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:Kernaghan-1"
+reference "eq:Kernaghan"
 
 \end_inset
 
