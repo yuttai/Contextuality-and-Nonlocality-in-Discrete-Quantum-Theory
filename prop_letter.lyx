@@ -1793,7 +1793,7 @@ name "eq:Kernaghan"
  &  & +\bar{f}(1,1,-1,1)+\bar{f}(1,1,1,-1)\textrm{ ,}\\
 \necess & \subseteq & \bar{f}(-1,1,1,1)+\bar{f}(1,1,-1,1)\nonumber \\*
  &  & +\bar{f}(1,0,1,0)+\bar{f}(0,1,0,-1)\textrm{ ,}\\
-\necess & \subseteq & \bar{f}(-1,1,1,1)+\bar{f}(1,1,-1,1)\nonumber \\*
+\necess & \subseteq & \bar{f}(1,-1,1,1)+\bar{f}(1,1,-1,1)\nonumber \\*
  &  & +\bar{f}(0,1,1,0)+\bar{f}(1,0,0,-1)\textrm{ ,}\\
 \necess & \subseteq & \bar{f}(1,1,-1,1)+\bar{f}(1,1,1,-1)\nonumber \\*
  &  & +\bar{f}(0,0,1,1)+\bar{f}(1,-1,0,0)\textrm{ ,}\\
@@ -1820,21 +1820,21 @@ end{subequations}
 
 \end_inset
 
-If we sum up equation
+If we sum up Eq.
 \begin_inset space ~
 \end_inset
 
-
+(
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:Kernaghan"
 
 \end_inset
 
-, we will have
+), we will have
 \begin_inset Formula 
 \begin{eqnarray}
-\left[11,11\right] & \subseteq & 4\bar{f}(1,0,0,0)+4\bar{f}(-1,1,1,1)\nonumber \\
+\left[11,11\right] & \subseteq & 4\bar{f}(1,0,0,0)+4\bar{f}(1,1,-1,1)\nonumber \\
  &  & +2\sum_{\ket{\psi}\in\mathcal{T}_{18}}\bar{f}\left(\ket{\psi}\right)\textrm{ ,}\label{eq:QuantumInterval-valuedProbability-Total}
 \end{eqnarray}
 
@@ -1843,7 +1843,7 @@ reference "eq:Kernaghan"
 where 
 \begin_inset Formula 
 \begin{eqnarray}
-\mathcal{T}_{18} & = & \mathcal{T}_{24}\backslash\{(1,0,0,0),(-1,1,1,1),(1,-1,1,-1),\nonumber \\
+\mathcal{T}_{18} & = & \mathcal{T}_{24}\backslash\{(1,0,0,0),(1,1,-1,1),(1,-1,1,-1),\nonumber \\
  &  & (1,0,-1,0),(1,0,0,1),(1,1,0,0)\}\textrm{ .}
 \end{eqnarray}
 
@@ -1861,7 +1861,7 @@ reference "eq:QuantumInterval-valuedProbability-Total"
 \end_inset
 
 ) can never be satisfied.
- Because each term in left-hand side is either 
+ Because each term in right-hand side is either 
 \begin_inset Formula $\imposs=\left[0,0\right]$
 \end_inset
 
@@ -1869,7 +1869,7 @@ reference "eq:QuantumInterval-valuedProbability-Total"
 \begin_inset Formula $\necess=\left[1,1\right]$
 \end_inset
 
-, the left-hand side is a singleton set of an even integer while the right-hand
+, the right-hand side is a singleton set of an even integer while the left-hand
  side is 
 \begin_inset Formula $\left\{ 11\right\} $
 \end_inset
@@ -1910,9 +1910,11 @@ Quantum IVPM and Real-valued Probability Measure
 
 \begin_layout Standard
 Recall we model the idea of the finite precision measurement as IVPM.
- Given a quantum IVPM, the natural question would be whether we are able
- to refine precisely enough to determine the underlying unknown quantum
- real-valued probability measure, i.e., a quantum state.
+ When we made finite number of observations, we can use some quantum IVPMs
+ to represent what we observed.
+ The natural question would be whether we are able to refine precisely enough
+ to determine the underlying unknown quantum real-valued probability measure,
+ i.e., a quantum state.
  This leads to the definition of core:
 \begin_inset ERT
 status collapsed
@@ -1972,9 +1974,9 @@ For example, we can add an one extra interval
 \begin_inset Formula 
 \begin{equation}
 \iota_{1}(x)=\begin{cases}
-\necess & \text{ if}x=1\text{ ;}\\
-\imposs & \text{ if}x=0\text{ ;}\\
-\unknown & \text{ otherwise.}
+\necess & \text{, if }x=1\text{ ;}\\
+\imposs & \text{, if }x=0\text{ ;}\\
+\unknown & \text{, otherwise.}
 \end{cases}\label{eq:homomorphism-1}
 \end{equation}
 
@@ -1984,8 +1986,12 @@ Then,
 \begin_inset Formula $\iota_{1}\circ\mu_{\ket{0}}^{\mathrm{\mathrm{B}}}:\events\rightarrow\mathscr{I}_{1}$
 \end_inset
 
- is a quantum IVPM, and we have 
-\begin_inset Formula $\mathrm{core}\left(\iota_{1}\circ\mu_{\ket{0}}^{\mathrm{\mathrm{B}}}\right)=\left\{ \mu_{\ket{0}}^{\mathrm{\mathrm{B}}}\right\} $
+ is a quantum IVPM whose core has a unique element
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mu_{\ket{0}}^{\mathrm{\mathrm{B}}}$
 \end_inset
 
 , where 
@@ -1996,111 +2002,9 @@ Then,
 \end_layout
 
 \begin_layout Standard
-While Shapley proved a good enough classical IVPM always has a non-empty
- core, and we haven't found any classical IVPM having an empty core, there
- are some simple quantum IVPM which has an empty core.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{thm}[
-\end_layout
-
-\end_inset
-
-Shapley
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand citep
-key "Shapley1971,Grabisch2016"
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "thm:Shapley"
-
-\end_inset
-
- Every classical convex interval-valued probability measure has a non-empty
- core, where 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- is called convex if 
-\begin_inset Formula 
-\begin{equation}
-\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\label{eq:QuantumInterval-valuedProbability-Convex}
-\end{equation}
-
-\end_inset
-
-for all commuting 
-\begin_inset Formula $P_{0},P_{1}\in\events$
-\end_inset
-
-, and the 
-\emph on
-disjunction
-\emph default
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $P_{0}\vee P_{1}$
-\end_inset
-
- is defined to be 
-\begin_inset Formula $P_{0}+P_{1}-P_{0}P_{1}$
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Griffiths2003"
-
-\end_inset
-
-.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{thm}
-\end_layout
-
-\end_inset
-
-
+However, not every quantum IVPM well represent our observations.
+ The following example provides a quantum IVPM with an empty core, i.e., it
+ cannot be further refined to get the underlying unknown quantum states.
 \end_layout
 
 \begin_layout Standard
@@ -2401,6 +2305,114 @@ end{example}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+While the above example alerts that there might be a bad choice to represent
+ our observations as a quantum IVPM, this phenomena is quantum, because
+ Shapley proved that a good enough classical IVPM always has a non-empty
+ core.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{thm}[
+\end_layout
+
+\end_inset
+
+Shapley
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Shapley1971,Grabisch2016"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:Shapley"
+
+\end_inset
+
+Every classical convex interval-valued probability measure has a non-empty
+ core, where 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ is called convex if 
+\begin_inset Formula 
+\begin{equation}
+\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\label{eq:QuantumInterval-valuedProbability-Convex}
+\end{equation}
+
+\end_inset
+
+for all commuting 
+\begin_inset Formula $P_{0},P_{1}\in\events$
+\end_inset
+
+, and the 
+\emph on
+disjunction
+\emph default
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $P_{0}\vee P_{1}$
+\end_inset
+
+ is defined to be 
+\begin_inset Formula $P_{0}+P_{1}-P_{0}P_{1}$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Griffiths2003"
+
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{thm}
+\end_layout
+
+\end_inset
+
+ In general, we haven't found any classical IVPM having an empty core.
+ 
 \end_layout
 
 \begin_layout Standard
