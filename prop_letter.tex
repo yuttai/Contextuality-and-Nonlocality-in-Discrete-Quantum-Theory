@@ -151,7 +151,7 @@ In order to model the idea of finite precision measurement, we replace
 the infinity precise~$[0,1]$ by a collection of finite number of
 intervals~$\mathscr{I}$, and consider quantum IVPMs~$\bar{\mu}:\events\rightarrow\mathscr{I}$.
 Based on the intuitive requirement, $\left[0,0\right]$, $\left[1,1\right]\in\mathscr{I}$,
-and operations on intervals,\begin{subequations}
+and operations on intervals,\begin{subequations}\label{eq:interval-operations}
 \begin{eqnarray}
  &  & \left[1,1\right]-\left[l,r\right]=\left[1-r,1-l\right]\textrm{ and}\\
  &  & [l_{1},r_{1}]+[l_{2},r_{2}]=[l_{1}+l_{2},r_{1}+r_{2}]
@@ -174,23 +174,20 @@ we have
 Notice that Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
 relaxes the equality in Eq.~(\ref{eq:QuantumProbability-Addition})
 to inclusion because the equality is usually too strong to hold. For
-example, if we consider $\left\{ P_{1},P_{2}\right\} =\left\{ P,\mathbb{1}-P\right\} $,
-we have 
+example, if we consider $\left\{ P_{1},P_{2}\right\} =\left\{ P,\mathbb{1}-P\right\} $
+and $\bar{\mu}\left(P\right)=\left[l,r\right]$, by Eq.~(\ref{eq:QuantumInterval-valuedProbability-Complement})
+and (\ref{eq:interval-operations}), we have 
 \[
 \bar{\mu}(\mathbb{1})=\left[1,1\right]\subsetneq\left[1+l-r,1+r-l\right]=\bar{\mu}\left(\mathbb{1}-P\right)+\bar{\mu}\left(P\right)
 \]
-by Eq.~(\ref{eq:QuantumInterval-valuedProbability-Complement}) when
-$r>l$.
+when $r>l$.
 
 Although considering IVPM is new for a quantum theory, people have
 already defined classical IVPMs~\citep{JamisonLodwick2004}, which
 are essentially the same as quantum IVPMs on a restricted mutually
-commuting sub-event space~$\events'\subseteq\events$, where the
-sub-event space is defined as follow.
-
-\begin{definition}\label{def:sub-event-space}Given a Hilbert space
-$\Hilb$, $\events'\subseteq\events$ is called a sub-event space
-if it satisfies the follow conditions.
+commuting sub-event space~$\events'\subseteq\events$, where any
+subset of $\events$ is called a sub-event space if it satisfies the
+follow conditions.
 \begin{itemize}
 \item $\mathbb{0}\in\events'$.
 \item $\mathbb{1}\in\events'$.
@@ -198,13 +195,14 @@ if it satisfies the follow conditions.
 \item For a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}\subseteq\events'$,
 we have $\sum_{i=1}^{N}P_{i}\in\events'$.
 \end{itemize}
-\end{definition}
-
-On the other hand, Gleason's theorem can be expressed as the limiting
-case when the collection of intervals are all singletons~$\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$.
-In the next paragraph, we will show the Kochen-Specker theorem~\citep{kochenspecker1967,peres1995quantum,Redhead1987-REDINA}
+Quantum IVPM not only stems from classical IVPM but also generalizes
+quantum real-valued probability measures which can be expressed a
+limiting case when the collection of intervals are all singletons~$\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
+where Gleason's theorem is applied. However, it certainly contains
+richer phenomena. For example, we will show the Kochen-Specker theorem~\citep{kochenspecker1967,peres1995quantum,Redhead1987-REDINA}
 is another limiting case when the collection of intervals are $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $,
-where $\imposs=\left[0,0\right]$ and $\necess=\left[1,1\right]$.
+where $\imposs=\left[0,0\right]$ and $\necess=\left[1,1\right]$,
+in the next paragraph.
 
 \paragraph{The Kochen-Specker Theorem}
 
@@ -265,7 +263,7 @@ Since observables in equation~(\ref{eq:MerminSquare}) are not projections,
 if we want to reformulate the above argument in the language of quantum
 IVPMs, we first need to find the common eigenbasis of each row and
 column, and consider the projections to each eigenvectors~\citep{Kernaghan1994,peres1995quantum}.
-Let $\mathcal{T}_{24}$ denote all eigenstates listed in table~\ref{table:commonBasis}.
+Let $\mathcal{T}_{24}$ denote all eigenstates listed in Table~\ref{table:commonBasis}.
 The Kochen-Specker theorem could then be proved by showing there is
 no function~$v:\events_{24}\rightarrow\left\{ 0,1\right\} $ satisfying
 equation~(\ref{eq:Kochen-Specker-Rules}), where 
@@ -284,13 +282,14 @@ defined by $\bar{\mu}_{24}\left(P\right)=\iota_{\mathrm{D}}\left(v\left(P\right)
 where 
 \begin{equation}
 \iota_{\mathrm{D}}\left(x\right)=\begin{cases}
-\necess & \text{ if}x=1\text{ ;}\\
-\imposs & \text{ if}x=0\text{ .}
+\necess & \text{, if }x=1\text{ ;}\\
+\imposs & \text{, if }x=0\text{ .}
 \end{cases}\label{eq:homomorphism-0}
 \end{equation}
 Hence, there exists an interval-valued frame function~$\bar{f}:\mathcal{T}_{24}\rightarrow\mathscr{I}_{\mathrm{D}}$
 defined by $\bar{f}\left(\ket{\psi}\right)=\bar{\mu}_{24}\left(\proj{\psi}\right)$
-satisfying the following conditions because of Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})\begin{subequations}\label{eq:Kernaghan}
+satisfying the following conditions because the right-hand side of
+each equation forms an orthogonal basis and we can apply Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})\begin{subequations}\label{eq:Kernaghan}
 \begin{eqnarray}
 \necess & \subseteq & \bar{f}(1,0,0,0)+\bar{f}(0,1,0,0)\nonumber \\*
  &  & +\bar{f}(0,0,1,0)+\bar{f}(0,0,0,1)\textrm{ ,}\\
