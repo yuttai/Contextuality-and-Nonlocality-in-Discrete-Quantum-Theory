@@ -30,14 +30,12 @@ showkeys, longbibliography, amsmath, amssymb]{revtex4-1}
 \newcommand{\necess}{{\text{\wesa{certain}}}}
 \newcommand{\unknown}{{\text{\wesa{unknown}}}}
 \newcommand{\midd}{{\text{\wesa{middle}}}}
-\newcommand{\ket}[1]{{\left\vert{#1}\right\rangle}}
+\usepackage[braket,qm]{qcircuit}
 \newcommand{\fket}[1]{{|#1\rangle}}
 \newcommand{\fproj}[1]{|#1\rangle\langle #1|}
-\newcommand{\op}[2]{\ensuremath{\left\vert{#1}\middle\rangle\middle\langle{#2}\right\vert}}
 \newcommand{\proj}[1]{\op{#1}{#1}}
 \newcommand{\ps}{\texttt{+}}
-\newcommand{\minus}{\texttt{-}}
-\newcommand{\ip}[2]{\ensuremath{\left\langle{#1}\middle\vert{#2}\right\rangle}}
+\newcommand{\ms}{\texttt{-}}
 
 \usepackage{color}
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -251,19 +249,26 @@ satisfying equation~(\ref{eq:Kochen-Specker-Rules}).
 \caption{\label{table:commonBasis}In each row, three observables are listed
 in the left column commutes, and their common eigenbasis is listed
 in the right column. In order to unify and simplify the notation,
-we do not normalize eigenstates, and represent the state~$\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}+\alpha_{3}\ket{3}$
-as $\left(\alpha_{0},\alpha_{1},\alpha_{2},\alpha_{3}\right)$.}
+we do not normalize eigenstates, and represent the state~$\alpha_{00}\ket{00}+\alpha_{01}\ket{01}+\alpha_{10}\ket{10}+\alpha_{11}\ket{11}$
+as $\left(\alpha_{00},\alpha_{01},\alpha_{10},\alpha_{11}\right)$.
+Also, to simplify the notation later, the projector onto each eigenstate
+is on the right of each eigenstate. A projector is named by its eigenstate
+if it is a product state, where $\ket{\ps}=\frac{1}{\sqrt{2}}\left(\ket{0}+\ket{1}\right)$
+and $\ket{\ms}=\frac{1}{\sqrt{2}}\left(\ket{0}-\ket{1}\right)$. For
+example, $P_{00}=\op{0}{0}$ and $P_{\ps\ms}=\op{\ps}{\ms}$. For
+the entangled states, $P_{\textrm{B}i}$ means it is one of the Bell
+basis, and $P_{\textrm{N}i}$ means it is not part of the Bell basis.}
 
 \begin{ruledtabular}
 \begin{tabular}{ccc|cccc}
 \multicolumn{3}{c}{Commuting observables} & \multicolumn{4}{c}{Common eigenbasis}\tabularnewline
 \hline 
-$\mathbb{1}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\mathbb{1}$  & $\sigma_{z}\otimes\sigma_{z}$  & $(1,0,0,0)$  & $(0,1,0,0)$  & $(0,0,1,0)$  & $(0,0,0,1)$ \tabularnewline
-$\sigma_{x}\otimes\mathbb{1}$  & $\mathbb{1}\otimes\sigma_{x}$  & $\sigma_{x}\otimes\sigma_{x}$  & $(1,1,1,1)$  & $(1,-1,1,-1)$  & $(1,1,-1,-1)$  & $(1,-1,-1,1)$ \tabularnewline
-$\sigma_{x}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\sigma_{x}$  & $\sigma_{y}\otimes\sigma_{y}$  & $(1,1,1,-1)$  & $(1,1,-1,1)$  & $(1,-1,1,1)$  & $(-1,1,1,1)$ \tabularnewline
-$\mathbb{1}\otimes\sigma_{z}$  & $\sigma_{x}\otimes\mathbb{1}$  & $\sigma_{x}\otimes\sigma_{z}$  & $(1,0,1,0)$  & $(0,1,0,1)$  & $(1,0,-1,0)$  & $(0,1,0,-1)$ \tabularnewline
-$\sigma_{z}\otimes\mathbb{1}$  & $\mathbb{1}\otimes\sigma_{x}$  & $\sigma_{z}\otimes\sigma_{x}$  & $(1,1,0,0)$  & $(1,-1,0,0)$  & $(0,0,1,1)$  & $(0,0,1,-1)$ \tabularnewline
-$\sigma_{z}\otimes\sigma_{z}$  & $\sigma_{x}\otimes\sigma_{x}$  & $\sigma_{y}\otimes\sigma_{y}$  & $(0,1,1,0)$  & $(0,1,-1,0)$  & $(1,0,0,1)$  & $(1,0,0,-1)$ \tabularnewline
+$\mathbb{1}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\mathbb{1}$  & $\sigma_{z}\otimes\sigma_{z}$  & $(1,0,0,0)\rightarrow P_{00}$  & $(0,1,0,0)\rightarrow P_{01}$  & $(0,0,1,0)\rightarrow P_{10}$  & $(0,0,0,1)\rightarrow P_{11}$ \tabularnewline
+$\sigma_{x}\otimes\mathbb{1}$  & $\mathbb{1}\otimes\sigma_{x}$  & $\sigma_{x}\otimes\sigma_{x}$  & $(1,1,1,1)\rightarrow P_{\ps\ps}$  & $(1,-1,1,-1)\rightarrow P_{\ps\ms}$  & $(1,1,-1,-1)\rightarrow P_{\ms\ps}$  & $(1,-1,-1,1)\rightarrow P_{\ms\ms}$ \tabularnewline
+$\sigma_{x}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\sigma_{x}$  & $\sigma_{y}\otimes\sigma_{y}$  & $(1,1,1,-1)\rightarrow P_{\textrm{N}0}$  & $(1,1,-1,1)\rightarrow P_{\textrm{N}1}$  & $(1,-1,1,1)\rightarrow P_{\textrm{N}2}$  & $(-1,1,1,1)\rightarrow P_{\textrm{N}3}$ \tabularnewline
+$\mathbb{1}\otimes\sigma_{z}$  & $\sigma_{x}\otimes\mathbb{1}$  & $\sigma_{x}\otimes\sigma_{z}$  & $(1,0,1,0)\rightarrow P_{\ps0}$  & $(0,1,0,1)\rightarrow P_{\ps1}$  & $(1,0,-1,0)\rightarrow P_{\ms0}$  & $(0,1,0,-1)\rightarrow P_{\ms1}$ \tabularnewline
+$\sigma_{z}\otimes\mathbb{1}$  & $\mathbb{1}\otimes\sigma_{x}$  & $\sigma_{z}\otimes\sigma_{x}$  & $(1,1,0,0)\rightarrow P_{0\ps}$  & $(1,-1,0,0)\rightarrow P_{0\ms}$  & $(0,0,1,1)\rightarrow P_{1\ps}$  & $(0,0,1,-1)\rightarrow P_{1\ms}$ \tabularnewline
+$\sigma_{z}\otimes\sigma_{z}$  & $\sigma_{x}\otimes\sigma_{x}$  & $\sigma_{y}\otimes\sigma_{y}$  & $(0,1,1,0)\rightarrow P_{\textrm{B}0}$  & $(0,1,-1,0)\rightarrow P_{\textrm{B}1}$  & $(1,0,0,1)\rightarrow P_{\textrm{B}2}$  & $(1,0,0,-1)\rightarrow P_{\textrm{B}3}$ \tabularnewline
 \end{tabular}
 \end{ruledtabular}
 
