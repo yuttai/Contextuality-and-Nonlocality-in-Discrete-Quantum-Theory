@@ -281,22 +281,19 @@ Since observables in equation~(\ref{eq:MerminSquare}) are not projections,
 if we want to reformulate the above argument in the language of quantum
 IVPMs, we first need to find the common eigenbasis of each row and
 column, and consider the projections to each eigenvectors~\cite{Kernaghan1994,peres1995quantum}.
-Let $\mathcal{T}_{24}$ denote all eigenstates listed in Table~\ref{table:commonBasis}.
-The Kochen-Specker theorem could then be proved by showing there is
-no function~$v:\events_{24}\rightarrow\left\{ 0,1\right\} $ satisfying
-equation~(\ref{eq:Kochen-Specker-Rules}), where 
+Let $\mathcal{T}_{24}$ denote the projectors onto each eigenstate
+listed in Table~\ref{table:commonBasis}. The Kochen-Specker theorem
+could then be proved by showing there is no function~$v:\events_{24}\rightarrow\left\{ 0,1\right\} $
+satisfying equation~(\ref{eq:Kochen-Specker-Rules}), where 
 \begin{equation}
-\events_{24}=\set{\sum_{i=1}^{N}\proj{\psi_{i}}}{\begin{gathered}\textrm{mutually orthogonal }\\
-\left\{ \ket{\psi_{i}}\right\} _{i=1}^{N}\subseteq\mathcal{T}_{24}
-\end{gathered}
-}
+\events_{24}=\set{\sum_{i=1}^{N}P_{i}}{\textrm{orthogonal }\left\{ P_{i}\right\} _{i=1}^{N}\subseteq\mathcal{T}_{24}}
 \end{equation}
 is a sub-event space.
 
 Assume there is a function~$v:\events_{24}\rightarrow\left\{ 0,1\right\} $
 satisfying equation~(\ref{eq:Kochen-Specker-Rules}). There must
-be a quantum IVPM~$\bar{\mu}_{24}:\events_{24}\rightarrow\mathscr{I}_{\mathrm{D}}$
-defined by $\bar{\mu}_{24}\left(P\right)=\iota_{\mathrm{D}}\left(v\left(P\right)\right)$,
+be a quantum IVPM~$\bar{\mu}':\events_{24}\rightarrow\mathscr{I}_{\mathrm{D}}$
+defined by $\bar{\mu}'\left(P\right)=\iota_{\mathrm{D}}\left(v\left(P\right)\right)$,
 where 
 \begin{equation}
 \iota_{\mathrm{D}}\left(x\right)=\begin{cases}
@@ -304,53 +301,38 @@ where
 \imposs & \text{, if }x=0\text{ .}
 \end{cases}\label{eq:homomorphism-0}
 \end{equation}
-Hence, there exists an interval-valued frame function~$\bar{f}:\mathcal{T}_{24}\rightarrow\mathscr{I}_{\mathrm{D}}$
-defined by $\bar{f}\left(\ket{\psi}\right)=\bar{\mu}_{24}\left(\proj{\psi}\right)$
-satisfying the following conditions because the right-hand side of
-each equation forms an orthogonal basis and we can apply Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})\begin{subequations}\label{eq:Kernaghan}
-\begin{eqnarray}
-\necess & \subseteq & \bar{f}\left(P_{00}\right)+\bar{f}\left(P_{01}\right)\nonumber \\*
- &  & +\bar{f}\left(P_{10}\right)+\bar{f}\left(P_{11}\right)\textrm{ ,}\\
-\necess & \subseteq & \bar{f}\left(P_{00}\right)+\bar{f}\left(P_{01}\right)\nonumber \\*
- &  & +\bar{f}\left(P_{1\ps}\right)+\bar{f}\left(P_{1\ms}\right)\textrm{ ,}\\
-\necess & \subseteq & \bar{f}\left(P_{00}\right)+\bar{f}\left(P_{10}\right)\nonumber \\*
- &  & +\bar{f}\left(P_{\ps1}\right)+\bar{f}\left(P_{\ms1}\right)\textrm{ ,}\\
-\necess & \subseteq & \bar{f}\left(P_{00}\right)+\bar{f}\left(P_{11}\right)\nonumber \\*
- &  & +\bar{f}\left(P_{\textrm{B}0}\right)+\bar{f}\left(P_{\textrm{B}1}\right)\textrm{ ,}\\
-\necess & \subseteq & \bar{f}\left(P_{\textrm{N}3}\right)+\bar{f}\left(P_{\textrm{N}2}\right)\nonumber \\*
- &  & +\bar{f}\left(P_{\textrm{N}1}\right)+\bar{f}\left(P_{\textrm{N}0}\right)\textrm{ ,}\\
-\necess & \subseteq & \bar{f}\left(P_{\textrm{N}3}\right)+\bar{f}\left(P_{\textrm{N}1}\right)\nonumber \\*
- &  & +\bar{f}\left(P_{\ps0}\right)+\bar{f}\left(P_{\ms1}\right)\textrm{ ,}\\
-\necess & \subseteq & \bar{f}\left(P_{\textrm{N}2}\right)+\bar{f}\left(P_{\textrm{N}1}\right)\nonumber \\*
- &  & +\bar{f}\left(P_{\textrm{B}0}\right)+\bar{f}\left(P_{\textrm{B}3}\right)\textrm{ ,}\\
-\necess & \subseteq & \bar{f}\left(P_{\textrm{N}1}\right)+\bar{f}\left(P_{\textrm{N}0}\right)\nonumber \\*
- &  & +\bar{f}\left(P_{1\ps}\right)+\bar{f}\left(P_{0\ms}\right)\textrm{ ,}\\
-\necess & \subseteq & \bar{f}\left(P_{\textrm{B}1}\right)+\bar{f}\left(P_{\textrm{B}3}\right)\nonumber \\*
- &  & +\bar{f}\left(P_{\ps\ps}\right)+\bar{f}\left(P_{\ms\ms}\right)\textrm{ ,}\\
-\necess & \subseteq & \bar{f}\left(P_{1\ms}\right)+\bar{f}\left(P_{0\ms}\right)\nonumber \\*
- &  & +\bar{f}\left(P_{\ps\ps}\right)+\bar{f}\left(P_{\ms\ps}\right)\textrm{ ,}\\
-\necess & \subseteq & \bar{f}\left(P_{\ps0}\right)+\bar{f}\left(P_{\ps1}\right)\nonumber \\*
- &  & +\bar{f}\left(P_{\ms\ps}\right)+\bar{f}\left(P_{\ms\ms}\right)\textrm{ .}
-\end{eqnarray}
-\end{subequations}If we sum up Eq.~(\ref{eq:Kernaghan}), we will
-have
-\begin{eqnarray}
-\left[11,11\right] & \subseteq & 4\bar{f}\left(P_{00}\right)+4\bar{f}\left(P_{\textrm{N}1}\right)\nonumber \\
- &  & +2\sum_{\ket{\psi}\in\mathcal{T}_{18}}\bar{f}\left(\ket{\psi}\right)\textrm{ ,}\label{eq:QuantumInterval-valuedProbability-Total}
-\end{eqnarray}
+Because the right-hand side of each equation forms an orthogonal basis,
+we can apply Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
+and have the following conditions
+\begin{eqnarray*}
+\necess & \subseteq & \bar{\mu}'\left(P_{00}\right)+\bar{\mu}'\left(P_{01}\right)+\bar{\mu}'\left(P_{10}\right)+\bar{\mu}'\left(P_{11}\right)\textrm{ ,}\\
+\necess & \subseteq & \bar{\mu}'\left(P_{00}\right)+\bar{\mu}'\left(P_{01}\right)+\bar{\mu}'\left(P_{1\ps}\right)+\bar{\mu}'\left(P_{1\ms}\right)\textrm{ ,}\\
+\necess & \subseteq & \bar{\mu}'\left(P_{00}\right)+\bar{\mu}'\left(P_{10}\right)+\bar{\mu}'\left(P_{\ps1}\right)+\bar{\mu}'\left(P_{\ms1}\right)\textrm{ ,}\\
+\necess & \subseteq & \bar{\mu}'\left(P_{00}\right)+\bar{\mu}'\left(P_{11}\right)+\bar{\mu}'\left(P_{\textrm{B}0}\right)+\bar{\mu}'\left(P_{\textrm{B}1}\right)\textrm{ ,}\\
+\necess & \subseteq & \bar{\mu}'\left(P_{\textrm{N}3}\right)+\bar{\mu}'\left(P_{\textrm{N}2}\right)+\bar{\mu}'\left(P_{\textrm{N}1}\right)+\bar{\mu}'\left(P_{\textrm{N}0}\right)\textrm{ ,}\\
+\necess & \subseteq & \bar{\mu}'\left(P_{\textrm{N}3}\right)+\bar{\mu}'\left(P_{\textrm{N}1}\right)+\bar{\mu}'\left(P_{\ps0}\right)+\bar{\mu}'\left(P_{\ms1}\right)\textrm{ ,}\\
+\necess & \subseteq & \bar{\mu}'\left(P_{\textrm{N}2}\right)+\bar{\mu}'\left(P_{\textrm{N}1}\right)+\bar{\mu}'\left(P_{\textrm{B}0}\right)+\bar{\mu}'\left(P_{\textrm{B}3}\right)\textrm{ ,}\\
+\necess & \subseteq & \bar{\mu}'\left(P_{\textrm{N}1}\right)+\bar{\mu}'\left(P_{\textrm{N}0}\right)+\bar{\mu}'\left(P_{1\ps}\right)+\bar{\mu}'\left(P_{0\ms}\right)\textrm{ ,}\\
+\necess & \subseteq & \bar{\mu}'\left(P_{\textrm{B}1}\right)+\bar{\mu}'\left(P_{\textrm{B}3}\right)+\bar{\mu}'\left(P_{\ps\ps}\right)+\bar{\mu}'\left(P_{\ms\ms}\right)\textrm{ ,}\\
+\necess & \subseteq & \bar{\mu}'\left(P_{1\ms}\right)+\bar{\mu}'\left(P_{0\ms}\right)+\bar{\mu}'\left(P_{\ps\ps}\right)+\bar{\mu}'\left(P_{\ms\ps}\right)\textrm{ ,}\\
+\necess & \subseteq & \bar{\mu}'\left(P_{\ps0}\right)+\bar{\mu}'\left(P_{\ps1}\right)+\bar{\mu}'\left(P_{\ms\ps}\right)+\bar{\mu}'\left(P_{\ms\ms}\right)\textrm{ .}
+\end{eqnarray*}
+If we sum up the preceding equations, we will have
+\begin{equation}
+\left[11,11\right]\subseteq4\bar{\mu}'\left(P_{00}\right)+4\bar{\mu}'\left(P_{\textrm{N}1}\right)+2\sum_{\ket{\psi}\in\mathcal{T}_{18}}\bar{\mu}'\left(\ket{\psi}\right)\textrm{ ,}\label{eq:QuantumInterval-valuedProbability-Total}
+\end{equation}
 where 
-\begin{eqnarray}
-\mathcal{T}_{18} & = & \mathcal{T}_{24}\backslash\{\left(P_{00}\right),\left(P_{\textrm{N}1}\right),\left(P_{\ps\ms}\right),\nonumber \\
- &  & \left(P_{\ms0}\right),\left(P_{\textrm{B}2}\right),\left(P_{0\ps}\right)\}\textrm{ .}
-\end{eqnarray}
+\begin{equation}
+\mathcal{T}_{18}=\mathcal{T}_{24}\backslash\{P_{00},P_{\textrm{N}1},P_{\ps\ms},P_{\ms0},P_{\textrm{B}2},P_{0\ps}\}\textrm{ .}
+\end{equation}
 However, Eq.~(\ref{eq:QuantumInterval-valuedProbability-Total})
 can never be satisfied. Because each term in right-hand side is either
 $\imposs=\left[0,0\right]$ or $\necess=\left[1,1\right]$, the right-hand
 side is a singleton set of an even integer while the left-hand side
-is $\left\{ 11\right\} $. Therefore, there is no quantum IVPM~$\bar{\mu}_{24}:\events_{24}\rightarrow\mathscr{I}_{\mathrm{D}}$.
+is $\left\{ 11\right\} $. Therefore, there is no quantum IVPM~$\bar{\mu}':\events_{24}\rightarrow\mathscr{I}_{\mathrm{D}}$.
 Moreover, there is no quantum IVPM defined on the set of all projectors
 as well; otherwise, if we have a quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$,
-then we can restrict $\bar{\mu}$ and define $\bar{\mu}_{24}=\left.\bar{\mu}\right|_{\events_{24}}$.
+then we can restrict $\bar{\mu}$ and define $\bar{\mu}'=\left.\bar{\mu}\right|_{\events_{24}}$.
 
 \paragraph{Quantum IVPM and Real-valued Probability Measure}
 
@@ -386,19 +368,14 @@ states.
 
 \begin{example}[Four-dimensional quantum three-interval-valued probability
 measure]\label{ex:four-dimensional-three-value}Consider the orthonormal
-basis~$\left\{ \ket{0},\ket{1},\ket{2},\ket{3}\right\} $ as defined
-in Table~\ref{table:commonBasis}. Let $\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$,
-$\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$. Then, we can
-define a quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{1}$
-as follow:\begin{subequations} 
-\begin{eqnarray}
-\imposs & = & \bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})\nonumber \\*
- & = & \bar{\mu}(\proj{\ps'})\textrm{ ,}\\
-\necess & = & \bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})\nonumber \\*
- & = & \bar{\mu}(\mathbb{1}-\proj{\ps'})\textrm{ ,}\\
-\unknown & = & \bar{\mu}(P)\qquad\textrm{otherwise.}
-\end{eqnarray}
-\end{subequations}
+basis~$\left\{ \ket{00},\ket{01},\ket{10},\ket{11}\right\} $ as
+defined in Table~\ref{table:commonBasis}. Then, we can define a
+quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{1}$ as follow:
+\begin{eqnarray*}
+ &  & \imposs=\bar{\mu}(\mathbb{0})=\bar{\mu}(P_{00})=\bar{\mu}(P_{0\ps})=\bar{\mu}(P_{\ps0})\textrm{ ,}\\
+ &  & \necess=\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-P_{00})=\bar{\mu}(\mathbb{1}-P_{0\ps})=\bar{\mu}(\mathbb{1}-P_{\ps0})\textrm{ ,}\\
+ &  & \unknown=\bar{\mu}(P)\qquad\textrm{otherwise.}
+\end{eqnarray*}
 
 To verify $\bar{\mu}$ is a quantum IVPM, first notice that $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$
 implies equation (\ref{eq:QuantumInterval-valuedProbability-Inclusion})
@@ -421,12 +398,12 @@ probability measure by contradiction. Suppose $\mu(P)\in\bar{\mu}(P)$
 for some quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$.
 We must have 
 \begin{equation}
-\mu(\proj{0})=\mu(\proj{\ps})=\mu(\proj{\ps'})=0\textrm{ .}\label{eq:probability-zero-on-states}
+\mu(P_{00})=\mu(P_{0\ps})=\mu(P_{\ps0})=0\textrm{ .}\label{eq:probability-zero-on-states}
 \end{equation}
 By Gleason's theorem, there is a mixed state~$\rho=\sum_{j=0}^{N-1}q_{j}\proj{\phi_{j}}$
 such that $\mu\left(P\right)=\Tr\left(\rho P\right)=\sum_{j=0}^{N-1}q_{j}\ip{\phi_{j}}{P\phi_{j}}$,
 where $\sum_{j=0}^{N-1}q_{j}=1$ and $q_{j}>0$. However, no pure
-state~$\ket{\phi}$ satisfies $\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0$
+state~$\ket{\phi}$ satisfies $\ip{\phi}{00}=\ip{\phi}{0\ps}=\ip{\phi}{\ps0}=0$
 so that we have $\mu(P)\notin\bar{\mu}(P)$ for all quantum probability
 measure~$\mu$.\qed\end{example}
 
