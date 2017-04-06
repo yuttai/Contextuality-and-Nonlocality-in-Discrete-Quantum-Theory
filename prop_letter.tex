@@ -228,17 +228,17 @@ quantum real-valued probability measures. Consider the collection
 of intervals are all singletons~$\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
 and a function~$\iota_{\infty}:\left[0,1\right]\rightarrow\mathscr{I}_{\infty}$
 defined by $\iota_{\infty}\left(x\right)=\left[x,x\right]$. Then,
-given a quantum real value probability measure~$\mu:\events\rightarrow\left[0,1\right]$,
+given a quantum real-valued probability measure~$\mu:\events\rightarrow\left[0,1\right]$,
 $\bar{\mu}(P)=\iota\left(\mu(P)\right)$ is a quantum IVPM, and vice
-versa. In another word, when quantum IVPMs with $\mathscr{I}_{\infty}$
-are just the same as quantum real-valued probability measures which
-can fit Gleason's theorem. 
+versa. In another word, quantum IVPMs with $\mathscr{I}_{\infty}$
+are just the same as quantum real-valued probability measures where
+Gleason's theorem can apply.
 
-However, quantum IVPMs certainly contains richer phenomena. For example,
-we will show the Kochen-Specker theorem~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA}
-is another limiting case when the collection of intervals are $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $,
-where $\imposs=\left[0,0\right]$ and $\necess=\left[1,1\right]$,
-in the next paragraph.
+$\mathscr{I}_{\infty}$ is one extreme case of quantum IVPM; another
+extreme case happens when the collection of intervals are $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $,
+where $\imposs=\left[0,0\right]$ and $\necess=\left[1,1\right]$.
+This is the case where the Kochen-Specker theorem~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA}
+can be applied and will be explained in the next paragraph.
 
 \paragraph{The Kochen-Specker Theorem}
 
@@ -363,20 +363,32 @@ then we can restrict $\bar{\mu}$ and define $\bar{\mu}'=\left.\bar{\mu}\right|_{
 
 Recall when providing infinity measurement resource, the quantum probability
 measures are simply induced by the Born rule for $d\ge3$. If we increase
-the measurement resource, i.e., pick finer intervals when constructing
-IVPMs, it would be natural to ask whether quantum IVPMs would approach
-the Born rule. In order to understand this question, it is instructive
-to consider the 2-dimensional non-Born quantum probability measure~$\mu:\events\rightarrow[0,1]$
-defined as follow:
+the measurement resource, i.e., pick finer intervals, it is natural
+to ask whether quantum IVPMs approach the Born rule. In order to understand
+this question, it is instructive to consider the 2-dimensional non-Born
+quantum probability measure~$\mu:\events\rightarrow[0,1]$ defined
+as follow:
 \begin{equation}
-\mu(P)=\begin{cases}
-\mu_{\ket{\ps}}^{B}(P) & \textrm{, if }P=\proj{\ps}\textrm{ or }\proj{\ms}\textrm{ ;}\\
-\mu_{\ket{0}}^{B}(P) & \textrm{, otherwise.}
+\mu_{0}(P)=\begin{cases}
+\mu_{\ket{\ps}}^{B}(P) & \textrm{, if }P\in\events_{0}\textrm{ ;}\\
+\mu_{\ket{0}}^{B}(P) & \textrm{, otherwis,}
 \end{cases}
 \end{equation}
-Notice that $\mu$ is consistent with the Born rule partially, because
-it is computed according to different states when applying on different
-projectors. \newpage{}
+where $\events_{0}=\left\{ \mathbb{0},\proj{\ps},\proj{\ms},\mathbb{1}\right\} $
+is a sub-event space. In another word, $\mu_{0}$ is consistent with
+the Born rule on every proper sub-event space, but not on the set
+of all projectors.
+
+Given a quantum IVPM~$\bar{\mu}$, the preceding idea motivates the
+definition of \emph{core} relative to a sub-event space~$\events'$
+as follow.
+\begin{equation}
+\mathrm{core}\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in\events'.~\mu_{\rho}^{B}\left(P\right)\in\bar{\mu}\left(P\right)}\textrm{ .}
+\end{equation}
+Although the elements of a core are density matrices, we may just
+use the state vectors for pure states if it is clear in the context.
+For example, $\mathrm{core}\left(\iota_{\infty}\circ\mu_{0},\events_{0}\right)=\left\{ \ket{\ps}\right\} $,
+where $\circ$ denote function composition.\newpage{}
 
 Recall we model the idea of the finite precision measurement as IVPM.
 When we made finite number of observations, we can use some quantum
