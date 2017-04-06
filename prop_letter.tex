@@ -219,8 +219,8 @@ follow conditions.
 \begin{itemize}
 \item $\mathbb{0}\in\events'$. 
 \item $\mathbb{1}\in\events'$. 
-\item For any projection $P\in\events'$, we have $\mathbb{1}-P\in\events'$. 
-\item For a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}\subseteq\events'$,
+\item For any projection~$P\in\events'$, we have $\mathbb{1}-P\in\events'$. 
+\item For a set of mutually orthogonal projections~$\left\{ P_{i}\right\} _{i=1}^{N}\subseteq\events'$,
 we have $\sum_{i=1}^{N}P_{i}\in\events'$. 
 \end{itemize}
 Quantum IVPM not only stems from classical IVPM but also generalizes
@@ -229,8 +229,8 @@ of intervals are all singletons~$\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\i
 and a function~$\iota_{\infty}:\left[0,1\right]\rightarrow\mathscr{I}_{\infty}$
 defined by $\iota_{\infty}\left(x\right)=\left[x,x\right]$. Then,
 given a quantum real-valued probability measure~$\mu:\events\rightarrow\left[0,1\right]$,
-$\bar{\mu}(P)=\iota\left(\mu(P)\right)$ is a quantum IVPM, and vice
-versa. In another word, quantum IVPMs with $\mathscr{I}_{\infty}$
+$\bar{\mu}(P)=\iota_{\infty}\left(\mu(P)\right)$ is a quantum IVPM,
+and vice versa. In another word, quantum IVPMs with $\mathscr{I}_{\infty}$
 are just the same as quantum real-valued probability measures where
 Gleason's theorem can apply.
 
@@ -366,7 +366,7 @@ measures are simply induced by the Born rule for $d\ge3$. If we increase
 the measurement resource, i.e., pick finer intervals, it is natural
 to ask whether quantum IVPMs approach the Born rule. In order to understand
 this question, it is instructive to consider the 2-dimensional non-Born
-quantum probability measure~$\mu:\events\rightarrow[0,1]$ defined
+quantum probability measure~$\mu_{0}:\events\rightarrow[0,1]$ defined
 as follow:
 \begin{equation}
 \mu_{0}(P)=\begin{cases}
@@ -380,15 +380,35 @@ the Born rule on every proper sub-event space, but not on the set
 of all projectors.
 
 Given a quantum IVPM~$\bar{\mu}$, the preceding idea motivates the
-definition of \emph{core} relative to a sub-event space~$\events'$
+definition of \emph{core} relative to a sub-event space~$\events'\subseteq\events$
 as follow.
 \begin{equation}
 \mathrm{core}\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in\events'.~\mu_{\rho}^{B}\left(P\right)\in\bar{\mu}\left(P\right)}\textrm{ .}
 \end{equation}
 Although the elements of a core are density matrices, we may just
 use the state vectors for pure states if it is clear in the context.
-For example, $\mathrm{core}\left(\iota_{\infty}\circ\mu_{0},\events_{0}\right)=\left\{ \ket{\ps}\right\} $,
-where $\circ$ denote function composition.\newpage{}
+For example, $\mathrm{core}\left(\iota_{\infty}\circ\mu_{0},\events_{0}\right)=\left\{ \ket{\ps}\right\} $
+and $\mathrm{core}\left(\iota_{\infty}\circ\mu_{0},\events\right)=\emptyset$,
+where $\circ$ denote function composition.
+
+Notice that $\iota_{\infty}\circ\mu_{0}$ has a non-empty core relative
+to $\events_{0}$ where every projectors are mutually commutative.
+Recall commutative sub-event space reduces quantum IVPMs to classical
+IVPMs. In general, we haven't found any classical IVPM has a non-empty
+core, and Shapley has proved that a good enough classical IVPM always
+has a non-empty core.
+
+\begin{thm}[Shapley~\cite{Shapley1971,Grabisch2016}]\label{thm:Shapley}For
+every interval-valued probability measure~$\bar{\mu}:\events'\rightarrow\mathscr{I}$,
+if the following conditions are true.
+\begin{itemize}
+\item $\events'$ is commutative, i.e., $\bar{\mu}$ is classical.
+\item For all commuting $P_{0},P_{1}\in\events$, we have $\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$,
+where $P_{0}\vee P_{1}$ is defined to be $P_{0}+P_{1}-P_{0}P_{1}$~\cite{Griffiths2003}.
+\end{itemize}
+Then, $\mathrm{core}\left(\bar{\mu},\events'\right)\ne\emptyset$.\end{thm}
+
+\newpage{}
 
 Recall we model the idea of the finite precision measurement as IVPM.
 When we made finite number of observations, we can use some quantum
@@ -460,23 +480,6 @@ where $\sum_{j=0}^{N-1}q_{j}=1$ and $q_{j}>0$. However, no pure
 state~$\ket{\phi}$ satisfies $\ip{\phi}{00}=\ip{\phi}{0\ps}=\ip{\phi}{\ps0}=0$
 so that we have $\mu(P)\notin\bar{\mu}(P)$ for all quantum probability
 measure~$\mu$.\qed\end{example}
-
-While the above example alerts that there might be a bad choice to
-represent our observations as a quantum IVPM, this phenomena is purely
-quantum, because Shapley proved that a good enough classical IVPM
-always has a non-empty core.
-
-\begin{thm}[Shapley~\cite{Shapley1971,Grabisch2016}]\label{thm:Shapley}Every
-classical convex interval-valued probability measure has a non-empty
-core, where $\bar{\mu}$ is called convex if 
-\begin{equation}
-\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\label{eq:QuantumInterval-valuedProbability-Convex}
-\end{equation}
-for all commuting $P_{0},P_{1}\in\events$, and the \emph{disjunction}~$P_{0}\vee P_{1}$
-is defined to be $P_{0}+P_{1}-P_{0}P_{1}$~\cite{Griffiths2003}.\end{thm}
-
-Since any classical IVPM we found has a non-empty core, we conjecture
-that every classical IVPM has a non-empty core.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliography{prop}
