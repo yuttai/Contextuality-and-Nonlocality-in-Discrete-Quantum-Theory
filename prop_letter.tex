@@ -411,34 +411,40 @@ Then, the quantum IVPM
 \end{equation}
 provides no information about any results so that $\mathrm{core}\left(\bar{\mu}_{1},\events'\right)$
 contains every density matrix. A more sophisticating example is the
-following.
+following.\footnote{\yutsung{It seems that our example in 4 dimensions together with
+relativity core would be unnecessary complex. Therefore, I roll our
+example back to 3 dimensions.}}
 
-\begin{example}[Four-dimensional quantum three-interval-valued probability
-measure]\label{ex:four-dimensional-three-value}Consider the orthonormal
-basis~$\left\{ \ket{00},\ket{01},\ket{10},\ket{11}\right\} $ as
-defined in Table~\ref{table:commonBasis}. Let
-\begin{eqnarray*}
- &  & \imposs=\bar{\mu}(\mathbb{0})=\bar{\mu}(P_{00})=\bar{\mu}(P_{0\ps})=\bar{\mu}(P_{\ps0})\textrm{ ,}\\
- &  & \necess=\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-P_{00})=\bar{\mu}(\mathbb{1}-P_{0\ps})=\bar{\mu}(\mathbb{1}-P_{\ps0})\textrm{ ,}\\
+\begin{example}[Three-dimensional quantum three-interval-valued probability
+measure]\label{ex:three-dimensional-three-value} Given a three dimensional
+Hilbert space with an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
+Let $\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $, $\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$,
+$\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$, and
+\begin{eqnarray}
+ &  & \begin{split}\imposs & =\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})\\
+ & =\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'})\textrm{ ,}
+\end{split}
+\\
+ &  & \begin{split}\necess & =\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})\\
+ & =\bar{\mu}(\mathbb{1}-\proj{\ps})=\bar{\mu}(\mathbb{1}-\proj{\ps'})\textrm{ ,}
+\end{split}
+\\
  &  & \unknown=\bar{\mu}(P)\qquad\textrm{otherwise.}
-\end{eqnarray*}
-It is straightforward to verify that $\bar{\mu}$ is a quantum IVPM.
+\end{eqnarray}
+It is straightforward to verify that $\bar{\mu}$ is a quantum interval-valued
+probability measure. 
 
 \newpage{}
 
-Second, we will prove that $\bar{\mu}$ cannot correspond to any quantum
-probability measure by contradiction. Suppose $\mu(P)\in\bar{\mu}(P)$
-for some quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$.
-We must have 
-\begin{equation}
-\mu(P_{00})=\mu(P_{0\ps})=\mu(P_{\ps0})=0\textrm{ .}\label{eq:probability-zero-on-states}
-\end{equation}
-By Gleason's theorem, there is a mixed state~$\rho=\sum_{j=0}^{N-1}q_{j}\proj{\phi_{j}}$
-such that $\mu\left(P\right)=\Tr\left(\rho P\right)=\sum_{j=0}^{N-1}q_{j}\ip{\phi_{j}}{P\phi_{j}}$,
-where $\sum_{j=0}^{N-1}q_{j}=1$ and $q_{j}>0$. However, no pure
-state~$\ket{\phi}$ satisfies $\ip{\phi}{00}=\ip{\phi}{0\ps}=\ip{\phi}{\ps0}=0$
-so that we have $\mu(P)\notin\bar{\mu}(P)$ for all quantum probability
-measure~$\mu$.\qed\end{example}
+Now assume there exists a real-valued quantum probability measure
+$\mu$ such that $\mu(P)\in\bar{\mu}(P)$ for every event (projection)~$P$.
+We derive a contradiction as follows. Suppose $\mu(P)\in\bar{\mu}(P)$
+then we must have $\mu(\proj{0})=\mu(\proj{\ps})=\mu(\proj{\ps'})=0$.
+By Gleason's theorem, there is a mixed state~$\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}$
+such that $\mu\left(P\right)=\sum_{j=1}^{N}q_{j}\ip{\phi_{j}}{P\phi_{j}}$,
+where $\sum_{j=1}^{N}q_{j}=1$ and $q_{j}>0$. However, no pure state~$\ket{\phi}$
+can satisfy $\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0$; a contradiction.
+\end{example}
 
 \newpage{}
 

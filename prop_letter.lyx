@@ -2202,6 +2202,41 @@ provides no information about any results so that
 
  contains every density matrix.
  A more sophisticating example is the following.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+yutsung{
+\end_layout
+
+\end_inset
+
+It seems that our example in 4 dimensions together with relativity core
+ would be unnecessary complex.
+ Therefore, I roll our example back to 3 dimensions.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2217,7 +2252,7 @@ begin{example}[
 
 \end_inset
 
-Four-dimensional quantum three-interval-valued probability measure
+Three-dimensional quantum three-interval-valued probability measure
 \begin_inset ERT
 status collapsed
 
@@ -2231,37 +2266,40 @@ status collapsed
 
 \begin_inset CommandInset label
 LatexCommand label
-name "ex:four-dimensional-three-value"
+name "ex:three-dimensional-three-value"
 
 \end_inset
 
-Consider the orthonormal basis
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\left\{ \ket{00},\ket{01},\ket{10},\ket{11}\right\} $
-\end_inset
-
- as defined in Table
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "table:commonBasis"
-
+ Given a three dimensional Hilbert space with an orthonormal basis 
+\begin_inset Formula $\left\{ \ket{0},\ket{1},\ket{2}\right\} $
 \end_inset
 
 .
- Let
+ Let 
+\begin_inset Formula $\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$
+\end_inset
+
+, and
 \begin_inset Formula 
-\begin{eqnarray*}
- &  & \imposs=\bar{\mu}(\mathbb{0})=\bar{\mu}(P_{00})=\bar{\mu}(P_{0\ps})=\bar{\mu}(P_{\ps0})\textrm{ ,}\\
- &  & \necess=\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-P_{00})=\bar{\mu}(\mathbb{1}-P_{0\ps})=\bar{\mu}(\mathbb{1}-P_{\ps0})\textrm{ ,}\\
+\begin{eqnarray}
+ &  & \begin{split}\imposs & =\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})\\
+ & =\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'})\textrm{ ,}
+\end{split}
+\\
+ &  & \begin{split}\necess & =\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})\\
+ & =\bar{\mu}(\mathbb{1}-\proj{\ps})=\bar{\mu}(\mathbb{1}-\proj{\ps'})\textrm{ ,}
+\end{split}
+\\
  &  & \unknown=\bar{\mu}(P)\qquad\textrm{otherwise.}
-\end{eqnarray*}
+\end{eqnarray}
 
 \end_inset
 
@@ -2269,7 +2307,8 @@ It is straightforward to verify that
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
- is a quantum IVPM.
+ is a quantum interval-valued probability measure.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2280,46 +2319,47 @@ It is straightforward to verify that
 \end_layout
 
 \begin_layout Standard
-Second, we will prove that 
-\begin_inset Formula $\bar{\mu}$
+Now assume there exists a real-valued quantum probability measure 
+\begin_inset Formula $\mu$
 \end_inset
 
- cannot correspond to any quantum probability measure by contradiction.
+ such that 
+\begin_inset Formula $\mu(P)\in\bar{\mu}(P)$
+\end_inset
+
+ for every event (projection)
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $P$
+\end_inset
+
+.
+ We derive a contradiction as follows.
  Suppose 
 \begin_inset Formula $\mu(P)\in\bar{\mu}(P)$
 \end_inset
 
- for some quantum probability measure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mu:\events\rightarrow\left[0,1\right]$
+ then we must have 
+\begin_inset Formula $\mu(\proj{0})=\mu(\proj{\ps})=\mu(\proj{\ps'})=0$
 \end_inset
 
 .
- We must have 
-\begin_inset Formula 
-\begin{equation}
-\mu(P_{00})=\mu(P_{0\ps})=\mu(P_{\ps0})=0\textrm{ .}\label{eq:probability-zero-on-states}
-\end{equation}
-
-\end_inset
-
-By Gleason's theorem, there is a mixed state
+ By Gleason's theorem, there is a mixed state
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Formula $\rho=\sum_{j=0}^{N-1}q_{j}\proj{\phi_{j}}$
+\begin_inset Formula $\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}$
 \end_inset
 
  such that 
-\begin_inset Formula $\mu\left(P\right)=\Tr\left(\rho P\right)=\sum_{j=0}^{N-1}q_{j}\ip{\phi_{j}}{P\phi_{j}}$
+\begin_inset Formula $\mu\left(P\right)=\sum_{j=1}^{N}q_{j}\ip{\phi_{j}}{P\phi_{j}}$
 \end_inset
 
 , where 
-\begin_inset Formula $\sum_{j=0}^{N-1}q_{j}=1$
+\begin_inset Formula $\sum_{j=1}^{N}q_{j}=1$
 \end_inset
 
  and 
@@ -2335,36 +2375,12 @@ By Gleason's theorem, there is a mixed state
 \begin_inset Formula $\ket{\phi}$
 \end_inset
 
- satisfies 
-\begin_inset Formula $\ip{\phi}{00}=\ip{\phi}{0\ps}=\ip{\phi}{\ps0}=0$
+ can satisfy 
+\begin_inset Formula $\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0$
 \end_inset
 
- so that we have 
-\begin_inset Formula $\mu(P)\notin\bar{\mu}(P)$
-\end_inset
-
- for all quantum probability measure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mu$
-\end_inset
-
-.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-qed
-\end_layout
-
-\end_inset
-
-
+; a contradiction.
+ 
 \begin_inset ERT
 status collapsed
 
