@@ -2288,56 +2288,9 @@ In the language of core, Gleason's theorem states that
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Recall we model the idea of the finite precision measurement as IVPM.
- When we made finite number of observations, we can use some quantum IVPMs
- to represent what we observed.
- Given a quantum IVPM
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
-, the question is whether we can refine precisely enough to determine the
- underlying unknown quantum real-valued probability measure, i.e., a quantum
- state.
- If we can, we say 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- has a non-empty core.
- More precisely, A 
-\emph on
-core
-\emph default
- of 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
-, 
-\begin_inset Formula $\mathrm{core}\left(\bar{\mu}\right)$
-\end_inset
-
-, is the set 
-\begin_inset Formula 
-\begin{equation}
-\set{\pmeas:\events\rightarrow[0,1]}{\forall P\in\events.~\pmeas\left(P\right)\in\bar{\mu}\left(P\right)}\textrm{ .}
-\end{equation}
-
-\end_inset
-
-For example, we can add an one extra interval
+ However, when we only have finite resources, a quantum IVPM may be identified
+ to more than one states on different sub-event spaces.
+ The simplest example add an one extra interval
 \begin_inset space ~
 \end_inset
 
@@ -2354,41 +2307,28 @@ For example, we can add an one extra interval
 \end_inset
 
 .
- Let 
+ Then, 
 \begin_inset Formula 
 \begin{equation}
-\iota_{1}(x)=\begin{cases}
-\necess & \text{, if }x=1\text{ ;}\\
-\imposs & \text{, if }x=0\text{ ;}\\
+\bar{\mu}_{1}\left(P\right)=\begin{cases}
+\necess & \text{, if }P=\mathbb{1}\text{ ;}\\
+\imposs & \text{, if }P=\mathbb{0}\text{ ;}\\
 \unknown & \text{, otherwise.}
 \end{cases}\label{eq:homomorphism-1}
 \end{equation}
 
 \end_inset
 
-Then, 
-\begin_inset Formula $\iota_{1}\circ\mu_{\ket{0}}^{\mathrm{B}}:\events\rightarrow\mathscr{I}_{1}$
+provides no information about any results so that 
+\begin_inset Formula $\mathrm{core}\left(\bar{\mu}_{1},\events'\right)$
 \end_inset
 
- is a quantum IVPM whose core has a unique element
-\begin_inset space ~
+ contains every quantum real-valued probability measure on 
+\begin_inset Formula $\events'$
 \end_inset
 
-
-\begin_inset Formula $\mu_{\ket{0}}^{\mathrm{B}}$
-\end_inset
-
-, where 
-\begin_inset Formula $\circ$
-\end_inset
-
- denote function composition.
-\end_layout
-
-\begin_layout Standard
-However, not every quantum IVPM well represents our observations.
- The following example provides a quantum IVPM with an empty core, i.e., it
- cannot be further refined to get the underlying unknown quantum states.
+.
+ The following is a more sophisticating example.
 \end_layout
 
 \begin_layout Standard
@@ -2442,15 +2382,7 @@ reference "table:commonBasis"
 \end_inset
 
 .
- Then, we can define a quantum IVPM
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}_{1}$
-\end_inset
-
- as follow:
+ Let
 \begin_inset Formula 
 \begin{eqnarray*}
  &  & \imposs=\bar{\mu}(\mathbb{0})=\bar{\mu}(P_{00})=\bar{\mu}(P_{0\ps})=\bar{\mu}(P_{\ps0})\textrm{ ,}\\
@@ -2460,100 +2392,18 @@ reference "table:commonBasis"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-To verify 
+It is straightforward to verify that 
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
- is a quantum IVPM, first notice that 
-\begin_inset Formula $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$
-\end_inset
-
- implies equation (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:QuantumInterval-valuedProbability-Inclusion"
-
-\end_inset
-
-) by induction.
- Second, equation (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:QuantumInterval-valuedProbability-Complement"
-
-\end_inset
-
-) implies 
-\begin_inset Formula $\bar{\mu}\left(\mathbb{1}\right)\subseteq\bar{\mu}\left(P\right)+\bar{\mu}\left(\mathbb{1}-P\right)$
-\end_inset
-
-.
- Therefore, to prove equation (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:QuantumInterval-valuedProbability-Inclusion"
-
-\end_inset
-
-), it is sufficient to check 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{subequations}
+ is a quantum IVPM.
 \end_layout
 
-\end_inset
-
- 
-\begin_inset Formula 
-\begin{eqnarray}
- &  & \bar{\mu}\left(\proj{\psi_{0}}+\proj{\psi_{1}}\right)\nonumber \\*
- & \subseteq & \bar{\mu}\left(\proj{\psi_{0}}\right)+\bar{\mu}\left(\proj{\psi_{1}}\right)\textrm{ ,}\\
- &  & \bar{\mu}\left(\proj{\psi_{0}}+\proj{\psi_{1}}+\proj{\psi_{2}}\right)\nonumber \\*
- & \subseteq & \bar{\mu}\left(\proj{\psi_{0}}\right)+\bar{\mu}\left(\proj{\psi_{1}}+\proj{\psi_{2}}\right)
-\end{eqnarray}
-
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{subequations}
-\end_layout
-
-\end_inset
-
- for orthogonal 
-\begin_inset Formula $\ket{\psi_{0}}$
-\end_inset
-
-, 
-\begin_inset Formula $\ket{\psi_{1}}$
-\end_inset
-
-, and 
-\begin_inset Formula $\ket{\psi_{2}}$
-\end_inset
-
-.
- These equation always hold because 
-\begin_inset Formula $\unknown$
-\end_inset
-
- is a subset of the left-hand side of both of the equations.
 \end_layout
 
 \begin_layout Standard

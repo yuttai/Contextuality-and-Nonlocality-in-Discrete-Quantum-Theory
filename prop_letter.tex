@@ -409,66 +409,34 @@ Then, $\mathrm{core}\left(\bar{\mu},\events'\right)\ne\emptyset$.\end{thm}
 
 In the language of core, Gleason's theorem states that $\mathrm{core}\left(\bar{\mu},\events\right)$
 has a unique element for any quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\infty}$
-when $d\ge3$.
-
-\newpage{}
-
-Recall we model the idea of the finite precision measurement as IVPM.
-When we made finite number of observations, we can use some quantum
-IVPMs to represent what we observed. Given a quantum IVPM~$\bar{\mu}$,
-the question is whether we can refine precisely enough to determine
-the underlying unknown quantum real-valued probability measure, i.e.,
-a quantum state. If we can, we say $\bar{\mu}$ has a non-empty core.
-More precisely, A \emph{core} of $\bar{\mu}$, $\mathrm{core}\left(\bar{\mu}\right)$,
-is the set 
-\begin{equation}
-\set{\pmeas:\events\rightarrow[0,1]}{\forall P\in\events.~\pmeas\left(P\right)\in\bar{\mu}\left(P\right)}\textrm{ .}
-\end{equation}
-For example, we can add an one extra interval~$\unknown=\left[0,1\right]$
+when $d\ge3$. However, when we only have finite resources, a quantum
+IVPM may be identified to more than one states on different sub-event
+spaces. The simplest example add an one extra interval~$\unknown=\left[0,1\right]$
 to $\mathscr{I}_{\mathrm{D}}$, and consider $\mathscr{I}_{1}=\left\{ \imposs,\unknown,\necess\right\} $.
-Let 
+Then, 
 \begin{equation}
-\iota_{1}(x)=\begin{cases}
-\necess & \text{, if }x=1\text{ ;}\\
-\imposs & \text{, if }x=0\text{ ;}\\
+\bar{\mu}_{1}\left(P\right)=\begin{cases}
+\necess & \text{, if }P=\mathbb{1}\text{ ;}\\
+\imposs & \text{, if }P=\mathbb{0}\text{ ;}\\
 \unknown & \text{, otherwise.}
 \end{cases}\label{eq:homomorphism-1}
 \end{equation}
-Then, $\iota_{1}\circ\mu_{\ket{0}}^{\mathrm{B}}:\events\rightarrow\mathscr{I}_{1}$
-is a quantum IVPM whose core has a unique element~$\mu_{\ket{0}}^{\mathrm{B}}$,
-where $\circ$ denote function composition.
-
-However, not every quantum IVPM well represents our observations.
-The following example provides a quantum IVPM with an empty core,
-i.e., it cannot be further refined to get the underlying unknown quantum
-states.
+provides no information about any results so that $\mathrm{core}\left(\bar{\mu}_{1},\events'\right)$
+contains every quantum real-valued probability measure on $\events'$.
+The following is a more sophisticating example.
 
 \begin{example}[Four-dimensional quantum three-interval-valued probability
 measure]\label{ex:four-dimensional-three-value}Consider the orthonormal
 basis~$\left\{ \ket{00},\ket{01},\ket{10},\ket{11}\right\} $ as
-defined in Table~\ref{table:commonBasis}. Then, we can define a
-quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{1}$ as follow:
+defined in Table~\ref{table:commonBasis}. Let
 \begin{eqnarray*}
  &  & \imposs=\bar{\mu}(\mathbb{0})=\bar{\mu}(P_{00})=\bar{\mu}(P_{0\ps})=\bar{\mu}(P_{\ps0})\textrm{ ,}\\
  &  & \necess=\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-P_{00})=\bar{\mu}(\mathbb{1}-P_{0\ps})=\bar{\mu}(\mathbb{1}-P_{\ps0})\textrm{ ,}\\
  &  & \unknown=\bar{\mu}(P)\qquad\textrm{otherwise.}
 \end{eqnarray*}
+It is straightforward to verify that $\bar{\mu}$ is a quantum IVPM.
 
-To verify $\bar{\mu}$ is a quantum IVPM, first notice that $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$
-implies equation (\ref{eq:QuantumInterval-valuedProbability-Inclusion})
-by induction. Second, equation (\ref{eq:QuantumInterval-valuedProbability-Complement})
-implies $\bar{\mu}\left(\mathbb{1}\right)\subseteq\bar{\mu}\left(P\right)+\bar{\mu}\left(\mathbb{1}-P\right)$.
-Therefore, to prove equation (\ref{eq:QuantumInterval-valuedProbability-Inclusion}),
-it is sufficient to check \begin{subequations} 
-\begin{eqnarray}
- &  & \bar{\mu}\left(\proj{\psi_{0}}+\proj{\psi_{1}}\right)\nonumber \\*
- & \subseteq & \bar{\mu}\left(\proj{\psi_{0}}\right)+\bar{\mu}\left(\proj{\psi_{1}}\right)\textrm{ ,}\\
- &  & \bar{\mu}\left(\proj{\psi_{0}}+\proj{\psi_{1}}+\proj{\psi_{2}}\right)\nonumber \\*
- & \subseteq & \bar{\mu}\left(\proj{\psi_{0}}\right)+\bar{\mu}\left(\proj{\psi_{1}}+\proj{\psi_{2}}\right)
-\end{eqnarray}
-\end{subequations} for orthogonal $\ket{\psi_{0}}$, $\ket{\psi_{1}}$,
-and $\ket{\psi_{2}}$. These equation always hold because $\unknown$
-is a subset of the left-hand side of both of the equations.
+\newpage{}
 
 Second, we will prove that $\bar{\mu}$ cannot correspond to any quantum
 probability measure by contradiction. Suppose $\mu(P)\in\bar{\mu}(P)$
