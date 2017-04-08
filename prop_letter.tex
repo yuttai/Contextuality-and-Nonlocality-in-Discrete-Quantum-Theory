@@ -379,20 +379,47 @@ defined as follow:
 where $\events_{0}=\left\{ \mathbb{0},\proj{\ps},\proj{\ms},\mathbb{1}\right\} $
 is a sub-event space. $\mu_{0}$ is not induced by the Born rule as
 a whole, but is consistent with the Born rule on $\events_{0}$ and
-some other proper sub-event spaces. Formally, given a quantum IVPM~$\bar{\mu}$,
-the \emph{core} relative to a sub-event space~$\events'\subseteq\events$
-as follow.\footnote{\yutsung{I changed the definition of core to embedding the Born rule.
+some other proper sub-event spaces. The similar phenomena happens
+for IVPMs as well. Formally, given a quantum IVPM~$\bar{\mu}$, the
+\emph{core} relative to a sub-event space~$\events'\subseteq\events$
+is\footnote{\yutsung{I changed the definition of core to embedding the Born rule.
 While this change might make it easier to explain the core of quantum
-IVPMs, it could increase the difficulty to explain classical IVPMs
-because we might need to explain the meaning of the Born rule for
-classical probability measures...}}
+IVPMs, should we explain the meaning of the Born rule for classical
+probability measures?}}
 \begin{equation}
 \mathrm{core}\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in\events'.~\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)}\textrm{ .}
 \end{equation}
-For example, $\mathrm{core}\left(\iota_{\infty}\circ\mu_{0},\events_{0}\right)=\left\{ \proj{\ps}\right\} $
+The core of an interval-valued probability measure is the set of states
+it approximates. For example, $\mathrm{core}\left(\iota_{\infty}\circ\mu_{0},\events_{0}\right)=\left\{ \proj{\ps}\right\} $,
+$\mathrm{core}\left(\iota_{\infty}\circ\mu_{0},\events_{1}\right)=\left\{ \proj{0}\right\} $
 and $\mathrm{core}\left(\iota_{\infty}\circ\mu_{0},\events\right)=\emptyset$,
-where $\circ$ denote function composition, and $\iota_{\infty}$
-is defined in Eq.~(\ref{eq:iota_infty}).
+where $\circ$ denotes function composition, $\iota_{\infty}$ is
+defined in Eq.~(\ref{eq:iota_infty}), and $\events_{1}=\left\{ \mathbb{0},\proj{0},\proj{1},\mathbb{1}\right\} $.
+That is, $\iota_{\infty}\circ\mu_{0}$ approximates $\proj{\ps}$
+if we are only allowed to use $\events_{0}$ during the measurement,
+approximates $\proj{0}$ if $\events_{1}$ is allowed, and approximates
+nothing if every projector is allowed.
+
+Notice that $\iota_{\infty}\circ\mu_{0}$ has a non-empty core relative
+to $\events_{0}$ and $\events_{1}$ which are all commutative. In
+general, a commutative sub-event space reduces quantum IVPMs to classical
+IVPMs. If a classical IVPM satisfies a coherence condition, convexity,
+it must approximate at least one infinitely-precise measure.
+
+\begin{thm}[Shapley~\cite{Shapley1971,Grabisch2016}]\label{thm:Shapley}For
+every interval-valued probability measure~$\bar{\mu}:\events'\rightarrow\mathscr{I}$,
+if the following conditions are true.
+\begin{itemize}
+\item $\events'$ is commutative, i.e., $\bar{\mu}$ is classical.
+\item $\bar{\mu}$ is convex, i.e., for all commuting $P_{0},P_{1}\in\events$,
+\[
+\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\textrm{ ,}
+\]
+where $P_{0}\vee P_{1}=P_{0}+P_{1}-P_{0}P_{1}$~\cite{Griffiths2003}.
+\end{itemize}
+Then, $\mathrm{core}\left(\bar{\mu},\events'\right)\ne\emptyset$.\end{thm}
+
+\newpage{}
 
 Notice that $\iota_{\infty}\circ\mu_{0}$ has different core elements
 relative to different sub-event spaces so that it has an empty core
@@ -457,27 +484,6 @@ We found this kind of incompatibility can be reduced if we increase
 the measurement resource, that is, using finer intervals. We conjecture
 by consuming more and more measurement resource, it would be more
 and more likely that there is an empty core relative to all projectors~$\events$.
-
-\newpage{}
-
-Notice that $\iota_{\infty}\circ\mu_{0}$ has a non-empty
-core relative to $\events_{0}$ which is commutative. In general,
-a commutative sub-event space reduces quantum IVPMs to classical IVPMs.
-We haven't found any classical IVPM has an empty core, and Shapley
-proved that a good enough classical IVPM always has a non-empty core.
-
-\begin{thm}[Shapley~\cite{Shapley1971,Grabisch2016}]\label{thm:Shapley}For
-every interval-valued probability measure~$\bar{\mu}:\events'\rightarrow\mathscr{I}$,
-if the following conditions are true.
-\begin{itemize}
-\item $\events'$ is commutative, i.e., $\bar{\mu}$ is classical.
-\item For all commuting $P_{0},P_{1}\in\events$, 
-\[
-\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\textrm{ ,}
-\]
-where $P_{0}\vee P_{1}=P_{0}+P_{1}-P_{0}P_{1}$~\cite{Griffiths2003}.
-\end{itemize}
-Then, $\mathrm{core}\left(\bar{\mu},\events'\right)\ne\emptyset$.\end{thm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliography{prop}
