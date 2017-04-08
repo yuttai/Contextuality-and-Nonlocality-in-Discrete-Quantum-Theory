@@ -227,8 +227,11 @@ Quantum IVPM not only stems from classical IVPM but also generalizes
 quantum real-valued probability measures. Consider the collection
 of all singletons~$\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
 and a function~$\iota_{\infty}:\left[0,1\right]\rightarrow\mathscr{I}_{\infty}$
-defined by $\iota_{\infty}\left(x\right)=\left[x,x\right]$. Then,
-given a quantum real-valued probability measure~$\mu:\events\rightarrow\left[0,1\right]$,
+defined by 
+\begin{equation}
+\iota_{\infty}\left(x\right)=\left[x,x\right]\textrm{ .}\label{eq:iota_infty}
+\end{equation}
+Then, given a quantum real-valued probability measure~$\mu:\events\rightarrow\left[0,1\right]$,
 $\bar{\mu}(P)=\iota_{\infty}\left(\mu(P)\right)$ is a quantum IVPM,
 and vice versa. In another word, quantum IVPMs mapping to $\mathscr{I}_{\infty}$
 are just the same as quantum real-valued probability measures where
@@ -361,13 +364,18 @@ then we can restrict $\bar{\mu}$ and define $\bar{\mu}'=\left.\bar{\mu}\right|_{
 
 \paragraph{Quantum IVPM and Real-valued Probability Measure}
 
-Recall when providing infinity measurement resource, the quantum probability
-measures are simply induced by the Born rule for $d\ge3$. If we increase
-the measurement resource, i.e., pick finer intervals, it is natural
-to ask whether quantum IVPMs approach the Born rule. In order to understand
-this question, it is instructive to consider the 2-dimensional non-Born
-quantum probability measure~$\mu_{0}:\events\rightarrow[0,1]$ defined
-as follow:
+Formally, we can ask: what can we deduce about the state of a quantum
+system given a quantum interval-valued probability measure, i.e.,
+given observations done with finite resources. In the case that the
+intervals are infinitely precise, the question reduces to Gleason's
+theorem which states that the state of the quantum system is uniquely
+determined by the probability measure. But surely the less resources
+are available, the less precise the intervals, and the less we expect
+to know about the state of the system.
+
+In order to understand this question, it is instructive to consider
+the 2-dimensional quantum probability measure~$\mu_{0}:\events\rightarrow[0,1]$
+defined as follow:
 \begin{equation}
 \mu_{0}(P)=\begin{cases}
 \mu_{\ket{\ps}}^{\mathrm{B}}(P) & \textrm{, if }P\in\events_{0}\textrm{ ;}\\
@@ -375,25 +383,22 @@ as follow:
 \end{cases}
 \end{equation}
 where $\events_{0}=\left\{ \mathbb{0},\proj{\ps},\proj{\ms},\mathbb{1}\right\} $
-is a sub-event space. In another word, $\mu_{0}$ is consistent with
-the Born rule on every proper sub-event space, but not on the set
-of all projectors.
-
-Given a quantum IVPM~$\bar{\mu}$, the preceding idea motivates the
-definition of \emph{core} relative to a sub-event space~$\events'\subseteq\events$
-as follow.\footnote{\yutsung{{I changed the definition of core} to density matrix. While
-this change might make it easier to explain the core of quantum IVPMs,
-it could increase the difficulty to explain classical IVPMs because
-we might need to explain the meaning of density matrix and the Born
-rule for classical probability measures...}}
+is a sub-event space. $\mu_{0}$ is not induced by the Born rule as
+a whole, but is consistent with the Born rule on $\events_{0}$ and
+some other proper sub-event spaces. Formally, given a quantum IVPM~$\bar{\mu}$,
+the \emph{core} relative to a sub-event space~$\events'\subseteq\events$
+as follow.\footnote{\yutsung{I changed the definition of core to embedding the Born rule.
+While this change might make it easier to explain the core of quantum
+IVPMs, it could increase the difficulty to explain classical IVPMs
+because we might need to explain the meaning of the Born rule for
+classical probability measures...}}
 \begin{equation}
 \mathrm{core}\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in\events'.~\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)}\textrm{ .}
 \end{equation}
-Although the elements of a core are density matrices, we may just
-use the state vectors for pure states if it is clear according to
-the context. For example, $\mathrm{core}\left(\iota_{\infty}\circ\mu_{0},\events_{0}\right)=\left\{ \ket{\ps}\right\} $
+For example, $\mathrm{core}\left(\iota_{\infty}\circ\mu_{0},\events_{0}\right)=\left\{ \proj{\ps}\right\} $
 and $\mathrm{core}\left(\iota_{\infty}\circ\mu_{0},\events\right)=\emptyset$,
-where $\circ$ denote function composition.
+where $\circ$ denote function composition, and $\iota_{\infty}$
+is defined in Eq.~(\ref{eq:iota_infty}).
 
 Notice that $\iota_{\infty}\circ\mu_{0}$ has different core elements
 relative to different sub-event spaces so that it has an empty core
@@ -444,10 +449,10 @@ for any mixed state~$\rho\in\mathrm{core}\left(\bar{\mu},\events_{1}\right)$,
 we have $\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=0$.
 Hence, $\rho$ is actually the pure state orthogonal to both $\ket{0}$
 and $\ket{\ps}$. The only choice of $\rho$ is $\ket{2}$, and it
-is easy to verify $\ket{2}$ is actually in $\mathrm{core}\left(\bar{\mu},\events_{1}\right)$.
+is easy to verify $\proj{2}$ is actually in $\mathrm{core}\left(\bar{\mu},\events_{1}\right)$.
 
 Similarly, let $\events_{2}$ be the minimal event space containing
-both $\proj{0}$ and $\proj{\ps'}$. We have $\mathrm{core}\left(\bar{\mu},\events_{2}\right)=\left\{ \ket{1}\right\} $.
+both $\proj{0}$ and $\proj{\ps'}$. We have $\mathrm{core}\left(\bar{\mu},\events_{2}\right)=\left\{ \proj{1}\right\} $.
 Therefore, 
 \begin{equation}
 \mathrm{core}\left(\bar{\mu},\events\right)\subseteq\mathrm{core}\left(\bar{\mu},\events_{1}\right)\cap\mathrm{core}\left(\bar{\mu},\events_{2}\right)=\emptyset\textrm{ ,}
