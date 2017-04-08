@@ -2071,8 +2071,8 @@ Recall when providing infinity measurement resource, the quantum probability
 \begin_inset Formula 
 \begin{equation}
 \mu_{0}(P)=\begin{cases}
-\mu_{\ket{\ps}}^{B}(P) & \textrm{, if }P\in\events_{0}\textrm{ ;}\\
-\mu_{\ket{0}}^{B}(P) & \textrm{, otherwis,}
+\mu_{\ket{\ps}}^{\mathrm{B}}(P) & \textrm{, if }P\in\events_{0}\textrm{ ;}\\
+\mu_{\ket{0}}^{\mathrm{B}}(P) & \textrm{, otherwis,}
 \end{cases}
 \end{equation}
 
@@ -2113,9 +2113,49 @@ core
 \end_inset
 
  as follow.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+yutsung{
+\end_layout
+
+\end_inset
+
+
+I changed the definition of core
+\lang english
+ to density matrix.
+ While this change might make it easier to explain the core of quantum IVPMs,
+ it could increase the difficulty to explain classical IVPMs because we
+ might need to explain the meaning of density matrix and the Born rule for
+ classical probability measures...
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{equation}
-\mathrm{core}\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in\events'.~\mu_{\rho}^{B}\left(P\right)\in\bar{\mu}\left(P\right)}\textrm{ .}
+\mathrm{core}\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in\events'.~\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)}\textrm{ .}
 \end{equation}
 
 \end_inset
@@ -2290,13 +2330,13 @@ name "ex:three-dimensional-three-value"
 , and
 \begin_inset Formula 
 \begin{eqnarray}
- &  & \begin{split}\imposs & =\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})\\
+ &  & \begin{aligned}\imposs & =\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})\\
  & =\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'})\textrm{ ,}
-\end{split}
+\end{aligned}
 \\
- &  & \begin{split}\necess & =\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})\\
+ &  & \begin{aligned}\necess & =\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})\\
  & =\bar{\mu}(\mathbb{1}-\proj{\ps})=\bar{\mu}(\mathbb{1}-\proj{\ps'})\textrm{ ,}
-\end{split}
+\end{aligned}
 \\
  &  & \unknown=\bar{\mu}(P)\qquad\textrm{otherwise.}
 \end{eqnarray}
@@ -2312,75 +2352,96 @@ It is straightforward to verify that
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
+Let 
+\begin_inset Formula $\events_{1}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Now assume there exists a real-valued quantum probability measure 
-\begin_inset Formula $\mu$
-\end_inset
-
- such that 
-\begin_inset Formula $\mu(P)\in\bar{\mu}(P)$
-\end_inset
-
- for every event (projection)
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $P$
-\end_inset
-
-.
- We derive a contradiction as follows.
- Suppose 
-\begin_inset Formula $\mu(P)\in\bar{\mu}(P)$
-\end_inset
-
- then we must have 
-\begin_inset Formula $\mu(\proj{0})=\mu(\proj{\ps})=\mu(\proj{\ps'})=0$
-\end_inset
-
-.
- By Gleason's theorem, there is a mixed state
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}$
-\end_inset
-
- such that 
-\begin_inset Formula $\mu\left(P\right)=\sum_{j=1}^{N}q_{j}\ip{\phi_{j}}{P\phi_{j}}$
-\end_inset
-
-, where 
-\begin_inset Formula $\sum_{j=1}^{N}q_{j}=1$
+ be the minimal event space containing both 
+\begin_inset Formula $\proj{0}$
 \end_inset
 
  and 
-\begin_inset Formula $q_{j}>0$
+\begin_inset Formula $\proj{\ps}$
 \end_inset
 
 .
- However, no pure state
+ Because 
+\begin_inset Formula $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$
+\end_inset
+
+, for any mixed state
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Formula $\ket{\phi}$
+\begin_inset Formula $\rho\in\mathrm{core}\left(\bar{\mu},\events_{1}\right)$
 \end_inset
 
- can satisfy 
-\begin_inset Formula $\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0$
+, we have 
+\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=0$
 \end_inset
 
-; a contradiction.
- 
+.
+ Hence, 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is actually the pure state orthogonal to both 
+\begin_inset Formula $\ket{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{\ps}$
+\end_inset
+
+.
+ The only choice of 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is 
+\begin_inset Formula $\ket{2}$
+\end_inset
+
+, and it is easy to verify 
+\begin_inset Formula $\ket{2}$
+\end_inset
+
+ is actually in 
+\begin_inset Formula $\mathrm{core}\left(\bar{\mu},\events_{1}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Similarly, let 
+\begin_inset Formula $\events_{2}$
+\end_inset
+
+ be the minimal event space containing both 
+\begin_inset Formula $\proj{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\proj{\ps'}$
+\end_inset
+
+.
+ We have 
+\begin_inset Formula $\mathrm{core}\left(\bar{\mu},\events_{2}\right)=\left\{ \ket{1}\right\} $
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula 
+\begin{equation}
+\mathrm{core}\left(\bar{\mu},\events\right)\subseteq\mathrm{core}\left(\bar{\mu},\events_{1}\right)\cap\mathrm{core}\left(\bar{\mu},\events_{2}\right)=\emptyset\textrm{ ,}
+\end{equation}
+
+\end_inset
+
+and must be empty.
 \begin_inset ERT
 status collapsed
 
@@ -2394,6 +2455,21 @@ end{example}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+We found this kind of incompatibility can be reduced if we increase the
+ measurement resource, that is, using finer intervals.
+ We conjecture by consuming more and more measurement resource, it would
+ be more and more likely that there is an empty core relative to all projectors
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\events$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard

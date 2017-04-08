@@ -370,8 +370,8 @@ quantum probability measure~$\mu_{0}:\events\rightarrow[0,1]$ defined
 as follow:
 \begin{equation}
 \mu_{0}(P)=\begin{cases}
-\mu_{\ket{\ps}}^{B}(P) & \textrm{, if }P\in\events_{0}\textrm{ ;}\\
-\mu_{\ket{0}}^{B}(P) & \textrm{, otherwis,}
+\mu_{\ket{\ps}}^{\mathrm{B}}(P) & \textrm{, if }P\in\events_{0}\textrm{ ;}\\
+\mu_{\ket{0}}^{\mathrm{B}}(P) & \textrm{, otherwis,}
 \end{cases}
 \end{equation}
 where $\events_{0}=\left\{ \mathbb{0},\proj{\ps},\proj{\ms},\mathbb{1}\right\} $
@@ -381,9 +381,13 @@ of all projectors.
 
 Given a quantum IVPM~$\bar{\mu}$, the preceding idea motivates the
 definition of \emph{core} relative to a sub-event space~$\events'\subseteq\events$
-as follow.
+as follow.\footnote{\yutsung{{I changed the definition of core} to density matrix. While
+this change might make it easier to explain the core of quantum IVPMs,
+it could increase the difficulty to explain classical IVPMs because
+we might need to explain the meaning of density matrix and the Born
+rule for classical probability measures...}}
 \begin{equation}
-\mathrm{core}\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in\events'.~\mu_{\rho}^{B}\left(P\right)\in\bar{\mu}\left(P\right)}\textrm{ .}
+\mathrm{core}\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in\events'.~\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)}\textrm{ .}
 \end{equation}
 Although the elements of a core are density matrices, we may just
 use the state vectors for pure states if it is clear according to
@@ -421,30 +425,39 @@ Hilbert space with an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\}
 Let $\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $, $\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$,
 $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$, and
 \begin{eqnarray}
- &  & \begin{split}\imposs & =\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})\\
+ &  & \begin{aligned}\imposs & =\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})\\
  & =\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'})\textrm{ ,}
-\end{split}
+\end{aligned}
 \\
- &  & \begin{split}\necess & =\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})\\
+ &  & \begin{aligned}\necess & =\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})\\
  & =\bar{\mu}(\mathbb{1}-\proj{\ps})=\bar{\mu}(\mathbb{1}-\proj{\ps'})\textrm{ ,}
-\end{split}
+\end{aligned}
 \\
  &  & \unknown=\bar{\mu}(P)\qquad\textrm{otherwise.}
 \end{eqnarray}
 It is straightforward to verify that $\bar{\mu}$ is a quantum interval-valued
 probability measure. 
 
-\newpage{}
+Let $\events_{1}$ be the minimal event space containing both $\proj{0}$
+and $\proj{\ps}$. Because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$,
+for any mixed state~$\rho\in\mathrm{core}\left(\bar{\mu},\events_{1}\right)$,
+we have $\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=0$.
+Hence, $\rho$ is actually the pure state orthogonal to both $\ket{0}$
+and $\ket{\ps}$. The only choice of $\rho$ is $\ket{2}$, and it
+is easy to verify $\ket{2}$ is actually in $\mathrm{core}\left(\bar{\mu},\events_{1}\right)$.
 
-Now assume there exists a real-valued quantum probability measure
-$\mu$ such that $\mu(P)\in\bar{\mu}(P)$ for every event (projection)~$P$.
-We derive a contradiction as follows. Suppose $\mu(P)\in\bar{\mu}(P)$
-then we must have $\mu(\proj{0})=\mu(\proj{\ps})=\mu(\proj{\ps'})=0$.
-By Gleason's theorem, there is a mixed state~$\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}$
-such that $\mu\left(P\right)=\sum_{j=1}^{N}q_{j}\ip{\phi_{j}}{P\phi_{j}}$,
-where $\sum_{j=1}^{N}q_{j}=1$ and $q_{j}>0$. However, no pure state~$\ket{\phi}$
-can satisfy $\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0$; a contradiction.
-\end{example}
+Similarly, let $\events_{2}$ be the minimal event space containing
+both $\proj{0}$ and $\proj{\ps'}$. We have $\mathrm{core}\left(\bar{\mu},\events_{2}\right)=\left\{ \ket{1}\right\} $.
+Therefore, 
+\begin{equation}
+\mathrm{core}\left(\bar{\mu},\events\right)\subseteq\mathrm{core}\left(\bar{\mu},\events_{1}\right)\cap\mathrm{core}\left(\bar{\mu},\events_{2}\right)=\emptyset\textrm{ ,}
+\end{equation}
+and must be empty.\end{example}
+
+We found this kind of incompatibility can be reduced if we increase
+the measurement resource, that is, using finer intervals. We conjecture
+by consuming more and more measurement resource, it would be more
+and more likely that there is an empty core relative to all projectors~$\events$.
 
 \newpage{}
 
