@@ -194,29 +194,47 @@ $P_{i}P_{j}=\delta_{ij}P_{i}$, we have
 \bar{\mu}\left(\sum_{i=1}^{N}P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}\left(P_{i}\right)\textrm{ ,}\label{eq:QuantumInterval-valuedProbability-Inclusion}
 \end{equation}
 \end{itemize}
-condition that provides only a bound and not an equivalence as in Eq. 
-\eqref{eq:QuantumProbability-Addition}. For
-example, if we consider $\left\{ P_{1},P_{2}\right\} =\left\{ P,\mathbb{1}-P\right\} $
-and $\bar{\mu}\left(P\right)=\left[l,r\right]$, we have, when $r-l=\ell>0$,
+condition that provides only a bound and not an equivalence as in
+Eq. \eqref{eq:QuantumProbability-Addition}. For example, if we consider
+$\left\{ P_{1},P_{2}\right\} =\left\{ P,\mathbb{1}-P\right\} $ and
+$\bar{\mu}\left(P\right)=\left[l,r\right]$, we have, when $r-l=\ell>0$,
 \[
-\bar{\mu}(\mathbb{1})=\left[1,1\right]\subsetneq\left[1-\ell,1+\ell\right]=
-\bar{\mu}\left(\mathbb{1}-P\right)+\bar{\mu}\left(P\right) .
+\bar{\mu}(\mathbb{1})=\left[1,1\right]\subsetneq\left[1-\ell,1+\ell\right]=\bar{\mu}\left(\mathbb{1}-P\right)+\bar{\mu}\left(P\right).
 \]
 
-Quantum IVPMs provide a unifying framework to account for finite precision
-measurements in quantum physics. It has the desired properties of
-turning into the classical IVPMs setup~\cite{JamisonLodwick2004}
-when the space of events includes only mutually commuting sub-events,
-and of leading to the standard von Neumann projective measurement
-theory when the collection of intervals are all singletons. To be
-more precise....\newpage{}
+It is easy to establish that quantum IVPMs generalize conventional
+quantum probability measures and classical IVPMs. In particular, any
+quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$
+can be recast as an interval-valued measure~$\iota_{\infty}\circ\mu:\events\rightarrow\mathscr{I}_{\infty}$,
+where $\circ$ denotes function composition, $\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
+and a function~$\iota_{\infty}:\left[0,1\right]\rightarrow\mathscr{I}_{\infty}$
+defined by 
+\begin{equation}
+\iota_{\infty}\left(x\right)=\left[x,x\right]\textrm{ .}\label{eq:iota_infty}
+\end{equation}
+In another word, quantum IVPMs mapping to $\mathscr{I}_{\infty}$
+are just the same as quantum real-valued probability measures where
+Gleason's theorem can apply.
 
-Although considering IVPM is new for a quantum theory, people have
-already defined classical IVPMs~\cite{JamisonLodwick2004}, which
-are essentially the same as quantum IVPMs on a restricted mutually
-commuting sub-event space~$\events'\subseteq\events$, where any
-subset of $\events$ is called a sub-event space if it satisfies the
-follow conditions. 
+More interesting examples comes when we focus on only three intervals
+$\left[0,0\right]$, $\left[1,1\right]$ and \emph{$\left[0,1\right]$},
+where $\left[0,0\right]$ and $\left[1,1\right]$ are called \imposs~and
+\necess~as before, and \emph{$\left[0,1\right]$} is called \unknown~because
+it provides no information. Then,
+\begin{equation}
+\bar{\mu}_{1}\left(P\right)=\begin{cases}
+\necess & \text{, if }P=\mathbb{1}\text{ ;}\\
+\imposs & \text{, if }P=\mathbb{0}\text{ ;}\\
+\unknown & \text{, otherwise.}
+\end{cases}\label{eq:homomorphism-1}
+\end{equation}
+is a quantum IVPM. This measure represents the beliefs of an experimenter
+with no prior knowledge about the particular quantum system in question.
+
+Quantum IVPMs turns into the classical IVPMs setup~\cite{JamisonLodwick2004}
+when the space of events includes only mutually commuting sub-events,
+where any subset of $\events$ is called a sub-event space if it satisfies
+the follow conditions. 
 \begin{itemize}
 \item $\mathbb{0}\in\events'$. 
 \item $\mathbb{1}\in\events'$. 
@@ -224,23 +242,20 @@ follow conditions.
 \item For a set of mutually orthogonal projections~$\left\{ P_{i}\right\} _{i=1}^{N}\subseteq\events'$,
 we have $\sum_{i=1}^{N}P_{i}\in\events'$. 
 \end{itemize}
-Quantum IVPM not only stems from classical IVPM but also generalizes
-quantum real-valued probability measures. Consider the collection
-of all singletons~$\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
-and a function~$\iota_{\infty}:\left[0,1\right]\rightarrow\mathscr{I}_{\infty}$
-defined by 
+For example, $\events_{0}=\left\{ \mathbb{0},\proj{\ps},\proj{\ms},\mathbb{1}\right\} $
+is a commuting sub-event space. Restricting $\bar{\mu}_{1}$ on $\events_{0}$,
+$\bar{\mu}_{1}|_{\events_{0}}$, gives a classical IVPM~$\bar{\mu}_{2}$:
 \begin{equation}
-\iota_{\infty}\left(x\right)=\left[x,x\right]\textrm{ .}\label{eq:iota_infty}
+\begin{aligned}\bar{\mu}_{2}(\mathbb{0}) & =\imposs & \bar{\mu}_{2}(\proj{0}) & =\unknown\\
+\bar{\mu}_{2}(\mathbb{1}) & =\necess & \bar{\mu}_{2}(\proj{1}) & =\unknown
+\end{aligned}
 \end{equation}
-Then, given a quantum real-valued probability measure~$\mu:\events\rightarrow\left[0,1\right]$,
-$\bar{\mu}(P)=\iota_{\infty}\left(\mu(P)\right)$ is a quantum IVPM,
-and vice versa. In another word, quantum IVPMs mapping to $\mathscr{I}_{\infty}$
-are just the same as quantum real-valued probability measures where
-Gleason's theorem can apply.
+If we identify $\proj{0}$ and $\proj{1}$ as the head and the tail
+of a coin, respectively, then $\bar{\mu}_{2}$ represents experimenter
+know nothing about a coin before she toss it.
 
 While mapping to $\mathscr{I}_{\infty}$ is one extreme case of quantum
-IVPM, mapping to $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $,
-where $\imposs=\left[0,0\right]$ and $\necess=\left[1,1\right]$,
+IVPM, mapping to $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $
 is another one corresponding to the Kochen-Specker theorem~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA}.
 
 \paragraph{The Kochen-Specker Theorem}
@@ -335,8 +350,8 @@ where
 \imposs & \text{, if }x=0\text{ .}
 \end{cases}\label{eq:homomorphism-0}
 \end{equation}
-Since each orthogonal basis can form an instance of Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion}),
-the orthogonal bases in $\events_{18}$ gives the following equations:
+For each the orthogonal basis in $\events_{18}$, Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
+gives the following equations: 
 \begin{equation}
 \begin{aligned}\necess & \subseteq\bar{\mu}\left(P_{12}\right)+\bar{\mu}\left(P_{18}\right)+\bar{\mu}\left(P_{17}\right)+\bar{\mu}\left(P_{16}\right)\textrm{ ,}\\
 \necess & \subseteq\bar{\mu}\left(P_{16}\right)+\bar{\mu}\left(P_{67}\right)+\bar{\mu}\left(P_{69}\right)+\bar{\mu}\left(P_{56}\right)\textrm{ ,}\\
@@ -363,34 +378,31 @@ Moreover, there is no quantum IVPM defined on the set of all projectors
 as well; otherwise, if we have a quantum IVPM~$\bar{\mu}':\events\rightarrow\mathscr{I}_{\mathrm{D}}$,
 then we can restrict $\bar{\mu}'$ and define $\bar{\mu}=\left.\bar{\mu}'\right|_{\events_{18}}$.
 
-
-\paragraph{Quantum IVPM and Real-valued Probability Measure}
+\paragraph{Quantum IVPM and States}
 
 Formally, we can ask: what can we deduce about the state of a quantum
 system given a quantum interval-valued probability measure, i.e.,
 given observations done with finite resources. In the case that the
-intervals are infinitely precise, the question reduces to Gleason's
-theorem which states that the state of the quantum system is uniquely
-determined by the probability measure. But surely the less resources
-are available, the less precise the intervals, and the less we expect
-to know about the state of the system.
+intervals are infinitely precise for $d\ge3$, the question reduces
+to Gleason's theorem which states that the state of the quantum system
+is uniquely determined by the probability measure. But surely the
+less resources are available, the less precise the intervals, and
+the less we expect to know about the state of the system.
 
-In order to understand this question, it is instructive to consider
-the 2-dimensional quantum probability measure~$\mu_{0}:\events\rightarrow[0,1]$
+To understand the relation between IVPMs and states, it is instructive
+to consider the 2-dimensional quantum probability measure~$\mu_{0}:\events\rightarrow[0,1]$
 defined as follow:
 \begin{equation}
 \mu_{0}(P)=\begin{cases}
 \mu_{\ket{\ps}}^{\mathrm{B}}(P) & \textrm{, if }P\in\events_{0}\textrm{ ;}\\
-\mu_{\ket{0}}^{\mathrm{B}}(P) & \textrm{, otherwis,}
+\mu_{\ket{0}}^{\mathrm{B}}(P) & \textrm{, otherwis.}
 \end{cases}
 \end{equation}
-where $\events_{0}=\left\{ \mathbb{0},\proj{\ps},\proj{\ms},\mathbb{1}\right\} $
-is a sub-event space. $\mu_{0}$ is not induced by the Born rule as
-a whole, but is consistent with the Born rule on $\events_{0}$ and
-some other proper sub-event spaces. The similar phenomena happens
-for IVPMs as well. Formally, given a quantum IVPM~$\bar{\mu}$, the
-\emph{core} relative to a sub-event space~$\events'\subseteq\events$
-is\footnote{\yutsung{I changed the definition of core to embedding the Born rule.
+$\mu_{0}$ is not induced by the Born rule as a whole, but is consistent
+with the Born rule on $\events_{0}$ and some other proper sub-event
+spaces. The similar phenomena happens for IVPMs as well. Formally,
+given a quantum IVPM~$\bar{\mu}$, the \emph{core} relative to a
+sub-event space~$\events'\subseteq\events$ is\footnote{\yutsung{I changed the definition of core to embedding the Born rule.
 While this change might make it easier to explain the core of quantum
 IVPMs, should we explain the meaning of the Born rule for classical
 probability measures?}}
@@ -398,15 +410,21 @@ probability measures?}}
 \mathrm{core}\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in\events'.~\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)}\textrm{ .}
 \end{equation}
 The core of an interval-valued probability measure is the set of states
-it approximates. For example, $\mathrm{core}\left(\iota_{\infty}\circ\mu_{0},\events_{0}\right)=\left\{ \proj{\ps}\right\} $,
-$\mathrm{core}\left(\iota_{\infty}\circ\mu_{0},\events_{1}\right)=\left\{ \proj{0}\right\} $
-and $\mathrm{core}\left(\iota_{\infty}\circ\mu_{0},\events\right)=\emptyset$,
-where $\circ$ denotes function composition, $\iota_{\infty}$ is
-defined in Eq.~(\ref{eq:iota_infty}), and $\events_{1}=\left\{ \mathbb{0},\proj{0},\proj{1},\mathbb{1}\right\} $.
+it approximates. For example, $\mathrm{core}\left(\bar{\mu}_{1},\events'\right)$
+contains every density matrix. The 2-dimensional measure~$\mu_{0}$
+can be understood by core as well:\begin{subequations}
+\begin{eqnarray}
+\mathrm{core}\left(\iota_{\infty}\circ\mu_{0},\events_{0}\right) & = & \left\{ \proj{\ps}\right\} \textrm{ ,}\\
+\mathrm{core}\left(\iota_{\infty}\circ\mu_{0},\events_{1}\right) & = & \left\{ \proj{0}\right\} \textrm{ ,}\\
+\mathrm{core}\left(\iota_{\infty}\circ\mu_{0},\events\right) & = & \emptyset\textrm{ ,}
+\end{eqnarray}
+\end{subequations}where $\events_{1}=\left\{ \mathbb{0},\proj{0},\proj{1},\mathbb{1}\right\} $.
 That is, $\iota_{\infty}\circ\mu_{0}$ approximates $\proj{\ps}$
 if we are only allowed to use $\events_{0}$ during the measurement,
-approximates $\proj{0}$ if $\events_{1}$ is allowed, and approximates
-nothing if every projector is allowed.
+and approximates $\proj{0}$ if $\events_{1}$ are the only allowed
+ones. Since $\iota_{\infty}\circ\mu_{0}$ approximates different states
+on different sub-event space, it intuitively approximates nothing
+if every projector is allowed.
 
 Notice that $\iota_{\infty}\circ\mu_{0}$ has a non-empty core relative
 to $\events_{0}$ and $\events_{1}$ which are all commutative. In
@@ -420,44 +438,27 @@ if the following conditions are true.
 \begin{itemize}
 \item $\events'$ is commutative, i.e., $\bar{\mu}$ is classical.
 \item $\bar{\mu}$ is convex, i.e., for all commuting $P_{0},P_{1}\in\events$,
-\[
-\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\textrm{ ,}
-\]
+$\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$,
 where $P_{0}\vee P_{1}=P_{0}+P_{1}-P_{0}P_{1}$~\cite{Griffiths2003}.
 \end{itemize}
 Then, $\mathrm{core}\left(\bar{\mu},\events'\right)\ne\emptyset$.\end{thm}
 
-\newpage{}
-
-Notice that $\iota_{\infty}\circ\mu_{0}$ has different core elements
-relative to different sub-event spaces so that it has an empty core
-relative to all projectors~$\events$. When $d\ge3$, if we have
-infinite measurement resource and consider $\bar{\mu}:\events\rightarrow\mathscr{I}_{\infty}$,
-by Gleason's theorem, $\mathrm{core}\left(\bar{\mu},\events\right)$
-has a unique element, i.e., we can always identify a unique state.
-However, when we only have finite resources, we usually can only identify
-a quantum IVPM to more than one states on different sub-event spaces.
-The simplest example add one extra interval~$\unknown=\left[0,1\right]$
-to $\mathscr{I}_{\mathrm{D}}$, and consider $\mathscr{I}_{1}=\left\{ \imposs,\unknown,\necess\right\} $.
-Then, the quantum IVPM
-\begin{equation}
-\bar{\mu}_{1}\left(P\right)=\begin{cases}
-\necess & \text{, if }P=\mathbb{1}\text{ ;}\\
-\imposs & \text{, if }P=\mathbb{0}\text{ ;}\\
-\unknown & \text{, otherwise.}
-\end{cases}\label{eq:homomorphism-1}
-\end{equation}
-provides no information about any results so that $\mathrm{core}\left(\bar{\mu}_{1},\events'\right)$
-contains every density matrix. A more sophisticating example is the
-following.\footnote{\yutsung{It seems that our example in 4 dimensions together with
+In informal terms, this result states that although measurements done
+with limited resources and poor precision may not uniquely identify
+the true state of the system, there is always at least one system
+that is consistent with the measurements. However, similar to 2-dimensional
+$\iota_{\infty}\circ\mu_{0}$, even if a quantum IVPM approximates
+some states for each classical sub-event space, it may not approximate
+any particular state while considering for all projectors~$\events$.\footnote{\yutsung{It seems that our example in 4 dimensions together with
 relativity core would be unnecessary complex. Therefore, I roll our
 example back to 3 dimensions.}}
 
 \begin{example}[Three-dimensional quantum three-interval-valued probability
 measure]\label{ex:three-dimensional-three-value} Given a three dimensional
 Hilbert space with an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
-Let $\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $, $\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$,
-$\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$, and
+Let $\mathscr{I}_{1}=\left\{ \necess,\imposs,\unknown\right\} $,
+$\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$, $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$,
+and\begin{subequations}
 \begin{eqnarray}
  &  & \begin{aligned}\imposs & =\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})\\
  & =\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'})\textrm{ ,}
@@ -469,8 +470,8 @@ $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$, and
 \\
  &  & \unknown=\bar{\mu}(P)\qquad\textrm{otherwise.}
 \end{eqnarray}
-It is straightforward to verify that $\bar{\mu}$ is a quantum interval-valued
-probability measure. 
+\end{subequations}It is straightforward to verify that $\bar{\mu}$
+is a quantum interval-valued probability measure. 
 
 Let $\events_{1}$ be the minimal event space containing both $\proj{0}$
 and $\proj{\ps}$. Because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$,
