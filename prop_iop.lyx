@@ -13121,10 +13121,126 @@ reference "ex3"
 \end_inset
 
 , and see how to compute the expectation value of different random variables.
+ To simplify the discussion later, we will only consider a random variable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $X:\Omega\rightarrow\left[0,1\right]$
+\end_inset
+
+ which is a step function, i.e., 
+\begin_inset Formula $X=\sum_{i=1}^{N}x_{i}\mathbf{1}_{A_{i}}$
+\end_inset
+
+, where 
+\begin_inset Formula $A_{i}\in\events$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{1}_{A}$
+\end_inset
+
+ is the indicator function defined by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{equation} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+mathbf{1}_{A}(x)=
+\backslash
+cases{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+1 & if $x
+\backslash
+in A$ ;
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+0 & if $x
+\backslash
+notin A$.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{equation}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Consider the random variable
+Given a random variable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $X$
+\end_inset
+
+ and a probability measure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\pmeas$
+\end_inset
+
+, the expectation value of 
+\begin_inset Formula $X$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{eqnarray*}
+\int X\rmd\pmeas & = & \sum_{i=1}^{N}x_{i}\pmeas\left(A_{i}\right)\textrm{ .}
+\end{eqnarray*}
+
+\end_inset
+
+Intuitively, the expectation value is weighted average of the possible outcomes
+ of 
+\begin_inset Formula $X$
+\end_inset
+
+ with the weight equal to the probability of each outcome could happen.
+ For example, consider the random variable
 \begin_inset space ~
 \end_inset
 
@@ -13169,7 +13285,67 @@ reference "ex1"
 \end_layout
 
 \begin_layout Standard
-Now consider the IVPM
+After we discussed the conventional expectation value, we can start to discuss
+ the expectation value of IVPM.
+ First, the only source use the exact same definition as ours is written
+ by Jamison and Lodwick
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "JamisonLodwick2004"
+
+\end_inset
+
+ so it's reasonable to start from their definition of integration
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Although they said they would explore their integration in more details,
+ they change their definition of IVPM later.
+ Hence, I don't know if they have any further development of their integration.
+\end_layout
+
+\end_inset
+
+.
+ Their integral of 
+\begin_inset Formula $X$
+\end_inset
+
+ is defined by 
+\begin_inset Formula 
+\begin{eqnarray*}
+\int_{A}X\rmd\bar{\mu} & = & \left[\inf\set{\sum_{i=1}^{N}x_{i}a_{i}}{a_{i}\in\bar{\mu}\left(A_{i}\right)\textrm{ and }\sum_{i=1}^{N}a_{i}=\min\bar{\mu}\left(A\right)},\right.\\
+ &  & \left.\sup\set{\sum_{i=1}^{N}x_{i}a_{i}}{a_{i}\in\bar{\mu}\left(A_{i}\right)\textrm{ and }\sum_{i=1}^{N}a_{i}=\max\bar{\mu}\left(A\right)}\right]\textrm{ .}
+\end{eqnarray*}
+
+\end_inset
+
+In this definition, we still work on the weighted average.
+ Since we don't know the exact probability, we want to average on all possible
+ allowed probability, which represents the requirement on 
+\begin_inset Formula $a_{i}\in\bar{\mu}\left(A_{i}\right)$
+\end_inset
+
+.
+ However, I don't have a clear intuition on why they want 
+\begin_inset Formula $\sum_{i=1}^{N}a_{i}=\min\bar{\mu}\left(A\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\sum_{i=1}^{N}a_{i}=\max\bar{\mu}\left(A\right)$
+\end_inset
+
+, and we will have a more intuitive definition following this line when
+ we move on to Choquet integral.
+\end_layout
+
+\begin_layout Standard
+After we have the definition, we can consider the IVPM
 \begin_inset space ~
 \end_inset
 
@@ -13188,151 +13364,12 @@ reference "ex3"
 
 \end_inset
 
-.
- First, the only source use the exact same definition as ours is written
- by Jamison and Lodwick
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "JamisonLodwick2004"
-
-\end_inset
-
-.
- They introduced a definition of integration as follow
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-yutsung{
-\end_layout
-
-\end_inset
-
-Although they said they would explore their integration in more details,
- they change their definition of IVPM later.
- Hence, I don't know if they have any further development of their integration.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-.
- If we denote the indicator function by 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{equation} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-mathbf{1}_{A}(x)=
-\backslash
-cases{ 
-\end_layout
-
-\begin_layout Plain Layout
-
-1 & if $x
-\backslash
-in A$ ;
-\backslash
-
-\backslash
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-0 & if $x
-\backslash
-notin A$, 
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{equation}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-then given a random variable
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $X=\sum_{i=1}^{N}x_{i}\mathbf{1}_{A_{i}}$
-\end_inset
-
-, where 
-\begin_inset Formula $x_{i}$
-\end_inset
-
- are all different, the integral of 
-\begin_inset Formula $X$
-\end_inset
-
- is defined by 
-\begin_inset Formula 
-\begin{eqnarray*}
-\int_{A}X\rmd\bar{\mu} & = & \left[\inf\set{\sum_{i=1}^{N}x_{i}a_{i}}{a_{i}\in\bar{\mu}\left(A_{i}\right)\textrm{ and }\sum_{i=1}^{N}a_{i}=\min\bar{\mu}\left(A\right)},\right.\\
- &  & \left.\sup\set{\sum_{i=1}^{N}x_{i}a_{i}}{a_{i}\in\bar{\mu}\left(A_{i}\right)\textrm{ and }\sum_{i=1}^{N}a_{i}=\max\bar{\mu}\left(A\right)}\right]\textrm{ .}
-\end{eqnarray*}
-
-\end_inset
-
-For example, 
-\begin_inset Formula $X_{0}=0\cdot\mathbf{1}_{\{HH\}}+1\cdot\mathbf{1}_{\{HT,TH\}}+2\cdot\mathbf{1}_{\{TT\}}$
-\end_inset
-
-, and 
+ as an example.
+ Because 
 \begin_inset Formula $\bar{\mu}\left(\Omega\right)=\left[1,1\right]$
 \end_inset
 
-.
- Therefore, 
+, we have 
 \begin_inset Formula 
 \begin{eqnarray*}
 \int_{\Omega}X\rmd\bar{\mu} & = & \left[\inf\set{\sum_{i=1}^{N}x_{i}a_{i}}{a_{i}\in\bar{\mu}\left(A_{i}\right)\textrm{ and }\sum_{i=1}^{N}a_{i}=1},\right.\\
