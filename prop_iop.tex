@@ -3,6 +3,7 @@
 \addbibresource{prop.bib}
 \ExecuteBibliographyOptions{sorting=none,maxbibnames=10,doi=false,isbn=false,url=false}
 \usepackage{fullpage}
+\usepackage{cmap}
 \usepackage[T1,T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{amssymb}
@@ -1923,15 +1924,50 @@ rest of the section, we will consider the real-valued and interval-valued
 probability measure defined in example~\ref{ex1} and \ref{ex3},
 and see how to compute the expectation value of different random variables.
 
-Consider the random variable~$X$ representing the number of tails.
-For the probability measure~$\pmeas$ in example~\ref{ex1}, the
-expectation value of $X$ is
+Consider the random variable~$X_{0}$ representing the number of
+tails. For the probability measure~$\pmeas$ in example~\ref{ex1},
+the expectation value of $X_{0}$ is
 \begin{eqnarray*}
-\int X\rmd\pmeas & = & 0\cdot\pmeas(\{HH\})+1\cdot\pmeas(\{HT,TH\})+2\cdot\pmeas(\{TT\})\\
+\int X_{0}\rmd\pmeas & = & 0\cdot\pmeas(\{HH\})+1\cdot\pmeas(\{HT,TH\})+2\cdot\pmeas(\{TT\})\\
  & = & 0\cdot\frac{1}{3}+1\cdot\frac{2}{3}+2\cdot0=\frac{2}{3}\textrm{ .}
 \end{eqnarray*}
+
 Now consider the IVPM~$\bar{\mu}$ in example~\ref{ex3}. First,
-since the left-end and the right-end satisfies equation~(\ref{eq:classical-complement})
+the only source use the exact same definition as ours is written by
+Jamison and Lodwick~\cite{JamisonLodwick2004}. They introduced a
+definition of integration as follow\footnote{\yutsung{Although they said they would explore their integration
+in more details, they change their definition of IVPM later. Hence,
+I don't know if they have any further development of their integration.}}. If we denote the indicator function by 
+\begin{equation} 
+\mathbf{1}_{A}(x)=\cases{ 
+1 & if $x\in A$ ;\\ 
+0 & if $x\notin A$, 
+}
+\end{equation}
+then given a random variable~$X=\sum_{i=1}^{N}x_{i}\mathbf{1}_{A_{i}}$,
+where $x_{i}$ are all different, the integral of $X$ is defined
+by 
+\begin{eqnarray*}
+\int_{A}X\rmd\bar{\mu} & = & \left[\inf\set{\sum_{i=1}^{N}x_{i}a_{i}}{a_{i}\in\bar{\mu}\left(A_{i}\right)\textrm{ and }\sum_{i=1}^{N}a_{i}=\min\bar{\mu}\left(A\right)},\right.\\
+ &  & \left.\sup\set{\sum_{i=1}^{N}x_{i}a_{i}}{a_{i}\in\bar{\mu}\left(A_{i}\right)\textrm{ and }\sum_{i=1}^{N}a_{i}=\max\bar{\mu}\left(A\right)}\right]\textrm{ .}
+\end{eqnarray*}
+For example, $X_{0}=0\cdot\mathbf{1}_{\{HH\}}+1\cdot\mathbf{1}_{\{HT,TH\}}+2\cdot\mathbf{1}_{\{TT\}}$,
+and $\bar{\mu}\left(\Omega\right)=\left[1,1\right]$. Therefore, 
+\begin{eqnarray*}
+\int_{\Omega}X\rmd\bar{\mu} & = & \left[\inf\set{\sum_{i=1}^{N}x_{i}a_{i}}{a_{i}\in\bar{\mu}\left(A_{i}\right)\textrm{ and }\sum_{i=1}^{N}a_{i}=1},\right.\\
+ &  & \left.\sup\set{\sum_{i=1}^{N}x_{i}a_{i}}{a_{i}\in\bar{\mu}\left(A_{i}\right)\textrm{ and }\sum_{i=1}^{N}a_{i}=1}\right]\\
+ & = & \left[\inf\set{a_{1}+2a_{2}}{a_{1}\in\bar{\mu}\left(\{HT,TH\}\right)\textrm{ and }a_{2}\in\bar{\mu}\left(\{TT\}\right)\textrm{ and }a_{1}+a_{2}=1},\right.\\
+ &  & \left.\sup\set{a_{1}+2a_{2}}{a_{1}\in\bar{\mu}\left(\{HT,TH\}\right)\textrm{ and }a_{2}\in\bar{\mu}\left(\{TT\}\right)\textrm{ and }a_{1}+a_{2}=1}\right]\\
+ & = & \left[\inf\set{a_{1}+2a_{2}}{\frac{1}{2}\le a_{1}\le1\textrm{ and }a_{2}=0\textrm{ and }a_{1}+a_{2}=1},\right.\\
+ &  & \left.\sup\set{a_{1}+2a_{2}}{\frac{1}{2}\le a_{1}\le1\textrm{ and }a_{2}=0\textrm{ and }a_{1}+a_{2}=1}\right]\\
+ & = & \left[\inf\set{a_{1}}{\frac{1}{2}\le a_{1}\le1\textrm{ and }a_{1}=1},\right.\\
+ &  & \left.\sup\set{a_{1}}{\frac{1}{2}\le a_{1}\le1\textrm{ and }a_{1}=1}\right]\\
+ & = & \left[1,1\right]
+\end{eqnarray*}
+What does this means...?
+
+In other references, since the left-end and the right-end of an IVPM
+satisfies equation~(\ref{eq:classical-complement}), 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
