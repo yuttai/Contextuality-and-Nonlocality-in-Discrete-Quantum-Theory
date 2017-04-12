@@ -1924,8 +1924,8 @@ rest of the section, we will consider the real-valued and interval-valued
 probability measure defined in example~\ref{ex1} and \ref{ex3},
 and see how to compute the expectation value of different random variables.
 To simplify the discussion later, we will only consider a random variable~$X:\Omega\rightarrow\left[0,1\right]$
-which is a step function, i.e., $X=\sum_{i=1}^{N}x_{i}\mathbf{1}_{A_{i}}$,
-where $A_{i}\in\events$ and $\mathbf{1}_{A}$ is the indicator function
+which is a step function, i.e., $X=\sum_{i=1}^{N}x_{i}\mathbf{1}_{E_{i}}$,
+where $E_{i}\in\events$ and $\mathbf{1}_{E}$ is the indicator function
 defined by 
 \begin{equation} 
 \mathbf{1}_{A}(x)=\cases{ 
@@ -1937,7 +1937,7 @@ defined by
 Given a random variable~$X$ and a probability measure~$\pmeas$,
 the expectation value of $X$ is 
 \begin{eqnarray}
-\int X\rmd\pmeas & = & \sum_{i=1}^{N}x_{i}\pmeas\left(A_{i}\right)\textrm{ .}
+\int X\rmd\pmeas & = & \sum_{i=1}^{N}x_{i}\pmeas\left(E_{i}\right)\textrm{ .}
 \end{eqnarray}
 Intuitively, the expectation value is weighted average of the possible
 outcomes of $X$ with the weight equal to the probability of each
@@ -1956,35 +1956,47 @@ so it's reasonable to start from their definition of integration\footnote{Althou
 they change their definition of IVPM later. Hence, I don't know if
 they have any further development of their integration.}. Their integral of $X$ is defined by 
 \begin{eqnarray*}
-\int_{A}X\rmd\bar{\mu} & = & \left[\inf\set{\sum_{i=1}^{N}x_{i}a_{i}}{a_{i}\in\bar{\mu}\left(A_{i}\right)\textrm{ and }\sum_{i=1}^{N}a_{i}=\min\bar{\mu}\left(A\right)},\right.\\
- &  & \left.\sup\set{\sum_{i=1}^{N}x_{i}a_{i}}{a_{i}\in\bar{\mu}\left(A_{i}\right)\textrm{ and }\sum_{i=1}^{N}a_{i}=\max\bar{\mu}\left(A\right)}\right]\textrm{ .}
+\int_{E}^{\textrm{JL}}X\rmd\bar{\mu} & = & \left[\inf\set{\sum_{i=1}^{N}x_{i}e_{i}}{e_{i}\in\bar{\mu}\left(E_{i}\right)\textrm{ and }\sum_{i=1}^{N}e_{i}=\min\bar{\mu}\left(E\right)},\right.\\
+ &  & \left.\sup\set{\sum_{i=1}^{N}x_{i}e_{i}}{e_{i}\in\bar{\mu}\left(E_{i}\right)\textrm{ and }\sum_{i=1}^{N}e_{i}=\max\bar{\mu}\left(E\right)}\right]\textrm{ .}
 \end{eqnarray*}
 In this definition, we still work on the weighted average. Since we
 don't know the exact probability, we want to average on all possible
-allowed probability, which is represented by the requirement on $a_{i}\in\bar{\mu}\left(A_{i}\right)$.
-However, I don't have a clear intuition on why they want $\sum_{i=1}^{N}a_{i}=\min\bar{\mu}\left(A\right)$
-and $\sum_{i=1}^{N}a_{i}=\max\bar{\mu}\left(A\right)$, and we will
+allowed probability, which is represented by the requirement on $e_{i}\in\bar{\mu}\left(E_{i}\right)$.
+However, I don't have a clear intuition on why they want $\sum_{i=1}^{N}e_{i}=\min\bar{\mu}\left(E\right)$
+and $\sum_{i=1}^{N}e_{i}=\max\bar{\mu}\left(E\right)$, and we will
 have a more intuitive definition following this line when we move
-on to Choquet integral~\cite{Choquet1954,Grabisch2016}.
-
-After we have the definition, we can consider the IVPM~$\bar{\mu}$
-in example~\ref{ex3} as an example. Because $\bar{\mu}\left(\Omega\right)=\left[1,1\right]$,
-we have 
+on to Choquet integral~\cite{Choquet1954,Grabisch2016}. After we
+have the definition, we can consider the IVPM~$\bar{\mu}$ in example~\ref{ex3}.
+Because $\bar{\mu}\left(\Omega\right)=\left[1,1\right]$, we have
 \begin{eqnarray*}
-\int_{\Omega}X\rmd\bar{\mu} & = & \left[\inf\set{\sum_{i=1}^{N}x_{i}a_{i}}{a_{i}\in\bar{\mu}\left(A_{i}\right)\textrm{ and }\sum_{i=1}^{N}a_{i}=1},\right.\\
- &  & \left.\sup\set{\sum_{i=1}^{N}x_{i}a_{i}}{a_{i}\in\bar{\mu}\left(A_{i}\right)\textrm{ and }\sum_{i=1}^{N}a_{i}=1}\right]\\
- & = & \left[\inf\set{a_{1}+2a_{2}}{a_{0}\in\bar{\mu}\left(\{HH\}\right)\textrm{ and }a_{1}\in\bar{\mu}\left(\{HT,TH\}\right)\textrm{ and }a_{2}\in\bar{\mu}\left(\{TT\}\right)\textrm{ and }a_{0}+a_{1}+a_{2}=1},\right.\\
- &  & \left.\sup\set{a_{1}+2a_{2}}{a_{0}\in\bar{\mu}\left(\{HH\}\right)\textrm{ and }a_{1}\in\bar{\mu}\left(\{HT,TH\}\right)\textrm{ and }a_{2}\in\bar{\mu}\left(\{TT\}\right)\textrm{ and }a_{0}+a_{1}+a_{2}=1}\right]\\
- & = & \left[\inf\set{a_{1}+2a_{2}}{0\le a_{0}\le\frac{1}{2}\textrm{ and }\frac{1}{2}\le a_{1}\le1\textrm{ and }a_{2}=0\textrm{ and }a_{0}+a_{1}+a_{2}=1},\right.\\
- &  & \left.\sup\set{a_{1}+2a_{2}}{0\le a_{0}\le\frac{1}{2}\textrm{ and }\frac{1}{2}\le a_{1}\le1\textrm{ and }a_{2}=0\textrm{ and }a_{0}+a_{1}+a_{2}=1}\right]\\
- & = & \left[\inf\set{a_{1}}{0\le a_{0}\le\frac{1}{2}\textrm{ and }\frac{1}{2}\le a_{1}\le1\textrm{ and }a_{0}+a_{1}=1},\right.\\
- &  & \left.\sup\set{a_{1}}{0\le a_{0}\le\frac{1}{2}\textrm{ and }\frac{1}{2}\le a_{1}\le1\textrm{ and }a_{0}+a_{1}=1}\right]\\
- & = & \left[\frac{1}{2},1\right]
+\int_{\Omega}^{\textrm{JL}}X\rmd\bar{\mu} & = & \left[\inf\set{\sum_{i=1}^{N}x_{i}e_{i}}{e_{i}\in\bar{\mu}\left(E_{i}\right)\textrm{ and }\sum_{i=1}^{N}e_{i}=1},\right.\\
+ &  & \left.\sup\set{\sum_{i=1}^{N}x_{i}e_{i}}{e_{i}\in\bar{\mu}\left(E_{i}\right)\textrm{ and }\sum_{i=1}^{N}e_{i}=1}\right]\\
+ & = & \left[\inf\set{e_{1}+2e_{2}}{e_{0}\in\bar{\mu}\left(\{HH\}\right)\textrm{ , }e_{1}\in\bar{\mu}\left(\{HT,TH\}\right)\textrm{ , }e_{2}\in\bar{\mu}\left(\{TT\}\right)\textrm{ , and }e_{0}+e_{1}+e_{2}=1},\right.\\
+ &  & \left.\sup\set{e_{1}+2e_{2}}{e_{0}\in\bar{\mu}\left(\{HH\}\right)\textrm{ , }e_{1}\in\bar{\mu}\left(\{HT,TH\}\right)\textrm{ , }e_{2}\in\bar{\mu}\left(\{TT\}\right)\textrm{ , and }e_{0}+e_{1}+e_{2}=1}\right]\\
+ & = & \left[\inf\set{e_{1}+2e_{2}}{0\le e_{0}\le\frac{1}{2}\textrm{ , }\frac{1}{2}\le e_{1}\le1\textrm{ , }e_{2}=0\textrm{ , and }e_{0}+e_{1}+e_{2}=1},\right.\\
+ &  & \left.\sup\set{e_{1}+2e_{2}}{0\le e_{0}\le\frac{1}{2}\textrm{ , }\frac{1}{2}\le e_{1}\le1\textrm{ , }e_{2}=0\textrm{ , and }e_{0}+e_{1}+e_{2}=1}\right]\\
+ & = & \left[\inf\set{e_{1}}{0\le e_{0}\le\frac{1}{2}\textrm{ , }\frac{1}{2}\le e_{1}\le1\textrm{ , and }e_{0}+e_{1}=1},\right.\\
+ &  & \left.\sup\set{e_{1}}{0\le e_{0}\le\frac{1}{2}\textrm{ , }\frac{1}{2}\le e_{1}\le1\textrm{ , and }e_{0}+e_{1}=1}\right]\\
+ & = & \left[\frac{1}{2},1\right]\textrm{ .}
 \end{eqnarray*}
-What does this means...?
 
-In other references, since the left-end and the right-end of an IVPM
-satisfies equation~(\ref{eq:classical-complement}), 
+\yutsung{{Put the definition of }Choquet integral, other meta-discourse
+here...}
+
+\begin{thm}\cite{Grabisch2016}For every classical interval-valued
+probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$ and
+any random variable~$X:\Omega\rightarrow\mathbb{R}$, let $l:\events\rightarrow\left[0,1\right]$
+and $r:\events\rightarrow\left[0,1\right]$ be the left-end and the
+right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[l\left(E\right),r\left(E\right)\right]$.
+The following statements are equivalent.
+\begin{itemize}
+\item $\bar{\mu}$ is convex.
+\item The Choquet integral on $l$ satisfies $\int X\rmd l=\min_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu$.
+\item The Choquet integral on $r$ satisfies $\int X\rmd r=\max_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu$.
+\end{itemize}
+\end{thm}
+
+\yutsung{{Put an example}, and other integral here...}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
