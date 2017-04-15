@@ -13126,7 +13126,7 @@ reference "ex3"
 \end_inset
 
 
-\begin_inset Formula $X:\Omega\rightarrow\left[0,1\right]$
+\begin_inset Formula $X:\Omega\rightarrow\mathbb{R}$
 \end_inset
 
  which is a step function, i.e., 
@@ -13229,7 +13229,7 @@ Given a random variable
  is 
 \begin_inset Formula 
 \begin{eqnarray}
-\int X\rmd\pmeas & = & \sum_{i=1}^{N}x_{i}\pmeas\left(E_{i}\right)\textrm{ .}
+\int X\rmd\pmeas & = & \sum_{i=1}^{N}x_{i}\pmeas\left(E_{i}\right)\textrm{ .}\label{eq:expectation}
 \end{eqnarray}
 
 \end_inset
@@ -13285,145 +13285,127 @@ reference "ex1"
 \end_layout
 
 \begin_layout Standard
-After we discussed the conventional expectation value, we can start to discuss
- the expectation value of IVPM.
- First, the only source use the exact same definition as ours is written
- by Jamison and Lodwick
+There are various different integral defined for IVPMs, and the most famous
+ one is called the Choquet integral
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "JamisonLodwick2004"
-
-\end_inset
-
- so it's reasonable to start from their definition of integration
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Although they said they would explore their integration in more details,
- they change their definition of IVPM later.
- Hence, I don't know if they have any further development of their integration.
-\end_layout
+key "Choquet1954,GilboaSchmeidler1994,Grabisch2016"
 
 \end_inset
 
 .
- Their integral of 
-\begin_inset Formula $X$
+ Let 
+\begin_inset Formula $X=\sum_{i=1}^{N}x_{i}\mathbf{1}_{E_{i}}$
 \end_inset
 
- is defined by 
-\begin_inset Formula 
-\begin{eqnarray*}
-\int_{E}^{\textrm{JL}}X\rmd\bar{\mu} & = & \left[\inf\set{\sum_{i=1}^{N}x_{i}e_{i}}{e_{i}\in\bar{\mu}\left(E_{i}\right)\textrm{ and }\sum_{i=1}^{N}e_{i}=\min\bar{\mu}\left(E\right)},\right.\\
- &  & \left.\sup\set{\sum_{i=1}^{N}x_{i}e_{i}}{e_{i}\in\bar{\mu}\left(E_{i}\right)\textrm{ and }\sum_{i=1}^{N}e_{i}=\max\bar{\mu}\left(E\right)}\right]\textrm{ .}
-\end{eqnarray*}
-
-\end_inset
-
-In this definition, we still work on the weighted average.
- Since we don't know the exact probability, we want to average on all possible
- allowed probability, which is represented by the requirement on 
-\begin_inset Formula $e_{i}\in\bar{\mu}\left(E_{i}\right)$
-\end_inset
-
-.
- However, I don't have a clear intuition on why they want 
-\begin_inset Formula $\sum_{i=1}^{N}e_{i}=\min\bar{\mu}\left(E\right)$
+ be a positive random variable with 
+\begin_inset Formula $0\le x_{1}\le x_{2}\le\ldots\le x_{N-1}\le x_{N}$
 \end_inset
 
  and 
-\begin_inset Formula $\sum_{i=1}^{N}e_{i}=\max\bar{\mu}\left(E\right)$
+\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
 \end_inset
 
-, and we will have a more intuitive definition following this line when
- we move on to Choquet integral
-\begin_inset space ~
+ a classical IVPM such that 
+\begin_inset Formula $l:\events\rightarrow\left[0,1\right]$
 \end_inset
 
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Choquet1954,Grabisch2016"
-
+ and 
+\begin_inset Formula $r:\events\rightarrow\left[0,1\right]$
 \end_inset
 
-.
- After we have the definition, we can consider the IVPM
-\begin_inset space ~
-\end_inset
-
-
+ be the left-end and the right-end of 
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
- in example
-\begin_inset space ~
+, respectively, i.e., 
+\begin_inset Formula $\bar{\mu}\left(E\right)=\left[l\left(E\right),r\left(E\right)\right]$
 \end_inset
 
+, the Choquet integral of 
+\begin_inset Formula $X$
+\end_inset
 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "ex3"
+ with respect to 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
 
+ is 
+\begin_inset Formula 
+\begin{eqnarray}
+\int X\rmd\bar{\mu} & = & \sum_{i=1}^{N}\left(x_{i}-x_{i-1}\right)\bar{\mu}\left(\bigcup_{j\ge i}E_{j}\right)\textrm{ ,}\\
+ & = & \sum_{i=1}^{N}x_{i}\left[l\left(\bigcup_{j\ge i}E_{j}\right)-l\left(\bigcup_{j\ge i+1}E_{j}\right),r\left(\bigcup_{j\ge i}E_{j}\right)-r\left(\bigcup_{j\ge i+1}E_{j}\right)\right]\label{eq:interval-expectation}
+\end{eqnarray}
+
+\end_inset
+
+where 
+\begin_inset Formula $x_{0}=0$
+\end_inset
+
+, and 
+\begin_inset Formula $x[l,r]=[xl,xr]$
+\end_inset
+
+ for 
+\begin_inset Formula $x\ge0$
 \end_inset
 
 .
- Because 
-\begin_inset Formula $\bar{\mu}\left(\Omega\right)=\left[1,1\right]$
+ Similar to equation
+\begin_inset space ~
 \end_inset
 
-, we have 
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:expectation"
+
+\end_inset
+
+), equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:interval-expectation"
+
+\end_inset
+
+) can be considered as weighted average of the possible outcomes of 
+\begin_inset Formula $X$
+\end_inset
+
+ as well, where the 
+\begin_inset Quotes eld
+\end_inset
+
+weight
+\begin_inset Quotes erd
+\end_inset
+
+
 \begin_inset Formula 
-\begin{eqnarray*}
-\int_{\Omega}^{\textrm{JL}}X\rmd\bar{\mu} & = & \left[\inf\set{\sum_{i=1}^{N}x_{i}e_{i}}{e_{i}\in\bar{\mu}\left(E_{i}\right)\textrm{ and }\sum_{i=1}^{N}e_{i}=1},\right.\\
- &  & \left.\sup\set{\sum_{i=1}^{N}x_{i}e_{i}}{e_{i}\in\bar{\mu}\left(E_{i}\right)\textrm{ and }\sum_{i=1}^{N}e_{i}=1}\right]\\
- & = & \left[\inf\set{e_{1}+2e_{2}}{e_{0}\in\bar{\mu}\left(\{HH\}\right)\textrm{ , }e_{1}\in\bar{\mu}\left(\{HT,TH\}\right)\textrm{ , }e_{2}\in\bar{\mu}\left(\{TT\}\right)\textrm{ , and }e_{0}+e_{1}+e_{2}=1},\right.\\
- &  & \left.\sup\set{e_{1}+2e_{2}}{e_{0}\in\bar{\mu}\left(\{HH\}\right)\textrm{ , }e_{1}\in\bar{\mu}\left(\{HT,TH\}\right)\textrm{ , }e_{2}\in\bar{\mu}\left(\{TT\}\right)\textrm{ , and }e_{0}+e_{1}+e_{2}=1}\right]\\
- & = & \left[\inf\set{e_{1}+2e_{2}}{0\le e_{0}\le\frac{1}{2}\textrm{ , }\frac{1}{2}\le e_{1}\le1\textrm{ , }e_{2}=0\textrm{ , and }e_{0}+e_{1}+e_{2}=1},\right.\\
- &  & \left.\sup\set{e_{1}+2e_{2}}{0\le e_{0}\le\frac{1}{2}\textrm{ , }\frac{1}{2}\le e_{1}\le1\textrm{ , }e_{2}=0\textrm{ , and }e_{0}+e_{1}+e_{2}=1}\right]\\
- & = & \left[\inf\set{e_{1}}{0\le e_{0}\le\frac{1}{2}\textrm{ , }\frac{1}{2}\le e_{1}\le1\textrm{ , and }e_{0}+e_{1}=1},\right.\\
- &  & \left.\sup\set{e_{1}}{0\le e_{0}\le\frac{1}{2}\textrm{ , }\frac{1}{2}\le e_{1}\le1\textrm{ , and }e_{0}+e_{1}=1}\right]\\
- & = & \left[\frac{1}{2},1\right]\textrm{ .}
-\end{eqnarray*}
+\[
+\left[l\left(\bigcup_{j\ge i}E_{j}\right)-l\left(\bigcup_{j\ge i+1}E_{j}\right),r\left(\bigcup_{j\ge i}E_{j}\right)-r\left(\bigcup_{j\ge i+1}E_{j}\right)\right]\subseteq\left[l\left(E_{i}\right),r\left(E_{i}\right)\right]=\bar{\mu}\left(E_{i}\right)\textrm{ .}
+\]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-yutsung{
-\end_layout
-
+is tighter than the natural weight.
+ This is reasonable because only one event can happen at once so we don't
+ be so pessimistic to accumulate all possible fuzziness together, and use
+ 
+\begin_inset Formula $\sum_{i=1}^{N}x_{i}\bar{\mu}\left(E_{i}\right)$
 \end_inset
 
-
-Put the definition of 
-\lang english
-Choquet integral, other meta-discourse here...
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -13542,10 +13524,7 @@ yutsung{
 
 \end_inset
 
-
-Put an example
-\lang english
-, and other integral here...
+Put an example, and other integral here...
 \begin_inset ERT
 status collapsed
 
