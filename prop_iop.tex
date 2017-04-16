@@ -1951,41 +1951,65 @@ in example~\ref{ex1}, the expectation value of $X_{0}$ is
 
 There are various different integral defined for IVPMs, and the most
 famous one is called the Choquet integral~\cite{Choquet1954,GilboaSchmeidler1994,Grabisch2016}.
-Let $X=\sum_{i=1}^{N}x_{i}\mathbf{1}_{E_{i}}$ be a positive random
-variable with $0\le x_{1}\le x_{2}\le\ldots\le x_{N-1}\le x_{N}$
-and $\bar{\mu}:\events\rightarrow\mathscr{I}$ a classical IVPM such
-that $l:\events\rightarrow\left[0,1\right]$ and $r:\events\rightarrow\left[0,1\right]$
-be the left-end and the right-end of $\bar{\mu}$, respectively, i.e.,
-$\bar{\mu}\left(E\right)=\left[l\left(E\right),r\left(E\right)\right]$,
-the Choquet integral of $X$ with respect to $\bar{\mu}$ is 
-\begin{eqnarray}
-\int X\rmd\bar{\mu} & = & \sum_{i=1}^{N}\left(x_{i}-x_{i-1}\right)\bar{\mu}\left(\bigcup_{j\ge i}E_{j}\right)\textrm{ ,}\\
- & = & \sum_{i=1}^{N}x_{i}\left[l\left(\bigcup_{j\ge i}E_{j}\right)-l\left(\bigcup_{j\ge i+1}E_{j}\right),r\left(\bigcup_{j\ge i}E_{j}\right)-r\left(\bigcup_{j\ge i+1}E_{j}\right)\right]\label{eq:interval-expectation}
-\end{eqnarray}
-where $x_{0}=0$, and $x[l,r]=[xl,xr]$ for $x\ge0$. Similar to equation~(\ref{eq:expectation}),
-equation~(\ref{eq:interval-expectation}) can be considered as weighted
-average of the possible outcomes of $X$ as well, where the ``weight''
-\[
-\left[l\left(\bigcup_{j\ge i}E_{j}\right)-l\left(\bigcup_{j\ge i+1}E_{j}\right),r\left(\bigcup_{j\ge i}E_{j}\right)-r\left(\bigcup_{j\ge i+1}E_{j}\right)\right]\subseteq\left[l\left(E_{i}\right),r\left(E_{i}\right)\right]=\bar{\mu}\left(E_{i}\right)\textrm{ .}
-\]
-is tighter than the natural weight. This is reasonable because only
-one event can happen at once so we don't be so pessimistic to accumulate
-all possible fuzziness together, and use $\sum_{i=1}^{N}x_{i}\bar{\mu}\left(E_{i}\right)$.
-
-\begin{thm}\cite{Grabisch2016}For every classical interval-valued
-probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$ and
-any random variable~$X:\Omega\rightarrow\mathbb{R}$, let $l:\events\rightarrow\left[0,1\right]$
-and $r:\events\rightarrow\left[0,1\right]$ be the left-end and the
+Let $X=\sum_{i=1}^{N}x_{i}\mathbf{1}_{E_{i}}$ be a random variable
+with $x_{1}\le x_{2}\le\ldots\le x_{N-1}\le x_{N}$ and $\bar{\mu}:\events\rightarrow\mathscr{I}$
+a classical IVPM such that $l:\events\rightarrow\left[0,1\right]$
+and $r:\events\rightarrow\left[0,1\right]$ are the left-end and the
 right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[l\left(E\right),r\left(E\right)\right]$.
-The following statements are equivalent.
-\begin{itemize}
-\item $\bar{\mu}$ is convex.
-\item The Choquet integral on $l$ satisfies $\int X\rmd l=\min_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu$.
-\item The Choquet integral on $r$ satisfies $\int X\rmd r=\max_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu$.
-\end{itemize}
+Then, the Choquet integral of $X$ with respect to $\bar{\mu}$ is
+\begin{equation}
+\int X\rmd\bar{\mu}=\sum_{i=1}^{N}x_{i}\left[l\left(\bigcup_{j\ge i}E_{j}\right)-l\left(\bigcup_{j\ge i+1}E_{j}\right),r\left(\bigcup_{j\ge i}E_{j}\right)-r\left(\bigcup_{j\ge i+1}E_{j}\right)\right]\textrm{ ,}\label{eq:interval-expectation}
+\end{equation}
+where 
+\begin{equation} 
+x[l,r]=\cases{ 
+[xl,xr] & for $x\ge0$ ;\\
+[xr,xl] & for $x\le0$ .
+}
+\end{equation}
+Similar to equation~(\ref{eq:expectation}), equation~(\ref{eq:interval-expectation})
+can be considered as weighted average of the possible outcomes of
+$X$ as well, despite the ``weight''
+\[
+\left[l\left(\bigcup_{j\ge i}E_{j}\right)-l\left(\bigcup_{j\ge i+1}E_{j}\right),r\left(\bigcup_{j\ge i}E_{j}\right)-r\left(\bigcup_{j\ge i+1}E_{j}\right)\right]\subseteq\left[l\left(E_{i}\right),r\left(E_{i}\right)\right]=\bar{\mu}\left(E_{i}\right)
+\]
+is tighter than the interval-valued probability of the corresponding
+event. Since only one event can happen at once, we don't have to be
+so pessimistic to accumulate all possible fuzziness together, and
+expect $\sum_{i=1}^{N}x_{i}\bar{\mu}\left(E_{i}\right)$ to happen.
+
+The Choquet integral has many desirable properties. For example, it
+can be represented as a weighted average over all minimum and maximum
+of the random variable. Most importantly, the Choquet integral has
+the same range as all expectation value in the core.
+
+\begin{thm}\cite{GilboaSchmeidler1994,Grabisch2016}For every classical
+interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+and any random variable~$X:\Omega\rightarrow\mathbb{R}$. $\bar{\mu}$
+is convex if and only if 
+
+\begin{equation}
+\int X\rmd\bar{\mu}=\left[\min_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu,\max_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu\right]\textrm{ .}
+\end{equation}
 \end{thm}
 
-\yutsung{{Put an example}, and other integral here...}
+\yutsung{Put an example here if we need...}
+
+Before discussing the measurement process and their manifestations
+with quantum IVPMs, we first review various notations brought forward
+from conventional quantum theory. Assume that a physical system is
+represented by a density matrix~$\rho$, and that we wish to measure
+a physical quantity~${\cal O}$ of this system, with corresponding
+observable~$\mathbf{O}$, whose spectrum decomposition is given by
+\begin{equation}
+\mathbf{O}=\sum_{i=1}^{N}\lambda_{i}P_{i}\ .
+\end{equation}
+where $P_{i}$ is the projector onto the eigenspace of the eigenvalue~$\lambda_{i}$.
+Then the Born rule of CQT tells us that the expectation value of the
+observable~$\mathbf{O}$ is given by
+\begin{equation}
+\Tr\left(\rho\mathbf{O}\right)=\sum_{i=1}^{N}\lambda_{i}\Tr\left(\rho P_{i}\right)=\sum_{i=1}^{N}\lambda_{i}\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)\ .
+\end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
