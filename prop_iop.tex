@@ -34,14 +34,12 @@
 \newcommand{\necess}{{\mbox{\wesa{certain}}}}
 \newcommand{\unknown}{{\mbox{\wesa{unknown}}}}
 \newcommand{\midd}{{\mbox{\wesa{middle}}}}
-\newcommand{\ket}[1]{{\left\vert{#1}\right\rangle}}
+\usepackage[braket,qm]{qcircuit}
 \newcommand{\fket}[1]{{|#1\rangle}}
 \newcommand{\fproj}[1]{|#1\rangle\langle #1|}
-\newcommand{\op}[2]{\ensuremath{\left\vert{#1}\middle\rangle\middle\langle{#2}\right\vert}}
 \newcommand{\proj}[1]{\op{#1}{#1}}
 \newcommand{\ps}{\texttt{+}}
 \newcommand{\minus}{\texttt{-}}
-\newcommand{\ip}[2]{\ensuremath{\left\langle{#1}\middle\vert{#2}\right\rangle}}
 
 \usepackage{color}
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -1984,7 +1982,7 @@ has the same range as all expectation value in the core.
 
 \begin{thm}\cite{GilboaSchmeidler1994,Grabisch2016}For every classical
 interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-and any random variable~$X:\Omega\rightarrow\mathbb{R}$. $\bar{\mu}$
+and any random variable~$X:\Omega\rightarrow\mathbb{R}$, $\bar{\mu}$
 is convex if and only if 
 
 \begin{equation}
@@ -2002,9 +2000,20 @@ observable~$\mathbf{O}$, whose spectrum decomposition is given by
 $\mathbf{O}=\sum_{i=1}^{N}\lambda_{i}P_{i}$, where $P_{i}$ is the
 projector onto the eigenspace of the eigenvalue~$\lambda_{i}$. Then,
 the Born rule of CQT tells us that the expectation value of the observable~$\mathbf{O}$
-is given by
+is given by~\cite{544199,Jaeger2007}
 \begin{equation}
-\Tr\left(\rho\mathbf{O}\right)=\sum_{i=1}^{N}\lambda_{i}\Tr\left(\rho P_{i}\right)=\sum_{i=1}^{N}\lambda_{i}\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)\ .
+\expval{\mathbf{O}}_{\rho}=\Tr\left(\rho\mathbf{O}\right)=\sum_{i=1}^{N}\lambda_{i}\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)\ .\label{eq:quantum-expectation}
+\end{equation}
+
+Consider a quantum IVPM~$\bar{\mu}$ such that $l:\events\rightarrow\left[0,1\right]$
+and $r:\events\rightarrow\left[0,1\right]$ are the left-end and the
+right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[l\left(E\right),r\left(E\right)\right]$.
+Given the same observable with an extra condition~$x_{1}\le x_{2}\le\ldots\le x_{N-1}\le x_{N}$,
+we can combine equation~(\ref{eq:interval-expectation}) and (\ref{eq:quantum-expectation})
+to define the expectation value of $\mathbf{O}$ with respect to $\bar{\mu}$
+as
+\begin{equation}
+\expval{\mathbf{O}}_{\bar{\mu}}=\sum_{i=1}^{N}\lambda_{i}\left[l\left(\sum_{j\ge i}P_{j}\right)-l\left(\sum_{j\ge i+1}P_{j}\right),r\left(\sum_{j\ge i}P_{j}\right)-r\left(\sum_{j\ge i+1}P_{j}\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
 \end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
