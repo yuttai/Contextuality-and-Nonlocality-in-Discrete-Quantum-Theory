@@ -1909,7 +1909,7 @@ so that $\mu_{\rho}^{\mathrm{B}}=\mu_{\ket{2}}^{\mathrm{B}}$. However,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Expectation Values for IVPMs (Version 1)}
+\section{Expectation Values for IVPMs}
 
 We may need to understand how to define expectation values of an observable
 for quantum IVPMs. Recall an observable is the quantum version of
@@ -1948,28 +1948,43 @@ in example~\ref{ex1}, the expectation value of $X_{0}$ is
 }\end{equation}
 
 There are various kind of integrals defined for IVPMs, and the most
-famous one is called the Choquet integral~\cite{Choquet1954,GilboaSchmeidler1994,Grabisch2016}.
+famous one is called the Choquet integral~\cite{Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016}.
 
 \begin{definition}Consider the following.
 \begin{itemize}
-\item $X=\sum_{i=1}^{N}x_{i}\mathbf{1}_{E_{i}}$ be a random variable with
-$x_{1}\le x_{2}\le\ldots\le x_{N-1}\le x_{N}$ and $E_{i}\cap E_{j}=\emptyset$.
+\item Let $X=\sum_{i=N^{-}}^{N^{+}}x_{i}\mathbf{1}_{E_{i}}$ be a positive
+random variable with 
+\[
+x_{N^{-}}\le x_{N^{-}+1}\le\ldots\le x_{-2}\le x_{-1}\le x_{0}=0\le x_{1}\le x_{2}\le\ldots\le x_{N^{+}-1}\le x_{N^{+}}
+\]
+ and $E_{i}\cap E_{j}=\emptyset$.
+\item Let $E_{i}'=\bigcup_{j\ge i}E_{j}=\set{\omega\in\Omega}{X\left(\omega\right)\ge x_{i}}\in\events$
+for $i>0$, and $E_{i}'=\bigcup_{j\le i}E_{j}=\set{\omega\in\Omega}{X\left(\omega\right)\le x_{i}}\in\events$
+for $i<0$.
 \item $\bar{\mu}:\events\rightarrow\mathscr{I}$ a classical IVPM such that
 $l:\events\rightarrow\left[0,1\right]$ and $r:\events\rightarrow\left[0,1\right]$
 are the left-end and the right-end of $\bar{\mu}$, respectively,
 i.e., $\bar{\mu}\left(E\right)=\left[l\left(E\right),r\left(E\right)\right]$.
 \item Multiplying a negative number switching the left and right end of
-an interval 
+an interval
 \begin{equation} 
 x[l,r]=\cases{ 
 [xl,xr] & for $x\ge0$ ;\\
 [xr,xl] & for $x\le0$ .
 }
 \end{equation}
+\item We also need to define the sign function as 
+\begin{equation} 
+\mathrm{sign}=\cases{ 
+1 & for $x\ge0$ ;\\
+0 & for $x=0$ ;\\
+-1 & for $x\le0$ .
+}
+\end{equation}
 \end{itemize}
 Then, the Choquet integral of $X$ with respect to $\bar{\mu}$ is
 \begin{equation}
-\int X\rmd\bar{\mu}=\sum_{i=1}^{N}x_{i}\left[l\left(\bigcup_{j\ge i}E_{j}\right)-l\left(\bigcup_{j\ge i+1}E_{j}\right),r\left(\bigcup_{j\ge i}E_{j}\right)-r\left(\bigcup_{j\ge i+1}E_{j}\right)\right]\textrm{ .}\label{eq:interval-expectation}
+\int X\rmd\bar{\mu}=\sum_{i=N^{-}}^{N^{+}}x_{i}\left[l\left(E_{i}'\right)-l\left(E_{i+\mathrm{sign}\left(i\right)}'\right),r\left(E_{i}'\right)-r\left(E_{i+\mathrm{sign}\left(i\right)}'\right)\right]\textrm{ .}\label{eq:interval-expectation}
 \end{equation}
 \end{definition}
 
@@ -1977,7 +1992,7 @@ Similar to equation~(\ref{eq:expectation}), equation~(\ref{eq:interval-expectati
 can be considered as weighted average of the possible outcomes of
 $X$ as well, despite the ``weight''
 \[
-\left[l\left(\bigcup_{j\ge i}E_{j}\right)-l\left(\bigcup_{j\ge i+1}E_{j}\right),r\left(\bigcup_{j\ge i}E_{j}\right)-r\left(\bigcup_{j\ge i+1}E_{j}\right)\right]\subseteq\left[l\left(E_{i}\right),r\left(E_{i}\right)\right]=\bar{\mu}\left(E_{i}\right)
+\left[l\left(E_{i}'\right)-l\left(E_{i+1}'\right),r\left(E_{i}'\right)-r\left(E_{i+1}'\right)\right]\subseteq\left[l\left(E_{i}\right),r\left(E_{i}\right)\right]=\bar{\mu}\left(E_{i}\right)
 \]
 is tighter than the interval-valued probability of the corresponding
 event. Since only one event can happen at once, we don't have to be
@@ -2013,93 +2028,20 @@ is given by~\cite{544199,Jaeger2007}
 Consider a quantum IVPM~$\bar{\mu}$ such that $l:\events\rightarrow\left[0,1\right]$
 and $r:\events\rightarrow\left[0,1\right]$ are the left-end and the
 right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[l\left(E\right),r\left(E\right)\right]$.
-Given the same observable with an extra condition~$x_{1}\le x_{2}\le\ldots\le x_{N-1}\le x_{N}$,
-we can combine equation~(\ref{eq:interval-expectation}) and (\ref{eq:quantum-expectation})
-to define the expectation value of $\mathbf{O}$ with respect to $\bar{\mu}$
-as
+Given the same observable with an extra condition~
+\[
+x_{N^{-}}\le x_{N^{-}+1}\le\ldots\le x_{-2}\le x_{-1}\le x_{0}=0\le x_{1}\le x_{2}\le\ldots\le x_{N^{+}-1}\le x_{N^{+}}
+\]
+and let $P_{i}'=\sum_{j\ge i}P_{j}\in\events$ for $i>0$, and $P_{i}'=\sum_{j\le i}P_{j}\in\events$
+for $i<0$, we can combine equation~(\ref{eq:interval-expectation})
+and (\ref{eq:quantum-expectation}) to define the expectation value
+of $\mathbf{O}$ with respect to $\bar{\mu}$ as
 \begin{equation}
-\expval{\mathbf{O}}_{\bar{\mu}}=\sum_{i=1}^{N}\lambda_{i}\left[l\left(\sum_{j\ge i}P_{j}\right)-l\left(\sum_{j\ge i+1}P_{j}\right),r\left(\sum_{j\ge i}P_{j}\right)-r\left(\sum_{j\ge i+1}P_{j}\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
+\expval{\mathbf{O}}_{\bar{\mu}}=\sum_{i=1}^{N}\lambda_{i}\left[l\left(P_{i}'\right)-l\left(P_{i+\mathrm{sign}\left(i\right)}'\right),r\left(P_{i}'\right)-r\left(P_{i+\mathrm{sign}\left(i\right)}'\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
 \end{equation}
 Let $\events\left(\mathbf{O}\right)$ denote the minimal sub-event
 space containing $\left\{ P_{i}\right\} _{i=1}^{N}$. Then, we have
 the corresponding theorem. 
-
-\begin{thm}Given a Hilbert space of $d\ge3$, for every quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-and any observable~$\mathbf{O}$, if $\bar{\mu}$ is convex, then
-\begin{equation}
-\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\mathrm{core}\left(\bar{\mu},\events\left(\mathbf{O}\right)\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\mathrm{core}\left(\bar{\mu},\events\left(\mathbf{O}\right)\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ .}\label{eq:quantum-interval-expectation-core}
-\end{equation}
-Conversely, if equation~(\ref{eq:quantum-interval-expectation-core})
-holds for every observable, then $\bar{\mu}$ is convex.\end{thm}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\section{Expectation Values for IVPMs (Version 2)}
-
-We may need to understand how to define expectation values of an observable
-for quantum IVPMs. Recall an observable is the quantum version of
-a random variable. Hence, in order to define expectation values of
-an observable, we need to understand the definition of expectation
-values of a random variable for an classical IVPM. Since the expectation
-value of random variable~$X$ is the integral $\int X\rmd\pmeas$~\cite{Kolmogorov1950},
-we need to understand the meaning of integration on IVPMs. In the
-rest of the section, we will consider the real-valued and interval-valued
-probability measure defined in example~\ref{ex1} and \ref{ex3},
-and see how to compute the expectation value of different random variables.
-To simplify the discussion later, we will only consider a random variable~$X:\Omega\rightarrow\mathbb{R}$
-which is a step function, i.e., $X=\sum_{i=N^{-}}^{N^{+}}x_{i}\mathbf{1}_{E_{i}}$,
-where 
-\begin{itemize}
-\item $x_{i}\ge0$ for $i\ge0$ and $x_{i}\le0$ for $i\le0$.
-\item $E_{N^{+}}\subseteq E_{N^{+}-1}\subseteq\ldots\subseteq E_{2}\subseteq E_{1}\subseteq\Omega\backslash E_{-1}$,
-$E_{N^{-}}\subseteq E_{N^{-}+1}\subseteq\ldots\subseteq E_{-2}\subseteq E_{-1}\subseteq\Omega\backslash E_{1}$,
-and $\Omega=E_{0}$.
-\item $\mathbf{1}_{E}$ is the indicator function defined by 
-\begin{equation} 
-\mathbf{1}_{A}(x)=\cases{ 
-1 & if $x\in A$ ;\\ 
-0 & if $x\notin A$. 
-}
-\end{equation}
-\end{itemize}
-Given a random variable~$X$ and a probability measure~$\pmeas$,
-the expectation value of $X$ is 
-\begin{eqnarray}
-\int X\rmd\pmeas & = & \sum_{i=N^{-}}^{N^{+}}x_{i}\pmeas\left(E_{i}\right)\textrm{ .}\label{eq:expectation-1}
-\end{eqnarray}
-
-There are various kind of integrals defined for IVPMs, and the most
-famous one is called the Choquet integral~\cite{Choquet1954,GilboaSchmeidler1994,Grabisch2016}.
-
-\begin{definition}Given the random variable~$X$ as previous paragraph,
-and a classical IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$.
-Then, the Choquet integral of $X$ with respect to $\bar{\mu}$ is
-\begin{equation}
-\int X\rmd\bar{\mu}=\sum_{i=N^{-}}^{N^{+}}x_{i}\bar{\mu}\left(E_{i}\right)\textrm{ ,}\label{eq:interval-expectation-1}
-\end{equation}
-where multiplying a negative number switching the left and right end
-of an interval 
-\begin{equation} 
-x[l,r]=\cases{ 
-[xl,xr] & for $x\ge0$ ;\\
-[xr,xl] & for $x\le0$ .
-}
-\end{equation}
-\end{definition}
-
-The Choquet integral has many desirable properties. For example, it
-has the same range as all expectation value in the core.
-
-\begin{thm}\cite{GilboaSchmeidler1994,Grabisch2016}For every classical
-IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$ and any random variable~$X:\Omega\rightarrow\mathbb{R}$,
-$\bar{\mu}$ is convex if and only if 
-\begin{equation}
-\int X\rmd\bar{\mu}=\left[\min_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu,\max_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu\right]\textrm{ .}
-\end{equation}
-\end{thm}
-
-\yutsung{Put an example here if we need...}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
