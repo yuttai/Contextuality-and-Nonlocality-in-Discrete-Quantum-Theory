@@ -44,6 +44,7 @@
 \newcommand{\set}[2]{\ensuremath{\left\{ {#1}~\middle|~{#2}\right\} }}
 \newcommand{\Tr}{\mathop{\mathrm{Tr}}\nolimits}
 \allowdisplaybreaks
+\newcommand{\coreBorn}{\mathrm{C}}
 \end_preamble
 \options english,reprint, aps, prl,superscriptaddress, showpacs,showkeys, longbibliography, amsmath, amssymb
 \use_default_options false
@@ -414,9 +415,15 @@ Gleason's Theorem
 
 \begin_layout Standard
 In conventional quantum theory, when we measure a property 
+\family roman
+\size normal
+
 \begin_inset Formula $\mathbf{O}$
 \end_inset
 
+
+\family default
+\size default
  of a physical system whose state is represented by a density matrix
 \begin_inset space ~
 \end_inset
@@ -594,6 +601,64 @@ cite{gleason1957,Redhead1987-REDINA,peres1995quantum}
 .
 \end_layout
 
+\begin_layout Standard
+Furthermore, 
+\family roman
+\size normal
+if we express the observable
+\begin_inset space ~
+\end_inset
+
+
+\family default
+\size default
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+ as its spectrum decomposition
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\sum_{i=1}^{N}\lambda_{i}P_{i}$
+\end_inset
+
+
+\family roman
+\size normal
+, the expectation value of 
+\family default
+\size default
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+
+\family roman
+\size normal
+ is given by
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "544199,Jaeger2007"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\expval{\mathbf{O}}_{\rho}=\Tr\left(\rho\mathbf{O}\right)=\sum_{i=1}^{N}\lambda_{i}\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)\ .\label{eq:quantum-expectation}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Paragraph
 Quantum Interval-valued Probability Measures (
 \emph on
@@ -657,8 +722,11 @@ name "eq:interval-operations"
  
 \begin_inset Formula 
 \begin{eqnarray}
- &  & \left[1,1\right]-\left[l,r\right]=\left[1-r,1-l\right],\textrm{ and}\\
- &  & [l_{1},r_{1}]+[l_{2},r_{2}]=[l_{1}+l_{2},r_{1}+r_{2}],
+ &  & [l_{1},r_{1}]+[l_{2},r_{2}]=[l_{1}+l_{2},r_{1}+r_{2}]\textrm{ and}\\
+ &  & x[l,r]=\begin{cases}
+[xl,xr] & \textrm{for }x\ge0\textrm{ ;}\\{}
+[xr,xl] & \textrm{for }x\le0\textrm{ .}
+\end{cases}
 \end{eqnarray}
 
 \end_inset
@@ -767,7 +835,7 @@ reference "eq:QuantumProbability-Addition"
 Formally, we can ask: what can we deduce about the state of a quantum system
  given a quantum interval-valued probability measure, i.e., given observations
  done with finite resources.
- Since the probabilities are intervals, it is intuitive to say a state
+ Since the probabilities are now intervals, it is intuitive to say a state
 \begin_inset space ~
 \end_inset
 
@@ -790,12 +858,16 @@ Formally, we can ask: what can we deduce about the state of a quantum system
  if 
 \begin_inset Formula 
 \begin{equation}
-\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)\textrm{ .}
+\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)\textrm{ ,}
 \end{equation}
 
 \end_inset
 
+and denoted by 
+\begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$
+\end_inset
 
+.
 \end_layout
 
 \begin_layout Standard
@@ -926,7 +998,7 @@ In the case that the intervals are infinitely precise, i.e.,
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
-, there is an unique state can be consistent with 
+, there is an unique state consistent with 
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
@@ -942,7 +1014,7 @@ While mapping to
 \begin_inset Formula $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $
 \end_inset
 
- is another one corresponding to the Kochen-Specker theorem
+ is another one, and corresponding to the Kochen-Specker theorem
 \begin_inset space ~
 \end_inset
 
@@ -958,32 +1030,131 @@ key "kochenspecker1967,peres1995quantum,Redhead1987-REDINA"
 d how to define expectation value of an observable with quantum IVPMs.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
+\begin_layout Paragraph
+Expectation Values for Quantum IVPMs
 \end_layout
 
 \begin_layout Standard
-Quantum IVPMs turns into the classical IVPMs setup
+Consider a quantum IVPM
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ such that 
+\begin_inset Formula $l:\events\rightarrow\left[0,1\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $r:\events\rightarrow\left[0,1\right]$
+\end_inset
+
+ are the left-end and the right-end of 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+, respectively, i.e., 
+\begin_inset Formula $\bar{\mu}\left(E\right)=\left[l\left(E\right),r\left(E\right)\right]$
+\end_inset
+
+.
+ This time, when we express the observable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+ as its spectrum decomposition
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\sum_{i=1}^{N^{-}}\lambda_{i}^{-}P_{i}^{-}+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}P_{i}^{+}$
+\end_inset
+
+, we separate the positive and negative eigenvalues and order them from
+ the smallest to the largest 
+\begin_inset Formula 
+\begin{equation}
+\lambda_{N^{-}}^{-}\le\ldots\le\lambda_{1}^{-}\le0\le\lambda_{1}^{+}\le\ldots\le\lambda_{N^{+}}^{+}\textrm{ .}
+\end{equation}
+
+\end_inset
+
+Let 
+\begin_inset Formula $P_{i}^{s\prime}=\sum_{j\ge i}P_{j}^{s}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta f\left(P_{i}^{s\prime}\right)=f\left(P_{i}^{s\prime}\right)-f\left(P_{i+1}^{s\prime}\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $s\in\left\{ +,-\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $f\in\left\{ l,r\right\} $
+\end_inset
+
+.
+ We can combine the classical Choquet integral
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "JamisonLodwick2004"
+key "Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016"
 
 \end_inset
 
- when the space of events includes only mutually commuting sub-events, where
- any subset of 
-\begin_inset Formula $\events$
+ with (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:quantum-expectation"
+
 \end_inset
 
- is called a sub-event space if it satisfies the follow conditions.
- 
+) to define the expectation value of 
+\family roman
+\size normal
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+ with respect to 
+\family default
+\size default
+
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ as
+\family roman
+\size normal
+
+\begin_inset Formula 
+\begin{eqnarray}
+\expval{\mathbf{O}}_{\bar{\mu}} & = & \sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta l\left(P_{i}^{+\prime}\right),\Delta r\left(P_{i}^{+\prime}\right)\right]\\
+ &  & +\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta l\left(P_{i}^{-\prime}\right),\Delta r\left(P_{i}^{-\prime}\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
+\end{eqnarray}
+
+\end_inset
+
+Let 
+\begin_inset Formula $\events'$
+\end_inset
+
+ denote the set containing 
+\begin_inset Formula $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}$
+\end_inset
+
+ and satisfies the following conditions.
 \end_layout
 
 \begin_layout Itemize
@@ -1033,6 +1204,124 @@ For a set of mutually orthogonal projections
 \end_inset
 
 .
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\size normal
+Then, we have the following theorem.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{thm}
+\end_layout
+
+\end_inset
+
+Given a Hilbert space of 
+\begin_inset Formula $d\ge3$
+\end_inset
+
+, for every quantum IVPM
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
+\end_inset
+
+ and any observable
+\begin_inset space ~
+\end_inset
+
+
+\family roman
+\size normal
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+
+\family default
+\size default
+, if 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ is convex, then
+\begin_inset Formula 
+\begin{equation}
+\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ .}\label{eq:quantum-interval-expectation-core}
+\end{equation}
+
+\end_inset
+
+Conversely, if equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:quantum-interval-expectation-core"
+
+\end_inset
+
+) holds for every observable, then 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ is convex.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{thm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Quantum IVPMs turns into the classical IVPMs setup
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "JamisonLodwick2004"
+
+\end_inset
+
+ when the space of events includes only mutually commuting sub-events, where
+ any subset of 
+\begin_inset Formula $\events$
+\end_inset
+
+ is called a sub-event space if it satisfies the follow conditions.
  
 \end_layout
 
@@ -1686,7 +1975,7 @@ status collapsed
 
 \begin_inset Formula 
 \begin{equation}
-\mathrm{core}\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in\events'.~\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)}\textrm{ .}
+\coreBorn\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in\events'.~\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)}\textrm{ .}
 \end{equation}
 
 \end_inset
@@ -1694,7 +1983,7 @@ status collapsed
 The core of an interval-valued probability measure is the set of states
  it approximates.
  For example, 
-\begin_inset Formula $\mathrm{core}\left(\bar{\mu}_{1},\events'\right)$
+\begin_inset Formula $\coreBorn\left(\bar{\mu}_{1},\events'\right)$
 \end_inset
 
  contains every density matrix.
@@ -1731,9 +2020,9 @@ begin{subequations}
 
 \begin_inset Formula 
 \begin{eqnarray}
-\mathrm{core}\left(\bar{\mu}_{0},\events_{0}\right) & = & \left\{ \proj{\ps}\right\} \textrm{ ,}\\
-\mathrm{core}\left(\bar{\mu}_{0},\events_{1}\right) & = & \left\{ \proj{0}\right\} \textrm{ ,}\\
-\mathrm{core}\left(\bar{\mu}_{0},\events\right) & = & \emptyset\textrm{ ,}
+\coreBorn\left(\bar{\mu}_{0},\events_{0}\right) & = & \left\{ \proj{\ps}\right\} \textrm{ ,}\\
+\coreBorn\left(\bar{\mu}_{0},\events_{1}\right) & = & \left\{ \proj{0}\right\} \textrm{ ,}\\
+\coreBorn\left(\bar{\mu}_{0},\events\right) & = & \emptyset\textrm{ ,}
 \end{eqnarray}
 
 \end_inset
@@ -1901,7 +2190,7 @@ key "Griffiths2003"
 
 \begin_layout Standard
 Then, 
-\begin_inset Formula $\mathrm{core}\left(\bar{\mu},\events'\right)\ne\emptyset$
+\begin_inset Formula $\coreBorn\left(\bar{\mu},\events'\right)\ne\emptyset$
 \end_inset
 
 .
@@ -2098,7 +2387,7 @@ Let
 \end_inset
 
 
-\begin_inset Formula $\rho\in\mathrm{core}\left(\bar{\mu},\events_{1}\right)$
+\begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},\events_{1}\right)$
 \end_inset
 
 , we have 
@@ -2132,7 +2421,7 @@ Let
 \end_inset
 
  is actually in 
-\begin_inset Formula $\mathrm{core}\left(\bar{\mu},\events_{1}\right)$
+\begin_inset Formula $\coreBorn\left(\bar{\mu},\events_{1}\right)$
 \end_inset
 
 .
@@ -2153,14 +2442,14 @@ Similarly, let
 
 .
  We have 
-\begin_inset Formula $\mathrm{core}\left(\bar{\mu},\events_{2}\right)=\left\{ \proj{1}\right\} $
+\begin_inset Formula $\coreBorn\left(\bar{\mu},\events_{2}\right)=\left\{ \proj{1}\right\} $
 \end_inset
 
 .
  Therefore, 
 \begin_inset Formula 
 \begin{equation}
-\mathrm{core}\left(\bar{\mu},\events\right)\subseteq\mathrm{core}\left(\bar{\mu},\events_{1}\right)\cap\mathrm{core}\left(\bar{\mu},\events_{2}\right)=\emptyset\textrm{ ,}
+\coreBorn\left(\bar{\mu},\events\right)\subseteq\coreBorn\left(\bar{\mu},\events_{1}\right)\cap\coreBorn\left(\bar{\mu},\events_{2}\right)=\emptyset\textrm{ ,}
 \end{equation}
 
 \end_inset

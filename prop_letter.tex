@@ -46,6 +46,7 @@ showkeys, longbibliography, amsmath, amssymb]{revtex4-1}
 \newcommand{\set}[2]{\ensuremath{\left\{ {#1}~\middle|~{#2}\right\} }}
 \newcommand{\Tr}{\mathop{\mathrm{Tr}}\nolimits}
 \allowdisplaybreaks
+\newcommand{\coreBorn}{\mathrm{C}}
 
 \begin{document}
 
@@ -170,20 +171,31 @@ satisfying the above axioms, Gleason's theorem asserts that there
 exists a unique state~$\rho$ such that $\mu=\mu_{\rho}^{\mathrm{B}}$
 in a Hilbert space of dimension $d\geq3$~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
 
+Furthermore, if we express the observable~$\mathbf{O}$ as its spectrum
+decomposition~$\sum_{i=1}^{N}\lambda_{i}P_{i}$, the expectation
+value of $\mathbf{O}$ is given by~\cite{544199,Jaeger2007}
+\begin{equation}
+\expval{\mathbf{O}}_{\rho}=\Tr\left(\rho\mathbf{O}\right)=\sum_{i=1}^{N}\lambda_{i}\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)\ .\label{eq:quantum-expectation}
+\end{equation}
+
+
 \paragraph{Quantum Interval-valued Probability Measures (\emph{IVPMs})}
 
-To formalize the idea of finite precision measurement, we next introduce 
-the notion of quantum IVPM~$\bar{\mu}$. The latter replaces 
-the infinitely precise interval $[0,1]$ by a finite collection $\mathscr{I}$ of
-intervals. Since the intervals $\imposs=\left[0,0\right]$ and $\necess=\left[1,1\right]$ 
-should be included in $\mathscr{I}$, and arithmetic operations on intervals satisfy
-\begin{subequations}\label{eq:interval-operations}
+To formalize the idea of finite precision measurement, we next introduce
+the notion of quantum IVPM~$\bar{\mu}$. The latter replaces the
+infinitely precise interval $[0,1]$ by a finite collection $\mathscr{I}$
+of intervals. Since the intervals $\imposs=\left[0,0\right]$ and
+$\necess=\left[1,1\right]$ should be included in $\mathscr{I}$,
+and arithmetic operations on intervals satisfy \begin{subequations}\label{eq:interval-operations}
 \begin{eqnarray}
- &  & \left[1,1\right]-\left[l,r\right]=\left[1-r,1-l\right], \textrm{ and}\\
- &  & [l_{1},r_{1}]+[l_{2},r_{2}]=[l_{1}+l_{2},r_{1}+r_{2}] ,
+ &  & [l_{1},r_{1}]+[l_{2},r_{2}]=[l_{1}+l_{2},r_{1}+r_{2}]\textrm{ and}\\
+ &  & x[l,r]=\begin{cases}
+[xl,xr] & \textrm{for }x\ge0\textrm{ ;}\\{}
+[xr,xl] & \textrm{for }x\le0\textrm{ .}
+\end{cases}
 \end{eqnarray}
-\end{subequations}
-$\bar{\mu}:\events\rightarrow\mathscr{I}$ is defined by the axioms:
+\end{subequations} $\bar{\mu}:\events\rightarrow\mathscr{I}$ is
+defined by the axioms: 
 \begin{itemize}
 \item $\bar{\mu}(\mathbb{0})=\left[0,0\right]$. 
 \item $\bar{\mu}(\mathbb{1})=\left[1,1\right]$. 
@@ -205,11 +217,12 @@ $\bar{\mu}\left(P\right)=\left[l,r\right]$, we have, when $r-l=\ell>0$,
 Formally, we can ask: what can we deduce about the state of a quantum
 system given a quantum interval-valued probability measure, i.e.,
 given observations done with finite resources. Since the probabilities
-are intervals, it is intuitive to say a state~$\rho$ is consistent
+are now intervals, it is intuitive to say a state~$\rho$ is consistent
 with $\bar{\mu}$ on a projector~$P$ if 
 \begin{equation}
-\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)\textrm{ .}
+\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)\textrm{ ,}
 \end{equation}
+and denoted by $\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$.
 
 Since our measurement is fuzzy, generally there are more than one
 state consistent with a particular quantum IVPM. For example, consider
@@ -232,21 +245,38 @@ In the case that the intervals are infinitely precise, i.e., $\mathscr{I}_{\inft
 any quantum probability measure can be recast as an interval-valued
 one. For $d\ge3$, the question reduces to Gleason's theorem which
 states that for any quantum IVPM~$\bar{\mu}$, there is an unique
-state can be consistent with $\bar{\mu}$ on every projector.
+state consistent with $\bar{\mu}$ on every projector.
 
 While mapping to $\mathscr{I}_{\infty}$ is one extreme case of quantum
 IVPM, mapping to $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $
-is another one corresponding to the Kochen-Specker theorem~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA}.
+is another one, and corresponding to the Kochen-Specker theorem~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA}.
 However, before dive into the Kochen-Specker theorem, it is better
 to understand how to define expectation value of an observable with
 quantum IVPMs.
 
-\newpage{}
+\paragraph{Expectation Values for Quantum IVPMs}
 
-Quantum IVPMs turns into the classical IVPMs setup~\cite{JamisonLodwick2004}
-when the space of events includes only mutually commuting sub-events,
-where any subset of $\events$ is called a sub-event space if it satisfies
-the follow conditions. 
+Consider a quantum IVPM~$\bar{\mu}$ such that $l:\events\rightarrow\left[0,1\right]$
+and $r:\events\rightarrow\left[0,1\right]$ are the left-end and the
+right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[l\left(E\right),r\left(E\right)\right]$.
+This time, when we express the observable~$\mathbf{O}$ as its spectrum
+decomposition~$\sum_{i=1}^{N^{-}}\lambda_{i}^{-}P_{i}^{-}+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}P_{i}^{+}$,
+we separate the positive and negative eigenvalues and order them from
+the smallest to the largest 
+\begin{equation}
+\lambda_{N^{-}}^{-}\le\ldots\le\lambda_{1}^{-}\le0\le\lambda_{1}^{+}\le\ldots\le\lambda_{N^{+}}^{+}\textrm{ .}
+\end{equation}
+Let $P_{i}^{s\prime}=\sum_{j\ge i}P_{j}^{s}$ and $\Delta f\left(P_{i}^{s\prime}\right)=f\left(P_{i}^{s\prime}\right)-f\left(P_{i+1}^{s\prime}\right)$,
+where $s\in\left\{ +,-\right\} $ and $f\in\left\{ l,r\right\} $.
+We can combine the classical Choquet integral~\cite{Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016}
+with (\ref{eq:quantum-expectation}) to define the expectation value
+of $\mathbf{O}$ with respect to $\bar{\mu}$ as
+\begin{eqnarray}
+\expval{\mathbf{O}}_{\bar{\mu}} & = & \sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta l\left(P_{i}^{+\prime}\right),\Delta r\left(P_{i}^{+\prime}\right)\right]\\
+ &  & +\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta l\left(P_{i}^{-\prime}\right),\Delta r\left(P_{i}^{-\prime}\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
+\end{eqnarray}
+Let $\events'$ denote the set containing $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}$
+and satisfies the following conditions.
 \begin{itemize}
 \item $\mathbb{0}\in\events'$. 
 \item $\mathbb{1}\in\events'$. 
@@ -254,6 +284,23 @@ the follow conditions.
 \item For a set of mutually orthogonal projections~$\left\{ P_{i}\right\} _{i=1}^{N}\subseteq\events'$,
 we have $\sum_{i=1}^{N}P_{i}\in\events'$. 
 \end{itemize}
+Then, we have the following theorem. 
+
+\begin{thm}Given a Hilbert space of $d\ge3$, for every quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+and any observable~$\mathbf{O}$, if $\bar{\mu}$ is convex, then
+\begin{equation}
+\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ .}\label{eq:quantum-interval-expectation-core}
+\end{equation}
+Conversely, if equation~(\ref{eq:quantum-interval-expectation-core})
+holds for every observable, then $\bar{\mu}$ is convex.\end{thm}
+
+\newpage{}
+
+Quantum IVPMs turns into the classical IVPMs setup~\cite{JamisonLodwick2004}
+when the space of events includes only mutually commuting sub-events,
+where any subset of $\events$ is called a sub-event space if it satisfies
+the follow conditions. 
+
 For example, $\events_{0}=\left\{ \mathbb{0},\proj{\ps},\proj{\ms},\mathbb{1}\right\} $
 is a commuting sub-event space. Restricting $\bar{\mu}_{1}$ on $\events_{0}$,
 $\bar{\mu}_{1}|_{\events_{0}}$, gives a classical IVPM~$\bar{\mu}_{2}$:
@@ -415,17 +462,17 @@ IVPMs, should we explain the meaning of the Born rule for classical
 probability measures? Check this definition in the classical setting,
 like commuting observables or product states... etc.}}
 \begin{equation}
-\mathrm{core}\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in\events'.~\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)}\textrm{ .}
+\coreBorn\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in\events'.~\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)}\textrm{ .}
 \end{equation}
 The core of an interval-valued probability measure is the set of states
-it approximates. For example, $\mathrm{core}\left(\bar{\mu}_{1},\events'\right)$
+it approximates. For example, $\coreBorn\left(\bar{\mu}_{1},\events'\right)$
 contains every density matrix. The 2-dimensional measure~$\mu_{0}$
 can be understood by core as well. Consider the IVPM~$\bar{\mu}_{0}=\iota_{\infty}\circ\mu_{0}$
 whose cores are\begin{subequations}
 \begin{eqnarray}
-\mathrm{core}\left(\bar{\mu}_{0},\events_{0}\right) & = & \left\{ \proj{\ps}\right\} \textrm{ ,}\\
-\mathrm{core}\left(\bar{\mu}_{0},\events_{1}\right) & = & \left\{ \proj{0}\right\} \textrm{ ,}\\
-\mathrm{core}\left(\bar{\mu}_{0},\events\right) & = & \emptyset\textrm{ ,}
+\coreBorn\left(\bar{\mu}_{0},\events_{0}\right) & = & \left\{ \proj{\ps}\right\} \textrm{ ,}\\
+\coreBorn\left(\bar{\mu}_{0},\events_{1}\right) & = & \left\{ \proj{0}\right\} \textrm{ ,}\\
+\coreBorn\left(\bar{\mu}_{0},\events\right) & = & \emptyset\textrm{ ,}
 \end{eqnarray}
 \end{subequations}where $\events_{1}=\left\{ \mathbb{0},\proj{0},\proj{1},\mathbb{1}\right\} $.
 That is, $\bar{\mu}_{0}$ approximates $\proj{\ps}$ if we are only
@@ -449,7 +496,7 @@ if the following conditions are true.
 $\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$,
 where $P_{0}\vee P_{1}=P_{0}+P_{1}-P_{0}P_{1}$~\cite{Griffiths2003}.
 \end{itemize}
-Then, $\mathrm{core}\left(\bar{\mu},\events'\right)\ne\emptyset$.\end{thm}
+Then, $\coreBorn\left(\bar{\mu},\events'\right)\ne\emptyset$.\end{thm}
 
 In informal terms, this result states that although measurements done
 with limited resources and poor precision may not uniquely identify
@@ -483,17 +530,17 @@ is a quantum interval-valued probability measure.
 
 Let $\events_{1}$ be the minimal event space containing both $\proj{0}$
 and $\proj{\ps}$. Because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$,
-for any mixed state~$\rho\in\mathrm{core}\left(\bar{\mu},\events_{1}\right)$,
+for any mixed state~$\rho\in\coreBorn\left(\bar{\mu},\events_{1}\right)$,
 we have $\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=0$.
 Hence, $\rho$ is actually the pure state orthogonal to both $\ket{0}$
 and $\ket{\ps}$. The only choice of $\rho$ is $\ket{2}$, and it
-is easy to verify $\proj{2}$ is actually in $\mathrm{core}\left(\bar{\mu},\events_{1}\right)$.
+is easy to verify $\proj{2}$ is actually in $\coreBorn\left(\bar{\mu},\events_{1}\right)$.
 
 Similarly, let $\events_{2}$ be the minimal event space containing
-both $\proj{0}$ and $\proj{\ps'}$. We have $\mathrm{core}\left(\bar{\mu},\events_{2}\right)=\left\{ \proj{1}\right\} $.
+both $\proj{0}$ and $\proj{\ps'}$. We have $\coreBorn\left(\bar{\mu},\events_{2}\right)=\left\{ \proj{1}\right\} $.
 Therefore, 
 \begin{equation}
-\mathrm{core}\left(\bar{\mu},\events\right)\subseteq\mathrm{core}\left(\bar{\mu},\events_{1}\right)\cap\mathrm{core}\left(\bar{\mu},\events_{2}\right)=\emptyset\textrm{ ,}
+\coreBorn\left(\bar{\mu},\events\right)\subseteq\coreBorn\left(\bar{\mu},\events_{1}\right)\cap\coreBorn\left(\bar{\mu},\events_{2}\right)=\emptyset\textrm{ ,}
 \end{equation}
 and must be empty.\end{example}
 
