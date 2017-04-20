@@ -234,7 +234,7 @@ it provides no information. Then,
 \bar{\mu}_{1}\left(P\right)=\begin{cases}
 \necess & \text{, if }P=\mathbb{1}\text{ ;}\\
 \imposs & \text{, if }P=\mathbb{0}\text{ ;}\\
-\unknown & \text{, otherwise.}
+\unknown & \text{, otherwise,}
 \end{cases}\label{eq:homomorphism-1}
 \end{equation}
 is a quantum IVPM. This measure represents the beliefs of an experimenter
@@ -250,15 +250,15 @@ state consistent with $\bar{\mu}$ on every projector.
 While mapping to $\mathscr{I}_{\infty}$ is one extreme case of quantum
 IVPM, mapping to $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $
 is another one, and corresponding to the Kochen-Specker theorem~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA}.
-However, before dive into the Kochen-Specker theorem, it is better
+However, before diving into the Kochen-Specker theorem, it is better
 to understand how to define expectation value of an observable with
 quantum IVPMs.
 
 \paragraph{Expectation Values for Quantum IVPMs}
 
-Consider a quantum IVPM~$\bar{\mu}$ such that $l:\events\rightarrow\left[0,1\right]$
-and $r:\events\rightarrow\left[0,1\right]$ are the left-end and the
-right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[l\left(E\right),r\left(E\right)\right]$.
+Consider a quantum IVPM~$\bar{\mu}$ such that $\boldsymbol{l}:\events\rightarrow\left[0,1\right]$
+and $\boldsymbol{r}:\events\rightarrow\left[0,1\right]$ are the left-end
+and the right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[\boldsymbol{l}\left(E\right),\boldsymbol{r}\left(E\right)\right]$.
 This time, when we express the observable~$\mathbf{O}$ as its spectrum
 decomposition~$\sum_{i=1}^{N^{-}}\lambda_{i}^{-}P_{i}^{-}+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}P_{i}^{+}$,
 we separate the positive and negative eigenvalues and order them from
@@ -267,13 +267,13 @@ the smallest to the largest
 \lambda_{N^{-}}^{-}\le\ldots\le\lambda_{1}^{-}\le0\le\lambda_{1}^{+}\le\ldots\le\lambda_{N^{+}}^{+}\textrm{ .}
 \end{equation}
 Let $P_{i}^{s\prime}=\sum_{j\ge i}P_{j}^{s}$ and $\Delta f\left(P_{i}^{s\prime}\right)=f\left(P_{i}^{s\prime}\right)-f\left(P_{i+1}^{s\prime}\right)$,
-where $s\in\left\{ +,-\right\} $ and $f\in\left\{ l,r\right\} $.
+where $s\in\left\{ +,-\right\} $ and $f\in\left\{ \boldsymbol{l},\boldsymbol{r}\right\} $.
 We can combine the classical Choquet integral~\cite{Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016}
-with (\ref{eq:quantum-expectation}) to define the expectation value
-of $\mathbf{O}$ with respect to $\bar{\mu}$ as
+with Eq.~(\ref{eq:quantum-expectation}) to define the expectation
+value of $\mathbf{O}$ with respect to $\bar{\mu}$ as
 \begin{eqnarray}
-\expval{\mathbf{O}}_{\bar{\mu}} & = & \sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta l\left(P_{i}^{+\prime}\right),\Delta r\left(P_{i}^{+\prime}\right)\right]\\
- &  & +\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta l\left(P_{i}^{-\prime}\right),\Delta r\left(P_{i}^{-\prime}\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
+\expval{\mathbf{O}}_{\bar{\mu}} & = & \sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta\boldsymbol{l}\left(P_{i}^{+\prime}\right),\Delta\boldsymbol{r}\left(P_{i}^{+\prime}\right)\right]\nonumber \\
+ &  & +\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta\boldsymbol{l}\left(P_{i}^{-\prime}\right),\Delta\boldsymbol{r}\left(P_{i}^{-\prime}\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
 \end{eqnarray}
 Let $\events'$ denote the set containing $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}$
 and satisfies the following conditions.
@@ -284,6 +284,9 @@ and satisfies the following conditions.
 \item For a set of mutually orthogonal projections~$\left\{ P_{i}\right\} _{i=1}^{N}\subseteq\events'$,
 we have $\sum_{i=1}^{N}P_{i}\in\events'$. 
 \end{itemize}
+And $\bar{\mu}$ is called convex if for all commuting $P_{0},P_{1}\in\events$,
+$\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$,
+where $P_{0}\vee P_{1}=P_{0}+P_{1}-P_{0}P_{1}$~\cite{Griffiths2003}.
 Then, we have the following theorem. 
 
 \begin{thm}Given a Hilbert space of $d\ge3$, for every quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
@@ -291,8 +294,27 @@ and any observable~$\mathbf{O}$, if $\bar{\mu}$ is convex, then
 \begin{equation}
 \expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ .}\label{eq:quantum-interval-expectation-core}
 \end{equation}
-Conversely, if equation~(\ref{eq:quantum-interval-expectation-core})
+Conversely, if Eq.~(\ref{eq:quantum-interval-expectation-core})
 holds for every observable, then $\bar{\mu}$ is convex.\end{thm}
+
+For example, to compute the expectation value of $\sigma_{\mathrm{z}}=\proj{0}-\proj{1}$
+with respect to $\bar{\mu}_{1}$, we have $N^{+}=N^{-}=1$, $\lambda_{1}^{+}=1$,
+$\lambda_{1}^{-}=-1$, $P_{1}^{+\prime}=\proj{0}$, $P_{1}^{-\prime}=\proj{1}$,
+$P_{2}^{+\prime}=P_{2}^{-\prime}=\mathbb{0}$. Let $\left[\boldsymbol{l}_{1}\left(E\right),\boldsymbol{r}_{1}\left(E\right)\right]=\bar{\mu}_{1}\left(E\right)$,
+then $\Delta\boldsymbol{l}_{1}\left(P_{1}^{+\prime}\right)=\boldsymbol{l}_{1}\left(\proj{0}\right)-\boldsymbol{l}_{1}\left(\mathbb{0}\right)=0$,
+$\Delta\boldsymbol{l}_{1}\left(P_{1}^{-\prime}\right)=\boldsymbol{l}_{1}\left(\proj{1}\right)-\boldsymbol{l}_{1}\left(\mathbb{0}\right)=0$,
+$\Delta\boldsymbol{r}_{1}\left(P_{1}^{+\prime}\right)=\boldsymbol{r}_{1}\left(\proj{0}\right)-\boldsymbol{r}_{1}\left(\mathbb{0}\right)=1$,
+$\Delta\boldsymbol{r}_{1}\left(P_{1}^{-\prime}\right)=\boldsymbol{r}_{1}\left(\proj{1}\right)-\boldsymbol{r}_{1}\left(\mathbb{0}\right)=1$.
+Therefore, $\expval{\sigma_{\mathrm{z}}}_{\bar{\mu}_{1}}=\left[0,1\right]+\left(-1\right)\left[0,1\right]=\left[-1,1\right]$.
+
+On the other hand, it is easy to verify that $\bar{\mu}_{1}$ is convex.
+Every state is consistent with $\bar{\mu}_{1}$, in particular $\proj{0}$
+and $\proj{1}$. It is easy to see 
+\begin{eqnarray*}
+\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho} & = & \expval{\sigma_{\mathrm{z}}}_{\proj{1}}=-1\textrm{ ,}\\
+\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho} & = & \expval{\sigma_{\mathrm{z}}}_{\proj{0}}=1\textrm{ ,}
+\end{eqnarray*}
+which is consistent with the theorem.
 
 \newpage{}
 
