@@ -51,6 +51,9 @@
 \newcommand{\yutsung}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{purple}{Yu-Tsung says: #1}\end{minipage}}}
 \newcommand{\set}[2]{\ensuremath{\left\{ {#1}~\middle|~{#2}\right\} }}
 \def\C{{\mathbb{C}}}
+\newcommand{\coreBorn}{\ensuremath{\mathrm{C}}}
+\newcommand{\mul}{\ensuremath{\mu^{\mathrm{L}}}}
+\newcommand{\mur}{\ensuremath{\mu^{\mathrm{R}}}}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -1748,7 +1751,65 @@ against
 \end_inset
 
 .
- Given a sample space
+ In general, the scalar multiplication of an interval is defined by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{equation} 
+\end_layout
+
+\begin_layout Plain Layout
+
+x[l,r]=
+\backslash
+cases{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+[xl,xr] & for $x
+\backslash
+ge0$ ;
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+[xr,xl] & for $x
+\backslash
+le0$ .
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{equation}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Given a sample space
 \begin_inset space ~
 \end_inset
 
@@ -13390,59 +13451,28 @@ begin{definition}
 
 \end_inset
 
-Consider the following.
+
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-Let 
-\begin_inset Formula $X=\sum_{i=N^{-}}^{N^{+}}x_{i}\mathbf{1}_{E_{i}}$
+Consider a classical IVPM
+\begin_inset space ~
 \end_inset
 
- be a positive random variable with 
-\begin_inset Formula 
-\[
-x_{N^{-}}\le x_{N^{-}+1}\le\ldots\le x_{-2}\le x_{-1}\le x_{0}=0\le x_{1}\le x_{2}\le\ldots\le x_{N^{+}-1}\le x_{N^{+}}
-\]
 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\mul:\events\rightarrow\left[0,1\right]$
 \end_inset
 
  and 
-\begin_inset Formula $E_{i}\cap E_{j}=\emptyset$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Let 
-\begin_inset Formula $E_{i}'=\bigcup_{j\ge i}E_{j}=\set{\omega\in\Omega}{X\left(\omega\right)\ge x_{i}}\in\events$
-\end_inset
-
- for 
-\begin_inset Formula $i>0$
-\end_inset
-
-, and 
-\begin_inset Formula $E_{i}'=\bigcup_{j\le i}E_{j}=\set{\omega\in\Omega}{X\left(\omega\right)\le x_{i}}\in\events$
-\end_inset
-
- for 
-\begin_inset Formula $i<0$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
-\end_inset
-
- a classical IVPM such that 
-\begin_inset Formula $l:\events\rightarrow\left[0,1\right]$
-\end_inset
-
- and 
-\begin_inset Formula $r:\events\rightarrow\left[0,1\right]$
+\begin_inset Formula $\mur:\events\rightarrow\left[0,1\right]$
 \end_inset
 
  are the left-end and the right-end of 
@@ -13450,145 +13480,63 @@ Let
 \end_inset
 
 , respectively, i.e., 
-\begin_inset Formula $\bar{\mu}\left(E\right)=\left[l\left(E\right),r\left(E\right)\right]$
+\begin_inset Formula $\bar{\mu}\left(E\right)=\left[\mul\left(E\right),\mur\left(E\right)\right]$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Itemize
-Multiplying a negative number switching the left and right end of an interval
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{equation} 
-\end_layout
-
-\begin_layout Plain Layout
-
-x[l,r]=
-\backslash
-cases{ 
-\end_layout
-
-\begin_layout Plain Layout
-
-[xl,xr] & for $x
-\backslash
-ge0$ ;
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-[xr,xl] & for $x
-\backslash
-le0$ .
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{equation}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
+We still decompose a random variable
+\begin_inset space ~
 \end_inset
 
 
+\begin_inset Formula $X$
+\end_inset
+
+ into step functions, but we separate the positive and negative terms and
+ write like 
+\begin_inset Formula $\sum_{i=1}^{N^{-}}x_{i}^{-}\mathbf{1}_{E_{i}^{-}}+\sum_{i=1}^{N^{+}}x_{i}^{+}\mathbf{1}_{E_{i}^{+}}$
+\end_inset
+
+, i.e., 
+\begin_inset Formula 
+\begin{equation}
+x_{N^{-}}^{-}\le\ldots\le x_{1}^{-}\le0\le x_{1}^{+}\le\ldots\le x_{N^{+}}^{+}
+\end{equation}
+
+\end_inset
+
+ and 
+\begin_inset Formula $\left\{ E_{i}^{-}\right\} _{i=1}^{N^{-}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\left\{ E_{i}^{+}\right\} _{i=1}^{N^{+}}$
+\end_inset
+
+ are all disjoint.
 \end_layout
 
 \begin_layout Itemize
-We also need to define the sign function as 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{equation} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-mathrm{sign}=
-\backslash
-cases{ 
-\end_layout
-
-\begin_layout Plain Layout
-
-1 & for $x
-\backslash
-ge0$ ;
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-0 & for $x=0$ ;
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
--1 & for $x
-\backslash
-le0$ .
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{equation}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
+Let 
+\begin_inset Formula $E_{i}^{s\prime}=\bigcup_{j\ge i}E_{j}^{s}$
 \end_inset
 
+ and 
+\begin_inset Formula $\Delta\mu^{*}\left(E_{i}^{s\prime}\right)=\mu^{*}\left(E_{i}^{s\prime}\right)-f\left(E_{i+1}^{s\prime}\right)$
+\end_inset
 
+, where 
+\begin_inset Formula $s\in\left\{ +,-\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $\mu^{*}\in\left\{ \mul,\mur\right\} $
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -13603,7 +13551,7 @@ Then, the Choquet integral of
  is 
 \begin_inset Formula 
 \begin{equation}
-\int X\rmd\bar{\mu}=\sum_{i=N^{-}}^{N^{+}}x_{i}\left[l\left(E_{i}'\right)-l\left(E_{i+\mathrm{sign}\left(i\right)}'\right),r\left(E_{i}'\right)-r\left(E_{i+\mathrm{sign}\left(i\right)}'\right)\right]\textrm{ .}\label{eq:interval-expectation}
+\int X\rmd\bar{\mu}=\sum_{i=1}^{N^{+}}x_{i}^{+}\left[\Delta\mul\left(E_{i}^{+\prime}\right),\Delta\mur\left(E_{i}^{+\prime}\right)\right]+\sum_{i=1}^{N^{-}}x_{i}^{-}\left[\Delta\mul\left(E_{i}^{-\prime}\right),\Delta\mur\left(E_{i}^{-\prime}\right)\right]\textrm{ .}\label{eq:interval-expectation}
 \end{equation}
 
 \end_inset
@@ -13617,6 +13565,102 @@ status collapsed
 
 \backslash
 end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The following lemma shows our definition is exactly the same as in the literatur
+e.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lemma}
+\end_layout
+
+\end_inset
+
+Follow the same notation in the definition, we also define 
+\begin_inset Formula $X^{+}=\sum_{i=1}^{N^{+}}x_{i}^{+}\mathbf{1}_{E_{i}^{+}}$
+\end_inset
+
+ and 
+\begin_inset Formula $X^{-}=\sum_{i=1}^{N^{-}}x_{i}^{-}\mathbf{1}_{E_{i}^{-}}$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula 
+\begin{equation}
+\int X\rmd\bar{\mu}=\int X^{+}\rmd\bar{\mu}-\int\left(-X^{-}\right)\rmd\bar{\mu}\textrm{ .}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lemma}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\int X\rmd\bar{\mu} & = & \sum_{i=1}^{N^{+}}x_{i}^{+}\left[\Delta\mul\left(E_{i}^{+\prime}\right),\Delta\mur\left(E_{i}^{+\prime}\right)\right]+\sum_{i=1}^{N^{-}}x_{i}^{-}\left[\Delta\mul\left(E_{i}^{-\prime}\right),\Delta\mur\left(E_{i}^{-\prime}\right)\right]\\
+ & = & \int X^{+}\rmd\bar{\mu}+\left[\sum_{i=1}^{N^{-}}x_{i}^{-}\Delta\mul\left(E_{i}^{-\prime}\right),\sum_{i=1}^{N^{-}}x_{i}^{-}\Delta\mur\left(E_{i}^{-\prime}\right)\right]\\
+ & = & \int X^{+}\rmd\bar{\mu}-\left[-\sum_{i=1}^{N^{-}}x_{i}^{-}\Delta\mur\left(E_{i}^{-\prime}\right),-\sum_{i=1}^{N^{-}}x_{i}^{-}\Delta\mul\left(E_{i}^{-\prime}\right)\right]\\
+ & = & \int X^{+}\rmd\bar{\mu}-\left[\sum_{i=1}^{N^{-}}\left(-x_{i}^{-}\right)\Delta\mur\left(E_{i}^{-\prime}\right),\sum_{i=1}^{N^{-}}\left(-x_{i}^{-}\right)\Delta\mul\left(E_{i}^{-\prime}\right)\right]\\
+ & = & \int X^{+}\rmd\bar{\mu}-\sum_{i=1}^{N^{-}}\left(-x_{i}^{-}\right)\left[\Delta\mur\left(E_{i}^{-\prime}\right),\Delta\mul\left(E_{i}^{-\prime}\right)\right]\\
+ & = & \int X^{+}\rmd\bar{\mu}-\int\left(-X^{-}\right)\rmd\bar{\mu}\textrm{ .}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{proof}
 \end_layout
 
 \end_inset
@@ -13661,16 +13705,16 @@ weight
 
 
 \begin_inset Formula 
-\[
-\left[l\left(E_{i}'\right)-l\left(E_{i+1}'\right),r\left(E_{i}'\right)-r\left(E_{i+1}'\right)\right]\subseteq\left[l\left(E_{i}\right),r\left(E_{i}\right)\right]=\bar{\mu}\left(E_{i}\right)
-\]
+\begin{equation}
+\left[\Delta\mul\left(E_{i}^{s\prime}\right),\Delta\mur\left(E_{i}^{s\prime}\right)\right]\subseteq\left[\mul\left(E_{i}^{s}\right),\mur\left(E_{i}^{s}\right)\right]=\bar{\mu}\left(E_{i}^{s}\right)\textrm{ for }s\in\left\{ +,-\right\} 
+\end{equation}
 
 \end_inset
 
 is tighter than the interval-valued probability of the corresponding event.
  Since only one event can happen at once, we don't have to be so pessimistic
  to accumulate all possible fuzziness together, and expect 
-\begin_inset Formula $\sum_{i=1}^{N}x_{i}\bar{\mu}\left(E_{i}\right)$
+\begin_inset Formula $\sum_{i=1}^{N}x_{i}\bar{\mu}\left(E_{i}^{s}\right)$
 \end_inset
 
  to happen.
@@ -13866,11 +13910,11 @@ Consider a quantum IVPM
 \end_inset
 
  such that 
-\begin_inset Formula $l:\events\rightarrow\left[0,1\right]$
+\begin_inset Formula $\mul:\events\rightarrow\left[0,1\right]$
 \end_inset
 
  and 
-\begin_inset Formula $r:\events\rightarrow\left[0,1\right]$
+\begin_inset Formula $\mur:\events\rightarrow\left[0,1\right]$
 \end_inset
 
  are the left-end and the right-end of 
@@ -13878,50 +13922,68 @@ Consider a quantum IVPM
 \end_inset
 
 , respectively, i.e., 
-\begin_inset Formula $\bar{\mu}\left(E\right)=\left[l\left(E\right),r\left(E\right)\right]$
+\begin_inset Formula $\bar{\mu}\left(E\right)=\left[\mul\left(E\right),\mur\left(E\right)\right]$
 \end_inset
 
 .
- Given the same observable with an extra condition
+ This time, when we express the observable
 \begin_inset space ~
 \end_inset
 
 
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+ as its spectrum decomposition
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\sum_{i=1}^{N^{-}}\lambda_{i}^{-}P_{i}^{-}+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}P_{i}^{+}$
+\end_inset
+
+, we separate the positive and negative eigenvalues and order them from
+ the smallest to the largest 
 \begin_inset Formula 
-\[
-\lambda_{N^{-}}\le\lambda_{N^{-}+1}\le\ldots\le\lambda_{-2}\le\lambda_{-1}\le\lambda_{0}=0\le\lambda_{1}\le\lambda_{2}\le\ldots\le\lambda_{N^{+}-1}\le\lambda_{N^{+}}
-\]
+\begin{equation}
+\lambda_{N^{-}}^{-}\le\ldots\le\lambda_{1}^{-}\le0\le\lambda_{1}^{+}\le\ldots\le\lambda_{N^{+}}^{+}\textrm{ .}
+\end{equation}
 
 \end_inset
 
-and let 
-\begin_inset Formula $P_{i}'=\sum_{j\ge i}P_{j}\in\events$
+Let 
+\begin_inset Formula $P_{i}^{s\prime}=\sum_{j\ge i}P_{j}^{s}$
 \end_inset
 
- for 
-\begin_inset Formula $i>0$
+ and 
+\begin_inset Formula $\Delta\mu^{*}\left(P_{i}^{s\prime}\right)=\mu^{*}\left(P_{i}^{s\prime}\right)-\mu^{*}\left(P_{i+1}^{s\prime}\right)$
 \end_inset
 
-, and 
-\begin_inset Formula $P_{i}'=\sum_{j\le i}P_{j}\in\events$
+, where 
+\begin_inset Formula $s\in\left\{ +,-\right\} $
 \end_inset
 
- for 
-\begin_inset Formula $i<0$
+ and 
+\begin_inset Formula $\mu^{*}\in\left\{ \mul,\mur\right\} $
 \end_inset
 
-, we can combine equation
+.
+ We can combine the classical Choquet integral
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016"
+
+\end_inset
+
+ with Eq.
 \begin_inset space ~
 \end_inset
 
 (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:interval-expectation"
-
-\end_inset
-
-) and (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:quantum-expectation"
@@ -13948,7 +14010,7 @@ reference "eq:quantum-expectation"
 
 \begin_inset Formula 
 \begin{equation}
-\expval{\mathbf{O}}_{\bar{\mu}}=\sum_{i=1}^{N}\lambda_{i}\left[l\left(P_{i}'\right)-l\left(P_{i+\mathrm{sign}\left(i\right)}'\right),r\left(P_{i}'\right)-r\left(P_{i+\mathrm{sign}\left(i\right)}'\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
+\expval{\mathbf{O}}_{\bar{\mu}}=\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta\mul\left(P_{i}^{+\prime}\right),\Delta\mur\left(P_{i}^{+\prime}\right)\right]+\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta\mul\left(P_{i}^{-\prime}\right),\Delta\mur\left(P_{i}^{-\prime}\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
 \end{equation}
 
 \end_inset
@@ -14012,7 +14074,7 @@ Given a Hilbert space of
  is convex, then
 \begin_inset Formula 
 \begin{equation}
-\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\mathrm{core}\left(\bar{\mu},\events\left(\mathbf{O}\right)\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\mathrm{core}\left(\bar{\mu},\events\left(\mathbf{O}\right)\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ .}\label{eq:quantum-interval-expectation-core}
+\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events\left(\mathbf{O}\right)\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events\left(\mathbf{O}\right)\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ .}\label{eq:quantum-interval-expectation-core}
 \end{equation}
 
 \end_inset

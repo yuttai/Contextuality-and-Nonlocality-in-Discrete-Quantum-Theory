@@ -404,9 +404,16 @@ complement event) is also taken into consideration. Formally, for
 a general event $E$ with probability $[l,r]$, the evidence that
 contradicts $E$ is evidence supporting the complement of $E$. The
 complement of $E$ must therefore have probability $\left[1-r,1-l\right]$
-which we abbreviate $\left[1,1\right]-\left[l,r\right]$. Given a
-sample space~$\Omega$, its set of events~$\events$, and a collection
-of intervals $\mathscr{I}$, a function~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+which we abbreviate $\left[1,1\right]-\left[l,r\right]$. In general,
+the scalar multiplication of an interval is defined by 
+\begin{equation} 
+x[l,r]=\cases{ 
+[xl,xr] & for $x\ge0$ ;\\
+[xr,xl] & for $x\le0$ .
+}
+\end{equation}
+Given a sample space~$\Omega$, its set of events~$\events$, and
+a collection of intervals $\mathscr{I}$, a function~$\bar{\mu}:\events\rightarrow\mathscr{I}$
 is a classical interval-valued probability measure if and only if
 $\bar{\mu}$ satisfies the following conditions~\cite{JamisonLodwick2004}
 where the last line uses $\subseteq$ to allow for tighter intervals
@@ -1950,54 +1957,61 @@ in example~\ref{ex1}, the expectation value of $X_{0}$ is
 There are various kind of integrals defined for IVPMs, and the most
 famous one is called the Choquet integral~\cite{Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016}.
 
-\begin{definition}Consider the following.
+\begin{definition}~
 \begin{itemize}
-\item Let $X=\sum_{i=N^{-}}^{N^{+}}x_{i}\mathbf{1}_{E_{i}}$ be a positive
-random variable with 
-\[
-x_{N^{-}}\le x_{N^{-}+1}\le\ldots\le x_{-2}\le x_{-1}\le x_{0}=0\le x_{1}\le x_{2}\le\ldots\le x_{N^{+}-1}\le x_{N^{+}}
-\]
- and $E_{i}\cap E_{j}=\emptyset$.
-\item Let $E_{i}'=\bigcup_{j\ge i}E_{j}=\set{\omega\in\Omega}{X\left(\omega\right)\ge x_{i}}\in\events$
-for $i>0$, and $E_{i}'=\bigcup_{j\le i}E_{j}=\set{\omega\in\Omega}{X\left(\omega\right)\le x_{i}}\in\events$
-for $i<0$.
-\item $\bar{\mu}:\events\rightarrow\mathscr{I}$ a classical IVPM such that
-$l:\events\rightarrow\left[0,1\right]$ and $r:\events\rightarrow\left[0,1\right]$
-are the left-end and the right-end of $\bar{\mu}$, respectively,
-i.e., $\bar{\mu}\left(E\right)=\left[l\left(E\right),r\left(E\right)\right]$.
-\item Multiplying a negative number switching the left and right end of
-an interval
-\begin{equation} 
-x[l,r]=\cases{ 
-[xl,xr] & for $x\ge0$ ;\\
-[xr,xl] & for $x\le0$ .
-}
+\item Consider a classical IVPM~$\bar{\mu}$ such that $\mul:\events\rightarrow\left[0,1\right]$
+and $\mur:\events\rightarrow\left[0,1\right]$ are the left-end and
+the right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[\mul\left(E\right),\mur\left(E\right)\right]$.
+\item We still decompose a random variable~$X$ into step functions, but
+we separate the positive and negative terms and write like $\sum_{i=1}^{N^{-}}x_{i}^{-}\mathbf{1}_{E_{i}^{-}}+\sum_{i=1}^{N^{+}}x_{i}^{+}\mathbf{1}_{E_{i}^{+}}$,
+i.e., 
+\begin{equation}
+x_{N^{-}}^{-}\le\ldots\le x_{1}^{-}\le0\le x_{1}^{+}\le\ldots\le x_{N^{+}}^{+}
 \end{equation}
-\item We also need to define the sign function as 
-\begin{equation} 
-\mathrm{sign}=\cases{ 
-1 & for $x\ge0$ ;\\
-0 & for $x=0$ ;\\
--1 & for $x\le0$ .
-}
-\end{equation}
+ and $\left\{ E_{i}^{-}\right\} _{i=1}^{N^{-}}$ and $\left\{ E_{i}^{+}\right\} _{i=1}^{N^{+}}$
+are all disjoint.
+\item Let $E_{i}^{s\prime}=\bigcup_{j\ge i}E_{j}^{s}$ and $\Delta\mu^{*}\left(E_{i}^{s\prime}\right)=\mu^{*}\left(E_{i}^{s\prime}\right)-f\left(E_{i+1}^{s\prime}\right)$,
+where $s\in\left\{ +,-\right\} $ and $\mu^{*}\in\left\{ \mul,\mur\right\} $.
 \end{itemize}
 Then, the Choquet integral of $X$ with respect to $\bar{\mu}$ is
 \begin{equation}
-\int X\rmd\bar{\mu}=\sum_{i=N^{-}}^{N^{+}}x_{i}\left[l\left(E_{i}'\right)-l\left(E_{i+\mathrm{sign}\left(i\right)}'\right),r\left(E_{i}'\right)-r\left(E_{i+\mathrm{sign}\left(i\right)}'\right)\right]\textrm{ .}\label{eq:interval-expectation}
+\int X\rmd\bar{\mu}=\sum_{i=1}^{N^{+}}x_{i}^{+}\left[\Delta\mul\left(E_{i}^{+\prime}\right),\Delta\mur\left(E_{i}^{+\prime}\right)\right]+\sum_{i=1}^{N^{-}}x_{i}^{-}\left[\Delta\mul\left(E_{i}^{-\prime}\right),\Delta\mur\left(E_{i}^{-\prime}\right)\right]\textrm{ .}\label{eq:interval-expectation}
 \end{equation}
 \end{definition}
+
+The following lemma shows our definition is exactly the same as in
+the literature.
+
+\begin{lemma}Follow the same notation in the definition, we also
+define $X^{+}=\sum_{i=1}^{N^{+}}x_{i}^{+}\mathbf{1}_{E_{i}^{+}}$
+and $X^{-}=\sum_{i=1}^{N^{-}}x_{i}^{-}\mathbf{1}_{E_{i}^{-}}$. Then,
+\begin{equation}
+\int X\rmd\bar{\mu}=\int X^{+}\rmd\bar{\mu}-\int\left(-X^{-}\right)\rmd\bar{\mu}\textrm{ .}
+\end{equation}
+
+\end{lemma}
+
+\begin{proof}
+\begin{eqnarray*}
+\int X\rmd\bar{\mu} & = & \sum_{i=1}^{N^{+}}x_{i}^{+}\left[\Delta\mul\left(E_{i}^{+\prime}\right),\Delta\mur\left(E_{i}^{+\prime}\right)\right]+\sum_{i=1}^{N^{-}}x_{i}^{-}\left[\Delta\mul\left(E_{i}^{-\prime}\right),\Delta\mur\left(E_{i}^{-\prime}\right)\right]\\
+ & = & \int X^{+}\rmd\bar{\mu}+\left[\sum_{i=1}^{N^{-}}x_{i}^{-}\Delta\mul\left(E_{i}^{-\prime}\right),\sum_{i=1}^{N^{-}}x_{i}^{-}\Delta\mur\left(E_{i}^{-\prime}\right)\right]\\
+ & = & \int X^{+}\rmd\bar{\mu}-\left[-\sum_{i=1}^{N^{-}}x_{i}^{-}\Delta\mur\left(E_{i}^{-\prime}\right),-\sum_{i=1}^{N^{-}}x_{i}^{-}\Delta\mul\left(E_{i}^{-\prime}\right)\right]\\
+ & = & \int X^{+}\rmd\bar{\mu}-\left[\sum_{i=1}^{N^{-}}\left(-x_{i}^{-}\right)\Delta\mur\left(E_{i}^{-\prime}\right),\sum_{i=1}^{N^{-}}\left(-x_{i}^{-}\right)\Delta\mul\left(E_{i}^{-\prime}\right)\right]\\
+ & = & \int X^{+}\rmd\bar{\mu}-\sum_{i=1}^{N^{-}}\left(-x_{i}^{-}\right)\left[\Delta\mur\left(E_{i}^{-\prime}\right),\Delta\mul\left(E_{i}^{-\prime}\right)\right]\\
+ & = & \int X^{+}\rmd\bar{\mu}-\int\left(-X^{-}\right)\rmd\bar{\mu}\textrm{ .}
+\end{eqnarray*}
+\end{proof}
 
 Similar to equation~(\ref{eq:expectation}), equation~(\ref{eq:interval-expectation})
 can be considered as weighted average of the possible outcomes of
 $X$ as well, despite the ``weight''
-\[
-\left[l\left(E_{i}'\right)-l\left(E_{i+1}'\right),r\left(E_{i}'\right)-r\left(E_{i+1}'\right)\right]\subseteq\left[l\left(E_{i}\right),r\left(E_{i}\right)\right]=\bar{\mu}\left(E_{i}\right)
-\]
+\begin{equation}
+\left[\Delta\mul\left(E_{i}^{s\prime}\right),\Delta\mur\left(E_{i}^{s\prime}\right)\right]\subseteq\left[\mul\left(E_{i}^{s}\right),\mur\left(E_{i}^{s}\right)\right]=\bar{\mu}\left(E_{i}^{s}\right)\textrm{ for }s\in\left\{ +,-\right\} 
+\end{equation}
 is tighter than the interval-valued probability of the corresponding
 event. Since only one event can happen at once, we don't have to be
 so pessimistic to accumulate all possible fuzziness together, and
-expect $\sum_{i=1}^{N}x_{i}\bar{\mu}\left(E_{i}\right)$ to happen.
+expect $\sum_{i=1}^{N}x_{i}\bar{\mu}\left(E_{i}^{s}\right)$ to happen.
 
 The Choquet integral has many desirable properties. For example, it
 has the same range as all expectation value in the core.
@@ -2026,23 +2040,35 @@ is given by~\cite{544199,Jaeger2007}
 \expval{\mathbf{O}}_{\rho}=\Tr\left(\rho\mathbf{O}\right)=\sum_{i=1}^{N}\lambda_{i}\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)\ .\label{eq:quantum-expectation}
 \end{equation}
 
-Consider a quantum IVPM~$\bar{\mu}$ such that $l:\events\rightarrow\left[0,1\right]$
-and $r:\events\rightarrow\left[0,1\right]$ are the left-end and the
-right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[l\left(E\right),r\left(E\right)\right]$.
-Given the same observable with an extra condition~
-\[
-\lambda_{N^{-}}\le\lambda_{N^{-}+1}\le\ldots\le\lambda_{-2}\le\lambda_{-1}\le\lambda_{0}=0\le\lambda_{1}\le\lambda_{2}\le\ldots\le\lambda_{N^{+}-1}\le\lambda_{N^{+}}
-\]
-and let $P_{i}'=\sum_{j\ge i}P_{j}\in\events$ for $i>0$, and $P_{i}'=\sum_{j\le i}P_{j}\in\events$
-for $i<0$, we can combine equation~(\ref{eq:interval-expectation})
-and (\ref{eq:quantum-expectation}) to define the expectation value
-of $\mathbf{O}$ with respect to $\bar{\mu}$ as
+Consider a quantum IVPM~$\bar{\mu}$ such that $\mul:\events\rightarrow\left[0,1\right]$
+and $\mur:\events\rightarrow\left[0,1\right]$ are the left-end and
+the right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[\mul\left(E\right),\mur\left(E\right)\right]$.
+This time, when we express the observable~$\mathbf{O}$ as its spectrum
+decomposition~$\sum_{i=1}^{N^{-}}\lambda_{i}^{-}P_{i}^{-}+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}P_{i}^{+}$,
+we separate the positive and negative eigenvalues and order them from
+the smallest to the largest 
 \begin{equation}
-\expval{\mathbf{O}}_{\bar{\mu}}=\sum_{i=1}^{N}\lambda_{i}\left[l\left(P_{i}'\right)-l\left(P_{i+\mathrm{sign}\left(i\right)}'\right),r\left(P_{i}'\right)-r\left(P_{i+\mathrm{sign}\left(i\right)}'\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
+\lambda_{N^{-}}^{-}\le\ldots\le\lambda_{1}^{-}\le0\le\lambda_{1}^{+}\le\ldots\le\lambda_{N^{+}}^{+}\textrm{ .}
+\end{equation}
+Let $P_{i}^{s\prime}=\sum_{j\ge i}P_{j}^{s}$ and $\Delta\mu^{*}\left(P_{i}^{s\prime}\right)=\mu^{*}\left(P_{i}^{s\prime}\right)-\mu^{*}\left(P_{i+1}^{s\prime}\right)$,
+where $s\in\left\{ +,-\right\} $ and $\mu^{*}\in\left\{ \mul,\mur\right\} $.
+We can combine the classical Choquet integral~\cite{Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016}
+with Eq.~(\ref{eq:quantum-expectation}) to define the expectation
+value of $\mathbf{O}$ with respect to $\bar{\mu}$ as
+\begin{equation}
+\expval{\mathbf{O}}_{\bar{\mu}}=\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta\mul\left(P_{i}^{+\prime}\right),\Delta\mur\left(P_{i}^{+\prime}\right)\right]+\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta\mul\left(P_{i}^{-\prime}\right),\Delta\mur\left(P_{i}^{-\prime}\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
 \end{equation}
 Let $\events\left(\mathbf{O}\right)$ denote the minimal sub-event
 space containing $\left\{ P_{i}\right\} _{i=1}^{N}$. Then, we have
 the corresponding theorem. 
+
+\begin{thm}Given a Hilbert space of $d\ge3$, for every quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+and any observable~$\mathbf{O}$, if $\bar{\mu}$ is convex, then
+\begin{equation}
+\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events\left(\mathbf{O}\right)\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events\left(\mathbf{O}\right)\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ .}\label{eq:quantum-interval-expectation-core}
+\end{equation}
+Conversely, if equation~(\ref{eq:quantum-interval-expectation-core})
+holds for every observable, then $\bar{\mu}$ is convex.\end{thm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
