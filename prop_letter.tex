@@ -44,9 +44,11 @@ showkeys, longbibliography, amsmath, amssymb]{revtex4-1}
 \newcommand{\amr}[1]{\begin{framed}\begin{minipage}{0.9\linewidth}\color{green}{Amr says: #1}\end{minipage}\end{framed}}
 \newcommand{\yutsung}[1]{\begin{framed}\begin{minipage}{0.9\linewidth}\color{purple}{Yu-Tsung says: #1}\end{minipage}\end{framed}}
 \newcommand{\set}[2]{\ensuremath{\left\{ {#1}~\middle|~{#2}\right\} }}
-\newcommand{\Tr}{\mathop{\mathrm{Tr}}\nolimits}
+\newcommand{\Tr}{\ensuremath{\mathop{\mathrm{Tr}}\nolimits}}
 \allowdisplaybreaks
-\newcommand{\coreBorn}{\mathrm{C}}
+\newcommand{\coreBorn}{\ensuremath{\mathrm{C}}}
+\newcommand{\mul}{\ensuremath{\mu^{\mathrm{l}}}}
+\newcommand{\mur}{\ensuremath{\mu^{\mathrm{r}}}}
 
 \begin{document}
 
@@ -256,9 +258,9 @@ quantum IVPMs.
 
 \paragraph{Expectation Values for Quantum IVPMs}
 
-Consider a quantum IVPM~$\bar{\mu}$ such that $\boldsymbol{l}:\events\rightarrow\left[0,1\right]$
-and $\boldsymbol{r}:\events\rightarrow\left[0,1\right]$ are the left-end
-and the right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[\boldsymbol{l}\left(E\right),\boldsymbol{r}\left(E\right)\right]$.
+Consider a quantum IVPM~$\bar{\mu}$ such that $\mul:\events\rightarrow\left[0,1\right]$
+and $\mur:\events\rightarrow\left[0,1\right]$ are the left-end and
+the right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[\mul\left(E\right),\mur\left(E\right)\right]$.
 This time, when we express the observable~$\mathbf{O}$ as its spectrum
 decomposition~$\sum_{i=1}^{N^{-}}\lambda_{i}^{-}P_{i}^{-}+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}P_{i}^{+}$,
 we separate the positive and negative eigenvalues and order them from
@@ -267,13 +269,13 @@ the smallest to the largest
 \lambda_{N^{-}}^{-}\le\ldots\le\lambda_{1}^{-}\le0\le\lambda_{1}^{+}\le\ldots\le\lambda_{N^{+}}^{+}\textrm{ .}
 \end{equation}
 Let $P_{i}^{s\prime}=\sum_{j\ge i}P_{j}^{s}$ and $\Delta f\left(P_{i}^{s\prime}\right)=f\left(P_{i}^{s\prime}\right)-f\left(P_{i+1}^{s\prime}\right)$,
-where $s\in\left\{ +,-\right\} $ and $f\in\left\{ \boldsymbol{l},\boldsymbol{r}\right\} $.
+where $s\in\left\{ +,-\right\} $ and $f\in\left\{ \mul,\mur\right\} $.
 We can combine the classical Choquet integral~\cite{Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016}
 with Eq.~(\ref{eq:quantum-expectation}) to define the expectation
 value of $\mathbf{O}$ with respect to $\bar{\mu}$ as
 \begin{eqnarray}
-\expval{\mathbf{O}}_{\bar{\mu}} & = & \sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta\boldsymbol{l}\left(P_{i}^{+\prime}\right),\Delta\boldsymbol{r}\left(P_{i}^{+\prime}\right)\right]\nonumber \\
- &  & +\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta\boldsymbol{l}\left(P_{i}^{-\prime}\right),\Delta\boldsymbol{r}\left(P_{i}^{-\prime}\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
+\expval{\mathbf{O}}_{\bar{\mu}} & = & \sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta\mul\left(P_{i}^{+\prime}\right),\Delta\mur\left(P_{i}^{+\prime}\right)\right]\nonumber \\
+ &  & +\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta\mul\left(P_{i}^{-\prime}\right),\Delta\mur\left(P_{i}^{-\prime}\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
 \end{eqnarray}
 Let $\events'$ denote the set containing $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}$
 and satisfies the following conditions.
@@ -303,11 +305,11 @@ holds for every observable, then $\bar{\mu}$ is convex.\end{thm}
 For example, to compute the expectation value of $\sigma_{\mathrm{z}}=\proj{0}-\proj{1}$
 with respect to $\bar{\mu}_{1}$, we have $N^{+}=N^{-}=1$, $\lambda_{1}^{+}=1$,
 $\lambda_{1}^{-}=-1$, $P_{1}^{+\prime}=\proj{0}$, $P_{1}^{-\prime}=\proj{1}$,
-$P_{2}^{+\prime}=P_{2}^{-\prime}=\mathbb{0}$. Let $\left[\boldsymbol{l}_{1}\left(E\right),\boldsymbol{r}_{1}\left(E\right)\right]=\bar{\mu}_{1}\left(E\right)$,
-then $\Delta\boldsymbol{l}_{1}\left(P_{1}^{+\prime}\right)=\boldsymbol{l}_{1}\left(\proj{0}\right)-\boldsymbol{l}_{1}\left(\mathbb{0}\right)=0$,
-$\Delta\boldsymbol{l}_{1}\left(P_{1}^{-\prime}\right)=\boldsymbol{l}_{1}\left(\proj{1}\right)-\boldsymbol{l}_{1}\left(\mathbb{0}\right)=0$,
-$\Delta\boldsymbol{r}_{1}\left(P_{1}^{+\prime}\right)=\boldsymbol{r}_{1}\left(\proj{0}\right)-\boldsymbol{r}_{1}\left(\mathbb{0}\right)=1$,
-$\Delta\boldsymbol{r}_{1}\left(P_{1}^{-\prime}\right)=\boldsymbol{r}_{1}\left(\proj{1}\right)-\boldsymbol{r}_{1}\left(\mathbb{0}\right)=1$.
+$P_{2}^{+\prime}=P_{2}^{-\prime}=\mathbb{0}$. Let $\left[\mul_{1}\left(E\right),\mur_{1}\left(E\right)\right]=\bar{\mu}_{1}\left(E\right)$,
+then $\Delta\mul_{1}\left(P_{1}^{+\prime}\right)=\mul_{1}\left(\proj{0}\right)-\mul_{1}\left(\mathbb{0}\right)=0$,
+$\Delta\mul_{1}\left(P_{1}^{-\prime}\right)=\mul_{1}\left(\proj{1}\right)-\mul_{1}\left(\mathbb{0}\right)=0$,
+$\Delta\mur_{1}\left(P_{1}^{+\prime}\right)=\mur_{1}\left(\proj{0}\right)-\mur_{1}\left(\mathbb{0}\right)=1$,
+$\Delta\mur_{1}\left(P_{1}^{-\prime}\right)=\mur_{1}\left(\proj{1}\right)-\mur_{1}\left(\mathbb{0}\right)=1$.
 Therefore, $\expval{\sigma_{\mathrm{z}}}_{\bar{\mu}_{1}}=\left[0,1\right]+\left(-1\right)\left[0,1\right]=\left[-1,1\right]$.
 
 On the other hand, it is easy to verify that $\bar{\mu}_{1}$ is convex.
