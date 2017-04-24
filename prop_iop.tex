@@ -1602,11 +1602,12 @@ such that:
 \begin{itemize}
 \item If $\mu:\events'\rightarrow\left[0,1\right]$ is a quantum real-valued
 probability measure, then there is a classical real-valued probability
-measure~$\mu':\Omega\rightarrow\left[0,1\right]$ such that $\mu\left(P\right)=\mu'\left(\tau\left(P\right)\right)$
+measure~$\mu':2^{\Omega}\rightarrow\left[0,1\right]$ such that $\mu\left(P\right)=\mu'\left(\tau\left(P\right)\right)$
 for all $P\in\events'$.
 \item If $\bar{\mu}:\events'\rightarrow\mathscr{I}$ is a quantum interval-valued
 probability measure, then there is a classical interval-valued probability
-measure~$\bar{\mu}':\Omega\rightarrow\mathscr{I}$ such that $\bar{\mu}\left(P\right)=\bar{\mu}'\left(\tau\left(P\right)\right)$
+measure~$\bar{\mu}':2^{\Omega}\rightarrow\mathscr{I}$ such that
+$\bar{\mu}\left(P\right)=\bar{\mu}'\left(\tau\left(P\right)\right)$
 for all $P\in\events'$
 \end{itemize}
 \end{thm}
@@ -1985,11 +1986,7 @@ the literature.
 \begin{lemma}Follow the same notation in the definition, we also
 define $X^{+}=\sum_{i=1}^{N^{+}}x_{i}^{+}\mathbf{1}_{E_{i}^{+}}$
 and $X^{-}=\sum_{i=1}^{N^{-}}x_{i}^{-}\mathbf{1}_{E_{i}^{-}}$. Then,
-\begin{equation}
-\int X\rmd\bar{\mu}=\int X^{+}\rmd\bar{\mu}-\int\left(-X^{-}\right)\rmd\bar{\mu}\textrm{ .}
-\end{equation}
-
-\end{lemma}
+$\int X\rmd\bar{\mu}=\int X^{+}\rmd\bar{\mu}-\int\left(-X^{-}\right)\rmd\bar{\mu}$.\end{lemma}
 
 \begin{proof}
 \begin{eqnarray*}
@@ -2019,11 +2016,7 @@ has the same range as all expectation value in the core.
 \begin{thm}\cite{Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016}For
 every classical IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$ and
 any random variable~$X:\Omega\rightarrow\mathbb{R}$, $\bar{\mu}$
-is convex if and only if 
-\begin{equation}
-\int X\rmd\bar{\mu}=\left[\min_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu,\max_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu\right]\textrm{ .}
-\end{equation}
-\end{thm}
+is convex if and only if $\int X\rmd\bar{\mu}=\left[\min_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu,\max_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu\right]$.\end{thm}
 
 \yutsung{Put an example here if we need...}
 
@@ -2042,33 +2035,71 @@ is given by~\cite{544199,Jaeger2007}
 
 Consider a quantum IVPM~$\bar{\mu}$ such that $\mul:\events\rightarrow\left[0,1\right]$
 and $\mur:\events\rightarrow\left[0,1\right]$ are the left-end and
-the right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[\mul\left(E\right),\mur\left(E\right)\right]$.
-This time, when we express the observable~$\mathbf{O}$ as its spectrum
-decomposition~$\sum_{i=1}^{N^{-}}\lambda_{i}^{-}P_{i}^{-}+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}P_{i}^{+}$,
-we separate the positive and negative eigenvalues and order them from
-the smallest to the largest 
+the right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(P\right)=\left[\mul\left(P\right),\mur\left(P\right)\right]$
+for all $P\in\events$. This time, when we express the observable
+as its spectrum decomposition
+\begin{equation}
+\mathbf{O}=\sum_{i=1}^{N^{-}}\lambda_{i}^{-}P_{i}^{-}+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}P_{i}^{+}\textrm{ ,}\label{eq:spectrum-decomposition}
+\end{equation}
+we separate the positive and negative eigenvalues and order its eigenvalues
+from the smallest to the largest 
 \begin{equation}
 \lambda_{N^{-}}^{-}\le\ldots\le\lambda_{1}^{-}\le0\le\lambda_{1}^{+}\le\ldots\le\lambda_{N^{+}}^{+}\textrm{ .}
 \end{equation}
 Let $P_{i}^{s\prime}=\sum_{j\ge i}P_{j}^{s}$ and $\Delta\mu^{*}\left(P_{i}^{s\prime}\right)=\mu^{*}\left(P_{i}^{s\prime}\right)-\mu^{*}\left(P_{i+1}^{s\prime}\right)$,
 where $s\in\left\{ +,-\right\} $ and $\mu^{*}\in\left\{ \mul,\mur\right\} $.
 We can combine the classical Choquet integral~\cite{Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016}
-with Eq.~(\ref{eq:quantum-expectation}) to define the expectation
+with Eq.~(\ref{eq:quantum-expectation}) and define the expectation
 value of $\mathbf{O}$ with respect to $\bar{\mu}$ as
 \begin{equation}
 \expval{\mathbf{O}}_{\bar{\mu}}=\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta\mul\left(P_{i}^{+\prime}\right),\Delta\mur\left(P_{i}^{+\prime}\right)\right]+\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta\mul\left(P_{i}^{-\prime}\right),\Delta\mur\left(P_{i}^{-\prime}\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
 \end{equation}
-Let $\events\left(\mathbf{O}\right)$ denote the minimal sub-event
-space containing $\left\{ P_{i}\right\} _{i=1}^{N}$. Then, we have
-the corresponding theorem. 
+
+Intuitively, the expectation value of an observable with respect to
+an IVPM should be the minimum and maximum expectation value of the
+same observable with respect to its consistent states. We found this
+is true when we require our IVPM to be convex, and on a commuting
+sub-event space, whose definition is given as follow.
+
+\begin{definition}A state~$\rho$ is consistent with $\bar{\mu}$
+on a projector~$P$ if $\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)$,
+and denoted by $\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$.\end{definition}
+
+\begin{definition}Given an observable~$\mathbf{O}$ with its spectrum
+decomposition~(\ref{eq:spectrum-decomposition}). A sub-event space~$\events'\subseteq\events$
+is called a sub-event space induced by $\mathbf{O}$ if $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}\subseteq\events'$.
+
+\end{definition}
+
+\noindent Having these two definition, we can write down our idea
+formally as follow.
 
 \begin{thm}Given a Hilbert space of $d\ge3$, for every quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-and any observable~$\mathbf{O}$, if $\bar{\mu}$ is convex, then
+and any observable~$\mathbf{O}$ inducing a sub-event space~$\events'$,
+if $\bar{\mu}$ is convex, then
 \begin{equation}
-\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events\left(\mathbf{O}\right)\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events\left(\mathbf{O}\right)\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ .}\label{eq:quantum-interval-expectation-core}
+\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ .}\label{eq:quantum-interval-expectation-core}
 \end{equation}
-Conversely, if equation~(\ref{eq:quantum-interval-expectation-core})
+Conversely, if Eq.~(\ref{eq:quantum-interval-expectation-core})
 holds for every observable, then $\bar{\mu}$ is convex.\end{thm}
+
+\begin{proof}Since $\events'$ is induced by $\mathbf{O}$, it is
+commuting. By theorem~\ref{thm:sub-event-space}, there is set~$\Omega$,
+a function~$\tau:\events'\rightarrow2^{\Omega}$, and a convex classical
+interval-valued probability measure~$\bar{\mu}':2^{\Omega}\rightarrow\mathscr{I}$
+such that $\bar{\mu}=\bar{\mu}'\circ\tau$. Let $\mul[\prime]:\events'\rightarrow\left[0,1\right]$
+and $\mur[\prime]:\events'\rightarrow\left[0,1\right]$ are the left-end
+and the right-end of $\bar{\mu}'$, respectively, i.e., $\bar{\mu}'\left(E\right)=\left[\mul[\prime]\left(E\right),\mur[\prime]\left(E\right)\right]$
+for all $E\in2^{\Omega}$. Consider the random variable~$X:\Omega\rightarrow\mathscr{I}$
+defined by $X=\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mathbf{1}_{\tau\left(P_{i}^{-}\right)}+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mathbf{1}_{\tau\left(P_{i}^{+}\right)}$.
+Then, 
+\begin{eqnarray*}
+\expval{\mathbf{O}}_{\bar{\mu}} & = & \sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta\mul\left(P_{i}^{+\prime}\right),\Delta\mur\left(P_{i}^{+\prime}\right)\right]+\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta\mul\left(P_{i}^{-\prime}\right),\Delta\mur\left(P_{i}^{-\prime}\right)\right]\\
+ & = & \sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta\mul[\prime]\left(\tau\left(P_{i}^{+\prime}\right)\right),\Delta\mur[\prime]\left(\tau\left(P_{i}^{+\prime}\right)\right)\right]+\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta\mul[\prime]\left(\tau\left(P_{i}^{-\prime}\right)\right),\Delta\mur[\prime]\left(\tau\left(P_{i}^{-\prime}\right)\right)\right]\\
+ & = & \int X\rmd\bar{\mu}'\\
+ & = & \left[\min_{\mu\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu,\max_{\mu\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu\right]
+\end{eqnarray*}
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
