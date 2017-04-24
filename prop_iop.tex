@@ -2037,7 +2037,7 @@ Consider a quantum IVPM~$\bar{\mu}$ such that $\mul:\events\rightarrow\left[0,1\
 and $\mur:\events\rightarrow\left[0,1\right]$ are the left-end and
 the right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(P\right)=\left[\mul\left(P\right),\mur\left(P\right)\right]$
 for all $P\in\events$. This time, when we express the observable
-as its spectrum decomposition
+as its spectral decomposition
 \begin{equation}
 \mathbf{O}=\sum_{i=1}^{N^{-}}\lambda_{i}^{-}P_{i}^{-}+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}P_{i}^{+}\textrm{ ,}\label{eq:spectrum-decomposition}
 \end{equation}
@@ -2065,7 +2065,7 @@ sub-event space, whose definition is given as follow.
 on a projector~$P$ if $\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)$,
 and denoted by $\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$.\end{definition}
 
-\begin{definition}Given an observable~$\mathbf{O}$ with its spectrum
+\begin{definition}Given an observable~$\mathbf{O}$ with its spectral
 decomposition~(\ref{eq:spectrum-decomposition}). A sub-event space~$\events'\subseteq\events$
 is called a sub-event space induced by $\mathbf{O}$ if $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}\subseteq\events'$.
 
@@ -2094,10 +2094,16 @@ for all $E\in2^{\Omega}$. Consider the random variable~$X:\Omega\rightarrow\math
 defined by $X=\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mathbf{1}_{\tau\left(P_{i}^{-}\right)}+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mathbf{1}_{\tau\left(P_{i}^{+}\right)}$.
 Then, 
 \begin{eqnarray*}
-\expval{\mathbf{O}}_{\bar{\mu}} & = & \sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta\mul\left(P_{i}^{+\prime}\right),\Delta\mur\left(P_{i}^{+\prime}\right)\right]+\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta\mul\left(P_{i}^{-\prime}\right),\Delta\mur\left(P_{i}^{-\prime}\right)\right]\\
+ &  & \expval{\mathbf{O}}_{\bar{\mu}}\\
+ & = & \sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta\mul\left(P_{i}^{+\prime}\right),\Delta\mur\left(P_{i}^{+\prime}\right)\right]+\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta\mul\left(P_{i}^{-\prime}\right),\Delta\mur\left(P_{i}^{-\prime}\right)\right]\\
  & = & \sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta\mul[\prime]\left(\tau\left(P_{i}^{+\prime}\right)\right),\Delta\mur[\prime]\left(\tau\left(P_{i}^{+\prime}\right)\right)\right]+\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta\mul[\prime]\left(\tau\left(P_{i}^{-\prime}\right)\right),\Delta\mur[\prime]\left(\tau\left(P_{i}^{-\prime}\right)\right)\right]\\
  & = & \int X\rmd\bar{\mu}'\\
- & = & \left[\min_{\mu\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu,\max_{\mu\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu\right]
+ & = & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu',\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu'\right]\\
+ & = & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu'\left(\tau\left(P_{i}^{-}\right)\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu'\left(\tau\left(P_{i}^{+}\right)\right),\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu'\left(\tau\left(P_{i}^{-}\right)\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu'\left(\tau\left(P_{i}^{+}\right)\right)\right]\\
+ & = & \textrm{(Need to verify the detail, but seems correct...)}\\
+ & = & \left[\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu\left(P_{i}^{-}\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu\left(P_{i}^{+}\right),\max_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu\left(P_{i}^{-}\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu\left(P_{i}^{+}\right)\right]\\
+ & = & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{-}\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{+}\right),\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{-}\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{+}\right)\right]\\
+ & = & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]
 \end{eqnarray*}
 \end{proof}
 
