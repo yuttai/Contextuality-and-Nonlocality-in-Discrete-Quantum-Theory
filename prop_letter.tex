@@ -260,42 +260,57 @@ quantum IVPMs.
 
 Consider a quantum IVPM~$\bar{\mu}$ such that $\mul:\events\rightarrow\left[0,1\right]$
 and $\mur:\events\rightarrow\left[0,1\right]$ are the left-end and
-the right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[\mul\left(E\right),\mur\left(E\right)\right]$.
-This time, when we express the observable~$\mathbf{O}$ as its spectrum
-decomposition~$\sum_{i=1}^{N^{-}}\lambda_{i}^{-}P_{i}^{-}+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}P_{i}^{+}$,
-we separate the positive and negative eigenvalues and order them from
-the smallest to the largest 
+the right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[\mul\left(E\right),\mur\left(E\right)\right]$
+for all $E\in\events$. This time, when we express the observable
+as its spectrum decomposition
+\begin{equation}
+\mathbf{O}=\sum_{i=1}^{N^{-}}\lambda_{i}^{-}P_{i}^{-}+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}P_{i}^{+}\textrm{ ,}\label{eq:spectrum-decomposition}
+\end{equation}
+we separate the positive and negative eigenvalues and order its eigenvalues
+from the smallest to the largest 
 \begin{equation}
 \lambda_{N^{-}}^{-}\le\ldots\le\lambda_{1}^{-}\le0\le\lambda_{1}^{+}\le\ldots\le\lambda_{N^{+}}^{+}\textrm{ .}
 \end{equation}
 Let $P_{i}^{s\prime}=\sum_{j\ge i}P_{j}^{s}$ and $\Delta\mu^{*}\left(P_{i}^{s\prime}\right)=\mu^{*}\left(P_{i}^{s\prime}\right)-\mu^{*}\left(P_{i+1}^{s\prime}\right)$,
 where $s\in\left\{ +,-\right\} $ and $\mu^{*}\in\left\{ \mul,\mur\right\} $.
 We can combine the classical Choquet integral~\cite{Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016}
-with Eq.~(\ref{eq:quantum-expectation}) to define the expectation
+with Eq.~(\ref{eq:quantum-expectation}) and define the expectation
 value of $\mathbf{O}$ with respect to $\bar{\mu}$ as
 \begin{eqnarray}
 \expval{\mathbf{O}}_{\bar{\mu}} & = & \sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta\mul\left(P_{i}^{+\prime}\right),\Delta\mur\left(P_{i}^{+\prime}\right)\right]\nonumber \\
  &  & +\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta\mul\left(P_{i}^{-\prime}\right),\Delta\mur\left(P_{i}^{-\prime}\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
 \end{eqnarray}
-Let $\events'$ denote the set containing $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}$
-and satisfies the following conditions.
+
+Intuitively, the expectation value of an observable with respect to
+an IVPM should be the minimum and maximum expectation value of the
+same observable with respect to its consistent states. We found this
+is true when we require our IVPM to be convex, and on a commuting
+sub-event space, whose definition is given as follow.
+
+\begin{definition}$\bar{\mu}$ is called convex if for all commuting
+$P_{0},P_{1}\in\events$, $\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$,
+where $P_{0}\vee P_{1}=P_{0}+P_{1}-P_{0}P_{1}$~\cite{Griffiths2003}.\end{definition}
+
+\begin{definition}Given an observable~$\mathbf{O}$ with its spectrum
+decomposition~(\ref{eq:spectrum-decomposition}). A set of projectors~$\events'\subseteq\events$
+is called a sub-event space induced by $\mathbf{O}$ if it satisfies
+the following conditions.
 \begin{itemize}
+\item $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}\subseteq\events'$.
 \item $\mathbb{0}\in\events'$. 
 \item $\mathbb{1}\in\events'$. 
 \item For any projection~$P\in\events'$, we have $\mathbb{1}-P\in\events'$. 
 \item For a set of mutually orthogonal projections~$\left\{ P_{i}\right\} _{i=1}^{N}\subseteq\events'$,
 we have $\sum_{i=1}^{N}P_{i}\in\events'$. 
 \end{itemize}
-And $\bar{\mu}$ is called convex if for all commuting $P_{0},P_{1}\in\events$,
-$\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$,
-where $P_{0}\vee P_{1}=P_{0}+P_{1}-P_{0}P_{1}$~\cite{Griffiths2003}.
-Then, the expectation value of an observable with respect to a convex
-IVPM is just the minimum and maximum expectation value of the same
-observable with respect to its consistent states. Formally speaking,
-we have the following theorem.
+\end{definition}
+
+\noindent Having the above two definitions, we can write down our
+idea formally as follow.
 
 \begin{thm}Given a Hilbert space of $d\ge3$, for every quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-and any observable~$\mathbf{O}$, if $\bar{\mu}$ is convex, then
+and any observable~$\mathbf{O}$ inducing a sub-event space~$\events'$,
+if $\bar{\mu}$ is convex, then
 \begin{equation}
 \expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ .}\label{eq:quantum-interval-expectation-core}
 \end{equation}
