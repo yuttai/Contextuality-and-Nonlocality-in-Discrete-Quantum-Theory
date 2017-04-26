@@ -47,6 +47,9 @@
 \newcommand{\yutsung}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{purple}{Yu-Tsung says: #1}\end{minipage}}}
 \newcommand{\set}[2]{\ensuremath{\left\{ {#1}~\middle|~{#2}\right\} }}
 \def\C{{\mathbb{C}}}
+\newcommand{\coreBorn}{\ensuremath{\mathrm{C}}}
+\newcommand{\mul}[1][]{\ensuremath{\mu^{\mathrm{L{#1}}}}}
+\newcommand{\mur}[1][]{\ensuremath{\mu^{\mathrm{R{#1}}}}}
 
 \begin{document}
 \title{Measurement and Probability in Fuzzy Quantum
@@ -2100,12 +2103,35 @@ Then,
  & = & \int X\rmd\bar{\mu}'\\
  & = & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu',\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu'\right]\\
  & = & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu'\left(\tau\left(P_{i}^{-}\right)\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu'\left(\tau\left(P_{i}^{+}\right)\right),\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu'\left(\tau\left(P_{i}^{-}\right)\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu'\left(\tau\left(P_{i}^{+}\right)\right)\right]\\
- & = & \textrm{(Need to verify the detail, but seems correct...)}\\
  & = & \left[\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu\left(P_{i}^{-}\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu\left(P_{i}^{+}\right),\max_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu\left(P_{i}^{-}\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu\left(P_{i}^{+}\right)\right]\\
  & = & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{-}\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{+}\right),\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{-}\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{+}\right)\right]\\
- & = & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]
+ & = & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ ,}
 \end{eqnarray*}
-\end{proof}
+where 
+\begin{equation}
+\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu'\left(\tau\left(P_{i}^{-}\right)\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu'\left(\tau\left(P_{i}^{+}\right)\right)\le\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu\left(P_{i}^{-}\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu\left(P_{i}^{+}\right)
+\end{equation}
+because $\tau$ in theorem~\ref{thm:sub-event-space} applies to
+both real-valued and interval-valued probability measure, for any
+$\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)$, there exists
+a $\mu'\in\mathrm{core}\left(\bar{\mu}'\right)$ such that $\mu=\mu'\circ\tau$.
+On the other hand, 
+\begin{equation}
+\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu'\left(\tau\left(P_{i}^{-}\right)\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu'\left(\tau\left(P_{i}^{+}\right)\right)\ge\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu\left(P_{i}^{-}\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu\left(P_{i}^{+}\right)
+\end{equation}
+because for any $\mu'\in\mathrm{core}\left(\bar{\mu}'\right)$, we
+have 
+\begin{eqnarray*}
+ &  & \mu'\left(E\right)\in\bar{\mu}'\left(E\right)\textrm{ for all }E\in2^{\Omega}\\
+ & \Rightarrow & \mu'\left(\tau\left(P\right)\right)\in\bar{\mu}'\left(\tau\left(P\right)\right)=\bar{\mu}\left(P\right)\textrm{ for all }P\in\events'
+\end{eqnarray*}
+Let $\rho=\sum_{i=1}^{N^{-}}\frac{\mu'\left(\tau\left(P_{i}^{-}\right)\right)}{\Tr\left(P_{i}^{-}\right)}P_{i}^{-}+\sum_{i=1}^{N^{+}}\frac{\mu'\left(\tau\left(P_{i}^{+}\right)\right)}{\Tr\left(P_{i}^{+}\right)}P_{i}^{+}$.
+Then, we have 
+\begin{eqnarray*}
+\mu_{\rho}^{\mathrm{B}}\left(P_{j}^{-}\right) & = & \sum_{i=1}^{N^{-}}\frac{\mu'\left(\tau\left(P_{i}^{-}\right)\right)}{\Tr\left(P_{i}^{-}\right)}\Tr\left(P_{i}^{-}P_{j}^{-}\right)+\sum_{i=1}^{N^{+}}\frac{\mu'\left(\tau\left(P_{i}^{+}\right)\right)}{\Tr\left(P_{i}^{+}\right)}\Tr\left(P_{i}^{+}P_{j}^{-}\right)=\mu'\left(\tau\left(P_{j}^{-}\right)\right)\\
+\mu_{\rho}^{\mathrm{B}}\left(P_{j}^{+}\right) & = & \sum_{i=1}^{N^{-}}\frac{\mu'\left(\tau\left(P_{i}^{-}\right)\right)}{\Tr\left(P_{i}^{-}\right)}\Tr\left(P_{i}^{-}P_{j}^{+}\right)+\sum_{i=1}^{N^{+}}\frac{\mu'\left(\tau\left(P_{i}^{+}\right)\right)}{\Tr\left(P_{i}^{+}\right)}\Tr\left(P_{i}^{+}P_{j}^{+}\right)=\mu'\left(\tau\left(P_{j}^{+}\right)\right)
+\end{eqnarray*}
+Therefore, $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu},\events'\right)$.\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
