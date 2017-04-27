@@ -27,6 +27,8 @@
 \theoremstyle{definition}
 \newtheorem{definition}[thm]{Definition}
 \newtheorem{example}[thm]{Example}
+\theoremstyle{remark}
+\newtheorem{claim}[thm]{Claim}
 
 \newcommand{\Hilb}{\mathcal{H}}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
@@ -14043,6 +14045,13 @@ begin{definition}
 
 \end_inset
 
+
+\begin_inset CommandInset label
+LatexCommand label
+name "def:consistent-state"
+
+\end_inset
+
 A state
 \begin_inset space ~
 \end_inset
@@ -14069,6 +14078,32 @@ A state
 
 , and denoted by 
 \begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$
+\end_inset
+
+.
+ Moreover, 
+\begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},S\right)$
+\end_inset
+
+ means 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is consistent with 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ on every projector in 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ Notice that 
+\begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},S\right)$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu},S\right)$
 \end_inset
 
 .
@@ -14338,11 +14373,14 @@ reference "thm:sub-event-space"
 \end_inset
 
  such that 
-\begin_inset Formula $\bar{\mu}=\bar{\mu}'\circ\tau$
+\begin_inset Formula 
+\begin{equation}
+\bar{\mu}=\bar{\mu}'\circ\tau\textrm{ .}\label{eq:sub-event-space}
+\end{equation}
+
 \end_inset
 
-.
- Let 
+Let 
 \begin_inset Formula $\mul[\prime]:\events'\rightarrow\left[0,1\right]$
 \end_inset
 
@@ -14380,19 +14418,127 @@ reference "thm:sub-event-space"
 \begin_inset Formula 
 \begin{eqnarray*}
  &  & \expval{\mathbf{O}}_{\bar{\mu}}\\
- & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i}^{s\prime}\right),\Delta\mur\left(P_{i}^{s\prime}\right)\right]\\
- & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul[\prime]\left(\tau\left(P_{i}^{s\prime}\right)\right),\Delta\mur[\prime]\left(\tau\left(P_{i}^{s\prime}\right)\right)\right]\\
+ & \stackrel{\textrm{Equation }(\ref{eq:quantum-interval-expectation})}{=} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i}^{s\prime}\right),\Delta\mur\left(P_{i}^{s\prime}\right)\right]\\
+ & \stackrel{\textrm{Equation }(\ref{eq:sub-event-space})}{=} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul[\prime]\left(\tau\left(P_{i}^{s\prime}\right)\right),\Delta\mur[\prime]\left(\tau\left(P_{i}^{s\prime}\right)\right)\right]\\
  & \stackrel{\textrm{Definition }\ref{def:Choquet}}{=} & \int X\rmd\bar{\mu}'\\
  & \stackrel{\textrm{Theorem }\ref{thm:Rosenmuller}}{=} & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu',\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu'\right]\\
- & = & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right),\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\right]\\
- & = & \left[\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right),\max_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)\right]\\
- & = & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{s}\right),\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{s}\right)\right]\\
- & = & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ ,}
+ & \stackrel{\textrm{Definition }\ref{def:Choquet}}{=} & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right),\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\right]\\
+ & \stackrel{\textrm{Claim }\ref{claim:min-max-core}}{=} & \left[\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right),\max_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)\right]\\
+ & \stackrel{\textrm{Definition }\ref{def:consistent-state}}{=} & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{s}\right),\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{s}\right)\right]\\
+ & \stackrel{\textrm{Equation }(\ref{eq:quantum-interval-expectation})}{=} & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ ,}
 \end{eqnarray*}
 
 \end_inset
 
-where 
+where claim
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "claim:min-max-core"
+
+\end_inset
+
+ is going to be proved in the next paragraph.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{claim}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "claim:min-max-core"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray}
+\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right) & = & \min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)\label{eq:min-core}\\
+\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right) & = & \max_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)\label{eq:max-core}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{claim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
+Since equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:min-core"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:max-core"
+
+\end_inset
+
+) are essentially the same, we are only going to prove equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:min-core"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+We have
 \begin_inset Formula 
 \begin{equation}
 \min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\le\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)
@@ -14400,7 +14546,7 @@ where
 
 \end_inset
 
-because 
+because the same 
 \begin_inset Formula $\tau$
 \end_inset
 
@@ -14415,8 +14561,8 @@ reference "thm:sub-event-space"
 
 \end_inset
 
- applies to both real-valued and interval-valued probability measure, for
- any 
+ applies to both real-valued and interval-valued probability measure, i.e.,
+ for any 
 \begin_inset Formula $\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)$
 \end_inset
 
@@ -14429,7 +14575,11 @@ reference "thm:sub-event-space"
 \end_inset
 
 .
- On the other hand, 
+ 
+\end_layout
+
+\begin_layout Standard
+On the other hand, 
 \begin_inset Formula 
 \begin{equation}
 \min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\ge\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)
@@ -14443,10 +14593,10 @@ because for any
 
 , we have 
 \begin_inset Formula 
-\begin{eqnarray*}
+\begin{eqnarray}
  &  & \mu'\left(E\right)\in\bar{\mu}'\left(E\right)\textrm{ for all }E\in2^{\Omega}\\
  & \Rightarrow & \mu'\left(\tau\left(P\right)\right)\in\bar{\mu}'\left(\tau\left(P\right)\right)=\bar{\mu}\left(P\right)\textrm{ for all }P\in\events'
-\end{eqnarray*}
+\end{eqnarray}
 
 \end_inset
 
@@ -14481,10 +14631,10 @@ Let
 \color inherit
 
 \begin_inset Formula 
-\begin{eqnarray*}
+\begin{eqnarray}
 \mu_{\rho}^{\mathrm{B}}\left(P_{j}^{-}\right) & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\frac{\mu'\left(\tau\left(P_{i}^{s}\right)\right)}{\Tr\left(P_{i}^{s}\right)}\Tr\left(P_{i}^{s}P_{j}^{-}\right)=\mu'\left(\tau\left(P_{j}^{-}\right)\right)\\
 \mu_{\rho}^{\mathrm{B}}\left(P_{j}^{+}\right) & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\frac{\mu'\left(\tau\left(P_{i}^{s}\right)\right)}{\Tr\left(P_{i}^{s}\right)}\Tr\left(P_{i}^{s}P_{j}^{+}\right)=\mu'\left(\tau\left(P_{j}^{+}\right)\right)
-\end{eqnarray*}
+\end{eqnarray}
 
 \end_inset
 
@@ -14493,6 +14643,19 @@ Therefore,
 \end_inset
 
 .
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 

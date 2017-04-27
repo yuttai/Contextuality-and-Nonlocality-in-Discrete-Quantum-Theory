@@ -2064,9 +2064,12 @@ same observable with respect to its consistent states. We found this
 is true when we require our IVPM to be convex, and on a commuting
 sub-event space, whose definition is given as follow.
 
-\begin{definition}A state~$\rho$ is consistent with $\bar{\mu}$
-on a projector~$P$ if $\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)$,
-and denoted by $\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$.\end{definition}
+\begin{definition}\label{def:consistent-state}A state~$\rho$ is
+consistent with $\bar{\mu}$ on a projector~$P$ if $\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)$,
+and denoted by $\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$.
+Moreover, $\rho\in\coreBorn\left(\bar{\mu},S\right)$ means $\rho$
+is consistent with $\bar{\mu}$ on every projector in $S$. Notice
+that $\rho\in\coreBorn\left(\bar{\mu},S\right)$ if and only if $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu},S\right)$.\end{definition}
 
 \begin{definition}Given an observable~$\mathbf{O}$ with its spectral
 decomposition~(\ref{eq:spectrum-decomposition}). A sub-event space~$\events'\subseteq\events$
@@ -2090,48 +2093,68 @@ holds for every observable, then $\bar{\mu}$ is convex.\end{thm}
 commuting. By theorem~\ref{thm:sub-event-space}, there is set~$\Omega$,
 a function~$\tau:\events'\rightarrow2^{\Omega}$, and a convex classical
 interval-valued probability measure~$\bar{\mu}':2^{\Omega}\rightarrow\mathscr{I}$
-such that $\bar{\mu}=\bar{\mu}'\circ\tau$. Let $\mul[\prime]:\events'\rightarrow\left[0,1\right]$
-and $\mur[\prime]:\events'\rightarrow\left[0,1\right]$ are the left-end
-and the right-end of $\bar{\mu}'$, respectively, i.e., $\bar{\mu}'\left(E\right)=\left[\mul[\prime]\left(E\right),\mur[\prime]\left(E\right)\right]$
+such that 
+\begin{equation}
+\bar{\mu}=\bar{\mu}'\circ\tau\textrm{ .}\label{eq:sub-event-space}
+\end{equation}
+Let $\mul[\prime]:\events'\rightarrow\left[0,1\right]$ and $\mur[\prime]:\events'\rightarrow\left[0,1\right]$
+are the left-end and the right-end of $\bar{\mu}'$, respectively,
+i.e., $\bar{\mu}'\left(E\right)=\left[\mul[\prime]\left(E\right),\mur[\prime]\left(E\right)\right]$
 for all $E\in2^{\Omega}$. Consider the random variable~$X:\Omega\rightarrow\mathscr{I}$
 defined by $X=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mathbf{1}_{\tau\left(P_{i}^{s}\right)}$.
 Then, 
 \begin{eqnarray*}
  &  & \expval{\mathbf{O}}_{\bar{\mu}}\\
- & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i}^{s\prime}\right),\Delta\mur\left(P_{i}^{s\prime}\right)\right]\\
- & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul[\prime]\left(\tau\left(P_{i}^{s\prime}\right)\right),\Delta\mur[\prime]\left(\tau\left(P_{i}^{s\prime}\right)\right)\right]\\
+ & \stackrel{\textrm{Equation }(\ref{eq:quantum-interval-expectation})}{=} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i}^{s\prime}\right),\Delta\mur\left(P_{i}^{s\prime}\right)\right]\\
+ & \stackrel{\textrm{Equation }(\ref{eq:sub-event-space})}{=} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul[\prime]\left(\tau\left(P_{i}^{s\prime}\right)\right),\Delta\mur[\prime]\left(\tau\left(P_{i}^{s\prime}\right)\right)\right]\\
  & \stackrel{\textrm{Definition }\ref{def:Choquet}}{=} & \int X\rmd\bar{\mu}'\\
  & \stackrel{\textrm{Theorem }\ref{thm:Rosenmuller}}{=} & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu',\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu'\right]\\
- & = & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right),\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\right]\\
- & = & \left[\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right),\max_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)\right]\\
- & = & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{s}\right),\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{s}\right)\right]\\
- & = & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ ,}
+ & \stackrel{\textrm{Definition }\ref{def:Choquet}}{=} & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right),\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\right]\\
+ & \stackrel{\textrm{Claim }\ref{claim:min-max-core}}{=} & \left[\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right),\max_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)\right]\\
+ & \stackrel{\textrm{Definition }\ref{def:consistent-state}}{=} & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{s}\right),\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{s}\right)\right]\\
+ & \stackrel{\textrm{Equation }(\ref{eq:quantum-interval-expectation})}{=} & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ ,}
 \end{eqnarray*}
-where 
+where claim~\ref{claim:min-max-core} is going to be proved in the
+next paragraph.
+
+\begin{claim}\label{claim:min-max-core}
+\begin{eqnarray}
+\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right) & = & \min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)\label{eq:min-core}\\
+\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right) & = & \max_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)\label{eq:max-core}
+\end{eqnarray}
+
+\end{claim}
+
+\begin{proof}Since equation~(\ref{eq:min-core}) and (\ref{eq:max-core})
+are essentially the same, we are only going to prove equation~(\ref{eq:min-core}).
+
+We have
 \begin{equation}
 \min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\le\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)
 \end{equation}
-because $\tau$ in theorem~\ref{thm:sub-event-space} applies to
-both real-valued and interval-valued probability measure, for any
-$\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)$, there exists
-a $\mu'\in\mathrm{core}\left(\bar{\mu}'\right)$ such that $\mu=\mu'\circ\tau$.
+because the same $\tau$ in theorem~\ref{thm:sub-event-space} applies
+to both real-valued and interval-valued probability measure, i.e.,
+for any $\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)$, there
+exists a $\mu'\in\mathrm{core}\left(\bar{\mu}'\right)$ such that
+$\mu=\mu'\circ\tau$. 
+
 On the other hand, 
 \begin{equation}
 \min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\ge\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)
 \end{equation}
 because for any $\mu'\in\mathrm{core}\left(\bar{\mu}'\right)$, we
 have 
-\begin{eqnarray*}
+\begin{eqnarray}
  &  & \mu'\left(E\right)\in\bar{\mu}'\left(E\right)\textrm{ for all }E\in2^{\Omega}\\
  & \Rightarrow & \mu'\left(\tau\left(P\right)\right)\in\bar{\mu}'\left(\tau\left(P\right)\right)=\bar{\mu}\left(P\right)\textrm{ for all }P\in\events'
-\end{eqnarray*}
+\end{eqnarray}
 Let $\rho=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\frac{\mu'\left(\tau\left(P_{i}^{s}\right)\right)}{\Tr\left(P_{i}^{s}\right)}P_{i}^{s}$.
 Then, we have 
-\begin{eqnarray*}
+\begin{eqnarray}
 \mu_{\rho}^{\mathrm{B}}\left(P_{j}^{-}\right) & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\frac{\mu'\left(\tau\left(P_{i}^{s}\right)\right)}{\Tr\left(P_{i}^{s}\right)}\Tr\left(P_{i}^{s}P_{j}^{-}\right)=\mu'\left(\tau\left(P_{j}^{-}\right)\right)\\
 \mu_{\rho}^{\mathrm{B}}\left(P_{j}^{+}\right) & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\frac{\mu'\left(\tau\left(P_{i}^{s}\right)\right)}{\Tr\left(P_{i}^{s}\right)}\Tr\left(P_{i}^{s}P_{j}^{+}\right)=\mu'\left(\tau\left(P_{j}^{+}\right)\right)
-\end{eqnarray*}
-Therefore, $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu},\events'\right)$.\end{proof}
+\end{eqnarray}
+Therefore, $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu},\events'\right)$.\end{proof}\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
