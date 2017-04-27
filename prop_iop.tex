@@ -1961,7 +1961,7 @@ in example~\ref{ex1}, the expectation value of $X_{0}$ is
 There are various kind of integrals defined for IVPMs, and the most
 famous one is called the Choquet integral~\cite{Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016}.
 
-\begin{definition}~
+\begin{definition}\label{def:Choquet}~
 \begin{itemize}
 \item Consider a classical IVPM~$\bar{\mu}$ such that $\mul:\events\rightarrow\left[0,1\right]$
 and $\mur:\events\rightarrow\left[0,1\right]$ are the left-end and
@@ -1979,12 +1979,12 @@ where $s\in\left\{ +,-\right\} $ and $\mu^{*}\in\left\{ \mul,\mur\right\} $.
 \end{itemize}
 Then, the Choquet integral of $X$ with respect to $\bar{\mu}$ is
 \begin{equation}
-\int X\rmd\bar{\mu}=\sum_{i=1}^{N^{+}}x_{i}^{+}\left[\Delta\mul\left(E_{i}^{+\prime}\right),\Delta\mur\left(E_{i}^{+\prime}\right)\right]+\sum_{i=1}^{N^{-}}x_{i}^{-}\left[\Delta\mul\left(E_{i}^{-\prime}\right),\Delta\mur\left(E_{i}^{-\prime}\right)\right]\textrm{ .}\label{eq:interval-expectation}
+\int X\rmd\bar{\mu}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\mul\left(E_{i}^{s\prime}\right),\Delta\mur\left(E_{i}^{s\prime}\right)\right]\textrm{ .}\label{eq:interval-expectation}
 \end{equation}
 \end{definition}
 
-The following lemma shows our definition is exactly the same as in
-the literature.
+\noindent The following lemma shows our definition is exactly the
+same as in the literature.
 
 \begin{lemma}Follow the same notation in the definition, we also
 define $X^{+}=\sum_{i=1}^{N^{+}}x_{i}^{+}\mathbf{1}_{E_{i}^{+}}$
@@ -2002,7 +2002,7 @@ $\int X\rmd\bar{\mu}=\int X^{+}\rmd\bar{\mu}-\int\left(-X^{-}\right)\rmd\bar{\mu
 \end{eqnarray*}
 \end{proof}
 
-Similar to equation~(\ref{eq:expectation}), equation~(\ref{eq:interval-expectation})
+\noindent Similar to equation~(\ref{eq:expectation}), equation~(\ref{eq:interval-expectation})
 can be considered as weighted average of the possible outcomes of
 $X$ as well, despite the ``weight''
 \begin{equation}
@@ -2016,7 +2016,7 @@ expect $\sum_{i=1}^{N}x_{i}\bar{\mu}\left(E_{i}^{s}\right)$ to happen.
 The Choquet integral has many desirable properties. For example, it
 has the same range as all expectation value in the core.
 
-\begin{thm}\cite{Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016}For
+\begin{thm}\label{thm:Rosenmuller}\cite{Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016}For
 every classical IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$ and
 any random variable~$X:\Omega\rightarrow\mathbb{R}$, $\bar{\mu}$
 is convex if and only if $\int X\rmd\bar{\mu}=\left[\min_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu,\max_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu\right]$.\end{thm}
@@ -2042,7 +2042,7 @@ the right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(P\right)=\left
 for all $P\in\events$. This time, when we express the observable
 as its spectral decomposition
 \begin{equation}
-\mathbf{O}=\sum_{i=1}^{N^{-}}\lambda_{i}^{-}P_{i}^{-}+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}P_{i}^{+}\textrm{ ,}\label{eq:spectrum-decomposition}
+\mathbf{O}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}P_{i}^{s}\textrm{ ,}\label{eq:spectrum-decomposition}
 \end{equation}
 we separate the positive and negative eigenvalues and order its eigenvalues
 from the smallest to the largest 
@@ -2055,7 +2055,7 @@ We can combine the classical Choquet integral~\cite{Vitali1925,Choquet1954,Gilbo
 with Eq.~(\ref{eq:quantum-expectation}) and define the expectation
 value of $\mathbf{O}$ with respect to $\bar{\mu}$ as
 \begin{equation}
-\expval{\mathbf{O}}_{\bar{\mu}}=\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta\mul\left(P_{i}^{+\prime}\right),\Delta\mur\left(P_{i}^{+\prime}\right)\right]+\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta\mul\left(P_{i}^{-\prime}\right),\Delta\mur\left(P_{i}^{-\prime}\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
+\expval{\mathbf{O}}_{\bar{\mu}}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i}^{s\prime}\right),\Delta\mur\left(P_{i}^{s\prime}\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
 \end{equation}
 
 Intuitively, the expectation value of an observable with respect to
@@ -2094,22 +2094,22 @@ such that $\bar{\mu}=\bar{\mu}'\circ\tau$. Let $\mul[\prime]:\events'\rightarrow
 and $\mur[\prime]:\events'\rightarrow\left[0,1\right]$ are the left-end
 and the right-end of $\bar{\mu}'$, respectively, i.e., $\bar{\mu}'\left(E\right)=\left[\mul[\prime]\left(E\right),\mur[\prime]\left(E\right)\right]$
 for all $E\in2^{\Omega}$. Consider the random variable~$X:\Omega\rightarrow\mathscr{I}$
-defined by $X=\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mathbf{1}_{\tau\left(P_{i}^{-}\right)}+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mathbf{1}_{\tau\left(P_{i}^{+}\right)}$.
+defined by $X=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mathbf{1}_{\tau\left(P_{i}^{s}\right)}$.
 Then, 
 \begin{eqnarray*}
  &  & \expval{\mathbf{O}}_{\bar{\mu}}\\
- & = & \sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta\mul\left(P_{i}^{+\prime}\right),\Delta\mur\left(P_{i}^{+\prime}\right)\right]+\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta\mul\left(P_{i}^{-\prime}\right),\Delta\mur\left(P_{i}^{-\prime}\right)\right]\\
- & = & \sum_{i=1}^{N^{+}}\lambda_{i}^{+}\left[\Delta\mul[\prime]\left(\tau\left(P_{i}^{+\prime}\right)\right),\Delta\mur[\prime]\left(\tau\left(P_{i}^{+\prime}\right)\right)\right]+\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\left[\Delta\mul[\prime]\left(\tau\left(P_{i}^{-\prime}\right)\right),\Delta\mur[\prime]\left(\tau\left(P_{i}^{-\prime}\right)\right)\right]\\
- & = & \int X\rmd\bar{\mu}'\\
- & = & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu',\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu'\right]\\
- & = & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu'\left(\tau\left(P_{i}^{-}\right)\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu'\left(\tau\left(P_{i}^{+}\right)\right),\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu'\left(\tau\left(P_{i}^{-}\right)\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu'\left(\tau\left(P_{i}^{+}\right)\right)\right]\\
- & = & \left[\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu\left(P_{i}^{-}\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu\left(P_{i}^{+}\right),\max_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu\left(P_{i}^{-}\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu\left(P_{i}^{+}\right)\right]\\
- & = & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{-}\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{+}\right),\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{-}\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{+}\right)\right]\\
+ & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i}^{s\prime}\right),\Delta\mur\left(P_{i}^{s\prime}\right)\right]\\
+ & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul[\prime]\left(\tau\left(P_{i}^{s\prime}\right)\right),\Delta\mur[\prime]\left(\tau\left(P_{i}^{s\prime}\right)\right)\right]\\
+ & \stackrel{\textrm{Definition }\ref{def:Choquet}}{=} & \int X\rmd\bar{\mu}'\\
+ & \stackrel{\textrm{Theorem }\ref{thm:Rosenmuller}}{=} & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu',\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu'\right]\\
+ & = & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right),\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\right]\\
+ & = & \left[\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right),\max_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)\right]\\
+ & = & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{s}\right),\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{s}\right)\right]\\
  & = & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ ,}
 \end{eqnarray*}
 where 
 \begin{equation}
-\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu'\left(\tau\left(P_{i}^{-}\right)\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu'\left(\tau\left(P_{i}^{+}\right)\right)\le\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu\left(P_{i}^{-}\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu\left(P_{i}^{+}\right)
+\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\le\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)
 \end{equation}
 because $\tau$ in theorem~\ref{thm:sub-event-space} applies to
 both real-valued and interval-valued probability measure, for any
@@ -2117,7 +2117,7 @@ $\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)$, there exists
 a $\mu'\in\mathrm{core}\left(\bar{\mu}'\right)$ such that $\mu=\mu'\circ\tau$.
 On the other hand, 
 \begin{equation}
-\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu'\left(\tau\left(P_{i}^{-}\right)\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu'\left(\tau\left(P_{i}^{+}\right)\right)\ge\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{i=1}^{N^{-}}\lambda_{i}^{-}\mu\left(P_{i}^{-}\right)+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}\mu\left(P_{i}^{+}\right)
+\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\ge\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)
 \end{equation}
 because for any $\mu'\in\mathrm{core}\left(\bar{\mu}'\right)$, we
 have 
@@ -2125,11 +2125,11 @@ have
  &  & \mu'\left(E\right)\in\bar{\mu}'\left(E\right)\textrm{ for all }E\in2^{\Omega}\\
  & \Rightarrow & \mu'\left(\tau\left(P\right)\right)\in\bar{\mu}'\left(\tau\left(P\right)\right)=\bar{\mu}\left(P\right)\textrm{ for all }P\in\events'
 \end{eqnarray*}
-Let $\rho=\sum_{i=1}^{N^{-}}\frac{\mu'\left(\tau\left(P_{i}^{-}\right)\right)}{\Tr\left(P_{i}^{-}\right)}P_{i}^{-}+\sum_{i=1}^{N^{+}}\frac{\mu'\left(\tau\left(P_{i}^{+}\right)\right)}{\Tr\left(P_{i}^{+}\right)}P_{i}^{+}$.
+Let $\rho=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\frac{\mu'\left(\tau\left(P_{i}^{s}\right)\right)}{\Tr\left(P_{i}^{s}\right)}P_{i}^{s}$.
 Then, we have 
 \begin{eqnarray*}
-\mu_{\rho}^{\mathrm{B}}\left(P_{j}^{-}\right) & = & \sum_{i=1}^{N^{-}}\frac{\mu'\left(\tau\left(P_{i}^{-}\right)\right)}{\Tr\left(P_{i}^{-}\right)}\Tr\left(P_{i}^{-}P_{j}^{-}\right)+\sum_{i=1}^{N^{+}}\frac{\mu'\left(\tau\left(P_{i}^{+}\right)\right)}{\Tr\left(P_{i}^{+}\right)}\Tr\left(P_{i}^{+}P_{j}^{-}\right)=\mu'\left(\tau\left(P_{j}^{-}\right)\right)\\
-\mu_{\rho}^{\mathrm{B}}\left(P_{j}^{+}\right) & = & \sum_{i=1}^{N^{-}}\frac{\mu'\left(\tau\left(P_{i}^{-}\right)\right)}{\Tr\left(P_{i}^{-}\right)}\Tr\left(P_{i}^{-}P_{j}^{+}\right)+\sum_{i=1}^{N^{+}}\frac{\mu'\left(\tau\left(P_{i}^{+}\right)\right)}{\Tr\left(P_{i}^{+}\right)}\Tr\left(P_{i}^{+}P_{j}^{+}\right)=\mu'\left(\tau\left(P_{j}^{+}\right)\right)
+\mu_{\rho}^{\mathrm{B}}\left(P_{j}^{-}\right) & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\frac{\mu'\left(\tau\left(P_{i}^{s}\right)\right)}{\Tr\left(P_{i}^{s}\right)}\Tr\left(P_{i}^{s}P_{j}^{-}\right)=\mu'\left(\tau\left(P_{j}^{-}\right)\right)\\
+\mu_{\rho}^{\mathrm{B}}\left(P_{j}^{+}\right) & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\frac{\mu'\left(\tau\left(P_{i}^{s}\right)\right)}{\Tr\left(P_{i}^{s}\right)}\Tr\left(P_{i}^{s}P_{j}^{+}\right)=\mu'\left(\tau\left(P_{j}^{+}\right)\right)
 \end{eqnarray*}
 Therefore, $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu},\events'\right)$.\end{proof}
 
