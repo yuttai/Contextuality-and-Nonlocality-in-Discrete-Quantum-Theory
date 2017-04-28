@@ -851,9 +851,9 @@ be $\bar{\mu}(P)=\unknown$ for every projection~$P$.}}
 Similarly, we can recast the result of cryptodeterminism to quantum
 interval-valued probability measures as well. In another word, for
 any classically event space~$\events$,there is always a classical
-interval-valued probability measure~$\bar{\mu}:\events\rightarrow\left\{ \imposs,\necess\right\} $.
+interval-valued probability measure mapping to $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $.
 However, given a Hilbert space of dimension~$d\ge3$, there is no
-quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\left\{ \imposs,\necess\right\} $
+quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$
 by corollary~\ref{cor:Kochen-Specker-IVPM} of the Kochen-Specker
 theorem. The Kochen-Specker theorem provides an example that quantum
 interval-valued probability measures behave differently from the classical
@@ -1785,20 +1785,23 @@ so that
 \end{itemize}
 \end{proof}
 
-\begin{cor}\label{cor:Kochen-Specker-IVPM}Given a Hilbert space
-of dimension~$d\ge3$, there is no quantum interval-valued probability
-measure~$\bar{\mu}:\events\rightarrow\left\{ \imposs,\necess\right\} $.\end{cor}
+Previously we discussed how to construct a quantum IVPM from a quantum
+real-valued probability measure; we then switch our focus to how to
+construct a quantum real-valued probability measure from a special
+kind of quantum IVPM.
 
-\begin{proof}We are going to prove by contradiction! Suppose there
-is a quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\left\{ \imposs,\necess\right\} $.
-Consider $\mu:\events\rightarrow\left[0,1\right]$ defined by
+\begin{lemma}\label{lemma:QIVPM2QCM}Let $\mathscr{I}_{\mathrm{D}}$
+be $\left\{ \imposs,\necess\right\} $. Given a quantum interval-valued
+probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$,
+$\mu:\events\rightarrow\left[0,1\right]$ defined by 
 \begin{equation} 
 \mu(P)=\cases{ 
 0 & if $\bar{\mu}(P)=\imposs$ ;\\ 
-1 & if $\bar{\mu}(P)=\necess$ .
+1 & if $\bar{\mu}(P)=\necess$ ,
 }\end{equation}
-We are going to verify that $\mu$ is a cryptodeterministic measure
-so that contradicts to the Kochen-Specker theorem.
+ is a cryptodeterministic measure.\end{lemma}
+
+\begin{proof}~
 \begin{itemize}
 \item Since $\bar{\mu}(\mathbb{0})=\imposs$, we have $\mu(\mathbb{0})=0$.
 \item Since $\bar{\mu}(\mathbb{1})=\necess$, we have $\mu(\mathbb{1})=1$.
@@ -1820,6 +1823,13 @@ so that $\imposs=\sum_{i=1}^{N}\bar{\mu}(P_{i})$, i.e., $\sum_{i=1}^{N}\pmeas(P_
 \end{itemize}
 \end{itemize}
 \end{proof}
+
+Together with the Kochen-Specker theorem, we will have the following
+corollary.
+
+\begin{cor}\label{cor:Kochen-Specker-IVPM}Given a Hilbert space
+of dimension~$d\ge3$, there is no quantum interval-valued probability
+measure~$\bar{\mu}:\events\rightarrow\left\{ \imposs,\necess\right\} $.\end{cor}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2157,6 +2167,22 @@ Then, we have
 \mu_{\rho}^{\mathrm{B}}\left(P_{j}^{+}\right) & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\frac{\mu'\left(\tau\left(P_{i}^{s}\right)\right)}{\Tr\left(P_{i}^{s}\right)}\Tr\left(P_{i}^{s}P_{j}^{+}\right)=\mu'\left(\tau\left(P_{j}^{+}\right)\right)
 \end{eqnarray}
 Therefore, $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu},\events'\right)$.\end{proof}\end{proof}
+
+Our next lemma discusses the Choquet integral on the real-valued probability
+measure reduced to the conventional expectation value.
+
+After we defined the expectation value, we can provide another proof
+of corollary~\ref{cor:Kochen-Specker-IVPM} which doesn't refer the
+Kochen-Specker theorem directly.
+
+\begin{thm}\label{cor:Kochen-Specker-expectation}Given a Hilbert
+space of dimension~$d\ge3$, there is no quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$,
+where $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $
+as before.\end{thm}
+
+\begin{proof}Assume there is a quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$,
+we will prove $\bar{\mu}$ has such bizarre properties that it cannot
+exist.\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
