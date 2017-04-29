@@ -2027,7 +2027,8 @@ so pessimistic to accumulate all possible fuzziness together, and
 expect $\sum_{i=1}^{N}x_{i}\bar{\mu}\left(E_{i}^{s}\right)$ to happen.
 
 The Choquet integral has many desirable properties. For example, it
-has the same range as all expectation value in the core.
+has the same range as all expectation value in the core, and it generalizes
+the Lebesgue integral.
 
 \begin{thm}\label{thm:Rosenmuller}\cite{Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016}For
 every classical IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$ and
@@ -2118,7 +2119,7 @@ $\expval{\mathbf{O}}_{\rho}=\int X\rmd\mu'$.\end{lemma}
 
 \begin{lemma}\label{lemma:interval-expectation-value-between-classical-quantum}Adopting
 the definitions in this subsection. Given a quantum IVPM~$\bar{\mu}$,
-there is a classical real-valued probability measure~$\bar{\mu}':2^{\Omega}\rightarrow\mathscr{I}$
+there is a classical IVPM~$\bar{\mu}':2^{\Omega}\rightarrow\mathscr{I}$
 such that $\bar{\mu}=\bar{\mu}'\circ\tau$. Then, we have $\expval{\mathbf{O}}_{\bar{\mu}}=\int X\rmd\bar{\mu}'$.\end{lemma}
 
 \begin{proof}Let $\mul[\prime]:\events'\rightarrow\left[0,1\right]$
@@ -2199,26 +2200,49 @@ i.e., $\rho\in\coreBorn\left(\bar{\mu},\events'\right)$.\end{proof}
 
 Our next lemma discusses the quantum version of lemma~\ref{lemma:Choquet-Lebesgue}.
 
-\begin{lemma}Given a Hilbert space of $d\ge3$, when $\mul:\events\rightarrow\left[0,1\right]$
+\begin{lemma}\label{lemma:expectation-singleton}Given a Hilbert
+space of $d\ge3$, when $\mul:\events\rightarrow\left[0,1\right]$
 and $\mur:\events\rightarrow\left[0,1\right]$ are real-valued probability
 measures, we have $\mul=\mur=\mu_{\rho}^{\mathrm{B}}$ for some density
 matrix~$\rho$. Then, $\expval{\mathbf{O}}_{\bar{\mu}}=\left\{ \expval{\mathbf{O}}_{\rho}\right\} $.\end{lemma}
 
-\begin{proof}The first part of the lemma is the consequence of Gleason's
-theorem directly. For the second part of the lemma \end{proof}
+\begin{proof}Adopting the definitions in subsection~\ref{subsec:Between-Expectation-Values-Classical-Quantum},
+we have
+\[
+\expval{\mathbf{O}}_{\bar{\mu}}\stackrel{\textrm{Lemma }\ref{lemma:real-expectation-value-between-classical-quantum}}{=}\int X\rmd\bar{\mu}'\stackrel{\textrm{Lemma }\ref{lemma:Choquet-Lebesgue}}{=}\left\{ \int X\rmd\mu'\right\} \stackrel{\textrm{Lemma }\ref{lemma:interval-expectation-value-between-classical-quantum}}{=}\left\{ \expval{\mathbf{O}}_{\rho}\right\} \textrm{ ,}
+\]
+where $\mu'=\mul[\prime]=\mur[\prime]$.\end{proof}
+
+\subsection{Quantum {\normalsize{}$\mathscr{I}_{\mathrm{D}}$}-valued Probability
+Measures}
 
 After we defined the expectation value, we can provide another proof
 of corollary~\ref{cor:Kochen-Specker-IVPM} which doesn't refer the
-Kochen-Specker theorem directly.
+Kochen-Specker theorem directly. Assume there is a quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$,
+we will prove $\bar{\mu}$ has such bizarre properties that it cannot
+exist. These properties will be summarized in the following two lemmas.
+
+\begin{lemma}For any quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$,
+$\expval{\mathbf{O}}_{\bar{\mu}}$ is a singleton set~$\left\{ \lambda\right\} $,
+where $\lambda$ is an eigenvalue of $\mathbf{O}$.\end{lemma}
+
+\begin{proof}Adopt the definitions in subsection~\ref{subsec:Between-Expectation-Values-Classical-Quantum}.
+By lemma~\ref{lemma:QIVPM2QCM}, $\mul$ and $\mur$ are the same
+real-valued probability measures called $\mu:\events\rightarrow\left\{ 1,0\right\} $.
+By lemma~\ref{lemma:expectation-singleton}, $\expval{\mathbf{O}}_{\bar{\mu}}=\left\{ \expval{\mathbf{O}}_{\rho}\right\} $.
+Since $\mu$ is a probability measure, there is only one pair of $\left(s_{0},i_{0}\right)$
+such that $\mu\left(P_{i_{0}}^{s_{0}}\right)=1$. Therefore, 
+\[
+\expval{\mathbf{O}}_{\rho}\stackrel{\textrm{Equation }(\ref{eq:quantum-expectation})}{=}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)=\lambda_{i_{0}}^{s_{0}}\textrm{ .}
+\]
+\end{proof}
 
 \begin{thm}\label{cor:Kochen-Specker-expectation}Given a Hilbert
 space of dimension~$d\ge3$, there is no quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$,
 where $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $
 as before.\end{thm}
 
-\begin{proof}Assume there is a quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$,
-we will prove $\bar{\mu}$ has such bizarre properties that it cannot
-exist.\end{proof}
+\begin{proof}\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
