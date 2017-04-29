@@ -1933,6 +1933,8 @@ so that $\mu_{\rho}^{\mathrm{B}}=\mu_{\ket{2}}^{\mathrm{B}}$. However,
 
 \section{Expectation Values for IVPMs}
 
+\subsection{Expectation Values for Classical IVPMs}
+
 We may need to understand how to define expectation values of an observable
 for quantum IVPMs. Recall an observable is the quantum version of
 a random variable. Hence, in order to define expectation values of
@@ -2038,6 +2040,8 @@ are real-valued probability measures, we have $\mul=\mur$ and $\int X\rmd\bar{\m
 
 \yutsung{Put an example here if we need...}
 
+\subsection{Expectation Values for Quantum IVPMs}
+
 Before discussing quantum IVPMs, we first review various notations
 brought forward from conventional quantum theory. Assume that a physical
 system is represented by a density matrix~$\rho$, and that we wish
@@ -2073,11 +2077,66 @@ value of $\mathbf{O}$ with respect to $\bar{\mu}$ as
 \expval{\mathbf{O}}_{\bar{\mu}}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i}^{s\prime}\right),\Delta\mur\left(P_{i}^{s\prime}\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
 \end{equation}
 
+
+\subsection{Between Expectation Values for Classical and Quantum IVPMs}
+
+Since the similarity between classical and quantum expectation values,
+we would prove some lemmas\footnote{\yutsung{functor?}} which can
+help us move the classical results to quantum.
+
+\begin{definition}Given an observable~$\mathbf{O}$ with its spectral
+decomposition~(\ref{eq:spectrum-decomposition}). A sub-event space~$\events'\subseteq\events$
+is called a sub-event space induced by $\mathbf{O}$ if it is the
+minimal sub-event space satisfying $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}\subseteq\events'$.\end{definition}
+
+Notice that a sub-event space induced by any observable commutes so
+that we can find a set~$\Omega$, a function~$\tau:\events'\rightarrow2^{\Omega}$
+to pull quantum real-valued or interval-valued probability measures
+to classical ones by theorem~\ref{thm:sub-event-space}. Although
+it is a powerful tool, it would be more powerful if we can pull an
+observable to a random variable as well.
+
+\begin{definition}Given an observable~$\mathbf{O}$ with its spectral
+decomposition~(\ref{eq:spectrum-decomposition}) and its inducing
+sub-event space $\events'$, set~$\Omega$, and function~$\tau:\events'\rightarrow2^{\Omega}$.
+Then, the random variable~$X:\Omega\rightarrow\mathbb{R}$ defined
+by $X=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mathbf{1}_{\tau\left(P_{i}^{s}\right)}$
+is called the random variable induced by $\mathbf{O}$.\end{definition}
+
+\begin{lemma}Adopting the definitions in this subsection. Given a
+density matrix~$\rho$, there is a classical real-valued probability
+measure~$\mu':2^{\Omega}\rightarrow\left[0,1\right]$ such that $\mu_{\rho}^{\mathrm{B}}=\mu'\circ\tau$.
+Then, we have $\expval{\mathbf{O}}_{\rho}=\int X\rmd\mu'$.\end{lemma}
+
+\begin{proof}
+\begin{eqnarray*}
+\expval{\mathbf{O}}_{\rho} & \stackrel{\textrm{Equation }(\ref{eq:quantum-expectation})}{=} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{s}\right)\\
+ & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\\
+ & \stackrel{\textrm{Equation }(\ref{eq:expectation})}{=} & \int X\rmd\left(\mu'\right)
+\end{eqnarray*}
+\end{proof}
+
+\begin{lemma}Adopting the definitions in this subsection. Given a
+quantum IVPM~$\bar{\mu}$, there is a classical real-valued probability
+measure~$\bar{\mu}':2^{\Omega}\rightarrow\mathscr{I}$ such that
+$\bar{\mu}=\bar{\mu}'\circ\tau$. Then, we have $\expval{\mathbf{O}}_{\bar{\mu}}=\int X\rmd\bar{\mu}'$.\end{lemma}
+
+\begin{proof}
+\begin{eqnarray*}
+\expval{\mathbf{O}}_{\bar{\mu}} & \stackrel{\textrm{Equation }(\ref{eq:quantum-interval-expectation})}{=} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i}^{s\prime}\right),\Delta\mur\left(P_{i}^{s\prime}\right)\right]\\
+ & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul[\prime]\left(\tau\left(P_{i}^{s\prime}\right)\right),\Delta\mur[\prime]\left(\tau\left(P_{i}^{s\prime}\right)\right)\right]\\
+ & \stackrel{\textrm{Definition }\ref{def:Choquet}}{=} & \int X\rmd\bar{\mu}'
+\end{eqnarray*}
+\end{proof}
+
+\subsection{Between Expectation Values for Quantum Real-valued and Interval-valued
+Probability Measures}
+
 Intuitively, the expectation value of an observable with respect to
 an IVPM should be the minimum and maximum expectation value of the
 same observable with respect to its consistent states. We found this
 is true when we require our IVPM to be convex, and on a commuting
-sub-event space, whose definition is given as follow.
+sub-event space, whose definition is given in the next subsection.
 
 \begin{definition}\label{def:consistent-state}A state~$\rho$ is
 consistent with $\bar{\mu}$ on a projector~$P$ if $\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)$,
@@ -2085,12 +2144,6 @@ and denoted by $\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$.
 Moreover, $\rho\in\coreBorn\left(\bar{\mu},S\right)$ means $\rho$
 is consistent with $\bar{\mu}$ on every projector in $S$. Notice
 that $\rho\in\coreBorn\left(\bar{\mu},S\right)$ if and only if $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu},S\right)$.\end{definition}
-
-\begin{definition}Given an observable~$\mathbf{O}$ with its spectral
-decomposition~(\ref{eq:spectrum-decomposition}). A sub-event space~$\events'\subseteq\events$
-is called a sub-event space induced by $\mathbf{O}$ if $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}\subseteq\events'$.
-
-\end{definition}
 
 \noindent Having these two definition, we can write down our idea
 formally as follow.
@@ -2115,7 +2168,7 @@ such that
 Let $\mul[\prime]:\events'\rightarrow\left[0,1\right]$ and $\mur[\prime]:\events'\rightarrow\left[0,1\right]$
 are the left-end and the right-end of $\bar{\mu}'$, respectively,
 i.e., $\bar{\mu}'\left(E\right)=\left[\mul[\prime]\left(E\right),\mur[\prime]\left(E\right)\right]$
-for all $E\in2^{\Omega}$. Consider the random variable~$X:\Omega\rightarrow\mathscr{I}$
+for all $E\in2^{\Omega}$. Consider the random variable~$X:\Omega\rightarrow\mathbb{R}$
 defined by $X=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mathbf{1}_{\tau\left(P_{i}^{s}\right)}$.
 Then, 
 \begin{eqnarray*}
