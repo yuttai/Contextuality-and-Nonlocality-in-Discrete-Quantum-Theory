@@ -2077,8 +2077,7 @@ value of $\mathbf{O}$ with respect to $\bar{\mu}$ as
 \expval{\mathbf{O}}_{\bar{\mu}}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i}^{s\prime}\right),\Delta\mur\left(P_{i}^{s\prime}\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
 \end{equation}
 
-
-\subsection{Between Expectation Values for Classical and Quantum IVPMs}
+\subsection{Between Expectation Values for Classical and Quantum IVPMs\label{subsec:Between-Expectation-Values-Classical-Quantum}}
 
 Since the similarity between classical and quantum expectation values,
 we would prove some lemmas\footnote{\yutsung{functor?}} which can
@@ -2089,12 +2088,12 @@ decomposition~(\ref{eq:spectrum-decomposition}). A sub-event space~$\events'\sub
 is called a sub-event space induced by $\mathbf{O}$ if it is the
 minimal sub-event space satisfying $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}\subseteq\events'$.\end{definition}
 
-Notice that a sub-event space induced by any observable commutes so
-that we can find a set~$\Omega$, a function~$\tau:\events'\rightarrow2^{\Omega}$
-to pull quantum real-valued or interval-valued probability measures
-to classical ones by theorem~\ref{thm:sub-event-space}. Although
-it is a powerful tool, it would be more powerful if we can pull an
-observable to a random variable as well.
+Notice that a sub-event space induced by any observable commutes.
+By theorem~\ref{thm:sub-event-space}, we can find a set~$\Omega$,
+a function~$\tau:\events'\rightarrow2^{\Omega}$ to pull quantum
+real-valued or interval-valued probability measures to classical ones.
+Although it is a powerful tool, it would be more powerful if we can
+pull an observable to a random variable as well.
 
 \begin{definition}Given an observable~$\mathbf{O}$ with its spectral
 decomposition~(\ref{eq:spectrum-decomposition}) and its inducing
@@ -2103,29 +2102,33 @@ Then, the random variable~$X:\Omega\rightarrow\mathbb{R}$ defined
 by $X=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mathbf{1}_{\tau\left(P_{i}^{s}\right)}$
 is called the random variable induced by $\mathbf{O}$.\end{definition}
 
-\begin{lemma}Adopting the definitions in this subsection. Given a
-density matrix~$\rho$, there is a classical real-valued probability
-measure~$\mu':2^{\Omega}\rightarrow\left[0,1\right]$ such that $\mu_{\rho}^{\mathrm{B}}=\mu'\circ\tau$.
-Then, we have $\expval{\mathbf{O}}_{\rho}=\int X\rmd\mu'$.\end{lemma}
+\begin{lemma}\label{lemma:real-expectation-value-between-classical-quantum}Adopting
+the definitions in this subsection. Given a density matrix~$\rho$,
+there is a classical real-valued probability measure~$\mu':2^{\Omega}\rightarrow\left[0,1\right]$
+such that $\mu_{\rho}^{\mathrm{B}}=\mu'\circ\tau$. Then, we have
+$\expval{\mathbf{O}}_{\rho}=\int X\rmd\mu'$.\end{lemma}
 
 \begin{proof}
 \begin{eqnarray*}
 \expval{\mathbf{O}}_{\rho} & \stackrel{\textrm{Equation }(\ref{eq:quantum-expectation})}{=} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{s}\right)\\
  & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\\
- & \stackrel{\textrm{Equation }(\ref{eq:expectation})}{=} & \int X\rmd\left(\mu'\right)
+ & \stackrel{\textrm{Equation }(\ref{eq:expectation})}{=} & \int X\rmd\mu'\textrm{ .}
 \end{eqnarray*}
 \end{proof}
 
-\begin{lemma}Adopting the definitions in this subsection. Given a
-quantum IVPM~$\bar{\mu}$, there is a classical real-valued probability
-measure~$\bar{\mu}':2^{\Omega}\rightarrow\mathscr{I}$ such that
-$\bar{\mu}=\bar{\mu}'\circ\tau$. Then, we have $\expval{\mathbf{O}}_{\bar{\mu}}=\int X\rmd\bar{\mu}'$.\end{lemma}
+\begin{lemma}\label{lemma:interval-expectation-value-between-classical-quantum}Adopting
+the definitions in this subsection. Given a quantum IVPM~$\bar{\mu}$,
+there is a classical real-valued probability measure~$\bar{\mu}':2^{\Omega}\rightarrow\mathscr{I}$
+such that $\bar{\mu}=\bar{\mu}'\circ\tau$. Then, we have $\expval{\mathbf{O}}_{\bar{\mu}}=\int X\rmd\bar{\mu}'$.\end{lemma}
 
-\begin{proof}
+\begin{proof}Let $\mul[\prime]:\events'\rightarrow\left[0,1\right]$
+and $\mur[\prime]:\events'\rightarrow\left[0,1\right]$ are the left-end
+and the right-end of $\bar{\mu}'$, respectively, i.e., $\bar{\mu}'\left(E\right)=\left[\mul[\prime]\left(E\right),\mur[\prime]\left(E\right)\right]$
+for all $E\in2^{\Omega}$. Then, 
 \begin{eqnarray*}
 \expval{\mathbf{O}}_{\bar{\mu}} & \stackrel{\textrm{Equation }(\ref{eq:quantum-interval-expectation})}{=} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i}^{s\prime}\right),\Delta\mur\left(P_{i}^{s\prime}\right)\right]\\
  & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul[\prime]\left(\tau\left(P_{i}^{s\prime}\right)\right),\Delta\mur[\prime]\left(\tau\left(P_{i}^{s\prime}\right)\right)\right]\\
- & \stackrel{\textrm{Definition }\ref{def:Choquet}}{=} & \int X\rmd\bar{\mu}'
+ & \stackrel{\textrm{Definition }\ref{def:Choquet}}{=} & \int X\rmd\bar{\mu}'\textrm{ .}
 \end{eqnarray*}
 \end{proof}
 
@@ -2157,61 +2160,26 @@ if $\bar{\mu}$ is convex, then
 Conversely, if Eq.~(\ref{eq:quantum-interval-expectation-core})
 holds for every observable, then $\bar{\mu}$ is convex.\end{thm}
 
-\begin{proof}Since $\events'$ is induced by $\mathbf{O}$, it is
-commuting. By theorem~\ref{thm:sub-event-space}, there is set~$\Omega$,
-a function~$\tau:\events'\rightarrow2^{\Omega}$, and a convex classical
-interval-valued probability measure~$\bar{\mu}':2^{\Omega}\rightarrow\mathscr{I}$
-such that 
-\begin{equation}
-\bar{\mu}=\bar{\mu}'\circ\tau\textrm{ .}\label{eq:sub-event-space}
-\end{equation}
-Let $\mul[\prime]:\events'\rightarrow\left[0,1\right]$ and $\mur[\prime]:\events'\rightarrow\left[0,1\right]$
-are the left-end and the right-end of $\bar{\mu}'$, respectively,
-i.e., $\bar{\mu}'\left(E\right)=\left[\mul[\prime]\left(E\right),\mur[\prime]\left(E\right)\right]$
-for all $E\in2^{\Omega}$. Consider the random variable~$X:\Omega\rightarrow\mathbb{R}$
-defined by $X=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mathbf{1}_{\tau\left(P_{i}^{s}\right)}$.
-Then, 
+\begin{proof}Adopting the definitions in subsection~\ref{subsec:Between-Expectation-Values-Classical-Quantum},
+it is easy to prove
 \begin{eqnarray*}
- &  & \expval{\mathbf{O}}_{\bar{\mu}}\\
- & \stackrel{\textrm{Equation }(\ref{eq:quantum-interval-expectation})}{=} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i}^{s\prime}\right),\Delta\mur\left(P_{i}^{s\prime}\right)\right]\\
- & \stackrel{\textrm{Equation }(\ref{eq:sub-event-space})}{=} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul[\prime]\left(\tau\left(P_{i}^{s\prime}\right)\right),\Delta\mur[\prime]\left(\tau\left(P_{i}^{s\prime}\right)\right)\right]\\
- & \stackrel{\textrm{Definition }\ref{def:Choquet}}{=} & \int X\rmd\bar{\mu}'\\
+\expval{\mathbf{O}}_{\bar{\mu}} & \stackrel{\textrm{Lemma }\ref{lemma:real-expectation-value-between-classical-quantum}}{=} & \int X\rmd\bar{\mu}'\\
  & \stackrel{\textrm{Theorem }\ref{thm:Rosenmuller}}{=} & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu',\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu'\right]\\
- & \stackrel{\textrm{Definition }\ref{def:Choquet}}{=} & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right),\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\right]\\
- & \stackrel{\textrm{Claim }\ref{claim:min-max-core}}{=} & \left[\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right),\max_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)\right]\\
- & \stackrel{\textrm{Definition }\ref{def:consistent-state}}{=} & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{s}\right),\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{s}\right)\right]\\
- & \stackrel{\textrm{Equation }(\ref{eq:quantum-interval-expectation})}{=} & \left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ ,}
+ & \stackrel{\textrm{Lemma }\ref{lemma:interval-expectation-value-between-classical-quantum}}{=} & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\expval{\mathbf{O}}_{\rho},\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ .}
 \end{eqnarray*}
-where claim~\ref{claim:min-max-core} is going to be proved in the
-next paragraph.
-
-\begin{claim}\label{claim:min-max-core}
-\begin{eqnarray}
-\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right) & = & \min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)\label{eq:min-core}\\
-\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right) & = & \max_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)\label{eq:max-core}
-\end{eqnarray}
-
-\end{claim}
-
-\begin{proof}Since equation~(\ref{eq:min-core}) and (\ref{eq:max-core})
-are essentially the same, we are only going to prove equation~(\ref{eq:min-core}).
-
-We have
+Therefore, equation~(\ref{eq:quantum-interval-expectation-core})
+is equivalent to convexity if $\mathrm{core}\left(\bar{\mu}'\right)$
+and $\coreBorn\left(\bar{\mu},\events'\right)$ are one-to-one correspondence
+so that
 \begin{equation}
-\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\le\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)
+\left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\expval{\mathbf{O}}_{\rho},\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\expval{\mathbf{O}}_{\rho}\right]=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ .}
 \end{equation}
-because the same $\tau$ in theorem~\ref{thm:sub-event-space} applies
-to both real-valued and interval-valued probability measure, i.e.,
-for any $\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)$, there
-exists a $\mu'\in\mathrm{core}\left(\bar{\mu}'\right)$ such that
-$\mu=\mu'\circ\tau$. 
 
-On the other hand, 
-\begin{equation}
-\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\ge\min_{\mu\in\mathrm{core}\left(\bar{\mu},\events'\right)}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)
-\end{equation}
-because for any $\mu'\in\mathrm{core}\left(\bar{\mu}'\right)$, we
-have 
+Notice that lemma~\ref{lemma:real-expectation-value-between-classical-quantum}
+guarantees that for any $\rho\in\coreBorn\left(\bar{\mu},\events'\right)$,
+there exists $\mu'\in\mathrm{core}\left(\bar{\mu}'\right)$ such that
+$\mu_{\rho}^{\mathrm{B}}=\mu'\circ\tau$. On the other hand, for any
+$\mu'\in\mathrm{core}\left(\bar{\mu}'\right)$, we have
 \begin{eqnarray}
  &  & \mu'\left(E\right)\in\bar{\mu}'\left(E\right)\textrm{ for all }E\in2^{\Omega}\\
  & \Rightarrow & \mu'\left(\tau\left(P\right)\right)\in\bar{\mu}'\left(\tau\left(P\right)\right)=\bar{\mu}\left(P\right)\textrm{ for all }P\in\events'
@@ -2222,7 +2190,8 @@ Then, we have
 \mu_{\rho}^{\mathrm{B}}\left(P_{j}^{-}\right) & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\frac{\mu'\left(\tau\left(P_{i}^{s}\right)\right)}{\Tr\left(P_{i}^{s}\right)}\Tr\left(P_{i}^{s}P_{j}^{-}\right)=\mu'\left(\tau\left(P_{j}^{-}\right)\right)\\
 \mu_{\rho}^{\mathrm{B}}\left(P_{j}^{+}\right) & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\frac{\mu'\left(\tau\left(P_{i}^{s}\right)\right)}{\Tr\left(P_{i}^{s}\right)}\Tr\left(P_{i}^{s}P_{j}^{+}\right)=\mu'\left(\tau\left(P_{j}^{+}\right)\right)
 \end{eqnarray}
-Therefore, $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu},\events'\right)$.\end{proof}\end{proof}
+Therefore, $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu},\events'\right)$,
+i.e., $\rho\in\coreBorn\left(\bar{\mu},\events'\right)$.\end{proof}
 
 Our next lemma discusses the quantum version of lemma~\ref{lemma:Choquet-Lebesgue}.
 
