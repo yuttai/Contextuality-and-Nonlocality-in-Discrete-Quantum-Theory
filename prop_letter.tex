@@ -302,20 +302,20 @@ and $\mathbf{O}_{1}=2\mathbb{1}-J_{\mathrm{z}}^{2}=2\proj{1}+\proj{0}+\proj{2}$.
 By following Table~\ref{table:quantum-interval-expectation}, we
 have 
 \begin{equation}
-\expval{\mathbf{O}_{1}}_{\bar{\mu}_{1}}=\sum_{i=1}^{2}\lambda_{i}^{+}\left[\Delta\mul\left(P_{i}^{+\prime}\right),\Delta\mur\left(P_{i}^{+\prime}\right)\right]=\left[1,2\right]\textrm{ .}
+\expval{\mathbf{O}_{1}}_{\bar{\mu}_{1}}=\sum_{i=1}^{2}\lambda_{i}^{+}\left[\Delta\mul\left(P_{i}^{+\prime}\right),\Delta\mur\left(P_{i}^{+\prime}\right)\right]=\left[1,2\right]
 \end{equation}
-$\left[1,2\right]$ is an intuitively result. Since two possible outcomes
-are $1$ and $2$, the expectation value is between one of them even
-if we no prior knowledge about the likelihood of outcomes. In contrast,
-if we naively multiply eigenvalues with intervals, their sum is $\sum_{i=1}^{2}\lambda_{i}^{+}\bar{\mu}_{1}\left(P_{i}^{+}\right)=\left[0,3\right]$
-which is a worse estimation. Because even if we no prior knowledge,
-we know one of them will happen, and estimating the lower-bound by$1\cdot0+2\cdot0=0$
-is too pessimistic.
+intuitively. Since two possible outcomes are $1$ and $2$, the expectation
+value should be between them even if we no prior knowledge about the
+likelihood of outcomes. In contrast, if we naively multiply eigenvalues
+with intervals, their sum, $\sum_{i=1}^{2}\lambda_{i}^{+}\bar{\mu}_{1}\left(P_{i}^{+}\right)=\left[0,3\right]$,
+is a worse estimation. In fact, estimating the lower-bound by $1\cdot0+2\cdot0=0$
+is too pessimistic because we know one of outcomes must be happen
+even without any prior knowledge.
 
 Formally, the expectation value of an observable with respect to an
-IVPM should intuitively be the minimum and maximum expectation value
-of the same observable with respect to its consistent states. We found
-this is true when we require our IVPM to be convex, and on a commuting
+IVPM should be the minimum and maximum expectation value of the same
+observable with respect to states consistent with it. We found this
+is true when we require our IVPM to be convex, and on a commuting
 sub-event space, whose definition is given as follow.
 
 \begin{definition}$\bar{\mu}$ is called convex if for all commuting
@@ -324,12 +324,10 @@ where $P_{0}\vee P_{1}=P_{0}+P_{1}-P_{0}P_{1}$~\cite{Griffiths2003}.\end{definit
 
 \begin{definition}Given an observable~$\mathbf{O}$ with its spectrum
 decomposition~(\ref{eq:spectrum-decomposition}). A set of projectors~$\events'\subseteq\events$
-is called a sub-event space induced by $\mathbf{O}$ if it satisfies
-the following conditions.
+is called a sub-event space induced by $\mathbf{O}$ if it is the
+minimal set satisfying the following conditions.
 \begin{itemize}
-\item $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}\subseteq\events'$.
-\item $\mathbb{0}\in\events'$. 
-\item $\mathbb{1}\in\events'$. 
+\item $\left\{ \mathbb{0},\mathbb{1}\right\} \cup\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}\subseteq\events'$.
 \item For any projection~$P\in\events'$, we have $\mathbb{1}-P\in\events'$. 
 \item For a set of mutually orthogonal projections~$\left\{ P_{i}\right\} _{i=1}^{N}\subseteq\events'$,
 we have $\sum_{i=1}^{N}P_{i}\in\events'$. 
@@ -353,12 +351,12 @@ holds for every observable, then $\bar{\mu}$ is convex.\end{thm}
 After we defined the expectation value, we will use the essential
 idea of the Kochen-Specker theorem to prove there is no quantum IVPM
 mapping to $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $.
-Suppose there is a quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$,
-it is easy to prove $\expval{\mathbf{O}}_{\bar{\mu}}$ is a singleton
-set~$\left\{ \lambda\right\} $, where $\lambda$ is an eigenvalue
-of $\mathbf{O}$. If we define the multiplication of two singleton
-sets~$\left\{ \lambda_{1}\right\} $ and $\left\{ \lambda_{2}\right\} $
-to be $\left\{ \lambda_{1}\lambda_{2}\right\} $, then we have 
+Suppose there is a quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$.
+We can prove $\expval{\mathbf{O}}_{\bar{\mu}}$ is a singleton set~$\left\{ \lambda\right\} $,
+where $\lambda$ is an eigenvalue of $\mathbf{O}$. If we define the
+multiplication of two singleton sets~$\left\{ \lambda_{1}\right\} $
+and $\left\{ \lambda_{2}\right\} $ to be $\left\{ \lambda_{1}\lambda_{2}\right\} $,
+then we have 
 \begin{equation}
 \prod_{j}\expval{\mathbf{O}_{j}}_{\bar{\mu}}=\expval{\prod_{j}\mathbf{O}_{j}}_{\bar{\mu}}\label{eq:Kochen-Specker-Rules}
 \end{equation}
@@ -373,9 +371,9 @@ these two properties, the following observables~\cite{Mermin1990Simple,peres1995
 \end{aligned}
 \label{eq:MerminSquare}
 \end{equation}
-must be sent to $1$ or $-1$. In each row and column, operators commutes,
-and each operator is the product of the two others, except in the
-third column $\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$.
+must have the the expectation value~$1$ or $-1$. In each row and
+column, operators commutes, and each operator is the product of the
+two others, except in the third column $\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$.
 Therefore, it is clear impossible to find a IVPM~$\bar{\mu}$ such
 that 
 \begin{equation}
