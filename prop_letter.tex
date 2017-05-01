@@ -142,6 +142,8 @@ world, because IVPMs become classical so that the non-Born IVPMs disappears
 when we restricting the domain of quantum IVPMs on a commuting sub-event
 space. \newpage{}
 
+\section{Theory}
+
 \paragraph{Gleason's Theorem}
 
 In conventional quantum theory, when we measure a property $\mathbf{O}$
@@ -242,18 +244,47 @@ is a quantum IVPM. This measure represents the beliefs of an experimenter
 with no prior knowledge about the particular quantum system in question,
 and any state is consistent with $\bar{\mu}_{1}$ on any projectors.
 
-In the case that the intervals are infinitely precise, i.e., $\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
-any quantum probability measure can be recast as an interval-valued
-one. When $d\ge3$, the question reduces to Gleason's theorem which
-states that for any quantum IVPM~$\bar{\mu}$, there is an unique
-state consistent with $\bar{\mu}$ on every projector.
+\paragraph{Quantum and Classical IVPMs}
 
-While mapping to $\mathscr{I}_{\infty}$ is one extreme case of quantum
-IVPMs, mapping to $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $
-is another one, corresponding to the Kochen-Specker theorem~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA,Griffiths2003}.
-However, before diving into the Kochen-Specker theorem, it is better
-to understand how to define the expectation value of an observable
-with quantum IVPMs.
+Quantum IVPMs turns into the classical IVPMs setup~\cite{JamisonLodwick2004}
+when the space of events includes only mutually commuting sub-events,
+where $\events'\subseteq\events$ is called a sub-event space if it
+satisfies the following conditions.
+\begin{itemize}
+\item $\left\{ \mathbb{0},\mathbb{1}\right\} \subseteq\events'$.
+\item For any projection~$P\in\events'$, we have $\mathbb{1}-P\in\events'$. 
+\item For a set of mutually orthogonal projections~$\left\{ P_{i}\right\} _{i=1}^{N}\subseteq\events'$,
+we have $\sum_{i=1}^{N}P_{i}\in\events'$. 
+\end{itemize}
+For example, $\events_{0}=\left\{ \mathbb{0},\proj{0},\proj{1},\mathbb{1}\right\} $
+is a commuting sub-event space. Restricting $\bar{\mu}_{1}$ on $\events_{0}$,
+$\bar{\mu}_{1}|_{\events_{0}}$, gives a classical IVPM~$\bar{\mu}_{2}$:
+\begin{equation}
+\begin{aligned}\bar{\mu}_{2}(\mathbb{0}) & =\imposs & \bar{\mu}_{2}(\proj{0}) & =\unknown\\
+\bar{\mu}_{2}(\mathbb{1}) & =\necess & \bar{\mu}_{2}(\proj{1}) & =\unknown
+\end{aligned}
+\end{equation}
+If we identify the density matrices~$\proj{0}$ and $\proj{1}$ as
+the head and the tail of a coin, respectively, then $\bar{\mu}_{2}$
+represents experimenter know nothing about a coin before she tosses
+it, and two classical states~$\proj{0}$ and $\proj{1}$ are both
+consistent with $\bar{\mu}_{2}$ on $\events_{0}$.
+
+In general, although measurements done with limited resources and
+poor precision may not uniquely identify the true state of a classical
+system, when the system satisfies an extra-condition called convex,
+there is always at least one system that is consistent with the measurements.
+
+\begin{definition}
+$\bar{\mu}$ is called convex if for all commuting $P_{0},P_{1}\in\events$,
+$\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$,
+where $P_{0}\vee P_{1}=P_{0}+P_{1}-P_{0}P_{1}$~\cite{Griffiths2003}.
+\end{definition}
+
+\begin{thm}[Shapley~\cite{Shapley1971,Grabisch2016}\label{thm:Shapley}]
+For every convex IVPM~$\bar{\mu}:\events'\rightarrow\mathscr{I}$,
+if $\events'$ commutes, then $\coreBorn\left(\bar{\mu},\events'\right)\ne\emptyset$.
+\end{thm}
 
 \paragraph{Expectation Values for Quantum IVPMs}
 
@@ -316,35 +347,43 @@ Formally, the expectation value of an observable with respect to an
 IVPM should be the minimum and maximum expectation value of the same
 observable with respect to states consistent with it. We found this
 is true when we require our IVPM to be convex, and on a commuting
-sub-event space, whose definition is given as follow.
+sub-event space induced by an observable.
 
-\begin{definition}$\bar{\mu}$ is called convex if for all commuting
-$P_{0},P_{1}\in\events$, $\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$,
-where $P_{0}\vee P_{1}=P_{0}+P_{1}-P_{0}P_{1}$~\cite{Griffiths2003}.\end{definition}
-
-\begin{definition}Given an observable~$\mathbf{O}$ with its spectrum
-decomposition~(\ref{eq:spectrum-decomposition}). A set of projectors~$\events'\subseteq\events$
-is called a sub-event space induced by $\mathbf{O}$ if it is the
-minimal set satisfying the following conditions.
-\begin{itemize}
-\item $\left\{ \mathbb{0},\mathbb{1}\right\} \cup\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}\subseteq\events'$.
-\item For any projection~$P\in\events'$, we have $\mathbb{1}-P\in\events'$. 
-\item For a set of mutually orthogonal projections~$\left\{ P_{i}\right\} _{i=1}^{N}\subseteq\events'$,
-we have $\sum_{i=1}^{N}P_{i}\in\events'$. 
-\end{itemize}
+\begin{definition}
+Given an observable~$\mathbf{O}$ with its spectrum decomposition~(\ref{eq:spectrum-decomposition}).
+A set of projectors~$\events'\subseteq\events$ is called a sub-event
+space induced by $\mathbf{O}$ if it is the minimal sub-event space
+satisfying $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}\subseteq\events'$.
 \end{definition}
 
-\noindent Having these two definitions, we can write down our idea
-formally as follow.
+\noindent Having this definitions, we can write down our idea formally
+as follow.
 
-\begin{thm}Given a Hilbert space of $d\ge3$, for every quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+\begin{thm}
+Given a Hilbert space of $d\ge3$, for every quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
 and any observable~$\mathbf{O}$ inducing a sub-event space~$\events'$,
 if $\bar{\mu}$ is convex, then
 \begin{equation}
 \expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ .}\label{eq:quantum-interval-expectation-core}
 \end{equation}
 Conversely, if Eq.~(\ref{eq:quantum-interval-expectation-core})
-holds for every observable, then $\bar{\mu}$ is convex.\end{thm}
+holds for every observable, then $\bar{\mu}$ is convex.
+\end{thm}
+
+\newpage{}
+
+In the case that the intervals are infinitely precise, i.e., $\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
+any quantum probability measure can be recast as an interval-valued
+one. When $d\ge3$, the question reduces to Gleason's theorem which
+states that for any quantum IVPM~$\bar{\mu}$, there is an unique
+state consistent with $\bar{\mu}$ on every projector.
+
+While mapping to $\mathscr{I}_{\infty}$ is one extreme case of quantum
+IVPMs, mapping to $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $
+is another one, corresponding to the Kochen-Specker theorem~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA,Griffiths2003}.
+However, before diving into the Kochen-Specker theorem, it is better
+to understand how to define the expectation value of an observable
+with quantum IVPMs.
 
 \paragraph{The Kochen-Specker Theorem}
 
@@ -384,34 +423,6 @@ that
 \label{eq:MerminSquare-values}
 \end{equation}
 satisfying Eq.~(\ref{eq:Kochen-Specker-Rules}).
-
-\paragraph{Quantum and Classical IVPMs}
-
-Quantum IVPMs turns into the classical IVPMs setup~\cite{JamisonLodwick2004}
-when the space of events includes only mutually commuting sub-events.
-For example, $\events_{0}=\left\{ \mathbb{0},\proj{0},\proj{1},\mathbb{1}\right\} $
-is a commuting sub-event space. Restricting $\bar{\mu}_{1}$ on $\events_{0}$,
-$\bar{\mu}_{1}|_{\events_{0}}$, gives a classical IVPM~$\bar{\mu}_{2}$:
-\begin{equation}
-\begin{aligned}\bar{\mu}_{2}(\mathbb{0}) & =\imposs & \bar{\mu}_{2}(\proj{0}) & =\unknown\\
-\bar{\mu}_{2}(\mathbb{1}) & =\necess & \bar{\mu}_{2}(\proj{1}) & =\unknown
-\end{aligned}
-\end{equation}
-If we identify the density matrices~$\proj{0}$ and $\proj{1}$ as
-the head and the tail of a coin, respectively, then $\bar{\mu}_{2}$
-represents experimenter know nothing about a coin before she tosses
-it, and two classical states~$\proj{0}$ and $\proj{1}$ are both
-consistent with $\bar{\mu}_{2}$ on $\events_{0}$.
-
-In general, although measurements done with limited resources and
-poor precision may not uniquely identify the true state of a classical
-system, there is always at least one system that is consistent with
-the measurements.
-
-\begin{thm}[Shapley~\cite{Shapley1971,Grabisch2016}\label{thm:Shapley}]
-For every convex IVPM~$\bar{\mu}:\events'\rightarrow\mathscr{I}$,
-if $\events'$ commutes, then $\coreBorn\left(\bar{\mu},\events'\right)\ne\emptyset$.
-\end{thm}
 
 However, even if a quantum IVPM approximates some states for each
 classical sub-event space, it may not approximate any particular state
