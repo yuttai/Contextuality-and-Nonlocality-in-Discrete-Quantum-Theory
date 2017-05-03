@@ -1620,7 +1620,7 @@ for all $P\in\events'$
 \end{thm}
 
 \begin{proof}Again, it is sufficient to prove the interval-valued
-case. Since $\events'$ is a set of mutually orthogonal projections,
+case. Since $\events'$ is a set of mutually commuting projections,
 they can be diagonalized by a common orthonormal basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$.
 Pick arbitrary projector~$P\in\events'$, its eigenvalues are $0$
 or $1$. Let $\tau\left(P\right)\subseteq\Omega$ be the set of eigenvectors
@@ -1653,8 +1653,37 @@ Sub-event Space}
 
 Since there is a correspondence between classical probability measures
 and quantum ones on a commuting sub-event space, we can use the quantum
-language to describe the classical world given a commuting sub-event
-space.
+language to describe the classical world given an orthonormal basis.
+
+\begin{definition}Given a Hilbert space~$\Hilb$, an orthonormal
+basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$, a classical
+real-valued probability measures~$\pmeas:2^{\Omega}\rightarrow\left[0,1\right]$
+on the sample space~$\Omega$. The density matrix~$\sum_{j=0}^{d-1}\pmeas\left(\left\{ j\right\} \right)\proj{j}$
+is call classical with respect to $\Omega$.\end{definition}
+
+\begin{definition}\label{def:consistent-state}A state~$\rho$ is
+consistent with $\bar{\mu}$ on a projector~$P$ if $\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)$,
+and denoted by $\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$.
+Moreover, $\rho\in\coreBorn\left(\bar{\mu},S\right)$ means $\rho$
+is consistent with $\bar{\mu}$ on every projector in $S$. Notice
+that $\rho\in\coreBorn\left(\bar{\mu},S\right)$ if and only if $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu},S\right)$.\end{definition}
+
+Then, we can rephrase theorem~\ref{thm:Shapley}, in the language
+of quantum IVPM with an orthonormal basis.
+
+\begin{cor}For every convex quantum IVPM~$\bar{\mu}:\events'\rightarrow\mathscr{I}$,
+if $\events'$ commutes, then $\coreBorn\left(\bar{\mu},\events'\right)\ne\emptyset$.\end{cor}
+
+\begin{proof}Since $\events'$ is a set of mutually commuting projections,
+they can be diagonalized by a common orthonormal basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$,
+and we can find a function~$\tau:\events'\rightarrow2^{\Omega}$
+such that the condition of theorem~\ref{thm:sub-event-space} holds.
+This means that we can find a convex classical IVPM~$\bar{\mu}':2^{\Omega}\rightarrow\mathscr{I}$
+such that $\bar{\mu}\left(P\right)=\bar{\mu}'\left(\tau\left(P\right)\right)$
+for all $P\in\events'$. By theorem~\ref{thm:Shapley}, there is
+a. classical probability measure~$\pmeas:2^{\Omega}\rightarrow\left[0,1\right]$
+such that $\pmeas\in\mathrm{core}\left(\bar{\mu}'\right)$. Then,
+it is easy to verify that the density matrix~$\sum_{j=0}^{d-1}\pmeas\left(\left\{ j\right\} \right)\proj{j}\in\coreBorn\left(\bar{\mu},\events'\right)$.\end{proof}
 
 \subsection{Application on Convexity}
 
@@ -2152,17 +2181,7 @@ Intuitively, the expectation value of an observable with respect to
 an IVPM should be the minimum and maximum expectation value of the
 same observable with respect to its consistent states. We found this
 is true when we require our IVPM to be convex, and on a commuting
-sub-event space, whose definition is given in the next subsection.
-
-\begin{definition}\label{def:consistent-state}A state~$\rho$ is
-consistent with $\bar{\mu}$ on a projector~$P$ if $\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)$,
-and denoted by $\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$.
-Moreover, $\rho\in\coreBorn\left(\bar{\mu},S\right)$ means $\rho$
-is consistent with $\bar{\mu}$ on every projector in $S$. Notice
-that $\rho\in\coreBorn\left(\bar{\mu},S\right)$ if and only if $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu},S\right)$.\end{definition}
-
-\noindent Having these two definition, we can write down our idea
-formally as follow.
+sub-event space.
 
 \begin{thm}Given a Hilbert space of $d\ge3$, for every quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
 and any observable~$\mathbf{O}$ inducing a sub-event space~$\events'$,
