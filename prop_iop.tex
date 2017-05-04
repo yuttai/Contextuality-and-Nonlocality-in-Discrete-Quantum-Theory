@@ -1604,8 +1604,9 @@ probability, and interval-valued probability measure on $\events'$.\end{definiti
 
 \begin{thm}\label{thm:sub-event-space}Given a Hilbert space~$\Hilb$
 and a mutually commuting sub-event space~$\events'\subseteq\events$,
-there is a set~$\Omega$ and a function~$\tau:\events'\rightarrow2^{\Omega}$
-such that:
+there is a set~$\Omega$, another commuting sub-event space~$\widehat{\events}$
+with $\events'\subseteq\widehat{\events}\subseteq\events$, and a
+bijection~$\tau:\widehat{\events}\rightarrow2^{\Omega}$ such that:
 \begin{itemize}
 \item If $\mu:\events'\rightarrow\left[0,1\right]$ is a quantum real-valued
 probability measure, then there is a classical real-valued probability
@@ -1615,7 +1616,7 @@ for all $P\in\events'$.
 probability measure, then there is a classical interval-valued probability
 measure~$\bar{\mu}':2^{\Omega}\rightarrow\mathscr{I}$ such that
 $\bar{\mu}\left(P\right)=\bar{\mu}'\left(\tau\left(P\right)\right)$
-for all $P\in\events'$
+for all $P\in\events'$.
 \end{itemize}
 \end{thm}
 
@@ -1624,9 +1625,11 @@ case. Since $\events'$ is a set of mutually commuting projections,
 they can be diagonalized by a common orthonormal basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$.
 Pick arbitrary projector~$P\in\events'$, its eigenvalues are $0$
 or $1$. Let $\tau\left(P\right)\subseteq\Omega$ be the set of eigenvectors
-whose eigenvalues are $1$. Then, we have $P=\sum_{\ket{j}\in\tau\left(P\right)}\proj{j}$.
+whose eigenvalues are $1$. Then, we have $P=\sum_{\ket{j}\in\tau\left(P\right)}\proj{j}$,
+$\widehat{\events}=\set{\sum_{\ket{j}\in E}\proj{j}}{E\subseteq\Omega}$,
+and $\tau$ is a bijection between $\widehat{\events}$ and $2^{\Omega}$.
 By definition~\ref{definition:quantum-classical}, $\bar{\mu}\left(P\right)=\bar{\mu}^{\Omega}\left(\tau\left(P\right)\right)$,
-and $\bar{\mu}^{\Omega}$ is a quantum interval-valued probability
+and $\bar{\mu}^{\Omega}$ is a classical interval-valued probability
 measure by lemma~\ref{lemma:classical-probability-measures}.\end{proof}
 
 Given an orthonormal basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$,
@@ -1656,10 +1659,10 @@ and quantum ones on a commuting sub-event space, we can use the quantum
 language to describe the classical world given an orthonormal basis.
 
 \begin{definition}Given a Hilbert space~$\Hilb$, an orthonormal
-basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$, a classical
+basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$, and a classical
 real-valued probability measures~$\pmeas:2^{\Omega}\rightarrow\left[0,1\right]$
-on the sample space~$\Omega$. The density matrix~$\sum_{j=0}^{d-1}\pmeas\left(\left\{ j\right\} \right)\proj{j}$
-is call classical with respect to $\Omega$.\end{definition}
+on the sample space~$\Omega$, the density matrix~$\sum_{j=0}^{d-1}\pmeas\left(\left\{ j\right\} \right)\proj{j}$
+is called classical with respect to $\Omega$.\end{definition}
 
 \begin{definition}\label{def:consistent-state}A state~$\rho$ is
 consistent with $\bar{\mu}$ on a projector~$P$ if $\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)$,
@@ -1671,19 +1674,24 @@ that $\rho\in\coreBorn\left(\bar{\mu},S\right)$ if and only if $\mu_{\rho}^{\mat
 Then, we can rephrase theorem~\ref{thm:Shapley}, in the language
 of quantum IVPM with an orthonormal basis.
 
-\begin{cor}For every convex quantum IVPM~$\bar{\mu}:\events'\rightarrow\mathscr{I}$,
-if $\events'$ commutes, then $\coreBorn\left(\bar{\mu},\events'\right)\ne\emptyset$.\end{cor}
+\begin{cor}For every convex quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$,
+if $\events'\subseteq\events$ commutes, then $\coreBorn\left(\bar{\mu},\events'\right)\ne\emptyset$.\end{cor}
 
 \begin{proof}Since $\events'$ is a set of mutually commuting projections,
-they can be diagonalized by a common orthonormal basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$,
-and we can find a function~$\tau:\events'\rightarrow2^{\Omega}$
-such that the condition of theorem~\ref{thm:sub-event-space} holds.
-This means that we can find a convex classical IVPM~$\bar{\mu}':2^{\Omega}\rightarrow\mathscr{I}$
+they can be diagonalized by a common orthonormal basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$.
+By theorem~\ref{thm:sub-event-space}, we can find a bijection~$\tau:\widehat{\events}\rightarrow2^{\Omega}$
+and a classical IVPM~$\bar{\mu}':2^{\Omega}\rightarrow\mathscr{I}$
 such that $\bar{\mu}\left(P\right)=\bar{\mu}'\left(\tau\left(P\right)\right)$
-for all $P\in\events'$. By theorem~\ref{thm:Shapley}, there is
-a. classical probability measure~$\pmeas:2^{\Omega}\rightarrow\left[0,1\right]$
-such that $\pmeas\in\mathrm{core}\left(\bar{\mu}'\right)$. Then,
-it is easy to verify that the density matrix~$\sum_{j=0}^{d-1}\pmeas\left(\left\{ j\right\} \right)\proj{j}\in\coreBorn\left(\bar{\mu},\events'\right)$.\end{proof}
+for all $P\in\events'$. Since $\tau$ is a bijection, $\bar{\mu}'$
+is convex. By theorem~\ref{thm:Shapley}, there is a. classical probability
+measure~$\pmeas:2^{\Omega}\rightarrow\left[0,1\right]$ such that
+\begin{eqnarray*}
+ &  & \pmeas\in\mathrm{core}\left(\bar{\mu}'\right)\\
+ & \Rightarrow & \pmeas\left(E\right)\in\bar{\mu}'\left(E\right)\textrm{ for all }E\in2^{\Omega}\\
+ & \Rightarrow & \pmeas\left(\tau\left(P\right)\right)\in\bar{\mu}'\left(\tau\left(P\right)\right)\textrm{ for all }P\in\widehat{\events}\\
+ & \Rightarrow & \pmeas\left(\tau\left(P\right)\right)\in\bar{\mu}\left(P\right)\textrm{ for all }P\in\widehat{\events}
+\end{eqnarray*}
+Then, it is easy to verify that the density matrix~$\sum_{j=0}^{d-1}\pmeas\left(\left\{ j\right\} \right)\proj{j}\in\coreBorn\left(\bar{\mu},\events'\right)$.\end{proof}
 
 \subsection{Application on Convexity}
 
