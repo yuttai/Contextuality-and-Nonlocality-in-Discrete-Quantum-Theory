@@ -9675,7 +9675,13 @@ Given a Hilbert space
  such that:
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:sub-event-space-real-quantum2classical"
+
+\end_inset
+
 If 
 \begin_inset Formula $\mu:\events'\rightarrow\left[0,1\right]$
 \end_inset
@@ -9700,7 +9706,13 @@ If
 .
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:sub-event-space-interval-quantum2classical"
+
+\end_inset
+
 If 
 \begin_inset Formula $\bar{\mu}:\events'\rightarrow\mathscr{I}$
 \end_inset
@@ -9720,6 +9732,37 @@ If
 
  for all 
 \begin_inset Formula $P\in\events'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:sub-event-space-real-classical2quantum"
+
+\end_inset
+
+If 
+\begin_inset Formula $\mu':2^{\Omega}\rightarrow\left[0,1\right]$
+\end_inset
+
+ is a classical real-valued probability measure, then there is a density
+ matrix
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\rho$
+\end_inset
+
+ such that 
+\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\mu'\left(\tau\left(P\right)\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $P\in\widehat{\events}$
 \end_inset
 
 .
@@ -9754,7 +9797,28 @@ begin{proof}
 
 \end_inset
 
-Again, it is sufficient to prove the interval-valued case.
+Since case 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:sub-event-space-real-quantum2classical"
+
+\end_inset
+
+ is a special case of case 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:sub-event-space-interval-quantum2classical"
+
+\end_inset
+
+, it is sufficient to prove case 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:sub-event-space-interval-quantum2classical"
+
+\end_inset
+
+.
  Since 
 \begin_inset Formula $\events'$
 \end_inset
@@ -9847,6 +9911,85 @@ reference "lemma:classical-probability-measures"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+For case 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:sub-event-space-real-classical2quantum"
+
+\end_inset
+
+, if we pick 
+\begin_inset Formula $\rho=\sum_{j=1}^{d}\mu'\left(\left\{ j\right\} \right)\proj{j}$
+\end_inset
+
+, then 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is a density matrix because
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "544199"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray}
+\Tr\left(\rho\right) & = & \sum_{j=1}^{d}\mu'\left(\left\{ j\right\} \right)\Tr\left(\proj{j}\right)=1\textrm{ .}
+\end{eqnarray}
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Also, 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \mu_{\rho}^{\mathrm{B}}\left(\proj{i}\right)=\sum_{j=1}^{N}\mu'\left(\left\{ j\right\} \right)\mu_{\ket{j}}^{\mathrm{\mathrm{B}}}\left(\proj{i}\right)=\mu'\left(\left\{ j\right\} \right)=\mu'\left(\tau\left(\proj{i}\right)\right)\textrm{ for all }i\textrm{ ,}\\
+ &  & \mu_{\rho}^{\mathrm{B}}\left(P_{1}\right)+\mu_{\rho}^{\mathrm{B}}\left(P_{2}\right)\overset{\textrm{IH}}{=}\mu'\left(\tau\left(P_{1}\right)\right)+\mu'\left(\tau\left(P_{2}\right)\right)=\mu'\left(\tau\left(P_{1}\right)\cup\tau\left(P_{2}\right)\right)=\mu'\left(\tau\left(P_{1}+P_{2}\right)\right)\textrm{ for commuting }P_{0},P_{1}\in\events\textrm{ with }P_{0}P_{1}=\mathbb{0}\textrm{ .}
+\end{eqnarray*}
+
+\end_inset
+
+Therefore, we have 
+\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\mu'\left(\tau\left(P\right)\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $P\in\widehat{\events}$
+\end_inset
+
+ by induction.
 \begin_inset ERT
 status collapsed
 
@@ -10284,18 +10427,53 @@ reference "thm:Shapley"
 \begin{eqnarray*}
  &  & \pmeas\in\mathrm{core}\left(\bar{\mu}'\right)\\
  & \Rightarrow & \pmeas\left(E\right)\in\bar{\mu}'\left(E\right)\textrm{ for all }E\in2^{\Omega}\\
- & \Rightarrow & \pmeas\left(\tau\left(P\right)\right)\in\bar{\mu}'\left(\tau\left(P\right)\right)\textrm{ for all }P\in\widehat{\events}\\
+ & \Rightarrow & \pmeas\left(\tau\left(P\right)\right)\in\bar{\mu}'\left(\tau\left(P\right)\right)=\bar{\mu}\left(P\right)\textrm{ for all }P\in\widehat{\events}\\
  & \Rightarrow & \pmeas\left(\tau\left(P\right)\right)\in\bar{\mu}\left(P\right)\textrm{ for all }P\in\widehat{\events}
 \end{eqnarray*}
 
 \end_inset
 
-Then, it is easy to verify that the density matrix
+By case 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:sub-event-space-real-classical2quantum"
+
+\end_inset
+
+ in theorem
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Formula $\sum_{j=0}^{d-1}\pmeas\left(\left\{ j\right\} \right)\proj{j}\in\coreBorn\left(\bar{\mu},\events'\right)$
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:sub-event-space"
+
+\end_inset
+
+, there is a density matrix
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\rho$
+\end_inset
+
+ such that 
+\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\mu'\left(\tau\left(P\right)\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $P\in\events'$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu},\events'\right)$
+\end_inset
+
+, i.e., 
+\begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},\events'\right)$
 \end_inset
 
 .
@@ -15243,72 +15421,38 @@ reference "lemma:real-expectation-value-between-classical-quantum"
 
 \end_inset
 
-Let 
-\begin_inset Formula $\rho=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\frac{\mu'\left(\tau\left(P_{i}^{s}\right)\right)}{\Tr\left(P_{i}^{s}\right)}P_{i}^{s}$
+By case 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:sub-event-space-real-classical2quantum"
+
 \end_inset
 
-.
- 
-\begin_inset Formula $\rho$
-\end_inset
-
- is a density matrix because
+ in theorem
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "544199"
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:sub-event-space"
 
 \end_inset
 
-
-\begin_inset Formula 
-\begin{eqnarray}
-\Tr\left(\rho\right) & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\frac{\mu'\left(\tau\left(P_{i}^{s}\right)\right)}{\Tr\left(P_{i}^{s}\right)}\Tr\left(P_{i}^{s}\right)=1\textrm{ .}
-\end{eqnarray}
-
+, there is a density matrix
+\begin_inset space ~
 \end_inset
 
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-Also, 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-
-\begin_inset Formula 
-\begin{eqnarray}
-\mu_{\rho}^{\mathrm{B}}\left(P_{j}^{s'}\right) & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\frac{\mu'\left(\tau\left(P_{i}^{s}\right)\right)}{\Tr\left(P_{i}^{s}\right)}\Tr\left(P_{i}^{s}P_{j}^{s'}\right)=\mu'\left(\tau\left(P_{j}^{s'}\right)\right)
-\end{eqnarray}
-
+\begin_inset Formula $\rho$
 \end_inset
 
-for 
-\begin_inset Formula $s'\in\left\{ +,-\right\} $
+ such that 
+\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\mu'\left(\tau\left(P\right)\right)$
 \end_inset
 
- and 
-\begin_inset Formula $1\le j\le N^{s'}$
+ for all 
+\begin_inset Formula $P\in\events'$
 \end_inset
 
 .
