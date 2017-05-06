@@ -145,7 +145,7 @@ space. \newpage{}
 
 \section{Theory}
 
-\paragraph{Gleason's Theorem}
+\paragraph{Conventional Quantum Theory (\emph{CQT})}
 
 In conventional quantum theory, when we measure a property $\mathbf{O}$
 of a physical system whose state is represented by a density matrix~$\rho$,
@@ -368,26 +368,73 @@ if $\bar{\mu}$ is convex, then
 Conversely, if Eq.~(\ref{eq:quantum-interval-expectation-core})
 holds for every observable, then $\bar{\mu}$ is convex.\end{thm}
 
-\newpage{}
+\section{Results}
 
-In the case that the intervals are infinitely precise, i.e., $\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
-any quantum probability measure can be recast as an interval-valued
-one. When $d\ge3$, the question reduces to Gleason's theorem which
-states that for any quantum IVPM~$\bar{\mu}$, there is an unique
-state consistent with $\bar{\mu}$ on every projector.
+\paragraph{Gleason's Theorem}
+
+In CQT, Gleason's theorem asserts any quantum real-valued probability
+measure is consistent with a unique mixed state, and Shapley proved
+a convex quantum IVPM must approximate some states for each classical
+sub-event space. However, a quantum IVPM may not approximate any particular
+state while considering all projectors~$\events$.
+
+\begin{example}[Three-dimensional quantum three-interval-valued probability
+measure\label{ex:three-dimensional-three-value}]
+Given a three dimensional Hilbert space with an orthonormal basis
+$\left\{ \ket{0},\ket{1},\ket{2}\right\} $. Let $\mathscr{I}_{1}=\left\{ \necess,\imposs,\unknown\right\} $,
+$\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$, $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$,
+and
+\begin{subequations}
+\begin{eqnarray}
+ &  & \begin{aligned}\imposs & =\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})\\
+ & =\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'})\textrm{ ,}
+\end{aligned}
+\\
+ &  & \begin{aligned}\necess & =\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})\\
+ & =\bar{\mu}(\mathbb{1}-\proj{\ps})=\bar{\mu}(\mathbb{1}-\proj{\ps'})\textrm{ ,}
+\end{aligned}
+\\
+ &  & \unknown=\bar{\mu}(P)\qquad\textrm{otherwise.}
+\end{eqnarray}
+\end{subequations}
+It is straightforward to verify that $\bar{\mu}$ is a convex quantum
+IVPM. 
+
+Let $\events_{1}$ be the minimal event space containing both $\proj{0}$
+and $\proj{\ps}$. Because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$,
+for any mixed state~$\rho\in\coreBorn\left(\bar{\mu},\events_{1}\right)$,
+we have $\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=0$.
+Hence, $\rho$ is actually the pure state orthogonal to both $\ket{0}$
+and $\ket{\ps}$. The only choice of $\rho$ is $\ket{2}$, and it
+is easy to verify $\proj{2}$ is actually in $\coreBorn\left(\bar{\mu},\events_{1}\right)$.
+
+Similarly, let $\events_{2}$ be the minimal event space containing
+both $\proj{0}$ and $\proj{\ps'}$. We have $\coreBorn\left(\bar{\mu},\events_{2}\right)=\left\{ \proj{1}\right\} $.
+Therefore, 
+\begin{equation}
+\coreBorn\left(\bar{\mu},\events\right)\subseteq\coreBorn\left(\bar{\mu},\events_{1}\right)\cap\coreBorn\left(\bar{\mu},\events_{2}\right)=\emptyset\textrm{ ,}
+\end{equation}
+and must be empty.
+\end{example}
+
+Although Gleason's theorem doesn't hold for every quantum IVPM, when
+the intervals are infinitely precise, i.e., $\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
+any quantum IVPM can be recast as an real-valued one. When $d\ge3$,
+the question reduces to Gleason's theorem which states that for any
+quantum IVPM~$\bar{\mu}$, there is an unique state consistent with
+$\bar{\mu}$ on every projector. In general, this kind of inconsistency
+can be reduced if we increase the measurement resource, that is, using
+finer intervals. We conjecture by consuming more and more measurement
+resource, it would be more and more likely that there is a state consistent
+with a quantum IVPM on all projectors~$\events$.
+
+\paragraph{The Kochen-Specker Theorem}
 
 While mapping to $\mathscr{I}_{\infty}$ is one extreme case of quantum
 IVPMs, mapping to $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $
 is another one, corresponding to the Kochen-Specker theorem~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA,Griffiths2003}.
-However, before diving into the Kochen-Specker theorem, it is better
-to understand how to define the expectation value of an observable
-with quantum IVPMs.
-
-\paragraph{The Kochen-Specker Theorem}
-
-After we defined the expectation value, we will use the essential
-idea of the Kochen-Specker theorem to prove there is no quantum IVPM
-mapping to $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $.
+We will use the essential idea of the Kochen-Specker theorem to prove
+there is no quantum IVPM mapping to $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $.
 Suppose there is a quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$.
 We can prove $\expval{\mathbf{O}}_{\bar{\mu}}$ is a singleton set~$\left\{ \lambda\right\} $,
 where $\lambda$ is an eigenvalue of $\mathbf{O}$. If we define the
@@ -421,65 +468,6 @@ that
 \label{eq:MerminSquare-values}
 \end{equation}
 satisfying Eq.~(\ref{eq:Kochen-Specker-Rules}).
-
-However, even if a quantum IVPM approximates some states for each
-classical sub-event space, it may not approximate any particular state
-while considering all projectors~$\events$.
-
-\begin{example}[Three-dimensional quantum three-interval-valued probability
-measure\label{ex:three-dimensional-three-value}]
-Given a three dimensional Hilbert space with an orthonormal basis
-$\left\{ \ket{0},\ket{1},\ket{2}\right\} $. Let $\mathscr{I}_{1}=\left\{ \necess,\imposs,\unknown\right\} $,
-$\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$, $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$,
-and
-\begin{subequations}
-\begin{eqnarray}
- &  & \begin{aligned}\imposs & =\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})\\
- & =\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'})\textrm{ ,}
-\end{aligned}
-\\
- &  & \begin{aligned}\necess & =\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})\\
- & =\bar{\mu}(\mathbb{1}-\proj{\ps})=\bar{\mu}(\mathbb{1}-\proj{\ps'})\textrm{ ,}
-\end{aligned}
-\\
- &  & \unknown=\bar{\mu}(P)\qquad\textrm{otherwise.}
-\end{eqnarray}
-\end{subequations}
-It is straightforward to verify that $\bar{\mu}$ is a quantum IVPM. 
-
-Let $\events_{1}$ be the minimal event space containing both $\proj{0}$
-and $\proj{\ps}$. Because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$,
-for any mixed state~$\rho\in\coreBorn\left(\bar{\mu},\events_{1}\right)$,
-we have $\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=0$.
-Hence, $\rho$ is actually the pure state orthogonal to both $\ket{0}$
-and $\ket{\ps}$. The only choice of $\rho$ is $\ket{2}$, and it
-is easy to verify $\proj{2}$ is actually in $\coreBorn\left(\bar{\mu},\events_{1}\right)$.
-
-Similarly, let $\events_{2}$ be the minimal event space containing
-both $\proj{0}$ and $\proj{\ps'}$. We have $\coreBorn\left(\bar{\mu},\events_{2}\right)=\left\{ \proj{1}\right\} $.
-Therefore, 
-\begin{equation}
-\coreBorn\left(\bar{\mu},\events\right)\subseteq\coreBorn\left(\bar{\mu},\events_{1}\right)\cap\coreBorn\left(\bar{\mu},\events_{2}\right)=\emptyset\textrm{ ,}
-\end{equation}
-and must be empty.
-\end{example}
-
-We found this kind of incompatibility can be reduced if we increase
-the measurement resource, that is, using finer intervals. We conjecture
-by consuming more and more measurement resource, it would be more
-and more likely that a quantum IVPM has a state consistent with it
-on all projectors~$\events$.
-
-\yutsung{Although Cabello proved some inequalities to verify contextuality~\cite{Cabello_2008},
-it seems not directly relating to empty/non-empty core. On one hand,
-the part using hidden variables cannot really apply on quantum IVPM
-expect $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $
-case. On the other hand, for the part predicted by quantum mechanics,
-the product of observables in inequalities are always either $\mathbb{1}$
-or $-\mathbb{1}$ whose the interval-valued probabilities and expectation
-values are always $\necess$. In this kind of situation, the inequalities
-applies on all IVPMs, no matter whether it has an empty or non-empty
-core.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
