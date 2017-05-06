@@ -286,10 +286,11 @@ $\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq
 where $P_{0}\vee P_{1}=P_{0}+P_{1}-P_{0}P_{1}$~\cite{Griffiths2003}.
 \end{definition}
 
-\begin{thm}[Shapley~\cite{Shapley1971,Grabisch2016}\label{thm:Shapley}]
-For every convex quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$,
-if a sub-event space~$\events'\subseteq\events$ commutes, then $\coreBorn\left(\bar{\mu},\events'\right)\ne\emptyset$.
-\end{thm}
+Based on Shapley's classical result~\cite{Shapley1971,GilboaSchmeidler1994,Grabisch2016},
+we have the following theorem.
+
+\begin{thm}\label{thm:Shapley}For every convex quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$,
+if a sub-event space~$\events'\subseteq\events$ commutes, then $\coreBorn\left(\bar{\mu},\events'\right)\ne\emptyset$.\end{thm}
 
 \paragraph{Expectation Values for Quantum IVPMs}
 
@@ -372,16 +373,16 @@ holds for every observable, then $\bar{\mu}$ is convex.\end{thm}
 
 \paragraph{Gleason's Theorem}
 
-In CQT, Gleason's theorem asserts any quantum real-valued probability
-measure is consistent with a unique mixed state, and Shapley proved
-a convex quantum IVPM must approximate some states for each classical
-sub-event space. However, a quantum IVPM may not approximate any particular
-state while considering all projectors~$\events$.
+Gleason's theorem asserts any quantum real-valued probability measure
+is consistent with a unique mixed state, and Shapley proved a convex
+quantum IVPM must approximate some states for each classical sub-event
+space. However, it may not approximate the same state in every sub-event
+space. As the result, there may be no state consistent with a convex
+quantum IVPM on all projectors~$\events$.
 
-\begin{example}[Three-dimensional quantum three-interval-valued probability
-measure\label{ex:three-dimensional-three-value}]
-Given a three dimensional Hilbert space with an orthonormal basis
-$\left\{ \ket{0},\ket{1},\ket{2}\right\} $. Let $\mathscr{I}_{1}=\left\{ \necess,\imposs,\unknown\right\} $,
+\begin{example}\label{ex:three-dimensional-three-value}Given a three
+dimensional Hilbert space with an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
+Let $\mathscr{I}_{1}=\left\{ \necess,\imposs,\unknown\right\} $,
 $\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$, $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$,
 and
 \begin{subequations}
@@ -400,33 +401,32 @@ and
 It is straightforward to verify that $\bar{\mu}$ is a convex quantum
 IVPM. 
 
-Let $\events_{1}$ be the minimal event space containing both $\proj{0}$
-and $\proj{\ps}$. Because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$,
-for any mixed state~$\rho\in\coreBorn\left(\bar{\mu},\events_{1}\right)$,
-we have $\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=0$.
-Hence, $\rho$ is actually the pure state orthogonal to both $\ket{0}$
-and $\ket{\ps}$. The only choice of $\rho$ is $\ket{2}$, and it
-is easy to verify $\proj{2}$ is actually in $\coreBorn\left(\bar{\mu},\events_{1}\right)$.
+Let $S_{1}=\left\{ \proj{0},\proj{\ps}\right\} $. Because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$,
+we have $\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=0$
+for any mixed state~$\rho\in\coreBorn\left(\bar{\mu},S_{1}\right)$.
+Hence, $\rho$ is actually $\ket{2}$, the only pure state orthogonal
+to both $\ket{0}$ and $\ket{\ps}$. It is easy to verify $\proj{2}$
+is actually in $\coreBorn\left(\bar{\mu},S_{1}\right)$.
 
-Similarly, let $\events_{2}$ be the minimal event space containing
-both $\proj{0}$ and $\proj{\ps'}$. We have $\coreBorn\left(\bar{\mu},\events_{2}\right)=\left\{ \proj{1}\right\} $.
+Similarly, let $S_{2}=\left\{ \proj{0},\proj{\ps'}\right\} $. We
+have $\coreBorn\left(\bar{\mu},S_{2}\right)=\left\{ \proj{1}\right\} $.
 Therefore, 
 \begin{equation}
-\coreBorn\left(\bar{\mu},\events\right)\subseteq\coreBorn\left(\bar{\mu},\events_{1}\right)\cap\coreBorn\left(\bar{\mu},\events_{2}\right)=\emptyset\textrm{ ,}
+\coreBorn\left(\bar{\mu},\events\right)\subseteq\coreBorn\left(\bar{\mu},S_{1}\right)\cap\coreBorn\left(\bar{\mu},S_{2}\right)=\emptyset
 \end{equation}
 and must be empty.
 \end{example}
 
-Although Gleason's theorem doesn't hold for every quantum IVPM, when
-the intervals are infinitely precise, i.e., $\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
-any quantum IVPM can be recast as an real-valued one. When $d\ge3$,
-the question reduces to Gleason's theorem which states that for any
-quantum IVPM~$\bar{\mu}$, there is an unique state consistent with
-$\bar{\mu}$ on every projector. In general, this kind of inconsistency
-can be reduced if we increase the measurement resource, that is, using
-finer intervals. We conjecture by consuming more and more measurement
-resource, it would be more and more likely that there is a state consistent
-with a quantum IVPM on all projectors~$\events$.
+Although Gleason's theorem doesn't hold for every quantum IVPM, it
+can be applied in a limit case when the intervals are infinitely precise.
+That is, when $\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
+any quantum IVPM can be recast as an real-valued one and has an unique
+state consistent with it on every projector when $d\ge3$. 
+
+In general, this kind of inconsistency can be reduced if we increase
+the measurement resource, that is, using finer intervals. We conjecture
+by using finer and finer intervals, it would be more and more likely
+that there is a state consistent with a quantum IVPM on all projectors~$\events$.
 
 \paragraph{The Kochen-Specker Theorem}
 
@@ -442,9 +442,9 @@ multiplication of two singleton sets~$\left\{ \lambda_{1}\right\} $
 and $\left\{ \lambda_{2}\right\} $ to be $\left\{ \lambda_{1}\lambda_{2}\right\} $,
 then we have 
 \begin{equation}
-\prod_{j}\expval{\mathbf{O}_{j}}_{\bar{\mu}}=\expval{\prod_{j}\mathbf{O}_{j}}_{\bar{\mu}}\label{eq:Kochen-Specker-Rules}
+\prod_{j=1}^{N}\expval{\mathbf{O}_{j}}_{\bar{\mu}}=\expval{\prod_{j=1}^{N}\mathbf{O}_{j}}_{\bar{\mu}}\label{eq:Kochen-Specker-Rules}
 \end{equation}
-for any sequence of commuting observables~$\left\{ \mathbf{O}_{j}\right\} $.
+for any sequence of commuting observables~$\left\{ \mathbf{O}_{j}\right\} _{j=1}^{N}$.
 
 Since the expectation value~$\expval{\cdot}_{\bar{\mu}}$ satisfying
 these two properties, the following observables~\cite{Mermin1990Simple,peres1995quantum}:
@@ -455,9 +455,9 @@ these two properties, the following observables~\cite{Mermin1990Simple,peres1995
 \end{aligned}
 \label{eq:MerminSquare}
 \end{equation}
-must have the the expectation value~$1$ or $-1$. In each row and
-column, operators commutes, and each operator is the product of the
-two others, except in the third column $\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$.
+must have the the expectation value~$\left\{ 1\right\} $ or $\left\{ -1\right\} $.
+In each row and column, operators commutes, and each operator is the
+product of the two others, except in the third column $\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$.
 Therefore, it is clear impossible to find a IVPM~$\bar{\mu}$ such
 that 
 \begin{equation}
