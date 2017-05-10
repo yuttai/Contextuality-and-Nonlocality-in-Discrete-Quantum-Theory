@@ -53,10 +53,16 @@ showkeys, longbibliography, amsmath, amssymb]{revtex4-1}
 
 \begin{document}
 
-\title{Contextuality and the Born rule in fuzzy quantum theories}
+\title{Interval-Valued Quantum Probabilities: Contextuality and the Born Rule}
+
+\author{Yu-Tsung Tai}
+\affiliation{Department of Mathematics, Indiana University, Bloomington, Indiana 47405,
+USA}
+\affiliation{Department of Computer Science, Indiana University, Bloomington,
+Indiana 47405, USA}
 
 \author{Andrew J Hanson}
-\affiliation{School of Informatics and Computing, Indiana University, Bloomington,
+\affiliation{Department of Informatics, Indiana University, Bloomington,
 Indiana 47405, USA}
 
 \author{Gerardo Ortiz}
@@ -64,13 +70,7 @@ Indiana 47405, USA}
 USA}
 
 \author{Amr Sabry}
-\affiliation{School of Informatics and Computing, Indiana University, Bloomington,
-Indiana 47405, USA}
-
-\author{Yu-Tsung Tai}
-\affiliation{Department of Mathematics, Indiana University, Bloomington, Indiana 47405,
-USA}
-\affiliation{School of Informatics and Computing, Indiana University, Bloomington,
+\affiliation{Department of Computer Science, Indiana University, Bloomington,
 Indiana 47405, USA}
 
 \date{\today}
@@ -104,59 +104,154 @@ discrete quantum theory}
 
 \maketitle
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Textbook quantum mechanics asserts that the probability of a measurement
-can be computed from wave function of the system and the measuring
-observable \emph{exactly} while real measurements must be finite precision.
-Whether finite precision measurement in reality affect the idealized
-quantum concept, e.g., contextuality~\cite{PhysRevLett.83.3751,Mermin1999,BarrettKent2004},
-and the very foundation of quantum mechanics is still a problem. In
-this letter, we model the finite precision quantum measurement by
-quantum interval-valued probability measures (IVPMs) which provides
-not only a uniform framework to understand Gleason's theorem~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}
-and the Kochen-Specker theorem~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA,Griffiths2003}
-but also some examples which cannot be explained by the Born rule~\cite{Born1983,peres1995quantum,544199,Jaeger2007}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
 
-The tension between finite precision measurement and the foundation
-of quantum mechanics sharpened, when the original definition of contextuality
-based on infinitely precise numbers is proved not experimental verifiable~\cite{PhysRevLett.83.3751,Kent1999}.
-After a long debate~\cite{Mermin1999,Peres2003,BarrettKent2004},
-people are still trying to update the definition of contextuality
-when they want to perform further experiments~\cite{Spekkens2005,GuehneKleinmannCabelloEtAl2010,MazurekPuseyKunjwalEtAl2016}.
+In this letter, we extend our previous work on the foundations of
+computability in quantum mechanics by exploring the application of
+interval-valued probability measures (IVPM) to achieving a coherent
+formulation of finite-resource quantum mechanics.
 
-We found that finite precision measurement affects not only contextuality
-but also the fundamental rule computing probability from a state.
-In the early formulation of quantum mechanics, von Neumann essentially
-formulated a quantum state as a density matrix while Mackey formulated
-a quantum state as a quantum probability measure which are proved
-by Gleason to be the essentially same as a density matrix~\cite{Varadarajan2008}.
-Combining quantum probability measures and the classical IVPM~\cite{JamisonLodwick2004}
-which could be used to formulate classical finite precision measurement,
-we can define quantum IVPMs. Surprisingly, there is a quantum IVPM
-which cannot be compatible with any density matrix according to the
-Born rule. Similar to revising the definition of contextuality because
-of finite precision measurement, the very basic definition of a quantum
-state or how to compute the probability from a state might need to
-be refined when we consider the finite precision measurement. This
-can also provide a new quantum phenomena different from the classical
-world, because IVPMs become classical so that the non-Born IVPMs disappears
-when we restricting the domain of quantum IVPMs on a commuting sub-event
-space. \newpage{}
+There are long-standing debates in the foundations of quantum
+mechanics regarding the tension between finite precision measurement
+and contextuality~\cite{Peres2003,BarrettKent2004}.  For example,
+Meyer~\cite{PhysRevLett.83.3751} and Mermin~\cite{Mermin1999} disagree
+on whether finite-precision measurement invalidate the Kochen-Specker
+theorem~\cite{kochenspecker1967,peres1995quantum}, and discussion
+continues on whether contextuality is experimentally
+verifiable~\cite{Spekkens2005,GuehneKleinmannCabelloEtAl2010,MazurekPuseyKunjwalEtAl2016}. The
+fundamental question is how to make mathematical theories of quantum
+mechanics that are intrinsically, rather than only implicitly,
+consistent with the resources available for the realistic accuracy of
+an actual measurement.
 
-\section{Theory}
+Our first observation is that essential objectives of our program to
+achieve a computable theory of quantum mechanics and finite-resource
+measurement, attempted previously with computable number
+systems~\cite{usat,geometry2013,DQT2014}, may be achievable by
+extending classical interval-valued probability
+measures~\cite{JamisonLodwick2004} to the quantum domain.  We begin by
+axiomatizing a quantum interval-valued probability measure (QIVPM)
+framework exploiting the fact that a density matrix approach can be
+considered as equivalent to a description of quantum states using
+probability
+measures~\cite{10.2307/2308516,Varadarajan2008}. %Mackey=10.2307
+One result is that the expectation value of an observable with respect
+to a QIVPM can be defined to be consistent with the constraints on the
+expectation value of the same observable expected from continuous
+quantum mechanics.  We then examine Gleason's
+theorem~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum} and the
+Kochen-Specker theorem in the context of QIVPM's, and conclude
+that they correspond to the limit of an infinite number of precise
+intervals, and the set of crypto-deterministic intervals (the set
+$\{\imposs,\necess\}$), respectively.
 
-\paragraph{Conventional Quantum Theory (\emph{CQT})}
+We note, however, that in this approach there exist QIVPM's that do
+not correspond to a density matrix computable by the Born rule, so
+that Gleason's theorem cannot hold in general.  It thus remains
+possible that a refinement of the basic definition of a quantum state
+or the computation of probability from a state may be required when we
+rigorously consider the implications of finite precision measurement.
 
-In conventional quantum theory, when we measure a property $\mathbf{O}$
-of a physical system whose state is represented by a density matrix~$\rho$,
-the probability to obtain the value $\lambda$ of that property is
-determined by the Born rule $\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)=\Tr\left(\rho P_{i}\right)$,
-where $P_{i}$ denotes the projector onto the eigenspace corresponding
-to the eigenvalue $\lambda_{i}$ of the Hermitian operator $\mathbf{O}$~\cite{Born1983,peres1995quantum,544199,Jaeger2007}.
-Alternatively, one may say that the state $\rho$ determines the probability
-measure $\mu_{\rho}^{\mathrm{B}}$ defined as a function from the
-set $\events$ of all possible projectors $P$ onto the interval $[0,1]$,
-and satisfies the following probability axioms~ \cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010}: 
+
+% Textbook quantum mechanics asserts that the probability of a
+% measurement can be computed from wave function of the system and the
+% measuring observable \emph{exactly} while real measurements must be
+% finite precision.  Whether finite precision measurement in reality
+% affect the idealized quantum concept, e.g.,
+% contextuality~\cite{PhysRevLett.83.3751,Mermin1999,BarrettKent2004},
+% and the very foundation of quantum mechanics is still a problem. In
+% this letter, we model the finite precision quantum measurement by
+% quantum interval-valued probability measures (IVPMs) which provides
+% not only a uniform framework to understand Gleason's
+% theorem~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum} and the
+% Kochen-Specker
+% theorem~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA,Griffiths2003}
+% but also some examples which cannot be explained by the Born
+% rule~\cite{Born1983,peres1995quantum,544199,Jaeger2007}.
+
+% The tension between finite precision measurement and the foundation of
+% quantum mechanics sharpened, when the original definition of
+% contextuality based on infinitely precise numbers is proved not
+% experimental verifiable~\cite{PhysRevLett.83.3751,Kent1999}.  After a
+% long debate~\cite{Mermin1999,Peres2003,BarrettKent2004}, people are
+% still trying to update the definition of contextuality when they want
+% to perform further
+% experiments~\cite{Spekkens2005,GuehneKleinmannCabelloEtAl2010,MazurekPuseyKunjwalEtAl2016}.
+
+% We found that finite precision measurement affects not only
+% contextuality but also the fundamental rule computing probability from
+% a state.  In the early formulation of quantum mechanics, von Neumann
+% essentially formulated a quantum state as a density matrix while
+% Mackey formulated a quantum state as a quantum probability measure
+% which are proved by Gleason to be the essentially same as a density
+% matrix~\cite{Varadarajan2008}.  Combining quantum probability measures
+% and the classical IVPM~\cite{JamisonLodwick2004} which could be used
+% to formulate classical finite precision measurement, we can define
+% quantum IVPMs. Surprisingly, there is a quantum IVPM which cannot be
+% compatible with any density matrix according to the Born rule. Similar
+% to revising the definition of contextuality because of finite
+% precision measurement, the very basic definition of a quantum state or
+% how to compute the probability from a state might need to be refined
+% when we consider the finite precision measurement. This can also
+% provide a new quantum phenomena different from the classical world,
+% because IVPMs become classical so that the non-Born IVPMs disappears
+% when we restricting the domain of quantum IVPMs on a commuting
+% sub-event space.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quantum Measurements}
+
+A \emph{probability space} is a mathematical abstraction specifying
+the necessary conditions for reasoning coherently about collections of
+uncertain events~\cite{Kolmogorov1950}.  In the quantum case, the set
+of events is the set of \emph{projection operators} $P$. This set
+includes the empty projection~$\mathbb{0}$, the identity
+projection~$\mathbb{1}$, projections of the form $\proj{\psi}$ where
+$\ket{\psi}$ is a pure quantum state, sums of \emph{orthogonal}
+projections, and products of \emph{commuting} projections. In a
+quantum probability
+space~\cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010},
+each event $P_i$ is associated with a probability $\mu(P_i)$ subject
+to the following axioms: $\mu(\mathbb{0})=0$, $\mu(\mathbb{1})=1$,
+$\mu\left(\mathbb{1}-P\right)=1-\mu\left(P\right)$, and for a set of
+mutually orthogonal projectors $\left\{ P_{i}\right\} _{i=1}^{N}$, we
+have:
+\begin{equation}
+\mu\left(\sum_{i=1}^{N}P_{i}\right)=
+\sum_{i=1}^{N}\mu\left(P_{i}\right)
+\textrm{ .}\label{eq:QuantumProbability-Addition}
+\end{equation}
+
+
+
+
+
+
+
+
+
+\newpage
+
+Conversely, given any quantum probability measure~$\mu:\events\rightarrow[0,1]$
+satisfying the above axioms, Gleason's theorem asserts that there
+exists a unique state~$\rho$ such that $\mu=\mu_{\rho}^{\mathrm{B}}$
+in a Hilbert space of dimension $d\geq3$~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
+
+In conventional quantum theory (CQT), when we measure a property
+$\mathbf{O}$ of a physical system whose state is represented by a
+density matrix~$\rho$, the probability to obtain the value $\lambda$
+of that property is determined by the Born rule
+$\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)=\Tr\left(\rho
+  P_{i}\right)$, where $P_{i}$ denotes the projector onto the
+eigenspace corresponding to the eigenvalue $\lambda_{i}$ of the
+Hermitian operator
+$\mathbf{O}$~\cite{Born1983,peres1995quantum,544199,Jaeger2007}.
+Alternatively, one may say that the state $\rho$ determines the
+probability measure $\mu_{\rho}^{\mathrm{B}}$ defined as a function
+from the set $\events$ of all possible projectors $P$ onto the
+interval $[0,1]$, and satisfies the following probability axioms~
+\cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010}:
 \begin{itemize}
 \item $\mu_{\rho}^{\mathrm{B}}(\mathbb{0})=0$. 
 \item $\mu_{\rho}^{\mathrm{B}}(\mathbb{1})=1$. 
@@ -183,15 +278,14 @@ value of $\mathbf{O}$ is given by~\cite{peres1995quantum,544199,Jaeger2007}
 \expval{\mathbf{O}}_{\rho}=\Tr\left(\rho\mathbf{O}\right)=\sum_{i=1}^{N}\lambda_{i}\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)\ .\label{eq:quantum-expectation}
 \end{equation}
 
-
-\paragraph{Quantum Interval-valued Probability Measures (\emph{IVPMs})}
-
-To formalize the idea of finite precision measurement, we next introduce
-the notion of quantum IVPM~$\bar{\mu}$. The latter replaces the
-infinitely precise interval $[0,1]$ by a finite collection $\mathscr{I}$
-of intervals. Since the intervals $\imposs=\left[0,0\right]$ and
-$\necess=\left[1,1\right]$ should be included in $\mathscr{I}$,
-and arithmetic operations on intervals satisfy \begin{subequations}\label{eq:interval-operations}
+To formalize the idea of finite precision measurement, we next
+introduce the notion of quantum interval-valued probability measures
+(\emph{IVPMs})~$\bar{\mu}$. The latter replaces the infinitely precise
+interval $[0,1]$ by a finite collection $\mathscr{I}$ of
+intervals. Since the intervals $\imposs=\left[0,0\right]$ and
+$\necess=\left[1,1\right]$ should be included in $\mathscr{I}$, and
+arithmetic operations on intervals
+satisfy \begin{subequations}\label{eq:interval-operations}
 \begin{eqnarray}
  &  & [l_{1},r_{1}]+[l_{2},r_{2}]=[l_{1}+l_{2},r_{1}+r_{2}]\textrm{ and}\\
  &  & x[l,r]=\begin{cases}
@@ -245,8 +339,6 @@ is a quantum IVPM. This measure represents the beliefs of an experimenter
 with no prior knowledge about the particular quantum system in question,
 and any state is consistent with $\bar{\mu}_{1}$ on any projectors.
 
-\paragraph{Quantum and Classical IVPMs}
-
 Quantum IVPMs become classical IVPMs~\cite{JamisonLodwick2004} when
 the space of events includes only mutually commuting sub-events, where
 $\events'\subseteq\events$ is called a sub-event space if it satisfies
@@ -291,8 +383,6 @@ we have the following theorem.
 
 \begin{thm}\label{thm:Shapley}For every convex quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$,
 if a sub-event space~$\events'\subseteq\events$ commutes, then $\coreBorn\left(\bar{\mu},\events'\right)\ne\emptyset$.\end{thm}
-
-\paragraph{Expectation Values for Quantum IVPMs}
 
 Consider a quantum IVPM~$\bar{\mu}$ such that $\mul:\events\rightarrow\left[0,1\right]$
 and $\mur:\events\rightarrow\left[0,1\right]$ are the left-end and
@@ -369,9 +459,11 @@ if $\bar{\mu}$ is convex, then
 Conversely, if Eq.~(\ref{eq:quantum-interval-expectation-core})
 holds for every observable, then $\bar{\mu}$ is convex.\end{thm}
 
-\section{Results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quantum States} 
 
-\paragraph{Gleason's Theorem}
+%%%%%
+\subsection{Gleason}
 
 Gleason's theorem asserts any quantum real-valued probability measure
 is consistent with a unique mixed state, and Shapley proved a convex
@@ -427,7 +519,8 @@ the measurement resource, that is, using finer intervals. We conjecture
 by using finer and finer intervals, it would be more and more likely
 that there is a state consistent with a quantum IVPM on all projectors~$\events$.
 
-\paragraph{The Kochen-Specker Theorem}
+%%%
+\subsection{Kochen-Specker}
 
 While mapping to $\mathscr{I}_{\infty}$ is one extreme case of quantum
 IVPMs, mapping to $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $
@@ -468,13 +561,11 @@ that
 \end{equation}
 satisfying Eq.~(\ref{eq:Kochen-Specker-Rules}).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliography{prop}
-
 \end{document}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 
