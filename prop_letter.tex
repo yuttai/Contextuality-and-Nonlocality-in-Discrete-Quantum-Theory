@@ -200,8 +200,8 @@ rigorously consider the implications of finite precision measurement.
 % sub-event space.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Quantum Measurements}
-
+\section{Fuzzy Measurements}
+ 
 A \emph{probability space} is a mathematical abstraction specifying
 the necessary conditions for reasoning coherently about collections of
 uncertain events~\cite{Kolmogorov1950}.  In the quantum case, the
@@ -246,7 +246,7 @@ the event $\proj{0}$ is in the range $[0.49,0.51]$. The spread in this
 range depends on the amount of resources (time, energy, money, etc)
 that are devoted to the experiment. In the classical setting, this
 ``fuzziness'' is formalized by moving to \emph{interval-valued
-  probability measures} (IVPMs). 
+  probability measures}.
 
 To adapt the axioms of such IVPMs to the quantum case, we proceed as
 follows. First we fix a collection of intervals $\mathscr{I}$ that
@@ -266,90 +266,118 @@ $\necess=\left[1,1\right]$. This is what Peres calls the
 \emph{crypto-deterministic} case in which there is no ambiguity about
 the status of any event; we know for certain if it will occur or not.
 
-
-
-\newpage
-
-Conversely, given any quantum probability measure~$\mu:\events\rightarrow[0,1]$
-satisfying the above axioms, Gleason's theorem asserts that there
-exists a unique state~$\rho$ such that $\mu=\mu_{\rho}^{\mathrm{B}}$
-in a Hilbert space of dimension $d\geq3$~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
-
-In conventional quantum theory (CQT), when we measure a property
-$\mathbf{O}$ of a physical system whose state is represented by a
-density matrix~$\rho$, the probability to obtain the value $\lambda$
-of that property is determined by the Born rule
-$\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)=\Tr\left(\rho
-  P_{i}\right)$, where $P_{i}$ denotes the projector onto the
-eigenspace corresponding to the eigenvalue $\lambda_{i}$ of the
-Hermitian operator
-$\mathbf{O}$~\cite{Born1983,peres1995quantum,544199,Jaeger2007}.
-Alternatively, one may say that the state $\rho$ determines the
-probability measure $\mu_{\rho}^{\mathrm{B}}$ defined as a function
-from the set $\events$ of all possible projectors $P$ onto the
-interval $[0,1]$, and satisfies the following probability axioms~
-\cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010}:
-
-\begin{itemize}
-\item $\mu_{\rho}^{\mathrm{B}}(\mathbb{0})=0$. 
-\item $\mu_{\rho}^{\mathrm{B}}(\mathbb{1})=1$. 
-\item $\mu_{\rho}^{\mathrm{B}}\left(\mathbb{1}-P\right)=
-1-\mu_{\rho}^{\mathrm{B}}\left(P\right)$. 
-\item For a set of mutually orthogonal projectors $\left\{ P_{i}\right\} _{i=1}^{N}$,
-$P_iP_j=\delta_{ij}P_i$,
-we have 
-\begin{equation}
-\mu_{\rho}^{\mathrm{B}}\left(\sum_{i=1}^{N}P_{i}\right)=
-\sum_{i=1}^{N}\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)
-\textrm{ .}\label{eq:QuantumProbability-Addition}
-\end{equation}
-\end{itemize}
-Conversely, given any quantum probability measure~$\mu:\events\rightarrow[0,1]$
-satisfying the above axioms, Gleason's theorem asserts that there
-exists a unique state~$\rho$ such that $\mu=\mu_{\rho}^{\mathrm{B}}$
-in a Hilbert space of dimension $d\geq3$~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
-
-Furthermore, if we express an observable~$\mathbf{O}$ as its spectrum
-decomposition~$\sum_{i=1}^{N}\lambda_{i}P_{i}$, the expectation
-value of $\mathbf{O}$ is given by~\cite{peres1995quantum,544199,Jaeger2007}
-\begin{equation}
-\expval{\mathbf{O}}_{\rho}=\Tr\left(\rho\mathbf{O}\right)=\sum_{i=1}^{N}\lambda_{i}\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)\ .\label{eq:quantum-expectation}
-\end{equation}
-
-To formalize the idea of finite precision measurement, we next
-introduce the notion of quantum interval-valued probability measures
-(\emph{IVPMs})~$\bar{\mu}$. The latter replaces the infinitely precise
-interval $[0,1]$ by a finite collection $\mathscr{I}$ of
-intervals. Since the intervals $\imposs=\left[0,0\right]$ and
-$\necess=\left[1,1\right]$ should be included in $\mathscr{I}$, and
-arithmetic operations on intervals
-satisfy \begin{subequations}\label{eq:interval-operations}
+Given a collection of intervals $\mathscr{I}$ with addition and scalar
+multiplication defined as follows: 
+\begin{subequations}\label{eq:interval-operations}
 \begin{eqnarray}
  &  & [l_{1},r_{1}]+[l_{2},r_{2}]=[l_{1}+l_{2},r_{1}+r_{2}]\textrm{ and}\\
  &  & x[l,r]=\begin{cases}
 [xl,xr] & \textrm{for }x\ge0\textrm{ ;}\\{}
-[xr,xl] & \textrm{for }x\le0\textrm{ .}
+[xr,xl] & \textrm{for }x\le0\textrm{ ,}
 \end{cases}
 \end{eqnarray}
-\end{subequations} $\bar{\mu}:\events\rightarrow\mathscr{I}$ is
-defined by the axioms: 
-\begin{itemize}
-\item $\bar{\mu}(\mathbb{0})=\left[0,0\right]$. 
-\item $\bar{\mu}(\mathbb{1})=\left[1,1\right]$. 
-\item $\bar{\mu}\left(\mathbb{1}-P\right)=\left[1,1\right]-\bar{\mu}\left(P\right)$. 
-\item For a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
-$P_{i}P_{j}=\delta_{ij}P_{i}$, we have 
+\end{subequations}
+a QIVPM $\bar{\mu}$ is an assignment of intervals to each event
+obeying the following axioms:
+$\bar{\mu}(\mathbb{0})=\imposs=\left[0,0\right]$,
+$\bar{\mu}(\mathbb{1})=\necess=\left[1,1\right]$,
+$\bar{\mu}\left(\mathbb{1}-P\right)=\left[1,1\right]-\bar{\mu}\left(P\right)$,
+and for a set of mutually orthogonal projections
+$\left\{ P_{i}\right\} _{i=1}^{N}$, we have:
 \begin{equation}
 \bar{\mu}\left(\sum_{i=1}^{N}P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}\left(P_{i}\right)\label{eq:QuantumInterval-valuedProbability-Inclusion}
 \end{equation}
-\end{itemize}
-condition that provides only a bound and not an equivalence as in
-Eq.~\eqref{eq:QuantumProbability-Addition}. For example, if we consider
-$\left\{ P_{1},P_{2}\right\} =\left\{ P,\mathbb{1}-P\right\} $ and
-$\bar{\mu}\left(P\right)=\left[l,r\right]$, we have, when $r-l=\ell>0$,
-\[
-\bar{\mu}(\mathbb{1})=\left[1,1\right]\subsetneq\left[1-\ell,1+\ell\right]=\bar{\mu}\left(\mathbb{1}-P\right)+\bar{\mu}\left(P\right).
-\]
+The first three axioms are the direct counterpart of the corresponding
+axioms for conventional probability measures. The last condition
+allows for the interval associated with a composite event to be
+sharper than the interval calculated from each individual
+event. Intuitively, consider an event $P$ and its complement
+$\mathbb{1}-P$. Looking at each separately we may discover
+$\bar{\mu}(P) = [0.2,0.3]$ and $\bar{\mu}(\mathbb{1}-P)=[0.7,0.8]$. By
+adding the individual intervals, we predict the probability of the
+composite event $P+(\mathbb{1}-P)$ to be in the range
+$[0.9,1.1]$. Eq.~\ref{eq:QuantumInterval-valuedProbability-Inclusion}
+allows us to refine this to $[1,1]$ by recognizing that the composite
+event is the identity projection. 
+
+% In conventional quantum theory (CQT), when we measure a property
+% $\mathbf{O}$ of a physical system whose state is represented by a
+% density matrix~$\rho$, the probability to obtain the value $\lambda$
+% of that property is determined by the Born rule
+% $\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)=\Tr\left(\rho
+%   P_{i}\right)$, where $P_{i}$ denotes the projector onto the
+% eigenspace corresponding to the eigenvalue $\lambda_{i}$ of the
+% Hermitian operator
+% $\mathbf{O}$~\cite{Born1983,peres1995quantum,544199,Jaeger2007}.
+% Alternatively, one may say that the state $\rho$ determines the
+% probability measure $\mu_{\rho}^{\mathrm{B}}$ defined as a function
+% from the set $\events$ of all possible projectors $P$ onto the
+% interval $[0,1]$, and satisfies the following probability axioms~
+% \cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010}:
+
+% \begin{itemize}
+% \item $\mu_{\rho}^{\mathrm{B}}(\mathbb{0})=0$. 
+% \item $\mu_{\rho}^{\mathrm{B}}(\mathbb{1})=1$. 
+% \item $\mu_{\rho}^{\mathrm{B}}\left(\mathbb{1}-P\right)=
+% 1-\mu_{\rho}^{\mathrm{B}}\left(P\right)$. 
+% \item For a set of mutually orthogonal projectors $\left\{ P_{i}\right\} _{i=1}^{N}$,
+% $P_iP_j=\delta_{ij}P_i$,
+% we have 
+% \begin{equation}
+% \mu_{\rho}^{\mathrm{B}}\left(\sum_{i=1}^{N}P_{i}\right)=
+% \sum_{i=1}^{N}\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)
+% \textrm{ .}\label{eq:QuantumProbability-Addition}
+% \end{equation}
+% \end{itemize}
+% Conversely, given any quantum probability measure~$\mu:\events\rightarrow[0,1]$
+% satisfying the above axioms, Gleason's theorem asserts that there
+% exists a unique state~$\rho$ such that $\mu=\mu_{\rho}^{\mathrm{B}}$
+% in a Hilbert space of dimension $d\geq3$~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
+
+% Furthermore, if we express an observable~$\mathbf{O}$ as its spectrum
+% decomposition~$\sum_{i=1}^{N}\lambda_{i}P_{i}$, the expectation
+% value of $\mathbf{O}$ is given by~\cite{peres1995quantum,544199,Jaeger2007}
+% \begin{equation}
+% \expval{\mathbf{O}}_{\rho}=\Tr\left(\rho\mathbf{O}\right)=\sum_{i=1}^{N}\lambda_{i}\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)\ .\label{eq:quantum-expectation}
+% \end{equation}
+
+% To formalize the idea of finite precision measurement, we next
+% introduce the notion of quantum interval-valued probability measures
+% (\emph{IVPMs})~$\bar{\mu}$. The latter replaces the infinitely precise
+% interval $[0,1]$ by a finite collection $\mathscr{I}$ of
+% intervals. Since the intervals $\imposs=\left[0,0\right]$ and
+% $\necess=\left[1,1\right]$ should be included in $\mathscr{I}$, and
+% arithmetic operations on intervals
+% satisfy \begin{subequations}\label{eq:interval-operations}
+% \begin{eqnarray}
+%  &  & [l_{1},r_{1}]+[l_{2},r_{2}]=[l_{1}+l_{2},r_{1}+r_{2}]\textrm{ and}\\
+%  &  & x[l,r]=\begin{cases}
+% [xl,xr] & \textrm{for }x\ge0\textrm{ ;}\\{}
+% [xr,xl] & \textrm{for }x\le0\textrm{ .}
+% \end{cases}
+% \end{eqnarray}
+% \end{subequations} $\bar{\mu}:\events\rightarrow\mathscr{I}$ is
+% defined by the axioms: 
+% \begin{itemize}
+% \item $\bar{\mu}(\mathbb{0})=\left[0,0\right]$. 
+% \item $\bar{\mu}(\mathbb{1})=\left[1,1\right]$. 
+% \item $\bar{\mu}\left(\mathbb{1}-P\right)=\left[1,1\right]-\bar{\mu}\left(P\right)$. 
+% \item For a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
+% $P_{i}P_{j}=\delta_{ij}P_{i}$, we have 
+% \begin{equation}
+% \bar{\mu}\left(\sum_{i=1}^{N}P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}\left(P_{i}\right)\label{eq:QuantumInterval-valuedProbability-Inclusion}
+% \end{equation}
+% \end{itemize}
+% condition that provides only a bound and not an equivalence as in
+% Eq.~\eqref{eq:QuantumProbability-Addition}. For example, if we consider
+% $\left\{ P_{1},P_{2}\right\} =\left\{ P,\mathbb{1}-P\right\} $ and
+% $\bar{\mu}\left(P\right)=\left[l,r\right]$, we have, when $r-l=\ell>0$,
+% \[
+% \bar{\mu}(\mathbb{1})=\left[1,1\right]\subsetneq\left[1-\ell,1+\ell\right]=\bar{\mu}\left(\mathbb{1}-P\right)+\bar{\mu}\left(P\right).
+% \]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fuzzy States}
 
 Formally, we can ask: what can we deduce about the state of a quantum
 system given a quantum IVPM, i.e., given observations done with finite
