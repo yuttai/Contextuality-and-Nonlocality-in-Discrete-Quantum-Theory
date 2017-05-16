@@ -206,27 +206,19 @@ A \emph{probability space} is a mathematical abstraction specifying
 the necessary conditions for reasoning coherently about collections
 of uncertain events~\cite{Kolmogorov1950}. In the quantum case,
 the events of interest are specified by \emph{projection operators}
-$P$. This set $P$ includes the empty projection~$\mathbb{0}$,
-the identity projection~$\mathbb{1}$, projections of the form $\proj{\psi}$
+$P$. This set includes the empty projection~$\mathbb{0}$, the identity
+projection~$\mathbb{1}$, projections of the form $\proj{\psi}$
 where $\ket{\psi}$ is a pure quantum state, sums of \emph{orthogonal}
 projections, and products of \emph{commuting} projections. In a well-defined
 quantum probability space~\cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010},
 each event $P_{i}$ is associated with a probability $\mu(P_{i})$
 subject to the following axioms: $\mu(\mathbb{0})=0$, $\mu(\mathbb{1})=1$,
-$\mu\left(\mathbb{1}-P\right)=1-\mu\left(P\right)$, and for a set
-of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
-we have: 
+$\mu\left(\mathbb{1}-P\right)=1-\mu\left(P\right)$, and for each
+pair of \emph{orthogonal} projections $P_{0}$ and $P_{1}$, we have:
 \begin{equation}
-\mu\left(\sum_{i=1}^{N}P_{i}\right)=\sum_{i=1}^{N}\mu\left(P_{i}\right)\textrm{ .}\label{eq:QuantumProbability-Addition}
+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\textrm{ ,}\label{eq:QuantumProbability-Addition}
 \end{equation}
-\yutsung{Should we define orthogonality between projectors? Also,
-in order to compare the Eq.~\ref{eq:QuantumProbability-Addition}
-and Eq.~\ref{eq:QuantumInterval-valuedProbability-Inclusion}, maybe
-it's better to write just two terms 
-\begin{equation}
-\mu\left(P_{0}+P_{1}\right)=\mu\left(P_{0}\right)+\mu\left(P_{1}\right)\textrm{ .}\label{eq:QuantumProbability-Addition-1}
-\end{equation}
-}
+where $P_{0}$ and $P_{1}$ are called orthogonal if $P_{0}P_{1}=\mathbb{0}$.
 
 As an example, consider a three-dimensional Hilbert space with
 orthonormal basis $\{\ket{0},\ket{1},\ket{2}\}$ and an observable $Q$
@@ -501,14 +493,16 @@ We will proceed by assuming a crypto-deterministic QIVMP $\bar{\mu}$
 and derive a contradiction using the following nine ``Mermin-Peres square''
 observables~\cite{Mermin1990Simple,peres1995quantum}:
 \begin{center}
-\begin{tabular}{| c | c | c |}
-\hline
-$\mathbb{1} \otimes\sigma_{z}$ & $\sigma_{z}  \otimes\mathbb{1}$ & $\sigma_{z} \otimes\sigma_{z}$  \\ \hline
-$\sigma_{x} \otimes\mathbb{1}$ & $\mathbb{1} \otimes\sigma_{x}$ & $\sigma_{x} \otimes\sigma_{x}$ \\ \hline
-$\sigma_{x} \otimes\sigma_{z}$ & $\sigma_{z} \otimes\sigma_{x}$ & $\sigma_{y} \otimes\sigma_{y}$ \\ \hline
+\begin{tabular}{|c|c|c|}
+\hline 
+$\mathbb{1}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\mathbb{1}$  & $\sigma_{z}\otimes\sigma_{z}$ \tabularnewline
+\hline 
+$\sigma_{x}\otimes\mathbb{1}$  & $\mathbb{1}\otimes\sigma_{x}$  & $\sigma_{x}\otimes\sigma_{x}$ \tabularnewline
+\hline 
+$\sigma_{x}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\sigma_{x}$  & $\sigma_{y}\otimes\sigma_{y}$ \tabularnewline
+\hline 
 \end{tabular}
-\label{eq:MerminSquare}
-\end{center}
+\par\end{center}
 
 
 The argument refers to the expectation value of these
