@@ -345,8 +345,8 @@ $0 \leq \ell \leq r \leq 1$ that guarantees that every element of the
 interval can be interpreted as a conventional probability. We also
 include $\imposs=[0,0]$ and $\necess=[1,1]$ as limiting intervals to
 refer to the probability of impossible events (e.g., the null event)
-and certain events (e.g., the event covering the entire space of
-events). For each interval $[\ell,r]$, we also need the interval
+and certain events (e.g., the event covering the entire sample space
+). For each interval $[\ell,r]$, we also need the interval
 $[1-r,1-\ell]$ so that if one interval refers to the probability of an
 event, the other refers to the probability of the complement
 event. For example, if we discover as a result of an experiment that
@@ -364,7 +364,7 @@ some cases, this is indeed a sensible definition. For example, if
 $\mu(E_1)=[0.1,0.2]$ and $\mu(E_2)=[0.3,0.4]$ we get
 $\mu(E_1+E_2) = [0.4,0.6]$. But consider an event $E$ such that
 $\mu(E)=[0.2,0.3]$ and hence $\mu(\overline{E})=[0.7,0.8]$. The two
-events $E$ and $\overline{E}$ are disjoint; the previous na\"\i ve way
+events $E$ and $\overline{E}$ are disjoint; the previous naïve way
 of combining the intervals would give $\mu(E+\overline{E})=[0.9,1.1]$
 which is not a valid probability interval. Moreover the event
 $E+\overline{E}$ is the identity event covering the entire space; its
@@ -396,7 +396,8 @@ we have:
 which is a generalization of the classical inclusion-exclusion
 principle that uses $\subseteq$ instead of $=$ for the same reason as
 before. The new condition, known as
-\emph{convexity}~\cite{Griffiths2003}, reduces to the previously
+\emph{convexity}~\cite{Shapley1971,GilboaSchmeidler1994,Marinacci1999,Grabisch2016},
+reduces to the previously
 motivated condition when the events are disjoint, i.e., when
 $\mu(E_1E_2) = 0$.
 
@@ -412,10 +413,10 @@ mutually commuting sub-events.
   multiplication defined as follows:
   \begin{subequations}\label{eq:interval-operations}
   \begin{eqnarray}
-   &  & [l_{1},r_{1}]+[l_{2},r_{2}]=[l_{1}+l_{2},r_{1}+r_{2}]\textrm{ and}\\
-   &  & x[l,r]=\begin{cases}
-  [xl,xr] & \textrm{for }x\ge0\textrm{ ;}\\{}
-  [xr,xl] & \textrm{for }x\le0\textrm{ ,}
+   &  & [\ell_{1},r_{1}]+[\ell_{2},r_{2}]=[\ell_{1}+\ell_{2},r_{1}+r_{2}]\textrm{ and}\\
+   &  & x[\ell,r]=\begin{cases}
+  [x\ell,xr] & \textrm{for }x\ge0\textrm{ ;}\\{}
+  [xr,x\ell] & \textrm{for }x\le0\textrm{ ,}
   \end{cases}
   \end{eqnarray}
   \end{subequations}
@@ -434,8 +435,8 @@ mutually commuting sub-events.
 The first three constraints are the direct counterpart of the
 corresponding ones for conventional probability measures. With the
 understanding that the union of classical sets $E_1+E_2$ is replaced
-by $P_0+P_1-P_0P_1$ in the case of projection operators, the last
-condition, Eq~\ref{eq:QuantumInterval-valuedProbability-Inclusion}, is
+by $P_0+P_1-P_0P_1$ in the case of projection operators~\cite{Griffiths2003}, the last
+condition, Eq.~\ref{eq:QuantumInterval-valuedProbability-Inclusion}, is
 a direct counterpart of Eq.~\ref{eq:classicalconvex}.
 
 Contrary to the case with conventional quantum probability spaces,
@@ -445,7 +446,10 @@ intervals, and we say a state~$\rho$ is consistent with $\bar{\mu}$ on
 a projector~$P$ if
 $\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)$, and
 denoted by
-$\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$.
+$\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$,
+where $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\Tr\left(\rho P\right)$
+is the probability that the event~$P$ happens determined by the
+Born rule~\cite{Born1983,peres1995quantum,544199,Jaeger2007}.
 Moreover, $\rho\in\coreBorn\left(\bar{\mu},S\right)$ means $\rho$ is
 consistent with $\bar{\mu}$ on every projector in $S$.
 
@@ -480,6 +484,7 @@ IVPM~$\bar{\mu}_{2}$:
 \begin{aligned}\bar{\mu}_{2}(\mathbb{0}) & =\imposs & \bar{\mu}_{2}(\proj{0}) & =\unknown\\
 \bar{\mu}_{2}(\mathbb{1}) & =\necess & \bar{\mu}_{2}(\proj{1}) & =\unknown
 \end{aligned}
+\textrm{ .}
 \end{equation}
 If we identify the density matrices~$\proj{0}$ and $\proj{1}$ as
 the head and the tail of a coin, respectively, then $\bar{\mu}_{2}$
@@ -495,7 +500,7 @@ has no prior knowledge.
 \section{Kochen-Specker} 
   
 Our first result regarding QIVPM is that a QIVPM cannot be
-crypto-deterministic in the sense of Peres~\cite{peres1995quantum}. We
+crypto-deterministic in the sense of Peres~\cite{PeresRon1988,peres1995quantum}. We
 will adapt the proof of the Kochen-Specker
 theorem~\cite{kochenspecker1967,
   peres1995quantum,Redhead1987-REDINA,Griffiths2003} to show that it
@@ -528,24 +533,14 @@ $\sigma_{x}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\sigma_{x}$  & $\sigma_{y}\ot
 The argument refers to the expectation value of these
 observables. In the case of QIVPM this is defined as follows. 
 
-\begin{definition} Given an observable~$\mathbf{O}$ with spectral
-  decomposition
-  $\mathbf{O}=\sum_{s\in\left\{ +,-\right\}
-  }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}P_{i}^{s}$, a set of
-  projectors~$\events'\subseteq\events$ is called a sub-event space
-  induced by $\mathbf{O}$ if it is the minimal sub-event space
-  containing
-  $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{
-    P_{i}^{+}\right\} _{i=1}^{N^{+}}$.
-\end{definition}
-
-\begin{thm} Given a Hilbert space of $d\ge3$, for every
-  QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$ and any
-  observable~$\mathbf{O}$ inducing a sub-event space~$\events'$, 
+\begin{definition}Given a Hilbert space of $d\ge3$, for every QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$,
+any observable~$\mathbf{O}$ with spectral decomposition $\mathbf{O}=\sum_{i=1}^{N}\lambda_{i}P_{i}$,
+and $\events'$ is minimal sub-event space containing $\left\{ P_{i}\right\} _{i=1}^{N}$,
+we have
 \begin{equation}
 \expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\textrm{ .}\label{eq:quantum-interval-expectation-core}
 \end{equation}
-\end{thm}
+\end{definition}
 
 The expectation value is intuitively between two possible outcomes
 which lie between the minimum and maximum bounds of the given
@@ -561,15 +556,8 @@ $\left\{ \lambda_{1}\lambda_{2}\right\} $, then we have
 for any sequence of commuting observables~$\left\{ \mathbf{O}_{j}\right\} _{j=1}^{N}$.
 
 Since the expectation value~$\expval{\cdot}_{\bar{\mu}}$ satisfying
-these two properties, the following observables~\cite{Mermin1990Simple,peres1995quantum}:
-\begin{equation}
-\begin{aligned}\mathbb{1} & \otimes\sigma_{z} & \sigma_{z} & \otimes\mathbb{1} & \sigma_{z} & \otimes\sigma_{z}\\
-\sigma_{x} & \otimes\mathbb{1} & \mathbb{1} & \otimes\sigma_{x} & \sigma_{x} & \otimes\sigma_{x}\\
-\sigma_{x} & \otimes\sigma_{z} & \sigma_{z} & \otimes\sigma_{x} & \sigma_{y} & \otimes\sigma_{y}
-\end{aligned}
-\label{eq:MerminSquare}
-\end{equation}
-must have the the expectation value~$\left\{ 1\right\} $ or $\left\{ -1\right\} $.
+these two properties, the observables in the Mermin-Peres square must
+have the the expectation value~$\left\{ 1\right\} $ or $\left\{ -1\right\} $.
 In each row and column, operators commutes, and each operator is the
 product of the two others, except in the third column $\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$.
 Therefore, it is clear impossible to find a IVPM~$\bar{\mu}$ such
@@ -624,7 +612,7 @@ a quantum IVPM on all projectors~$\events$.
  &  & \unknown=\bar{\mu}_{3}(P)\qquad\textrm{otherwise.}
 \end{eqnarray}
 \end{subequations}
-It is straightforward to verify that $\bar{\mu}_{3}$ is a convex
+It is straightforward to verify that $\bar{\mu}_{3}$ is a
 quantum IVPM. 
 
 Let $S_{1}=\left\{ \proj{0},\proj{\ps}\right\} $. Because
@@ -632,8 +620,8 @@ $\bar{\mu}_{3}(\proj{0})=\bar{\mu}_{3}(\proj{\ps})=\imposs$, we have
 $\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=0$
 for any mixed
 state~$\rho\in\coreBorn\left(\bar{\mu}_{3},S_{1}\right)$.  Hence,
-$\rho$ is actually $\ket{2}$, the only pure state orthogonal to both
-$\ket{0}$ and $\ket{\ps}$. It is easy to verify $\proj{2}$ is actually
+$\rho$ cannot be any state other than $\ket{2}$, the only pure state orthogonal to both
+$\ket{0}$ and $\ket{\ps}$, and it is easy to verify $\proj{2}$ is actually
 in $\coreBorn\left(\bar{\mu}_{3},S_{1}\right)$.
 
 Similarly, let $S_{2}=\left\{ \proj{0},\proj{\ps'}\right\} $. We have
