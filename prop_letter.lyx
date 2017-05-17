@@ -98,7 +98,7 @@
 \use_package undertilde 0
 \cite_engine basic
 \cite_engine_type default
-\biblio_style plain
+\biblio_style 
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -1143,7 +1143,7 @@ projection operators
 \end_inset
 
 .
- This set includes the empty projection
+ These include the empty projection
 \begin_inset space ~
 \end_inset
 
@@ -1167,15 +1167,39 @@ projection operators
 \begin_inset Formula $\ket{\psi}$
 \end_inset
 
- is a pure quantum state, sums of 
+ is a pure quantum state (an element of a Hilbert space), sums of 
 \emph on
 orthogonal
 \emph default
- projections, and products of 
+ projections 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{1}$
+\end_inset
+
+ such 
+\begin_inset Formula $P_{0}P_{1}=\mathbb{0}$
+\end_inset
+
+, and products of 
 \emph on
 commuting
 \emph default
- projections.
+ projections 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{1}$
+\end_inset
+
+ such 
+\begin_inset Formula $P_{0}P_{1}=P_{1}P_{0}$
+\end_inset
+
+.
  In a well-defined quantum probability space
 \begin_inset space ~
 \end_inset
@@ -1191,11 +1215,15 @@ key "10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010"
 \begin_inset Formula $P_{i}$
 \end_inset
 
- is associated with a probability 
+ is mapped using a probability measure 
+\begin_inset Formula $\mu:P\rightarrow[0,1]$
+\end_inset
+
+ to a probability 
 \begin_inset Formula $\mu(P_{i})$
 \end_inset
 
- subject to the following axioms: 
+ subject to the following constraints: 
 \begin_inset Formula $\mu(\mathbb{0})=0$
 \end_inset
 
@@ -1222,24 +1250,12 @@ orthogonal
 , we have: 
 \begin_inset Formula 
 \begin{equation}
-\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\textrm{ ,}\label{eq:QuantumProbability-Addition}
+{\mu}\left(P_{0}+P_{1}\right)={\mu}\left(P_{0}\right)+{\mu}\left(P_{1}\right)\textrm{.}\label{eq:QuantumProbability-Addition}
 \end{equation}
 
 \end_inset
 
-where 
-\begin_inset Formula $P_{0}$
-\end_inset
 
- and 
-\begin_inset Formula $P_{1}$
-\end_inset
-
- are called orthogonal if 
-\begin_inset Formula $P_{0}P_{1}=\mathbb{0}$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -1249,7 +1265,7 @@ As an example, consider a three-dimensional Hilbert space with orthonormal
 \end_inset
 
  and an observable 
-\begin_inset Formula $Q$
+\begin_inset Formula $\mathbf{O}$
 \end_inset
 
  with spectral decomposition 
@@ -2897,7 +2913,7 @@ key "JamisonLodwick2004"
 
 \end_inset
 
- and then propose our quantum framework.
+ and then propose our quantum generalization.
  In the classical setting, there are several proposals for 
 \begin_inset Quotes eld
 \end_inset
@@ -2909,7 +2925,7 @@ imprecise probabilities
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Dempster1967,Artstein1972,Shafer1976,PuriRalescu1983,GilboaSchmeidler1994,Marinacci1999,Weichselberger2000,JamisonLodwick2004,Teran2014,Grabisch2016"
+key "Dempster1967,Artstein1972,Shafer1976,GilboaSchmeidler1994,Marinacci1999,Weichselberger2000,JamisonLodwick2004,Grabisch2016"
 
 \end_inset
 
@@ -2968,7 +2984,7 @@ First for each interval
 
  as limiting intervals to refer to the probability of impossible events
  (e.g., the null event) and certain events (e.g., the event covering the entire
- space).
+ space of events).
  For each interval 
 \begin_inset Formula $[\ell,r]$
 \end_inset
@@ -2983,11 +2999,15 @@ First for each interval
 \begin_inset Formula $\mu(E)=[0.2,0.3]$
 \end_inset
 
- for some event 
+ for some event
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $E$
 \end_inset
 
-, we may conclude that 
+, we may conclude thatv 
 \begin_inset Formula $\mu(\overline{E})=[0.7,0.8]$
 \end_inset
 
@@ -3019,7 +3039,7 @@ Let
 
 .
  A first attempt at calculating the probability of the combined event that
- 
+ either 
 \begin_inset Formula $E_{1}$
 \end_inset
 
@@ -3059,8 +3079,16 @@ Let
 \end_inset
 
 .
- The two events are disjoint; the previous naï ve way of combining the intervals
- would give 
+ The two events 
+\begin_inset Formula $E$
+\end_inset
+
+ and 
+\begin_inset Formula $\overline{E}$
+\end_inset
+
+ are disjoint; the previous naï ve way of combining the intervals would
+ give 
 \begin_inset Formula $\mu(E+\overline{E})=[0.9,1.1]$
 \end_inset
 
@@ -3143,8 +3171,11 @@ Let
 \end_inset
 
 .
- When combining non-disjoint events, there is a further subtlety whose resolutio
-n will give the most general and final condition as follows.
+\end_layout
+
+\begin_layout Standard
+When combining non-disjoint events, there is a further subtlety whose resolution
+ will give the most general and final condition as follows.
  For general, non-necessarily disjoint events 
 \begin_inset Formula $E_{1}$
 \end_inset
@@ -3171,8 +3202,23 @@ which is a generalization of the classical inclusion-exclusion principle
 \end_inset
 
  for the same reason as before.
- The new condition reduces to the previously motivated condition when the
- events are disjoint, i.e., when 
+ The new condition, known as 
+\emph on
+convexity
+\emph default
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Griffiths2003"
+
+\end_inset
+
+, reduces to the previously motivated condition when the events are disjoint,
+ i.e., when 
 \begin_inset Formula $\mu(E_{1}E_{2})=0$
 \end_inset
 
@@ -3181,9 +3227,9 @@ which is a generalization of the classical inclusion-exclusion principle
 
 \begin_layout Standard
 We now have the necessary ingredients to define QIVPMs as a generalization
- of the above observations.
- More precisely the quantum definition will reduce to the classical one
- when the space of quantum events is restricted to mutually commuting sub-events.
+ of both classical IVPMs and conventional quantum probability measures.
+ More precisely the quantum IVPM will reduce to the classical IVPM when
+ the space of quantum events is restricted to mutually commuting sub-events.
 \end_layout
 
 \begin_layout Standard
@@ -3260,13 +3306,13 @@ end{subequations}
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
- is an assignment of intervals to each event (projection operator) obeying
- the following axioms: 
-\begin_inset Formula $\bar{\mu}(\mathbb{0})=\imposs=\left[0,0\right]$
+ is an assignment of intervals to each event (projection operator) subject
+ to the following constraints: 
+\begin_inset Formula $\bar{\mu}(\mathbb{0})=\left[0,0\right]$
 \end_inset
 
 , 
-\begin_inset Formula $\bar{\mu}(\mathbb{1})=\necess=\left[1,1\right]$
+\begin_inset Formula $\bar{\mu}(\mathbb{1})=\left[1,1\right]$
 \end_inset
 
 , 
@@ -3306,8 +3352,8 @@ end{definition}
 
 \end_inset
 
- The first three axioms are the direct counterpart of the corresponding
- axioms for conventional probability measures.
+ The first three constraints are the direct counterpart of the corresponding
+ ones for conventional probability measures.
  With the understanding that the union of classical sets 
 \begin_inset Formula $E_{1}+E_{2}$
 \end_inset
@@ -3336,6 +3382,58 @@ reference "eq:QuantumInterval-valuedProbability-Inclusion"
 LatexCommand ref
 reference "eq:classicalconvex"
 
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Contrary to the case with conventional quantum probability spaces, there
+ is generally no unique state consistent with a QIVPM.
+ Given observations done with finite resources, the probabilities become
+ intervals, and we say a state
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\rho$
+\end_inset
+
+ is consistent with 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ on a projector
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $P$
+\end_inset
+
+ if 
+\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)$
+\end_inset
+
+, and denoted by 
+\begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$
+\end_inset
+
+.
+ Moreover, 
+\begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},S\right)$
+\end_inset
+
+ means 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is consistent with 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ on every projector in 
+\begin_inset Formula $S$
 \end_inset
 
 .
@@ -3377,16 +3475,20 @@ For any projection
 \end_layout
 
 \begin_layout Itemize
-For a set of mutually orthogonal projections
+For each pair of orthogonal projections
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Formula $\left\{ P_{i}\right\} _{i=1}^{N}\subseteq\events'$
+\begin_inset Formula $P_{0}\in\events'$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{1}\in\events'$
 \end_inset
 
 , we have 
-\begin_inset Formula $\sum_{i=1}^{N}P_{i}\in\events'$
+\begin_inset Formula $(P_{0}+P_{1})\in\events'$
 \end_inset
 
 .
@@ -3420,8 +3522,8 @@ For example, assuming the three intervals
 
 is a quantum IVPM.
  This measure represents the beliefs of an experimenter with no prior knowledge
- about the particular quantum system in question, and any state is consistent
- with 
+ about the particular quantum system in question; any quantum state would
+ be consistent with 
 \begin_inset Formula $\bar{\mu}_{1}$
 \end_inset
 
@@ -3539,15 +3641,26 @@ Kochen-Specker
 
 \begin_layout Standard
 Our first result regarding QIVPM is that a QIVPM cannot be crypto-deterministic
- in the sense of Peres.
- We will use the proof of the Kochen-Specker theorem
+ in the sense of Peres
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "kochenspecker1967,peres1995quantum,Redhead1987-REDINA,Griffiths2003"
+key "peres1995quantum"
+
+\end_inset
+
+.
+ We will adapt the proof of the Kochen-Specker theorem
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kochenspecker1967,   peres1995quantum,Redhead1987-REDINA,Griffiths2003"
 
 \end_inset
 
@@ -3598,9 +3711,9 @@ fuzzy
 a fundamental part of quantum theory
 \emph default
 .
- There is in fact two sources of imprecision: one due to the finite measurement
- resources and one due to complementarity which requires every QIVPM to
- be truly probabilistic.
+ There are in fact two sources of uncertainty: one due to the finite measurement
+ resources and one due to complementarity which requires every quantum framework
+ to be truly probabilistic.
 \end_layout
 
 \begin_layout Standard
@@ -4040,143 +4153,17 @@ status collapsed
 \end_inset
 
 
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
-Rest of Paper
+Gleason
 \end_layout
 
 \begin_layout Standard
-To adapt the axioms of such IVPMs to the quantum case, we proceed as follows.
- First we fix a collection of intervals 
-\begin_inset Formula $\mathscr{I}$
-\end_inset
-
- that represents an abstraction of the available experimental resources.
- At one extreme, infinitely precise resources would correspond to the collection
- of intervals 
-\begin_inset Formula $\{[x,x]\mid x\in[0,1]\}$
-\end_inset
-
-.
- This case should coincide with the idealized situation above.
- At another extreme, an experiment with 
-\begin_inset Quotes eld
-\end_inset
-
-minimal
-\begin_inset Quotes erd
-\end_inset
-
- resources would correspond to the following three intervals 
-\begin_inset Formula $\imposs=\left[0,0\right]$
-\end_inset
-
-, 
-\begin_inset Formula $\necess=\left[1,1\right]$
-\end_inset
-
-, and 
-\begin_inset Formula $\unknown=[0,1]$
-\end_inset
-
-.
- As before, the first two intervals are associated with the empty projection
- and the identity projection but every other projection would be associated
- with 
-\begin_inset Formula $\unknown$
-\end_inset
-
-; its probability can be anything in the range 
-\begin_inset Formula $[0,1]$
-\end_inset
-
-.
- A third special situation would be to consider IVPMs with only the two
- intervals 
-\begin_inset Formula $\imposs=\left[0,0\right]$
-\end_inset
-
- and 
-\begin_inset Formula $\necess=\left[1,1\right]$
-\end_inset
-
-.
- This is what Peres calls the 
-\emph on
-crypto-deterministic
-\emph default
- case in which there is no ambiguity about the status of any event; we know
- for certain if it will occur or not.
-\end_layout
-
-\begin_layout Standard
-In general, measurements done with limited resources and poor precision
- may not uniquely identify the true state of a classical system.
- However, at least one system is consistent with the measurements when the
- system satisfies an extra-condition called convex.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{definition}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- is called convex
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Griffiths2003"
-
-\end_inset
-
-.
- if for all commuting 
-\begin_inset Formula $P_{0},P_{1}\in\events$
-\end_inset
-
-, we have 
-\begin_inset Formula $\bar{\mu}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$
-\end_inset
-
-.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{definition}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Based on Shapley's classical result
+In the classical setting, measurements done with limited resources and poor
+ precision may not uniquely identify the true state of a system system.
+ However, there is always at least one state that is consistent with the
+ imprecise measurements
 \begin_inset space ~
 \end_inset
 
@@ -4187,7 +4174,7 @@ key "Shapley1971,GilboaSchmeidler1994,Grabisch2016"
 
 \end_inset
 
-, we have the following theorem.
+.
 \end_layout
 
 \begin_layout Standard
@@ -4210,7 +4197,7 @@ name "thm:Shapley"
 
 \end_inset
 
-For every convex quantum IVPM
+ For every QIVPM
 \begin_inset space ~
 \end_inset
 
@@ -4231,6 +4218,7 @@ For every convex quantum IVPM
 \end_inset
 
 .
+ 
 \begin_inset ERT
 status collapsed
 
@@ -4247,1214 +4235,12 @@ end{thm}
 \end_layout
 
 \begin_layout Standard
-Consider again Eq.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:QuantumInterval-valuedProbability-Inclusion"
-
-\end_inset
-
-.
- We will generalize it as follows for all commuting 
-\begin_inset Formula $P_{0},P_{1}\in\events$
-\end_inset
-
-, we have 
-\begin_inset Formula $\bar{\mu}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$
-\end_inset
-
-.
- Note that if 
-\begin_inset Formula $P_{0}$
-\end_inset
-
- and 
-\begin_inset Formula $P_{1}$
-\end_inset
-
- are 
-\emph on
-orthogonal
-\emph default
-, i.e., if 
-\begin_inset Formula $P_{0}P_{1}=0$
-\end_inset
-
- the new equation reduces to Eq.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:QuantumInterval-valuedProbability-Inclusion"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Verbatim
-Inclusion exclusion principle 
-\end_layout
-
-\begin_layout Verbatim
- pr(e1 union e2) + pr (e1 intersect e2) = 
-\end_layout
-
-\begin_layout Verbatim
-  pr(e1) + pr(e2)
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-in classical Real number prob.
- LHS = X; RHS = X
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
----
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-in classical IVPM; we only get LHS <= X; RHS <= X
-\end_layout
-
-\begin_layout Verbatim
-but we have no connection between LHS and RHS
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-convexity imposes that LHS >= RHS
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
----
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-our condition in the quantum case is the same; 
-\end_layout
-
-\begin_layout Verbatim
-our left(LHS) is >= left(RHS); the right is dual, 
-\end_layout
-
-\begin_layout Verbatim
-which makes LHS interval subset RHS interval.
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
---
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-replace set union by projection sum = p0 + p1 - p0p1
-\end_layout
-
-\begin_layout Verbatim
-replace = by subseteq
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-and we get convexity definition
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
--- 
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-Now we need a simple classical example that shows 
-\end_layout
-
-\begin_layout Verbatim
-why we need convexity or at least what it means
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-must be dimension 4 because everything of dim 3 
-\end_layout
-
-\begin_layout Verbatim
-is convex in classical case
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-Consider omega = { 0, 1, 2, 3 }
-\end_layout
-
-\begin_layout Verbatim
-intervals = imposssible, certain, 
-\end_layout
-
-\begin_layout Verbatim
-            unlikely = [0,0.5], likely [0.5,1] 
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-mu(empty) = imposs
-\end_layout
-
-\begin_layout Verbatim
-mu(omega) = certain
-\end_layout
-
-\begin_layout Verbatim
-mu({j}) = unlikely
-\end_layout
-
-\begin_layout Verbatim
-mu(Omega 
-\backslash
- {j}) = likely
-\end_layout
-
-\begin_layout Verbatim
-mu({0,1}) = mu({0,2}) = mu({1,2}) = unlikely
-\end_layout
-
-\begin_layout Verbatim
-mu({0,3}) = mu({1,3}) = mu({2,3}) = likely
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-EQ A:
-\end_layout
-
-\begin_layout Verbatim
-mu({0}) + mu({0,1,2}) = [0.5,1.5]
-\end_layout
-
-\begin_layout Verbatim
-mu({0,1}) + mu({0,2}) = [0,1]
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-AND [0.5,1.5] is not subseteq of [0,1]
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-Note that there is a core p(0) = p(1) = p(2) = 0.2, 
-\end_layout
-
-\begin_layout Verbatim
-p(3) = 0.4, and under that core both sides of EQ A 
-\end_layout
-
-\begin_layout Verbatim
-have prob.
- 0.8.
- So one way to make it convex is 
-\end_layout
-
-\begin_layout Verbatim
-to use very precise intervals [0.2,0.2] etc.
- 
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-Another way to make this convex is by choosing 
-\end_layout
-
-\begin_layout Verbatim
-just one additional interval unknown [0,1] 
-\end_layout
-
-\begin_layout Verbatim
-instead of unlikely and likely.
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Verbatim
-Intuition: the more you group the more 
-\end_layout
-
-\begin_layout Verbatim
-precise you get
-\end_layout
-
-\begin_layout Verbatim
-
-\end_layout
-
-\begin_layout Standard
-In the classical setting, IVPMs typically are equipped with additional condition
-s to ensure they are 
-\begin_inset Quotes eld
-\end_inset
-
-well-behaved.
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-amr{
-\end_layout
-
-\end_inset
-
- Yu-Tsung: please construct an example with commuting events P0 and P1 such
- that:
-\end_layout
-
-\begin_layout Standard
-mu(P0 + P1 - P0P1) + mu(P0P1) = [x,y] mu(P0) + mu(P1) = [z,w]
-\end_layout
-
-\begin_layout Standard
-and 
-\begin_inset Formula $[x,y]$
-\end_inset
-
- is NOT included in 
-\begin_inset Formula $[z,w]$
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-yutsung{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-Consider a four dimensional Hilbert space with an orthonormal basis
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\Omega=\{\ket{0},\ket{1},\ket{2},\ket{3}\}$
-\end_inset
-
-, and the commuting sub-event space
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\events'=\set{\sum_{\ket{j}\in E}\proj{j}}{E\subseteq\Omega}$
-\end_inset
-
-.
- Then, 
-\begin_inset Formula $\bar{\mu}_{0}:\events'\rightarrow\mathscr{I}$
-\end_inset
-
- defined by
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{subequations}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Formula 
-\begin{eqnarray}
- &  & \imposs=\bar{\mu}_{0}(\mathbb{0})\textrm{ ,}\\
- &  & \necess=\bar{\mu}_{0}(\mathbb{1})\textrm{ ,}\\
- &  & \begin{aligned}\unlikely & =\bar{\mu}_{0}(\proj{j})=\bar{\mu}_{0}(\proj{0}+\proj{1})\\
- & =\bar{\mu}_{0}(\proj{0}+\proj{2})\\
- & =\bar{\mu}_{0}(\proj{1}+\proj{2})\textrm{ ,}
-\end{aligned}
-\\
- &  & \begin{aligned}\likely & =\bar{\mu}_{0}(\mathbb{1}-\proj{j})=\bar{\mu}_{0}(\proj{0}+\proj{2})\\
- & =\bar{\mu}_{0}(\proj{1}+\proj{3})\\
- & =\bar{\mu}_{0}(\proj{2}+\proj{3})
-\end{aligned}
-\end{eqnarray}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{subequations}
-\end_layout
-
-\end_inset
-
-is an IVPM, where 
-\begin_inset Formula $\ket{j}\in\Omega$
-\end_inset
-
- and 
-\begin_inset Formula $\mathscr{I}=\left\{ \imposs,\unlikely,\likely,\necess\right\} $
-\end_inset
-
-.
- However, 
-\begin_inset Formula $\bar{\mu}_{0}$
-\end_inset
-
- is not convex because 
-\begin_inset Formula 
-\begin{equation}
-\begin{aligned} & \bar{\mu}_{0}(\proj{0})+\bar{\mu}_{0}(\mathbb{1}-\proj{3})\\
-= & \left[\frac{1}{2},\frac{3}{2}\right]\nsubseteq\left[1,2\right]\\
-= & \bar{\mu}_{0}(\proj{0}+\proj{1})+\bar{\mu}_{0}(\proj{0}+\proj{2})\textrm{ .}
-\end{aligned}
-\end{equation}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Formally, we can ask: what can we deduce about the state of a quantum system
- given a quantum IVPM, i.e., given observations done with finite resources.
- Since the probabilities are now intervals, it is intuitive to say a state
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\rho$
-\end_inset
-
- is consistent with 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- on a projector
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $P$
-\end_inset
-
- if 
-\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)$
-\end_inset
-
-, and denoted by 
-\begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$
-\end_inset
-
-.
- Moreover, 
-\begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},S\right)$
-\end_inset
-
- means 
-\begin_inset Formula $\rho$
-\end_inset
-
- is consistent with 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- on every projector in 
-\begin_inset Formula $S$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Consider a quantum IVPM 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- such that 
-\begin_inset Formula $\mul:\events\rightarrow\left[0,1\right]$
-\end_inset
-
- and 
-\begin_inset Formula $\mur:\events\rightarrow\left[0,1\right]$
-\end_inset
-
- are the left-end and the right-end of 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
-, respectively, i.e., 
-\begin_inset Formula $\bar{\mu}\left(P\right)=\left[\mul\left(P\right),\mur\left(P\right)\right]$
-\end_inset
-
- for all 
-\begin_inset Formula $P\in\events$
-\end_inset
-
-.
- This time, when we express an observable as its spectral decomposition
- 
-\begin_inset Formula 
-\begin{equation}
-\mathbf{O}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}P_{i}^{s}\textrm{ ,}\label{eq:spectrum-decomposition}
-\end{equation}
-
-\end_inset
-
-we separate the positive and negative eigenvalues and order its eigenvalues
- from the smallest to the largest 
-\begin_inset Formula 
-\begin{equation}
-\lambda_{N^{-}}^{-}\le\ldots\le\lambda_{1}^{-}\le0\le\lambda_{1}^{+}\le\ldots\le\lambda_{N^{+}}^{+}\textrm{ .}
-\end{equation}
-
-\end_inset
-
-Let 
-\begin_inset Formula $P_{i}^{s\prime}=\sum_{j\ge i}P_{j}^{s}$
-\end_inset
-
- and 
-\begin_inset Formula $\Delta\mu^{*}\left(P_{i}^{s\prime}\right)=\mu^{*}\left(P_{i}^{s\prime}\right)-\mu^{*}\left(P_{i+1}^{s\prime}\right)$
-\end_inset
-
-, where 
-\begin_inset Formula $s\in\left\{ +,-\right\} $
-\end_inset
-
- and 
-\begin_inset Formula $\mu^{*}\in\left\{ \mul,\mur\right\} $
-\end_inset
-
-.
- We can combine the classical Choquet integral
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016"
-
-\end_inset
-
- with Eq.
-\begin_inset space ~
-\end_inset
-
-(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:quantum-expectation"
-
-\end_inset
-
-) and define the expectation value of 
-\begin_inset Formula $\mathbf{O}$
-\end_inset
-
- with respect to 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- as 
-\begin_inset Formula 
-\begin{eqnarray}
-\expval{\mathbf{O}}_{\bar{\mu}} & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i}^{s\prime}\right),\Delta\mur\left(P_{i}^{s\prime}\right)\right]\textrm{ .}\label{eq:quantum-interval-expectation}
-\end{eqnarray}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide true
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "table:quantum-interval-expectation"
-
-\end_inset
-
-This table highlights the process to compute 
-\begin_inset Formula $\expval{\mathbf{O}_{1}}_{\bar{\mu}_{1}}$
-\end_inset
-
-.
- Notice that 
-\begin_inset Formula $\bar{\mu}_{1}$
-\end_inset
-
- is defined by Eq.
-\begin_inset space ~
-\end_inset
-
-(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:no-information-IVPM"
-
-\end_inset
-
-), 
-\begin_inset Formula $\mul_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $\mur_{1}$
-\end_inset
-
- are defined by 
-\begin_inset Formula $\left[\mul_{1}\left(P\right),\mur_{1}\left(P\right)\right]=\bar{\mu}_{1}\left(P\right)$
-\end_inset
-
-, and 
-\begin_inset Formula $P_{3}^{+\prime}=\sum_{j\ge3}P_{j}^{s}=\mathbb{0}$
-\end_inset
-
- so that 
-\begin_inset Formula $\mul_{1}\left(P_{3}^{+\prime}\right)=\mur_{1}\left(P_{3}^{+\prime}\right)=0$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Ruled Table
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="10">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $i$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\lambda_{i}^{+}$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $P_{i}^{+}$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\bar{\mu}_{1}\left(P_{i}^{+}\right)$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $P_{i}^{+\prime}$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\bar{\mu}_{1}\left(P_{i}^{+\prime}\right)$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\mul_{1}\left(P_{i}^{+\prime}\right)$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\mur_{1}\left(P_{i}^{+\prime}\right)$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\Delta\mul_{1}\left(P_{i}^{+\prime}\right)$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\Delta\mur_{1}\left(P_{i}^{+\prime}\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $1$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $1$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\proj{0}+\proj{2}$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\unknown$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\mathbb{1}$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\necess$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $1$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $1$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $1$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $0$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $2$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $2$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\proj{1}$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\unknown$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\proj{1}$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\unknown$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $0$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $1$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $0$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $1$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-For example, given a three dimensional Hilbert space with an orthonormal
- basis 
-\begin_inset Formula $\left\{ \ket{0},\ket{1},\ket{2}\right\} $
-\end_inset
-
-.
- Let 
-\begin_inset Formula $J_{\mathrm{z}}=\proj{0}-\proj{2}$
-\end_inset
-
-, and 
-\begin_inset Formula $\mathbf{O}_{1}=2\mathbb{1}-J_{\mathrm{z}}^{2}=2\proj{1}+\proj{0}+\proj{2}$
-\end_inset
-
-.
- By following Table
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "table:quantum-interval-expectation"
-
-\end_inset
-
-, we have 
-\begin_inset Formula 
-\begin{equation}
-\expval{\mathbf{O}_{1}}_{\bar{\mu}_{1}}=\sum_{i=1}^{2}\lambda_{i}^{+}\left[\Delta\mul\left(P_{i}^{+\prime}\right),\Delta\mur\left(P_{i}^{+\prime}\right)\right]=\left[1,2\right]\textrm{ .}
-\end{equation}
-
-\end_inset
-
-The expectation value is intuitively between two possible outcomes, 
-\begin_inset Formula $1$
-\end_inset
-
- and 
-\begin_inset Formula $2$
-\end_inset
-
-, even if we have no prior knowledge about the likelihood of outcomes.
- In contrast, if we naively multiply eigenvalues with intervals, their sum,
- 
-\begin_inset Formula $\sum_{i=1}^{2}\lambda_{i}^{+}\bar{\mu}_{1}\left(P_{i}^{+}\right)=\left[0,3\right]$
-\end_inset
-
-, is a worse and counter-intuitive estimation.
- In fact, estimating the lower-bound by 
-\begin_inset Formula $1\cdot0+2\cdot0=0$
-\end_inset
-
- is too pessimistic because we know one of outcomes must happen without
- any prior knowledge.
-\end_layout
-
-\begin_layout Standard
-Intuitively, the expectation value of an observable with respect to a QIVPM
- is bounded by the minimum and maximum expectation value of the same observable
- with respect to states consistent with it.
- This is true when we require our IVPM to be convex, and on a commuting
- sub-event space induced by an observable.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%%%%%
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Gleason
-\end_layout
-
-\begin_layout Standard
 Gleason's theorem asserts any quantum real-valued probability measure is
- consistent with a unique mixed state, and Shapley proved a convex quantum
- IVPM must approximate some states for each classical sub-event space.
+ consistent with a unique mixed state, and Shapley proved a quantum IVPM
+ must approximate some states for each classical sub-event space.
  However, it may not approximate the same state in every sub-event space.
- As the result, there may be no state consistent with a convex quantum IVPM
- on all projectors
+ As the result, there may be no state consistent with a quantum IVPM on
+ all projectors
 \begin_inset space ~
 \end_inset
 
@@ -5485,7 +4271,7 @@ name "ex:three-dimensional-three-value"
 
 \end_inset
 
-Given a three dimensional Hilbert space with an orthonormal basis 
+ Given a three dimensional Hilbert space with an orthonormal basis 
 \begin_inset Formula $\left\{ \ket{0},\ket{1},\ket{2}\right\} $
 \end_inset
 
@@ -5622,6 +4408,7 @@ Similarly, let
 \end_inset
 
 and must be empty.
+ 
 \begin_inset ERT
 status collapsed
 
@@ -5644,7 +4431,7 @@ Although Gleason's theorem doesn't hold for every quantum IVPM, it can be
 \begin_inset Formula $\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$
 \end_inset
 
-, any quantum IVPM can be recast as an real-valued one and has an unique
+, any quantum IVPM can be recast as an real-valued one and has a unique
  state consistent with it on every projector when 
 \begin_inset Formula $d\ge3$
 \end_inset
@@ -6727,10 +5514,6 @@ status collapsed
 \end_inset
 
 
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "prop"
@@ -6738,25 +5521,7 @@ options "default"
 
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-bibliography{prop}
-\end_layout
-
-\end_inset
-
-
+ 
 \end_layout
 
 \end_body
