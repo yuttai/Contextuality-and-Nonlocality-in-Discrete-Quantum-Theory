@@ -359,15 +359,15 @@ next.
 Let $E_1$ and $E_2$ be to disjoint events with probabilities
 $\mu(E_1)=[\ell_1,r_1]$ and $\mu(E_2)=[\ell_2,r_2]$. A first attempt
 at calculating the probability of the combined event that either $E_1$
-or $E_2$ occurs might be $\mu(E_1+E_2) = [\ell_1+\ell_2,r_1+r_2]$. In
+or $E_2$ occurs might be $\mu(E_1\cup E_2) = [\ell_1+\ell_2,r_1+r_2]$. In
 some cases, this is indeed a sensible definition. For example, if
 $\mu(E_1)=[0.1,0.2]$ and $\mu(E_2)=[0.3,0.4]$ we get
-$\mu(E_1+E_2) = [0.4,0.6]$. But consider an event $E$ such that
+$\mu(E_1\cup E_2) = [0.4,0.6]$. But consider an event $E$ such that
 $\mu(E)=[0.2,0.3]$ and hence $\mu(\overline{E})=[0.7,0.8]$. The two
 events $E$ and $\overline{E}$ are disjoint; the previous naïve way
-of combining the intervals would give $\mu(E+\overline{E})=[0.9,1.1]$
+of combining the intervals would give $\mu(E\cup\overline{E})=[0.9,1.1]$
 which is not a valid probability interval. Moreover the event
-$E+\overline{E}$ is the identity event covering the entire space; its
+$E\cup\overline{E}$ is the identity event covering the entire space; its
 probability interval should be $[1,1]$ which is sharper than
 $[0.9,1.1]$. The problem is that the two intervals are correlated:
 there is more information in the combined event than in each event
@@ -378,11 +378,11 @@ $[0.7,0.8]$, the values are not independent. Any value of
 $\mu(E) \leq 0.25$ will force $\mu(\overline{E})\geq 0.75$. To account
 for such subtleties, the axioms of interval-valued probability do not
 use a strict equality for the combination of disjoint events. The
-correct constraint regarding the probability of $E_1+E_2$ when $E_1$
+correct constraint regarding the probability of $E_1\cup E_2$ when $E_1$
 and $E_2$ are disjoint is
-$\mu(E_1+E_2) \subseteq [\ell_1+\ell_2,r_1+r_2]$ which, in combination
+$\mu(E_1\cup E_2) \subseteq [\ell_1+\ell_2,r_1+r_2]$ which, in combination
 with the requirement for the identity event would force
-$\mu(E+\overline{E})$ to always be $[1,1]$ irrespective of the
+$\mu(E\cup\overline{E})$ to always be $[1,1]$ irrespective of the
 particular assignments of $\mu(E)$ or $\mu(\overline{E})$. 
 
 When combining non-disjoint events, there is a further subtlety whose
@@ -390,7 +390,7 @@ resolution will give the most general and final condition as
 follows. For general, non-necessarily disjoint events $E_1$ and $E_2$,
 we have:
 \begin{equation}
-\mu(E_1+E_2) + \mu(E_1E_2) \subseteq \mu(E_1) + \mu(E_2)
+\mu(E_1\cup E_2) + \mu(E_1\cap E_2) \subseteq \mu(E_1) + \mu(E_2)
 \label{eq:classicalconvex}
 \end{equation}
 which is a generalization of the classical inclusion-exclusion
@@ -399,7 +399,7 @@ before. The new condition, known as
 \emph{convexity}~\cite{Shapley1971,GilboaSchmeidler1994,Marinacci1999,Grabisch2016},
 reduces to the previously
 motivated condition when the events are disjoint, i.e., when
-$\mu(E_1E_2) = 0$.
+$\mu(E_1\cap E_2) = 0$.
 
 We now have the necessary ingredients to define QIVPMs as a
 generalization of both classical IVPMs and conventional quantum
@@ -434,7 +434,7 @@ mutually commuting sub-events.
 \end{definition}
 The first three constraints are the direct counterpart of the
 corresponding ones for conventional probability measures. With the
-understanding that the union of classical sets $E_1+E_2$ is replaced
+understanding that the union of classical sets $E_1\cup E_2$ is replaced
 by $P_0+P_1-P_0P_1$ in the case of projection operators~\cite{Griffiths2003}, the last
 condition, Eq.~\ref{eq:QuantumInterval-valuedProbability-Inclusion}, is
 a direct counterpart of Eq.~\ref{eq:classicalconvex}.
