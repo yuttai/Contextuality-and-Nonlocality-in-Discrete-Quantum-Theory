@@ -52,6 +52,10 @@
 \newcommand{\coreBorn}{\ensuremath{\mathrm{C}}}
 \newcommand{\mul}[1][]{\ensuremath{\mu^{\mathrm{L{#1}}}}}
 \newcommand{\mur}[1][]{\ensuremath{\mu^{\mathrm{R{#1}}}}}
+% https://tex.stackexchange.com/questions/345284/can-i-have-an-almost-non-breaking-space-in-latex
+% Change non-breaking space to \nolinebreak[1] 
+% Hence, it will not hyphenate too much surrounding words.
+\newcommand{\nb}{\nolinebreak[1] }
 
 \begin{document}
 \title{Measurement and Probability in Fuzzy Quantum
@@ -757,7 +761,7 @@ disjoint events, $\mu^{\mathrm{D}}\left(\bigcup_{i=1}^{N}P_{i}\right)=\sum_{i=1}
 
 The answer is ``no'' due to the Kochen-Specker theorem whose proof
 can also be formulated in the language of cryptodeterministic measure
-as in \ref{sec:MerminSquare}.
+as in section~\ref{subsec:Quantum-I_D-valued-Probability}.
 
 \begin{thm}[Kochen-Specker~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA}]\label{thm:Kochen-Specker}Given
 a Hilbert space of dimension~$d\ge3$, there is no cryptodeterministic
@@ -2269,7 +2273,7 @@ we have
 where $\mu'=\mul[\prime]=\mur[\prime]$.\end{proof}
 
 \subsection{Quantum {\normalsize{}$\mathscr{I}_{\mathrm{D}}$}-valued Probability
-Measures}
+Measures\label{subsec:Quantum-I_D-valued-Probability}}
 
 After we defined the expectation value, we can provide another proof
 of corollary~\ref{cor:Kochen-Specker-IVPM} which doesn't refer the
@@ -2345,6 +2349,25 @@ that
 \end{array}\label{eq:MerminSquare-values}
 \end{equation}
 satisfying equation~(\ref{eq:Kochen-Specker-Rules}).\end{proof}
+
+\subsection{Quantum $\delta$-deterministic Probability Measures}
+
+Since there is no quantum $\mathscr{I}_{\mathrm{D}}$-valued probability
+measures, we want to know whether there is something which is almost
+quantum $\mathscr{I}_{\mathrm{D}}$-valued probability measures. This
+gives the following definition.
+
+\begin{definition}An interval-valued probability measure\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$
+is called $\delta$-deterministic if either $\left[l,r\right]\subseteq\left[0,\delta\right]$
+or $\left[l,r\right]\subseteq\left[1-\delta,1\right]$ for every $\left[l,r\right]\in\mathscr{I}$.\end{definition}
+
+Given the preceding definition, theorem~\ref{thm:Kochen-Specker-expectation}
+says there is no quantum $0$-deterministic probability measures.
+In contrast, given a three-dimensional Hilbert space, there is $\frac{1}{3}$-deterministic
+probability measures\nb$\iota_{\frac{1}{3}}\circ\mu_{\frac{\mathbb{1}}{3}}^{\mathrm{B}}:\events\rightarrow\left\{ \imposs,\left[\frac{1}{3},\frac{1}{3}\right],\left[\frac{2}{3},\frac{2}{3}\right],\necess\right\} $.
+The real problem is if we decrease $\delta$ from $\frac{1}{3}$,
+when quantum $\delta$-deterministic probability measures starts to
+disappear?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
