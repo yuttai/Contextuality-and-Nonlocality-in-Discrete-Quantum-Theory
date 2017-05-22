@@ -1869,17 +1869,18 @@ so that
 Previously we discussed how to construct a quantum IVPM from a quantum
 real-valued probability measure; we then switch our focus to how to
 construct a quantum real-valued probability measure from a special
-kind of quantum IVPM.
+kind of quantum IVPMs.
 
-\begin{definition}An interval-valued probability measure\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$
+\begin{definition}\label{def:delta-deterministic}An interval-valued
+probability measure\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$
 is called $\delta$-deterministic if either $\left[l,r\right]\subseteq\left[0,\delta\right]$
 or $\left[l,r\right]\subseteq\left[1-\delta,1\right]$ for every $\left[l,r\right]\in\mathscr{I}$.\end{definition}
 
-For example, recall $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $,
-then a $\mathscr{I}_{\mathrm{D}}$-valued QIVPM is $0$-deterministic.
+Recall $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $
+so that a $\mathscr{I}_{\mathrm{D}}$-valued QIVPM is $0$-deterministic.
 For another example, given a three-dimensional Hilbert space, $\iota_{\frac{1}{3}}\circ\mu_{\frac{\mathbb{1}}{3}}^{\mathrm{B}}:\events\rightarrow\left\{ \imposs,\left[\frac{1}{3},\frac{1}{3}\right],\left[\frac{2}{3},\frac{2}{3}\right],\necess\right\} $
 is a $\frac{1}{3}$-deterministic. However, we will prove there is
-no $\delta$-deterministic probability measures for smaller $\delta$
+no $\delta$-deterministic probability measures for small $\delta$
 due to the Kochen-Specker theorem.
 
 \begin{lemma}\label{lemma:QIVPM2QCM}Given a Hilbert space of dimension\nb$d$,
@@ -1899,35 +1900,32 @@ is a cryptodeterministic measure.\end{lemma}
 \item Since $\bar{\mu}(\mathbb{1})=\necess$, we have $\mu(\mathbb{1})=1$.
 \item For every event $P$, we have 
 \begin{equation}\eqalign{ 
-& \pmeas\left(P\right)=0\\ 
-\Rightarrow & \bar{\mu}(P)\subseteq\left[0,\delta\right]\\
+& \pmeas\left(P\right)=0\Rightarrow\bar{\mu}(P)\subseteq\left[0,\delta\right]\\
 \Rightarrow & \bar{\mu}(\mathbb{1}-P)=\left[1,1\right]-\bar{\mu}(P)\subseteq\left[1-\delta,1\right]\\
 \Rightarrow & \pmeas\left(\mathbb{1}-P\right)=1=1-\pmeas\left(P\right)\textrm{ .}
 }\end{equation}
 Similarly, when $\pmeas\left(P\right)=1$, we also have $\pmeas\left(\mathbb{1}-P\right)=1-\pmeas\left(P\right)$.
 \item Given a collection $\left\{ P_{i}\right\} _{i=1}^{N}$ of pairwise
-orthogonal events, we must have $N\le d$. Also, $\delta<\left(1+d\right)^{-1}\Rightarrow\delta\le d\delta<1-\delta$.
+orthogonal events, we must have $N\le d$. 
 \begin{itemize}
 \item If $\pmeas(P_{i})=0$ for all $i$, then
 \begin{equation}\eqalign{ 
 & \bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}(P_{i})\subseteq\left[0,N\delta\right]\subseteq\left[0,d\delta\right]\\
-\Rightarrow & \bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\cap\left[1-\delta,1\right]=\textrm{Ø}\Rightarrow\bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\subseteq\left[0,\delta\right]\\
+\overset{d\delta<1-\delta}{\Rightarrow} & \bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\cap\left[1-\delta,1\right]=\textrm{Ø}\Rightarrow\bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\subseteq\left[0,\delta\right]\\
 \Rightarrow & \pmeas\left(\bigcup_{i=1}^{N}P_{i}\right)=0=\sum_{i=1}^{N}\pmeas(P_{i})\textrm{ .}
 }\end{equation}
 \item If $\pmeas\left(P_{i_{0}}\right)=1$ for a unique $i_{0}$, then
 \begin{equation}\eqalign{ 
 & \bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}(P_{i})\subseteq\left[1-\delta,1+(N-1)\delta\right]\\
-\Rightarrow & \bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\cap\left[0,\delta\right]=\textrm{Ø}\Rightarrow\bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\subseteq\left[1-\delta,1\right]\\
-\Rightarrow & \pmeas\left(\bigcup_{i=1}^{N}P_{i}\right)=1=\sum_{i=1}^{N}\pmeas(P_{i})\textrm{ .}
+\Rightarrow & \bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\subseteq\left[1-\delta,1\right]\Rightarrow\pmeas\left(\bigcup_{i=1}^{N}P_{i}\right)=1=\sum_{i=1}^{N}\pmeas(P_{i})\textrm{ .}
 }\end{equation}
 \item If $\pmeas\left(P_{i_{0}}\right)=\pmeas\left(P_{i_{1}}\right)=1$
 for $i_{0}\ne i_{1}$, then
-\begin{equation}\eqalign{ 
-& \bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}(P_{i})\subseteq\left[2-2\delta,N\right]\\
-\Rightarrow & \bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\cap\left[0,\delta\right]=\bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\cap\left[1-\delta,1\right]\textrm{Ø}\textrm{ .}
-}\end{equation}
-A contradiction! Therefore, this case is impossible, and need no further
-discussion.
+\begin{equation}
+\bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}(P_{i})\subseteq\left[2-2\delta,N\right]
+\end{equation}
+which contradicts to definition~\ref{def:delta-deterministic} so
+that this case is impossible.
 \end{itemize}
 \end{itemize}
 \end{proof}
@@ -1937,11 +1935,7 @@ corollary.
 
 \begin{cor}\label{cor:Kochen-Specker-IVPM}Given a Hilbert space
 of dimension\nb$d\ge3$, there is no quantum $\delta$-deterministic
-probability measure for $\delta<\left(1+d\right)^{-1}$. When $\delta\ge\left(1+d\right)^{-1}$,
-there exists a quantum $\delta$-deterministic probability measure
-$\bar{\mu}:\events\rightarrow\mathscr{I}$ for some $\mathscr{I}$.\end{cor}
-
-\begin{proof}...\end{proof}
+probability measure for $\delta<\left(1+d\right)^{-1}$. \end{cor}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
