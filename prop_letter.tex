@@ -611,7 +611,7 @@ measures for small $\delta$ due to the Kochen-Specker theorem.
 
 \begin{lemma}\label{lemma:QIVPM2QCM}Given a Hilbert space of dimension\nb$d$,
 and a quantum $\delta$-deterministic probability measure\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$
-with $\delta<\left(1+d\right)^{-1}$, then $\mu:\events\rightarrow\left[0,1\right]$
+with $\delta<\frac{1}{3}$, then $\mu:\events\rightarrow\left[0,1\right]$
 defined by
 \begin{equation}
 \mu(P)=\begin{cases}
@@ -633,31 +633,29 @@ defined by
 \end{eqnarray}
 \end{subequations}Similarly, when $\pmeas\left(P\right)=1$, we also
 have $\pmeas\left(\mathbb{1}-P\right)=1-\pmeas\left(P\right)$.
-\item Given a collection $\left\{ P_{i}\right\} _{i=1}^{N}$ of pairwise
-orthogonal events, we must have $N\le d$. 
+\item Given a pair of orthogonal operators\nb$P_{0}$ and $P_{1}$, we
+have $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\bar{\mu}(P_{0})+\bar{\mu}(P_{1})$.
+Without loss of generality, there are two cases:
 \begin{itemize}
-\item If $\pmeas(P_{i})=0$ for all $i$, then\begin{subequations}
+\item If $\pmeas\left(P_{0}\right)=\pmeas\left(P_{1}\right)=0$, then\begin{subequations}
 \begin{eqnarray}
- &  & \bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}(P_{i})\subseteq\left[0,N\delta\right]\\
- & \overset{d\delta<1-\delta}{\Rightarrow} & \bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\cap\left[1-\delta,1\right]=\textrm{Ø}\\
- & \Rightarrow & \bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\subseteq\left[0,\delta\right]\\
- & \Rightarrow & \pmeas\left(\bigcup_{i=1}^{N}P_{i}\right)=0=\sum_{i=1}^{N}\pmeas(P_{i})\textrm{ .}
+ &  & \bar{\mu}(P_{0})+\bar{\mu}(P_{1})\subseteq\left[0,2\delta\right]\\
+ & \overset{2\delta<1-\delta}{\Rightarrow} & \bar{\mu}\left(P_{0}+P_{1}\right)\cap\left[1-\delta,1\right]=\emptyset\\
+ & \Rightarrow & \bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[0,\delta\right]\\
+ & \Rightarrow & \pmeas\left(P_{0}+P_{1}\right)=0=\pmeas\left(P_{0}\right)+\pmeas\left(P_{1}\right)\textrm{ .}
 \end{eqnarray}
 \end{subequations}
-\item If $\pmeas\left(P_{i_{0}}\right)=1$ for a unique $i_{0}$, then\begin{subequations}
+\item If $\pmeas\left(P_{0}\right)=0$ and $\pmeas\left(P_{1}\right)=1$,
+then\begin{subequations}
 \begin{eqnarray}
- &  & \bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}(P_{i})\subseteq\left[1-\delta,1\right]\\
- & \Rightarrow & \pmeas\left(\bigcup_{i=1}^{N}P_{i}\right)=1=\sum_{i=1}^{N}\pmeas(P_{i})\textrm{ .}
+ &  & \bar{\mu}(P_{0})+\bar{\mu}(P_{1})\subseteq\left[1-\delta,1\right]\\
+ & \Rightarrow & \pmeas\left(P_{0}+P_{1}\right)=1=\pmeas\left(P_{0}\right)+\pmeas\left(P_{1}\right)\textrm{ .}
 \end{eqnarray}
 \end{subequations}
-\item If $\pmeas\left(P_{i_{0}}\right)=\pmeas\left(P_{i_{1}}\right)=1$
-for $i_{0}\ne i_{1}$, then
-\begin{equation}
-\bar{\mu}\left(\bigcup_{i=1}^{N}P_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}(P_{i})\subseteq\left[2-2\delta,N\right]
-\end{equation}
-which contradicts to definition~\ref{def:delta-deterministic} so
-that this case is impossible.
 \end{itemize}
+Therefore, we always have $\pmeas\left(P_{0}+P_{1}\right)=\pmeas\left(P_{0}\right)+\pmeas\left(P_{1}\right)$.
+By induction, we have $\pmeas\left(\bigcup_{i=1}^{N}P_{i}\right)=\sum_{i=1}^{N}\pmeas(P_{i})$
+for any mutually orthogonal events\nb$\left\{ P_{i}\right\} _{i=1}^{N}$. 
 \end{itemize}
 \end{proof}
 
@@ -666,7 +664,7 @@ corollary.
 
 \begin{cor}\label{cor:Kochen-Specker-IVPM}Given a Hilbert space
 of dimension\nb$d\ge3$, there is no quantum $\delta$-deterministic
-probability measure for $\delta<\left(1+d\right)^{-1}$. \end{cor}
+probability measure for $\delta<\frac{1}{3}$. \end{cor}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Gleason}
