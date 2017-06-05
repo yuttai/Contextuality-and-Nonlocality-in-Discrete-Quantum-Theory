@@ -1792,7 +1792,7 @@ if $\sum_{i=1}^{N}x_{i}\in\left[0,1\right]$, then $\iota\left(\sum_{i=1}^{N}x_{i
 \end{itemize}
 \end{definition}
 
-\begin{lemma}Consider a regular pair~$\left(\mathscr{I},\iota\right)$.
+\begin{lemma}\label{lemma:real2interval}Consider a regular pair~$\left(\mathscr{I},\iota\right)$.
 Then, given a quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$,
 a function~$\bar{\mu}:\events\rightarrow\mathscr{I}$ defined by
 $\bar{\mu}(P)=\iota\left(\mu(P)\right)$ is a quantum IVPM.\end{lemma}
@@ -1873,26 +1873,26 @@ kind of quantum IVPMs.
 
 \begin{definition}\label{def:delta-deterministic}An interval-valued
 probability measure\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$
-is called $\delta$-deterministic if either $\left[l,r\right]\subseteq\left[0,\delta\right]$
-or $\left[l,r\right]\subseteq\left[1-\delta,1\right]$ for every $\left[l,r\right]\in\mathscr{I}$.\end{definition}
+is called $\left(1/n,\delta\right)$-deterministic if for every $\left[l,r\right]\in\mathscr{I}$,
+there is a $k\in\mathbb{Z}$ such that $\left[l,r\right]\subseteq\left[k/n-\delta,k/n+\delta\right]$.\end{definition}
 
 Recall $\mathscr{I}_{\mathrm{D}}=\left\{ \imposs,\necess\right\} $
-so that a $\mathscr{I}_{\mathrm{D}}$-valued QIVPM is $0$-deterministic.
-For another example, given a three-dimensional Hilbert space, $\iota_{\frac{1}{3}}\circ\mu_{\frac{\mathbb{1}}{3}}^{\mathrm{B}}:\events\rightarrow\left\{ \imposs,\left[\frac{1}{3},\frac{1}{3}\right],\left[\frac{2}{3},\frac{2}{3}\right],\necess\right\} $
-is a $\frac{1}{3}$-deterministic. However, we will prove there is
-no $\delta$-deterministic probability measures for small $\delta$
-due to the Kochen-Specker theorem.
+so that a $\mathscr{I}_{\mathrm{D}}$-valued QIVPM is $\left(1,0\right)$-deterministic.
+For another example, given a three-dimensional Hilbert space, 
+\begin{equation}
+\iota_{\infty}\circ\mu_{\frac{\mathbb{1}}{3}}^{\mathrm{B}}:\events\rightarrow\left\{ \imposs,\left[\frac{1}{3},\frac{1}{3}\right],\left[\frac{2}{3},\frac{2}{3}\right],\necess\right\} 
+\end{equation}
+is a $\left(1,\frac{1}{3}\right)$-deterministic and $\left(\frac{1}{3},0\right)$-deterministic.
+However, we will prove there is generally no $\left(1/n,\delta\right)$-deterministic
+probability measures when $\delta$ is much smaller than $1/n$.
 
 \begin{lemma}\label{lemma:QIVPM2QCM}Given a Hilbert space of dimension\nb$d$,
-and a quantum $\delta$-deterministic probability measure\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$
-with $\delta<\frac{1}{3}$, then $\mu:\events\rightarrow\left[0,1\right]$
-defined by 
-\begin{equation} 
-\mu(P)=\cases{ 
-0 & if $\bar{\mu}(P)\subseteq\left[0,\delta\right]$ ;\\ 
-1 & if $\bar{\mu}(P)\subseteq\left[1-\delta,1\right]$
-}\end{equation}
-is a cryptodeterministic measure.\end{lemma}
+and a quantum $\left(1/n,\delta\right)$-deterministic probability
+measure\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$ with $\delta<1/\left(3n\right)$,
+if $\bar{\mu}(P)\subseteq\left[k/n-\delta,k/n+\delta\right]$, let
+$\mu(P)=k/n$, then $\mu:\events\rightarrow\left[0,1\right]$ is a
+quantum IVPM. In another word, $\iota_{\infty}\circ\mu$ is $\left(1/n,0\right)$-deterministic
+by lemma~\ref{lemma:real2interval}.\end{lemma}
 
 \begin{proof}~
 \begin{itemize}
@@ -1900,29 +1900,30 @@ is a cryptodeterministic measure.\end{lemma}
 \item Since $\bar{\mu}(\mathbb{1})=\necess$, we have $\mu(\mathbb{1})=1$.
 \item For every event $P$, we have 
 \begin{equation}\eqalign{ 
-& \pmeas\left(P\right)=0\Rightarrow\bar{\mu}(P)\subseteq\left[0,\delta\right]\\
-\Rightarrow & \bar{\mu}(\mathbb{1}-P)=\left[1,1\right]-\bar{\mu}(P)\subseteq\left[1-\delta,1\right]\\
-\Rightarrow & \pmeas\left(\mathbb{1}-P\right)=1=1-\pmeas\left(P\right)\textrm{ .}
+& \pmeas\left(P\right)=\frac{k}{n}\Rightarrow\bar{\mu}(P)\subseteq\left[\frac{k}{n}-\delta,\frac{k}{n}+\delta\right]\\
+\Rightarrow & \bar{\mu}(\mathbb{1}-P)=\left[1,1\right]-\bar{\mu}(P)\subseteq\left[1-\frac{k}{n}-\delta,1-\frac{k}{n}+\delta\right]\\
+\Rightarrow & \pmeas\left(\mathbb{1}-P\right)=1-\frac{k}{n}=1-\pmeas\left(P\right)\textrm{ .}
 }\end{equation}
-Similarly, when $\pmeas\left(P\right)=1$, we also have $\pmeas\left(\mathbb{1}-P\right)=1-\pmeas\left(P\right)$.
-\item Given a pair of orthogonal operators\nb$P_{0}$ and $P_{1}$, we
-have $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\bar{\mu}(P_{0})+\bar{\mu}(P_{1})$.
-Without loss of generality, there are two cases:
-\begin{itemize}
-\item If $\pmeas\left(P_{0}\right)=\pmeas\left(P_{1}\right)=0$, then
-\begin{equation}\eqalign{ 
-& \bar{\mu}(P_{0})+\bar{\mu}(P_{1})\subseteq\left[0,2\delta\right]\\
-\overset{2\delta<1-\delta}{\Rightarrow} & \bar{\mu}\left(P_{0}+P_{1}\right)\cap\left[1-\delta,1\right]=\emptyset\Rightarrow\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[0,\delta\right]\\
-\Rightarrow & \pmeas\left(P_{0}+P_{1}\right)=0=\pmeas\left(P_{0}\right)+\pmeas\left(P_{1}\right)\textrm{ .}
-}\end{equation}
-\item If $\pmeas\left(P_{0}\right)=0$ and $\pmeas\left(P_{1}\right)=1$,
-then
-\begin{equation}\eqalign{ 
-& \bar{\mu}(P_{0})+\bar{\mu}(P_{1})\subseteq\left[1-\delta,1\right]\\
-\Rightarrow & \pmeas\left(P_{0}+P_{1}\right)=1=\pmeas\left(P_{0}\right)+\pmeas\left(P_{1}\right)\textrm{ .}
-}\end{equation}
-\end{itemize}
-Therefore, we always have $\pmeas\left(P_{0}+P_{1}\right)=\pmeas\left(P_{0}\right)+\pmeas\left(P_{1}\right)$.
+\item Given a pair of orthogonal operators\nb$P_{0}$ and $P_{1}$, let
+$\pmeas\left(P_{0}\right)=k_{0}/n$ and $\pmeas\left(P_{1}\right)=k_{1}/n$.
+Then, 
+\begin{equation}
+\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\bar{\mu}(P_{0})+\bar{\mu}(P_{1})\subseteq\left[\frac{k_{0}+k_{1}}{n}-2\delta,\frac{k_{0}+k_{1}}{n}+2\delta\right]\textrm{ .}
+\end{equation}
+Since $\delta<1/\left(3n\right)$, we have
+\begin{equation}
+\frac{k_{0}+k_{1}-1}{n}+\delta<\frac{k_{0}+k_{1}}{n}-2\delta\le\frac{k_{0}+k_{1}}{n}+2\delta<\frac{k_{0}+k_{1}+1}{n}-\delta\textrm{ .}
+\end{equation}
+The previous inequality implies that if$\bar{\mu}\left(P_{0}+P_{1}\right)$
+overlap with any interval of the form $\left[k/n-\delta,k/n+\delta\right]$
+for some $k$, $k$ must be $k_{0}+k_{1}$, i.e., 
+\begin{equation}
+\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[\frac{k_{0}+k_{1}}{n}-\delta,\frac{k_{0}+k_{1}}{n}+\delta\right]\textrm{ .}
+\end{equation}
+Therefore, 
+\begin{equation}
+\pmeas\left(P_{0}+P_{1}\right)=\frac{k_{0}+k_{1}}{n}=\pmeas\left(P_{0}\right)+\pmeas\left(P_{1}\right)\textrm{ .}
+\end{equation}
 By induction, we have $\pmeas\left(\bigcup_{i=1}^{N}P_{i}\right)=\sum_{i=1}^{N}\pmeas(P_{i})$
 for any mutually orthogonal events\nb$\left\{ P_{i}\right\} _{i=1}^{N}$. 
 \end{itemize}
@@ -1932,8 +1933,14 @@ Together with the Kochen-Specker theorem, we will have the following
 corollary.
 
 \begin{cor}\label{cor:Kochen-Specker-IVPM}Given a Hilbert space
-of dimension\nb$d\ge3$, there is no quantum $\delta$-deterministic
+of dimension\nb$d\ge3$, there is no quantum $\left(1,\delta\right)$-deterministic
 probability measure for $\delta<\frac{1}{3}$.\end{cor}
+
+In general~\cite{Redhead1987-REDINA}, Gleason's theorem asserts
+that a quantum probability measure must be continuous. Therefore,
+a $\left(1/n,0\right)$-deterministic QIVPM exists if and only if
+$d\mid n$, and so does a $\left(1/n,\delta\right)$-deterministic
+QIVPM for $\delta<1/\left(3n\right)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
