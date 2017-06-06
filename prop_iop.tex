@@ -1777,40 +1777,54 @@ is convex.\end{thm}
 
 \subsection{From Real-valued to Interval-valued}
 
-\begin{definition}We say a pair~$\left(\mathscr{I},\iota\right)$
-is regular\footnote{\yutsung{''regular'' is just a random name pop into my mind...
-
-This whole definition might be rewritten using category theory...
-I would investigate it if it is necessary...}} if $\mathscr{I}$ is a collection of intervals and $\iota:\left[0,1\right]\rightarrow\mathscr{I}$
+\begin{definition}We say a pair\nb$\left(\mathscr{I},\iota\right)$
+is additive\footnote{\yutsung{This whole definition might be rewritten using category
+theory... I would investigate it if it is necessary...}} if $\mathscr{I}$ is a collection of intervals and $\iota:\left[0,1\right]\rightarrow\mathscr{I}$
 is a function satisfying the following properties. 
 \begin{itemize}
 \item $\iota\left(0\right)=\left[0,0\right]$. 
 \item $\iota\left(1\right)=\left[1,1\right]$. 
 \item For any $x\in\left[0,1\right]$, $\iota\left(1-x\right)=\left[1,1\right]-\iota\left(x\right)$. 
-\item For a set $\left\{ x_{i}\right\} _{i=1}^{N}\subseteq\left[0,1\right]$,
+\item For a set\nb$\left\{ x_{i}\right\} _{i=1}^{N}\subseteq\left[0,1\right]$,
 if $\sum_{i=1}^{N}x_{i}\in\left[0,1\right]$, then $\iota\left(\sum_{i=1}^{N}x_{i}\right)\subseteq\sum_{i=1}^{N}\iota\left(x_{i}\right)$. 
 \end{itemize}
-\end{definition}
+Moreover, $\left(\mathscr{I},\iota\right)$ is called convex if for
+any three numbers\nb$x_{0}$, $x_{1}$, and $x_{2}\in\left[0,1\right]$,
+if $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$, then $\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\subseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)$.\end{definition}
 
-\begin{lemma}\label{lemma:real2interval}Consider a regular pair~$\left(\mathscr{I},\iota\right)$.
-Then, given a quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$,
-a function~$\bar{\mu}:\events\rightarrow\mathscr{I}$ defined by
-$\bar{\mu}(P)=\iota\left(\mu(P)\right)$ is a quantum IVPM.\end{lemma}
+\begin{lemma}\label{lemma:real2interval}Consider an additive pair\nb$\left(\mathscr{I},\iota\right)$.
+Then, given a quantum probability measure\nb$\mu:\events\rightarrow\left[0,1\right]$,
+a function\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$ defined by
+$\bar{\mu}(P)=\iota\left(\mu(P)\right)$ is a quantum IVPM. Moreover,
+if $\left(\mathscr{I},\iota\right)$ is convex, then $\bar{\mu}(P)$
+is a convex.\end{lemma}
 
 \begin{proof}~
 \begin{itemize}
 \item $\bar{\mu}(\mathbb{0})=\iota\left(\mu(\mathbb{0})\right)=\iota\left(0\right)=\left[0,0\right]$.
 \item $\bar{\mu}(\mathbb{1})=\iota\left(\mu(\mathbb{1})\right)=\iota\left(1\right)=\left[1,1\right]$.
 \item For any projection $P$, $\bar{\mu}\left(\mathbb{1}-P\right)=\iota\left(\mu(\mathbb{1}-P)\right)=\iota\left(1-\mu(P)\right)=\left[1,1\right]-\iota\left(\mu(P)\right)=\left[1,1\right]-\bar{\mu}\left(P\right)$.
-\item For a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
+\item For a set of mutually orthogonal projections\nb$\left\{ P_{i}\right\} _{i=1}^{N}$,
 we have $\sum_{i=1}^{N}\mu\left(P_{i}\right)=\mu\left(\sum_{i=1}^{N}P_{i}\right)\in\left[0,1\right]$
 so that $\bar{\mu}\left(\sum_{i=1}^{N}P_{i}\right)=\iota\left(\mu\left(\sum_{i=1}^{N}P_{i}\right)\right)=\iota\left(\sum_{i=1}^{N}\mu\left(P_{i}\right)\right)\subseteq\sum_{i=1}^{N}\iota\left(\mu\left(P_{i}\right)\right)=\sum_{i=1}^{N}\bar{\mu}\left(P_{i}\right)$.
+\item For convexity part, given a pair of commuting operators\nb$P_{0}$
+and $P_{1}$, they and $P_{0}\vee P_{1}$ can be expressed by the
+summation among $P_{0}\left(\mathbb{1}-P_{1}\right)$, $\left(\mathbb{1}-P_{0}\right)P_{1}$,
+and $P_{0}P_{1}$. Hence, 
+\begin{equation}\eqalign{ 
+ & \bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)=\iota\left(\mu\left(P_{0}\vee P_{1}\right)\right)+\iota\left(\mu\left(P_{0}P_{1}\right)\right)\\
+= & \iota\left(\mu\left(P_{0}\left(\mathbb{1}-P_{1}\right)\right)+\mu\left(\left(\mathbb{1}-P_{0}\right)P_{1}\right)+\mu\left(P_{0}P_{1}\right)\right)+\iota\left(\mu\left(P_{0}P_{1}\right)\right)\\
+\subseteq&\iota\left(\mu\left(P_{0}\left(\mathbb{1}-P_{1}\right)\right)+\mu\left(P_{0}P_{1}\right)\right)+\iota\left(\mu\left(\left(\mathbb{1}-P_{0}\right)P_{1}\right)+\mu\left(P_{0}P_{1}\right)\right)\\
+= & \iota\left(\mu\left(P_{0}\right)\right)+\iota\left(\mu\left(P_{1}\right)\right)=\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right) 
+}\end{equation}
 \end{itemize}
 \end{proof}
 
-\begin{lemma}Consider a regular pair~$\left(\mathscr{I},\iota\right)$.
-Then, there is a quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-such that $\mathrm{core}\left(\bar{\mu}\right)$ has an unique element.\end{lemma}
+\begin{lemma}Consider an additive pair\nb$\left(\mathscr{I},\iota\right)$.
+Then, there is a quantum IVPM\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$
+such that $\mathrm{core}\left(\bar{\mu}\right)$ has an unique element.
+Obviously, if $\left(\mathscr{I},\iota\right)$ is convex, so does
+$\bar{\mu}$.\end{lemma}
 
 \begin{proof}Consider $\bar{\mu}(P)=\iota\left(\mu_{\ket{0}}^{\mathrm{\mathrm{B}}}(P)\right)$.
 Then, $\bar{\mu}\left(\proj{0}\right)=\iota\left(\mu_{\ket{0}}^{\mathrm{\mathrm{B}}}\left(\proj{0}\right)\right)=\iota\left(1\right)=\left[1,1\right]$,
@@ -1818,7 +1832,7 @@ i.e., for any quantum probability measure~$\mu\in\mathrm{core}\left(\bar{\mu}\ri
 we have $\mu\left(\proj{0}\right)=1$. Therefore, $\mu=\mu_{\ket{0}}^{\mathrm{\mathrm{B}}}$.\end{proof}
 
 \begin{example}\label{ex:regular-pair}For any positive integer~$n$,
-there is a regular pair~$\left(\mathscr{I}_{n},\iota_{n}\right)$
+there is an additive pair\nb$\left(\mathscr{I}_{n},\iota_{n}\right)$
 defined by 
 \begin{equation}\eqalign{ 
 \mathscr{I}_{n} = \set{\left[\frac{k}{n},\frac{k}{n}\right]}{k=0,\ldots,n}\cup\set{\left[\frac{k}{n},\frac{k+1}{n}\right]}{k=0,\ldots,n-1}\\ 
