@@ -1791,13 +1791,14 @@ desirable if we can construct a QIVPM\nb$\bar{\mu}$ from $\mu$,
 and expect $\mu$ is in the core of $\bar{\mu}$.
 
 Notice that the range of $\mu$ and $\bar{\mu}$ are different. If
-there is a good function\nb$\iota:\left[0,1\right]\rightarrow\mathscr{I}$,
-then a QIVPM can be easily defined by function composition\nb$\events\overset{\mu}{\rightarrow}\left[0,1\right]\overset{\iota}{\rightarrow}\mathscr{I}$.
-This gives the following definition.
+there is a ``homomorphism''\nb$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
+preserving the desiring properties of the ranges, then we could easily
+inducing a map from quantum real-valued probability measures to QIVPMs
+by function composition\nb$\events\overset{\mu}{\rightarrow}\left[0,1\right]\overset{\iota}{\rightarrow}\mathscr{I}$.
+This idea gives the following definition.
 
 \begin{definition}We say a pair\nb$\left(\mathscr{I},\iota\right)$
-is additive\footnote{\yutsung{This whole definition might be rewritten using category
-theory... I would investigate it if it is necessary...}} if $\mathscr{I}$ is a collection of intervals and $\iota:\left[0,1\right]\rightarrow\mathscr{I}$
+is additive if $\mathscr{I}$ is a collection of intervals and $\iota:\left[0,1\right]\rightarrow\mathscr{I}$
 is a function satisfying the following properties. 
 \begin{itemize}
 \item $\iota\left(0\right)=\left[0,0\right]$. 
@@ -1808,11 +1809,11 @@ if $\sum_{i=1}^{N}x_{i}\in\left[0,1\right]$, then $\iota\left(\sum_{i=1}^{N}x_{i
 \end{itemize}
 Moreover, $\left(\mathscr{I},\iota\right)$ is called convex if for
 any three numbers\nb$x_{0}$, $x_{1}$, and $x_{2}\in\left[0,1\right]$,
-if $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$, then $\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\subseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)$.\end{definition}
+$x_{0}+x_{1}+x_{2}\in\left[0,1\right]$ implies $\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\subseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)$.\end{definition}
 
 Although a convex pair\nb$\left(\mathscr{I},\iota\right)$ may look
 exotic, the left end of $\iota$, defined by $\iotal\left(x\right)=\min\iota\left(x\right)$,
-is the well-studied Wright-convex satisfying $\iotal\left(x_{0}+x_{1}+x_{2}\right)+\iotal\left(x_{2}\right)\ge\iotal\left(x_{0}+x_{2}\right)+\iotal\left(x_{1}+x_{2}\right)$\nb\cite{Wright1954,RobertsVarberg1973,Pales2013}.
+is well-studied Wright-convex satisfying $\iotal\left(x_{0}+x_{1}+x_{2}\right)+\iotal\left(x_{2}\right)\ge\iotal\left(x_{0}+x_{2}\right)+\iotal\left(x_{1}+x_{2}\right)$\nb\cite{Wright1954,RobertsVarberg1973,Pales2013}.
 After we define\nb$\left(\mathscr{I},\iota\right)$, we are ready
 to construct a QIVPM from a quantum probability measure.
 
@@ -1827,19 +1828,19 @@ is a convex.\end{lemma}
 \begin{itemize}
 \item $\bar{\mu}(\mathbb{0})=\iota\left(\mu(\mathbb{0})\right)=\iota\left(0\right)=\left[0,0\right]$.
 \item $\bar{\mu}(\mathbb{1})=\iota\left(\mu(\mathbb{1})\right)=\iota\left(1\right)=\left[1,1\right]$.
-\item For any projection $P$, $\bar{\mu}\left(\mathbb{1}-P\right)=\iota\left(\mu(\mathbb{1}-P)\right)=\iota\left(1-\mu(P)\right)=\left[1,1\right]-\iota\left(\mu(P)\right)=\left[1,1\right]-\bar{\mu}\left(P\right)$.
+\item For any projection $P$, $\bar{\mu}\left(\mathbb{1}-P\right)=\iota\left(1-\mu(P)\right)=\left[1,1\right]-\bar{\mu}\left(P\right)$.
 \item For a set of mutually orthogonal projections\nb$\left\{ P_{i}\right\} _{i=1}^{N}$,
-we have $\sum_{i=1}^{N}\mu\left(P_{i}\right)=\mu\left(\sum_{i=1}^{N}P_{i}\right)\in\left[0,1\right]$
-so that $\bar{\mu}\left(\sum_{i=1}^{N}P_{i}\right)=\iota\left(\mu\left(\sum_{i=1}^{N}P_{i}\right)\right)=\iota\left(\sum_{i=1}^{N}\mu\left(P_{i}\right)\right)\subseteq\sum_{i=1}^{N}\iota\left(\mu\left(P_{i}\right)\right)=\sum_{i=1}^{N}\bar{\mu}\left(P_{i}\right)$.
+we have $\sum_{i=1}^{N}\mu\left(P_{i}\right)\in\left[0,1\right]$
+so that $\bar{\mu}\left(\sum_{i=1}^{N}P_{i}\right)=\iota\left(\sum_{i=1}^{N}\mu\left(P_{i}\right)\right)\subseteq\sum_{i=1}^{N}\bar{\mu}\left(P_{i}\right)$.
 \item For convexity part, given a pair of commuting operators\nb$P_{0}$
 and $P_{1}$, they and $P_{0}\vee P_{1}$ can be expressed by the
 summation among $P_{0}\left(\mathbb{1}-P_{1}\right)$, $\left(\mathbb{1}-P_{0}\right)P_{1}$,
 and $P_{0}P_{1}$. Hence, 
 \begin{equation}\eqalign{ 
- & \bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)=\iota\left(\mu\left(P_{0}\vee P_{1}\right)\right)+\iota\left(\mu\left(P_{0}P_{1}\right)\right)\\
+ & \bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\\
 = & \iota\left(\mu\left(P_{0}\left(\mathbb{1}-P_{1}\right)\right)+\mu\left(\left(\mathbb{1}-P_{0}\right)P_{1}\right)+\mu\left(P_{0}P_{1}\right)\right)+\iota\left(\mu\left(P_{0}P_{1}\right)\right)\\
 \subseteq&\iota\left(\mu\left(P_{0}\left(\mathbb{1}-P_{1}\right)\right)+\mu\left(P_{0}P_{1}\right)\right)+\iota\left(\mu\left(\left(\mathbb{1}-P_{0}\right)P_{1}\right)+\mu\left(P_{0}P_{1}\right)\right)\\
-= & \iota\left(\mu\left(P_{0}\right)\right)+\iota\left(\mu\left(P_{1}\right)\right)=\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right) 
+= & \bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right) 
 }\end{equation}
 \end{itemize}
 \end{proof}
