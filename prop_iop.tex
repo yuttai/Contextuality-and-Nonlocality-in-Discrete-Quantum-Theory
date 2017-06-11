@@ -56,6 +56,8 @@
 % Change non-breaking space to \nolinebreak[1] 
 % Hence, it will not hyphenate too much surrounding words.
 \newcommand{\nb}{\nolinebreak[1] }
+\newcommand{\iotal}[1][]{\ensuremath{\iota^{\mathrm{L{#1}}}}}
+\newcommand{\iotar}[1][]{\ensuremath{\iota^{\mathrm{R{#1}}}}}
 
 \begin{document}
 \title{Measurement and Probability in Fuzzy Quantum
@@ -1777,6 +1779,22 @@ is convex.\end{thm}
 
 \subsection{From Real-valued to Interval-valued}
 
+Recall that given a set of intervals\nb$\mathscr{I}$, we want to
+know whether there is an QIVPM mapping to $\mathscr{I}$. If there
+is a QIVPM\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$, we want
+to verify whether $\bar{\mu}$ has a non-empty core. Usually, the
+easiest way to prove the existence is to construct an example. As
+in example~\ref{ex:three-dimensional-5-value}, constructing a QIVPM
+directly is long and tedious. In contrast, a quantum probability measure\nb$\mu:\events\rightarrow\left[0,1\right]$
+can be easily constructed by the Born rule. Therefore, it would be
+desirable if we can construct a QIVPM\nb$\bar{\mu}$ from $\mu$,
+and expect $\mu$ is in the core of $\bar{\mu}$.
+
+Notice that the range of $\mu$ and $\bar{\mu}$ are different. If
+there is a good function\nb$\iota:\left[0,1\right]\rightarrow\mathscr{I}$,
+then a QIVPM can be easily defined by function composition\nb$\events\overset{\mu}{\rightarrow}\left[0,1\right]\overset{\iota}{\rightarrow}\mathscr{I}$.
+This gives the following definition.
+
 \begin{definition}We say a pair\nb$\left(\mathscr{I},\iota\right)$
 is additive\footnote{\yutsung{This whole definition might be rewritten using category
 theory... I would investigate it if it is necessary...}} if $\mathscr{I}$ is a collection of intervals and $\iota:\left[0,1\right]\rightarrow\mathscr{I}$
@@ -1791,6 +1809,12 @@ if $\sum_{i=1}^{N}x_{i}\in\left[0,1\right]$, then $\iota\left(\sum_{i=1}^{N}x_{i
 Moreover, $\left(\mathscr{I},\iota\right)$ is called convex if for
 any three numbers\nb$x_{0}$, $x_{1}$, and $x_{2}\in\left[0,1\right]$,
 if $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$, then $\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\subseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)$.\end{definition}
+
+Although a convex pair\nb$\left(\mathscr{I},\iota\right)$ may look
+exotic, the left end of $\iota$, defined by $\iotal\left(x\right)=\min\iota\left(x\right)$,
+is the well-studied Wright-convex satisfying $\iotal\left(x_{0}+x_{1}+x_{2}\right)+\iotal\left(x_{2}\right)\ge\iotal\left(x_{0}+x_{2}\right)+\iotal\left(x_{1}+x_{2}\right)$\nb\cite{Wright1954,RobertsVarberg1973,Pales2013}.
+After we define\nb$\left(\mathscr{I},\iota\right)$, we are ready
+to construct a QIVPM from a quantum probability measure.
 
 \begin{lemma}\label{lemma:real2interval}Consider an additive pair\nb$\left(\mathscr{I},\iota\right)$.
 Then, given a quantum probability measure\nb$\mu:\events\rightarrow\left[0,1\right]$,
@@ -1877,6 +1901,19 @@ so that
 \end{itemize}
 \end{itemize}
 \end{proof}
+
+Although a QIVPM can be constructed by an additive pair easily, a
+convex pair may not give a convex QIVPM with non-trivial finite number
+of intervals. Notice a Wright-convex function is midpoint-convex or
+Jensen-convex, i.e., 
+\begin{equation}
+\frac{\iotal\left(x_{0}\right)+\iotal\left(x_{1}\right)}{2}\ge\iotal\left(\frac{x_{0}+x_{1}}{2}\right)\textrm{ ,}
+\end{equation}
+and a midpoint-convex function is continuous on an open interval if
+we cannot use the Axiom of Choices\nb\cite{Blumberg_1919,Sierpinski1920,RobertsVarberg1973}.
+Therefore, for any convex QIVPM constructed by a convex pair\nb$\left(\mathscr{I},\iota\right)$,
+$\mathscr{I}$ must either be $\left\{ \necess,\imposs,\unknown\right\} $
+or contain infinitely many intervals.
 
 \subsection{From Interval-valued to Real-valued}
 

@@ -60,6 +60,8 @@
 % Change non-breaking space to \nolinebreak[1] 
 % Hence, it will not hyphenate too much surrounding words.
 \newcommand{\nb}{\nolinebreak[1] }
+\newcommand{\iotal}[1][]{\ensuremath{\iota^{\mathrm{L{#1}}}}}
+\newcommand{\iotar}[1][]{\ensuremath{\iota^{\mathrm{R{#1}}}}}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -11530,6 +11532,162 @@ From Real-valued to Interval-valued
 \end_layout
 
 \begin_layout Standard
+Recall that given a set of intervals
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\mathscr{I}$
+\end_inset
+
+, we want to know whether there is an QIVPM mapping to 
+\begin_inset Formula $\mathscr{I}$
+\end_inset
+
+.
+ If there is a QIVPM
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
+\end_inset
+
+, we want to verify whether 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ has a non-empty core.
+ Usually, the easiest way to prove the existence is to construct an example.
+ As in example
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ex:three-dimensional-5-value"
+
+\end_inset
+
+, constructing a QIVPM directly is long and tedious.
+ In contrast, a quantum probability measure
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\mu:\events\rightarrow\left[0,1\right]$
+\end_inset
+
+ can be easily constructed by the Born rule.
+ Therefore, it would be desirable if we can construct a QIVPM
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ from 
+\begin_inset Formula $\mu$
+\end_inset
+
+, and expect 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is in the core of 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Notice that the range of 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ are different.
+ If there is a good function
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\iota:\left[0,1\right]\rightarrow\mathscr{I}$
+\end_inset
+
+, then a QIVPM can be easily defined by function composition
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\events\overset{\mu}{\rightarrow}\left[0,1\right]\overset{\iota}{\rightarrow}\mathscr{I}$
+\end_inset
+
+.
+ This gives the following definition.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -11716,6 +11874,77 @@ end{definition}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Although a convex pair
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\left(\mathscr{I},\iota\right)$
+\end_inset
+
+ may look exotic, the left end of 
+\begin_inset Formula $\iota$
+\end_inset
+
+, defined by 
+\begin_inset Formula $\iotal\left(x\right)=\min\iota\left(x\right)$
+\end_inset
+
+, is the well-studied Wright-convex satisfying 
+\begin_inset Formula $\iotal\left(x_{0}+x_{1}+x_{2}\right)+\iotal\left(x_{2}\right)\ge\iotal\left(x_{0}+x_{2}\right)+\iotal\left(x_{1}+x_{2}\right)$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wright1954,RobertsVarberg1973,Pales2013"
+
+\end_inset
+
+.
+ After we define
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\left(\mathscr{I},\iota\right)$
+\end_inset
+
+, we are ready to construct a QIVPM from a quantum probability measure.
 \end_layout
 
 \begin_layout Standard
@@ -12764,6 +12993,68 @@ end{proof}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Although a QIVPM can be constructed by an additive pair easily, a convex
+ pair may not give a convex QIVPM with non-trivial finite number of intervals.
+ Notice a Wright-convex function is midpoint-convex or Jensen-convex, i.e.,
+ 
+\begin_inset Formula 
+\begin{equation}
+\frac{\iotal\left(x_{0}\right)+\iotal\left(x_{1}\right)}{2}\ge\iotal\left(\frac{x_{0}+x_{1}}{2}\right)\textrm{ ,}
+\end{equation}
+
+\end_inset
+
+and a midpoint-convex function is continuous on an open interval if we cannot
+ use the Axiom of Choices
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Blumberg_1919,Sierpinski1920,RobertsVarberg1973"
+
+\end_inset
+
+.
+ Therefore, for any convex QIVPM constructed by a convex pair
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\left(\mathscr{I},\iota\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\mathscr{I}$
+\end_inset
+
+ must either be 
+\begin_inset Formula $\left\{ \necess,\imposs,\unknown\right\} $
+\end_inset
+
+ or contain infinitely many intervals.
 \end_layout
 
 \begin_layout Subsection
