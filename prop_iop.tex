@@ -1782,13 +1782,14 @@ is convex.\end{thm}
 Recall that given a set of intervals\nb$\mathscr{I}$, we want to
 know whether there is an QIVPM mapping to $\mathscr{I}$. If there
 is a QIVPM\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$, we want
-to verify whether $\bar{\mu}$ has a non-empty core. Usually, the
-easiest way to prove the existence is to construct an example. As
-in example~\ref{ex:three-dimensional-5-value}, constructing a QIVPM
-directly is long and tedious. In contrast, a quantum probability measure\nb$\mu:\events\rightarrow\left[0,1\right]$
-can be easily constructed by the Born rule. Therefore, it would be
-desirable if we can construct a QIVPM\nb$\bar{\mu}$ from $\mu$,
-and expect $\mu$ is in the core of $\bar{\mu}$.
+to further verify whether $\bar{\mu}$ has a non-empty core. Usually,
+the easiest way to prove the existence is to construct an example.
+As in example~\ref{ex:three-dimensional-5-value}, constructing a
+QIVPM directly is long and tedious. In contrast, a quantum probability
+measure\nb$\mu:\events\rightarrow\left[0,1\right]$ can be easily
+constructed by the Born rule. Therefore, it would be desirable if
+we can construct a QIVPM\nb$\bar{\mu}$ from $\mu$, and expect $\mu$
+is in the core of $\bar{\mu}$.
 
 Notice that the range of $\mu$ and $\bar{\mu}$ are different. If
 there is a ``homomorphism''\nb$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
@@ -1912,9 +1913,39 @@ Jensen-convex, i.e.,
 \end{equation}
 and a midpoint-convex function is continuous on an open interval if
 we cannot use the Axiom of Choices\nb\cite{Blumberg_1919,Sierpinski1920,RobertsVarberg1973}.
-Therefore, for any convex QIVPM constructed by a convex pair\nb$\left(\mathscr{I},\iota\right)$,
+Therefore, for any convex pair\nb$\left(\mathscr{I},\iota\right)$,
 $\mathscr{I}$ must either be $\left\{ \necess,\imposs,\unknown\right\} $
 or contain infinitely many intervals.
+
+Although a pair\nb$\left(\mathscr{I},\iota\right)$ is not convex,
+it can still induce a convex QIVPM. In particular, every QIVPM on
+a three-dimensional Hilbert space is convex by theorem~\ref{thm:convex-3}.
+The next natural question is whether a non-convex pair always induces
+some non-convex QIVPM, and the answer is ``yes'' by the following
+lemma.
+
+\begin{lemma}Given an additive but non-convex pair\nb$\left(\mathscr{I},\iota\right)$,
+there is a non-convex quantum IVPM\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$.\end{lemma}
+
+\begin{proof}Since $\left(\mathscr{I},\iota\right)$ is additive
+but non-convex, there are three numbers\nb$x_{0}$, $x_{1}$, and
+$x_{2}\in\left[0,1\right]$ such that $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$
+but $\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\nsubseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)$.
+Consider a 4-dimensional Hilbert space and a density matrix
+\begin{equation}
+\rho=x_{0}\proj{0}+x_{1}\proj{1}+x_{2}\proj{2}+\left(1-x_{0}-x_{1}-x_{2}\right)\proj{3}\textrm{ .}
+\end{equation}
+Let $P_{0}=\proj{0}+\proj{2}$, $P_{1}=\proj{1}+\proj{2}$, and $\bar{\mu}(P)=\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}(P)\right)$.
+Then,
+\begin{equation}\eqalign{ 
+ & \bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)
+=\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}(\proj{0}+\proj{1}+\proj{2})\right)+\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}(\proj{2})\right)\\ 
+= & \iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)
+\nsubseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)\\ 
+= & \iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}(\proj{0}+\proj{2})\right)+\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}(\proj{1}+\proj{2})\right)
+=\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\textrm{ .} 
+}\end{equation}
+\end{proof}
 
 \subsection{From Interval-valued to Real-valued}
 
