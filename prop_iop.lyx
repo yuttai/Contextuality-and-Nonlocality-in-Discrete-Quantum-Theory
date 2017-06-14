@@ -13337,11 +13337,73 @@ From Real-valued to Interval-valued II
 \end_layout
 
 \begin_layout Standard
-Since we cannot restrict our convex interval-valued function mapping only
- finite number of intervals, let's consider another natural interval-valued
- function.
- Before we consider them, we review the counterpart of Wright-convex, Wright-con
-cave
+Since we cannot restrict our convex interval-valued function mapping to
+ only finite number of intervals, let's consider another family of natural
+ interval-valued functions.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lemma}
+\end_layout
+
+\end_inset
+
+Given a function
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $c:\left[0,1\right]\rightarrow\left[0,1\right]$
+\end_inset
+
+ satisfying the following conditions:
+\end_layout
+
+\begin_layout Itemize
+For all 
+\begin_inset Formula $x\in\left[0,1\right]$
+\end_inset
+
+, 
+\begin_inset Formula $c\left(x\right)\le x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+For all 
+\begin_inset Formula $x\in\left[0,1\right]$
+\end_inset
+
+, 
+\begin_inset Formula $c\left(1-x\right)=c\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $c$
+\end_inset
+
+ is Wright-concave
 \begin_inset ERT
 status collapsed
 
@@ -13361,40 +13423,7 @@ key "Brzdek_2014"
 
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{definition}
-\end_layout
-
-\end_inset
-
-A function
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nb
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $c:\left[0,1\right]\rightarrow\left[0,1\right]$
-\end_inset
-
- is called Wright-concave if for any three numbers
+, i.e., for any three numbers
 \begin_inset ERT
 status collapsed
 
@@ -13428,6 +13457,10 @@ nb
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+Then, there is a convex interval-valued function
 \begin_inset ERT
 status collapsed
 
@@ -13435,7 +13468,32 @@ status collapsed
 
 
 \backslash
-end{definition}
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\iota_{c}':\left[0,1\right]\rightarrow\mathscr{I}_{c}'$
+\end_inset
+
+ defined by 
+\begin_inset Formula $\iota_{c}'\left(x\right)=\left[x-c\left(x\right),x+c\left(x\right)\right]$
+\end_inset
+
+, where 
+\begin_inset Formula $\mathscr{I}_{c}'=\set{\iota_{c}'\left(x\right)}{x\in\left[0,1\right]}$
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lemma}
 \end_layout
 
 \end_inset
@@ -13451,12 +13509,84 @@ status collapsed
 
 
 \backslash
-begin{example}
+begin{proof}
 \end_layout
 
 \end_inset
 
-Given a concave function
+
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Since 
+\begin_inset Formula $c\left(x\right)\le x$
+\end_inset
+
+, 
+\begin_inset Formula $0\le x-c\left(x\right)$
+\end_inset
+
+.
+ Also, 
+\begin_inset Formula $c\left(x\right)=c\left(1-x\right)\le1-x$
+\end_inset
+
+ implies 
+\begin_inset Formula $x+c\left(x\right)\le1$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $\iota_{c}'\left(x\right)=\left[x-c\left(x\right),x+c\left(x\right)\right]\subseteq\left[0,1\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+For any 
+\begin_inset Formula $x\in\left[0,1\right]$
+\end_inset
+
+, 
+\begin_inset Formula $\iota_{c}'\left(1-x\right)=\left[1,1\right]-\left[x-c\left(1-x\right),x+c\left(1-x\right)\right]=\left[1,1\right]-\iota_{c}'\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Since 
+\begin_inset Formula $c\left(0\right)\in\left[0,1\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $c\left(0\right)\le0$
+\end_inset
+
+, we have 
+\begin_inset Formula $c\left(0\right)=0$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $\iota_{c}'\left(0\right)=\left[0,0\right]$
+\end_inset
+
+, and 
+\begin_inset Formula $\iota_{c}'\left(1\right)=\left[1,1\right]-\iota_{c}'\left(0\right)=\left[1,1\right]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Given any three numbers
 \begin_inset ERT
 status collapsed
 
@@ -13470,14 +13600,272 @@ nb
 \end_inset
 
 
-\begin_inset Formula $c:$
+\begin_inset Formula $x_{0}$
 \end_inset
 
- For any 
-\begin_inset Formula $\delta\ge0$
+, 
+\begin_inset Formula $x_{1}$
 \end_inset
 
-, there is an additive interval-valued function
+, and 
+\begin_inset Formula $x_{2}\in\left[0,1\right]$
+\end_inset
+
+, if 
+\begin_inset Formula $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$
+\end_inset
+
+, we have
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{equation}
+\backslash
+eqalign{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+ & c
+\backslash
+left(x_{0}+x_{1}+x_{2}
+\backslash
+right)+c
+\backslash
+left(x_{2}
+\backslash
+right)
+\backslash
+le c
+\backslash
+left(x_{0}+x_{2}
+\backslash
+right)+c
+\backslash
+left(x_{1}+x_{2}
+\backslash
+right)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Rightarrow & 
+\backslash
+left[x_{0}+x_{1}+x_{2}+c
+\backslash
+left(x_{0}+x_{1}+x_{2}
+\backslash
+right)
+\backslash
+right]+
+\backslash
+left[x_{2}+c
+\backslash
+left(x_{2}
+\backslash
+right)
+\backslash
+right]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ & 
+\backslash
+le
+\backslash
+left[x_{0}+x_{2}+c
+\backslash
+left(x_{0}+x_{2}
+\backslash
+right)
+\backslash
+right]+
+\backslash
+left[x_{1}+x_{2}+c
+\backslash
+left(x_{1}+x_{2}
+\backslash
+right)
+\backslash
+right]
+\backslash
+textrm{ .} }
+\backslash
+end{equation}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Also, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{equation}
+\backslash
+eqalign{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+ & c
+\backslash
+left(x_{0}+x_{1}+x_{2}
+\backslash
+right)+c
+\backslash
+left(x_{2}
+\backslash
+right)
+\backslash
+le c
+\backslash
+left(x_{0}+x_{2}
+\backslash
+right)+c
+\backslash
+left(x_{1}+x_{2}
+\backslash
+right)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Rightarrow & -c
+\backslash
+left(x_{0}+x_{2}
+\backslash
+right)-c
+\backslash
+left(x_{1}+x_{2}
+\backslash
+right)
+\backslash
+le-c
+\backslash
+left(x_{0}+x_{1}+x_{2}
+\backslash
+right)-c
+\backslash
+left(x_{2}
+\backslash
+right)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Rightarrow & 
+\backslash
+left[x_{0}+x_{2}-c
+\backslash
+left(x_{0}+x_{2}
+\backslash
+right)
+\backslash
+right]+
+\backslash
+left[x_{1}+x_{2}-c
+\backslash
+left(x_{1}+x_{2}
+\backslash
+right)
+\backslash
+right]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ & 
+\backslash
+le
+\backslash
+left[x_{0}+x_{1}+x_{2}-c
+\backslash
+left(x_{0}+x_{1}+x_{2}
+\backslash
+right)
+\backslash
+right]+
+\backslash
+left[x_{2}-c
+\backslash
+left(x_{2}
+\backslash
+right)
+\backslash
+right]
+\backslash
+textrm{ .} 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\backslash
+end{equation}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+The above two equations implies 
+\begin_inset Formula $\iota_{c}'\left(x_{0}+x_{1}+x_{2}\right)+\iota_{c}'\left(x_{2}\right)\subseteq\iota_{c}'\left(x_{0}+x_{2}\right)+\iota_{c}'\left(x_{1}+x_{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+For a set
 \begin_inset ERT
 status collapsed
 
@@ -13491,10 +13879,25 @@ nb
 \end_inset
 
 
-\begin_inset Formula $\iota_{\delta}':\left[0,1\right]\rightarrow\mathscr{I}_{\delta}'$
+\begin_inset Formula $\left\{ x_{i}\right\} _{i=1}^{N}\subseteq\left[0,1\right]$
 \end_inset
 
- defined by
+, if 
+\begin_inset Formula $\sum_{i=1}^{N}x_{i}\in\left[0,1\right]$
+\end_inset
+
+, then 
+\begin_inset Formula $\iota_{c}'\left(\sum_{i=1}^{N}x_{i}\right)\subseteq\sum_{i=1}^{N}\iota_{c}'\left(x_{i}\right)$
+\end_inset
+
+ by inducting on the convex condition listed previously with 
+\begin_inset Formula $x_{2}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -13502,7 +13905,7 @@ status collapsed
 
 
 \backslash
-end{example}
+end{proof}
 \end_layout
 
 \end_inset

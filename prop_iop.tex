@@ -1958,18 +1958,49 @@ of the constructed QIVPM one-by-one which might be long and tedious.
 \subsection{From Real-valued to Interval-valued II}
 
 Since we cannot restrict our convex interval-valued function mapping
-only finite number of intervals, let's consider another natural interval-valued
-function. Before we consider them, we review the counterpart of Wright-convex,
-Wright-concave\nb\cite{Brzdek_2014}.
+to only finite number of intervals, let's consider another family
+of natural interval-valued functions.
 
-\begin{definition}A function\nb$c:\left[0,1\right]\rightarrow\left[0,1\right]$
-is called Wright-concave if for any three numbers\nb$x_{0}$, $x_{1}$,
-and $x_{2}\in\left[0,1\right]$, $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$
-implies $c\left(x_{0}+x_{1}+x_{2}\right)+c\left(x_{2}\right)\le c\left(x_{0}+x_{2}\right)+c\left(x_{1}+x_{2}\right)$.\end{definition}
+\begin{lemma}Given a function\nb$c:\left[0,1\right]\rightarrow\left[0,1\right]$
+satisfying the following conditions:
+\begin{itemize}
+\item For all $x\in\left[0,1\right]$, $c\left(x\right)\le x$.
+\item For all $x\in\left[0,1\right]$, $c\left(1-x\right)=c\left(x\right)$.
+\item $c$ is Wright-concave\nb\cite{Brzdek_2014}, i.e., for any three
+numbers\nb$x_{0}$, $x_{1}$, and $x_{2}\in\left[0,1\right]$, $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$
+implies $c\left(x_{0}+x_{1}+x_{2}\right)+c\left(x_{2}\right)\le c\left(x_{0}+x_{2}\right)+c\left(x_{1}+x_{2}\right)$.
+\end{itemize}
+Then, there is a convex interval-valued function\nb$\iota_{c}':\left[0,1\right]\rightarrow\mathscr{I}_{c}'$
+defined by $\iota_{c}'\left(x\right)=\left[x-c\left(x\right),x+c\left(x\right)\right]$,
+where $\mathscr{I}_{c}'=\set{\iota_{c}'\left(x\right)}{x\in\left[0,1\right]}$.\end{lemma}
 
-\begin{example}Given a concave function\nb$c:$ For any $\delta\ge0$,
-there is an additive interval-valued function\nb$\iota_{\delta}':\left[0,1\right]\rightarrow\mathscr{I}_{\delta}'$
-defined by\end{example}
+\begin{proof}~
+\begin{itemize}
+\item Since $c\left(x\right)\le x$, $0\le x-c\left(x\right)$. Also, $c\left(x\right)=c\left(1-x\right)\le1-x$
+implies $x+c\left(x\right)\le1$. Therefore, $\iota_{c}'\left(x\right)=\left[x-c\left(x\right),x+c\left(x\right)\right]\subseteq\left[0,1\right]$.
+\item For any $x\in\left[0,1\right]$, $\iota_{c}'\left(1-x\right)=\left[1,1\right]-\left[x-c\left(1-x\right),x+c\left(1-x\right)\right]=\left[1,1\right]-\iota_{c}'\left(x\right)$.
+\item Since $c\left(0\right)\in\left[0,1\right]$ and $c\left(0\right)\le0$,
+we have $c\left(0\right)=0$. Therefore, $\iota_{c}'\left(0\right)=\left[0,0\right]$,
+and $\iota_{c}'\left(1\right)=\left[1,1\right]-\iota_{c}'\left(0\right)=\left[1,1\right]$. 
+\item Given any three numbers\nb$x_{0}$, $x_{1}$, and $x_{2}\in\left[0,1\right]$,
+if $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$, we have
+\begin{equation}\eqalign{ 
+ & c\left(x_{0}+x_{1}+x_{2}\right)+c\left(x_{2}\right)\le c\left(x_{0}+x_{2}\right)+c\left(x_{1}+x_{2}\right)\\
+\Rightarrow & \left[x_{0}+x_{1}+x_{2}+c\left(x_{0}+x_{1}+x_{2}\right)\right]+\left[x_{2}+c\left(x_{2}\right)\right]\\
+ & \le\left[x_{0}+x_{2}+c\left(x_{0}+x_{2}\right)\right]+\left[x_{1}+x_{2}+c\left(x_{1}+x_{2}\right)\right]\textrm{ .} }\end{equation}
+Also, 
+\begin{equation}\eqalign{ 
+ & c\left(x_{0}+x_{1}+x_{2}\right)+c\left(x_{2}\right)\le c\left(x_{0}+x_{2}\right)+c\left(x_{1}+x_{2}\right)\\
+\Rightarrow & -c\left(x_{0}+x_{2}\right)-c\left(x_{1}+x_{2}\right)\le-c\left(x_{0}+x_{1}+x_{2}\right)-c\left(x_{2}\right)\\
+\Rightarrow & \left[x_{0}+x_{2}-c\left(x_{0}+x_{2}\right)\right]+\left[x_{1}+x_{2}-c\left(x_{1}+x_{2}\right)\right]\\
+ & \le\left[x_{0}+x_{1}+x_{2}-c\left(x_{0}+x_{1}+x_{2}\right)\right]+\left[x_{2}-c\left(x_{2}\right)\right]\textrm{ .} 
+}\end{equation}
+The above two equations implies $\iota_{c}'\left(x_{0}+x_{1}+x_{2}\right)+\iota_{c}'\left(x_{2}\right)\subseteq\iota_{c}'\left(x_{0}+x_{2}\right)+\iota_{c}'\left(x_{1}+x_{2}\right)$.
+\item For a set\nb$\left\{ x_{i}\right\} _{i=1}^{N}\subseteq\left[0,1\right]$,
+if $\sum_{i=1}^{N}x_{i}\in\left[0,1\right]$, then $\iota_{c}'\left(\sum_{i=1}^{N}x_{i}\right)\subseteq\sum_{i=1}^{N}\iota_{c}'\left(x_{i}\right)$
+by inducting on the convex condition listed previously with $x_{2}=0$.
+\end{itemize}
+\end{proof}
 
 \subsection{From Interval-valued to Real-valued}
 
