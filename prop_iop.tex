@@ -1871,40 +1871,56 @@ Then, $\bar{\mu}\left(\proj{0}\right)=\iota\left(\mu_{\ket{0}}^{\mathrm{\mathrm{
 i.e., for any quantum probability measure~$\mu\in\mathrm{core}\left(\bar{\mu}\right)$,
 we have $\mu\left(\proj{0}\right)=1$. Therefore, $\mu=\mu_{\ket{0}}^{\mathrm{\mathrm{B}}}$.\end{proof}
 
-\begin{example}\label{ex:regular-pair}For any positive integer~$n$,
-there is an additive interval-valued function\nb$\iota_{n}:\left[0,1\right]\rightarrow\mathscr{I}_{n}$
+\begin{example}\label{ex:regular-pair}For any positive integer~$n$
+and $\delta\in\left[0,1\right]$, there is an additive interval-valued
+function\nb$\iota_{n,\delta}:\left[0,1\right]\rightarrow\mathscr{I}_{n,\delta}$
 defined by
 \begin{equation}\eqalign{ 
-\mathscr{I}_{n} = \set{\left[\frac{k}{n},\frac{k}{n}\right]}{k=0,\ldots,n}\cup\set{\left[\frac{k}{n},\frac{k+1}{n}\right]}{k=0,\ldots,n-1}\\ 
-\iota_{n}\left(x\right) = \cases{ 
-\left[\frac{k}{n},\frac{k}{n}\right] & , if $x=\frac{k}{n}$ ;\\ 
+\eqalign{\mathscr{I}_{n,\delta} =& \set{\left[\frac{k-\delta}{n},\frac{k+\delta}{n}\right]}{k=1,\ldots,n-1}\\
+&\cup\set{\left[\frac{k}{n},\frac{k+1}{n}\right]}{k=0,\ldots,n-1}\cup\left\{\left[0,0\right],\left[1,1\right]\right\}}\\ 
+\iota_{n,\delta}\left(x\right) = \cases{ 
+\left[x,x\right] & , if $x=0$ or  $x=1$ ;\\ 
+\left[\frac{k-\delta}{n},\frac{k+\delta}{n}\right] & , if $x=\frac{k}{n}\in\left(0,1\right)$ ;\\ 
 \left[\frac{k}{n},\frac{k+1}{n}\right] & , if $\frac{k}{n}<x<\frac{k+1}{n}$ . 
-} 
+}
 }\end{equation}
-Notice that the usual $\left\{ \necess,\imposs,\unknown\right\} $
-is $\mathscr{I}_{1}$. Also, let $\mathscr{I}_{\infty}=\set{\left\{ x\right\} }{x\in\left[0,1\right]}$
+When we use the same notation in other place in this paper, we may
+write $\iota_{n}:\left[0,1\right]\rightarrow\mathscr{I}_{n}$ to represent
+$\iota_{n,0}:\left[0,1\right]\rightarrow\mathscr{I}_{n,0}$. Notice
+that the usual $\left\{ \necess,\imposs,\unknown\right\} $ is $\mathscr{I}_{1}$.
+Also, let $\mathscr{I}_{\infty}=\set{\left\{ x\right\} }{x\in\left[0,1\right]}$
 and $\iota_{\infty}\left(x\right)=\left\{ x\right\} $. Of course,
 $\iota_{\infty}:\left[0,1\right]\rightarrow\mathscr{I}_{\infty}$
 is an additive interval-valued function.\end{example}
 
 \begin{proof}~
 \begin{itemize}
-\item $\iota\left(0\right)=\left[0,0\right]$. 
-\item $\iota\left(1\right)=\left[1,1\right]$. 
-\item When $x=k/n$, we have $\iota\left(1-x\right)=\left[1-k/n,1-k/n\right]=\left[1,1\right]-\iota\left(x\right)$.\\
+\item Since $\delta\in\left[0,1\right]$ and $\iota_{n,\delta}\left(x\right)=\left[\frac{k-\delta}{n},\frac{k+\delta}{n}\right]$
+only when $0<x=\frac{k}{n}<1$, we have $\iota_{n,\delta}\left(x\right)\subseteq\left[0,1\right]$.
+\item $\iota_{n,\delta}\left(0\right)=\left[0,0\right]$. 
+\item $\iota_{n,\delta}\left(1\right)=\left[1,1\right]$. 
+\item When $x=0$ or $x=1$, we have $\iota_{n,\delta}\left(1-x\right)=\left[1-x,1-x\right]=\left[1,1\right]-\iota_{n,\delta}\left(x\right)$.\\
+When $x=k/n\in\left(0,1\right)$, we have 
+\begin{equation}
+\iota_{n,\delta}\left(1-x\right)=\left[\frac{n-k-\delta}{n},\frac{n-k+\delta}{n}\right]=\left[1,1\right]-\iota_{n,\delta}\left(x\right)\textrm{ .}
+\end{equation}
 When $k/n<x<\left(k+1\right)/n$, we have $1-k/n>1-x>1-\left(k+1\right)/n$
 so that 
 \begin{equation}
-\iota\left(1-x\right)=\left[1-\frac{k+1}{n},1-\frac{k}{n}\right]=\left[1,1\right]-\left[\frac{k}{n},\frac{k+1}{n}\right]=\left[1,1\right]-\iota\left(x\right)\textrm{ .}
+\iota_{n,\delta}\left(1-x\right)=\left[1-\frac{k+1}{n},1-\frac{k}{n}\right]=\left[1,1\right]-\iota_{n,\delta}\left(x\right)\textrm{ .}
 \end{equation}
 \item It is sufficient to prove the case when $N=2$, i.e., for a set $\left\{ x_{1},x_{2}\right\} \subseteq\left[0,1\right]$,
-if $x_{1}+x_{2}\in\left[0,1\right]$, then $\iota\left(x_{1}+x_{2}\right)\subseteq\iota\left(x_{1}\right)+\iota\left(x_{2}\right)$,
+if $x_{1}+x_{2}\in\left[0,1\right]$, then $\iota_{n,\delta}\left(x_{1}+x_{2}\right)\subseteq\iota_{n,\delta}\left(x_{1}\right)+\iota_{n,\delta}\left(x_{2}\right)$,
 and the rest can be done by the induction. 
 \begin{itemize}
-\item When $x_{1}=k_{1}/n$, we have 
+\item When $x_{1}=0$, we have $\iota_{n,\delta}\left(x_{1}+x_{2}\right)=\iota_{n,\delta}\left(x_{2}\right)=\iota_{n,\delta}\left(x_{1}\right)+\iota_{n,\delta}\left(x_{2}\right)$.
+\item When $x_{1}=k_{1}/n\in\left(0,1\right)$, we have 
 \begin{equation}
-\iota\left(x_{1}+x_{2}\right)=\left[\frac{k_{1}}{n},\frac{k_{1}}{n}\right]+\iota\left(x_{2}\right)=\iota\left(x_{1}\right)+\iota\left(x_{2}\right)\textrm{ .}
+\iota_{n,\delta}\left(x_{1}+x_{2}\right)\subseteq\left[\frac{k_{1}}{n},\frac{k_{1}}{n}\right]+\iota_{n,\delta}\left(x_{2}\right)\subseteq\iota_{n,\delta}\left(x_{1}\right)+\iota_{n,\delta}\left(x_{2}\right)\textrm{ ,}
 \end{equation}
+where $\iota_{n,\delta}\left(x_{1}+x_{2}\right)$ is a proper subset
+of $\left[\frac{k_{1}}{n},\frac{k_{1}}{n}\right]+\iota_{n,\delta}\left(x_{2}\right)$
+only when $x_{1}+x_{2}=1$.
 \item When $k_{1}/n<x_{1}<\left(k_{1}+1\right)/n$ and $k_{2}/n<x_{2}<\left(k_{2}+1\right)/n$,
 we have 
 \begin{equation}
@@ -1912,8 +1928,8 @@ we have
 \end{equation}
 so that 
 \begin{equation}\eqalign{ 
-& \iota\left(x_{1}+x_{2}\right)\subseteq\left[\frac{k_{1}+k_{2}}{n},\frac{k_{1}+k_{2}+2}{n}\right]\\ 
-= &\left[\frac{k_{1}}{n},\frac{k_{1}+1}{n}\right]+\left[\frac{k_{2}}{n},\frac{k_{2}+1}{n}\right]=\iota\left(x_{1}\right)+\iota\left(x_{2}\right)\textrm{ .} 
+& \iota_{n,\delta}\left(x_{1}+x_{2}\right)\subseteq\left[\frac{k_{1}+k_{2}}{n},\frac{k_{1}+k_{2}+2}{n}\right]\\ 
+= &\left[\frac{k_{1}}{n},\frac{k_{1}+1}{n}\right]+\left[\frac{k_{2}}{n},\frac{k_{2}+1}{n}\right]=\iota_{n,\delta}\left(x_{1}\right)+\iota_{n,\delta}\left(x_{2}\right)\textrm{ .} 
 }\end{equation}
 \end{itemize}
 \end{itemize}

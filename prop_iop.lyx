@@ -12583,6 +12583,10 @@ For any positive integer
 \begin_inset Formula $n$
 \end_inset
 
+ and 
+\begin_inset Formula $\delta\in\left[0,1\right]$
+\end_inset
+
 , there is an additive interval-valued function
 \begin_inset ERT
 status collapsed
@@ -12597,7 +12601,7 @@ nb
 \end_inset
 
 
-\begin_inset Formula $\iota_{n}:\left[0,1\right]\rightarrow\mathscr{I}_{n}$
+\begin_inset Formula $\iota_{n,\delta}:\left[0,1\right]\rightarrow\mathscr{I}_{n,\delta}$
 \end_inset
 
  defined by
@@ -12621,19 +12625,36 @@ eqalign{
 
 
 \backslash
-mathscr{I}_{n} = 
+eqalign{
+\backslash
+mathscr{I}_{n,
+\backslash
+delta} =& 
 \backslash
 set{
 \backslash
 left[
 \backslash
-frac{k}{n},
+frac{k-
 \backslash
-frac{k}{n}
+delta}{n},
 \backslash
-right]}{k=0,
+frac{k+
 \backslash
-ldots,n}
+delta}{n}
+\backslash
+right]}{k=1,
+\backslash
+ldots,n-1}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+&
 \backslash
 cup
 \backslash
@@ -12649,6 +12670,24 @@ right]}{k=0,
 \backslash
 ldots,n-1}
 \backslash
+cup
+\backslash
+left
+\backslash
+{
+\backslash
+left[0,0
+\backslash
+right],
+\backslash
+left[1,1
+\backslash
+right]
+\backslash
+right
+\backslash
+}}
+\backslash
 
 \backslash
  
@@ -12658,7 +12697,9 @@ ldots,n-1}
 
 
 \backslash
-iota_{n}
+iota_{n,
+\backslash
+delta}
 \backslash
 left(x
 \backslash
@@ -12671,15 +12712,38 @@ cases{
 
 
 \backslash
+left[x,x
+\backslash
+right] & , if $x=0$ or  $x=1$ ;
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 left[
 \backslash
-frac{k}{n},
+frac{k-
 \backslash
-frac{k}{n}
+delta}{n},
+\backslash
+frac{k+
+\backslash
+delta}{n}
 \backslash
 right] & , if $x=
 \backslash
-frac{k}{n}$ ;
+frac{k}{n}
+\backslash
+in
+\backslash
+left(0,1
+\backslash
+right)$ ;
 \backslash
 
 \backslash
@@ -12706,7 +12770,7 @@ frac{k+1}{n}$ .
 
 \begin_layout Plain Layout
 
-} 
+}
 \end_layout
 
 \begin_layout Plain Layout
@@ -12722,7 +12786,17 @@ end{equation}
 
 \end_inset
 
-Notice that the usual 
+When we use the same notation in other place in this paper, we may write
+ 
+\begin_inset Formula $\iota_{n}:\left[0,1\right]\rightarrow\mathscr{I}_{n}$
+\end_inset
+
+ to represent 
+\begin_inset Formula $\iota_{n,0}:\left[0,1\right]\rightarrow\mathscr{I}_{n,0}$
+\end_inset
+
+.
+ Notice that the usual 
 \begin_inset Formula $\left\{ \necess,\imposs,\unknown\right\} $
 \end_inset
 
@@ -12781,7 +12855,27 @@ begin{proof}
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\iota\left(0\right)=\left[0,0\right]$
+Since 
+\begin_inset Formula $\delta\in\left[0,1\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\iota_{n,\delta}\left(x\right)=\left[\frac{k-\delta}{n},\frac{k+\delta}{n}\right]$
+\end_inset
+
+ only when 
+\begin_inset Formula $0<x=\frac{k}{n}<1$
+\end_inset
+
+, we have 
+\begin_inset Formula $\iota_{n,\delta}\left(x\right)\subseteq\left[0,1\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\iota_{n,\delta}\left(0\right)=\left[0,0\right]$
 \end_inset
 
 .
@@ -12789,7 +12883,7 @@ begin{proof}
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\iota\left(1\right)=\left[1,1\right]$
+\begin_inset Formula $\iota_{n,\delta}\left(1\right)=\left[1,1\right]$
 \end_inset
 
 .
@@ -12798,15 +12892,31 @@ begin{proof}
 
 \begin_layout Itemize
 When 
-\begin_inset Formula $x=k/n$
+\begin_inset Formula $x=0$
+\end_inset
+
+ or 
+\begin_inset Formula $x=1$
 \end_inset
 
 , we have 
-\begin_inset Formula $\iota\left(1-x\right)=\left[1-k/n,1-k/n\right]=\left[1,1\right]-\iota\left(x\right)$
+\begin_inset Formula $\iota_{n,\delta}\left(1-x\right)=\left[1-x,1-x\right]=\left[1,1\right]-\iota_{n,\delta}\left(x\right)$
 \end_inset
 
 .
 \begin_inset Newline newline
+\end_inset
+
+When 
+\begin_inset Formula $x=k/n\in\left(0,1\right)$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\begin{equation}
+\iota_{n,\delta}\left(1-x\right)=\left[\frac{n-k-\delta}{n},\frac{n-k+\delta}{n}\right]=\left[1,1\right]-\iota_{n,\delta}\left(x\right)\textrm{ .}
+\end{equation}
+
 \end_inset
 
 When 
@@ -12820,7 +12930,7 @@ When
  so that 
 \begin_inset Formula 
 \begin{equation}
-\iota\left(1-x\right)=\left[1-\frac{k+1}{n},1-\frac{k}{n}\right]=\left[1,1\right]-\left[\frac{k}{n},\frac{k+1}{n}\right]=\left[1,1\right]-\iota\left(x\right)\textrm{ .}
+\iota_{n,\delta}\left(1-x\right)=\left[1-\frac{k+1}{n},1-\frac{k}{n}\right]=\left[1,1\right]-\iota_{n,\delta}\left(x\right)\textrm{ .}
 \end{equation}
 
 \end_inset
@@ -12842,7 +12952,7 @@ It is sufficient to prove the case when
 \end_inset
 
 , then 
-\begin_inset Formula $\iota\left(x_{1}+x_{2}\right)\subseteq\iota\left(x_{1}\right)+\iota\left(x_{2}\right)$
+\begin_inset Formula $\iota_{n,\delta}\left(x_{1}+x_{2}\right)\subseteq\iota_{n,\delta}\left(x_{1}\right)+\iota_{n,\delta}\left(x_{2}\right)$
 \end_inset
 
 , and the rest can be done by the induction.
@@ -12852,18 +12962,42 @@ It is sufficient to prove the case when
 \begin_deeper
 \begin_layout Itemize
 When 
-\begin_inset Formula $x_{1}=k_{1}/n$
+\begin_inset Formula $x_{1}=0$
+\end_inset
+
+, we have 
+\begin_inset Formula $\iota_{n,\delta}\left(x_{1}+x_{2}\right)=\iota_{n,\delta}\left(x_{2}\right)=\iota_{n,\delta}\left(x_{1}\right)+\iota_{n,\delta}\left(x_{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+When 
+\begin_inset Formula $x_{1}=k_{1}/n\in\left(0,1\right)$
 \end_inset
 
 , we have 
 \begin_inset Formula 
 \begin{equation}
-\iota\left(x_{1}+x_{2}\right)=\left[\frac{k_{1}}{n},\frac{k_{1}}{n}\right]+\iota\left(x_{2}\right)=\iota\left(x_{1}\right)+\iota\left(x_{2}\right)\textrm{ .}
+\iota_{n,\delta}\left(x_{1}+x_{2}\right)\subseteq\left[\frac{k_{1}}{n},\frac{k_{1}}{n}\right]+\iota_{n,\delta}\left(x_{2}\right)\subseteq\iota_{n,\delta}\left(x_{1}\right)+\iota_{n,\delta}\left(x_{2}\right)\textrm{ ,}
 \end{equation}
 
 \end_inset
 
+where 
+\begin_inset Formula $\iota_{n,\delta}\left(x_{1}+x_{2}\right)$
+\end_inset
 
+ is a proper subset of 
+\begin_inset Formula $\left[\frac{k_{1}}{n},\frac{k_{1}}{n}\right]+\iota_{n,\delta}\left(x_{2}\right)$
+\end_inset
+
+ only when 
+\begin_inset Formula $x_{1}+x_{2}=1$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -12904,7 +13038,9 @@ eqalign{
 
 & 
 \backslash
-iota
+iota_{n,
+\backslash
+delta}
 \backslash
 left(x_{1}+x_{2}
 \backslash
@@ -12945,13 +13081,17 @@ frac{k_{2}+1}{n}
 \backslash
 right]=
 \backslash
-iota
+iota_{n,
+\backslash
+delta}
 \backslash
 left(x_{1}
 \backslash
 right)+
 \backslash
-iota
+iota_{n,
+\backslash
+delta}
 \backslash
 left(x_{2}
 \backslash
