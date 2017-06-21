@@ -583,78 +583,63 @@ that $\langle \mathbf{O}_{ij}\rangle_{\bar \mu}$
 %\end{equation}
 satisfying Eq.~(\ref{eq:Kochen-Specker-Rules}).
 
-According to Mermin's comment\nb\cite{Mermin1999},
+According to Mermin's comment\nb\citep{Mermin1999}, 
 \begin{quote}
 ...although the outcomes deduced from such imperfect measurements
 will occasionally differ dramatically from those allowed in the ideal
 case, if the misalignment is very slight, the statistical distribution
-of outcomes will differ only slightly from the ideal case...
+of outcomes will differ only slightly from the ideal case... 
 \end{quote}
 if the imperfection of the measurement is small enough, the finitely
 precise measurement should not nullify the Kochen-Specker theorem.
-This idea can be modeled precisely by QIVPMs.
+This idea can be modeled precisely by considering the following kind
+of QIVPMs.
 
-\begin{definition}\label{def:delta-deterministic}An interval-valued
-probability measure\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$
-is called $\left(1/n,\delta\right)$-deterministic if for every $\left[\ell,r\right]\in\mathscr{I}$,
-there is a $k\in\mathbb{Z}$ such that $\left[\ell,r\right]\subseteq\left[k/n-\delta,k/n+\delta\right]$.\end{definition}
+\begin{definition}\label{def:delta-deterministic}An QIVPM\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$
+is called $\delta$-deterministic if either $\bar{\mu}\left(P\right)\subseteq\left[0,\delta\right]$
+or $\bar{\mu}\left(P\right)\subseteq\left[1-\delta,1\right]$ for
+any $P\in\events$.\end{definition}
 
-For example, any cryptodeterministic QIVPM is $\left(1,0\right)$-deterministic.
-For another example, given a three-dimensional Hilbert space, 
+For example, any cryptodeterministic QIVPM is $0$-deterministic.
+For another example, given a three-dimensional Hilbert space, a $\frac{1}{3}$-deterministic
+QIVPM can be given by $\bar{\mu}\left(P\right)=\left[x,x\right]$,
+where $P$ projects onto a $x$-dimensional subspace. By utilizing
+$\delta$-deterministic QIVPMs, we can have a Kochen-Specker theorem
+with finite precision measurement.
+
+\begin{thm}\label{cor:Kochen-Specker-IVPM}Given a Hilbert space
+of dimension\nb$d\ge3$, there is no $\delta$-deterministic QIVPM
+for $\delta<\frac{1}{3}$.\end{thm}
+
+\begin{proof}Suppose there is a $\delta$-deterministic QIVPM\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$,
+then we can define a cryptodeterministic QIVPM\nb$\bar{\mu}^{\textrm{D}}:\events\rightarrow\left\{ \imposs,\necess\right\} $
+by 
 \begin{equation}
-\iota_{\infty}\circ\mu_{\frac{\mathbb{1}}{3}}^{\mathrm{B}}:\events\rightarrow\left\{ \imposs,\left[\frac{1}{3},\frac{1}{3}\right],\left[\frac{2}{3},\frac{2}{3}\right],\necess\right\} 
+\bar{\mu}^{\textrm{D}}\left(P\right)=\begin{cases}
+\imposs\,, & \textrm{ if }\bar{\mu}\left(P\right)\subseteq\left[0,\delta\right]\:;\\
+\necess\,, & \textrm{ if }\bar{\mu}\left(P\right)\subseteq\left[1-\delta,1\right]\:.
+\end{cases}
 \end{equation}
-is $\left(1,\frac{1}{3}\right)$-deterministic and $\left(\frac{1}{3},0\right)$-deterministic,
-where $\iota_{\infty}\left(x\right)=\left[x,x\right]$. However, we
-will prove there is generally no $\left(1/n,\delta\right)$-deterministic
-probability measures when $\delta$ is much smaller than $1/n$.
 
-\begin{lemma}\label{lemma:QIVPM2QCM}Given a Hilbert space of dimension\nb$d$,
-and a quantum $\left(1/n,\delta\right)$-deterministic probability
-measure\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$ with $\delta<1/\left(3n\right)$,
-if $\bar{\mu}(P)\subseteq\left[k/n-\delta,k/n+\delta\right]$, let
-$\mu(P)=k/n$, then $\mu:\events\rightarrow\left[0,1\right]$ is a
-quantum probability measure. In another word, $\iota_{\infty}\circ\mu$
-is $\left(1/n,0\right)$-deterministic.\end{lemma}
-
-\begin{proof} The essential part to verify $\mu$ is a quantum probability
-measure is to verify Eq.~(\ref{eq:QuantumProbability-Addition}). Given a pair of orthogonal
-operators\nb$P_{0}$ and $P_{1}$, let $\pmeas\left(P_{0}\right)=k_{0}/n$ and $\pmeas\left(P_{1}\right)=k_{1}/n$.
-Then, 
-\begin{equation}
-\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[\frac{k_{0}+k_{1}}{n}-2\delta,\frac{k_{0}+k_{1}}{n}+2\delta\right]\,.
-\end{equation}
-Since $\delta<1/\left(3n\right)$, we have
-\begin{subequations}
+The essential part to verify $\bar{\mu}^{\textrm{D}}$ is a cryptodeterministic
+QIVPM is to verify\begin{subequations}
 \begin{eqnarray}
-\frac{k_{0}+k_{1}-1}{n}+\delta&<&\frac{k_{0}+k_{1}}{n}-2\delta\\
-\frac{k_{0}+k_{1}}{n}+2\delta&<&\frac{k_{0}+k_{1}+1}{n}-\delta\,.
+ &  & \bar{\mu}^{\textrm{D}}\left(P_{0}\right)=\bar{\mu}^{\textrm{D}}\left(P_{1}\right)=\imposs\\
+ & \Rightarrow & \bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\imposs
 \end{eqnarray}
-\end{subequations}
-The previous inequalities imply that if $\bar{\mu}\left(P_{0}+P_{1}\right)$
-overlap with any interval of the form $\left[k/n-\delta,k/n+\delta\right]$
-for some $k$, $k$ must be $k_{0}+k_{1}$, i.e., 
-\begin{equation}
-\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[\frac{k_{0}+k_{1}}{n}-\delta,\frac{k_{0}+k_{1}}{n}+\delta\right]\,.
-\end{equation}
-Therefore, 
-\begin{equation}
-\pmeas\left(P_{0}+P_{1}\right)=\frac{k_{0}+k_{1}}{n}=\pmeas\left(P_{0}\right)+\pmeas\left(P_{1}\right)\,.
-\end{equation}
-\end{proof}
+\end{subequations}for orthogonal operators\nb$P_{0}$ and $P_{1}$
+which is a special case of Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion}).
 
-Together with the Kochen-Specker theorem, we will have the following
-corollary.
-
-\begin{cor}\label{cor:Kochen-Specker-IVPM}Given a Hilbert space
-of dimension\nb$d\ge3$, there is no quantum $\left(1,\delta\right)$-deterministic
-probability measure for $\delta<\frac{1}{3}$.\end{cor}
-
-In general~\cite{Redhead1987-REDINA}, Gleason's theorem asserts
-that a quantum probability measure must be continuous. Therefore,
-a $\left(1/n,0\right)$-deterministic QIVPM exists if and only if
-$d\mid n$, and so does a $\left(1/n,\delta\right)$-deterministic
-QIVPM for $\delta<1/\left(3n\right)$.
+When $\bar{\mu}^{\textrm{D}}\left(P_{0}\right)=\bar{\mu}^{\textrm{D}}\left(P_{1}\right)=\imposs$,
+we have $\bar{\mu}\left(P_{0}\right)\subseteq\left[0,\delta\right]$
+and $\bar{\mu}\left(P_{1}\right)\subseteq\left[0,\delta\right]$ which
+implies $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[0,2\delta\right]$.
+Since $\delta<\frac{1}{3}\Rightarrow2\delta<1-\delta$, $\bar{\mu}\left(P_{0}+P_{1}\right)$
+cannot be a subset of $\left[1-\delta,1\right]$, but $\bar{\mu}\left(P_{0}+P_{1}\right)$
+is a subset of either $\left[0,\delta\right]$ or $\left[1-\delta,1\right]$.
+Hence, $\bar{\mu}\left(P_{0}+P_{1}\right)$ must be a subset of $\left[0,\delta\right]$,
+which implies $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\imposs$.
+The remain part of the proof are routine verification.\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\section{Gleason}
