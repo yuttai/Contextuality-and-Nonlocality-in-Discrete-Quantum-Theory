@@ -2098,24 +2098,24 @@ a operator or matrix\nb$\rho$, the norm of $\rho$ is defined by
 
 \begin{lemma}Given a Hilbert space with the set of all projectors\nb$\events$,
 and an interval-valued function\nb$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
-with the maximum length of intervals in $\mathscr{I}$ is $1/n$.
+with the maximum length of intervals in $\mathscr{I}$ is $\delta$.
 For two mixed state\nb$\rho$ and $\rho'$, if $\rho'\in\coreBorn\left(\iota\circ\mu_{\rho}^{\mathrm{B}},\events\right)$,
-then $\left\Vert \rho-\rho'\right\Vert \le1/n$.\end{lemma}
+then $\left\Vert \rho-\rho'\right\Vert \le\delta$.\end{lemma}
 
 \begin{proof}By definition, we have $\mu_{\rho'}^{\mathrm{B}}\left(P\right)\in\iota\left(\mu_{\rho}^{\mathrm{B}}\left(P\right)\right)$
 for all $P\in\events$. By substitute $P=\proj{\psi}$, we have 
 \begin{equation}
 \mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)\in\iota\left(\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right)\,.\label{eq:consistent2another_state}
 \end{equation}
-Since the maximum length of intervals in $\mathscr{I}$ is $1/n$,
+Since the maximum length of intervals in $\mathscr{I}$ is $\delta$,
 we can move $\rho$ and $\rho'$ to the same side and rewrite equation~(\ref{eq:consistent2another_state})
 as
 \begin{equation}
-\frac{1}{n}\ge\left|\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)-\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right|=\left|\melem{\psi}{\rho'-\rho}{\psi}\right|\,.
+\delta\ge\left|\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)-\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right|=\left|\melem{\psi}{\rho'-\rho}{\psi}\right|\,.
 \end{equation}
 Applying maximum on both side, we have
 \begin{equation}
-\frac{1}{n}\ge\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{\rho'-\rho}{\psi}\right|=\left\Vert \rho'-\rho\right\Vert \,.
+\delta\ge\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{\rho'-\rho}{\psi}\right|=\left\Vert \rho'-\rho\right\Vert \,.
 \end{equation}
 \end{proof}
 
@@ -2124,27 +2124,41 @@ then $\rho'$ is close to $\rho$. Conversely, if $\rho'$ is close
 to $\rho$, $\rho'$ is consistent with $\iota\circ\mu_{\rho}^{\mathrm{B}}$
 by the following lemma.
 
-\begin{lemma}Given a Hilbert space with the set of all projectors\nb$\events$,
-and an interval-valued function\nb$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
-with the minimum length of intervals in $\mathscr{I}\backslash\left\{ \imposs,\necess\right\} $
-is $1/n$. For two mixed state\nb$\rho$ and $\rho'$, if the following
-conditions holds.
+\begin{lemma}Given a $d$-dimensional Hilbert space with the set
+of all projectors\nb$\events$, and an interval-valued function\nb$\iota:\left[0,1\right]\rightarrow\mathscr{I}$.
+For two mixed state\nb$\rho$ and $\rho'$, if the following conditions
+holds.
 \begin{itemize}
-\item $\left\Vert \rho-\rho'\right\Vert \le1/n$.
-\item $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\imposs$ if and only if $P=\mathbb{0}$.
-\item $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\necess$ if and only if $P=\mathbb{1}$.
+\item Let $\delta=\min_{x\in\left(0,1\right)}\left\{ \max\iota\left(x\right)-x,x-\min\iota\left(x\right)\right\} $.
+In another word, if $\left|x-y\right|\le\delta$, we must have $y\in\iota\left(x\right)$.
+\item $\left\Vert \rho-\rho'\right\Vert \le d\delta$.
+\item $\mu_{\rho}^{\mathrm{B}}\left(P\right)=0$ if and only if $P=\mathbb{0}$.
+\item $\mu_{\rho}^{\mathrm{B}}\left(P\right)=1$ if and only if $P=\mathbb{1}$.
 \end{itemize}
 Then, $\rho'\in\coreBorn\left(\iota\circ\mu_{\rho}^{\mathrm{B}},\events\right)$.\end{lemma}
 
 \begin{proof}Since
 \begin{equation}
-\frac{1}{n}\ge\left\Vert \rho'-\rho\right\Vert =\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{\rho'-\rho}{\psi}\right|\,,
+d\delta\ge\left\Vert \rho'-\rho\right\Vert =\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{\rho'-\rho}{\psi}\right|\,,
 \end{equation}
 we have
 \begin{equation}
-\frac{1}{n}\ge\left|\melem{\psi}{\rho'-\rho}{\psi}\right|=\left|\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)-\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right|
+d\delta\ge\left|\melem{\psi}{\rho'-\rho}{\psi}\right|=\left|\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)-\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right|\label{eq:Born_rule_difference}
 \end{equation}
-for all normalized pure state\nb$\ket{\psi}$. \end{proof}
+for all normalized pure state\nb$\ket{\psi}$.
+
+When $P\in\left\{ \mathbb{0},\mathbb{1}\right\} $, it is obvious
+$\mu_{\rho'}^{\mathrm{B}}\left(P\right)\in\iota\left(\mu_{\rho}^{\mathrm{B}}\left(P\right)\right)$.
+
+When $P\in\events\backslash\left\{ \mathbb{0},\mathbb{1}\right\} $,
+there exists an orthonormal set $\left\{ \ket{i}\right\} _{i=0}^{d'-1}$
+such that $P=\sum_{i=0}^{d'-1}\proj{i}$. By applying equation~(\ref{eq:Born_rule_difference}),
+\begin{equation}
+\left|\mu_{\rho'}^{\mathrm{B}}\left(P\right)-\mu_{\rho}^{\mathrm{B}}\left(P\right)\right|\le\sum_{i=0}^{d'-1}\left|\mu_{\rho'}^{\mathrm{B}}\left(\proj{i}\right)-\mu_{\rho}^{\mathrm{B}}\left(\proj{i}\right)\right|\le\delta\,.
+\end{equation}
+
+Since $P$ is neither $\mathbb{0}$ nor $\mathbb{1}$, $\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\left(0,1\right)$.
+Hence, we have $\mu_{\rho'}^{\mathrm{B}}\left(P\right)\in\iota\left(\mu_{\rho}^{\mathrm{B}}\left(P\right)\right)$.\end{proof}
 
 \subsection{From Interval-valued to Real-valued}
 

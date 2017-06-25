@@ -14841,7 +14841,7 @@ nb
 \end_inset
 
  is 
-\begin_inset Formula $1/n$
+\begin_inset Formula $\delta$
 \end_inset
 
 .
@@ -14871,7 +14871,7 @@ nb
 \end_inset
 
 , then 
-\begin_inset Formula $\left\Vert \rho-\rho'\right\Vert \le1/n$
+\begin_inset Formula $\left\Vert \rho-\rho'\right\Vert \le\delta$
 \end_inset
 
 .
@@ -14929,7 +14929,7 @@ Since the maximum length of intervals in
 \end_inset
 
  is 
-\begin_inset Formula $1/n$
+\begin_inset Formula $\delta$
 \end_inset
 
 , we can move 
@@ -14954,7 +14954,7 @@ reference "eq:consistent2another_state"
 ) as
 \begin_inset Formula 
 \begin{equation}
-\frac{1}{n}\ge\left|\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)-\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right|=\left|\melem{\psi}{\rho'-\rho}{\psi}\right|\,.
+\delta\ge\left|\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)-\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right|=\left|\melem{\psi}{\rho'-\rho}{\psi}\right|\,.
 \end{equation}
 
 \end_inset
@@ -14962,7 +14962,7 @@ reference "eq:consistent2another_state"
 Applying maximum on both side, we have
 \begin_inset Formula 
 \begin{equation}
-\frac{1}{n}\ge\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{\rho'-\rho}{\psi}\right|=\left\Vert \rho'-\rho\right\Vert \,.
+\delta\ge\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{\rho'-\rho}{\psi}\right|=\left\Vert \rho'-\rho\right\Vert \,.
 \end{equation}
 
 \end_inset
@@ -15033,7 +15033,11 @@ begin{lemma}
 
 \end_inset
 
-Given a Hilbert space with the set of all projectors
+Given a 
+\begin_inset Formula $d$
+\end_inset
+
+-dimensional Hilbert space with the set of all projectors
 \begin_inset ERT
 status collapsed
 
@@ -15067,14 +15071,6 @@ nb
 \begin_inset Formula $\iota:\left[0,1\right]\rightarrow\mathscr{I}$
 \end_inset
 
- with the minimum length of intervals in 
-\begin_inset Formula $\mathscr{I}\backslash\left\{ \imposs,\necess\right\} $
-\end_inset
-
- is 
-\begin_inset Formula $1/n$
-\end_inset
-
 .
  For two mixed state
 \begin_inset ERT
@@ -15101,14 +15097,31 @@ nb
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\left\Vert \rho-\rho'\right\Vert \le1/n$
+Let 
+\begin_inset Formula $\delta=\min_{x\in\left(0,1\right)}\left\{ \max\iota\left(x\right)-x,x-\min\iota\left(x\right)\right\} $
+\end_inset
+
+.
+ In another word, if 
+\begin_inset Formula $\left|x-y\right|\le\delta$
+\end_inset
+
+, we must have 
+\begin_inset Formula $y\in\iota\left(x\right)$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\imposs$
+\begin_inset Formula $\left\Vert \rho-\rho'\right\Vert \le d\delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}\left(P\right)=0$
 \end_inset
 
  if and only if 
@@ -15119,7 +15132,7 @@ nb
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\necess$
+\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}\left(P\right)=1$
 \end_inset
 
  if and only if 
@@ -15166,7 +15179,7 @@ begin{proof}
 Since
 \begin_inset Formula 
 \begin{equation}
-\frac{1}{n}\ge\left\Vert \rho'-\rho\right\Vert =\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{\rho'-\rho}{\psi}\right|\,,
+d\delta\ge\left\Vert \rho'-\rho\right\Vert =\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{\rho'-\rho}{\psi}\right|\,,
 \end{equation}
 
 \end_inset
@@ -15174,7 +15187,7 @@ Since
 we have
 \begin_inset Formula 
 \begin{equation}
-\frac{1}{n}\ge\left|\melem{\psi}{\rho'-\rho}{\psi}\right|=\left|\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)-\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right|
+d\delta\ge\left|\melem{\psi}{\rho'-\rho}{\psi}\right|=\left|\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)-\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right|\label{eq:Born_rule_difference}
 \end{equation}
 
 \end_inset
@@ -15197,7 +15210,79 @@ nb
 \end_inset
 
 .
- 
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $P\in\left\{ \mathbb{0},\mathbb{1}\right\} $
+\end_inset
+
+, it is obvious 
+\begin_inset Formula $\mu_{\rho'}^{\mathrm{B}}\left(P\right)\in\iota\left(\mu_{\rho}^{\mathrm{B}}\left(P\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $P\in\events\backslash\left\{ \mathbb{0},\mathbb{1}\right\} $
+\end_inset
+
+, there exists an orthonormal set 
+\begin_inset Formula $\left\{ \ket{i}\right\} _{i=0}^{d'-1}$
+\end_inset
+
+ such that 
+\begin_inset Formula $P=\sum_{i=0}^{d'-1}\proj{i}$
+\end_inset
+
+.
+ By applying equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Born_rule_difference"
+
+\end_inset
+
+), 
+\begin_inset Formula 
+\begin{equation}
+\left|\mu_{\rho'}^{\mathrm{B}}\left(P\right)-\mu_{\rho}^{\mathrm{B}}\left(P\right)\right|\le\sum_{i=0}^{d'-1}\left|\mu_{\rho'}^{\mathrm{B}}\left(\proj{i}\right)-\mu_{\rho}^{\mathrm{B}}\left(\proj{i}\right)\right|\le\delta\,.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $P$
+\end_inset
+
+ is neither 
+\begin_inset Formula $\mathbb{0}$
+\end_inset
+
+ nor 
+\begin_inset Formula $\mathbb{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\left(0,1\right)$
+\end_inset
+
+.
+ Hence, we have 
+\begin_inset Formula $\mu_{\rho'}^{\mathrm{B}}\left(P\right)\in\iota\left(\mu_{\rho}^{\mathrm{B}}\left(P\right)\right)$
+\end_inset
+
+.
 \begin_inset ERT
 status collapsed
 
