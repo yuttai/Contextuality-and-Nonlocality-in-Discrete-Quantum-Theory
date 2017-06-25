@@ -1861,14 +1861,26 @@ and $P_{0}P_{1}$. Hence,
 \end{itemize}
 \end{proof}
 
+Since we want to consider QIVPMs induced by the Born rule, it is easier
+to work with the states instead of the probability measures, which
+gives us the following definition.
+
+\begin{definition}A state\nb$\rho$ is consistent with $\bar{\mu}$
+on a projector\nb$P$ if $\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)$,
+i.e., $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu}|_{\left\{ P\right\} }\right)$,
+and denoted by $\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$.
+Moreover, $\rho\in\coreBorn\left(\bar{\mu},S\right)$ means $\rho$
+is consistent with $\bar{\mu}$ on every projector in $S$, i.e.,
+$\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu}|_{S}\right)$.\end{definition}
+
 \begin{lemma}Consider a set of intervals\nb$\mathscr{I}$ with an
 additive interval-valued function\nb$\iota:\left[0,1\right]\rightarrow\mathscr{I}$.
 For any normalized pure state\nb$\ket{\phi}$, $\iota\circ\mu_{\phi}^{\mathrm{\mathrm{B}}}$
-is a quantum IVPM such that $\mathrm{core}\left(\iota\circ\mu_{\phi}^{\mathrm{\mathrm{B}}}\right)$
+is a quantum IVPM such that $\coreBorn\left(\iota\circ\mu_{\phi}^{\mathrm{\mathrm{B}}}\right)$
 has an unique element. Obviously, if $\iota$ is convex, so does $\iota\circ\mu_{\phi}^{\mathrm{\mathrm{B}}}$.\end{lemma}
 
 \begin{proof}$\left(\iota\circ\mu_{\phi}^{\mathrm{\mathrm{B}}}\right)\left(\proj{\phi}\right)=\iota\left(\mu_{\phi}^{\mathrm{\mathrm{B}}}\left(\proj{\phi}\right)\right)=\iota\left(1\right)=\left[1,1\right]$,
-i.e., for any quantum probability measure~$\mu\in\mathrm{core}\left(\iota\circ\mu_{\phi}^{\mathrm{\mathrm{B}}}\right)$,
+i.e., for any quantum probability measure~$\mu\in\coreBorn\left(\iota\circ\mu_{\phi}^{\mathrm{\mathrm{B}}}\right)$,
 we have $\mu\left(\proj{\phi}\right)=1$. Therefore, $\mu=\mu_{\phi}^{\mathrm{\mathrm{B}}}$.\end{proof}
 
 \begin{example}\label{ex:regular-pair}For any positive integer~$n$
@@ -2074,20 +2086,15 @@ by inducting on the convex condition listed previously with $x_{2}=0$.
 
 \subsubsection{Sates Consistent with a QIVPM Induced by the Born Rule}
 
-Since we want to consider QIVPMs induced by the Born rule, it is easier
-to work with the states instead of the probability measures, which
-gives us the following definition.
-
-\begin{definition}A state\nb$\rho$ is consistent with $\bar{\mu}$
-on a projector\nb$P$ if $\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)$,
-i.e., $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu}|_{\left\{ P\right\} }\right)$,
-and denoted by $\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$.
-Moreover, $\rho\in\coreBorn\left(\bar{\mu},S\right)$ means $\rho$
-is consistent with $\bar{\mu}$ on every projector in $S$, i.e.,
-$\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu}|_{S}\right)$.\end{definition}
-
 When we work with mixed states or density matrices, we also need a
 norm to compute the distance among them.
+
+\begin{definition}\cite{RobertsVarberg1973,peres1995quantum,544199}Given
+a operator or matrix\nb$\rho$, the norm of $\rho$ is defined by
+\begin{equation}
+\left\Vert \rho\right\Vert =\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{\rho}{\psi}\right|\,.
+\end{equation}
+\end{definition}
 
 \begin{lemma}Given a Hilbert space with the set of all projectors\nb$\events$,
 and an interval-valued function\nb$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
@@ -2095,13 +2102,49 @@ with the maximum length of intervals in $\mathscr{I}$ is $1/n$.
 For two mixed state\nb$\rho$ and $\rho'$, if $\rho'\in\coreBorn\left(\iota\circ\mu_{\rho}^{\mathrm{B}},\events\right)$,
 then $\left\Vert \rho-\rho'\right\Vert \le1/n$.\end{lemma}
 
-\begin{proof}By definition, we have
-\begin{equation}\eqalign{ 
- & \rho'\in\coreBorn\left(\iota\circ\mu_{\rho}^{\mathrm{B}},\events\right)\\ 
-\Leftrightarrow & \forall P\in\events\ \mu_{\rho}^{\mathrm{B}}\left(P\right)\in\iota\left(\mu_{\rho}^{\mathrm{B}}\left(P\right)\right)\\ 
-\Rightarrow & \forall\textrm{ normalized pure state }\ket{\psi}\ \mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\in\iota\left(\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right) 
-}\end{equation}
+\begin{proof}By definition, we have $\mu_{\rho'}^{\mathrm{B}}\left(P\right)\in\iota\left(\mu_{\rho}^{\mathrm{B}}\left(P\right)\right)$
+for all $P\in\events$. By substitute $P=\proj{\psi}$, we have 
+\begin{equation}
+\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)\in\iota\left(\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right)\,.\label{eq:consistent2another_state}
+\end{equation}
+Since the maximum length of intervals in $\mathscr{I}$ is $1/n$,
+we can move $\rho$ and $\rho'$ to the same side and rewrite equation~(\ref{eq:consistent2another_state})
+as
+\begin{equation}
+\frac{1}{n}\ge\left|\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)-\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right|=\left|\melem{\psi}{\rho'-\rho}{\psi}\right|\,.
+\end{equation}
+Applying maximum on both side, we have
+\begin{equation}
+\frac{1}{n}\ge\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{\rho'-\rho}{\psi}\right|=\left\Vert \rho'-\rho\right\Vert \,.
+\end{equation}
 \end{proof}
+
+Previously, we proved that if $\rho'$ is consistent with $\iota\circ\mu_{\rho}^{\mathrm{B}}$,
+then $\rho'$ is close to $\rho$. Conversely, if $\rho'$ is close
+to $\rho$, $\rho'$ is consistent with $\iota\circ\mu_{\rho}^{\mathrm{B}}$
+by the following lemma.
+
+\begin{lemma}Given a Hilbert space with the set of all projectors\nb$\events$,
+and an interval-valued function\nb$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
+with the minimum length of intervals in $\mathscr{I}\backslash\left\{ \imposs,\necess\right\} $
+is $1/n$. For two mixed state\nb$\rho$ and $\rho'$, if the following
+conditions holds.
+\begin{itemize}
+\item $\left\Vert \rho-\rho'\right\Vert \le1/n$.
+\item $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\imposs$ if and only if $P=\mathbb{0}$.
+\item $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\necess$ if and only if $P=\mathbb{1}$.
+\end{itemize}
+Then, $\rho'\in\coreBorn\left(\iota\circ\mu_{\rho}^{\mathrm{B}},\events\right)$.\end{lemma}
+
+\begin{proof}Since
+\begin{equation}
+\frac{1}{n}\ge\left\Vert \rho'-\rho\right\Vert =\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{\rho'-\rho}{\psi}\right|\,,
+\end{equation}
+we have
+\begin{equation}
+\frac{1}{n}\ge\left|\melem{\psi}{\rho'-\rho}{\psi}\right|=\left|\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)-\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right|
+\end{equation}
+for all normalized pure state\nb$\ket{\psi}$. \end{proof}
 
 \subsection{From Interval-valued to Real-valued}
 
