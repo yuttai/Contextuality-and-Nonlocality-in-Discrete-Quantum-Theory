@@ -80,7 +80,6 @@ Indiana 47405, USA}
 \date{\today}
 
 \begin{abstract}~
-\amr{rewrite from scratch}
 \begin{description}
 \item [{Background}] In a world of bounded resource, any quantum measurement
 can be only performed in finite precision.
@@ -663,23 +662,24 @@ which implies $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\imposs$.
 \section{Gleason}
 
 In the classical setting, measurements done with limited resources and
-poor precision may not uniquely identify the true state of a system
+poor precision may not uniquely identify the true state of a
 system. However, there is always at least one state that is consistent
 with the imprecise
-measurements\nb\cite{Shapley1971,GilboaSchmeidler1994,Grabisch2016}.
+measurements~\cite{Shapley1971,GilboaSchmeidler1994,Grabisch2016}.
 
 \begin{thm}\label{thm:Shapley}
-  For every QIVPM\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$, if a
+  For a QIVPM\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$, if a
   sub-event space\nb$\events'\subseteq\events$ commutes, then
   $\coreBorn\left(\bar{\mu},\events'\right)\ne\emptyset$.
 \end{thm}
 
-Gleason's theorem asserts any quantum real-valued probability measure
-is consistent with a unique mixed state, and Shapley proved a quantum
-IVPM must approximate some states for each classical sub-event
-space. However, it may not approximate the same state in every
-sub-event space. As the result, there may be no state consistent with
-a QIVPM on all projectors\nb$\events$.
+In the idealized situation of real-valued quantum probability
+measures, Gleason's theorem asserts that every measure is determined
+by a unique mixed state. The theorem above is weaker however: it
+asserts that, for each classical sub-event subspace, a QIVPM must be
+consistent with \emph{some} state. But the states consistent with
+different subspaces may be incomparable as the following example
+shows.
 
 \begin{example}\label{ex:three-dimensional-three-value}
   Given a three dimensional Hilbert space with an orthonormal basis
@@ -700,45 +700,51 @@ a QIVPM on all projectors\nb$\events$.
  &  & \unknown=\bar{\mu}_{3}(P)\qquad\textrm{otherwise.}
 \end{eqnarray}
 \end{subequations}
-It is straightforward to verify that $\bar{\mu}_{3}$ is a QIVPM.
-
-Let $S_{1}=\left\{ \proj{0},\proj{\ps}\right\} $. Because
+It is straightforward to verify that $\bar{\mu}_{3}$ is a QIVPM. Now
+let $S_{1}=\left\{ \proj{0},\proj{\ps}\right\} $. Because
 $\bar{\mu}_{3}(\proj{0})=\bar{\mu}_{3}(\proj{\ps})=\imposs$, we have
 $\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=0$
 for any mixed
 state\nb$\rho\in\coreBorn\left(\bar{\mu}_{3},S_{1}\right)$.  Hence,
-$\rho$ cannot be any state other than $\ket{2}$, the only pure state orthogonal to both
-$\ket{0}$ and $\ket{\ps}$, and it is easy to verify $\proj{2}$ is actually
-in $\coreBorn\left(\bar{\mu}_{3},S_{1}\right)$.
-
-Similarly, let $S_{2}=\left\{ \proj{0},\proj{\ps'}\right\} $. We have
+$\rho$ cannot be any state other than $\ket{2}$, the only pure state
+orthogonal to both $\ket{0}$ and $\ket{\ps}$, and it is easy to verify
+$\proj{2}$ is actually in
+$\coreBorn\left(\bar{\mu}_{3},S_{1}\right)$. Similarly, let
+$S_{2}=\left\{ \proj{0},\proj{\ps'}\right\} $. We have
 $\coreBorn\left(\bar{\mu}_{3},S_{2}\right)=\left\{ \proj{1}\right\} $.
 Therefore,
 \begin{equation}
 \coreBorn\left(\bar{\mu}_{3},\events\right)\subseteq\coreBorn\left(\bar{\mu}_{3},S_{1}\right)\cap\coreBorn\left(\bar{\mu}_{3},S_{2}\right)=\emptyset
 \end{equation}
-and must be empty.
+Thus, there is no state that is consistent with the QIVPM on all
+projectors\nb$\events$ invalidating Gleason's theorem.
 \end{example}
 
-Although Gleason's theorem doesn't hold for every QIVPM, if a quantum
-IVPM\nb$\bar{\mu}$ is induced by a totally mixed state\nb$\rho$
-nicely, then whether another density
-matrix\nb$\rho'\in\coreBorn\left(\bar{\mu},\events'\right)$ can be
-estimated by $\left\Vert \rho-\rho'\right\Vert $, where a
-state\nb$\rho$ is called totally mixed if
+Although Gleason's theorem does not hold for every QIVPM, we can show
+that for a certain class of QIVPMs, the collection of states
+consistent with the projectors get closer and closer to each other as
+the intervals get narrower and narrower, eventually collapsing to a
+single state when the intervals become infinitely precise real
+numbers. To state this result, we introduce a few technical notions. 
+
+We call a state $\rho$ a \emph{totally mixed state} if
 $0<\mu_{\rho}^{\mathrm{B}}\left(P\right)<1$ for any
-$P\in\events\backslash\left\{ \mathbb{0},\mathbb{1}\right\} $, and the
-the norm of a matrix\nb$A$ is defined by
+$P\in\events\backslash\left\{ \mathbb{0},\mathbb{1}\right\} $. We also
+define a notion of distance based on the following norm of a
+matrix\nb$A$ as
 $\left\Vert A\right\Vert
-=\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{A}{\psi}\right|$\nb\citep{544199}.
-For example, consider the intervals
+=\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{A}{\psi}\right|$\nb\citep{544199}. Now
+consider the following collection of intervals:
 \begin{eqnarray}
 \widehat{\mathscr{I}}_{n} & = & \set{\left[\frac{k-1}{2n},\frac{k+1}{2n}\right]\cap\left[0,1\right]}{k=0,\ldots,2n}\nonumber \\
  &  & \cup\left\{ \left[0,0\right],\left[1,1\right]\right\} 
 \end{eqnarray}
 which are overlapping intervals with length\nb$1/n$ except the intervals
-near the ends. We can define an interval-valued function\nb$\widehat{\iota}_{n}:\left[0,1\right]\rightarrow\widehat{\mathscr{I}}_{n}$
-by the following:
+near the ends. 
+
+A totally mixed state induces a QIVPM over the intervals above as
+follows. We first define a map $\widehat{\iota}_{n}$ from the interval
+$[0,1]$ to the collection of intervals above as follows:
 \begin{itemize}
 \item when $x=0$ or $x=1$, $\widehat{\iota}_{n}\left(x\right)=\left[x,x\right]$;
 \item when $0<x<1$, $\widehat{\iota}_{n}\left(x\right)=\left[\frac{k-1}{2n},\frac{k+1}{2n}\right]\cap\left[0,1\right]$,
@@ -748,26 +754,44 @@ where $k$ is defined by one of the following:
 \item $2\nmid k$ and $k-0.5<2nx<k+0.5$.
 \end{itemize}
 \end{itemize}
-Then, for any totally mixed state\nb$\rho$ on a $d$-dimensional
-Hilbert space, $\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}}$
-is a QIVPM, and we have
+
+It is now not difficult to verify that for any totally mixed
+state\nb$\rho$ on a $d$-dimensional Hilbert space,
+$\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}}$ is a
+QIVPM. Furthemore, we have:
 \begin{itemize}
 \item If $\left\Vert \rho-\rho'\right\Vert \le1/\left(4dn\right)$, $\rho'\in\coreBorn\left(\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}},\events\right)$.
 \item If $\rho'\in\coreBorn\left(\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}},\events\right)$,
 then $\left\Vert \rho-\rho'\right\Vert \le1/n$.
 \end{itemize}
-In summary, the states consistent with
+In other words, the states consistent with this QIVMP
 $\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}}$ will be closer and
-closer to $\rho$ as $n$ goes to infinity. In a limit case when the
-intervals are infinitely precise, i.e.,
+closer to $\rho$ as $n$ goes to infinity. In the limiting case when
+the intervals are infinitely precise, i.e.,
 $\set{\left[x,x\right]}{x\in\left[0,1\right]}$, any QIVPM can be
-recast as an real-valued one and has a unique state consistent with it
-on every projector when $d\ge3$.
+recast as an real-valued one and will have a unique state consistent
+with it on every projector when $d\ge3$.
 
-In general, this kind of inconsistency can be reduced if we increase
-the measurement resource, that is, using finer intervals. We conjecture
-by using finer and finer intervals, it would be more and more likely
-that there is a state consistent with a QIVPM on all projectors\nb$\events$.
+% In general, this kind of inconsistency can be reduced if we increase
+% the measurement resource, that is, using finer intervals. We conjecture
+% by using finer and finer intervals, it would be more and more likely
+% that there is a state consistent with a QIVPM on all projectors\nb$\events$.
+% We can define an interval-valued function\nb
+% :\left[0,1\right]\rightarrow\widehat{\mathscr{I}}_{n}$
+% by the following:
+
+% if a QIVPM\nb$\bar{\mu}$ is induced by a totally mixed
+% state\nb$\rho$ nicely, then whether another density
+% matrix\nb$\rho'\in\coreBorn\left(\bar{\mu},\events'\right)$ can be
+% estimated by $\left\Vert \rho-\rho'\right\Vert
+% $, where a
+% state\nb$\rho$ is called totally mixed if
+% $0<\mu_{\rho}^{\mathrm{B}}\left(P\right)<1$ for any
+% $P\in\events\backslash\left\{ \mathbb{0},\mathbb{1}\right\}
+% $, and the the norm of a matrix\nb$A$ is defined by $\left\Vert
+%   A\right\Vert
+% =\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{A}{\psi}\right|$\nb\citep{544199}.
+% For example, consider the intervals
 
 % %%%
 % \subsection{Kochen-Specker}
