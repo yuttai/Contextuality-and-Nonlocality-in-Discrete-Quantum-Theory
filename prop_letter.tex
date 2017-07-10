@@ -57,7 +57,7 @@ showkeys, longbibliography, amsmath, amssymb]{revtex4-1}
 
 \begin{document}
 
-\title{Interval-Valued Quantum Probabilities: Contextuality and the Born Rule}
+\title{Quantum Interval-Valued Probability: Contextuality and the Born Rule}
 
 \author{Yu-Tsung Tai}
 \affiliation{Department of Mathematics, Indiana University, Bloomington, Indiana 47405,
@@ -97,6 +97,8 @@ and these non-Born interval-valued probability measures disappear.
 measurement and non-commutativity when formulating quantum theory.
 Also, the Born rule may not be as nature as we used to believe in
 the world of finite resource.
+
+
 \end{description}
 \end{abstract}
 
@@ -112,10 +114,10 @@ discrete quantum theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-In this letter, we extend our previous work on the foundations of
+In this paper, we extend our previous work on the foundations of
 computability in quantum mechanics by exploring the application of
 interval-valued probability measures (IVPM) to achieving a coherent
-formulation of finite-resource quantum mechanics.
+formulation of finite-resource quantum mechanics.  In particular, we quantify the concept of imperfect quantum measurement and its impact on the interpretation of the Kochen-Specker and Gleason theorems and their implications for the foundations of quantum mechanics. 
 
 There are long-standing debates in the foundations of quantum
 mechanics regarding the tension between finite precision measurement
@@ -123,20 +125,48 @@ and contextuality\nb\cite{BarrettKent2004,Appleby_2005}.  For example,
 Meyer\nb\cite{PhysRevLett.83.3751} and Mermin\nb\cite{Mermin1999} disagree
 on whether finite-precision measurements invalidate the Kochen-Specker
 theorem\nb\cite{kochenspecker1967,peres1995quantum}, and discussion
-continues on whether contextuality is experimentally
-verifiable\nb\cite{Spekkens2005,GuehneKleinmannCabelloEtAl2010,MazurekPuseyKunjwalEtAl2016}. The
-fundamental question is how to make mathematical theories of quantum
-mechanics that are intrinsically, rather than only implicitly,
-consistent with the resources available for the realistic accuracy of
-an actual measurement.
+has continued on whether contextuality is consistent with  experimental outcomes\nb\cite{Spekkens2005,GuehneKleinmannCabelloEtAl2010,MazurekPuseyKunjwalEtAl2016}. The
+fundamental question is how to make mathematical theories of quantum mechanics that are intrinsically, rather than only implicitly, consistent with the resources available for the realistic accuracy of an actual measurement.
+
+Here we develop a mathematical framework that includes the uncertainties of finite precision and imperfections in the quantum measurement process.  Our first observation is that essential objectives of our program to
+achieve a computable theory of quantum mechanics and finite-resource
+measurement, attempted previously with computable number
+systems\nb\cite{usat,geometry2013apsrev4,DQT2014}, may be achievable by
+extending classical interval-valued probability
+measures\nb\cite{JamisonLodwick2004} to the quantum domain.  We begin by axiomatizing a quantum interval-valued probability measure (QIVPM) framework, which will provide a quantitative description of the impact of finite precision on the foundations of quantum mechanics.
+
+% exploiting the fact that a density matrix approach can be
+% considered as equivalent to a description of quantum states
+% using probability  measures\nb\cite{10.2307/2308516,Varadarajan2008}. %Mackey=10.2307
+
+In particular, the effect of finite precision on contextuality, and the Kochen-Specker theorem, is shown to have a resolution in terms of the quantum interval valued probability measure framework that we introduce.  To proceed, we use a formulation of the Mermin square that uses the
+expectation value of an observable with respect
+to a QIVPM can be defined to be consistent with the constraints on the
+expectation value of the same observable expected from continuous
+quantum mechanics.  We then examine Gleason's
+theorem\nb\cite{gleason1957,Redhead1987-REDINA,peres1995quantum} and the
+Kochen-Specker theorem in the context of QIVPM's, and conclude that
+they correspond to the limit of an infinite number of precise
+intervals, and the set of cryptodeterministic intervals (the set\nb$\{\imposs,\necess\}$),
+respectively.
+
+
+
+
+\begin{itemize}
+\item Develop a framework that includes the uncertainties of finite precision in the quantum measurement process.
+\item Provide a quantitative description of the impact of finite precision on the foundations of quantum mechanics.
+\item In particular, the effect of finite precision on contextuality is shown to have a resolution in terms of the quantum interval valued probability measure framework that we introduce.
+\item A key aspect of quantum measurement is its stochastic nature as reflected in Born's rule.  Gleason's theorem establishes the existence of a unique state (in Hilbert spaces of dimension $\ge 3$), the probabilities of whose outcomes are computed from Born's rule assuming infinite precision.  Then it is legitimate to question what happens when infinite precision cannot be achieved.
+\item 
+\end{itemize}
 
 Our first observation is that essential objectives of our program to
 achieve a computable theory of quantum mechanics and finite-resource
 measurement, attempted previously with computable number
 systems\nb\cite{usat,geometry2013apsrev4,DQT2014}, may be achievable by
 extending classical interval-valued probability
-measures\nb\cite{JamisonLodwick2004} to the quantum domain.  We begin by
-axiomatizing a quantum interval-valued probability measure (QIVPM)
+measures\nb\cite{JamisonLodwick2004} to the quantum domain.  We begin by axiomatizing a quantum interval-valued probability measure (QIVPM)
 framework exploiting the fact that a density matrix approach can be
 considered as equivalent to a description of quantum states using
 probability measures\nb\cite{10.2307/2308516,Varadarajan2008}. %Mackey=10.2307
@@ -162,6 +192,7 @@ Can one incorporate in a rigorous mathematical framework the idea of
 finite precision measurement? Yes QIVPM. Now what is the fate of the 
 foundational theorems of QM when this framework is applied?
 
+The paper is organized as follows.   In Sec.\ \ref{sec:fuzzy} we begin by introducing the foundations of quantum probability space and fuzzy measurement.  We then move on to introduce the concept of quantum interval valued probability in Sec.\ \ref{sec:Interval-Uncertainty}.  This QIVPM will provide the mathematical framework to quantify the impact of finite precision measurements on quantum mechanics.  For instance, in Sec.\ \ref{sec:Kochen-Specker},  we quantify the domain of validity of a  contextual measurement, thus addressing the conditions under which the Kochen-Specker theorem applies.  This provides a way of resolving the Meyer-Mermin debate, which is the main result of our Theorem \ref{cor:Kochen-Specker-IVPM}.  In Sec.\ \ref{sec:Gleason}, we study Gleason's theorem in the context of imprecise measurements, concluding that QIVPM provides a framework with quantitative bounds in which Gleason's theorem, while formally invalid, holds asymptotically.  Finally, we present our conclusions in Sec.~\ref{sec:Conclusion}.
 
 % Textbook quantum mechanics asserts that the probability of a
 % measurement can be computed from wave function of the system and the
@@ -210,7 +241,7 @@ foundational theorems of QM when this framework is applied?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fuzzy Measurements}
- 
+ \label{sec:fuzzy}
 A \emph{probability space} is a mathematical abstraction specifying
 the necessary conditions for reasoning coherently about collections of
 uncertain events\nb\cite{Kolmogorov1950}. In the quantum case, the
@@ -336,7 +367,7 @@ by moving to \emph{interval-valued probability measures}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Intervals of Uncertainty}
-  
+  \label{sec:Interval-Uncertainty}
 We will start by reviewing IVPMs in the classical setting and then
 propose our quantum generalization. In the classical setting, there
 are several proposals for ``imprecise
@@ -507,6 +538,7 @@ has no prior knowledge.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Kochen-Specker} 
+  \label{sec:Kochen-Specker}
   
 Our first result is that a QIVPM cannot be cryptodeterministic in the
 sense of Peres\nb\cite{PeresRon1988,peres1995quantum}. We will adapt
@@ -660,7 +692,7 @@ which implies $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\imposs$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Gleason}
-
+  \label{sec:Gleason}
 In the classical setting, measurements done with limited resources and
 poor precision may not uniquely identify the true state of a
 system. However, there is always at least one state that is consistent
@@ -837,26 +869,26 @@ with it on every projector when $d\ge3$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
-
-Foundational concepts in quantum mechanics, such as Gleason and
-Kochen-Specker theorems, rely in a very subtle way on the use of
+  \label{sec:Conclusion}
+  
+Foundational concepts in quantum mechanics, such as the Kochen-Specker and
+Gleason theorems, rely in a very subtle way on the use of
 unbounded resources. By assuming infinitely precise measurements,
-these two insightful theorems underline two fundamental aspects of
-quantum mechanics. On the one hand, Gleason's result establishes a
+these two insightful theorems underlie two fundamental aspects of
+quantum mechanics. On the one hand, Kochen-Specker's result reveals a distinctive aspect of physical reality, the fact that it is contextual, and on the other hand, Gleason's theorem establishes a
 relationship between quantum states and probabilities uniquely defined
-by Born's rule, on the other, Kochen-Specker unveils a distinctive
-aspect of physical reality, the fact that it is contextual.  Our goal
+by Born's rule.  Our goal
 in this paper has been to analyze the physical consequences of a
 mathematical framework that allows for finite precision measurements
-by introducing the concept of quantum interval-valued probability. The
-latter incorporates uncertainty in the measurement results by defining
+by introducing the concept of quantum interval-valued probability. This
+framework incorporates uncertainty in the measurement results by defining
 fuzzy probability measures, and includes standard quantum measurement
 as the particular instance of sharp, infinitely precise, intervals.
 In addition, we showed how these two theorems emerge as limiting cases
-of this very same framework, thus connecting two seemingly unrelated
-aspects of quantum physics. Most importantly, we concluded that
-arbitrary finite precision measurement conditions nullify the main
-tenets of both theorems.
+of this same framework, thus connecting two seemingly unrelated
+aspects of quantum physics. We noted that
+{\it arbitrary\/} finite precision measurement conditions can nullify the main
+tenets of both theorems. However, by carefully specifying experimental uncertainties, we were able to establish rigorous bounds on the validity of these two theorems. Therefore, we have established a context in which infinite precision quantum mechanical theories can be reconciled with finite precision quantum mechanical measurements, and have provided a possible resolution of the Meyer-Mermin debate on the impact of finite precision on the Kochen-Specker theorem \cite{PhysRevLett.83.3751,Mermin1999}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
