@@ -605,8 +605,8 @@ The question now is what happens if we relax the perfect measurement
 assumption that the intervals are precisely $[0,0]$ and
 $[1,1]$. We need to examine what happens if
 measurement imperfections occasionally cause an
-ideally impossible event to be detected or an ideally certain event to
-be not be detected. Mermin argues in this case that:
+ideally impossible event to be detected or an ideally certain event
+not to be detected. Mermin argues in this case that:
 \begin{quote}
   \ldots although the outcomes deduced from such imperfect
   measurements will occasionally differ dramatically from those
@@ -616,10 +616,11 @@ be not be detected. Mermin argues in this case that:
 \end{quote}
 
 We can formally test this hypothesis by considering the notion of
-$\delta$-deterministic QIVPM below. 
+a $\delta$-deterministic QIVPM below. 
 
-\begin{definition}\label{def:delta-deterministic}A QIVPM\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$
-  is called $\delta$-deterministic if either
+\begin{definition}\label{def:delta-deterministic}We define
+  QIVPM\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$
+  as $\delta$-deterministic if either
   $\bar{\mu}\left(P\right)\subseteq\left[0,\delta\right]$ or
   $\bar{\mu}\left(P\right)\subseteq\left[1-\delta,1\right]$ for any
   $P\in\events$.\end{definition}
@@ -628,9 +629,9 @@ A cryptodeterministic QIVPM is $0$-deterministic.  As $\delta$ gets
 bigger, the QIVPM allows more and more indeterminate behavior. A
 $\frac{1}{3}$-deterministic QIVPM can be given by
 $\bar{\mu}\left(P\right)=\left[x/3,x/3\right]$, where $P$ projects
-onto a $x$-dimensional subspace in a three-dimensional Hilbert space.
+onto an $x$-dimensional subspace of a three-dimensional Hilbert space.
 
-We now prove that for small enough $\delta$, the Kochen-Specker is
+We now prove that for small enough $\delta$, the Kochen-Specker result is
 still valid, i.e., if the measurement imperfections are small enough,
 we cannot nullify the Kochen-Specker theorem as
 Meyer~\cite{PhysRevLett.83.3751} argued. 
@@ -654,8 +655,8 @@ However, since we know that there is no cryptodeterministic QIVPM,
 $\bar{\mu}^{\textrm{D}}$ cannot exist and hence $\bar{\mu}$ cannot
 exist.
 
-It remains to verify $\bar{\mu}^{\textrm{D}}$ is a cryptodeterministic
-QIVPM. The main part of that verification is to check:
+It remains to verify that $\bar{\mu}^{\textrm{D}}$ is a cryptodeterministic
+QIVPM by checking the properties of
 \begin{subequations}
 \begin{eqnarray}
  &  & \bar{\mu}^{\textrm{D}}\left(P_{0}\right)=\bar{\mu}^{\textrm{D}}\left(P_{1}\right)=\imposs\\
@@ -670,7 +671,8 @@ Since $\delta<\frac{1}{3}\Rightarrow2\delta<1-\delta$, $\bar{\mu}\left(P_{0}+P_{
 cannot be a subset of $\left[1-\delta,1\right]$, but $\bar{\mu}\left(P_{0}+P_{1}\right)$
 is a subset of either $\left[0,\delta\right]$ or $\left[1-\delta,1\right]$.
 Hence, $\bar{\mu}\left(P_{0}+P_{1}\right)$ must be a subset of $\left[0,\delta\right]$,
-which implies $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\imposs$. 
+which implies $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\imposs$. Thus the
+theorem holds when $\delta<\frac{1}{3}$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -690,15 +692,15 @@ measurements~\cite{Shapley1971,GilboaSchmeidler1994,Grabisch2016}.
 
 In the idealized situation of real-valued quantum probability
 measures, Gleason's theorem asserts that every measure is determined
-by a unique mixed state. The theorem above is weaker however: it
+by a unique mixed state. The theorem above is weaker: it
 asserts that, for each classical sub-event subspace, a QIVPM must be
 consistent with \emph{some} state. But the states consistent with
-different subspaces may be incomparable as the following example
+different subspaces may be incomparable, as the following example
 shows.
 
 \begin{example}\label{ex:three-dimensional-three-value}
-  Given a three dimensional Hilbert space with an orthonormal basis
-  $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.  Let
+  Given a three-dimensional Hilbert space with an orthonormal basis
+  $\left\{ \ket{0},\ket{1},\ket{2}\right\} $,  let
   $\mathscr{I}_{1}=\left\{ \necess,\imposs,\unknown\right\} $,
   $\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$,
   $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$, and
@@ -732,7 +734,8 @@ Therefore,
 \coreBorn\left(\bar{\mu}_{3},\events\right)\subseteq\coreBorn\left(\bar{\mu}_{3},S_{1}\right)\cap\coreBorn\left(\bar{\mu}_{3},S_{2}\right)=\emptyset
 \end{equation}
 Thus, there is no state that is consistent with the QIVPM on all
-projectors\nb$\events$ invalidating Gleason's theorem.
+projectors\nb$\events$, so Gleason's theorem does not hold for at least this
+example.
 \end{example}
 
 Although Gleason's theorem does not hold for every QIVPM, we can show
@@ -755,19 +758,19 @@ consider the following collection of intervals:
  &  & \cup\left\{ \left[0,0\right],\left[1,1\right]\right\} 
 \end{eqnarray}
 which are overlapping intervals with length\nb$1/n$ except the intervals
-near the ends. 
+at each end. 
 
 A totally mixed state induces a QIVPM over the intervals above as
 follows. We first define a map $\widehat{\iota}_{n}$ from the interval
-$[0,1]$ to the collection of intervals above as follows:
+$[0,1]$ to the collection of intervals as:
 \begin{itemize}
 \item when $x=0$ or $x=1$, $\widehat{\iota}_{n}\left(x\right)=\left[x,x\right]$;
 \item when $0<x<1$, $\widehat{\iota}_{n}\left(x\right)=\left[\frac{k-1}{2n},\frac{k+1}{2n}\right]\cap\left[0,1\right]$,
 where $k$ is defined by one of the following:
-\begin{itemize}
-\item $2\mid k$ and $k-0.5\le2nx\le k+0.5$;
-\item $2\nmid k$ and $k-0.5<2nx<k+0.5$.
-\end{itemize}
+\begin{enumerate}
+\item $k$ even and $k-0.5\le2nx\le k+0.5$;
+\item $k$ odd and $k-0.5<2nx<k+0.5$.
+\end{enumerate}
 \end{itemize}
 
 It is now not difficult to verify that for any totally mixed
@@ -780,12 +783,12 @@ $\rho'\in\coreBorn\left(\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}},\events\
 \item If $\rho'\in\coreBorn\left(\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}},\events\right)$,
 then $\left\Vert \rho-\rho'\right\Vert \le1/n$.
 \end{itemize}
-In other words, the states consistent with this QIVMP
-$\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}}$ will be closer and
+In other words, for the states consistent with this QIVPM,
+$\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}}$ will become closer and
 closer to $\rho$ as $n$ goes to infinity. In the limiting case when
 the intervals are infinitely precise, i.e.,
 $\set{\left[x,x\right]}{x\in\left[0,1\right]}$, any QIVPM can be
-recast as an real-valued one and will have a unique state consistent
+recast as a real-valued one and will have a unique state consistent
 with it on every projector when $d\ge3$.
 
 % In general, this kind of inconsistency can be reduced if we increase
