@@ -160,13 +160,9 @@ Then it is legitimate to question what happens when infinite precision
 cannot be achieved. While a QIVPM\nb$\bar{\mu}$ might not be consistent
 with a unique state\nb$\rho'$ on all projectors on a Hilbert space,
 if $\bar{\mu}$ is induced by a mixed state\nb$\rho$, $\rho'$ would
-close to $\rho$ when we shirk the length of intervals under some
+close to $\rho$ when we shrink the length of intervals under some
 good conditions, and recover original Gleason's theorem in the limiting
-case. Since Gleason's theorem cannot apply on QIVPMs in general, it
-thus remains possible that a refinement of the basic definition of
-a quantum state or the computation of probability from a state may
-be required when we rigorously consider the implications of finite
-precision measurement.
+case.
 
 The paper is organized as follows.   In Sec.\ \ref{sec:fuzzy} we begin by introducing the foundations of quantum probability space and fuzzy measurement.  We then move on to introduce the concept of quantum interval valued probability in Sec.\ \ref{sec:Interval-Uncertainty}.  This QIVPM will provide the mathematical framework to quantify the impact of finite precision measurements on quantum mechanics.  For instance, in Sec.\ \ref{sec:Kochen-Specker},  we quantify the domain of validity of a  contextual measurement, thus addressing the conditions under which the Kochen-Specker theorem applies.  This provides a way of resolving the Meyer-Mermin debate, which is the main result of our Theorem \ref{cor:Kochen-Specker-IVPM}.  In Sec.\ \ref{sec:Gleason}, we study Gleason's theorem in the context of imprecise measurements, concluding that QIVPM provides a framework with quantitative bounds in which Gleason's theorem, while formally invalid, holds asymptotically.  Finally, we present our conclusions in Sec.~\ref{sec:Conclusion}.
 
@@ -225,16 +221,17 @@ events of interest are specified by \emph{projection operators}
 $P$. These include the empty projection\nb$\mathbb{0}$, the identity
 projection\nb$\mathbb{1}$, projections of the form $\proj{\psi}$ where
 $\ket{\psi}$ is a pure quantum state (an element of a Hilbert space),
-sums of \emph{orthogonal} projections $P_0$ and $P_1$ such
+sums of \emph{orthogonal} projections $P_0$ and $P_1$ with
 $P_0P_1=\mathbb{0}$, and products of \emph{commuting} projections
-$P_0$ and $P_1$ such $P_0P_1=P_1P_0$. In a well-defined quantum
+$P_0$ and $P_1$ with $P_0P_1=P_1P_0$. In a well-defined quantum
 probability
 space\nb\cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010},
-each event $P_{i}$ is mapped using a probability measure
-$\mu : P \rightarrow [0,1]$ to a probability $\mu(P_{i})$ subject to
+each event $P_{i}$ is mapped to a probability using a probability measure
+$\mu : P \rightarrow [0,1]$ to a probability $\mu(P_{i})$. We impose
 the following constraints: $\mu(\mathbb{0})=0$, $\mu(\mathbb{1})=1$,
 $\mu\left(\mathbb{1}-P\right)=1-\mu\left(P\right)$, and for each pair
-of \emph{orthogonal} projections $P_{0}$ and $P_{1}$, we have:
+of \emph{orthogonal} projections $P_{0}$ and $P_{1}$, standard probability
+measures obey
 \begin{equation}
 {\mu}\left(P_{0}+P_{1}\right)={\mu}\left(P_{0}\right)+{\mu}\left(P_{1}\right)\,.\label{eq:QuantumProbability-Addition}
 \end{equation}
@@ -261,9 +258,10 @@ small imperfections and inaccuracies in measuring devices, an
 experimenter might only be able to determine that the probability of
 the event $\proj{0}$ is in the range $[0.49,0.51]$ instead of
 precisely 0.5. The spread in this range depends on the amount of
-resources (time, energy, money, etc) that are devoted to the
-experiment. In the classical setting, this ``fuzziness'' is formalized
-by moving to \emph{interval-valued probability measures}.
+resources (time, energy, money, etc.) that are devoted to the
+experiment. In the classical setting, this ``fuzziness'' can be formalized
+by moving to \emph{interval-valued probability measures}, which we explore in
+the next section, along with our proposed extension to the quantum domain.
 
 % In conventional quantum theory (CQT), when we measure a property
 % $\mathbf{O}$ of a physical system whose state is represented by a
@@ -350,14 +348,14 @@ are several proposals for ``imprecise
 probabilities''~\citep{Dempster1967,Shafer1976,GilboaSchmeidler1994,Marinacci1999,Weichselberger2000,JamisonLodwick2004,HuberRonchetti2009,Grabisch2016}.
 Although these proposals differ in some details, they all share the
 fact that the probability $\mu(E)$ of an event~$E$ is generalized from
-a single real number to an interval of certainty $[\ell,r]$
+a single real number to an interval\nb$[\ell,r]$
 where\nb$\ell$ intuitively corresponds to the strength of evidence for
-the event and~$r$ corresponds to the strength of evidence against the
+the event and~$1-r$ corresponds to the strength of evidence against the
 event. The collection of intervals used in the definition of a
-probability measure must satisfy certain properties which we explain
+probability measure must satisfy certain properties that we explain
 next.
 
-First for each interval $[\ell,r]$ we have the natural constraint
+First, for each interval $[\ell,r]$ we have the natural constraint
 $0 \leq \ell \leq r \leq 1$ that guarantees that every element of the
 interval can be interpreted as a conventional probability. We also
 include $\imposs=[0,0]$ and $\necess=[1,1]$ as limiting intervals to
@@ -365,17 +363,17 @@ refer to the probability of impossible events (e.g., the null event)
 and certain events (e.g., the event covering the entire sample space).
 For each interval $[\ell,r]$, we also need the interval
 $[1-r,1-\ell]$ so that if one interval refers to the probability of an
-event, the other refers to the probability of the complement
-event. For example, if we discover as a result of an experiment that
+event, the other refers to the probability of the event's complement.
+For example, if we discover as a result of an experiment that
 $\mu(E) = [0.2,0.3]$ for some event~$E$, we may conclude that
-$\mu(\overline{E}) = [0.7,0.8]$ for the complement event
+$\mu(\overline{E}) = [0.7,0.8]$ for the complementary event
 $\overline{E}$. In addition to these simple conditions, there are some
 subtle conditions on how intervals are combined, which we discuss
 next.
 
-Let $E_1$ and $E_2$ be to disjoint events with probabilities
+Let $E_1$ and $E_2$ be two disjoint events with probabilities
 $\mu(E_1)=[\ell_1,r_1]$ and $\mu(E_2)=[\ell_2,r_2]$. A first attempt
-at calculating the probability of the combined event that either $E_1$
+at calculating the probability of the combined event that \emph{either} $E_1$
 or $E_2$ occurs might be $\mu(E_1\cup E_2) = [\ell_1+\ell_2,r_1+r_2]$. In
 some cases, this is indeed a sensible definition. For example, if
 $\mu(E_1)=[0.1,0.2]$ and $\mu(E_2)=[0.3,0.4]$ we get
@@ -389,7 +387,7 @@ probability interval should be $[1,1]$ which is sharper than
 $[0.9,1.1]$. The problem is that the two intervals are correlated:
 there is more information in the combined event than in each event
 separately. In our example, even though the true probability of
-$\mu(E)$ can be in anywhere in the range $[0.2,0.3]$ and the true
+$\mu(E)$ can be anywhere in the range $[0.2,0.3]$ and the true
 probability of $\mu(\overline{E})$ can be in anywhere in the range
 $[0.7,0.8]$, the values are not independent. Any value of
 $\mu(E) \leq 0.25$ will force $\mu(\overline{E})\geq 0.75$. To account
@@ -403,8 +401,8 @@ $\mu(E\cup\overline{E})$ to always be $[1,1]$ irrespective of the
 particular assignments of $\mu(E)$ or $\mu(\overline{E})$. 
 
 When combining non-disjoint events, there is a further subtlety whose
-resolution will give the most general and final condition. For
-general, non-necessarily disjoint events $E_1$ and $E_2$, we have:
+resolution will give us one final general condition. For
+general, not necessarily disjoint, events $E_1$ and $E_2$, we have:
 \begin{equation}
 \mu(E_1\cup E_2) + \mu(E_1\cap E_2) \subseteq \mu(E_1) + \mu(E_2)
 \label{eq:classicalconvex}
@@ -419,59 +417,64 @@ $\mu(E_1\cap E_2) = 0$.
 
 We now have the necessary ingredients to define QIVPMs as a
 generalization of both classical IVPMs and conventional quantum
-probability measures. More precisely the quantum IVPM will reduce to
+probability measures. We will assume that the quantum IVPM will reduce to
 the classical IVPM when the space of quantum events is restricted to
 mutually commuting sub-events.
 
 \begin{definition}[QIVPM]
-  Given a collection of intervals $\mathscr{I}$ including
-  $\imposs=[0,0]$ and $\necess=[1,1]$ and with addition and scalar
+  Assume a collection of intervals $\mathscr{I}$ including
+  $\imposs=[0,0]$ and $\necess=[1,1]$ with addition and scalar
   multiplication defined as follows:
   \begin{subequations}\label{eq:interval-operations}
   \begin{eqnarray}
    &  & [\ell_{1},r_{1}]+[\ell_{2},r_{2}]=[\ell_{1}+\ell_{2},r_{1}+r_{2}]\textrm{ and}\\
    &  & x[\ell,r]=\begin{cases}
   [x\ell,xr] & \textrm{for }x\ge0\,;\\{}
-  [xr,x\ell] & \textrm{for }x\le0\,,
+  [xr,x\ell] & \textrm{for }x\le0\,.
   \end{cases}
   \end{eqnarray}
   \end{subequations}
-  a QIVPM $\bar{\mu}$ is an assignment of an interval to each event
-  (projection operator) subject to the following constraints:
-  $\bar{\mu}(\mathbb{0})=\left[0,0\right]$,
-  $\bar{\mu}(\mathbb{1})=\left[1,1\right]$,
-  $\bar{\mu}\left(\mathbb{1}-P\right)=\left[1,1\right]-\bar{\mu}\left(P\right)$,
-  and for each pair of \emph{commuting} projections $P_0$ and $P_1$,
-  we have:
+  Then we take a QIVPM\nb$\bar{\mu}$ to be an assignment of an interval to each
+  event (projection operator\nb$P$) subject to the following constraints:
+  \begin{subequations}\label{eq:QIVPM-constraints}
+  \begin{eqnarray}
+   &  & \bar{\mu}(\mathbb{0})=\left[0,0\right]\,,\\
+   &  & \bar{\mu}(\mathbb{1})=\left[1,1\right]\,,\\
+   &  & \bar{\mu}\left(\mathbb{1}-P\right)=\left[1,1\right]-\bar{\mu}\left(P\right)\,,
+  \end{eqnarray}
+  \end{subequations}
+  and satisfying for each pair of \emph{commuting} projections $P_0$ and $P_1$,
+  ($P_0P_1=P_1P_0$)
 \begin{equation}
-\bar{\mu}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)
+\bar{\mu}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\,.
 \label{eq:QuantumInterval-valuedProbability-Inclusion}
 \end{equation}
 \end{definition}
-The first three constraints are the direct counterpart of the
-corresponding ones for conventional probability measures. With the
-understanding that the union of classical sets $E_1\cup E_2$ is replaced
-by $P_0+P_1-P_0P_1$ in the case of projection operators~\cite{Griffiths2003}, the last
-condition, Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion}), is
+The first three constraints\nb(\ref{eq:QIVPM-constraints}) are the direct
+counterpart of the corresponding ones for conventional interval probability
+measures.
+With the understanding that the union of classical sets $E_1\cup E_2$ is replaced
+by $P_0+P_1-P_0P_1$ in the case of quantum projection
+operators~\cite{Griffiths2003}, the last condition, Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion}), is
 a direct counterpart of Eq.~(\ref{eq:classicalconvex}).
 
 Contrary to the case with conventional quantum probability spaces,
 there is generally no unique state consistent with a QIVPM. Given
 observations done with finite resources, the probabilities become
-intervals, and we say a state\nb$\rho$ is consistent with $\bar{\mu}$ on
-a projector\nb$P$ if
+intervals, and we say a state\nb$\rho$ is consistent with the
+measure\nb$\bar{\mu}$ acting on a projector\nb$P$ if
 $\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)$, and
 denoted by
 $\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$,
 where $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\Tr\left(\rho P\right)$
 is the probability that the event\nb$P$ happens determined by the
 Born rule\nb\cite{Born1983,peres1995quantum,544199}.
-Moreover, $\rho\in\coreBorn\left(\bar{\mu},S\right)$ means~$\rho$ is
+$\rho\in\coreBorn\left(\bar{\mu},S\right)$ means~$\rho$ is
 consistent with $\bar{\mu}$ on every projector in $S$.
 
 Quantum IVPMs become classical IVPMs when the space of events includes
-only mutually commuting events, where $\events'\subseteq\events$
-is called a sub-event space if it satisfies the following conditions.
+only mutually commuting events. We define $\events'\subseteq\events$
+to be a sub-event space if it satisfies the following conditions.
 \begin{itemize}
 \item $\left\{ \mathbb{0},\mathbb{1}\right\} \subseteq\events'$.
 \item For any projection\nb$P\in\events'$, we have $\mathbb{1}-P\in\events'$. 
@@ -479,8 +482,8 @@ is called a sub-event space if it satisfies the following conditions.
   $P_1 \in \events'$, we have $(P_0 + P_1) \in \events'$. 
 \end{itemize}
 
-For example, assuming the three intervals \imposs, \necess, and
-$\unknown=\left[0,1\right]$, then:
+For example, assuming the three intervals $\imposs=\left[0,0\right]$,
+$\necess=\left[1,1\right]$, and $\unknown=\left[0,1\right]$, then:
 \begin{equation}
 \bar{\mu}_{1}\left(P\right)=\begin{cases}
 \necess\,, & \text{if }P=\mathbb{1}\text{ ;}\\
@@ -493,7 +496,7 @@ with no prior knowledge about the particular quantum system in
 question; any quantum state would be consistent with $\bar{\mu}_{1}$
 on any projectors. We have that
 $\events_{0}=\left\{ \mathbb{0},\proj{0},\proj{1},\mathbb{1}\right\} $
-is a commuting sub-event space. Restricting $\bar{\mu}_{1}$ on
+is a commuting sub-event space. Restricting $\bar{\mu}_{1}$ to
 $\events_{0}$, $\bar{\mu}_{1}|_{\events_{0}}$, gives a classical
 IVPM~$\bar{\mu}_{2}$:
 \begin{equation}
@@ -504,23 +507,24 @@ IVPM~$\bar{\mu}_{2}$:
 \end{equation}
 If we identify the density matrices\nb$\proj{0}$ and $\proj{1}$ as
 the head and the tail of a coin, respectively, then $\bar{\mu}_{2}$
-represents that an experimenter knows nothing about a coin before
-she tosses it. Moreover, for each $p\in\left[0,1\right]$, the mixed
+represents the situation in which that an experimenter knows nothing about a
+coin before she tosses it. Moreover, for each $p\in\left[0,1\right]$, the mixed
 state\nb$p\proj{0}+\left(1-p\right)\proj{1}$ represents a classical
-coin with probability\nb$p$ to get head, and $p\proj{0}+\left(1-p\right)\proj{1}$
-is consistent with $\bar{\mu}_{2}$ on $\events_{0}$ because any
-classical coin should be consistent with the situation where an experimenter
+coin with probability\nb$p$ to get heads, and
+$p\proj{0}+\left(1-p\right)\proj{1}$ is consistent with $\bar{\mu}_{2}$ on $\events_{0}$ because any
+classical coin should be consistent with the situation for which an experimenter
 has no prior knowledge.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Kochen-Specker} 
   \label{sec:Kochen-Specker}
   
-Our first result is that a QIVPM cannot be cryptodeterministic in the
-sense of Peres\nb\cite{PeresRon1988,peres1995quantum}. We will adapt
+Our first result is that a QIVPM is consistent with the inability to avoid
+uncertainty found in conventional infinite precise quantum
+mechanics\nb\cite{PeresRon1988,peres1995quantum}. We will adapt
 the proof of the Kochen-Specker theorem~\cite{kochenspecker1967,
   peres1995quantum,Redhead1987-REDINA,Griffiths2003} to show that it
-is, in general, impossible to just have the two intervals \imposs\ and
+is, in general, impossible to have just the two intervals \imposs\ and
 \necess: every QIVPM must be parameterized by a collection of
 intervals that includes at least one additional ``fuzzy'' interval and
 some events must be associated with such uncertain intervals. The
@@ -528,10 +532,10 @@ significance of this observation is that the uncertainty in the
 intervals is, in contrast to the classical case, \emph{a fundamental
   part of quantum theory}. There are in fact two sources of
 uncertainty: one due to the finite measurement resources and one due
-to complementarity which requires every quantum framework to be truly
+to complementarity, which requires every quantum framework to be truly
 probabilistic.
 
-We will proceed by assuming a cryptodeterministic QIVMP $\bar{\mu}$
+We will proceed by assuming a QIVMP $\bar{\mu}$
 and derive a contradiction using the following nine ``Mermin-Peres square''
 observables $\mathbf{O}_{ij}$\nb\cite{Mermin1990Simple,peres1995quantum}:
 \begin{center}
@@ -543,7 +547,7 @@ $\sigma_{x}\otimes\mathbb{1}$  & $\mathbb{1}\otimes\sigma_{x}$  & $\sigma_{x}\ot
 \hline 
 $\sigma_{x}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\sigma_{x}$  & $\sigma_{y}\otimes\sigma_{y}$ \tabularnewline
 \hline 
-\end{tabular}
+\end{tabular}\,,
 \par\end{center}
 
 \noindent The argument refers to the expectation value of these

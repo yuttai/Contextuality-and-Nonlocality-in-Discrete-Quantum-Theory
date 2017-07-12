@@ -14,7 +14,6 @@
 \usepackage{bbold}
 \usepackage{wesa}
 \usepackage{graphicx}
-\usepackage{verbatim}
 
 
 \theoremstyle{plain}
@@ -194,7 +193,7 @@ today
 \begin_layout Abstract
 We present a mathematical framework based on quantum interval-valued probability
  measures to study the effect of experimental imperfections and finite precision
- measurements on defining features of quantum mechanics such as contextuality
+ measurements on defining aspects of quantum mechanics such as contextuality
  and the Born rule.
  While foundational results such as the Kochen-Specker and Gleason theorems
  fail to hold in general in a world with limited resources, when we allow
@@ -226,9 +225,18 @@ status collapsed
 03.65.Ta, 03.67.-a, 02.50.Cw, 02.50.Le
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
 \begin_layout Keywords
 Finite precision measurement, the Born rule, Gleason's theorem, the Kochen-Speck
 er theorem, interval-valued probability measure, discrete quantum theory
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -255,8 +263,8 @@ Introduction
 
 \begin_layout Standard
 In this paper, we extend our previous work on the foundations of computability
- in quantum mechanics by exploring the application of interval-valued probabilit
-y measures (IVPM) to achieving a coherent formulation of finite-resource
+ in quantum physics by exploring the application of interval-valued probability
+ measures (IVPM) to achieving a coherent formulation of finite-resource
  quantum mechanics.
  In particular, we quantify the concept of imperfect quantum measurement
  and its impact on the interpretation of the Kochen-Specker and Gleason
@@ -285,7 +293,8 @@ key "BarrettKent2004,Appleby_2005"
 
 \end_inset
 
-.
+, which refers to the fact that the results of measuring compatible sets
+ of observables depend on whether they are measured together or separately.
  For example, Meyer
 \begin_inset ERT
 status collapsed
@@ -326,8 +335,8 @@ key "Mermin1999"
 
 \end_inset
 
- disagree on whether finite-precision measurements invalidate the Kochen-Specker
- theorem
+ disagree on whether finite-precision measurements invalidate the spirit
+ of the Kochen-Specker theorem
 \begin_inset ERT
 status collapsed
 
@@ -347,8 +356,21 @@ key "kochenspecker1967,peres1995quantum"
 
 \end_inset
 
-.
- In particular, the Kochen-Specker theorem is based on the two sphere
+, which is a mathematical statement about contextuality.
+ The Kochen-Specker theorem asserts that, in a Hilbert space of dimension
+ 
+\begin_inset Formula $d\ge3$
+\end_inset
+
+, it is impossible to associate definite measured values, 
+\begin_inset Formula $\mu(P_{i})=0$
+\end_inset
+
+ or 
+\begin_inset Formula $1$
+\end_inset
+
+, with every projection operator
 \begin_inset ERT
 status collapsed
 
@@ -362,28 +384,53 @@ nb
 \end_inset
 
 
-\begin_inset Formula $S^{2}$
+\begin_inset Formula $P_{i}$
 \end_inset
 
- cannot be colored by red and green such that any orthogonal basis has exactly
- one red vector.
- On the one hand, Meyer argued that the rational dense subset of 
-\begin_inset Formula $S^{2}$
+, in such a way that, if a set of commuting 
+\begin_inset Formula $P_{i}$
 \end_inset
 
-, 
-\begin_inset Formula $S^{2}\cap\mathbb{Q}^{3}$
+ satisfies 
+\begin_inset Formula $\sum_{i}P_{i}=1$
 \end_inset
 
-, is colorable, and we cannot distinguish 
-\begin_inset Formula $S^{2}$
+, then 
+\begin_inset Formula $\sum_{i}\mu(P_{i})=1$
 \end_inset
 
- and 
-\begin_inset Formula $S^{2}\cap\mathbb{Q}^{3}$
+.
+ In contrast, Meyer showed that one 
+\shape italic
+can
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
 \end_inset
 
- since finite precision measurement
+
+\shape default
+ assign definite values 
+\begin_inset Formula $0$
+\end_inset
+
+ or 
+\begin_inset Formula $1$
+\end_inset
+
+ to the measurement outcome 
+\begin_inset Formula $\mu(P_{i})$
+\end_inset
+
+ when the Hilbert space is defined over the field of rational numbers, therefore
+ nullifying the theorem
 \begin_inset ERT
 status collapsed
 
@@ -397,24 +444,31 @@ nb
 \end_inset
 
 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "PhysRevLett.83.3751,Szangolies2015"
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{PhysRevLett.83.3751}
+\end_layout
 
 \end_inset
 
 .
- On the another hand, Mermin argued any physical outcome must be a continuous
- function on the experimental configuration so that small experimental imperfect
-ion should not 
+ However, Mermin then argued that measurement outcomes must depend smoothly
+ on slight changes in the experimental configuration.
+ Mermin therefore claimed that the impact of Meyer's negative result is
+ 
 \begin_inset Quotes eld
 \end_inset
 
-nullify
+unsupportable
 \begin_inset Quotes erd
 \end_inset
 
- an idealized theorem
+
 \begin_inset ERT
 status collapsed
 
@@ -428,9 +482,15 @@ nb
 \end_inset
 
 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "Mermin1999,Szangolies2015"
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Mermin1999}
+\end_layout
 
 \end_inset
 
@@ -457,10 +517,10 @@ key "Spekkens2005,GuehneKleinmannCabelloEtAl2010,MazurekPuseyKunjwalEtAl2016"
 \end_inset
 
 .
- The fundamental question is how to make mathematical theories of quantum
- mechanics that are intrinsically, rather than only implicitly, consistent
- with the resources available for the realistic accuracy of an actual measuremen
-t.
+ A fundamental question is how to address this controversy by developing
+ mathematical theories of quantum mechanics that are intrinsically, rather
+ than only implicitly, consistent with the resources available for the realistic
+ accuracy of an actual measurement.
 \end_layout
 
 \begin_layout Standard
@@ -543,9 +603,15 @@ nb
 \end_inset
 
 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Born1983,peres1995quantum,544199"
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Born1983,peres1995quantum,544199}
+\end_layout
 
 \end_inset
 
@@ -570,9 +636,15 @@ nb
 \end_inset
 
 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "gleason1957,Redhead1987-REDINA,peres1995quantum"
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{gleason1957,Redhead1987-REDINA,peres1995quantum}
+\end_layout
 
 \end_inset
 
@@ -642,12 +714,8 @@ nb
 \begin_inset Formula $\rho$
 \end_inset
 
- when we shirk the length of intervals under some good conditions, and recover
- original Gleason's theorem in the limiting case.
- Since Gleason's theorem cannot apply on QIVPMs in general, it thus remains
- possible that a refinement of the basic definition of a quantum state or
- the computation of probability from a state may be required when we rigorously
- consider the implications of finite precision measurement.
+ when we shrink the length of intervals under some good conditions, and
+ recover original Gleason's theorem in the limiting case.
 \end_layout
 
 \begin_layout Standard
@@ -1521,7 +1589,7 @@ orthogonal
 \begin_inset Formula $P_{1}$
 \end_inset
 
- such 
+ with 
 \begin_inset Formula $P_{0}P_{1}=\mathbb{0}$
 \end_inset
 
@@ -1537,7 +1605,7 @@ commuting
 \begin_inset Formula $P_{1}$
 \end_inset
 
- such 
+ with 
 \begin_inset Formula $P_{0}P_{1}=P_{1}P_{0}$
 \end_inset
 
@@ -1566,7 +1634,7 @@ key "10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010"
 \begin_inset Formula $P_{i}$
 \end_inset
 
- is mapped using a probability measure 
+ is mapped to a probability using a probability measure 
 \begin_inset Formula $\mu:P\rightarrow[0,1]$
 \end_inset
 
@@ -1574,7 +1642,8 @@ key "10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010"
 \begin_inset Formula $\mu(P_{i})$
 \end_inset
 
- subject to the following constraints: 
+.
+ We impose the following constraints: 
 \begin_inset Formula $\mu(\mathbb{0})=0$
 \end_inset
 
@@ -1598,7 +1667,7 @@ orthogonal
 \begin_inset Formula $P_{1}$
 \end_inset
 
-, we have: 
+, standard probability measures obey 
 \begin_inset Formula 
 \begin{equation}
 {\mu}\left(P_{0}+P_{1}\right)={\mu}\left(P_{0}\right)+{\mu}\left(P_{1}\right)\,.\label{eq:QuantumProbability-Addition}
@@ -1691,7 +1760,7 @@ The above axioms describe a mathematical idealization involving infinitely
 
  instead of precisely 0.5.
  The spread in this range depends on the amount of resources (time, energy,
- money, etc) that are devoted to the experiment.
+ money, etc.) that are devoted to the experiment.
  In the classical setting, this 
 \begin_inset Quotes eld
 \end_inset
@@ -1700,11 +1769,12 @@ fuzziness
 \begin_inset Quotes erd
 \end_inset
 
- is formalized by moving to 
+ can be formalized by moving to 
 \emph on
 interval-valued probability measures
 \emph default
-.
+, which we explore in the next section, along with our proposed extension
+ to the quantum domain.
 \end_layout
 
 \begin_layout Standard
@@ -3321,7 +3391,20 @@ citep{Dempster1967,Shafer1976,GilboaSchmeidler1994,Marinacci1999,Weichselberger2
 \begin_inset Formula $E$
 \end_inset
 
- is generalized from a single real number to an interval of certainty 
+ is generalized from a single real number to an interval
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $[\ell,r]$
 \end_inset
 
@@ -3347,16 +3430,16 @@ nb
 \end_inset
 
 
-\begin_inset Formula $r$
+\begin_inset Formula $1-r$
 \end_inset
 
  corresponds to the strength of evidence against the event.
  The collection of intervals used in the definition of a probability measure
- must satisfy certain properties which we explain next.
+ must satisfy certain properties that we explain next.
 \end_layout
 
 \begin_layout Standard
-First for each interval 
+First, for each interval 
 \begin_inset Formula $[\ell,r]$
 \end_inset
 
@@ -3386,7 +3469,7 @@ First for each interval
 \end_inset
 
  so that if one interval refers to the probability of an event, the other
- refers to the probability of the complement event.
+ refers to the probability of the event's complement.
  For example, if we discover as a result of an experiment that 
 \begin_inset Formula $\mu(E)=[0.2,0.3]$
 \end_inset
@@ -3403,7 +3486,7 @@ First for each interval
 \begin_inset Formula $\mu(\overline{E})=[0.7,0.8]$
 \end_inset
 
- for the complement event 
+ for the complementary event 
 \begin_inset Formula $\overline{E}$
 \end_inset
 
@@ -3421,7 +3504,7 @@ Let
 \begin_inset Formula $E_{2}$
 \end_inset
 
- be to disjoint events with probabilities 
+ be two disjoint events with probabilities 
 \begin_inset Formula $\mu(E_{1})=[\ell_{1},r_{1}]$
 \end_inset
 
@@ -3431,7 +3514,11 @@ Let
 
 .
  A first attempt at calculating the probability of the combined event that
- either 
+ 
+\emph on
+either
+\emph default
+ 
 \begin_inset Formula $E_{1}$
 \end_inset
 
@@ -3505,7 +3592,7 @@ Let
 \begin_inset Formula $\mu(E)$
 \end_inset
 
- can be in anywhere in the range 
+ can be anywhere in the range 
 \begin_inset Formula $[0.2,0.3]$
 \end_inset
 
@@ -3567,8 +3654,8 @@ Let
 
 \begin_layout Standard
 When combining non-disjoint events, there is a further subtlety whose resolution
- will give the most general and final condition.
- For general, non-necessarily disjoint events 
+ will give us one final general condition.
+ For general, not necessarily disjoint, events 
 \begin_inset Formula $E_{1}$
 \end_inset
 
@@ -3629,8 +3716,8 @@ key "Shapley1971,GilboaSchmeidler1994,Marinacci1999,Grabisch2016"
 \begin_layout Standard
 We now have the necessary ingredients to define QIVPMs as a generalization
  of both classical IVPMs and conventional quantum probability measures.
- More precisely the quantum IVPM will reduce to the classical IVPM when
- the space of quantum events is restricted to mutually commuting sub-events.
+ We will assume that the quantum IVPM will reduce to the classical IVPM
+ when the space of quantum events is restricted to mutually commuting sub-events.
 \end_layout
 
 \begin_layout Standard
@@ -3657,7 +3744,7 @@ status collapsed
 
 \end_inset
 
- Given a collection of intervals 
+ Assume a collection of intervals 
 \begin_inset Formula $\mathscr{I}$
 \end_inset
 
@@ -3669,7 +3756,7 @@ status collapsed
 \begin_inset Formula $\necess=[1,1]$
 \end_inset
 
- and with addition and scalar multiplication defined as follows: 
+ with addition and scalar multiplication defined as follows: 
 \begin_inset ERT
 status collapsed
 
@@ -3695,7 +3782,7 @@ name "eq:interval-operations"
  &  & [\ell_{1},r_{1}]+[\ell_{2},r_{2}]=[\ell_{1}+\ell_{2},r_{1}+r_{2}]\textrm{ and}\\
  &  & x[\ell,r]=\begin{cases}
 [x\ell,xr] & \textrm{for }x\ge0\,;\\{}
-[xr,x\ell] & \textrm{for }x\le0\,,
+[xr,x\ell] & \textrm{for }x\le0\,.
 \end{cases}
 \end{eqnarray}
 
@@ -3714,24 +3801,84 @@ end{subequations}
 
 \end_inset
 
- a QIVPM 
+ Then we take a QIVPM
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
- is an assignment of an interval to each event (projection operator) subject
- to the following constraints: 
-\begin_inset Formula $\bar{\mu}(\mathbb{0})=\left[0,0\right]$
+ to be an assignment of an interval to each event (projection operator
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
 \end_inset
 
-, 
-\begin_inset Formula $\bar{\mu}(\mathbb{1})=\left[1,1\right]$
+
+\begin_inset Formula $P$
 \end_inset
 
-, 
-\begin_inset Formula $\bar{\mu}\left(\mathbb{1}-P\right)=\left[1,1\right]-\bar{\mu}\left(P\right)$
+) subject to the following constraints: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subequations}
+\end_layout
+
 \end_inset
 
-, and for each pair of 
+
+\begin_inset CommandInset label
+LatexCommand label
+name "eq:QIVPM-constraints"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{eqnarray}
+ &  & \bar{\mu}(\mathbb{0})=\left[0,0\right]\,,\\
+ &  & \bar{\mu}(\mathbb{1})=\left[1,1\right]\,,\\
+ &  & \bar{\mu}\left(\mathbb{1}-P\right)=\left[1,1\right]-\bar{\mu}\left(P\right)\,,
+\end{eqnarray}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subequations}
+\end_layout
+
+\end_inset
+
+ and satisfying for each pair of 
 \emph on
 commuting
 \emph default
@@ -3743,10 +3890,14 @@ commuting
 \begin_inset Formula $P_{1}$
 \end_inset
 
-, we have: 
+, (
+\begin_inset Formula $P_{0}P_{1}=P_{1}P_{0}$
+\end_inset
+
+) 
 \begin_inset Formula 
 \begin{equation}
-\bar{\mu}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\label{eq:QuantumInterval-valuedProbability-Inclusion}
+\bar{\mu}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\,.\label{eq:QuantumInterval-valuedProbability-Inclusion}
 \end{equation}
 
 \end_inset
@@ -3764,8 +3915,28 @@ end{definition}
 
 \end_inset
 
- The first three constraints are the direct counterpart of the corresponding
- ones for conventional probability measures.
+ The first three constraints
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:QIVPM-constraints"
+
+\end_inset
+
+) are the direct counterpart of the corresponding ones for conventional
+ interval probability measures.
  With the understanding that the union of classical sets 
 \begin_inset Formula $E_{1}\cup E_{2}$
 \end_inset
@@ -3774,7 +3945,7 @@ end{definition}
 \begin_inset Formula $P_{0}+P_{1}-P_{0}P_{1}$
 \end_inset
 
- in the case of projection operators
+ in the case of quantum projection operators
 \begin_inset space ~
 \end_inset
 
@@ -3831,11 +4002,24 @@ nb
 \begin_inset Formula $\rho$
 \end_inset
 
- is consistent with 
+ is consistent with the measure
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
- on a projector
+ acting on a projector
 \begin_inset ERT
 status collapsed
 
@@ -3902,7 +4086,7 @@ key "Born1983,peres1995quantum,544199"
 \end_inset
 
 .
- Moreover, 
+ 
 \begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},S\right)$
 \end_inset
 
@@ -3927,11 +4111,12 @@ key "Born1983,peres1995quantum,544199"
 
 \begin_layout Standard
 Quantum IVPMs become classical IVPMs when the space of events includes only
- mutually commuting events, where 
+ mutually commuting events.
+ We define 
 \begin_inset Formula $\events'\subseteq\events$
 \end_inset
 
- is called a sub-event space if it satisfies the following conditions.
+ to be a sub-event space if it satisfies the following conditions.
  
 \end_layout
 
@@ -4001,29 +4186,11 @@ nb
 
 \begin_layout Standard
 For example, assuming the three intervals 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-imposs
-\end_layout
-
+\begin_inset Formula $\imposs=\left[0,0\right]$
 \end_inset
 
 , 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-necess
-\end_layout
-
+\begin_inset Formula $\necess=\left[1,1\right]$
 \end_inset
 
 , and 
@@ -4059,7 +4226,7 @@ is a QIVPM.
 \begin_inset Formula $\bar{\mu}_{1}$
 \end_inset
 
- on 
+ to 
 \begin_inset Formula $\events_{0}$
 \end_inset
 
@@ -4111,8 +4278,8 @@ nb
 \begin_inset Formula $\bar{\mu}_{2}$
 \end_inset
 
- represents that an experimenter knows nothing about a coin before she tosses
- it.
+ represents the situation in which that an experimenter knows nothing about
+ a coin before she tosses it.
  Moreover, for each 
 \begin_inset Formula $p\in\left[0,1\right]$
 \end_inset
@@ -4151,7 +4318,7 @@ nb
 \begin_inset Formula $p$
 \end_inset
 
- to get head, and 
+ to get heads, and 
 \begin_inset Formula $p\proj{0}+\left(1-p\right)\proj{1}$
 \end_inset
 
@@ -4163,8 +4330,8 @@ nb
 \begin_inset Formula $\events_{0}$
 \end_inset
 
- because any classical coin should be consistent with the situation where
- an experimenter has no prior knowledge.
+ because any classical coin should be consistent with the situation for
+ which an experimenter has no prior knowledge.
 \end_layout
 
 \begin_layout Standard
@@ -4200,8 +4367,8 @@ name "sec:Kochen-Specker"
 \end_layout
 
 \begin_layout Standard
-Our first result is that a QIVPM cannot be cryptodeterministic in the sense
- of Peres
+Our first result is that a QIVPM is consistent with the inability to avoid
+ uncertainty found in conventional infinite precise quantum mechanics
 \begin_inset ERT
 status collapsed
 
@@ -4233,7 +4400,7 @@ key "kochenspecker1967,   peres1995quantum,Redhead1987-REDINA,Griffiths2003"
 
 \end_inset
 
- to show that it is, in general, impossible to just have the two intervals
+ to show that it is, in general, impossible to have just the two intervals
  
 \begin_inset ERT
 status collapsed
@@ -4281,12 +4448,12 @@ a fundamental part of quantum theory
 \emph default
 .
  There are in fact two sources of uncertainty: one due to the finite measurement
- resources and one due to complementarity which requires every quantum framework
- to be truly probabilistic.
+ resources and one due to complementarity, which requires every quantum
+ framework to be truly probabilistic.
 \end_layout
 
 \begin_layout Standard
-We will proceed by assuming a cryptodeterministic QIVMP 
+We will proceed by assuming a QIVMP 
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
@@ -4452,6 +4619,10 @@ key "Mermin1990Simple,peres1995quantum"
 \end_inset
 
 
+\begin_inset space \thinspace{}
+\end_inset
+
+, 
 \end_layout
 
 \begin_layout Standard
