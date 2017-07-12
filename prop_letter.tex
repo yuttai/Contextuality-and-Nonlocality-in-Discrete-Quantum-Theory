@@ -535,7 +535,7 @@ uncertainty: one due to the finite measurement resources and one due
 to complementarity, which requires every quantum framework to be truly
 probabilistic.
 
-We will proceed by assuming a QIVMP $\bar{\mu}$
+We will proceed by assuming a cryptodeterministic QIVMP $\bar{\mu}$
 and derive a contradiction using the following nine ``Mermin-Peres square''
 observables $\mathbf{O}_{ij}$\nb\cite{Mermin1990Simple,peres1995quantum}:
 \begin{center}
@@ -550,10 +550,11 @@ $\sigma_{x}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\sigma_{x}$  & $\sigma_{y}\ot
 \end{tabular}\,,
 \par\end{center}
 
-\noindent The argument refers to the expectation value of these
-observables. In the case of QIVPM this is defined as follows. 
+\noindent where $\left\{\mathbb{1},\sigma_{x},\sigma_{y},\sigma_{z}\right\}$ are
+Pauli matrices acting on a pair of spin-$\frac{1}{2}$ state. We now define the
+expectation value of the QIVPM for our Mermin-Peres square.
 
-\begin{definition}Given a Hilbert space of $d\ge3$, for every
+\begin{definition}Given a Hilbert space of dimension\nb$d\ge3$, for every
   QIVPM\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$, any
   observable\nb$\mathbf{O}$ with spectral decomposition
   $\mathbf{O}=\sum_{i=1}^{N}\lambda_{i}P_{i}$, and any minimal
@@ -564,8 +565,8 @@ observables. In the case of QIVPM this is defined as follows.
 \end{equation}
 \end{definition}
 
-The expectation value is intuitively between two possible outcomes
-which lie between the minimum and maximum bounds of the given
+The expectation value is intuitively between two possible outcomes,
+which themselves lie between the minimum and maximum bounds of the given
 probability intervals. (This definition is consistent with the
 classical Choquet integral on commuting sub-event spaces by adopting
 the classical
@@ -579,14 +580,15 @@ $\left\{ \lambda_{1}\lambda_{2}\right\} $, then we have
 \begin{equation}
 \prod_{j=1}^{N}\expval{\mathbf{O}_{j}}_{\bar{\mu}}=\expval{\prod_{j=1}^{N}\mathbf{O}_{j}}_{\bar{\mu}}\label{eq:Kochen-Specker-Rules}
 \end{equation}
-for any sequence of commuting observables\nb$\left\{ \mathbf{O}_{j}\right\} _{j=1}^{N}$.
+for any set of commuting observables\nb$\left\{ \mathbf{O}_{j}\right\}
+_{j=1}^{N}$.
 
 Since the expectation value\nb$\expval{\cdot}_{\bar{\mu}}$ satisfies
 these two properties, the observables in the Mermin-Peres square must
 have the the expectation value\nb$\left\{ 1\right\} $ or
 $\left\{ -1\right\} $.  In each row and column, the operators commute,
-and each operator is the product of the two others, except in the
-third column
+and each operator is the product of two others, except in the
+third column, where
 $\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$.
 Therefore, it is clearly impossible to find a QIVPM\nb$\bar{\mu}$ such
 that $\langle \mathbf{O}_{ij}\rangle_{\bar \mu}$
@@ -600,8 +602,9 @@ that $\langle \mathbf{O}_{ij}\rangle_{\bar \mu}$
 satisfies Eq.~(\ref{eq:Kochen-Specker-Rules}).
 
 The question now is what happens if we relax the perfect measurement
-assumption that entails that the intervals are precisely $[0,0]$ and
-$[1,1]$. What if the measurement imperfections occasionally cause an
+assumption that the intervals are precisely $[0,0]$ and
+$[1,1]$. We need to examine what happens if
+measurement imperfections occasionally cause an
 ideally impossible event to be detected or an ideally certain event to
 be not be detected. Mermin argues in this case that:
 \begin{quote}
