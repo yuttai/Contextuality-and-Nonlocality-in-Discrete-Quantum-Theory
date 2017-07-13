@@ -216,7 +216,7 @@ The paper is organized as follows.   In Sec.\ \ref{sec:fuzzy} we begin by introd
  \label{sec:fuzzy}
 A \emph{probability space} is a mathematical abstraction specifying
 the necessary conditions for reasoning coherently about collections of
-uncertain events\nb\cite{Kolmogorov1950}. In the quantum case, the
+uncertain events\nb\cite{Kolmogorov1950,544199,Griffiths2003,Grabisch2016}. In the quantum case, the
 events of interest are specified by \emph{projection operators}
 $P$. These include the empty projection\nb$\mathbb{0}$, the identity
 projection\nb$\mathbb{1}$, projections of the form $\proj{\psi}$ where
@@ -226,8 +226,9 @@ $P_0P_1=\mathbb{0}$, and products of \emph{commuting} projections
 $P_0$ and $P_1$ with $P_0P_1=P_1P_0$. In a well-defined quantum
 probability
 space\nb\cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010},
-each event $P_{i}$ is mapped to a probability using a probability measure
-$\mu : P \rightarrow [0,1]$ to a probability $\mu(P_{i})$. We impose
+each event $P_{i}$ is mapped to a probability\nb$\mu(P_{i})$ using
+a probability measure\nb$\mu:\events\rightarrow[0,1]$, where $\events$
+is the set of all projections on a given Hilbert space. We impose
 the following constraints: $\mu(\mathbb{0})=0$, $\mu(\mathbb{1})=1$,
 $\mu\left(\mathbb{1}-P\right)=1-\mu\left(P\right)$, and for each pair
 of \emph{orthogonal} projections $P_{0}$ and $P_{1}$, standard probability
@@ -463,14 +464,29 @@ there is generally no unique state consistent with a QIVPM. Given
 observations done with finite resources, the probabilities become
 intervals, and we say a state\nb$\rho$ is consistent with the
 measure\nb$\bar{\mu}$ acting on a projector\nb$P$ if
-$\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)$, and
-denoted by
-$\rho\in\coreBorn\left(\bar{\mu},\left\{ P\right\} \right)$,
+$\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)$,
 where $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\Tr\left(\rho P\right)$
 is the probability that the event\nb$P$ happens determined by the
-Born rule\nb\cite{Born1983,peres1995quantum,544199}.
-$\rho\in\coreBorn\left(\bar{\mu},S\right)$ means~$\rho$ is
-consistent with $\bar{\mu}$ on every projector in $S$.
+Born rule\nb\citep{Born1983,peres1995quantum,544199}. Given a set
+of projectors\nb$S$, 
+\begin{equation}
+\coreBorn\left(\bar{\mu},S\right)=\set{\textrm{mixed state }\rho}{\forall P\in S\ \mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)}
+\end{equation}
+is the set of all mixed states consistent with $\bar{\mu}$ on every
+projector in $S$. For example, assuming the three intervals $\imposs=\left[0,0\right]$,
+$\necess=\left[1,1\right]$, and $\unknown=\left[0,1\right]$, then:
+\begin{equation}
+\bar{\mu}_{1}\left(P\right)=\begin{cases}
+\necess\,, & \text{if }P=\mathbb{1}\text{ ;}\\
+\imposs\,, & \text{if }P=\mathbb{0}\text{ ;}\\
+\unknown\,, & \text{otherwise,}
+\end{cases}\label{eq:no-information-IVPM}
+\end{equation}
+is a QIVPM. This measure represents the beliefs of an experimenter
+with no prior knowledge about the particular quantum system in question;
+any quantum state would be consistent with $\bar{\mu}_{1}$ on any
+projectors, and $\coreBorn\left(\bar{\mu}_{1},\events\right)$ is
+just the set of all mixed states.
 
 Quantum IVPMs become classical IVPMs when the space of events includes
 only mutually commuting events. We define $\events'\subseteq\events$
@@ -482,21 +498,9 @@ to be a sub-event space if it satisfies the following conditions.
   $P_1 \in \events'$, we have $(P_0 + P_1) \in \events'$. 
 \end{itemize}
 
-For example, assuming the three intervals $\imposs=\left[0,0\right]$,
-$\necess=\left[1,1\right]$, and $\unknown=\left[0,1\right]$, then:
-\begin{equation}
-\bar{\mu}_{1}\left(P\right)=\begin{cases}
-\necess\,, & \text{if }P=\mathbb{1}\text{ ;}\\
-\imposs\,, & \text{if }P=\mathbb{0}\text{ ;}\\
-\unknown\,, & \text{otherwise,}
-\end{cases}\label{eq:no-information-IVPM}
-\end{equation}
-is a QIVPM. This measure represents the beliefs of an experimenter
-with no prior knowledge about the particular quantum system in
-question; any quantum state would be consistent with $\bar{\mu}_{1}$
-on any projectors. We have that
-$\events_{0}=\left\{ \mathbb{0},\proj{0},\proj{1},\mathbb{1}\right\} $
-is a commuting sub-event space. Restricting $\bar{\mu}_{1}$ to
+For example, $\events_{0}=\left\{ \mathbb{0},\proj{0},\proj{1},\mathbb{1}\right\} $
+is a commuting sub-event space. Consider $\bar{\mu}_{1}$ defined
+in the previous paragraph. Restricting $\bar{\mu}_{1}$ to
 $\events_{0}$, $\bar{\mu}_{1}|_{\events_{0}}$, gives a classical
 IVPM~$\bar{\mu}_{2}$:
 \begin{equation}
