@@ -5508,7 +5508,7 @@ nb
 \begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
 \end_inset
 
-, we claim that the following QIVPM 
+, we claim that the following function
 \begin_inset ERT
 status collapsed
 
@@ -5525,7 +5525,7 @@ nb
 \begin_inset Formula $\bar{\mu}^{\textrm{D}}:\events\rightarrow\left\{ \imposs,\necess\right\} $
 \end_inset
 
- is cryptodeterministic: 
+ is a cryptodeterministic QIVPM: 
 \begin_inset Formula 
 \begin{equation}
 \bar{\mu}^{\textrm{D}}\left(P\right)=\begin{cases}
@@ -5906,42 +5906,20 @@ end{subequations}
 \end_inset
 
  is a QIVPM.
- Then we will prove 
-\begin_inset Formula $\coreBorn\left(\bar{\mu},\events\right)$
-\end_inset
-
- is an empty set by contradiction.
- Suppose there is a mixed state
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nb
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}\in\coreBorn\left(\bar{\mu},\events\right)$
-\end_inset
-
-, where 
-\begin_inset Formula $\sum_{j=1}^{N}q_{j}=1$
-\end_inset
-
- and 
-\begin_inset Formula $q_{j}>0$
+ Now let 
+\begin_inset Formula $S_{1}=\left\{ \proj{0},\proj{\ps}\right\} $
 \end_inset
 
 .
- Since 
-\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}(P)\in\bar{\mu}(P)$
+ Because 
+\begin_inset Formula $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$
 \end_inset
 
- for any
+, we have 
+\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=0$
+\end_inset
+
+ for any mixed state
 \begin_inset ERT
 status collapsed
 
@@ -5955,45 +5933,54 @@ nb
 \end_inset
 
 
-\begin_inset Formula $P$
+\begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},S_{1}\right)$
 \end_inset
 
-, the mixed state
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nb
-\end_layout
-
-\end_inset
-
-
+.
+ Hence, 
 \begin_inset Formula $\rho$
 \end_inset
 
- must satisfy 
+ cannot be any state other than 
+\begin_inset Formula $\ket{2}$
+\end_inset
+
+, the only pure state orthogonal to both 
+\begin_inset Formula $\ket{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{\ps}$
+\end_inset
+
+, and it is easy to verify 
+\begin_inset Formula $\proj{2}$
+\end_inset
+
+ is actually in 
+\begin_inset Formula $\coreBorn\left(\bar{\mu},S_{1}\right)$
+\end_inset
+
+.
+ Similarly, let 
+\begin_inset Formula $S_{2}=\left\{ \proj{0},\proj{\ps'}\right\} $
+\end_inset
+
+.
+ We have 
+\begin_inset Formula $\coreBorn\left(\bar{\mu},S_{2}\right)=\left\{ \proj{1}\right\} $
+\end_inset
+
+.
+ Therefore, 
 \begin_inset Formula 
 \begin{equation}
-\melem{0}{\rho}{0}=\melem{\ps}{\rho}{\ps}=\melem{\ps'}{\rho}{\ps'}=0
+\coreBorn\left(\bar{\mu},\events\right)\subseteq\coreBorn\left(\bar{\mu},S_{1}\right)\cap\coreBorn\left(\bar{\mu},S_{2}\right)=\emptyset
 \end{equation}
 
 \end_inset
 
-which implies 
-\begin_inset Formula $\ip{\phi_{j}}{0}=\ip{\phi_{j}}{\ps}=\ip{\phi_{j}}{\ps'}=0$
-\end_inset
-
- for all 
-\begin_inset Formula $j$
-\end_inset
-
-.
- However, the last equation never holds.
- Thus, there is no state consistent with the QIVPM on all projectors
+Thus, there is no state that is consistent with the QIVPM on all projectors
 \begin_inset ERT
 status collapsed
 
@@ -6007,7 +5994,7 @@ nb
 \end_inset
 
 
-\begin_inset Formula $P\in\events$
+\begin_inset Formula $\events$
 \end_inset
 
 , so Gleason's theorem does not hold for at least this example.
@@ -6259,7 +6246,7 @@ In other words, for the states consistent with this QIVPM,
 \end_inset
 
  will become closer and closer to 
-\begin_inset Formula $\rho$
+\begin_inset Formula $\rho'$
 \end_inset
 
  as 

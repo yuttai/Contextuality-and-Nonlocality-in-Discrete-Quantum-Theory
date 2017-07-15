@@ -649,9 +649,8 @@ Meyer~\cite{PhysRevLett.83.3751} argued.
 
 \begin{proof} Suppose there is a $\delta$-deterministic
   QIVPM\nb$\bar{\mu}:\events\rightarrow\mathscr{I}$, we claim that the
-  following QIVPM
-  \nb$\bar{\mu}^{\textrm{D}}:\events\rightarrow\left\{
-    \imposs,\necess\right\} $ is cryptodeterministic:
+  following function\nb$\bar{\mu}^{\textrm{D}}:\events\rightarrow\left\{
+    \imposs,\necess\right\} $ is a cryptodeterministic QIVPM:
 \begin{equation}
 \bar{\mu}^{\textrm{D}}\left(P\right)=\begin{cases}
 \imposs\,, & \textrm{ if }\bar{\mu}\left(P\right)\subseteq\left[0,\delta\right]\:;\\
@@ -724,20 +723,22 @@ shows.
  &  & \unknown=\bar{\mu}(P)\qquad\textrm{otherwise.}
 \end{eqnarray}
 \end{subequations}
-It is straightforward to verify that $\bar{\mu}$ is a QIVPM. Then we will
-prove $\coreBorn\left(\bar{\mu},\events\right)$ is an empty set by
-contradiction. Suppose there is a mixed
-state\nb$\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}\in\coreBorn\left(\bar{\mu},\events\right)$,
-where $\sum_{j=1}^{N}q_{j}=1$ and $q_{j}>0$. Since $\mu_{\rho}^{\mathrm{B}}(P)\in\bar{\mu}(P)$
-for any\nb$P$, the mixed state\nb$\rho$ must satisfy
+It is straightforward to verify that $\bar{\mu}$
+is a QIVPM. Now let $S_{1}=\left\{ \proj{0},\proj{\ps}\right\} $.
+Because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$, we have
+$\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=0$
+for any mixed state\nb$\rho\in\coreBorn\left(\bar{\mu},S_{1}\right)$.
+Hence, $\rho$ cannot be any state other than $\ket{2}$, the only
+pure state orthogonal to both $\ket{0}$ and $\ket{\ps}$, and it
+is easy to verify $\proj{2}$ is actually in $\coreBorn\left(\bar{\mu},S_{1}\right)$.
+Similarly, let $S_{2}=\left\{ \proj{0},\proj{\ps'}\right\} $. We
+have $\coreBorn\left(\bar{\mu},S_{2}\right)=\left\{ \proj{1}\right\} $.
+Therefore, 
 \begin{equation}
-\melem{0}{\rho}{0}=\melem{\ps}{\rho}{\ps}=\melem{\ps'}{\rho}{\ps'}=0
+\coreBorn\left(\bar{\mu},\events\right)\subseteq\coreBorn\left(\bar{\mu},S_{1}\right)\cap\coreBorn\left(\bar{\mu},S_{2}\right)=\emptyset
 \end{equation}
-which implies $\ip{\phi_{j}}{0}=\ip{\phi_{j}}{\ps}=\ip{\phi_{j}}{\ps'}=0$
-for all $j$. However, the last equation never holds. 
-Thus, there is no state consistent with the QIVPM on all 
-projectors\nb$P\in\events$, so Gleason's theorem does not hold for at least this
-example.
+Thus, there is no state that is consistent with the QIVPM on all projectors\nb$\events$,
+so Gleason's theorem does not hold for at least this example.
 \end{example}
 
 Although Gleason's theorem does not hold for every QIVPM, we can show
@@ -787,7 +788,7 @@ then $\left\Vert \rho-\rho'\right\Vert \le1/n$.
 \end{itemize}
 In other words, for the states consistent with this QIVPM,
 $\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}}$ will become closer and
-closer to $\rho$ as $n$ goes to infinity. In the limiting case when
+closer to $\rho'$ as $n$ goes to infinity. In the limiting case when
 the intervals are infinitely precise, i.e.,
 $\set{\left[x,x\right]}{x\in\left[0,1\right]}$, any QIVPM can be
 recast as a real-valued one and will have a unique state consistent
