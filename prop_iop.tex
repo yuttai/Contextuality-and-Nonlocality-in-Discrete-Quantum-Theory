@@ -1615,56 +1615,65 @@ there is a set~$\Omega$, another commuting sub-event space~$\widehat{\events}$
 with $\events'\subseteq\widehat{\events}\subseteq\events$, and a
 bijection~$\tau:\widehat{\events}\rightarrow2^{\Omega}$ such that:
 \begin{enumerate}
-\item \label{enu:sub-event-space-real-quantum2classical}If $\mu:\events'\rightarrow\left[0,1\right]$
+\item \label{enu:sub-event-space-real-quantum2classical}If $\mu':\events'\rightarrow\left[0,1\right]$
 is a quantum real-valued probability measure, then there is a classical
-real-valued probability measure~$\mu':2^{\Omega}\rightarrow\left[0,1\right]$
-such that $\mu\left(P\right)=\mu'\left(\tau\left(P\right)\right)$
+real-valued probability measure\nb$\mu:2^{\Omega}\rightarrow\left[0,1\right]$
+such that $\mu'\left(P\right)=\mu\left(\tau\left(P\right)\right)$
 for all $P\in\events'$.
-\item \label{enu:sub-event-space-interval-quantum2classical}If $\bar{\mu}:\events'\rightarrow\mathscr{I}$
+\item \label{enu:sub-event-space-interval-quantum2classical}If $\bar{\mu}':\events'\rightarrow\mathscr{I}$
 is a quantum interval-valued probability measure, then there is a
-classical interval-valued probability measure~$\bar{\mu}':2^{\Omega}\rightarrow\mathscr{I}$
-such that $\bar{\mu}\left(P\right)=\bar{\mu}'\left(\tau\left(P\right)\right)$
+classical interval-valued probability measure\nb$\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}$
+such that $\bar{\mu}'\left(P\right)=\bar{\mu}\left(\tau\left(P\right)\right)$
 for all $P\in\events'$.
-\item \label{enu:sub-event-space-real-classical2quantum}If $\mu':2^{\Omega}\rightarrow\left[0,1\right]$
-is a classical real-valued probability measure, then there is a density
-matrix~$\rho$ such that $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\mu'\left(\tau\left(P\right)\right)$
+\item \label{enu:sub-event-space-real-classical2quantum}If $\mu:2^{\Omega}\rightarrow\left[0,1\right]$
+is a classical real-valued probability measure, then $\mu\circ\tau:\widehat{\events}\rightarrow\left[0,1\right]$
+is a QRVPM.
+\item \label{enu:sub-event-space-Gleason}Given a QRVPM\nb$\widehat{\mu}:\widehat{\events}\rightarrow\left[0,1\right]$,
+there is a density matrix~$\rho$ such that $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\widehat{\mu}\left(P\right)$
 for all $P\in\widehat{\events}$.
+\item $\rho$ in the previous case may not be unique.
 \end{enumerate}
 \end{thm}
 
-\begin{proof}Since case \ref{enu:sub-event-space-real-quantum2classical}
-is a special case of case \ref{enu:sub-event-space-interval-quantum2classical},
-it is sufficient to prove case \ref{enu:sub-event-space-interval-quantum2classical}.
-Since $\events'$ is a set of mutually commuting projections, they
-can be diagonalized by a common orthonormal basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$.
-Pick arbitrary projector~$P\in\events'$, its eigenvalues are $0$
-or $1$. Let $\tau\left(P\right)\subseteq\Omega$ be the set of eigenvectors
-whose eigenvalues are $1$. Then, we have $P=\sum_{\ket{j}\in\tau\left(P\right)}\proj{j}$,
+\begin{proof}
+\begin{enumerate}
+\item Since this case is a special case of the next case, it is sufficient
+to prove the next case. 
+\item Since $\events'$ is a set of mutually commuting projections, they
+can be diagonalized by a common orthonormal basis\nb$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$.
+Pick arbitrary projector\nb$P\in\events'$, its eigenvalues are $0$
+or $1$. Select its eigenvectors whose eigenvalues are $1$ into a
+set\nb$\tau\left(P\right)\subseteq\Omega$. Then, we have $P=\sum_{\ket{j}\in\tau\left(P\right)}\proj{j}$,
 $\widehat{\events}=\set{\sum_{\ket{j}\in E}\proj{j}}{E\subseteq\Omega}$,
 and $\tau$ is a bijection between $\widehat{\events}$ and $2^{\Omega}$.
-By definition~\ref{definition:quantum-classical}, $\bar{\mu}\left(P\right)=\bar{\mu}^{\Omega}\left(\tau\left(P\right)\right)$,
+By definition\nb\ref{definition:quantum-classical}, $\bar{\mu}'\left(P\right)=\bar{\mu}^{\Omega}\left(\tau\left(P\right)\right)$,
 and $\bar{\mu}^{\Omega}$ is a classical interval-valued probability
-measure by lemma~\ref{lemma:classical-probability-measures}.
-
-For case \ref{enu:sub-event-space-real-classical2quantum}, if we
-pick $\rho=\sum_{j=1}^{d}\mu'\left(\left\{ j\right\} \right)\proj{j}$,
-then $\rho$ is a density matrix because~\cite{544199}
+measure by lemma\nb\ref{lemma:classical-probability-measures}.
+\item Trivial.
+\item If we pick $\rho=\sum_{j=1}^{d}\widehat{\mu}\left(\proj{j}\right)\proj{j}$,
+then $\rho$ is a density matrix because\nb\cite{544199}
 \begin{eqnarray}
-\Tr\left(\rho\right) & = & \sum_{j=1}^{d}\mu'\left(\left\{ j\right\} \right)\Tr\left(\proj{j}\right)=1\,.
+\Tr\left(\rho\right) & = & \sum_{j=1}^{d}\widehat{\mu}\left(\proj{j}\right)\Tr\left(\proj{j}\right)=1\,.
 \end{eqnarray}
 Also, 
+\begin{eqnarray}
+ &  & \mu_{\rho}^{\mathrm{B}}\left(\proj{i}\right)=\sum_{j=1}^{N}\widehat{\mu}\left(\proj{j}\right)\mu_{\ket{j}}^{\mathrm{\mathrm{B}}}\left(\proj{i}\right)=\widehat{\mu}\left(\proj{i}\right)\textrm{ for all }i\,,\\
+ &  & \mu_{\rho}^{\mathrm{B}}\left(P_{0}\right)+\mu_{\rho}^{\mathrm{B}}\left(P_{1}\right)\overset{\textrm{IH}}{=}\widehat{\mu}\left(P_{0}\right)+\widehat{\mu}\left(P_{1}\right)=\widehat{\mu}\left(P_{0}+P_{1}\right)
+\end{eqnarray}
+for orthogonal\nb$P_{0},P_{1}\in\events$. Therefore, we have $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\widehat{\mu}\left(P\right)$
+for all $P\in\widehat{\events}$ by induction.
+\item Consider a Hilbert space\nb$\Hilb$ of dimension 2, a mutually commuting
+sub-event space~$\widehat{\events}=\left\{ \mathbb{0},\proj{0},\proj{1},\mathbb{1}\right\} $,
+and a QRVPM\nb$\widehat{\mu}:\widehat{\events}\rightarrow\left[0,1\right]$
+such that $\widehat{\mu}\left(\proj{0}\right)=\widehat{\mu}\left(\proj{1}\right)=\frac{1}{2}$.
+Then, $\proj{\ps}$ and $\proj{\minus}$ are both density matrices,
+and 
 \begin{eqnarray*}
- &  & \mu_{\rho}^{\mathrm{B}}\left(\proj{i}\right)
- =\sum_{j=1}^{N}\mu'\left(\left\{ j\right\} \right)\mu_{\ket{j}}^{\mathrm{\mathrm{B}}}\left(\proj{i}\right)
- =\mu'\left(\left\{ j\right\} \right)
- =\mu'\left(\tau\left(\proj{i}\right)\right)\textrm{ for all }i\,,\\
- &  & \mu_{\rho}^{\mathrm{B}}\left(P_{1}\right)+\mu_{\rho}^{\mathrm{B}}\left(P_{2}\right)
- \overset{\textrm{IH}}{=}\mu'\left(\tau\left(P_{1}\right)\right)+\mu'\left(\tau\left(P_{2}\right)\right)
- =\mu'\left(\tau\left(P_{1}+P_{2}\right)\right)
+ &  & \mu_{\ket{\ps}}^{\mathrm{B}}\left(\proj{0}\right)=\mu_{\ket{\minus}}^{\mathrm{B}}\left(\proj{0}\right)=\frac{1}{2}=\widehat{\mu}\left(\proj{0}\right)\,,\\
+ &  & \mu_{\ket{\ps}}^{\mathrm{B}}\left(\proj{1}\right)=\mu_{\ket{\minus}}^{\mathrm{B}}\left(\proj{1}\right)=\frac{1}{2}=\widehat{\mu}\left(\proj{1}\right)\,.
 \end{eqnarray*}
-for commuting\nb$P_{0},P_{1}\in\events$ with $P_{0}P_{1}=\mathbb{0}$.
-Therefore, we have $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\mu'\left(\tau\left(P\right)\right)$
-for all $P\in\widehat{\events}$ by induction.\end{proof}
+\end{enumerate}
+\end{proof}
 
 Given an orthonormal basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$,
 if we consider sub-event space generated by $\Omega$, $\events^{\Omega}=\set{\sum_{\ket{j}\in E}\proj{j}}{E\subseteq\Omega}$,
@@ -1725,7 +1734,7 @@ measure~$\pmeas:2^{\Omega}\rightarrow\left[0,1\right]$ such that
  & \Rightarrow & \pmeas\left(\tau\left(P\right)\right)\in\bar{\mu}'\left(\tau\left(P\right)\right)=\bar{\mu}\left(P\right)\textrm{ for all }P\in\widehat{\events}\\
  & \Rightarrow & \pmeas\left(\tau\left(P\right)\right)\in\bar{\mu}\left(P\right)\textrm{ for all }P\in\widehat{\events}
 \end{eqnarray*}
-By case \ref{enu:sub-event-space-real-classical2quantum} in theorem~\ref{thm:sub-event-space},
+By theorem~\ref{thm:sub-event-space},
 there is a density matrix~$\rho$ such that $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\mu'\left(\tau\left(P\right)\right)$
 for all $P\in\events'$. Therefore, $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu},\events'\right)$,
 i.e., $\rho\in\coreBorn\left(\bar{\mu},\events'\right)$.\end{proof}
@@ -2663,7 +2672,7 @@ $\mu'\in\mathrm{core}\left(\bar{\mu}'\right)$, we have
  &  & \mu'\left(E\right)\in\bar{\mu}'\left(E\right)\textrm{ for all }E\in2^{\Omega}\\
  & \Rightarrow & \mu'\left(\tau\left(P\right)\right)\in\bar{\mu}'\left(\tau\left(P\right)\right)=\bar{\mu}\left(P\right)\textrm{ for all }P\in\events'
 \end{eqnarray}
-By case \ref{enu:sub-event-space-real-classical2quantum} in theorem~\ref{thm:sub-event-space},
+By theorem~\ref{thm:sub-event-space},
 there is a density matrix~$\rho$ such that $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\mu'\left(\tau\left(P\right)\right)$
 for all $P\in\events'$. Therefore, $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu},\events'\right)$,
 i.e., $\rho\in\coreBorn\left(\bar{\mu},\events'\right)$.\end{proof}
