@@ -500,18 +500,23 @@ knowledge.
 \section{Kochen-Specker} 
 \label{sec:Kochen-Specker}
   
-Our first result is that a QIVPM is consistent with the inability to
-avoid uncertainty found in conventional infinite precise quantum
-mechanics~\cite{PeresRon1988,peres1995quantum}.
-
-KS is formulated under the assumption that all observables for a QM
-system have definite values at all times. (cite) 
-
-Our QIVPM framework allows us to reformulate KS by relaxing this
-assumption. 
-
-This quantifies Mermin's argument:
-
+Our generalization of quantum probability measures to QIVPMs will
+allow us to strengthen one of the fundamental theorems in of quantum
+information: the Kochen-Specker
+theorem~\cite{PeresRon1988,peres1995quantum}. Our stronger version of
+the theorem will suggest a resolution to the debate initiated by Meyer
+and Mermin on the relevance of the Kochen-Specker to experimental, and
+hence finite-precision, quantum
+measurements~\citep{PhysRevLett.83.3751,Mermin1999,Kent1999,HavlicekKrennSummhammerSvozil2001,SimonBruknerZeilinger2001,Cabello2002,Larsson2002,Appleby2002,Peres2003,BarrettKent2004,Appleby_2005,Spekkens2005,GuehneKleinmannCabelloEtAl2010,MazurekPuseyKunjwalEtAl2016}.
+. Specifically, the original Kochen-Specker theorem is formulated
+under the assumption that all observables of a quantum mechanical
+system have \emph{definite values at all
+  times}~\cite{StanfordXXX}. Our interval-valued framework will allow
+us to state, and prove, a stronger version of the theorem that holds
+even if the observables have values that are only definite up to some
+specific parameter that quantifies experimental uncertainty. Put
+differently, our stronger statement and theorem quantifies Mermin's
+qualitative argument:
 \begin{quote}
   \ldots although the outcomes deduced from such imperfect
   measurements will occasionally differ dramatically from those
@@ -520,35 +525,36 @@ This quantifies Mermin's argument:
   the ideal case~\citep{Mermin1999}.
 \end{quote}
 
-%%%%%
-\subsection{$\delta$-Determinism}
+\paragraph*{$\delta$-Determinism.} The first step in our formalization
+is to introduce a family of QIVPMs parameterized by an uncertainty
+$\delta$ which we call $\delta$-deterministic QIVPMs. 
 
-The technical question is what happens if we relax the perfect
-measurement assumption that the intervals are precisely $[0,0]$ and
-$[1,1]$. We need to examine what happens if measurement imperfections
-occasionally cause an ideally impossible event to be detected or an
-ideally certain event not to be detected. 
- 
-We can formally test this hypothesis by considering the notion of
-a $\delta$-deterministic QIVPM below. 
-
-\begin{definition}\label{def:delta-deterministic}We define
-  QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-  as $\delta$-deterministic if either
+\begin{definition}\label{def:delta-deterministic} A
+  QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$ is
+  $\delta$-deterministic if, for every event $P\in\events$, we have
+  that either 
   $\bar{\mu}\left(P\right)\subseteq\left[0,\delta\right]$ or
-  $\bar{\mu}\left(P\right)\subseteq\left[1-\delta,1\right]$ for any
-  $P\in\events$.\end{definition}
+  $\bar{\mu}\left(P\right)\subseteq\left[1-\delta,1\right]$. 
+\end{definition}
 
-As $\delta$ gets bigger, the QIVPM allows more and more indeterminate
-behavior. We now prove that for small enough $\delta$, the Kochen-Specker result is
-still valid, i.e., if the measurement imperfections are small enough,
-we cannot nullify the Kochen-Specker theorem as
-Meyer~\cite{PhysRevLett.83.3751} argued. 
- 
-%%%%%
-\subsection{Expectation Values of Fuzzy Observables} 
+When $\delta=0$ , every event must be assigned a probability in either
+the interval $[0,0]$ or $[1,1]$, i.e., every event is completely
+determined with certainty. As $\delta$ gets bigger, the QIVPM allows
+more and more indeterminate behavior. Our technical result will be
+that for ``small enough'' $\delta$, a variant of the Kochen-Specker
+theorem is still valid. To state and prove this result we will first
+reformulate the original Kochen-Specker as a statement regarding the
+non-existence of $0$-deterministic QIVPM. We will then strengthen this
+result to show the non-existence of any $\delta$-deterministic QIVPM
+when $\delta < 1/3$ and the Hilbert space dimension is greater than
+2. 
 
-\begin{definition}Given a Hilbert space $\Hilb$ of dimension~$d\ge3$,
+\paragraph*{Expectation Values of Fuzzy Observables.}  Our following
+development will crucially rely on analyzing the expectation values of
+families of observables. We introduce the necessary definitions before
+stating and proving our variants of the Kochen-Specker theorem.
+
+\begin{definition} Given a Hilbert space $\Hilb$ of dimension~$d\ge3$,
   for every QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$, any
   observable~$\mathbf{O}$ with spectral decomposition
   $\mathbf{O}=\sum_{i=1}^{N}\lambda_{i}P_{i}$, and the minimal
@@ -576,20 +582,22 @@ to be $\left\{ \lambda_{1}\lambda_{2}\right\} $, then we have
 for any set of commuting observables~$\left\{ \mathbf{O}_{j}\right\}
 _{j=1}^{N}$.
 
-%%%%%
-\subsection{Finite Precision KS}
+We now state and prove a theorem that is equivalent to the original
+Kochen-Specker theorem but that is formulated in terms of
+$0$-deterministic QIVPMs. 
 
-Statement of reformulated KS
-\begin{thm}[Kochen-Specker~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA}]\label{thm:Kochen-Specker}
-  Given a Hilbert space $\Hilb$ of dimension~$d\ge3$, there is no
-  0-deterministic
-  measure~$\mu^{\mathrm{D}}:\events\rightarrow\left\{ 0,1\right\}
-  $.\end{thm}
 
-Proof of reformulated KS. We will proceed by assuming a 0-deterministic QIVPM $\bar{\mu}$ and
-derive a contradiction using the following nine ``Mermin-Peres
-square''
-observables~$\mathbf{O}_{ij}$~\cite{Mermin1990Simple,peres1995quantum}:
+\begin{thm}[0-deterministic variant of Kochen-Specker] 
+\label{thm:Kochen-Specker}
+Given a Hilbert space $\Hilb$ of dimension~$d\ge3$, there is no
+0-deterministic
+measure~$\mu^{\mathrm{D}}:\events\rightarrow\left\{ 0,1\right\}$.
+\end{thm}
+
+To prove this result, we proceed by assuming a 0-deterministic QIVPM
+$\bar{\mu}$ and derive a contradiction using the same nine observables
+$\mathbf{O}_{ij}$ used in the ``Mermin-Peres'' proof of the
+Kochen-Specker theorem~\cite{Mermin1990Simple,peres1995quantum}:
 {\renewcommand{\arraystretch}{2}%
 \begin{center}
 \begin{tabular}{|@{\quad}c@{\quad}|@{\quad}c@{\quad}|@{\quad}c@{\quad}|}
@@ -603,7 +611,6 @@ $\sigma_{x}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\sigma_{x}$  & $\sigma_{y}\ot
 \end{tabular}\,,
 \par\end{center}
 }
-
 \noindent where $\left\{\mathbb{1},\sigma_{x},\sigma_{y},\sigma_{z}\right\}$ are
 Pauli matrices acting on a pair of spin-$\frac{1}{2}$ states. We now define the
 expectation value of the QIVPM for our Mermin-Peres square.
@@ -619,21 +626,18 @@ Therefore, it is clearly impossible to find a QIVPM~$\bar{\mu}$ such
 that $\langle \mathbf{O}_{ij}\rangle_{\bar \mu}$ satisfies
 Eq.~(\ref{eq:Kochen-Specker-Rules}).
  
-\paragraph*{Stronger KS: Main Result.}
+We will now adapt the proof above to show that it is, in general,
+impossible to have just the two intervals \imposs\ and \necess: every
+QIVPM must be parameterized by a collection of intervals that includes
+at least one additional ``fuzzy'' interval and some events must be
+associated with such uncertain intervals. The significance of this
+observation is that the uncertainty in the intervals is, in contrast
+to the classical case, \emph{a fundamental part of quantum
+  theory}. There are in fact two sources of uncertainty: one due to
+the finite measurement resources and one due to complementarity, which
+requires every quantum framework to be truly probabilistic.
 
-We will adapt the proof of the Kochen-Specker
-theorem~\cite{kochenspecker1967,
-  peres1995quantum,Redhead1987-REDINA,Griffiths2003} to show that it
-is, in general, impossible to have just the two intervals \imposs\ and
-\necess: every QIVPM must be parameterized by a collection of
-intervals that includes at least one additional ``fuzzy'' interval and
-some events must be associated with such uncertain intervals. The
-significance of this observation is that the uncertainty in the
-intervals is, in contrast to the classical case, \emph{a fundamental
-  part of quantum theory}. There are in fact two sources of
-uncertainty: one due to the finite measurement resources and one due
-to complementarity, which requires every quantum framework to be truly
-probabilistic.
+???~\cite{kochenspecker1967,peres1995quantum,Redhead1987-REDINA,Griffiths2003} 
 
 \begin{thm}\label{cor:Kochen-Specker-IVPM} Given a Hilbert space $\Hilb$
   of dimension~$d\ge3$, there is no $\delta$-deterministic QIVPM for
@@ -825,7 +829,7 @@ have established a context in which infinite precision quantum
 mechanical theories can be reconciled with finite precision quantum
 mechanical measurements, and have provided a possible resolution of
 the Meyer-Mermin debate on the impact of finite precision on the
-Kochen-Specker theorem \cite{PhysRevLett.83.3751,Mermin1999}.
+Kochen-Specker theorem~\cite{PhysRevLett.83.3751,Mermin1999}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
