@@ -56,6 +56,7 @@
 % Change non-breaking space to \nolinebreak[1] 
 % Hence, it will not hyphenate too much surrounding words.
 \newcommand{\nb}{\nolinebreak[1] }
+\newcommand{\rmd}{\mathrm{d}}
 \end_preamble
 \options reprint,aps,prl,superscriptaddress,showpacs,showkeys,longbibliography,amsmath,amssymb
 \use_default_options false
@@ -1133,7 +1134,7 @@ Given an observable
  one can define the expectation value of that observable as 
 \begin_inset Formula 
 \begin{equation}
-\expval{\mathbf{O}}_{\mu}=\sum_{i=1}^{N}\lambda_{i}\mu(P_{i})\,.
+\expval{\mathbf{O}}_{\mu}=\sum_{i=1}^{N}\lambda_{i}\mu(P_{i})\,.\label{eq:quantum-expectation}
 \end{equation}
 
 \end_inset
@@ -1358,7 +1359,7 @@ citep{Dempster1967,Shafer1976,GilboaSchmeidler1994,Marinacci1999,Weichselberger2
 .
  Although these proposals differ in some details, they all share the fact
  that the probability 
-\begin_inset Formula $\mu(E)$
+\begin_inset Formula $\bar{\mu}(E)$
 \end_inset
 
  of an event
@@ -1447,7 +1448,7 @@ First, for each interval
  so that if one interval refers to the probability of an event, the other
  refers to the probability of the event's complement.
  For example, if we discover as a result of an experiment that 
-\begin_inset Formula $\mu(E)=[0.2,0.3]$
+\begin_inset Formula $\bar{\mu}(E)=[0.2,0.3]$
 \end_inset
 
  for some event
@@ -1459,7 +1460,7 @@ First, for each interval
 \end_inset
 
 , we may conclude that 
-\begin_inset Formula $\mu(\overline{E})=[0.7,0.8]$
+\begin_inset Formula $\bar{\mu}(\overline{E})=[0.7,0.8]$
 \end_inset
 
  for the complement event 
@@ -1481,11 +1482,11 @@ Let
 \end_inset
 
  be two disjoint events with probabilities 
-\begin_inset Formula $\mu(E_{1})=[\ell_{1},r_{1}]$
+\begin_inset Formula $\bar{\mu}(E_{1})=[\ell_{1},r_{1}]$
 \end_inset
 
  and 
-\begin_inset Formula $\mu(E_{2})=[\ell_{2},r_{2}]$
+\begin_inset Formula $\bar{\mu}(E_{2})=[\ell_{2},r_{2}]$
 \end_inset
 
 .
@@ -1503,21 +1504,21 @@ either
 \end_inset
 
  occurs might be 
-\begin_inset Formula $\mu(E_{1}\cup E_{2})=[\ell_{1}+\ell_{2},r_{1}+r_{2}]$
+\begin_inset Formula $\bar{\mu}(E_{1}\cup E_{2})=[\ell_{1}+\ell_{2},r_{1}+r_{2}]$
 \end_inset
 
 .
  In some cases, this is indeed a sensible definition.
  For example, if 
-\begin_inset Formula $\mu(E_{1})=[0.1,0.2]$
+\begin_inset Formula $\bar{\mu}(E_{1})=[0.1,0.2]$
 \end_inset
 
  and 
-\begin_inset Formula $\mu(E_{2})=[0.3,0.4]$
+\begin_inset Formula $\bar{\mu}(E_{2})=[0.3,0.4]$
 \end_inset
 
  we get 
-\begin_inset Formula $\mu(E_{1}\cup E_{2})=[0.4,0.6]$
+\begin_inset Formula $\bar{\mu}(E_{1}\cup E_{2})=[0.4,0.6]$
 \end_inset
 
 .
@@ -1526,11 +1527,11 @@ either
 \end_inset
 
  such that 
-\begin_inset Formula $\mu(E)=[0.2,0.3]$
+\begin_inset Formula $\bar{\mu}(E)=[0.2,0.3]$
 \end_inset
 
  and hence 
-\begin_inset Formula $\mu(\overline{E})=[0.7,0.8]$
+\begin_inset Formula $\bar{\mu}(\overline{E})=[0.7,0.8]$
 \end_inset
 
 .
@@ -1544,7 +1545,7 @@ either
 
  are disjoint; the previous naïve way of combining the intervals would give
  
-\begin_inset Formula $\mu(E\cup\overline{E})=[0.9,1.1]$
+\begin_inset Formula $\bar{\mu}(E\cup\overline{E})=[0.9,1.1]$
 \end_inset
 
  which is not a valid probability interval.
@@ -1565,18 +1566,32 @@ either
  The problem is that the two intervals are correlated: there is more information
  in the combined event than in each event separately.
  In our example, even though the true probability of 
+
+\begin_inset Formula $\bar{\mu}(E)$
+\end_inset
+
+
+\lang english
+, 
 \begin_inset Formula $\mu(E)$
 \end_inset
 
- can be anywhere in the range 
+, can be anywhere in the range 
 \begin_inset Formula $[0.2,0.3]$
 \end_inset
 
  and the true probability of 
+
+\begin_inset Formula $\bar{\mu}(\overline{E})$
+\end_inset
+
+
+\lang english
+, 
 \begin_inset Formula $\mu(\overline{E})$
 \end_inset
 
- can be in anywhere in the range 
+, can be in anywhere in the range 
 \begin_inset Formula $[0.7,0.8]$
 \end_inset
 
@@ -1605,12 +1620,12 @@ either
 \end_inset
 
  are disjoint is 
-\begin_inset Formula $\mu(E_{1}\cup E_{2})\subseteq[\ell_{1}+\ell_{2},r_{1}+r_{2}]$
+\begin_inset Formula $\bar{\mu}(E_{1}\cup E_{2})\subseteq[\ell_{1}+\ell_{2},r_{1}+r_{2}]$
 \end_inset
 
  which, in combination with the requirement for the identity event would
  force 
-\begin_inset Formula $\mu(E\cup\overline{E})$
+\begin_inset Formula $\bar{\mu}(E\cup\overline{E})$
 \end_inset
 
  to always be 
@@ -1618,7 +1633,7 @@ either
 \end_inset
 
  irrespective of the particular assignments of 
-\begin_inset Formula $\mu(E)$
+\begin_inset Formula $\bar{\mu}(E)$
 \end_inset
 
  or
@@ -1626,7 +1641,7 @@ either
 \end_inset
 
 
-\begin_inset Formula $\mu(\overline{E})$
+\begin_inset Formula $\bar{\mu}(\overline{E})$
 \end_inset
 
 .
@@ -1646,7 +1661,7 @@ When combining non-disjoint events, there is a further subtlety whose resolution
 , we have: 
 \begin_inset Formula 
 \begin{equation}
-\mu(E_{1}\cup E_{2})+\mu(E_{1}\cap E_{2})\subseteq\mu(E_{1})+\mu(E_{2})\label{eq:classicalconvex}
+\bar{\mu}(E_{1}\cup E_{2})+\bar{\mu}(E_{1}\cap E_{2})\subseteq\bar{\mu}(E_{1})+\bar{\mu}(E_{2})\label{eq:classicalconvex}
 \end{equation}
 
 \end_inset
@@ -1678,7 +1693,7 @@ key "Shapley1971,GilboaSchmeidler1994,Marinacci1999,Grabisch2016"
 
 , reduces to the previously motivated condition when the events are disjoint,
  i.e., when 
-\begin_inset Formula $\mu(E_{1}\cap E_{2})=0$
+\begin_inset Formula $\bar{\mu}(E_{1}\cap E_{2})=0$
 \end_inset
 
 .
@@ -1703,7 +1718,7 @@ If we define its expectation value with respect to the IVPM
 \end_inset
 
 
-\begin_inset Formula $\mu$
+\begin_inset Formula $\bar{\mu}$
 \end_inset
 
 defined in the previous paragraph naïvely, it would be
@@ -1722,7 +1737,8 @@ begin{subequations}
 
 \begin_inset Formula 
 \begin{eqnarray}
-1\cdot\mu(E)+2\cdot\mu(\overline{E}) & = & 1\cdot[0.2,0.3]+2\cdot[0.7,0.8]\\
+ &  & 1\cdot\bar{\mu}(E)+2\cdot\bar{\mu}(\overline{E})\\
+ & = & 1\cdot[0.2,0.3]+2\cdot[0.7,0.8]\\
  & = & [1\cdot0.2+2\cdot0.7,1\cdot0.3+2\cdot0.8]\\
  & = & [1.6,1.9]\,.
 \end{eqnarray}
@@ -1738,6 +1754,338 @@ status collapsed
 
 \backslash
 end{subequations}
+\end_layout
+
+\end_inset
+
+However, if the true probability of 
+
+\begin_inset Formula $\bar{\mu}(E)$
+\end_inset
+
+
+\lang english
+, 
+\begin_inset Formula $\mu(E)$
+\end_inset
+
+, is 
+\begin_inset Formula $0.2$
+\end_inset
+
+, the expectation value with respect to 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{equation}
+1\cdot\mu(E)+2\cdot\mu(\overline{E})=1\cdot0.2+2\cdot0.8=1.8\,;
+\end{equation}
+
+\end_inset
+
+if the true probability of 
+
+\begin_inset Formula $\bar{\mu}(E)$
+\end_inset
+
+
+\lang english
+, 
+\begin_inset Formula $\mu(E)$
+\end_inset
+
+, is 
+\begin_inset Formula $0.3$
+\end_inset
+
+, the expectation value with respect to 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is
+\begin_inset Formula 
+\begin{equation}
+1\cdot\mu(E)+2\cdot\mu(\overline{E})=1\cdot0.3+2\cdot0.7=1.7\,.
+\end{equation}
+
+\end_inset
+
+No matter what the true probability of 
+
+\begin_inset Formula $\bar{\mu}(E)$
+\end_inset
+
+ is the expectation value of it never reach 
+\begin_inset Formula $1.6$
+\end_inset
+
+ and 
+\begin_inset Formula $1.9$
+\end_inset
+
+ because the 
+\lang english
+naïve expectation value with respect to 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ combines impossible situation all together.
+ Since a random variable may have more than two values, the realistic expectatio
+n value called the Choquet integral is much more complex than the naïve
+ one
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "def:Choquet"
+
+\end_inset
+
+Consider a classical IVPM
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\mul:\events\rightarrow\left[0,1\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\mur:\events\rightarrow\left[0,1\right]$
+\end_inset
+
+ are the left-end and the right-end of 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+, respectively, i.e., 
+\begin_inset Formula $\bar{\mu}\left(E\right)=\left[\mul\left(E\right),\mur\left(E\right)\right]$
+\end_inset
+
+.
+ We decompose a random variable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $X$
+\end_inset
+
+ into step functions, but we separate the positive and negative terms and
+ write like 
+\begin_inset Formula $\sum_{i=1}^{N^{-}}x_{i}^{-}\mathbf{1}_{E_{i}^{-}}+\sum_{i=1}^{N^{+}}x_{i}^{+}\mathbf{1}_{E_{i}^{+}}$
+\end_inset
+
+, where 
+\begin_inset Formula 
+\begin{equation}
+x_{N^{-}}^{-}\le\ldots\le x_{1}^{-}\le0\le x_{1}^{+}\le\ldots\le x_{N^{+}}^{+}
+\end{equation}
+
+\end_inset
+
+ and 
+\begin_inset Formula $\left\{ E_{i}^{-}\right\} _{i=1}^{N^{-}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\left\{ E_{i}^{+}\right\} _{i=1}^{N^{+}}$
+\end_inset
+
+ are all disjoint.
+ Let 
+\begin_inset Formula $E_{i}^{s\prime}=\bigcup_{j\ge i}E_{j}^{s}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta\mu^{*}\left(E_{i}^{s\prime}\right)=\mu^{*}\left(E_{i}^{s\prime}\right)-\mu^{*}\left(E_{i+1}^{s\prime}\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $s\in\left\{ +,-\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $\mu^{*}\in\left\{ \mul,\mur\right\} $
+\end_inset
+
+.
+ Then, the Choquet integral of 
+\begin_inset Formula $X$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{equation}
+\int X\rmd\bar{\mu}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\mul\left(E_{i}^{s\prime}\right),\Delta\mur\left(E_{i}^{s\prime}\right)\right]\,.\label{eq:interval-expectation}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Choquet integral is actually what we desire.
+ Consider the 
+\emph on
+core
+\emph default
+ of 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ is the set 
+\begin_inset Formula 
+\begin{equation}
+\mathrm{core}\left(\bar{\mu}\right)=\set{\pmeas:\events\rightarrow[0,1]}{\forall P\in\events.~\pmeas\left(P\right)\in\bar{\mu}\left(P\right)}\,,
+\end{equation}
+
+\end_inset
+
+i.e., the set of real-value probability measure consistent with 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+.
+ According to Shapley's theorem
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shapley1971,GilboaSchmeidler1994,Grabisch2016"
+
+\end_inset
+
+, the core of 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ is always non-empty, and we have the following theorem
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{thm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:Rosenmuller"
+
+\end_inset
+
+For every classical IVPM
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
+\end_inset
+
+ and any random variable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $X:\Omega\rightarrow\mathbb{R}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{equation}
+\int X\rmd\bar{\mu}=\left[\min_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu,\max_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu\right]\,.
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{thm}
 \end_layout
 
 \end_inset
@@ -2007,7 +2355,153 @@ reference "sec:Gleason"
 \end_layout
 
 \begin_layout Standard
-\noindent
+After we defined QIVPM, we can merge the definition of quantum expectation
+ value
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:quantum-expectation"
+
+\end_inset
+
+) and the classical Choquet integral
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:interval-expectation"
+
+\end_inset
+
+) to the following definition.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+Consider a QIVPM
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\mul:\events\rightarrow\left[0,1\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\mur:\events\rightarrow\left[0,1\right]$
+\end_inset
+
+ are the left-end and the right-end of 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+, respectively, i.e., 
+\begin_inset Formula $\bar{\mu}\left(P\right)=\left[\mul\left(P\right),\mur\left(P\right)\right]$
+\end_inset
+
+ for all 
+\begin_inset Formula $P\in\events$
+\end_inset
+
+.
+ This time, when we express the observable as its spectral decomposition
+\begin_inset Formula 
+\begin{equation}
+\mathbf{O}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}P_{i}^{s}\,,\label{eq:spectrum-decomposition}
+\end{equation}
+
+\end_inset
+
+we separate the positive and negative eigenvalues and order its eigenvalues
+ from the smallest to the largest 
+\begin_inset Formula 
+\begin{equation}
+\lambda_{N^{-}}^{-}\le\ldots\le\lambda_{1}^{-}\le0\le\lambda_{1}^{+}\le\ldots\le\lambda_{N^{+}}^{+}\,.
+\end{equation}
+
+\end_inset
+
+Let 
+\begin_inset Formula $P_{i}^{s\prime}=\sum_{j\ge i}P_{j}^{s}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta\mu^{*}\left(P_{i}^{s\prime}\right)=\mu^{*}\left(P_{i}^{s\prime}\right)-\mu^{*}\left(P_{i+1}^{s\prime}\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $s\in\left\{ +,-\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $\mu^{*}\in\left\{ \mul,\mur\right\} $
+\end_inset
+
+.
+ Then, the expectation value of 
+\family roman
+\size normal
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+ with respect to 
+\family default
+\size default
+
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ is defined as
+\family roman
+\size normal
+
+\begin_inset Formula 
+\begin{equation}
+\expval{\mathbf{O}}_{\bar{\mu}}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i}^{s\prime}\right),\Delta\mur\left(P_{i}^{s\prime}\right)\right]\,.\label{eq:quantum-interval-expectation}
+\end{equation}
+
+\end_inset
+
+
+\family default
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 In the remainder of this section, we will show that our definition of QIVPMs
  is consistent with classical IVPMs in the sense that a restriction of QIVPMs
  to commuting events recovers the definition of classical IVPMs.
@@ -2427,6 +2921,122 @@ If we identify the states
 \end_layout
 
 \begin_layout Standard
+Since Thm.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:Shapley"
+
+\end_inset
+
+ corresponds to classical Shapley's theorem, Thm.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:Rosenmuller"
+
+\end_inset
+
+ has its quantum counterpart.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{thm}
+\end_layout
+
+\end_inset
+
+ Given a Hilbert space 
+\begin_inset Formula $\Hilb$
+\end_inset
+
+ of dimension
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $d\ge3$
+\end_inset
+
+, for every QIVPM
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
+\end_inset
+
+, 
+\family roman
+\size normal
+and an observable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+ with its 
+\family default
+\size default
+spectral decomposition
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:spectrum-decomposition"
+
+\end_inset
+
+), let 
+\begin_inset Formula $\events'$
+\end_inset
+
+ be the minimal subspace of events containing 
+\begin_inset Formula $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\begin{equation}
+\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\,.\label{eq:quantum-interval-expectation-core}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{thm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -2686,71 +3296,6 @@ Our following development will crucially rely on analyzing the expectation
  values of families of observables.
  We introduce the necessary definitions before stating and proving our variants
  of the Kochen-Specker theorem.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{thm}
-\end_layout
-
-\end_inset
-
- Given a Hilbert space 
-\begin_inset Formula $\Hilb$
-\end_inset
-
- of dimension
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $d\ge3$
-\end_inset
-
-, for every QIVPM
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
-\end_inset
-
-, and the minimal subspace of events 
-\begin_inset Formula $\events'$
-\end_inset
-
- containing 
-\begin_inset Formula $\left\{ P_{i}\right\} _{i=1}^{N}$
-\end_inset
-
-, then 
-\begin_inset Formula 
-\begin{equation}
-\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\,.\label{eq:quantum-interval-expectation-core}
-\end{equation}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{thm}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

@@ -54,6 +54,7 @@ showkeys, longbibliography, amsmath, amssymb]{revtex4-1}
 % Change non-breaking space to \nolinebreak[1] 
 % Hence, it will not hyphenate too much surrounding words.
 \newcommand{\nb}{\nolinebreak[1] }
+\newcommand{\rmd}{\mathrm{d}}
 
 \begin{document}
 
@@ -262,7 +263,7 @@ Given an observable~$\mathbf{O}$ with spectral decomposition
 $\mathbf{O}=\sum_{i=1}^{N}\lambda_{i}P_{i}$ one can define the 
 expectation value of that observable as
 \begin{equation}
-\expval{\mathbf{O}}_{\mu}=\sum_{i=1}^{N}\lambda_{i}\mu(P_{i})\,.
+\expval{\mathbf{O}}_{\mu}=\sum_{i=1}^{N}\lambda_{i}\mu(P_{i})\,.\label{eq:quantum-expectation}
 \end{equation}
 
 A conventional quantum probability measure can be easily
@@ -318,7 +319,7 @@ propose our quantum generalization. In the classical setting, there
 are several proposals for ``imprecise
 probabilities''~\citep{Dempster1967,Shafer1976,GilboaSchmeidler1994,Marinacci1999,Weichselberger2000,JamisonLodwick2004,HuberRonchetti2009,Grabisch2016}.
 Although these proposals differ in some details, they all share the
-fact that the probability $\mu(E)$ of an event~$E$ is generalized from
+fact that the probability $\bar{\mu}(E)$ of an event~$E$ is generalized from
 a single \emph{real number} to an \emph{interval}~$[\ell,r]$
 where~$\ell$ intuitively corresponds to the strength of evidence for
 the event~$E$ and~$1-r$ corresponds to the strength of evidence
@@ -336,46 +337,46 @@ sample space).  For each interval $[\ell,r]$, we also need the
 interval $[1-r,1-\ell]$ so that if one interval refers to the
 probability of an event, the other refers to the probability of the
 event's complement.  For example, if we discover as a result of an
-experiment that $\mu(E) = [0.2,0.3]$ for some event~$E$, we may
-conclude that $\mu(\overline{E}) = [0.7,0.8]$ for the complement event
+experiment that $\bar{\mu}(E) = [0.2,0.3]$ for some event~$E$, we may
+conclude that $\bar{\mu}(\overline{E}) = [0.7,0.8]$ for the complement event
 $\overline{E}$. In addition to these simple conditions, there are some
 subtle conditions on how intervals are combined, which we discuss
 next.
 
 Let $E_1$ and $E_2$ be two disjoint events with probabilities
-$\mu(E_1)=[\ell_1,r_1]$ and $\mu(E_2)=[\ell_2,r_2]$. A first attempt
+$\bar{\mu}(E_1)=[\ell_1,r_1]$ and $\bar{\mu}(E_2)=[\ell_2,r_2]$. A first attempt
 at calculating the probability of the combined event that
 \emph{either} $E_1$ or $E_2$ occurs might be
-$\mu(E_1\cup E_2) = [\ell_1+\ell_2,r_1+r_2]$. In some cases, this is
-indeed a sensible definition. For example, if $\mu(E_1)=[0.1,0.2]$ and
-$\mu(E_2)=[0.3,0.4]$ we get $\mu(E_1\cup E_2) = [0.4,0.6]$. But
-consider an event $E$ such that $\mu(E)=[0.2,0.3]$ and hence
-$\mu(\overline{E})=[0.7,0.8]$. The two events $E$ and $\overline{E}$
+$\bar{\mu}(E_1\cup E_2) = [\ell_1+\ell_2,r_1+r_2]$. In some cases, this is
+indeed a sensible definition. For example, if $\bar{\mu}(E_1)=[0.1,0.2]$ and
+$\bar{\mu}(E_2)=[0.3,0.4]$ we get $\bar{\mu}(E_1\cup E_2) = [0.4,0.6]$. But
+consider an event $E$ such that $\bar{\mu}(E)=[0.2,0.3]$ and hence
+$\bar{\mu}(\overline{E})=[0.7,0.8]$. The two events $E$ and $\overline{E}$
 are disjoint; the previous naïve way of combining the intervals would
-give $\mu(E\cup\overline{E})=[0.9,1.1]$ which is not a valid
+give $\bar{\mu}(E\cup\overline{E})=[0.9,1.1]$ which is not a valid
 probability interval. Moreover the event $E\cup\overline{E}$ is the
 identity event covering the entire space; its probability interval
 should be $[1,1]$ which is sharper than $[0.9,1.1]$. The problem is
 that the two intervals are correlated: there is more information in
 the combined event than in each event separately. In our example, even
-though the true probability of $\mu(E)$ can be anywhere in the range
-$[0.2,0.3]$ and the true probability of $\mu(\overline{E})$ can be in
+though the true probability of {$\bar{\mu}(E)$}, $\mu(E)$, can be anywhere in the range
+$[0.2,0.3]$ and the true probability of {$\bar{\mu}(\overline{E})$}, $\mu(\overline{E})$, can be in
 anywhere in the range $[0.7,0.8]$, the values are not independent. Any
 value of $\mu(E) \leq 0.25$ will force $\mu(\overline{E})\geq
 0.75$. To account for such subtleties, the axioms of interval-valued
 probability do not use a strict equality for the combination of
 disjoint events. The correct constraint regarding the probability of
 $E_1\cup E_2$ when $E_1$ and $E_2$ are disjoint is
-$\mu(E_1\cup E_2) \subseteq [\ell_1+\ell_2,r_1+r_2]$ which, in
+$\bar{\mu}(E_1\cup E_2) \subseteq [\ell_1+\ell_2,r_1+r_2]$ which, in
 combination with the requirement for the identity event would force
-$\mu(E \cup \overline{E})$ to always be $[1,1]$ irrespective of the
-particular assignments of $\mu(E)$ or~$\mu(\overline{E})$.
+$\bar{\mu}(E \cup \overline{E})$ to always be $[1,1]$ irrespective of the
+particular assignments of $\bar{\mu}(E)$ or~$\bar{\mu}(\overline{E})$.
 
 When combining non-disjoint events, there is a further subtlety whose
 resolution will give us the final general condition for IVPMs. For
 general, not necessarily disjoint, events $E_1$ and $E_2$, we have:
 \begin{equation}
-\mu(E_1\cup E_2) + \mu(E_1\cap E_2) \subseteq \mu(E_1) + \mu(E_2)
+\bar{\mu}(E_1\cup E_2) + \bar{\mu}(E_1\cap E_2) \subseteq \bar{\mu}(E_1) + \bar{\mu}(E_2)
 \label{eq:classicalconvex}
 \end{equation}
 which is a generalization of the classical inclusion-exclusion
@@ -384,7 +385,7 @@ before. The new condition, known as
 \emph{convexity}~\cite{Shapley1971,GilboaSchmeidler1994,Marinacci1999,Grabisch2016},
 reduces to the previously
 motivated condition when the events are disjoint, i.e., when
-$\mu(E_1\cap E_2) = 0$.
+$\bar{\mu}(E_1\cap E_2) = 0$.
 
 The similar kind of subtleties happens when we want to define the
 expectation value of a random variable. Given a random variable
@@ -394,14 +395,68 @@ X\left(\omega\right)=\begin{cases}
 2 & \textrm{, if }\omega\notin E\textrm{ .}
 \end{cases}
 \end{equation}
-If we define its expectation value with respect to the IVPM~$\mu$defined
+If we define its expectation value with respect to the IVPM~$\bar{\mu}$defined
 in the previous paragraph naïvely, it would be\begin{subequations}
 \begin{eqnarray}
-1\cdot\mu(E)+2\cdot\mu(\overline{E}) & = & 1\cdot[0.2,0.3]+2\cdot[0.7,0.8]\\
+ &  & 1\cdot\bar{\mu}(E)+2\cdot\bar{\mu}(\overline{E})\\
+ & = & 1\cdot[0.2,0.3]+2\cdot[0.7,0.8]\\
  & = & [1\cdot0.2+2\cdot0.7,1\cdot0.3+2\cdot0.8]\\
  & = & [1.6,1.9]\,.
 \end{eqnarray}
-\end{subequations}
+\end{subequations}However, if the true probability of {$\bar{\mu}(E)$},
+$\mu(E)$, is $0.2$, the expectation value with respect to $\mu$
+is 
+\begin{equation}
+1\cdot\mu(E)+2\cdot\mu(\overline{E})=1\cdot0.2+2\cdot0.8=1.8\,;
+\end{equation}
+if the true probability of {$\bar{\mu}(E)$}, $\mu(E)$, is $0.3$,
+the expectation value with respect to $\mu$ is
+\begin{equation}
+1\cdot\mu(E)+2\cdot\mu(\overline{E})=1\cdot0.3+2\cdot0.7=1.7\,.
+\end{equation}
+No matter what the true probability of {$\bar{\mu}(E)$ is the expectation
+value of it never reach $1.6$ and $1.9$ because the }naïve expectation
+value with respect to $\bar{\mu}$ combines impossible situation all
+together. Since a random variable may have more than two values, the
+realistic expectation value called the Choquet integral is much more
+complex than the naïve one~\citep{Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016}.
+
+\begin{definition}\label{def:Choquet}Consider a classical IVPM~$\bar{\mu}$
+such that $\mul:\events\rightarrow\left[0,1\right]$ and $\mur:\events\rightarrow\left[0,1\right]$
+are the left-end and the right-end of $\bar{\mu}$, respectively,
+i.e., $\bar{\mu}\left(E\right)=\left[\mul\left(E\right),\mur\left(E\right)\right]$.
+We decompose a random variable~$X$ into step functions, but we separate
+the positive and negative terms and write like $\sum_{i=1}^{N^{-}}x_{i}^{-}\mathbf{1}_{E_{i}^{-}}+\sum_{i=1}^{N^{+}}x_{i}^{+}\mathbf{1}_{E_{i}^{+}}$,
+where 
+\begin{equation}
+x_{N^{-}}^{-}\le\ldots\le x_{1}^{-}\le0\le x_{1}^{+}\le\ldots\le x_{N^{+}}^{+}
+\end{equation}
+ and $\left\{ E_{i}^{-}\right\} _{i=1}^{N^{-}}$ and $\left\{ E_{i}^{+}\right\} _{i=1}^{N^{+}}$
+are all disjoint. Let $E_{i}^{s\prime}=\bigcup_{j\ge i}E_{j}^{s}$
+and $\Delta\mu^{*}\left(E_{i}^{s\prime}\right)=\mu^{*}\left(E_{i}^{s\prime}\right)-\mu^{*}\left(E_{i+1}^{s\prime}\right)$,
+where $s\in\left\{ +,-\right\} $ and $\mu^{*}\in\left\{ \mul,\mur\right\} $.
+Then, the Choquet integral of $X$ with respect to $\bar{\mu}$ is
+\begin{equation}
+\int X\rmd\bar{\mu}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\mul\left(E_{i}^{s\prime}\right),\Delta\mur\left(E_{i}^{s\prime}\right)\right]\,.\label{eq:interval-expectation}
+\end{equation}
+\end{definition}
+
+The Choquet integral is actually what we desire. Consider the \emph{core}
+of $\bar{\mu}$ is the set 
+\begin{equation}
+\mathrm{core}\left(\bar{\mu}\right)=\set{\pmeas:\events\rightarrow[0,1]}{\forall P\in\events.~\pmeas\left(P\right)\in\bar{\mu}\left(P\right)}\,,
+\end{equation}
+i.e., the set of real-value probability measure consistent with $\bar{\mu}$.
+According to Shapley's theorem~\citep{Shapley1971,GilboaSchmeidler1994,Grabisch2016},
+the core of $\bar{\mu}$ is always non-empty, and we have the following
+theorem\nb\citep{Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016}.
+
+\begin{thm}\label{thm:Rosenmuller}For every classical IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+and any random variable~$X:\Omega\rightarrow\mathbb{R}$, 
+\begin{equation}
+\int X\rmd\bar{\mu}=\left[\min_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu,\max_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu\right]\,.
+\end{equation}
+\end{thm}
 
 We now have the necessary ingredients to define the quantum extension,
 QIVPMs, as a generalization of both classical IVPMs and quantum
@@ -453,6 +508,32 @@ Sec.~\ref{sec:Gleason}, we will show that QIVPMs generalize
 conventional quantum probability measures in the limit where the
 endpoints of each interval coincide and this dense set of point
 intervals covers $[0,1]$.
+
+After we defined QIVPM, we can merge the definition of quantum expectation
+value~(\ref{eq:quantum-expectation}) and the classical Choquet integral~(\ref{eq:interval-expectation})
+to the following definition.
+
+\begin{definition}Consider a QIVPM~$\bar{\mu}$ such that $\mul:\events\rightarrow\left[0,1\right]$
+and $\mur:\events\rightarrow\left[0,1\right]$ are the left-end and
+the right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(P\right)=\left[\mul\left(P\right),\mur\left(P\right)\right]$
+for all $P\in\events$. This time, when we express the observable
+as its spectral decomposition
+\begin{equation}
+\mathbf{O}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}P_{i}^{s}\,,\label{eq:spectrum-decomposition}
+\end{equation}
+we separate the positive and negative eigenvalues and order its eigenvalues
+from the smallest to the largest 
+\begin{equation}
+\lambda_{N^{-}}^{-}\le\ldots\le\lambda_{1}^{-}\le0\le\lambda_{1}^{+}\le\ldots\le\lambda_{N^{+}}^{+}\,.
+\end{equation}
+Let $P_{i}^{s\prime}=\sum_{j\ge i}P_{j}^{s}$ and $\Delta\mu^{*}\left(P_{i}^{s\prime}\right)=\mu^{*}\left(P_{i}^{s\prime}\right)-\mu^{*}\left(P_{i+1}^{s\prime}\right)$,
+where $s\in\left\{ +,-\right\} $ and $\mu^{*}\in\left\{ \mul,\mur\right\} $.
+Then, the expectation value of $\mathbf{O}$ with respect to $\bar{\mu}$
+is defined as
+\begin{equation}
+\expval{\mathbf{O}}_{\bar{\mu}}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i}^{s\prime}\right),\Delta\mur\left(P_{i}^{s\prime}\right)\right]\,.\label{eq:quantum-interval-expectation}
+\end{equation}
+\end{definition}
 
 In the remainder of this section, we will show that our definition of
 QIVPMs is consistent with classical IVPMs in the sense that a
@@ -547,6 +628,19 @@ $\bar{\mu}_{2}$ on $\events_{0}$ because any classical coin should be
 consistent with the situation for which an experimenter has no prior
 knowledge.
 
+Since Thm.~\ref{thm:Shapley} corresponds to classical Shapley's
+theorem, Thm.~\ref{thm:Rosenmuller} has its quantum counterpart.
+
+\begin{thm} Given a Hilbert space $\Hilb$ of dimension~$d\ge3$,
+for every QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$, and an
+observable~$\mathbf{O}$ with its spectral decomposition~(\ref{eq:spectrum-decomposition}),
+let $\events'$ be the minimal subspace of events containing $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}$,
+then 
+\begin{equation}
+\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\,.\label{eq:quantum-interval-expectation-core}
+\end{equation}
+\end{thm}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Kochen-Specker} 
 \label{sec:Kochen-Specker}
@@ -604,15 +698,6 @@ when $\delta < 1/3$ and the Hilbert space dimension is greater than
 development will crucially rely on analyzing the expectation values of
 families of observables. We introduce the necessary definitions before
 stating and proving our variants of the Kochen-Specker theorem.
-
-\begin{thm} Given a Hilbert space $\Hilb$ of dimension~$d\ge3$,
-  for every QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$, and the minimal
-  subspace of events $\events'$ containing
-  $\left\{ P_{i}\right\} _{i=1}^{N}$, then
-\begin{equation}
-\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\,.\label{eq:quantum-interval-expectation-core}
-\end{equation}
-\end{thm}
 
 The expectation value is intuitively between two possible outcomes,
 which themselves lie between the minimum and maximum bounds of the
