@@ -388,43 +388,57 @@ motivated condition when the events are disjoint, i.e., when
 $\bar{\mu}(E_1\cap E_2) = 0$.
 
 The similar kind of subtleties happens when we want to define the
-expectation value of a random variable. Given a random variable
+expectation value of a random variable. Consider an event $E$ such
+that $\bar{\mu}(E)=[0.2,0.3]$ and $\bar{\mu}(\overline{E})=[0.7,0.8]$.
+Given a random variable
 \begin{equation}
 X\left(\omega\right)=\begin{cases}
 1 & \textrm{, if }\omega\in E\textrm{ ;}\\
-2 & \textrm{, if }\omega\notin E\textrm{ .}
+2 & \textrm{, if }\omega\notin E\textrm{ ,}
 \end{cases}
 \end{equation}
-If we define its expectation value with respect to the IVPM~$\bar{\mu}$defined
-in the previous paragraph naïvely, it would be\begin{subequations}
+its expectation value with respect to $\bar{\mu}$ might naïvely be
+defined as\begin{subequations}
 \begin{eqnarray}
  &  & 1\cdot\bar{\mu}(E)+2\cdot\bar{\mu}(\overline{E})\\
  & = & 1\cdot[0.2,0.3]+2\cdot[0.7,0.8]\\
  & = & [1\cdot0.2+2\cdot0.7,1\cdot0.3+2\cdot0.8]\\
  & = & [1.6,1.9]\,.
 \end{eqnarray}
-\end{subequations}However, if the true probability of {$\bar{\mu}(E)$},
-$\mu(E)$, is $0.2$, the expectation value with respect to $\mu$
-is 
+\end{subequations}As we discussed in the previous paragraph, the
+true probability of $\bar{\mu}(E)$, $\mu(E)$, can be anywhere in
+the range $[0.2,0.3]$ and the true probability of $\bar{\mu}(\overline{E})$,
+$\mu(\overline{E})$, is $1-\mu(E)$. If $\mu(E)=0.2$, the expectation
+value with respect to $\mu$ is 
 \begin{equation}
 1\cdot\mu(E)+2\cdot\mu(\overline{E})=1\cdot0.2+2\cdot0.8=1.8\,;
 \end{equation}
-if the true probability of {$\bar{\mu}(E)$}, $\mu(E)$, is $0.3$,
-the expectation value with respect to $\mu$ is
+if $\mu(E)=0.3$, the expectation value with respect to $\mu$ is
 \begin{equation}
 1\cdot\mu(E)+2\cdot\mu(\overline{E})=1\cdot0.3+2\cdot0.7=1.7\,.
 \end{equation}
-No matter what the true probability of {$\bar{\mu}(E)$ is the expectation
-value of it never reach $1.6$ and $1.9$ because the }naïve expectation
-value with respect to $\bar{\mu}$ combines impossible situation all
-together. Since a random variable may have more than two values, the
-realistic expectation value called the Choquet integral is much more
-complex than the naïve one~\citep{Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016}.
+In another word, no matter how we pick $\mu(E)$, its expectation
+value ranges in $\left[1.7,1.8\right]$ which is narrower than the
+naïve expectation value~$[1.6,1.9]$ because the naïve one combines
+contradicting situations in the computation. In general, the realistic
+expectation value, called the Choquet integral, is more complex than
+what we discussed as a random variable may have more than two values.
+Despite its complexity, it is still a weight average among the values
+of a random variable as in Def.~\ref{def:Choquet}. After we formulate
+the idea of the ``true'' probability measure of an IVPM~$\bar{\mu}$
+as 
+\begin{equation}
+\mathrm{core}\left(\bar{\mu}\right)=\set{\pmeas:\events\rightarrow[0,1]}{\forall P\in\events.~\pmeas\left(P\right)\in\bar{\mu}\left(P\right)}\,,\label{eq:core}
+\end{equation}
+Thm.~\ref{thm:Rosenmuller} claims the expectation value of $\bar{\mu}$
+is the range of the expectation value of the probability measure in
+the core of $\bar{\mu}$, which was intuitively discussed in the previous
+example.
 
-\begin{definition}\label{def:Choquet}Consider a classical IVPM~$\bar{\mu}$
-such that $\mul:\events\rightarrow\left[0,1\right]$ and $\mur:\events\rightarrow\left[0,1\right]$
-are the left-end and the right-end of $\bar{\mu}$, respectively,
-i.e., $\bar{\mu}\left(E\right)=\left[\mul\left(E\right),\mur\left(E\right)\right]$.
+\begin{definition}[Choquet integral~\citep{Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016}]\label{def:Choquet}Consider
+a classical IVPM~$\bar{\mu}$ such that $\mul:\events\rightarrow\left[0,1\right]$
+and $\mur:\events\rightarrow\left[0,1\right]$ are the left-end and
+the right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[\mul\left(E\right),\mur\left(E\right)\right]$.
 We decompose a random variable~$X$ into step functions, but we separate
 the positive and negative terms and write like $\sum_{i=1}^{N^{-}}x_{i}^{-}\mathbf{1}_{E_{i}^{-}}+\sum_{i=1}^{N^{+}}x_{i}^{+}\mathbf{1}_{E_{i}^{+}}$,
 where 
@@ -441,18 +455,9 @@ Then, the Choquet integral of $X$ with respect to $\bar{\mu}$ is
 \end{equation}
 \end{definition}
 
-The Choquet integral is actually what we desire. Consider the \emph{core}
-of $\bar{\mu}$ is the set 
-\begin{equation}
-\mathrm{core}\left(\bar{\mu}\right)=\set{\pmeas:\events\rightarrow[0,1]}{\forall P\in\events.~\pmeas\left(P\right)\in\bar{\mu}\left(P\right)}\,,
-\end{equation}
-i.e., the set of real-value probability measure consistent with $\bar{\mu}$.
-According to Shapley's theorem~\citep{Shapley1971,GilboaSchmeidler1994,Grabisch2016},
-the core of $\bar{\mu}$ is always non-empty, and we have the following
-theorem\nb\citep{Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016}.
-
-\begin{thm}\label{thm:Rosenmuller}For every classical IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-and any random variable~$X:\Omega\rightarrow\mathbb{R}$, 
+\begin{thm}\label{thm:Rosenmuller}\citep{Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016}~For
+every classical IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$ and
+any random variable~$X:\Omega\rightarrow\mathbb{R}$, 
 \begin{equation}
 \int X\rmd\bar{\mu}=\left[\min_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu,\max_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu\right]\,.
 \end{equation}
@@ -827,7 +832,7 @@ poor precision may not uniquely identify the true state of a
 system. However, there is always at least one state that is consistent
 with the imprecise measurements.
 
-\begin{thm}[Shapley~\cite{Shapley1971,GilboaSchmeidler1994,Grabisch2016}]\label{thm:Shapley}
+\begin{thm}[Shapley~\cite{Shapley1971,GilboaSchmeidler1994,Grabisch2016}]
   For a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$, if a subspace
   of events~$\events'\subseteq\events$ commutes, then
   $\coreBorn\left(\bar{\mu},\events'\right)\ne\emptyset$.

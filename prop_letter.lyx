@@ -1566,12 +1566,9 @@ either
  The problem is that the two intervals are correlated: there is more information
  in the combined event than in each event separately.
  In our example, even though the true probability of 
-
 \begin_inset Formula $\bar{\mu}(E)$
 \end_inset
 
-
-\lang english
 , 
 \begin_inset Formula $\mu(E)$
 \end_inset
@@ -1581,12 +1578,9 @@ either
 \end_inset
 
  and the true probability of 
-
 \begin_inset Formula $\bar{\mu}(\overline{E})$
 \end_inset
 
-
-\lang english
 , 
 \begin_inset Formula $\mu(\overline{E})$
 \end_inset
@@ -1702,26 +1696,35 @@ key "Shapley1971,GilboaSchmeidler1994,Marinacci1999,Grabisch2016"
 \begin_layout Standard
 The similar kind of subtleties happens when we want to define the expectation
  value of a random variable.
+ Consider an event 
+\begin_inset Formula $E$
+\end_inset
+
+ such that 
+\begin_inset Formula $\bar{\mu}(E)=[0.2,0.3]$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{\mu}(\overline{E})=[0.7,0.8]$
+\end_inset
+
+.
  Given a random variable
 \begin_inset Formula 
 \begin{equation}
 X\left(\omega\right)=\begin{cases}
 1 & \textrm{, if }\omega\in E\textrm{ ;}\\
-2 & \textrm{, if }\omega\notin E\textrm{ .}
+2 & \textrm{, if }\omega\notin E\textrm{ ,}
 \end{cases}
 \end{equation}
 
 \end_inset
 
-If we define its expectation value with respect to the IVPM
-\begin_inset space ~
-\end_inset
-
-
+its expectation value with respect to 
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
-defined in the previous paragraph naïvely, it would be
+ might naïvely be defined as
 \begin_inset ERT
 status collapsed
 
@@ -1758,19 +1761,33 @@ end{subequations}
 
 \end_inset
 
-However, if the true probability of 
-
+As we discussed in the previous paragraph, the true probability of 
 \begin_inset Formula $\bar{\mu}(E)$
 \end_inset
 
-
-\lang english
 , 
 \begin_inset Formula $\mu(E)$
 \end_inset
 
+, can be anywhere in the range 
+\begin_inset Formula $[0.2,0.3]$
+\end_inset
+
+ and the true probability of 
+\begin_inset Formula $\bar{\mu}(\overline{E})$
+\end_inset
+
+, 
+\begin_inset Formula $\mu(\overline{E})$
+\end_inset
+
 , is 
-\begin_inset Formula $0.2$
+\begin_inset Formula $1-\mu(E)$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\mu(E)=0.2$
 \end_inset
 
 , the expectation value with respect to 
@@ -1785,19 +1802,8 @@ However, if the true probability of
 
 \end_inset
 
-if the true probability of 
-
-\begin_inset Formula $\bar{\mu}(E)$
-\end_inset
-
-
-\lang english
-, 
-\begin_inset Formula $\mu(E)$
-\end_inset
-
-, is 
-\begin_inset Formula $0.3$
+if 
+\begin_inset Formula $\mu(E)=0.3$
 \end_inset
 
 , the expectation value with respect to 
@@ -1812,40 +1818,84 @@ if the true probability of
 
 \end_inset
 
-No matter what the true probability of 
-
-\begin_inset Formula $\bar{\mu}(E)$
+In another word, no matter how we pick 
+\begin_inset Formula $\mu(E)$
 \end_inset
 
- is the expectation value of it never reach 
-\begin_inset Formula $1.6$
+, its expectation value ranges in 
+\begin_inset Formula $\left[1.7,1.8\right]$
 \end_inset
 
- and 
-\begin_inset Formula $1.9$
-\end_inset
-
- because the 
-\lang english
-naïve expectation value with respect to 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- combines impossible situation all together.
- Since a random variable may have more than two values, the realistic expectatio
-n value called the Choquet integral is much more complex than the naïve
- one
+ which is narrower than the naïve expectation value
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016"
+\begin_inset Formula $[1.6,1.9]$
+\end_inset
+
+ because the naïve one combines contradicting situations in the computation.
+ In general, the realistic expectation value, called the Choquet integral,
+ is more complex than what we discussed as a random variable may have more
+ than two values.
+ Despite its complexity, it is still a weight average among the values of
+ a random variable as in Def.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Choquet"
 
 \end_inset
 
 .
+ After we formulate the idea of the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ probability measure of an IVPM
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ as 
+\begin_inset Formula 
+\begin{equation}
+\mathrm{core}\left(\bar{\mu}\right)=\set{\pmeas:\events\rightarrow[0,1]}{\forall P\in\events.~\pmeas\left(P\right)\in\bar{\mu}\left(P\right)}\,,\label{eq:core}
+\end{equation}
+
+\end_inset
+
+Thm.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:Rosenmuller"
+
+\end_inset
+
+ claims the expectation value of 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ is the range of the expectation value of the probability measure in the
+ core of 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+, which was intuitively discussed in the previous example.
 \end_layout
 
 \begin_layout Standard
@@ -1856,7 +1906,29 @@ status collapsed
 
 
 \backslash
-begin{definition}
+begin{definition}[
+\end_layout
+
+\end_inset
+
+Choquet integral
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
 \end_layout
 
 \end_inset
@@ -1973,67 +2045,6 @@ end{definition}
 \end_layout
 
 \begin_layout Standard
-The Choquet integral is actually what we desire.
- Consider the 
-\emph on
-core
-\emph default
- of 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- is the set 
-\begin_inset Formula 
-\begin{equation}
-\mathrm{core}\left(\bar{\mu}\right)=\set{\pmeas:\events\rightarrow[0,1]}{\forall P\in\events.~\pmeas\left(P\right)\in\bar{\mu}\left(P\right)}\,,
-\end{equation}
-
-\end_inset
-
-i.e., the set of real-value probability measure consistent with 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
-.
- According to Shapley's theorem
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Shapley1971,GilboaSchmeidler1994,Grabisch2016"
-
-\end_inset
-
-, the core of 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- is always non-empty, and we have the following theorem
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nb
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -2051,6 +2062,17 @@ begin{thm}
 LatexCommand label
 name "thm:Rosenmuller"
 
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016"
+
+\end_inset
+
+
+\begin_inset space ~
 \end_inset
 
 For every classical IVPM
@@ -4120,13 +4142,6 @@ status collapsed
 
 ]
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "thm:Shapley"
 
 \end_inset
 
