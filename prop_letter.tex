@@ -397,7 +397,7 @@ X\left(\omega\right)=\begin{cases}
 2 & \textrm{, if }\omega\notin E\textrm{ ,}
 \end{cases}
 \end{equation}
-its expectation value with respect to $\bar{\mu}$ might naïvely be
+its expectation value with respect to $\bar{\mu}$ might be naïvely
 defined as\begin{subequations}
 \begin{eqnarray}
  &  & 1\cdot\bar{\mu}(E)+2\cdot\bar{\mu}(\overline{E})\\
@@ -407,41 +407,39 @@ defined as\begin{subequations}
 \end{eqnarray}
 \end{subequations}As we discussed in the previous paragraph, the
 true probability of $\bar{\mu}(E)$, $\mu(E)$, can be anywhere in
-the range $[0.2,0.3]$ and the true probability of $\bar{\mu}(\overline{E})$,
-$\mu(\overline{E})$, is $1-\mu(E)$. If $\mu(E)=0.2$, the expectation
-value with respect to $\mu$ is 
+the range $[0.2,0.3]$ and the true probability of $\bar{\mu}(\overline{E})$
+is $\mu(\overline{E})=1-\mu(E)$. If $\mu(E)=0.2$, the expectation
+value of $X$ with respect to $\mu$ is 
 \begin{equation}
 1\cdot\mu(E)+2\cdot\mu(\overline{E})=1\cdot0.2+2\cdot0.8=1.8\,;
 \end{equation}
-if $\mu(E)=0.3$, the expectation value with respect to $\mu$ is
+if $\mu(E)=0.3$, the expectation value of $X$ with respect to $\mu$
+is
 \begin{equation}
 1\cdot\mu(E)+2\cdot\mu(\overline{E})=1\cdot0.3+2\cdot0.7=1.7\,.
 \end{equation}
-In another word, no matter how we pick $\mu(E)$, its expectation
-value ranges in $\left[1.7,1.8\right]$ which is narrower than the
-naïve expectation value~$[1.6,1.9]$ because the naïve one combines
-contradicting situations in the computation. In general, the realistic
-expectation value, called the Choquet integral, is more complex than
-what we discussed as a random variable may have more than two values.
-Despite its complexity, it is still a weight average among the values
-of a random variable as in Def.~\ref{def:Choquet}. After we formulate
-the idea of the ``true'' probability measure of an IVPM~$\bar{\mu}$
-as 
-\begin{equation}
-\mathrm{core}\left(\bar{\mu}\right)=\set{\pmeas:\events\rightarrow[0,1]}{\forall P\in\events.~\pmeas\left(P\right)\in\bar{\mu}\left(P\right)}\,,\label{eq:core}
-\end{equation}
-Thm.~\ref{thm:Rosenmuller} claims the expectation value of $\bar{\mu}$
-is the range of the expectation value of the probability measure in
-the core of $\bar{\mu}$, which was intuitively discussed in the previous
-example.
+In another word, no matter how we pick $\mu(E)$, the expectation
+value of $X$ is in $\left[1.7,1.8\right]$ which is a more realistic
+expectation value of $X$ with respect to $\bar{\mu}$. The interval~$\left[1.7,1.8\right]$
+is narrower than the naïve expectation value~$[1.6,1.9]$ because
+the naïve one combines contradicting situations in the computation.
+In general, the computation of the realistic expectation value, called
+the Choquet integral, is more complex than what we discussed because
+a random variable may have more than two values. Despite its complexity,
+it is still a weight average among the values of a random variable
+as given in the following definition.
 
 \begin{definition}[Choquet integral~\citep{Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016}]\label{def:Choquet}Consider
 a classical IVPM~$\bar{\mu}$ such that $\mul:\events\rightarrow\left[0,1\right]$
 and $\mur:\events\rightarrow\left[0,1\right]$ are the left-end and
 the right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[\mul\left(E\right),\mur\left(E\right)\right]$.
 We decompose a random variable~$X$ into step functions, but we separate
-the positive and negative terms and write like $\sum_{i=1}^{N^{-}}x_{i}^{-}\mathbf{1}_{E_{i}^{-}}+\sum_{i=1}^{N^{+}}x_{i}^{+}\mathbf{1}_{E_{i}^{+}}$,
-where 
+the positive and negative terms and write like
+\begin{equation}
+X=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\mathbf{1}_{E_{i}^{s}}\,,
+\end{equation}
+where $\mathbf{1}_{E_{i}^{s}}$ is the indicator function of $E_{i}^{s}$,
+and we order the value of its range from the smallest to the largest
 \begin{equation}
 x_{N^{-}}^{-}\le\ldots\le x_{1}^{-}\le0\le x_{1}^{+}\le\ldots\le x_{N^{+}}^{+}
 \end{equation}
@@ -454,6 +452,16 @@ Then, the Choquet integral of $X$ with respect to $\bar{\mu}$ is
 \int X\rmd\bar{\mu}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\mul\left(E_{i}^{s\prime}\right),\Delta\mur\left(E_{i}^{s\prime}\right)\right]\,.\label{eq:interval-expectation}
 \end{equation}
 \end{definition}
+
+Although Def.~\ref{def:Choquet} looks complex, it matches with our
+intuition in the previous example. Let
+\begin{equation}
+\mathrm{core}\left(\bar{\mu}\right)=\set{\pmeas:\events\rightarrow[0,1]}{\forall P\in\events.~\pmeas\left(P\right)\in\bar{\mu}\left(P\right)}\,,\label{eq:core}
+\end{equation}
+be the set of possible ``true'' probability measure of an IVPM~$\bar{\mu}$.
+Then, the following theorem claims the expectation value of $\bar{\mu}$
+is the range of the expectation value of the probability measure in
+the core of $\bar{\mu}$.
 
 \begin{thm}\label{thm:Rosenmuller}\citep{Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016}~For
 every classical IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$ and
