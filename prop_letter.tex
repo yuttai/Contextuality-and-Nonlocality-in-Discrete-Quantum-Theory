@@ -204,18 +204,18 @@ characterizing the uncertainties tends to zero, and the set of
 single-point QIVPMs densely covers the entire real interval $[0,1]$.
 
 
-The paper is organized as follows.  In Sec.\ \ref{sec:fuzzy} we begin
+The paper is organized as follows.  In Sec.~\ref{sec:fuzzy} we begin
 by introducing the foundations of quantum probability space and fuzzy
 measurement.  We then move on to introduce the concept of quantum
-interval valued probability in Sec.\ \ref{sec:Interval-Uncertainty}.
+interval valued probability in Sec.~\ref{sec:Interval-Uncertainty}.
 The QIVPM will provide the mathematical framework we need to quantify the
 impact of finite precision measurements on quantum mechanics.  For
-instance, in Sec.\ \ref{sec:Kochen-Specker}, we quantify the domain of
+instance, in Sec.~\ref{sec:Kochen-Specker}, we quantify the domain of
 validity of a contextual measurement, thus addressing the conditions
 under which the Kochen-Specker theorem applies.  This provides a way
 not only of resolving the Meyer-Mermin debate, but also revealing a
 precise transition to non-contextuality;  these are the results of our
-Thm~\ref{cor:Kochen-Specker-IVPM}.  In Sec.\ \ref{sec:Gleason}, we
+Thm~\ref{cor:Kochen-Specker-IVPM}.  In Sec.~\ref{sec:Gleason}, we
 study Gleason's theorem in the context of imprecise measurements,
 concluding that QIVPM provides a framework with quantitative bounds in
 which Gleason's theorem, while formally invalid in a universe with
@@ -231,26 +231,25 @@ the necessary conditions for reasoning coherently about collections of
 uncertain
 events~\cite{Kolmogorov1950,544199,Griffiths2003,Grabisch2016}. In the
 quantum case, the events of interest are specified by \emph{projection
-  operators} $P$. These include the empty projector~$\mathbb{0}$,
-the identity projector~$\mathbb{1}$, projectors of the form
-$\proj{\phi}$ where $\ket{\phi}$ is a pure quantum state (an element
-of a Hilbert space), sums of \emph{orthogonal} projectors $P_0$
-and~$P_1$ with $P_0P_1=\mathbb{0}$, and products of \emph{commuting}
-projectors $P_0$ and~$P_1$ with $P_0P_1=P_1P_0$. In a well-defined
-quantum probability
+  operators} $P$. These include the empty projector~$\mathbb{0}$, the
+identity projector~$\mathbb{1}$, projectors of the form $\proj{\phi}$
+where $\ket{\phi}$ is a pure quantum state (an element of a Hilbert
+space), sums of \emph{orthogonal} projectors $P_0$ and~$P_1$ with
+$P_0P_1=\mathbb{0}$, and products of \emph{commuting} projectors $P_0$
+and~$P_1$ with $P_0P_1=P_1P_0$. In a quantum probability
 space~\cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010},
 each event~$P_{i}$ is mapped to a probability~$\mu(P_{i})$ using a
-probability measure~$\mu:\events\rightarrow[0,1]$, where $\events$
-is the set of all projectors on a given Hilbert space, subject to the
+probability measure~$\mu:\events\rightarrow[0,1]$, where $\events$ is
+the set of all projectors on a given Hilbert space, subject to the
 following constraints: $\mu(\mathbb{0})=0$, $\mu(\mathbb{1})=1$,
 $\mu\left(\mathbb{1}-P\right)=1-\mu\left(P\right)$, and for each pair
 of \emph{orthogonal} projectors $P_{0}$ and $P_{1}$:
 \begin{equation}
 {\mu}\left(P_{0}+P_{1}\right)={\mu}\left(P_{0}\right)+{\mu}\left(P_{1}\right)\,.\label{eq:QuantumProbability-Addition}
 \end{equation}
-Given an observable~$\mathbf{O}$ with spectral decomposition
-$\mathbf{O}=\sum_{i=1}^{N}\lambda_{i}P_{i}$ one can define the 
-expectation value of that observable as:
+Given a probability for every projector, we can associate an
+expectation value with an observable~$\mathbf{O}$ with spectral
+decomposition $\mathbf{O}=\sum_{i=1}^{N}\lambda_{i}P_{i}$ as:
 \begin{equation}
 \expval{\mathbf{O}}_{\mu}=\sum_{i=1}^{N}\lambda_{i}\mu(P_{i})\,.\label{eq:quantum-expectation}
 \end{equation}
@@ -260,7 +259,7 @@ constructed if one knows the current state of the quantum system by
 using the Born rule.  Specifically, for each pure normalized quantum
 state~$\ket{\phi}$, the Born rule induces a probability measure
 $\mu_{\phi}^{\mathrm{B}}$ defined as
-$\mu_{\phi}^{\mathrm{B}}(P)=\ip{\phi}{P\phi}$. The situation
+$\mu_{\phi}^{\mathrm{B}}(P)=\ip{\phi}{P\vert\phi}$. The situation
 generalizes to mixed states
 $\rho = \sum_{j=1}^{N}q_{j}\proj{\phi_{j}}$, where
 $\sum_{j=1}^{N}q_{j}=1$ in which case the generalized Born rule
@@ -307,7 +306,7 @@ propose our quantum generalization. In the classical setting, there
 are several proposals for ``imprecise
 probabilities''~\citep{Dempster1967,Shafer1976,GilboaSchmeidler1994,Marinacci1999,Weichselberger2000,JamisonLodwick2004,HuberRonchetti2009,Grabisch2016}.
 Although these proposals differ in some details, they all share the
-fact that the probability $\bar{\mu}(E)$ of an event~$E$ is generalized from
+fact that the probability $\mu(E)$ of an event~$E$ is generalized from
 a single \emph{real number} to an \emph{interval}~$[\ell,r]$
 where~$\ell$ intuitively corresponds to the strength of evidence for
 the event~$E$ and~$1-r$ corresponds to the strength of evidence
@@ -323,48 +322,48 @@ refer to the probability of impossible events (e.g., the null event)
 and events that are certain (e.g., the event covering the entire
 sample space).  For each interval $[\ell,r]$, we also need the
 interval $[1-r,1-\ell]$ so that if one interval refers to the
-probability of an event, the other refers to the probability of the
-event's complement.  For example, if we discover as a result of an
-experiment that $\bar{\mu}(E) = [0.2,0.3]$ for some event~$E$, we may
-conclude that $\bar{\mu}(\overline{E}) = [0.7,0.8]$ for the complement event
-$\overline{E}$. In addition to these simple conditions, there are some
-subtle conditions on how intervals are combined, which we discuss
-next.
+probability of an event $E$, the other refers to the probability of
+the event's complement $\overline{E}$.  For example, if we discover as
+a result of an experiment that $\mu(E) = [0.2,0.3]$ for some
+event~$E$, we may conclude that $\mu(\overline{E}) = [0.7,0.8]$ for
+the complement event $\overline{E}$. In addition to these simple
+conditions, there are some subtle conditions on how intervals are
+combined, which we discuss next.
 
 Let $E_1$ and $E_2$ be two disjoint events with probabilities
-$\bar{\mu}(E_1)=[\ell_1,r_1]$ and $\bar{\mu}(E_2)=[\ell_2,r_2]$. A first attempt
+$\mu(E_1)=[\ell_1,r_1]$ and $\mu(E_2)=[\ell_2,r_2]$. A first attempt
 at calculating the probability of the combined event that
 \emph{either} $E_1$ or $E_2$ occurs might be
-$\bar{\mu}(E_1\cup E_2) = [\ell_1+\ell_2,r_1+r_2]$. In some cases, this is
-indeed a sensible definition. For example, if $\bar{\mu}(E_1)=[0.1,0.2]$ and
-$\bar{\mu}(E_2)=[0.3,0.4]$ we get $\bar{\mu}(E_1\cup E_2) = [0.4,0.6]$. But
-consider an event $E$ such that $\bar{\mu}(E)=[0.2,0.3]$ and hence
-$\bar{\mu}(\overline{E})=[0.7,0.8]$. The two events $E$ and $\overline{E}$
+$\mu(E_1\cup E_2) = [\ell_1+\ell_2,r_1+r_2]$. In some cases, this is
+indeed a sensible definition. For example, if $\mu(E_1)=[0.1,0.2]$ and
+$\mu(E_2)=[0.3,0.4]$ we get $\mu(E_1\cup E_2) = [0.4,0.6]$. But
+consider an event $E$ such that $\mu(E)=[0.2,0.3]$ and hence
+$\mu(\overline{E})=[0.7,0.8]$. The two events $E$ and $\overline{E}$
 are disjoint; the previous naïve way of combining the intervals would
-give $\bar{\mu}(E\cup\overline{E})=[0.9,1.1]$ which is not a valid
+give $\mu(E\cup\overline{E})=[0.9,1.1]$ which is not a valid
 probability interval. Moreover the event $E\cup\overline{E}$ is the
 identity event covering the entire space; its probability interval
 should be $[1,1]$ which is sharper than $[0.9,1.1]$. The problem is
 that the two intervals are correlated: there is more information in
 the combined event than in each event separately. In our example, even
-though the true probability of {$\bar{\mu}(E)$}, $\mu(E)$, can be anywhere in the range
-$[0.2,0.3]$ and the true probability of {$\bar{\mu}(\overline{E})$}, $\mu(\overline{E})$, can be in
+though the ``true'' probability of $E$ can be anywhere in the range
+$[0.2,0.3]$ and the ``true'' probability of $\overline{E}$ can be in
 anywhere in the range $[0.7,0.8]$, the values are not independent. Any
 value of $\mu(E) \leq 0.25$ will force $\mu(\overline{E})\geq
 0.75$. To account for such subtleties, the axioms of interval-valued
 probability do not use a strict equality for the combination of
 disjoint events. The correct constraint regarding the probability of
 $E_1\cup E_2$ when $E_1$ and $E_2$ are disjoint is
-$\bar{\mu}(E_1\cup E_2) \subseteq [\ell_1+\ell_2,r_1+r_2]$ which, in
+$\mu(E_1\cup E_2) \subseteq [\ell_1+\ell_2,r_1+r_2]$ which, in
 combination with the requirement for the identity event would force
-$\bar{\mu}(E \cup \overline{E})$ to always be $[1,1]$ irrespective of the
-particular assignments of $\bar{\mu}(E)$ or~$\bar{\mu}(\overline{E})$.
+$\mu(E \cup \overline{E})$ to always be $[1,1]$ irrespective of the
+particular assignments of $\mu(E)$ or~$\mu(\overline{E})$.
 
 When combining non-disjoint events, there is a further subtlety whose
 resolution will give us the final general condition for IVPMs. For
 general, not necessarily disjoint, events $E_1$ and $E_2$, we have:
 \begin{equation}
-\bar{\mu}(E_1\cup E_2) + \bar{\mu}(E_1\cap E_2) \subseteq \bar{\mu}(E_1) + \bar{\mu}(E_2)
+\mu(E_1\cup E_2) + \mu(E_1\cap E_2) \subseteq \mu(E_1) + \mu(E_2)
 \label{eq:classicalconvex}
 \end{equation}
 which is a generalization of the classical inclusion-exclusion
@@ -373,7 +372,7 @@ before. The new condition, known as
 \emph{convexity}~\cite{Shapley1971,GilboaSchmeidler1994,Marinacci1999,Grabisch2016},
 reduces to the previously
 motivated condition when the events are disjoint, i.e., when
-$\bar{\mu}(E_1\cap E_2) = 0$.
+$\mu(E_1\cap E_2) = 0$.
 
 We now have the necessary ingredients to define the quantum extension,
 QIVPMs, as a generalization of both classical IVPMs and quantum
@@ -527,7 +526,7 @@ interval.
 
 \begin{definition}[Expectation Value of Observables over QIVPMs] Let
   $\mathscr{I}$ be a set of intervals; $\Hilb$ a Hilbert space of
-  dimension~$d\ge3$ with event space $\events$; and $\mathbf{O}$ an
+  dimension~$d\ge3$ with event space~$\events$; and $\mathbf{O}$ an
   observable with spectral decomposition
   $\Sigma_{i=1}^N \lambda_iP_i$. Let $\events'$ be the minimal
   subspace of events containing all the projectors $P_i$, then we define:
@@ -547,29 +546,28 @@ to commuting projectors, the definition above is consistent with the
 classical notion of the \emph{Choquet
   integral}~\cite{GilboaSchmeidler1994,Grabisch2016} which is used to
 calculate the expectation value of random variables as a weighted
-average.
+average.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Kochen-Specker} 
 \label{sec:Kochen-Specker}
   
-Our generalization of quantum probability measures to QIVPMs will
-allow us to strengthen one of the fundamental theorems in of quantum
+Our generalization of quantum probability measures to QIVPMs allows us
+to strengthen one of the fundamental theorems in of quantum
 information: the Kochen-Specker
 theorem~\cite{PeresRon1988,peres1995quantum}. Our stronger version of
 the theorem will suggest a resolution to the debate initiated by Meyer
 and Mermin on the relevance of the Kochen-Specker to experimental, and
 hence finite-precision, quantum
 measurements~\citep{PhysRevLett.83.3751,Mermin1999,Kent1999,HavlicekKrennSummhammerSvozil2001,SimonBruknerZeilinger2001,Cabello2002,Larsson2002,Appleby2002,Peres2003,BarrettKent2004,Appleby_2005,Spekkens2005,GuehneKleinmannCabelloEtAl2010,MazurekPuseyKunjwalEtAl2016}.
-Specifically, the original Kochen-Specker theorem is formulated
-under the assumption that all observables of a quantum mechanical
-system have \emph{definite values at all
-  times}~\cite{Held2016}. Our interval-valued framework will allow
-us to state, and prove, a stronger version of the theorem that holds
-even if the observables have values that are only definite up to some
-specific parameter that quantifies experimental uncertainty. Put
-differently, our stronger statement and theorem quantifies Mermin's
-qualitative argument:
+Specifically, the original Kochen-Specker theorem is formulated under
+the assumption that all observables of a quantum mechanical system
+have \emph{definite values at all times}~\cite{Held2016}. Our
+interval-valued framework will allow us to state, and prove, a
+stronger version of the theorem that holds even if the observables
+have values that are only definite up to some specific parameter that
+quantifies experimental uncertainty. Put differently, our stronger
+statement and theorem quantifies Mermin's qualitative argument:
 \begin{quote}
   \ldots although the outcomes deduced from such imperfect
   measurements will occasionally differ dramatically from those
@@ -602,27 +600,17 @@ result to show the non-existence of any $\delta$-deterministic QIVPM
 when $\delta < 1/3$ and the Hilbert space dimension is greater than
 2. 
 
-\paragraph*{Expectation Values of Fuzzy Observables.}  Our following
-development will crucially rely on analyzing the expectation values of
-families of observables. We introduce the necessary definitions before
-stating and proving our variants of the Kochen-Specker theorem.
-
-The expectation value is intuitively between two possible outcomes,
-which themselves lie between the minimum and maximum bounds of the
-given probability intervals. (This definition is consistent with the
-classical Choquet integral on subspaces of commuting events by
-adopting the classical
-results~\cite{GilboaSchmeidler1994,Grabisch2016}.)  If the QIVPM is
-0-deterministic, this interval collapses to a singleton
-$\left\{ \lambda\right\} $, where $\lambda$ is an eigenvalue
-of~$\mathbf{O}$. If we define the multiplication of two singleton
-sets~$\left\{ \lambda_{1}\right\} $ and $\left\{ \lambda_{2}\right\} $
-to be $\left\{ \lambda_{1}\lambda_{2}\right\} $, then we have
+If a QIVPM is 0-deterministic, then for a family of commuting
+observables~$\left\{ \mathbf{O}_{j}\right\} _{j=1}^{M}$, we have:
 \begin{equation}
 \prod_{j=1}^{M}\expval{\mathbf{O}_{j}}_{\bar{\mu}}=\expval{\prod_{j=1}^{M}\mathbf{O}_{j}}_{\bar{\mu}}\label{eq:Kochen-Specker-Rules}
 \end{equation}
-for any set of commuting observables~$\left\{ \mathbf{O}_{j}\right\}
-_{j=1}^{M}$.
+Intuitively the expectation value of an observable lies between two
+possible outcomes, which themselves lie between the minimum and
+maximum bounds of the given probability intervals.  If the QIVPM is
+0-deterministic, this interval collapses to a singleton
+$\left\{ \lambda\right\} $, where $\lambda$ is an eigenvalue
+of~$\mathbf{O}$. 
 
 We now state and prove a theorem that is equivalent to the original
 Kochen-Specker theorem but that is formulated in terms of
@@ -1015,6 +1003,19 @@ is defined as
 \expval{\mathbf{O}}_{\bar{\mu}}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i}^{s\prime}\right),\Delta\mur\left(P_{i}^{s\prime}\right)\right]\,.\label{eq:quantum-interval-expectation}
 \end{equation}
 \end{definition}
+
+If we define the multiplication of two singleton
+sets~$\left\{ \lambda_{1}\right\} $ and $\left\{ \lambda_{2}\right\} $
+to be $\left\{ \lambda_{1}\lambda_{2}\right\} $.
+
+
+
+
+
+
+
+
+
 
 
 
