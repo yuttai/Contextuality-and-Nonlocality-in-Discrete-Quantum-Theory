@@ -19127,12 +19127,12 @@ name "lemma:real-expectation-value-between-classical-quantum"
 \end_inset
 
 Adopting the definitions in this subsection.
- Given a density matrix
+ Given a QRVPM
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Formula $\rho$
+\begin_inset Formula $\mu:\events\rightarrow\left[0,1\right]$
 \end_inset
 
 , there is a classical real-valued probability measure
@@ -19144,12 +19144,12 @@ Adopting the definitions in this subsection.
 \end_inset
 
  such that 
-\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}|_{\events'}=\mu'\circ\tau$
+\begin_inset Formula $\mu|_{\events'}=\mu'\circ\tau$
 \end_inset
 
 .
  Then, we have 
-\begin_inset Formula $\expval{\mathbf{O}}_{\rho}=\int X\rmd\mu'$
+\begin_inset Formula $\expval{\mathbf{O}}_{\mu}=\int X\rmd\mu'$
 \end_inset
 
 .
@@ -19182,11 +19182,11 @@ begin{proof}
 \end_inset
 
 Since 
-\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}:\events\rightarrow\left[0,1\right]$
+\begin_inset Formula $\mu:\events\rightarrow\left[0,1\right]$
 \end_inset
 
  is a QRVPM, 
-\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}|_{\events'}$
+\begin_inset Formula $\mu|_{\events'}$
 \end_inset
 
  is a QRVPM on the commuting sub-event space
@@ -19239,14 +19239,14 @@ reference "thm:sub-event-space"
 \end_inset
 
 , there is a CRVPM such that 
-\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}|_{\events'}=\mu'\circ\tau$
+\begin_inset Formula $\mu|_{\events'}=\mu'\circ\tau$
 \end_inset
 
 .
  
 \begin_inset Formula 
 \begin{eqnarray*}
-\expval{\mathbf{O}}_{\rho} & \stackrel{\textrm{Equation }(\ref{eq:quantum-expectation})}{=} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{s}\right)\\
+\expval{\mathbf{O}}_{\mu} & \stackrel{\textrm{Equation }(\ref{eq:quantum-expectation})}{=} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)\\
  & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\\
  & \stackrel{\textrm{Equation }(\ref{eq:expectation})}{=} & \int X\rmd\mu'\,.
 \end{eqnarray*}
@@ -19705,20 +19705,12 @@ Given a Hilbert space of
 \end_inset
 
  are real-valued probability measures, we have 
-\begin_inset Formula $\mul=\mur=\mu_{\rho}^{\mathrm{B}}$
-\end_inset
-
- for some density matrix
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\rho$
+\begin_inset Formula $\mul=\mur=\mu$
 \end_inset
 
 .
  Then, 
-\begin_inset Formula $\expval{\mathbf{O}}_{\bar{\mu}}=\left\{ \expval{\mathbf{O}}_{\rho}\right\} $
+\begin_inset Formula $\expval{\mathbf{O}}_{\bar{\mu}}=\left\{ \expval{\mathbf{O}}_{\mu}\right\} $
 \end_inset
 
 .
@@ -19763,9 +19755,9 @@ reference "subsec:Between-Expectation-Values-Classical-Quantum"
 
 , we have
 \begin_inset Formula 
-\[
-\expval{\mathbf{O}}_{\bar{\mu}}\stackrel{\textrm{Lemma }\ref{lemma:real-expectation-value-between-classical-quantum}}{=}\int X\rmd\bar{\mu}'\stackrel{\textrm{Lemma }\ref{lemma:Choquet-Lebesgue}}{=}\left\{ \int X\rmd\mu'\right\} \stackrel{\textrm{Lemma }\ref{lemma:interval-expectation-value-between-classical-quantum}}{=}\left\{ \expval{\mathbf{O}}_{\rho}\right\} \,,
-\]
+\begin{equation}
+\expval{\mathbf{O}}_{\bar{\mu}}\stackrel{\textrm{Lemma }\ref{lemma:real-expectation-value-between-classical-quantum}}{=}\int X\rmd\bar{\mu}'\stackrel{\textrm{Lemma }\ref{lemma:Choquet-Lebesgue}}{=}\left\{ \int X\rmd\mu'\right\} \stackrel{\textrm{Lemma }\ref{lemma:interval-expectation-value-between-classical-quantum}}{=}\left\{ \expval{\mathbf{O}}_{\mu}\right\} \,,
+\end{equation}
 
 \end_inset
 
@@ -19959,7 +19951,7 @@ reference "lemma:expectation-singleton"
 \end_inset
 
 , 
-\begin_inset Formula $\expval{\mathbf{O}}_{\bar{\mu}}=\left\{ \expval{\mathbf{O}}_{\rho}\right\} $
+\begin_inset Formula $\expval{\mathbf{O}}_{\bar{\mu}}=\left\{ \expval{\mathbf{O}}_{\mu}\right\} $
 \end_inset
 
 .
@@ -19979,7 +19971,7 @@ reference "lemma:expectation-singleton"
  Therefore, 
 \begin_inset Formula 
 \begin{equation}
-\expval{\mathbf{O}}_{\rho}\stackrel{\textrm{Equation }(\ref{eq:quantum-expectation})}{=}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)=\lambda_{i_{0}}^{s_{0}}\,.\label{eq:expectation-value-eigenvalue}
+\expval{\mathbf{O}}_{\mu}\stackrel{\textrm{Equation }(\ref{eq:quantum-expectation})}{=}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)=\lambda_{i_{0}}^{s_{0}}\,.\label{eq:expectation-value-eigenvalue}
 \end{equation}
 
 \end_inset

@@ -2596,18 +2596,16 @@ by $X=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mathbf{1}
 is called the random variable induced by $\mathbf{O}$.\end{definition}
 
 \begin{lemma}\label{lemma:real-expectation-value-between-classical-quantum}Adopting
-the definitions in this subsection. Given a density matrix~$\rho$,
+the definitions in this subsection. Given a QRVPM~$\mu:\events\rightarrow\left[0,1\right]$,
 there is a classical real-valued probability measure~$\mu':2^{\Omega}\rightarrow\left[0,1\right]$
-such that $\mu_{\rho}^{\mathrm{B}}|_{\events'}=\mu'\circ\tau$. Then,
-we have $\expval{\mathbf{O}}_{\rho}=\int X\rmd\mu'$.\end{lemma}
+such that $\mu|_{\events'}=\mu'\circ\tau$. Then, we have $\expval{\mathbf{O}}_{\mu}=\int X\rmd\mu'$.\end{lemma}
 
-\begin{proof}Since $\mu_{\rho}^{\mathrm{B}}:\events\rightarrow\left[0,1\right]$
-is a QRVPM, $\mu_{\rho}^{\mathrm{B}}|_{\events'}$ is a QRVPM on the
-commuting sub-event space\nb$\events'$. By case\nb\ref{enu:sub-event-space-real-quantum2classical}
-in theorem~\ref{thm:sub-event-space}, there is a CRVPM such that
-$\mu_{\rho}^{\mathrm{B}}|_{\events'}=\mu'\circ\tau$. 
+\begin{proof}Since $\mu:\events\rightarrow\left[0,1\right]$ is a
+QRVPM, $\mu|_{\events'}$ is a QRVPM on the commuting sub-event space\nb$\events'$.
+By case\nb\ref{enu:sub-event-space-real-quantum2classical} in theorem~\ref{thm:sub-event-space},
+there is a CRVPM such that $\mu|_{\events'}=\mu'\circ\tau$. 
 \begin{eqnarray*}
-\expval{\mathbf{O}}_{\rho} & \stackrel{\textrm{Equation }(\ref{eq:quantum-expectation})}{=} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{s}\right)\\
+\expval{\mathbf{O}}_{\mu} & \stackrel{\textrm{Equation }(\ref{eq:quantum-expectation})}{=} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)\\
  & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu'\left(\tau\left(P_{i}^{s}\right)\right)\\
  & \stackrel{\textrm{Equation }(\ref{eq:expectation})}{=} & \int X\rmd\mu'\,.
 \end{eqnarray*}
@@ -2681,14 +2679,13 @@ Our next lemma discusses the quantum version of lemma~\ref{lemma:Choquet-Lebesgu
 \begin{lemma}\label{lemma:expectation-singleton}Given a Hilbert
 space of $d\ge3$, when $\mul:\events\rightarrow\left[0,1\right]$
 and $\mur:\events\rightarrow\left[0,1\right]$ are real-valued probability
-measures, we have $\mul=\mur=\mu_{\rho}^{\mathrm{B}}$ for some density
-matrix~$\rho$. Then, $\expval{\mathbf{O}}_{\bar{\mu}}=\left\{ \expval{\mathbf{O}}_{\rho}\right\} $.\end{lemma}
+measures, we have $\mul=\mur=\mu$. Then, $\expval{\mathbf{O}}_{\bar{\mu}}=\left\{ \expval{\mathbf{O}}_{\mu}\right\} $.\end{lemma}
 
 \begin{proof}Adopting the definitions in subsection~\ref{subsec:Between-Expectation-Values-Classical-Quantum},
 we have
-\[
-\expval{\mathbf{O}}_{\bar{\mu}}\stackrel{\textrm{Lemma }\ref{lemma:real-expectation-value-between-classical-quantum}}{=}\int X\rmd\bar{\mu}'\stackrel{\textrm{Lemma }\ref{lemma:Choquet-Lebesgue}}{=}\left\{ \int X\rmd\mu'\right\} \stackrel{\textrm{Lemma }\ref{lemma:interval-expectation-value-between-classical-quantum}}{=}\left\{ \expval{\mathbf{O}}_{\rho}\right\} \,,
-\]
+\begin{equation}
+\expval{\mathbf{O}}_{\bar{\mu}}\stackrel{\textrm{Lemma }\ref{lemma:real-expectation-value-between-classical-quantum}}{=}\int X\rmd\bar{\mu}'\stackrel{\textrm{Lemma }\ref{lemma:Choquet-Lebesgue}}{=}\left\{ \int X\rmd\mu'\right\} \stackrel{\textrm{Lemma }\ref{lemma:interval-expectation-value-between-classical-quantum}}{=}\left\{ \expval{\mathbf{O}}_{\mu}\right\} \,,
+\end{equation}
 where $\mu'=\mul[\prime]=\mur[\prime]$.\end{proof}
 
 \subsection{Quantum {\normalsize{}$\mathscr{I}_{\mathrm{D}}$}-valued Probability
@@ -2707,12 +2704,12 @@ where $\lambda$ is an eigenvalue of $\mathbf{O}$.\end{lemma}
 \begin{proof}Adopt the definitions in subsection~\ref{subsec:Between-Expectation-Values-Classical-Quantum}.
 By lemma~\ref{lemma:QIVPM2QCM}, $\mul$ and $\mur$ are the same
 real-valued probability measures, and is simply denoted by $\mu:\events\rightarrow\left\{ 1,0\right\} $.
-By lemma~\ref{lemma:expectation-singleton}, $\expval{\mathbf{O}}_{\bar{\mu}}=\left\{ \expval{\mathbf{O}}_{\rho}\right\} $.
+By lemma~\ref{lemma:expectation-singleton}, $\expval{\mathbf{O}}_{\bar{\mu}}=\left\{ \expval{\mathbf{O}}_{\mu}\right\} $.
 Since $\mu$ is a cryptodeterministic measure, there is only one pair
 of $\left(s_{0},i_{0}\right)$ such that $\mu\left(P_{i_{0}}^{s_{0}}\right)=1$.
 Therefore, 
 \begin{equation}
-\expval{\mathbf{O}}_{\rho}\stackrel{\textrm{Equation }(\ref{eq:quantum-expectation})}{=}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)=\lambda_{i_{0}}^{s_{0}}\,.\label{eq:expectation-value-eigenvalue}
+\expval{\mathbf{O}}_{\mu}\stackrel{\textrm{Equation }(\ref{eq:quantum-expectation})}{=}\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu\left(P_{i}^{s}\right)=\lambda_{i_{0}}^{s_{0}}\,.\label{eq:expectation-value-eigenvalue}
 \end{equation}
 \end{proof}
 
