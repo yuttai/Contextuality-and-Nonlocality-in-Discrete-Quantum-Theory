@@ -2537,19 +2537,51 @@ are real-valued probability measures, we have $\mul=\mur$ and $\int X\rmd\bar{\m
 
 Finally, we are going to focus on CIVPMs whose range is $\mathscr{I}_{\mathrm{D}}$.
 
-\begin{lemma}For any CIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$
-and a random variable~$X=\sum_{i=1}^{N}x_{i}\mathbf{1}_{E_{i}}$,
-$\int X\rmd\bar{\mu}$ is a singleton set~$\left\{ x_{i}\right\} $
-for some $i$.\end{lemma}
+\begin{lemma}\label{lemma:deterministic-CIVPM}Given a CIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$,
+the following statements are true:
+\begin{enumerate}
+\item Its left-end~$\mul$ and right-end~$\mur$ are the same CRVPM, and
+will be simply denoted by $\pmeas:\events\rightarrow\left\{ 1,0\right\} $
+\item There is a unique $\omega_{0}\in\Omega$ such that $\bar{\mu}\left(\left\{ \omega_{0}\right\} \right)=\left\{ \pmeas\left(\left\{ \omega_{0}\right\} \right)\right\} =\necess$,
+denoted by $\pmeas^{-1}\left(1\right)$ or $\bar{\mu}^{-1}\left(\necess\right)$.
+\end{enumerate}
+\end{lemma}
 
-\begin{proof}By lemma~\ref{lemma:QIVPM2QCM}, $\mul$ and $\mur$
-are the same CRVPM, and is simply denoted by $\pmeas:\events\rightarrow\left\{ 1,0\right\} $.
-By lemma~\ref{lemma:Choquet-Lebesgue}, $\int X\rmd\bar{\mu}=\left\{ \int X\rmd\mu\right\} $.
-Since the range of $\pmeas$ is $\left\{ 1,0\right\} $ and $\sum_{i=1}^{N}\pmeas\left(E_{i}\right)=1$,
-there is a unique $i_{0}$ such that $\mu\left(E_{i_{0}}\right)=1$.
-Therefore, 
+\begin{proof}~
+\begin{enumerate}
+\item The directly consequence of lemma~\ref{lemma:QIVPM2QCM}.
+\item Since the range of $\pmeas$ is $\left\{ 1,0\right\} $ and $\sum_{\omega\in\Omega}\pmeas\left(\left\{ \omega\right\} \right)=1$,
+there is a unique $\omega_{0}$ such that $\mu\left(\left\{ \omega_{0}\right\} \right)=1$
+which implies $\bar{\mu}\left(\left\{ \omega_{0}\right\} \right)=\necess$.
+\end{enumerate}
+\end{proof}
+
+\begin{lemma}\label{lemma:deterministic-CIVPM-expectation}For any
+CIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$ and
+a random variable~$X=\sum_{i=1}^{N}x_{i}\mathbf{1}_{E_{i}}$, then
+$\int X\rmd\bar{\mu}=\left\{ X\left(\bar{\mu}^{-1}\left(\necess\right)\right)\right\} $.\end{lemma}
+
+\begin{proof}By adopting the notation in lemma~\ref{lemma:deterministic-CIVPM},
+we have
 \begin{equation}
-\int X\rmd\mu\stackrel{\textrm{Equation }(\ref{eq:expectation})}{=}\sum_{i=1}^{N}x_{i}\pmeas\left(E_{i}\right)=x_{i_{0}}\,.\label{eq:expectation-value-eigenvalue-classical}
+\int X\rmd\bar{\mu}\stackrel{\textrm{Lemma }\ref{lemma:Choquet-Lebesgue}}{=}\left\{ \int X\rmd\mu\right\} \stackrel{\textrm{Equation }(\ref{eq:expectation})}{=}\left\{ X\left(\pmeas^{-1}\left(1\right)\right)\cdot1\right\} =\left\{ X\left(\bar{\mu}^{-1}\left(\necess\right)\right)\right\} \,.\label{eq:expectation-value-eigenvalue-classical}
+\end{equation}
+\end{proof}
+
+Given two singleton sets~$\left\{ x_{1}\right\} $ and $\left\{ x_{2}\right\} $,
+it is intuitive to define their multiplication of to be $\left\{ x_{1}x_{2}\right\} $
+which gives the following lemma.
+
+\begin{lemma}For any CIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$
+and a sequence of random variable~$\left\{ X_{j}\right\} $,
+\begin{equation}
+\prod_{j}\int X_{j}\rmd\bar{\mu}=\int\prod_{j}X_{j}\rmd\bar{\mu}\,.\label{eq:Kochen-Specker-Rules-classical}
+\end{equation}
+\end{lemma}
+
+\begin{proof} 
+\begin{equation}
+\prod_{j}\int X_{j}\rmd\bar{\mu}\stackrel{\textrm{Lemma }\ref{lemma:deterministic-CIVPM-expectation}}{=}\prod_{j}\left\{ X_{j}\left(\bar{\mu}^{-1}\left(\necess\right)\right)\right\} =\left\{ \prod_{j}X_{j}\left(\bar{\mu}^{-1}\left(\necess\right)\right)\right\} \stackrel{\textrm{Lemma }\ref{lemma:deterministic-CIVPM-expectation}}{=}\int\prod_{j}X_{j}\rmd\bar{\mu}\,.\label{eq:expectation-value-eigenvalue-classical-1}
 \end{equation}
 \end{proof}
 
