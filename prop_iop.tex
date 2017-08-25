@@ -1631,6 +1631,15 @@ is a QRVPM.
 there is a density matrix~$\rho$ such that $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\widehat{\mu}\left(P\right)$
 for all $P\in\widehat{\events}$.
 \item $\rho$ in the previous case may not be unique.
+\item The bijection~$\tau:\widehat{\events}\rightarrow2^{\Omega}$ preserves
+the following operations.
+\begin{itemize}
+\item $\tau\left(\mathbb{0}\right)=\emptyset$.
+\item $\tau\left(\mathbb{1}\right)=\Omega$.
+\item For any projection $P\in\widehat{\events}$, we have $\tau\left(\mathbb{1}-P\right)=\Omega-\tau\left(P\right)$.
+\item For a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}\subseteq\widehat{\events}$,
+we have $\tau\left(\sum_{i=1}^{N}P_{i}\right)=\sum_{i=1}^{N}\tau\left(P_{i}\right)$.
+\end{itemize}
 \end{enumerate}
 \end{thm}
 
@@ -1671,6 +1680,7 @@ and
  &  & \mu_{\ket{\ps}}^{\mathrm{B}}\left(\proj{0}\right)=\mu_{\ket{\minus}}^{\mathrm{B}}\left(\proj{0}\right)=\frac{1}{2}=\widehat{\mu}\left(\proj{0}\right)\,,\\
  &  & \mu_{\ket{\ps}}^{\mathrm{B}}\left(\proj{1}\right)=\mu_{\ket{\minus}}^{\mathrm{B}}\left(\proj{1}\right)=\frac{1}{2}=\widehat{\mu}\left(\proj{1}\right)\,.
 \end{eqnarray*}
+\item Trivial.
 \end{enumerate}
 \end{proof}
 
@@ -2563,26 +2573,28 @@ $\int X\rmd\bar{\mu}=\left\{ X\left(\bar{\mu}^{-1}\left(\necess\right)\right)\ri
 
 \begin{proof}By adopting the notation in lemma~\ref{lemma:deterministic-CIVPM},
 we have
-\begin{equation}
-\int X\rmd\bar{\mu}\stackrel{\textrm{Lemma }\ref{lemma:Choquet-Lebesgue}}{=}\left\{ \int X\rmd\mu\right\} \stackrel{\textrm{Equation }(\ref{eq:expectation})}{=}\left\{ X\left(\pmeas^{-1}\left(1\right)\right)\cdot1\right\} =\left\{ X\left(\bar{\mu}^{-1}\left(\necess\right)\right)\right\} \,.\label{eq:expectation-value-eigenvalue-classical}
-\end{equation}
+\begin{eqnarray*}
+ &  & \int X\rmd\bar{\mu}\stackrel{\textrm{Lemma }\ref{lemma:Choquet-Lebesgue}}{=}\left\{ \int X\rmd\mu\right\} \\
+ & \stackrel{\textrm{Equation }(\ref{eq:expectation})}{=} & \left\{ X\left(\pmeas^{-1}\left(1\right)\right)\cdot1\right\} =\left\{ X\left(\bar{\mu}^{-1}\left(\necess\right)\right)\right\} \,.
+\end{eqnarray*}
 \end{proof}
 
 Given two singleton sets~$\left\{ x_{1}\right\} $ and $\left\{ x_{2}\right\} $,
 it is intuitive to define their multiplication of to be $\left\{ x_{1}x_{2}\right\} $
 which gives the following lemma.
 
-\begin{lemma}For any CIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$
+\begin{lemma}\label{lemma:deterministic-CIVPM-product}For any CIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$
 and a sequence of random variable~$\left\{ X_{j}\right\} $,
 \begin{equation}
 \prod_{j}\int X_{j}\rmd\bar{\mu}=\int\prod_{j}X_{j}\rmd\bar{\mu}\,.\label{eq:Kochen-Specker-Rules-classical}
 \end{equation}
 \end{lemma}
 
-\begin{proof} 
-\begin{equation}
-\prod_{j}\int X_{j}\rmd\bar{\mu}\stackrel{\textrm{Lemma }\ref{lemma:deterministic-CIVPM-expectation}}{=}\prod_{j}\left\{ X_{j}\left(\bar{\mu}^{-1}\left(\necess\right)\right)\right\} =\left\{ \prod_{j}X_{j}\left(\bar{\mu}^{-1}\left(\necess\right)\right)\right\} \stackrel{\textrm{Lemma }\ref{lemma:deterministic-CIVPM-expectation}}{=}\int\prod_{j}X_{j}\rmd\bar{\mu}\,.\label{eq:expectation-value-eigenvalue-classical-1}
-\end{equation}
+\begin{proof}
+\begin{eqnarray*}
+ &  & \prod_{j}\int X_{j}\rmd\bar{\mu}\stackrel{\textrm{Lemma }\ref{lemma:deterministic-CIVPM-expectation}}{=}\prod_{j}\left\{ X_{j}\left(\bar{\mu}^{-1}\left(\necess\right)\right)\right\} \\
+ & = & \left\{ \prod_{j}X_{j}\left(\bar{\mu}^{-1}\left(\necess\right)\right)\right\} \stackrel{\textrm{Lemma }\ref{lemma:deterministic-CIVPM-expectation}}{=}\int\prod_{j}X_{j}\rmd\bar{\mu}\,.
+\end{eqnarray*}
 \end{proof}
 
 \subsection{Expectation Values for Quantum IVPMs}
@@ -2640,12 +2652,31 @@ real-valued or interval-valued probability measures to classical ones.
 Although it is a powerful tool, it would be more powerful if we can
 pull an observable to a random variable as well.
 
-\begin{definition}Given an observable~$\mathbf{O}$ with its spectral
-decomposition~(\ref{eq:spectrum-decomposition}) and its inducing
-sub-event space $\events'$, set~$\Omega$, and function~$\tau:\events'\rightarrow2^{\Omega}$.
-Then, the random variable~$X:\Omega\rightarrow\mathbb{R}$ defined
-by $X=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mathbf{1}_{\tau\left(P_{i}^{s}\right)}$
+\begin{definition}\label{def:observable2random-variable}Given an
+observable~$\mathbf{O}$ with its spectral decomposition~(\ref{eq:spectrum-decomposition})
+and its inducing subspace of events\nb$\events'$, set~$\Omega$,
+and function~$\tau:\events'\rightarrow2^{\Omega}$. Then, the random
+variable~$X:\Omega\rightarrow\mathbb{R}$ defined by $X=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mathbf{1}_{\tau\left(P_{i}^{s}\right)}$
 is called the random variable induced by $\mathbf{O}$.\end{definition}
+
+The following lemma shows that .
+
+\begin{lemma}\label{lemma:observable2random-variable}Given an observable~$\mathbf{O}$
+with an orthonormal basis\nb$\Omega=\left\{ \ket{k}\right\} _{k=0}^{d-1}$,
+$\widehat{\events}=\set{\sum_{\ket{k}\in E}\proj{k}}{E\subseteq\Omega}$,
+and the bijection~$\tau:\widehat{\events}\rightarrow2^{\Omega}$
+defined in theorem~\ref{thm:sub-event-space}. By definition~\ref{def:observable2random-variable},
+$\mathbf{O}$ induces a random variable\nb$X:\Omega\rightarrow\mathbb{R}$,
+if $\mathbf{O}=\sum_{k=0}^{d-1}\lambda_{k}\proj{k}$, then $X=\sum_{k=0}^{d-1}\lambda_{k}\mathbf{1}_{\left\{ \ket{k}\right\} }$.\end{lemma}
+
+\begin{proof}Since $\mathbf{O}$ can be diagonalized by $\Omega$,
+each projector in the spectral decomposition\nb$P_{i}^{s}$ is the
+summation of some basis vectors\nb$\sum_{k\in S_{i}^{s}}\proj{k}$.
+Since
+\begin{equation}
+\mathbf{1}_{\tau\left(P_{i}^{s}\right)}=\mathbf{1}_{\tau\left(\sum_{k\in S_{i}^{s}}\proj{k}\right)}=\mathbf{1}_{\bigcup_{k\in S_{i}^{s}}\tau\left(\proj{k}\right)}=\sum_{k\in S_{i}^{s}}\mathbf{1}_{\left\{ \ket{k}\right\} }\,,
+\end{equation}
+we have $X=\sum_{k=0}^{d-1}\lambda_{k}\mathbf{1}_{\ket{k}}$.\end{proof}
 
 \begin{lemma}\label{lemma:real-expectation-value-between-classical-quantum}Adopting
 the definitions in this subsection. Given a QRVPM~$\mu:\events\rightarrow\left[0,1\right]$,
@@ -2753,7 +2784,7 @@ exist. These properties will be summarized in the following two lemmas.
 $\expval{\mathbf{O}}_{\bar{\mu}}$ is a singleton set~$\left\{ \lambda\right\} $,
 where $\lambda$ is an eigenvalue of $\mathbf{O}$.\end{lemma}
 
-\begin{proof}Adopt the definitions in subsection~\ref{subsec:Between-Expectation-Values-Classical-Quantum}.
+\begin{proof}[Proof 1]Adopt the definitions in subsection~\ref{subsec:Between-Expectation-Values-Classical-Quantum}.
 By lemma~\ref{lemma:QIVPM2QCM}, $\mul$ and $\mur$ are the same
 real-valued probability measures, and is simply denoted by $\mu:\events\rightarrow\left\{ 1,0\right\} $.
 By lemma~\ref{lemma:expectation-singleton}, $\expval{\mathbf{O}}_{\bar{\mu}}=\left\{ \expval{\mathbf{O}}_{\mu}\right\} $.
@@ -2765,11 +2796,20 @@ Therefore,
 \end{equation}
 \end{proof}
 
+\begin{proof}[Proof 2]Adopt the definitions in subsection~\ref{subsec:Between-Expectation-Values-Classical-Quantum},
+we have
+\begin{equation}
+\expval{\mathbf{O}}_{\bar{\mu}}=\int X\rmd\bar{\mu}'\stackrel{\textrm{Lemma }\ref{lemma:deterministic-CIVPM-expectation}}{=}\left\{ X\left(\bar{\mu}^{-1}\left(\necess\right)\right)\right\} \,,
+\end{equation}
+where $X\left(\bar{\mu}^{-1}\left(\necess\right)\right)$ is an eigenvalue
+of $\mathbf{O}$ by the definition of $X$.\end{proof}
+
 Given two singleton sets~$\left\{ \lambda_{1}\right\} $ and $\left\{ \lambda_{2}\right\} $,
 it is intuitive to define their multiplication of to be $\left\{ \lambda_{1}\lambda_{2}\right\} $
 which gives the following lemma.
 
-\begin{lemma}For any sequence of commuting observables~$\left\{ \mathbf{O}_{j}\right\} $,
+\begin{lemma}For a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$
+and a sequence of commuting observables~$\left\{ \mathbf{O}_{j}\right\} $,
 \begin{equation}
 \prod_{j}\expval{\mathbf{O}_{j}}_{\bar{\mu}}=\expval{\prod_{j}\mathbf{O}_{j}}_{\bar{\mu}}\,.\label{eq:Kochen-Specker-Rules}
 \end{equation}
@@ -2777,15 +2817,28 @@ which gives the following lemma.
 
 \begin{proof}Since $\left\{ \mathbf{O}_{j}\right\} $ is a sequence
 of commuting observables, they can be diagonalized by a common orthonormal
-basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$. By lemma~\ref{lemma:QIVPM2QCM},
-$\mul$ and $\mur$ are the same cryptodeterministic measure, and
-is simply denoted by $\mu:\events\rightarrow\left\{ 1,0\right\} $.
-Since $\mu$ is a cryptodeterministic measure, there is only one $j_{0}$
-such that $\mu\left(\proj{j_{0}}\right)=1$. Therefore, by the same
-reason as equation~(\ref{eq:expectation-value-eigenvalue}), the
-both sides of equation~(\ref{eq:Kochen-Specker-Rules}) are the product
-of eigenvalues corresponding to eigenstate~$\ket{j_{0}}$, and should
-be equal.\end{proof}
+basis\nb$\Omega=\left\{ \ket{k}\right\} _{k=0}^{d-1}$. By theorem~\ref{thm:sub-event-space},
+there is a commuting sub-event space\nb$\widehat{\events}$ with
+$\widehat{\events}\subseteq\events$ and a bijection\nb$\tau:\widehat{\events}\rightarrow2^{\Omega}$
+such that there is a CIVPM\nb$\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}_{\mathrm{D}}$
+such that $\bar{\mu}\left(P\right)=\bar{\mu}'\left(\tau\left(P\right)\right)$
+for all $P\in\widehat{\events}$.
+
+Let $\events'_{j}$ be the subspace of events induced by $\mathbf{O}_{j}=\sum_{k=0}^{d-1}\lambda_{j,k}\proj{k}$.
+Clearly, $\events'_{j}\subseteq\widehat{\events}$. Therefore, restricting
+$\tau$ on each $\events'_{j}$ gives a function\nb$\tau|_{\events'_{j}}:\events'_{j}\rightarrow2^{\Omega}$.
+Then, we can follow lemma~\ref{lemma:observable2random-variable}
+to induce random variables\nb$X_{j}=\sum_{k=0}^{d-1}\lambda_{j,k}\mathbf{1}_{\left\{ \ket{k}\right\} }$,
+and have $\expval{\mathbf{O}_{j}}_{\bar{\mu}}=\int X_{j}\rmd\bar{\mu}'$
+by lemma~\ref{lemma:interval-expectation-value-between-classical-quantum}.
+Therefore, 
+\begin{eqnarray*}
+ &  & \prod_{j}\expval{\mathbf{O}_{j}}_{\bar{\mu}}=\prod_{j}\int X_{j}\rmd\bar{\mu}'\\
+ & \stackrel{\textrm{Lemma }\ref{lemma:deterministic-CIVPM-product}}{=} & \int\prod_{j}X_{j}\rmd\bar{\mu}'=\int\prod_{j}\sum_{k=0}^{d-1}\lambda_{j,k}\mathbf{1}_{\left\{ \ket{k}\right\} }\rmd\bar{\mu}'\\
+ & = & \int\sum_{k=0}^{d-1}\prod_{j}\lambda_{j,k}\mathbf{1}_{\left\{ \ket{k}\right\} }\rmd\bar{\mu}'=\expval{\sum_{k=0}^{d-1}\prod_{j}\lambda_{j,k}\proj{k}}_{\bar{\mu}}\\
+ & = & \expval{\prod_{j}\mathbf{O}_{j}}_{\bar{\mu}}\,.
+\end{eqnarray*}
+\end{proof}
 
 Based on the previous lemmas, we could follow Mermin's idea to prove
 the Kochen-Specker theorem again~\cite{Mermin1990Simple,peres1995quantum}.
