@@ -18261,19 +18261,9 @@ end{equation}
 \end_layout
 
 \begin_layout Standard
-There are various kind of integrals defined for IVPMs, and the most famous
- one is called the Choquet integral
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016"
-
-\end_inset
-
-.
+There is a subtlety happens when we want to define the expectation value
+ of a random variable on IVPMs, and will be demonstrated by the following
+ example.
 \end_layout
 
 \begin_layout Standard
@@ -18284,7 +18274,388 @@ status collapsed
 
 
 \backslash
-begin{definition}
+begin{example}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "ex:expectation"
+
+\end_inset
+
+Consider an CIVPM
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ and an event
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $E$
+\end_inset
+
+ such that 
+\begin_inset Formula $\bar{\mu}(E)=[0.2,0.3]$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{\mu}(\overline{E})=[0.7,0.8]$
+\end_inset
+
+.
+ Given a random variable
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{equation} 
+\end_layout
+
+\begin_layout Plain Layout
+
+X
+\backslash
+left(
+\backslash
+omega
+\backslash
+right)=
+\backslash
+cases{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+1 & 
+\backslash
+textrm{, if }
+\backslash
+omega
+\backslash
+in E
+\backslash
+textrm{ ;}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+2 & 
+\backslash
+textrm{, if }
+\backslash
+omega
+\backslash
+notin E
+\backslash
+textrm{ ,} 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{equation}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+its expectation value with respect to 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ might be naïvely defined as
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{equation}
+\backslash
+eqalign{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+ &  & 1
+\backslash
+cdot
+\backslash
+bar{
+\backslash
+mu}(E)+2
+\backslash
+cdot
+\backslash
+bar{
+\backslash
+mu}(
+\backslash
+overline{E})
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ & = & 1
+\backslash
+cdot[0.2,0.3]+2
+\backslash
+cdot[0.7,0.8]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ & = & [1
+\backslash
+cdot0.2+2
+\backslash
+cdot0.7,1
+\backslash
+cdot0.3+2
+\backslash
+cdot0.8]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ & = & [1.6,1.9]
+\backslash
+,.
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\backslash
+end{equation}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+As we discussed when introducing the core, the true probability of 
+\begin_inset Formula $\bar{\mu}(E)$
+\end_inset
+
+, 
+\begin_inset Formula $\mu(E)$
+\end_inset
+
+, can be anywhere in the range 
+\begin_inset Formula $[0.2,0.3]$
+\end_inset
+
+ and the true probability of 
+\begin_inset Formula $\bar{\mu}(\overline{E})$
+\end_inset
+
+ is 
+\begin_inset Formula $\mu(\overline{E})=1-\mu(E)$
+\end_inset
+
+, that is, 
+\begin_inset Formula $\mu\in\mathrm{core}\left(\bar{\mu}\right)$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\mu(E)=0.2$
+\end_inset
+
+, the expectation value of 
+\begin_inset Formula $X$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{equation}
+1\cdot\mu(E)+2\cdot\mu(\overline{E})=1\cdot0.2+2\cdot0.8=1.8\,;
+\end{equation}
+
+\end_inset
+
+if 
+\begin_inset Formula $\mu(E)=0.3$
+\end_inset
+
+, the expectation value of 
+\begin_inset Formula $X$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is
+\begin_inset Formula 
+\begin{equation}
+1\cdot\mu(E)+2\cdot\mu(\overline{E})=1\cdot0.3+2\cdot0.7=1.7\,.
+\end{equation}
+
+\end_inset
+
+In another word, no matter how we pick 
+\begin_inset Formula $\mu(E)$
+\end_inset
+
+, the expectation value of 
+\begin_inset Formula $X$
+\end_inset
+
+ is in 
+\begin_inset Formula $\left[1.7,1.8\right]$
+\end_inset
+
+ which is a more realistic expectation value of 
+\begin_inset Formula $X$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+.
+ The interval
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\left[1.7,1.8\right]$
+\end_inset
+
+ is narrower than the naïve expectation value
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $[1.6,1.9]$
+\end_inset
+
+ because the naïve one combines contradicting situations in the computation.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{example}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In general, the computation of the realistic expectation value, called the
+ Choquet integral, is more complex than what we discussed because a random
+ variable may have more than two values.
+ Despite its complexity, it is still a weight average among the values of
+ a random variable as given in the following definition.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{definition}[
+\end_layout
+
+\end_inset
+
+Choquet integral
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
 \end_layout
 
 \end_inset
@@ -18613,11 +18984,15 @@ For every classical IVPM
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
- is convex if and only if 
-\begin_inset Formula $\int X\rmd\bar{\mu}=\left[\min_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu,\max_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu\right]$
+ is convex if and only if
+\begin_inset Formula 
+\begin{equation}
+\int X\rmd\bar{\mu}=\left[\min_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu,\max_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu\right]\,.\label{eq:Rosenmuller}
+\end{equation}
+
 \end_inset
 
-.
+
 \begin_inset ERT
 status collapsed
 
@@ -18626,6 +19001,431 @@ status collapsed
 
 \backslash
 end{thm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notice that 
+\begin_inset Formula $\left[1.7,1.8\right]$
+\end_inset
+
+ in example
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ex:expectation"
+
+\end_inset
+
+ is just the right-hand side of equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Rosenmuller"
+
+\end_inset
+
+).
+ Let compute the left-hand side of equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Rosenmuller"
+
+\end_inset
+
+) in table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:Choquet"
+
+\end_inset
+
+ and see they are equal.
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $i$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{i}^{+}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E_{i}^{+}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\overline{E}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E_{i}^{+\prime}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Omega$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\emptyset$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mul\left(E_{i}^{+\prime}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:Choquet"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18692,31 +19492,12 @@ end{lemma}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-yutsung{
-\end_layout
-
+\begin_layout Subsection
+Expectation Values for 
+\begin_inset Formula $0$
 \end_inset
 
-Put an example here if we need...
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
+-deterministic CIVPMs
 \end_layout
 
 \begin_layout Standard
@@ -18779,7 +19560,7 @@ Its left-end
 \begin_inset Formula $\pmeas:\events\rightarrow\left\{ 1,0\right\} $
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Enumerate

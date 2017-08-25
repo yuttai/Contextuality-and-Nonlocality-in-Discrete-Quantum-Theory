@@ -2475,10 +2475,53 @@ in example~\ref{ex1}, the expectation value of $X_{0}$ is
  & = 0\cdot\frac{1}{3}+1\cdot\frac{2}{3}+2\cdot0=\frac{2}{3}\,. 
 }\end{equation}
 
-There are various kind of integrals defined for IVPMs, and the most
-famous one is called the Choquet integral~\cite{Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016}.
+There is a subtlety happens when we want to define the expectation
+value of a random variable on IVPMs, and will be demonstrated by the
+following example.
 
-\begin{definition}\label{def:Choquet}~
+\begin{example}\label{ex:expectation}Consider an CIVPM\nb$\bar{\mu}$
+and an event\nb$E$ such that $\bar{\mu}(E)=[0.2,0.3]$ and $\bar{\mu}(\overline{E})=[0.7,0.8]$.
+Given a random variable
+\begin{equation} 
+X\left(\omega\right)=\cases{ 
+1 & , if $\omega\in E$ ;\\
+2 & , if $\omega\notin E$ , 
+}
+\end{equation}
+its expectation value with respect to $\bar{\mu}$ might be naïvely
+defined as
+\begin{equation}\eqalign{ 
+ & 1\cdot\bar{\mu}(E)+2\cdot\bar{\mu}(\overline{E})\\
+= & 1\cdot[0.2,0.3]+2\cdot[0.7,0.8]\\
+= & [1\cdot0.2+2\cdot0.7,1\cdot0.3+2\cdot0.8]\\
+= & [1.6,1.9]\,.
+}\end{equation}
+As we discussed when introducing the core, the true probability of
+$\bar{\mu}(E)$, $\mu(E)$, can be anywhere in the range $[0.2,0.3]$
+and the true probability of $\bar{\mu}(\overline{E})$ is $\mu(\overline{E})=1-\mu(E)$,
+that is, $\mu\in\mathrm{core}\left(\bar{\mu}\right)$. If $\mu(E)=0.2$,
+the expectation value of $X$ with respect to $\mu$ is 
+\begin{equation}
+1\cdot\mu(E)+2\cdot\mu(\overline{E})=1\cdot0.2+2\cdot0.8=1.8\,;
+\end{equation}
+if $\mu(E)=0.3$, the expectation value of $X$ with respect to $\mu$
+is
+\begin{equation}
+1\cdot\mu(E)+2\cdot\mu(\overline{E})=1\cdot0.3+2\cdot0.7=1.7\,.
+\end{equation}
+In another word, no matter how we pick $\mu(E)$, the expectation
+value of $X$ is in $\left[1.7,1.8\right]$ which is a more realistic
+expectation value of $X$ with respect to $\bar{\mu}$. The interval~$\left[1.7,1.8\right]$
+is narrower than the naïve expectation value~$[1.6,1.9]$ because
+the naïve one combines contradicting situations in the computation.\end{example}
+
+In general, the computation of the realistic expectation value, called
+the Choquet integral, is more complex than what we discussed because
+a random variable may have more than two values. Despite its complexity,
+it is still a weight average among the values of a random variable
+as given in the following definition.
+
+\begin{definition}[Choquet integral~\cite{Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016}]\label{def:Choquet}~
 \begin{itemize}
 \item Consider a classical IVPM~$\bar{\mu}$ such that $\mul:\events\rightarrow\left[0,1\right]$
 and $\mur:\events\rightarrow\left[0,1\right]$ are the left-end and
@@ -2537,13 +2580,44 @@ the Lebesgue integral.
 \begin{thm}\label{thm:Rosenmuller}\cite{Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016}For
 every classical IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$ and
 any random variable~$X:\Omega\rightarrow\mathbb{R}$, $\bar{\mu}$
-is convex if and only if $\int X\rmd\bar{\mu}=\left[\min_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu,\max_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu\right]$.\end{thm}
+is convex if and only if
+\begin{equation}
+\int X\rmd\bar{\mu}=\left[\min_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu,\max_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu\right]\,.\label{eq:Rosenmuller}
+\end{equation}
+\end{thm}
+
+Notice that $\left[1.7,1.8\right]$ in example~\ref{ex:expectation}
+is just the right-hand side of equation~(\ref{eq:Rosenmuller}).
+Let compute the left-hand side of equation~(\ref{eq:Rosenmuller})
+in table~\ref{table:Choquet} and see they are equal.
+\begin{table}
+\begin{tabular}{|c|c|c|c|}
+\hline 
+$i$ & 1 & 2 & 3\tabularnewline
+\hline 
+\hline 
+$x_{i}^{+}$ & 1 & 2 & \tabularnewline
+\hline 
+$E_{i}^{+}$ & $E$ & $\overline{E}$ & \tabularnewline
+\hline 
+$E_{i}^{+\prime}$ & $E$ & $\Omega$ & $\emptyset$\tabularnewline
+\hline 
+$\mul\left(E_{i}^{+\prime}\right)$ &  &  & \tabularnewline
+\hline 
+ &  &  & \tabularnewline
+\hline 
+ &  &  & \tabularnewline
+\hline 
+ &  &  & \tabularnewline
+\hline 
+\end{tabular}\caption{\label{table:Choquet}}
+\end{table}
 
 \begin{lemma}\label{lemma:Choquet-Lebesgue}\cite{Grabisch2016}When
 $\mul:\events\rightarrow\left[0,1\right]$ and $\mur:\events\rightarrow\left[0,1\right]$
 are real-valued probability measures, we have $\mul=\mur$ and $\int X\rmd\bar{\mu}=\left\{ \int X\rmd\mul\right\} =\left\{ \int X\rmd\mur\right\} $.\end{lemma}
 
-\yutsung{Put an example here if we need...}
+\subsection{Expectation Values for $0$-deterministic CIVPMs}
 
 Finally, we are going to focus on CIVPMs whose range is $\mathscr{I}_{\mathrm{D}}$.
 
@@ -2551,7 +2625,7 @@ Finally, we are going to focus on CIVPMs whose range is $\mathscr{I}_{\mathrm{D}
 the following statements are true:
 \begin{enumerate}
 \item Its left-end~$\mul$ and right-end~$\mur$ are the same CRVPM, and
-will be simply denoted by $\pmeas:\events\rightarrow\left\{ 1,0\right\} $
+will be simply denoted by $\pmeas:\events\rightarrow\left\{ 1,0\right\} $.
 \item There is a unique $\omega_{0}\in\Omega$ such that $\bar{\mu}\left(\left\{ \omega_{0}\right\} \right)=\left\{ \pmeas\left(\left\{ \omega_{0}\right\} \right)\right\} =\necess$,
 denoted by $\pmeas^{-1}\left(1\right)$ or $\bar{\mu}^{-1}\left(\necess\right)$.
 \end{enumerate}
