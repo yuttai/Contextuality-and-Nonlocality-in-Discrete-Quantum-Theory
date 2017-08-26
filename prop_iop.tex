@@ -2485,7 +2485,7 @@ Given a random variable
 \begin{equation} 
 X\left(\omega\right)=\cases{ 
 1 & , if $\omega\in E$ ;\\
-2 & , if $\omega\notin E$ , 
+2 & , if $\omega\notin E$ ,
 }
 \end{equation}
 its expectation value with respect to $\bar{\mu}$ might be naïvely
@@ -2539,12 +2539,68 @@ where $s\in\left\{ +,-\right\} $ and $\mu^{*}\in\left\{ \mul,\mur\right\} $.
 \end{itemize}
 Then, the Choquet integral of $X$ with respect to $\bar{\mu}$ is
 \begin{equation}
-\int X\rmd\bar{\mu}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\mul\left(E_{i}^{s\prime}\right),\Delta\mur\left(E_{i}^{s\prime}\right)\right]\,.\label{eq:interval-expectation}
+\int X\rmd\bar{\mu}=\left[\sum_{i=1}^{N^{+}}x_{i}^{+}\Delta\mul\left(E_{i}^{+\prime}\right)+\sum_{i=1}^{N^{-}}x_{i}^{-}\Delta\mur\left(E_{i}^{-\prime}\right),\sum_{i=1}^{N^{+}}x_{i}^{+}\Delta\mur\left(E_{i}^{+\prime}\right)+\sum_{i=1}^{N^{-}}x_{i}^{-}\Delta\mul\left(E_{i}^{-\prime}\right)\right]\,.\label{eq:interval-expectation}
 \end{equation}
 \end{definition}
 
-\noindent The following lemma shows our definition is exactly the
-same as in the literature.
+\begin{table}
+\caption{\label{table:Choquet}
+\[
+\int X\rmd\bar{\mu}=\left[1\cdot0.3+2\cdot0.7,1\cdot0.2+2\cdot0.8\right]=\left[1.7,1.8\right]\,.
+\]
+}
+
+
+\begin{indented}
+\item\begin{tabular}{|c|c|c|c|c|c|c|c|} 
+\br 
+$i$ & $x_{i}^{+}$ & $E_{i}^{+}$ & $E_{i}^{+\prime}$ & $\mul\left(E_{i}^{+\prime}\right)$ & $\Delta\mul\left(E_{i}^{+\prime}\right)$ & $\mur\left(E_{i}^{+\prime}\right)$ & $\Delta\mur\left(E_{i}^{+\prime}\right)$\tabularnewline 
+\mr 
+$1$ & $1$ & $E$ & $\Omega$ & $1$ & $0.3$ & $1$ & $0.2$\tabularnewline 
+\mr 
+$2$ & $2$ & $\overline{E}$ & $\overline{E}$ & $0.7$ & $0.7$ & $0.8$ & $0.8$\tabularnewline 
+\mr 
+$3$ &  &  & $\emptyset$ & $0$ &  & $0$ & \tabularnewline 
+\br 
+\end{tabular}
+\end{indented}
+\end{table}
+Table~\ref{table:Choquet} follows the definition to compute $\int X\rmd\bar{\mu}$.
+Notice that equation~(\ref{eq:interval-expectation}) looks complex.
+On the one hand, it would be a little bit easier to think its right-hand
+side as 
+\begin{equation}
+\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\mul\left(E_{i}^{s\prime}\right),\Delta\mur\left(E_{i}^{s\prime}\right)\right]\,,\label{eq:interval-expectation-1}
+\end{equation}
+$\Delta\mul\left(E_{i}^{s\prime}\right)$ can be larger than $\Delta\mur\left(E_{i}^{s\prime}\right)$
+as in the second row in table~\ref{table:Choquet}. Therefore, if
+we want to use this notation, we need to stick to this convention
+that not reverse the two ends of intervals, even if the left-end is
+larger than the right-end. On the other hand, similar to equation~(\ref{eq:expectation}),
+equation~(\ref{eq:interval-expectation-1}) can be considered as
+weighted average of the possible outcomes of $X$ as well, despite
+the ``weight''
+\begin{equation}
+\left[\Delta\mul\left(E_{i}^{s\prime}\right),\Delta\mur\left(E_{i}^{s\prime}\right)\right]\subseteq\left[\mul\left(E_{i}^{s}\right),\mur\left(E_{i}^{s}\right)\right]=\bar{\mu}\left(E_{i}^{s}\right)\textrm{ for }s\in\left\{ +,-\right\} 
+\end{equation}
+is tighter than the interval-valued probability of the corresponding
+event. This makes it easier to remember.
+
+Also, $\left[1.7,1.8\right]$ in example~\ref{ex:expectation} is
+exactly the same as the expectation value computed in table~\ref{table:Choquet}.
+This nature property can be generated to the following theorem.
+
+\begin{thm}\label{thm:Rosenmuller}\cite{Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016}For
+every classical IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$ and
+any random variable~$X:\Omega\rightarrow\mathbb{R}$, $\bar{\mu}$
+is convex if and only if
+\begin{equation}
+\int X\rmd\bar{\mu}=\left[\min_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu,\max_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu\right]\,.\label{eq:Rosenmuller}
+\end{equation}
+\end{thm}
+
+The next lemmas shows our definition is exactly the same as in the
+literature, and is consistent with the CRVPM.
 
 \begin{lemma}Follow the same notation in the definition, we also
 define $X^{+}=\sum_{i=1}^{N^{+}}x_{i}^{+}\mathbf{1}_{E_{i}^{+}}$
@@ -2561,57 +2617,6 @@ $\int X\rmd\bar{\mu}=\int X^{+}\rmd\bar{\mu}-\int\left(-X^{-}\right)\rmd\bar{\mu
  & = & \int X^{+}\rmd\bar{\mu}-\int\left(-X^{-}\right)\rmd\bar{\mu}\,.
 \end{eqnarray*}
 \end{proof}
-
-\noindent Similar to equation~(\ref{eq:expectation}), equation~(\ref{eq:interval-expectation})
-can be considered as weighted average of the possible outcomes of
-$X$ as well, despite the ``weight''
-\begin{equation}
-\left[\Delta\mul\left(E_{i}^{s\prime}\right),\Delta\mur\left(E_{i}^{s\prime}\right)\right]\subseteq\left[\mul\left(E_{i}^{s}\right),\mur\left(E_{i}^{s}\right)\right]=\bar{\mu}\left(E_{i}^{s}\right)\textrm{ for }s\in\left\{ +,-\right\} 
-\end{equation}
-is tighter than the interval-valued probability of the corresponding
-event. Since only one event can happen at once, we don't have to be
-so pessimistic to accumulate all possible fuzziness together, and
-expect $\sum_{i=1}^{N}x_{i}\bar{\mu}\left(E_{i}^{s}\right)$ to happen.
-
-The Choquet integral has many desirable properties. For example, it
-has the same range as all expectation value in the core, and it generalizes
-the Lebesgue integral.
-
-\begin{thm}\label{thm:Rosenmuller}\cite{Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016}For
-every classical IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$ and
-any random variable~$X:\Omega\rightarrow\mathbb{R}$, $\bar{\mu}$
-is convex if and only if
-\begin{equation}
-\int X\rmd\bar{\mu}=\left[\min_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu,\max_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu\right]\,.\label{eq:Rosenmuller}
-\end{equation}
-\end{thm}
-
-Notice that $\left[1.7,1.8\right]$ in example~\ref{ex:expectation}
-is just the right-hand side of equation~(\ref{eq:Rosenmuller}).
-Let compute the left-hand side of equation~(\ref{eq:Rosenmuller})
-in table~\ref{table:Choquet} and see they are equal.
-\begin{table}
-\begin{tabular}{|c|c|c|c|}
-\hline 
-$i$ & 1 & 2 & 3\tabularnewline
-\hline 
-\hline 
-$x_{i}^{+}$ & 1 & 2 & \tabularnewline
-\hline 
-$E_{i}^{+}$ & $E$ & $\overline{E}$ & \tabularnewline
-\hline 
-$E_{i}^{+\prime}$ & $E$ & $\Omega$ & $\emptyset$\tabularnewline
-\hline 
-$\mul\left(E_{i}^{+\prime}\right)$ &  &  & \tabularnewline
-\hline 
- &  &  & \tabularnewline
-\hline 
- &  &  & \tabularnewline
-\hline 
- &  &  & \tabularnewline
-\hline 
-\end{tabular}\caption{\label{table:Choquet}}
-\end{table}
 
 \begin{lemma}\label{lemma:Choquet-Lebesgue}\cite{Grabisch2016}When
 $\mul:\events\rightarrow\left[0,1\right]$ and $\mur:\events\rightarrow\left[0,1\right]$
