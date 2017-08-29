@@ -50,7 +50,7 @@
 \newcommand{\yutsung}[1]{\fbox{\begin{minipage}{0.9\textwidth}\color{purple}{Yu-Tsung says: #1}\end{minipage}}}
 \newcommand{\set}[2]{\ensuremath{\left\{ {#1}~\middle|~{#2}\right\} }}
 \def\C{{\mathbb{C}}}
-\newcommand{\coreBorn}{\ensuremath{\mathrm{C}}}
+\newcommand{\coreBorn}{\ensuremath{\overline{\Hilb}}}
 \newcommand{\mul}[1][]{\ensuremath{\mu^{\mathrm{L{#1}}}}}
 \newcommand{\mur}[1][]{\ensuremath{\mu^{\mathrm{R{#1}}}}}
 % https://tex.stackexchange.com/questions/345284/can-i-have-an-almost-non-breaking-space-in-latex
@@ -2689,7 +2689,7 @@ projector onto the eigenspace of the eigenvalue~$\lambda_{i}$. Then,
 the Born rule of CQT tells us that the expectation value of the observable~$\mathbf{O}$
 is given by~\cite{544199,Jaeger2007}
 \begin{equation}
-\expval{\mathbf{O}}_{\rho}=\Tr\left(\rho\mathbf{O}\right)=\sum_{i=1}^{N}\lambda_{i}\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)\ .\label{eq:quantum-expectation}
+\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}}=\Tr\left(\rho\mathbf{O}\right)=\sum_{i=1}^{N}\lambda_{i}\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)\ .\label{eq:quantum-expectation}
 \end{equation}
 
 Consider a quantum IVPM~$\bar{\mu}$ such that $\mul:\events\rightarrow\left[0,1\right]$
@@ -2799,11 +2799,12 @@ same observable with respect to its consistent states. We found this
 is true when we require our IVPM to be convex, and on a commuting
 sub-event space.
 
-\begin{thm}Given a Hilbert space of $d\ge3$, for every quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+\begin{thm}\label{thm:quantum-Rosenmuller}Given a Hilbert space
+of $d\ge3$, for every quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
 and any observable~$\mathbf{O}$ inducing a sub-event space~$\events'$,
 if $\bar{\mu}$ is convex, then
 \begin{equation}
-\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\,.\label{eq:quantum-interval-expectation-core}
+\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}}\right]\,.\label{eq:quantum-interval-expectation-core}
 \end{equation}
 Conversely, if Eq.~(\ref{eq:quantum-interval-expectation-core})
 holds for every observable, then $\bar{\mu}$ is convex.\end{thm}
@@ -2813,14 +2814,14 @@ it is easy to prove
 \begin{eqnarray*}
 \expval{\mathbf{O}}_{\bar{\mu}} & \stackrel{\textrm{Lemma }\ref{lemma:real-expectation-value-between-classical-quantum}}{=} & \int X\rmd\bar{\mu}'\\
  & \stackrel{\textrm{Theorem }\ref{thm:Rosenmuller}}{=} & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu',\max_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\int X\rmd\mu'\right]\\
- & \stackrel{\textrm{Lemma }\ref{lemma:interval-expectation-value-between-classical-quantum}}{=} & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\expval{\mathbf{O}}_{\rho},\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\expval{\mathbf{O}}_{\rho}\right]\,.
+ & \stackrel{\textrm{Lemma }\ref{lemma:interval-expectation-value-between-classical-quantum}}{=} & \left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}},\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}}\right]\,.
 \end{eqnarray*}
 Therefore, equation~(\ref{eq:quantum-interval-expectation-core})
 is equivalent to convexity if $\mathrm{core}\left(\bar{\mu}'\right)$
 and $\coreBorn\left(\bar{\mu},\events'\right)$ are one-to-one correspondence
 so that
 \begin{equation}
-\left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\expval{\mathbf{O}}_{\rho},\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\expval{\mathbf{O}}_{\rho}\right]=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\rho}\right]\,.
+\left[\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}},\min_{\mu'\in\mathrm{core}\left(\bar{\mu}'\right)}\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}}\right]=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}}\right]\,.
 \end{equation}
 
 Notice that lemma~\ref{lemma:real-expectation-value-between-classical-quantum}
@@ -2832,8 +2833,8 @@ $\mu'\in\mathrm{core}\left(\bar{\mu}'\right)$, we have
  &  & \mu'\left(E\right)\in\bar{\mu}'\left(E\right)\textrm{ for all }E\in2^{\Omega}\\
  & \Rightarrow & \mu'\left(\tau\left(P\right)\right)\in\bar{\mu}'\left(\tau\left(P\right)\right)=\bar{\mu}\left(P\right)\textrm{ for all }P\in\events'
 \end{eqnarray}
-By theorem~\ref{thm:sub-event-space},
-there is a density matrix~$\rho$ such that $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\mu'\left(\tau\left(P\right)\right)$
+By theorem~\ref{thm:sub-event-space}, there is a density matrix~$\rho$
+such that $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\mu'\left(\tau\left(P\right)\right)$
 for all $P\in\events'$. Therefore, $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu},\events'\right)$,
 i.e., $\rho\in\coreBorn\left(\bar{\mu},\events'\right)$.\end{proof}
 
@@ -2844,12 +2845,22 @@ space of $d\ge3$, when $\mul:\events\rightarrow\left[0,1\right]$
 and $\mur:\events\rightarrow\left[0,1\right]$ are real-valued probability
 measures, we have $\mul=\mur=\mu$. Then, $\expval{\mathbf{O}}_{\bar{\mu}}=\left\{ \expval{\mathbf{O}}_{\mu}\right\} $.\end{lemma}
 
-\begin{proof}Adopting the definitions in subsection~\ref{subsec:Between-Expectation-Values-Classical-Quantum},
+\begin{proof}[Proof 1]Adopting the definitions in subsection~\ref{subsec:Between-Expectation-Values-Classical-Quantum},
 we have
 \begin{equation}
 \expval{\mathbf{O}}_{\bar{\mu}}\stackrel{\textrm{Lemma }\ref{lemma:real-expectation-value-between-classical-quantum}}{=}\int X\rmd\bar{\mu}'\stackrel{\textrm{Lemma }\ref{lemma:Choquet-Lebesgue}}{=}\left\{ \int X\rmd\mu'\right\} \stackrel{\textrm{Lemma }\ref{lemma:interval-expectation-value-between-classical-quantum}}{=}\left\{ \expval{\mathbf{O}}_{\mu}\right\} \,,
 \end{equation}
 where $\mu'=\mul[\prime]=\mur[\prime]$.\end{proof}
+
+\begin{proof}[Proof 2]Let $\events'$ be the subspace of events
+induced by $\mathbf{O}$. For any state\nb$\rho\in\coreBorn\left(\bar{\mu},\events'\right)$,
+we have $\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)=\left\{ \mu\left(P\right)\right\} $
+for all $P\in\events'$. Thus, $\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}}=\expval{\mathbf{O}}_{\mu}$.
+By theorem~\ref{thm:quantum-Rosenmuller}, we have
+\begin{equation}
+\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}}\right]=\left\{ \expval{\mathbf{O}}_{\mu}\right\} 
+\end{equation}
+\end{proof}
 
 \subsection{Quantum {\normalsize{}$\mathscr{I}_{\mathrm{D}}$}-valued Probability
 Measures\label{subsec:Quantum-I_D-valued-Probability}}
@@ -2927,11 +2938,11 @@ i.e., $\mathbf{O}_{j}=\sum_{k=0}^{d-1}\lambda_{j,k}\proj{k}$ and
 $\prod_{j}\mathbf{O}_{j}=\sum_{k=0}^{d-1}\prod_{j}\lambda_{j,k}\proj{k}$.
 By lemma~\ref{lemma:QIVPM2QCM}, $\mul$ and $\mur$ are the same
 real-valued probability measures, and is simply denoted by $\mu:\events\rightarrow\left\{ 1,0\right\} $.
-Since $\mu$ is a cryptodeterministic measure, there is only one $\proj{k}$
-such that $\mu\left(\proj{k}\right)=1$.
+Since $\mu$ is a cryptodeterministic measure, there is only one $\proj{k_{0}}$
+such that $\mu\left(\proj{k_{0}}\right)=1$.
 \begin{equation}\eqalign{ 
- & \prod_{j}\expval{\mathbf{O}_{j}}_{\bar{\mu}}\stackrel{\textrm{Lemma }\ref{lemma:expectation-singleton}}{=}\prod_{j}\left\{ \expval{\mathbf{O}_{j}}_{\mu}\right\} =\prod_{j}\left\{ \lambda_{j,k}\right\} \\
-= & \left\{ \prod_{j}\lambda_{j,k}\right\} =\expval{\prod_{j}\mathbf{O}_{j}}_{\mu}\stackrel{\textrm{Lemma }\ref{lemma:expectation-singleton}}{=}\expval{\prod_{j}\mathbf{O}_{j}}_{\bar{\mu}}\,. 
+ & \prod_{j}\expval{\mathbf{O}_{j}}_{\bar{\mu}}\stackrel{\textrm{Lemma }\ref{lemma:expectation-singleton}}{=}\prod_{j}\left\{ \expval{\mathbf{O}_{j}}_{\mu}\right\} =\prod_{j}\left\{ \lambda_{j,k_{0}}\right\} \\
+= & \left\{ \prod_{j}\lambda_{j,k_{0}}\right\} =\expval{\prod_{j}\mathbf{O}_{j}}_{\mu}\stackrel{\textrm{Lemma }\ref{lemma:expectation-singleton}}{=}\expval{\prod_{j}\mathbf{O}_{j}}_{\bar{\mu}}\,. 
 }\end{equation}
 \end{proof}
 
