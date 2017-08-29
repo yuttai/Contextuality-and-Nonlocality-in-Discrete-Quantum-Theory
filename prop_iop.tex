@@ -2895,11 +2895,12 @@ and a sequence of commuting observables~$\left\{ \mathbf{O}_{j}\right\} $,
 \end{equation}
 \end{lemma}
 
-\begin{proof}Since $\left\{ \mathbf{O}_{j}\right\} $ is a sequence
-of commuting observables, they can be diagonalized by a common orthonormal
-basis\nb$\Omega=\left\{ \ket{k}\right\} _{k=0}^{d-1}$. By theorem~\ref{thm:sub-event-space},
-there is a commuting sub-event space\nb$\widehat{\events}$ with
-$\widehat{\events}\subseteq\events$ and a bijection\nb$\tau:\widehat{\events}\rightarrow2^{\Omega}$
+\begin{proof}[Proof 1]Since $\left\{ \mathbf{O}_{j}\right\} $ is
+a sequence of commuting observables, they can be diagonalized by a
+common orthonormal basis\nb$\Omega=\left\{ \ket{k}\right\} _{k=0}^{d-1}$.
+By theorem~\ref{thm:sub-event-space}, there is a commuting sub-event
+space\nb$\widehat{\events}$ with $\widehat{\events}\subseteq\events$
+and a bijection\nb$\tau:\widehat{\events}\rightarrow2^{\Omega}$
 such that there is a CIVPM\nb$\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}_{\mathrm{D}}$
 such that $\bar{\mu}\left(P\right)=\bar{\mu}'\left(\tau\left(P\right)\right)$
 for all $P\in\widehat{\events}$.
@@ -2917,6 +2918,22 @@ Therefore,
  & \stackrel{\textrm{Lemma }\ref{lemma:deterministic-CIVPM-product}}{=} & \int\prod_{j}X_{j}\rmd\bar{\mu}'=\int\prod_{j}\sum_{k=0}^{d-1}\lambda_{j,k}\mathbf{1}_{\left\{ \ket{k}\right\} }\rmd\bar{\mu}'\\
  & = & \int\sum_{k=0}^{d-1}\prod_{j}\lambda_{j,k}\mathbf{1}_{\left\{ \ket{k}\right\} }\rmd\bar{\mu}'=\expval{\sum_{k=0}^{d-1}\prod_{j}\lambda_{j,k}\proj{k}}_{\bar{\mu}}\\
  & = & \expval{\prod_{j}\mathbf{O}_{j}}_{\bar{\mu}}\,.
+\end{eqnarray*}
+\end{proof}
+
+\begin{proof}[Proof 2]Since $\left\{ \mathbf{O}_{j}\right\} $ is
+a sequence of commuting observables, they can be diagonalized by a
+common orthonormal basis\nb$\Omega=\left\{ \ket{k}\right\} _{k=0}^{d-1}$,
+i.e., $\mathbf{O}_{j}=\sum_{k=0}^{d-1}\lambda_{j,k}\proj{k}$ and
+$\prod_{j}\mathbf{O}_{j}=\sum_{k=0}^{d-1}\prod_{j}\lambda_{j,k}\proj{k}$.
+By lemma~\ref{lemma:QIVPM2QCM}, $\mul$ and $\mur$ are the same
+real-valued probability measures, and is simply denoted by $\mu:\events\rightarrow\left\{ 1,0\right\} $.
+Since $\mu$ is a cryptodeterministic measure, there is only one $\proj{k}$
+such that $\mu\left(\proj{k}\right)=1$.
+\begin{eqnarray*}
+ &  & \prod_{j}\expval{\mathbf{O}_{j}}_{\bar{\mu}}\stackrel{\textrm{Lemma }\ref{lemma:expectation-singleton}}{=}\prod_{j}\left\{ \expval{\mathbf{O}_{j}}_{\mu}\right\} \\
+ & = & \prod_{j}\left\{ \lambda_{j,k}\right\} =\left\{ \prod_{j}\lambda_{j,k}\right\} \\
+ & = & \expval{\prod_{j}\mathbf{O}_{j}}_{\mu}\stackrel{\textrm{Lemma }\ref{lemma:expectation-singleton}}{=}\expval{\prod_{j}\mathbf{O}_{j}}_{\bar{\mu}}\,.
 \end{eqnarray*}
 \end{proof}
 
