@@ -53,7 +53,6 @@ showkeys, longbibliography, amsmath, amssymb]{revtex4-1}
 % https://tex.stackexchange.com/questions/345284/can-i-have-an-almost-non-breaking-space-in-latex
 % Change non-breaking space to \nolinebreak[1] 
 % Hence, it will not hyphenate too much surrounding words.
-\newcommand{\nb}{\nolinebreak[1]\ }
 \newcommand{\rmd}{\mathrm{d}}
 
 \begin{document}
@@ -127,7 +126,7 @@ impossible to associate definite measured values, $\mu(P_i)= 0$ or
 $1$, with every projection operator~$P_i$, in such a way that, if a
 set of commuting $P_i$ satisfies $\sum_i P_i = 1$, then
 $\sum_i \mu(P_i) = 1$.   Meyer showed that one {\it can\/}
-assign definite values $0$ or $1$ to the measurement outcome
+assign definite values $0$ or~$1$ to the measurement outcome
 $\mu(P_i)$ when the Hilbert space is defined over the field of
 rational numbers, therefore nullifying the
 theorem~\citep{PhysRevLett.83.3751}.  However, Mermin then argued
@@ -355,21 +354,21 @@ $\mu(\overline{E})=[0.7,0.8]$. The two events $E$ and $\overline{E}$
 are disjoint; the naïve addition of intervals would give
 $\mu(E\cup\overline{E})=[0.9,1.1]$ which is not a valid probability
 interval. Moreover the event $E\cup\overline{E}$ is the identity event
-covering the entire space; its probability interval should be $[1,1]$
-which is sharper than $[0.9,1.1]$. The problem is that the two
-intervals are correlated: there is more information in the combined
-event than in each event separately. In our example, even though the
-``true'' probability of $E$ can be anywhere in the range $[0.2,0.3]$
-and the ``true'' probability of~$\overline{E}$ can be in anywhere in
-the range $[0.7,0.8]$, the values are not independent. Any value of
-$\mu(E) \leq 0.25$ will force $\mu(\overline{E})\geq 0.75$. To account
-for such subtleties, the axioms of interval-valued probability do not
-use a strict equality for the combination of disjoint events. The
-correct constraint regarding the probability of $E_1\cup E_2$ when
-$E_1$ and $E_2$ are disjoint is
+covering the entire space; its probability interval should be
+$\necess$ which is sharper than $[0.9,1.1]$. The problem is that the
+two intervals are correlated: there is more information in the
+combined event than in each event separately. In our example, even
+though the ``true'' probability of $E$ can be anywhere in the range
+$[0.2,0.3]$ and the ``true'' probability of~$\overline{E}$ can be in
+anywhere in the range $[0.7,0.8]$, the values are not independent. Any
+value of $\mu(E) \leq 0.25$ will force $\mu(\overline{E})\geq
+0.75$. To account for such subtleties, the axioms of interval-valued
+probability do not use a strict equality for the combination of
+disjoint events. The correct constraint regarding the probability of
+$E_1\cup E_2$ when $E_1$ and $E_2$ are disjoint is
 $\mu(E_1\cup E_2) \subseteq [\ell_1+\ell_2,r_1+r_2]$ which, in
 combination with the requirement for the identity event would force
-$\mu(E \cup \overline{E})$ to always be $[1,1]$ irrespective of the
+$\mu(E \cup \overline{E})$ to always be $\necess$ irrespective of the
 particular assignments of $\mu(E)$ or~$\mu(\overline{E})$.
 
 When combining non-disjoint events, there is a further subtlety whose
@@ -397,9 +396,9 @@ connection between QIVPMs and conventional quantum probability
 measures.
 
 \begin{definition}[QIVPM]
-  Assume a collection of intervals $\mathscr{I}$ including
-  $\imposs=[0,0]$ and $\necess=[1,1]$ with addition and scalar
-  multiplication defined as follows:
+  Assume a collection of intervals $\mathscr{I}$ including $\imposs$
+  and $\necess$ with addition and scalar multiplication defined as
+  follows:
   \begin{subequations}\label{eq:interval-operations}
   \begin{eqnarray}
    &  & [\ell_{1},r_{1}]+[\ell_{2},r_{2}]=[\ell_{1}+\ell_{2},r_{1}+r_{2}]\textrm{ and}\\
@@ -413,13 +412,13 @@ measures.
   event (projection operator~$P$) subject to the following constraints:
   \begin{subequations}\label{eq:QIVPM-constraints}
   \begin{eqnarray}
-   &  & \bar{\mu}(\mathbb{0})=\left[0,0\right]\,,\\
-   &  & \bar{\mu}(\mathbb{1})=\left[1,1\right]\,,\\
-   &  & \bar{\mu}\left(\mathbb{1}-P\right)=\left[1,1\right]-\bar{\mu}\left(P\right)\,,
+   &  & \bar{\mu}(\mathbb{0})=\imposs\,,\\
+   &  & \bar{\mu}(\mathbb{1})=\necess\,,\\
+   &  & \bar{\mu}\left(\mathbb{1}-P\right)= \necess -\bar{\mu}\left(P\right)\,,
   \end{eqnarray}
   \end{subequations}
-  and satisfying for each pair of \emph{commuting} projectors $P_0$
-  and $P_1$ with $P_0P_1=P_1P_0$,
+  and satisfying for each pair of \emph{commuting} projectors~$P_0$
+  and~$P_1$ with $P_0P_1=P_1P_0$,
 \begin{equation}
 \bar{\mu}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\,.
 \label{eq:QuantumInterval-valuedProbability-Inclusion}
@@ -471,7 +470,7 @@ $\coreBorn(\bar{\mu},\events')$:
 The proof that QIVPMs become classical IVPMs when the space of events
 includes only mutually commuting events is presented in detail in the
 long version of this paper~\cite{HOSTunpublished}. The idea of the
-proof is as follows. Given a subspace of commuting events $\events_C$,
+proof is as follows. Given a subspace of commuting events~$\events_C$,
 we can construct a partial orthonormal basis by diagonalization and
 complete it to a full orthonormal basis $\overline{\events_C}$. We
 then build a bijection between the QIVPM on the set of projectors
@@ -575,20 +574,20 @@ average.
 Our generalization of quantum probability measures to QIVPMs allows us
 to strengthen the scope of one of the fundamental theorems of quantum
 information: the Kochen-Specker
-theorem~\cite{kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007,Held2016}. Our finite-precision
-extension of the theorem will suggest a resolution to the debate
-initiated by Meyer and Mermin on the relevance of the Kochen-Specker
-to experimental, and hence finite-precision, quantum
+theorem~\cite{kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007,Held2016}. Our
+finite-precision extension of the theorem will suggest a resolution to
+the debate initiated by Meyer and Mermin on the relevance of the
+Kochen-Specker to experimental, and hence finite-precision, quantum
 measurements~\citep{PhysRevLett.83.3751,Mermin1999,Kent1999,HavlicekKrennSummhammerSvozil2001,SimonBruknerZeilinger2001,Cabello2002,Larsson2002,Appleby2002,BarrettKent2004,Appleby_2005,Spekkens2005,GuehneKleinmannCabelloEtAl2010,MazurekPuseyKunjwalEtAl2016}.
 Specifically, the original Kochen-Specker theorem is formulated under
 the assumption that all observables of a quantum mechanical system
-have \emph{definite values at all times}~\cite{Held2016}. Our
-interval-valued probability framework will allow us to state, and
-prove, a stronger version of the theorem that holds even if the
-observables have values that are only definite up to some specific
-parameter that quantifies experimental uncertainty. Put differently,
-our stronger statement and theorem quantifies Mermin's
-intuition~\citep{Mermin1999}:
+have \emph{definite values at all times}~\cite{Held2016}, i.e., they
+have infinitely precise values at all times. Our interval-valued
+probability framework will allow us to state, and prove, a stronger
+version of the theorem that holds even if the observables have values
+that are only definite up to some precision specified by a parameter
+$\delta$. Put differently, our stronger statement and theorem
+quantifies Mermin's intuition~\citep{Mermin1999}:
 \begin{quote}
   \ldots although the outcomes deduced from such imperfect
   measurements will occasionally differ dramatically from those
@@ -611,68 +610,43 @@ $\delta$-deterministic QIVPMs.
   $\bar{\mu}\left(P\right)\subseteq\left[1-\delta,1\right]$. 
 \end{definition}
 
-When $\delta=0$, every event must be assigned a probability in either
-interval $[0,0]$ or $[1,1]$, i.e., every event is completely
-determined with certainty. As $\delta$ gets larger, the QIVPM allows for
-more indeterminate behavior. For example, when $\delta=\frac{1}{3}$,
-two possible collections of intervals\nb$\mathscr{I}$ could be 
-$\left\{ \imposs,\left[0,\frac{1}{3}\right],\left[\frac{2}{3},1\right],
-\necess\right\}$ and $\left\{ \imposs,\left[\frac{1}{6},\frac{1}{6}\right],
-\left[\frac{1}{3},\frac{1}{3}\right],\left[\frac{2}{3},\frac{2}{3}\right],
-\left[\frac{5}{6},\frac{5}{6}\right],\necess\right\}$. Our technical result will be
-that for ``small enough'' $\delta$, a variant of the Kochen-Specker
-result is still valid. To state and prove this generalization we will first
-reformulate the original Kochen-Specker theorem as a statement regarding the
-non-existence of $0$-deterministic QIVPM. We will then strengthen this
-result to show the non-existence of any $\delta$-deterministic QIVPM
-when $\delta < 1/3$ and the Hilbert space dimension is greater than
-2. 
-
-\amr{Fix below until next marker}
-
-A 0-deterministic QIVPM\nb$\bar{\mu}$ has an important property
-regarding to the expectation values of a family of $M$ commuting
-observables\nb$\left\{ \mathbf{O}_{j}\right\} _{j=1}^{M}$ relative
-to $\bar{\mu}$. Since $\left\{ \mathbf{O}_{j}\right\} _{j=1}^{M}$
-commutes, they can be diagonalized by a common orthonormal basis~$\Omega=\left\{ \ket{k}\right\} _{k=0}^{d-1}$.
-Since $\bar{\mu}$ is 0-deterministic, a unique $\ket{k_{0}}$ and
-a unique quantum probability measure\nb$\mu$ exists such that $\bar{\mu}\left(P\right)=\left\{ \mu\left(P\right)\right\} $
-and $\mu\left(P\right)\in\left\{ 0,1\right\} $ for all $P\in\events$;
-$\mu\left(\proj{k}\right)=1$ if and only if $k=k_{0}$\nb\citep{HOSTunpublished}.
-If we denote the product observables\nb$\prod_{j=1}^{M}\mathbf{O}_{j}$
-as $\overline{\mathbf{O}}$, the expectation values of the observables\nb$\expval{\mathbf{O}_{j}}_{\bar{\mu}}$
-and $\expval{\overline{\mathbf{O}}}_{\bar{\mu}}$ are equal to the
-singleton sets whose only elements are $\expval{\mathbf{O}_{j}}_{\mu}$
-and $\expval{\overline{\mathbf{O}}}_{\mu}$, respectively. Both $\prod_{j=1}^{M}\expval{\mathbf{O}_{j}}_{\mu}$
-and $\expval{\overline{\mathbf{O}}}_{\mu}$ are equal to the product
-of the eigenvalues corresponding to the pure state\nb$\ket{k_{0}}$
-for each observable\nb$\mathbf{O}_{j}$. By adopting an intuitive
-product rule\nb$\left\{ x_{0}\right\} \cdot\left\{ x_{1}\right\} =\left\{ x_{0}x_{1}\right\} $,
-we have the following property: 
-\begin{equation}
-\prod_{j=1}^{M}\expval{\mathbf{O}_{j}}_{\bar{\mu}}=\expval{\prod_{j=1}^{M}\mathbf{O}_{j}}_{\bar{\mu}}\,.\label{eq:Kochen-Specker-Rules}
-\end{equation}
-
-\amr{End marker}
-
-We now state and prove a theorem that is equivalent in scope to the
-original Kochen-Specker theorem but that is formulated in terms of
-$0$-deterministic QIVPMs.
+\noindent The definition puts no restrictions on the choice of
+intervals, only on the assignment of intervals to events. When
+$\delta=0$, every event must be assigned a probability in either
+interval $\imposs$ or $\necess$, i.e., every event is completely
+determined with certainty. As $\delta$ gets larger, the QIVPM allows
+for more indeterminate behavior. % For example, when
+% $\delta=\frac{1}{3}$, two possible collections of
+% intervals\nb$\mathscr{I}$ could be
+% $\left\{
+%   \imposs,\left[0,\frac{1}{3}\right],\left[\frac{2}{3},1\right],
+%   \necess\right\}$ and
+% $\left\{ \imposs,\left[\frac{1}{6},\frac{1}{6}\right],
+%   \left[\frac{1}{3},\frac{1}{3}\right],\left[\frac{2}{3},\frac{2}{3}\right],
+%   \left[\frac{5}{6},\frac{5}{6}\right],\necess\right\}$.
+Our technical result will be that for ``small enough'' $\delta$, a
+variant of the Kochen-Specker result is still valid. To state and
+prove this generalization we will first reformulate the original
+Kochen-Specker theorem as a statement regarding the non-existence of
+$0$-deterministic QIVPM. We will then strengthen this result to show
+the non-existence of any $\delta$-deterministic QIVPM when
+$\delta < 1/3$ and the Hilbert space dimension is greater than 2.
 
 \begin{thm} [0-Deterministic Variant of
   Kochen-Specker] \label{thm:Kochen-Specker} Given a Hilbert space
   $\Hilb$ of dimension~$d\ge3$, there is no 0-deterministic
-  measure~$\bar{\mu}$ mapping every event to either $[0,0]$ or $[1,1]$.
+  measure~$\bar{\mu}$ mapping every event to either $\imposs$ or
+  $\necess$.
 \end{thm}
 
 To explain why this result is equivalent to the original
 Kochen-Specker theorem and to prove it at the same time, we proceed by
 assuming a 0-deterministic QIVPM $\bar{\mu}$ and derive a
 contradiction to the original Kochen-Specker theorem using the same
-nine observables $\mathbf{O}_{ij}$ used in the ``Mermin-Peres'' proof
-of the Kochen-Specker
-theorem~\cite{Mermin1990Simple,peres1995quantum}:
-{\renewcommand{\arraystretch}{2}%
+nine observables $\mathbf{O}_{ij}$ with both $i$ and $j$ in the range
+${1,2,3}$ used in the ``Mermin-Peres'' proof of the Kochen-Specker
+theorem~\cite{Mermin1990Simple,peres1995quantum}. These nine
+observables are given below: {\renewcommand{\arraystretch}{2}%
 \begin{center}
 \begin{tabular}{|@{\quad}c@{\quad}|@{\quad}c@{\quad}|@{\quad}c@{\quad}|}
 \hline 
@@ -686,17 +660,78 @@ $\sigma_{x}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\sigma_{x}$  & $\sigma_{y}\ot
 \par\end{center}
 }
 \noindent where
-$\left\{\mathbb{1},\sigma_{x},\sigma_{y},\sigma_{z}\right\}$ are Pauli
-matrices acting on a pair of spin-$\frac{1}{2}$ states.  The
-observables in the Mermin-Peres square must have expectation
-values~$\left\{ 1\right\} $ or $\left\{ -1\right\} $.  In each row and
-column, the operators commute, and each operator is the product of two
-others, except in the third column, where
+$\left\{\mathbb{1},\sigma_{x},\sigma_{y},\sigma_{z}\right\}$ are the
+Pauli matrices acting on a pair of spin-$\frac{1}{2}$ states. These
+matrices satisfy
 $\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$.
+Furthermore we have that the observables in the square satisfy the
+following properties: each observable has expectation value~$1$
+or~$-1$; in each row and column, the observables commute; and in each
+row and column except the third column, each operator is the product
+of the other two. To find a QIVPM~$\bar{\mu}$ \ldots
+
+
 Therefore, it is clearly impossible to find a QIVPM~$\bar{\mu}$ such
 that $\langle \mathbf{O}_{ij}\rangle_{\bar \mu}$ satisfies
 Eq.~(\ref{eq:Kochen-Specker-Rules}).
  
+A 0-deterministic QIVPM~$\bar{\mu}$ has an important property
+regarding to the expectation values of a family of $M$ commuting
+observables~$\left\{ \mathbf{O}_{j}\right\} _{j=1}^{M}$ relative to
+$\bar{\mu}$. Since $\left\{ \mathbf{O}_{j}\right\} _{j=1}^{M}$
+commutes, they can be diagonalized by a common orthonormal
+basis~$\Omega=\left\{ \ket{k}\right\} _{k=0}^{d-1}$.  Since
+$\bar{\mu}$ is 0-deterministic, a unique $\ket{k_{0}}$ and a unique
+quantum probability measure~$\mu$ exists such that
+$\bar{\mu}\left(P\right)=\left\{ \mu\left(P\right)\right\} $ and
+$\mu\left(P\right)\in\left\{ 0,1\right\} $ for all $P\in\events$;
+$\mu\left(\proj{k}\right)=1$ if and only if
+$k=k_{0}$~\citep{HOSTunpublished}.  If we denote the product
+observables~$\prod_{j=1}^{M}\mathbf{O}_{j}$ as
+$\overline{\mathbf{O}}$, the expectation values of the
+observables~$\expval{\mathbf{O}_{j}}_{\bar{\mu}}$ and
+$\expval{\overline{\mathbf{O}}}_{\bar{\mu}}$ are equal to the
+singleton sets whose only elements are $\expval{\mathbf{O}_{j}}_{\mu}$
+and $\expval{\overline{\mathbf{O}}}_{\mu}$, respectively. Both
+$\prod_{j=1}^{M}\expval{\mathbf{O}_{j}}_{\mu}$ and
+$\expval{\overline{\mathbf{O}}}_{\mu}$ are equal to the product of the
+eigenvalues corresponding to the pure state~$\ket{k_{0}}$ for each
+observable~$\mathbf{O}_{j}$. By adopting an intuitive product
+rule~$\left\{ x_{0}\right\} \cdot\left\{ x_{1}\right\} =\left\{
+  x_{0}x_{1}\right\} $, we have the following property:
+\begin{equation}
+\prod_{j=1}^{M}\expval{\mathbf{O}_{j}}_{\bar{\mu}}=\expval{\prod_{j=1}^{M}\mathbf{O}_{j}}_{\bar{\mu}}\,.\label{eq:Kochen-Specker-Rules}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 We can in fact generalize the above theorem to state that for small
 enough $\delta$, it is impossible to have $\delta$-deterministic
 QIVPMs. Every QIVPM must map some events to truly uncertain intervals,
@@ -804,20 +839,21 @@ $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$, and
  &  & \unknown=\bar{\mu}(P)\qquad\textrm{otherwise.}
 \end{eqnarray}
 \end{subequations}
-It is straightforward to verify that $\bar{\mu}$ is a QIVPM. Then we will
-prove $\coreBorn\left(\bar{\mu},\events\right)$ is an empty set by
-contradiction. Suppose there is a
-state\nb$\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}\in\coreBorn\left(\bar{\mu},\events\right)$,
-where $\sum_{j=1}^{N}q_{j}=1$ and $q_{j}>0$. Since $\mu_{\rho}^{\mathrm{B}}(P)\in\bar{\mu}(P)$
-for any\nb$P$, the state\nb$\rho$ must satisfy
+It is straightforward to verify that $\bar{\mu}$ is a QIVPM. Then we
+will prove $\coreBorn\left(\bar{\mu},\events\right)$ is an empty set
+by contradiction. Suppose there is a state
+$\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}\in\coreBorn\left(\bar{\mu},\events\right)$,
+where $\sum_{j=1}^{N}q_{j}=1$ and $q_{j}>0$. Since
+$\mu_{\rho}^{\mathrm{B}}(P)\in\bar{\mu}(P)$ for any~$P$, the
+state~$\rho$ must satisfy:
 \begin{equation}
 \mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps'})=0
 \end{equation}
-which implies $\ip{\phi_{j}}{0}=\ip{\phi_{j}}{\ps}=\ip{\phi_{j}}{\ps'}=0$
-for all $j$. However, the last equation never holds. 
-Thus, there is no state consistent with the QIVPM on all 
-projectors\nb$P\in\events$, so Gleason's theorem does not hold for at least this
-example.
+which implies
+$\ip{\phi_{j}}{0}=\ip{\phi_{j}}{\ps}=\ip{\phi_{j}}{\ps'}=0$ for all
+$j$. However, the last equation never holds.  Thus, there is no state
+consistent with the QIVPM on all projectors~$P\in\events$, so
+Gleason's theorem does not hold for at least this example.
 
 Although Gleason's theorem does not hold for every QIVPM, we can show
 that for a certain class of QIVPMs, the collection of states
@@ -836,7 +872,7 @@ $\left\Vert A\right\Vert
 consider the following collection of intervals:
 \begin{eqnarray}
 \widehat{\mathscr{I}}_{n} & = & \set{\left[\frac{k-1}{2n},\frac{k+1}{2n}\right]\cap\left[0,1\right]}{k=0,\ldots,2n}\nonumber \\
- &  & \cup\left\{ \left[0,0\right],\left[1,1\right]\right\} 
+ &  & \cup\{ \imposs, \necess \}
 \end{eqnarray}
 which are overlapping intervals with length~$1/n$ except the intervals
 at each end. 
