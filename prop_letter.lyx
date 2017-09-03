@@ -55,7 +55,6 @@
 % https://tex.stackexchange.com/questions/345284/can-i-have-an-almost-non-breaking-space-in-latex
 % Change non-breaking space to \nolinebreak[1] 
 % Hence, it will not hyphenate too much surrounding words.
-\newcommand{\nb}{\nolinebreak[1]\ }
 \newcommand{\rmd}{\mathrm{d}}
 \end_preamble
 \options reprint,aps,prl,superscriptaddress,showpacs,showkeys,longbibliography,amsmath,amssymb
@@ -212,6 +211,7 @@ We present a mathematical framework based on quantum interval-valued probability
 \end_layout
 
 \begin_layout PACS
+ 
 \begin_inset ERT
 status collapsed
 
@@ -344,7 +344,7 @@ ecker theorem
 
 
 \begin_inset CommandInset citation
-LatexCommand citep
+LatexCommand cite
 key "kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007,Held2016"
 
 \end_inset
@@ -405,7 +405,11 @@ status collapsed
 \begin_inset Formula $0$
 \end_inset
 
- or 
+ or
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $1$
 \end_inset
 
@@ -1486,7 +1490,7 @@ either
 
  is the identity event covering the entire space; its probability interval
  should be 
-\begin_inset Formula $[1,1]$
+\begin_inset Formula $\necess$
 \end_inset
 
  which is sharper than 
@@ -1566,7 +1570,7 @@ true
 \end_inset
 
  to always be 
-\begin_inset Formula $[1,1]$
+\begin_inset Formula $\necess$
 \end_inset
 
  irrespective of the particular assignments of 
@@ -1686,11 +1690,11 @@ status collapsed
 \end_inset
 
  including 
-\begin_inset Formula $\imposs=[0,0]$
+\begin_inset Formula $\imposs$
 \end_inset
 
  and 
-\begin_inset Formula $\necess=[1,1]$
+\begin_inset Formula $\necess$
 \end_inset
 
  with addition and scalar multiplication defined as follows: 
@@ -1777,9 +1781,9 @@ name "eq:QIVPM-constraints"
  
 \begin_inset Formula 
 \begin{eqnarray}
- &  & \bar{\mu}(\mathbb{0})=\left[0,0\right]\,,\\
- &  & \bar{\mu}(\mathbb{1})=\left[1,1\right]\,,\\
- &  & \bar{\mu}\left(\mathbb{1}-P\right)=\left[1,1\right]-\bar{\mu}\left(P\right)\,,
+ &  & \bar{\mu}(\mathbb{0})=\imposs\,,\\
+ &  & \bar{\mu}(\mathbb{1})=\necess\,,\\
+ &  & \bar{\mu}\left(\mathbb{1}-P\right)=\necess-\bar{\mu}\left(P\right)\,,
 \end{eqnarray}
 
 \end_inset
@@ -1801,11 +1805,19 @@ end{subequations}
 \emph on
 commuting
 \emph default
- projectors 
+ projectors
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $P_{0}$
 \end_inset
 
- and 
+ and
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $P_{1}$
 \end_inset
 
@@ -2067,7 +2079,11 @@ key "HOSTunpublished"
 
 .
  The idea of the proof is as follows.
- Given a subspace of commuting events 
+ Given a subspace of commuting events
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\events_{C}$
 \end_inset
 
@@ -2106,7 +2122,7 @@ status collapsed
 
 \end_inset
 
-
+ 
 \begin_inset CommandInset label
 LatexCommand label
 name "thm:Shapley"
@@ -2372,7 +2388,7 @@ status collapsed
 
 \end_inset
 
-Let 
+ Let 
 \begin_inset Formula $\mathscr{I}$
 \end_inset
 
@@ -2380,15 +2396,7 @@ Let
 \begin_inset Formula $\Hilb$
 \end_inset
 
- a Hilbert space of dimension
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $d\ge3$
-\end_inset
-
- with event space
+ a Hilbert space with event space
 \begin_inset space ~
 \end_inset
 
@@ -2551,7 +2559,7 @@ Our generalization of quantum probability measures to QIVPMs allows us to
 
 
 \begin_inset CommandInset citation
-LatexCommand citep
+LatexCommand cite
 key "kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007,Held2016"
 
 \end_inset
@@ -2596,11 +2604,15 @@ key "Held2016"
 
 \end_inset
 
-.
+, i.e., they have infinitely precise values at all times.
  Our interval-valued probability framework will allow us to state, and prove,
  a stronger version of the theorem that holds even if the observables have
- values that are only definite up to some specific parameter that quantifies
- experimental uncertainty.
+ values that are only definite up to some precision specified by a parameter
+ 
+\begin_inset Formula $\delta$
+\end_inset
+
+.
  Put differently, our stronger statement and theorem quantifies Mermin's
  intuition
 \begin_inset space ~
@@ -2743,16 +2755,19 @@ end{definition}
 \end_layout
 
 \begin_layout Standard
-When 
+\noindent
+The definition puts no restrictions on the choice of intervals, only on
+ the assignment of intervals to events.
+ When 
 \begin_inset Formula $\delta=0$
 \end_inset
 
-, every event must be assigned a probability in either the interval 
-\begin_inset Formula $[0,0]$
+, every event must be assigned a probability in either interval 
+\begin_inset Formula $\imposs$
 \end_inset
 
  or 
-\begin_inset Formula $[1,1]$
+\begin_inset Formula $\necess$
 \end_inset
 
 , i.e., every event is completely determined with certainty.
@@ -2760,38 +2775,219 @@ When
 \begin_inset Formula $\delta$
 \end_inset
 
- gets bigger, the QIVPM allows more and more indeterminate behavior.
- For example, when 
-\begin_inset Formula $\delta=\frac{1}{3}$
-\end_inset
-
-, two possible collection of intervals
+ gets larger, the QIVPM allows for more indeterminate behavior.
+ 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
+% For example, when
+\end_layout
 
-\backslash
-nb
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
 
 
-\begin_inset Formula $\mathscr{I}$
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+delta=
+\backslash
+frac{1}{3}$, two possible collections of
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
- are 
-\begin_inset Formula $\left\{ \imposs,\left[0,\frac{1}{3}\right],\left[\frac{2}{3},1\right],\necess\right\} $
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% intervals
+\backslash
+nb$
+\backslash
+mathscr{I}$ could be
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
- and 
-\begin_inset Formula $\left\{ \imposs,\left[\frac{1}{6},\frac{1}{6}\right],\left[\frac{1}{3},\frac{1}{3}\right],\left[\frac{2}{3},\frac{2}{3}\right],\left[\frac{5}{6},\frac{5}{6}\right],\necess\right\} $
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+left
+\backslash
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
-.
- Our technical result will be that for 
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   
+\backslash
+imposs,
+\backslash
+left[0,
+\backslash
+frac{1}{3}
+\backslash
+right],
+\backslash
+left[
+\backslash
+frac{2}{3},1
+\backslash
+right],
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   
+\backslash
+necess
+\backslash
+right
+\backslash
+}$ and
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+left
+\backslash
+{ 
+\backslash
+imposs,
+\backslash
+left[
+\backslash
+frac{1}{6},
+\backslash
+frac{1}{6}
+\backslash
+right],
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   
+\backslash
+left[
+\backslash
+frac{1}{3},
+\backslash
+frac{1}{3}
+\backslash
+right],
+\backslash
+left[
+\backslash
+frac{2}{3},
+\backslash
+frac{2}{3}
+\backslash
+right],
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   
+\backslash
+left[
+\backslash
+frac{5}{6},
+\backslash
+frac{5}{6}
+\backslash
+right],
+\backslash
+necess
+\backslash
+right
+\backslash
+}$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Our technical result will be that for 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2803,9 +2999,9 @@ small enough
 \begin_inset Formula $\delta$
 \end_inset
 
-, a variant of the Kochen-Specker theorem is still valid.
- To state and prove this result we will first reformulate the original Kochen-Sp
-ecker as a statement regarding the non-existence of 
+, a variant of the Kochen-Specker result is still valid.
+ To state and prove this generalization we will first reformulate the original
+ Kochen-Specker theorem as a statement regarding the non-existence of 
 \begin_inset Formula $0$
 \end_inset
 
@@ -2829,12 +3025,88 @@ status collapsed
 
 
 \backslash
+begin{thm}[
+\end_layout
+
+\end_inset
+
+0-Deterministic Variant of Kochen-Specker
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:Kochen-Specker"
+
+\end_inset
+
+ Given a Hilbert space 
+\begin_inset Formula $\Hilb$
+\end_inset
+
+ of dimension
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $d\ge3$
+\end_inset
+
+, there is no 0-deterministic measure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ mapping every event to either 
+\begin_inset Formula $\imposs$
+\end_inset
+
+ or 
+\begin_inset Formula $\necess$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{thm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
 amr{
 \end_layout
 
 \end_inset
 
-Fix below until next marker
+Start comments
 \begin_inset ERT
 status collapsed
 
@@ -2849,17 +3121,316 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-A 0-deterministic QIVPM
+2 qubit system otimes is tensor product mathbb
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-
-\backslash
-nb
+{
 \end_layout
 
+\end_inset
+
+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ is identity projector/observable/matrix expectation value relative to mubar
+ explain why expectation value of 0-determinstic qivpm is eigen value of
+ observable
+\end_layout
+
+\begin_layout Standard
+To explain why this result is equivalent to the original Kochen-Specker
+ theorem and to prove it at the same time, we proceed by assuming a 0-determinis
+tic QIVPM 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ and derive a contradiction to the original Kochen-Specker theorem using
+ the same nine observables 
+\begin_inset Formula $\mathbf{O}_{ij}$
+\end_inset
+
+ with both 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ in the range 
+\begin_inset Formula $\{1,2,3\}$
+\end_inset
+
+ used in the 
+\begin_inset Quotes eld
+\end_inset
+
+Mermin-Peres
+\begin_inset Quotes erd
+\end_inset
+
+ proof of the Kochen-Specker theorem
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Mermin1990Simple,peres1995quantum"
+
+\end_inset
+
+.
+ These nine observables are given below: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\arraystretch}{2}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="none" valignment="top" special="@{\quad}c|">
+<column alignment="none" valignment="top" special="@{\quad}@{\quad}c|">
+<column alignment="none" valignment="top" special="@{\quad}@{\quad}c|@{\quad}">
+<row>
+<cell alignment="none" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathbb{1}\otimes\sigma_{z}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma_{z}\otimes\mathbb{1}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma_{z}\otimes\sigma_{z}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma_{x}\otimes\mathbb{1}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathbb{1}\otimes\sigma_{x}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma_{x}\otimes\sigma_{x}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma_{x}\otimes\sigma_{z}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma_{z}\otimes\sigma_{x}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma_{y}\otimes\sigma_{y}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset space \thinspace{}
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ where 
+\begin_inset Formula $\left\{ \mathbb{1},\sigma_{x},\sigma_{y},\sigma_{z}\right\} $
+\end_inset
+
+ are the Pauli matrices acting on a pair of spin-
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+ states.
+ These matrices satisfy 
+\begin_inset Formula $\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$
+\end_inset
+
+.
+ Furthermore we have that the observables in the square satisfy the following
+ properties: each observable has expectation value
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $1$
+\end_inset
+
+ or
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $-1$
+\end_inset
+
+; in each row and column, the observables commute; and in each row and column
+ except the third column, each operator is the product of the other two.
+ To find a QIVPM
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Therefore, it is clearly impossible to find a QIVPM
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\langle\mathbf{O}_{ij}\rangle_{\bar{\mu}}$
+\end_inset
+
+ satisfies Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Kochen-Specker-Rules"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+A 0-deterministic QIVPM
+\begin_inset space ~
 \end_inset
 
 
@@ -2872,16 +3443,7 @@ nb
 \end_inset
 
  commuting observables
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nb
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
 
@@ -2915,16 +3477,7 @@ nb
 \end_inset
 
  and a unique quantum probability measure
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nb
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
 
@@ -2952,6 +3505,10 @@ nb
 \end_inset
 
 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -2959,30 +3516,14 @@ status collapsed
 
 
 \backslash
-nb
+citep{HOSTunpublished}
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand citep
-key "HOSTunpublished"
 
 \end_inset
 
 .
  If we denote the product observables
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nb
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
 
@@ -2994,16 +3535,7 @@ nb
 \end_inset
 
 , the expectation values of the observables
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nb
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
 
@@ -3032,16 +3564,7 @@ nb
 \end_inset
 
  are equal to the product of the eigenvalues corresponding to the pure state
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nb
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
 
@@ -3049,16 +3572,7 @@ nb
 \end_inset
 
  for each observable
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nb
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
 
@@ -3067,16 +3581,7 @@ nb
 
 .
  By adopting an intuitive product rule
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nb
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
 
@@ -3095,392 +3600,6 @@ nb
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-amr{
-\end_layout
-
-\end_inset
-
-End marker
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We now state and prove a theorem that is equivalent in scope to the original
- Kochen-Specker theorem but that is formulated in terms of 
-\begin_inset Formula $0$
-\end_inset
-
--deterministic QIVPMs.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{thm}[
-\end_layout
-
-\end_inset
-
-0-Deterministic Variant of Kochen-Specker
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "thm:Kochen-Specker"
-
-\end_inset
-
- Given a Hilbert space 
-\begin_inset Formula $\Hilb$
-\end_inset
-
- of dimension
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $d\ge3$
-\end_inset
-
-, there is no 0-deterministic measure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- mapping every event to either 
-\begin_inset Formula $[0,0]$
-\end_inset
-
- or 
-\begin_inset Formula $[1,1]$
-\end_inset
-
-.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{thm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-To explain why this result is equivalent to the original Kochen-Specker
- theorem and to prove it at the same time, we proceed by assuming a 0-determinis
-tic QIVPM 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- and derive a contradiction to the original Kochen-Specker theorem using
- the same nine observables 
-\begin_inset Formula $\mathbf{O}_{ij}$
-\end_inset
-
- used in the 
-\begin_inset Quotes eld
-\end_inset
-
-Mermin-Peres
-\begin_inset Quotes erd
-\end_inset
-
- proof of the Kochen-Specker theorem
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Mermin1990Simple,peres1995quantum"
-
-\end_inset
-
-: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset FormulaMacro
-\newcommand{\arraystretch}{2}
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{center} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{tabular}{|@{
-\backslash
-quad}c@{
-\backslash
-quad}|@{
-\backslash
-quad}c@{
-\backslash
-quad}|@{
-\backslash
-quad}c@{
-\backslash
-quad}|} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline  
-\end_layout
-
-\begin_layout Plain Layout
-
-$
-\backslash
-mathbb{1}
-\backslash
-otimes
-\backslash
-sigma_{z}$  & $
-\backslash
-sigma_{z}
-\backslash
-otimes
-\backslash
-mathbb{1}$  & $
-\backslash
-sigma_{z}
-\backslash
-otimes
-\backslash
-sigma_{z}$ 
-\backslash
-tabularnewline 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline  
-\end_layout
-
-\begin_layout Plain Layout
-
-$
-\backslash
-sigma_{x}
-\backslash
-otimes
-\backslash
-mathbb{1}$  & $
-\backslash
-mathbb{1}
-\backslash
-otimes
-\backslash
-sigma_{x}$  & $
-\backslash
-sigma_{x}
-\backslash
-otimes
-\backslash
-sigma_{x}$ 
-\backslash
-tabularnewline 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline  
-\end_layout
-
-\begin_layout Plain Layout
-
-$
-\backslash
-sigma_{x}
-\backslash
-otimes
-\backslash
-sigma_{z}$  & $
-\backslash
-sigma_{z}
-\backslash
-otimes
-\backslash
-sigma_{x}$  & $
-\backslash
-sigma_{y}
-\backslash
-otimes
-\backslash
-sigma_{y}$ 
-\backslash
-tabularnewline 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-hline  
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{tabular}
-\backslash
-,, 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-par
-\backslash
-end{center} 
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-where 
-\begin_inset Formula $\left\{ \mathbb{1},\sigma_{x},\sigma_{y},\sigma_{z}\right\} $
-\end_inset
-
- are Pauli matrices acting on a pair of spin-
-\begin_inset Formula $\frac{1}{2}$
-\end_inset
-
- states.
- The observables in the Mermin-Peres square must have expectation values
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\left\{ 1\right\} $
-\end_inset
-
- or 
-\begin_inset Formula $\left\{ -1\right\} $
-\end_inset
-
-.
- In each row and column, the operators commute, and each operator is the
- product of two others, except in the third column, where 
-\begin_inset Formula $\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$
-\end_inset
-
-.
- Therefore, it is clearly impossible to find a QIVPM
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- such that 
-\begin_inset Formula $\langle\mathbf{O}_{ij}\rangle_{\bar{\mu}}$
-\end_inset
-
- satisfies Eq.
-\begin_inset space ~
-\end_inset
-
-(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:Kochen-Specker-Rules"
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Standard
-\noindent
 We can in fact generalize the above theorem to state that for small enough
  
 \begin_inset Formula $\delta$
@@ -3535,7 +3654,7 @@ status collapsed
 
 \end_inset
 
-
+ 
 \begin_inset CommandInset label
 LatexCommand label
 name "cor:Kochen-Specker-IVPM"
@@ -3852,7 +3971,7 @@ status collapsed
 
 \end_inset
 
-For a QIVPM
+ For a QIVPM
 \begin_inset space ~
 \end_inset
 
@@ -4077,20 +4196,7 @@ end{subequations}
 \end_inset
 
  is an empty set by contradiction.
- Suppose there is a state
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nb
-\end_layout
-
-\end_inset
-
-
+ Suppose there is a state 
 \begin_inset Formula $\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}\in\coreBorn\left(\bar{\mu},\events\right)$
 \end_inset
 
@@ -4108,16 +4214,7 @@ nb
 \end_inset
 
  for any
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nb
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
 
@@ -4125,23 +4222,14 @@ nb
 \end_inset
 
 , the state
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nb
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset Formula $\rho$
 \end_inset
 
- must satisfy 
+ must satisfy: 
 \begin_inset Formula 
 \begin{equation}
 \mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps'})=0
@@ -4160,16 +4248,7 @@ which implies
 .
  However, the last equation never holds.
  Thus, there is no state consistent with the QIVPM on all projectors
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nb
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
 
@@ -4240,7 +4319,7 @@ citep{544199}
 \begin_inset Formula 
 \begin{eqnarray}
 \widehat{\mathscr{I}}_{n} & = & \set{\left[\frac{k-1}{2n},\frac{k+1}{2n}\right]\cap\left[0,1\right]}{k=0,\ldots,2n}\nonumber \\
- &  & \cup\left\{ \left[0,0\right],\left[1,1\right]\right\} 
+ &  & \cup\{\imposs,\necess\}
 \end{eqnarray}
 
 \end_inset
