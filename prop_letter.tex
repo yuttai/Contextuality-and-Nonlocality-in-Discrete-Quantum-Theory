@@ -616,7 +616,14 @@ intervals, only on the assignment of intervals to events. When
 $\delta=0$, every event must be assigned a probability in either
 interval $\imposs$ or $\necess$, i.e., every event is completely
 determined with certainty. As $\delta$ gets larger, the QIVPM allows
-for more indeterminate behavior.
+for more indeterminate behavior. For example, assuming a set of
+intervals including $\imposs$, $\necess$, and
+$\{ [0,1/4], [1/4,1/2], [1/2,3/4], [3/4,1] \}$, the probability
+measure that maps every event to either $\imposs$ or $\necess$ would
+be a 0-deterministic QIVPM, and the probability measure that maps
+every event to one of $\imposs$, $\necess$, $[0,1/5]$, or $[4/5,1]$
+would be a $\delta$-deterministic QIVPM for every
+$1/5 \le \delta \le 1$.
 
 The expectation value of an observable relative to a 0-deterministic
 QIVPM is fully determinate and is equal to one of the eigenvalues of
@@ -631,7 +638,7 @@ one of the $\bar{\mu}(\proj{\psi_i})=\necess$ and all others mapped to
 $\imposs$. Given any state~$\rho$ that is consistent with this QIVPM
 on all the projectors in $\Omega$, we have by Eq.~(\ref{eq:hbar}) that
 $\mu_{\rho}^{\mathrm{B}}$ must also map exactly one of the projectors
-to 1 and all others to 0. If an observable has a spectral
+in $\Omega$ to 1 and all others to 0. If an observable has a spectral
 decomposition along $\Omega$ then, by
 Eq.~(\ref{eq:quantum-expectation}), its expectation value relative to
 $\mu_{\rho}^{\mathrm{B}}$ is the eigenvalue $\lambda$ whose projector
@@ -654,9 +661,10 @@ non-existence of $0$-deterministic QIVPM.
 \noindent To explain why this result is equivalent to the original
 Kochen-Specker theorem and to prove it at the same time, we proceed by
 assuming a 0-deterministic QIVPM $\bar{\mu}$ and derive a
-contradiction to the original Kochen-Specker theorem. Our
-counterexample uses the simpler proof for a Hilbert space of dimension
-$d=4$ and is constructed as follows.
+contradiction to the original Kochen-Specker theorem. Instead of
+adapting the more complicated proof for $d=3$, our counterexample uses
+the simpler proof for a Hilbert space of dimension $d=4$ and is
+constructed as follows.
 
 We consider a 2-qubit Hilbert space $\Hilb=\Hilb_1\otimes\Hilb_2$
 representing pairs of spin-$\frac{1}{2}$ states. We use the same nine
@@ -686,18 +694,20 @@ each row and column, \emph{except the column $j=2$}, every observable
 is the product of the other two. In the $j=2$ column, we have instead
 that
 $\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$. Now
-assume a QIVPM ${\bar{\mu}}$; the expectation values of the
-observables in each row relative to this QIVPM are fully determinate
-and must lie in either the interval $[1,1]$ or the interval $[-1,-1]$
-depending on which eigenvalue is the one whose associated projector is
-certain. Since the product of any two observables in a row is equal to
-the third, there must be an even number of occurrences of the interval
-$[-1,-1]$ in each row and hence in the entire table. However, looking
-at the expectation values of the observables in each column, there
-must be an even number of occurrences of the interval $[-1,-1]$ in the
-first two columns and an odd number in the $j=2$ column and hence in
-the entire table. The contradiction implies the non-existence of the
-assumed QIVPM.
+assume a 0-deterministic QIVPM ${\bar{\mu}}$; the expectation values
+of the observables in each row relative to this 0-deterministic QIVPM
+are fully determinate and must lie in either the interval $[1,1]$ or
+the interval $[-1,-1]$ depending on which eigenvalue is the one whose
+associated projector is certain. Since the product of any two
+observables in a row is equal to the third, there must be an even
+number of occurrences of the interval $[-1,-1]$ in each row and hence
+in the entire table. However, looking at the expectation values of the
+observables in each column, there must be an even number of
+occurrences of the interval $[-1,-1]$ in the first two columns and an
+odd number in the $j=2$ column and hence in the entire table. The
+contradiction implies the non-existence of the assumed 0-deterministic
+QIVPM. We therefore prove a stronger statement of contextuality that
+includes the effects of finite-precision.
 
 % \begin{table*}
 % \caption{\label{tab:Mermin-Peres-Computation}Compute the expectation value
@@ -761,7 +771,7 @@ assumed QIVPM.
 % rule~$\left\{ x_{0}\right\} \cdot\left\{ x_{1}\right\} =\left\{
 %   x_{0}x_{1}\right\} $, we have the following property:
 % \begin{equation}
-% \prod_{j=1}^{M}\expval{\mathbf{O}_{j}}_{\bar{\mu}}=\expval{\prod_{j=1}^{M}\mathbf{O}_{j}}_{\bar{\mu}}\,.\label{eq:Kochen-Specker-Rules}
+% \prod_{j=1}^{M}\expval{\mathbf{O}_{j}}_{\bar{\mu}}=\expval{\prod_{j=1}^{M}\mathbF{O}_{j}}_{\bar{\mu}}\,.\label{eq:Kochen-Specker-Rules}
 % \end{equation}
 
 Our framework allows us to generalize the above theorem to state that
@@ -820,10 +830,11 @@ changes. Assuming a Hilbert space $\Hilb$ of dimension $3$, then for
 any projector $P$ that projects onto an $n$-dimensional subspace of
 $\Hilb$, it is straightforward to check that
 $\bar{\mu}\left(P\right)=\left[n/3,n/3\right]$ is a valid
-$\frac{1}{3}$-deterministic QIVPM. In other words, when the uncertainty
-in measurements becomes so large, the Kochen-Specker theorem no longer
-holds and it becomes possible to map every observable to some (quite
-inaccurate) probability interval.
+$\frac{1}{3}$-deterministic QIVPM. In other words, when the
+uncertainty in measurements becomes so large, the Kochen-Specker
+theorem no longer holds and it becomes possible to map every
+observable to some (quite inaccurate) probability interval, and hence
+the theory becomes non-contextual.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Gleason}
