@@ -464,6 +464,7 @@ we denote the collection of all states that are consistent with
 $\bar{\mu}$ on every projector in $\events'$ as
 $\coreBorn(\bar{\mu},\events')$:
 \begin{equation}
+\label{eq:hbar}
 \coreBorn\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in \events',~\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)}.
 \end{equation}
 
@@ -615,178 +616,164 @@ intervals, only on the assignment of intervals to events. When
 $\delta=0$, every event must be assigned a probability in either
 interval $\imposs$ or $\necess$, i.e., every event is completely
 determined with certainty. As $\delta$ gets larger, the QIVPM allows
-for more indeterminate behavior. % For example, when
-% $\delta=\frac{1}{3}$, two possible collections of
-% intervals\nb$\mathscr{I}$ could be
-% $\left\{
-%   \imposs,\left[0,\frac{1}{3}\right],\left[\frac{2}{3},1\right],
-%   \necess\right\}$ and
-% $\left\{ \imposs,\left[\frac{1}{6},\frac{1}{6}\right],
-%   \left[\frac{1}{3},\frac{1}{3}\right],\left[\frac{2}{3},\frac{2}{3}\right],
-%   \left[\frac{5}{6},\frac{5}{6}\right],\necess\right\}$.
-Our technical result will be that for ``small enough'' $\delta$, a
-variant of the Kochen-Specker result is still valid. To state and
-prove this generalization we will first reformulate the original
-Kochen-Specker theorem as a statement regarding the non-existence of
-$0$-deterministic QIVPM. We will then strengthen this result to show
-the non-existence of any $\delta$-deterministic QIVPM when
-$\delta < 1/3$ and the Hilbert space dimension is greater than 2.
+for more indeterminate behavior.
 
-\begin{thm} [0-Deterministic Variant of
+The expectation value of an observable relative to a 0-deterministic
+QIVPM is fully determinate and is equal to one of the eigenvalues of
+that observable. To see this, note that given an orthonormal basis
+$\Omega=\{ \ket{\psi_0},\ket{\psi_1},\ldots\}$, a 0-deterministic
+QIVPM must map exactly one of the projectors $\proj{\psi_i}$ to
+$\necess$ and all others to $\imposs$. This is because by
+Eq.~(\ref{eq:QIVPM-constraints}b), we have
+$\bar{\mu}(\Sigma_i{\proj{\psi_i}})=\necess$ and by
+Eq.~\ref{eq:QuantumInterval-valuedProbability-Inclusion}, we must have
+one of the $\bar{\mu}(\proj{\psi_i})=\necess$ and all others mapped to
+$\imposs$. Given any state~$\rho$ that is consistent with this QIVPM
+on all the projectors in $\Omega$, we have by Eq.~(\ref{eq:hbar}) that
+$\mu_{\rho}^{\mathrm{B}}$ must also map exactly one of the projectors
+to 1 and all others to 0. If an observable has a spectral
+decomposition along $\Omega$ then, by
+Eq.~(\ref{eq:quantum-expectation}), its expectation value relative to
+$\mu_{\rho}^{\mathrm{B}}$ is the eigenvalue $\lambda$ whose projector
+is mapped to 1. It therefore follows, by
+Eq.~(\ref{eq:quantum-interval-expectation-core}), that the expectation
+value relative to the 0-deterministic~${\bar{\mu}}$ is fully
+determinate and lies in the interval $[\lambda,\lambda]$.
+
+We can now proceed with our technical result which is that the
+original Kochen-Specker theorem is a statement regarding the
+non-existence of $0$-deterministic QIVPM. 
+
+\begin{thm}[0-Deterministic Variant of
   Kochen-Specker] \label{thm:Kochen-Specker} Given a Hilbert space
   $\Hilb$ of dimension~$d\ge3$, there is no 0-deterministic
   measure~$\bar{\mu}$ mapping every event to either $\imposs$ or
   $\necess$.
 \end{thm}
 
-\amr{Start comments}
-
-2 qubit system
-otimes is tensor product
-mathbb{1} is identity projector/observable/matrix
-expectation value relative to mubar
-explain why expectation value of 0-determinstic qivpm is eigen value
-of observable
-
-To explain why this result is equivalent to the original
+\noindent To explain why this result is equivalent to the original
 Kochen-Specker theorem and to prove it at the same time, we proceed by
 assuming a 0-deterministic QIVPM $\bar{\mu}$ and derive a
-contradiction to the original Kochen-Specker theorem using the same
-nine observables $\mathbf{O}_{ij}$ with both $i$ and $j$ in the range
-$\{1,2,3\}$ used in the ``Mermin-Peres'' proof of the Kochen-Specker
-theorem~\cite{Mermin1990Simple,peres1995quantum}. These nine
-observables are given below: {\renewcommand{\arraystretch}{2}%
+contradiction to the original Kochen-Specker theorem. Our
+counterexample uses the simpler proof for a Hilbert space of dimension
+$d=4$ and is constructed as follows.
+
+We consider a 2-qubit Hilbert space $\Hilb=\Hilb_1\otimes\Hilb_2$
+representing pairs of spin-$\frac{1}{2}$ states. We use the same nine
+observables $\mathbf{O}_{ij}$ with $i$ and $j$ ranging over
+$\{0,1,2\}$ from the ``Mermin-Peres'' proof of the Kochen-Specker
+theorem~\cite{Mermin1990Simple,peres1995quantum}:
+
+{\renewcommand{\arraystretch}{2}%
 \begin{center}
-\begin{tabular}{|@{\quad}c@{\quad}|@{\quad}c@{\quad}|@{\quad}c@{\quad}|}
+\begin{tabular}{r|@{\quad}c@{\quad}|@{\quad}c@{\quad}|@{\quad}c@{\quad}|}
+$\mathbf{O}_{ij}$~ & $j=0$ & $j=1$ & $j=2$ \\
 \hline 
-$\mathbb{1}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\mathbb{1}$  & $\sigma_{z}\otimes\sigma_{z}$ \tabularnewline
+$i=0~$ & $\mathbb{1}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\mathbb{1}$  & $\sigma_{z}\otimes\sigma_{z}$ \tabularnewline
 \hline 
-$\sigma_{x}\otimes\mathbb{1}$  & $\mathbb{1}\otimes\sigma_{x}$  & $\sigma_{x}\otimes\sigma_{x}$ \tabularnewline
+$i=1~$ & $\sigma_{x}\otimes\mathbb{1}$  & $\mathbb{1}\otimes\sigma_{x}$  & $\sigma_{x}\otimes\sigma_{x}$ \tabularnewline
 \hline 
-$\sigma_{x}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\sigma_{x}$  & $\sigma_{y}\otimes\sigma_{y}$ \tabularnewline
+$i=2~$ & $\sigma_{x}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\sigma_{x}$  & $\sigma_{y}\otimes\sigma_{y}$ \tabularnewline
 \hline 
 \end{tabular}\,,
 \par\end{center}
-}
-\noindent where $\left\{ \mathbb{1},\sigma_{x},\sigma_{y},\sigma_{z}\right\} $
-are the Pauli matrices acting on a pair of spin-$\frac{1}{2}$ states.
-These matrices satisfy $\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$.
-Furthermore we have that the observables in the square satisfy the
-following properties: each observable has expectation value~$1$
-or~$-1$; 
+} 
 
-\begin{table*}
-\caption{\label{tab:Mermin-Peres-Computation}Compute the expectation value
-of of observables~$\ensuremath{\mathbb{1}\otimes\sigma_{z}}$, $\ensuremath{\sigma_{z}\otimes\mathbb{1}}$,
-and $\ensuremath{\sigma_{z}\otimes\sigma_{z}}$ relative to a 0-deterministic
-QIVPM~$\bar{\mu}$. During the computation, whenever $\rho\in\coreBorn\left(\bar{\mu},\events'\right)$,
-$\mu_{\rho}^{\mathrm{B}}\left(P_{1}\right)$ and $\mu_{\rho}^{\mathrm{B}}\left(P_{2}\right)$
-must be the value list in the table. Therefore, $\expval{\mathbf{O}}_{\bar{\mu}}$
-is a singleton set.}
-\begin{tabular}{|c|c|c|c|c|c|c|c|}
-\hline 
-Observable~$\mathbf{O}$ & Spectral Decomposition~$1\cdot P_{1}-1\cdot P_{2}$ & $\bar{\mu}\left(P_{1}\right)$ & $\bar{\mu}\left(P_{2}\right)$ & $\mu_{\rho}^{\mathrm{B}}\left(P_{1}\right)$ & $\mu_{\rho}^{\mathrm{B}}\left(P_{2}\right)$ & $\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}}$ & $\expval{\mathbf{O}}_{\bar{\mu}}$\tabularnewline
-\hline 
-\hline 
-$\ensuremath{\mathbb{1}\otimes\sigma_{z}}$ & $1\cdot\left(\proj{0}+\proj{2}\right)-1\cdot\left(\proj{1}+\proj{3}\right)$ & $\imposs$ & $\necess$ & $0$ & $1$ & $1\cdot0-1\cdot1=-1$ & $\left\{ -1\right\} $\tabularnewline
-\hline 
-$\ensuremath{\sigma_{z}\otimes\mathbb{1}}$ & $1\cdot\left(\proj{0}+\proj{1}\right)-1\cdot\left(\proj{2}+\proj{3}\right)$ & $\necess$ & $\imposs$ & $1$ & $0$ & $1\cdot1-1\cdot0=1$ & $\left\{ 1\right\} $\tabularnewline
-\hline 
-$\ensuremath{\sigma_{z}\otimes\sigma_{z}}$ & $1\cdot\left(\proj{0}+\proj{3}\right)-1\cdot\left(\proj{1}+\proj{2}\right)$ & $\imposs$ & $\necess$ & $0$ & $1$ & $1\cdot0-1\cdot1=-1$ & $\left\{ -1\right\} $\tabularnewline
-\hline 
-\end{tabular}
-\end{table*}
-\yutsung{In order to understand the expectation value of observables~$\ensuremath{\mathbb{1}\otimes\sigma_{z}}$,
-$\ensuremath{\sigma_{z}\otimes\mathbb{1}}$, and $\ensuremath{\sigma_{z}\otimes\sigma_{z}}$
-relative to a 0-deterministic QIVPM~$\bar{\mu}$, we first diagonalize
-these observables by the computational basis~$\Omega=\left\{ \ket{0},\ket{1},\ket{2},\ket{3}\right\} $,
-where $\ket{0}=\ket{0}\otimes\ket{0}$, $\ket{1}=\ket{0}\otimes\ket{1}$,
-$\ket{2}=\ket{1}\otimes\ket{0}$, and $\ket{3}=\ket{1}\otimes\ket{1}$.
-Since $\bar{\mu}$ is 0-deterministic, there is a unique $\ket{k_{0}}\in\Omega$
-such that $\bar{\mu}\left(\proj{k_{0}}\right)=\necess$ and $\bar{\mu}\left(\proj{k}\right)=\imposs$
-for $k\ne k_{0}$~\citep{HOSTunpublished}. Without loss of generality,
-assume $k_{0}=1$, the expectation values can be computed step-by-step
-in Table~\ref{tab:Mermin-Peres-Computation}. They are singleton
-sets whose only element is the eigenvalue of the observable. By adopting
-an intuitive product rule~$\left\{ x_{0}\right\} \cdot\left\{ x_{1}\right\} =\left\{ x_{0}x_{1}\right\} $
-for singleton sets, these expectation values also satisfy the property~$\expval{\ensuremath{\mathbb{1}\otimes\sigma_{z}}}_{\bar{\mu}}\cdot\expval{\ensuremath{\sigma_{z}\otimes\mathbb{1}}}_{\bar{\mu}}=\expval{\ensuremath{\sigma_{z}\otimes\sigma_{z}}}_{\bar{\mu}}$
-since $\left(\ensuremath{\mathbb{1}\otimes\sigma_{z}}\right)\cdot\left(\ensuremath{\sigma_{z}\otimes\mathbb{1}}\right)=\left(\ensuremath{\sigma_{z}\otimes\sigma_{z}}\right)$.}
+\noindent The observables are constructed using the Pauli matrices
+$\left\{ \mathbb{1},\sigma_{x},\sigma_{y},\sigma_{z}\right\}$ whose
+eigenvalues are all either 1 or -1. They are arranged such that in
+each row and column, \emph{except the column $j=2$}, every observable
+is the product of the other two. In the $j=2$ column, we have instead
+that
+$\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$. Now
+assume a QIVPM ${\bar{\mu}}$; the expectation values of the
+observables in each row relative to this QIVPM are fully determinate
+and must lie in either the interval $[1,1]$ or the interval $[-1,-1]$
+depending on which eigenvalue is the one whose associated projector is
+certain. Since the product of any two observables in a row is equal to
+the third, there must be an even number of occurrences of the interval
+$[-1,-1]$ in each row and hence in the entire table. However, looking
+at the expectation values of the observables in each column, there
+must be an even number of occurrences of the interval $[-1,-1]$ in the
+first two columns and an odd number in the $j=2$ column and hence in
+the entire table. The contradiction implies the non-existence of the
+assumed QIVPM.
 
-\noindent in each row and column, the observables commute; and in
-each row and column except the third column, each operator is the
-product of the other two. To find a QIVPM~$\bar{\mu}$ \ldots{}
+% \begin{table*}
+% \caption{\label{tab:Mermin-Peres-Computation}Compute the expectation value
+% of of observables~$\ensuremath{\mathbb{1}\otimes\sigma_{z}}$, $\ensuremath{\sigma_{z}\otimes\mathbb{1}}$,
+% and $\ensuremath{\sigma_{z}\otimes\sigma_{z}}$ relative to a 0-deterministic
+% QIVPM~$\bar{\mu}$. During the computation, whenever $\rho\in\coreBorn\left(\bar{\mu},\events'\right)$,
+% $\mu_{\rho}^{\mathrm{B}}\left(P_{1}\right)$ and $\mu_{\rho}^{\mathrm{B}}\left(P_{2}\right)$
+% must be the value list in the table. Therefore, $\expval{\mathbf{O}}_{\bar{\mu}}$
+% is a singleton set.}
+% \begin{tabular}{|c|c|c|c|c|c|c|c|}
+% \hline 
+% Observable~$\mathbf{O}$ & Spectral Decomposition~$1\cdot P_{1}-1\cdot P_{2}$ & $\bar{\mu}\left(P_{1}\right)$ & $\bar{\mu}\left(P_{2}\right)$ & $\mu_{\rho}^{\mathrm{B}}\left(P_{1}\right)$ & $\mu_{\rho}^{\mathrm{B}}\left(P_{2}\right)$ & $\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}}$ & $\expval{\mathbf{O}}_{\bar{\mu}}$\tabularnewline
+% \hline 
+% \hline 
+% $\ensuremath{\mathbb{1}\otimes\sigma_{z}}$ & $1\cdot\left(\proj{0}+\proj{2}\right)-1\cdot\left(\proj{1}+\proj{3}\right)$ & $\imposs$ & $\necess$ & $0$ & $1$ & $1\cdot0-1\cdot1=-1$ & $\left\{ -1\right\} $\tabularnewline
+% \hline 
+% $\ensuremath{\sigma_{z}\otimes\mathbb{1}}$ & $1\cdot\left(\proj{0}+\proj{1}\right)-1\cdot\left(\proj{2}+\proj{3}\right)$ & $\necess$ & $\imposs$ & $1$ & $0$ & $1\cdot1-1\cdot0=1$ & $\left\{ 1\right\} $\tabularnewline
+% \hline 
+% $\ensuremath{\sigma_{z}\otimes\sigma_{z}}$ & $1\cdot\left(\proj{0}+\proj{3}\right)-1\cdot\left(\proj{1}+\proj{2}\right)$ & $\imposs$ & $\necess$ & $0$ & $1$ & $1\cdot0-1\cdot1=-1$ & $\left\{ -1\right\} $\tabularnewline
+% \hline 
+% \end{tabular}
+% \end{table*}
+% \yutsung{In order to understand the expectation value of observables~$\ensuremath{\mathbb{1}\otimes\sigma_{z}}$,
+% $\ensuremath{\sigma_{z}\otimes\mathbb{1}}$, and $\ensuremath{\sigma_{z}\otimes\sigma_{z}}$
+% relative to a 0-deterministic QIVPM~$\bar{\mu}$, we first diagonalize
+% these observables by the computational basis~$\Omega=\left\{ \ket{0},\ket{1},\ket{2},\ket{3}\right\} $,
+% where $\ket{0}=\ket{0}\otimes\ket{0}$, $\ket{1}=\ket{0}\otimes\ket{1}$,
+% $\ket{2}=\ket{1}\otimes\ket{0}$, and $\ket{3}=\ket{1}\otimes\ket{1}$.
+% Since $\bar{\mu}$ is 0-deterministic, there is a unique $\ket{k_{0}}\in\Omega$
+% such that $\bar{\mu}\left(\proj{k_{0}}\right)=\necess$ and $\bar{\mu}\left(\proj{k}\right)=\imposs$
+% for $k\ne k_{0}$~\citep{HOSTunpublished}. Without loss of generality,
+% assume $k_{0}=1$, the expectation values can be computed step-by-step
+% in Table~\ref{tab:Mermin-Peres-Computation}. They are singleton
+% sets whose only element is the eigenvalue of the observable. By adopting
+% an intuitive product rule~$\left\{ x_{0}\right\} \cdot\left\{ x_{1}\right\} =\left\{ x_{0}x_{1}\right\} $
+% for singleton sets, these expectation values also satisfy the property~$\expval{\ensuremath{\mathbb{1}\otimes\sigma_{z}}}_{\bar{\mu}}\cdot\expval{\ensuremath{\sigma_{z}\otimes\mathbb{1}}}_{\bar{\mu}}=\expval{\ensuremath{\sigma_{z}\otimes\sigma_{z}}}_{\bar{\mu}}$
+% since $\left(\ensuremath{\mathbb{1}\otimes\sigma_{z}}\right)\cdot\left(\ensuremath{\sigma_{z}\otimes\mathbb{1}}\right)=\left(\ensuremath{\sigma_{z}\otimes\sigma_{z}}\right)$.}
 
+% A 0-deterministic QIVPM~$\bar{\mu}$ has an important property
+% regarding to the expectation values of a family of $M$ commuting
+% observables~$\left\{ \mathbf{O}_{j}\right\} _{j=1}^{M}$ relative to
+% $\bar{\mu}$. Since $\left\{ \mathbf{O}_{j}\right\} _{j=1}^{M}$
+% commutes, they can be diagonalized by a common orthonormal
+% basis~$\Omega=\left\{ \ket{k}\right\} _{k=0}^{d-1}$.  Since
+% $\bar{\mu}$ is 0-deterministic, a unique $\ket{k_{0}}$ and a unique
+% quantum probability measure~$\mu$ exists such that
+% $\bar{\mu}\left(P\right)=\left\{ \mu\left(P\right)\right\} $ and
+% $\mu\left(P\right)\in\left\{ 0,1\right\} $ for all $P\in\events$;
+% $\mu\left(\proj{k}\right)=1$ if and only if
+% $k=k_{0}$~\citep{HOSTunpublished}.  If we denote the product
+% observables~$\prod_{j=1}^{M}\mathbf{O}_{j}$ as
+% $\overline{\mathbf{O}}$, the expectation values of the
+% observables~$\expval{\mathbf{O}_{j}}_{\bar{\mu}}$ and
+% $\expval{\overline{\mathbf{O}}}_{\bar{\mu}}$ are equal to the
+% singleton sets whose only elements are $\expval{\mathbf{O}_{j}}_{\mu}$
+% and $\expval{\overline{\mathbf{O}}}_{\mu}$, respectively. Both
+% $\prod_{j=1}^{M}\expval{\mathbf{O}_{j}}_{\mu}$ and
+% $\expval{\overline{\mathbf{O}}}_{\mu}$ are equal to the product of the
+% eigenvalues corresponding to the pure state~$\ket{k_{0}}$ for each
+% observable~$\mathbf{O}_{j}$. By adopting an intuitive product
+% rule~$\left\{ x_{0}\right\} \cdot\left\{ x_{1}\right\} =\left\{
+%   x_{0}x_{1}\right\} $, we have the following property:
+% \begin{equation}
+% \prod_{j=1}^{M}\expval{\mathbf{O}_{j}}_{\bar{\mu}}=\expval{\prod_{j=1}^{M}\mathbf{O}_{j}}_{\bar{\mu}}\,.\label{eq:Kochen-Specker-Rules}
+% \end{equation}
 
-Therefore, it is clearly impossible to find a QIVPM~$\bar{\mu}$ such
-that $\langle \mathbf{O}_{ij}\rangle_{\bar \mu}$ satisfies
-Eq.~(\ref{eq:Kochen-Specker-Rules}).
- 
-A 0-deterministic QIVPM~$\bar{\mu}$ has an important property
-regarding to the expectation values of a family of $M$ commuting
-observables~$\left\{ \mathbf{O}_{j}\right\} _{j=1}^{M}$ relative to
-$\bar{\mu}$. Since $\left\{ \mathbf{O}_{j}\right\} _{j=1}^{M}$
-commutes, they can be diagonalized by a common orthonormal
-basis~$\Omega=\left\{ \ket{k}\right\} _{k=0}^{d-1}$.  Since
-$\bar{\mu}$ is 0-deterministic, a unique $\ket{k_{0}}$ and a unique
-quantum probability measure~$\mu$ exists such that
-$\bar{\mu}\left(P\right)=\left\{ \mu\left(P\right)\right\} $ and
-$\mu\left(P\right)\in\left\{ 0,1\right\} $ for all $P\in\events$;
-$\mu\left(\proj{k}\right)=1$ if and only if
-$k=k_{0}$~\citep{HOSTunpublished}.  If we denote the product
-observables~$\prod_{j=1}^{M}\mathbf{O}_{j}$ as
-$\overline{\mathbf{O}}$, the expectation values of the
-observables~$\expval{\mathbf{O}_{j}}_{\bar{\mu}}$ and
-$\expval{\overline{\mathbf{O}}}_{\bar{\mu}}$ are equal to the
-singleton sets whose only elements are $\expval{\mathbf{O}_{j}}_{\mu}$
-and $\expval{\overline{\mathbf{O}}}_{\mu}$, respectively. Both
-$\prod_{j=1}^{M}\expval{\mathbf{O}_{j}}_{\mu}$ and
-$\expval{\overline{\mathbf{O}}}_{\mu}$ are equal to the product of the
-eigenvalues corresponding to the pure state~$\ket{k_{0}}$ for each
-observable~$\mathbf{O}_{j}$. By adopting an intuitive product
-rule~$\left\{ x_{0}\right\} \cdot\left\{ x_{1}\right\} =\left\{
-  x_{0}x_{1}\right\} $, we have the following property:
-\begin{equation}
-\prod_{j=1}^{M}\expval{\mathbf{O}_{j}}_{\bar{\mu}}=\expval{\prod_{j=1}^{M}\mathbf{O}_{j}}_{\bar{\mu}}\,.\label{eq:Kochen-Specker-Rules}
-\end{equation}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-We can in fact generalize the above theorem to state that for small
-enough $\delta$, it is impossible to have $\delta$-deterministic
-QIVPMs. Every QIVPM must map some events to truly uncertain intervals,
-not just ``almost definite intervals.'' The significance of this
-observation is that the uncertainty in the intervals is, in contrast
-to the classical case, \emph{a fundamental part of quantum
-  theory}. There are in fact two sources of uncertainty: one due to
-the finite measurement resources and one due to complementarity, which
-requires every quantum framework to be truly probabilistic.
+Our framework allows us to generalize the above theorem to state that
+for small enough $\delta$, it is impossible to have
+$\delta$-deterministic QIVPMs. Every QIVPM must map some events to
+truly uncertain intervals, not just ``almost definite intervals.'' The
+significance of this observation is that the uncertainty in the
+intervals is, in contrast to the classical case, \emph{a fundamental
+  part of quantum theory}. There are in fact two sources of
+uncertainty: one due to the finite measurement resources and one due
+to complementarity, which requires every quantum framework to be truly
+probabilistic.
 
 \begin{thm}[Finite-precision Extension of Kochen-Specker] \label{cor:Kochen-Specker-IVPM} Given a Hilbert space $\Hilb$
   of dimension~$d\ge3$, there is no $\delta$-deterministic QIVPM for
@@ -829,13 +816,14 @@ $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\imposs$. Thus the
 theorem holds when $\delta<\frac{1}{3}$.
 
 When $\delta \ge \frac{1}{3}$, the situation abruptly
-changes. Assuming a Hilbert space $\Hilb$ of dimension $3$, then
-for any projector $P$ that projects onto an $n$-dimensional subspace
-of $\Hilb$, it is straightforward to check that
+changes. Assuming a Hilbert space $\Hilb$ of dimension $3$, then for
+any projector $P$ that projects onto an $n$-dimensional subspace of
+$\Hilb$, it is straightforward to check that
 $\bar{\mu}\left(P\right)=\left[n/3,n/3\right]$ is a valid
-$\frac{1}{3}$-deterministic QIVPM. 
-
-\amr{Explain significance}
+$\frac{1}{3}$-deterministic QIVPM. In other words, when the uncertainty
+in measurements becomes so large, the Kochen-Specker theorem no longer
+holds and it becomes possible to map every observable to some (quite
+inaccurate) probability interval.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Gleason}
