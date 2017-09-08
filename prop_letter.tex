@@ -214,9 +214,10 @@ $\Hilb$ of dimension $d\ge3$, there is a mathematically precise sense
 in which one recovers the original Gleason theorem asymptotically.
 Specifically, if a set of QIVPMs representing bounded resources
 correspond individually to at least one state's~$\rho'$, those states
-will converge to a unique state $\rho$ when the size of the intervals
-characterizing the uncertainties tends to zero, and the set of
-single-point QIVPMs densely covers the entire real interval $[0,1]$.
+will converge to a unique state $\rho$ in the limit as the size of the intervals
+characterizing the uncertainties goes to zero, and the set of
+single-point QIVPMs densely covers the entire real interval $[0,1]$ or the
+appropriate subset corresponding to a given quantum system.
 
 
 The paper is organized as follows.  In Sec.~\ref{sec:fuzzy} we begin
@@ -262,22 +263,22 @@ of \emph{orthogonal} projectors $P_{0}$ and $P_{1}$:
 \begin{equation}
 {\mu}\left(P_{0}+P_{1}\right)={\mu}\left(P_{0}\right)+{\mu}\left(P_{1}\right)\,.\label{eq:QuantumProbability-Addition}
 \end{equation}
-Given a probability for every projector, we can associate an
-expectation value with an observable~$\mathbf{O}$ with spectral
+Given a probability for every projector, we can define the
+expectation value of an observable~$\mathbf{O}$ having spectral
 decomposition $\mathbf{O}=\sum_{i=1}^{N}\lambda_{i}P_{i}$ as:
 \begin{equation}
 \expval{\mathbf{O}}_{\mu}=\sum_{i=1}^{N}\lambda_{i}\mu(P_{i})\,.\label{eq:quantum-expectation}
 \end{equation}
 
-A conventional quantum probability measure can be easily
-constructed if one knows the current state of the quantum system by
-using the Born rule.  Specifically, for each pure normalized quantum
+A conventional quantum probability measure can easily be
+constructed using the Born rule if one knows the current state of the quantum
+system.  Specifically, for each pure normalized quantum
 state~$\ket{\phi}$, the Born rule induces a probability measure
 $\mu_{\phi}^{\mathrm{B}}$ defined as
 $\mu_{\phi}^{\mathrm{B}}(P)=\ip{\phi}{P\vert\phi}$. The situation
 generalizes to mixed states
 $\rho = \sum_{j=1}^{N}q_{j}\proj{\phi_{j}}$, where
-$\sum_{j=1}^{N}q_{j}=1$ in which case the generalized Born rule
+$\sum_{j=1}^{N}q_{j}=1$, in which case the generalized Born rule
 induces a probability measure $\mu_{\rho}^{\mathrm{B}}$ defined as
 $\mu_{\rho}^{\mathrm{B}}\left(P\right) = \Tr\left(\rho P\right) =
 \sum_{j=1}^{N}
@@ -286,8 +287,9 @@ q_{j}\mu_{\phi_{j}}^{\mathrm{B}}\left(P\right)$~\cite{peres1995quantum,544199,Ja
 As an example, consider a three-dimensional Hilbert space with
 orthonormal basis $\{\ket{0},\ket{1},\ket{2}\}$ and an observable
 $\mathbf{O}$ with spectral decomposition
-$\mathbf{O} = \proj{0} + 2\,\proj{1} + 3\,\proj{2}$. Two fragments of
-valid probability measures $\mu_1$ and $\mu_2$ that can be associated
+$\mathbf{O} = \proj{0} + 2\,\proj{1} + 3\,\proj{2}$, i.e., $q_{j} = j$ and
+$\ket{\phi_{j}} = \ket{j - 1}$.
+Two fragments of valid probability measures $\mu_1$ and $\mu_2$ that can be associated
 with this space are: $\mu_1(\proj{0}) = 0.5$, $\mu_1(\proj{1}) = 0.5$,
 $\mu_1(\proj{2}) = 0$, and $\mu_2(\proj{0}) = 0.5$,
 $\mu_2(\proj{1}) = 0$, $\mu_2(\proj{2}) = 0.5$. By the Born rule, the
@@ -304,7 +306,7 @@ infinitely precise measurements. In an actual experimental setup with
 an ensemble of quantum states that are not exactly identically
 prepared, and with small imperfections and inaccuracies in measuring
 devices, an experimenter might only be able to determine that the
-probability of the event $\proj{0}$ is in the range $[0.49,0.51]$
+probability of the event $\proj{0}$ is concentrated in the range $[0.49,0.51]$
 instead of precisely 0.5. The spread in this range depends on the
 amount of resources (time, energy, money, etc.) that are devoted to
 the experiment. In the classical setting, this ``fuzziness'' can be
@@ -325,7 +327,10 @@ fact that the probability $\mu(E)$ of an event~$E$ is generalized from
 a single \emph{real number} to an \emph{interval}~$[\ell,r]$
 where~$\ell$ intuitively corresponds to the strength of evidence for
 the event~$E$ and~$1-r$ corresponds to the strength of evidence
-against the same event. The collection of intervals used in the
+against the same event. More generally, this inverval would be interpreted as
+the Guassian width of a probability distribution, but for notational convenience
+we will continue in the following to write this as a definite interval.
+The collection of intervals used in the
 definition of a probability measure must satisfy certain properties
 that we explain next.
 
@@ -341,7 +346,7 @@ probability of an event~$E$, the dual refers to the probability of the
 event's complement $\overline{E}$.  For example, if we discover as a
 result of an experiment that $\mu(E) = [0.2,0.3]$ for some event~$E$,
 we may conclude that $\mu(\overline{E}) = [0.7,0.8]$ for the
-complement event $\overline{E}$. In addition to these simple
+complementary event $\overline{E}$. In addition to these simple
 conditions, there are some subtle conditions on how intervals are
 combined, which we discuss next.
 
@@ -372,7 +377,9 @@ $E_1\cup E_2$ when $E_1$ and $E_2$ are disjoint is
 $\mu(E_1\cup E_2) \subseteq [\ell_1+\ell_2,r_1+r_2]$ which, in
 combination with the requirement for the identity event would force
 $\mu(E \cup \overline{E})$ to always be $\necess$ irrespective of the
-particular assignments of $\mu(E)$ or~$\mu(\overline{E})$.
+particular assignments of $\mu(E)$ or~$\mu(\overline{E})$. Parallel arguments
+can be made interpreting $[\ell,r]$ as Gaussian width, but will be omitted as no
+essential new information seems to be introduced.
 
 When combining non-disjoint events, there is a further subtlety whose
 resolution will give us the final general condition for IVPMs. For
@@ -538,7 +545,7 @@ of observables in the context of QIVPMs. In conventional quantum
 mechanics the expectation value of an observable as defined in
 Eq.~\eqref{eq:quantum-expectation} is a unique real number. The
 generalization to QIVPMs implies that this expectation value will
-itself become bounded by an interval. 
+itself become bounded by or, more generally distributed around, an interval. 
 
 \begin{definition}[Expectation Value of Observables over QIVPMs] Let
   $\mathscr{I}$ be a set of intervals; $\Hilb$ a Hilbert space
@@ -546,7 +553,7 @@ itself become bounded by an interval.
   observable with spectral decomposition
   $\Sigma_{i=1}^N \lambda_iP_i$. Let $\events'$ be the minimal
   subspace of events containing all the projectors $P_i$ in the
-  spectral decomposition of $\mathbf{O}$, then we define:
+  spectral decomposition of $\mathbf{O}$ and define:
 \begin{equation}
 \expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}
 \expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}
@@ -562,7 +569,7 @@ consistent with $\bar{\mu}$ on every projector in the spectral
 decomposition of the observable. If $\bar{\mu}$ is a conventional
 (Born) probability measure induced by a state $\rho$, then
 $\coreBorn\left(\bar{\mu},\events'\right)$ will contain the singleton
-state $\rho$ and both endpoints of the interval will agree, thus
+state $\rho$ and the interval collapses to a point, thus
 reducing the definition to that of
 Eq.~(\ref{eq:quantum-expectation}). We also note that, when restricted
 to commuting projectors, the definition above is consistent with the
