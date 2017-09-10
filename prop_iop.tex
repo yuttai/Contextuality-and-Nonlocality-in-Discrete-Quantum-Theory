@@ -1594,8 +1594,8 @@ of pairwise disjoint events, we have
 \end{proof}
 
 \begin{definition}\label{def:sub-event-space}Given a Hilbert space
-$\Hilb$, $\events'\subseteq\events$ is called a sub-event space
-if it satisfies the follow conditions.
+$\Hilb$, a set of event~$\events'\subseteq\events$ is called a
+subspace if it satisfies the follow conditions.
 \begin{itemize}
 \item $\mathbb{0}\in\events'$.
 \item $\mathbb{1}\in\events'$.
@@ -1606,7 +1606,9 @@ we have $\sum_{i=1}^{N}P_{i}\in\events'$.
 By replacing every occurrence of $\events$ by $\events'$ in definition~\ref{def:QuantumCryptodeterministicMeasures},
 \ref{def:QuantumProbabilitySpace}, and \ref{def:QuantumInterval-valuedProbability},
 it is straightforward to define a quantum cryptodeterministic, real-valued
-probability, and interval-valued probability measure on $\events'$.\end{definition}
+probability, and interval-valued probability measure on $\events'$.{
+Also, }$\events'$ is called convex if we have $P_{1}P_{2}\in\events'$
+for a pair of mutually commuting projections $P_{1}$ and $P_{2}\in\events'$.\end{definition}
 
 \begin{thm}\label{thm:sub-event-space}Given a Hilbert space~$\Hilb$
 and a mutually commuting sub-event space~$\events'\subseteq\events$,
@@ -1636,9 +1638,11 @@ the following operations.
 \begin{itemize}
 \item $\tau\left(\mathbb{0}\right)=\emptyset$.
 \item $\tau\left(\mathbb{1}\right)=\Omega$.
-\item For any projection $P\in\widehat{\events}$, we have $\tau\left(\mathbb{1}-P\right)=\Omega-\tau\left(P\right)$.
+\item For any projection $P\in\widehat{\events}$, we have $\tau\left(\mathbb{1}-P\right)=\Omega\backslash\tau\left(P\right)$.
 \item For a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}\subseteq\widehat{\events}$,
-we have $\tau\left(\sum_{i=1}^{N}P_{i}\right)=\sum_{i=1}^{N}\tau\left(P_{i}\right)$.
+we have $\tau\left(\sum_{i=1}^{N}P_{i}\right)=\bigcup_{i=1}^{N}\tau\left(P_{i}\right)$.
+\item For a pair of mutually commuting projections $P_{1}$ and $P_{2}\in\events'$,
+we have $\tau\left(P_{1}P_{2}\right)=\tau\left(P_{1}\right)\cap\tau\left(P_{2}\right)$.
 \end{itemize}
 \end{enumerate}
 \end{thm}
@@ -2721,9 +2725,10 @@ we would prove some lemmas\footnote{\yutsung{functor?}} which can
 help us move the classical results to quantum.
 
 \begin{definition}Given an observable~$\mathbf{O}$ with its spectral
-decomposition~(\ref{eq:spectrum-decomposition}). A sub-event space~$\events'\subseteq\events$
-is called a sub-event space induced by $\mathbf{O}$ if it is the
-minimal sub-event space satisfying $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}\subseteq\events'$.\end{definition}
+decomposition~(\ref{eq:spectrum-decomposition}). A subspace of events~$\events'\subseteq\events$
+is called a subspace of events induced by $\mathbf{O}$ if it is the
+minimal subspace of events satisfying $\left\{ P_{i}^{-}\right\} _{i=1}^{N^{-}}\cup\left\{ P_{i}^{+}\right\} _{i=1}^{N^{+}}\subseteq\events'$.
+Obvious, $\events'$ is convex.\end{definition}
 
 Notice that a sub-event space induced by any observable commutes.
 By theorem~\ref{thm:sub-event-space}, we can find a set~$\Omega$,
