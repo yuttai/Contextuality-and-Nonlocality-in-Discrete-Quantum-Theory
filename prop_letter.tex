@@ -424,7 +424,7 @@ measures.
   \begin{subequations}\label{eq:QIVPM-constraints}
   \begin{eqnarray}
    &  & \bar{\mu}(\mathbb{0})=\imposs\,,\\
-   &  & \bar{\mu}(\mathbb{1})=\necess\,,\\
+   &  & \bar{\mu}(\mathbb{1})=\necess\,,\label{eq:necess}\\
    &  & \bar{\mu}\left(\mathbb{1}-P\right)= \necess -\bar{\mu}\left(P\right)\,,
   \end{eqnarray}
   \end{subequations}
@@ -652,11 +652,11 @@ that observable. To see this, note that given an orthonormal basis
 $\Omega=\{ \ket{\psi_0},\ket{\psi_1},\ldots\}$, a 0-deterministic
 QIVPM must map exactly one of the projectors $\proj{\psi_i}$ to
 $\necess$ and all others to $\imposs$. This is because by
-Eq.~(\ref{eq:QIVPM-constraints}b), we have
+Eq.~(\ref{eq:necess}), we have
 $\bar{\mu}(\Sigma_i{\proj{\psi_i}})=\necess$ and by inductively applying
-Eq.~\ref{eq:QuantumInterval-valuedProbability-Inclusion}, \yutsung{Check whether
+Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion}), \yutsung{Check whether
 we can explain how to apply
-Eq.~\ref{eq:QuantumInterval-valuedProbability-Inclusion} in this situation
+Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion}) in this situation
 better.} we must have
 one of the $\bar{\mu}(\proj{\psi_i})=\necess$ and all others mapped to
 $\imposs$. Given any state~$\rho$ that is consistent with this QIVPM
@@ -899,21 +899,23 @@ and $[\ell_{2},r_{2}]$, $\widehat{\iota}_{n}\left(\mu_{\rho}^{\mathrm{B}}\left(P
 will be $[\ell_{i},r_{i}]$ if $\widehat{\iota}_{n}\left(\mu_{\rho}^{\mathrm{B}}\left(P\right)\right)$
 is closer to the center of $[\ell_{i},r_{i}]$. When there is a tie,
 we set $\widehat{\iota}_{n}\left(\mu_{\rho}^{\mathrm{B}}\left(P\right)\right)=\left[\frac{k-1}{2n},\frac{k+1}{2n}\right]\cap\left[0,1\right]$
-if $k$ even. For example, consider $n=2$, 
+for even $k$. For example, when $n=2$, 
 \begin{eqnarray}
-\widehat{\mathscr{I}}_{1} & = & \set{\left[\frac{k-1}{4},\frac{k+1}{4}\right]\cap\left[0,1\right]}{k=0,\ldots,4}\nonumber \\
+\widehat{\mathscr{I}}_{2} & = & \set{\left[\frac{k-1}{4},\frac{k+1}{4}\right]\cap\left[0,1\right]}{k=0,\ldots,4}\nonumber \\
  &  & \cup\{\imposs,\necess\}\nonumber \\
  & = & \left\{ \imposs,\left[0,\frac{1}{4}\right],\left[0,\frac{1}{2}\right],\left[\frac{1}{4},\frac{3}{4}\right],\right.\nonumber \\
  &  & \left.\left[\frac{1}{2},1\right],\left[\frac{1}{4},1\right],\necess\right\} \,.
 \end{eqnarray}
-$\widehat{\iota}_{2}\circ\mu_{1}$ can be computed by Table~\ref{tab:Compute-the-QIVPM}.
+It is straightforward to verify $\widehat{\iota}_{2}\circ\mu_{1}$
+is a QIVPM. It will be denoted by $\bar{\mu}_{4}$ whose values on
+the minimal subspace of events containing $\proj{0}$, $\proj{1}$,
+and $\proj{2}$, $\events_{C}$, is computed by Table~\ref{tab:Compute-the-QIVPM}.
 \begin{table}
-\caption{\label{tab:Compute-the-QIVPM}Compute the QIVPM~$\widehat{\iota}_{2}\circ\mu_{1}$
-from $\mu_{1}$ on the minimal subspace of events containing $\proj{0}$,
-$\proj{1}$, and $\proj{2}$.}
+\caption{\label{tab:Compute-the-QIVPM}Compute $\bar{\mu}_{4}$ based on $\mu_{1}$
+on $\events_{C}$.}
 \begin{tabular}{ccc}
 \toprule 
-$P$ & $\mu_{1}\left(P\right)$ & $\widehat{\iota}_{2}\left(\mu_{1}\left(P\right)\right)$\tabularnewline
+$P$ & $\mu_{1}\left(P\right)$ & $\bar{\mu}_{4}\left(P\right)$\tabularnewline
 \midrule
 \midrule 
 $\mathbb{0}$ & $0$ & $\left[0,0\right]$\tabularnewline
@@ -934,27 +936,27 @@ $\mathbb{1}$ & $1$ & $\left[1,1\right]$\tabularnewline
 \bottomrule
 \end{tabular}
 \end{table}
-Let $\bar{\mu}_{4}$ be $\widehat{\iota}_{2}\circ\mu_{1}$. It is
-clear that $\bar{\mu}_{4}$ satisfies Eqs.~(\ref{eq:QIVPM-constraints}).
-For Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion}),
-given a pair of commuting projectors~$P_{0}$ and $P_{1}$ on a three-dimensional
-Hilbert space, one of the following must hold:
-\begin{enumerate}
-\item When the pair of $P_{0}$ and $P_{1}$ is the same as the pair $P_{0}P_{1}$
-and $P_{0}+P_{1}-P_{0}P_{1}$, we have $\bar{\mu}_{4}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\bar{\mu}_{4}\left(P_{0}P_{1}\right)=\bar{\mu}_{4}\left(P_{0}\right)+\bar{\mu}_{4}\left(P_{1}\right)$,
-so that Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
-clearly holds.
-\item When either $P_{0}P_{1}=\mathbb{0}$ or $P_{0}+P_{1}-P_{0}P_{1}=\mathbb{1}$,
-we must have 
-\begin{eqnarray}
- &  & \bar{\mu}_{4}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\bar{\mu}_{4}\left(P_{0}P_{1}\right)\nonumber \\
- & \subseteq & \left[\mu_{1}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\mu_{1}\left(P_{0}P_{1}\right)-\frac{1}{4},\right.\nonumber \\
- &  & \left.\mu_{1}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\mu_{1}\left(P_{0}P_{1}\right)+\frac{1}{4}\right]\nonumber \\
- & = & \left[\mu_{1}\left(P_{0}\right)+\mu_{1}\left(P_{1}\right)-\frac{1}{4},\mu_{1}\left(P_{0}\right)+\mu_{1}\left(P_{1}\right)+\frac{1}{4}\right]\nonumber \\
- & \subseteq & \bar{\mu}_{4}\left(P_{0}\right)+\bar{\mu}_{4}\left(P_{1}\right)\,.
-\end{eqnarray}
-\end{enumerate}
-Therefore, $\bar{\mu}_{4}$ is a QIVPM.
+
+The QIVPM~$\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}}$ is well-behavior
+in a sense that the collection of states consistent it get closer
+and closer to $\rho$ as the intervals get narrower and narrower,
+eventually collapsing to $\rho$ when the intervals become infinitely
+precise real numbers. To state this result, we need some more technical
+notions. We first define a notion of distance based on the following
+norm of a matrix~$A$ as $\left\Vert A\right\Vert =\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{A}{\psi}\right|$~\citep{544199}.
+Then, for any state~$\rho$ satisfying $0<\mu_{\rho}^{\mathrm{B}}\left(P\right)<1$
+for any $P\in\events\backslash\left\{ \mathbb{0},\mathbb{1}\right\} $,
+any other state~$\rho'$ consistent with $\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}}$
+must close to $\rho$ in a sense that $\left\Vert \rho-\rho'\right\Vert \le1/\left(12n\right)$.
+Reversely, if a state~$\rho'$ is close to $\rho$ in a sense that
+$\left\Vert \rho-\rho'\right\Vert \le1/n$, then $\rho'$ is consistent
+with $\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}}$. In other
+words, for the states consistent with this QIVPM, $\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}}$
+will become closer and closer to $\rho'$ as $n$ goes to infinity.
+In the limiting case when the intervals are infinitely precise, i.e.,
+$\set{\left[x,x\right]}{x\in\left[0,1\right]}$, any QIVPM can be
+recast as a real-valued one and will have a unique state consistent
+with it on every projector.
 
 \yutsung{Clean up until here.}
 
@@ -1017,59 +1019,6 @@ $\ip{\phi_{j}}{0}=\ip{\phi_{j}}{\ps}=\ip{\phi_{j}}{\ps'}=0$ for all
 $j$. However, the last equation never holds.  Thus, there is no state
 consistent with the QIVPM on all projectors~$P\in\events$, so
 Gleason's theorem does not hold, at least for this example.
-
-Although Gleason's theorem does not hold for every QIVPM, we can show
-that for a certain class of QIVPMs, the collection of states
-consistent with the projectors get closer and closer to each other as
-the intervals get narrower and narrower, eventually collapsing to a
-single state when the intervals become infinitely precise real
-numbers. To state this result, we introduce a few technical notions. 
-
-We call a state $\rho$ a \emph{totally mixed state} if
-$0<\mu_{\rho}^{\mathrm{B}}\left(P\right)<1$ for any
-$P\in\events\backslash\left\{ \mathbb{0},\mathbb{1}\right\} $. We also
-define a notion of distance based on the following norm of a
-matrix~$A$ as
-$\left\Vert A\right\Vert
-=\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{A}{\psi}\right|$~\citep{544199}. Now
-consider the following collection of intervals:
-\begin{eqnarray}
-\widehat{\mathscr{I}}_{n} & = & \set{\left[\frac{k-1}{2n},\frac{k+1}{2n}\right]\cap\left[0,1\right]}{k=0,\ldots,2n}\nonumber \\
- &  & \cup\{ \imposs, \necess \}
-\end{eqnarray}
-which are overlapping intervals with length~$1/n$ except the intervals
-at length~$\left(2n\right)^{-1}$ at each end.
-
-A totally mixed state induces a QIVPM over the intervals above as
-follows. We first define a map $\widehat{\iota}_{n}$ from the interval
-$[0,1]$ to the collection of intervals as:
-\begin{itemize}
-\item when $x=0$ or $x=1$, $\widehat{\iota}_{n}\left(x\right)=\left[x,x\right]$;
-\item when $0<x<1$, $\widehat{\iota}_{n}\left(x\right)=\left[\frac{k-1}{2n},\frac{k+1}{2n}\right]\cap\left[0,1\right]$,
-where $k$ is defined by one of the following:
-\begin{enumerate}
-\item $k$ even and $k-0.5\le2nx\le k+0.5$;
-\item $k$ odd and $k-0.5<2nx<k+0.5$.
-\end{enumerate}
-\end{itemize}
-
-It is now not difficult to verify that for any totally mixed
-state~$\rho$ on a three-dimensional Hilbert space,
-$\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}}$ is a
-QIVPM. Furthermore, we have:
-\begin{itemize}
-\item If $\left\Vert \rho-\rho'\right\Vert \le1/\left(12n\right)$,
-$\rho'\in\coreBorn\left(\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}},\events\right)$.
-\item If $\rho'\in\coreBorn\left(\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}},\events\right)$,
-then $\left\Vert \rho-\rho'\right\Vert \le1/n$.
-\end{itemize}
-In other words, for the states consistent with this QIVPM,
-$\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}}$ will become closer and
-closer to $\rho'$ as $n$ goes to infinity. In the limiting case when
-the intervals are infinitely precise, i.e.,
-$\set{\left[x,x\right]}{x\in\left[0,1\right]}$, any QIVPM can be
-recast as a real-valued one and will have a unique state consistent
-with it on every projector when $d\ge3$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
