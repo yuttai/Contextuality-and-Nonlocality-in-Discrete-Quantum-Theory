@@ -952,46 +952,25 @@ Reversely, if a state~$\rho'$ is close to $\rho$ in a sense that
 $\left\Vert \rho-\rho'\right\Vert \le1/n$, then $\rho'$ is consistent
 with $\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}}$. In other
 words, for the states consistent with this QIVPM, $\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}}$
-will become closer and closer to $\rho'$ as $n$ goes to infinity.
+will become closer and closer to $\rho'$ as $n$ goes to infinity. 
+
 In the limiting case when the intervals are infinitely precise, i.e.,
-$\set{\left[x,x\right]}{x\in\left[0,1\right]}$, any QIVPM can be
-recast as a real-valued one and will have a unique state consistent
-with it on every projector.
+$\set{\left[x,x\right]}{x\in\left[0,1\right]}$, even if a QIVPM is
+not \emph{a priori} known to be induced by a state, it can be recast
+as a real-valued one and will have a unique state consistent with
+it on every projector. This fact is called Gleason's theorem.
 
-\yutsung{Clean up until here.}
-
-In the classical setting, measurements done with limited resources
-and poor precision may not uniquely identify the true state of a system.
-However, there is always at least one state that is consistent with
-the imprecise measurements.
-
-\begin{thm}[Shapley~\cite{Shapley1971,GilboaSchmeidler1994,Grabisch2016}]
-  For a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$, if a subspace
-  of events~$\events'\subseteq\events$ commutes, then
-  $\coreBorn\left(\bar{\mu},\events'\right)\ne\emptyset$.
-\end{thm}
-
-In the idealized situation of real-valued quantum probability
-measures, Gleason's theorem asserts that every measure is determined
-by a unique state. 
-
-\begin{thm}[Gleason~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}]\label{cor:Gleason's}In
+\begin{thm}[Gleason~\citep{gleason1957,Redhead1987-REDINA,peres1995quantum}]\label{cor:Gleason's}In
 a Hilbert space $\Hilb$ of dimension $d\geq3$, given a quantum probability
-measure~$\mu:\events\rightarrow[0,1]$, there exists a unique 
-state~$\rho$ such that $\mu=\mu_{\rho}^{\mathrm{B}}$.
-\end{thm}
+measure~$\mu:\events\rightarrow[0,1]$, there exists a unique state~$\rho$
+such that $\mu=\mu_{\rho}^{\mathrm{B}}$. \end{thm}
 
-Thm.~\ref{thm:Shapley} is weaker: it asserts that, for each classical
-subspace of events, a QIVPM must be consistent with \emph{some}
-state. But the states consistent with different subspaces may be
-incomparable, as the following example shows.
-
-Given a three-dimensional Hilbert space $\Hilb$ with an orthonormal
-basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $, let
-$\mathscr{I}_{1}=\left\{ \necess,\imposs,\unknown\right\} $,
-$\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$,
-$\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$, and
-\begin{subequations}
+\noindent However, if the intervals are only with finite-precision,
+there are some QIVPMs which cannot be consistent with any state. Given
+a three-dimensional Hilbert space $\Hilb$ with an orthonormal basis
+$\left\{ \ket{0},\ket{1},\ket{2}\right\} $, let $\mathscr{I}_{1}=\left\{ \necess,\imposs,\unknown\right\} $,
+$\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$, $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$,
+and \begin{subequations} 
 \begin{eqnarray}
  &  & \begin{aligned}\imposs & =\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})\\
  & =\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'})\,,
@@ -1003,22 +982,19 @@ $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$, and
 \\
  &  & \unknown=\bar{\mu}(P)\qquad\textrm{otherwise.}
 \end{eqnarray}
-\end{subequations}
-It is straightforward to verify that $\bar{\mu}$ is a QIVPM. Then we
-will prove $\coreBorn\left(\bar{\mu},\events\right)$ is an empty set
-by contradiction. Suppose there is a state
-$\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}\in\coreBorn\left(\bar{\mu},\events\right)$,
-where $\sum_{j=1}^{N}q_{j}=1$ and $q_{j}>0$. Since
-$\mu_{\rho}^{\mathrm{B}}(P)\in\bar{\mu}(P)$ for any~$P$, the
-state~$\rho$ must satisfy:
+\end{subequations} It is straightforward to verify that $\bar{\mu}$
+is a QIVPM. Then we will prove $\coreBorn\left(\bar{\mu},\events\right)$
+is an empty set by contradiction. Suppose there is a state $\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}\in\coreBorn\left(\bar{\mu},\events\right)$,
+where $\sum_{j=1}^{N}q_{j}=1$ and $q_{j}>0$. Since $\mu_{\rho}^{\mathrm{B}}(P)\in\bar{\mu}(P)$
+for any~$P$, the state~$\rho$ must satisfy: 
 \begin{equation}
 \mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps'})=0
 \end{equation}
-which implies
-$\ip{\phi_{j}}{0}=\ip{\phi_{j}}{\ps}=\ip{\phi_{j}}{\ps'}=0$ for all
-$j$. However, the last equation never holds.  Thus, there is no state
-consistent with the QIVPM on all projectors~$P\in\events$, so
-Gleason's theorem does not hold, at least for this example.
+which implies $\ip{\phi_{j}}{0}=\ip{\phi_{j}}{\ps}=\ip{\phi_{j}}{\ps'}=0$
+for all $j$. However, the last equation never holds. Thus, there
+is no state consistent with the QIVPM on all projectors~$P\in\events$,
+so Gleason's theorem cannot be extended to general QIVPMs because
+of this example.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
