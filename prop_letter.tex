@@ -881,10 +881,9 @@ consistent with these kind of QIVPMs.
 
 The quantum probability measure~$\mu_{1}$ maps some projectors to
 $0$ or $0.5$, which are replaced by $\left[0,0\right]$ or $\left[0.5,0.5\right]$
-to get $\bar{\mu}_{3}$. This is replacing two numbers by the smallest
-intervals containing them. In general, any set of the numbers can
-be replaced by an interval containing them if we carefully pick a
-set of intervals and the rule to select the correct interval when
+to get $\bar{\mu}_{3}$. The way we replace two numbers by the smallest
+intervals containing them can be generalized if we carefully pick
+a set of intervals and the rule to select the correct interval when
 intervals are overlapping. For example, consider the following collection
 of intervals: 
 \begin{eqnarray}
@@ -893,29 +892,56 @@ of intervals:
 \end{eqnarray}
 which are overlapping intervals with length~$1/n$ except the intervals
 at length~$\left(2n\right)^{-1}$ at each end. Since these intervals
-are overlapping, we define the interior part of these intervals
-
-Then, we can define a QIVPM mapping to $\mathscr{I}_{n}$ based on
-any Born rule probability~$\mu_{\rho}^{\mathrm{B}}$ on a three-dimensional
-Hilbert space by replacing the probability~$\mu_{\rho}^{\mathrm{B}}\left(P\right)$
-with the interval containing it, $\iota_{n}\left(\mu_{\rho}^{\mathrm{B}}\left(P\right)\right)$.
-Since intervals in $\mathscr{I}_{n}$ are overlapping, if $\mu_{\rho}^{\mathrm{B}}\left(P\right)$
-are contained in both intervals~$[\ell_{1},r_{1}]$ and $[\ell_{2},r_{2}]$,
-$\iota_{n}\left(\mu_{\rho}^{\mathrm{B}}\left(P\right)\right)$ will
-be $[\ell_{i},r_{i}]$ if $\iota_{n}\left(\mu_{\rho}^{\mathrm{B}}\left(P\right)\right)$
-is closer to the center of $[\ell_{i},r_{i}]$\yutsung{Verify...}.
-When there is a tie, we set $\iota_{n}\left(\mu_{\rho}^{\mathrm{B}}\left(P\right)\right)=\left[\frac{k-1}{2n},\frac{k+1}{2n}\right]\cap\left[0,1\right]$
-for even $k$. For example, when $n=2$, 
+are overlapping, we define the non-overlapping interior part of a
+interval according to the following rule.\begin{subequations}
 \begin{eqnarray}
-\mathscr{I}_{2} & = & \set{\left[\tfrac{k-1}{4},\tfrac{k+1}{4}\right]\cap\left[0,1\right]}{k=0,\ldots,4}\nonumber \\
- &  & \cup\{\imposs,\necess\}\nonumber \\
- & = & \left\{ \imposs,\left[0,\tfrac{1}{4}\right],\left[0,{\textstyle \tfrac{1}{2}}\right],\left[\tfrac{1}{4},\tfrac{3}{4}\right],\right.\nonumber \\
- &  & \left.\left[\tfrac{1}{2},1\right],\left[\tfrac{1}{4},1\right],\necess\right\} \,.
+\textrm{Int}\left(\imposs\right) & = & \imposs\,,\\
+\textrm{Int}\left(\left[0,\tfrac{1}{2n}\right]\right) & = & \left(0,\tfrac{0.5}{2n}\right]\,,\\
+\textrm{Int}\left(\left[\tfrac{k-1}{2n},\tfrac{k+1}{2n}\right]\right) & = & \left[\tfrac{k-0.5}{2n},\tfrac{k+0.5}{2n}\right]\nonumber \\
+ &  & \textrm{for even }0<k<2n\,,\\
+\textrm{Int}\left(\left[\tfrac{k-1}{2n},\tfrac{k+1}{2n}\right]\right) & = & \left(\tfrac{k-0.5}{2n},\tfrac{k+0.5}{2n}\right)\nonumber \\
+ &  & \textrm{for odd }k\,,\\
+\textrm{Int}\left(\left[\tfrac{2n-1}{2n},1\right]\right) & = & \left[\tfrac{2n-0.5}{2n},1\right)\,,\\
+\textrm{Int}\left(\necess\right) & = & \necess\,.
 \end{eqnarray}
-It is straightforward to verify $\iota_{2}\circ\mu_{1}$ and $\iota_{2}\circ\mu_{\mathbb{1}/3}^{\mathrm{B}}$
-are QIVPMs whose values on the minimal subspace of events containing
-$\proj{0}$, $\proj{1}$, and $\proj{2}$, $\events_{C}$, is computed
-by Table~\ref{tab:Compute-the-QIVPM}. 
+\end{subequations}Hence, given a real-valued probability~$x$, we
+will replace it with an interval~$\iota_{n}\left(x\right)=[\ell,r]$
+if $x\in\textrm{Int}\left([\ell,r]\right)$.
+
+After we have a rule to replace a real number by an interval, any
+Born rule probability~$\mu_{\rho}^{\mathrm{B}}$ on a three-dimensional
+Hilbert space can be extended to a QIVPM~$\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$,
+where $\circ$ is the function concatenation. For example, when $n=2$,
+we can summarize the set of intervals~$\mathscr{I}_{2}$ and their
+interior in Table~\ref{tab:I2}.
+\begin{table}
+\caption{\label{tab:I2}Intervals in $\mathscr{I}_{2}$ and their interior.}
+\begin{tabular}{cc}
+\toprule 
+$[\ell,r]$ & $\textrm{Int}\left([\ell,r]\right)$\tabularnewline
+\midrule
+\midrule 
+$\imposs$ & $\imposs$\tabularnewline
+\midrule 
+$\left[0,\tfrac{1}{4}\right]$ & $\left(0,\tfrac{1}{8}\right]$\tabularnewline
+\midrule 
+$\left[0,{\textstyle \tfrac{1}{2}}\right]$ & $\left(\tfrac{1}{8},\tfrac{3}{8}\right)$\tabularnewline
+\midrule 
+$\left[\tfrac{1}{4},\tfrac{3}{4}\right]$ & $\left[\tfrac{3}{8},\tfrac{5}{8}\right]$\tabularnewline
+\midrule 
+$\left[\tfrac{1}{2},1\right]$ & $\left(\tfrac{5}{8},\tfrac{7}{8}\right)$\tabularnewline
+\midrule 
+$\left[\tfrac{1}{4},1\right]$ & $\left[\tfrac{7}{8},1\right)$\tabularnewline
+\midrule 
+$\necess$ & $\necess$\tabularnewline
+\bottomrule
+\end{tabular}
+\end{table}
+Given two quantum probability measure~$\mu_{1}$ and $\mu_{\mathbb{1}/3}^{\mathrm{B}}$,
+where $\frac{\mathbb{1}}{3}=\frac{1}{3}\left(\proj{0}+\proj{1}+\proj{2}\right)$,
+it is then easy to compute $\iota_{2}\circ\mu_{1}$ and $\iota_{2}\circ\mu_{\mathbb{1}/3}^{\mathrm{B}}$
+on the minimal subspace of events containing $\proj{0}$, $\proj{1}$,
+and $\proj{2}$, $\events_{C}$ as in Table~\ref{tab:Compute-the-QIVPM}.
 \begin{table}
 \caption{\label{tab:Compute-the-QIVPM}Compute $\iota_{2}\circ\mu_{1}$ and
 $\iota_{2}\circ\mu_{\mathbb{1}/3}^{\mathrm{B}}$ based on $\mu_{1}$
@@ -925,24 +951,26 @@ and $\mu_{\mathbb{1}/3}^{\mathrm{B}}$ on $\events_{C}$.}
 $P$ & $\mu_{1}\left(P\right)$ & $\iota_{2}\left(\mu_{1}\left(P\right)\right)$ & $\mu_{\mathbb{1}/3}^{\mathrm{B}}\left(P\right)$ & $\iota_{2}\left(\mu_{\mathbb{1}/3}^{\mathrm{B}}\left(P\right)\right)$\tabularnewline
 \midrule
 \midrule 
-$\mathbb{0}$ & $0$ & $\left[0,0\right]$ & $0$ & $\left[0,0\right]$\tabularnewline
+$\mathbb{0}$ & $0$ & $\imposs$ & $0$ & $\imposs$\tabularnewline
 \midrule 
 $\proj{0}$ & $0.5$ & $\left[\frac{1}{4},\frac{3}{4}\right]$ & $\frac{1}{3}$ & $\left[0,\frac{1}{2}\right]$\tabularnewline
 \midrule 
 $\proj{1}$ & $0.5$ & $\left[\frac{1}{4},\frac{3}{4}\right]$ & $\frac{1}{3}$ & $\left[0,\frac{1}{2}\right]$\tabularnewline
 \midrule 
-$\proj{2}$ & $0$ & $\left[0,0\right]$ & $\frac{1}{3}$ & $\left[0,\frac{1}{2}\right]$\tabularnewline
+$\proj{2}$ & $0$ & $\imposs$ & $\frac{1}{3}$ & $\left[0,\frac{1}{2}\right]$\tabularnewline
 \midrule 
 $\mathbb{1}-\proj{0}$ & $0.5$ & $\left[\frac{1}{4},\frac{3}{4}\right]$ & $\frac{2}{3}$ & $\left[\frac{1}{2},1\right]$\tabularnewline
 \midrule 
 $\mathbb{1}-\proj{1}$ & $0.5$ & $\left[\frac{1}{4},\frac{3}{4}\right]$ & $\frac{2}{3}$ & $\left[\frac{1}{2},1\right]$\tabularnewline
 \midrule 
-$\mathbb{1}-\proj{2}$ & $1$ & $\left[1,1\right]$ & $\frac{2}{3}$ & $\left[\frac{1}{2},1\right]$\tabularnewline
+$\mathbb{1}-\proj{2}$ & $1$ & $\necess$ & $\frac{2}{3}$ & $\left[\frac{1}{2},1\right]$\tabularnewline
 \midrule 
-$\mathbb{1}$ & $1$ & $\left[1,1\right]$ & $1$ & $\left[1,1\right]$\tabularnewline
+$\mathbb{1}$ & $1$ & $\necess$ & $1$ & $\necess$\tabularnewline
 \bottomrule
 \end{tabular}
 \end{table}
+Verifying $\iota_{2}\circ\mu_{1}$ and $\iota_{2}\circ\mu_{\mathbb{1}/3}^{\mathrm{B}}$
+are QIVPMs are also straightforward.
 
 Given any state~$\rho$ satisfying $0<\mu_{\rho}^{\mathrm{B}}\left(P\right)<1$
 for any $P\in\events\backslash\left\{ \mathbb{0},\mathbb{1}\right\} $,
@@ -954,15 +982,15 @@ precise real numbers. To state this result, we need to define a notion
 of distance based on the following norm of a matrix~$A$ as $\left\Vert A\right\Vert =\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{A}{\psi}\right|$~\citep{544199}.
 If a state~$\rho'$ is consistent with $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$,
 its distance with $\rho$, $\left\Vert \rho-\rho'\right\Vert $, must
-be bounded by $1/\left(12n\right)$. Reversely, if the distance between
-$\rho$ and $\rho'$ is bounded by $1/n$, then $\rho'$ is consistent
-with $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$. In other words, for
-the states consistent with this QIVPM, $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$
+be bounded by $\left(12n\right)^{-1}$. Reversely, if the distance
+between $\rho$ and $\rho'$ is bounded by $1/n$, then $\rho'$ is
+consistent with $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$. In other
+words, for the states consistent with this QIVPM, $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$
 will become closer and closer to $\rho'$ as $n$ goes to infinity. 
 
 For example, since $\mu_{1}\left(\proj{2}\right)=0$, any state corresponds
-to $\mu_{1}$is not totally mixed state. On the other hand, $\mathbb{1}/3$
-is a totally mixed state. \yutsung{{To be continue...}}
+to $\mu_{1}$ is not totally mixed state. On the other hand, $\mathbb{1}/3$
+is a totally mixed state. \yutsung{To be continue...}
 
 In the limiting case when the intervals are infinitely precise, i.e.,
 $\set{\left[x,x\right]}{x\in\left[0,1\right]}$, even if a QIVPM is
