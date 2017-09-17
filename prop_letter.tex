@@ -21,7 +21,7 @@ showkeys, longbibliography, amsmath, amssymb]{revtex4-1}
 \newtheorem{cor}{Corollary}[thm]
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
-\newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
 
 \newcommand{\Hilb}{\mathcal{H}}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
@@ -906,11 +906,15 @@ the non-existence of certain kind of QIVPMs, we also want to understand
 what a QIVPM could be when it exists. In Sec.~\ref{sec:Interval-Uncertainty},
 the only non-trivial QIVPM~ $\bar{\mu}_{3}$ is induced by the quantum
 probability measure~$\mu_{1}$ defined in Sec.~\ref{sec:fuzzy}.
-This result will first be generalized in this section, and then we
-will show some QIVPMs may not be induced by any quantum probability
-measure, i.e., no state is consistent with these kind of QIVPMs, while
-there is always an unique state consistent with a quantum probability
-measure by Gleason's theorem.
+This result will first be generalized in this section, and introduce
+a finite-precision extension of the Born rule~\citep{peres1995quantum,544199,Jaeger2007}.
+The Born rule is essential to compute the conventional quantum probability
+because any quantum probability measure can be induced by the Born
+rule according to Gleason's theorem~\citep{gleason1957,Redhead1987-REDINA,peres1995quantum}.
+We then provide a finite precision variant of Gleason's theorem for
+QIVPMs induced by the Born rule, but there are also some general QIVPMs
+may not be induced by any quantum probability measure, i.e., no state
+is consistent with these kind of QIVPMs.
 
 The quantum probability measure~$\mu_{1}$ maps some projectors to
 $0$ or $0.5$, which are replaced by $\left[0,0\right]$ or $\left[0.5,0.5\right]$
@@ -971,16 +975,23 @@ $\left[\tfrac{2n-1}{2n},1\right]$ & $\left[\tfrac{2n-0.5}{2n},1\right)$ & $\left
 $\necess$ & $\necess$ & $\necess$ & $\necess$\tabularnewline\addlinespace
 \bottomrule
 \end{tabular}
+
+\yutsung{Not sure what is the best way embedding the condition for
+$k$ in the table...}
 \end{table}
 Hence, given a real-valued probability~$x$, we could easily replace
 it with an interval~$\iota_{n}\left(x\right)=[\ell,r]$ if $x\in\textrm{Int}\left([\ell,r]\right)$.
 
-After we have the rule to replace a real number by an interval, any
-Born rule probability~$\mu_{\rho}^{\mathrm{B}}$ on a three-dimensional
-Hilbert space can be extended to a QIVPM~$\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$,
-where $\circ$ is the function concatenation~\citep{HOSTunpublished}.
-For example, when $n=2$, two quantum probability measures~$\mu_{\mathbb{1}/3}^{\mathrm{B}}$
-and $\mu_{\rho_{0}}^{\mathrm{B}}$ can induce two QIVPMs~$\iota_{2}\circ\mu_{\mathbb{1}/3}^{\mathrm{B}}$
+After we have the rule to replace a real number by an interval, we
+can induce a QIVPM from a state according to the following theorem.
+
+\begin{thm}[Finite-precision Extension of the Born rule~\citep{HOSTunpublished}]For
+any state $\rho$ on a three-dimensional Hilbert space, $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$
+is a QIVPM, where $\circ$ is the function concatenation.\end{thm}\yutsung{Do
+we need to summarize the proof?}
+
+\noindent For example, when $n=2$, two states~$\mathbb{1}/3$ and
+$\rho_{0}$ can induce two QIVPMs~$\iota_{2}\circ\mu_{\mathbb{1}/3}^{\mathrm{B}}$
 and $\iota_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}}$, where $\mathbb{1}/3=\left(\proj{0}+\proj{1}+\proj{2}\right)/3$
 and $\rho_{0}=\frac{7}{24}\cdot\proj{0}+\frac{1}{3}\cdot\proj{1}+\frac{3}{8}\cdot\proj{2}$.
 The interval-valued probability of the induced QIVPMs, $\iota_{2}\left(\mu_{\mathbb{1}/3}^{\mathrm{B}}\left(P\right)\right)$
@@ -1025,22 +1036,44 @@ $\mathbb{1}$ & $1$ & $\necess$ & $1$ & $\necess$\tabularnewline\addlinespace
 \bottomrule
 \end{tabular}
 \end{table}
-Verifying $\iota_{2}\circ\mu_{1}$ and $\iota_{2}\circ\mu_{\mathbb{1}/3}^{\mathrm{B}}$
-are QIVPMs are also straightforward.
 
-A state~$\rho$ is called totally mixed state if it satisfies $0<\mu_{\rho}^{\mathrm{B}}\left(P\right)<1$
-for any $P\in\events\backslash\left\{ \mathbb{0},\mathbb{1}\right\} $.
-Given any totally mixed state~$\rho$, we know not only $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$
-is a QIVPM, but also the collection of states consistent it get closer
-and closer to $\rho$ as the intervals get narrower and narrower,
-eventually collapsing to $\rho$ when the intervals become infinitely
-precise real numbers. To state this result, we need to define a notion
-of distance based on the following norm of a matrix~$A$ as $\left\Vert A\right\Vert =\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{A}{\psi}\right|$~\citep{544199}.
-If a state~$\rho'$ is consistent with $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$,
-its distance with $\rho$, $\left\Vert \rho-\rho'\right\Vert $, must
-be bounded by $1/n$. Reversely, if the distance between $\rho$ and
-$\rho'$ is bounded by $\left(12n\right)^{-1}$, then $\rho'$ is
-consistent with $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$~\citep{HOSTunpublished}.
+In the limiting case when the intervals are infinitely precise, i.e.,
+$\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$
+with its corresponding $\iota_{\infty}\left(x\right)=[x,x]$, we can
+formulate Gleason's theorem in our framework.
+
+\begin{thm}[$\mathscr{I}_{\infty}$ Variant of Gleason]\label{cor:Gleason's}In
+a Hilbert space $\Hilb$ of dimension $d\geq3$, given a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\infty}$,
+the states consistent with it on every project, $\coreBorn\left(\bar{\mu},\events\right)$
+has a unique element. \end{thm}
+
+Our framework allows us to generalize the above theorem to QIVPMs
+induced by the finite-precision extension of the Born rule~$\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$:
+The collection of states consistent $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$
+get closer and closer to $\rho$ as the intervals get narrower and
+narrower, eventually collapsing to $\rho$ when the intervals become
+infinitely precise real numbers. To state this result, we introduce
+a few technical notions. We call a state~$\rho$ a \emph{totally
+mixed state} if $0<\mu_{\rho}^{\mathrm{B}}\left(P\right)<1$ for any
+$P\in\events\backslash\left\{ \mathbb{0},\mathbb{1}\right\} $. We
+also define a notion of distance between two states~$\rho$ and $\rho'$
+as $\left\Vert \rho-\rho'\right\Vert =\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{\rho-\rho'}{\psi}\right|$~\citep{544199},
+and the set of all states whose distance with $\rho$ is bounded by
+$\epsilon$ is denoted by $B_{\epsilon}\left(\rho\right)=\set{\rho'}{\left\Vert \rho-\rho'\right\Vert \le\epsilon}$.
+
+\begin{thm}[Finite-precision Extension of Gleason~\citep{HOSTunpublished}]In
+a Hilbert space $\Hilb$ of dimension $3$, given any totally mixed
+state~$\rho$, 
+\begin{equation}
+B_{\frac{1}{12n}}\left(\rho\right)\subseteq\coreBorn\left(\iota_{n}\circ\mu_{\rho}^{\mathrm{B}},\events\right)\subseteq B_{1/n}\left(\rho\right)\,.
+\end{equation}
+\end{thm}\yutsung{Do we need to summarize the proof?}
+
+\noindent In another word, if a state~$\rho'$ is consistent with
+$\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$, its distance with $\rho$,
+$\left\Vert \rho-\rho'\right\Vert $, must be bounded by $1/n$. Reversely,
+if the distance between $\rho$ and $\rho'$ is bounded by $\frac{1}{12n}$,
+then $\rho'$ is consistent with $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$.
 For example, $\mathbb{1}/3$ and $\rho_{0}$ are both totally mixed
 states. Since $\left\Vert \frac{\mathbb{1}}{3}-\rho_{0}\right\Vert \le\frac{1}{24}$,
 we should have $\rho_{0}\in\coreBorn\left(\widehat{\iota}_{2}\circ\mu_{\mathbb{1}/3}^{\mathrm{B}},\events\right)$
@@ -1051,21 +1084,12 @@ $\rho$ is guarantied belong to $\coreBorn\left(\widehat{\iota}_{2}\circ\mu_{\mat
 and the states consistent with $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$
 will become closer and closer to $\rho$.
 
-In the limiting case when the intervals are infinitely precise, i.e.,
-$\set{\left[x,x\right]}{x\in\left[0,1\right]}$, even if a QIVPM is
-not \emph{a priori} known to be induced by a state, it can be recast
-as a real-valued one and will have a unique state consistent with
-it on every projector. This fact is called Gleason's theorem.
+If a QIVPM is not \emph{a priori} known to be induced by a state,
+there are some QIVPMs which cannot be consistent with any state. 
 
-\begin{thm}[Gleason~\citep{gleason1957,Redhead1987-REDINA,peres1995quantum}]\label{cor:Gleason's}In
-a Hilbert space $\Hilb$ of dimension $d\geq3$, given a quantum probability
-measure~$\mu:\events\rightarrow[0,1]$, there exists a unique state~$\rho$
-such that $\mu=\mu_{\rho}^{\mathrm{B}}$. \end{thm}
-
-\noindent However, if the intervals are only with finite-precision,
-there are some QIVPMs which cannot be consistent with any state. Given
-a three-dimensional Hilbert space $\Hilb$ with an orthonormal basis
-$\left\{ \ket{0},\ket{1},\ket{2}\right\} $, let $\mathscr{I}_{0}=\left\{ \necess,\imposs,\unknown\right\} $,
+\begin{example*}Given a three-dimensional Hilbert space $\Hilb$
+with an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $,
+let $\mathscr{I}_{0}=\left\{ \necess,\imposs,\unknown\right\} $,
 $\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$, $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$,
 and \begin{subequations} 
 \begin{eqnarray}
@@ -1091,7 +1115,7 @@ which implies $\ip{\phi_{j}}{0}=\ip{\phi_{j}}{\ps}=\ip{\phi_{j}}{\ps'}=0$
 for all $j$. However, the last equation never holds. Thus, there
 is no state consistent with the QIVPM on all projectors~$P\in\events$,
 so Gleason's theorem cannot be extended to general QIVPMs because
-of this example.
+of this example.\end{example*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
