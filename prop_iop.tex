@@ -2632,16 +2632,20 @@ $\int X\rmd\bar{\mu}=\int X^{+}\rmd\bar{\mu}-\int\left(-X^{-}\right)\rmd\bar{\mu
 $\mul:\events\rightarrow\left[0,1\right]$ and $\mur:\events\rightarrow\left[0,1\right]$
 are real-valued probability measures, we have $\mul=\mur$ and $\int X\rmd\bar{\mu}=\left\{ \int X\rmd\mul\right\} =\left\{ \int X\rmd\mur\right\} $.\end{lemma}
 
-\subsection{Expectation Values for $0$-deterministic CIVPMs}
+\subsection{Expectation Values for $\delta$-deterministic CIVPMs}
 
-Finally, we are going to focus on CIVPMs whose range is $\mathscr{I}_{\mathrm{D}}$.
+Finally, we are going to focus on $\delta$-deterministic CIVPMs.
 
-\begin{lemma}\label{lemma:deterministic-CIVPM}Given a CIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$,
-the following statements are true:
+\begin{lemma}\label{lemma:deterministic-CIVPM}Consider a sample
+space~$\Omega$ with $d$ elements, and $\delta<1/d$. Given a $\delta$-deterministic
+CIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$, the following statements
+are true:
 \begin{enumerate}
-\item Its left-end~$\mul$ and right-end~$\mur$ are the same CRVPM, and
-will be simply denoted by $\pmeas:\events\rightarrow\left\{ 1,0\right\} $.
-\item There is a unique $\omega_{0}\in\Omega$ such that $\bar{\mu}\left(\left\{ \omega_{0}\right\} \right)=\left\{ \pmeas\left(\left\{ \omega_{0}\right\} \right)\right\} =\necess$,
+\item If $\bar{\mu}$ is $0$-deterministic, its left-end~$\mul$ and right-end~$\mur$
+are the same CRVPM, and will be simply denoted by $\pmeas:\events\rightarrow\left\{ 1,0\right\} $.
+\item There is a unique element~$\omega_{0}\in\Omega$ such that $\bar{\mu}\left(\left\{ \omega_{0}\right\} \right)\subseteq\left[1-\delta,1\right]$,
+denoted by $\bar{\mu}^{-1}\left(\left[1-\delta,1\right]\right)$.
+In particular, if $\bar{\mu}$ is $0$-deterministic, $\bar{\mu}\left(\left\{ \omega_{0}\right\} \right)=\left\{ \pmeas\left(\left\{ \omega_{0}\right\} \right)\right\} =\necess$,
 denoted by $\pmeas^{-1}\left(1\right)$ or $\bar{\mu}^{-1}\left(\necess\right)$.
 \end{enumerate}
 \end{lemma}
@@ -2649,9 +2653,18 @@ denoted by $\pmeas^{-1}\left(1\right)$ or $\bar{\mu}^{-1}\left(\necess\right)$.
 \begin{proof}~
 \begin{enumerate}
 \item The directly consequence of lemma~\ref{lemma:QIVPM2QCM}.
-\item Since the range of $\pmeas$ is $\left\{ 1,0\right\} $ and $\sum_{\omega\in\Omega}\pmeas\left(\left\{ \omega\right\} \right)=1$,
-there is a unique $\omega_{0}$ such that $\mu\left(\left\{ \omega_{0}\right\} \right)=1$
-which implies $\bar{\mu}\left(\left\{ \omega_{0}\right\} \right)=\necess$.
+\item We have either $\bar{\mu}\left(\left\{ \omega\right\} \right)\subseteq\left[0,\delta\right]$
+or $\bar{\mu}\left(\left\{ \omega\right\} \right)\subseteq\left[1-\delta,1\right]$.
+\begin{casenv}
+\item If $\bar{\mu}\left(\left\{ \omega\right\} \right)\subseteq\left[0,\delta\right]$
+for all $\omega\in\Omega$, then $\necess=\bar{\mu}\left(\Omega\right)\subseteq\sum_{\omega\in\Omega}\bar{\mu}\left(\left\{ \omega\right\} \right)\subseteq\left[0,d\delta\right]\Rightarrow d\delta>1$.
+A contradiction!
+\item If there are more than one~$\omega\in\Omega$ such that $\bar{\mu}\left(\left\{ \omega\right\} \right)\subseteq\left[1-\delta,1\right]$,
+then $\necess=\bar{\mu}\left(\Omega\right)\subseteq\sum_{\omega\in\Omega}\bar{\mu}\left(\left\{ \omega\right\} \right)\subseteq\left[2-2\delta,d\right]\Rightarrow2\delta>1$.
+A contradiction!
+\end{casenv}
+Therefore, there is a unique element~$\omega_{0}\in\Omega$ such
+that $\bar{\mu}\left(\left\{ \omega_{0}\right\} \right)\subseteq\left[1-\delta,1\right]$.
 \end{enumerate}
 \end{proof}
 
