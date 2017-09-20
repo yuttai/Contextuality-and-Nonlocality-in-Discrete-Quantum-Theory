@@ -19,9 +19,11 @@ showkeys, longbibliography, amsmath, amssymb, floatfix]{revtex4-1}
 \newtheorem{thm}{Theorem}
 \newtheorem{lemma}{Lemma}[thm]
 \newtheorem{cor}{Corollary}[thm]
+\newtheorem{assumption}{Assumption}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
 \newtheorem*{example*}{Example}
+\newtheorem{condition}[assumption]{Condition}
 
 \newcommand{\Hilb}{\mathcal{H}}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
@@ -194,9 +196,47 @@ system effectively from a quantum system into a classical system.
 % theory\ldots(?)
 % \end{enumerate}
 % }
-\yutsung{Still not comfortable about the current statement... Notice
-that the key properties of the non-contextual hidden variable theory
-used in our Mermin-Peres square proof is
+\yutsung{Still not comfortable about the current statement... To
+clarify what we did, here we review the assumption in the original
+Kochen-Specker theorem, and what we used in our variant version.}
+
+The original Kochen-Specker theorem assumes the following there is
+a hidden variable assignment~$v$ for every observables~$\mathbf{O}$
+such that
+
+\begin{assumption}If $\mathbf{O}_{0}$ and $\mathbf{O}_{1}$ are
+commuting, then $v$ is linear, i.e., $v\left(x_{0}\mathbf{O}_{0}+x_{1}\mathbf{O}_{1}\right)=x_{0}v\left(\mathbf{O}_{0}\right)+x_{1}v\left(\mathbf{O}_{1}\right)$
+for $x_{0}$ and $x_{1}\in\mathbb{C}$.\end{assumption}
+
+\begin{assumption}\label{assu:times}If $\mathbf{O}_{0}$ and $\mathbf{O}_{1}$
+are commuting, then $v\left(\mathbf{O}_{0}\mathbf{O}_{1}\right)=v\left(\mathbf{O}_{0}\right)v\left(\mathbf{O}_{1}\right)$.\end{assumption}
+
+\noindent These two assumptions implies the following conditions:
+
+\begin{condition}\label{cond:eigenvalue}$v\left(\mathbf{O}\right)$
+must be an eigenvalue of $\mathbf{O}$.\end{condition}
+
+\noindent In particular, Condition~\ref{cond:eigenvalue} implies
+$v(P)=0$ or $1$ for any projector~$P$. Together with $v\left(\mathbb{1}\right)=1$.
+We have:
+
+\begin{condition}\label{cond:sum-one}If a set of commuting projectors~$P_{i}$
+satisfies $\sum_{i}P_{i}=1$, then $\sum_{i}v(P_{i})=1$.\end{condition}
+
+\noindent Kochen-Specker~\citep{kochenspecker1967} and Peres~\citep{peres1995quantum}
+then proved the contradiction based on Condition~\ref{cond:sum-one}.
+The proof given by Mermin~\citep{Mermin1990Simple} is particular
+short and easy to understand, because he proved proved the contradiction
+based on Assumption~\ref{assu:times} and Condition~\ref{cond:eigenvalue}.
+
+\yutsung{Let's move on to what we did for 0-Deterministic Variant
+of Kochen-Specker theorem~\ref{thm:Kochen-Specker}.}
+
+\yutsung{Finally, we can say about Finite-precision Extension of
+Kochen-Specker theorem~\ref{cor:Kochen-Specker-IVPM}.}
+
+Notice that the key properties of the non-contextual hidden variable
+theory used in our Mermin-Peres square proof is
 \begin{itemize}
 \item The expectation value of an observable is one of the eigenvalue of
 that observable.
@@ -214,7 +254,9 @@ So we should not even ask ``whether the existence of QIVPMs when
 $\delta\ge\frac{1}{3}$ implies non-contextuality hidden variable
 theory or not.'' A little bit different analog could be: we should
 not ask ``where is the momentum of a particle when we measure its
-position...''}
+position...''
+
+\yutsung{End of discussion!}
 
 These results provide a new insight into the Meyer-Mermin debate by
 presenting a theory in which there is a \emph{parameter} interpolating
