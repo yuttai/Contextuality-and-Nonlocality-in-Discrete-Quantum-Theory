@@ -197,15 +197,16 @@ system effectively from a quantum system into a classical system.
 % \end{enumerate}
 % }
 \yutsung{Still not comfortable about the current statement... To
-clarify what we did, here we review the assumption in the original
-Kochen-Specker theorem, and what we used in our variant version.}
+clarify what we did as requested by Andy, here we review the assumption
+in the original Kochen-Specker theorem, and what we used in our variant
+version.}
 
-The original Kochen-Specker theorem assumes the following there is
-a hidden variable assignment~$v$ for every observables~$\mathbf{O}$
-such that
+The original Kochen-Specker theorem assumes there is a hidden variable
+assignment~$v$ for every observables~$\mathbf{O}$ such that $v\left(\mathbf{O}\right)\in\mathbb{R}$
+and satisfying the following two assumptions.
 
-\begin{assumption}If $\mathbf{O}_{0}$ and $\mathbf{O}_{1}$ are
-commuting, then $v$ is linear, i.e., $v\left(x_{0}\mathbf{O}_{0}+x_{1}\mathbf{O}_{1}\right)=x_{0}v\left(\mathbf{O}_{0}\right)+x_{1}v\left(\mathbf{O}_{1}\right)$
+\begin{assumption}\label{assu:linear}If $\mathbf{O}_{0}$ and $\mathbf{O}_{1}$
+are commuting, then $v$ is linear, i.e., $v\left(x_{0}\mathbf{O}_{0}+x_{1}\mathbf{O}_{1}\right)=x_{0}v\left(\mathbf{O}_{0}\right)+x_{1}v\left(\mathbf{O}_{1}\right)$
 for $x_{0}$ and $x_{1}\in\mathbb{C}$.\end{assumption}
 
 \begin{assumption}\label{assu:times}If $\mathbf{O}_{0}$ and $\mathbf{O}_{1}$
@@ -223,28 +224,83 @@ We have:
 \begin{condition}\label{cond:sum-one}If a set of commuting projectors~$P_{i}$
 satisfies $\sum_{i}P_{i}=1$, then $\sum_{i}v(P_{i})=1$.\end{condition}
 
+\noindent Or equivalently.
+
+\begin{condition}\label{cond:one-one}If a set of commuting projectors~$P_{i}$
+satisfies $\sum_{i}P_{i}=1$, then there exists exactly one $P_{i_{0}}$
+such that $v\left(P_{i_{0}}\right)=1$ and $v\left(P_{i}\right)=0$
+for $i\ne i_{0}$.\end{condition}
+
 \noindent Kochen-Specker~\citep{kochenspecker1967} and Peres~\citep{peres1995quantum}
-then proved the contradiction based on Condition~\ref{cond:sum-one}.
-The proof given by Mermin~\citep{Mermin1990Simple} is particular
-short and easy to understand, because he proved proved the contradiction
-based on Assumption~\ref{assu:times} and Condition~\ref{cond:eigenvalue}.
+then got the contradiction based on Condition~\ref{cond:sum-one}
+or \ref{cond:one-one}. Instead of Condition~\ref{cond:sum-one},
+Mermin~\citep{Mermin1990Simple} got the contradiction based on Assumption~\ref{assu:times}
+and Condition~\ref{cond:eigenvalue} which makes his proof particularly
+short and easy to understand.
 
 \yutsung{Let's move on to what we did for 0-Deterministic Variant
 of Kochen-Specker theorem~\ref{thm:Kochen-Specker}.}
 
+The natural KS assumption in 0-deterministic QIVPM is the following
+one correspondence of Condition~\ref{cond:sum-one}.
+
+\begin{assumption}\label{assu:0-deterministicQIVPM}There exists
+a 0-deterministic QIVPM.\end{assumption}
+
+\noindent This assumption itself can deduce the same contradiction
+exactly the same as Kochen-Specker~\citep{kochenspecker1967} and
+Peres~\citep{peres1995quantum} did, but the proof will be as long
+and tedious as theirs. In order to follow the clearer Mermin's proof,
+we deduce the following condition based on our assumption:
+
+\noindent \begin{condition}\label{cond:one-one-0-deterministicQIVPM}For
+a $0$-deterministic QIVPMs~$\bar{\mu}$, if a set of commuting projectors~$P_{i}$
+satisfies $\sum_{i}P_{i}=1$, then there exists exactly one $P_{i_{0}}$
+such that $\bar{\mu}\left(P_{i_{0}}\right)=\necess$ and $\bar{\mu}\left(P_{i}\right)=\imposs$
+for $i\ne i_{0}$.\end{condition}
+
+\noindent The preceding condition is the key step to deduce the following
+two conditions used in Mermin's proof.
+
+\begin{condition}\label{cond:eigenvalue-0-deterministicQIVPM}For
+a $0$-deterministic QIVPMs~$\bar{\mu}$, $\expval{\mathbf{O}}_{\bar{\mu}}$
+must be an eigenvalue of $\mathbf{O}$.\end{condition}
+
+\begin{condition}\label{assu:times-0-deterministicQIVPM}For a $0$-deterministic
+QIVPMs~$\bar{\mu}$, if $\mathbf{O}_{0}$ and $\mathbf{O}_{1}$ are
+commuting, then $\expval{\mathbf{O}_{0}\mathbf{O}_{1}}_{\bar{\mu}}=\expval{\mathbf{O}_{0}}_{\bar{\mu}}\expval{\mathbf{O}_{1}}_{\bar{\mu}}$.\end{condition}
+
+\noindent Notice that the expectation value relative to $0$-deterministic
+$\bar{\mu}$ plays the same role as the hidden variable assignment~$v$
+in the original Kochen-Specker theorem. After we proved these two
+conditions, we can easily follow Mermin to build a contradiction.
+
 \yutsung{Finally, we can say about Finite-precision Extension of
 Kochen-Specker theorem~\ref{cor:Kochen-Specker-IVPM}.}
 
-Notice that the key properties of the non-contextual hidden variable
-theory used in our Mermin-Peres square proof is
-\begin{itemize}
-\item The expectation value of an observable is one of the eigenvalue of
-that observable.
-\item For $0$-deterministic QIVPMs, we have
-\begin{equation}
-\prod_{j}\expval{\mathbf{O}_{j}}_{\bar{\mu}}=\expval{\prod_{j}\mathbf{O}_{j}}_{\bar{\mu}}\,.\label{eq:Kochen-Specker-Rules}
-\end{equation}
-\end{itemize}
+The natural KS assumption for 0-deterministic QIVPM is just ``it
+exists.'' We might image the natural KS assumption for $\delta$-deterministic
+QIVPM is the same, and start from the following assumption.
+
+\begin{assumption}\label{assu:delta-deterministicQIVPM}There exists
+a $\delta$-deterministic QIVPM.\end{assumption}
+
+\noindent This assumption draw the same contradiction when $\delta<\frac{1}{3}$,
+and there is no contradiction when $\delta\ge\frac{1}{3}$. Therefore,
+we want to understand what happens when $\delta$ passing $\frac{1}{3}$.
+Notice that Assumption~\ref{assu:delta-deterministicQIVPM} looks
+similar, but is not exactly equivalent to Condition~\ref{cond:sum-one}
+and Assumption~\ref{assu:0-deterministicQIVPM}. Therefore, in order
+to understand better the physical meaning, and in order to know whether
+we get a non-contextual hidden variable theory, a contextual hidden
+variable theory, or not a hidden variable theory at all, we might
+need to prove the corresponding states of Condition~\ref{cond:one-one},
+Condition~\ref{cond:eigenvalue}, Assumption~\ref{assu:linear},
+and Assumption~\ref{assu:times}. 
+
+\noindent I personally believe they are approximately hold for small
+$\delta$, but void when $\delta$ is large enough. 
+
 I think these two properties might be weakened when $0<\delta<\frac{1}{3}$,
 and completely break down when $\delta\ge\frac{1}{3}$. (Need a proof!)
 If this is the case, the correct statement is that ``the assumption
