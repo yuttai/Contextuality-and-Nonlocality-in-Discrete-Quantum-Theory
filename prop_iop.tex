@@ -16,6 +16,8 @@
 \usepackage{verbatim}
 \usepackage{iopams}
 \usepackage{setstack}
+\usepackage{enumitem}
+\usepackage{amstext}
 
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}
@@ -26,6 +28,14 @@
 \newtheorem{example}[thm]{Example}
 \theoremstyle{remark}
 \newtheorem{claim}[thm]{Claim}
+
+\newlist{casenv}{enumerate}{4}
+\setlist[casenv]{leftmargin=*,align=left,widest={iiii}}
+\setlist[casenv,1]{label={{\itshape\ \casename} \arabic*.},ref=\arabic*}
+\setlist[casenv,2]{label={{\itshape\ \casename} \roman*.},ref=\roman*}
+\setlist[casenv,3]{label={{\itshape\ \casename\ \alph*.}},ref=\alph*}
+\setlist[casenv,4]{label={{\itshape\ \casename} \arabic*.},ref=\arabic*}
+\providecommand{\casename}{Case}
 
 \newcommand{\Hilb}{\mathcal{H}}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
@@ -2885,14 +2895,13 @@ By theorem~\ref{thm:quantum-Rosenmuller}, we have
 \end{equation}
 \end{proof}
 
-\subsection{Quantum {\normalsize{}$\mathscr{I}_{\mathrm{D}}$}-valued Probability
-Measures\label{subsec:Quantum-I_D-valued-Probability}}
+\subsection{Expectation Values for $\delta$-deterministic QIVPMs\label{subsec:Quantum-I_D-valued-Probability}}
 
 After we defined the expectation value, we can provide another proof
 of corollary~\ref{cor:Kochen-Specker-IVPM} which doesn't refer the
-Kochen-Specker theorem directly. Assume there is a quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$,
-we will prove $\bar{\mu}$ has such bizarre properties that it cannot
-exist. These properties will be summarized in the following two lemmas.
+Kochen-Specker theorem directly. Assume there is a $\delta$-deterministic
+QIVPM~$\bar{\mu}$, we will prove $\bar{\mu}$ has such bizarre properties
+that it cannot exist for small $\delta$.
 
 \begin{lemma}For any quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\mathrm{D}}$,
 $\expval{\mathbf{O}}_{\bar{\mu}}$ is a singleton set~$\left\{ \lambda\right\} $,
