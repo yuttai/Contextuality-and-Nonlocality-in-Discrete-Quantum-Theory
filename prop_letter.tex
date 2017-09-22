@@ -945,34 +945,35 @@ the theory becomes non-contextual.
 
 \label{sec:Gleason}
 
-While the finite-precision extension of Kochen-Specker theorem asserts
-the non-existence of certain kind of QIVPMs, we also want to understand
-what a QIVPM could be when it exists. A conventional quantum probability
-measure~$\mu$ can be easily be constructed using the Born rule when
-one knows the current state of the system~\citep{Born1983,peres1995quantum,544199,Jaeger2007},
-and Gleason's theorem asserts that the only state consistent with
-$\mu$ on all projectors is the one used to construct $\mu$~\citep{gleason1957,Redhead1987-REDINA,peres1995quantum}.
+While the finite-precision extension of the Kochen-Specker theorem
+asserts the non-existence of a certain kind of QIVPMs, we also want
+to understand what a QIVPM could be when it exists. A conventional
+quantum probability measure~$\mu$ can easily be constructed using
+the Born rule when one knows the current state of the system~\citep{Born1983,peres1995quantum,544199,Jaeger2007}.
+Gleason's theorem asserts that the only state consistent with $\mu$
+on all projectors is the one used to construct $\mu$~\citep{gleason1957,Redhead1987-REDINA,peres1995quantum}.
 Although the Born rule could incorporate the idea of finite precision
 easily, there is a QIVPM such that every state can only consistent
-with it on some of projectors. However, if we only focus on the QIVPM~$\bar{\mu}$
-induced by a state~$\rho$ according to the Born rule, called the
-Born QIVPMs, we found the states consistent with $\bar{\mu}$ will
-be closer and closer to $\rho$ while shrinking the length of intervals.
+with it on some of the projectors. However, if we only focus on the
+Born QIVPMs~$\bar{\mu}$, that is, QIVPM's induced by a state~$\rho$
+according to the Born rule, we find that if we monotonically shrink
+the length of intervals, the states consistent with $\bar{\mu}$ will
+be closer and closer to $\rho$, and vise visa.
 
 The first step toward a finite precision Born rule is to find a way
-replacing the computed probability by an interval. This can be done
-by carefully picking a set of intervals and a rule to select the correct
-interval when intervals are overlapping. For example, consider the
-following collection of intervals: 
+of replacing the computed probability by an interval. This can be
+done by carefully picking a set of intervals and a rule to select
+the correct interval when intervals are overlapping. For example,
+consider the following collection of intervals: 
 \begin{equation}
 \begin{aligned}\mathscr{I}_{n}= & \set{\left[\tfrac{k-1}{2n},\tfrac{k+1}{2n}\right]\cap\left[0,1\right]}{k=0,\ldots,2n}\\
  & \cup\{\imposs,\necess\}
 \end{aligned}
 \end{equation}
-which are overlapping intervals with length~$1/n$ except the intervals
-with length~$\left(2n\right)^{-1}$ at each end. To select the correct
-interval from these overlapping intervals~$[\ell,r]$, we define
-the non-overlapping interior part of a interval, $\textrm{Int}\left([\ell,r]\right)$,
+which are overlapping intervals with length~$1/n$ except for the
+intervals with length~$\left(2n\right)^{-1}$ at each end. To select
+the correct interval from these overlapping intervals~$[\ell,r]$,
+we define the non-overlapping interior part of a interval, $\textrm{Int}\left([\ell,r]\right)$,
 as in Table~\ref{tab:I2}.
 \begin{table}
 \caption{\label{tab:I2}Intervals in $\mathscr{I}_{n}$ and their interior
@@ -1022,26 +1023,33 @@ $\necess$ & $\necess$ & $\necess$ & $\necess$\tabularnewline\addlinespace
 \yutsung{Not sure what is the best way embedding the condition for
 $k$ in the table...}
 \end{table}
-Then, given a real-valued probability~$x$, we will select a interval~$\iota_{n}\left(x\right)=[\ell,r]$
+Then, given a real-valued probability~$x$, we will select an interval~$\iota_{n}\left(x\right)=[\ell,r]$
 if $x\in\textrm{Int}\left([\ell,r]\right)$.
 
 After we have the rule to replace a real number by an interval, we
-can induce a QIVPM from a state according to the following theorem.
+can induce a QIVPM from a state according to the following theorem:
 
 \begin{thm}[Finite-precision Extension of the Born rule]For any
 state $\rho$ on a three-dimensional Hilbert space, $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$
 is a QIVPM, where $\circ$ is the function concatenation.\end{thm}
 
 \noindent Given $x_{0}$, $x_{1}$, and $x_{0}+x_{1}\in\left[0,1\right]$,
-it is easy to verify $\iota_{n}\left(x_{0}+x_{1}\right)\subseteq\iota_{n}\left(x_{0}\right)+\iota_{n}\left(x_{1}\right)$.
+it is easy to verify that
+\begin{equation}
+\iota_{n}\left(x_{0}+x_{1}\right)\subseteq\iota_{n}\left(x_{0}\right)+\iota_{n}\left(x_{1}\right)\,.
+\end{equation}
 This implies Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
 when $P_{0}$ and $P_{1}$ are orthogonal. When $P_{0}$ and $P_{1}$
-are not orthogonal on a three-dimensional Hilbert space, either one
-of them projects onto the subspace which the other one project onto,
-or their complements are orthogonal which reduced the case we discussed~\citep{HOSTunpublished}.
-Therefore, $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$ is indeed a QIVPM.
-For example, when $n=2$, two states~$\mathbb{1}/3$ and $\rho_{0}$
-can induce two QIVPMs~$\iota_{2}\circ\mu_{\mathbb{1}/3}^{\mathrm{B}}$
+are not orthogonal on a three-dimensional Hilbert space, then we have
+two possibilities:
+\begin{itemize}
+\item Their complements are orthogonal reducing to the case we discussed.
+\item One of them projects onto the subspace which the other one projects
+onto.
+\end{itemize}
+\noindent Therefore, $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$ is indeed
+a QIVPM. For example, when $n=2$, two states~$\mathbb{1}/3$ and
+$\rho_{0}$ can induce two QIVPMs~$\iota_{2}\circ\mu_{\mathbb{1}/3}^{\mathrm{B}}$
 and $\iota_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}}$, where $\mathbb{1}/3=\left(\proj{0}+\proj{1}+\proj{2}\right)/3$
 and $\rho_{0}=\frac{7}{24}\cdot\proj{0}+\frac{1}{3}\cdot\proj{1}+\frac{3}{8}\cdot\proj{2}$.
 The interval-valued probability of the induced QIVPMs, $\iota_{2}\left(\mu_{\mathbb{1}/3}^{\mathrm{B}}\left(P\right)\right)$
