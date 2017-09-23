@@ -952,19 +952,28 @@ quantum probability measure~$\mu$ can easily be constructed using
 the Born rule when one knows the current state of the system~\citep{Born1983,peres1995quantum,544199,Jaeger2007}.
 Gleason's theorem asserts that the only state consistent with $\mu$
 on all projectors is the one used to construct $\mu$~\citep{gleason1957,Redhead1987-REDINA,peres1995quantum}.
-Although the Born rule could incorporate the idea of finite precision
-easily, there is a QIVPM such that every state can only consistent
-with it on some of the projectors. However, if we only focus on the
-Born QIVPMs~$\bar{\mu}$, that is, QIVPM's induced by a state~$\rho$
+In another word, the set of all quantum probability measures is one-to-one
+corresponding to the set of states so that studying the set of states
+is sufficient to understand all possible phenomenon regarding to quantum
+probability. Although we can extend the Born rule to its finite precision
+version easily, there are some subtleties extending Gleason's theorem.
+In particular, there is a QIVPM such that no state can be consistent
+with it on every projector. However, if we only focus on the Born
+QIVPMs~$\bar{\mu}$, that is, QIVPM's induced by a state~$\rho$
 according to the Born rule, we find that if we monotonically shrink
 the length of intervals, the states consistent with $\bar{\mu}$ will
-be closer and closer to $\rho$, and vise visa.
+be closer and closer to $\rho$, and vise visa. As the result, although
+a finite precision version of Gleason's theorem is stated, there might
+be more rich phenomenon regarding to quantum probability when considering
+finite precision measurement, and highlight the necessity to develop
+a mathematical theory of quantum mechanics that intrinsically consistent
+with the resources available for realistic measurement.
 
 The first step toward a finite precision Born rule is to find a way
 of replacing the computed probability by an interval. This can be
 done by carefully picking a set of intervals and a rule to select
 the correct interval when intervals are overlapping. For example,
-consider the following collection of intervals: 
+consider the following collection of overlapping intervals: 
 \begin{equation}
 \begin{aligned}\mathscr{I}_{n}= & \set{\left[\tfrac{k-1}{2n},\tfrac{k+1}{2n}\right]\cap\left[0,1\right]}{k=0,\ldots,2n}\\
  & \cup\{\imposs,\necess\}
@@ -974,98 +983,122 @@ which are overlapping intervals with length~$1/n$ except for the
 intervals with length~$\left(2n\right)^{-1}$ at each end. To select
 the correct interval from these overlapping intervals~$[\ell,r]$,
 we define the non-overlapping interior part of a interval, $\textrm{Int}\left([\ell,r]\right)$,
-as in Table~\ref{tab:I2}.
+as in Table~\ref{tab:I_n}.
 \begin{table}
-\caption{\label{tab:I2}Intervals in $\mathscr{I}_{n}$ and their interior
-with an concrete example for $\mathscr{I}_{2}$. Although intervals~$[\ell,r]$
-are overlapping, their interior~$\textrm{Int}\left([\ell,r]\right)$
+\caption{\label{tab:I_n}Intervals in $\mathscr{I}_{n}$ and their interior.
+Although intervals~$[\ell,r]$ are overlapping, their interior~$\textrm{Int}\left([\ell,r]\right)$
 are non-overlapping.}
 
-\begin{tabular}{cccc}
+\begin{tabular}{ccc}
 \toprule 
 \addlinespace
-\multicolumn{2}{c}{$\mathscr{I}_{n}$} & \multicolumn{2}{c}{$\mathscr{I}_{2}$}\tabularnewline\addlinespace
-\midrule 
-\addlinespace
-$[\ell,r]$ & $\textrm{Int}\left([\ell,r]\right)$ & $[\ell,r]$ & $\textrm{Int}\left([\ell,r]\right)$\tabularnewline\addlinespace
+$k$ & $[\ell,r]$ & $\textrm{Int}\left([\ell,r]\right)$\tabularnewline\addlinespace
 \midrule
 \midrule 
 \addlinespace
-$\imposs$ & $\imposs$ & $\imposs$ & $\imposs$\tabularnewline\addlinespace
+ & $\imposs$ & $\imposs$\tabularnewline\addlinespace
 \midrule 
 \addlinespace
-$\left[0,\tfrac{1}{2n}\right]$ & $\left(0,\tfrac{0.5}{2n}\right]$ & $\left[0,\tfrac{1}{4}\right]$ & $\left(0,\tfrac{1}{8}\right]$\tabularnewline\addlinespace
+$0$ & $\left[0,\tfrac{1}{2n}\right]$ & $\left(0,\tfrac{0.5}{2n}\right]$\tabularnewline\addlinespace
 \midrule 
 \addlinespace
-$\begin{gathered}\left[\tfrac{k-1}{2n},\tfrac{k+1}{2n}\right]\\
-\textrm{for odd }k
-\end{gathered}
-$ & $\left(\tfrac{k-0.5}{2n},\tfrac{k+0.5}{2n}\right)$ & $\left[0,{\textstyle \tfrac{1}{2}}\right]$ & $\left(\tfrac{1}{8},\tfrac{3}{8}\right)$\tabularnewline\addlinespace
+Any odd number & $\left[\tfrac{k-1}{2n},\tfrac{k+1}{2n}\right]$ & $\left(\tfrac{k-0.5}{2n},\tfrac{k+0.5}{2n}\right)$\tabularnewline\addlinespace
 \midrule 
 \addlinespace
-\multirow{2}{*}{$\begin{gathered}\left[\tfrac{k-1}{2n},\tfrac{k+1}{2n}\right]\\
-\textrm{for even }k\\
-0<k<2n
-\end{gathered}
-$} & \multirow{2}{*}{$\left[\tfrac{k-0.5}{2n},\tfrac{k+0.5}{2n}\right]$} & $\left[\tfrac{1}{4},\tfrac{3}{4}\right]$ & $\left[\tfrac{3}{8},\tfrac{5}{8}\right]$\tabularnewline\addlinespace
-\cmidrule{3-4} 
-\addlinespace
- &  & $\left[\tfrac{1}{2},1\right]$ & $\left(\tfrac{5}{8},\tfrac{7}{8}\right)$\tabularnewline\addlinespace
+\begin{tabular}{c}
+Any even number\tabularnewline
+with $0<k<2n$\tabularnewline
+\end{tabular} & \multirow{1}{*}{$\left[\tfrac{k-1}{2n},\tfrac{k+1}{2n}\right]$} & \multirow{1}{*}{$\left[\tfrac{k-0.5}{2n},\tfrac{k+0.5}{2n}\right]$}\tabularnewline\addlinespace
 \midrule 
 \addlinespace
-$\left[\tfrac{2n-1}{2n},1\right]$ & $\left[\tfrac{2n-0.5}{2n},1\right)$ & $\left[\tfrac{1}{4},1\right]$ & $\left[\tfrac{7}{8},1\right)$\tabularnewline\addlinespace
+$2n$ & $\left[\tfrac{2n-1}{2n},1\right]$ & $\left[\tfrac{2n-0.5}{2n},1\right)$\tabularnewline\addlinespace
 \midrule 
 \addlinespace
-$\necess$ & $\necess$ & $\necess$ & $\necess$\tabularnewline\addlinespace
+ & $\necess$ & $\necess$\tabularnewline\addlinespace
 \bottomrule
 \end{tabular}
-
-\yutsung{Not sure what is the best way embedding the condition for
-$k$ in the table...}
 \end{table}
-Then, given a real-valued probability~$x$, we will select an interval~$\iota_{n}\left(x\right)=[\ell,r]$
+ To understand these intervals and their interior part more clear,
+a special case $\mathscr{I}_{2}$ is also listed in Table~\ref{tab:I_2}.
+\begin{table}
+\caption{\label{tab:I_2}Intervals in $\mathscr{I}_{2}$ and their interior.
+Although intervals~$[\ell,r]$ are overlapping, their interior~$\textrm{Int}\left([\ell,r]\right)$
+are non-overlapping.}
+
+\begin{tabular}{ccc}
+\toprule 
+\addlinespace
+$k$ & $[\ell,r]$ & $\textrm{Int}\left([\ell,r]\right)$\tabularnewline\addlinespace
+\midrule
+\midrule 
+\addlinespace
+ & $\imposs$ & $\imposs$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$0$ & $\left[0,\tfrac{1}{4}\right]$ & $\left(0,\tfrac{1}{8}\right]$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$1$ & $\left[0,{\textstyle \tfrac{1}{2}}\right]$ & $\left(\tfrac{1}{8},\tfrac{3}{8}\right)$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$2$ & $\left[\tfrac{1}{4},\tfrac{3}{4}\right]$ & $\left[\tfrac{3}{8},\tfrac{5}{8}\right]$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$3$ & $\left[\tfrac{1}{2},1\right]$ & $\left(\tfrac{5}{8},\tfrac{7}{8}\right)$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$4$ & $\left[\tfrac{1}{4},1\right]$ & $\left[\tfrac{7}{8},1\right)$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+ & $\necess$ & $\necess$\tabularnewline\addlinespace
+\bottomrule
+\end{tabular}
+\end{table}
+ Then, given a real-valued probability~$x$, we will select an interval~$\iota_{n}\left(x\right)=[\ell,r]$
 if $x\in\textrm{Int}\left([\ell,r]\right)$.
 
 After we have the rule to replace a real number by an interval, we
 can induce a QIVPM from a state according to the following theorem:
 
-\begin{thm}[Finite-precision Extension of the Born rule]For any
-state $\rho$ on a three-dimensional Hilbert space, $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$
+\begin{thm}[Finite-precision Extension of the Born rule]\label{thm:Finite-precision-Born}For
+any state $\rho$ on a three-dimensional Hilbert space, $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$
 is a QIVPM, where $\circ$ is the function concatenation.\end{thm}
 
 \noindent Given $x_{0}$, $x_{1}$, and $x_{0}+x_{1}\in\left[0,1\right]$,
 it is easy to verify that
 \begin{equation}
-\iota_{n}\left(x_{0}+x_{1}\right)\subseteq\iota_{n}\left(x_{0}\right)+\iota_{n}\left(x_{1}\right)\,.
+\iota_{n}\left(x_{0}+x_{1}\right)\subseteq\iota_{n}\left(x_{0}\right)+\iota_{n}\left(x_{1}\right)\,.\label{eq:iota-add}
 \end{equation}
 This implies Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
 when $P_{0}$ and $P_{1}$ are orthogonal. When $P_{0}$ and $P_{1}$
 are not orthogonal on a three-dimensional Hilbert space, then we have
 two possibilities:
 \begin{itemize}
-\item Their complements are orthogonal reducing to the case we discussed.
+\item Their complements are orthogonal so that we can apply Eq.~(\ref{eq:iota-add})
+on their complements.
 \item One of them projects onto the subspace which the other one projects
 onto.
 \end{itemize}
-\noindent Therefore, $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$ is indeed
-a QIVPM. For example, when $n=2$, two states~$\mathbb{1}/3$ and
-$\rho_{0}$ can induce two QIVPMs~$\iota_{2}\circ\mu_{\mathbb{1}/3}^{\mathrm{B}}$
-and $\iota_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}}$, where $\mathbb{1}/3=\left(\proj{0}+\proj{1}+\proj{2}\right)/3$
-and $\rho_{0}=\frac{7}{24}\cdot\proj{0}+\frac{1}{3}\cdot\proj{1}+\frac{3}{8}\cdot\proj{2}$.
-The interval-valued probability of the induced QIVPMs, $\iota_{2}\left(\mu_{\mathbb{1}/3}^{\mathrm{B}}\left(P\right)\right)$
+\noindent No matter which case, Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
+can be deduced easily. Therefore, $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$
+is indeed a QIVPM. As a concrete example of Thm.~\ref{thm:Finite-precision-Born},
+when $n=2$, two states~$\rho_{1}$ and $\rho_{0}$ can induce two
+QIVPMs~$\iota_{2}\circ\mu_{\rho_{1}}^{\mathrm{B}}$ and $\iota_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}}$,
+where $\rho_{1}=\left(\proj{0}+\proj{1}+\proj{2}\right)/3$ and $\rho_{0}=\frac{7}{24}\cdot\proj{0}+\frac{1}{3}\cdot\proj{1}+\frac{3}{8}\cdot\proj{2}$.
+The interval-valued probability of the induced QIVPMs, $\iota_{2}\left(\mu_{\rho_{1}}^{\mathrm{B}}\left(P\right)\right)$
 and $\iota_{2}\left(\mu_{\rho_{0}}^{\mathrm{B}}\left(P\right)\right)$,
 for any projector $P$ in the minimal subspace of events containing
 $\proj{0}$, $\proj{1}$, and $\proj{2}$, $\events_{C}$, are computed
 straightforwardly in Table~\ref{tab:Compute-the-QIVPM}.
 \begin{table}
-\caption{\label{tab:Compute-the-QIVPM}Compute $\iota_{2}\circ\mu_{\mathbb{1}/3}^{\mathrm{B}}$
-and $\iota_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}}$ based on $\mu_{\mathbb{1}/3}^{\mathrm{B}}$
+\caption{\label{tab:Compute-the-QIVPM}Compute $\iota_{2}\circ\mu_{\rho_{1}}^{\mathrm{B}}$
+and $\iota_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}}$ based on $\mu_{\rho_{1}}^{\mathrm{B}}$
 and $\mu_{\rho_{0}}^{\mathrm{B}}$ on $\events_{C}$.}
 
 \begin{tabular}{ccccc}
 \toprule 
 \addlinespace
-$P$ & $\mu_{\mathbb{1}/3}^{\mathrm{B}}\left(P\right)$ & $\iota_{2}\left(\mu_{\mathbb{1}/3}^{\mathrm{B}}\left(P\right)\right)$ & $\mu_{\rho_{0}}^{\mathrm{B}}\left(P\right)$ & $\iota_{2}\left(\mu_{\rho_{0}}^{\mathrm{B}}\left(P\right)\right)$\tabularnewline\addlinespace
+$P$ & $\mu_{\rho_{1}}^{\mathrm{B}}\left(P\right)$ & $\iota_{2}\left(\mu_{\rho_{1}}^{\mathrm{B}}\left(P\right)\right)$ & $\mu_{\rho_{0}}^{\mathrm{B}}\left(P\right)$ & $\iota_{2}\left(\mu_{\rho_{0}}^{\mathrm{B}}\left(P\right)\right)$\tabularnewline\addlinespace
 \midrule
 \midrule 
 \addlinespace
@@ -1131,13 +1164,13 @@ $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$, its distance with $\rho$,
 $\left\Vert \rho-\rho'\right\Vert $, must be bounded by $1/n$. Reversely,
 if the distance between $\rho$ and $\rho'$ is bounded by $\frac{1}{12n}$,
 then $\rho'$ is consistent with $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$.
-For example, $\mathbb{1}/3$ and $\rho_{0}$ are both totally mixed
-states. Since $\left\Vert \frac{\mathbb{1}}{3}-\rho_{0}\right\Vert \le\frac{1}{24}$,
-we should have $\rho_{0}\in\coreBorn\left(\widehat{\iota}_{2}\circ\mu_{\mathbb{1}/3}^{\mathrm{B}},\events\right)$
-and $\mathbb{1}/3\in\coreBorn\left(\widehat{\iota}_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}},\events\right)$,
+For example, $\rho_{1}$ and $\rho_{0}$ are both totally mixed states.
+Since $\left\Vert \rho_{1}-\rho_{0}\right\Vert \le\frac{1}{24}$,
+we should have $\rho_{0}\in\coreBorn\left(\widehat{\iota}_{2}\circ\mu_{\rho_{1}}^{\mathrm{B}},\events\right)$
+and $\rho_{1}\in\coreBorn\left(\widehat{\iota}_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}},\events\right)$,
 and this is indeed the case for $P\in\events_{C}$ according to Table~\ref{tab:Compute-the-QIVPM}.
 In general, as $n$ goes to infinity, only the states very close to
-$\rho$ is guarantied belong to $\coreBorn\left(\widehat{\iota}_{2}\circ\mu_{\mathbb{1}/3}^{\mathrm{B}},\events\right)$,
+$\rho$ is guarantied belong to $\coreBorn\left(\widehat{\iota}_{2}\circ\mu_{\rho_{1}}^{\mathrm{B}},\events\right)$,
 and the states consistent with $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$
 will become closer and closer to $\rho$.
 
