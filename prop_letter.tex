@@ -1157,9 +1157,9 @@ narrower, eventually collapsing to $\rho$ when the intervals become
 infinitely precise real numbers covering the real line. To state this
 result, we need to introduce a notion of distance between two states~$\rho$
 and $\rho'$ as $\left\Vert \rho-\rho'\right\Vert =\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{\rho-\rho'}{\psi}\right|$~\citep{544199}.
-The following theorem that is obtained by replacing the QIVPM~$\bar{\mu}$
-in Thm.~\ref{cor:Gleason's} by a Born QIVPM~$\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$,
-and estimate the states consistent with it.
+By replacing the QIVPM~$\bar{\mu}$ in Thm.~\ref{cor:Gleason's}
+by a Born QIVPM~$\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$, we obtain
+the following theorem that estimates the states consistent with $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$.
 
 \begin{thm}[Finite-precision Extension of Gleason's theorem for the
 Born QIVPMs]\label{thm:Finite-precision-Gleason}In a Hilbert space
@@ -1167,15 +1167,16 @@ $\Hilb$ of dimension $3$, given any state~$\rho$, if a state~$\rho'\in\coreBorn\
 then their distance~$\left\Vert \rho-\rho'\right\Vert \le\frac{1}{n}$.\end{thm}
 
 \noindent If a state~$\rho'$ is consistent with $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$,
-the difference between the Born quantum probabilities on any 1-dimensioal
+the difference between their Born quantum probabilities on any 1-dimensioal
 projector~$\proj{\psi}$, $\left|\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)-\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)\right|$,
 must be bounded by $1/n$ which implies $\left\Vert \rho-\rho'\right\Vert \le\frac{1}{n}$
-by definition. As a concrete example of Thm.~\ref{thm:Finite-precision-Gleason},
-since $\rho_{1}\in\coreBorn\left(\widehat{\iota}_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}},\events\right)$
-and $\rho_{0}\in\coreBorn\left(\widehat{\iota}_{2}\circ\mu_{\rho_{1}}^{\mathrm{B}},\events\right)$
-which is easy to see on the commuting subspace of event~$\events_{C}$
-according to Table~\ref{tab:Compute-the-QIVPM}, we have $\left\Vert \rho_{0}-\rho_{1}\right\Vert \le\frac{1}{2}$,
-and this is indeed the case because $\left\Vert \rho_{0}-\rho_{1}\right\Vert =\frac{1}{24}$~\citep{HOSTunpublished}.
+by definition. For example, Table~\ref{tab:Compute-the-QIVPM} shows
+that $\rho_{0}$ is consistent with $\iota_{2}\circ\mu_{\rho_{1}}^{\mathrm{B}}$
+and $\rho_{1}$ is consistent with $\iota_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}}$
+both on every projectors in $\events_{C}$. Indeed, they are consistent
+with each other on every projectors in $\events$ that implies $\left\Vert \rho_{0}-\rho_{1}\right\Vert \le\frac{1}{2}$
+by Thm.\ref{thm:Finite-precision-Gleason}. This is true because the
+exact value of $\left\Vert \rho_{0}-\rho_{1}\right\Vert $ is $\frac{1}{24}$~\citep{544199}.
 
 If a QIVPM is not \emph{a priori} known to be induced by a state,
 there are some QIVPMs that cannot be consistent with any state.
@@ -1191,7 +1192,9 @@ The function~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$ defined
 in Table~\ref{tab:non-Born-QIVPM} can be verified as a QIVPM straightforwardly.
 \begin{table}
 \caption{\label{tab:non-Born-QIVPM}Define a non-Born QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$
-on the three-dimensional Hilbert space.}
+on the three-dimensional Hilbert space. The projectors mapping to
+the same interval is listed in the column labeled by $P$ and separated
+by commas.}
 
 \begin{tabular}{cc}
 \toprule 
@@ -1200,10 +1203,11 @@ $P$ & $\bar{\mu}\left(P\right)$\tabularnewline\addlinespace
 \midrule
 \midrule 
 \addlinespace
-$\mathbb{0}$, $\proj{0}$, $\proj{\ps}$, $\proj{\ps'}$ & $\imposs$\tabularnewline\addlinespace
+$\mathbb{0}$, $\proj{0}$, $\proj{\ps}$, and $\proj{\ps'}$ & $\imposs$\tabularnewline\addlinespace
 \midrule 
 \addlinespace
-$\mathbb{1}$, $\mathbb{1}-\proj{0}$, $\mathbb{1}-\proj{\ps}$, $\mathbb{1}-\proj{\ps'}$ & $\necess$\tabularnewline\addlinespace
+$\mathbb{1}$, $\mathbb{1}-\proj{0}$, $\mathbb{1}-\proj{\ps}$, and
+$\mathbb{1}-\proj{\ps'}$ & $\necess$\tabularnewline\addlinespace
 \midrule 
 \addlinespace
 All other projectors & $\unknown$\tabularnewline\addlinespace
@@ -1223,9 +1227,9 @@ there is no state consistent with the QIVPM on all projectors~$P\in\events$,
 so Gleason's theorem cannot be extended to general QIVPMs.
 
 Notice that if we restrict $\bar{\mu}$ on the commuting subspace
-of events~$\events_{C}$, the state~$\frac{1}{2}\cdot\proj{1}+\frac{1}{2}\cdot\proj{2}\in\coreBorn\left(\bar{\mu},\events_{C}\right)$
-so that $\coreBorn\left(\bar{\mu},\events_{C}\right)$ is non-empty.
-In general, for any commuting subspace of events~$\events_{C}'$,
+of events~$\events_{C}$, the state~$\frac{1}{2}\cdot\proj{1}+\frac{1}{2}\cdot\proj{2}$
+is consistent with $\bar{\mu}$ so that $\coreBorn\left(\bar{\mu},\events_{C}\right)$
+is non-empty. In general, for any commuting subspace of events~$\events_{C}'$,
 $\coreBorn\left(\bar{\mu},\events_{C}'\right)$ is non-empty according
 to the classical Thm.~\ref{thm:Shapley}. The difference between
 classical and quantum highlights the following fact: Although classically
