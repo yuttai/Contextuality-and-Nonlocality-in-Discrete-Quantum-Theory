@@ -946,6 +946,7 @@ the theory becomes non-contextual.
 
 \label{sec:Gleason}
 
+\begin{comment}
 While the finite-precision extension of the Kochen-Specker theorem
 asserts the non-existence of a certain kind of QIVPMs, we also want
 to understand what a QIVPM could be when it exists. A conventional
@@ -971,6 +972,68 @@ to error analysis in experimental results, but it highlights some
 new phenomena regarding the foundation of quantum mechanics, and it
 is necessary to embed the idea of the resources available for realistic
 measurement into the formulation of quantum theory.
+\end{comment}
+
+Notice that if we restrict $\bar{\mu}$ on the commuting subspace
+of events~$\events_{C}$, the state~$\frac{1}{2}\cdot\proj{1}+\frac{1}{2}\cdot\proj{2}$
+is consistent with $\bar{\mu}$ so that $\coreBorn\left(\bar{\mu},\events_{C}\right)$
+is non-empty. In general, for any commuting subspace of events~$\events_{C}'$,
+$\coreBorn\left(\bar{\mu},\events_{C}'\right)$ is non-empty according
+to the classical Thm.~\ref{thm:Shapley}. The difference between
+classical and quantum highlights the following fact: Although classically
+we could build a theory and deal the finite-precision measurement
+in error analysis, it is necessary to embed the finite-precision measurement
+into the foundation of quantum theory.
+
+If a QIVPM is not \emph{a priori} known to be induced by a state,
+there are some QIVPMs that cannot be consistent with any state.
+
+\begin{thm}[Non-extensible of Gleason's theorem to general QIVPMs]\label{thm:Non-extensible-of-Gleason's}In
+a Hilbert space $\Hilb$ of dimension $3$, there is a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+such that $\coreBorn\left(\bar{\mu},\events\right)=\emptyset$.\end{thm}
+
+\noindent To prove the theorem, we first need to construct a QIVPM,
+and then verify that no states consistent with it on all projectors.
+Given an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $,
+let $\mathscr{I}_{0}=\left\{ \necess,\imposs,\unknown\right\} $,
+$\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$, $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$.
+The function~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$ defined
+in Table~\ref{tab:non-Born-QIVPM} can be verified as a QIVPM straightforwardly.
+\begin{table}
+\caption{\label{tab:non-Born-QIVPM}Define a non-Born QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$
+on the three-dimensional Hilbert space. The projectors mapping to
+the same interval is listed in the column labeled by $P$ and separated
+by commas.}
+
+\begin{tabular}{cc}
+\toprule 
+\addlinespace
+$P$ & $\bar{\mu}\left(P\right)$\tabularnewline\addlinespace
+\midrule
+\midrule 
+\addlinespace
+$\mathbb{0}$, $\proj{0}$, $\proj{\ps}$, and $\proj{\ps'}$ & $\imposs$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$\mathbb{1}$, $\mathbb{1}-\proj{0}$, $\mathbb{1}-\proj{\ps}$, and
+$\mathbb{1}-\proj{\ps'}$ & $\necess$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+All other projectors & $\unknown$\tabularnewline\addlinespace
+\bottomrule
+\end{tabular}
+\end{table}
+Next we will prove $\coreBorn\left(\bar{\mu},\events\right)$ is an
+empty set by contradiction. Suppose there is a state $\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}\in\coreBorn\left(\bar{\mu},\events\right)$,
+where $\sum_{j=1}^{N}q_{j}=1$ and $q_{j}>0$. Since $\mu_{\rho}^{\mathrm{B}}(P)\in\bar{\mu}(P)$
+for any~$P$, the state~$\rho$ must satisfy: 
+\begin{equation}
+\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps'})=0\,,
+\end{equation}
+which implies $\ip{\phi_{j}}{0}=\ip{\phi_{j}}{\ps}=\ip{\phi_{j}}{\ps'}=0$
+for all $j$. The last equation never holds proving the theorem. Thus,
+there is no state consistent with the QIVPM on all projectors~$P\in\events$,
+so Gleason's theorem cannot be extended to general QIVPMs.
 
 The first step toward a finite precision Born rule is to find a way
 of replacing the computed probability by an interval. This can be
@@ -1142,15 +1205,6 @@ $\mathbb{1}$ & $1$ & $\necess$ & $1$ & $\necess$\tabularnewline\addlinespace
 \end{tabular}
 \end{table}
 
-In the limiting case when the intervals are infinitely precise, i.e.,
-$\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
-we can formulate Gleason's theorem in our framework as follows.
-
-\begin{thm}[$\mathscr{I}_{\infty}$ Variant of Gleason]\label{cor:Gleason's}In
-a Hilbert space $\Hilb$ of dimension $d\geq3$, given a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\infty}$,
-the state consistent with it on every projector, $\coreBorn\left(\bar{\mu},\events\right)$,
-is unique. \end{thm}
-
 Our framework allows us to generalize the above theorem to Born QIVPMs~$\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$:
 The collection of states consistent $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$
 gets closer and closer to $\rho$ as the intervals get narrower and
@@ -1167,6 +1221,9 @@ Born QIVPMs]\label{thm:Finite-precision-Gleason}In a Hilbert space
 $\Hilb$ of dimension $3$, given any state~$\rho$, if a state~$\rho'\in\coreBorn\left(\iota_{n}\circ\mu_{\rho}^{\mathrm{B}},\events\right)$,
 then their distance~$\left\Vert \rho-\rho'\right\Vert \le\frac{1}{n}$.\end{thm}
 
+\yutsung{Compare the norm we used with other distances. For example,
+the trace distance defined in Sec.~9.2.1 in Nielsen and Chuang~\citep{544199}.}
+
 \noindent If a state~$\rho'$ is consistent with $\iota_{n}\circ\mu_{\rho}^{\mathrm{B}}$,
 the difference between their Born quantum probabilities on any 1-dimensioal
 projector~$\proj{\psi}$, $\left|\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)-\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)\right|$,
@@ -1180,66 +1237,14 @@ by Thm.~\ref{thm:Finite-precision-Gleason}. This is true because
 the exact value of $\left\Vert \rho_{0}-\rho_{1}\right\Vert $ is
 $\frac{1}{24}$~\citep{544199}.
 
-If a QIVPM is not \emph{a priori} known to be induced by a state,
-there are some QIVPMs that cannot be consistent with any state.
+In the limiting case when the intervals are infinitely precise, i.e.,
+$\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
+we can formulate Gleason's theorem in our framework as follows.
 
-\begin{thm}[Non-extensible of Gleason's theorem to general QIVPMs]\label{thm:Non-extensible-of-Gleason's}In
-a Hilbert space $\Hilb$ of dimension $3$, there is a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-such that $\coreBorn\left(\bar{\mu},\events\right)=\emptyset$.\end{thm}
-
-\noindent To prove the theorem, we first need to construct a QIVPM,
-and then verify that no states consistent with it on all projectors.
-Given an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $,
-let $\mathscr{I}_{0}=\left\{ \necess,\imposs,\unknown\right\} $,
-$\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$, $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$.
-The function~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$ defined
-in Table~\ref{tab:non-Born-QIVPM} can be verified as a QIVPM straightforwardly.
-\begin{table}
-\caption{\label{tab:non-Born-QIVPM}Define a non-Born QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$
-on the three-dimensional Hilbert space. The projectors mapping to
-the same interval is listed in the column labeled by $P$ and separated
-by commas.}
-
-\begin{tabular}{cc}
-\toprule 
-\addlinespace
-$P$ & $\bar{\mu}\left(P\right)$\tabularnewline\addlinespace
-\midrule
-\midrule 
-\addlinespace
-$\mathbb{0}$, $\proj{0}$, $\proj{\ps}$, and $\proj{\ps'}$ & $\imposs$\tabularnewline\addlinespace
-\midrule 
-\addlinespace
-$\mathbb{1}$, $\mathbb{1}-\proj{0}$, $\mathbb{1}-\proj{\ps}$, and
-$\mathbb{1}-\proj{\ps'}$ & $\necess$\tabularnewline\addlinespace
-\midrule 
-\addlinespace
-All other projectors & $\unknown$\tabularnewline\addlinespace
-\bottomrule
-\end{tabular}
-\end{table}
-Next we will prove $\coreBorn\left(\bar{\mu},\events\right)$ is an
-empty set by contradiction. Suppose there is a state $\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}\in\coreBorn\left(\bar{\mu},\events\right)$,
-where $\sum_{j=1}^{N}q_{j}=1$ and $q_{j}>0$. Since $\mu_{\rho}^{\mathrm{B}}(P)\in\bar{\mu}(P)$
-for any~$P$, the state~$\rho$ must satisfy: 
-\begin{equation}
-\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps'})=0\,,
-\end{equation}
-which implies $\ip{\phi_{j}}{0}=\ip{\phi_{j}}{\ps}=\ip{\phi_{j}}{\ps'}=0$
-for all $j$. The last equation never holds proving the theorem. Thus,
-there is no state consistent with the QIVPM on all projectors~$P\in\events$,
-so Gleason's theorem cannot be extended to general QIVPMs.
-
-Notice that if we restrict $\bar{\mu}$ on the commuting subspace
-of events~$\events_{C}$, the state~$\frac{1}{2}\cdot\proj{1}+\frac{1}{2}\cdot\proj{2}$
-is consistent with $\bar{\mu}$ so that $\coreBorn\left(\bar{\mu},\events_{C}\right)$
-is non-empty. In general, for any commuting subspace of events~$\events_{C}'$,
-$\coreBorn\left(\bar{\mu},\events_{C}'\right)$ is non-empty according
-to the classical Thm.~\ref{thm:Shapley}. The difference between
-classical and quantum highlights the following fact: Although classically
-we could build a theory and deal the finite-precision measurement
-in error analysis, it is necessary to embed the finite-precision measurement
-into the foundation of quantum theory.
+\begin{thm}[$\mathscr{I}_{\infty}$ Variant of Gleason]\label{cor:Gleason's}In
+a Hilbert space $\Hilb$ of dimension $d\geq3$, given a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\infty}$,
+the state consistent with it on every projector, $\coreBorn\left(\bar{\mu},\events\right)$,
+is unique. \end{thm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
