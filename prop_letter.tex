@@ -955,9 +955,10 @@ In this section, we want to shift our attention to consider states
 consistent with $\bar{\mu}$ on every event, $\coreBorn\left(\bar{\mu},\events\right)$,
 so that these states could characterize $\bar{\mu}$ comprehensively.
 When the intervals are infinitely precise, i.e., $\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
-QIVPMs become to quantum probability measures~\citep{HOSTunpublished},
-and Gleason's theorem claims that there is always a unique state consistent
-with $\bar{\mu}:\events\rightarrow\mathscr{I}_{\infty}$~\citep{gleason1957,Redhead1987-REDINA,peres1995quantum}.
+a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\infty}$ becomes
+quantum probability measure~\citep{HOSTunpublished}, and Gleason's
+theorem claims that there is always a unique state consistent with
+$\bar{\mu}$~\citep{gleason1957,Redhead1987-REDINA,peres1995quantum}.
 However, if we consider general QIVPMs mapping to an \emph{arbitrary}
 set of intervals, there is a QIVPM that no state can be consistent
 with it.
@@ -970,11 +971,11 @@ such that $\coreBorn\left(\bar{\mu},\events\right)=\emptyset$.\end{thm}
 and then verify that no states consistent with it on all projectors.
 Given an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $,
 let $\mathscr{I}_{0}=\left\{ \necess,\imposs,\unknown\right\} $,
-$\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$, $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$.
+$\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$, and $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$.
 The function~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$ defined
 in Table~\ref{tab:non-Born-QIVPM} can be verified as a QIVPM straightforwardly.
 \begin{table}
-\caption{\label{tab:non-Born-QIVPM}Define a non-Born QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$
+\caption{\label{tab:non-Born-QIVPM}Define a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$
 on the three-dimensional Hilbert space. The projectors mapping to
 the same interval is listed in the column labeled by $P$ and separated
 by commas.}
@@ -1009,12 +1010,9 @@ for all $j$. The last equation never holds proving the theorem.
 
 In other words, if the measurement intervals are too imprecise, the
 results we get might contradict to each other, and exclude all possible
-states consistent with the measurement results. There are many ways
-to avoid these kind of too imprecise intervals~\citep{HOSTunpublished}.
-Following, we consider a concrete family of intervals and QIVPMs~$\bar{\mu}$
-such that if we monotonically shrink the length of intervals, the
-states consistent with $\bar{\mu}$ will be closer and closer to $\rho$
-which inducing $\bar{\mu}$.
+states consistent with the measurement results. To avoid this problem,
+instead of proposing an abstract framework~\citep{HOSTunpublished},
+we start from a concrete family of intervals as follow:
 \begin{equation}
 \begin{aligned}\mathscr{I}_{n}= & \set{\left[\tfrac{k-1}{2n},\tfrac{k+1}{2n}\right]\cap\left[0,1\right]}{k=0,\ldots,2n}\\
  & \cup\{\imposs,\necess\}
@@ -1022,15 +1020,14 @@ which inducing $\bar{\mu}$.
 \end{equation}
 which are overlapping intervals with length~$1/n$ except for the
 intervals with length~$\left(2n\right)^{-1}$ at each end. As shown
-in Table~\ref{tab:I_n}, we select the correct interval from these
-overlapping intervals~$[\ell,r]$, and define $\textrm{Int}\left([\ell,r]\right)$,
-the non-overlapping interior part of an interval.
+in Table~\ref{tab:I_n}, for each interval~$[\ell,r]$, we define
+$\textrm{Int}\left([\ell,r]\right)$, the non-overlapping interior
+part of $[\ell,r]$.
 \begin{table}
 \caption{\label{tab:I_n}Intervals in $\mathscr{I}_{n}$, their lengths, and
 their interiors, where $2\mid k$ means $k$ is even, and $2\nmid k$
 means $k$ is odd. Although intervals~$[\ell,r]$ are overlapping,
-their interior~$\textrm{Int}\left([\ell,r]\right)$ are non-overlapping.
-See Table~\ref{tab:I_2} for a concrete example when $n=2$.}
+their interior~$\textrm{Int}\left([\ell,r]\right)$ are non-overlapping.}
 
 \begin{tabular}{cccc}
 \toprule 
@@ -1064,25 +1061,27 @@ $2n$ & $\left[\tfrac{2n-1}{2n},1\right]$ & $\tfrac{1}{2n}$ & $\left[\tfrac{2n-0.
 \bottomrule
 \end{tabular}
 \end{table}
-Then, given a real-valued probability~$x$, we will select the interval~$\iota_{n}\left(x\right)=[\ell,r]$
-if $x\in\textrm{Int}\left([\ell,r]\right)$.
+Since the interior part of intervals are non-overlapping, we can define
+a function~$\iota_{n}:\left[0,1\right]\rightarrow\mathscr{I}_{n}$
+by selecting the interval~$\iota_{n}\left(x\right)=[\ell,r]$ if
+$x\in\textrm{Int}\left([\ell,r]\right)$.
 
-After we have the rule to replace a real number by an interval, we
-can induce a QIVPM from a state according to the following theorem:
+After we have the way mapping a real-valued probability to an interval-valued
+one, we can induce a QIVPM from a state according to the following
+theorem:
 
 \begin{thm}[Finite-precision Extension of the Born rule]\label{thm:Finite-precision-Born}For
 any state $\rho$ on a three-dimensional Hilbert space, a function~$\left[\mu_{\rho}^{\mathrm{B}}\right]_{n}:\events\rightarrow\mathscr{I}_{n}$
 defined by $\left[\mu_{\rho}^{\mathrm{B}}\right]_{n}\left(P\right)=\iota_{n}\left(\mu_{\rho}^{\mathrm{B}}\left(P\right)\right)$
-is a QIVPM.\end{thm}
+is a QIVPM, called the Born QIVPM.\end{thm}
 
 \noindent To prove that $\left[\mu_{\rho}^{\mathrm{B}}\right]_{n}$
 is a QIVPM, it is sufficient to check Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion}).
-Given $x_{0}$, $x_{1}$, and $x_{0}+x_{1}\in\left[0,1\right]$, it
-is easy to verify that
+Given $x_{0}$, $x_{1}$, and $x_{0}+x_{1}\in\left[0,1\right]$,
 \begin{equation}
-\iota_{n}\left(x_{0}+x_{1}\right)\subseteq\iota_{n}\left(x_{0}\right)+\iota_{n}\left(x_{1}\right)\,.\label{eq:iota-add}
+\iota_{n}\left(x_{0}+x_{1}\right)\subseteq\iota_{n}\left(x_{0}\right)+\iota_{n}\left(x_{1}\right)\label{eq:iota-add}
 \end{equation}
-This implies Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
+implies Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
 when $P_{0}$ and $P_{1}$ are orthogonal. When $P_{0}$ and $P_{1}$
 are not orthogonal on a three-dimensional Hilbert space, we have two
 possibilities:
@@ -1096,29 +1095,37 @@ onto.
 easily so that $\left[\mu_{\rho}^{\mathrm{B}}\right]_{n}$ is indeed
 a QIVPM.
 
-The collection of states consistent $\left[\mu_{\rho}^{\mathrm{B}}\right]_{n}$
+Because $\rho\in\coreBorn\left(\left[\mu_{\rho}^{\mathrm{B}}\right]_{n},\events\right)$,
+there is always a state consistent with $\left[\mu_{\rho}^{\mathrm{B}}\right]_{n}$.
+Moreover by introducing a notion of distance between two states~$\rho$
+and $\rho'$ as $\left\Vert \rho-\rho'\right\Vert =\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{\rho-\rho'}{\psi}\right|$~\citep{544199},
+the collection of states consistent with $\left[\mu_{\rho}^{\mathrm{B}}\right]_{n}$
 gets closer and closer to $\rho$ as the intervals get narrower and
 narrower, eventually collapsing to $\rho$ when the intervals become
-infinitely precise real numbers covering the real line. To state this
-result, we need to introduce a notion of distance between two states~$\rho$
-and $\rho'$ as $\left\Vert \rho-\rho'\right\Vert =\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{\rho-\rho'}{\psi}\right|$~\citep{544199}.
-By replacing the QIVPM~$\bar{\mu}$ in Thm.~\ref{cor:Gleason's}
-by a Born QIVPM~$\left[\mu_{\rho}^{\mathrm{B}}\right]_{n}$, we obtain
-the following theorem that estimates the states consistent with $\left[\mu_{\rho}^{\mathrm{B}}\right]_{n}$.
+infinitely precise real numbers covering the real line.
 
 \begin{thm}[Finite-precision Extension of Gleason's theorem for the
 Born QIVPMs]\label{thm:Finite-precision-Gleason}In a Hilbert space
 $\Hilb$ of dimension $3$, given any state~$\rho$, if a state~$\rho'\in\coreBorn\left(\left[\mu_{\rho}^{\mathrm{B}}\right]_{n},\events\right)$,
 then their distance~$\left\Vert \rho-\rho'\right\Vert \le\frac{1}{n}$.\end{thm}
 
+\noindent Given state~$\rho'$ consistent with $\left[\mu_{\rho}^{\mathrm{B}}\right]_{n}$,
+the difference between their Born quantum probabilities on any 1-dimensioal
+projector~$\proj{\psi}$ is $\left|\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)-\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)\right|$,
+and must be bounded by $1/n$ which implies $\left\Vert \rho-\rho'\right\Vert \le\frac{1}{n}$
+by definition.
+
 \yutsung{Compare the norm we used with other distances. For example,
 the trace distance defined in Sec.~9.2.1 in Nielsen and Chuang~\citep{544199}.}
 
-\noindent If a state~$\rho'$ is consistent with $\left[\mu_{\rho}^{\mathrm{B}}\right]_{n}$,
-the difference between their Born quantum probabilities on any 1-dimensioal
-projector~$\proj{\psi}$, $\left|\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)-\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)\right|$,
-must be bounded by $1/n$ which implies $\left\Vert \rho-\rho'\right\Vert \le\frac{1}{n}$
-by definition.
+In the limiting case when the intervals are infinitely precise, the
+original Gleason theorem is recovered, and can be formulated in our
+framework as follows.
+
+\begin{thm}[$\mathscr{I}_{\infty}$ Variant of Gleason]\label{cor:Gleason's}In
+a Hilbert space $\Hilb$ of dimension $d\geq3$, given a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\infty}$,
+the state consistent with it on every projector, $\coreBorn\left(\bar{\mu},\events\right)$,
+is unique. \end{thm}
 
 \yutsung{Clean up until here.}
 
@@ -1259,23 +1266,14 @@ $\mathbb{1}$ & $1$ & $\necess$ & $1$ & $\necess$\tabularnewline\addlinespace
 
 Our framework allows us to generalize the above theorem to Born QIVPMs~$\left[\mu_{\rho}^{\mathrm{B}}\right]_{n}$: 
 
-\noindent  For example, Table~\ref{tab:Compute-the-QIVPM} shows
-that $\rho_{0}$ is consistent with $\left[\mu_{\rho_{1}}^{\mathrm{B}}\right]_{2}$
+\noindent For example, Table~\ref{tab:Compute-the-QIVPM} shows that
+$\rho_{0}$ is consistent with $\left[\mu_{\rho_{1}}^{\mathrm{B}}\right]_{2}$
 and $\rho_{1}$ is consistent with $\left[\mu_{\rho_{0}}^{\mathrm{B}}\right]_{2}$
 both on every projectors in $\events_{C}$. Indeed, they are consistent
 with each other on every projectors in $\events$ that implies $\left\Vert \rho_{0}-\rho_{1}\right\Vert \le\frac{1}{2}$
 by Thm.~\ref{thm:Finite-precision-Gleason}. This is true because
 the exact value of $\left\Vert \rho_{0}-\rho_{1}\right\Vert $ is
 $\frac{1}{24}$~\citep{544199}.
-
-In the limiting case when the intervals are infinitely precise, i.e.,
-$\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
-we can formulate Gleason's theorem in our framework as follows.
-
-\begin{thm}[$\mathscr{I}_{\infty}$ Variant of Gleason]\label{cor:Gleason's}In
-a Hilbert space $\Hilb$ of dimension $d\geq3$, given a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\infty}$,
-the state consistent with it on every projector, $\coreBorn\left(\bar{\mu},\events\right)$,
-is unique. \end{thm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
