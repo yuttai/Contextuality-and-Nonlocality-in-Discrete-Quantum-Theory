@@ -1983,19 +1983,95 @@ so that
 \end{itemize}
 \end{proof}
 
-\begin{example}\label{ex:equilateral}For any positive integer~$n$,
-there is an additive interval-valued function\nb$\widehat{\iota}_{n}:\left[0,1\right]\rightarrow\widehat{\mathscr{I}}_{n}$
-defined by the following:
-\begin{itemize}
-\item when $x=0$ or $x=1$, $\widehat{\iota}_{n}\left(x\right)=\left[x,x\right]$;
-\item when $0<x<1$, we have $\widehat{\iota}_{n}\left(x\right)=\left[\frac{k-1}{2n},\frac{k+1}{2n}\right]\cap\left[0,1\right]$,
-where $k$ is defined by either one of the following:
-\begin{itemize}
-\item $2\mid k$ and $k-0.5\le2nx\le k+0.5$;
-\item $2\nmid k$ and $k-0.5<2nx<k+0.5$,
-\end{itemize}
-\end{itemize}
-where $\widehat{\mathscr{I}}_{n}=\set{\left[\frac{k-1}{2n},\frac{k+1}{2n}\right]\cap\left[0,1\right]}{k=0,\ldots,2n}\cup\left\{ \left[0,0\right],\left[1,1\right]\right\} $.\end{example}
+\begin{example}\label{ex:equilateral}Consider the following intervals
+\begin{equation}\eqalign{ 
+\widehat{\mathscr{I}}_{n}= & \set{\left[\tfrac{k-1}{2n},\tfrac{k+1}{2n}\right]\cap\left[0,1\right]}{k=0,\ldots,2n}\\
+ & \cup\{\imposs,\necess\}
+}\end{equation}
+which are overlapping intervals with length~$1/n$ except for the
+intervals with length~$\left(2n\right)^{-1}$ at each end. As shown
+in Table~\ref{tab:I_n}, for each interval~$[\ell,r]$, we define
+$\textrm{Int}\left([\ell,r]\right)$, the non-overlapping interior
+part of $[\ell,r]$.
+\begin{table}
+\caption{\label{tab:I_n}Intervals in $\widehat{\mathscr{I}}_{n}$, their lengths,
+and their interiors, where $2\mid k$ means $k$ is even, and $2\nmid k$
+means $k$ is odd. Although intervals~$[\ell,r]$ are overlapping,
+their interior~$\textrm{Int}\left([\ell,r]\right)$ are non-overlapping.}
+\centering{}%
+\begin{tabular}{cccc}
+\toprule 
+\addlinespace
+$k$ & $[\ell,r]$ & $r-\ell$ & $\textrm{Int}\left([\ell,r]\right)$\tabularnewline\addlinespace
+\midrule
+\midrule 
+\addlinespace
+ & $\imposs$ & $0$ & $\imposs$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$0$ & $\left[0,\tfrac{1}{2n}\right]$ & $\tfrac{1}{2n}$ & $\left(0,\tfrac{0.5}{2n}\right]$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+\begin{tabular}{c}
+$0<k<2n$\tabularnewline
+and $2\nmid k$\tabularnewline
+\end{tabular} & $\left[\tfrac{k-1}{2n},\tfrac{k+1}{2n}\right]$ & $\tfrac{1}{n}$ & $\left(\tfrac{k-0.5}{2n},\tfrac{k+0.5}{2n}\right)$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+\begin{tabular}{c}
+$0<k<2n$\tabularnewline
+and $2\mid k$\tabularnewline
+\end{tabular} & \multirow{1}{*}{$\left[\tfrac{k-1}{2n},\tfrac{k+1}{2n}\right]$} & $\tfrac{1}{n}$ & $\left[\tfrac{k-0.5}{2n},\tfrac{k+0.5}{2n}\right]$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$2n$ & $\left[\tfrac{2n-1}{2n},1\right]$ & $\tfrac{1}{2n}$ & $\left[\tfrac{2n-0.5}{2n},1\right)$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+ & $\necess$ & $0$ & $\necess$\tabularnewline\addlinespace
+\bottomrule
+\end{tabular}
+\end{table}
+Since their interior parts are non-overlapping, we can define a function~$\widehat{\iota}_{n}:\left[0,1\right]\rightarrow\widehat{\mathscr{I}}_{n}$
+by $\widehat{\iota}_{n}\left(x\right)=[\ell,r]$ if $x\in\textrm{Int}\left([\ell,r]\right)$
+to map a real-valued probability to an interval-valued one. Table~\ref{tab:I_2}
+lists a special case $\widehat{\mathscr{I}}_{2}$ to illustrate these
+intervals and their interior parts more clearly.
+\begin{table}
+\caption{\label{tab:I_2}Intervals in $\widehat{\mathscr{I}}_{2}$, , their
+lengths, and their interiors. Although intervals~$[\ell,r]$ are
+overlapping, their interior~$\textrm{Int}\left([\ell,r]\right)$
+are non-overlapping.}
+\centering{}%
+\begin{tabular}{cccc}
+\toprule 
+\addlinespace
+$k$ & $[\ell,r]$ & $r-\ell$ & $\textrm{Int}\left([\ell,r]\right)$\tabularnewline\addlinespace
+\midrule
+\midrule 
+\addlinespace
+ & $\imposs$ & $0$ & $\imposs$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$0$ & $\left[0,\tfrac{1}{4}\right]$ & $\tfrac{1}{4}$ & $\left(0,\tfrac{1}{8}\right]$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$1$ & $\left[0,{\textstyle \tfrac{1}{2}}\right]$ & $\tfrac{1}{2}$ & $\left(\tfrac{1}{8},\tfrac{3}{8}\right)$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$2$ & $\left[\tfrac{1}{4},\tfrac{3}{4}\right]$ & $\tfrac{1}{2}$ & $\left[\tfrac{3}{8},\tfrac{5}{8}\right]$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$3$ & $\left[\tfrac{1}{2},1\right]$ & $\tfrac{1}{2}$ & $\left(\tfrac{5}{8},\tfrac{7}{8}\right)$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$4$ & $\left[\tfrac{1}{4},1\right]$ & $\tfrac{1}{4}$ & $\left[\tfrac{7}{8},1\right)$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+ & $\necess$ & $0$ & $\necess$\tabularnewline\addlinespace
+\bottomrule
+\end{tabular}
+\end{table}
+\end{example}
 
 \begin{proof}~
 \begin{itemize}
