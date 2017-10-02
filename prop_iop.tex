@@ -18,6 +18,9 @@
 \usepackage{setstack}
 \usepackage{enumitem}
 \usepackage{amstext}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
 
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}
@@ -2232,8 +2235,9 @@ for $1\le p<\infty$. The common matrix norms of $A$ are all different
 from $3/2$ so that our norm defined in definition~\ref{def:norm}
 is different from all of them.\end{example}
 
-\begin{lemma}Given a Hilbert space with the set of all projectors\nb$\events$,
-and an additive interval-valued function\nb$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
+\begin{lemma}\label{thm:Finite-precision-Gleason}Given a Hilbert
+space with the set of all projectors\nb$\events$, and an additive
+interval-valued function\nb$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
 with the maximum length of intervals in $\mathscr{I}$ is $\delta$.
 For two mixed states\nb$\rho$ and $\rho'$, if $\rho'\in\coreBorn\left(\iota\circ\mu_{\rho}^{\mathrm{B}},\events\right)$,
 then $\left\Vert \rho-\rho'\right\Vert \le\delta$.\end{lemma}
@@ -2262,7 +2266,63 @@ we can estimate the states consistent with a QIVPM more tightly.
 the maximum length of intervals in $\widehat{\mathscr{I}}_{n}$ is
 $1/n$. Therefore, for any totally mixed state\nb$\rho$ on a $d$-dimensional
 Hilbert space, if $\rho'\in\coreBorn\left(\widehat{\iota}_{n}\circ\mu_{\rho}^{\mathrm{B}},\events\right)$,
-then $\left\Vert \rho-\rho'\right\Vert \le1/n$.\end{example}
+then $\left\Vert \rho-\rho'\right\Vert \le1/n$.
+
+For example, when $n=2$, two states~$\rho_{0}=\frac{1}{3}\cdot\proj{0}+\frac{1}{3}\cdot\proj{1}+\frac{1}{3}\cdot\proj{2}$
+and $\rho_{1}=\frac{7}{24}\cdot\proj{0}+\frac{1}{3}\cdot\proj{1}+\frac{3}{8}\cdot\proj{2}$
+can induce two QIVPMs~$\widehat{\iota}_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}}$
+and $\widehat{\iota}_{2}\circ\mu_{\rho_{1}}^{\mathrm{B}}$. Given
+any projector $P$ in the minimal subspace of events containing $\proj{0}$,
+$\proj{1}$, and $\proj{2}$, $\events_{C}$, the interval-valued
+probability of the induced QIVPMs, $\widehat{\iota}_{2}\left(\mu_{\rho_{0}}^{\mathrm{B}}\left(P\right)\right)$
+and $\widehat{\iota}_{2}\left(\mu_{\rho_{1}}^{\mathrm{B}}\left(P\right)\right)$,
+can be computed straightforwardly in Table~\ref{tab:Compute-the-QIVPM}.
+\begin{table}
+\caption{\label{tab:Compute-the-QIVPM}Compute $\widehat{\iota}_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}}$
+and $\widehat{\iota}_{2}\circ\mu_{\rho_{1}}^{\mathrm{B}}$ based on
+$\mu_{\rho_{0}}^{\mathrm{B}}$ and $\mu_{\rho_{1}}^{\mathrm{B}}$
+on $\events_{C}$.}
+\centering{}%
+\begin{tabular}{ccccc}
+\toprule 
+\addlinespace
+$P$ & $\mu_{\rho_{0}}^{\mathrm{B}}\left(P\right)$ & $\widehat{\iota}_{2}\left(\mu_{\rho_{0}}^{\mathrm{B}}\left(P\right)\right)$ & $\mu_{\rho_{1}}^{\mathrm{B}}\left(P\right)$ & $\widehat{\iota}_{2}\left(\mu_{\rho_{1}}^{\mathrm{B}}\left(P\right)\right)$\tabularnewline\addlinespace
+\midrule
+\midrule 
+\addlinespace
+$\mathbb{0}$ & $0$ & $\imposs$ & $0$ & $\imposs$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$\proj{0}$ & $\frac{1}{3}$ & $\left[0,\frac{1}{2}\right]$ & $\frac{7}{24}$ & $\left[0,\frac{1}{2}\right]$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$\proj{1}$ & $\frac{1}{3}$ & $\left[0,\frac{1}{2}\right]$ & $\frac{1}{3}$ & $\left[0,\frac{1}{2}\right]$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$\proj{2}$ & $\frac{1}{3}$ & $\left[0,\frac{1}{2}\right]$ & $\frac{3}{8}$ & $\left[\tfrac{1}{4},\tfrac{3}{4}\right]$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$\mathbb{1}-\proj{2}$ & $\frac{2}{3}$ & $\left[\frac{1}{2},1\right]$ & $\frac{5}{8}$ & $\left[\tfrac{1}{4},\tfrac{3}{4}\right]$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$\mathbb{1}-\proj{1}$ & $\frac{2}{3}$ & $\left[\frac{1}{2},1\right]$ & $\frac{2}{3}$ & $\left[\frac{1}{2},1\right]$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$\mathbb{1}-\proj{0}$ & $\frac{2}{3}$ & $\left[\frac{1}{2},1\right]$ & $\frac{17}{24}$ & $\left[\frac{1}{2},1\right]$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$\mathbb{1}$ & $1$ & $\necess$ & $1$ & $\necess$\tabularnewline\addlinespace
+\bottomrule
+\end{tabular}
+\end{table}
+Table~\ref{tab:Compute-the-QIVPM} shows that $\rho_{0}$ is consistent
+with $\widehat{\iota}_{2}\circ\mu_{\rho_{1}}^{\mathrm{B}}$ and $\rho_{1}$
+is consistent with $\widehat{\iota}_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}}$
+both on every projectors in $\events_{C}$. Indeed, they are consistent
+with each other on every projectors in $\events$ that implies $\left\Vert \rho_{0}-\rho_{1}\right\Vert \le\frac{1}{2}$
+by lemma~\ref{thm:Finite-precision-Gleason}. This is true because
+the exact value of $\left\Vert \rho_{0}-\rho_{1}\right\Vert $ is
+$\frac{1}{24}$~\cite{544199}.\end{example}
 
 Previously, we proved that if $\rho'$ is consistent with $\iota\circ\mu_{\rho}^{\mathrm{B}}$,
 then $\rho'$ is close to $\rho$. However, if $\rho'$ is close to
