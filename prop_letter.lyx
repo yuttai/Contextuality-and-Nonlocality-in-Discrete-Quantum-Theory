@@ -22,6 +22,7 @@
 \newtheorem{lemma}{Lemma}[thm]
 \newtheorem{cor}{Corollary}[thm]
 \newtheorem{assumption}{Assumption}
+\newtheorem{fact}{Fact}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
 \newtheorem*{example*}{Example}
@@ -65,6 +66,10 @@
 \end_preamble
 \options reprint,aps,prl,superscriptaddress,showpacs,showkeys,longbibliography,amsmath,amssymb,floatfix
 \use_default_options false
+\begin_modules
+theorems-ams
+theorems-ams-extended
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -7975,11 +7980,7 @@ reference "tab:non-Born-QIVPM"
 
 \end_inset
 
-, there is always a state consistent with a Born QIVPM
-\begin_inset space ~
-\end_inset
-
-
+, there is always a state consistent with a Born QIVPM 
 \begin_inset Formula $\left[\mu_{\rho}^{\mathrm{B}}\right]_{n}$
 \end_inset
 
@@ -8000,10 +8001,6 @@ reference "tab:non-Born-QIVPM"
 \begin_inset Formula $\rho'$
 \end_inset
 
-, 
-\begin_inset Formula $\left\Vert \rho-\rho'\right\Vert =\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{\rho-\rho'}{\psi}\right|$
-\end_inset
-
 
 \begin_inset space ~
 \end_inset
@@ -8021,7 +8018,15 @@ citep{544199}
 
 \end_inset
 
-, the collection of states consistent with 
+, 
+\begin_inset Formula 
+\begin{equation}
+\left\Vert \rho-\rho'\right\Vert =\max_{\ip{\psi}{\psi}=1}\left|\melem{\psi}{\rho-\rho'}{\psi}\right|\,,\label{eq:norm}
+\end{equation}
+
+\end_inset
+
+the collection of states consistent with 
 \begin_inset Formula $\left[\mu_{\rho}^{\mathrm{B}}\right]_{n}$
 \end_inset
 
@@ -8143,49 +8148,6 @@ Given a state
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-yutsung{
-\end_layout
-
-\end_inset
-
-Compare the norm we used with other distances.
- For example, the trace distance defined in Sec.
-\begin_inset space ~
-\end_inset
-
-9.2.1 in Nielsen and Chuang
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand citep
-key "544199"
-
-\end_inset
-
-.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 In the limiting case when the intervals are infinitely precise real numbers
  covering the real line, the original Gleason theorem is recovered, and
  can be formulated in our framework as follows.
@@ -8256,6 +8218,186 @@ status collapsed
 
 \backslash
 end{thm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+yutsung{
+\end_layout
+
+\end_inset
+
+Following are the discussion and personal notes about our norm and other
+ notation of norm and distance.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nielsen and Chuang
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "544199"
+
+\end_inset
+
+ defined their norm
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:norm"
+
+\end_inset
+
+) in Appendix
+\begin_inset space ~
+\end_inset
+
+6
+\end_layout
+
+\begin_layout Standard
+Although Nielsen and Chuang
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "544199"
+
+\end_inset
+
+ in Appendix 6 follow Simon [2] to prove theorems, it seems Simon didn't
+ define the norm in his book [2], and the definition used in Nielsen and
+ Chuang [1] is clearly not what Simon would like to use...
+ Figuring out what we should use...
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{fact}
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $\sigma\left(\rho-\rho'\right)$
+\end_inset
+
+ denote the set of eigenvalues of 
+\begin_inset Formula $\rho-\rho'$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\rho$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho'$
+\end_inset
+
+ are states, they are Hermitian
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "544199"
+
+\end_inset
+
+, and so does 
+\begin_inset Formula $\rho-\rho'$
+\end_inset
+
+.
+ In this situation, 
+\begin_inset Formula $\left\Vert \rho-\rho'\right\Vert =\max\set{\left|\lambda\right|}{\lambda\in\sigma\left(\rho-\rho'\right)}$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "544199"
+
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{fact}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+yutsung{
+\end_layout
+
+\end_inset
+
+End of discussion.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \end_inset
