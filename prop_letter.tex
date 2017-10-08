@@ -953,7 +953,7 @@ the theory becomes non-contextual.
 
 \yutsung{Notice that the use of quantum is minumalized in this section.
 In another word, the results of this section should apply to both
-quantum and classical case.}
+quantum and classical IVPMs.}
 
 Recall in Sec.~\ref{sec:fuzzy}, we illustrate the non-constructive
 postulates of the quantum probability measures first, and then introduce
@@ -964,7 +964,78 @@ probability measures and QIVPMs are $\left[0,1\right]$ and $\mathscr{I}$,
 respectively, if there is a function~$\iota$ mapping a number~$x\in\left[0,1\right]$
 to $\iota\left(x\right)\in\mathscr{I}$, then we can concatenate it
 with a quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$
-and get a QIVPM~$\bar{\mu}:\events\overset{\mu}{\rightarrow}\left[0,1\right]\overset{\iota}{\rightarrow}\mathscr{I}$.
+and get a function~$\bar{\mu}:\events\overset{\mu}{\rightarrow}\left[0,1\right]\overset{\iota}{\rightarrow}\mathscr{I}$.
+Although $\bar{\mu}$ has the same the domain and range, $\bar{\mu}$
+may or may not be a QIVPM. For example, the following theorem highlight
+the situation when $\bar{\mu}$ cannot be a QIVPM.
+
+\begin{thm}If there exists three numbers~$x_{0}$, $x_{1}$, and
+$x_{2}\in\left[0,1\right]$ such that $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$,
+but 
+\begin{equation}
+\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\nsubseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)\,.\label{eq:iota-Inclusion-not}
+\end{equation}
+Then, there is a quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$
+such that $\iota\circ\mu$ is not a QIVPM, where $\circ$ is the function
+concatenation.\end{thm}
+
+Consider the state
+\begin{equation}
+\begin{aligned}\rho={} & x_{0}\proj{0}+x_{1}\proj{1}+x_{2}\proj{2}\\
+ & +\left(1-x_{0}-x_{1}-x_{2}\right)\proj{3}\textrm{ .}
+\end{aligned}
+\end{equation}
+Then, the function~$\iota\circ\mu_{\rho}^{\mathrm{\mathrm{B}}}:\events\rightarrow\mathscr{I}$
+fails to satisfy Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
+\begin{eqnarray}
+ &  & \begin{aligned} & \mathrel{\hphantom{=}}\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{0}+\proj{1}+\proj{2}\right)\right)+\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{2}\right)\right)\end{aligned}
+\nonumber \\
+ &  & \begin{aligned} & =\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\\
+ & \nsubseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)
+\end{aligned}
+\\
+ &  & \begin{aligned} & =\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{0}+\proj{2}\right)\right)+\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{1}+\proj{2}\right)\right)\textrm{ ,}\end{aligned}
+\nonumber 
+\end{eqnarray}
+and cannot be a QIVPM.
+
+In other words, even if $\iota\circ\mu$ has the same domain and range
+as a QIVPM, we may need to verify whether $\iota\circ\mu$ is a QIVPM
+individually. For example, consider the following easy example. In
+the four-dimensional Hilbert space, 
+\begin{equation}
+\iota\left(x\right)=\begin{cases}
+\imposs & \textrm{, if }x=0\textrm{ ;}\\
+\left[0,\tfrac{1}{2}\right] & \textrm{, if }x\in\left(0,\tfrac{1}{4}\right]\textrm{ ;}\\
+\unknown & \textrm{, if }x\in\left(\tfrac{1}{4},\tfrac{3}{4}\right)\textrm{ ;}\\
+\left[\tfrac{1}{2},1\right] & \textrm{, if }x\in\left[\tfrac{3}{4},1\right)\textrm{ ;}\\
+\necess & \textrm{, if }x=1\textrm{ .}
+\end{cases}
+\end{equation}
+and $\rho=\left(\proj{0}+\proj{1}+\proj{2}+\proj{3}\right)/4$ induce
+a QIVPM~$\iota\circ\mu_{\rho}^{\mathrm{\mathrm{B}}}$ which is a
+non-trivial fact~\citep{HOSTunpublished}. In order to verify whether
+$\iota\circ\mu$ is a QIVPM easier, we want to impose some conditions
+on $\iota$. Notice that our counterexamples are in a four-dimensional
+Hilbert space, the conditions for $\iota$ for a Hilbert space of
+dimension~$d\le3$ is not as strict as the general conditions.
+
+\begin{thm}In a Hilbert space of dimension~$d\le3$, if $\iota:\left[0,1\right]\rightarrow\mathscr{I}$
+subject to the following constraints:\begin{subequations}\label{eq:iota-constraints}
+\begin{eqnarray}
+ &  & \iota(0)=\imposs\,,\\
+ &  & \iota(1)=\necess\,,\\
+ &  & \iota\left(1-x\right)=\necess-\iota\left(x\right)\,,
+\end{eqnarray}
+\end{subequations}and satisfying for any three numbers~$x_{0}$
+and $x_{1}\in\left[0,1\right]$, $x_{0}+x_{1}\in\left[0,1\right]$
+implies
+\begin{equation}
+\iota_{n}\left(x_{0}+x_{1}\right)\subseteq\iota_{n}\left(x_{0}\right)+\iota_{n}\left(x_{1}\right)\textrm{ .}\label{eq:iota-add}
+\end{equation}
+Then, $\iota\circ\mu:\events\rightarrow\mathscr{I}$ is always a QIVPM
+for any quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$.\end{thm}
+
 Although their concatenation $\iota\circ\mu$ is always a function
 from $\events$ to $\mathscr{I}$, to guarantee $\iota\circ\mu$ is
 a QIVPM, $\iota$ needs to satisfy some extra conditions.
@@ -972,7 +1043,7 @@ a QIVPM, $\iota$ needs to satisfy some extra conditions.
 \begin{thm}If $\iota\circ\mu:\events\rightarrow\mathscr{I}$ is always
 a QIVPM for any quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$
 in any Hilbert space $\Hilb$, then $\iota:\left[0,1\right]\rightarrow\mathscr{I}$
-must subject to the following constraints:\begin{subequations}\label{eq:iota-constraints}
+must subject to the following constraints:\begin{subequations}
 \begin{eqnarray}
  &  & \iota(0)=\imposs\,,\\
  &  & \iota(1)=\necess\,,\\
@@ -985,37 +1056,6 @@ implies
 \iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\subseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)\,.\label{eq:iota-Inclusion}
 \end{equation}
 \end{thm}
-
-If $\iota$ fails to satisfy the first three constraints, Eqs.~(\ref{eq:iota-constraints}),
-it is easy to see that the concatenated function~$\iota\circ\mu$
-may not be a QIVPM. Suppose $\iota$ fails to satisfy Eq.~(\ref{eq:iota-Inclusion}),
-i.e., there exists three numbers~$x_{0}$, $x_{1}$, and $x_{2}\in\left[0,1\right]$
-such that $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$, but 
-\begin{equation}
-\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\nsubseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)\,.\label{eq:iota-Inclusion-not}
-\end{equation}
-Consider the state
-\begin{equation}
-\begin{aligned}\rho={} & x_{0}\proj{0}+x_{1}\proj{1}+x_{2}\proj{2}\\
- & +\left(1-x_{0}-x_{1}-x_{2}\right)\proj{3}\textrm{ .}
-\end{aligned}
-\end{equation}
-Let $P_{0}=\proj{0}+\proj{2}$, $P_{1}=\proj{1}+\proj{2}$. Then,
-the function~$\iota\circ\mu_{\rho}^{\mathrm{\mathrm{B}}}:\events\rightarrow\mathscr{I}$
-fails to satisfy Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
-\begin{eqnarray}
- &  & \begin{aligned} & \mathrel{\hphantom{=}}\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{0}+\proj{1}+\proj{2}\right)\right)+\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{2}\right)\right)\end{aligned}
-\nonumber \\
- &  & \begin{aligned} & =\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\\
- & \nsubseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)
-\end{aligned}
-\\
- &  & \begin{aligned} & =\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{0}+\proj{2}\right)\right)+\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{1}+\proj{2}\right)\right)\textrm{ ,}\end{aligned}
-\nonumber 
-\end{eqnarray}
-and cannot be a QIVPM. Therefore, $\iota$ must satisfy Eqs.~(\ref{eq:iota-constraints})
-and Eq.~(\ref{eq:iota-Inclusion}) to guarantee $\iota\circ\mu$
-is always a QIVPM.
 
 Although a interval-valued function~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
 may look exotic, its left-end and right-end~$\left[\iotal\left(x\right),\iotar\left(x\right)\right]=\iota\left(x\right)$
