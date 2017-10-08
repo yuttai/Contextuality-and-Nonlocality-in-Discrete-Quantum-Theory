@@ -1,13 +1,42 @@
+%% LyX 2.2.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
 \documentclass[12pt]{iopart}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage{verbatim}
+\usepackage{booktabs}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\usepackage{iopams}
+\usepackage{setstack}
+ \newlist{casenv}{enumerate}{4}
+ \setlist[casenv]{leftmargin=*,align=left,widest={iiii}}
+ \setlist[casenv,1]{label={{\itshape\ \casename} \arabic*.},ref=\arabic*}
+ \setlist[casenv,2]{label={{\itshape\ \casename} \roman*.},ref=\roman*}
+ \setlist[casenv,3]{label={{\itshape\ \casename\ \alph*.}},ref=\alph*}
+ \setlist[casenv,4]{label={{\itshape\ \casename} \arabic*.},ref=\arabic*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage[ backend=biber]{biblatex}
 \addbibresource{prop.bib}
 \ExecuteBibliographyOptions{sorting=none,maxbibnames=10,doi=false,isbn=false,url=false}
-\usepackage{fullpage}
-\usepackage{cmap}
-\usepackage[T1,T2A]{fontenc}
-\usepackage[utf8]{inputenc}
 \DeclareUnicodeCharacter{0229}{\c{e}}
-\usepackage{amssymb}
+\usepackage{mmap}
+\usepackage{fullpage}
 \usepackage{amsthm}
 \usepackage{mathrsfs}
 \usepackage{bbold}
@@ -16,11 +45,6 @@
 \usepackage{verbatim}
 \usepackage{iopams}
 \usepackage{setstack}
-\usepackage{enumitem}
-\usepackage{amstext}
-\usepackage{array}
-\usepackage{booktabs}
-\usepackage{multirow}
 
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}
@@ -31,14 +55,6 @@
 \newtheorem{example}[thm]{Example}
 \theoremstyle{remark}
 \newtheorem{claim}[thm]{Claim}
-
-\newlist{casenv}{enumerate}{4}
-\setlist[casenv]{leftmargin=*,align=left,widest={iiii}}
-\setlist[casenv,1]{label={{\itshape\ \casename} \arabic*.},ref=\arabic*}
-\setlist[casenv,2]{label={{\itshape\ \casename} \roman*.},ref=\roman*}
-\setlist[casenv,3]{label={{\itshape\ \casename\ \alph*.}},ref=\alph*}
-\setlist[casenv,4]{label={{\itshape\ \casename} \arabic*.},ref=\arabic*}
-\providecommand{\casename}{Case}
 
 \newcommand{\Hilb}{\mathcal{H}}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
@@ -72,91 +88,99 @@
 \newcommand{\nb}{\nolinebreak[3] }
 \newcommand{\iotal}[1][]{\ensuremath{\iota^{\mathrm{L{#1}}}}}
 \newcommand{\iotar}[1][]{\ensuremath{\iota^{\mathrm{R{#1}}}}}
+\renewcommand{\maketitle}{}
 \newcommand{\tfrac}[2]{\textstyle\frac{#1}{#2}}
 
+\makeatother
+
+ \providecommand{\casename}{Case}
+
 \begin{document}
+
 \title{Quantum Interval-Valued Probability: Measurement and Probability}
 
-\author{Andrew J Hanson$^{1}$, Gerardo Ortiz$^{2}$,
-Amr Sabry$^{1}$ and Yu-Tsung Tai$^{3,1}$}
-\address{$^{1}$ School of Informatics and Computing, Indiana
-University, Bloomington, IN 47405, USA}
+\author{Andrew J Hanson$^{1}$, Gerardo Ortiz$^{2}$, Amr Sabry$^{1}$ and
+Yu-Tsung Tai$^{3,1}$}
+
+\address{$^{1}$ School of Informatics and Computing, Indiana University,
+Bloomington, IN 47405, USA}
+
 \address{$^{2}$ Department of Physics, Indiana University, Bloomington, IN
 47405, USA}
+
 \address{$^{3}$ Department of Mathematics, Indiana University, Bloomington,
 IN 47405, USA}
+
 \ead{ortizg@indiana.edu}
 \begin{abstract}
-\today
+\today 
 \end{abstract}
+
 \pacs{03.65.-w, 03.65.Ta, 02.40.Dr, 02.50.Cw, 02.50.Le}
-\noindent{\it Keywords\/}: {Finite precision measurement, the Born rule, Gleason's theorem, interval-valued
-probability, discrete quantum theory}
+
+\noindent{\it Keywords\/}: {\noindent Finite precision measurement, the Born rule, Gleason's
+theorem, interval-valued probability, discrete quantum theory}
 
 \submitto{\jpa}
 
+\maketitle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Introduction}
 
 Textbook quantum mechanics asserts that, given a quantum spin system
-described by the wave function
-$\ket{\psi}=\frac{\sqrt{\pi}}{2}\fket{\ps\frac{1}{2}}+\frac{\sqrt{4-\pi}}{2}\fket{\minus\frac{1}{2}}$
-and given the observable
-$S_z =
-\frac{\hbar}{2}(\fproj{\ps\frac{1}{2}}-\fproj{\minus\frac{1}{2}})$,
+described by the wave function $\ket{\psi}=\frac{\sqrt{\pi}}{2}\fket{\ps\frac{1}{2}}+\frac{\sqrt{4-\pi}}{2}\fket{\minus\frac{1}{2}}$
+and given the observable $S_{z}=\frac{\hbar}{2}(\fproj{\ps\frac{1}{2}}-\fproj{\minus\frac{1}{2}})$,
 then the probability of observing the eigenvalue $\ps\frac{\hbar}{2}$
-(with post-measurement state $\fket{\ps\frac{1}{2}}$) is
-$\frac{\pi}{4}$ and the probability of observing the eigenvalue
-$\minus\frac{\hbar}{2}$ (with post-measurement state
-$\fket{\minus\frac{1}{2}}$) is $1-\frac{\pi}{4}$. According to the
-frequency interpretation of probability, the above assertion implies
-that when performing a very large number of experiments on quantum
-systems described by wave function $\ket{\psi}$, a fraction
+(with post-measurement state $\fket{\ps\frac{1}{2}}$) is $\frac{\pi}{4}$
+and the probability of observing the eigenvalue $\minus\frac{\hbar}{2}$
+(with post-measurement state $\fket{\minus\frac{1}{2}}$) is $1-\frac{\pi}{4}$.
+According to the frequency interpretation of probability, the above
+assertion implies that when performing a very large number of experiments
+on quantum systems described by wave function $\ket{\psi}$, a fraction
 $\frac{\pi}{4}$ of the experiments will result in the observation
-$\ps\frac{\hbar}{2}$ and the remaining fraction $1-\frac{\pi}{4}$ will
-result in the observation $\minus\frac{\hbar}{2}$.
+$\ps\frac{\hbar}{2}$ and the remaining fraction $1-\frac{\pi}{4}$
+will result in the observation $\minus\frac{\hbar}{2}$.
 
 In reality, i.e., in an actual experiment, simulation, or computation,
 bounded by space, time, and energy resources, the situation is much
 fuzzier: (i) we cannot \emph{exactly} prepare the state $\ket{\psi}$;
-(ii) we cannot build a measurement apparatus corresponding
-\emph{exactly} to observable $S_z$; and (iii) we cannot prepare
-\emph{exact} replicas of any state. In other words, we can only
-perform a limited number of experiments on quantum systems closely
-related to wave function $\ket{\psi}$ and using an apparatus that
-closely approximates observable $S_z$. Given any fixed resources,
-these experiments will \emph{not} result in the \emph{exact} fraction
-$\frac{\pi}{4}$ of observations $\ps\frac{\hbar}{2}$ and
-$1-\frac{\pi}{4}$ of observations $\minus\frac{\hbar}{2}$. In fact,
-these experiments can be viewed as a method (algorithm) to calculate
-the value $\pi$ and it is known that the state of the art algorithms
-for computing the $n$th binary digit of~$\pi$ require on the order of
-$O\left(n\log^{O\left(1\right)}\left(n\right)\right)$
+(ii) we cannot build a measurement apparatus corresponding \emph{exactly}
+to observable $S_{z}$; and (iii) we cannot prepare \emph{exact} replicas
+of any state. In other words, we can only perform a limited number
+of experiments on quantum systems closely related to wave function
+$\ket{\psi}$ and using an apparatus that closely approximates observable
+$S_{z}$. Given any fixed resources, these experiments will \emph{not}
+result in the \emph{exact} fraction $\frac{\pi}{4}$ of observations
+$\ps\frac{\hbar}{2}$ and $1-\frac{\pi}{4}$ of observations $\minus\frac{\hbar}{2}$.
+In fact, these experiments can be viewed as a method (algorithm) to
+calculate the value $\pi$ and it is known that the state of the art
+algorithms for computing the $n$th binary digit of~$\pi$ require
+on the order of $O\left(n\log^{O\left(1\right)}\left(n\right)\right)$
 operations~\cite{journals/moc/BaileyBP97}. In other words, calculating
 the $n$th digit of $\pi$ appears to require more and more physical
 resources as~$n$ gets larger.
 
 All of this is well-known and holds in both the classical and quantum
-worlds. In the classical world, these observations are believed to be
-well-understood approximations to an idealized independent reality
+worlds. In the classical world, these observations are believed to
+be well-understood approximations to an idealized independent reality
 that can continuously approached with more and more resources. The
-question in the quantum world is more subtle; it is not evident at all
-that this resource-aware perspective does not alter the very
-foundations of quantum mechanics. Indeed taking such resource bounds
-into consideration is what founded computer science as a discipline
-and has become crucial for understanding the very nature of
-computation. Following Feynman~\cite{Feynman1982Simulating},
-Landauer~\cite{Landauer1996188}, and others, one might argue that this
-resource-bounded perspective is also crucial for understanding the
-very nature of physical processes.
+question in the quantum world is more subtle; it is not evident at
+all that this resource-aware perspective does not alter the very foundations
+of quantum mechanics. Indeed taking such resource bounds into consideration
+is what founded computer science as a discipline and has become crucial
+for understanding the very nature of computation. Following Feynman~\cite{Feynman1982Simulating},
+Landauer~\cite{Landauer1996188}, and others, one might argue that
+this resource-bounded perspective is also crucial for understanding
+the very nature of physical processes.
 
 In previous work, we analyzed the wave function description of quantum
-systems from a resource-bounded perspective. Technically, instead of
-postulating that quantum states are rays in a Hilbert space, i.e., we
-instead used special finite fields whose size reflected the available
-resources. \ldots
+systems from a resource-bounded perspective. Technically, instead
+of postulating that quantum states are rays in a Hilbert space, i.e.,
+we instead used special finite fields whose size reflected the available
+resources. \ldots{}
 
-\newpage
+\newpage{}
 
 This is a \emph{theoretical} investigation of \emph{experimental}
 physics using \emph{computational} methods. All experiments and computations
@@ -195,7 +219,7 @@ is unsatisfiable or has exactly one satisfying assignment~\cite{Valiant198685,Pa
 can be deterministically solved in constant time. To eliminate such
 unrealistic theories requires delicate analysis of the structure of
 the Hilbert space, the process of observation, and the notion of probability
-teasing apart their reliance on the infinitely precise real numbers~\cite{geometry2013,DQT2014}. 
+teasing apart their reliance on the infinitely precise real numbers~\cite{geometry2013,DQT2014}.
 
 In this paper, we shift focus from the infinitely-specified but not
 directly observable quantum states, to observable measurable properties
@@ -237,15 +261,16 @@ Meyer, Mermin, and others about whether finite precision measurement
 would nullify the Kochen-Specker theorem or not~\cite{PhysRevLett.83.3751,Mermin1999,BarrettKent2004}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Classical Probability}
 
 A \emph{probability space} specifies the necessary conditions for
-reasoning coherently about collections of uncertain
-events~\cite{Kolmogorov1950,Shafer1976,Griffiths2003,Swart2013}.  We
-review the conventional presentation of probability spaces and then
-discuss the computational resources needed to estimate probabilities.
+reasoning coherently about collections of uncertain events~\cite{Kolmogorov1950,Shafer1976,Griffiths2003,Swart2013}.
+We review the conventional presentation of probability spaces and
+then discuss the computational resources needed to estimate probabilities.
 
 %%%
+
 \subsection{Classical Probability Spaces}
 
 The conventional definition of a probability space builds upon the
@@ -261,30 +286,27 @@ of interest and that the sample space is a convenient artifact that
 allows us to treat events as sets obeying the laws of Boolean algebra~\cite{Boole1948,Redhead1987-REDINA,Griffiths2003}.
 
 \begin{definition}[Probability Measure]\label{def:ClassicalProbabilitySpace}
-  Given the set of events $\events$, a \emph{probability measure} is a
-  function $\pmeas:\events\rightarrow[0,1]$ such that:
+Given the set of events $\events$, a \emph{probability measure} is
+a function $\pmeas:\events\rightarrow[0,1]$ such that: 
 \begin{itemize}
-\item $\pmeas(\emptyset)=0$,
+\item $\pmeas(\emptyset)=0$, 
 \item $\pmeas(\Omega)=1$, 
-\item for every event $E$,
-  $\pmeas\left(\Omega\backslash E\right)=1-\pmeas\left(E\right)$ where
-  $\Omega\backslash E$ is the complement event of $E$, and
-\item for every collection $\left\{ E_{i}\right\} _{i=1}^{N}$ of
-  pairwise disjoint events,
-  $\pmeas\left(\bigcup_{i=1}^{N}E_{i}\right)=\sum_{i=1}^{N}\pmeas(E_{i})$.
+\item for every event $E$, $\pmeas\left(\Omega\backslash E\right)=1-\pmeas\left(E\right)$
+where $\Omega\backslash E$ is the complement event of $E$, and 
+\item for every collection $\left\{ E_{i}\right\} _{i=1}^{N}$ of pairwise
+disjoint events, $\pmeas\left(\bigcup_{i=1}^{N}E_{i}\right)=\sum_{i=1}^{N}\pmeas(E_{i})$. 
 \end{itemize}
-\end{definition}
-\noindent There is some redundancy in the definition that will be useful when
-moving to quantum probability spaces. 
+\end{definition} There is some redundancy in the definition that
+will be useful when moving to quantum probability spaces.
 
-\begin{example}[Two-coins experiment]\label{ex1} Consider an
-  experiment that tosses two coins. We have four possible outcomes
-  that constitute the sample space $\Omega=\{HH,HT,TH,TT\}$. There are
-  16 total events including the event $\{HH,HT\}$ that the first coin
-  lands heads up, the event $\{HT,TH\}$ that the two coins land on
-  opposite sides, and the event $\{HT,TH,TT\}$ that at least one coin
-  lands tails up. Here is a possible probability measure for these
-  events:
+\noindent \begin{example}[Two-coins experiment]\label{ex1} Consider
+an experiment that tosses two coins. We have four possible outcomes
+that constitute the sample space $\Omega=\{HH,HT,TH,TT\}$. There
+are 16 total events including the event $\{HH,HT\}$ that the first
+coin lands heads up, the event $\{HT,TH\}$ that the two coins land
+on opposite sides, and the event $\{HT,TH,TT\}$ that at least one
+coin lands tails up. Here is a possible probability measure for these
+events: 
 \begin{equation}
 \begin{array}{c@{\qquad\qquad}c}
 \begin{array}{rcl}
@@ -309,113 +331,107 @@ moving to quantum probability spaces.
 \end{equation}
 \end{example}
 
-\noindent It is useful to think that this probability measure is
-completely determined by the ``reality'' of the two coins in question
-and their characteristics, in the sense that each pair of coins
-induces a measure, and each measure must correspond to some pair of
-coins. The measure above would be induced by two particular coins such
-that the first coin is twice as likely to land tails up than heads up
-and the second coin is double-headed. 
+\noindent It is useful to think that this probability measure is completely
+determined by the ``reality'' of the two coins in question and their
+characteristics, in the sense that each pair of coins induces a measure,
+and each measure must correspond to some pair of coins. The measure
+above would be induced by two particular coins such that the first
+coin is twice as likely to land tails up than heads up and the second
+coin is double-headed.
 
 %%%%%
+
 \subsection{Measuring Probabilities: Buffon's Needle Problem\label{subsec:Measuring-Probabilities:-Buffon}}
 
 In a strict computational or experimental setting, one should question
 the reliance of the definition of probability space on the uncountable
-and uncomputable real
-interval~$[0,1]$~\cite{Turing_1937,Ziegler2007,weihrauch2012computable}.
+and uncomputable real interval~$[0,1]$~\cite{Turing_1937,Ziegler2007,weihrauch2012computable}.
 This interval includes numbers like $0.h_{1}h_{2}h_{3}\ldots$ where
-$h_{i}$ is 1 or 0 depending on whether Turing machine
-$\mathit{TM}_{i}$ halts or not. Such numbers cannot be computed. This
-interval also includes numbers like $\pi / 4$ which can only be
-computed with increasingly large resources as the precision
-increases. Therefore, in a resource-aware computational or
-experimental setting, it is more appropriate to consider probability
-measures that map events to a set of elements computable with a fixed
-set of resources. We expand on this observation in the next section
-and then recall its formalization using interval-valued probability
-measures~\cite{Weichselberger2000,JamisonLodwick2004}.
- 
-In the previous example, we assumed the probability~$\pmeas(E)$ of
-each event~$E$ is known a priori. In reality, although each event is
-assumed to have a probability, the exact value of $\pmeas(E)$ may not
-be known. According to the \emph{frequency interpretation of
-  probability} (which we will revisit when moving to the quantum
-case)~\cite{Venn1876,Hajek2012}, 
-to determine the probability of an event, we run $M$
-independent trials which gives us an approximation of the (assumed)
-``true'' or ``real'' probability. Let $x_{i}$ be 1 or 0 depending on
-whether the event~$E$ occurs in the $i$-th trial or not, then
-$\pmeas(E)$ could be approximated to given accuracy~$\epsilon>0$ by
-the relative frequency~$\sum_{i=1}^{M}x_{i} / M$ with the
-probability converging to one as $M$ goes to infinity, i.e.,
+$h_{i}$ is 1 or 0 depending on whether Turing machine $\mathit{TM}_{i}$
+halts or not. Such numbers cannot be computed. This interval also
+includes numbers like $\pi/4$ which can only be computed with increasingly
+large resources as the precision increases. Therefore, in a resource-aware
+computational or experimental setting, it is more appropriate to consider
+probability measures that map events to a set of elements computable
+with a fixed set of resources. We expand on this observation in the
+next section and then recall its formalization using interval-valued
+probability measures~\cite{Weichselberger2000,JamisonLodwick2004}.
+
+In the previous example, we assumed the probability~$\pmeas(E)$
+of each event~$E$ is known a priori. In reality, although each event
+is assumed to have a probability, the exact value of $\pmeas(E)$
+may not be known. According to the \emph{frequency interpretation
+of probability} (which we will revisit when moving to the quantum
+case)~\cite{Venn1876,Hajek2012}, to determine the probability of
+an event, we run $M$ independent trials which gives us an approximation
+of the (assumed) ``true'' or ``real'' probability. Let $x_{i}$
+be 1 or 0 depending on whether the event~$E$ occurs in the $i$-th
+trial or not, then $\pmeas(E)$ could be approximated to given accuracy~$\epsilon>0$
+by the relative frequency~$\sum_{i=1}^{M}x_{i}/M$ with the probability
+converging to one as $M$ goes to infinity, i.e., 
 \begin{equation}
-\forall\epsilon>0,\lim_{M\rightarrow\infty}\pmeas\left(\left|\pmeas(E)-\frac{1}{M}\sum_{i=1}^{M} x_{i}\right|<\epsilon\right)=1\,.
+\forall\epsilon>0,\lim_{M\rightarrow\infty}\pmeas\left(\left|\pmeas(E)-\frac{1}{M}\sum_{i=1}^{M}x_{i}\right|<\epsilon\right)=1\,.
 \end{equation}
 This fact is called the law of large numbers~\cite{Bernoulli2006,Kolmogorov1950,Uspensky1937,Shafer1976,544199}.
 
 Let's look at a concrete example. Suppose we drop a needle of length
 $\ell$ onto a floor made of equally spaced parallel lines a distance
-$h$ apart, where $\ell<h$. It is a known fact that the probability of
-the needle crossing a line is
-$2\ell/\left(\pi h\right)$~\cite{Buffon1777,DeMorgan1872,Hall1873,Uspensky1937}.
+$h$ apart, where $\ell<h$. It is a known fact that the probability
+of the needle crossing a line is $2\ell/\left(\pi h\right)$~\cite{Buffon1777,DeMorgan1872,Hall1873,Uspensky1937}.
 Consider an experimental setup consisting of a collection of $M$
 identical needles of length $\ell$. We throw the $M$ needles one
-needle at a time, and observe the number $M_c$ of needles that cross a
-line, thus estimating the probability of a needle crossing a line to
-be $M_c/M$. In an actual experiment with $500$ needles and the
-ratio $\ell/h=0.75$~\cite{Hall1873}, it was found that $236$
-crossed a line so the relative frequency is $0.472$ whereas the
-idealized mathematical probability is $0.4774\ldots$.  In a larger
-experiment with $5000$ needles and the ratio
-$\ell/h=0.8$~\cite{Uspensky1937}, the relative frequency was
-calculated to be $0.5064$ whereas the idealized mathematical
-probability is $0.5092\ldots$. We see that the observed probability
-approaches $2\ell/\left(\pi h\right)$ but only if \emph{larger and larger
-  resources} are expended. These resource considerations suggest that
-it is possible to replace the real interval $[0,1]$ with rational
-numbers up to a certain precision related to the particular experiment
-in question. There is clearly a connection between the number of
-needles and the achievable precision: in the hypothetical experiment
-with 3 needles, it is not sensible to retain 100 digits in the
-expansion of $2\ell/\left(\pi h\right)$.
+needle at a time, and observe the number $M_{c}$ of needles that
+cross a line, thus estimating the probability of a needle crossing
+a line to be $M_{c}/M$. In an actual experiment with $500$ needles
+and the ratio $\ell/h=0.75$~\cite{Hall1873}, it was found that
+$236$ crossed a line so the relative frequency is $0.472$ whereas
+the idealized mathematical probability is $0.4774\ldots$. In a larger
+experiment with $5000$ needles and the ratio $\ell/h=0.8$~\cite{Uspensky1937},
+the relative frequency was calculated to be $0.5064$ whereas the
+idealized mathematical probability is $0.5092\ldots$. We see that
+the observed probability approaches $2\ell/\left(\pi h\right)$ but
+only if \emph{larger and larger resources} are expended. These resource
+considerations suggest that it is possible to replace the real interval
+$[0,1]$ with rational numbers up to a certain precision related to
+the particular experiment in question. There is clearly a connection
+between the number of needles and the achievable precision: in the
+hypothetical experiment with 3 needles, it is not sensible to retain
+100 digits in the expansion of $2\ell/\left(\pi h\right)$.
 
 There is another more subtle assumption of unbounded computational
 power in the experiment. We are assuming that we can always determine
-with certainty whether a needle is crossing a line. But ``lines'' on
-the the floor have thickness, their distance apart is not exactly $h$,
-and the needles' lengths are not all absolutely equal to $\ell$.
+with certainty whether a needle is crossing a line. But ``lines''
+on the the floor have thickness, their distance apart is not exactly
+$h$, and the needles' lengths are not all absolutely equal to $\ell$.
 These perturbations make the events ``fuzzy.'' Thus, in an experiment
 with limited resources, it is not possible to talk about the idealized
-event that exactly $M_c$ needles cross lines as this would require the
-most expensive needles built to the most precise accuracy, laser
-precision for drawing lines on the floor, and the most powerful
-microscopes to determine if a needle does cross a line. Instead we
-might talk about the event that $M_c-\delta$ needles evidently cross
-lines and $M_c+\delta'$ needles plausibly cross lines where $\delta$ and
-$\delta'$ are resource-dependent approximations. This fuzzy notion of
-events leads to probabilities being only calculable within intervals
-of confidence reflecting the certainty of events and their
-plausibility. This is indeed consistent with published experiments: in
-an experiment with $3204$ needles and the ratio
-$\ell/h=0.6$~\cite{DeMorgan1872}, $1213$ needles clearly
-crossed a line and $11$ needles were close enough to plausibly be
-considered as crossing the line: we would express the probability in
-this case as the interval
-$\left[\frac{1213}{3204},\frac{1224}{3204}\right]$ expressing that we
-are certain that the event has probability at least
+event that exactly $M_{c}$ needles cross lines as this would require
+the most expensive needles built to the most precise accuracy, laser
+precision for drawing lines on the floor, and the most powerful microscopes
+to determine if a needle does cross a line. Instead we might talk
+about the event that $M_{c}-\delta$ needles evidently cross lines
+and $M_{c}+\delta'$ needles plausibly cross lines where $\delta$
+and $\delta'$ are resource-dependent approximations. This fuzzy notion
+of events leads to probabilities being only calculable within intervals
+of confidence reflecting the certainty of events and their plausibility.
+This is indeed consistent with published experiments: in an experiment
+with $3204$ needles and the ratio $\ell/h=0.6$~\cite{DeMorgan1872},
+$1213$ needles clearly crossed a line and $11$ needles were close
+enough to plausibly be considered as crossing the line: we would express
+the probability in this case as the interval $\left[\frac{1213}{3204},\frac{1224}{3204}\right]$
+expressing that we are certain that the event has probability at least
 $\frac{1213}{3204}$ but it is possible that it would have probability
 $\frac{1224}{3204}$.
 
 Another way to re-express the above observations is that the calculus
 of probabilities requires all probabilities to be \emph{coherent}
-(e.g., the probability of the union of two disjoint events is the sum
-of their probabilities). But given limited resources, the calculation
-of a probability measure can only be approximate and hence the
-probabilities cannot be absolutely guaranteed to be coherent in the
-ideal sense. 
+(e.g., the probability of the union of two disjoint events is the
+sum of their probabilities). But given limited resources, the calculation
+of a probability measure can only be approximate and hence the probabilities
+cannot be absolutely guaranteed to be coherent in the ideal sense.
 
 %%%%%
+
 \subsection{Classical Interval-Valued Probability Measures}
 
 As motivated above, an event $E_{1}$ may have an interval of probability
@@ -456,15 +472,13 @@ events, we have
 \bar{\mu}\left(\bigcup_{i=1}^{N}E_{i}\right)\subseteq\sum_{i=1}^{N}\bar{\mu}\left(E_{i}\right)\,.\label{eq:classical-include}
 \end{equation}
 \end{itemize}
-
-\begin{example}[Two-coin experiment with interval probability]
-\label{ex3} We split the unit interval $[0,1]$ in the following
-four closed sub-intervals: $[0,0]$ which we call \imposs, $[0,\frac{1}{2}]$
-which we call \unlikely, $[\frac{1}{2},1]$ which we call \likely,
-and $[1,1]$ which we call \necess. Using these new values, we can
-modify the probability measure of example~\ref{ex1} by mapping each
-numeric value to the smallest sub-interval containing it to get the
-following: 
+\begin{example}[Two-coin experiment with interval probability]\label{ex3}
+We split the unit interval $[0,1]$ in the following four closed sub-intervals:
+$[0,0]$ which we call \imposs, $[0,\frac{1}{2}]$ which we call
+\unlikely, $[\frac{1}{2},1]$ which we call \likely, and $[1,1]$
+which we call \necess. Using these new values, we can modify the
+probability measure of example~\ref{ex1} by mapping each numeric
+value to the smallest sub-interval containing it to get the following:
 \begin{equation}
 \begin{array}{c@{\qquad\qquad}c}
 \begin{array}{rcl}
@@ -490,12 +504,11 @@ following:
 Despite the absence of infinitely precise numeric information, the
 probability measure is quite informative: it reveals that the second
 coin is double-headed and that the first coin is biased. To understand
-the $\subseteq$-condition, consider the following calculation:
-\begin{equation}\eqalign{
- & \bar{\mu}(\{HH\})+\bar{\mu}(\{HT\})+\bar{\mu}(\{TH\})+\bar{\mu}(\{TT\})\\
+the $\subseteq$-condition, consider the following calculation: 
+\begin{equation}\eqalign{ 
+& \bar{\mu}(\{HH\})+\bar{\mu}(\{HT\})+\bar{\mu}(\{TH\})+\bar{\mu}(\{TT\})\\
 =& \imposs+\unlikely+\imposs+\likely\\
-=& \left[0,0\right]+\left[0,\frac{1}{2}\right]+\left[0,0\right]+\left[\frac{1}{2},1\right]=
-\left[\frac{1}{2},\frac{3}{2}\right]\,.
+=& \left[0,0\right]+\left[0,\frac{1}{2}\right]+\left[0,0\right]+\left[\frac{1}{2},1\right]= \left[\frac{1}{2},\frac{3}{2}\right]\,. 
 }\end{equation}
 If we were to equate $\bar{\mu}(\Omega)$ with the sum of the individual
 probabilities, we would get that $\bar{\mu}(\Omega)=\left[\frac{1}{2},\frac{3}{2}\right]$.
@@ -506,113 +519,104 @@ of the event $\Omega$, and of course it is contained in $[\frac{1}{2},\frac{3}{2
 However it is only possible to exploit the information about the complement
 when all four events are combined. Thus the $\subseteq$-condition
 allows us to get an estimate for the combined event from each of its
-constituents and then gather more evidence knowing the aggregate
-event.
+constituents and then gather more evidence knowing the aggregate event.
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Quantum Probability}
- 
-The mathematical framework of classical probability above assumes that
-there exists a predetermined set of events that are independent of the
-particular experiment --- classical physics is
-non-contextual~\cite{kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007}. 
-However, even in classical situations, the structure
-of the event space is often only partially known and the precise
-dependence of two events on each other cannot, a priori, be determined
-with certainty. In the quantum framework, this partial knowledge is
-compounded by the fact that there exist non-commuting events which
-cannot happen simultaneously. To accommodate these more complex
-situations, conventional approaches to quantum probability abandon the
-sample space~$\Omega$ and reason directly about events which are
-generalized from plain sets to projection operators. A quantum
-probability space therefore consists of just two components: a set of
-events $\qevents$ often formalized as projection operators and a
-probability measure $\mu:\qevents\rightarrow[0,1]$ formalized using
-the Born rule~\cite{Born1983,Mermin2007,Jaeger2007}.
+
+The mathematical framework of classical probability above assumes
+that there exists a predetermined set of events that are independent
+of the particular experiment — classical physics is non-contextual~\cite{kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007}.
+However, even in classical situations, the structure of the event
+space is often only partially known and the precise dependence of
+two events on each other cannot, a priori, be determined with certainty.
+In the quantum framework, this partial knowledge is compounded by
+the fact that there exist non-commuting events which cannot happen
+simultaneously. To accommodate these more complex situations, conventional
+approaches to quantum probability abandon the sample space~$\Omega$
+and reason directly about events which are generalized from plain
+sets to projection operators. A quantum probability space therefore
+consists of just two components: a set of events $\qevents$ often
+formalized as projection operators and a probability measure $\mu:\qevents\rightarrow[0,1]$
+formalized using the Born rule~\cite{Born1983,Mermin2007,Jaeger2007}.
 
 %%%%%
+
 \subsection{Quantum Events}
 
-\begin{definition}[Projection Operators; Orthogonality~\cite{10.2307/2308516,Redhead1987-REDINA,peres1995quantum,Griffiths2003,Swart2013}]
-  \label{def:Projection} Given a Hilbert space $\Hilb$, an event (an
-  experimental proposition~\cite{BirkhoffVonNeumann1936}, a
-  question~\cite{10.2307/2308516,Abramsky2012},
-  or an elementary quantum test~\cite{peres1995quantum}) is represented
-  as a (self-adjoint or orthogonal~\cite {Griffiths2003,Maassen2010})
-  projection operator $P:\Hilb\rightarrow\Hilb$ onto a linear subspace
-  of $\Hilb$. The following define projections and list some of their properties:
+\begin{definition}[Projection Operators; Orthogonality~\cite{10.2307/2308516,Redhead1987-REDINA,peres1995quantum,Griffiths2003,Swart2013}]\label{def:Projection}
+Given a Hilbert space $\Hilb$, an event (an experimental proposition~\cite{BirkhoffVonNeumann1936},
+a question~\cite{10.2307/2308516,Abramsky2012}, or an elementary
+quantum test~\cite{peres1995quantum}) is represented as a (self-adjoint
+or orthogonal~\cite{Griffiths2003,Maassen2010}) projection operator
+$P:\Hilb\rightarrow\Hilb$ onto a linear subspace of $\Hilb$. The
+following define projections and list some of their properties: 
 \begin{itemize}
 \item $\mathbb{0}$ is a projection. 
 \item For any pure state~$\ket{\psi}$, $\proj{\psi}$ is a projection
 operator. 
-\item Projection operators $P_{0}$ and $P_{1}$ are \emph{orthogonal}
-  if $P_{0}P_{1}=P_{1}P_{0}=\mathbb{0}$. The sum of two projection
-  operators~$P_{0}+P_{1}$ is also a projection operator if and only if
-  they are orthogonal.
-\item Conversely, every projection~$P$ can be expressed as
-  $\sum_{j=1}^{N}\proj{\psi_{j}}$, where $P$ actually projects onto
-  the linear subspace with orthonormal
-  basis~$\left\{ \ket{\psi_{j}}\right\} _{j=1}^{N}$.
-\item A set of projections $\left\{ P_{i}\right\} _{i=1}^{N}$ is
-  called an \emph{ideal measurement} if it is a partition of the
-  identity, i.e., $\sum_{i=1}^{N}P_{i}=\mathbb{1}$~\cite{Swart2013}.
-  In this case, projections $\left\{ P_{i}\right\} _{i=1}^{N}$ must
-  be mutually orthogonal~\cite{Griffiths2003,Halmos1957}, and $N$ must be less
-  or equal to the dimension of the Hilbert space.
-\item If $P$ is a projection operator, then $\mathbb{1}-P$ is also a
-  projection operator, called its \emph{complement}. It is orthogonal to
-  $P$, and corresponds to the complement event~$\Omega\backslash E$ in
-  classical probability~\cite{Griffiths2003}.
+\item Projection operators $P_{0}$ and $P_{1}$ are \emph{orthogonal} if
+$P_{0}P_{1}=P_{1}P_{0}=\mathbb{0}$. The sum of two projection operators~$P_{0}+P_{1}$
+is also a projection operator if and only if they are orthogonal. 
+\item Conversely, every projection~$P$ can be expressed as $\sum_{j=1}^{N}\proj{\psi_{j}}$,
+where $P$ actually projects onto the linear subspace with orthonormal
+basis~$\left\{ \ket{\psi_{j}}\right\} _{j=1}^{N}$. 
+\item A set of projections $\left\{ P_{i}\right\} _{i=1}^{N}$ is called
+an \emph{ideal measurement} if it is a partition of the identity,
+i.e., $\sum_{i=1}^{N}P_{i}=\mathbb{1}$~\cite{Swart2013}. In this
+case, projections $\left\{ P_{i}\right\} _{i=1}^{N}$ must be mutually
+orthogonal~\cite{Griffiths2003,Halmos1957}, and $N$ must be less
+or equal to the dimension of the Hilbert space. 
+\item If $P$ is a projection operator, then $\mathbb{1}-P$ is also a projection
+operator, called its \emph{complement}. It is orthogonal to $P$,
+and corresponds to the complement event~$\Omega\backslash E$ in
+classical probability~\cite{Griffiths2003}. 
 \item Projection operators $P_{0}$ and $P_{1}$ \emph{commute} if $P_{0}P_{1}=P_{1}P_{0}$.
 The product of two projection operators~$P_{0}P_{1}$ is also a projection
 operator if and only if they commute. This corresponds to the classical
 intersection between events~\cite{peres1995quantum,Griffiths2003}. 
-\item For two commuting projection operators $P_{0}$ and $P_{1}$,
-  their \emph{disjunction}~$P_{0}\vee P_{1}$ is defined to be
-  $P_{0}+P_{1}-P_{0}P_{1}$~\cite{Griffiths2003}.
+\item For two commuting projection operators $P_{0}$ and $P_{1}$, their
+\emph{disjunction}~$P_{0}\vee P_{1}$ is defined to be $P_{0}+P_{1}-P_{0}P_{1}$~\cite{Griffiths2003}. 
 \end{itemize}
 \end{definition}
 
 \begin{example}[One-qubit quantum probability space] Consider a
-  one-qubit Hilbert space with each event interpreted as a possible
-  post-measurement state~\cite{peres1995quantum,Mermin2007,Jaeger2007}. 
-  For example, the event $\proj{0}$ indicates
-  that the post-measurement state will be $\ket{0}$; the probability
-  of such an event depends on the current state; the event $\proj{1}$
-  indicates that the post-measurement state will be $\ket{1}$; the
-  event $\proj{\ps}$ where
-  $\ket{\ps}=\left(\ket{0}+\ket{1}\right) / \sqrt{2}$ indicates that the
-  post-measurement state will be $\ket{\ps}$; the event
-  $\mathbb{1}=\proj{0}+\proj{1}$ indicates that the post-measurement
-  state will be a linear combination of $\ket{0}$ and $\ket{1}$ and is
-  clearly certain; finally the empty event $\mathbb{0}$ states that
-  the post-measurement state will be the empty state and is
-  impossible. As in the classical case, a probability measure is a
-  function that maps events to $[0,1]$. Here is a partial
-  specification of a possible probability measure that would be
-  induced by a system whose current state is $\ket{0}$,
-  $\mu\left(\mathbb{0}\right)=0$, $\mu\left(\mathbb{1}\right)=1$,
-  $\mu\left(\proj{0}\right)=1$, $\mu\left(\proj{1}\right)=0$,
-  $\mu\left(\proj{\ps}\right)=\frac{1}{2}$, \ldots. Note that, similarly to
-  the classical case, the probability of $\mathbb{1}$ is 1 and the
-  probability of collections of orthogonal events (e.g.,
-  $\proj{0}+\proj{1}$) is the sum of the individual probabilities.  A
-  collection of non-orthogonal events (e.g., $\proj{0}$ and
-  $\proj{\ps}$) is however not even a valid event. In the classical
-  example, we argued that each probability measure is uniquely
-  determined by two actual coins. A similar (but much more subtle)
-  argument is valid also in the quantum case. By postulates of quantum
-  mechanics and Gleason's theorem, it turns out that for large enough
-  quantum systems, each probability measure is uniquely determined by
-  an actual quantum state as discussed next.
-\end{example}
+one-qubit Hilbert space with each event interpreted as a possible
+post-measurement state~\cite{peres1995quantum,Mermin2007,Jaeger2007}.
+For example, the event $\proj{0}$ indicates that the post-measurement
+state will be $\ket{0}$; the probability of such an event depends
+on the current state; the event $\proj{1}$ indicates that the post-measurement
+state will be $\ket{1}$; the event $\proj{\ps}$ where $\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$
+indicates that the post-measurement state will be $\ket{\ps}$; the
+event $\mathbb{1}=\proj{0}+\proj{1}$ indicates that the post-measurement
+state will be a linear combination of $\ket{0}$ and $\ket{1}$ and
+is clearly certain; finally the empty event $\mathbb{0}$ states that
+the post-measurement state will be the empty state and is impossible.
+As in the classical case, a probability measure is a function that
+maps events to $[0,1]$. Here is a partial specification of a possible
+probability measure that would be induced by a system whose current
+state is $\ket{0}$, $\mu\left(\mathbb{0}\right)=0$, $\mu\left(\mathbb{1}\right)=1$,
+$\mu\left(\proj{0}\right)=1$, $\mu\left(\proj{1}\right)=0$, $\mu\left(\proj{\ps}\right)=\frac{1}{2}$,
+\ldots{}. Note that, similarly to the classical case, the probability
+of $\mathbb{1}$ is 1 and the probability of collections of orthogonal
+events (e.g., $\proj{0}+\proj{1}$) is the sum of the individual probabilities.
+A collection of non-orthogonal events (e.g., $\proj{0}$ and $\proj{\ps}$)
+is however not even a valid event. In the classical example, we argued
+that each probability measure is uniquely determined by two actual
+coins. A similar (but much more subtle) argument is valid also in
+the quantum case. By postulates of quantum mechanics and Gleason's
+theorem, it turns out that for large enough quantum systems, each
+probability measure is uniquely determined by an actual quantum state
+as discussed next. \end{example}
 
 %%%%%
+
 \subsection{Quantum Probability Measures}
 
-Given our setup, the definition of a quantum probability measure is a
-small variation on the classical definition. 
+Given our setup, the definition of a quantum probability measure is
+a small variation on the classical definition.
 
 \begin{definition}[Quantum Probability Measure~\cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010}]\label{def:QuantumProbabilitySpace}
 Given a Hilbert space $\Hilb$ with its set of events~$\events$,
@@ -621,35 +625,31 @@ such that:
 \begin{itemize}
 \item $\mu(\mathbb{0})=0$. 
 \item $\mu(\mathbb{1})=1$. 
-\item For any projection $P$, $\mu\left(\mathbb{1}-P\right)=1-\mu\left(P\right)$.
+\item For any projection $P$, $\mu\left(\mathbb{1}-P\right)=1-\mu\left(P\right)$. 
 \item For a set of mutually orthogonal projections $\left\{ P_{i}\right\} _{i=1}^{N}$,
-we have $\mu\left(\sum_{i=1}^{N}P_{i}\right)=\sum_{i=1}^{N}\mu\left(P_{i}\right)$.
+we have $\mu\left(\sum_{i=1}^{N}P_{i}\right)=\sum_{i=1}^{N}\mu\left(P_{i}\right)$. 
 \end{itemize}
 \end{definition}
 
-\noindent A quantum probability measure can be easily constructed if
-one knows the current state of the quantum system by using the Born
-rule.  Specifically, for each
-pure normalized quantum state $\ket{\phi}$, the Born rule induces a
-probability measure $\mu_{\phi}^{\mathrm{B}}$ defined as
-$\mu_{\phi}^{\mathrm{B}}(P)=\ip{\phi}{P\phi}$. The situation generalizes to
-mixed states $\rho = \sum_{j=1}^{N}q_{j}\proj{\phi_{j}}$, where
-$\sum_{j=1}^{N}q_{j}=1$ in which case the generalized Born rule
-induces a probability measure $\mu_{\rho}^{\mathrm{B}}$ defined
-as
-$\mu_{\rho}^{\mathrm{B}}\left(P\right) = \Tr\left(\rho P\right) =
-\sum_{j=1}^{N}
-q_{j}\mu_{\phi_{j}}^{\mathrm{B}}\left(P\right)$~\cite{peres1995quantum,544199,Jaeger2007}.
+\noindent A quantum probability measure can be easily constructed
+if one knows the current state of the quantum system by using the
+Born rule. Specifically, for each pure normalized quantum state $\ket{\phi}$,
+the Born rule induces a probability measure $\mu_{\phi}^{\mathrm{B}}$
+defined as $\mu_{\phi}^{\mathrm{\mathrm{B}}}(P)=\ip{\phi}{P\phi}$.
+The situation generalizes to mixed states $\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}$,
+where $\sum_{j=1}^{N}q_{j}=1$ in which case the generalized Born
+rule induces a probability measure $\mu_{\rho}^{\mathrm{\mathrm{B}}}$
+defined as $\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(P\right)=\Tr\left(\rho P\right)=\sum_{j=1}^{N}q_{j}\mu_{\phi_{j}}^{\mathrm{\mathrm{B}}}\left(P\right)$~\cite{peres1995quantum,544199,Jaeger2007}.
 Conversely every probability measure must be of this form.
 
-\begin{thm}[Gleason's
-  theorem~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}]\label{cor:Gleason's}In
+\begin{thm}[Gleason's theorem~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}]\label{cor:Gleason's}In
 a Hilbert space $\Hilb$ of dimension $d\geq3$, given a quantum probability
 measure~$\mu:\events\rightarrow[0,1]$, there exists a unique mixed
-state~$\rho$ such that $\mu=\mu_{\rho}^{\mathrm{B}}$.
+state~$\rho$ such that $\mu=\mu_{\rho}^{\mathrm{\mathrm{B}}}$.
 \end{thm}
 
 %%%%%
+
 \subsection{Measuring Quantum Probabilities}
 
 Similarly to the classical case, it is possible to estimate quantum
@@ -688,7 +688,6 @@ the detected pattern. This example illustrates the case of a fundamental
 physical limitation that not even infinite resources could mitigate.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \section{Cryptodeterminism}
 
@@ -793,11 +792,9 @@ with the event really happened are the only askable events.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \section{Quantum Interval-valued Probability}
 
 %%%%%
-
 
 \subsection{Quantum Interval-valued Probability Measures}
 
@@ -851,22 +848,23 @@ is defined by
 \includegraphics[scale=0.38]{figure1} 
 \par\end{centering}
 \caption{\label{fig:three-dimensional-3-value}This figure illustrates the
-1-dimensional projectors mapped by $\bar{\mu}_{\ket{0}}^{\mathrm{B}}(P)=\iota\left(\mu_{\ket{0}}^{\mathrm{B}}(P)\right)$
+1-dimensional projectors mapped by $\bar{\mu}_{\ket{0}}^{\mathrm{\mathrm{B}}}(P)=\iota\left(\mu_{\ket{0}}^{\mathrm{\mathrm{B}}}(P)\right)$
 plotted in $\mathbb{R}^{3}$. The red dotted vector is $\ket{0}$,
-and $\bar{\mu}_{\ket{0}}^{\mathrm{B}}\left(\proj{0}\right)=\necess$. $\ket{0}$
-is the normal vector of the plane so that we have $\bar{\mu}_{\ket{0}}^{\mathrm{B}}\left(\proj{\psi}\right)=\imposs$
+and $\bar{\mu}_{\ket{0}}^{\mathrm{\mathrm{B}}}\left(\proj{0}\right)=\necess$.
+$\ket{0}$ is the normal vector of the plane so that we have $\bar{\mu}_{\ket{0}}^{\mathrm{\mathrm{B}}}\left(\proj{\psi}\right)=\imposs$
 for any vector~$\ket{\psi}$ in the plane. For any other vector~$\ket{\psi}$,
-we have $\bar{\mu}_{\ket{0}}^{\mathrm{B}}\left(\proj{\psi}\right)=\unknown$.}
+we have $\bar{\mu}_{\ket{0}}^{\mathrm{\mathrm{B}}}\left(\proj{\psi}\right)=\unknown$.}
 \end{figure}
 For example, figure~\ref{fig:three-dimensional-3-value} plots the
-1-dimensional projectors mapped by $\iota\left(\mu_{\ket{0}}^{\mathrm{B}}(P)\right)$.
+1-dimensional projectors mapped by $\iota\left(\mu_{\ket{0}}^{\mathrm{\mathrm{B}}}(P)\right)$.
 This measure represents the beliefs of an experimenter with no prior
-knowledge about the particular quantum system in question.\footnote{\yutsung{Actually, $\iota\left(\mu_{\ket{0}}^{\mathrm{B}}(P)\right)$ is quite
-informative. Since $\iota\left(\mu_{\ket{0}}^{\mathrm{B}}(P)\right)=\necess$
-if and only if $P=\proj{0}$, we know the core of $\iota\left(\mu_{\ket{0}}^{\mathrm{B}}(P)\right)$
-is exactly $\left\{ \mu_{\ket{0}}^{\mathrm{B}}\right\} $. The quantum interval-valued
-probability measure for an experimenter with no prior knowledge should
-be $\bar{\mu}(P)=\unknown$ for every projection~$P$.}} 
+knowledge about the particular quantum system in question.\footnote{\yutsung{Actually, $\iota\left(\mu_{\ket{0}}^{\mathrm{\mathrm{B}}}(P)\right)$
+is quite informative. Since $\iota\left(\mu_{\ket{0}}^{\mathrm{\mathrm{B}}}(P)\right)=\necess$
+if and only if $P=\proj{0}$, we know the core of $\iota\left(\mu_{\ket{0}}^{\mathrm{\mathrm{B}}}(P)\right)$
+is exactly $\left\{ \mu_{\ket{0}}^{\mathrm{\mathrm{B}}}\right\} $.
+The quantum interval-valued probability measure for an experimenter
+with no prior knowledge should be $\bar{\mu}(P)=\unknown$ for every
+projection~$P$.}} 
 
 Similarly, we can recast the result of cryptodeterminism to quantum
 interval-valued probability measures as well. In another word, for
@@ -881,7 +879,6 @@ one, and the convexity and core in the next section provides another
 example that quantum interval-valued probability measures behave unexpectedly.
 
 %%%%%
-
 
 \subsection{Convexity and Core}
 
@@ -964,6 +961,7 @@ can satisfy $\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0$; a contradiction.
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Why Empty Core?}
 
 The possibility that a convex quantum interval-valued probability
@@ -1044,24 +1042,24 @@ are three of all possibilities:
 \begin{itemize}
 \item When $\events_{1}=\events\backslash\left\{ \proj{\ps'}\right\} $,
 because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$, we have
-$\mathrm{core}\left(\bar{\mu}|_{\events_{1}}\right)=\left\{ \mu_{\ket{2}}^{\mathrm{B}}\right\} $.
+$\mathrm{core}\left(\bar{\mu}|_{\events_{1}}\right)=\left\{ \mu_{\ket{2}}^{\mathrm{\mathrm{B}}}\right\} $.
 \item When $\events_{2}=\events\backslash\left\{ \proj{\ps}\right\} $,
 because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps'})=\imposs$, we
-have $\mathrm{core}\left(\bar{\mu}|_{\events_{2}}\right)=\left\{ \mu_{\ket{1}}^{\mathrm{B}}\right\} $.
+have $\mathrm{core}\left(\bar{\mu}|_{\events_{2}}\right)=\left\{ \mu_{\ket{1}}^{\mathrm{\mathrm{B}}}\right\} $.
 \item When $\events_{3}=\events\backslash\left\{ \proj{0},\proj{\ps},\proj{\ps'}\right\} $,
 because $\bar{\mu}(\proj{\phi})\ne\necess$ for all $\ket{\phi}$,
-we have $\mu_{\frac{\mathbb{1}}{3}}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu}|_{\events_{3}}\right)$
-as well as $\mu_{\ket{2}}^{\mathrm{B}}$ and $\mu_{\ket{1}}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu}|_{\events_{3}}\right)$.
+we have $\mu_{\frac{\mathbb{1}}{3}}^{\mathrm{\mathrm{B}}}\in\mathrm{core}\left(\bar{\mu}|_{\events_{3}}\right)$
+as well as $\mu_{\ket{2}}^{\mathrm{\mathrm{B}}}$ and $\mu_{\ket{1}}^{\mathrm{\mathrm{B}}}\in\mathrm{core}\left(\bar{\mu}|_{\events_{3}}\right)$.
 \end{itemize}
 Each of these possibilities is compatible with some but not all of
 the observations. In another word, 
 \begin{equation}
-\mathrm{core}\left(\bar{\mu}\right)=\bigcap_{\events'\subseteq\events}\mathrm{core}\left(\bar{\mu}|_{\events'}\right)\subseteq\mathrm{core}\left(\bar{\mu}|_{\events_{1}}\right)\cap\mathrm{core}\left(\bar{\mu}|_{\events_{2}}\right)=\left\{ \mu_{\ket{2}}^{\mathrm{B}}\right\} \cap\left\{ \mu_{\ket{1}}^{\mathrm{B}}\right\} =\emptyset\,.
+\mathrm{core}\left(\bar{\mu}\right)=\bigcap_{\events'\subseteq\events}\mathrm{core}\left(\bar{\mu}|_{\events'}\right)\subseteq\mathrm{core}\left(\bar{\mu}|_{\events_{1}}\right)\cap\mathrm{core}\left(\bar{\mu}|_{\events_{2}}\right)=\left\{ \mu_{\ket{2}}^{\mathrm{\mathrm{B}}}\right\} \cap\left\{ \mu_{\ket{1}}^{\mathrm{\mathrm{B}}}\right\} =\emptyset\,.
 \end{equation}
 The first two possibilities are particular interesting since each
 two 1-dimensional projectors\nb$\proj{\psi_{0}}$ and $\proj{\psi_{1}}$
 mapped to $\imposs$ suggests there is a subset~$\events'\subseteq\events$
-such that $\mathrm{core}\left(\bar{\mu}|_{\events'}\right)=\left\{ \mu_{\ket{\psi_{0}}\times\ket{\psi_{1}}}^{\mathrm{B}}\right\} $
+such that $\mathrm{core}\left(\bar{\mu}|_{\events'}\right)=\left\{ \mu_{\ket{\psi_{0}}\times\ket{\psi_{1}}}^{\mathrm{\mathrm{B}}}\right\} $
 in the Hilbert space of dimension 3, where the cross product of complex
 vectors is defined in definition~\ref{def:cross-product}. 
 
@@ -1070,7 +1068,7 @@ if $\bar{\mu}$ has a non-empty core, the states mapping to $\imposs$
 is contained in a plane, which contains no area in the sphere. On
 the other hand, if the states mapping to $\imposs$ contain some area
 in the sphere as in figure~\ref{fig:three-dimensional-real-frame-1},
-and this area intersects a plane~$\events'$, then $\mathrm{core}\left(\bar{\mu}|_{\events'}\right)=\left\{ \mu_{\ket{\psi}}^{\mathrm{B}}\right\} $,
+and this area intersects a plane~$\events'$, then $\mathrm{core}\left(\bar{\mu}|_{\events'}\right)=\left\{ \mu_{\ket{\psi}}^{\mathrm{\mathrm{B}}}\right\} $,
 where $\ket{\psi}$ is the normal vector of $\events'$. Since different
 planes have different normal vectors, $\bar{\mu}$ has an empty core.
 Furthermore, the larger the area, the more state vectors which are
@@ -1086,15 +1084,15 @@ which represents the ability of measurement equipment. In particular,
 we have the following results whose details are described in \ref{sec:Real-Interval-valued-Frame}. 
 \begin{itemize}
 \item The radius of any disk inside the area of the 1-dimensional projectors
-mapping to $\imposs$ must smaller than $\pi / 4$ (theorem~\ref{thm:pi-div-4}).
+mapping to $\imposs$ must smaller than $\pi/4$ (theorem~\ref{thm:pi-div-4}). 
 \item When the radius of any disk inside the area of the 1-dimensional projectors
-mapping to $\imposs$ between $\arcsin\left(1 / \sqrt{3}\right)$
-and $\pi / 4$, we have $\unknown\in\mathscr{I}$, i.e., $\underset{\left[l,r\right]\in\mathscr{I}}{\max}r-l=1$
-(theorem~\ref{thm:arcsin-one-over-sqrt-three}).
+mapping to $\imposs$ between $\arcsin\left(1/\sqrt{3}\right)$ and
+$\pi/4$, we have $\unknown\in\mathscr{I}$, i.e., $\underset{\left[l,r\right]\in\mathscr{I}}{\max}r-l=1$
+(theorem~\ref{thm:arcsin-one-over-sqrt-three}). 
 \item When the radius of any disk inside the area of the 1-dimensional projectors
-mapping to $\imposs$ between $\pi/6$ and $\arcsin\left(1 / \sqrt{3}\right)$,
+mapping to $\imposs$ between $\pi/6$ and $\arcsin\left(1/\sqrt{3}\right)$,
 we have $\underset{\left[l,r\right]\in\mathscr{I}}{\max}r-l=\frac{1}{3}$
-(to be typed...).
+(to be typed...). 
 \end{itemize}
 In general, we conjecture that if the measurement equipment is made
 more and more precise, the corresponding interval-valued probability
@@ -1103,7 +1101,6 @@ $\mathscr{I}=\set{\left\{ a\right\} }{a\in\left[0,1\right]}$ we do
 indeed recover the conventional Gleason's theorem and the Born rule.
 
 %%%%%
-
 
 \subsection{Wigner's Friends}
 
@@ -1132,6 +1129,7 @@ measure in example~\ref{ex:three-dimensional-three-value} which
 has an empty core.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Conclusion and Discussion}
 
 If we insist that probabilities cannot be computed to infinite precision
@@ -1146,24 +1144,27 @@ Moreover, our examples and Gleason's theorem summarized in table~\ref{table_long
 suggests that as the measurement resources increase, an entire quantum
 IVPM could more and more likely be identified to a particular state.
 \begin{table}
-\caption{\label{table_long}Relation between measurement resources and
-interval-valued probability measures.}
+\caption{\label{table_long}Relation between measurement resources and interval-valued
+probability measures.}
+
 \begin{indented}
-\item[]\begin{tabular}{c|cccc}
-\br
-Measurement resources & Lowest & \multicolumn{2}{c}{$\longleftrightarrow$} & Highest\tabularnewline
-\mr
-Count of $\mathscr{I}$ & $3$ & $4$ & \ldots{} & $\infty$\tabularnewline
-$\sup_{\left[l,r\right]\in\mathscr{I}}\left|r-l\right|$ & $1$ & $\frac{1}{2}$ & \ldots{} & $0$\tabularnewline
-Count of $\mathrm{core}\left(\bar{\mu}\right)$ & 0 & 0 &  & 1\tabularnewline
-Count of states correspond to pieces of $\bar{\mu}$ & $3$ & $2$ & \ldots{} & $1$\tabularnewline
-\mr
-How precise we could identify a state? & Coarse & \multicolumn{2}{c}{$\longleftrightarrow$} & Precise\tabularnewline
-\br
-\end{tabular}
+\item\begin{tabular}{c|cccc} 
+\br 
+Measurement resources & Lowest & \multicolumn{2}{c}{$\longleftrightarrow$} & Highest\tabularnewline 
+\mr 
+Count of $\mathscr{I}$ & $3$ & $4$ & \ldots{} & $\infty$\tabularnewline 
+$\sup_{\left[l,r\right]\in\mathscr{I}}\left|r-l\right|$ & $1$ & $\frac{1}{2}$ & \ldots{} & $0$\tabularnewline 
+Count of $\mathrm{core}\left(\bar{\mu}\right)$ & 0 & 0 &  & 1\tabularnewline 
+Count of states correspond to pieces of $\bar{\mu}$ & $3$ & $2$ & \ldots{} & $1$\tabularnewline 
+\mr 
+How precise we could identify a state? & Coarse & \multicolumn{2}{c}{$\longleftrightarrow$} & Precise\tabularnewline 
+\br 
+\end{tabular} 
 \end{indented}
+ 
 \end{table}
-Additional work is in progress on the following research questions:
+
+Additional work is in progress on the following research questions: 
 \begin{description}
 \item [{Research Question.}] Confirm that there is always a quantum IVPM
 with an empty-core if the length of the intervals is bigger than zero. 
@@ -1173,7 +1174,7 @@ quantum IVPM is close to the Born rule.
 of the intervals increase the quantum IVPM converges to the measure
 induced by the Born rule. 
 \item [{Research Question.}] Investigate the status of the theorems of
-Bell and Kochen-Specker for quantum IVPM.
+Bell and Kochen-Specker for quantum IVPM. 
 \end{description}
 Although we discussed how a quantum IVPM could be induced from a real
 quantum state, our investigation leaves an open question of whether
@@ -1194,9 +1195,11 @@ beliefs (i.e., probabilities) to possible future interactions.
 Anyone who has discussed this with us?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\appendix
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+%dummy comment inserted by tex2lyx to ensure that this paragraph is not empty%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Interval-valued Frame Functions\label{sec:Interval-valued-Frame-Functions}}
 
 Although quantum IVPMs in example~\ref{ex:three-dimensional-three-value}
@@ -1228,8 +1231,8 @@ different symbols emphasis that they are embedded in different spaces.\end{defin
 any quantum probability measure~$\mu$ on the Hilbert space of dimension~$d$,
 we can define its \emph{frame function}~$f:\mathbb{C}S^{d-1}\rightarrow\left[0,1\right]$
 by $f\left(\ket{\psi}\right)=\mu\left(\proj{\psi}\right)$. For a
-quantum probability measure~$\mu_{\phi}^{\mathrm{B}}$ induced by the Born
-rule, its frame function is denoted by $f_{\phi}^{\mathrm{B}}$.\end{definition}
+quantum probability measure~$\mu_{\phi}^{\mathrm{\mathrm{B}}}$ induced
+by the Born rule, its frame function is denoted by $f_{\phi}^{\mathrm{\mathrm{B}}}$.\end{definition}
 
 \begin{thm}\label{thm:frame-function}\cite{gleason1957,peres1995quantum,RichmanBridges1999}~A
 frame function~$f:\mathbb{C}S^{d-1}\rightarrow\left[0,1\right]$
@@ -1291,6 +1294,7 @@ it is sufficient to check
 \end{equation}
 for orthogonal $\ket{\psi_{0}}$ and $\ket{\psi_{1}}$,which always
 holds because the properties of $\bar{f}$.\end{proof}
+
 \begin{definition}\label{def:cross-product}For $\ket{\psi}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}+\alpha_{2}\ket{2}=\left(\begin{array}{c}
 \alpha_{0}\\
 \alpha_{1}\\
@@ -1330,67 +1334,69 @@ by $\ket{\psi}\nparallel\ket{\phi}$.\end{definition}
 \begin{lemma}Given $\ket{\psi}$, $\ket{\phi}$ and $\ket{\varphi}\in\mathbb{C}^{3}$
 such that $\ket{\psi}\nparallel\ket{\phi}$. Then, $\ket{\varphi}\parallel\left(\ket{\psi}\times\ket{\phi}\right)$
 if and only if $\ip{\psi}{\varphi}=\ip{\phi}{\varphi}=0$.\end{lemma}
-\begin{proof}
-To prove that $\ket{\varphi}\parallel\left(\ket{\psi}\times\ket{\phi}\right)\Rightarrow\ip{\psi}{\varphi}=\ip{\phi}{\varphi}=0$,
+\begin{proof} To prove that $\ket{\varphi}\parallel\left(\ket{\psi}\times\ket{\phi}\right)\Rightarrow\ip{\psi}{\varphi}=\ip{\phi}{\varphi}=0$,
 we can just verify 
-\begin{equation}\eqalign{
-&\ip{\psi}{\psi\times\phi}=\ip{\psi\times\phi}{\psi}^{*}\\
-=&\left[\left(\alpha_{1}\beta_{2}-\alpha_{2}\beta_{1}\right)\alpha_{0}+\left(\alpha_{2}\beta_{0}-\alpha_{0}\beta_{2}\right)\alpha_{1}+\left(\alpha_{0}\beta_{1}-\alpha_{1}\beta_{0}\right)\alpha_{2}\right]^{*}=0\,,\\
-&\ip{\phi}{\psi\times\phi}=\ip{\psi\times\phi}{\phi}^{*}\\
-=&\left[\left(\alpha_{1}\beta_{2}-\alpha_{2}\beta_{1}\right)\beta_{0}+\left(\alpha_{2}\beta_{0}-\alpha_{0}\beta_{2}\right)\beta_{1}+\left(\alpha_{0}\beta_{1}-\alpha_{1}\beta_{0}\right)\beta_{2}\right]^{*}=0\,.
+\begin{equation}\eqalign{ 
+&\ip{\psi}{\psi\times\phi}=\ip{\psi\times\phi}{\psi}^{*}\\ 
+=&\left[\left(\alpha_{1}\beta_{2}-\alpha_{2}\beta_{1}\right)\alpha_{0}+\left(\alpha_{2}\beta_{0}-\alpha_{0}\beta_{2}\right)\alpha_{1}+\left(\alpha_{0}\beta_{1}-\alpha_{1}\beta_{0}\right)\alpha_{2}\right]^{*}=0\,,\\ 
+&\ip{\phi}{\psi\times\phi}=\ip{\psi\times\phi}{\phi}^{*}\\ 
+=&\left[\left(\alpha_{1}\beta_{2}-\alpha_{2}\beta_{1}\right)\beta_{0}+\left(\alpha_{2}\beta_{0}-\alpha_{0}\beta_{2}\right)\beta_{1}+\left(\alpha_{0}\beta_{1}-\alpha_{1}\beta_{0}\right)\beta_{2}\right]^{*}=0\,. 
 }\end{equation}
 
 To prove the other direction, consider the linear transformation~$T:\mathbb{C}^{3}\rightarrow\mathbb{C}^{2}$
-defined by $T\left(\ket{\varphi}\right)=\left(\begin{array}{c}\ip{\psi}{\varphi}\\
+defined by $T\left(\ket{\varphi}\right)=\left(\begin{array}{c}
+\ip{\psi}{\varphi}\\
 \ip{\phi}{\varphi}
 \end{array}\right)$. Since $\ket{\psi}\nparallel\ket{\phi}$, we have $\mathrm{rank}\left(T\right)=2$.
 Together with the rank equation~\cite{FraleighBeauregard1995}, we
-have
+have 
 \begin{equation}
 \dim\left(\ker T\right)=\mathrm{nullity}\left(T\right)=3-\mathrm{rank}\left(T\right)=3-2=1\,.
 \end{equation}
 By the other direction of the proof, we have already known $\ket{\psi}\times\ket{\phi}\in\ker T$.
 Therefore, $\ket{\varphi}\parallel\left(\ket{\psi}\times\ket{\phi}\right)$.
-\end{proof}
-Since interval-valued probability measures~$\bar{\mu}$ and interval-valued
-frame functions~$\bar{f}$ are one-to-one correspondence, studying
-1-dimensional projectors mapping to impossible by $\bar{\mu}$ is
-the same as studying the points on $\mathbb{C}S^{2}$ mapping to impossible
-by $\bar{f}$. These points, denoted by $\bar{f}^{-1}\left(\imposs\right)=\set{\ket{\psi}\in\mathbb{C}S^{2}}{\bar{f}(\ket{\psi})=\imposs}$,
+\end{proof} Since interval-valued probability measures~$\bar{\mu}$
+and interval-valued frame functions~$\bar{f}$ are one-to-one correspondence,
+studying 1-dimensional projectors mapping to impossible by $\bar{\mu}$
+is the same as studying the points on $\mathbb{C}S^{2}$ mapping to
+impossible by $\bar{f}$. These points, denoted by $\bar{f}^{-1}\left(\imposs\right)=\set{\ket{\psi}\in\mathbb{C}S^{2}}{\bar{f}(\ket{\psi})=\imposs}$,
 play an important role to understand $\bar{f}$. There are 4 different
-cases when analyzing $\bar{f}^{-1}\left(\imposs\right)$:
+cases when analyzing $\bar{f}^{-1}\left(\imposs\right)$: 
 \begin{enumerate}
-\item $\bar{f}^{-1}\left(\imposs\right)=\emptyset$. If $f_{\phi}^{\mathrm{B}}\in\mathrm{core}\left(\bar{f}\right)$
-for some pure state~$\ket{\phi}$, we could say nothing about $\ket{\phi}$.
+\item $\bar{f}^{-1}\left(\imposs\right)=\emptyset$. If $f_{\phi}^{\mathrm{\mathrm{B}}}\in\mathrm{core}\left(\bar{f}\right)$
+for some pure state~$\ket{\phi}$, we could say nothing about $\ket{\phi}$. 
 \item $\bar{f}^{-1}\left(\imposs\right)=\left\{ \ket{\psi_{0}}\right\} $.
-If $f_{\phi}^{\mathrm{B}}\in\mathrm{core}\left(\bar{f}\right)$ for some pure
-state~$\ket{\phi}$, $\ket{\phi}$ could be any state orthogonal
-to $\ket{\psi_{0}}$.
+If $f_{\phi}^{\mathrm{\mathrm{B}}}\in\mathrm{core}\left(\bar{f}\right)$
+for some pure state~$\ket{\phi}$, $\ket{\phi}$ could be any state
+orthogonal to $\ket{\psi_{0}}$. 
 \item Consider $\left\{ \ket{\psi_{0}},\ket{\psi_{1}}\right\} \subseteq\bar{f}^{-1}\left(\imposs\right)$.
 If $\left(\ket{\psi_{0}}\times\ket{\psi_{1}}\right)\parallel\left(\ket{\psi_{0}'}\times\ket{\psi_{1}'}\right)$
 for any $\left\{ \ket{\psi_{0}'},\ket{\psi_{1}'}\right\} \subseteq\bar{f}^{-1}\left(\imposs\right)$,
 then $\ket{\psi_{0}}\times\ket{\psi_{1}}$ is the only pure state
-which might induce $\bar{f}$. In another word, if $f_{\phi}^{\mathrm{B}}\in\mathrm{core}\left(\bar{f}\right)$
+which might induce $\bar{f}$. In another word, if $f_{\phi}^{\mathrm{\mathrm{B}}}\in\mathrm{core}\left(\bar{f}\right)$
 for some pure state~$\ket{\phi}$, then $\ket{\phi}\parallel\left(\ket{\psi_{0}}\times\ket{\psi_{1}}\right)$.
 For example, example~\ref{ex:three-dimensional-5-value} is in this
 case when the core is empty; an interval-valued frame function defined
-by $\bar{f}\left(\ket{\psi}\right)=\iota\left(f_{\phi}^{\mathrm{B}}\left(\ket{\psi}\right)\right)$
-is also in this case when the core is the singleton set~$\left\{ f_{\phi}^{\mathrm{B}}\right\} $,
+by $\bar{f}\left(\ket{\psi}\right)=\iota\left(f_{\phi}^{\mathrm{\mathrm{B}}}\left(\ket{\psi}\right)\right)$
+is also in this case when the core is the singleton set~$\left\{ f_{\phi}^{\mathrm{\mathrm{B}}}\right\} $,
 where $\iota$ is defined in equation~(\ref{eq:homomorphism}). 
 \item If there exist two pair of states and $\left\{ \ket{\psi_{0}},\ket{\psi_{1}}\right\} $
 and $\left\{ \ket{\psi_{0}'},\ket{\psi_{1}'}\right\} \subseteq\bar{f}^{-1}\left(\imposs\right)$
 such that $\left(\ket{\psi_{0}}\times\ket{\psi_{1}}\right)\nparallel\left(\ket{\psi_{0}'}\times\ket{\psi_{1}'}\right)$,
 then both $\ket{\psi_{0}}\times\ket{\psi_{1}}$ and $\ket{\psi_{0}'}\times\ket{\psi_{1}'}$
-might induce $\bar{f}$. However, neither $f_{\psi_{0}\times\psi_{1}}^{\mathrm{B}}$
-nor $f_{\psi_{0}'\times\psi_{1}'}^{\mathrm{B}}$ is in the core of $\bar{f}$
-because $f_{\psi_{0}\times\psi_{1}}^{\mathrm{B}}$ is inconsistent with $\bar{f}\left(\ket{\psi_{0}'}\right)=\bar{f}\left(\ket{\psi_{1}'}\right)=\imposs$
-and $f_{\psi_{0}'\times\psi_{1}'}^{\mathrm{B}}$ is inconsistent with $\bar{f}\left(\ket{\psi_{0}}\right)=\bar{f}\left(\ket{\psi_{1}}\right)=\imposs$.
-Actually, $\bar{f}$ has an empty core, and this is the case for example~\ref{ex:three-dimensional-three-value}.
+might induce $\bar{f}$. However, neither $f_{\psi_{0}\times\psi_{1}}^{\mathrm{\mathrm{B}}}$
+nor $f_{\psi_{0}'\times\psi_{1}'}^{\mathrm{\mathrm{B}}}$ is in the
+core of $\bar{f}$ because $f_{\psi_{0}\times\psi_{1}}^{\mathrm{\mathrm{B}}}$
+is inconsistent with $\bar{f}\left(\ket{\psi_{0}'}\right)=\bar{f}\left(\ket{\psi_{1}'}\right)=\imposs$
+and $f_{\psi_{0}'\times\psi_{1}'}^{\mathrm{\mathrm{B}}}$ is inconsistent
+with $\bar{f}\left(\ket{\psi_{0}}\right)=\bar{f}\left(\ket{\psi_{1}}\right)=\imposs$.
+Actually, $\bar{f}$ has an empty core, and this is the case for example~\ref{ex:three-dimensional-three-value}. 
 \end{enumerate}
 In summary, if we have an idea of $\bar{f}^{-1}\left(\imposs\right)$,
 we could have some idea of the pure states in core.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Real Interval-valued Frame Functions\label{sec:Real-Interval-valued-Frame}}
 
 In order to simplify the discussion, we call a function\nb$\bar{f}:S^{2}\rightarrow\mathscr{I}$
@@ -1429,11 +1435,11 @@ is larger than $\theta_{0}$ to impossible.
 north pole~$\ket{0}\in S^{2}$, then $\angle\left(\ket{\psi}\right)=\arccos\ip{0}{\psi}$
 denotes the latitude of $\ket{\psi}$. Conversely, $\angle^{-1}\left(I\right)=\set{\ket{\psi}\in S^{2}}{\angle\left(\ket{\psi}\right)\in I}$.
 For example, the north pole has the latitude $0$, the equator has
-the the latitude $\pi / 2$, and $\angle^{-1}\left(\left[0,\theta_{0}\right]\right)=\set{\ket{\psi}\in S^{2}}{\theta_{0}\le\angle\left(\ket{\psi}\right)\le\pi / 2}$
+the the latitude $\pi/2$, and $\angle^{-1}\left(\left[0,\theta_{0}\right]\right)=\set{\ket{\psi}\in S^{2}}{\theta_{0}\le\angle\left(\ket{\psi}\right)\le\pi/2}$
 contains all states whose latitude is larger than $\theta_{0}$.\end{definition}
 
-\begin{lemma}\label{lemma:imposs-imply-same-value}Given
-$\theta_{0}\in\left[0,\pi/2\right]$ and an interval-valued frame function~$\bar{f}:S^{2}\rightarrow\mathscr{I}$,
+\begin{lemma}\label{lemma:imposs-imply-same-value}Given $\theta_{0}\in\left[0,\pi/2\right]$
+and an interval-valued frame function~$\bar{f}:S^{2}\rightarrow\mathscr{I}$,
 if $\bar{f}\left(\ket{\psi}\right)=\imposs$ for every $\ket{\psi}\in\angle^{-1}\left(\left[0,\theta_{0}\right]\right)$,
 then there is $l_{0}\in\left[0,\frac{1}{2}\right]$ such that $\bar{f}\left(\ket{\psi_{0}}\right)=\left[l_{0},1-l_{0}\right]\in\mathscr{I}$
 for any $\ket{\psi_{0}}\in\angle^{-1}\left(\left[\pi/2-\theta_{0},\pi/2\right]\right)$.\end{lemma}
@@ -1447,6 +1453,7 @@ vector above the light green circle maps to $\imposs$, and we want
 to prove that every vector between dark green and light blue maps
 to the same interval.}
 \end{figure}
+
 \begin{proof} We could illustrate the situation in figure~\ref{fig:three-dimensional-real-frame-1}.
 Let the yellow circle is the states whose latitude is $\theta_{0}$.
 Then, every states above the yellow circle maps to $\imposs$ by $\bar{f}$.
@@ -1473,7 +1480,7 @@ Moreover, the same argument can apply on the great circle which is
 not longitude. Since $\ket{\bar{1}}$ is the normal vector of the
 gray circle which includes $\ket{2}$ and $\ket{\bar{2}}$, we have
 $\bar{f}\left(\ket{2}\right)=\left[1,1\right]-\bar{f}\left(\ket{\bar{1}}\right)=\bar{f}\left(\ket{\bar{2}}\right)$.
-In another words, for any $\ket{\psi_{0}}$ and $\ket{\psi_{1}}\in\angle^{-1}\left(\left[\pi / 2-\theta_{0},\pi / 2\right]\right)$,
+In another words, for any $\ket{\psi_{0}}$ and $\ket{\psi_{1}}\in\angle^{-1}\left(\left[\pi/2-\theta_{0},\pi/2\right]\right)$,
 even if $\ket{\psi_{0}}$ and $\ket{\psi_{1}}$ are not in the same
 longitude, then $\bar{f}\left(\ket{\psi_{0}}\right)$ and $\bar{f}\left(\ket{\psi_{1}}\right)$
 are still the same.
@@ -1481,65 +1488,58 @@ are still the same.
 Thus, we could plug $\bar{f}\left(\ket{1}\right)=\bar{f}\left(\ket{2'}\right)=\left[l_{0},r_{0}\right]$
 into equation~(\ref{eq:includes}), and get 
 \begin{equation}
-\left[1-r_{0},1-l_{0}\right]=\left[1,1\right]-\left[l_{0},r_{0}\right]=\left[l_{0},r_{0}\right]\Rightarrow
-l_{0}+r_{0}=1\,.
+\left[1-r_{0},1-l_{0}\right]=\left[1,1\right]-\left[l_{0},r_{0}\right]=\left[l_{0},r_{0}\right]\Rightarrow l_{0}+r_{0}=1\,.
 \end{equation}
 Also, we have 
 \begin{equation}
-1\in\bar{f}\left(\ket{0'}\right)+\bar{f}\left(\ket{1}\right)+\bar{f}\left(\ket{2'}\right)=\left[2l_{0},2r_{0}\right]\Rightarrow
-l_{0}\le\frac{1}{2}\le r_{0}\,.
+1\in\bar{f}\left(\ket{0'}\right)+\bar{f}\left(\ket{1}\right)+\bar{f}\left(\ket{2'}\right)=\left[2l_{0},2r_{0}\right]\Rightarrow l_{0}\le\frac{1}{2}\le r_{0}\,.
 \end{equation}
-Thus the lemma is proved.
-\end{proof}
-\begin{thm}\label{thm:pi-div-4}Given $\theta_{0}\in\left[0,\pi / 2\right]$
-and an interval-valued frame function~$\bar{f}:S^{2}\rightarrow\mathscr{I}$,
-if $\bar{f}\left(\ket{\psi}\right)=\imposs$ for every $\ket{\psi}\in\angle^{-1}\left(\left[0,\theta_{0}\right]\right)$,
-then $\theta_{0}<\pi / 4$.\end{thm}
-\begin{proof}
-We are going to prove by contradiction. Suppose $\theta_{0}\ge\pi / 4$,
-we have $\left[0,\theta_{0}\right]\cap\left[\pi / 2-\theta_{0},\pi / 2\right]=\left[\pi / 2-\theta_{0},\theta_{0}\right]\ne\emptyset$.
-Pick any $\ket{\psi_{0}}\in\angle^{-1}\left(\left[\pi / 2-\theta_{0},\theta_{0}\right]\right)$,
+Thus the lemma is proved. \end{proof} \begin{thm}\label{thm:pi-div-4}Given
+$\theta_{0}\in\left[0,\pi/2\right]$ and an interval-valued frame
+function~$\bar{f}:S^{2}\rightarrow\mathscr{I}$, if $\bar{f}\left(\ket{\psi}\right)=\imposs$
+for every $\ket{\psi}\in\angle^{-1}\left(\left[0,\theta_{0}\right]\right)$,
+then $\theta_{0}<\pi/4$.\end{thm} \begin{proof} We are going to
+prove by contradiction. Suppose $\theta_{0}\ge\pi/4$, we have $\left[0,\theta_{0}\right]\cap\left[\pi/2-\theta_{0},\pi/2\right]=\left[\pi/2-\theta_{0},\theta_{0}\right]\ne\emptyset$.
+Pick any $\ket{\psi_{0}}\in\angle^{-1}\left(\left[\pi/2-\theta_{0},\theta_{0}\right]\right)$,
 by lemma~\ref{lemma:imposs-imply-same-value}, we have $\imposs=\bar{f}\left(\ket{\psi_{0}}\right)=\left[l_{0},1-l_{0}\right]$,
-where $l_{0}\in\left[0,\pi / 2\right]$. A contradiction!
-\end{proof}
-\begin{thm}\label{thm:arcsin-one-over-sqrt-three}Given $\theta_{0}\in\left[\arcsin\left(1 / \sqrt{3}\right),\pi / 4\right)$
+where $l_{0}\in\left[0,\pi/2\right]$. A contradiction! \end{proof}
+\begin{thm}\label{thm:arcsin-one-over-sqrt-three}Given $\theta_{0}\in\left[\arcsin\left(1/\sqrt{3}\right),\pi/4\right)$
 and an interval-valued frame function~$\bar{f}:S^{2}\rightarrow\mathscr{I}$,
 if $\bar{f}\left(\ket{\psi}\right)=\imposs$ for every $\ket{\psi}\in\angle^{-1}\left(\left[0,\theta_{0}\right]\right)$,
-then $\unknown\in\mathscr{I}$.\end{thm}
+then $\unknown\in\mathscr{I}$.\end{thm} 
 \begin{figure}
 \begin{centering}
-\includegraphics[scale=0.38]{figureb2.eps} 
+\includegraphics[scale=0.38]{figureb2} 
 \par\end{centering}
 \caption{\label{fig:three-dimensional-real-frame-2}This figure is used in
 the proof of theorem~\ref{thm:arcsin-one-over-sqrt-three}. The latitude
-of the yellow circle is $\theta_{0}\in\left[\arcsin\left(1 / \sqrt{3}\right),\pi / 4\right)$,
-and the latitude of the green circle is $\pi / 2-\theta_{0}$.}
+of the yellow circle is $\theta_{0}\in\left[\arcsin\left(1/\sqrt{3}\right),\pi/4\right)$,
+and the latitude of the green circle is $\pi/2-\theta_{0}$.}
 \end{figure}
-\begin{proof}
-We could illustrate the situation in figure~\ref{fig:three-dimensional-real-frame-2},
+
+\begin{proof} We could illustrate the situation in figure~\ref{fig:three-dimensional-real-frame-2},
 where the latitude of of the yellow circle is $\theta_{0}$ and the
-latitude of of the green circle is $\pi / 2-\theta_{0}$. Therefore,
+latitude of of the green circle is $\pi/2-\theta_{0}$. Therefore,
 $\bar{f}$ should map any state above the yellow circle to $\imposs$
 and any states between the green circle and the equator to the same
 interval, say, $\left[l_{0},1-l_{0}\right]$, where $0\le l_{0}\le\frac{1}{2}$
 by lemma~\ref{lemma:imposs-imply-same-value}.
 
-When $\theta_{0}\ge\arcsin\left(1 / \sqrt{3}\right)$, the latitude
-of the green circle is $\theta_{0}\le\pi / 2-\arcsin\left(1 / \sqrt{3}\right)$.
+When $\theta_{0}\ge\arcsin\left(1/\sqrt{3}\right)$, the latitude
+of the green circle is $\theta_{0}\le\pi/2-\arcsin\left(1/\sqrt{3}\right)$.
 Now consider three states~$\ket{A}$, $\ket{B}$, and $\ket{C}$
-whose latitude is $\pi / 2-\arcsin\left(1 / \sqrt{3}\right)$
-so that they are below the green circle, and these three states form
-an equilateral triangle whose center is $H$. Since the latitude of
-this triangle is $\pi / 2-\arcsin\left(1 / \sqrt{3}\right)$,
-we know $\overline{OH}=1 / \sqrt{3}$, where $O$ is the center
-of the sphere. By the Pythagorean theorem, $\overline{HA}=\overline{HB}=\sqrt{\frac{2}{3}}$.
-Notice that $\triangle HAB$ is an isosceles triangle with $\angle AHB=2\pi / 3$,
-we have $\overline{AB}=\sqrt{2}$. Since $\overline{OA}=\overline{OB}=1$
-and $\overline{AB}=\sqrt{2}$, $\triangle OAB$ is an isosceles right
-triangle with $\angle AHB=\pi / 2$, i.e., $\ket{A}$ and $\ket{B}$
-are orthogonal. Applying the same reason on all $\ket{A}$, $\ket{B}$,
-and $\ket{C}$, $\left\{ \ket{A},\ket{B},\ket{C}\right\} $ is an
-orthonormal basis.
+whose latitude is $\pi/2-\arcsin\left(1/\sqrt{3}\right)$ so that
+they are below the green circle, and these three states form an equilateral
+triangle whose center is $H$. Since the latitude of this triangle
+is $\pi/2-\arcsin\left(1/\sqrt{3}\right)$, we know $\overline{OH}=1/\sqrt{3}$,
+where $O$ is the center of the sphere. By the Pythagorean theorem,
+$\overline{HA}=\overline{HB}=\sqrt{\frac{2}{3}}$. Notice that $\triangle HAB$
+is an isosceles triangle with $\angle AHB=2\pi/3$, we have $\overline{AB}=\sqrt{2}$.
+Since $\overline{OA}=\overline{OB}=1$ and $\overline{AB}=\sqrt{2}$,
+$\triangle OAB$ is an isosceles right triangle with $\angle AHB=\pi/2$,
+i.e., $\ket{A}$ and $\ket{B}$ are orthogonal. Applying the same
+reason on all $\ket{A}$, $\ket{B}$, and $\ket{C}$, $\left\{ \ket{A},\ket{B},\ket{C}\right\} $
+is an orthonormal basis.
 
 Since $\left\{ \ket{A},\ket{B},\ket{C}\right\} $ is an orthonormal
 basis and $\bar{f}\left(\ket{A}\right)=\bar{f}\left(\ket{B}\right)=\bar{f}\left(\ket{C}\right)=\left[l_{0},1-l_{0}\right]$,
@@ -1551,6 +1551,7 @@ Recall that $0\le l_{0}\le\frac{1}{2}$. Therefore, $l_{0}=0$, that
 is, $\unknown=\left[l_{0},1-l_{0}\right]\in\mathscr{I}$. \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Between Quantum and Classical}
 
 This section discusses the relation between quantum and classical.
@@ -1620,8 +1621,8 @@ we have $\sum_{i=1}^{N}P_{i}\in\events'$.
 By replacing every occurrence of $\events$ by $\events'$ in definition~\ref{def:QuantumCryptodeterministicMeasures},
 \ref{def:QuantumProbabilitySpace}, and \ref{def:QuantumInterval-valuedProbability},
 it is straightforward to define a quantum cryptodeterministic, real-valued
-probability, and interval-valued probability measure on $\events'$.{
-Also, }$\events'$ is called convex if we have $P_{1}P_{2}\in\events'$
+probability, and interval-valued probability measure on $\events'$.
+Also, $\events'$ is called convex if we have $P_{1}P_{2}\in\events'$
 for a pair of mutually commuting projections $P_{1}$ and $P_{2}\in\events'$.\end{definition}
 
 \begin{thm}\label{thm:sub-event-space}Given a Hilbert space~$\Hilb$
@@ -1761,8 +1762,8 @@ measure~$\pmeas:2^{\Omega}\rightarrow\left[0,1\right]$ such that
  & \Rightarrow & \pmeas\left(\tau\left(P\right)\right)\in\bar{\mu}'\left(\tau\left(P\right)\right)=\bar{\mu}\left(P\right)\textrm{ for all }P\in\widehat{\events}\\
  & \Rightarrow & \pmeas\left(\tau\left(P\right)\right)\in\bar{\mu}\left(P\right)\textrm{ for all }P\in\widehat{\events}
 \end{eqnarray*}
-By theorem~\ref{thm:sub-event-space},
-there is a density matrix~$\rho$ such that $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\mu'\left(\tau\left(P\right)\right)$
+By theorem~\ref{thm:sub-event-space}, there is a density matrix~$\rho$
+such that $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\mu'\left(\tau\left(P\right)\right)$
 for all $P\in\events'$. Therefore, $\mu_{\rho}^{\mathrm{B}}\in\mathrm{core}\left(\bar{\mu},\events'\right)$,
 i.e., $\rho\in\coreBorn\left(\bar{\mu},\events'\right)$.\end{proof}
 
@@ -1822,6 +1823,7 @@ is convex.\end{thm}
 \begin{proof}The direct consequence of the previous lemmas. \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{From QRVPM to QIVPM\label{sec:Real-and-Interval}}
 
 Recall that given a set of intervals\nb$\mathscr{I}$, we want to
@@ -1930,9 +1932,8 @@ defined by
 \eqalign{\mathscr{I}_{n,\delta} =& \set{\left[\frac{k-\delta}{n},\frac{k+\delta}{n}\right]}{k=1,\ldots,n-1}\\
 &\cup\set{\left[\frac{k}{n},\frac{k+1}{n}\right]}{k=0,\ldots,n-1}\cup\left\{\left[0,0\right],\left[1,1\right]\right\}}\\ 
 \iota_{n,\delta}\left(x\right) = \cases{ 
-\left[x,x\right]\,, &if $x=0$ or  $x=1$ ;\\ 
-\left[\frac{k-\delta}{n},\frac{k+\delta}{n}\right]\,, &if
-$x=\frac{k}{n}\in\left(0,1\right)$ ;\\
+\left[x,x\right]\,, &if $x=0$ or $x=1$ ;\\ 
+\left[\frac{k-\delta}{n},\frac{k+\delta}{n}\right]\,, &if $x=\frac{k}{n}\in\left(0,1\right)$ ;\\ 
 \left[\frac{k}{n},\frac{k+1}{n}\right]\,, &if $\frac{k}{n}<x<\frac{k+1}{n}$ . 
 }
 }\end{equation}
@@ -2184,13 +2185,14 @@ if $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$, we have
 \begin{equation}\eqalign{ 
  & c\left(x_{0}+x_{1}+x_{2}\right)+c\left(x_{2}\right)\le c\left(x_{0}+x_{2}\right)+c\left(x_{1}+x_{2}\right)\\
 \Rightarrow & \left[x_{0}+x_{1}+x_{2}+c\left(x_{0}+x_{1}+x_{2}\right)\right]+\left[x_{2}+c\left(x_{2}\right)\right]\\
- & \le\left[x_{0}+x_{2}+c\left(x_{0}+x_{2}\right)\right]+\left[x_{1}+x_{2}+c\left(x_{1}+x_{2}\right)\right]\,. }\end{equation}
+ & \le\left[x_{0}+x_{2}+c\left(x_{0}+x_{2}\right)\right]+\left[x_{1}+x_{2}+c\left(x_{1}+x_{2}\right)\right]\,.
+}\end{equation}
 Also, 
 \begin{equation}\eqalign{ 
  & c\left(x_{0}+x_{1}+x_{2}\right)+c\left(x_{2}\right)\le c\left(x_{0}+x_{2}\right)+c\left(x_{1}+x_{2}\right)\\
 \Rightarrow & -c\left(x_{0}+x_{2}\right)-c\left(x_{1}+x_{2}\right)\le-c\left(x_{0}+x_{1}+x_{2}\right)-c\left(x_{2}\right)\\
 \Rightarrow & \left[x_{0}+x_{2}-c\left(x_{0}+x_{2}\right)\right]+\left[x_{1}+x_{2}-c\left(x_{1}+x_{2}\right)\right]\\
- & \le\left[x_{0}+x_{1}+x_{2}-c\left(x_{0}+x_{1}+x_{2}\right)\right]+\left[x_{2}-c\left(x_{2}\right)\right]\,. 
+ & \le\left[x_{0}+x_{1}+x_{2}-c\left(x_{0}+x_{1}+x_{2}\right)\right]+\left[x_{2}-c\left(x_{2}\right)\right]\,.
 }\end{equation}
 The above two equations implies $\iota_{c}'\left(x_{0}+x_{1}+x_{2}\right)+\iota_{c}'\left(x_{2}\right)\subseteq\iota_{c}'\left(x_{0}+x_{2}\right)+\iota_{c}'\left(x_{1}+x_{2}\right)$.
 \item For a set\nb$\left\{ x_{i}\right\} _{i=1}^{N}\subseteq\left[0,1\right]$,
@@ -2456,19 +2458,17 @@ probability measures.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \section{Examples for Quantum Interval-valued Probability Measures\label{sec:Examples-for-QuantumIVPM}}
 
 \begin{figure}
 \begin{centering}
 \includegraphics[scale=0.38]{figureE1} 
 \par\end{centering}
-\caption{\label{fig:three-dimensional-5-value}This figure illustrates cases
-1 and 2 of example~\ref{ex:three-dimensional-5-value} plotted in
-$\mathbb{R}^{3}$. The red and green dotted vectors are $\ket{0}$
-and $\ket{\ps}$ respectively. All possible real vectors of the subspaces
-orthogonal to $\ket{0}$ or $\ket{\ps}$ are drawn in the red and
-green circles, respectively.}
+\caption{\label{fig:three-dimensional-5-value}This figure illustrates example~\ref{ex:three-dimensional-5-value}
+plotted in $\mathbb{R}^{3}$. The red and green dotted vectors are
+$\ket{0}$ and $\ket{\ps}$ respectively. All possible real vectors
+of the subspaces orthogonal to $\ket{0}$ or $\ket{\ps}$ are drawn
+in the red and green circles, respectively.}
 \end{figure}
 
 \begin{example}[Three-dimensional quantum 5-interval-valued probability
@@ -2543,17 +2543,18 @@ measure, $\bar{\mu}$ is convex by theorem~\ref{thm:convex-3}.
 
 The following argument establishes that $\bar{\mu}$ has an empty
 core. Assume there is a real-valued probability measure satisfying
-$\mu_{\rho}^{\mathrm{B}}(P)\in\bar{\mu}(P)$ for all $P\in\events$. Because
-$\mu_{\rho}^{\mathrm{B}}(\proj{0})\in\bar{\mu}(\proj{0})=\imposs$ and $\mu_{\rho}^{\mathrm{B}}(\proj{\ps})\in\bar{\mu}(\proj{\ps})=\imposs$,
-we must have $\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=0$
-so that $\mu_{\rho}^{\mathrm{B}}=\mu_{\ket{2}}^{\mathrm{B}}$. However, 
+$\mu_{\rho}^{\mathrm{\mathrm{B}}}(P)\in\bar{\mu}(P)$ for all $P\in\events$.
+Because $\mu_{\rho}^{\mathrm{\mathrm{B}}}(\proj{0})\in\bar{\mu}(\proj{0})=\imposs$
+and $\mu_{\rho}^{\mathrm{\mathrm{B}}}(\proj{\ps})\in\bar{\mu}(\proj{\ps})=\imposs$,
+we must have $\mu_{\rho}^{\mathrm{\mathrm{B}}}(\proj{0})=\mu_{\rho}^{\mathrm{\mathrm{B}}}(\proj{\ps})=0$
+so that $\mu_{\rho}^{\mathrm{\mathrm{B}}}=\mu_{\ket{2}}^{\mathrm{\mathrm{B}}}$.
+However, 
 \begin{equation}
-\mu_{\ket{2}}^{\mathrm{B}}(\proj{2})=1\notin\unlikely=\bar{\mu}(\proj{2})\,.
+\mu_{\ket{2}}^{\mathrm{\mathrm{B}}}(\proj{2})=1\notin\unlikely=\bar{\mu}(\proj{2})\,.
 \end{equation}
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \section{Expectation Values for IVPMs}
 
@@ -2720,6 +2721,9 @@ is convex if and only if
 \end{equation}
 \end{thm}
 
+\yutsung{{Example for when }$\bar{\mu}$ is not convex, Eq.~(\ref{eq:Rosenmuller})
+doesn't hold. This can justify why we need convex...}
+
 The next lemmas shows our definition is exactly the same as in the
 literature, and is consistent with the CRVPM.
 
@@ -2788,7 +2792,7 @@ $\int X\rmd\bar{\mu}=\left\{ X\left(\bar{\mu}^{-1}\left(\necess\right)\right)\ri
 \begin{proof}By adopting the notation in lemma~\ref{lemma:deterministic-CIVPM},
 we have
 \begin{eqnarray*}
- &  & \int X\rmd\bar{\mu}\stackrel{\textrm{Lemma }\ref{lemma:Choquet-Lebesgue}}{=}\left\{ \int X\rmd\mu\right\} \\
+ &  & \int X\rmd\bar{\mu}\stackrel{\textrm{Lemma }\ref{lemma:Choquet-Lebesgue}}{=}\left\{ \int X\rmd\mu\right\} \\
  & \stackrel{\textrm{Equation }(\ref{eq:expectation})}{=} & \left\{ X\left(\pmeas^{-1}\left(1\right)\right)\cdot1\right\} =\left\{ X\left(\bar{\mu}^{-1}\left(\necess\right)\right)\right\} \,.
 \end{eqnarray*}
 \end{proof}
@@ -2806,8 +2810,8 @@ and a sequence of random variable~$\left\{ X_{j}\right\} $,
 
 \begin{proof}
 \begin{eqnarray*}
- &  & \prod_{j}\int X_{j}\rmd\bar{\mu}\stackrel{\textrm{Lemma }\ref{lemma:deterministic-CIVPM-expectation}}{=}\prod_{j}\left\{ X_{j}\left(\bar{\mu}^{-1}\left(\necess\right)\right)\right\} \\
- & = & \left\{ \prod_{j}X_{j}\left(\bar{\mu}^{-1}\left(\necess\right)\right)\right\} \stackrel{\textrm{Lemma }\ref{lemma:deterministic-CIVPM-expectation}}{=}\int\prod_{j}X_{j}\rmd\bar{\mu}\,.
+ &  & \prod_{j}\int X_{j}\rmd\bar{\mu}\stackrel{\textrm{Lemma }\ref{lemma:deterministic-CIVPM-expectation}}{=}\prod_{j}\left\{ X_{j}\left(\bar{\mu}^{-1}\left(\necess\right)\right)\right\} \\
+ & = & \left\{ \prod_{j}X_{j}\left(\bar{\mu}^{-1}\left(\necess\right)\right)\right\} \stackrel{\textrm{Lemma }\ref{lemma:deterministic-CIVPM-expectation}}{=}\int\prod_{j}X_{j}\rmd\bar{\mu}\,.
 \end{eqnarray*}
 \end{proof}
 
@@ -3138,10 +3142,4 @@ satisfying equation~(\ref{eq:Kochen-Specker-Rules}).\end{proof}
 \bibliography{prop}
 \end{comment}
 \printbibliography
-
 \end{document}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
