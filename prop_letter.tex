@@ -959,14 +959,13 @@ Recall in Sec.~\ref{sec:fuzzy}, we illustrate the non-constructive
 postulates for the quantum probability measures first, and then introduce
 the Born rule which induces a quantum probability measures from each
 state. Since the postulates for QIVPMs in Sec.~\ref{sec:Interval-Uncertainty}
-are also non-constructive, we also want to find a simple rule to construct
-a QIVPM. When we generalize quantum probability measures to QIVPMs,
-we replace the unit interval range~$\left[0,1\right]$ by a set of
-intervals~$\mathscr{I}$. This replacement suggests a function~$\iota$
-mapping a number~$x\in\left[0,1\right]$ to an interval~$\iota\left(x\right)\in\mathscr{I}$.
-The function~$\iota$ can then be concatenated with a quantum probability
-measure~$\mu:\events\rightarrow\left[0,1\right]$ and easily get
-an interval-valued function~$\iota\circ\mu:\events\overset{\mu}{\rightarrow}\left[0,1\right]\overset{\iota}{\rightarrow}\mathscr{I}$,
+are also non-constructive, we want to find a simple rule to construct
+a QIVPM as well. When we generalized quantum probability measures
+to QIVPMs, we changed the range from the unit interval~$\left[0,1\right]$
+to a set of intervals~$\mathscr{I}$. This replacement suggests us
+to find a function~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
+which can then be concatenated with a quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$
+and easily produce an interval-valued function~$\iota\circ\mu:\events\overset{\mu}{\rightarrow}\left[0,1\right]\overset{\iota}{\rightarrow}\mathscr{I}$,
 where $\circ$ is the function concatenation. However, the concatenated
 function~$\iota\circ\mu$ may or may not be a QIVPM. For example,
 in a four-dimensional Hilbert space, consider the function 
@@ -986,7 +985,7 @@ induced by $\rho_{1}=\frac{1}{8}\cdot\proj{0}+\frac{1}{8}\cdot\proj{1}+\frac{1}{
 is \emph{not} a QIVPM. Although we could verify whether $\iota\circ\mu$
 is a QIVPM or not for any pair of $\iota$ and $\mu$ individually,
 the verification process is long and tedious. Therefore, it is desirable
-to have some easy criteria to get a QIVPM~$\iota\circ\mu$.
+to have some easy criteria to decide when $\iota\circ\mu$ is a QIVPM.
 
 \begin{thm}\label{thm:QRVPM2QIVPM-3}In a Hilbert space of dimension~$d\le3$,
 if $\iota:\left[0,1\right]\rightarrow\mathscr{I}$ subject to the
@@ -1045,46 +1044,45 @@ $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$ implies
 \end{equation}
 \end{thm}
 
-Suppose $\iota$ doesn't satisfy Eq.~(\ref{eq:iota-Inclusion}),
-we can find three particular numbers~$x_{0}'$, $x_{1}'$, and $x_{2}'\in\left[0,1\right]$
-such that $x_{0}'+x_{1}'+x_{2}'\in\left[0,1\right]$, but 
+The proof is by contradiction: Suppose $\iota$ doesn't satisfy Eq.~(\ref{eq:iota-Inclusion}),
+we can find three particular numbers~$x_{0}$, $x_{1}$, and $x_{2}\in\left[0,1\right]$
+such that $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$, but 
 \[
-\iota\left(x_{0}'+x_{1}'+x_{2}'\right)+\iota\left(x_{2}'\right)\nsubseteq\iota\left(x_{0}'+x_{2}'\right)+\iota\left(x_{1}'+x_{2}'\right)\,.
+\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\nsubseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)\,.
 \]
-Consider the state
-\begin{equation}
-\begin{aligned}\rho={} & x_{0}'\proj{0}+x_{1}'\proj{1}+x_{2}'\proj{2}\\
- & +\left(1-x_{0}'-x_{1}'-x_{2}'\right)\proj{3}\,.
-\end{aligned}
-\end{equation}
+Consider the state $\rho=x_{0}\proj{0}+x_{1}\proj{1}+x_{2}\proj{2}+\left(1-x_{0}-x_{1}-x_{2}\right)\proj{3}$.
 Then, the function~$\iota\circ\mu_{\rho}^{\mathrm{\mathrm{B}}}:\events\rightarrow\mathscr{I}$
 fails to satisfy Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
-\[
-\begin{aligned} & \mathrel{\hphantom{\nsubseteq}}\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{0}+\proj{1}+\proj{2}\right)\right)+\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{2}\right)\right)\\
- & \nsubseteq\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{0}+\proj{2}\right)\right)+\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{1}+\proj{2}\right)\right)\,,
-\end{aligned}
-\]
+\begin{eqnarray*}
+ &  & \iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{0}+\proj{1}+\proj{2}\right)\right)+\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{2}\right)\right)\\
+ & \nsubseteq & \iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{0}+\proj{2}\right)\right)+\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{1}+\proj{2}\right)\right)\,,
+\end{eqnarray*}
 and cannot be a QIVPM. Therefore, to make sure $\iota\circ\mu$ is
 always a QIVPM, $\iota:\left[0,1\right]\rightarrow\mathscr{I}$ should
 satisfy Eqs.~(\ref{eq:iota-constraints}) and Eq.~(\ref{eq:iota-Inclusion}).
 
 Since $\iota'\circ\mu_{\rho_{1}}^{\mathrm{\mathrm{B}}}$ is not a
 QIVPM, we know $\iota'$ doesn't satisfy Eq.~(\ref{eq:iota-Inclusion}).
-In order to find $\iota$ satisfying Eq.~(\ref{eq:iota-Inclusion}),
+In order to find a function~$\iota$ satisfying Eq.~(\ref{eq:iota-Inclusion}),
 we decompose it into two functions: its left-end and right-end~$\left[\iotal\left(x\right),\iotar\left(x\right)\right]=\iota\left(x\right)$.
 They are both usual functions from a unit interval to another unit
 interval. Eq.~(\ref{eq:iota-Inclusion}) then implies that $\iotal$
 is Wright-convex, i.e., $\iotal\left(x_{0}+x_{1}+x_{2}\right)+\iotal\left(x_{2}\right)\ge\iotal\left(x_{0}+x_{2}\right)+\iotal\left(x_{1}+x_{2}\right)$,
 and $\iotar$ is Wright-concave, i.e., $\iotar\left(x_{0}+x_{1}+x_{2}\right)+\iotar\left(x_{2}\right)\le\iotar\left(x_{0}+x_{2}\right)+\iotar\left(x_{1}+x_{2}\right)$~\citep{Wright1954,RobertsVarberg1973,PecaricTong1992,Brzdek_2014}.
-Notice that a Wright-convex function is midpoint-convex or Jensen-convex,
-i.e., 
+A Wright-convex function is midpoint-convex or Jensen-convex~\citep{RobertsVarberg1973,PecaricTong1992},
+i.e., we have
 \begin{equation}
-\frac{\iotal\left(x_{0}\right)+\iotal\left(x_{1}\right)}{2}\ge\iotal\left(\frac{x_{0}+x_{1}}{2}\right)\,,
+\frac{\iotal\left(x_{0}\right)+\iotal\left(x_{1}\right)}{2}\ge\iotal\left(\frac{x_{0}+x_{1}}{2}\right)\,.
 \end{equation}
-and a midpoint-convex function is continuous on an open interval if
-we cannot use the Axiom of Choices~\citep{Blumberg_1919,Sierpinski1920,RobertsVarberg1973}.
+A midpoint-convex function is continuous on an open interval if we
+cannot use the Axiom of Choices~\citep{Blumberg_1919,Sierpinski1920,RobertsVarberg1973}.
 Therefore, the range of $\iota$ either is $\left\{ \necess,\imposs,\unknown\right\} $
 or contains infinitely many intervals.
+
+\yutsung{Another idea might be fixing a quantum probability measure~$\mu$,
+whether there is a length of intervals, such that if $\iota$ mapping
+to a interval tighter than the given length, then $\iota\circ\mu$
+is always a QIVPM... I don't know the answer of this question.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
