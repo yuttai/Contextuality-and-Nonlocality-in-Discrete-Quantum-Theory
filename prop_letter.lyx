@@ -6778,11 +6778,15 @@ reference "sec:Interval-Uncertainty"
 \begin_inset Formula $\iota:\left[0,1\right]\rightarrow\mathscr{I}$
 \end_inset
 
- which can be used to replace the probability on a projector, 
+ which can be used to replace a real-valued probability
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\mu\left(P\right)$
 \end_inset
 
-, by an interval
+ by an interval-valued one
 \begin_inset space ~
 \end_inset
 
@@ -6791,7 +6795,7 @@ reference "sec:Interval-Uncertainty"
 \end_inset
 
 .
- In other words, concatenating 
+ In other words, compositing 
 \begin_inset Formula $\iota$
 \end_inset
 
@@ -6812,7 +6816,7 @@ reference "sec:Interval-Uncertainty"
 \end_inset
 
  which has the same domain and range as a QIVPM.
- However, the concatenated function
+ However, the composited function
 \begin_inset space ~
 \end_inset
 
@@ -6876,24 +6880,21 @@ key "HOSTunpublished"
 \end_inset
 
 .
- Although we could verify whether 
+ In order not to verify whether 
 \begin_inset Formula $\iota\circ\mu$
 \end_inset
 
- is a QIVPM or not for any pair of 
-\begin_inset Formula $\iota$
+ is a QIVPM for each individual case, it is desirable to have some criteria
+ to discriminate different cases.
+ We will start from the simpler criteria for the dimension
+\begin_inset space ~
 \end_inset
 
- and 
-\begin_inset Formula $\mu$
+
+\begin_inset Formula $d\le3$
 \end_inset
 
- individually, the verification process is long and tedious.
- Therefore, it is desirable to have some easy criteria to decide when 
-\begin_inset Formula $\iota\circ\mu$
-\end_inset
-
- is a QIVPM.
+, and then the general case.
 \end_layout
 
 \begin_layout Standard
@@ -7091,18 +7092,7 @@ Their complements
 \begin_inset Formula $\mathbb{1}-P_{1}$
 \end_inset
 
- are orthogonal so that we can apply Eq.
-\begin_inset space ~
-\end_inset
-
-(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:iota-add"
-
-\end_inset
-
-) on their complements.
+ are orthogonal.
 \end_layout
 
 \begin_layout Itemize
@@ -7234,6 +7224,10 @@ name "enu:iota-subject-to"
 
 \end_inset
 
+The function
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset Formula $\iota:\left[0,1\right]\rightarrow\mathscr{I}$
 \end_inset
@@ -7272,7 +7266,10 @@ reference "eq:iota-constraints"
  implies
 \begin_inset Formula 
 \begin{equation}
-\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\subseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)\,.\label{eq:iota-Inclusion}
+\begin{aligned} & \iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\\
+\subseteq{} & \iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)\,.
+\end{aligned}
+\label{eq:iota-Inclusion}
 \end{equation}
 
 \end_inset
@@ -7287,6 +7284,10 @@ name "enu:iota-mu-QIVPM"
 
 \end_inset
 
+The composited function
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset Formula $\iota\circ\mu:\events\rightarrow\mathscr{I}$
 \end_inset
@@ -7299,7 +7300,7 @@ name "enu:iota-mu-QIVPM"
 \begin_inset Formula $\mu:\events\rightarrow\left[0,1\right]$
 \end_inset
 
- in any Hilbert space
+ on any Hilbert space
 \begin_inset space ~
 \end_inset
 
@@ -7349,7 +7350,7 @@ reference "enu:iota-mu-QIVPM"
 
 \end_inset
 
-, and the rest of the proof is to prove the negation of Statement
+, and the rest of the proof is to prove that if Statement
 \begin_inset space ~
 \end_inset
 
@@ -7360,7 +7361,7 @@ reference "enu:iota-subject-to"
 
 \end_inset
 
- implies the negation of Statement
+ is false, then Statement
 \begin_inset space ~
 \end_inset
 
@@ -7371,7 +7372,7 @@ reference "enu:iota-mu-QIVPM"
 
 \end_inset
 
-.
+ is false as well.
  If 
 \begin_inset Formula $\iota$
 \end_inset
@@ -7408,14 +7409,11 @@ reference "eq:iota-Inclusion"
 \end_inset
 
 , but 
-\begin_inset Formula 
-\[
-\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\nsubseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)\,.
-\]
-
+\begin_inset Formula $\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\nsubseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)$
 \end_inset
 
-Consider the state 
+.
+ Consider the state 
 \begin_inset Formula $\rho=x_{0}\proj{0}+x_{1}\proj{1}+x_{2}\proj{2}+\left(1-x_{0}-x_{1}-x_{2}\right)\proj{3}$
 \end_inset
 
@@ -7523,7 +7521,7 @@ reference "eq:iota-Inclusion"
 \end_inset
 
 .
- They are both usual functions from a unit interval to another unit interval.
+ They both map from a unit interval to another unit interval.
  Eq.
 \begin_inset space ~
 \end_inset
@@ -7587,14 +7585,15 @@ key "Wright1954,RobertsVarberg1973,PecaricTong1992,Brzdek_2014"
 \end_inset
 
 .
- A Wright-convex function is midpoint-convex or Jensen-convex
+ It is well-known that a Wright-convex function is midpoint-convex or Jensen-con
+vex
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand citep
-key "Jensen_1906,Klee_1956,Kenyon_1956,RobertsVarberg1973,PecaricTong1992"
+key "Klee_1956,Kenyon_1956,RobertsVarberg1973,PecaricTong1992"
 
 \end_inset
 
@@ -7606,8 +7605,11 @@ key "Jensen_1906,Klee_1956,Kenyon_1956,RobertsVarberg1973,PecaricTong1992"
 
 \end_inset
 
-A midpoint-convex function is continuous on an open interval if we cannot
- use the Axiom of Choices
+Furthermore, a midpoint-convex function is either continuous on 
+\begin_inset Formula $\left(0,1\right)$
+\end_inset
+
+ or Lebesgue non-measurable
 \begin_inset space ~
 \end_inset
 
@@ -7619,7 +7621,19 @@ key "Blumberg_1919,Sierpinski1920,RobertsVarberg1973"
 \end_inset
 
 .
- Therefore, the range of 
+ When 
+\begin_inset Formula $\iotal$
+\end_inset
+
+ is Lebesgue non-measurable, 
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $\iotal$
+\end_inset
+
+ is continuous, the range of 
 \begin_inset Formula $\iota$
 \end_inset
 
@@ -7627,7 +7641,8 @@ key "Blumberg_1919,Sierpinski1920,RobertsVarberg1973"
 \begin_inset Formula $\left\{ \necess,\imposs,\unknown\right\} $
 \end_inset
 
- or contains infinitely many intervals.
+ or contains uncountably many intervals.
+ 
 \end_layout
 
 \begin_layout Standard

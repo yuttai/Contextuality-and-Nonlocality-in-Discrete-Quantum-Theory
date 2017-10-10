@@ -964,11 +964,11 @@ a QIVPM as well. When we generalized quantum probability measures
 to QIVPMs, we changed the range from the unit interval~$\left[0,1\right]$
 to a set of intervals~$\mathscr{I}$. This replacement suggests us
 to find a function~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
-which can be used to replace the probability on a projector, $\mu\left(P\right)$,
-by an interval~$\iota\left(\mu\left(P\right)\right)$. In other words,
-concatenating $\iota$ with a quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$
+which can be used to replace a real-valued probability~$\mu\left(P\right)$
+by an interval-valued one~$\iota\left(\mu\left(P\right)\right)$.
+In other words, compositing $\iota$ with a quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$
 produces an interval-valued function~$\iota\circ\mu:\events\overset{\mu}{\rightarrow}\left[0,1\right]\overset{\iota}{\rightarrow}\mathscr{I}$
-which has the same domain and range as a QIVPM. However, the concatenated
+which has the same domain and range as a QIVPM. However, the composited
 function~$\iota\circ\mu$ may or may not be a QIVPM. For example,
 in a four-dimensional Hilbert space, consider the function 
 \begin{equation}
@@ -984,11 +984,11 @@ While the function~$\iota_{1}\circ\mu_{\rho_{0}}^{\mathrm{\mathrm{B}}}$
 induced by $\rho_{0}=\frac{1}{4}\cdot\proj{0}+\frac{1}{4}\cdot\proj{1}+\frac{1}{4}\cdot\proj{2}+\frac{1}{4}\cdot\proj{3}$
 is a QIVPM, the function~$\iota_{1}\circ\mu_{\rho_{1}}^{\mathrm{\mathrm{B}}}$
 induced by $\rho_{1}=\frac{1}{8}\cdot\proj{0}+\frac{1}{8}\cdot\proj{1}+\frac{1}{8}\cdot\proj{2}+\frac{5}{8}\cdot\proj{3}$
-is \emph{not} a QIVPM~\citep{HOSTunpublished}. Although we could
-verify whether $\iota\circ\mu$ is a QIVPM or not for any pair of
-$\iota$ and $\mu$ individually, the verification process is long
-and tedious. Therefore, it is desirable to have some easy criteria
-to decide when $\iota\circ\mu$ is a QIVPM.
+is \emph{not} a QIVPM~\citep{HOSTunpublished}. In order not to verify
+whether $\iota\circ\mu$ is a QIVPM for each individual case, it is
+desirable to have some criteria to discriminate different cases. We
+will start from the simpler criteria for the dimension~$d\le3$,
+and then the general case.
 
 \begin{thm}\label{thm:QRVPM2QIVPM-3}In a Hilbert space of dimension~$d\le3$,
 if $\iota:\left[0,1\right]\rightarrow\mathscr{I}$ subject to the
@@ -1020,8 +1020,7 @@ three possibilities:
 \begin{itemize}
 \item $P_{0}$ and $P_{1}$ are orthogonal.
 \item Their complements~$\mathbb{1}-P_{0}$ and $\mathbb{1}-P_{1}$ are
-orthogonal so that we can apply Eq.~(\ref{eq:iota-add}) on their
-complements.
+orthogonal.
 \item One of them projects onto a subspace of what the other one projects
 onto.
 \end{itemize}
@@ -1038,28 +1037,28 @@ guarantee $\iota\circ\mu$ is always a QIVPM.
 
 \begin{thm}The following two statements are equivalent:
 \begin{enumerate}
-\item \label{enu:iota-subject-to}$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
+\item \label{enu:iota-subject-to}The function~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
 subject to Eqs.~(\ref{eq:iota-constraints}) and satisfying for any
 three numbers~$x_{0}$, $x_{1}$, and $x_{2}\in\left[0,1\right]$,
 $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$ implies
 \begin{equation}
-\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\subseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)\,.\label{eq:iota-Inclusion}
+\begin{aligned} & \iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\\
+\subseteq{} & \iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)\,.
+\end{aligned}
+\label{eq:iota-Inclusion}
 \end{equation}
-\item \label{enu:iota-mu-QIVPM}$\iota\circ\mu:\events\rightarrow\mathscr{I}$
+\item \label{enu:iota-mu-QIVPM}The composited function~$\iota\circ\mu:\events\rightarrow\mathscr{I}$
 is always a QIVPM for any quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$
-in any Hilbert space~$\Hilb$.
+on any Hilbert space~$\Hilb$.
 \end{enumerate}
 \end{thm}
 
 It is clear that Statement~\ref{enu:iota-subject-to} implies Statement~\ref{enu:iota-mu-QIVPM},
-and the rest of the proof is to prove the negation of Statement~\ref{enu:iota-subject-to}
-implies the negation of Statement~\ref{enu:iota-mu-QIVPM}. If $\iota$
-doesn't satisfy Eq.~(\ref{eq:iota-Inclusion}), we can find three
-particular numbers~$x_{0}$, $x_{1}$, and $x_{2}\in\left[0,1\right]$
-such that $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$, but 
-\[
-\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\nsubseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)\,.
-\]
+and the rest of the proof is to prove that if Statement~\ref{enu:iota-subject-to}
+is false, then Statement~\ref{enu:iota-mu-QIVPM} is false as well.
+If $\iota$ doesn't satisfy Eq.~(\ref{eq:iota-Inclusion}), we can
+find three particular numbers~$x_{0}$, $x_{1}$, and $x_{2}\in\left[0,1\right]$
+such that $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$, but $\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\nsubseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)$.
 Consider the state $\rho=x_{0}\proj{0}+x_{1}\proj{1}+x_{2}\proj{2}+\left(1-x_{0}-x_{1}-x_{2}\right)\proj{3}$.
 Then, the function~$\iota\circ\mu_{\rho}^{\mathrm{\mathrm{B}}}:\events\rightarrow\mathscr{I}$
 fails to satisfy Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
@@ -1074,19 +1073,21 @@ Since $\iota_{1}\circ\mu_{\rho_{1}}^{\mathrm{\mathrm{B}}}$ is not
 a QIVPM, we know $\iota_{1}$ doesn't satisfy Eq.~(\ref{eq:iota-Inclusion}).
 In order to find a function~$\iota$ satisfying Eq.~(\ref{eq:iota-Inclusion}),
 we decompose it into two functions: its left-end and right-end~$\left[\iotal\left(x\right),\iotar\left(x\right)\right]=\iota\left(x\right)$.
-They are both usual functions from a unit interval to another unit
-interval. Eq.~(\ref{eq:iota-Inclusion}) then implies that $\iotal$
-is Wright-convex, i.e., $\iotal\left(x_{0}+x_{1}+x_{2}\right)+\iotal\left(x_{2}\right)\ge\iotal\left(x_{0}+x_{2}\right)+\iotal\left(x_{1}+x_{2}\right)$,
+They both map from a unit interval to another unit interval. Eq.~(\ref{eq:iota-Inclusion})
+then implies that $\iotal$ is Wright-convex, i.e., $\iotal\left(x_{0}+x_{1}+x_{2}\right)+\iotal\left(x_{2}\right)\ge\iotal\left(x_{0}+x_{2}\right)+\iotal\left(x_{1}+x_{2}\right)$,
 and $\iotar$ is Wright-concave, i.e., $\iotar\left(x_{0}+x_{1}+x_{2}\right)+\iotar\left(x_{2}\right)\le\iotar\left(x_{0}+x_{2}\right)+\iotar\left(x_{1}+x_{2}\right)$~\citep{Wright1954,RobertsVarberg1973,PecaricTong1992,Brzdek_2014}.
-A Wright-convex function is midpoint-convex or Jensen-convex~\citep{Jensen_1906,Klee_1956,Kenyon_1956,RobertsVarberg1973,PecaricTong1992},
+It is well-known that a Wright-convex function is midpoint-convex
+or Jensen-convex~\citep{Klee_1956,Kenyon_1956,RobertsVarberg1973,PecaricTong1992},
 i.e., we have
 \begin{equation}
 \frac{\iotal\left(x_{0}\right)+\iotal\left(x_{1}\right)}{2}\ge\iotal\left(\frac{x_{0}+x_{1}}{2}\right)\,.
 \end{equation}
-A midpoint-convex function is continuous on an open interval if we
-cannot use the Axiom of Choices~\citep{Blumberg_1919,Sierpinski1920,RobertsVarberg1973}.
-Therefore, the range of $\iota$ either is $\left\{ \necess,\imposs,\unknown\right\} $
-or contains infinitely many intervals.
+Furthermore, a midpoint-convex function is either continuous on $\left(0,1\right)$
+or Lebesgue non-measurable~\citep{Blumberg_1919,Sierpinski1920,RobertsVarberg1973}.
+When $\iotal$ is Lebesgue non-measurable, 
+
+When $\iotal$ is continuous, the range of $\iota$ either is $\left\{ \necess,\imposs,\unknown\right\} $
+or contains uncountably many intervals. 
 
 \yutsung{Another idea might be fixing a quantum probability measure~$\mu$,
 whether there is a length of intervals, such that if $\iota$ mapping
