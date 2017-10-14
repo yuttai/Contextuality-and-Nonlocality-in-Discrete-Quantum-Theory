@@ -926,42 +926,89 @@ the true state of the system, there is always at least one system
 that is consistent with the measurements. Surprisingly, we discovered
 a counterexample to this statement in the quantum case, and have:
 
-\begin{thm}\label{def:EmptyCoreQuantumInterval-valuedProbability}
-There is a convex quantum interval-valued probability measure~$\bar{\mu}:\events\rightarrow\mathscr{I}$
-such that $\mathrm{core}\left(\bar{\mu}\right)=\emptyset$.\end{thm}
+\begin{thm}[Empty core for general QIVPMs]\label{thm:Non-extensible-of-Gleason's}In
+a Hilbert space of dimension~$d$, there exists a convex QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+such that $\coreBorn\left(\bar{\mu},\events\right)=\emptyset$.\end{thm}
 
-This theorem could be proved by constructing the following convex
-quantum interval-valued probability measure with an empty core.
+\begin{proof}To prove the theorem, we first need to construct a QIVPM,
+and then verify that no states consistent with it on all projectors.
+Given an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2},\ldots,\ket{d-1}\right\} $,
+let $\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$ and $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$.
+Consider the function~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$
+defined in Table~\ref{tab:non-Born-QIVPM}, where $\mathscr{I}_{0}=\left\{ \necess,\imposs,\unknown\right\} $.
+\begin{table}
+\caption{\label{tab:non-Born-QIVPM}Define a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$
+on the three-dimensional Hilbert space. The projectors mapping to
+the same interval are listed in the column labeled by $P$ and separated
+by commas.}
+\centering{}%
+\begin{tabular}{cc}
+\toprule 
+\addlinespace
+$P$ & $\bar{\mu}\left(P\right)$\tabularnewline\addlinespace
+\midrule
+\midrule 
+\addlinespace
+$\mathbb{0}$, $\proj{0}$, $\proj{\ps}$, and $\proj{\ps'}$ & $\imposs$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+$\mathbb{1}$, $\mathbb{1}-\proj{0}$, $\mathbb{1}-\proj{\ps}$, and
+$\mathbb{1}-\proj{\ps'}$ & $\necess$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+All other projectors & $\unknown$\tabularnewline\addlinespace
+\bottomrule
+\end{tabular}
+\end{table}
+The situation when $d=3$ is illustrated in figure~\ref{fig:three-dimensional-3-value-2}.
 \begin{figure}
 \begin{centering}
 \includegraphics[scale=0.38]{figure2_1} 
 \par\end{centering}
-\caption{\label{fig:three-dimensional-3-value-2}This figure illustrates example~\ref{ex:three-dimensional-three-value}
+\caption{\label{fig:three-dimensional-3-value-2}This figure illustrates theorem~\ref{thm:Non-extensible-of-Gleason's}
 plotted in $\mathbb{R}^{3}$. The red, green, and blue vectors are
 $\ket{0}$, $\ket{\ps}$, and $\ket{\ps'}$ respectively. }
 \end{figure}
-
-\begin{example}[Three-dimensional quantum three-interval-valued probability
-measure]\label{ex:three-dimensional-three-value} Given a three dimensional
-Hilbert space with an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
-Let $\mathscr{I}=\left\{ \necess,\imposs,\unknown\right\} $, $\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$,
-$\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$, and 
+To verify $\bar{\mu}$ be a convex QIVPM, it is sufficient to verify
+equation~(\ref{eq:QuantumInterval-valuedProbability-Convex}). There
+are several cases:
+\begin{itemize}
+\item When $P_{0}=\mathbb{0}$, equation~(\ref{eq:QuantumInterval-valuedProbability-Convex})
+holds by lemma~\ref{lemma:quantum-convex-condition-lemma}. This
+lemma also implies equation~(\ref{eq:QuantumInterval-valuedProbability-Convex})
+is true when when $P_{0}=\mathbb{1}$.
+\item When $P_{0}=\proj{0}$, if $P_{1}=\proj{0}+P_{2}$, then equation~(\ref{eq:QuantumInterval-valuedProbability-Convex})
+holds by lemma~\ref{lemma:quantum-convex-condition-lemma}. Otherwise,
+we have $P_{0}P_{1}=\mathbb{0}$, and $\bar{\mu}\left(P_{0}P_{1}\right)=\bar{\mu}\left(P_{0}\right)=\imposs$.
+There are two cases:
+\begin{itemize}
+\item When $P_{1}=\mathbb{1}-\proj{0}$, we have
 \begin{equation}\eqalign{ 
-\bar{\mu}(\mathbb{0})=\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\bar{\mu}(\proj{\ps'})=\imposs\,,\\ 
-\bar{\mu}(\mathbb{1})=\bar{\mu}(\mathbb{1}-\proj{0})=\bar{\mu}(\mathbb{1}-\proj{\ps})=\bar{\mu}(\mathbb{1}-\proj{\ps'})=\necess\,,\\ 
-\bar{\mu}(P) = \unknown\qquad\textrm{otherwise.} 
+ & \bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)=\bar{\mu}\left(\mathbb{1}\right)+\bar{\mu}\left(\mathbb{0}\right)\\
+={} & \bar{\mu}\left(\mathbb{1}-\proj{0}\right)+\bar{\mu}\left(\proj{0}\right)=\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\,.
 }\end{equation}
-It is straightforward to verify that $\bar{\mu}$ is a quantum interval-valued
-probability measure by theorem~\ref{thm:interval-valued-frame-function}
-and convex by theorem~\ref{thm:convex-3}. Now assume there exists
-a real-valued quantum probability measure $\mu$ such that $\mu(P)\in\bar{\mu}(P)$
-for every event (projection)~$P$. We derive a contradiction as follows.
-Suppose $\mu(P)\in\bar{\mu}(P)$ then we must have $\mu(\proj{0})=\mu(\proj{\ps})=\mu(\proj{\ps'})=0$.
-By Gleason's theorem, there is a mixed state~$\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}$
-such that $\mu\left(P\right)=\sum_{j=1}^{N}q_{j}\ip{\phi_{j}}{P\phi_{j}}$,
-where $\sum_{j=1}^{N}q_{j}=1$ and $q_{j}>0$. However, no pure state~$\ket{\phi}$
-can satisfy $\ip{\phi}{0}=\ip{\phi}{\ps}=\ip{\phi}{\ps'}=0$; a contradiction.
-\end{example}
+\item When $P_{1}\ne\mathbb{1}-\proj{0}$, we have
+\begin{equation}
+\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)=\unknown+\imposs=\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\,.
+\end{equation}
+\end{itemize}
+Therefore, equation~(\ref{eq:QuantumInterval-valuedProbability-Convex})
+holds when $P_{0}=\proj{0}$. Similarly, equation~(\ref{eq:QuantumInterval-valuedProbability-Convex})
+holds when $P_{0}=\proj{\ps}$ or $P_{0}=\proj{\ps'}$. By lemma~\ref{lemma:quantum-convex-condition-lemma},
+equation~(\ref{eq:QuantumInterval-valuedProbability-Convex}) is
+also true when when $P_{0}=\mathbb{1}-\proj{0}$, $\mathbb{1}-\proj{\ps}$,
+or $\mathbb{1}-\proj{\ps'}$.
+\item If neither the above two cases holds, we have $\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\unknown+\unknown=\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$.
+\end{itemize}
+Next we will prove $\coreBorn\left(\bar{\mu},\events\right)$ is an
+empty set by contradiction. Suppose there is a state $\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}\in\coreBorn\left(\bar{\mu},\events\right)$,
+where $\sum_{j=1}^{N}q_{j}=1$ and $q_{j}>0$. Since $\mu_{\rho}^{\mathrm{B}}(P)\in\bar{\mu}(P)$
+for any~$P$, the state~$\rho$ must satisfy: 
+\begin{equation}
+\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps'})=0\,,
+\end{equation}
+which implies $\ip{\phi_{j}}{0}=\ip{\phi_{j}}{\ps}=\ip{\phi_{j}}{\ps'}=0$
+for all $j$. The last equation never holds proving the theorem.\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
