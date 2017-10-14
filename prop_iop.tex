@@ -1774,10 +1774,10 @@ i.e., $\rho\in\coreBorn\left(\bar{\mu},\events'\right)$.\end{proof}
 
 The rest of the section focus on convexity.
 
-\begin{lemma}Given a quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$,
-if $\bar{\mu}^{\Omega}:2^{\Omega}\rightarrow\mathscr{I}$ are all
-convex for any orthonormal basis~$\Omega$, then $\bar{\mu}$ is
-convex.\end{lemma}
+\begin{lemma}\label{lemma:classical-quantum-convex}Given a quantum
+IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$, if $\bar{\mu}^{\Omega}:2^{\Omega}\rightarrow\mathscr{I}$
+are all convex for any orthonormal basis~$\Omega$, then $\bar{\mu}$
+is convex.\end{lemma}
 
 \begin{proof} Pick two commuting events~$P_{0},P_{1}\in\events$.
 Since they are commuting, they can be diagonalized by a common orthonormal
@@ -1791,39 +1791,74 @@ where $E_{0},E_{1}\subseteq\Omega$. Then,
 }\end{equation}
 \end{proof}
 
-\begin{lemma}When the number of elements in $\Omega$ is less than
-or equal to 3, every classical IVPM~$\bar{\mu}^{\Omega}:2^{\Omega}\rightarrow\mathscr{I}$
-is convex.\end{lemma}
+\begin{lemma}\label{lemma:classical-convex-condition-lemma}Given
+a classical IVPM~$\bar{\mu}^{\Omega}:2^{\Omega}\rightarrow\mathscr{I}$,
+the following statements are true:
+\begin{enumerate}
+\item If $E_{0}\subseteq E_{1}$, then $\bar{\mu}^{\Omega}\left(E_{0}\cup E_{1}\right)+\bar{\mu}^{\Omega}\left(E_{0}\cap E_{1}\right)\subseteq\bar{\mu}^{\Omega}\left(E_{0}\right)+\bar{\mu}^{\Omega}\left(E_{1}\right)$.
+\item If $\bar{\mu}^{\Omega}\left(E_{0}\cup E_{1}\right)+\bar{\mu}^{\Omega}\left(E_{0}\cap E_{1}\right)\subseteq\bar{\mu}^{\Omega}\left(E_{0}\right)+\bar{\mu}^{\Omega}\left(E_{1}\right)$,
+then $\bar{\mu}^{\Omega}\left(\overline{E_{0}}\cup\overline{E_{1}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{0}}\cap\overline{E_{1}}\right)\subseteq\bar{\mu}^{\Omega}\left(\overline{E_{0}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{1}}\right)$,
+where $\overline{E_{0}}=\Omega\backslash E_{0}$ and $\overline{E_{1}}=\Omega\backslash E_{1}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}
+\item $\bar{\mu}^{\Omega}\left(E_{0}\cup E_{1}\right)+\bar{\mu}^{\Omega}\left(E_{0}\cap E_{1}\right)=\bar{\mu}^{\Omega}\left(E_{0}\right)+\bar{\mu}^{\Omega}\left(E_{1}\right)$.
+\item 
+\begin{equation}\eqalign{ 
+ & \bar{\mu}^{\Omega}\left(E_{0}\cup E_{1}\right)+\bar{\mu}^{\Omega}\left(E_{0}\cap E_{1}\right)\subseteq\bar{\mu}^{\Omega}\left(E_{0}\right)+\bar{\mu}^{\Omega}\left(E_{1}\right)\\
+\Rightarrow & \bar{\mu}^{\Omega}\left(\Omega\backslash\left(\overline{E_{0}}\cap \overline{E_{1}}\right)\right)+\bar{\mu}^{\Omega}\left(\Omega\backslash\left(\overline{E_{0}}\cup \overline{E_{1}}\right)\right)\subseteq\bar{\mu}^{\Omega}\left(\Omega\backslash\left(\overline{E_{0}}\right)\right)+\bar{\mu}^{\Omega}\left(\Omega\backslash\left(\overline{E_{1}}\right)\right)\\
+\Rightarrow & 2-\left[\bar{\mu}^{\Omega}\left(\overline{E_{0}}\cap \overline{E_{1}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{0}}\cup \overline{E_{1}}\right)\right]\subseteq2-\left[\bar{\mu}^{\Omega}\left(\overline{E_{0}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{1}}\right)\right]\\
+\Rightarrow & \bar{\mu}^{\Omega}\left(\overline{E_{0}}\cap \overline{E_{1}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{0}}\cup \overline{E_{1}}\right)\subseteq\bar{\mu}^{\Omega}\left(\overline{E_{0}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{1}}\right)\,. 
+}\end{equation}
+\end{enumerate}
+\end{proof}
+
+\begin{lemma}\label{lemma:classical-3-elements}When the number of
+elements in $\Omega$ is less than or equal to 3, every classical
+IVPM~$\bar{\mu}^{\Omega}:2^{\Omega}\rightarrow\mathscr{I}$ is convex.\end{lemma}
 
 \begin{proof}Given two events~$E_{0},E_{1}\subseteq\Omega$, we
 want to verify 
 \begin{equation}
 \bar{\mu}^{\Omega}\left(E_{0}\cup E_{1}\right)+\bar{\mu}^{\Omega}\left(E_{0}\cap E_{1}\right)\subseteq\bar{\mu}^{\Omega}\left(E_{0}\right)+\bar{\mu}^{\Omega}\left(E_{1}\right)\,.\label{eq:classical-convex}
 \end{equation}
-When $E_{0}\cap E_{1}=\emptyset$, equation~(\ref{eq:classical-convex})
-is a special case of equation~(\ref{eq:classical-include}). When
-$E_{0}\cup E_{1}=\Omega$, we have $E_{0}^{c}\cap E_{1}^{c}=\emptyset$,
-where $E_{0}^{c}=\Omega\backslash E_{0}$ and $E_{1}^{c}=\Omega\backslash E_{1}$.
-Thus, 
-\begin{equation}\eqalign{ 
-& \bar{\mu}^{\Omega}\left(E_{0}^{c}\cup E_{1}^{c}\right)+\bar{\mu}^{\Omega}\left(E_{0}^{c}\cap E_{1}^{c}\right)\subseteq\bar{\mu}^{\Omega}\left(E_{0}^{c}\right)+\bar{\mu}^{\Omega}\left(E_{1}^{c}\right)\\ 
-\Rightarrow & \bar{\mu}^{\Omega}\left(\Omega\backslash\left(E_{0}^{c}\cup E_{1}^{c}\right)\right)+\bar{\mu}^{\Omega}\left(\Omega\backslash\left(E_{0}^{c}\cap E_{1}^{c}\right)\right)\subseteq\bar{\mu}^{\Omega}\left(\Omega\backslash\left(E_{0}^{c}\right)\right)+\bar{\mu}^{\Omega}\left(\Omega\backslash\left(E_{1}^{c}\right)\right)\\ 
-\Rightarrow & \bar{\mu}^{\Omega}\left(E_{0}\cap E_{1}\right)+\bar{\mu}^{\Omega}\left(E_{0}\cup E_{1}\right)\subseteq\bar{\mu}^{\Omega}\left(E_{0}\right)+\bar{\mu}^{\Omega}\left(E_{1}\right)\,. 
-}\end{equation}
 When the number of elements in $\Omega\le3$, one of the following
 must happen
 \begin{enumerate}
-\item $E_{0}\cap E_{1}=\emptyset$.
-\item $E_{0}\cup E_{1}=\Omega$.
-\item $E_{0}\subseteq E_{1}$ or $E_{1}\subseteq E_{0}$.
+\item When $E_{0}\cap E_{1}=\emptyset$, equation~(\ref{eq:classical-convex})
+is a special case of equation~(\ref{eq:classical-include}). 
+\item When $E_{0}\cup E_{1}=\Omega$, we have $\overline{E_{0}}\cap\overline{E_{1}}=\emptyset$,
+where $\overline{E_{0}}=\Omega\backslash E_{0}$ and $\overline{E_{1}}=\Omega\backslash E_{1}$.
+By equation~(\ref{eq:classical-include}), we have $\bar{\mu}^{\Omega}\left(\overline{E_{0}}\cup\overline{E_{1}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{0}}\cap\overline{E_{1}}\right)\subseteq\bar{\mu}^{\Omega}\left(\overline{E_{0}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{1}}\right)$.
+Then, lemma~\ref{lemma:classical-convex-condition-lemma} proves
+equation~(\ref{eq:classical-convex}).
+\item When $E_{0}\subseteq E_{1}$ or $E_{1}\subseteq E_{0}$, equation~(\ref{eq:classical-convex})
+is also followed by lemma~\ref{lemma:classical-convex-condition-lemma}.
 \end{enumerate}
-so that $\bar{\mu}^{\Omega}$ is convex. \end{proof}
+so that $\bar{\mu}^{\Omega}$ is convex.\end{proof}
+
+\begin{lemma}\label{lemma:quantum-convex-condition-lemma}Given a
+QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$, the following statements
+are true:
+\begin{enumerate}
+\item If $P_{1}=P_{0}+P_{2}$, then $\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$.
+\item If $\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$,
+then $\bar{\mu}\left(\overline{P_{0}}\vee\overline{P_{1}}\right)+\bar{\mu}\left(\overline{P_{0}}\overline{P_{1}}\right)\subseteq\bar{\mu}\left(\overline{P_{0}}\right)+\bar{\mu}\left(\overline{P_{1}}\right)$,
+where $\overline{P_{0}}=\Omega\backslash P_{0}$ and $\overline{P_{1}}=\Omega\backslash P_{1}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}The direct consequence of lemma~\ref{lemma:classical-convex-condition-lemma}
+and theorem~\ref{thm:sub-event-space}.\end{proof}
 
 \begin{thm}\label{thm:convex-3}Given a Hilbert space~$\Hilb$ of
 dimension~$3$, every quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
 is convex.\end{thm}
 
-\begin{proof}The direct consequence of the previous lemmas. \end{proof}
+\begin{proof}The direct consequence of lemma~\ref{lemma:classical-quantum-convex}
+and lemma~\ref{lemma:classical-3-elements}. \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
