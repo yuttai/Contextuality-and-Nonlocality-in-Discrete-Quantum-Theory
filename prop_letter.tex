@@ -961,17 +961,11 @@ the Born rule which induces a quantum probability measures from each
 state~\citep{Born1983,peres1995quantum,544199,Jaeger2007}. Since
 the postulates for QIVPMs in Sec.~\ref{sec:Interval-Uncertainty}
 are also non-constructive, we want to find a simple rule to construct
-a QIVPM as well. When we generalized quantum probability measures
-to QIVPMs, we changed the range from the unit interval~$\left[0,1\right]$
-to a set of intervals~$\mathscr{I}$. This replacement suggests us
-to find a function~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
-which can be used to replace a real-valued probability~$\mu\left(P\right)$
-by an interval-valued one~$\iota\left(\mu\left(P\right)\right)$.
-In other words, compositing $\iota$ with a quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$
-produces an interval-valued function~$\iota\circ\mu:\events\overset{\mu}{\rightarrow}\left[0,1\right]\overset{\iota}{\rightarrow}\mathscr{I}$
-which has the same domain and range as a QIVPM. However, the composited
-function~$\iota\circ\mu$ may or may not be a QIVPM. For example,
-in a four-dimensional Hilbert space, consider the function 
+a QIVPM as well. 
+
+However, the composited function~$\iota\circ\mu$ may or may not
+be a QIVPM. For example, in a four-dimensional Hilbert space, consider
+the function 
 \begin{equation}
 \iota_{1}\left(x\right)=\begin{cases}
 \imposs\,, & \textrm{ if }x=0\,;\\
@@ -1139,19 +1133,19 @@ set of intervals, there is a QIVPM that no state can be consistent
 with it.
 
 \begin{thm}[Empty core for general QIVPMs]\label{thm:Non-extensible-of-Gleason's}In
-a Hilbert space of dimension~$d$, there exists a convex QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+a Hilbert space of dimension~$d\ge3$, there exists a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
 such that $\coreBorn\left(\bar{\mu},\events\right)=\emptyset$.\end{thm}
 
 To prove the theorem, we first need to construct a QIVPM, and then
 verify that no states consistent with it on all projectors. Given
 an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2},\ldots,\ket{d-1}\right\} $,
-let $\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$ and $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$.
-The function~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$ defined
-in Table~\ref{tab:non-Born-QIVPM} can be verified as a QIVPM straightforwardly~\citep{HOSTunpublished},
-where
+let $\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$, $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$,
+and
 \begin{equation}
 \mathscr{I}_{0}=\left\{ \necess,\imposs,\unknown\right\} \,.\label{eq:3-value-intervals}
 \end{equation}
+The function~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$ defined
+in Table~\ref{tab:non-Born-QIVPM} can be verified as a QIVPM straightforwardly~\citep{HOSTunpublished}.
 \begin{table}
 \caption{\label{tab:non-Born-QIVPM}Define a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$
 on the three-dimensional Hilbert space. The projectors mapping to
@@ -1188,12 +1182,29 @@ for all $j$. The last equation never holds proving the theorem.
 
 In other words, if the measurement intervals are too imprecise, the
 results we get might contradict to each other, and exclude any possible
-state from being consistent with the measurement results. In contrast
-with the QIVPM defined in Table~\ref{tab:non-Born-QIVPM}, if a QIVPM~$\iota\circ\mu_{\rho}^{\mathrm{B}}$
-is induced by a conventional quantum probability measure~$\mu_{\rho}^{\mathrm{B}}$
-and a function~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$ considered
-in Sec.~\ref{sec:Born}, there is always a state consistent with
-it because $\rho\in\coreBorn\left(\iota\circ\mu_{\rho}^{\mathrm{B}},\events\right)$.
+state from being consistent with the measurement results. To address
+this problem, we are going to consider a particular family of QIVPMs
+induced by quantum probability measures. When we generalized quantum
+probability measures to QIVPMs, we changed the range from the unit
+interval~$\left[0,1\right]$ to a set of intervals~$\mathscr{I}$.
+This replacement suggests us to find a function~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
+which can be used to replace a real-valued probability~$\mu\left(P\right)$
+by an interval-valued one~$\iota\left(\mu\left(P\right)\right)$.
+In other words, compositing $\iota$ with a quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$
+produces an interval-valued function~$\iota\circ\mu:\events\overset{\mu}{\rightarrow}\left[0,1\right]\overset{\iota}{\rightarrow}\mathscr{I}$
+which has the same domain and range as a QIVPM. Although there are
+infinitely many different choice of $\iota$, the function~$\iota$
+satisfies the following homomorphism-like properties are of particular
+interest, because it guarantee $\iota\circ\mu$ is always a QIVPM.
+
+\begin{definition}Assume a collection of intervals $\mathscr{I}$
+including $\imposs$ and $\necess$. \end{definition}
+
+In contrast with the QIVPM defined in Table~\ref{tab:non-Born-QIVPM},
+if a QIVPM~$\iota\circ\mu_{\rho}^{\mathrm{B}}$ is induced by a conventional
+quantum probability measure~$\mu_{\rho}^{\mathrm{B}}$ and a function~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
+considered in Sec.~\ref{sec:Born}, there is always a state consistent
+with it because $\rho\in\coreBorn\left(\iota\circ\mu_{\rho}^{\mathrm{B}},\events\right)$.
 Moreover, the collection of states consistent with $\iota\circ\mu_{\rho}^{\mathrm{B}}$
 gets closer and closer to $\rho$ as the intervals get narrower and
 narrower. To state this result, we introduce a few technical notions.
