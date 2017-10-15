@@ -2429,6 +2429,53 @@ Notice that even if we explicitly exclude $0$ and $1$, the previous
 argument applies on any boundary points among intervals. Therefore,
 there is no way to avoid this problem if we have more than three intervals.\end{example}
 
+\subsection{Category Theory}
+
+It looks like $\iota$ might be a morphism in a category. Let's try
+to check if it is true here.
+
+\begin{definition}Given $\mathscr{I}$ is a collection of intervals,
+we say a interval-valued function\nb$\iota:\mathscr{I}'\rightarrow\mathscr{I}''$
+is additive if $\iota$ satisfies the following properties. 
+\begin{itemize}
+\item $\iota\left(\imposs\right)=\imposs$. 
+\item $\iota\left(\necess\right)=\necess$. 
+\item For any $\left[\ell,r\right]\in\mathscr{I}'$, $\iota\left(\necess-\left[\ell,r\right]\right)=\necess-\iota\left(\left[\ell,r\right]\right)$. 
+\item For a pair\nb$\left[\ell_{0},r_{0}\right]$ and $\left[\ell_{1},r_{1}\right]\in\mathscr{I}'$,
+if $\left[\ell_{0},r_{0}\right]\subseteq\left[\ell_{1},r_{1}\right]$,
+then $\iota\left(\left[\ell_{0},r_{0}\right]\right)\subseteq\iota\left(\left[\ell_{1},r_{1}\right]\right)$. 
+\item For a pair\nb$\left[\ell_{0},r_{0}\right]$ and $\left[\ell_{1},r_{1}\right]\in\mathscr{I}'$,
+if $\left[\ell_{0},r_{0}\right]+\left[\ell_{1},r_{1}\right]\cap\left[0,1\right]\neq\emptyset$,
+then $\left[\ell_{0},r_{0}\right]+\left[\ell_{1},r_{1}\right]\in\mathscr{I}'$
+and $\iota\left(\left[\ell_{0},r_{0}\right]+\left[\ell_{1},r_{1}\right]\right)\subseteq\iota\left(\left[\ell_{0},r_{0}\right]\right)+\iota\left(\left[\ell_{1},r_{1}\right]\right)$. 
+\end{itemize}
+Moreover, $\iota$ is called convex if for any three intervals\nb$\left[\ell_{0},r_{0}\right]$,
+$\left[\ell_{1},r_{1}\right]$, and $\left[\ell_{2},r_{2}\right]\in\mathscr{I}'$,
+their sum $\left[\ell_{0},r_{0}\right]+\left[\ell_{1},r_{1}\right]+\left[\ell_{2},r_{2}\right]\in\mathscr{I}'$
+implies $\iota\left(\left[\ell_{0},r_{0}\right]+\left[\ell_{1},r_{1}\right]+\left[\ell_{2},r_{2}\right]\right)+\iota\left(\left[\ell_{2},r_{2}\right]\right)\subseteq\iota\left(\left[\ell_{0},r_{0}\right]+\left[\ell_{2},r_{2}\right]\right)+\iota\left(\left[\ell_{1},r_{1}\right]+\left[\ell_{2},r_{2}\right]\right)$.\end{definition}
+
+\begin{lemma}\label{lemma:interval2interval}Consider an additive
+interval-valued function\nb$\iota:\mathscr{I}'\rightarrow\mathscr{I}''$.
+Then, given a QIVPM\nb$\bar{\mu}':\events\rightarrow\mathscr{I}'$,
+a function\nb$\bar{\mu}'':\events\rightarrow\mathscr{I}''$ defined
+by $\bar{\mu}''\left(P\right)=\iota\left(\bar{\mu}'\left(P\right)\right)$
+is a QIVPM.\end{lemma}
+
+\begin{proof}~
+\begin{itemize}
+\item $\bar{\mu}''\left(\mathbb{0}\right)=\iota\left(\bar{\mu}'\left(\mathbb{0}\right)\right)=\iota\left(\imposs\right)=\imposs$.
+\item $\bar{\mu}''\left(\mathbb{1}\right)=\iota\left(\bar{\mu}'\left(\mathbb{1}\right)\right)=\iota\left(\necess\right)=\necess$.
+\item For any projection $P$, $\bar{\mu}''\left(\mathbb{1}-P\right)=\iota\left(\necess-\bar{\mu}'\left(P\right)\right)=\necess-\bar{\mu}''\left(P\right)$.
+\item For a pair of mutually orthogonal projections\nb$P_{0}$ and $P_{1}\in\events$,
+since $\emptyset\neq\bar{\mu}'\left(P_{0}+P_{1}\right)\cap\left[0,1\right]\subseteq\bar{\mu}'\left(P_{0}\right)+\bar{\mu}'\left(P_{1}\right)\cap\left[0,1\right]$,
+we have $\bar{\mu}'\left(P_{0}\right)+\bar{\mu}'\left(P_{1}\right)\in\mathscr{I}'$
+and
+\[
+\bar{\mu}''\left(P_{0}+P_{1}\right)=\iota\left(\bar{\mu}'\left(P_{0}+P_{1}\right)\right)\subseteq\iota\left(\bar{\mu}'\left(P_{0}\right)+\bar{\mu}'\left(P_{1}\right)\right)\subseteq\iota\left(\bar{\mu}'\left(P_{0}\right)\right)+\iota\left(\bar{\mu}'\left(P_{1}\right)\right)=\bar{\mu}''\left(P_{0}\right)+\bar{\mu}''\left(P_{1}\right)\,.
+\]
+\end{itemize}
+\end{proof}
+
 \section{From Interval-valued to Real-valued}
 
 Previously we discussed how to construct a quantum IVPM from a quantum

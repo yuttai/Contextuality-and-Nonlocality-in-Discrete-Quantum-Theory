@@ -18339,6 +18339,411 @@ end{example}
 
 \end_layout
 
+\begin_layout Subsection
+Category Theory
+\end_layout
+
+\begin_layout Standard
+It looks like 
+\begin_inset Formula $\iota$
+\end_inset
+
+ might be a morphism in a category.
+ Let's try to check if it is true here.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+Given 
+\begin_inset Formula $\mathscr{I}$
+\end_inset
+
+ is a collection of intervals, we say a interval-valued function
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\iota:\mathscr{I}'\rightarrow\mathscr{I}''$
+\end_inset
+
+ is additive if 
+\begin_inset Formula $\iota$
+\end_inset
+
+ satisfies the following properties.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\iota\left(\imposs\right)=\imposs$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\iota\left(\necess\right)=\necess$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+For any 
+\begin_inset Formula $\left[\ell,r\right]\in\mathscr{I}'$
+\end_inset
+
+, 
+\begin_inset Formula $\iota\left(\necess-\left[\ell,r\right]\right)=\necess-\iota\left(\left[\ell,r\right]\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+For a pair
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\left[\ell_{0},r_{0}\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\left[\ell_{1},r_{1}\right]\in\mathscr{I}'$
+\end_inset
+
+, if 
+\begin_inset Formula $\left[\ell_{0},r_{0}\right]\subseteq\left[\ell_{1},r_{1}\right]$
+\end_inset
+
+, then 
+\begin_inset Formula $\iota\left(\left[\ell_{0},r_{0}\right]\right)\subseteq\iota\left(\left[\ell_{1},r_{1}\right]\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+For a pair
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\left[\ell_{0},r_{0}\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\left[\ell_{1},r_{1}\right]\in\mathscr{I}'$
+\end_inset
+
+, if 
+\begin_inset Formula $\left[\ell_{0},r_{0}\right]+\left[\ell_{1},r_{1}\right]\cap\left[0,1\right]\neq\emptyset$
+\end_inset
+
+, then 
+\begin_inset Formula $\left[\ell_{0},r_{0}\right]+\left[\ell_{1},r_{1}\right]\in\mathscr{I}'$
+\end_inset
+
+ and 
+\begin_inset Formula $\iota\left(\left[\ell_{0},r_{0}\right]+\left[\ell_{1},r_{1}\right]\right)\subseteq\iota\left(\left[\ell_{0},r_{0}\right]\right)+\iota\left(\left[\ell_{1},r_{1}\right]\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Moreover, 
+\begin_inset Formula $\iota$
+\end_inset
+
+ is called convex if for any three intervals
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\left[\ell_{0},r_{0}\right]$
+\end_inset
+
+, 
+\begin_inset Formula $\left[\ell_{1},r_{1}\right]$
+\end_inset
+
+, and 
+\begin_inset Formula $\left[\ell_{2},r_{2}\right]\in\mathscr{I}'$
+\end_inset
+
+, their sum 
+\begin_inset Formula $\left[\ell_{0},r_{0}\right]+\left[\ell_{1},r_{1}\right]+\left[\ell_{2},r_{2}\right]\in\mathscr{I}'$
+\end_inset
+
+ implies 
+\begin_inset Formula $\iota\left(\left[\ell_{0},r_{0}\right]+\left[\ell_{1},r_{1}\right]+\left[\ell_{2},r_{2}\right]\right)+\iota\left(\left[\ell_{2},r_{2}\right]\right)\subseteq\iota\left(\left[\ell_{0},r_{0}\right]+\left[\ell_{2},r_{2}\right]\right)+\iota\left(\left[\ell_{1},r_{1}\right]+\left[\ell_{2},r_{2}\right]\right)$
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lemma}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lemma:interval2interval"
+
+\end_inset
+
+Consider an additive interval-valued function
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\iota:\mathscr{I}'\rightarrow\mathscr{I}''$
+\end_inset
+
+.
+ Then, given a QIVPM
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}':\events\rightarrow\mathscr{I}'$
+\end_inset
+
+, a function
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}'':\events\rightarrow\mathscr{I}''$
+\end_inset
+
+ defined by 
+\begin_inset Formula $\bar{\mu}''\left(P\right)=\iota\left(\bar{\mu}'\left(P\right)\right)$
+\end_inset
+
+ is a QIVPM.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lemma}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\bar{\mu}''\left(\mathbb{0}\right)=\iota\left(\bar{\mu}'\left(\mathbb{0}\right)\right)=\iota\left(\imposs\right)=\imposs$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\bar{\mu}''\left(\mathbb{1}\right)=\iota\left(\bar{\mu}'\left(\mathbb{1}\right)\right)=\iota\left(\necess\right)=\necess$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+For any projection 
+\begin_inset Formula $P$
+\end_inset
+
+, 
+\begin_inset Formula $\bar{\mu}''\left(\mathbb{1}-P\right)=\iota\left(\necess-\bar{\mu}'\left(P\right)\right)=\necess-\bar{\mu}''\left(P\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+For a pair of mutually orthogonal projections
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{1}\in\events$
+\end_inset
+
+, since 
+\begin_inset Formula $\emptyset\neq\bar{\mu}'\left(P_{0}+P_{1}\right)\cap\left[0,1\right]\subseteq\bar{\mu}'\left(P_{0}\right)+\bar{\mu}'\left(P_{1}\right)\cap\left[0,1\right]$
+\end_inset
+
+, we have 
+\begin_inset Formula $\bar{\mu}'\left(P_{0}\right)+\bar{\mu}'\left(P_{1}\right)\in\mathscr{I}'$
+\end_inset
+
+ and
+\begin_inset Formula 
+\[
+\bar{\mu}''\left(P_{0}+P_{1}\right)=\iota\left(\bar{\mu}'\left(P_{0}+P_{1}\right)\right)\subseteq\iota\left(\bar{\mu}'\left(P_{0}\right)+\bar{\mu}'\left(P_{1}\right)\right)\subseteq\iota\left(\bar{\mu}'\left(P_{0}\right)\right)+\iota\left(\bar{\mu}'\left(P_{1}\right)\right)=\bar{\mu}''\left(P_{0}\right)+\bar{\mu}''\left(P_{1}\right)\,.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 From Interval-valued to Real-valued
 \end_layout
