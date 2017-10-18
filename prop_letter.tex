@@ -454,7 +454,7 @@ simultaneously. In Sec.~\ref{sec:Gleason} we will discuss the
 connection between QIVPMs and conventional quantum probability
 measures.
 
-\begin{definition}[QIVPM]
+\begin{definition}[QIVPM]\label{def:QIVPM}
   Assume a collection of intervals $\mathscr{I}$ including $\imposs$
   and $\necess$ with addition and scalar multiplication defined as
   follows:
@@ -953,27 +953,20 @@ the theory becomes non-contextual.
 
 \label{sec:Gleason}
 
-In Sec.~\ref{sec:Interval-Uncertainty}, we discussed how states
-consistent with a QIVPM~$\bar{\mu}$ on the projectors in a subspace
-of event~$\events'$. In particular, if $\events'$ commutes, $\bar{\mu}$
-restricting on $\events'$ is essentially a classical IVPM, and Thm.~\ref{thm:Shapley}
-claims that there is always a state~$\rho$ consistent with $\bar{\mu}$.
-In this section, we want to shift our attention to consider states
-consistent with $\bar{\mu}$ on \emph{every} event, $\coreBorn\left(\bar{\mu},\events\right)$.
-When the intervals are infinitely precise, i.e., $\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
-a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\infty}$ becomes
-quantum probability measure~\citep{HOSTunpublished}. In this situation,
-Gleason's theorem claims that there is always a unique state consistent
-with $\bar{\mu}$~\citep{gleason1957,Redhead1987-REDINA,peres1995quantum}.
+While the finite-precision extension of the Kochen-Specker theorem
+asserts the non-existence of a certain kind of QIVPMs, we also want
+to understand what a QIVPM could be when it exists. In contrast with
+the conventional Born rule~\citep{Born1983,peres1995quantum,544199,Jaeger2007}
+and Gleason's theorem~\citep{gleason1957,Redhead1987-REDINA,peres1995quantum}:
 
 \begin{thm}[$\mathscr{I}_{\infty}$ Variant of Gleason]\label{cor:Gleason's}In
-a Hilbert space $\Hilb$ of dimension $d\geq3$, given a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\infty}$,
+a Hilbert space $\Hilb$ of dimension $d\geq3$, given a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$,
 the state consistent with it on every projector, $\coreBorn\left(\bar{\mu},\events\right)$,
 is unique. \end{thm}
 
-\noindent However, if we consider general QIVPMs mapping to an \emph{arbitrary}
-set of intervals, there is a QIVPM that no state can be consistent
-with it.
+\noindent We haven't discussed how to construct a QIVPM according
+to a simple rule. Even if we have a QIVPM, there might not have any
+states consistent with it.
 
 \begin{thm}[Empty core for general QIVPMs]\label{thm:Non-extensible-of-Gleason's}In
 a Hilbert space of dimension~$d\ge3$, there exists a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
@@ -1040,13 +1033,11 @@ which has the same domain and range as a QIVPM. In order to guarantee
 $\iota\circ\mu$ is always a QIVPM, we consider the following homomorphism-like
 properties for $\iota$.
 
-\begin{definition}[{morphism}]{\label{def:morphism}}Given a collection
+\begin{definition}[THOS rule]\label{def:THOS}Given a collection
 of intervals $\mathscr{I}$ including $\imposs$ and $\necess$, a
 function~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$ is called
-a \emph{morphism}\yutsung{We can give it a better name. If sticking
-with this name, we may need to prove that it is a morphism in the
-sense of category theory or something...}if $\iota:\left[0,1\right]\rightarrow\mathscr{I}$
-is subject to the following constraints:\begin{subequations}\label{eq:iota-constraints}
+a THOS rule if $\iota:\left[0,1\right]\rightarrow\mathscr{I}$ is
+subject to the following constraints:\begin{subequations}\label{eq:iota-constraints}
 \begin{eqnarray}
  &  & \iota(0)=\imposs\,,\\
  &  & \iota(1)=\necess\,,\\
@@ -1060,16 +1051,16 @@ implies
 \end{equation}
 \end{definition}
 
-\noindent Because the similarity between Def.~\ref{def:morphism}
-and Def.~\ref{def:QIVPM}, $\iota\circ\mu$ should always be a IVPM
-no matter in classical or quantum case. Surprisingly, if $\iota\circ\mu$
-is always a IVPM, then $\iota$ must be a morphism.
+\noindent Because the similarity between Def.~\ref{def:THOS} and
+Def.~\ref{def:QIVPM}, $\iota\circ\mu$ should always be a IVPM no
+matter in classical or quantum case. Surprisingly, if $\iota\circ\mu$
+is always a IVPM, then $\iota$ must be a THOS rule.
 
-\begin{thm}\label{thm:iota-statements}The following three statements
-are equivalent:
+\begin{thm}[The equivalence among THOS rules and IVPMs]\label{thm:iota-statements}The
+following three statements are equivalent:
 \begin{enumerate}
 \item \label{enu:iota-subject-to}The function~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
-is a morphism.
+is a THOS rule.
 \item \label{enu:iota-mu-CIVPM}The composited function~$\iota\circ\mu:\events\rightarrow\mathscr{I}$
 is always a classical IVPM for any classical probability measure~$\mu:\events_{C}\rightarrow\left[0,1\right]$.
 \item \label{enu:iota-mu-QIVPM}The composited function~$\iota\circ\mu:\events\rightarrow\mathscr{I}$
@@ -1080,11 +1071,11 @@ on any Hilbert space~$\Hilb$.
 
 As we have discussed, Statement~\ref{enu:iota-subject-to} implies
 \ref{enu:iota-mu-QIVPM}. The rest of the proof is to prove that if
-$\iota$ is not a morphism, then $\iota\circ\mu$ might not be a QIVPM
-for any quantum probability measure~$\mu$. If $\iota$ doesn't satisfy
-Eq.~(\ref{eq:iota-Inclusion}), we can find three particular numbers~$x_{0}$,
-$x_{1}$, and $x_{2}\in\left[0,1\right]$ such that $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$,
-but $\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\nsubseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)$.
+$\iota$ is not a THOS rule, then $\iota\circ\mu$ might not be a
+QIVPM for any quantum probability measure~$\mu$. If $\iota$ doesn't
+satisfy Eq.~(\ref{eq:iota-Inclusion}), we can find three particular
+numbers~$x_{0}$, $x_{1}$, and $x_{2}\in\left[0,1\right]$ such
+that $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$, but $\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\nsubseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)$.
 Consider the state $\rho=x_{0}\proj{0}+x_{1}\proj{1}+x_{2}\proj{2}+\left(1-x_{0}-x_{1}-x_{2}\right)\proj{3}$.
 Then, the function~$\iota\circ\mu_{\rho}^{\mathrm{\mathrm{B}}}:\events\rightarrow\mathscr{I}$
 fails to satisfy Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
@@ -1092,11 +1083,11 @@ fails to satisfy Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
  &  & \iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{0}+\proj{1}+\proj{2}\right)\right)+\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{2}\right)\right)\\
  & \nsubseteq & \iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{0}+\proj{2}\right)\right)+\iota\left(\mu_{\rho}^{\mathrm{\mathrm{B}}}\left(\proj{1}+\proj{2}\right)\right)\,,
 \end{eqnarray*}
-and cannot be a QIVPM. Therefore, $\iota$ is a morphism if and only
+and cannot be a QIVPM. Therefore, $\iota$ is a THOS rule if and only
 if $\iota\circ\mu$ is always a QIVPM. Similarly, Statement~\ref{enu:iota-subject-to}
 and \ref{enu:iota-mu-CIVPM} are equivalent as well~\citep{HOSTunpublished}.
 
-Even if $\iota$ is not a morphism, the composited function~$\iota\circ\mu$
+Even if $\iota$ is not a THOS rule, the composited function~$\iota\circ\mu$
 may still be a QIVPM under so suitable conditions. For example, Eq.~(\ref{eq:iota-Inclusion})
 can be weaken as follow: for any numbers~$x_{0}$ and $x_{1}\in\left[0,1\right]$,
 their sum~$x_{0}+x_{1}\in\left[0,1\right]$ implies
@@ -1137,11 +1128,12 @@ is the maximum absolute value of the eigenvalues of $\rho-\rho'$~\citep{544199},
 and equal to $\left\Vert \rho-\rho'\right\Vert $~\citep{GolubVanLoan1996,Foucart2012}.
 Hence, $\left\Vert \rho-\rho'\right\Vert \le\delta$.
 
-Since morphisms have many desirable properties, the intervals it mapping
-to either is trivial or contains infinity intervals.
+Since THOS rules have many desirable properties, the intervals it
+mapping to either is trivial or contains infinity intervals.
 
-\begin{thm}\label{thm:convex-uncountable}For any function~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
-described in Thm.~\ref{thm:iota-statements}, either $\mathscr{I}=\mathscr{I}_{0}$
+\begin{thm}[{The range of THOS rule}s]\label{thm:convex-uncountable}For
+any function~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$ described
+in Thm.~\ref{thm:iota-statements}, either $\mathscr{I}=\mathscr{I}_{0}$
 defined in Eq.(\ref{eq:3-value-intervals}) or $\mathscr{I}$ contains
 uncountably many intervals.\end{thm}
 
