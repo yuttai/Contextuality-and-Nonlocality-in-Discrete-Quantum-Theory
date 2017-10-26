@@ -377,14 +377,10 @@ fact that the probability $\mu(E)$ of an event~$E$ is generalized from
 a single \emph{real number} to an \emph{interval}~$[\ell,r]$
 where~$\ell$ intuitively corresponds to the strength of evidence for
 the event~$E$ and~$1-r$ corresponds to the strength of evidence
-against the same event. More generally, this interval would be interpreted as
-the Gaussian width of a probability distribution, but for notational
-convenience we will continue in the following to write this as a definite interval.
-\yutsung{Check the interpretation in the statistics literature~\citep{HuberRonchetti2009}!
-Or we may need to prove it could be interpreted as Gaussian width
-by ourselves...} The collection of intervals used in the
-definition of a probability measure must satisfy certain properties
-that we explain next.
+against the same event. Under some additional assumptions, this
+interval could be interpreted as the Gaussian width of a probability
+distribution. We use general intervals with no constraints other than
+the ones needed to maintain coherence: these are described next. 
 
 First, for each interval $[\ell,r]$ we have the natural constraint
 $0 \leq \ell \leq r \leq 1$ that guarantees that every element of the
@@ -429,9 +425,10 @@ $E_1\cup E_2$ when $E_1$ and $E_2$ are disjoint is
 $\mu(E_1\cup E_2) \subseteq [\ell_1+\ell_2,r_1+r_2]$ which, in
 combination with the requirement for the event of the entire space would force
 $\mu(E \cup \overline{E})$ to always be $\necess$ irrespective of the
-particular assignments of $\mu(E)$ or~$\mu(\overline{E})$. Parallel arguments
-can be made interpreting $[\ell,r]$ as Gaussian width, but will be omitted as no
-essential new information seems to be introduced.
+particular assignments of $\mu(E)$ or~$\mu(\overline{E})$. 
+%% Parallel arguments
+%% can be made interpreting $[\ell,r]$ as Gaussian width, but will be omitted as no
+%% essential new information seems to be introduced.
 
 When combining non-disjoint events, there is a further subtlety whose
 resolution will give us the final general condition for IVPMs. For
@@ -449,13 +446,13 @@ motivated condition when the events are disjoint, i.e., when
 $\mu(E_1\cap E_2) = 0$.
 
 We now have the necessary ingredients to define the quantum extension,
-QIVPMs, as a generalization of both classical IVPMs and quantum
-probability measures. We will show that QIVPMs reduce to classical
-IVPMs when the space of quantum events is restricted to mutually
-commuting events, i.e., to compatible events that can be measured
-simultaneously. In Sec.~\ref{sec:Gleason} we will discuss the
+QIVPMs, as a generalization of both classical IVPMs and conventional
+quantum probability measures. We will show that QIVPMs reduce to
+classical IVPMs when the space of quantum events is restricted to
+mutually commuting events, i.e., to compatible events that can be
+measured simultaneously. In Sec.~\ref{sec:Gleason} we will discuss the
 connection between QIVPMs and conventional quantum probability
-measures.
+measures in detail. 
 
 \begin{definition}[QIVPM]\label{def:QIVPM}
   Assume a collection of intervals $\mathscr{I}$ including $\imposs$
@@ -582,16 +579,16 @@ IVPM~$\bar{\mu}_{2}$:
 \end{aligned}
 \label{eq:classical-no-information-IVPM}
 \end{equation}
-If we identify the states ~$\proj{0}$ and $\proj{1}$ with the head
-and the tail of a coin, respectively, then $\bar{\mu}_{2}$ represents
-the situation in which an experimenter knows nothing about a coin
-before she tosses it. Moreover, for each $p\in\left[0,1\right]$, the
-state~$p\proj{0}+\left(1-p\right)\proj{1}$ represents a classical
-coin with probability~$p$ to get heads, and
-$p\proj{0}+\left(1-p\right)\proj{1}$ is consistent with
-$\bar{\mu}_{2}$ on $\events_{0}$ because any classical coin should be
-consistent with the situation for which an experimenter has no prior
-knowledge.
+If we identify the states ~$\proj{0}$ and $\proj{1}$ with the head and
+the tail of a coin, respectively, then $\bar{\mu}_{2}$ represents the
+situation in which an experimenter knows nothing about a coin before
+she tosses it. Moreover, for each $p\in\left[0,1\right]$, the
+state~$p\proj{0}+\left(1-p\right)\proj{1}$ represents a classical coin
+with probability~$p$ to get heads, and
+$p\proj{0}+\left(1-p\right)\proj{1}$ is consistent
+with~$\bar{\mu}_{2}$ on $\events_{0}$ because any classical coin
+should be consistent with the situation for which an experimenter has
+no prior knowledge.
 
 We conclude this section with a generalization of expectation values
 of observables in the context of QIVPMs. In conventional quantum
@@ -616,31 +613,34 @@ itself become bounded by or, more generally distributed around, an interval.
 
 \noindent Intuitively the expectation value of an observable relative
 to a QIVPM $\bar{\mu}$ lies between two possible outcomes, which
-themselves lie between the minimum and maximum bounds of the probability
-intervals associated with each state~$\rho$ that is consistent with
-$\bar{\mu}$ on every projector in the spectral decomposition of the
-observable. If $\bar{\mu}$ is a conventional (Born) probability measure
-induced by a state $\rho$, then the Born rule probability induced
-by every state in $\coreBorn\left(\bar{\mu},\events'\right)$ will
-be $\mu_{\rho}^{\mathrm{B}}$ and the interval collapses to a point,
-thus reducing the definition to that of Eq.~(\ref{eq:quantum-expectation})~\citep{HOSTunpublished}.
-For example, we can extend one of the fragments of valid probability
-measures~$\mu_{1}$ defined in Table~\ref{tab:quantum-probability-measure}
-to a QIVPM~$\bar{\mu}_{3}$:
-\begin{equation}
-\begin{aligned}\bar{\mu}_{3}(\proj{0}) & =\left[\tfrac{1}{2},\tfrac{1}{2}\right] & \bar{\mu}_{3}(\proj{2}) & =\left[0,0\right]\\
-\bar{\mu}_{3}(\proj{1}) & =\left[\tfrac{1}{2},\tfrac{1}{2}\right] &  & \ldots\textrm{ etc.}
-\end{aligned}
-\label{eq:Born-QIVPM}
-\end{equation}
-For the same observable~$\mathbf{O}=\proj{0}+2\,\proj{1}+3\,\proj{2}$,
-the only state~$\rho$ consistent with $\bar{\mu}_{3}$ on $\proj{0}$,
-$\proj{1}$, and $\proj{2}$ must be $\proj{\ps}$, and $\mu_{1}=\mu_{\proj{\ps}}^{\mathrm{B}}$.
-Therefore, the expectation value~$\expval{\mathbf{O}}_{\bar{\mu}_{3}}=\left[\expval{\mathbf{O}}_{\mu_{1}},\expval{\mathbf{O}}_{\mu_{1}}\right]=\left[1.5,1.5\right]$
-which is an interval, but not between $0$ and $1$ because it is
-not a probability of an event. We also note that, when restricted
-to commuting projectors, the definition above is consistent with the
-classical notion of the \emph{Choquet integral}~\citep{GilboaSchmeidler1994,Grabisch2016}
+themselves lie between the minimum and maximum bounds of the
+probability intervals associated with each state~$\rho$ that is
+consistent with~$\bar{\mu}$ on every projector in the spectral
+decomposition of the observable. If $\bar{\mu}$ is a conventional
+(Born) probability measure induced by a state $\rho$, then the Born
+rule probability induced by every state in
+$\coreBorn\left(\bar{\mu},\events'\right)$ will be
+$\mu_{\rho}^{\mathrm{B}}$ and the interval collapses to a point, thus
+reducing the definition to that of
+Eq.~(\ref{eq:quantum-expectation})~\citep{HOSTunpublished}.
+% For example, we can extend one of the fragments of valid probability
+% measures~$\mu_{1}$ defined in Table~\ref{tab:quantum-probability-measure}
+% to a QIVPM~$\bar{\mu}_{3}$:
+% \begin{equation}
+% \begin{aligned}\bar{\mu}_{3}(\proj{0}) & =\left[\tfrac{1}{2},\tfrac{1}{2}\right] & \bar{\mu}_{3}(\proj{2}) & =\left[0,0\right]\\
+% \bar{\mu}_{3}(\proj{1}) & =\left[\tfrac{1}{2},\tfrac{1}{2}\right] &  & \ldots\textrm{ etc.}
+% \end{aligned}
+% \label{eq:Born-QIVPM}
+% \end{equation}
+% For the same observable~$\mathbf{O}=\proj{0}+2\,\proj{1}+3\,\proj{2}$,
+% the only state~$\rho$ consistent with $\bar{\mu}_{3}$ on $\proj{0}$,
+% $\proj{1}$, and $\proj{2}$ must be $\proj{\ps}$, and $\mu_{1}=\mu_{\proj{\ps}}^{\mathrm{B}}$.
+% Therefore, the expectation value~$\expval{\mathbf{O}}_{\bar{\mu}_{3}}=\left[\expval{\mathbf{O}}_{\mu_{1}},\expval{\mathbf{O}}_{\mu_{1}}\right]=\left[1.5,1.5\right]$
+% which is an interval, but not between $0$ and $1$ because it is
+% not a probability of an event. 
+We also note that, when restricted to commuting projectors, the
+definition above is consistent with the classical notion of the
+\emph{Choquet integral}~\citep{GilboaSchmeidler1994,Grabisch2016}
 which is used to calculate the expectation value of random variables
 as a weighted average~\citep{HOSTunpublished}.
 
