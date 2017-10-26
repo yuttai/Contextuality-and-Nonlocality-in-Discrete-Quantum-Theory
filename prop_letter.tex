@@ -62,8 +62,9 @@ showkeys, longbibliography, amsmath, amssymb, floatfix]{revtex4-1}
 \newcommand{\rmd}{\mathrm{d}}
 \newcommand{\rmi}{\mathrm{i}}
 \lineskiplimit=1pt
-\newcommand{\iotal}[1][]{\ensuremath{\iota^{\mathrm{L{#1}}}}}
-\newcommand{\iotar}[1][]{\ensuremath{\iota^{\mathrm{R{#1}}}}}
+\newcommand{\ultramodular}{\ensuremath{f}}
+\newcommand{\ultramodularL}[1][]{\ensuremath{\ultramodular^{\mathrm{L{#1}}}}}
+\newcommand{\ultramodularR}[1][]{\ensuremath{\ultramodular^{\mathrm{R{#1}}}}}
 
 \begin{document}
 
@@ -1025,29 +1026,30 @@ To address this problem, we are going to introduce a simple rule which
 can induce well-behaved QIVPMs by quantum probability measures systematically.
 When we generalized quantum probability measures to QIVPMs, we changed
 the range from the unit interval $\left[0,1\right]$ to a set of intervals~$\mathscr{I}$.
-This replacement suggests to find a function $\iota:\left[0,1\right]\rightarrow\mathscr{I}$
+This replacement suggests to find a function $\ultramodular:\left[0,1\right]\rightarrow\mathscr{I}$
 to replace a real-valued probability $\mu\left(P\right)$ by an interval-valued
-one $\iota\left(\mu\left(P\right)\right)$. In other words, compositing
-$\iota$ with a quantum probability measure $\mu:\events\rightarrow\left[0,1\right]$
-produces a function $\iota\circ\mu:\events\overset{\mu}{\rightarrow}\left[0,1\right]\overset{\iota}{\rightarrow}\mathscr{I}$
-which has the same domain and range as a QIVPM. In order to guarantee
-$\iota\circ\mu$ always a QIVPM, we consider the following homomorphism-like
-properties for~$\iota$.
+one $\ultramodular\left(\mu\left(P\right)\right)$. In other words,
+compositing $\ultramodular$ with a quantum probability measure $\mu:\events\rightarrow\left[0,1\right]$
+produces a function $\ultramodular\circ\mu:\events\overset{\mu}{\rightarrow}\left[0,1\right]\overset{\ultramodular}{\rightarrow}\mathscr{I}$
+with the same domain and range as a QIVPM. In order to guarantee $\ultramodular\circ\mu$
+always a QIVPM, we consider the following homomorphism-like properties
+for~$\ultramodular$.
 
-\begin{definition}[THOS Rule]\label{def:THOS}Given a collection
-of intervals $\mathscr{I}$ including $\imposs$ and $\necess$, a
-function $\iota:\left[0,1\right]\rightarrow\mathscr{I}$ is called
-a THOS rule if $\iota$ is subject to the following constraints:\begin{subequations}\label{eq:iota-constraints}
+\begin{definition}[Ultramodular Functions]\label{def:THOS}Given
+a collection of intervals $\mathscr{I}$ including $\imposs$ and
+$\necess$, a function $\ultramodular:\left[0,1\right]\rightarrow\mathscr{I}$
+is called a ultramodular function if $\ultramodular$ is subject to
+the following constraints:\begin{subequations}\label{eq:iota-constraints}
 \begin{eqnarray}
- &  & \iota(0)=\imposs\,,\\
- &  & \iota(1)=\necess\,,\\
- &  & \iota\left(1-x\right)=\necess-\iota\left(x\right)\,,
+ &  & \ultramodular(0)=\imposs\,,\\
+ &  & \ultramodular(1)=\necess\,,\\
+ &  & \ultramodular\left(1-x\right)=\necess-\ultramodular\left(x\right)\,,
 \end{eqnarray}
 \end{subequations}and satisfies that for any three numbers~$x_{0}$,
 $x_{1}$, and $x_{2}\in\left[0,1\right]$, their sum~$x_{0}+x_{1}+x_{2}\in\left[0,1\right]$
 implies
 \begin{equation}
-\iota\left(x_{0}+x_{1}+x_{2}\right)+\iota\left(x_{2}\right)\subseteq\iota\left(x_{0}+x_{2}\right)+\iota\left(x_{1}+x_{2}\right)\,.\label{eq:iota-Inclusion}
+\ultramodular\left(x_{0}+x_{1}+x_{2}\right)+\ultramodular\left(x_{2}\right)\subseteq\ultramodular\left(x_{0}+x_{2}\right)+\ultramodular\left(x_{1}+x_{2}\right)\,.\label{eq:iota-Inclusion}
 \end{equation}
 \end{definition}
 
@@ -1056,28 +1058,31 @@ are the direct counterpart of the corresponding QIVPM constraints,
 Eqs.~(\ref{eq:QIVPM-constraints}); the last condition, Eq.~(\ref{eq:iota-Inclusion}),
 is the direct counterpart of the convexity conditions, Eq.~(\ref{eq:classicalconvex})
 and (\ref{eq:QuantumInterval-valuedProbability-Inclusion}). Therefore
-the composited function~$\iota\circ\mu$ satisfies the constraints
+the composited function~$\ultramodular\circ\mu$ satisfies the constraints
 for IVPMs naturally no matter in classical or quantum case. Conversely,
-if $\iota\circ\mu$ is always a IVPM, then $\iota$ is a THOS rule.
-In other words, $\iota$ is a THOS rule is a necessary and sufficient
-condition for $\iota\circ\mu$ is always a IVPM as we next show.
+if $\ultramodular\circ\mu$ is always a IVPM, then the function~$\ultramodular$
+is ultramodular. In other words, $\ultramodular$ is ultramodular
+is a necessary and sufficient condition for $\ultramodular\circ\mu$
+is always a IVPM as we next show.
 
-\begin{thm}[Equivalence among THOS Rules and IVPMs]\label{thm:iota-statements}The
+\begin{thm}[Equivalence among Ultramodular Functions and IVPMs]\label{thm:iota-statements}The
 following three statements are equivalent:
 \begin{enumerate}
-\item \label{enu:iota-subject-to}A function~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$
-is a THOS rule.
-\item \label{enu:iota-mu-CIVPM}The composited function~$\iota\circ\mu:\events_{\mathrm{C}}\rightarrow\mathscr{I}$
+\item \label{enu:iota-subject-to}A function~$\ultramodular:\left[0,1\right]\rightarrow\mathscr{I}$
+is ultramodular.
+\item \label{enu:iota-mu-CIVPM}The composited function~$\ultramodular\circ\mu:\events_{\mathrm{C}}\rightarrow\mathscr{I}$
 is always a classical IVPM for any classical probability measure~$\mu:\events_{\mathrm{C}}\rightarrow\left[0,1\right]$.
-\item \label{enu:iota-mu-QIVPM}The composited function~$\iota\circ\mu:\events\rightarrow\mathscr{I}$
+\item \label{enu:iota-mu-QIVPM}The composited function~$\ultramodular\circ\mu:\events\rightarrow\mathscr{I}$
 is always a QIVPM for any quantum probability measure~$\mu:\events\rightarrow\left[0,1\right]$
 on any Hilbert space~$\Hilb$.
 \end{enumerate}
 \end{thm}
 
-As we have discussed, Statement~\ref{enu:iota-subject-to} implies
-\ref{enu:iota-mu-QIVPM}. The rest of the proof is to show that if
-$\iota$ is not a THOS rule, then $\iota\circ\mu$ might not be a
+The equivalence between Statement~\ref{enu:iota-subject-to} and
+\ref{enu:iota-mu-CIVPM} is a well-known classical result~\citep{Choquet1954,NgMoYeh1997,Marinacci_2004}.
+For quantum case, Statement~\ref{enu:iota-subject-to} implies \ref{enu:iota-mu-QIVPM}
+as we have discussed. The rest of the proof is to show that if $\ultramodular$
+is not ultramodular, then $\ultramodular\circ\mu$ might not be a
 QIVPM. Suppose there are three particular numbers~$x_{0}$, $x_{1}$,
 and $x_{2}\in\left[0,1\right]$ such that $x_{0}+x_{1}+x_{2}\in\left[0,1\right]$,
 but they don't satisfy Eq.~(\ref{eq:iota-Inclusion}). Consider the
@@ -1087,39 +1092,38 @@ state
  & +\left(1-x_{0}-x_{1}-x_{2}\right)\proj{3}\,.
 \end{aligned}
 \end{equation}
-Its inducing function $\iota\circ\mu_{\rho}^{\mathrm{\mathrm{B}}}$
+Its inducing function $\ultramodular\circ\mu_{\rho}^{\mathrm{\mathrm{B}}}$
 fails to satisfy Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
 when $P_{0}=\proj{0}+\proj{2}$ and $P_{1}=\proj{1}+\proj{2}$ so
-that $\iota\circ\mu_{\rho}^{\mathrm{\mathrm{B}}}$ cannot be a QIVPM.
-Therefore, $\iota$ is a THOS rule if and only if $\iota\circ\mu$
-is always a QIVPM. Similarly, Statement~\ref{enu:iota-subject-to}
-and \ref{enu:iota-mu-CIVPM} are equivalent as well~\citep{HOSTunpublished}.
+that $\ultramodular\circ\mu_{\rho}^{\mathrm{\mathrm{B}}}$ cannot
+be a QIVPM. Therefore, $\ultramodular$ is ultramodular if and only
+if $\ultramodular\circ\mu$ is always a QIVPM.
 
 In contrast with the QIVPM defined in Table~\ref{tab:non-Born-QIVPM},
-there is always a state consistent with any composited QIVPM $\iota\circ\mu_{\rho}^{\mathrm{B}}$.
-Moreover, the collection of states consistent with $\iota\circ\mu_{\rho}^{\mathrm{B}}$
+there is always a state consistent with any composited QIVPM $\ultramodular\circ\mu_{\rho}^{\mathrm{B}}$.
+Moreover, the collection of states consistent with $\ultramodular\circ\mu_{\rho}^{\mathrm{B}}$
 gets closer and closer to $\rho$ as the intervals get narrower and
 narrower. Eventually, the collection of consisting states collapses
 to the singleton set~$\left\{ \rho\right\} $ as the intervals become
 the infinitely precise intervals~$\mathscr{I}_{\infty}$. This fact
 is a weak version of Gleason's theorem because we only consider composited
-QIVPMs $\iota\circ\mu_{\rho}^{\mathrm{B}}$ instead of general QIVPMs~$\bar{\mu}$.
-To precisely state this result, we need to introduce the norm of pure
-states and operators. The norm of a pure state~$\ket{\psi}$ is defined
-as usual $\left\Vert \psi\right\Vert =\sqrt{\ip{\psi}{\psi}}$. Similarly,
-given any Hermitian operator~$A$, we consider the usual operator
-norm $\left\Vert A\right\Vert =\max_{\left\Vert \psi\right\Vert =1}\left\Vert A\ket{\psi}\right\Vert $,
+QIVPMs $\ultramodular\circ\mu_{\rho}^{\mathrm{B}}$ instead of general
+QIVPMs~$\bar{\mu}$. To precisely state this result, we need to introduce
+the norm of pure states and operators. The norm of a pure state~$\ket{\psi}$
+is defined as usual $\left\Vert \psi\right\Vert =\sqrt{\ip{\psi}{\psi}}$.
+Similarly, given any Hermitian operator~$A$, we consider the usual
+operator norm $\left\Vert A\right\Vert =\max_{\left\Vert \psi\right\Vert =1}\left\Vert A\ket{\psi}\right\Vert $,
 which is also known as $2$-norm or spectral norm~\citep{RobertsVarberg1973,peres1995quantum,GolubVanLoan1996,Foucart2012}.
 Then, a weak version of Gleason's theorem can be stated as follow.
 
 \begin{thm}[Finite-Precision Extension of Weak Gleason's theorem]\label{thm:Finite-precision-Gleason}Consider
-an interval-valued function $\iota:\left[0,1\right]\rightarrow\mathscr{I}$
+an interval-valued function $\ultramodular:\left[0,1\right]\rightarrow\mathscr{I}$
 with the maximum length of intervals~$m$. Given any state~$\rho$,
-if a state $\rho'\in\coreBorn\left(\iota\circ\mu_{\rho}^{\mathrm{B}},\events\right)$,
+if a state $\rho'\in\coreBorn\left(\ultramodular\circ\mu_{\rho}^{\mathrm{B}},\events\right)$,
 then the norm of their difference $\left\Vert \rho-\rho'\right\Vert \le m$.\end{thm}
 
-Given a state~$\rho'$ consistent with $\iota\circ\mu_{\rho}^{\mathrm{B}}$,
-we have $\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)\in\iota\left(\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right)$
+Given a state~$\rho'$ consistent with $\ultramodular\circ\mu_{\rho}^{\mathrm{B}}$,
+we have $\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)\in\ultramodular\left(\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right)$
 for any one-dimensional projector $\proj{\psi}$. Since the maximum
 length of the intervals in $\mathscr{I}$ is $m$, it is also the
 upper bound of the difference 
@@ -1131,52 +1135,53 @@ is the maximum absolute value of the eigenvalues of $\rho-\rho'$~\citep{544199},
 and equal to $\left\Vert \rho-\rho'\right\Vert $~\citep{GolubVanLoan1996,Foucart2012}.
 Hence, $\left\Vert \rho-\rho'\right\Vert \le m$.
 
-Although a THOS rule has many desirable properties, the set of intervals
-it mapping to either is trivial or contains infinite intervals.
+Although a ultramodular function has many desirable properties, the
+set of intervals it mapping to either is trivial or contains infinite
+intervals.
 
-\begin{thm}[Range of THOS Rules]\label{thm:convex-uncountable}For
-any THOS rule~$\iota:\left[0,1\right]\rightarrow\mathscr{I}$, either
-$\mathscr{I}=\mathscr{I}_{0}$ or $\mathscr{I}$ contains uncountably
+\begin{thm}[Range of Ultramodular Functions]\label{thm:convex-uncountable}For
+any ultramodular function~$\ultramodular:\left[0,1\right]\rightarrow\mathscr{I}$,
+either $\mathscr{I}=\mathscr{I}_{0}$ or $\mathscr{I}$ contains uncountably
 many intervals.\end{thm}
 
-Since $\iota$ maps to intervals, we can decompose it into two functions:
-its left-end and right-end $\left[\iotal\left(x\right),\iotar\left(x\right)\right]=\iota\left(x\right)$.
-By Eq.~(\ref{eq:iota-Inclusion}), the left-end function $\iotal:\left[0,1\right]\rightarrow\left[0,1\right]$
+Since $\ultramodular$ maps to intervals, we can decompose it into
+two functions: its left-end and right-end $\left[\ultramodularL\left(x\right),\ultramodularR\left(x\right)\right]=\ultramodular\left(x\right)$.
+By Eq.~(\ref{eq:iota-Inclusion}), the left-end function $\ultramodularL:\left[0,1\right]\rightarrow\left[0,1\right]$
 is Wright-convex~\citep{Wright1954,RobertsVarberg1973,PecaricTong1992},
 i.e., 
 \begin{equation}
-\begin{aligned} & \iotal\left(x_{0}+x_{1}+x_{2}\right)+\iotal\left(x_{2}\right)\\
-\ge{} & \iotal\left(x_{0}+x_{2}\right)+\iotal\left(x_{1}+x_{2}\right)\,.
+\begin{aligned} & \ultramodularL\left(x_{0}+x_{1}+x_{2}\right)+\ultramodularL\left(x_{2}\right)\\
+\ge{} & \ultramodularL\left(x_{0}+x_{2}\right)+\ultramodularL\left(x_{1}+x_{2}\right)\,.
 \end{aligned}
 \end{equation}
 Then, for any $x_{0}'$ and $x_{1}'\in\left[0,1\right]$ with $x_{0}'\ge x_{1}'$,
 we can substitute $x_{0}$ and $x_{1}$ by $\left(x_{0}'-x_{1}'\right)/2$
 , substitute $x_{2}$ by $x_{1}'$, and get the following inequality
 \begin{eqnarray}
-\frac{\iotal\left(x_{0}'\right)+\iotal\left(x_{1}'\right)}{2} & \ge & \iotal\left(\frac{x_{0}'+x_{1}'}{2}\right)\,,
+\frac{\ultramodularL\left(x_{0}'\right)+\ultramodularL\left(x_{1}'\right)}{2} & \ge & \ultramodularL\left(\frac{x_{0}'+x_{1}'}{2}\right)\,,
 \end{eqnarray}
-i.e., $\iotal$ is midpoint-convex or Jensen-convex~\citep{Klee_1956,Kenyon_1956,RobertsVarberg1973,PecaricTong1992}.
-Together with the fact that $\iotal$ maps to a bounded interval $\left[0,1\right]$,
-the left-end function~$\iotal$ must be continuous on the unit open
-interval $\left(0,1\right)$~\citep{Jensen_1906,RobertsVarberg1973}.
-Therefore, either $\iota$ maps every number in $\left(0,1\right)$
-to the same interval, or the number of intervals that $\iota$ maps
-to must be uncountable.
+i.e., $\ultramodularL$ is midpoint-convex or Jensen-convex~\citep{Klee_1956,Kenyon_1956,RobertsVarberg1973,PecaricTong1992}.
+Together with the fact that $\ultramodularL$ maps to a bounded interval
+$\left[0,1\right]$, the left-end function~$\ultramodularL$ must
+be continuous on the unit open interval $\left(0,1\right)$~\citep{Jensen_1906,RobertsVarberg1973}.
+Therefore, either $\ultramodular$ maps every number in $\left(0,1\right)$
+to the same interval, or the number of intervals that $\ultramodular$
+maps to must be uncountable.
 
-Even if $\iota$ has to be a THOS rule to guarantee $\iota\circ\mu$
-a QIVPM, the composited function $\iota\circ\mu$ may still be a QIVPM
-when $\iota$ is not a THOS rule. In this case, the composited function
-$\iota\circ\mu$ could map to non-trivial finite number of intervals.
-For example, we can weaken the convex condition, Eq.~(\ref{eq:iota-Inclusion}),
-to the following additive condition: for any numbers $x_{0}$ and
-$x_{1}\in\left[0,1\right]$, their sum $x_{0}+x_{1}\in\left[0,1\right]$
-implies
+Even if $\ultramodular$ has to be ultramodular to guarantee $\ultramodular\circ\mu$
+a QIVPM, the composited function $\ultramodular\circ\mu$ may still
+be a QIVPM when $\ultramodular$ is not ultramodular. In this case,
+the composited function $\ultramodular\circ\mu$ could map to non-trivial
+finite number of intervals. For example, we can weaken the convex
+condition, Eq.~(\ref{eq:iota-Inclusion}), to the following additive
+condition: for any numbers $x_{0}$ and $x_{1}\in\left[0,1\right]$,
+their sum $x_{0}+x_{1}\in\left[0,1\right]$ implies
 \begin{equation}
-\iota\left(x_{0}+x_{1}\right)\subseteq\iota\left(x_{0}\right)+\iota\left(x_{1}\right)\,.\label{eq:iota-add}
+\ultramodular\left(x_{0}+x_{1}\right)\subseteq\ultramodular\left(x_{0}\right)+\ultramodular\left(x_{1}\right)\,.\label{eq:iota-add}
 \end{equation}
-Then, given a three-dimensional Hilbert space, when $\iota$ satisfies
-Eqs.~(\ref{eq:iota-constraints}) and Eq.~(\ref{eq:iota-add}),
-$\iota\circ\mu$ still must be a QIVPM~\citep{HOSTunpublished}.
+Then, given a three-dimensional Hilbert space, when $\ultramodular$
+satisfies Eqs.~(\ref{eq:iota-constraints}) and Eq.~(\ref{eq:iota-add}),
+$\ultramodular\circ\mu$ still must be a QIVPM~\citep{HOSTunpublished}.
 More concretely, consider an orthonormal basis $\{\ket{0},\ket{1},\ket{2}\}$,
 two states $\rho_{0}=\frac{1}{3}\proj{0}+\frac{1}{3}\proj{1}+\frac{1}{3}\proj{2}$
 and $\rho_{1}=\frac{7}{24}\proj{0}+\frac{1}{3}\proj{1}+\frac{3}{8}\proj{2}$,
@@ -1186,12 +1191,13 @@ and a set of intervals
  & \left.\left[\tfrac{1}{2},1\right],\left[\tfrac{3}{4},1\right],\necess\right\} \,.
 \end{aligned}
 \end{equation}
-Since the interval-valued function~$\iota_{2}:\left[0,1\right]\rightarrow\mathscr{I}_{2}$
+Since the interval-valued function~$\ultramodular_{2}:\left[0,1\right]\rightarrow\mathscr{I}_{2}$
 defined in Table~\ref{tab:I_2} satisfies Eqs.~(\ref{eq:iota-constraints})
-and Eq.~(\ref{eq:iota-add})~\citep{HOSTunpublished}, $\iota_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}}$
-and $\iota_{2}\circ\mu_{\rho_{1}}^{\mathrm{B}}$ are both QIVPMs.
+and Eq.~(\ref{eq:iota-add})~\citep{HOSTunpublished}, $\ultramodular_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}}$
+and $\ultramodular_{2}\circ\mu_{\rho_{1}}^{\mathrm{B}}$ are both
+QIVPMs.
 \begin{table}
-\caption{\label{tab:I_2}A interval-valued function~$\iota_{2}:\left[0,1\right]\rightarrow\mathscr{I}_{2}$.}
+\caption{\label{tab:I_2}A interval-valued function~$\ultramodular_{2}:\left[0,1\right]\rightarrow\mathscr{I}_{2}$.}
 
 \hfill{}%
 \begin{minipage}[t]{2.5cm}%
@@ -1199,7 +1205,7 @@ and $\iota_{2}\circ\mu_{\rho_{1}}^{\mathrm{B}}$ are both QIVPMs.
 \begin{tabular}{cc}
 \toprule 
 \addlinespace
-$x$ & $\iota_{2}\left(x\right)$\tabularnewline\addlinespace
+$x$ & $\ultramodular_{2}\left(x\right)$\tabularnewline\addlinespace
 \midrule
 \midrule 
 \addlinespace
@@ -1222,7 +1228,7 @@ $\tfrac{3}{8}\le x\le\tfrac{5}{8}$ & $\left[\tfrac{1}{4},\tfrac{3}{4}\right]$\ta
 \begin{tabular}{cc}
 \toprule 
 \addlinespace
-$x$ & $\iota_{2}\left(x\right)$\tabularnewline\addlinespace
+$x$ & $\ultramodular_{2}\left(x\right)$\tabularnewline\addlinespace
 \midrule
 \midrule 
 \addlinespace
@@ -1239,16 +1245,16 @@ $x=1$ & $\necess$\tabularnewline\addlinespace
 \end{minipage}\hfill{}
 \end{table}
 Given any one-dimensional projector $\proj{\psi}$, we have $\mu_{\rho_{0}}^{\mathrm{B}}\left(\proj{\psi}\right)=\frac{1}{3}$
-so that $\iota_{2}\left(\mu_{\rho_{0}}^{\mathrm{B}}\left(\proj{\psi}\right)\right)=\left[0,{\textstyle \tfrac{1}{2}}\right]$.
+so that $\ultramodular_{2}\left(\mu_{\rho_{0}}^{\mathrm{B}}\left(\proj{\psi}\right)\right)=\left[0,{\textstyle \tfrac{1}{2}}\right]$.
 On the other hand, 
 \begin{eqnarray*}
 \mu_{\rho_{1}}^{\mathrm{B}}\left(\proj{\psi}\right) & = & \tfrac{7}{24}\left|\ip{\psi}{0}\right|^{2}+\tfrac{1}{3}\left|\ip{\psi}{1}\right|^{2}+\tfrac{3}{8}\left|\ip{\psi}{2}\right|^{2}
 \end{eqnarray*}
 is bounded between $\frac{7}{24}$ and $\frac{3}{8}$. Therefore,
-$\mu_{\rho_{1}}^{\mathrm{B}}\left(\proj{\psi}\right)\in\iota_{2}\left(\mu_{\rho_{0}}^{\mathrm{B}}\left(\proj{\psi}\right)\right)$.
+$\mu_{\rho_{1}}^{\mathrm{B}}\left(\proj{\psi}\right)\in\ultramodular_{2}\left(\mu_{\rho_{0}}^{\mathrm{B}}\left(\proj{\psi}\right)\right)$.
 According to the complement condition, Eq.~(\ref{eq:complement}),
-we also have $\mu_{\rho_{1}}^{\mathrm{B}}\left(P\right)\in\iota_{2}\left(\mu_{\rho_{0}}^{\mathrm{B}}\left(P\right)\right)$
-for any two-dimensional projector~$P$. Hence, $\rho_{1}\in\coreBorn\left(\iota_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}},\events\right)$,
+we also have $\mu_{\rho_{1}}^{\mathrm{B}}\left(P\right)\in\ultramodular_{2}\left(\mu_{\rho_{0}}^{\mathrm{B}}\left(P\right)\right)$
+for any two-dimensional projector~$P$. Hence, $\rho_{1}\in\coreBorn\left(\ultramodular_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}},\events\right)$,
 and Thm.~\ref{thm:Finite-precision-Gleason} asserts $\left\Vert \rho_{0}-\rho_{1}\right\Vert $
 less than or equal to the maximum length of intervals $\frac{1}{2}$.
 This is true because the exact value of $\left\Vert \rho_{0}-\rho_{1}\right\Vert $
