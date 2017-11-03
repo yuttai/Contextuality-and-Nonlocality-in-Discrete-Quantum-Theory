@@ -49,6 +49,8 @@ showkeys, longbibliography, amsmath, amssymb, floatfix]{revtex4-1}
 \usepackage{framed}
 \newcommand{\amr}[1]{\begin{framed}\begin{minipage}{0.9\linewidth}\color{green}{Amr says: #1}\end{minipage}\end{framed}}
 \newcommand{\yutsung}[1]{\begin{framed}\begin{minipage}{0.9\linewidth}\color{purple}{Yu-Tsung says: #1}\end{minipage}\end{framed}}
+\newcommand{\gerardo}[1]{\fbox{\begin{minipage}{0.9\linewidth}\color{OliveGreen}{Gerardo says: #1}\end{minipage}}}
+\newcommand{\andy}[1]{\fbox{\begin{minipage}{0.9\linewidth}\color{blue}{Andy says: #1}\end{minipage}}}
 \newcommand{\set}[2]{\ensuremath{\left\{ {#1}\mathrel{}\middle|\mathrel{}{#2}\right\} }}
 \newcommand{\Tr}{\ensuremath{\mathop{\mathrm{Tr}}\nolimits}}
 \allowdisplaybreaks
@@ -97,8 +99,10 @@ and finite precision measurements on defining aspects of quantum
 mechanics such as contextuality and the Born rule. While foundational
 results such as the Kochen-Specker and Gleason theorems fail to hold
 in general in a world with limited resources, when we allow infinite
-precision, their validity is recovered.  However, we are able to use
-the interval-valued framework to establish bounds on the validity of
+precision, their validity is recovered. \andy{<reverse this?> are valid in the
+context of infinite precision, they fail to hold in general in a world with
+limited resourses.} Here we employ an
+interval-valued framework to establish bounds on the validity of
 those theorems in realistic experimental environments. In this way,
 not only can we quantify the idea of finite-precision measurement
 within our theory, but we can also suggest a possible resolution of
@@ -158,8 +162,8 @@ application of interval-valued probability measures (IVPMs) to
 achieving a coherent formulation of finite-resource quantum mechanics.
 From this starting point, we develop a mathematical framework that includes the
 uncertainties of finite precision and imperfections in the quantum
-measurement process.  In particular, we are able to quantify the concept of
-imperfect quantum measurement and its impact on the interpretation of
+measurement process.  In particular, we are able to suggest a way to quantify
+the concept of imperfect quantum measurement and its impact on the interpretation of
 the Kochen-Specker and Gleason theorems and their implications for the
 foundations of quantum mechanics.  We have reason to believe that
 essential objectives of our program to achieve a computable theory of
@@ -202,7 +206,7 @@ simulated by a non-contextual hidden variable theory.
 % theory\ldots(?)
 % \end{enumerate}
 % }
-%% \yutsung{Still not comfortable about the current statement...}
+\yutsung{Rewrite to match the interpretation of the Kochen-Specker section.}
 These results provide a new insight into the Meyer-Mermin debate by
 presenting a theory in which there is a \emph{parameter} interpolating
 between what appeared previously to be irreconcilable interpretations
@@ -211,7 +215,7 @@ of contextuality.
 We also investigate the second key aspect of imprecise quantum
 measurement, which is its statistical nature as reflected in the
 application of the Born rule determining the probability of a given
-measurement outcome~\citep{Born1983,peres1995quantum,544199}.  Here,
+measurement outcome~\citep{Born1983,Mermin2007,Jaeger2007}.  Here,
 Gleason's theorem establishes that there is no alternative to the Born
 rule by demonstrating, using reasonable continuity arguments in
 Hilbert spaces of dimension $d\ge3$, the existence of a unique state
@@ -243,7 +247,7 @@ the impact of finite precision measurements on quantum mechanics.  For
 instance, in Sec.~\ref{sec:Kochen-Specker}, we quantify the domain of
 validity of a contextual measurement, thus addressing the conditions
 under which the Kochen-Specker theorem applies.  This provides a way
-not only of resolving the Meyer-Mermin debate, but also revealing of a
+of not only resolving the Meyer-Mermin debate, but also revealing of a
 precise transition to non-contextuality; these are the results of our
 Thm~\ref{cor:Kochen-Specker-IVPM}.  In Sec.~\ref{sec:Gleason}, we
 study Gleason's theorem in the context of imprecise measurements,
@@ -299,7 +303,7 @@ $\sum_{j=1}^{N}q_{j}=1$, in which case the generalized Born rule
 induces a probability measure $\mu_{\rho}^{\mathrm{B}}$ defined as
 $\mu_{\rho}^{\mathrm{B}}\left(P\right) = \Tr\left(\rho P\right) =
 \sum_{j=1}^{N}
-q_{j}\mu_{\phi_{j}}^{\mathrm{B}}\left(P\right)$~\cite{peres1995quantum,544199,Jaeger2007}.
+q_{j}\mu_{\phi_{j}}^{\mathrm{B}}\left(P\right)$~\citep{Born1983,Mermin2007,Jaeger2007}.
 
 \begin{comment}
 As an example, consider a three-dimensional Hilbert space with orthonormal
@@ -360,7 +364,7 @@ an ensemble of quantum states that are not exactly identically
 prepared, and with small imperfections and inaccuracies in measuring
 devices, an experimenter might only be able to determine that the
 probability of an event $P$ is concentrated in the range $[0.49,0.51]$
-instead of being precisely 0.5. The spread in this range depends on
+instead of being precisely $0.5$. The spread in this range depends on
 the quantities of resources (time, energy, money, etc.) that are
 devoted to the experiment. In the classical setting, this
 ``fuzziness'' can be formalized by moving to \emph{interval-valued
@@ -515,7 +519,7 @@ rule, i.e, if:
 \end{equation}
 where $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\Tr\left(\rho P\right)$
 is the probability of the event~$P$ as determined by the Born
-rule~\citep{Born1983,Mermin2007}.
+rule~\citep{Born1983,Mermin2007,Jaeger2007}.
 
 We generalize this consistency relation to sets of states and general
 subspaces of events as follows. A set of events $\events'$ is a
@@ -916,12 +920,12 @@ QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$. We will use this
 assumed QIVPM to construct the following 0-deterministic QIVPM
 $\bar{\mu}^{\textrm{D}}:\events\rightarrow\left\{
   \imposs,\necess\right\}$:
-\begin{equation}
+\[
 \bar{\mu}^{\textrm{D}}\left(P\right)=\begin{cases}
 \imposs\,, & \textrm{ if }\bar{\mu}\left(P\right)\subseteq\left[0,\delta\right]\:;\\
 \necess\,, & \textrm{ if }\bar{\mu}\left(P\right)\subseteq\left[1-\delta,1\right]\:.
 \end{cases}
-\end{equation}
+\]
 However, since we know that 0-deterministic QIVPMs do not exist, the
 map $\bar{\mu}^{\textrm{D}}$ cannot exist and hence $\bar{\mu}$ does
 not exist. It remains to verify that $\bar{\mu}^{\textrm{D}}$ is
@@ -977,7 +981,7 @@ requires every quantum framework to be truly probabilistic.
 
 A conventional quantum probability measure can be easily constructed
 from a state $\rho$ according to the Born
-rule~\citep{Born1983,peres1995quantum,544199,Jaeger2007}.  According
+rule~\citep{Born1983,Mermin2007,Jaeger2007}.  According
 to Gleason's
 theorem~\citep{gleason1957,Redhead1987-REDINA,peres1995quantum}, this
 state $\rho$ is also the unique state consistent with any possible
@@ -1075,14 +1079,15 @@ To that end, we construct a family of QIVPMs parameterized by
 formalize how the real-valued probabilities are mapped to
 intervals. We also introduce a notion of norm that quantifies the
 distance between (pure or mixed) states.  The norm of a pure
-state~$\ket{\psi}$ is defined as usual
+state $\rho=\proj{\psi}$ is defined as usual
 $\left\Vert \psi\right\Vert =\sqrt{\ip{\psi}{\psi}}$.  Similarly,
 given any Hermitian operator~$A$, we consider the usual operator norm
 $\left\Vert A\right\Vert =\max_{\left\Vert \psi\right\Vert
   =1}\left\Vert A\ket{\psi}\right\Vert $, which is also known as the
 $2$-norm or the spectral
 norm~\citep{RobertsVarberg1973,peres1995quantum,GolubVanLoan1996,Foucart2012}.
-Then, a version of Gleason's theorem can be stated as follows. 
+Then, a finite-precision extension of Gleason's theorem can be stated as
+follows.
 
 % the composited function~$\ultramodular\circ\mu$ satisfies the constraints
 % for IVPMs naturally no matter in classical or quantum case. Conversely,
@@ -1117,7 +1122,7 @@ The proof proceeds as follows. Given a state~$\rho'$ consistent with
 $f\circ\mu_{\rho}^{\mathrm{B}}$, we have
 $\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)\in
 f\left(\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right)$ for any
-one-dimensional projector $\proj{\psi}$. Since the maximum length of
+one-dimensional projector $P=\proj{\psi}$. Since the maximum length of
 the intervals in $\mathscr{I}$ is $\alpha$, it is also the upper bound
 of the difference:
 \[
@@ -1128,8 +1133,8 @@ is the maximum absolute value of the eigenvalues of $\rho-\rho'$~\citep{544199},
 and equal to $\left\Vert \rho-\rho'\right\Vert $~\citep{GolubVanLoan1996,Foucart2012}.
 Hence, $\left\Vert \rho-\rho'\right\Vert \le \alpha$.
 
-The previous theorem generalizes Gleason's theorem in the sense that
-it accounts for a larger class of probability measures which includes
+Previous theorem~\ref{thm:Finite-precision-Gleason} generalizes Gleason's
+theorem in the sense that it accounts for a larger class of probability measures which includes
 the conventional one as a limit. The theorem is however ``special'' in
 the sense that it only applies to the particular class of QIVPMs
 constructed by composing a blurring function with a conventional
@@ -1137,7 +1142,7 @@ quantum probability measure. QIVPMs constructed in this manner have
 some peculiar properties which we examine next.
 
 A blurring function is called \emph{ultramodular} if it satisfies
-certain properties.
+the following properties.
 
 \begin{definition}[Ultramodular Functions]\label{def:THOS}Given
   a collection of intervals $\mathscr{I}$ including $\imposs$ and
@@ -1169,8 +1174,9 @@ Eq.~(\ref{eq:classicalconvex}) and
 these conditions guarantee that, for any conventional quantum
 probability measure $\mu$, the composition $\ultramodular \circ \mu$,
 defines a valid QIVPM. Conversely, if for every quantum probability
-measure $\mu$, it is the case that $f \circ \mu$ is a QIVPM, then $f$
-is an ultramodular function. Formally, we have the following result.
+measure $\mu$, it is the case that $f \circ \mu$ is a QIVPM, then blurring
+function~$f$ is an ultramodular function. Formally, we have the following
+result.
 
 \begin{thm}[Equivalence of Ultramodular Functions and IVPMs]\label{thm:iota-statements}The
 following three statements are equivalent:
@@ -1240,8 +1246,8 @@ in our setting.
 
 \begin{thm}[Range of Ultramodular Functions]\label{thm:convex-uncountable}For
 any ultramodular function~$\ultramodular:\left[0,1\right]\rightarrow\mathscr{I}$,
-either $\mathscr{I}=\mathscr{I}_{0}$ or $\mathscr{I}$ contains uncountably
-many intervals.\end{thm}
+either $\mathscr{I}=\mathscr{I}_{0}$ in Eq.~(\ref{eq:3-value-intervals}) or
+$\mathscr{I}$ contains uncountably many intervals.\end{thm}
 
 Since $\ultramodular$ maps to intervals, we can decompose it into
 two functions: its left-end and right-end $\left[\ultramodularL\left(x\right),\ultramodularR\left(x\right)\right]=\ultramodular\left(x\right)$.
@@ -1267,7 +1273,7 @@ conventional quantum probability measure, must also have an uncountable
 range of intervals. Of course, any particular QIVPM, or any particular
 experiment, will use a fixed collection of intervals appropriate for
 the resources and precision of the particular experiment. 
-
+\gerardo{We need to explain physically what it means?}
 % The essential reason for getting an uncountable number of intervals is
 % the convexity condition we imposed on QIVPMs. This condition is widely
 % used in the classical setting but it is possible that it should be
