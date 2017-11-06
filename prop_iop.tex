@@ -930,11 +930,16 @@ a counterexample to this statement in the quantum case, and have:
 a Hilbert space of dimension~$d\ge3$, there exists a convex QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
 such that $\coreBorn\left(\bar{\mu},\events\right)=\emptyset$.\end{thm}
 
-\begin{proof}To prove the theorem, we first need to construct a QIVPM,
-and then verify that no states consistent with it on all projectors.
-Given an orthonormal basis $\left\{ \ket{0},\ket{1},\ket{2},\ldots,\ket{d-1}\right\} $,
-let $\ket{\ps}=\left(\ket{0}+\ket{1}\right)/\sqrt{2}$, $\ket{\ps'}=\left(\ket{0}+\ket{2}\right)/\sqrt{2}$,
+\begin{proof}To prove this theorem, we need to construct a QIVPM
+on some Hilbert space, and verify that there are no states that are
+consistent with it on all possible events. Assume a Hilbert space
+of dimension~$d$ with orthonormal basis $\left\{ \ket{0},\ket{1},\ldots,\ket{d-1}\right\} $
 and $\mathscr{I}_{0}=\left\{ \necess,\imposs,\unknown\right\} $.
+For $i=1,\ldots,d-1$, let $\ket{i'}=\left(\ket{0}+\ket{i}\right)/\sqrt{2}$.
+The inner product of two distinguish states $\ket{i'}\ne\ket{j'}$
+is $\ip{i'}{j'}=\frac{1}{4}\ne0$. Also, the inner product $\ip{i'}{0}=1/\sqrt{2}\ne0$.
+Hence, 
+
 Consider the function~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$
 defined in Table~\ref{tab:non-Born-QIVPM}
 \begin{table}
@@ -1001,15 +1006,15 @@ also true when when $P_{0}=\mathbb{1}-\proj{0}$, $\mathbb{1}-\proj{\ps}$,
 or $\mathbb{1}-\proj{\ps'}$.
 \item If neither the above two cases holds, we have $\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\unknown+\unknown=\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$.
 \end{itemize}
-Next we will prove $\coreBorn\left(\bar{\mu},\events\right)$ is an
-empty set by contradiction. Suppose there is a state $\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}\in\coreBorn\left(\bar{\mu},\events\right)$,
+Next we will prove by contradiction that $\coreBorn\left(\bar{\mu},\events\right)$
+is the empty set. Suppose there is a state $\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}\in\coreBorn\left(\bar{\mu},\events\right)$,
 where $\sum_{j=1}^{N}q_{j}=1$ and $q_{j}>0$. Since $\mu_{\rho}^{\mathrm{B}}(P)\in\bar{\mu}(P)$
 for any~$P$, the state~$\rho$ must satisfy: 
 \begin{equation}
 \mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps'})=0\,,
 \end{equation}
 which implies $\ip{\phi_{j}}{0}=\ip{\phi_{j}}{\ps}=\ip{\phi_{j}}{\ps'}=0$
-for all $j$. \yutsung{Then?}.\end{proof}
+for all~$j$. The last equation never holds proving the theorem.\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1044,7 +1049,7 @@ probability~$\bar{\mu}$ Dempster-Shafer if $\bar{\mu}$ satisfies
 \bar{\mu}\left(\bigvee_{i=1}^{N}P_{i}\right)+\sum_{{{\scriptstyle I\subseteq\left\{ 1,\ldots,N\right\} }\atop {\scriptstyle \left|I\right|\textrm{ is odd}}}}\bar{\mu}\left(\prod_{i\in I}P_{i}\right)\subseteq\sum_{{{\scriptstyle I\subseteq\left\{ 1,\ldots,N\right\} }\atop {\scriptstyle \left|I\right|\textrm{ is even}}}}\bar{\mu}\left(\prod_{i\in I}P_{i}\right)\,.\label{eq:Dempster-Shafer-game-quantum}
 \end{equation}
 for all set of mutually orthogonal projections~$\left\{ P_{i}\right\} _{i=1}^{N}\subseteq\events$.
-However, the quantum interval-valued probability measure in example~\ref{ex:three-dimensional-three-value}
+However, the quantum interval-valued probability measure in theorem~\ref{thm:Non-extensible-of-Gleason's}
 is Dempster-Shafer and has an empty core. In summary, it is unlikely
 to guarantee a non-empty core by strengthening convexity.
 
@@ -1088,7 +1093,7 @@ help us understand the core because of the following identity
 \end{equation}
 if we know more about the right-hand side of the equation, we can
 have more idea about the left-hand side. This idea can be applied
-to example~\ref{ex:three-dimensional-three-value}, and the following
+to theorem~\ref{thm:Non-extensible-of-Gleason's}, and the following
 are three of all possibilities:
 \begin{itemize}
 \item When $\events_{1}=\events\backslash\left\{ \proj{\ps'}\right\} $,
@@ -1170,13 +1175,13 @@ same wave function to describe the system.
 
 The question is what happens if Wigner has more than one friend in
 the laboratory. Suppose Wigner has three friends: E, P, and R in the
-laboratory. E, P, and R measure the spin-1 system described in example~\ref{ex:three-dimensional-three-value}.
+laboratory. E, P, and R measure the spin-1 system described in theorem~\ref{thm:Non-extensible-of-Gleason's}.
 After the experiment, E tells Wigner $\proj{0}$ never happened, P
 tells Wigner $\proj{\ps}$ never happened, and R tells Wigner $\proj{\ps'}$
 never happened. Wigner may then need to use the quantum Dempster-Shafer
 rule(?) or other rules(?) to combine the belief told by his friends,
 and the combined belief might be the quantum interval-valued probability
-measure in example~\ref{ex:three-dimensional-three-value} which
+measure in theorem~\ref{thm:Non-extensible-of-Gleason's} which
 has an empty core.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1253,10 +1258,10 @@ Anyone who has discussed this with us?
 
 \section{Interval-valued Frame Functions\label{sec:Interval-valued-Frame-Functions}}
 
-Although quantum IVPMs in example~\ref{ex:three-dimensional-three-value}
+Although quantum IVPMs in theorem~\ref{thm:Non-extensible-of-Gleason's}
 and \ref{ex:three-dimensional-5-value} have empty cores, we might
 still think that the probability measure~$\bar{\mu}$ is induced
-by some states. In example~\ref{ex:three-dimensional-three-value},
+by some states. In theorem~\ref{thm:Non-extensible-of-Gleason's},
 the probability measure~$\bar{\mu}$ might be induced by the state
 $\ket{2}$ because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps})=\imposs$,
 or induced by the state $\ket{1}$ because $\bar{\mu}(\proj{0})=\bar{\mu}(\proj{\ps'})=\imposs$.
@@ -1441,7 +1446,7 @@ core of $\bar{f}$ because $f_{\psi_{0}\times\psi_{1}}^{\mathrm{\mathrm{B}}}$
 is inconsistent with $\bar{f}\left(\ket{\psi_{0}'}\right)=\bar{f}\left(\ket{\psi_{1}'}\right)=\imposs$
 and $f_{\psi_{0}'\times\psi_{1}'}^{\mathrm{\mathrm{B}}}$ is inconsistent
 with $\bar{f}\left(\ket{\psi_{0}}\right)=\bar{f}\left(\ket{\psi_{1}}\right)=\imposs$.
-Actually, $\bar{f}$ has an empty core, and this is the case for example~\ref{ex:three-dimensional-three-value}. 
+Actually, $\bar{f}$ has an empty core, and this is the case for theorem~\ref{thm:Non-extensible-of-Gleason's}. 
 \end{enumerate}
 In summary, if we have an idea of $\bar{f}^{-1}\left(\imposs\right)$,
 we could have some idea of the pure states in core.
