@@ -931,36 +931,22 @@ a Hilbert space of dimension~$d\ge3$, there exists a convex QIVPM~$\bar{\mu}:\ev
 such that $\coreBorn\left(\bar{\mu},\events\right)=\emptyset$.\end{thm}
 
 \begin{proof}To prove this theorem, we need to construct a QIVPM
-on some Hilbert space, and verify that there are no states that are
+on the Hilbert space, and verify that there are no states that are
 consistent with it on all possible events. Assume a Hilbert space
 of dimension~$d$ with orthonormal basis $\left\{ \ket{0},\ket{1},\ldots,\ket{d-1}\right\} $
 and $\mathscr{I}_{0}=\left\{ \necess,\imposs,\unknown\right\} $.
 For $i=1,\ldots,d-1$, let $\ket{i'}=\left(\ket{0}+\ket{i}\right)/\sqrt{2}$.
-Consider the function~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$
-defined in Table~\ref{tab:non-Born-QIVPM}
-\begin{table}
-\caption{\label{tab:non-Born-QIVPM}Define a QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$
-on a Hilbert space of dimension~$d\ge3$. The projectors mapping
-to the same interval are listed in the column labeled by $P$ and
-separated by commas.}
-\centering{}%
-\begin{tabular}{cc}
-\toprule 
-\addlinespace
-$P$ & $\bar{\mu}\left(P\right)$\tabularnewline\addlinespace
-\midrule
-\midrule 
-\addlinespace
-$\mathbb{0}$, $\proj{0}$, $\proj{i'}$ & $\imposs$\tabularnewline\addlinespace
-\midrule 
-\addlinespace
-$\mathbb{1}$, $\mathbb{1}-\proj{0}$, $\mathbb{1}-\proj{i'}$ & $\necess$\tabularnewline\addlinespace
-\midrule 
-\addlinespace
-All other projectors & $\unknown$\tabularnewline\addlinespace
-\bottomrule
-\end{tabular}
-\end{table}
+Given two distinguish states $\ket{i'}\ne\ket{j'}$, since the inner
+products $\ip{i'}{j'}$ and $\ip{i'}{0}$ are both non-zero, all projectors
+in $\mathcal{S}=\left\{ \proj{0}\right\} \cup\set{\proj{i'}}{i=1,\ldots,d-1}$
+are not commuting. Consider the function~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$
+defined by 
+\begin{equation} 
+\bar{\mu}\left(P\right)=\cases{ 
+\imposs\,, & if $P=\mathbb{0}$ or $P\in\mathcal{S}$ ;\\ 
+\necess\,, & if $P=\mathbb{1}$ or $\mathbb{1}-P\in\mathcal{S}$ ;\\ 
+\unknown\,, & otherwise. 
+}\label{eq:non-Born-QIVPM} \end{equation}
 The situation when $d=3$ is illustrated in figure~\ref{fig:three-dimensional-3-value-2}.
 \begin{figure}
 \begin{centering}
@@ -968,11 +954,8 @@ The situation when $d=3$ is illustrated in figure~\ref{fig:three-dimensional-3-v
 \par\end{centering}
 \caption{\label{fig:three-dimensional-3-value-2}This figure illustrates theorem~\ref{thm:Non-extensible-of-Gleason's}
 plotted in $\mathbb{R}^{3}$. The red, green, and blue vectors are
-$\ket{0}$, $\ket{\ps}$, and $\ket{\ps'}$ respectively. }
+$\ket{0}$, $\ket{1'}$, and $\ket{2'}$ respectively. }
 \end{figure}
-The inner product of two distinguish states $\ket{i'}\ne\ket{j'}$
-is $\ip{i'}{j'}=\frac{1}{4}\ne0$. Also, the inner product $\ip{i'}{0}=1/\sqrt{2}\ne0$.
-Hence, a set of projections $\mathcal{S}=\left\{ \proj{0}\right\} \cup\set{}$.
 To verify $\bar{\mu}$ be a convex QIVPM, it is sufficient to verify
 equation~(\ref{eq:QuantumInterval-valuedProbability-Convex}). There
 are several cases:
@@ -981,38 +964,40 @@ are several cases:
 holds by lemma~\ref{lemma:quantum-convex-condition-lemma}. This
 lemma also implies equation~(\ref{eq:QuantumInterval-valuedProbability-Convex})
 is true when when $P_{0}=\mathbb{1}$.
-\item When $P_{0}=\proj{0}$, if $P_{1}=\proj{0}+P_{2}$, then equation~(\ref{eq:QuantumInterval-valuedProbability-Convex})
+\item When $P_{0}=\proj{\psi}\in\mathcal{S}$, if $P_{1}=\proj{\psi}+P_{2}$,
+then equation~(\ref{eq:QuantumInterval-valuedProbability-Convex})
 holds by lemma~\ref{lemma:quantum-convex-condition-lemma}. Otherwise,
 we have $P_{0}P_{1}=\mathbb{0}$, and $\bar{\mu}\left(P_{0}P_{1}\right)=\bar{\mu}\left(P_{0}\right)=\imposs$.
 There are two cases:
 \begin{itemize}
-\item When $P_{1}=\mathbb{1}-\proj{0}$, we have
+\item When $P_{1}=\mathbb{1}-\proj{\psi}$, we have
 \begin{equation}\eqalign{ 
  & \bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)=\bar{\mu}\left(\mathbb{1}\right)+\bar{\mu}\left(\mathbb{0}\right)\\
-={} & \bar{\mu}\left(\mathbb{1}-\proj{0}\right)+\bar{\mu}\left(\proj{0}\right)=\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\,.
+={} & \necess+\imposs=\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\,.
 }\end{equation}
-\item When $P_{1}\ne\mathbb{1}-\proj{0}$, we have
+\item When $P_{1}\ne\mathbb{1}-\proj{\psi}$, neither $P_{1}\in\mathcal{S}$
+nor $\mathbb{1}-P_{1}\in\mathcal{S}$ because all projectors in $\mathcal{S}$
+are not commuting. Hence,
 \begin{equation}
 \bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)=\unknown+\imposs=\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\,.
 \end{equation}
 \end{itemize}
 Therefore, equation~(\ref{eq:QuantumInterval-valuedProbability-Convex})
-holds when $P_{0}=\proj{0}$. Similarly, equation~(\ref{eq:QuantumInterval-valuedProbability-Convex})
-holds when $P_{0}=\proj{\ps}$ or $P_{0}=\proj{\ps'}$. By lemma~\ref{lemma:quantum-convex-condition-lemma},
+holds when $P_{0}=\proj{\psi}\in\mathcal{S}$. By lemma~\ref{lemma:quantum-convex-condition-lemma},
 equation~(\ref{eq:QuantumInterval-valuedProbability-Convex}) is
-also true when when $P_{0}=\mathbb{1}-\proj{0}$, $\mathbb{1}-\proj{\ps}$,
-or $\mathbb{1}-\proj{\ps'}$.
+also true when when $P_{0}=\mathbb{1}-\proj{\psi}$, where $\proj{\psi}\in\mathcal{S}$.
 \item If neither the above two cases holds, we have $\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\unknown+\unknown=\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$.
 \end{itemize}
 Next we will prove by contradiction that $\coreBorn\left(\bar{\mu},\events\right)$
 is the empty set. Suppose there is a state $\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}\in\coreBorn\left(\bar{\mu},\events\right)$,
 where $\sum_{j=1}^{N}q_{j}=1$ and $q_{j}>0$. Since $\mu_{\rho}^{\mathrm{B}}(P)\in\bar{\mu}(P)$
-for any~$P$, the state~$\rho$ must satisfy: 
+for any~$P$, the state~$\rho$ must satisfy $\mu_{\rho}^{\mathrm{B}}(P)$
+for all $P\in\mathcal{S}$. This implies 
 \begin{equation}
-\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps'})=0\,,
+\ip{\phi_{j}}{0}=\ip{\phi_{j}}{i'}=0\label{eq:probability-zero-on-states}
 \end{equation}
-which implies $\ip{\phi_{j}}{0}=\ip{\phi_{j}}{\ps}=\ip{\phi_{j}}{\ps'}=0$
-for all~$j$. The last equation never holds proving the theorem.\end{proof}
+for all $i=1,\ldots d-1$ and for all $j=1,\ldots N$. Eq.~(\ref{eq:probability-zero-on-states})
+never holds proving the theorem.\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
