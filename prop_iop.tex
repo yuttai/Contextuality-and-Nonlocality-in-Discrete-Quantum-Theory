@@ -933,13 +933,13 @@ such that $\coreBorn\left(\bar{\mu},\events\right)=\emptyset$.\end{thm}
 \begin{proof}To prove this theorem, we need to construct a QIVPM
 on the Hilbert space, and verify that there are no states that are
 consistent with it on all possible events. Assume a Hilbert space
-of dimension~$d$ with orthonormal basis $\left\{ \ket{0},\ket{1},\ldots,\ket{d-1}\right\} $
+of dimension $d\ge3$ with orthonormal basis $\left\{ \ket{0},\ket{1},\ldots,\ket{d-1}\right\} $
 and $\mathscr{I}_{0}=\left\{ \necess,\imposs,\unknown\right\} $.
 For $i=1,\ldots,d-1$, let $\ket{i'}=\left(\ket{0}+\ket{i}\right)/\sqrt{2}$.
 Given two distinguish states $\ket{i'}\ne\ket{j'}$, since the inner
 products $\ip{i'}{j'}$ and $\ip{i'}{0}$ are both non-zero, all projectors
 in $\mathcal{S}=\left\{ \proj{0}\right\} \cup\set{\proj{i'}}{i=1,\ldots,d-1}$
-are not commuting. Consider the function~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$
+are not commuting with each other. Consider the function~$\bar{\mu}:\events\rightarrow\mathscr{I}_{0}$
 defined by 
 \begin{equation} 
 \bar{\mu}\left(P\right)=\cases{ 
@@ -957,8 +957,8 @@ plotted in $\mathbb{R}^{3}$. The red, green, and blue vectors are
 $\ket{0}$, $\ket{1'}$, and $\ket{2'}$ respectively. }
 \end{figure}
 To verify $\bar{\mu}$ be a convex QIVPM, it is sufficient to verify
-equation~(\ref{eq:QuantumInterval-valuedProbability-Convex}). There
-are several cases:
+the convexity condition, equation~(\ref{eq:QuantumInterval-valuedProbability-Convex}).
+There are several cases:
 \begin{itemize}
 \item When $P_{0}=\mathbb{0}$, equation~(\ref{eq:QuantumInterval-valuedProbability-Convex})
 holds by lemma~\ref{lemma:quantum-convex-condition-lemma}. This
@@ -1810,25 +1810,8 @@ i.e., $\rho\in\coreBorn\left(\bar{\mu},\events'\right)$.\end{proof}
 
 The rest of the section focus on convexity.
 
-\begin{lemma}\label{lemma:classical-quantum-convex}Given a quantum
-IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$, if $\bar{\mu}^{\Omega}:2^{\Omega}\rightarrow\mathscr{I}$
-are all convex for any orthonormal basis~$\Omega$, then $\bar{\mu}$
-is convex.\end{lemma}
-
-\begin{proof} Pick two commuting events~$P_{0},P_{1}\in\events$.
-Since they are commuting, they can be diagonalized by a common orthonormal
-basis~$\Omega=\left\{ \ket{j}\right\} _{j=0}^{d-1}$. Since they
-are projectors, the eigenvalues of them are $0$ or $1$ so that we
-can express them as $P_{0}=\sum_{\ket{j}\in E_{0}}\proj{j}$ and $P_{1}=\sum_{\ket{j}\in E_{1}}\proj{j}$,
-where $E_{0},E_{1}\subseteq\Omega$. Then, 
-\begin{equation}\eqalign{  
-& \bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)= \bar{\mu}^{\Omega}\left(E_{0}\cup E_{1}\right)+\bar{\mu}^{\Omega}\left(E_{0}\cap E_{1}\right)\\ 
-\subseteq & \bar{\mu}^{\Omega}\left(E_{0}\right)+\bar{\mu}^{\Omega}\left(E_{1}\right)= \bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\,. 
-}\end{equation}
-\end{proof}
-
-\begin{lemma}\label{lemma:classical-convex-condition-lemma}Given
-a classical IVPM~$\bar{\mu}^{\Omega}:2^{\Omega}\rightarrow\mathscr{I}$,
+\begin{thm}\label{lemma:classical-convex-condition-lemma}Given a
+classical IVPM~$\bar{\mu}^{\Omega}:2^{\Omega}\rightarrow\mathscr{I}$,
 the following statements are true:
 \begin{enumerate}
 \item If $E_{0}\subseteq E_{1}$, then $\bar{\mu}^{\Omega}\left(E_{0}\cup E_{1}\right)+\bar{\mu}^{\Omega}\left(E_{0}\cap E_{1}\right)\subseteq\bar{\mu}^{\Omega}\left(E_{0}\right)+\bar{\mu}^{\Omega}\left(E_{1}\right)$.
@@ -1836,18 +1819,18 @@ the following statements are true:
 then $\bar{\mu}^{\Omega}\left(\overline{E_{0}}\cup\overline{E_{1}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{0}}\cap\overline{E_{1}}\right)\subseteq\bar{\mu}^{\Omega}\left(\overline{E_{0}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{1}}\right)$,
 where $\overline{E_{0}}=\Omega\backslash E_{0}$ and $\overline{E_{1}}=\Omega\backslash E_{1}$.
 \end{enumerate}
-\end{lemma}
+\end{thm}
 
 \begin{proof}
 \begin{enumerate}
 \item $\bar{\mu}^{\Omega}\left(E_{0}\cup E_{1}\right)+\bar{\mu}^{\Omega}\left(E_{0}\cap E_{1}\right)=\bar{\mu}^{\Omega}\left(E_{0}\right)+\bar{\mu}^{\Omega}\left(E_{1}\right)$.
 \item 
-\begin{equation}\eqalign{ 
- & \bar{\mu}^{\Omega}\left(E_{0}\cup E_{1}\right)+\bar{\mu}^{\Omega}\left(E_{0}\cap E_{1}\right)\subseteq\bar{\mu}^{\Omega}\left(E_{0}\right)+\bar{\mu}^{\Omega}\left(E_{1}\right)\\
-\Rightarrow & \bar{\mu}^{\Omega}\left(\Omega\backslash\left(\overline{E_{0}}\cap \overline{E_{1}}\right)\right)+\bar{\mu}^{\Omega}\left(\Omega\backslash\left(\overline{E_{0}}\cup \overline{E_{1}}\right)\right)\subseteq\bar{\mu}^{\Omega}\left(\Omega\backslash\left(\overline{E_{0}}\right)\right)+\bar{\mu}^{\Omega}\left(\Omega\backslash\left(\overline{E_{1}}\right)\right)\\
-\Rightarrow & 2-\left[\bar{\mu}^{\Omega}\left(\overline{E_{0}}\cap \overline{E_{1}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{0}}\cup \overline{E_{1}}\right)\right]\subseteq2-\left[\bar{\mu}^{\Omega}\left(\overline{E_{0}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{1}}\right)\right]\\
-\Rightarrow & \bar{\mu}^{\Omega}\left(\overline{E_{0}}\cap \overline{E_{1}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{0}}\cup \overline{E_{1}}\right)\subseteq\bar{\mu}^{\Omega}\left(\overline{E_{0}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{1}}\right)\,. 
-}\end{equation}
+\begin{eqnarray*}
+ &  & \bar{\mu}^{\Omega}\left(E_{0}\cup E_{1}\right)+\bar{\mu}^{\Omega}\left(E_{0}\cap E_{1}\right)\subseteq\bar{\mu}^{\Omega}\left(E_{0}\right)+\bar{\mu}^{\Omega}\left(E_{1}\right)\\
+ & \Rightarrow & \bar{\mu}^{\Omega}\left(\Omega\backslash\left(\overline{E_{0}}\cap\overline{E_{1}}\right)\right)+\bar{\mu}^{\Omega}\left(\Omega\backslash\left(\overline{E_{0}}\cup\overline{E_{1}}\right)\right)\subseteq\bar{\mu}^{\Omega}\left(\Omega\backslash\left(\overline{E_{0}}\right)\right)+\bar{\mu}^{\Omega}\left(\Omega\backslash\left(\overline{E_{1}}\right)\right)\\
+ & \Rightarrow & 2-\left[\bar{\mu}^{\Omega}\left(\overline{E_{0}}\cap\overline{E_{1}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{0}}\cup\overline{E_{1}}\right)\right]\subseteq2-\left[\bar{\mu}^{\Omega}\left(\overline{E_{0}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{1}}\right)\right]\\
+ & \Rightarrow & \bar{\mu}^{\Omega}\left(\overline{E_{0}}\cap\overline{E_{1}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{0}}\cup\overline{E_{1}}\right)\subseteq\bar{\mu}^{\Omega}\left(\overline{E_{0}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{1}}\right)\,.
+\end{eqnarray*}
 \end{enumerate}
 \end{proof}
 
@@ -1868,33 +1851,33 @@ is a special case of equation~(\ref{eq:classical-include}).
 \item When $E_{0}\cup E_{1}=\Omega$, we have $\overline{E_{0}}\cap\overline{E_{1}}=\emptyset$,
 where $\overline{E_{0}}=\Omega\backslash E_{0}$ and $\overline{E_{1}}=\Omega\backslash E_{1}$.
 By equation~(\ref{eq:classical-include}), we have $\bar{\mu}^{\Omega}\left(\overline{E_{0}}\cup\overline{E_{1}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{0}}\cap\overline{E_{1}}\right)\subseteq\bar{\mu}^{\Omega}\left(\overline{E_{0}}\right)+\bar{\mu}^{\Omega}\left(\overline{E_{1}}\right)$.
-Then, lemma~\ref{lemma:classical-convex-condition-lemma} proves
+Then, theorem~\ref{lemma:classical-convex-condition-lemma} proves
 equation~(\ref{eq:classical-convex}).
 \item When $E_{0}\subseteq E_{1}$ or $E_{1}\subseteq E_{0}$, equation~(\ref{eq:classical-convex})
-is also followed by lemma~\ref{lemma:classical-convex-condition-lemma}.
+is also followed by theorem~\ref{lemma:classical-convex-condition-lemma}.
 \end{enumerate}
 so that $\bar{\mu}^{\Omega}$ is convex.\end{proof}
 
 \begin{lemma}\label{lemma:quantum-convex-condition-lemma}Given a
-QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$, the following statements
+QIVPM $\bar{\mu}:\events\rightarrow\mathscr{I}$, the following statements
 are true:
 \begin{enumerate}
 \item If $P_{1}=P_{0}+P_{2}$, then $\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$.
-\item If $\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$,
+\item Given commuting $P_{0}$ and $P_{1}\in\events$, if $\bar{\mu}\left(P_{0}\vee P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)$,
 then $\bar{\mu}\left(\overline{P_{0}}\vee\overline{P_{1}}\right)+\bar{\mu}\left(\overline{P_{0}}\overline{P_{1}}\right)\subseteq\bar{\mu}\left(\overline{P_{0}}\right)+\bar{\mu}\left(\overline{P_{1}}\right)$,
 where $\overline{P_{0}}=\Omega\backslash P_{0}$ and $\overline{P_{1}}=\Omega\backslash P_{1}$.
 \end{enumerate}
 \end{lemma}
 
-\begin{proof}The direct consequence of lemma~\ref{lemma:classical-convex-condition-lemma}
+\begin{proof}The direct consequence of theorem~\ref{lemma:classical-convex-condition-lemma}
 and theorem~\ref{thm:sub-event-space}.\end{proof}
 
 \begin{thm}\label{thm:convex-3}Given a Hilbert space~$\Hilb$ of
-dimension~$3$, every quantum IVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$
+dimension~$3$, every quantum IVPM $\bar{\mu}:\events\rightarrow\mathscr{I}$
 is convex.\end{thm}
 
-\begin{proof}The direct consequence of lemma~\ref{lemma:classical-quantum-convex}
-and lemma~\ref{lemma:classical-3-elements}. \end{proof}
+\begin{proof}The direct consequence of lemma~\ref{lemma:classical-3-elements}
+and theorem~\ref{thm:sub-event-space}. \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
