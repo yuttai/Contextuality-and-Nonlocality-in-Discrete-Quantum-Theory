@@ -66,6 +66,7 @@ showkeys, longbibliography, amsmath, amssymb, floatfix]{revtex4-1}
 \newcommand{\ultramodular}{\mathcal{M}}
 \newcommand{\ultramodularL}[1][]{\ensuremath{\ultramodular^{\mathrm{L{#1}}}}}
 \newcommand{\ultramodularR}[1][]{\ensuremath{\ultramodular^{\mathrm{R{#1}}}}}
+\newcommand{\muB}{\ensuremath{\mu^{B}}}
 
 \begin{document}
 
@@ -291,15 +292,15 @@ A conventional quantum probability measure can easily be constructed
 using the Born rule if one knows the current state of the quantum
 system.  Specifically, for each pure normalized quantum
 state~$\ket{\phi} \in {\cal H}$, the Born rule induces a probability measure
-$\mu_{\phi}^{\mathrm{B}}$ defined as
-$\mu_{\phi}^{\mathrm{B}}(P)=\melem{\phi}{P}{\phi}$. The situation
+$\muB_{\phi}$ defined as
+$\muB_{\phi}(P)=\melem{\phi}{P}{\phi}$. The situation
 generalizes to mixed states
 $\rho = \sum_{j=1}^{N}q_{j}\proj{\phi_{j}}$, $\ket{\phi_j} \in {\cal H}$, where $q_j > 0$ and
 $\sum_{j=1}^{N}q_{j}=1$, in which case the generalized Born rule
-induces a probability measure $\mu_{\rho}^{\mathrm{B}}$ defined as
-$\mu_{\rho}^{\mathrm{B}}\left(P\right) = \Tr\left(\rho P\right) =
+induces a probability measure $\muB_{\rho}$ defined as
+$\muB_{\rho}\left(P\right) = \Tr\left(\rho P\right) =
 \sum_{j=1}^{N}
-q_{j}\mu_{\phi_{j}}^{\mathrm{B}}\left(P\right)$~\citep{Born1983bibTeX,Mermin2007,Jaeger2007}.
+q_{j}\muB_{\phi_{j}}\left(P\right)$~\citep{Born1983bibTeX,Mermin2007,Jaeger2007}.
 
 \begin{comment}
 As an example, consider a three-dimensional Hilbert space with orthonormal
@@ -511,9 +512,9 @@ is consistent with a state $\rho$ and projector~$P$ if the interval
 $\bar{\mu}(P)$ contains the exact probability calculated by the Born
 rule, i.e, if:
 \begin{equation}
-\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)
+\muB_{\rho}\left(P\right)\in\bar{\mu}\left(P\right)
 \end{equation}
-where $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\Tr\left(\rho P\right)$
+where $\muB_{\rho}\left(P\right)=\Tr\left(\rho P\right)$
 is the probability of the event~$P$ as determined by the Born
 rule~\citep{Born1983bibTeX,Mermin2007,Jaeger2007}.
 
@@ -531,7 +532,7 @@ $\bar{\mu}$ on every projector in $\events'$ as
 $\coreBorn(\bar{\mu},\events')$:
 \begin{equation}
 \label{eq:hbar}
-\coreBorn\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in \events',~\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)}.
+\coreBorn\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in \events',~\muB_{\rho}\left(P\right)\in\bar{\mu}\left(P\right)}.
 \end{equation}
 
 The proof that QIVPMs become classical IVPMs when the space of events
@@ -614,8 +615,8 @@ itself become bounded by or, more generally distributed around, an interval.
   spectral decomposition of $\mathbf{O}$ and define:
 \begin{equation}
 \expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}
-\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}
-\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}}\right]\,. \label{eq:quantum-interval-expectation-core}
+\expval{\mathbf{O}}_{\muB_{\rho}},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}
+\expval{\mathbf{O}}_{\muB_{\rho}}\right]\,. \label{eq:quantum-interval-expectation-core}
 \end{equation}
 \end{definition}
 
@@ -628,7 +629,7 @@ decomposition of the observable. If $\bar{\mu}$ is a conventional
 (Born) probability measure induced by a state $\rho$, then the Born
 rule probability induced by every state in
 $\coreBorn\left(\bar{\mu},\events'\right)$ will be
-$\mu_{\rho}^{\mathrm{B}}$ and the interval collapses to a point, thus
+$\muB_{\rho}$ and the interval collapses to a point, thus
 reducing the definition to that of
 Eq.~(\ref{eq:quantum-expectation})~\citep{HOSTunpublished}.
 % For example, we can extend one of the fragments of valid probability
@@ -642,7 +643,7 @@ Eq.~(\ref{eq:quantum-expectation})~\citep{HOSTunpublished}.
 % \end{equation}
 % For the same observable~$\mathbf{O}=\proj{0}+2\,\proj{1}+3\,\proj{2}$,
 % the only state~$\rho$ consistent with $\bar{\mu}_{3}$ on $\proj{0}$,
-% $\proj{1}$, and $\proj{2}$ must be $\proj{\ps}$, and $\mu_{1}=\mu_{\proj{\ps}}^{\mathrm{B}}$.
+% $\proj{1}$, and $\proj{2}$ must be $\proj{\ps}$, and $\mu_{1}=\muB_{\proj{\ps}}$.
 % Therefore, the expectation value~$\expval{\mathbf{O}}_{\bar{\mu}_{3}}=\left[\expval{\mathbf{O}}_{\mu_{1}},\expval{\mathbf{O}}_{\mu_{1}}\right]=\left[1.5,1.5\right]$
 % which is an interval, but not between $0$ and $1$ because it is
 % not a probability of an event. 
@@ -760,11 +761,11 @@ applying Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion}),
 we must have one of the $\bar{\mu}(\proj{\psi_i})=\necess$ and all
 others mapped to $\imposs$. Given any state~$\rho$ that is consistent
 with this QIVPM on all the projectors in $\Omega$, we have by
-Eq.~(\ref{eq:hbar}) that $\mu_{\rho}^{\mathrm{B}}$ must also map
+Eq.~(\ref{eq:hbar}) that $\muB_{\rho}$ must also map
 exactly one of the projectors in $\Omega$ to 1 and all others to 0. If
 an observable has a spectral decomposition along $\Omega$ then, by
 Eq.~(\ref{eq:quantum-expectation}), its expectation value relative to
-$\mu_{\rho}^{\mathrm{B}}$ is the eigenvalue $\lambda$ whose projector
+$\muB_{\rho}$ is the eigenvalue $\lambda$ whose projector
 is mapped to 1. It therefore follows, by
 Eq.~(\ref{eq:quantum-interval-expectation-core}), that the expectation
 value relative to the 0-deterministic~${\bar{\mu}}$ is fully
@@ -838,12 +839,12 @@ QIVPM.
 % of of observables~$\ensuremath{\mathbb{1}\otimes\sigma_{z}}$, $\ensuremath{\sigma_{z}\otimes\mathbb{1}}$,
 % and $\ensuremath{\sigma_{z}\otimes\sigma_{z}}$ relative to a 0-deterministic
 % QIVPM~$\bar{\mu}$. During the computation, whenever $\rho\in\coreBorn\left(\bar{\mu},\events'\right)$,
-% $\mu_{\rho}^{\mathrm{B}}\left(P_{1}\right)$ and $\mu_{\rho}^{\mathrm{B}}\left(P_{2}\right)$
+% $\muB_{\rho}\left(P_{1}\right)$ and $\muB_{\rho}\left(P_{2}\right)$
 % must be the value list in the table. Therefore, $\expval{\mathbf{O}}_{\bar{\mu}}$
 % is a singleton set.}
 % \begin{tabular}{|c|c|c|c|c|c|c|c|}
 % \hline 
-% Observable~$\mathbf{O}$ & Spectral Decomposition~$1\cdot P_{1}-1\cdot P_{2}$ & $\bar{\mu}\left(P_{1}\right)$ & $\bar{\mu}\left(P_{2}\right)$ & $\mu_{\rho}^{\mathrm{B}}\left(P_{1}\right)$ & $\mu_{\rho}^{\mathrm{B}}\left(P_{2}\right)$ & $\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}}$ & $\expval{\mathbf{O}}_{\bar{\mu}}$\tabularnewline
+% Observable~$\mathbf{O}$ & Spectral Decomposition~$1\cdot P_{1}-1\cdot P_{2}$ & $\bar{\mu}\left(P_{1}\right)$ & $\bar{\mu}\left(P_{2}\right)$ & $\muB_{\rho}\left(P_{1}\right)$ & $\muB_{\rho}\left(P_{2}\right)$ & $\expval{\mathbf{O}}_{\muB_{\rho}}$ & $\expval{\mathbf{O}}_{\bar{\mu}}$\tabularnewline
 % \hline 
 % \hline 
 % $\ensuremath{\mathbb{1}\otimes\sigma_{z}}$ & $1\cdot\left(\proj{0}+\proj{2}\right)-1\cdot\left(\proj{1}+\proj{3}\right)$ & $\imposs$ & $\necess$ & $0$ & $1$ & $1\cdot0-1\cdot1=-1$ & $\left\{ -1\right\} $\tabularnewline
@@ -1118,10 +1119,10 @@ $\coreBorn\left(\bar{\mu},\events\right)$ is the empty set. Suppose
 there is a state
 $\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}\in\coreBorn\left(\bar{\mu},\events\right)$,
 where $\sum_{j=1}^{N}q_{j}=1$ and $q_{j} > 0$. Since
-$\mu_{\rho}^{\mathrm{B}}(P)\in\bar{\mu}(P)$ for any~$P$, the
+$\muB_{\rho}(P)\in\bar{\mu}(P)$ for any~$P$, the
 state~$\rho$ must satisfy:
 \begin{equation}
-\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps'})=0\,,
+\muB_{\rho}(\proj{0})=\muB_{\rho}(\proj{\ps})=\muB_{\rho}(\proj{\ps'})=0\,,
 \end{equation}
 which implies $\ip{\phi_{j}}{0}=\ip{\phi_{j}}{\ps}=\ip{\phi_{j}}{\ps'}=0$
 for all~$j$. The last equation never holds proving the theorem.
@@ -1170,24 +1171,24 @@ follows.
 
 \begin{thm}[Finite-Precision Extension of the Gleason
   Theorem]\label{thm:Finite-precision-Gleason}Let $f$ be a blurring
-  function and let $f \circ \mu_{\rho}^{\mathrm{B}}$ be a QIVPM, where
-  $\mu_{\rho}^{\mathrm{B}}$ is the probability measure induced by the
+  function and let $f \circ \muB_{\rho}$ be a QIVPM, where
+  $\muB_{\rho}$ is the probability measure induced by the
   Born rule for a given state $\rho$. Let $\alpha$ be the maximum
   length of intervals in its image. If a state $\rho'$ is consistent
-  with $f\circ\mu_{\rho}^{\mathrm{B}}$ on all events, i.e.,
-  $\rho'\in\coreBorn\left(f\circ\mu_{\rho}^{\mathrm{B}},\events\right)$,
+  with $f\circ\muB_{\rho}$ on all events, i.e.,
+  $\rho'\in\coreBorn\left(f\circ\muB_{\rho},\events\right)$,
   then the norm of their difference is bounded by $\alpha$, i.e.,
   $\left\Vert \rho-\rho'\right\Vert \le \alpha$.\end{thm}
 
 The proof proceeds as follows. Given a state~$\rho'$ consistent with
-$f\circ\mu_{\rho}^{\mathrm{B}}$, we have
-$\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)\in
-f\left(\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right)$ for any
+$f\circ\muB_{\rho}$, we have
+$\muB_{\rho'}\left(\proj{\psi}\right)\in
+f\left(\muB_{\rho}\left(\proj{\psi}\right)\right)$ for any
 one-dimensional projector $P=\proj{\psi}$. Since the maximum length of
 the intervals in $\mathscr{I}$ is $\alpha$, it is also the upper bound
 of the difference:
 \[
-\left|\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)-\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right|=\left|\melem{\psi}{\rho-\rho'}{\psi}\right|\le \alpha\,.
+\left|\muB_{\rho'}\left(\proj{\psi}\right)-\muB_{\rho}\left(\proj{\psi}\right)\right|=\left|\melem{\psi}{\rho-\rho'}{\psi}\right|\le \alpha\,.
 \]
 Since $\rho-\rho'$ is Hermitian, $\max_{\left\Vert \psi\right\Vert =1}\left|\melem{\psi}{\rho-\rho'}{\psi}\right|$
 is the maximum absolute value of the eigenvalues of $\rho-\rho'$~\citep{544199},
@@ -1267,7 +1268,7 @@ satisfy Eq.~(\ref{eq:iota-Inclusion}). Consider the state:
 \rho=x_{0}\proj{0}+x_{1}\proj{1}+x_{2}\proj{2}+\left(1-y\right)\proj{3}\,.
 \]
 The induced map using the Born rule and blurred by $\ultramodular$,
-$\ultramodular\circ\mu_{\rho}^{\mathrm{\mathrm{B}}}$, fails to satisfy
+$\ultramodular\circ\muB_{\rho}$, fails to satisfy
 Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion}) when
 $P_{0}=\proj{0}+\proj{2}$ and $P_{1}=\proj{1}+\proj{2}$. In other
 words, this induced map fails to be a QIVPM. For the classical case, if
@@ -1275,17 +1276,17 @@ $\ultramodular$ is not ultramodular, we also want to find a classical
 probability measure $\mu:\events_{\mathrm{C}}\rightarrow\left[0,1\right]$ such
 that $\ultramodular\circ\mu$ is not a classical IVPM. This can be
 done by restricting our previous quantum probability measure
-$\mu_{\rho}^{\mathrm{\mathrm{B}}}$ on a commuting subspace of
+$\muB_{\rho}$ on a commuting subspace of
 event~$\events_{\mathrm{C}}$ generated by $\proj{0}$, $\proj{1}$, $\proj{2}$,
 and $\proj{3}$. The restricted function
-$\mu=\mu_{\rho}^{\mathrm{\mathrm{B}}}|_{\events_{\mathrm{C}}}$ is a classical probability
+$\mu=\muB_{\rho}|_{\events_{\mathrm{C}}}$ is a classical probability
 measure, and the induced map $\ultramodular\circ\mu$ fails to be
 a classical IVPM by the same reason as the quantum case.
 
 % In contrast with the QIVPM defined in Table~\ref{tab:non-Born-QIVPM},
 % there is always a state consistent with any composite QIVPM
-% $\ultramodular\circ\mu_{\rho}^{\mathrm{B}}$.  Moreover, the collection
-% of states consistent with $\ultramodular\circ\mu_{\rho}^{\mathrm{B}}$
+% $\ultramodular\circ\muB_{\rho}$.  Moreover, the collection
+% of states consistent with $\ultramodular\circ\muB_{\rho}$
 % gets closer and closer to~$\rho$ as the intervals get narrower and
 % narrower. Eventually, the collection of states collapses to the
 % singleton set~$\left\{ \rho\right\} $ as the intervals become the
@@ -1370,8 +1371,8 @@ the resources and precision of the particular experiment.
 % \end{equation}
 % Since the interval-valued function~$\ultramodular_{2}:\left[0,1\right]\rightarrow\mathscr{I}_{2}$
 % defined in Table~\ref{tab:I_2} satisfies Eqs.~(\ref{eq:iota-constraints})
-% and Eq.~(\ref{eq:iota-add})~\citep{HOSTunpublished}, $\ultramodular_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}}$
-% and $\ultramodular_{2}\circ\mu_{\rho_{1}}^{\mathrm{B}}$ are both
+% and Eq.~(\ref{eq:iota-add})~\citep{HOSTunpublished}, $\ultramodular_{2}\circ\muB_{\rho_{0}}$
+% and $\ultramodular_{2}\circ\muB_{\rho_{1}}$ are both
 % QIVPMs.
 % \begin{table}
 % \caption{\label{tab:I_2}A interval-valued function~$\ultramodular_{2}:\left[0,1\right]\rightarrow\mathscr{I}_{2}$.}
@@ -1421,19 +1422,19 @@ the resources and precision of the particular experiment.
 % \par\end{center}%
 % \end{minipage}\hfill{}
 % \end{table}
-% Given any one-dimensional projector $\proj{\psi}$, we have $\mu_{\rho_{0}}^{\mathrm{B}}\left(\proj{\psi}\right)=\frac{1}{3}$
-% so that $\ultramodular_{2}\left(\mu_{\rho_{0}}^{\mathrm{B}}\left(\proj{\psi}\right)\right)=\left[0,{\textstyle \tfrac{1}{2}}\right]$.
+% Given any one-dimensional projector $\proj{\psi}$, we have $\muB_{\rho_{0}}\left(\proj{\psi}\right)=\frac{1}{3}$
+% so that $\ultramodular_{2}\left(\muB_{\rho_{0}}\left(\proj{\psi}\right)\right)=\left[0,{\textstyle \tfrac{1}{2}}\right]$.
 % On the other hand, 
 % \begin{eqnarray*}
-% \mu_{\rho_{1}}^{\mathrm{B}}\left(\proj{\psi}\right) & = & \tfrac{7}{24}\left|\ip{\psi}{0}\right|^{2}+\tfrac{1}{3}\left|\ip{\psi}{1}\right|^{2}+\tfrac{3}{8}\left|\ip{\psi}{2}\right|^{2}
+% \muB_{\rho_{1}}\left(\proj{\psi}\right) & = & \tfrac{7}{24}\left|\ip{\psi}{0}\right|^{2}+\tfrac{1}{3}\left|\ip{\psi}{1}\right|^{2}+\tfrac{3}{8}\left|\ip{\psi}{2}\right|^{2}
 % \end{eqnarray*}
 % is bounded between $\frac{7}{24}$ and $\frac{3}{8}$. Therefore,
-% $\mu_{\rho_{1}}^{\mathrm{B}}\left(\proj{\psi}\right)\in\ultramodular_{2}\left(\mu_{\rho_{0}}^{\mathrm{B}}\left(\proj{\psi}\right)\right)$.
+% $\muB_{\rho_{1}}\left(\proj{\psi}\right)\in\ultramodular_{2}\left(\muB_{\rho_{0}}\left(\proj{\psi}\right)\right)$.
 % According to the complement condition, Eq.~(\ref{eq:complement}), we
 % also have
-% $\mu_{\rho_{1}}^{\mathrm{B}}\left(P\right)\in\ultramodular_{2}\left(\mu_{\rho_{0}}^{\mathrm{B}}\left(P\right)\right)$
+% $\muB_{\rho_{1}}\left(P\right)\in\ultramodular_{2}\left(\muB_{\rho_{0}}\left(P\right)\right)$
 % for any two-dimensional projector~$P$. Hence,
-% $\rho_{1}\in\coreBorn\left(\ultramodular_{2}\circ\mu_{\rho_{0}}^{\mathrm{B}},\events\right)$,
+% $\rho_{1}\in\coreBorn\left(\ultramodular_{2}\circ\muB_{\rho_{0}},\events\right)$,
 % and Thm.~\ref{thm:Finite-precision-Gleason} asserts that
 % $\left\Vert \rho_{0}-\rho_{1}\right\Vert $ is less than or equal to the
 % maximum length of intervals $\frac{1}{2}$.  This is true because the
