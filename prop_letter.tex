@@ -54,19 +54,20 @@ showkeys, longbibliography, amsmath, amssymb, floatfix]{revtex4-1}
 \newcommand{\Tr}{\ensuremath{\mathop{\mathrm{Tr}}\nolimits}}
 \allowdisplaybreaks
 \newcommand{\coreBorn}{\ensuremath{\overline{\Hilb}}}
-\newcommand{\mul}[1][]{\ensuremath{\mu^{\mathrm{L{#1}}}}}
-\newcommand{\mur}[1][]{\ensuremath{\mu^{\mathrm{R{#1}}}}}
+\newcommand{\mul}[1][]{\ensuremath{\mu^{L{#1}}}}
+\newcommand{\mur}[1][]{\ensuremath{\mu^{R{#1}}}}
 \setcounter{secnumdepth}{3}
 % https://tex.stackexchange.com/questions/345284/can-i-have-an-almost-non-breaking-space-in-latex
 % Change non-breaking space to \nolinebreak[1] 
 % Hence, it will not hyphenate too much surrounding words.
-\newcommand{\rmd}{\mathrm{d}}
-\newcommand{\rmi}{\mathrm{i}}
+\newcommand{\rmd}{d}
+\newcommand{\rmi}{i}
 \lineskiplimit=1pt
 \newcommand{\ultramodular}{\mathcal{M}}
-\newcommand{\ultramodularL}[1][]{\ensuremath{\ultramodular^{\mathrm{L{#1}}}}}
-\newcommand{\ultramodularR}[1][]{\ensuremath{\ultramodular^{\mathrm{R{#1}}}}}
+\newcommand{\ultramodularL}[1][]{\ensuremath{\ultramodular^{L{#1}}}}
+\newcommand{\ultramodularR}[1][]{\ensuremath{\ultramodular^{R{#1}}}}
 \newcommand{\muB}{\ensuremath{\mu^{B}}}
+\newcommand{\eventsC}{\ensuremath{\events_{C}}}
 
 \begin{document}
 
@@ -456,7 +457,7 @@ We now have the necessary ingredients to define the quantum extension,
 QIVPMs, as a generalization of both classical IVPMs and conventional
 quantum probability measures. We will show that QIVPMs reduce to
 classical IVPMs when the space of quantum events $\events$ is
-restricted to mutually commuting events $\events_{\mathrm{C}}$, i.e.,
+restricted to mutually commuting events $\eventsC$, i.e.,
 to compatible events that can be measured simultaneously. In
 Sec.~\ref{sec:Gleason} we will discuss the connection between QIVPMs
 and conventional quantum probability measures in detail.
@@ -539,24 +540,24 @@ The proof that QIVPMs become classical IVPMs when the space of events
 includes only mutually commuting events is presented in detail in the
 long version of this paper~\cite{HOSTunpublished}. The idea of the
 proof is as follows. Given a subspace of mutually commuting
-events~$\events_{\mathrm{C}}$, we can construct a partial orthonormal
+events~$\eventsC$, we can construct a partial orthonormal
 basis by diagonalization and complete it to a full orthonormal basis
-$\overline{\events_{\mathrm{C}}}$. We then build a bijection between
+$\overline{\eventsC}$. We then build a bijection between
 the QIVPM on the set of projectors associated with this basis and the
 set of classical events corresponding to this basis. This
 correspondence leads to a crucial property in our setting.
 
 \begin{thm}[Non-empty Core for Compatible Measurements] \label{thm:Shapley}
   For QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$, if a subspace
-  of events~$\events_{\mathrm{C}}\subseteq\events$ commutes, then
-  $\coreBorn\left(\bar{\mu},\events_{\mathrm{C}}\right)\ne\emptyset$.
+  of events~$\eventsC\subseteq\events$ commutes, then
+  $\coreBorn\left(\bar{\mu},\eventsC\right)\ne\emptyset$.
 \end{thm}
 
 This theorem follows directly from our
 correspondence~\cite{HOSTunpublished} and Shapley's
 theorem~\cite{Shapley1971,GilboaSchmeidler1994,NgMoYeh1997,Grabisch2016},
 which proves that a classical IVPM always contains at least one state $\rho$
-that is consistent with every event in $\events_{\mathrm{C}}$. In contrast, as we
+that is consistent with every event in $\eventsC$. In contrast, as we
 illustrate in Sec.~\ref{sec:Gleason}, the set of states
 $\coreBorn\left(\bar{\mu},\events'\right)$ that is consistent with
 some arbitrary (not necessarily commuting) events $\events'$ and a
@@ -1246,9 +1247,9 @@ following three statements are equivalent:
 \item \label{enu:iota-subject-to}A function~$\ultramodular:\left[0,1\right]\rightarrow\mathscr{I}$
 is ultramodular.
 \item \label{enu:iota-mu-CIVPM}The composite
-  function~$\ultramodular\circ\mu:\events_{\mathrm{C}}\rightarrow\mathscr{I}$
+  function~$\ultramodular\circ\mu:\eventsC\rightarrow\mathscr{I}$
   is a classical IVPM for all classical probability
-  measure~$\mu:\events_{\mathrm{C}}\rightarrow\left[0,1\right]$.
+  measure~$\mu:\eventsC\rightarrow\left[0,1\right]$.
 \item \label{enu:iota-mu-QIVPM}The composite
   function~$\ultramodular\circ\mu:\events\rightarrow\mathscr{I}$ is a
   QIVPM for all quantum probability
@@ -1273,13 +1274,13 @@ Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion}) when
 $P_{0}=\proj{0}+\proj{2}$ and $P_{1}=\proj{1}+\proj{2}$. In other
 words, this induced map fails to be a QIVPM. For the classical case, if
 $\ultramodular$ is not ultramodular, we also want to find a classical
-probability measure $\mu:\events_{\mathrm{C}}\rightarrow\left[0,1\right]$ such
+probability measure $\mu:\eventsC\rightarrow\left[0,1\right]$ such
 that $\ultramodular\circ\mu$ is not a classical IVPM. This can be
 done by restricting our previous quantum probability measure
 $\muB_{\rho}$ on a commuting subspace of
-event~$\events_{\mathrm{C}}$ generated by $\proj{0}$, $\proj{1}$, $\proj{2}$,
+event~$\eventsC$ generated by $\proj{0}$, $\proj{1}$, $\proj{2}$,
 and $\proj{3}$. The restricted function
-$\mu=\muB_{\rho}|_{\events_{\mathrm{C}}}$ is a classical probability
+$\mu=\muB_{\rho}|_{\eventsC}$ is a classical probability
 measure, and the induced map $\ultramodular\circ\mu$ fails to be
 a classical IVPM by the same reason as the quantum case.
 
