@@ -416,7 +416,7 @@ interval $[1-r,1-\ell]$ so that if one interval refers to the
 probability of an event~$E$, the dual refers to the probability of the
 event's complement $\overline{E}$.  For example, if we discover as a
 result of an experiment that $\mu(E) = [0.2,0.3]$ for some event~$E$,
-we may conclude that $\mu(\overline{E}) = [0.7,0.8]$ for the
+we may conclude that $\mu\left(\overline{E}\right) = [0.7,0.8]$ for the
 complementary event~$\overline{E}$. In addition to these simple
 conditions, there are some subtle conditions on how intervals are
 combined, which we discuss next.
@@ -429,9 +429,9 @@ $\mu(E_1\cup E_2) = [\ell_1+\ell_2,r_1+r_2]$. In some cases, this is
 indeed a sensible definition. For example, if $\mu(E_1)=[0.1,0.2]$ and
 $\mu(E_2)=[0.3,0.4]$ we get $\mu(E_1\cup E_2) = [0.4,0.6]$. But
 consider an event $E$ such that $\mu(E)=[0.2,0.3]$ and hence
-$\mu(\overline{E})=[0.7,0.8]$. The two events $E$ and $\overline{E}$
+$\mu\left(\overline{E}\right)=[0.7,0.8]$. The two events $E$ and $\overline{E}$
 are disjoint; the naïve addition of intervals would give
-$\mu(E\cup\overline{E})=[0.9,1.1]$ which is not a valid probability
+$\mu\eft(E\cup\overline{E}\right)=[0.9,1.1]$ which is not a valid probability
 interval. Moreover the event $E\cup\overline{E}$ is the
 entire space; its probability interval should be
 $\necess$ which is sharper than $[0.9,1.1]$. The problem is that the
@@ -440,7 +440,7 @@ combined event than in each event separately. In our example, even
 though the ``true'' probability of $E$ can be anywhere in the range
 $[0.2,0.3]$ and the ``true'' probability of~$\overline{E}$ can be
 anywhere in the range $[0.7,0.8]$, the values are not independent. Any
-value of $\mu(E) \leq 0.25$ will force $\mu(\overline{E})\geq
+value of $\mu(E) \leq 0.25$ will force $\mu\left(\overline{E}\right)\geq
 0.75$. To account for such subtleties, the axioms of interval-valued
 probability do not use a strict equality for the combination of
 disjoint events. The correct constraint enforcing coherence of
@@ -451,7 +451,7 @@ $E_1\cup E_2$ when $E_1$ and $E_2$ are disjoint is therefore:
 \mu(E_1\cup E_2) \subseteq [\ell_1+\ell_2,r_1+r_2]\,.
 \end{equation}
 Note that for any event $E$ with $\mu(E)=[\ell,r]$, we always have
-$\mu(\Omega)=\necess\subseteq[\ell,r]+[1-r,1-\ell]=\mu(E\cup\overline{E})$.
+$\mu(\Omega)=\necess\subseteq[\ell,r]+[1-r,1-\ell]=\mu(E)\cup\mu\left(\overline{E}\right)$.
 %% Parallel arguments
 %% can be made interpreting $[\ell,r]$ as Gaussian width, but will be omitted as no
 %% essential new information seems to be introduced.
@@ -1098,7 +1098,7 @@ Now let us consider relaxing $\mathscr{I}$
 to a countable set of finite-width intervals.
 As the intervals in the image of a QIVPM become less and less sharp,
 we expect more and more states to be consistent with it. Indeed, in
-the limit, the intervals become \imposs, \necess, and \unknown,  and
+the limit, the intervals become \imposs, \necess, and $\unknown=\left[0,1\right]$,  and
 every state is consistent with an assignment that states that its
 projections are unknown. There is however a subtlety: as shown in the
 theorem below, it is possible for an arbitrary assignment of intervals to projectors
@@ -1519,7 +1519,7 @@ theorem~\cite{PhysRevLett.83.3751,Mermin1999}.
 
 The similar kind of subtleties happens when we want to define the
 expectation value of a random variable. Consider an event $E$ such
-that $\bar{\mu}(E)=[0.2,0.3]$ and $\bar{\mu}(\overline{E})=[0.7,0.8]$.
+that $\bar{\mu}(E)=[0.2,0.3]$ and $\bar{\mu}\left(\overline{E}\right)=[0.7,0.8]$.
 Given a random variable
 \begin{equation}
 X\left(\omega\right)=\begin{cases}
@@ -1530,23 +1530,23 @@ X\left(\omega\right)=\begin{cases}
 its expectation value with respect to $\bar{\mu}$ might be naïvely
 defined as\begin{subequations}
 \begin{eqnarray}
- &  & 1\cdot\bar{\mu}(E)+2\cdot\bar{\mu}(\overline{E})\\
+ &  & 1\cdot\bar{\mu}(E)+2\cdot\bar{\mu}\left(\overline{E}\right)\\
  & = & 1\cdot[0.2,0.3]+2\cdot[0.7,0.8]\\
  & = & [1\cdot0.2+2\cdot0.7,1\cdot0.3+2\cdot0.8]\\
  & = & [1.6,1.9]\,.
 \end{eqnarray}
 \end{subequations}As we discussed in the previous paragraph, the
 true probability of $\bar{\mu}(E)$, $\mu(E)$, can be anywhere in
-the range $[0.2,0.3]$ and the true probability of $\bar{\mu}(\overline{E})$
-is $\mu(\overline{E})=1-\mu(E)$. If $\mu(E)=0.2$, the expectation
+the range $[0.2,0.3]$ and the true probability of $\bar{\mu}\left(\overline{E}\right)$
+is $\mu\left(\overline{E}\right)=1-\mu(E)$. If $\mu(E)=0.2$, the expectation
 value of $X$ with respect to $\mu$ is 
 \begin{equation}
-1\cdot\mu(E)+2\cdot\mu(\overline{E})=1\cdot0.2+2\cdot0.8=1.8\,;
+1\cdot\mu(E)+2\cdot\mu\left(\overline{E}\right)=1\cdot0.2+2\cdot0.8=1.8\,;
 \end{equation}
 if $\mu(E)=0.3$, the expectation value of $X$ with respect to $\mu$
 is
 \begin{equation}
-1\cdot\mu(E)+2\cdot\mu(\overline{E})=1\cdot0.3+2\cdot0.7=1.7\,.
+1\cdot\mu(E)+2\cdot\mu\left(\overline{E}\right)=1\cdot0.3+2\cdot0.7=1.7\,.
 \end{equation}
 In another word, no matter how we pick $\mu(E)$, the expectation
 value of $X$ is in $\left[1.7,1.8\right]$ which is a more realistic
