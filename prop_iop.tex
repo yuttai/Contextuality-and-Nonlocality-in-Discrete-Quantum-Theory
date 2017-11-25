@@ -2758,7 +2758,7 @@ the right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left
 we separate the positive and negative terms and write like $\sum_{i=1}^{N^{-}}x_{i}^{-}\mathbf{1}_{E_{i}^{-}}+\sum_{i=1}^{N^{+}}x_{i}^{+}\mathbf{1}_{E_{i}^{+}}$,
 i.e., 
 \begin{equation}
-x_{N^{-}}^{-}\le\ldots\le x_{1}^{-}\le0\le x_{1}^{+}\le\ldots\le x_{N^{+}}^{+}
+x_{N^{-}}^{-}<\ldots<x_{1}^{-}<0\le x_{1}^{+}<\ldots<x_{N^{+}}^{+}
 \end{equation}
  and $\left\{ E_{i}^{-}\right\} _{i=1}^{N^{-}}$ and $\left\{ E_{i}^{+}\right\} _{i=1}^{N^{+}}$
 are all disjoint.
@@ -2922,39 +2922,41 @@ and a sequence of random variable~$\left\{ X_{j}\right\} $,
 \end{eqnarray*}
 \end{proof}
 
-\subsection{Expectation Values for Quantum IVPMs}
+\subsection{Expectation Values for QIVPMs}
 
-Before discussing quantum IVPMs, we first review various notations
-brought forward from conventional quantum theory. Assume that a physical
-system is represented by a density matrix~$\rho$, and that we wish
-to measure a physical quantity~${\cal O}$ of this system, with corresponding
+Before discussing QIVPMs, we first review various notations brought
+forward from conventional quantum theory. Assume that a physical system
+is represented by a density matrix~$\rho$, and that we wish to measure
+a physical quantity~${\cal O}$ of this system, with corresponding
 observable~$\mathbf{O}$, whose spectral decomposition is given by
 \begin{equation}
-\mathbf{O}=\sum_{i=1}^{N}\lambda_{i}P_{i}\,,\label{eq:spectrum-decomposition}
+\mathbf{O}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}P_{i}^{s}\,,\label{eq:spectrum-decomposition-distinct}
 \end{equation}
-where $P_{i}$ is the projector onto the eigenspace of each distinct
-eigenvalue~$\lambda_{i}$. Since $\lambda_{i}$ are distinct, $N$
-may be less than $d$. Although we requires the eigenvalues in a spectral
-decomposition to be distinct, we will relax this requirement in the
-next section. Then, the Born rule of CQT tells us that the expectation
-value of the observable~$\mathbf{O}$ is given by~\cite{544199,Jaeger2007}
+where the positive and negative eigenvalues are ordered from the smallest
+to the largest 
+\begin{equation}
+\lambda_{N^{-}}^{-}<\ldots<\lambda_{1}^{-}<0\le\lambda_{1}^{+}<\ldots<\lambda_{N^{+}}^{+}\,,
+\end{equation}
+and $P_{i}$ is the projector onto the eigenspace of each distinct
+eigenvalue~$\lambda_{i}$. This spectral decomposition might be different
+from the one people used to~.
+
+Since $\lambda_{i}$ are distinct, $N$ may be less than $d$. Although
+we requires the eigenvalues in equation~(\ref{eq:spectrum-decomposition-distinct})
+to be distinct, we will consider the other type of spectral decomposition,
+especially $\mathbf{O}=\sum_{k=1}^{d}\lambda_{k}\proj{k}$ in lemma~\ref{lemma:observable2random-variable}
+later. Then, the Born rule of CQT tells us that the expectation value
+of the observable~$\mathbf{O}$ is given by~\cite{544199,Jaeger2007}
 \begin{equation}
 \expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}}=\Tr\left(\rho\mathbf{O}\right)=\sum_{i=1}^{N}\lambda_{i}\mu_{\rho}^{\mathrm{B}}\left(P_{i}\right)\ .\label{eq:quantum-expectation}
 \end{equation}
 
-Consider a quantum IVPM~$\bar{\mu}$ such that $\mul:\events\rightarrow\left[0,1\right]$
+Consider a QIVPM~$\bar{\mu}$ such that $\mul:\events\rightarrow\left[0,1\right]$
 and $\mur:\events\rightarrow\left[0,1\right]$ are the left-end and
 the right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(P\right)=\left[\mul\left(P\right),\mur\left(P\right)\right]$
 for all $P\in\events$. This time, when we express the observable
 as its spectral decomposition
-\begin{equation}
-\mathbf{O}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}P_{i}^{s}\,,\label{eq:spectrum-decomposition-distinct}
-\end{equation}
-we separate the positive and negative eigenvalues and order its eigenvalues
-from the smallest to the largest 
-\begin{equation}
-\lambda_{N^{-}}^{-}\le\ldots\le\lambda_{1}^{-}\le0\le\lambda_{1}^{+}\le\ldots\le\lambda_{N^{+}}^{+}\,.
-\end{equation}
+
 Let $P_{i}^{s\prime}=\sum_{j\ge i}P_{j}^{s}$ and $\Delta\mu^{*}\left(P_{i}^{s\prime}\right)=\mu^{*}\left(P_{i}^{s\prime}\right)-\mu^{*}\left(P_{i+1}^{s\prime}\right)$,
 where $s\in\left\{ +,-\right\} $ and $\mu^{*}\in\left\{ \mul,\mur\right\} $.
 We can combine the classical Choquet integral~\cite{Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016}
@@ -2967,8 +2969,8 @@ value of $\mathbf{O}$ with respect to $\bar{\mu}$ as
 \subsection{Between Expectation Values for Classical and Quantum IVPMs\label{subsec:Between-Expectation-Values-Classical-Quantum}}
 
 Since the similarity between classical and quantum expectation values,
-we would prove some lemmas\footnote{\yutsung{functor?}} which can
-help us move the classical results to quantum.
+we would prove some lemmas\footnote{\yutsung{functor? Galois connection?}}
+which can help us move the classical results to quantum.
 
 \begin{definition}Given an observable~$\mathbf{O}$ with any its
 spectral decomposition~(\ref{eq:spectrum-decomposition}) whose eigenvalues
