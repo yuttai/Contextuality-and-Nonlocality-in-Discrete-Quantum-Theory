@@ -2756,15 +2756,16 @@ as given in the following definition.
 and $\mur:\events\rightarrow\left[0,1\right]$ are the left-end and
 the right-end of $\bar{\mu}$, respectively, i.e., $\bar{\mu}\left(E\right)=\left[\mul\left(E\right),\mur\left(E\right)\right]$.
 \item We still decompose a random variable~$X$ into step functions, but
-we separate the positive and negative terms and write like $\sum_{i=1}^{N^{-}}x_{i}^{-}\mathbf{1}_{E_{i}^{-}}+\sum_{i=1}^{N^{+}}x_{i}^{+}\mathbf{1}_{E_{i}^{+}}$,
-i.e., 
+we separate the positive and negative terms and write 
+\begin{equation}
+X=\sum_{i=1}^{N^{-}}x_{i}^{-}\mathbf{1}_{E_{i}^{-}}+\sum_{i=1}^{N^{+}}x_{i}^{+}\mathbf{1}_{E_{i}^{+}}\,,\label{eq:classical-decomposition}
+\end{equation}
+where 
 \begin{equation}
 x_{N^{-}}^{-}<\ldots<x_{1}^{-}<0\le x_{1}^{+}<\ldots<x_{N^{+}}^{+}
 \end{equation}
- and $\left\{ E_{i}^{-}\right\} _{i=1}^{N^{-}}$ and $\left\{ E_{i}^{+}\right\} _{i=1}^{N^{+}}$
+and $\left\{ E_{i}^{-}\right\} _{i=1}^{N^{-}}$ and $\left\{ E_{i}^{+}\right\} _{i=1}^{N^{+}}$
 are all disjoint.
-\item Let $E_{i}^{s\prime}=\bigcup_{j\ge i}E_{j}^{s}$ and $\Delta\mu^{*}\left(E_{i}^{s\prime}\right)=\mu^{*}\left(E_{i}^{s\prime}\right)-\mu^{*}\left(E_{i+1}^{s\prime}\right)$,
-where $s\in\left\{ +,-\right\} $ and $\mu^{*}\in\left\{ \mul,\mur\right\} $.
 \end{itemize}
 Then, the Choquet integral of $X$ with respect to $\bar{\mu}$ is
 \begin{equation}\eqalign{ 
@@ -2926,10 +2927,15 @@ and a sequence of random variable~$\left\{ X_{j}\right\} $,
 \subsection{Expectation Values for QIVPMs}
 
 Before discussing QIVPMs, we first review various notations brought
-forward from conventional quantum theory. Assume that a physical system
-is represented by a density matrix~$\rho$, and that we wish to measure
-a physical quantity~${\cal O}$ of this system, with corresponding
-observable~$\mathbf{O}$, whose spectral decomposition is given by~\cite{Griffiths1994,FraleighBeauregard1995,544199,FriedbergInselSpence2002,Jaeger2007}
+forward from the conventional quantum theory. Assume that we wish
+to measure a physical quantity~${\cal O}$ of this system, with corresponding
+observable~$\mathbf{O}$. Its spectral decomposition can either be
+represented in term of outer product or projector. Since we want to
+define the expectation value of~$\mathbf{O}$ with respect to a QIVPM
+as the classical Choquet integral in definition~\ref{def:Choquet},
+we are going to order the eigenvalues of~$\mathbf{O}$ as we ordered
+the step functions for classical random variables, and to represent
+the spectral decomposition of~$\mathbf{O}$ by~\cite{Griffiths1994,FraleighBeauregard1995,544199,FriedbergInselSpence2002,Jaeger2007}
 \begin{equation}
 \mathbf{O}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}P_{i}^{s}\,,\label{eq:spectrum-decomposition-distinct}
 \end{equation}
@@ -2938,35 +2944,70 @@ to the largest
 \begin{equation}
 \lambda_{N^{-}}^{-}<\ldots<\lambda_{1}^{-}<0\le\lambda_{1}^{+}<\ldots<\lambda_{N^{+}}^{+}\,,
 \end{equation}
-and $P_{i}$ is the projector onto the eigenspace of each distinct
-eigenvalue~$\lambda_{i}$. Compare to equation~(\ref{eq:spectrum-decomposition-distinct}),
-the spectral decomposition of $\mathbf{O}$ may be represented in
-term of outer product as $\mathbf{O}=\sum_{k=1}^{d}\lambda_{k}\proj{k}$
-which would be used in lemma~\ref{lemma:observable2random-variable}
-later. Disregard the representation of the spectral decomposition,
-it can be used to defined the expectation value of the observable~$\mathbf{O}$
-as~\cite{544199,Jaeger2007}
+and $P_{i}^{s}$ is the projector onto the eigenspace of each distinct
+eigenvalue~$\lambda_{i}^{s}$.
+
+For the conventional quantum theory, a physical system can be represented
+by a density matrix~$\rho$, the expectation value of the observable~$\mathbf{O}$
+is defined as~\cite{544199,Jaeger2007}
 \begin{equation}
 \expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}}=\Tr\left(\rho\mathbf{O}\right)=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mu_{\rho}^{\mathrm{B}}\left(P_{i}^{s}\right)\ .\label{eq:quantum-expectation}
 \end{equation}
-
-Consider a QIVPM~$\bar{\mu}$ such that $\mul:\events\rightarrow\left[0,1\right]$
-and $\mur:\events\rightarrow\left[0,1\right]$ are the left-end and
-the right-end of $\bar{\mu}$. Similar to the classical Choquet integral
-in definition~\ref{def:Choquet}, we can let $P_{i}^{s\prime}=\sum_{j\ge i}P_{j}^{s}$
+Equation~(\ref{eq:quantum-expectation}) can be combined with definition~\ref{def:Choquet}
+to define the expectation value of $\mathbf{O}$ with respect to a
+QIVPM~$\bar{\mu}$. Similar to definition~\ref{def:Choquet}, we
+first separate the left-end and the right-end of $\bar{\mu}$ as $\mul:\events\rightarrow\left[0,1\right]$
+and $\mur:\events\rightarrow\left[0,1\right]$. Then, let $P_{i}^{s\prime}=\sum_{j\ge i}P_{j}^{s}$
 and $\Delta\mu^{*}\left(P_{i}^{s\prime}\right)=\mu^{*}\left(P_{i}^{s\prime}\right)-\mu^{*}\left(P_{i+1}^{s\prime}\right)$,
-where $s\in\left\{ +,-\right\} $ and $\mu^{*}\in\left\{ \mul,\mur\right\} $,
-and define the expectation value of $\mathbf{O}$ with respect to
-$\bar{\mu}$ as
+where $s\in\left\{ +,-\right\} $ and $\mu^{*}\in\left\{ \mul,\mur\right\} $.
+Finally, the expectation value of $\mathbf{O}$ with respect to a
+QIVPM~$\bar{\mu}$ is defined to be
 \begin{equation}
 \expval{\mathbf{O}}_{\bar{\mu}}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i}^{s\prime}\right),\Delta\mur\left(P_{i}^{s\prime}\right)\right]\,.\label{eq:quantum-interval-expectation}
 \end{equation}
 
-\subsection{Between Expectation Values for Classical and Quantum IVPMs\label{subsec:Between-Expectation-Values-Classical-Quantum}}
+Notice that the similarity between classical Choquet integral and
+quantum expectation values as in Table~\ref{tab:compare-CIVPM-QRVPM}.
+\begin{table}
+\caption{\label{tab:compare-CIVPM-QRVPM}Compare the similarity between the
+classical and quantum}
+\centering{}%
+\begin{tabular}{cc}
+\toprule 
+\addlinespace
+Classical & Quantum\tabularnewline\addlinespace
+\midrule
+\midrule 
+\addlinespace
+CIVPM~$\bar{\mu}$ & QIVPM~$\bar{\mu}$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+Random variable~$X$ & Observable~$\mathbf{O}$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+Classical step function decomposition, equation~(\ref{eq:classical-decomposition}) & Spectral decomposition, equation~(\ref{eq:spectrum-decomposition-distinct})\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+Distinct value~$x_{i}^{s}$ & Distinct eigenvalue~$\lambda_{i}^{s}$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+Non-overlapping sets~$E_{i}^{s}$ & Orthogonal projector~$E_{i}^{s}$\tabularnewline\addlinespace
+\midrule 
+\addlinespace
+ & \tabularnewline\addlinespace
+\midrule 
+\addlinespace
+ & \tabularnewline\addlinespace
+\midrule 
+\addlinespace
+ & \tabularnewline\addlinespace
+\bottomrule
+\end{tabular}
+\end{table}
+\footnote{\yutsung{functor? Galois connection?}}, 
 
-Since the similarity between classical and quantum expectation values,
-we would prove some lemmas\footnote{\yutsung{functor? Galois connection?}}
-which can help us move the classical results to quantum.
+we would prove some lemmas which can help us move the classical results
+to quantum.
 
 \begin{definition}Given an observable~$\mathbf{O}$ with any its
 spectral decomposition~(\ref{eq:spectrum-decomposition}) whose eigenvalues
