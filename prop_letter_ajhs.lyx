@@ -6,6 +6,8 @@
 \origin unavailable
 \textclass revtex4-1
 \begin_preamble
+
+
 \usepackage{fullpage}
 \usepackage{cmap}
 \usepackage{amsthm}
@@ -14,14 +16,21 @@
 \usepackage{wesa}
 \usepackage{graphicx}
 \usepackage{multirow}
-\DeclareUnicodeCharacter{0229}{\c{e}}
+\usepackage[braket,qm]{qcircuit}
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{xparse}
+
 
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}\newtheorem{lemma}{Lemma}[thm]
 \newtheorem{cor}{Corollary}[thm]
 \newtheorem{assumption}{Assumption}\newtheorem{fact}{Fact}\theoremstyle{definition}
-\newtheorem{definition}{Definition}
-\newtheorem{condition}[assumption]{Condition}
+\newtheorem{definition}{Definition}\newtheorem{condition}[assumption]{Condition}
+
+\DeclareUnicodeCharacter{0229}{\c{e}}
 
 \newcommand{\Hilb}{\mathcal{H}}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
@@ -33,36 +42,39 @@
 \newcommand{\necess}{{\text{\wesa{certain}}}}
 \newcommand{\unknown}{{\text{\wesa{unknown}}}}
 \newcommand{\midd}{{\text{\wesa{middle}}}}
-\usepackage[braket,qm]{qcircuit}
 \newcommand{\fket}[1]{{|#1\rangle}}
 \newcommand{\fproj}[1]{|#1\rangle\langle #1|}
 \newcommand{\proj}[1]{\op{#1}{#1}}
 \newcommand{\ps}{\texttt{+}}
 \newcommand{\ms}{\texttt{-}}
-
-\usepackage{color}
-\usepackage[usenames,dvipsnames]{xcolor}
-\usepackage{framed}
-\newcommand{\amr}[1]{\begin{framed}\begin{minipage}{0.9\linewidth}\color{green}{Amr says: #1}\end{minipage}\end{framed}}
-\newcommand{\yutsung}[1]{\begin{framed}\begin{minipage}{0.9\linewidth}\color{purple}{Yu-Tsung says: #1}\end{minipage}\end{framed}}
-\newcommand{\gerardo}[1]{\fbox{\begin{minipage}{0.9\linewidth}\color{OliveGreen}{Gerardo says: #1}\end{minipage}}}
-\newcommand{\andy}[1]{\fbox{\begin{minipage}{0.9\linewidth}\color{blue}{Andy says: #1}\end{minipage}}}
 \newcommand{\set}[2]{\ensuremath{\left\{ {#1}\mathrel{}\middle|\mathrel{}{#2}\right\} }}
 \newcommand{\Tr}{\ensuremath{\mathop{\mathrm{Tr}}\nolimits}}
 \allowdisplaybreaks
 \newcommand{\coreBorn}{\ensuremath{\overline{\Hilb}}}
-\newcommand{\mul}[1][]{\ensuremath{\mu^{\mathrm{L{#1}}}}}
-\newcommand{\mur}[1][]{\ensuremath{\mu^{\mathrm{R{#1}}}}}
+\newcommand{\mul}[1][]{\ensuremath{\mu^{L{#1}}}}
+\newcommand{\mur}[1][]{\ensuremath{\mu^{R{#1}}}}
 
 % https://tex.stackexchange.com/questions/345284/can-i-have-an-almost-non-breaking-space-in-latex
 % Change non-breaking space to \nolinebreak[1] 
 % Hence, it will not hyphenate too much surrounding words.
-\newcommand{\rmd}{\mathrm{d}}
-\newcommand{\rmi}{\mathrm{i}}
+\newcommand{\rmd}{d}
+\newcommand{\rmi}{i}
 \lineskiplimit=1pt
 \newcommand{\ultramodular}{\mathcal{M}}
-\newcommand{\ultramodularL}[1][]{\ensuremath{\ultramodular^{\mathrm{L{#1}}}}}
-\newcommand{\ultramodularR}[1][]{\ensuremath{\ultramodular^{\mathrm{R{#1}}}}}
+\newcommand{\ultramodularL}[1][]{\ensuremath{\ultramodular^{L{#1}}}}
+\newcommand{\ultramodularR}[1][]{\ensuremath{\ultramodular^{R{#1}}}}
+\newcommand{\muB}{\ensuremath{\mu^{B}}}
+\newcommand{\eventsC}{\ensuremath{\events_{C}}}
+
+\newcommand{\says}[3]{\begin{framed}\begin{minipage}{0.9\linewidth}\color{#1}{#2 says: #3}\end{minipage}\end{framed}}
+\newcommand{\amr}[1]{\says{green}{Amr}{#1}}
+\newcommand{\yutsung}[1]{\says{purple}{Yu-Tsung}{#1}}
+\newcommand{\gerardo}[1]{\says{OliveGreen}{Gerardo}{#1}}
+\newcommand{\andy}[1]{\says{blue}{Andy}{#1}}
+% \excludecomment{suggest}
+\NewDocumentEnvironment{suggest}{m m O{}}{#1{TEXT \##2 would go here. #3}}{#1{TEXT \##2 end here.}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end_preamble
 \options reprint,aps,prl,superscriptaddress,showpacs,showkeys,longbibliography,amsmath,amssymb,floatfix
 \use_default_options false
@@ -110,8 +122,8 @@
 \use_package stackrel 0
 \use_package stmaryrd 0
 \use_package undertilde 0
-\cite_engine basic
-\cite_engine_type default
+\cite_engine natbib
+\cite_engine_type numerical
 \biblio_style 
 \use_bibtopic false
 \use_indices false
@@ -159,7 +171,8 @@ Department of Computer Science, Indiana University, Bloomington, Indiana
 \end_layout
 
 \begin_layout Author
-Andrew J Hanson
+Andrew J.
+ Hanson
 \end_layout
 
 \begin_layout Affiliation
@@ -206,33 +219,8 @@ We present a mathematical framework based on quantum interval-valued probability
  measurements on defining aspects of quantum mechanics such as contextuality
  and the Born rule.
  While foundational results such as the Kochen-Specker and Gleason theorems
- fail to hold in general in a world with limited resources, when we allow
- infinite precision, their validity is recovered.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-andy{
-\end_layout
-
-\end_inset
-
-<reverse this?> are valid in the context of infinite precision, they fail
- to hold in general in a world with limited resources.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+ are valid in the context of infinite precision, they fail to hold in general
+ in a world with limited resources.
  Here we employ an interval-valued framework to establish bounds on the
  validity of those theorems in realistic experimental environments.
  In this way, not only can we quantify the idea of finite-precision measurement
@@ -330,6 +318,12 @@ Introduction
 \end_layout
 
 \begin_layout Standard
+In this investigation, we explore the implications of extending conventional
+ quantum-mechanical probability measures to include the effect of imprecise
+ measurements.
+\end_layout
+
+\begin_layout Standard
 There are long-standing debates in the foundations of quantum mechanics
  regarding the tension between finite precision measurement and contextuality
 \begin_inset space ~
@@ -377,7 +371,7 @@ ecker theorem
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007,Held2016"
+key "BELL_1966,kochenspecker1967,Redhead1987-REDINA,Mermin1990Simple,peres1995quantum,Jaeger2007,Held2016"
 
 \end_inset
 
@@ -387,7 +381,7 @@ key "kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007,Held2016"
 \begin_inset Formula $d\ge3$
 \end_inset
 
-, it is impossible to associate definite probabilities, 
+, it is impossible to associate determinate probabilities, 
 \begin_inset Formula $\mu(P_{i})=0$
 \end_inset
 
@@ -433,7 +427,7 @@ status collapsed
 
 
 \shape default
- assign definite probabilities 
+ assign determinate probabilities 
 \begin_inset Formula $0$
 \end_inset
 
@@ -517,7 +511,8 @@ leinmannCabelloEtAl2010,MazurekPuseyKunjwalEtAl2016}
 
 \begin_layout Standard
 The question of how to address this controversy, and the effect of finite
- precision on measurements in general, is therefore a fundamental problem.
+ precision on measurements in general, is therefore a fundamental problem
+ of physics.
  How does one develop mathematical theories of quantum mechanics that are
  intrinsically, rather than only implicitly, consistent with the resources
  available for the realistic accuracy of an actual measurement? In this
@@ -562,20 +557,25 @@ key "JamisonLodwick2004"
 \end_layout
 
 \begin_layout Standard
-A principal result is that recasting the Kochen-Specker theorem in terms
- of 
-\begin_inset Quotes eld
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% ajh "begin" doubled, replace here; two missing commas
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
-
+We start our investigation with the concept of 
 \begin_inset Formula $\delta$
 \end_inset
 
--determinism,
-\begin_inset Quotes erd
-\end_inset
-
- with
+-determinism, where
 \begin_inset space ~
 \end_inset
 
@@ -583,17 +583,57 @@ A principal result is that recasting the Kochen-Specker theorem in terms
 \begin_inset Formula $\delta$
 \end_inset
 
- quantifying the effect of finite-precision uncertainties on measurement
- outcomes, reducing to the purely deterministic Kochen-Specker case for
- 
+ quantifies the effect of finite-precision uncertainties on measurement
+ outcomes.
+ We recast the Kochen-Specker theorem using 
+\begin_inset Formula $\delta$
+\end_inset
+
+-determinism to quantify the effects of finite precision and imperfections
+ on contextuality.
+ When 
 \begin_inset Formula $\delta=0$
 \end_inset
 
-, can resolve the question of the effect of finite precision and imperfections
- on contextuality.
- A remarkable consequence of our analysis is that not only does the quantum-mech
-anical requirement for contextuality continue to hold, thus maintaining
- the Kochen-Specker result for a 
+, the generalized theorem reduces to the conventional one, but as 
+\begin_inset Formula $\delta$
+\end_inset
+
+ varies from 0 to 1 we note a transition from contextuality to non-contextuality.
+ For a 
+\emph on
+non-vanishing
+\emph default
+ range of 
+\begin_inset Formula $\delta$
+\end_inset
+
+, quantum-mechanical contextuality continues to hold, maintaining the Kochen-Spe
+cker result, but at a 
+\emph on
+certain fixed value
+\emph default
+, 
+\begin_inset Formula $\delta=\frac{1}{3}$
+\end_inset
+
+, there is a sharp transition to 
+\emph on
+non-contextuality
+\emph default
+, parallel in character to a phase transition.
+ These results provide a new insight into the Meyer-Mermin debate by presenting
+ a theory in which there is a 
+\emph on
+parameter
+\emph default
+ interpolating between what appeared previously to be irreconcilable aspects
+ of contextuality.
+\end_layout
+
+\begin_layout Standard
+The quantum-mechanical requirement for contextuality continues to hold,
+ thus maintaining the Kochen-Specker result for a 
 \emph on
 non-vanishing
 \emph default
@@ -614,9 +654,38 @@ certain fixed value
 \emph on
 non-contextuality
 \emph default
-; that is, suddenly a quantum system can be simulated by a non-contextual
- hidden variable theory.
+.
  
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% ; that is, suddenly a quantum system can be
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% simulated by a non-contextual hidden variable theory.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -918,37 +987,40 @@ status collapsed
 
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-yutsung{
-\end_layout
-
-\end_inset
-
-Rewrite to match the interpretation of the Kochen-Specker section.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- These results provide a new insight into the Meyer-Mermin debate by presenting
+These results provide a new insight into the Meyer-Mermin debate by presenting
  a theory in which there is a 
 \emph on
 parameter
 \emph default
- interpolating between what appeared previously to be irreconcilable interpretat
-ions of contextuality.
+ interpolating between what appeared previously to be irreconcilable aspects
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%interpretations
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+of contextuality.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% ajh- above: I think "interpretations" is not quite right -> "aspects"?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -966,7 +1038,7 @@ status collapsed
 
 
 \backslash
-citep{Born1983,Mermin2007,Jaeger2007}
+citep{Born1983bibTeX,Mermin2007,Jaeger2007}
 \end_layout
 
 \end_inset
@@ -982,7 +1054,7 @@ citep{Born1983,Mermin2007,Jaeger2007}
 \begin_inset Formula $\rho$
 \end_inset
 
- consistent with the statistical predictions computed from that rule
+ consistent with the statistical predictions computed from the Born rule
 \begin_inset space ~
 \end_inset
 
@@ -1011,7 +1083,11 @@ citep{gleason1957,Redhead1987-REDINA,peres1995quantum}
 \begin_inset Formula $\rho$
 \end_inset
 
- on all projectors defined on a Hilbert space 
+ on all projectors defined on a Hilbert space
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\Hilb$
 \end_inset
 
@@ -1022,15 +1098,21 @@ citep{gleason1957,Redhead1987-REDINA,peres1995quantum}
 , there is a mathematically precise sense in which one recovers the original
  Gleason theorem asymptotically.
  Specifically, it is possible to construct a class of QIVPMs representing
- bounded resources that is parameterized by the size of the probability
- intervals of uncertainty.
+ bounded resources that is parameterized by the size of the intervals.
  We then demonstrate that all QIVPMs in this class are consistent with a
- non-empty set of quantum states, and as the size of the intervals characterizin
-g the uncertainties goes to zero, this set of quantum states converges to
- the unique state consistent with the Born rule.
- We furthermore establish a mathematical correlation between the sizes of
- the intervals and the volume of states that are all consistent with an
- imprecise measurement.
+ non-empty 
+\begin_inset Quotes eld
+\end_inset
+
+ball
+\begin_inset Quotes erd
+\end_inset
+
+ of quantum states whose radius is defined by the maximal length of the
+ intervals characterizing the uncertainties.
+ As the size of the intervals goes to zero, this ball of quantum states
+ converges to a point representing the unique state consistent with the
+ Born rule and Gleason's theorem.
 \end_layout
 
 \begin_layout Standard
@@ -1048,8 +1130,8 @@ reference "sec:fuzzy"
 
  we begin by introducing the foundations of quantum probability space and
  fuzzy measurement.
- We then move on to introduce the concept of quantum interval valued probability
- in Sec.
+ We then move on to introduce the concept of quantum interval-valued probability
+ measures in Sec.
 \begin_inset space ~
 \end_inset
 
@@ -1061,7 +1143,7 @@ reference "sec:Interval-Uncertainty"
 \end_inset
 
 .
- The QIVPMs will provide the mathematical framework we need to quantify
+ These QIVPMs will provide the mathematical framework we need to quantify
  the impact of finite precision measurements on quantum mechanics.
  For instance, in Sec.
 \begin_inset space ~
@@ -1076,8 +1158,8 @@ reference "sec:Kochen-Specker"
 
 , we quantify the domain of validity of a contextual measurement, thus addressin
 g the conditions under which the Kochen-Specker theorem applies.
- This provides a way of not only resolving the Meyer-Mermin debate, but
- also revealing of a precise transition to non-contextuality; these are
+ This provides a way not only of resolving the Meyer-Mermin debate, but
+ also of revealing a precise transition to non-contextuality; these are
  the results of our Thm.
 \begin_inset space ~
 \end_inset
@@ -1164,7 +1246,7 @@ probability space
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Kolmogorov1950,544199,Griffiths2003,Grabisch2016"
+key "Kolmogorov1950bibTeX,544199,Griffiths2003,Grabisch2016"
 
 \end_inset
 
@@ -1206,11 +1288,19 @@ projection operators
 \begin_inset Formula $\ket{\phi}$
 \end_inset
 
- is a pure quantum state (an element of a Hilbert space), sums of 
+ is a pure quantum state (an element of a Hilbert space 
+\begin_inset Formula ${\cal H}$
+\end_inset
+
+), sums of 
 \emph on
 orthogonal
 \emph default
- projectors 
+ projectors
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $P_{0}$
 \end_inset
 
@@ -1254,7 +1344,7 @@ commuting
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010"
+key "10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010,Abramsky2012"
 
 \end_inset
 
@@ -1286,8 +1376,22 @@ key "10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010"
 \begin_inset Formula $\events$
 \end_inset
 
- is the set of all projectors on a given Hilbert space, subject to the following
- constraints: 
+ is the set of all events, (i.e., projectors on a given Hilbert space), 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% ajh ()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+subject to the following constraints: 
 \begin_inset Formula $\mu(\mathbb{0})=0$
 \end_inset
 
@@ -1347,7 +1451,18 @@ Given a Hilbert space
 \begin_inset Formula $\lambda_{i}\in\mathbb{R}$
 \end_inset
 
-, as: 
+, as
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "544199,Jaeger2007"
+
+\end_inset
+
+: 
 \begin_inset Formula 
 \begin{equation}
 \expval{\mathbf{O}}_{\mu}=\sum_{i=1}^{d}\lambda_{i}\mu(P_{i})\,.\label{eq:quantum-expectation}
@@ -1360,47 +1475,41 @@ Given a Hilbert space
 
 \begin_layout Standard
 A conventional quantum probability measure can easily be constructed using
- the Born rule if one knows the current state of the quantum system.
- Specifically, for each pure normalized quantum state
-\begin_inset space ~
-\end_inset
-
-
+ the Born rule if one knows the current pure normalized quantum state 
 \begin_inset Formula $\ket{\phi}\in{\cal H}$
 \end_inset
 
-, the Born rule induces a probability measure 
-\begin_inset Formula $\mu_{\phi}^{\mathrm{B}}$
+; then the Born rule induces a probability measure 
+\begin_inset Formula $\muB_{\phi}$
 \end_inset
 
  defined as 
-\begin_inset Formula $\mu_{\phi}^{\mathrm{B}}(P)=\melem{\phi}{P}{\phi}$
+\begin_inset Formula $\muB_{\phi}(P)=\melem{\phi}{P}{\phi}$
 \end_inset
 
 .
- The situation generalizes to mixed states 
+ For mixed states 
 \begin_inset Formula $\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}$
 \end_inset
 
-, 
+, where 
 \begin_inset Formula $\ket{\phi_{j}}\in{\cal H}$
 \end_inset
 
-, where 
+, 
 \begin_inset Formula $q_{j}>0$
 \end_inset
 
- and 
+, and 
 \begin_inset Formula $\sum_{j=1}^{N}q_{j}=1$
 \end_inset
 
-, in which case the generalized Born rule induces a probability measure
- 
-\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}$
+, the generalized Born rule induces a probability measure 
+\begin_inset Formula $\muB_{\rho}$
 \end_inset
 
  defined as 
-\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\Tr\left(\rho P\right)=\sum_{j=1}^{N}q_{j}\mu_{\phi_{j}}^{\mathrm{B}}\left(P\right)$
+\begin_inset Formula $\muB_{\rho}\left(P\right)=\Tr\left(\rho P\right)=\sum_{j=1}^{N}q_{j}\muB_{\phi_{j}}\left(P\right)$
 \end_inset
 
 
@@ -1415,7 +1524,7 @@ status collapsed
 
 
 \backslash
-citep{Born1983,Mermin2007,Jaeger2007}
+citep{Born1983bibTeX,Mermin2007,Jaeger2007}
 \end_layout
 
 \end_inset
@@ -1960,12 +2069,12 @@ By the Born rule, the first probability measure corresponds to the quantum
 \end_layout
 
 \begin_layout Standard
-The above axioms describe a mathematical idealization involving infinitely
- precise measurements.
+The quantum probability postulates assume a mathematical idealization in
+ which quantum states and measurements are both infinitely precise.
  In an actual experimental setup with an ensemble of quantum states that
- are not exactly identically prepared, and with small imperfections and
- inaccuracies in measuring devices, an experimenter might only be able to
- determine that the probability of an event 
+ would ideally be identical, but are not actually identically prepared,
+ with imperfections and inaccuracies in measuring devices, an experimenter
+ might only be able to determine that the probability of an event 
 \begin_inset Formula $P$
 \end_inset
 
@@ -1978,8 +2087,8 @@ The above axioms describe a mathematical idealization involving infinitely
 \end_inset
 
 .
- The spread in this range depends on the quantities of resources (time,
- energy, money, etc.) that are devoted to the experiment.
+ The spread in this range depends on the amount of resources (time, energy,
+ money, etc.) that are devoted to the experiment.
  In the classical setting, this 
 \begin_inset Quotes eld
 \end_inset
@@ -2087,7 +2196,7 @@ interval
 \begin_inset Formula $[\ell,r]$
 \end_inset
 
- where
+, where
 \begin_inset space ~
 \end_inset
 
@@ -2114,12 +2223,11 @@ interval
  corresponds to the strength of evidence against the same event.
  Under some additional assumptions, this interval could be interpreted as
  the Gaussian width of a probability distribution.
- We use general intervals with no constraints other than the ones needed
- to maintain coherence: these are described next.
 \end_layout
 
 \begin_layout Standard
-First, for each interval 
+We next introduce probability axioms for IVPMs.
+ First, for each interval 
 \begin_inset Formula $[\ell,r]$
 \end_inset
 
@@ -2137,9 +2245,25 @@ First, for each interval
 \begin_inset Formula $\necess=[1,1]$
 \end_inset
 
- as limiting intervals to refer to the probability of impossible events
- (e.g., the null event) and events that are certain (e.g., the event covering
- the entire sample space).
+ as limiting intervals to refer to the probability interval for impossible
+ events and events that are certain.
+ We can write this, respectively, as 
+\begin_inset Formula $\mu(\emptyset)=\imposs$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu(\Omega)=\necess$
+\end_inset
+
+, where 
+\begin_inset Formula $\emptyset$
+\end_inset
+
+ is the empty set and 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ is the event covering the entire sample space.
  For each interval 
 \begin_inset Formula $[\ell,r]$
 \end_inset
@@ -2174,10 +2298,14 @@ First, for each interval
 \end_inset
 
 , we may conclude that 
-\begin_inset Formula $\mu(\overline{E})=[0.7,0.8]$
+\begin_inset Formula $\mu\left(\overline{E}\right)=[0.7,0.8]$
 \end_inset
 
- for the complementary event 
+ for the complementary event
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\overline{E}$
 \end_inset
 
@@ -2245,7 +2373,7 @@ either
 \end_inset
 
  and hence 
-\begin_inset Formula $\mu(\overline{E})=[0.7,0.8]$
+\begin_inset Formula $\mu\left(\overline{E}\right)=[0.7,0.8]$
 \end_inset
 
 .
@@ -2258,7 +2386,7 @@ either
 \end_inset
 
  are disjoint; the naïve addition of intervals would give 
-\begin_inset Formula $\mu(E\cup\overline{E})=[0.9,1.1]$
+\begin_inset Formula $\mu\left(E\cup\overline{E}\right)=[0.9,1.1]$
 \end_inset
 
  which is not a valid probability interval.
@@ -2309,7 +2437,7 @@ true
 \begin_inset Formula $\overline{E}$
 \end_inset
 
- can be in anywhere in the range 
+ can be anywhere in the range 
 \begin_inset Formula $[0.7,0.8]$
 \end_inset
 
@@ -2319,13 +2447,14 @@ true
 \end_inset
 
  will force 
-\begin_inset Formula $\mu(\overline{E})\geq0.75$
+\begin_inset Formula $\mu\left(\overline{E}\right)\geq0.75$
 \end_inset
 
 .
  To account for such subtleties, the axioms of interval-valued probability
  do not use a strict equality for the combination of disjoint events.
- The correct constraint regarding the probability of 
+ The correct constraint enforcing coherence of the probability assignment
+ for 
 \begin_inset Formula $E_{1}\cup E_{2}$
 \end_inset
 
@@ -2337,33 +2466,24 @@ true
 \begin_inset Formula $E_{2}$
 \end_inset
 
- are disjoint is: 
+ are disjoint is therefore: 
 \begin_inset Formula 
 \begin{equation}
-\mu(E_{1}\cup E_{2})\subseteq[\ell_{1}+\ell_{2},r_{1}+r_{2}]\label{eq:disjoint}
+\mu(E_{1}\cup E_{2})\subseteq[\ell_{1}+\ell_{2},r_{1}+r_{2}]\,.\label{eq:disjoint}
 \end{equation}
 
 \end_inset
 
-which, in combination with the requirement for the event of the entire space
- would force 
-\begin_inset Formula $\mu(E\cup\overline{E})$
+Note that for any event 
+\begin_inset Formula $E$
 \end_inset
 
- to always be 
-\begin_inset Formula $\necess$
+ with 
+\begin_inset Formula $\mu(E)=[\ell,r]$
 \end_inset
 
- irrespective of the particular assignments of 
-\begin_inset Formula $\mu(E)$
-\end_inset
-
- or
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mu(\overline{E})$
+, we always have 
+\begin_inset Formula $\mu(\Omega)=\necess\subseteq[\ell,r]+[1-r,1-\ell]=\mu(E)\cup\mu\left(\overline{E}\right)$
 \end_inset
 
 .
@@ -2416,18 +2536,22 @@ status collapsed
 \begin_layout Standard
 When combining non-disjoint events, there is a further subtlety whose resolution
  will give us the final general condition for IVPMs.
- For general, not necessarily disjoint, events 
+ For events 
 \begin_inset Formula $E_{1}$
 \end_inset
 
- and 
+ and
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $E_{2}$
 \end_inset
 
-, we have: 
+, not necessarily disjoint, we have: 
 \begin_inset Formula 
 \begin{equation}
-\mu(E_{1}\cup E_{2})+\mu(E_{1}\cap E_{2})\subseteq\mu(E_{1})+\mu(E_{2})\label{eq:classicalconvex}
+\mu(E_{1}\cup E_{2})+\mu(E_{1}\cap E_{2})\subseteq\mu(E_{1})+\mu(E_{2})\,,\label{eq:classicalconvex}
 \end{equation}
 
 \end_inset
@@ -2481,7 +2605,7 @@ y measures.
 \end_inset
 
  is restricted to mutually commuting events 
-\begin_inset Formula $\events_{\mathrm{C}}$
+\begin_inset Formula $\eventsC$
 \end_inset
 
 , i.e., to compatible events that can be measured simultaneously.
@@ -2746,18 +2870,429 @@ reference "eq:classicalconvex"
 \end_inset
 
 ).
- Thus our definition of QIVPMs merges classical IVPMs with quantum probability
- measures.
+ Thus our definition of QIVPMs merges aspects of both classical IVPMs and
+ quantum probability measures.
 \end_layout
 
 \begin_layout Standard
 \noindent
-In the remainder of this section, we will show that our definition of QIVPMs
- is consistent with classical IVPMs in the sense that a restriction of QIVPMs
- to commuting events recovers the definition of classical IVPMs.
- To formalize this connection between QIVPMs and classical IVPMs, we first
- note that in contrast to the case with conventional quantum probability
- spaces, there is generally no unique state
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{suggest}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+andy
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+6
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}[
+\end_layout
+
+\end_inset
+
+inverted logic and phrasing.
+ I would start at "To formalize this ..." and replace all the way to Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:hbar"
+
+\end_inset
+
+)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ We now show that our definition of QIVPMs is consistent with classical
+ IVPMs in the sense that a restriction of QIVPMs to mutually commuting events
+ recovers the definition of classical IVPMs.
+ However, we must refine this context for the quantum case, defining a QIVPM
+ 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ to be 
+\emph on
+consistent
+\emph default
+ with a state 
+\begin_inset Formula $\rho$
+\end_inset
+
+ and a projector
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $P$
+\end_inset
+
+ if the interval 
+\begin_inset Formula $\bar{\mu}(P)$
+\end_inset
+
+ contains the exact probability calculated by the Born rule
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Born1983bibTeX,Mermin2007,Jaeger2007}
+\end_layout
+
+\end_inset
+
+, i.e., 
+\begin_inset Formula 
+\begin{equation}
+\muB_{\rho}\left(P\right)=\Tr\left(\rho P\right)\in\bar{\mu}\left(P\right)\ .
+\end{equation}
+
+\end_inset
+
+In contrast with conventional probability spaces, there is 
+\emph on
+no guarantee
+\emph default
+ that a unique state 
+\begin_inset Formula $\rho$
+\end_inset
+
+ consistent with a QIVPM exists.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
+\end_layout
+
+\end_inset
+
+We next refine the concept of consistency by introducing the idea of a 
+\begin_inset Quotes eld
+\end_inset
+
+core
+\begin_inset Quotes erd
+\end_inset
+
+ set of states relative to subspaces.
+ First, we define 
+\begin_inset Formula $\events'$
+\end_inset
+
+ as a 
+\emph on
+subspace
+\emph default
+ of a set of events if 
+\begin_inset Formula $\events$
+\end_inset
+
+ if 
+\begin_inset Formula $\events'$
+\end_inset
+
+ contains 
+\begin_inset Formula $\mathbb{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbb{1}$
+\end_inset
+
+ and is closed under complements, sums, and products.
+ In particular, for any projector
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $P\in\events'$
+\end_inset
+
+, we have 
+\begin_inset Formula $\mathbb{1}-P\in\events'$
+\end_inset
+
+ and for each pair of commuting projectors
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $P_{0}\in\events'$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{1}\in\events'$
+\end_inset
+
+, we have 
+\begin_inset Formula $P_{0}+P_{1}-P_{0}P_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{0}P_{1}\in\events'$
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{definition}[
+\end_layout
+
+\end_inset
+
+The core of a probability measure
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ The 
+\emph on
+core
+\emph default
+ 
+\begin_inset Formula $\coreBorn\left(\bar{\mu},\events'\right)$
+\end_inset
+
+ of a probability measure 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ relative to a subspace of events 
+\begin_inset Formula $\events'$
+\end_inset
+
+ is the collection of all states 
+\begin_inset Formula $\rho$
+\end_inset
+
+ that are 
+\emph on
+consistent
+\emph default
+ with 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ on every projector in 
+\begin_inset Formula $\events'$
+\end_inset
+
+, that is 
+\begin_inset Formula 
+\begin{equation}
+\coreBorn\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in\events',~\muB_{\rho}\left(P\right)\in\bar{\mu}\left(P\right)}\ .\label{eq:hbar}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{
+\end_layout
+
+\end_inset
+
+suggest
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% which coherently introduces the "core" and sets if off as a
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% DEFINITION, etc.
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
+\end_layout
+
+\end_inset
+
+We now show that our definition of QIVPMs is consistent with classical IVPMs
+ in the sense that a restriction of QIVPMs to mutually commuting events
+ recovers the definition of classical IVPMs.
+ To formalize this connection, we first note that in contrast to the case
+ with conventional quantum probability spaces, there is generally no unique
+ state
 \begin_inset space ~
 \end_inset
 
@@ -2770,7 +3305,11 @@ In the remainder of this section, we will show that our definition of QIVPMs
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
- is consistent with a state 
+ is 
+\emph on
+consistent
+\emph default
+ with a state 
 \begin_inset Formula $\rho$
 \end_inset
 
@@ -2789,13 +3328,13 @@ In the remainder of this section, we will show that our definition of QIVPMs
  contains the exact probability calculated by the Born rule, i.e, if: 
 \begin_inset Formula 
 \begin{equation}
-\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)
+\muB_{\rho}\left(P\right)\in\bar{\mu}\left(P\right)
 \end{equation}
 
 \end_inset
 
 where 
-\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}\left(P\right)=\Tr\left(\rho P\right)$
+\begin_inset Formula $\muB_{\rho}\left(P\right)=\Tr\left(\rho P\right)$
 \end_inset
 
  is the probability of the event
@@ -2818,15 +3357,24 @@ status collapsed
 
 
 \backslash
-citep{Born1983,Mermin2007,Jaeger2007}
+citep{Born1983bibTeX,Mermin2007,Jaeger2007}
 \end_layout
 
 \end_inset
 
 .
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 We generalize this consistency relation to sets of states and general subspaces
  of events as follows.
  A set of events 
@@ -2894,7 +3442,23 @@ subspace
 \begin_inset Formula $\events'$
 \end_inset
 
-, we denote the collection of all states that are consistent with 
+, we define the 
+\emph on
+core
+\emph default
+ of 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ relative to 
+\begin_inset Formula $\events'$
+\end_inset
+
+ as the collection of all states 
+\begin_inset Formula $\rho$
+\end_inset
+
+ that are consistent with 
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
@@ -2909,50 +3473,180 @@ subspace
 : 
 \begin_inset Formula 
 \begin{equation}
-\coreBorn\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in\events',~\mu_{\rho}^{\mathrm{B}}\left(P\right)\in\bar{\mu}\left(P\right)}.\label{eq:hbar}
+\coreBorn\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in\events',~\muB_{\rho}\left(P\right)\in\bar{\mu}\left(P\right)}.\label{eq:hbar}
 \end{equation}
 
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
-The proof that QIVPMs become classical IVPMs when the space of events includes
- only mutually commuting events is presented in detail in the long version
- of this paper
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{suggest}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+andy
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+7
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}[
+\end_layout
+
+\end_inset
+
+This story order is incomprehensible.
+ I would state FIRST that 'here is the outline of the proof', and LAST 'Thm
+ 1..., whose full proof will appear in
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "HOSTunpublished"
+key "TaiThesis2018"
 
 \end_inset
 
 .
- The idea of the proof is as follows.
- Given a subspace of mutually commuting events
-\begin_inset space ~
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
 \end_inset
 
-
-\begin_inset Formula $\events_{\mathrm{C}}$
+ The general idea of the proof that QIVPMs become classical IVPMs when the
+ space of events includes only mutually commuting events depends on showing
+ the existence of a non-empty core for such commuting events.
+ The first step in establishing this assertion is to to take a subspace
+ 
+\begin_inset Formula $\eventsC$
 \end_inset
 
-, we can construct a partial orthonormal basis by diagonalization and complete
- it to a full orthonormal basis 
-\begin_inset Formula $\overline{\events_{\mathrm{C}}}$
+ of mutually commuting events, construct a partial orthonormal basis by
+ diagonalization, and complete this to a full orthonormal basis 
+\begin_inset Formula $\overline{\eventsC}$
 \end_inset
 
 .
  We then build a bijection between the QIVPM on the set of projectors associated
  with this basis and the set of classical events corresponding to this basis.
- This correspondence leads to a crucial property in our setting.
+ Using this correspondence together with a classical result by Shapley
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shapley1971,GilboaSchmeidler1994,NgMoYeh1997,Grabisch2016"
+
+\end_inset
+
+, we can establish that for the special case of commuting events, a QIVPM
+ will always have a non-empty core
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Shapley's result proves that a classical IVPM always contains at least one
+ state that is consistent with every event.
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+.
+ This leads to 
 \begin_inset ERT
 status collapsed
 
@@ -2976,14 +3670,14 @@ status collapsed
 
 \end_inset
 
-
+ 
 \begin_inset CommandInset label
 LatexCommand label
 name "thm:Shapley"
 
 \end_inset
 
- For QIVPM
+ For every QIVPM
 \begin_inset space ~
 \end_inset
 
@@ -2996,11 +3690,182 @@ name "thm:Shapley"
 \end_inset
 
 
-\begin_inset Formula $\events_{\mathrm{C}}\subseteq\events$
+\begin_inset Formula $\eventsC\subseteq\events$
 \end_inset
 
  commutes, then 
-\begin_inset Formula $\coreBorn\left(\bar{\mu},\events_{\mathrm{C}}\right)\ne\emptyset$
+\begin_inset Formula $\coreBorn\left(\bar{\mu},\eventsC\right)\ne\emptyset$
+\end_inset
+
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{thm}
+\end_layout
+
+\end_inset
+
+ whose full proof will appear in 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TaiThesis2018"
+
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{
+\end_layout
+
+\end_inset
+
+suggest
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ The proof that QIVPMs become classical IVPMs when the space of events includes
+ only mutually commuting events is presented in detail in a forthcoming
+ thesis
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TaiThesis2018"
+
+\end_inset
+
+.
+ The idea of the proof is as follows.
+ Given a subspace of mutually commuting events
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\eventsC$
+\end_inset
+
+, we can construct a partial orthonormal basis by diagonalization and complete
+ it to a full orthonormal basis 
+\begin_inset Formula $\overline{\eventsC}$
+\end_inset
+
+.
+ We then build a bijection between the QIVPM on the set of projectors associated
+ with this basis and the set of classical events corresponding to this basis.
+ Using this correspondence together with a classical result by Shapley
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shapley1971,GilboaSchmeidler1994,NgMoYeh1997,Grabisch2016"
+
+\end_inset
+
+, we can establish that for the special case of commuting events, a QIVPM
+ will always have a non-empty core
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Shapley's result proves that a classical IVPM always contains at least one
+ state that is consistent with every event.
+\end_layout
+
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{thm}[
+\end_layout
+
+\end_inset
+
+Non-empty Core for Compatible Measurements
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:Shapley"
+
+\end_inset
+
+ For every QIVPM
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
+\end_inset
+
+, if a subspace of events
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\eventsC\subseteq\events$
+\end_inset
+
+ commutes, then 
+\begin_inset Formula $\coreBorn\left(\bar{\mu},\eventsC\right)\ne\emptyset$
 \end_inset
 
 .
@@ -3018,42 +3883,112 @@ end{thm}
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
-This theorem follows directly from our correspondence
-\begin_inset space ~
 \end_inset
 
 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "HOSTunpublished"
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{suggest}
+\end_layout
 
 \end_inset
 
- and Shapley's theorem
-\begin_inset space ~
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
 \end_inset
 
 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Shapley1971,GilboaSchmeidler1994,NgMoYeh1997,Grabisch2016"
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+andy
+\end_layout
 
 \end_inset
 
-, which proves that a classical IVPM always contains at least one state
- 
-\begin_inset Formula $\rho$
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
 \end_inset
 
- that is consistent with every event in 
-\begin_inset Formula $\events_{\mathrm{C}}$
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+8
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}[
+\end_layout
+
+\end_inset
+
+inverted narrative order
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ The importance of the existence of empty cores combined with the conditions
+ guaranteeing non-empty cores is that one cannot guarantee non-empty cores
+ for finite-precision attempts at proving Gleason's theorem by extending
+ the Born measure 
+\begin_inset Formula $\muB_{\rho}\left(P\right)$
+\end_inset
+
+ to QIVPMs 
+\begin_inset Formula $\bar{\mu}\left(P\right)$
 \end_inset
 
 .
- In contrast, as we illustrate in Sec.
+ We will show in Sec.
 \begin_inset space ~
 \end_inset
 
@@ -3064,12 +3999,85 @@ reference "sec:Gleason"
 
 \end_inset
 
-, the set of states 
+ that a core defined by the set of states 
 \begin_inset Formula $\coreBorn\left(\bar{\mu},\events'\right)$
 \end_inset
 
  that is consistent with some arbitrary (not necessarily commuting) events
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\events'$
+\end_inset
+
+ and a particular QIVPM 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
  
+\emph on
+may be empty
+\emph default
+.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{
+\end_layout
+
+\end_inset
+
+suggest
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ The importance of this property is that it is violated in finite-precision
+ versions of Gleason's theorem (cf.
+ Thm.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:Non-extensible-of-Gleason's"
+
+\end_inset
+
+ in Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Gleason"
+
+\end_inset
+
+).
+ As we will show, the set of states 
+\begin_inset Formula $\coreBorn\left(\bar{\mu},\events'\right)$
+\end_inset
+
+ that is consistent with some arbitrary (not necessarily commuting) events
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\events'$
 \end_inset
 
@@ -3082,137 +4090,752 @@ reference "sec:Gleason"
 empty
 \emph default
 .
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
-For example, a well-defined QIVPM, assuming the three intervals 
-\begin_inset Formula $\imposs$
-\end_inset
-
-, 
-\begin_inset Formula $\necess$
-\end_inset
-
-, and 
-\begin_inset Formula $\unknown=\left[0,1\right]$
-\end_inset
-
-, is: 
-\begin_inset Formula 
-\begin{equation}
-\bar{\mu}_{1}\left(P\right)=\begin{cases}
-\imposs\,, & \text{if }P=\mathbb{0}\text{ ;}\\
-\necess\,, & \text{if }P=\mathbb{1}\text{ ;}\\
-\unknown\,, & \text{otherwise.}
-\end{cases}\label{eq:no-information-IVPM}
-\end{equation}
-
-\end_inset
-
-This measure represents the beliefs of an experimenter with no prior knowledge
- about the particular quantum system in question; any quantum state would
- be consistent with 
-\begin_inset Formula $\bar{\mu}_{1}$
-\end_inset
-
- on any projectors.
- That is, 
-\begin_inset Formula $\coreBorn\left(\bar{\mu}_{1},\events\right)$
-\end_inset
-
- is the set of all states.
- The subspace 
-\begin_inset Formula $\events_{0}=\left\{ \mathbb{0},\proj{0},\proj{1},\mathbb{1}\right\} $
-\end_inset
-
- is a subspace of commuting events.
- Indeed restricting 
-\begin_inset Formula $\bar{\mu}_{1}$
-\end_inset
-
- to 
-\begin_inset Formula $\events_{0}$
-\end_inset
-
-, 
-\begin_inset Formula $\bar{\mu}_{1}|_{\events_{0}}$
-\end_inset
-
-, gives a measure 
-\begin_inset Formula $\bar{\mu}_{2}$
-\end_inset
-
-: 
-\begin_inset Formula 
-\begin{equation}
-\begin{aligned}\bar{\mu}_{2}(\mathbb{0}) & =\imposs & \bar{\mu}_{2}(\proj{0}) & =\unknown\\
-\bar{\mu}_{2}(\mathbb{1}) & =\necess & \bar{\mu}_{2}(\proj{1}) & =\unknown
-\end{aligned}
-\label{eq:classical-no-information-IVPM}
-\end{equation}
-
-\end_inset
-
-that corresponds to a classical IVPM.
- Indeed, if we identify the states
-\begin_inset space ~
 \end_inset
 
 
-\begin_inset Formula $\proj{0}$
-\end_inset
+\begin_inset ERT
+status collapsed
 
- and 
-\begin_inset Formula $\proj{1}$
-\end_inset
+\begin_layout Plain Layout
 
- with the head and the tail of a coin, respectively, then 
-\begin_inset Formula $\bar{\mu}_{2}$
-\end_inset
-
- represents the situation in which an experimenter knows nothing about a
- coin before she tosses it.
- Moreover, for each 
-\begin_inset Formula $p\in\left[0,1\right]$
-\end_inset
-
-, the state
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $p\proj{0}+\left(1-p\right)\proj{1}$
-\end_inset
-
- represents a classical coin with probability
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $p$
-\end_inset
-
- to get heads, and 
-\begin_inset Formula $p\proj{0}+\left(1-p\right)\proj{1}$
-\end_inset
-
- is consistent with
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\bar{\mu}_{2}$
-\end_inset
-
- on 
-\begin_inset Formula $\events_{0}$
-\end_inset
-
- because any classical coin should be consistent with the situation for
- which an experimenter has no prior knowledge.
+% For example, a well-defined QIVPM, assuming the three intervals
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+imposs$, $
+\backslash
+necess$, and $
+\backslash
+unknown=
+\backslash
+left[0,1
+\backslash
+right]$, is:
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{equation}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+bar{
+\backslash
+mu}_{1}
+\backslash
+left(P
+\backslash
+right)=
+\backslash
+begin{cases}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+imposs
+\backslash
+,, & 
+\backslash
+text{if }P=
+\backslash
+mathbb{0}
+\backslash
+text{ ;}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+necess
+\backslash
+,, & 
+\backslash
+text{if }P=
+\backslash
+mathbb{1}
+\backslash
+text{ ;}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+unknown
+\backslash
+,, & 
+\backslash
+text{otherwise.}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{cases}
+\backslash
+label{eq:no-information-IVPM}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{equation}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% This measure represents the beliefs of an experimenter with no prior
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% knowledge about the particular quantum system in question; any quantum
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% state would be consistent with $
+\backslash
+bar{
+\backslash
+mu}_{1}$ on any projectors.
+ That
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% is, $
+\backslash
+coreBorn
+\backslash
+left(
+\backslash
+bar{
+\backslash
+mu}_{1},
+\backslash
+events
+\backslash
+right)$ is the set of all
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% states.
+ The subspace
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+events_{0}=
+\backslash
+left
+\backslash
+{ 
+\backslash
+mathbb{0},
+\backslash
+proj{0},
+\backslash
+proj{1},
+\backslash
+mathbb{1}
+\backslash
+right
+\backslash
+} $
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% is a subspace of commuting events.
+ Restricting $
+\backslash
+bar{
+\backslash
+mu}_{1}$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% to $
+\backslash
+events_{0}$, $
+\backslash
+bar{
+\backslash
+mu}_{1}|_{
+\backslash
+events_{0}}$, gives a measure
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+bar{
+\backslash
+mu}_{2}$:
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{equation}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{aligned}
+\backslash
+bar{
+\backslash
+mu}_{2}(
+\backslash
+mathbb{0}) & =
+\backslash
+imposs & 
+\backslash
+bar{
+\backslash
+mu}_{2}(
+\backslash
+proj{0}) & =
+\backslash
+unknown
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+bar{
+\backslash
+mu}_{2}(
+\backslash
+mathbb{1}) & =
+\backslash
+necess & 
+\backslash
+bar{
+\backslash
+mu}_{2}(
+\backslash
+proj{1}) & =
+\backslash
+unknown
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{aligned}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+label{eq:classical-no-information-IVPM}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{equation}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% that corresponds to a classical IVPM.
+ Indeed, if we identify the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% states~$
+\backslash
+proj{0}$ and $
+\backslash
+proj{1}$ with the head and the tail of a coin,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% respectively, then $
+\backslash
+bar{
+\backslash
+mu}_{2}$ represents the situation in which
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% an experimenter knows nothing about a coin before she tosses
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% it.
+ Moreover, for each $p
+\backslash
+in
+\backslash
+left[0,1
+\backslash
+right]$, the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% state~$p
+\backslash
+proj{0}+
+\backslash
+left(1-p
+\backslash
+right)
+\backslash
+proj{1}$ represents a classical coin
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% with probability~$p$ to get heads, and
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $p
+\backslash
+proj{0}+
+\backslash
+left(1-p
+\backslash
+right)
+\backslash
+proj{1}$ is consistent
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% with~$
+\backslash
+bar{
+\backslash
+mu}_{2}$ on $
+\backslash
+events_{0}$ because any classical coin
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% should be consistent with the situation for which an experimenter has
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% no prior knowledge.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 We conclude this section with a generalization of expectation values of
  observables in the context of QIVPMs.
  In conventional quantum mechanics the expectation value of an observable
@@ -3229,10 +4852,20 @@ reference "eq:quantum-expectation"
 
  is a unique real number.
  The generalization to QIVPMs implies that this expectation value will itself
- become bounded by or, more generally distributed around, an interval.
+ become bounded by an interval.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -3300,7 +4933,7 @@ status collapsed
  and define: 
 \begin_inset Formula 
 \begin{equation}
-\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\mu_{\rho}^{\mathrm{B}}}\right]\,.\label{eq:quantum-interval-expectation-core}
+\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\muB_{\rho}},\max_{\rho\in\coreBorn\left(\bar{\mu},\events'\right)}\expval{\mathbf{O}}_{\muB_{\rho}}\right]\,.\label{eq:quantum-interval-expectation-core}
 \end{equation}
 
 \end_inset
@@ -3319,10 +4952,18 @@ end{definition}
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
-\noindent
+\end_inset
+
 Intuitively the expectation value of an observable relative to a QIVPM 
 \begin_inset Formula $\bar{\mu}$
 \end_inset
@@ -3358,7 +4999,7 @@ Intuitively the expectation value of an observable relative to a QIVPM
 \end_inset
 
  will be 
-\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}$
+\begin_inset Formula $\muB_{\rho}$
 \end_inset
 
  and the interval collapses to a point, thus reducing the definition to
@@ -3385,7 +5026,7 @@ status collapsed
 
 
 \backslash
-citep{HOSTunpublished}
+citep{TaiThesis2018}
 \end_layout
 
 \end_inset
@@ -3658,13 +5299,11 @@ ps}$, and $
 \backslash
 mu_{1}=
 \backslash
-mu_{
+muB_{
 \backslash
 proj{
 \backslash
-ps}}^{
-\backslash
-mathrm{B}}$.
+ps}}$.
 \end_layout
 
 \begin_layout Plain Layout
@@ -3792,15 +5431,25 @@ status collapsed
 
 
 \backslash
-citep{HOSTunpublished}
+citep{TaiThesis2018}
 \end_layout
 
 \end_inset
 
 .
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -3816,13 +5465,19 @@ status collapsed
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+section{The Kochen-Specker Theorem and Contextuality}
 \end_layout
 
-\begin_layout Section
-The Kochen-Specker Theorem and Contextuality
-\end_layout
+\end_inset
 
-\begin_layout Standard
+ 
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Kochen-Specker"
@@ -3830,9 +5485,18 @@ name "sec:Kochen-Specker"
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 Our generalization of quantum probability measures to QIVPMs allows us to
  strengthen the scope of one of the fundamental theorems of quantum physics:
  the Kochen-Specker theorem
@@ -3842,7 +5506,7 @@ Our generalization of quantum probability measures to QIVPMs allows us to
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007,Held2016"
+key "BELL_1966,kochenspecker1967,Redhead1987-REDINA,Mermin1990Simple,peres1995quantum,Jaeger2007,Held2016"
 
 \end_inset
 
@@ -3913,18 +5577,50 @@ citep{Mermin1999}
 \end_inset
 
 : 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{quote}
 \end_layout
 
-\begin_layout Quote
-\SpecialChar ldots
-although the outcomes deduced from such imperfect measurements will occasionally
- differ dramatically from those allowed in the ideal case, if the misalignment
+\end_inset
+
+ \SpecialChar ldots
+although the outcomes deduced from such imperfect measurements will occasionall
+y differ dramatically from those allowed in the ideal case, if the misalignment
  is very slight, the statistical distribution of outcomes will differ only
  slightly from the ideal case.
  
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{quote}
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -3940,9 +5636,19 @@ delta$-Determinism.}
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 The first step in our formalization is to introduce a family of QIVPMs parameter
 ized by an uncertainty
 \begin_inset space ~
@@ -3957,9 +5663,19 @@ ized by an uncertainty
 \end_inset
 
 -deterministic QIVPMs.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -4033,16 +5749,6 @@ end{definition}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
 \begin_inset ERT
 status collapsed
 
@@ -4050,7 +5756,7 @@ status collapsed
 
 
 \backslash
-centering
+par 
 \end_layout
 
 \end_inset
@@ -4061,325 +5767,550 @@ status collapsed
 
 \begin_layout Plain Layout
 
-{}
+% 
+\backslash
+begin{table}
 \end_layout
-
-\end_inset
-
-
-\begin_inset Caption Standard
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:classical-IVPMs"
 
-\end_inset
-
-Example QIVPMs
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\bar{\mu}_{A}$
-\end_inset
-
-, 
-\begin_inset Formula $\bar{\mu}_{B}$
-\end_inset
-
- and 
-\begin_inset Formula $\bar{\mu}_{C}$
-\end_inset
-
- on commuting events 
-\begin_inset Formula $P$
-\end_inset
-
-.
 \end_layout
 
 \end_inset
 
 
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="4">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row topspace="default">
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Formula $P$
-\end_inset
 
- 
+%   
+\backslash
+noindent 
+\backslash
+centering{}
+\backslash
+caption{
+\backslash
+label{tab:classical-IVPMs}Example 
 \end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\bar{\mu}_{A}(P)$
-\end_inset
 
- 
 \end_layout
 
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
+
+
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Formula $\bar{\mu}_{B}(P)$
-\end_inset
 
- 
+%     QIVPMs~$
+\backslash
+bar{
+\backslash
+mu}_{A}$, $
+\backslash
+bar{
+\backslash
+mu}_{B}$ and $
+\backslash
+bar{
+\backslash
+mu}_{C}$ on
 \end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\bar{\mu}_{C}(P)$
-\end_inset
-
 
 \end_layout
 
 \end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
+
+
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathbb{0}$
-\end_inset
 
- 
+%     commuting events $P$.}
 \end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\imposs$
-\end_inset
 
- 
 \end_layout
 
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
+
+
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Formula $\imposs$
-\end_inset
 
- 
+% 
+\backslash
+begin{tabular}{cccc}
 \end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\imposs$
-\end_inset
-
 
 \end_layout
 
 \end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
+
+
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Formula $\proj{0}$
-\end_inset
 
- 
+% 
+\backslash
+toprule 
 \end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\necess$
-\end_inset
 
- 
 \end_layout
 
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
+
+
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Formula $\left[\frac{2}{3},1\right]$
-\end_inset
 
- 
+% 
+\backslash
+addlinespace
 \end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\left[\frac{2}{3},\frac{2}{3}\right]$
-\end_inset
-
 
 \end_layout
 
 \end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
+
+
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Formula $\proj{1}$
-\end_inset
 
- 
+% $P$ & $
+\backslash
+bar{
+\backslash
+mu}_{A}(P)$ & $
+\backslash
+bar{
+\backslash
+mu}_{B}(P)$ & $
+\backslash
+bar{
+\backslash
+mu}_{C}(P)$
+\backslash
+tabularnewline
+\backslash
+addlinespace
 \end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\imposs$
-\end_inset
 
- 
 \end_layout
 
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
+
+
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Formula $\left[0,\frac{1}{3}\right]$
-\end_inset
 
- 
+% 
+\backslash
+midrule
 \end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\left[\frac{1}{3},\frac{1}{3}\right]$
-\end_inset
-
 
 \end_layout
 
 \end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
+
+
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathbb{1}$
-\end_inset
 
- 
+% 
+\backslash
+midrule 
 \end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\necess$
-\end_inset
 
- 
 \end_layout
 
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
+
+
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Formula $\necess$
-\end_inset
 
- 
+% 
+\backslash
+addlinespace
 \end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\necess$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
 
 \end_layout
 
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+mathbb{0}$ & $
+\backslash
+imposs$ & $
+\backslash
+imposs$ & $
+\backslash
+imposs$
+\backslash
+tabularnewline
+\backslash
+addlinespace
 \end_layout
 
-\begin_layout Standard
-\noindent
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+midrule 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+addlinespace
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+proj{0}$ & $
+\backslash
+necess$ & $
+\backslash
+left[
+\backslash
+frac{2}{3},1
+\backslash
+right]$ & $
+\backslash
+left[
+\backslash
+frac{2}{3},
+\backslash
+frac{2}{3}
+\backslash
+right]$
+\backslash
+tabularnewline
+\backslash
+addlinespace
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+midrule 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+addlinespace
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+proj{1}$ & $
+\backslash
+imposs$ & $
+\backslash
+left[0,
+\backslash
+frac{1}{3}
+\backslash
+right]$ & $
+\backslash
+left[
+\backslash
+frac{1}{3},
+\backslash
+frac{1}{3}
+\backslash
+right]$
+\backslash
+tabularnewline
+\backslash
+addlinespace
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+midrule 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+addlinespace
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+mathbb{1}$ & $
+\backslash
+necess$ & $
+\backslash
+necess$ & $
+\backslash
+necess$
+\backslash
+tabularnewline
+\backslash
+addlinespace
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+bottomrule
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+yutsung{$
+\backslash
+bar{
+\backslash
+mu}_{A}$ is neither a QIVPM nor a restriction of a QIVPM
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% according to the current definition.
+ Need to fix this example or fix the definition.}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{table}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 This definition puts no restrictions on the set of intervals itself, only
  on which intervals are assigned to events.
  When 
 \begin_inset Formula $\delta=0$
 \end_inset
 
-, every event must be assigned a probability either in the interval 
+, every event must be assigned a probability either in 
 \begin_inset Formula $\imposs$
 \end_inset
 
@@ -4393,144 +6324,335 @@ This definition puts no restrictions on the set of intervals itself, only
 \end_inset
 
  gets larger, the QIVPM allows for more indeterminate behavior.
- For example, 
-\begin_inset Formula $\bar{\mu}_{A}$
-\end_inset
-
- defined in Table
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:classical-IVPMs"
-
-\end_inset
-
- is 
-\begin_inset Formula $0$
-\end_inset
-
--deterministic because 
-\begin_inset Formula $\imposs\subseteq\left[0,0\right]$
-\end_inset
-
- and 
-\begin_inset Formula $\necess\subseteq\left[1-0,1\right]$
-\end_inset
-
-.
- By interpreting the states 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\proj{0}$
-\end_inset
-
- and 
-\begin_inset Formula $\proj{1}$
-\end_inset
-
- as the head and the tail of a coin, 
-\begin_inset Formula $\bar{\mu}_{A}$
-\end_inset
-
- represents tossing a double-headed coin.
- When 
-\begin_inset Formula $\delta$
-\end_inset
-
- is increased to 
-\begin_inset Formula $\frac{1}{3}$
-\end_inset
-
-, both 
-\begin_inset Formula $\bar{\mu}_{B}$
-\end_inset
-
- and 
-\begin_inset Formula $\bar{\mu}_{C}$
-\end_inset
-
- become 
-\begin_inset Formula $\frac{1}{3}$
-\end_inset
-
--deterministic.
- In contrast, 
-\begin_inset Formula $\bar{\mu}_{2}$
-\end_inset
-
- defined in Eq.
-\begin_inset space ~
-\end_inset
-
-(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:classical-no-information-IVPM"
-
-\end_inset
-
-) is still not 
-\begin_inset Formula $\frac{1}{3}$
-\end_inset
-
--deterministic because 
-\begin_inset Formula $\bar{\mu}_{2}(\proj{0})=\bar{\mu}_{2}(\proj{1})=\unknown$
-\end_inset
-
-, but neither 
-\begin_inset Formula $\unknown\subseteq\left[0,\frac{1}{3}\right]$
-\end_inset
-
- nor 
-\begin_inset Formula $\unknown\subseteq\left[1-\frac{1}{3},1\right]$
-\end_inset
-
-.
- Finally, when 
-\begin_inset Formula $\delta=1$
-\end_inset
-
-, because every interval is a subset of 
-\begin_inset Formula $\unknown$
-\end_inset
-
-, every QIVPM is 
-\begin_inset Formula $1$
-\end_inset
-
--deterministic.
- In particular, the non-informative QIVPM
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\bar{\mu}_{1}$
-\end_inset
-
- defined in Eq.
-\begin_inset space ~
-\end_inset
-
-(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:no-information-IVPM"
-
-\end_inset
-
-) is 1-deterministic.
  
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-%% and the Born QIVPM~$
+% For example, $
+\backslash
+bar{
+\backslash
+mu}_{A}$ defined in
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Table~
+\backslash
+ref{tab:classical-IVPMs} is $0$-deterministic because
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+imposs
+\backslash
+subseteq
+\backslash
+left[0,0
+\backslash
+right]$ and
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+necess
+\backslash
+subseteq
+\backslash
+left[1-0,1
+\backslash
+right]$.
+  By interpreting the states
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% ~$
+\backslash
+proj{0}$ and $
+\backslash
+proj{1}$ as the head and the tail of a coin,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+bar{
+\backslash
+mu}_{A}$ represents tossing a double-headed coin.
+ When $
+\backslash
+delta$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% is increased to $
+\backslash
+frac{1}{3}$, both $
+\backslash
+bar{
+\backslash
+mu}_{B}$ and
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+bar{
+\backslash
+mu}_{C}$ become $
+\backslash
+frac{1}{3}$-deterministic.
+ In contrast,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+bar{
+\backslash
+mu}_{A}$ is still not $
+\backslash
+frac{1}{3}$-deterministic because
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+bar{
+\backslash
+mu}_{A}(
+\backslash
+proj{0})=
+\backslash
+bar{
+\backslash
+mu}_{A}(
+\backslash
+proj{1})=
+\backslash
+unknown=[0,1]$, but
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% both $
+\backslash
+unknown
+\backslash
+subseteq
+\backslash
+left[0,
+\backslash
+frac{1}{3}
+\backslash
+right]$ and
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+unknown
+\backslash
+subseteq
+\backslash
+left[1-
+\backslash
+frac{1}{3},1
+\backslash
+right]$ are false.
+  Finally,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% when $
+\backslash
+delta=1$, because every interval is a subset of $
+\backslash
+unknown$,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% every QIVPM is $1$-deterministic.
+ In particular, the non-informative
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% QIVPM~$
+\backslash
+bar{
+\backslash
+mu}_{A}$ is 1-deterministic.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% %% and the Born QIVPM~$
 \backslash
 bar{
 \backslash
@@ -4549,7 +6671,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-%% Eq.~(
+% %% Eq.~(
 \backslash
 ref{eq:Born-QIVPM}) are both $1$-deterministic.
 \end_layout
@@ -4557,14 +6679,28 @@ ref{eq:Born-QIVPM}) are both $1$-deterministic.
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 The expectation value of an observable 
 \begin_inset Formula $\mathbf{O}$
 \end_inset
 
- in a Hilbert space of dimension 
+ in a Hilbert space 
+\begin_inset Formula ${\cal H}$
+\end_inset
+
+ of dimension 
 \begin_inset Formula $d$
 \end_inset
 
@@ -4650,7 +6786,7 @@ reference "eq:hbar"
 \end_inset
 
 ) that 
-\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}$
+\begin_inset Formula $\muB_{\rho}$
 \end_inset
 
  must also map exactly one of the projectors in 
@@ -4658,7 +6794,11 @@ reference "eq:hbar"
 \end_inset
 
  to 1 and all others to 0.
- If an observable has a spectral decomposition along 
+ If an observable has a spectral decomposition along
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\Omega$
 \end_inset
 
@@ -4673,12 +6813,16 @@ reference "eq:quantum-expectation"
 
 \end_inset
 
-), its expectation value relative to 
-\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}$
+), its expectation value relative to
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\muB_{\rho}$
 \end_inset
 
  is the eigenvalue 
-\begin_inset Formula $\lambda$
+\begin_inset Formula $\lambda_{i}$
 \end_inset
 
  whose projector is mapped to 1.
@@ -4702,27 +6846,47 @@ reference "eq:quantum-interval-expectation-core"
 \end_inset
 
  is fully determinate and lies in the interval 
-\begin_inset Formula $[\lambda,\lambda]$
+\begin_inset Formula $[\lambda_{i},\lambda_{i}]$
 \end_inset
 
 .
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 We can now proceed with the main technical result of this section.
  We first observe that the original Kochen-Specker theorem is a statement
  regarding the non-existence of a 
 \begin_inset Formula $0$
 \end_inset
 
--deterministic QIVPM, and generalize to 
+-deterministic QIVPM, and generalize to a corresponding statement about
+ 
 \begin_inset Formula $\delta$
 \end_inset
 
 -deterministic QIVPMs.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -4746,7 +6910,7 @@ status collapsed
 
 \end_inset
 
-
+ 
 \begin_inset CommandInset label
 LatexCommand label
 name "thm:Kochen-Specker"
@@ -4792,10 +6956,18 @@ end{thm}
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
-\noindent
+\end_inset
+
 To explain why this result is equivalent to the original Kochen-Specker
  theorem and to prove it at the same time, we proceed by assuming a 0-determinis
 tic QIVPM 
@@ -4813,9 +6985,18 @@ tic QIVPM
 \end_inset
 
  and is constructed as follows.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 We consider a two spin-
 \begin_inset Formula $\frac{1}{2}$
 \end_inset
@@ -4853,21 +7034,31 @@ magic square
 \begin_inset Quotes erd
 \end_inset
 
- proof of the Kochen-Specker theorem
+ used to prove the Kochen-Specker theorem
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Mermin1990Simple,peres1995quantum"
+key "Mermin1990Simple,peres1995quantum,Griffiths2003"
 
 \end_inset
 
 :
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
 \begin_inset ERT
 status open
 
@@ -5053,17 +7244,27 @@ end{center}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\noindent
 The observables are constructed using the Pauli matrices 
 \begin_inset Formula $\left\{ \mathbb{1},\sigma_{x},\sigma_{y},\sigma_{z}\right\} $
 \end_inset
 
- whose eigenvalues are all either 1 or 
+ whose eigenvalues are all either
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $1$
+\end_inset
+
+ or 
 \begin_inset Formula $-1$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Redhead1987-REDINA,544199,Griffiths2003,Jaeger2007,Mermin2007"
+
 \end_inset
 
 .
@@ -5122,7 +7323,7 @@ status collapsed
 
 
 \backslash
-citep{HOSTunpublished}
+citep{TaiThesis2018}
 \end_layout
 
 \end_inset
@@ -5149,7 +7350,7 @@ status collapsed
 
 
 \backslash
-citep{HOSTunpublished}
+citep{TaiThesis2018}
 \end_layout
 
 \end_inset
@@ -5184,9 +7385,20 @@ status collapsed
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -5320,21 +7532,17 @@ status collapsed
 
 % $
 \backslash
-mu_{
+muB_{
 \backslash
-rho}^{
-\backslash
-mathrm{B}}
+rho}
 \backslash
 left(P_{1}
 \backslash
 right)$ and $
 \backslash
-mu_{
+muB_{
 \backslash
-rho}^{
-\backslash
-mathrm{B}}
+rho}
 \backslash
 left(P_{2}
 \backslash
@@ -5450,21 +7658,17 @@ left(P_{2}
 \backslash
 right)$ & $
 \backslash
-mu_{
+muB_{
 \backslash
-rho}^{
-\backslash
-mathrm{B}}
+rho}
 \backslash
 left(P_{1}
 \backslash
 right)$ & $
 \backslash
-mu_{
+muB_{
 \backslash
-rho}^{
-\backslash
-mathrm{B}}
+rho}
 \backslash
 left(P_{2}
 \backslash
@@ -5474,11 +7678,9 @@ expval{
 \backslash
 mathbf{O}}_{
 \backslash
-mu_{
+muB_{
 \backslash
-rho}^{
-\backslash
-mathrm{B}}}$ & $
+rho}}$ & $
 \backslash
 expval{
 \backslash
@@ -6043,7 +8245,7 @@ status collapsed
 \backslash
 ne k_{0}$~
 \backslash
-citep{HOSTunpublished}.
+citep{TaiThesis2018}.
  Without loss of generality,
 \end_layout
 
@@ -6252,9 +8454,20 @@ right)$.}
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -6527,7 +8740,7 @@ status collapsed
 
 % $k=k_{0}$~
 \backslash
-citep{HOSTunpublished}.
+citep{TaiThesis2018}.
   If we denote the product
 \end_layout
 
@@ -6875,9 +9088,19 @@ end{equation}
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 Our framework allows us to generalize the above theorem to state that for
  small enough 
 \begin_inset Formula $\delta$
@@ -6899,10 +9122,82 @@ almost definite intervals.
 \begin_inset Quotes erd
 \end_inset
 
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+andy{contextuality is never defined.}
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+yutsung{Actually, the second sentence in the introduction defines
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% ``contextuality''.
+ The problem is that there is no direct relation between what
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% defined in the introduction and here.}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -6967,9 +9262,18 @@ end{thm}
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 The proof is by contradiction: Suppose there is a 
 \begin_inset Formula $\delta$
 \end_inset
@@ -6983,8 +9287,8 @@ The proof is by contradiction: Suppose there is a
 \end_inset
 
 .
- We will use this assumed QIVPM to construct the following 0-deterministic
- QIVPM 
+ Now use this assumed QIVPM to construct the following 0-deterministic QIVPM
+ 
 \begin_inset Formula $\bar{\mu}^{\textrm{D}}:\events\rightarrow\left\{ \imposs,\necess\right\} $
 \end_inset
 
@@ -7013,7 +9317,7 @@ However, since we know that 0-deterministic QIVPMs do not exist, the map
 \begin_inset Formula $\bar{\mu}^{\textrm{D}}$
 \end_inset
 
- is indeed a 0-deterministic QIVPM by checking that for orthogonal operators
+ is indeed a 0-deterministic QIVPM by checking that for orthogonal projectors
 \begin_inset space ~
 \end_inset
 
@@ -7045,7 +9349,7 @@ status collapsed
 
 
 \backslash
-citep{HOSTunpublished}
+citep{TaiThesis2018}
 \end_layout
 
 \end_inset
@@ -7115,31 +9419,61 @@ citep{HOSTunpublished}
 \end_inset
 
 .
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 The bound 
 \begin_inset Formula $\delta<\frac{1}{3}$
 \end_inset
 
- is tight as it is possible to construct 
+ is tight as it is possible to construct a 
 \begin_inset Formula $\frac{1}{3}$
 \end_inset
 
--deterministic QIVPMs.
- For example, take 
-\begin_inset Formula $d=3$
+-deterministic QIVPM 
+\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
 \end_inset
 
-, and let 
+.
+ For example, consider a three-dimensional Hilbert space
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\Hilb$
+\end_inset
+
+ with orthonormal basis 
+\begin_inset Formula $\left\{ \ket{0},\ket{1},\ket{2}\right\} $
+\end_inset
+
+ and a state 
+\begin_inset Formula $\rho=\frac{1}{3}\proj{0}+\frac{1}{3}\proj{1}+\frac{1}{3}\proj{2}$
+\end_inset
+
+.
+ Let 
 \begin_inset Formula $P$
 \end_inset
 
- be a projector onto an 
+ be an operator projecting onto an 
 \begin_inset Formula $n$
 \end_inset
 
--dimensional subspace of 
+-dimensional subspace of
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\Hilb$
 \end_inset
 
@@ -7149,7 +9483,12 @@ The bound
 
 .
  It is straightforward to check that 
-\begin_inset Formula $\bar{\mu}\left(P\right)=\left[\frac{n}{3},\frac{n}{3}\right]$
+\begin_inset Formula $\muB_{\rho}\left(P\right)=\frac{n}{3}$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $\bar{\mu}\left(P\right)=\left[\muB_{\rho}\left(P\right),\muB_{\rho}\left(P\right)\right]$
 \end_inset
 
  is a valid 
@@ -7157,21 +9496,50 @@ The bound
 \end_inset
 
 -deterministic QIVPM.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 When 
 \begin_inset Formula $\delta\geq\frac{1}{3}$
 \end_inset
 
-, i.e, when the uncertainty in measurements becomes that large, it becomes
+, i.e, when the uncertainty in measurements becomes so large, it becomes
  possible to map every observable to some (quite inaccurate) probability
- interval, and hence invalidating the Kochen-Specker theorem.
+ interval, thus invalidating the Kochen-Specker theorem.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
-For two-dimensional Hilbert space, there exists a non-contextual hidden
- variable model
+\end_inset
+
+As is the case for conventional, infinitely-precise, quantum probability
+ measures, the theorem is only applicable to dimensions 
+\begin_inset Formula $d\geq3$
+\end_inset
+
+.
+ Indeed when the Hilbert space has dimension 2, it is straightforward to
+ construct a 0-deterministic QIVPM as follows.
+ Consider a non-contextual hidden variable model for 
+\begin_inset Formula $d=2$
+\end_inset
+
+ (e.g., as proposed by Bell or Kochen-Specker
 \begin_inset space ~
 \end_inset
 
@@ -7182,152 +9550,1016 @@ key "BELL_1966,kochenspecker1967"
 
 \end_inset
 
+).
+ Such a two-dimensional model assigns definite values to all observables
+ at all times, and hence assigns a 
+\emph on
+determinate
+\emph default
+ probability (0 or 1) to each event.
+ This probability measure directly induces a 0-deterministic QIVPM by changing
+ 0 to 
+\begin_inset Formula $\imposs$
+\end_inset
+
+ and 1 to 
+\begin_inset Formula $\necess$
+\end_inset
+
 .
- This non-contextual model can be represented as a quantum probability measure
+ It follows that every 0-deterministic QIVPM is 
+\begin_inset Formula $\delta$
+\end_inset
+
+-deterministic.
  
-\begin_inset Formula $\mu:\events\rightarrow[0,1]$
-\end_inset
-
- satisfying an extra condition, either 
-\begin_inset Formula $\mu\left(P\right)=0$
-\end_inset
-
- or
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $1$
-\end_inset
-
-, but not any intermediate values.
- A quantum probability measure of this kind, 
-\begin_inset Formula $\mu$
-\end_inset
-
-, is equivalent to a 0-deterministic QIVPM 
-\begin_inset Formula $\bar{\mu}:\events\rightarrow\left\{ \imposs,\necess\right\} $
-\end_inset
-
- since the latter can be constructed according to the following way:
-\begin_inset Formula 
-\begin{equation}
-\bar{\mu}\left(P\right)=\begin{cases}
-\imposs\,, & \textrm{ if }\mu\left(P\right)=0\:;\\
-\necess\,, & \textrm{ if }\mu\left(P\right)=1\:,
-\end{cases}
-\end{equation}
-
-\end_inset
-
-and vice versa.
- Moreover, the QIVPM
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- is also 
-\begin_inset Formula $\delta$
-\end_inset
-
--deterministic for any 
-\begin_inset Formula $\delta\in\left[0,1\right]$
-\end_inset
-
- since 
-\begin_inset Formula $\imposs\subseteq\left[0,\delta\right]$
-\end_inset
-
- and 
-\begin_inset Formula $\necess\subseteq\left[1-\delta,1\right]$
-\end_inset
-
-.
- Conversely, as shown in the proof of Thm.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cor:Kochen-Specker-IVPM"
-
-\end_inset
-
-, any 
-\begin_inset Formula $\delta$
-\end_inset
-
--deterministic QIVPM for 
-\begin_inset Formula $\delta<\frac{1}{3}$
-\end_inset
-
- induces a 0-deterministic QIVPM so as a non-contextual hidden variable
- model.
- In summary, the existence of 
-\begin_inset Formula $\delta$
-\end_inset
-
--deterministic QIVPM for 
-\begin_inset Formula $\delta<\frac{1}{3}$
-\end_inset
-
- is equivalent to the existence of a non-contextual hidden variable model.
- Both of them exist for 
-\begin_inset Formula $d=2$
-\end_inset
-
-, while none of them exist for 
-\begin_inset Formula $d\ge3$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
+%% ajh: Fixed garbled sentence.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% In conventional quantum mechanics, there exists a non-contextual 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% hidden variable model for the special case of a two-dimensional 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Hilbert space~
+\backslash
+cite{BELL_1966,kochenspecker1967}.
+ This non-contextual
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% model can be modeled by a quantum probability measure 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+mu:
+\backslash
+events
+\backslash
+rightarrow[0,1]$ which maps every event to either 0 or 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 1.
+ Such a quantum probability measure, $
+\backslash
+mu$, is clearly equivalent to
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% a 0-deterministic QIVPM
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+bar{
+\backslash
+mu}:
+\backslash
+events
+\backslash
+rightarrow
+\backslash
+left
+\backslash
+{ 
+\backslash
+imposs,
+\backslash
+necess
+\backslash
+right
+\backslash
+} $ and
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% hence a $
+\backslash
+delta$-deterministic QIVPM for any
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+delta
+\backslash
+in
+\backslash
+left[0,1
+\backslash
+right]$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% % 
+\backslash
+begin{equation}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% % 
+\backslash
+bar{
+\backslash
+mu}
+\backslash
+left(P
+\backslash
+right)=
+\backslash
+begin{cases}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% % 
+\backslash
+imposs
+\backslash
+,, & 
+\backslash
+textrm{ if }
+\backslash
+mu
+\backslash
+left(P
+\backslash
+right)=0
+\backslash
+:;
+\backslash
 
 \backslash
-amr{
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
 
- Something like this: We have quantified one aspect of imprecision in QM
- (originally noted by Heisenberg – cite microscope paper).
- This does not account for all the probabilistic nature of QM, however.
- Merge with original sentence: The significance of this observation is that
- the uncertainty in the intervals is, in contrast to the classical case,
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% % 
+\backslash
+necess
+\backslash
+,, & 
+\backslash
+textrm{ if }
+\backslash
+mu
+\backslash
+left(P
+\backslash
+right)=1
+\backslash
+:,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% % 
+\backslash
+end{cases}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% % 
+\backslash
+end{equation}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% % and vice versa.
  
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% %% Moreover, the QIVPM~$
+\backslash
+bar{
+\backslash
+mu}$ is also $
+\backslash
+delta$-deterministic
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% %% for any $
+\backslash
+delta
+\backslash
+in
+\backslash
+left[0,1
+\backslash
+right]$ since $
+\backslash
+imposs
+\backslash
+subseteq
+\backslash
+left[0,
+\backslash
+delta
+\backslash
+right]$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% %% and $
+\backslash
+necess
+\backslash
+subseteq
+\backslash
+left[1-
+\backslash
+delta,1
+\backslash
+right]$.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Conversely, as shown in the proof of
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Thm.~
+\backslash
+ref{cor:Kochen-Specker-IVPM}, any $
+\backslash
+delta$-deterministic QIVPM
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% for $
+\backslash
+delta<
+\backslash
+frac{1}{3}$ induces a 0-deterministic QIVPM.
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%  so as a
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% non-contextual hidden variable model.
+ In summary, the existence of
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+delta$-deterministic QIVPM for $
+\backslash
+delta<
+\backslash
+frac{1}{3}$ is equivalent to
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% the existence of a non-contextual hidden variable model.
+ Both of them
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% exist for $d=2$, while none of them exist for $d
+\backslash
+ge3$.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+We have thus quantified one important aspect of uncertainty in quantum mechanics
+—the effect of the imprecise nature of devices—which is a novel addition
+ to the theory of measurement.
+ Indeed, as Heisenberg emphasized in his famous microscope example
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Heisenberg1983apsrev4"
+
+\end_inset
+
+, the conventional theory of measurement states that it is impossible to
+ precisely measure any property of a system without disturbing it somewhat.
+ Thus, there are fundamental limits to what one can measure and these limits
+ have traditionally been attributed to complementarity.
+ Our imprecision represents an 
 \emph on
-a fundamental part of quantum theory
+additional
 \emph default
-.
- There are in fact two sources of uncertainty: one due to the finite measurement
- resources and one due to complementarity, which requires every quantum
- framework to be truly probabilistic.
+ source of indeterminacy beyond the inherent probabilistic nature of quantum
+ mechanics.
  
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-}
+%% 
+\backslash
+andy{Make sure Amr is OK with the ``beyond'' here.
+ This was previously ``to''.}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% The significance of this observation is that the uncertainty in the
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% intervals is, in contrast to the classical case, 
+\backslash
+emph{a fundamental
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   part of quantum theory}.
+ There are in fact two sources of
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% uncertainty: one due to the finite measurement resources and one due
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% to complementarity, which requires every quantum framework to be truly
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% probabilistic.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% We have quantified one aspect of imprecision in quantum mechanics
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% which is due to the imprecise nature of devices.
+ There is however
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% another
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% QM (originally noted by Heisenberg -- cite microscope paper).
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Something like this: We have quantified one aspect of imprecision in 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% QM (originally noted by Heisenberg -- cite microscope paper).
+ This
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% does not account for all the probabilistic nature of QM,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% however.
+ Merge with original sentence: The significance of this
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% observation is that the uncertainty in the intervals is, in contrast
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% to the classical case, 
+\backslash
+emph{a fundamental part of quantum
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   theory}.
+ There are in fact two sources of uncertainty: one due to
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% the finite measurement resources and one due to complementarity, which
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% requires every quantum framework to be truly probabilistic.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -7343,13 +10575,32 @@ status collapsed
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+section{The Born Rule and Gleason's Theorem}
 \end_layout
 
-\begin_layout Section
-The Born Rule and Gleason's Theorem
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Gleason"
@@ -7357,9 +10608,18 @@ name "sec:Gleason"
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 A conventional quantum probability measure can be easily constructed from
  a state 
 \begin_inset Formula $\rho$
@@ -7377,7 +10637,7 @@ status collapsed
 
 
 \backslash
-citep{Born1983,Mermin2007,Jaeger2007}
+citep{Born1983bibTeX,Mermin2007,Jaeger2007}
 \end_layout
 
 \end_inset
@@ -7406,7 +10666,7 @@ citep{gleason1957,Redhead1987-REDINA,peres1995quantum}
 
  is also the unique state consistent with any possible probability measure.
  In order to re-examine these results in our framework, we first reformulate
- Gleason's theorem in QIVPMs using infinitely precise intervals
+ Gleason's theorem in QIVPMs using infinitely precise uncountable intervals
 \begin_inset space ~
 \end_inset
 
@@ -7415,9 +10675,19 @@ citep{gleason1957,Redhead1987-REDINA,peres1995quantum}
 \end_inset
 
 :
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -7472,11 +10742,27 @@ In a Hilbert space
 \begin_inset Formula $\rho$
 \end_inset
 
- consistent with it on every projector, 
-\begin_inset Formula $\coreBorn\left(\bar{\mu},\events\right)$
+ consistent with
+\begin_inset space ~
 \end_inset
 
-, is unique.
+
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ on every projector is unique, i.e., there exists a unique state
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\rho$
+\end_inset
+
+ such that 
+\begin_inset Formula $\coreBorn\left(\bar{\mu},\events\right)=\{\rho\}$
+\end_inset
+
+.
  
 \begin_inset ERT
 status collapsed
@@ -7491,9 +10777,6 @@ end{thm}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -7501,47 +10784,187 @@ status collapsed
 
 
 \backslash
-amr{
+par 
 \end_layout
 
 \end_inset
 
-Rewrite next sentence.
- Thm 4 assumes infinite precision.
- Question: what happens with finite precision intervals.
- Two thoughts: (1) multiple states will match the probab.
- distribution, (2) for small collections of projectors different states
- will agree with observations; if one looks at all projectors it may be
- the case that no state agrees with all.
+Now let us consider relaxing 
+\begin_inset Formula $\mathscr{I}$
+\end_inset
+
+ to a countable set of finite-width intervals.
+ As the intervals in the image of a QIVPM become less and less sharp, we
+ expect more and more states to be consistent with it.
+ Indeed, in the limit, the intervals become 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-}
+
+\backslash
+imposs
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+necess
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset Formula $\unknown=\left[0,1\right]$
+\end_inset
+
+, and every state is consistent with an assignment that states that its
+ projections are unknown.
+ There is however a subtlety: as shown in the theorem below, it is possible
+ for an arbitrary assignment of intervals to projectors to be globally inconsist
+ent.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+noindent For general QIVPMs mapping to imprecise intervals, we also
 \end_layout
 
-\begin_layout Standard
-\noindent
-For general QIVPMs mapping to imprecise intervals, we also want to seek
- a simple rule to construct them, and to understand which states are consistent
- with them.
- However, if measurement intervals are too imprecise, the state consistent
- with the results of measurements on some projectors might contradict the
- state induced by some other projectors.
- Indeed we can formally prove that, in general, there may be 
-\emph on
-no
-\emph default
- state consistent with some arbitrary QIVPM.
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% want to seek a simple rule to construct them, and to understand which
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% states are consistent with them.
+ However, if measurement intervals are
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% too imprecise, the state consistent with the results of measurements
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% on some projectors might contradict the state induced by some other
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% projectors.
+ Indeed we can formally prove that, in general, there may
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% be 
+\backslash
+emph{no} state consistent with some arbitrary QIVPM.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -7554,7 +10977,7 @@ begin{thm}[
 
 \end_inset
 
-Empty Core for General QIVPMs
+Empty Cores Exist for General QIVPMs
 \begin_inset ERT
 status collapsed
 
@@ -7572,7 +10995,11 @@ name "thm:Non-extensible-of-Gleason's"
 
 \end_inset
 
-There exists a Hilbert space and a QIVPM
+There exists a Hilbert space 
+\begin_inset Formula ${\cal H}$
+\end_inset
+
+ and a QIVPM
 \begin_inset space ~
 \end_inset
 
@@ -7597,10 +11024,33 @@ end{thm}
 
 \end_inset
 
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% ajh: fixed garbled statement, add ${
+\backslash
+cal H}$
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 To prove this theorem, we need to construct a QIVPM on some Hilbert space,
  and verify that there are no states that are consistent with it on all
  possible events.
@@ -7659,7 +11109,7 @@ status collapsed
 
 
 \backslash
-citep{HOSTunpublished}
+citep{TaiThesis2018}
 \end_layout
 
 \end_inset
@@ -7854,6 +11304,7 @@ All other projectors
 \end_layout
 
 \begin_layout Standard
+\noindent
 Next we will prove by contradiction that 
 \begin_inset Formula $\coreBorn\left(\bar{\mu},\events\right)$
 \end_inset
@@ -7872,35 +11323,43 @@ Next we will prove by contradiction that
 \end_inset
 
 .
- Since 
-\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}(P)\in\bar{\mu}(P)$
+ Since we assumed the core 
+\begin_inset Formula $\coreBorn\left(\bar{\mu},\events\right)$
 \end_inset
 
- for any
+ is non-empty, so 
+\begin_inset Formula $\muB_{\rho}(P)\in\bar{\mu}(P)$
+\end_inset
+
+, and Table
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Formula $P$
-\end_inset
-
-, the state
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\rho$
-\end_inset
-
- must satisfy: 
-\begin_inset Formula 
-\begin{equation}
-\mu_{\rho}^{\mathrm{B}}(\proj{0})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps})=\mu_{\rho}^{\mathrm{B}}(\proj{\ps'})=0\,,
-\end{equation}
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:non-Born-QIVPM"
 
 \end_inset
 
-which implies 
+ tells us that 
+\begin_inset Formula $\bar{\mu}(\proj{0})=\imposs=[0,0]$
+\end_inset
+
+, we must conclude that 
+\begin_inset Formula $\muB_{\rho}(\proj{0})=0\in[0,0]$
+\end_inset
+
+, and similarly for 
+\begin_inset Formula $\proj{\ps}$
+\end_inset
+
+ and 
+\begin_inset Formula $\proj{\ps'}$
+\end_inset
+
+.
+ If this is true, then 
 \begin_inset Formula $\ip{\phi_{j}}{0}=\ip{\phi_{j}}{\ps}=\ip{\phi_{j}}{\ps'}=0$
 \end_inset
 
@@ -7913,10 +11372,32 @@ which implies
 \end_inset
 
 .
- The last equation never holds proving the theorem.
+ The last equation never holds, proving the theorem.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%ajh: garbled argument starting at 'Since we assumed', tried to fix.
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 The fact that a collection of poor measurements on a quantum system cannot
  reveal the underlying state is not surprising.
  Under certain conditions, we can however guarantee that the uncertainty
@@ -7927,11 +11408,19 @@ some
  non-empty collection of quantum states.
  Furthermore, we can relate the uncertainty in measurements to the volume
  of quantum states such that, in the limit of infinitely precise measurements,
- the volume of states collapses to a single point corresponding to a single
- state.
+ the volume of states collapses to a single state.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 To that end, we construct a family of QIVPMs parameterized by 
 \emph on
 blurring
@@ -7947,7 +11436,7 @@ blurring
 \begin_inset Formula $\rho=\proj{\psi}$
 \end_inset
 
- is defined as usual 
+ is defined as usual by 
 \begin_inset Formula $\left\Vert \psi\right\Vert =\sqrt{\ip{\psi}{\psi}}$
 \end_inset
 
@@ -7988,9 +11477,19 @@ citep{RobertsVarberg1973,peres1995quantum,GolubVanLoan1996,Foucart2012}
 .
  Then, a finite-precision extension of Gleason's theorem can be stated as
  follows.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -8101,9 +11600,20 @@ status collapsed
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -8332,9 +11842,20 @@ ultramodular$.
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -8370,14 +11891,18 @@ Let
 \end_inset
 
  be a blurring function and let 
-\begin_inset Formula $f\circ\mu_{\rho}^{\mathrm{B}}$
+\begin_inset Formula $f\circ\muB_{\rho}$
 \end_inset
 
  be a QIVPM, where 
-\begin_inset Formula $\mu_{\rho}^{\mathrm{B}}$
+\begin_inset Formula $\muB_{\rho}$
 \end_inset
 
- is the probability measure induced by the Born rule for a given state 
+ is the probability measure induced by the Born rule for a given state
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\rho$
 \end_inset
 
@@ -8392,11 +11917,11 @@ Let
 \end_inset
 
  is consistent with 
-\begin_inset Formula $f\circ\mu_{\rho}^{\mathrm{B}}$
+\begin_inset Formula $f\circ\muB_{\rho}$
 \end_inset
 
  on all events, i.e., 
-\begin_inset Formula $\rho'\in\coreBorn\left(f\circ\mu_{\rho}^{\mathrm{B}},\events\right)$
+\begin_inset Formula $\rho'\in\coreBorn\left(f\circ\muB_{\rho},\events\right)$
 \end_inset
 
 , then the norm of their difference is bounded by 
@@ -8421,9 +11946,18 @@ end{thm}
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 The proof proceeds as follows.
  Given a state
 \begin_inset space ~
@@ -8434,11 +11968,11 @@ The proof proceeds as follows.
 \end_inset
 
  consistent with 
-\begin_inset Formula $f\circ\mu_{\rho}^{\mathrm{B}}$
+\begin_inset Formula $f\circ\muB_{\rho}$
 \end_inset
 
 , we have 
-\begin_inset Formula $\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)\in f\left(\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right)$
+\begin_inset Formula $\muB_{\rho'}\left(\proj{\psi}\right)\in f\left(\muB_{\rho}\left(\proj{\psi}\right)\right)$
 \end_inset
 
  for any one-dimensional projector 
@@ -8457,7 +11991,7 @@ The proof proceeds as follows.
 , it is also the upper bound of the difference: 
 \begin_inset Formula 
 \[
-\left|\mu_{\rho'}^{\mathrm{B}}\left(\proj{\psi}\right)-\mu_{\rho}^{\mathrm{B}}\left(\proj{\psi}\right)\right|=\left|\melem{\psi}{\rho-\rho'}{\psi}\right|\le\alpha\,.
+\left|\muB_{\rho'}\left(\proj{\psi}\right)-\muB_{\rho}\left(\proj{\psi}\right)\right|=\left|\melem{\psi}{\rho-\rho'}{\psi}\right|\le\alpha\,.
 \]
 
 \end_inset
@@ -8518,10 +12052,34 @@ citep{GolubVanLoan1996,Foucart2012}
 \end_inset
 
 .
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
-Previous theorem
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% ajh: no abbreviations as first words of sentences.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Theorem
 \begin_inset space ~
 \end_inset
 
@@ -8533,8 +12091,7 @@ reference "thm:Finite-precision-Gleason"
 \end_inset
 
  generalizes Gleason's theorem in the sense that it accounts for a larger
- class of probability measures which includes the conventional one as a
- limit.
+ class of probability measures that includes the conventional one as a limit.
  The theorem is however 
 \begin_inset Quotes eld
 \end_inset
@@ -8546,19 +12103,38 @@ special
  in the sense that it only applies to the particular class of QIVPMs constructed
  by composing a blurring function with a conventional quantum probability
  measure.
- QIVPMs constructed in this manner have some peculiar properties which we
+ QIVPMs constructed in this manner have some peculiar properties that we
  examine next.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 A blurring function is called 
 \emph on
 ultramodular
 \emph default
  if it satisfies the following properties.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -8690,10 +12266,18 @@ end{definition}
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
-\noindent
+\end_inset
+
 The first three constraints, Eqs.
 \begin_inset space ~
 \end_inset
@@ -8762,16 +12346,16 @@ key "Choquet1954,Shapley1971,NgMoYeh1997,MarinacciMontrucchio2005"
 \begin_inset Formula $\ultramodular\circ\mu$
 \end_inset
 
-, defines a valid QIVPM.
+ defines a valid QIVPM.
  Conversely, if for every quantum probability measure 
 \begin_inset Formula $\mu$
 \end_inset
 
-, it is the case that 
+, it is the case that if 
 \begin_inset Formula $f\circ\mu$
 \end_inset
 
- is a QIVPM, then blurring function
+ is a QIVPM, then the blurring function
 \begin_inset space ~
 \end_inset
 
@@ -8781,9 +12365,19 @@ key "Choquet1954,Shapley1971,NgMoYeh1997,MarinacciMontrucchio2005"
 
  is an ultramodular function.
  Formally, we have the following result.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -8887,15 +12481,15 @@ The composite function
 \end_inset
 
 
-\begin_inset Formula $\ultramodular\circ\mu:\events_{\mathrm{C}}\rightarrow\mathscr{I}$
+\begin_inset Formula $\ultramodular\circ\mu:\eventsC\rightarrow\mathscr{I}$
 \end_inset
 
- is a classical IVPM for all classical probability measure
+ is a classical IVPM for all classical probability measures
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Formula $\mu:\events_{\mathrm{C}}\rightarrow\left[0,1\right]$
+\begin_inset Formula $\mu:\eventsC\rightarrow\left[0,1\right]$
 \end_inset
 
 .
@@ -8930,7 +12524,7 @@ The composite function
 \begin_inset Formula $\ultramodular\circ\mu:\events\rightarrow\mathscr{I}$
 \end_inset
 
- is a QIVPM for all quantum probability measure
+ is a QIVPM for all quantum probability measures
 \begin_inset space ~
 \end_inset
 
@@ -8966,9 +12560,18 @@ end{thm}
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 Statement
 \begin_inset space ~
 \end_inset
@@ -9057,7 +12660,7 @@ The induced map using the Born rule and blurred by
 \end_inset
 
 , 
-\begin_inset Formula $\ultramodular\circ\mu_{\rho}^{\mathrm{\mathrm{B}}}$
+\begin_inset Formula $\ultramodular\circ\muB_{\rho}$
 \end_inset
 
 , fails to satisfy Eq.
@@ -9087,7 +12690,7 @@ reference "eq:QuantumInterval-valuedProbability-Inclusion"
 
  is not ultramodular, we also want to find a classical probability measure
  
-\begin_inset Formula $\mu:\events_{\mathrm{C}}\rightarrow\left[0,1\right]$
+\begin_inset Formula $\mu:\eventsC\rightarrow\left[0,1\right]$
 \end_inset
 
  such that 
@@ -9097,18 +12700,14 @@ reference "eq:QuantumInterval-valuedProbability-Inclusion"
  is not a classical IVPM.
  This can be done by restricting our previous quantum probability measure
  
-\begin_inset Formula $\mu_{\rho}^{\mathrm{\mathrm{B}}}$
+\begin_inset Formula $\muB_{\rho}$
 \end_inset
 
- on a commuting subspace of event
-\begin_inset space ~
+ to the space of events 
+\begin_inset Formula $\eventsC$
 \end_inset
 
-
-\begin_inset Formula $\events_{\mathrm{C}}$
-\end_inset
-
- generated by 
+ generated by the mutually commuting projectors 
 \begin_inset Formula $\proj{0}$
 \end_inset
 
@@ -9126,17 +12725,121 @@ reference "eq:QuantumInterval-valuedProbability-Inclusion"
 
 .
  The restricted function 
-\begin_inset Formula $\mu=\mu_{\rho}^{\mathrm{\mathrm{B}}}|_{\events_{\mathrm{C}}}$
+\begin_inset Formula $\mu=\muB_{\rho}|_{\eventsC}$
 \end_inset
 
- is a classical probability measure, and the induced map 
+ is then a classical probability measure, and the induced map 
 \begin_inset Formula $\ultramodular\circ\mu$
 \end_inset
 
- fails to be a classical IVPM by the same reason as the quantum case.
+ fails to be a classical IVPM for the same reason as in the quantum case.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% ajh: sentence "This can be done..." is somehow garbled, tried to
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% fix.
+  $
+\backslash
+eventsC$ is by DEFINITION a commuting subspace, so the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% original sentence does not seem to have any meaning.
+  Are there
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% MORE mutually commuting projectors in $
+\backslash
+eventsC$?  It would seem
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% that there are no others, so this is all confusing, as that would
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% make this sentence completely vacuous.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -9180,11 +12883,9 @@ ultramodular
 \backslash
 circ
 \backslash
-mu_{
+muB_{
 \backslash
-rho}^{
-\backslash
-mathrm{B}}$.
+rho}$.
   Moreover, the collection
 \end_layout
 
@@ -9206,11 +12907,9 @@ ultramodular
 \backslash
 circ
 \backslash
-mu_{
+muB_{
 \backslash
-rho}^{
-\backslash
-mathrm{B}}$
+rho}$
 \end_layout
 
 \begin_layout Plain Layout
@@ -9487,15 +13186,35 @@ status collapsed
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 In other words, essential properties of QIVPMs constructed using blurring
  functions can be gleaned from the properties of ultramodular functions.
  The following is a most interesting property in our setting.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -9538,7 +13257,7 @@ For any ultramodular function
 \begin_inset Formula $\mathscr{I}=\mathscr{I}_{0}$
 \end_inset
 
- in Eq.
+ as defined in Eq.
 \begin_inset space ~
 \end_inset
 
@@ -9567,15 +13286,24 @@ end{thm}
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 Since 
 \begin_inset Formula $\ultramodular$
 \end_inset
 
  maps to intervals, we can decompose it into two functions: its left-end
- and right-end 
+ and right-end, where 
 \begin_inset Formula $\left[\ultramodularL\left(x\right),\ultramodularR\left(x\right)\right]=\ultramodular\left(x\right)$
 \end_inset
 
@@ -9687,22 +13415,31 @@ citep{MarinacciMontrucchio2005}
 \begin_inset Formula $\left[0,1\right]$
 \end_inset
 
- to the same interval, or the number of intervals that 
+ to the same interval, or the number of intervals to which 
 \begin_inset Formula $\ultramodular$
 \end_inset
 
- maps to must be uncountable.
+ maps must be uncountable.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
-To summarize, a conventional quantum probability measure, has an uncountable
+\end_inset
+
+To summarize, a conventional quantum probability measure has an uncountable
  range 
 \begin_inset Formula $[0,1]$
 \end_inset
 
 .
  A QIVPM constructed by blurring such a conventional quantum probability
- measure, must also have an uncountable range of intervals.
+ measure must also have an uncountable range of intervals.
  Of course, any particular QIVPM, or any particular experiment, will use
  a fixed collection of intervals appropriate for the resources and precision
  of the particular experiment.
@@ -9712,25 +13449,18 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
-gerardo{
+gerardo{We need to explain physically what it means?}
 \end_layout
-
-\end_inset
-
-We need to explain physically what it means?
-\begin_inset ERT
-status collapsed
 
 \begin_layout Plain Layout
 
-}
 \end_layout
 
 \end_inset
 
- 
+
 \begin_inset ERT
 status collapsed
 
@@ -10149,7 +13879,7 @@ status collapsed
 
 % QIVPM~
 \backslash
-citep{HOSTunpublished}.
+citep{TaiThesis2018}.
   For example, consider an orthonormal
 \end_layout
 
@@ -10467,17 +14197,15 @@ status collapsed
 \backslash
 ref{eq:iota-add})~
 \backslash
-citep{HOSTunpublished}, $
+citep{TaiThesis2018}, $
 \backslash
 ultramodular_{2}
 \backslash
 circ
 \backslash
-mu_{
+muB_{
 \backslash
-rho_{0}}^{
-\backslash
-mathrm{B}}$
+rho_{0}}$
 \end_layout
 
 \begin_layout Plain Layout
@@ -10498,11 +14226,9 @@ ultramodular_{2}
 \backslash
 circ
 \backslash
-mu_{
+muB_{
 \backslash
-rho_{1}}^{
-\backslash
-mathrm{B}}$ are both
+rho_{1}}$ are both
 \end_layout
 
 \begin_layout Plain Layout
@@ -10569,9 +14295,20 @@ mathscr{I}_{2}$.}
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -11448,11 +15185,9 @@ proj{
 \backslash
 psi}$, we have $
 \backslash
-mu_{
+muB_{
 \backslash
-rho_{0}}^{
-\backslash
-mathrm{B}}
+rho_{0}}
 \backslash
 left(
 \backslash
@@ -11483,11 +15218,9 @@ ultramodular_{2}
 \backslash
 left(
 \backslash
-mu_{
+muB_{
 \backslash
-rho_{0}}^{
-\backslash
-mathrm{B}}
+rho_{0}}
 \backslash
 left(
 \backslash
@@ -11554,11 +15287,9 @@ status collapsed
 
 % 
 \backslash
-mu_{
+muB_{
 \backslash
-rho_{1}}^{
-\backslash
-mathrm{B}}
+rho_{1}}
 \backslash
 left(
 \backslash
@@ -11650,11 +15381,9 @@ status collapsed
 
 % $
 \backslash
-mu_{
+muB_{
 \backslash
-rho_{1}}^{
-\backslash
-mathrm{B}}
+rho_{1}}
 \backslash
 left(
 \backslash
@@ -11670,11 +15399,9 @@ ultramodular_{2}
 \backslash
 left(
 \backslash
-mu_{
+muB_{
 \backslash
-rho_{0}}^{
-\backslash
-mathrm{B}}
+rho_{0}}
 \backslash
 left(
 \backslash
@@ -11733,11 +15460,9 @@ status collapsed
 
 % $
 \backslash
-mu_{
+muB_{
 \backslash
-rho_{1}}^{
-\backslash
-mathrm{B}}
+rho_{1}}
 \backslash
 left(P
 \backslash
@@ -11749,11 +15474,9 @@ ultramodular_{2}
 \backslash
 left(
 \backslash
-mu_{
+muB_{
 \backslash
-rho_{0}}^{
-\backslash
-mathrm{B}}
+rho_{0}}
 \backslash
 left(P
 \backslash
@@ -11804,11 +15527,9 @@ ultramodular_{2}
 \backslash
 circ
 \backslash
-mu_{
+muB_{
 \backslash
-rho_{0}}^{
-\backslash
-mathrm{B}},
+rho_{0}},
 \backslash
 events
 \backslash
@@ -11924,9 +15645,20 @@ frac{1}{24}$.
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -11942,13 +15674,19 @@ status collapsed
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+section{Conclusion}
 \end_layout
 
-\begin_layout Section
-Conclusion
-\end_layout
+\end_inset
 
-\begin_layout Standard
+ 
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Conclusion"
@@ -11956,29 +15694,87 @@ name "sec:Conclusion"
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 Foundational concepts in quantum mechanics, such as the Kochen-Specker and
- Gleason theorems, rely in a very subtle way on the use of unbounded resources.
+ Gleason theorems, rely in subtle ways on the use of unbounded resources.
  By assuming infinitely precise measurements, these two insightful theorems
- underlie two fundamental aspects of quantum mechanics.
- On the one hand, Kochen-Specker's result reveals a distinctive aspect of
- physical reality, the fact that it is contextual, and, on the other hand,
- Gleason's theorem establishes a relationship between quantum states and
- probabilities uniquely defined by Born's rule.
+ form the foundations of two fundamental aspects of quantum mechanics.
+ On the one hand, the Kochen-Specker result reveals a distinctive aspect
+ of physical reality, the fact that it is contextual, and, on the other
+ hand, Gleason's theorem establishes a relationship between quantum states
+ and probabilities uniquely defined by Born's rule.
  Our goal in this paper has been to analyze the physical consequences of
  a mathematical framework that allows for finite precision measurements
  by introducing the concept of quantum interval-valued probability.
  This framework incorporates uncertainty in the measurement results by defining
  fuzzy probability measures, and includes standard quantum measurement as
  the particular instance of sharp, infinitely precise, intervals.
- In addition, we showed how these two theorems emerge as limiting cases
- of this same framework, thus connecting two seemingly unrelated aspects
- of quantum physics.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% 
+\backslash
+andy{``quantum measurement'' should be replaced by the }
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+In addition, we showed how these two theorems emerge as limiting cases of
+ this same framework, thus connecting two seemingly unrelated aspects of
+ quantum physics.
  We noted that 
-\shape italic
-arbitrary
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+it
+\end_layout
+
+\end_inset
+
+ arbitrary
 \begin_inset ERT
 status collapsed
 
@@ -11992,7 +15788,16 @@ status collapsed
 \end_inset
 
 
-\shape default
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
  finite precision measurement conditions can nullify the main tenets of
  both theorems.
  However, by carefully specifying experimental uncertainties, we were able
@@ -12012,9 +15817,19 @@ key "PhysRevLett.83.3751,Mermin1999"
 \end_inset
 
 .
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -12037,7 +15852,7 @@ options "default"
 
 \end_inset
 
- 
+
 \end_layout
 
 \end_body
