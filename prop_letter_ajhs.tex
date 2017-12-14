@@ -473,8 +473,8 @@ events $E_1$ and~$E_2$, not necessarily disjoint, we have:
 \end{equation}
 which is a generalization of the classical inclusion-exclusion
 principle that uses $\subseteq$ instead of $=$ for the same reason as
-before. The new condition, known as \emph{convexity}
-\cite{Shapley1971,GilboaSchmeidler1994,NgMoYeh1997,Marinacci1999,MarinacciMontrucchio2005,Grabisch2016},
+before. The new condition, known as
+\emph{convexity}~\cite{Shapley1971,GilboaSchmeidler1994,NgMoYeh1997,Marinacci1999,MarinacciMontrucchio2005,Grabisch2016},
 reduces to the previously motivated Eq.~(\ref{eq:disjoint}) when the
 events are disjoint, i.e., when $\mu(E_1\cap E_2) = 0$.
 
@@ -527,24 +527,40 @@ direct counterpart of the convexity condition of
 Eq.~(\ref{eq:classicalconvex}). Thus our definition of QIVPMs merges
 aspects of both classical IVPMs and quantum probability measures. 
 
-\newpage
+Our definition of QIVPMs is consistent with classical IVPMs in the
+sense that a restriction of QIVPMs to mutually commuting events,
+$\eventsC$, recovers the definition of classical IVPMs. The proof of
+this fact is included in the forthcoming thesis by the first author. A
+consequence of this fact is that known properties of classical IVPMs
+directly hold for QIVPMs when one restricts to mutually commuting
+events, $\eventsC$. In particular, in the classical world, it is
+\emph{impossible} for experiments to result in probabilities that are
+inconsistent with \emph{some} state of the system under consideration,
+i.e., all IVPMs must have a non-empty ``core''~\footnote{A result by
+  Shapley~\cite{Shapley1971,GilboaSchmeidler1994,NgMoYeh1997,Grabisch2016}
+  proves that a classical IVPM always contains at least one state that
+  is consistent with every event.}. Interestingly, as we show in
+Sec.~\ref{sec:Gleason}, it is possible in the quantum world for the
+probabilities associated with some events to be inconsistent with
+\emph{any} quantum state, i.e., for the QIVPM to have an empty core;
+in that case, one cannot guarantee non-empty cores for finite-precision
+attempts at proving Gleason's theorem by extending the Born measure
+$\muB_{\rho}\left(P\right)$ to QIVPMs
+$\bar{\mu}\left(P\right)$. However, if the set of events is mutually
+commuting, the situation reverts to the classical case in which
+probabilities always determine at least one state.
 
-\begin{suggest}{\andy}{6}[inverted logic and phrasing.  I would start at "To formalize
-this ..." and replace all the way to Eq.~(\ref{eq:hbar})]
-We now show that our definition of QIVPMs is consistent
-with classical IVPMs in the sense that a restriction of QIVPMs to
-mutually commuting events recovers the definition of classical
-IVPMs.  However, we must refine this context for the quantum case,
-defining a QIVPM  $\bar{\mu}$ to be \emph{consistent} with a state $\rho$ and
-a projector~$P$ if the interval $\bar{\mu}(P)$ contains the exact
-probability calculated by the Born
-rule~\citep{Born1983bibTeX,Mermin2007,Jaeger2007}, i.e., 
+We now give the necessary technical definitions to prove this
+non-empty core property. We say a QIVPM $\bar{\mu}$ is
+\emph{consistent} with a state $\rho$ and a projector~$P$ if the
+interval $\bar{\mu}(P)$ contains the exact probability calculated by
+the Born rule~\citep{Born1983bibTeX,Mermin2007,Jaeger2007}, i.e.,
   \begin{equation}
   \muB_{\rho}\left(P\right) = \Tr\left(\rho
   P\right)\in\bar{\mu}\left(P\right)\ .
   \end{equation}
-In contrast with conventional probability spaces, there is \emph{no
-guarantee} that a unique state $\rho$ consistent with a QIVPM exists. 
+In contrast with classical probability spaces, there is \emph{no
+guarantee} that there exists a unique state $\rho$ consistent with a QIVPM.
 
 We next refine the concept of consistency by introducing the idea of
 a ``core'' set of states relative to subspaces. First, we define
@@ -567,88 +583,9 @@ $\bar{\mu}$ on every projector in $\events'$, that is
 \events',~\muB_{\rho}\left(P\right)\in\bar{\mu}\left(P\right)} \ .
 \end{equation}
 \end{definition}
-\end{suggest}
-%% which coherently introduces the "core" and sets if off as a
-%% DEFINITION, etc. 
 
-\newpage 
-
-We now show that our definition of QIVPMs is consistent with classical
-IVPMs in the sense that a restriction of QIVPMs to mutually commuting
-events recovers the definition of classical IVPMs. To formalize this
-connection, we first note that in contrast to the case with
-conventional quantum probability spaces, there is generally no unique
-state~$\rho$ consistent with a QIVPM. We say that a QIVPM $\bar{\mu}$
-is \emph{consistent} with a state $\rho$ and projector~$P$ if the
-interval $\bar{\mu}(P)$ contains the exact probability calculated by
-the Born rule, i.e, if:
-\begin{equation}
-\muB_{\rho}\left(P\right)\in\bar{\mu}\left(P\right)
-\end{equation}
-where $\muB_{\rho}\left(P\right)=\Tr\left(\rho P\right)$
-is the probability of the event~$P$ as determined by the Born
-rule~\citep{Born1983bibTeX,Mermin2007,Jaeger2007}.
-
-We generalize this consistency relation to sets of states and general
-subspaces of events as follows. A set of events $\events'$ is a
-\emph{subspace} of $\events$ if it contains $\mathbb{0}$
-and~$\mathbb{1}$ and is closed under complements, sums, and products,
-i.e., for any projector~$P\in\events'$, we have
-$\mathbb{1}-P\in\events'$ and for each pair of commuting
-projectors~$P_{0}\in\events'$ and $P_{1}\in\events'$, we have
-$P_{0}+P_{1}-P_{0}P_{1}$ and $P_{0}P_{1}\in\events'$. Given a
-probability measure $\bar{\mu}$ and a subspace of events $\events'$,
-we define the \emph{core} of $\bar{\mu}$ relative to $\events'$ as the
-collection of all states $\rho$ that are consistent with $\bar{\mu}$
-on every projector in $\events'$ as $\coreBorn(\bar{\mu},\events')$:
-\begin{equation}
-\label{eq:hbar}
-\coreBorn\left(\bar{\mu},\events'\right)=\set{\rho}{\forall P\in \events',~\muB_{\rho}\left(P\right)\in\bar{\mu}\left(P\right)}.
-\end{equation}
-
-\newpage
-
-\begin{suggest}{\andy}{7}[This story order is incomprehensible. I would state FIRST that 'here
-is the outline of the proof', and LAST 'Thm 1..., whose full proof
-will appear in~\cite{TaiThesis2018}.]
-   The general idea of the proof that QIVPMs become classical
-IVPMs when the space of events includes only mutually commuting
-events depends on showing the existence of a non-empty core for such
-commuting events.  The first step in establishing this assertion is to
-to take a subspace $\eventsC$ of mutually commuting events, construct
-a partial orthonormal basis by diagonalization, and complete this to a
-full orthonormal basis  $\overline{\eventsC}$.  We then
-build a bijection between the QIVPM on the set of projectors
-associated with this basis and the set of classical events
-corresponding to this basis.  Using this correspondence together with a
-classical result by
-Shapley~\cite{Shapley1971,GilboaSchmeidler1994,NgMoYeh1997,Grabisch2016},
-we can establish that for the special case of commuting events, a
-QIVPM will always have a non-empty core~\footnote{Shapley's result
-  proves that a classical IVPM always contains at least one state that
-  is consistent with every event.}.  This leads to
-\begin{thm}[Non-empty Core for Compatible Measurements] \label{thm:Shapley}
-  For every QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$, if a subspace
-  of events~$\eventsC\subseteq\events$ commutes, then
-  $\coreBorn\left(\bar{\mu},\eventsC\right)\ne\emptyset$,
-\end{thm}
-whose full proof will appear in ~\cite{TaiThesis2018}.
-\end{suggest}
-The proof that QIVPMs become classical IVPMs when the space of events
-includes only mutually commuting events is presented in detail in a
-forthcoming thesis~\cite{TaiThesis2018}. The idea of the proof is as
-follows. Given a subspace of mutually commuting events~$\eventsC$, we
-can construct a partial orthonormal basis by diagonalization and
-complete it to a full orthonormal basis $\overline{\eventsC}$. We then
-build a bijection between the QIVPM on the set of projectors
-associated with this basis and the set of classical events
-corresponding to this basis. Using this correspondence together with a
-classical result by
-Shapley~\cite{Shapley1971,GilboaSchmeidler1994,NgMoYeh1997,Grabisch2016},
-we can establish that for the special case of commuting events, a
-QIVPM will always have a non-empty core~\footnote{Shapley's result
-  proves that a classical IVPM always contains at least one state that
-  is consistent with every event.}.
+We are now in position to state and prove that, for the special case
+of commuting events, a QIVPM will always have a non-empty core.
 
 \begin{thm}[Non-empty Core for Compatible Measurements] \label{thm:Shapley}
   For every QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$, if a subspace
@@ -656,24 +593,17 @@ QIVPM will always have a non-empty core~\footnote{Shapley's result
   $\coreBorn\left(\bar{\mu},\eventsC\right)\ne\emptyset$.
 \end{thm}
 
-\begin{suggest}{\andy}{8}[inverted narrative order]
-The importance of the existence of empty cores combined with
-  the conditions guaranteeing non-empty cores is that one cannot
-  guarantee non-empty cores for finite-precision attempts at proving
-  Gleason's theorem by extending the Born measure
-  $\muB_{\rho}\left(P\right)$ to QIVPMs $\bar{\mu}\left(P\right)$.  We
-  will show in  Sec.~\ref{sec:Gleason} that a core defined by the set
-  of states $\coreBorn\left(\bar{\mu},\events'\right)$ that is
-  consistent with some arbitrary (not necessarily commuting)
-  events~$\events'$  and a particular QIVPM  $\bar{\mu}$
-   \emph{may be empty}.
-\end{suggest}
-The importance of this property is that it is violated in
-finite-precision versions of Gleason's theorem
-(cf. Thm.~\ref{thm:Non-extensible-of-Gleason's} in Sec.~\ref{sec:Gleason}). As we will show, the set of states
-$\coreBorn\left(\bar{\mu},\events'\right)$ that is consistent with
-some arbitrary (not necessarily commuting) events~$\events'$ and a
-particular QIVPM $\bar{\mu}$ may be \emph{empty}.
+The proof, detailed in the forthcoming thesis, proceeds as
+follows. From a subspace $\eventsC$ of mutually commuting events, one
+can construct a partial orthonormal basis by diagonalization, and
+complete this to a full orthonormal basis $\overline{\eventsC}$.  We
+can then build a bijection between the QIVPM on the set of projectors
+associated with this basis and the set of classical events
+corresponding to this basis.  Using this correspondence together with
+the classical result by
+Shapley~\cite{Shapley1971,GilboaSchmeidler1994,NgMoYeh1997,Grabisch2016},
+we can establish that for the special case of commuting events, a
+QIVPM will always have a non-empty core.
 
 % For example, a well-defined QIVPM, assuming the three intervals
 % $\imposs$, $\necess$, and $\unknown=\left[0,1\right]$, is:
