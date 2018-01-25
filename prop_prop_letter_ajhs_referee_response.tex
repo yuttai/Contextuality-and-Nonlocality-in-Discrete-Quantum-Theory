@@ -108,44 +108,47 @@ Indiana 47405, USA}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \paragraph{Classical $\frac{1}{4}$-deterministic Probability Measure}
 
-The first step in our formalization is to introduce a family of QIVPMs
-parameterized by an uncertainty~$\delta$, which we call
-$\delta$-deterministic QIVPMs.
+Although the definition of $\delta$-determinism in our paper only
+applied on QIVPMs~\cite{THOS2017}, this definition can be easily
+extended to apply on both classical and quantum IVPMs as follow.
 
-\begin{definition}[$\delta$-Determinism]\label{def:delta-deterministic} A
-  QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$ is
-  $\delta$-deterministic if, for every event $P\in\events$, we have
-  that either 
-  $\bar{\mu}\left(P\right)\subseteq\left[0,\delta\right]$ or
-  $\bar{\mu}\left(P\right)\subseteq\left[1-\delta,1\right]$. 
-\end{definition}
+\begin{definition}[$\delta$-Determinism]\label{def:delta-deterministic}
+Given a classical or quantum IVPM~$\bar{\mu}:\events'\rightarrow\mathscr{I}$,
+where $\events'$ is the set of all events, $\events$, when $\bar{\mu}$
+is a QIVPM and $\events'$ is the set of mutually commuting events,
+$\eventsC$, when $\bar{\mu}$ is a classical one. $\bar{\mu}$ is
+$\delta$-deterministic if, for every event $P\in\events'$, we have
+that either $\bar{\mu}\left(P\right)\subseteq\left[0,\delta\right]$
+or $\bar{\mu}\left(P\right)\subseteq\left[1-\delta,1\right]$. \end{definition}
 
 \begin{table}
-  \noindent \centering{}\caption{\label{tab:classical-IVPMs}Example
-    QIVPMs~$\bar{\mu}_{A}$, $\bar{\mu}_{B}$ and $\bar{\mu}_{C}$ on
-    commuting events $P$.}
+\noindent \centering{}\caption{\label{tab:classical-IVPMs}Example $\frac{1}{4}$-deterministic classical
+IVPMs~$\bar{\mu}_{A}$, $\bar{\mu}_{B}$ and $\bar{\mu}_{C}$ on
+commuting events $P$.}
 \begin{tabular}{cccc}
-\toprule
+\toprule 
 \addlinespace
-$P$ & $\bar{\mu}_{A}(P)$ & $\bar{\mu}_{B}(P)$ & $\bar{\mu}_{C}(P)$\tabularnewline\addlinespace
+$P$  & $\bar{\mu}_{A}(P)$  & $\bar{\mu}_{B}(P)$  & $\bar{\mu}_{C}(P)$\tabularnewline
 \midrule
-\midrule
+\midrule 
 \addlinespace
-$\mathbb{0}$ & $\imposs$ & $\imposs$ & $\imposs$\tabularnewline\addlinespace
-\midrule
+$\mathbb{0}$  & $\imposs$  & $\imposs$  & $\imposs$\tabularnewline
+\midrule 
 \addlinespace
-$\proj{0}$ & $\necess$ & $\left[\frac{2}{3},1\right]$ & $\left[\frac{2}{3},\frac{2}{3}\right]$\tabularnewline\addlinespace
-\midrule
+$\proj{0}$  & $\necess$  & $\left[\frac{3}{4},\frac{4}{5}\right]$  & $\left[\frac{3}{4},1\right]$\tabularnewline
+\midrule 
 \addlinespace
-$\proj{1}$ & $\imposs$ & $\left[0,\frac{1}{3}\right]$ & $\left[\frac{1}{3},\frac{1}{3}\right]$\tabularnewline\addlinespace
-\midrule
+$\proj{1}$  & $\imposs$  & $\left[\frac{1}{5},\frac{1}{4}\right]$  & $\left[1,\frac{1}{4}\right]$\tabularnewline
+\midrule 
 \addlinespace
-$\mathbb{1}$ & $\necess$ & $\necess$ & $\necess$\tabularnewline\addlinespace
+$\mathbb{1}$  & $\necess$  & $\necess$  & $\necess$\tabularnewline
 \bottomrule
 \end{tabular}
-\yutsung{$\bar{\mu}_{A}$ is neither a QIVPM nor a restriction of a QIVPM
-according to the current definition. Need to fix this example or fix the definition.}
 \end{table}
+
+Then, it is easy to construct $\frac{1}{4}$-deterministic classical
+IVPMs~$\bar{\mu}_{A}$, $\bar{\mu}_{B}$ and $\bar{\mu}_{C}$ defined
+in Table~\ref{tab:classical-IVPMs}. 
 
 \noindent This definition puts no restrictions on the set of intervals
 itself, only on which intervals are assigned to events. When
@@ -168,10 +171,6 @@ $\unknown\subseteq\left[1-\frac{1}{3},1\right]$ are false.  Finally,
 when $\delta=1$, because every interval is a subset of $\unknown$,
 every QIVPM is $1$-deterministic. In particular, the non-informative
 QIVPM~$\bar{\mu}_{A}$ is 1-deterministic.
-\begin{comment}
-and the Born QIVPM~$\bar{\mu}_{3}$ defined in
-Eq.~(\ref{eq:Born-QIVPM}) are both $1$-deterministic.
-\end{comment}
 
 \paragraph{Why a Quantum $\frac{1}{4}$-deterministic Probability Measure is
 Impossible}
@@ -182,12 +181,6 @@ $\delta$-deterministic QIVPMs. We next prove a main result of this
 paper which is a stronger statement of contextuality that includes the
 effects of finite-precision.  Every QIVPM must map some events to
 truly uncertain intervals, not just ``almost definite intervals.'' 
-\begin{comment}
-\andy{contextuality is never defined.}
-\yutsung{Actually, the second sentence in the introduction defines
-``contextuality''. The problem is that there is no direct relation between what
-defined in the introduction and here.}
-\end{comment}
 
 \begin{thm}[Finite-precision Extension of the Kochen-Specker
   Theorem] \label{cor:Kochen-Specker-IVPM} Given a Hilbert space
