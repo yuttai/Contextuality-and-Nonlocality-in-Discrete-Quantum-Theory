@@ -37,10 +37,10 @@
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
 \newcommand{\qevents}{\ensuremath{\mathcal{E}}}
 \newcommand{\pmeas}{\ensuremath{\mu}}
-\newcommand{\imposs}{{\text{\wesa{impossible}}}}
+\newcommand{\imposs}{\ensuremath{\left[0,0\right]}}
 \newcommand{\likely}{{\text{\wesa{likely}}}}
 \newcommand{\unlikely}{{\text{\wesa{unlikely}}}}
-\newcommand{\necess}{{\text{\wesa{certain}}}}
+\newcommand{\necess}{\ensuremath{\left[1,1\right]}}
 \newcommand{\unknown}{{\text{\wesa{unknown}}}}
 \newcommand{\midd}{{\text{\wesa{middle}}}}
 \newcommand{\fket}[1]{{|#1\rangle}}
@@ -240,7 +240,7 @@ status collapsed
 
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 Classical 
 \begin_inset Formula $\frac{1}{4}$
 \end_inset
@@ -762,7 +762,7 @@ reference "tab:classical-IVPMs"
 .
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsection
 Why a Quantum 
 \begin_inset Formula $\frac{1}{4}$
 \end_inset
@@ -807,12 +807,12 @@ To illustrate our proof for non-existence of
 
 : 
 \begin_inset Formula 
-\[
+\begin{equation}
 \bar{\mu}^{\textrm{D}}\left(P\right)=\begin{cases}
 \imposs\,, & \textrm{ if }\bar{\mu}\left(P\right)\subseteq\left[0,\tfrac{1}{4}\right]\:;\\
 \necess\,, & \textrm{ if }\bar{\mu}\left(P\right)\subseteq\left[\tfrac{3}{4},1\right]\:.
 \end{cases}
-\]
+\end{equation}
 
 \end_inset
 
@@ -833,16 +833,20 @@ However, since we know that
 \begin_inset Formula $\bar{\mu}^{\textrm{D}}$
 \end_inset
 
- is indeed a 
-\begin_inset Formula $0$
+ is indeed a QIVPM.
+ Since the range of 
+\begin_inset Formula $\bar{\mu}^{\textrm{D}}$
 \end_inset
 
--deterministic QIVPM.
- 
-\end_layout
+, 
+\begin_inset Formula $\left\{ \imposs,\necess\right\} $
+\end_inset
 
-\begin_layout Standard
-by checking that for orthogonal projectors
+, is a set of singleton sets, if 
+\begin_inset Formula $\bar{\mu}^{\textrm{D}}$
+\end_inset
+
+ satisfies that for orthogonal projectors
 \begin_inset space ~
 \end_inset
 
@@ -854,15 +858,16 @@ by checking that for orthogonal projectors
 \begin_inset Formula $P_{1}$
 \end_inset
 
-, we have that 
-\begin_inset Formula $\bar{\mu}^{\textrm{D}}\left(P_{0}\right)=\bar{\mu}^{\textrm{D}}\left(P_{1}\right)=\imposs$
+, 
+\begin_inset Formula 
+\begin{equation}
+\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\bar{\mu}^{\textrm{D}}\left(P_{0}\right)+\bar{\mu}^{\textrm{D}}\left(P_{1}\right)\,,\label{eq:QuantumInterval-valuedProbability-Equal}
+\end{equation}
+
 \end_inset
 
- implies 
-\begin_inset Formula $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\imposs$
-\end_inset
-
-
+then we can apply the same reason of proving classical inclusion-exclusion
+ principle
 \begin_inset space ~
 \end_inset
 
@@ -873,8 +878,159 @@ key "TaiThesis2018"
 
 \end_inset
 
+ to get
+\begin_inset Formula 
+\[
+\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\bar{\mu}^{\textrm{D}}\left(P_{0}P_{1}\right)=\bar{\mu}^{\textrm{D}}\left(P_{0}\right)+\bar{\mu}^{\textrm{D}}\left(P_{1}\right)
+\]
+
+\end_inset
+
+which implies 
+\begin_inset Formula $\bar{\mu}^{\textrm{D}}$
+\end_inset
+
+ is convex, i.e., 
+\begin_inset Formula $\bar{\mu}^{\textrm{D}}$
+\end_inset
+
+ is a QIVPM.
+ Therefore, our task now is to prove Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:QuantumInterval-valuedProbability-Equal"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename prop_prop_letter_ajhs_referee_response_pptx.pdf
+	scale 50
+	BoundingBox 50bp 100bp 900bp 300bp
+	clip
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Show-subset"
+
+\end_inset
+
+Show 
+\begin_inset Formula $\bar{\mu}\left(P_{0}+P_{1}\right)$
+\end_inset
+
+ must be a subset of 
+\begin_inset Formula $\left[0,\frac{1}{4}\right]$
+\end_inset
+
 .
- Indeed when 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+For orthogonal projectors
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{1}$
+\end_inset
+
+, when one of 
+\begin_inset Formula $\bar{\mu}^{\textrm{D}}\left(P_{0}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{\mu}^{\textrm{D}}\left(P_{1}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\necess$
+\end_inset
+
+, say 
+\begin_inset Formula $\bar{\mu}^{\textrm{D}}\left(P_{0}\right)=\necess$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula $\bar{\mu}^{\textrm{D}}\left(P_{1}\right)=\imposs$
+\end_inset
+
+, 
+\begin_inset Formula $\bar{\mu}\left(P_{0}\right)\subseteq\left[\frac{3}{4},1\right]$
+\end_inset
+
+, 
+\begin_inset Formula $\bar{\mu}\left(P_{1}\right)\subseteq\left[0,\frac{1}{4}\right]$
+\end_inset
+
+, and 
+\begin_inset Formula $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[\frac{3}{4},\frac{5}{4}\right]$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\bar{\mu}\left(P_{0}+P_{1}\right)$
+\end_inset
+
+ is bounded by 
+\begin_inset Formula $\left[0,1\right]$
+\end_inset
+
+, we must have 
+\begin_inset Formula $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[\frac{3}{4},1\right]$
+\end_inset
+
+, i.e., 
+\begin_inset Formula $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\necess=\bar{\mu}^{\textrm{D}}\left(P_{0}\right)+\bar{\mu}^{\textrm{D}}\left(P_{1}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For orthogonal projectors
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{1}$
+\end_inset
+
+, when 
 \begin_inset Formula $\bar{\mu}^{\textrm{D}}\left(P_{0}\right)=\bar{\mu}^{\textrm{D}}\left(P_{1}\right)=\imposs$
 \end_inset
 
@@ -927,60 +1083,6 @@ reference "fig:Show-subset"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename prop_prop_letter_ajhs_referee_response_pptx.pdf
-	scale 50
-	BoundingBox 50bp 100bp 900bp 300bp
-	clip
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Show-subset"
-
-\end_inset
-
-Show 
-\begin_inset Formula $\bar{\mu}\left(P_{0}+P_{1}\right)$
-\end_inset
-
- must be a subset of 
-\begin_inset Formula $\left[0,\frac{1}{4}\right]$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
