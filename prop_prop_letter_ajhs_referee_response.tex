@@ -120,13 +120,14 @@ Indiana 47405, USA}
 \maketitle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Why a \texorpdfstring{$\frac{1}{4}$}{¼}-deterministic QIVPM is
-Impossible?}
+\section{Finite-precision Extension of the Kochen-Specker Theorem}
 
-To illustrate our proof for non-existence of $\delta$-deterministic
-QIVPMs for $\delta<\frac{1}{3}$, we will explain why we cannot construct
-any $\frac{1}{4}$-deterministic QIVPM in full details. The proof
-is by contradiction: Suppose there is a $\frac{1}{4}$-deterministic
+\begin{thm}[Finite-precision Extension of the Kochen-Specker Theorem]
+\label{cor:Kochen-Specker-IVPM} Given a Hilbert space $\Hilb$ of
+dimension~$d\ge3$, there is no $\delta$-deterministic QIVPM for
+$\delta<\frac{1}{3}$.\end{thm}
+
+The proof is by contradiction: Suppose there is a $\delta$-deterministic
 QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$. Now use this assumed
 QIVPM to construct the following $0$-deterministic QIVPM $\bar{\mu}^{\textrm{D}}:\events\rightarrow\left\{ \imposs,\necess\right\} $:
 \begin{equation}
@@ -135,7 +136,7 @@ QIVPM to construct the following $0$-deterministic QIVPM $\bar{\mu}^{\textrm{D}}
 \necess\,, & \textrm{ if }\bar{\mu}\left(P\right)\subseteq\left[\tfrac{3}{4},1\right]\:.
 \end{cases}
 \end{equation}
-However, since we know that $0$-deterministic QIVPMs do not exist~\cite{THOS2017},
+However, since we know that $0$-deterministic QIVPMs do not exist,
 the map $\bar{\mu}^{\textrm{D}}$ cannot exist and hence $\bar{\mu}$
 does not exist. It remains to verify that $\bar{\mu}^{\textrm{D}}$
 is indeed a QIVPM by checking that for orthogonal projectors $P_{0}$
@@ -158,219 +159,121 @@ $\bar{\mu}^{\textrm{D}}\left(P_{0}\right)=\necess$. Then, $\bar{\mu}^{\textrm{D}
 and 
 \begin{equation}
 \begin{aligned} & \bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\\
-\subseteq{} & \left[\tfrac{3}{4},1\right]+\left[0,\tfrac{1}{4}\right]=\left[\tfrac{3}{4},\tfrac{5}{4}\right]\,.
+\subseteq{} & \left[1-\delta,1\right]+\left[0,\delta\right]=\left[1-\delta,1+\delta\right]\,.
 \end{aligned}
 \end{equation}
 Since $\bar{\mu}\left(P_{0}+P_{1}\right)$ is bounded by $\left[0,1\right]$,
-we must have $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[\frac{3}{4},1\right]$,
+we must have $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[1-\delta,1\right]$,
 i.e., $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\necess=\bar{\mu}^{\textrm{D}}\left(P_{0}\right)+\bar{\mu}^{\textrm{D}}\left(P_{1}\right)$.
 
 \begin{figure*}
-\includegraphics[bb=50bp 100bp 900bp 300bp,clip,scale=0.5]{prop_prop_letter_ajhs_referee_response_pptx}\caption{\label{fig:Show-subset}Show $\bar{\mu}\left(P_{0}+P_{1}\right)$
-must be a subset of $\left[0,\frac{1}{4}\right]$.}
+\includegraphics[bb=50bp 100bp 900bp 300bp,clip,scale=0.5]{prop_prop_letter_ajhs_referee_response_pptx}\caption{\label{fig:Show-subset}Either $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[0,\delta\right]$
+or $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[1-\delta,1\right]$.
+Together with the fact that $\bar{\mu}\left(P_{0}+P_{1}\right)\cap\left[1-\delta,1\right]=\emptyset$,
+we have $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[0,\delta\right]$.}
 \end{figure*}
 For orthogonal projectors~$P_{0}$ and $P_{1}$, when $\bar{\mu}^{\textrm{D}}\left(P_{0}\right)=\bar{\mu}^{\textrm{D}}\left(P_{1}\right)=\imposs$,
-we have both $\bar{\mu}\left(P_{0}\right)$ and $\bar{\mu}\left(P_{1}\right)\subseteq\left[0,\frac{1}{4}\right]$
-which implies $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[0,\frac{1}{2}\right]$.
-Since $\bar{\mu}\left(P_{0}+P_{1}\right)$ is a subset of either $\left[0,\frac{1}{4}\right]$
-or $\left[\tfrac{3}{4},1\right]$ and the latter is excluded as illustrated
+we have both $\bar{\mu}\left(P_{0}\right)$ and $\bar{\mu}\left(P_{1}\right)\subseteq\left[0,\delta\right]$
+which implies $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[0,2\delta\right]$.
+Since $\bar{\mu}\left(P_{0}+P_{1}\right)$ is a subset of either $\left[0,\delta\right]$
+or $\left[1-\delta,1\right]$ and the latter is excluded as illustrated
 in Fig.~\ref{fig:Show-subset} , then $\bar{\mu}\left(P_{0}+P_{1}\right)$
-must be a subset of $\left[0,\frac{1}{4}\right]$, which implies $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\imposs$.
+must be a subset of $\left[0,\delta\right]$, which implies $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\imposs$.
 
-After we explained why there is no $\delta$-deterministic QIVPMs
-for $\delta<\frac{1}{3}$, we are going to explain the physical meaning
-of $\delta$-deterministic, and understand the transition from $\delta<\frac{1}{3}$
-to $\delta\ge\frac{1}{3}$.
+\section{Mermin-Peres ``Magic Square''}
 
-\section{Physical Meaning of \texorpdfstring{$\delta$}{δ}-Determinism}
+In our response, we provide an example to show that if enough experimental
+records are missing, there exists a probability measure consistent
+with the experimental records even if the presented experimental records
+are always the same. In this section, we want to provide a similar
+example on the Mermin-Peres ''Magic Square''. We consider a two
+spin-$\frac{1}{2}$ Hilbert space $\Hilb=\Hilb_{1}\otimes\Hilb_{2}$
+of dimension $d=4$. We use the same nine observables $\mathbf{O}_{ij}$
+with $i$ and $j$ ranging over $\{0,1,2\}$ from the Mermin-Peres
+``magic square'' used to prove the Kochen-Specker theorem~\cite{Mermin1990Simple,peres1995quantum,Griffiths2003}:
 
-Since the definition of QIVPMs is a generalization of both classical
-IVPMs and conventional quantum probability measures, the meaning of
-$\delta$-determinism can be explained better when we consider $\delta$-deterministic
-classical IVPMs.
 
-\begin{definition}[$\delta$-Determinism for classical IVPMs]\label{def:delta-deterministic-classical}
-Given a classical IVPM~$\bar{\mu}:\eventsC\rightarrow\mathscr{I}$,
-where $\eventsC$ is the set of mutually commuting events. Then, $\bar{\mu}$
-is $\delta$-deterministic if, for every event $P\in\events'$, we
-have either $\bar{\mu}\left(P\right)\subseteq\left[0,\delta\right]$
-or $\bar{\mu}\left(P\right)\subseteq\left[1-\delta,1\right]$. \end{definition}
+{{\renewcommand{\arraystretch}{2}% 
+\begin{center} 
+\begin{tabular}{r|@{\quad}c@{\quad}|@{\quad}c@{\quad}|@{\quad}c@{\quad}|} 
+$\mathbf{O}_{ij}$~ & $j=0$ & $j=1$ & $j=2$ \\ 
+\hline  
+$i=0~$ & $\mathbb{1}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\mathbb{1}$  & $\sigma_{z}\otimes\sigma_{z}$ \tabularnewline 
+\hline  
+$i=1~$ & $\sigma_{x}\otimes\mathbb{1}$  & $\mathbb{1}\otimes\sigma_{x}$  & $\sigma_{x}\otimes\sigma_{x}$ \tabularnewline 
+\hline  
+$i=2~$ & $\sigma_{x}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\sigma_{x}$  & $\sigma_{y}\otimes\sigma_{y}$ \tabularnewline 
+\hline  
+\end{tabular}\,.
+\par\end{center} 
+}
 
-\begin{table}
-\noindent \centering{}\caption{\label{tab:classical-IVPMs}Examples of $\delta$-deterministic classical
-IVPMs $\bar{\mu}_{A}$ and $\bar{\mu}_{B}$ on commuting events $P$.}
+\noindent The observables are constructed using the Pauli matrices
+$\left\{ \mathbb{1},\sigma_{x},\sigma_{y},\sigma_{z}\right\} $ whose
+eigenvalues are all either~$1$ or $-1$ \cite{Redhead1987-REDINA,544199,Griffiths2003,Jaeger2007,Mermin2007}.
+They are arranged such that in each row and column, \emph{except the
+column $j=2$}, every observable is the product of the other two.
+In the $j=2$ column, we have instead that $\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$.
+
+Assume we measure these observables twice. By the Kochen-Specker theorem,
+the following measurement results is impossible because the number
+of expectation values in the $j=2$ column is odd.
+\begin{center}
 \begin{tabular}{ccc}
 \toprule 
 \addlinespace
-$P$  & $\bar{\mu}_{A}(P)$  & $\bar{\mu}_{B}(P)$ \tabularnewline
+$\mathbf{O}_{ij}$  & Trial~0 & Trial~1\tabularnewline
 \midrule
 \midrule 
 \addlinespace
-$\mathbb{0}$  & $\imposs$  & $\imposs$ \tabularnewline
+$\mathbf{O}_{00}$ , $\mathbf{O}_{01}$, $\mathbf{O}_{10}$ , $\mathbf{O}_{11}$  & $-1$ & $-1$\tabularnewline
 \midrule 
 \addlinespace
-$\proj{0}$  & $\necess$  & $\left[\frac{3}{4},\frac{4}{5}\right]$ \tabularnewline
-\midrule 
-\addlinespace
-$\proj{1}$  & $\imposs$  & $\left[\frac{1}{5},\frac{1}{4}\right]$ \tabularnewline
-\midrule 
-\addlinespace
-$\mathbb{1}$  & $\necess$  & $\necess$ \tabularnewline
+$\mathbf{O}_{02}$ , $\mathbf{O}_{12}$ , $\mathbf{O}_{20}$ , $\mathbf{O}_{21}$
+, $\mathbf{O}_{22}$  & $1$ & $1$\tabularnewline
 \bottomrule
 \end{tabular}
-\end{table}
+\par\end{center}
 
-\noindent It is easy to construct $\delta$-deterministic classical
-IVPMs $\bar{\mu}_{A}$ and $\bar{\mu}_{B}$ defined in Table~\ref{tab:classical-IVPMs},
-where $\proj{0}$ and $\proj{1}$ represents heads and tails in coin-tossing,
-respectively. The interpretation for $\bar{\mu}_{A}$ is that we have
-a double-headed coin that always comes up heads. For $\bar{\mu}_{B}$,
-the interpretation is that we throw a coin $1000$ times and we observe
-$750$ heads and $200$ tails and the coin falls under the couch $50$
-times. For $\bar{\mu}_{A}$, $\delta$ is $0$; for $\bar{\mu}_{B}$,
-$\delta=\frac{1}{4}$, and $\delta$ qualifies how close a coin is
-to double-headed (or double-tailed), which we can certainly know the
-outcome of a coin even before tossing. We see here that we can construct
-$0$-deterministic as well as $\frac{1}{4}$-deterministic and in
-fact for any $\delta$ in the range $\left[0,1\right]$ we can construct
-a $\delta$-deterministic classical probability measure. BUT the situation
-changes in the quantum case, WE CANNOT construct $\delta$-deterministic
-probability measures for $\delta<\frac{1}{3}$.
-
-\section{Why a \texorpdfstring{$\frac{1}{3}$}{⅓}-deterministic QIVPM exists?}
-
-\begin{table}
-\noindent \centering{}\caption{\label{tab:classical-IVPMs-results}A sample experimental record for
-a classical experiment with three possible outcomes $\proj{0}$, $\proj{1}$,
-and $\proj{2}$. A event can be happened ($\happen$) or not happened
-($\notHappen$), and the experimental results could be summarized
-by a $0$-deterministic classical IVPM~$\bar{\mu}_{\ref{tab:classical-IVPMs-results}}$.}
-\begin{tabular}{ccccc}
+However, if half of the records are missing, i.e., $\delta=\frac{1}{2}$,
+we might get the following measurement results, where $\missing$
+stands for missing data.
+\begin{center}
+\begin{tabular}{cccc}
 \toprule 
 \addlinespace
-$P$  & Trial~0 & Trial~1 & Trial~2 & $\bar{\mu}_{\ref{tab:classical-IVPMs-results}}(P)$\tabularnewline
-\midrule
-\midrule 
-\addlinespace
-$\mathbb{0}$  & $\notHappen$ & $\notHappen$ & $\notHappen$ & $\imposs$\tabularnewline
-\midrule 
-\addlinespace
-$\proj{0}$  & $\notHappen$ & $\notHappen$ & $\notHappen$ & $\imposs$\tabularnewline
-\midrule 
-\addlinespace
-$\proj{1}$  & $\notHappen$ & $\notHappen$ & $\notHappen$ & $\imposs$\tabularnewline
-\midrule 
-\addlinespace
-$\proj{2}$ & $\happen$ & $\happen$ & $\happen$ & $\necess$\tabularnewline
-\midrule 
-\addlinespace
-$\mathbb{1}-\proj{0}$  & $\happen$ & $\happen$ & $\happen$ & $\necess$\tabularnewline
-\midrule 
-\addlinespace
-$\mathbb{1}-\proj{1}$  & $\happen$ & $\happen$ & $\happen$ & $\necess$\tabularnewline
-\midrule 
-\addlinespace
-$\mathbb{1}-\proj{2}$ & $\notHappen$ & $\notHappen$ & $\notHappen$ & $\imposs$\tabularnewline
-\midrule 
-\addlinespace
-$\mathbb{1}$  & $\happen$ & $\happen$ & $\happen$ & $\necess$\tabularnewline
-\bottomrule
-\end{tabular}
-\end{table}
-Sample experimental results with three possible outcomes $\proj{0}$,
-$\proj{1}$, and $\proj{2}$ are listed in Table~\ref{tab:classical-IVPMs-results}.
-Because the results of every event are always the same, they could
-be summarized to a $0$-deterministic classical IVPM~$\bar{\mu}_{\ref{tab:classical-IVPMs-results}}$.
-Given any Hilbert space of dimension~$d\ge3$, the Kochen-Specker
-theorem asserts that we cannot have a table where every event always
-has the same result~\cite{THOS2017}. 
-\begin{table}
-\noindent \centering{}\caption{\label{tab:quantum-IVPMs-results}A sample inconsistent experimental
-record for a quantum experiment on a three-dimensional Hilbert space,
-where $\proj{\psi}$ is any one-dimensional projector, and $\mathbb{1}-\proj{\psi}$
-is any two-dimensional projector. A event can be happened ($\happen$)
-or not happened ($\notHappen$), but $\bar{\mu}_{\ref{tab:quantum-IVPMs-results}}$
-that summarizes the experimental results is not a QIVPM.}
-\begin{tabular}{ccccc}
-\toprule 
-\addlinespace
-$P$  & Trial~0 & Trial~1 & Trial~2 & $\bar{\mu}_{\ref{tab:quantum-IVPMs-results}}(P)$\tabularnewline
-\midrule
-\midrule 
-\addlinespace
-$\mathbb{0}$  & $\notHappen$ & $\notHappen$ & $\notHappen$ & $\imposs$\tabularnewline
-\midrule 
-\addlinespace
-$\proj{\psi}$  & $\notHappen$ & $\notHappen$ & $\notHappen$ & $\imposs$\tabularnewline
-\midrule 
-\addlinespace
-$\mathbb{1}-\proj{\psi}$  & $\happen$ & $\happen$ & $\happen$ & $\necess$\tabularnewline
-\midrule 
-\addlinespace
-$\mathbb{1}$  & $\happen$ & $\happen$ & $\happen$ & $\necess$\tabularnewline
-\bottomrule
-\end{tabular}
-\end{table}
-For example, Table~\ref{tab:quantum-IVPMs-results} doesn't give
-coherent experimental results, and cannot be summarized as a QIVPM
-because given any two distinct one-dimensional projectors $P_{0}$
-and $P_{1}$, 
-\begin{equation}
-\begin{aligned} & \bar{\mu}_{\ref{tab:quantum-IVPMs-results}}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\bar{\mu}_{\ref{tab:quantum-IVPMs-results}}\left(P_{0}P_{1}\right)=\necess\\
-\nsubseteq{} & \imposs=\bar{\mu}_{\ref{tab:quantum-IVPMs-results}}\left(P_{0}\right)+\bar{\mu}_{\ref{tab:quantum-IVPMs-results}}\left(P_{1}\right)\,.
+$\mathbf{O}_{ij}$  & Trial~0 & Trial~1 & $\begin{aligned} & \textrm{Missing Record}\\
+ & \textrm{Might Be}
 \end{aligned}
-\end{equation}
-
-\begin{table}
-\noindent \centering{}\caption{\label{tab:quantum-IVPMs-missing}A sample experimental record for
-a quantum experiment on a three-dimensional Hilbert space with some
-records missing. Now a event can be happened ($\happen$), not happened
-($\notHappen$), or missing ($\missing$), and $\proj{\psi_{i}}$
-is any one-dimensional projector with Trial~$i$ missing, and $\mathbb{1}-\proj{\psi_{i}}$
-is any two-dimensional projector with Trial~$i$ missing. Although
-$\bar{\mu}_{\ref{tab:quantum-IVPMs-missing}}$ which summarizes the
-experimental results is not directly a QIVPM, the whole records might
-come from coherent experimental results with a QIVPM $\bar{\mu}_{\ref{tab:quantum-IVPMs-missing}}'$.}
-\begin{tabular}{cccccc}
-\toprule 
-\addlinespace
-$P$  & Trial~0 & Trial~1 & Trial~2 & $\bar{\mu}_{\ref{tab:quantum-IVPMs-missing}}(P)$ & $\bar{\mu}_{\ref{tab:quantum-IVPMs-missing}}'(P)$\tabularnewline
+$\tabularnewline
 \midrule
 \midrule 
 \addlinespace
-$\mathbb{0}$  & $\notHappen$ & $\notHappen$ & $\notHappen$ & $\imposs$ & $\imposs$\tabularnewline
+$\mathbf{O}_{00}$, $\mathbf{O}_{11}$ & $-1$ & $\missing$ & $1$\tabularnewline
 \midrule 
 \addlinespace
-$\proj{\psi_{0}}$  & $\missing$ & $\notHappen$ & $\notHappen$ & $\left[0,\frac{1}{3}\right]$ & $\left[\frac{1}{3},\frac{1}{3}\right]$\tabularnewline
+$\mathbf{O}_{01}$ , $\mathbf{O}_{10}$  & $\missing$ & $-1$ & $1$\tabularnewline
 \midrule 
 \addlinespace
-$\proj{\psi_{1}}$  & $\notHappen$ & $\missing$ & $\notHappen$ & $\left[0,\frac{1}{3}\right]$ & $\left[\frac{1}{3},\frac{1}{3}\right]$\tabularnewline
+$\mathbf{O}_{02}$ , $\mathbf{O}_{20}$ , $\mathbf{O}_{22}$  & $1$ & $\missing$ & $-1$\tabularnewline
 \midrule 
 \addlinespace
-$\proj{\psi_{2}}$  & $\notHappen$ & $\notHappen$ & $\missing$ & $\left[0,\frac{1}{3}\right]$ & $\left[\frac{1}{3},\frac{1}{3}\right]$\tabularnewline
-\midrule 
-\addlinespace
-$\mathbb{1}-\proj{\psi_{0}}$  & $\missing$ & $\happen$ & $\happen$ & $\left[\frac{2}{3},1\right]$ & $\left[\frac{2}{3},\frac{2}{3}\right]$\tabularnewline
-\midrule 
-\addlinespace
-$\mathbb{1}-\proj{\psi_{1}}$  & $\happen$ & $\missing$ & $\happen$ & $\left[\frac{2}{3},1\right]$ & $\left[\frac{2}{3},\frac{2}{3}\right]$\tabularnewline
-\midrule 
-\addlinespace
-$\mathbb{1}-\proj{\psi_{2}}$  & $\happen$ & $\happen$ & $\missing$ & $\left[\frac{2}{3},1\right]$ & $\left[\frac{2}{3},\frac{2}{3}\right]$\tabularnewline
-\midrule 
-\addlinespace
-$\mathbb{1}$  & $\happen$ & $\happen$ & $\happen$ & $\necess$ & $\necess$\tabularnewline
+$\mathbf{O}_{12}$ , $\mathbf{O}_{21}$  & $\missing$ & $1$ & $-1$\tabularnewline
 \bottomrule
 \end{tabular}
-\end{table}
-If $\frac{1}{3}$ of records in Table~\ref{tab:quantum-IVPMs-results}
-is missing, we will have a record as in Table~\ref{tab:quantum-IVPMs-missing},
-whose results cannot be directly summarized as a QIVPM. However, because
-a missing record could come from either happened or not happened,
-if every missing record for one-dimensional projectors come from happened,
-and every missing record for two-dimensional projectors come from
-not happened, then the experimental results can be summarized as a
-QIVPM $\bar{\mu}_{\ref{tab:quantum-IVPMs-missing}}'$.
+\par\end{center}
+
+Since the experimental results are missing, it might come form the
+third column. In this kind of situation, the expectation values of
+each observables are always $0$, and the product relations among
+these the expectation values must be consistent with the the product
+relations among observables.
+
+Notice that we need more experimental results when considering the
+Mermin-Peres ``magic square'' example. The reason is that in a four-dimensional
+Hilbert space, we know a $\frac{1}{2}$-deterministic QIVPMs, but
+we don't know whether there exists a $\delta$-deterministic QIVPM
+for $\frac{1}{3}<\delta\le\frac{1}{2}$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliography{prop}
