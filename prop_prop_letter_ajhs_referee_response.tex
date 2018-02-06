@@ -120,56 +120,114 @@ Indiana 47405, USA}
 \maketitle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Finite-precision Extension of the Kochen-Specker Theorem}
+In our QIVPM framework, the Kochen-Specker (KS) theorem is equivalent
+to stating that there does not exist a ($\delta=$)$0$-deterministic
+QIVPM. We further claim that there cannot exist any $\delta$-deterministic
+QIVPM for $\delta<\frac{1}{3}$ and that there exist QIVPMs for every
+$\delta\ge\frac{1}{3}$.
 
-\begin{thm}[Finite-precision Extension of the Kochen-Specker Theorem]
-\label{cor:Kochen-Specker-IVPM} Given a Hilbert space $\Hilb$ of
-dimension~$d\ge3$, there is no $\delta$-deterministic QIVPM for
-$\delta<\frac{1}{3}$.\end{thm}
+The referee questions the correctness of the theorem and the physical
+interpretation of $\delta$-determinism. In answer to the question
+of correctness we attach the complete proof of our theorem which we
+verified again. In the next paragraphs, we explain the physical interpretation
+of $\delta$-determinism and provide examples that illustrate why
+$\frac{1}{3}$ is special.
 
-The proof is by contradiction: Suppose there is a $\delta$-deterministic
-QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$. Now use this assumed
-QIVPM to construct the following $0$-deterministic QIVPM $\bar{\mu}^{\textrm{D}}:\events\rightarrow\left\{ \imposs,\necess\right\} $:
+We understand that the argument against $\delta$-determinism by the
+referee assumes that the parameter $\delta$ is \emph{exclusively}
+related to the density of points (states) defined in a general Hilbert
+space. This is indeed Meyer's great insight and main assumption in
+his proof about the field of rationals nullifying the KS theorem.
+In other words, Meyer attributes finite-precision errors to the description
+of the states. We, however, make no particular assumptions about the
+description of the states, and attribute finite-precision errors to
+the measurement process itself as realized in a laboratory. In our
+framework, the parameter $\delta$ reflects insufficient knowledge
+of the experimenter which could be due to a variety of reasons related
+to imperfections of devices. A typical question that an experimenter
+may not be able to answer accurately would be \char`\"{}did an electron
+land to the left or to the right of the screen\char`\"{}? There are
+cases in which the electron would land too close to the middle of
+the screen for the experimenter to be able to determine with certainty
+if that is closer to the left or the right. That imprecision might
+be modeled by limiting the description of the quantum states to rational
+points but we do not make this assumption. We simply record this imprecision
+in the probability we assign to events and use the axioms of probability
+theory (additivity, etc) to argue that a sharp transition occurs when
+the imprecisions reach a certain value. 
+
+The following argument shows a concrete but simplified situation which
+explains the physical significance of the parameter $\delta$. We
+then follow this explanation by providing experimental results for
+a three-dimensional quantum system which cannot be described by any
+$\delta$-deterministic QIVPM for $\delta<\frac{1}{3}$ but can be
+described by a $\frac{1}{3}$-deterministic QIVPM.
+
+The meaning of $\delta$: To determine the probability of any event,
+we typically repeat an experiment $n$ times and count the number
+of times we witness the event. This assumes that for each run of the
+experiment we can determine, using our apparatuses, whether the event
+occurred or not. Assume an event has an ideal mathematical probability
+of $0$, and we repeat the experiment $100$ times. In a perfect world
+we should be able to refute the event $100$ times and calculate that
+the probability is $0$. We might also observe the event $2$ times
+and refute it $98$ times and therefore calculate the probability
+to be $0.02$. This situation still assumes perfect measurement conditions
+however. The question we focus on is what happens if we are only able
+to refute it $97$ times and are uncertain $3$ times? This is quite
+common in actual experiments. Mathematically we can model this idea
+by stating that the probability of the event is in the range $\left[0,0.03\right]$
+which says that the probability of the event could be $0$, $0.01$,
+$0.02$, or $0.03$ as each the three missing records could either
+be evidence for the event or against it. We just can't nail it down
+given the current experimental results and therefore use a $\delta=0.03$-deterministic
+probability measure. The interesting observation is that the axioms
+of probability theory (like additivity and convexity) impose enough
+constraints on the structure of probability measures that make them
+robust in the face of small $\delta$s.
+
+To see this in detail, consider a three-dimensional Hilbert space
+and an experiment repeated $12$ times. By the KS theorem, it is impossible
+to build a probability measure that maps every projection to either
+$0=\frac{0}{12}$ or $1=\frac{12}{12}$. Now consider what happens
+if $\frac{1}{4}$ of the data for every one-dimensional projector~$P$
+is missing yielding the following probability measure as a possible
+formalization:
+
 \begin{equation}
-\bar{\mu}^{\textrm{D}}\left(P\right)=\begin{cases}
-\imposs\,, & \textrm{ if }\bar{\mu}\left(P\right)\subseteq\left[0,\delta\right]\:;\\
-\necess\,, & \textrm{ if }\bar{\mu}\left(P\right)\subseteq\left[1-\delta,1\right]\:.
-\end{cases}
+\begin{aligned}\mu\left(\mathbb{0}\right) & =\imposs & \mu\left(\mathbb{1}\right) & =\necess\\
+\mu\left(P\right) & =\left[0,\tfrac{1}{4}\right] & \mu\left(\mathbb{1}-P\right) & =\left[\tfrac{3}{4},1\right]
+\end{aligned}
 \end{equation}
-However, since we know that $0$-deterministic QIVPMs do not exist,
-the map $\bar{\mu}^{\textrm{D}}$ cannot exist and hence $\bar{\mu}$
-does not exist. It remains to verify that $\bar{\mu}^{\textrm{D}}$
-is indeed a QIVPM by checking that for orthogonal projectors $P_{0}$
-and~$P_{1}$, 
+Indeed for every one-dimensional projector, the missing data could
+either refute or support the associated event. This measure does not
+satisfy the axioms of probability measures and cannot be extended
+to any valid QIVPM. In particular for any two one-dimensional events
+$P_{0}$ and $P_{1}$, we have $\mu\left(P_{0}\right)+\mu\left(P_{1}\right)=\left[0,\tfrac{1}{2}\right]$
+but $\mu\left(P_{0}+P_{1}\right)=\left[\tfrac{3}{4},1\right]$ because
+the latter is a two-dimensional event. This violates the condition
+that $\mu\left(P_{0}+P_{1}\right)$ is a subset of $\mu\left(P_{0}\right)+\mu\left(P_{1}\right)$.
+
+The situation changes sharply if the missing data reaches $\frac{1}{3}$,
+which gives the following probability measure as a possible formalization:
+
 \begin{equation}
-\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\bar{\mu}^{\textrm{D}}\left(P_{0}\right)+\bar{\mu}^{\textrm{D}}\left(P_{1}\right)\,,\label{eq:QuantumInterval-valuedProbability-Equal}
+\begin{aligned}\mu\left(\mathbb{0}\right) & =\imposs & \mu\left(\mathbb{1}\right) & =\necess\\
+\mu\left(P\right) & =\left[0,\tfrac{1}{3}\right] & \mu\left(\mathbb{1}-P\right) & =\left[\tfrac{2}{3},1\right]
+\end{aligned}
 \end{equation}
-because Eq.~(\ref{eq:QuantumInterval-valuedProbability-Equal}) implies
-the convexity condition.
+This is not a valid probability measure for the same argument as above.
+However, it might be the case that the missing data for one-dimensional
+projectors always support the associated event while those for two-dimensional
+projectors always refute the event. In this case, the same experimental
+data is consistent with the following probability measure:
 
-When one of $\bar{\mu}^{\textrm{D}}\left(P_{0}\right)$ and $\bar{\mu}^{\textrm{D}}\left(P_{1}\right)$
-is $\necess$, say $\bar{\mu}^{\textrm{D}}\left(P_{0}\right)=\necess$
-and $\bar{\mu}^{\textrm{D}}\left(P_{1}\right)=\imposs$, we have $\bar{\mu}\left(P_{0}\right)\subseteq\left[1-\delta,1\right]$
-and $\bar{\mu}\left(P_{1}\right)\subseteq\left[0,\delta\right]$ which
-implies $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[1-\delta,1+\delta\right]$.
-Since $\bar{\mu}\left(P_{0}+P_{1}\right)$ is a subset of $\left[0,1\right]$,
-$\bar{\mu}\left(P_{0}+P_{1}\right)$ must be a subset of $\left[1-\delta,1\right]$,
-which implies $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\necess$.
-
-\begin{figure*}
-\includegraphics[bb=50bp 100bp 900bp 300bp,clip,scale=0.5]{prop_prop_letter_ajhs_referee_response_pptx}\caption{\label{fig:Show-subset}Since $\bar{\mu}\left(P_{0}+P_{1}\right)$
-and $\left[1-\delta,1\right]$ are disjoint, $\bar{\mu}\left(P_{0}+P_{1}\right)$
-is a subset of $\left[0,\delta\right]$.}
-\end{figure*}
-When $\bar{\mu}^{\textrm{D}}\left(P_{0}\right)=\bar{\mu}^{\textrm{D}}\left(P_{1}\right)=\imposs$,
-we have both $\bar{\mu}\left(P_{0}\right)$ and $\bar{\mu}\left(P_{1}\right)\subseteq\left[0,\delta\right]$
-which implies $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[0,2\delta\right]$.
-Since $\bar{\mu}\left(P_{0}+P_{1}\right)$ is a subset of either $\left[0,\delta\right]$
-or $\left[1-\delta,1\right]$ and the latter is excluded as illustrated
-in Fig.~\ref{fig:Show-subset} , then $\bar{\mu}\left(P_{0}+P_{1}\right)$
-must be a subset of $\left[0,\delta\right]$, which implies $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\imposs$.
-
-\section{Mermin-Peres ``Magic Square''}
+\begin{equation}
+\begin{aligned}\mu\left(\mathbb{0}\right) & =\imposs & \mu\left(\mathbb{1}\right) & =\necess\\
+\mu\left(P\right) & =\left[\tfrac{1}{3},\tfrac{1}{3}\right] & \mu\left(\mathbb{1}-P\right) & =\left[\tfrac{2}{3},\tfrac{2}{3}\right]
+\end{aligned}
+\end{equation}
+which can be easily verified to be a valid QIVPM.
 
 In our response, we provide an example to show that if enough experimental
 records are missing, there exists a probability measure consistent
