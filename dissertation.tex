@@ -8,31 +8,36 @@
 \DeclareUnicodeCharacter{00A0}{~}
 \usepackage{mmap}
 \usepackage{comment}
+%\usepackage[basic]{complexity}
+\newcommand{\lang}[1]{{\ensuremath{\mathsf{#1}}}}
+\newcommand{\newlang}[2]{\newcommand{#1}{\lang{#2}}}
+\newlang{\usat}{UNIQUE-SAT}
+\usepackage[all]{xy}
+\usepackage{framed}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[braket,qm]{qcircuit}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+
+\newcommand{\says}[3]{\begin{framed}\begin{minipage}{0.9\linewidth}\color{#1}{#2 says: #3}\end{minipage}\end{framed}}
+\newcommand{\yutsung}[1]{\says{purple}{Yu-Tsung}{#1}}
+\newcommand{\muB}{\ensuremath{\mu^{B}}}
+\newcommand{\events}{\ensuremath{\mathcal{E}}}
+\newcommand{\set}[2]{\ensuremath{\left\{ {#1}\mathrel{}\middle|\mathrel{}{#2}\right\} }}
+
 
 \begin{document}
 %data for Title Page
-\begin{comment}
-\title{Dissertation Title}
-\author{Author}
-\date{Completion Date}
-\end{comment}
 \title{Discrete Quantum Theories and Computing}
 \author{Yu-Tsung Tai}
 \date{\today}
-\maketitle
+\maketitle[Department of Mathematics][Department of Computer Science]
 
 %data for Acceptance Page
-\committeechair{Committee Chair}
-\readertwo{2nd Reader}
-\readerthree{3rd Reader}
-\readerfour{4th Reader}
 \defensedate{Defense Date}
-\acceptancepage
+\acceptancepage{Prof. Amr A. Sabry}{Prof. Dylan Paul Thurston}{Prof. Gerardo Ortiz}{Prof. Andrew J. Hanson}[Prof. Shouhong Wang]
 
 %data for Copyright Page
-\begin{comment}
-\cryear{Current Year}
-\end{comment}
 \cryear{2018}
 \copyrightpage
 
@@ -50,15 +55,6 @@ provided funding, your typist, or anyone else who helped.
 %\end{preface}
 
 \begin{abstract}
-\begin{comment}
- The abstract is double-spaced and limited to 350 words. As many people will learn about
-your work through your abstract published in Dissertation Abstracts (http://proquest.umi.com/login),
-you should spend a good bit of effort in the composition of both the abstract and the title of your work.
-Try to convey the flavor of your work, not just the bare bones of your findings; in an average abstract
-there will be about 70 characters per line with a maximum of 35 lines. You should also work to phrase your
-title so that it truly describes the contents and will be easily found in the index of Dissertation Abstracts.
-The index is based on key words, so be as specific as you can be about your subject.
-\end{comment}
 Our primary research interest is to build a quantum computing model
 characterizing realistic quantum computers. While most of the quantum
 computing models based on uncomputable numbers, that is, the continuum
@@ -70,221 +66,214 @@ finite fields. Although we have fruitful results on their geometric
 implications and computing powers, their probability models are still
 not completely satisfactory. To address this issue, we further exploited
 quantum interval-valued probability, and proved an imprecise version
-of foundational results such as the Gleason and Kochen-Specker theorems.
+of foundational results such as the Gleason and Kochen-Specker theorems. 
 \end{abstract}
+\tableofcontents{}
 
-\tableofcontents
+\chapter{Introduction}
 
-\chapter{Documentation}
+Before diving into quantum computing, it is instructive to review
+two kinds of classical computers: digital and analog. Although discrete
+digital computers could be modeled by various computational models,
+including Turing machines~\cite{Turing_1937}, these models are essentially
+the same by the (strong) Church-Turing thesis \cite{Church_1936,Turing_1937,Kleene_1943}.
+Moreover, any Turing-computable function could be carried out by a
+digital computer as long as it has enough resources~\cite{Piccinini2015}.
+In contrast, there are various idealized real computation models \cite{Siegelmann1998,Ziegler2007,weihrauch2012computable,blum2012complexity}.
+Although these models are usually more powerful than discrete Turing
+machines, their computational powers might not be realized by realistic
+analog chips and computers, and the realized analog computational
+devices are mostly chips embedded in our digital computers to communicate
+with non-computational analog devices~\cite{Camenzind2005}. Currently
+most of the quantum computing models based on the continuum of real
+numbers. Similar to the development classical computers, the computational
+power of realistic quantum computers might not be the same as predicted
+by current quantum computing models. When developing realistic quantum
+computers or estimating the computational powers of realistic quantum
+computers, it might also be helpful to study discrete quantum computing
+models.
 
-This pdf doubles as documentation for the iuphd.cls file, and as a sample for the output.
-The iuphd class is based on the standard \LaTeX \ report class, and as such you may assume that it follows
-the default formatting of the report class unless otherwise specified below.  The
-changes to the report class include the following:
+Despite the history of computation, when replacing the continuum of
+complex and real numbers by the discrete finite fields and finite
+number of intervals, we show how a number of subtle properties of
+quantum computing can be teased apart, step by step, as we explore
+the implications of \emph{discrete quantum theories} in a systematic
+fashion. In particular, on different discrete quantum theories, we
+will present how geometrical structure of states and quantum probability
+could be, and how these mathematical structures affect the power of
+discrete quantum computing. 
 
-\begin{itemize}
- \item changes to the default settings for margins, font size (11pt), spacing (double), and pagination,
- \item the quote, quotation, and verse environments have been changed to switch temporarily to single spacing, and
-       remove the extra space at the top and bottom,
- \item the enumerate and itemize environments have been changed to remove extra space between the items and at the
-       top and bottom,
- \item a line has been added to prevent the double spacing from affecting arrays,
- \item both numbered and unnumbered chapter headings are now centered by default,
- \item heading names such as CHAPTER, and BIBLIOGRAPHY are now all caps by default regardless of how they are typed,
- \emph{(This is accomplished with the help of textcase.sty.  Not all latex distributions come with this by default.)}
- \item changes to the definitions of \textbackslash maketitle and the `abstract' environment,
- \item the addition of commands for creating the acceptance page and copyright page,
- \item the addition of the `acknowledgments', `preface', and `dedication' environments,
- \item the addition of macros for specifying the department or school name, the names of
- the committee members, the defense date, and the copyright year,
- \item document class options for changing ``Department'' to ``School'' on the title page, and for showing
- the abstract, preface, acknowledgments, or dedication in the table of contents.
-\end{itemize}
+\chapter{Conventional Quantum Theory}
 
-The appropriate commands for using these features are already typed into the dissertation.tex sample file,
-with the optional items (dedication, preface, and copyright) commented out.  Simply remove the \% from the front
-of these optional commands if you wish to use them.  The headings for the acknowledgments, preface, and dedication have
-been defined as unnumbered chapter headings, which means they will not show up in the table of contents by default.
-See the instructions below for adding them to the table of contents if desired.
+\section{Geometrical Structure of States}
 
-\section{Current Standards at IU}
-The current version of iuphd.cls complies with the standards of formatting a dissertation at IU as of 2013.  Below is a discussion of
-some of the main points.
+An $n$-qubit pure state in the conventional quantum theory (CQT)
+is represented as a vector in the $2^{n}$-dimensional Hilbert space.
+If we eliminate all symmetries, an irreducible state is actually a
+point in the projective Hilbert space \cite{MosseriDandoloff2001,Jaeger2007}
+also known as the complex projective space~$\mathbb{CP}^{2^{n}-1}$
+\cite{Hatcher2001,Bengtsson2007}. These irreducible quantum states
+can also be classified as product states and entangled states, and
+the latter one plays the essential role for pure-state algorithms
+\cite{Mermin2007,Jaeger2007}.
 
-The current pagination standard is for the page number to appear centered at the top or bottom of the
-page, and to use lowercase roman numerals for the material preceding the first chapter with the title page unnumbered but counting as
-page one. The only part of this that is not standard in the \LaTeX \ report class is the use of roman numerals, which was accomplished
-by changing the definitions to \textbackslash maketitle and \textbackslash tableofcontents.
+\section{Quantum Probability}
 
-The current standard for chapter headings seems to be that they are centered and in all caps.  The iuphd.cls enforces these
-conventions automatically, however it is possible to override these changes with titlesec and titletoc. Because the textcase package is used,
-the capitalization is not affected in math mode, so for instance
-\medskip
+Given a pure state~$\ket{\phi}$, when we measure an observable represented
+by an Hermitian matrix~$\mathbf{O}$, the measurement result is one
+of the eigenvalues of $\mathbf{O}$. The probability of getting a
+particular eigenvalue~$\lambda$ is $\melem{\phi}{P}{\phi}$, where
+$P$ is the projection operator onto the eigenspace of $\lambda$.
+This rule of computing the probability is called the Born rule \cite{Born1983,Mermin2007,Jaeger2007},
+which is used when we want to extract information from a quantum computer.
+For any mixed state~$\rho$, the generalized Born rule induces a
+conventional quantum probability measure $\muB_{\rho}:\events\rightarrow[0,1]$,
+where $\events$ is the set of all projection operators on a given
+Hilbert space. Conversely, any quantum probability measure $\mu:\events\rightarrow[0,1]$
+can be induced from a mixed state $\rho$ in the Hilbert space of
+dimension $d\ge3$ according to Gleason's theorem \cite{gleason1957,Redhead1987-REDINA,peres1995quantum,RichmanBridges1999,Hamhalter2013}.
+In another word, this state $\rho$ is the unique state consistent
+with any given quantum probability measure.
 
-\textbackslash section\{\$p\$-adic numbers\}
-\medskip
+\chapter{Quantum Theories and Computing over Finite Fields}
 
-\noindent will give the output ``$p$-ADIC NUMBERS'' in both the section heading and in the table of contents
-(unless the value of \textbackslash tocdepth is changed to prevent sections from being listed in the table of contents).
-Since all caps takes up more space horizontally than mixed upper and lowecase text, the size of the chapter headings
-has been reduced to \textbackslash LARGE from \textbackslash huge.  However, no changes have been made to the size of any of the
-other headings in the report class.
+\section{Modal Quantum Theory and Computing}
 
-Most dissertations are one-sided, with an additional half inch added to the left hand margin on each page for the purpose of binding.
-Although this is the standard, they do allow for the possibility of two-sided printing, which would cause the side with the extra margin
-to alternate for binding.  This is automatically enforced simply by using the twoside option (a feature already built into the
-standard report class). This is done as follows:
-\medskip
+Our first discrete model replaces the complex numbers by a unrestricted
+finite field~$\mathbb{F}_{q}$ \cite{Schumacher2012-SCHMQT,DQT2014,SchumacherWestmoreland2010}.
+In this model, an $n$-qubit state is a non-zero vector in $\mathbb{F}_{q}^{2^{n}}$.
+When we measure a given state~$\ket{\phi}$, an observable is replaced
+by a basis~$\mathcal{B}$ of $\mathbb{F}_{q}^{2^{n}}$. Since $\ket{\phi}$
+can be represented by the summation across a unique subset~$\mathcal{S}$
+of the basis~$\mathcal{B}$, whether it is possible or impossible
+to measure a basis vector~$\ket{i}$ depends on whether $\ket{i}$
+is in $\mathcal{S}$ or not. Because this model only predicts whether
+a result is possible or impossible, it is called the modal quantum
+theory. Its computational model, called the modal quantum computing,
+is far from conventional quantum computing. Although modal quantum
+computing can express simple algorithms such as quantum teleportation
+\cite{BennettBrassardEtAl1993,peres1995quantum,Mermin2007,Jaeger2007},
+it is so weak that it cannot express Deutsch's algorithm \cite{Deutsch1985,Mermin2007}.
+This quantum theory is, however, also so powerful that it can be used
+to solve an unstructured database search of size $N$ using $O(\log(N))$
+steps, which outperforms the known asymptotic bound $O(\sqrt{N})$
+in conventional quantum computing \cite{Grover:1996:FQM:237814.237866,BennettBernsteinBrassardVazirani1997,Mermin2007,Jaeger2007}.
 
-\textbackslash documentclass[twoside]\{iuphd\}
-\medskip
+\section{Discrete Quantum Theory and Computing (I)}
 
-There does not seem to be a standard about whether the abstract, preface, acknowledgments, and dedication are listed in the table of
-contents (TOC) or not.  As such, an option has been provided for including or excluding each one individually.  The syntax for these options
-follows the pattern `showX' if X is to be listed in the TOC, and 'hideX' if X is to be omitted from the TOC, where X can be any of the four
-items listed above.  In all cases, the default is for these \emph{not} to have entries in the table of contents.  So for example, to include
-both the abstract and the preface in the table of contents, but not the dedication or acknowledgments, you would use the code:
-\medskip
+Our second model called discrete quantum theory (I) considers only
+finite fields of order $p^{2}$, with the prime $p$ of the form $4\ell+3$
+($\ell$ a non-negative integer) \cite{geometry2013,DQT2014}. In
+this model, an irreducible state is a vector in $\mathbb{F}_{p^{2}}^{2^{n}}$,
+and can be reduced to a point in the discrete complex projective space~$\mathbb{DCP}^{2^{n}-1}$.
+Among these irreducible states, the product states and entangled states
+can not only be identified as in CQT but also be counted for different
+$p$. Although the state space is a natural discrete analog to CQT,
+this model still only predicts whether a measurement result is possible
+or impossible, because it is not possible to define an inner product
+in the usual sense due to the modular arithmetic~\cite{grove2002classical}.
+Under suitable conditions, we can have deterministic quantum algorithms
+such as the algorithms of Deutsch, Simon \cite{Simon:1994:PQC:1398518.1399019,Mermin2007,Jaeger2007},
+and Bernstein-Vazirani \cite{Bernstein:1993:QCT:167088.167097,Mermin2007},
+but this still leads to excessive computational power for the unstructured
+database search problem for certain database sizes. 
 
-\textbackslash documentclass[showabstract,showpreface]\{iuphd\}
-\medskip
+\section{Discrete Quantum Theory and Computing (II)}
 
-\noindent To include a line for the bibliography in the table of contents, the command
-\medskip
+Our third model, discrete quantum theory (II)~\cite{DQT2014}, restricts
+states in some local region of $\mathbb{F}_{p^{2}}^{2^{n}}$. Within
+a local region, a notion of inner product and probability could be
+recovered. Its discrete quantum computing can be further applied to
+the deterministic Deutsch-Jozsa algorithm \cite{DeutschJozsa1992,Jaeger2007}
+and the probabilistic Grover algorithm \cite{Grover:1996:FQM:237814.237866,Mermin2007,Jaeger2007}.
 
-\textbackslash addcontentsline\{toc\}\{chapter\}\{BIBLIOGRAPHY\}
-\medskip
+\section{Toward Discrete Quantum Probability}
 
-\noindent should be placed directly above the \textbackslash bibliography and \textbackslash bibliographystyle commands.  It may be necessary
-to use \textbackslash clearpage above this command to get the page number displayed in the contents to be correct.  However, if you are using
-\textbackslash include for each chapter, then \textbackslash clearpage has technically already been used in this case, and so it is not
-necessary to use it again. Similar commands will work for including any unnumbered heading in the table of contents, with careful attention
-to the effects of \textbackslash clearpage.
+When people tried to define quantum probability over finite fields,
+people tended to treat the original Born rule as an axiom, and tried
+to modify it to get a discrete Born rule \cite{Schumacher2012-SCHMQT,doi:10.1142/S0217984913500644,DQT2014,Ellerman2016a}.
+However, any modified Born rule could hardly work on the whole vector
+space, since there is no inner product on the whole vector space over
+finite fields. Instead of treating the Born rule as an axiom, the
+Born rule can actually be deduced from a set of abstract definitions
+and axioms according to Gleason's theorem. Although we might hope
+to deduce a discrete Born rule directly from a similar set of definitions
+and axioms, no discrete Born rule satisfies certain properties motivated
+by Gleason's theorem with infinitely precise real-number probability~\cite{Gardiner2014}.
+Since the state spaces are now discrete and finite, this suggests
+us to consider a discrete Born rule mapping to finite number of intervals
+called interval-valued probability~\cite{JamisonLodwick2004,THOS2017}.
+To adopting the idea of interval-valued probability step-by-step,
+before attempting to study quantum interval-valued probability over
+finite fields, we will first review the classical interval-valued
+probability, and extend it with the conventional quantum theory.
 
-Various commands have been defined for the data that will show up on the title page, acceptance page, and copyright page.  These include:
-\begin{itemize}
- \item \textbackslash title - for the title of the dissertation
- \item \textbackslash author - for the name of the author of the dissertation
- \item \textbackslash date - for the \emph{completion date} of the dissertation
- \item \textbackslash department - this is optional.  The default value is ``Mathematics,'' but if you are in a different department, this
-        command can be used to change its value to the name of whatever department (or school) you are in.  
- \item \textbackslash committeechair, \textbackslash readertwo, \textbackslash readerthree, \textbackslash readerfour - for the names of the
-                      dissertation committee members.
- \item \textbackslash defensedate - for the \emph{defense date} of the dissertation (which may not match the completion date).
- \item \textbackslash cryear - for the copyright year.
-\end{itemize}
+\chapter{Quantum Interval-Valued Probability}
 
-Additionally the commands \textbackslash acceptancepage and \textbackslash copyrightpage have been defined to generate the acceptance page and copyright page
-respectively.  The copyright page is not required, so it has been commented out of my dissertation.tex sample file.  Two document class options have been provided
-for switching the text on the title page between ``Department'' and ``School.''  These options are given the obvious names `department' and `school'. The
-default option is `department', so it only needs to be changed if you are in a school rather than a department.
+\section{Classical Interval-Valued Probability}
 
-A CV is also required following the bibliography, however, to maintain maximum flexibility I have not provided any special tools for
-formatting a CV.  Various packages are available that do this, although I prefer custom formatting. As such, I have provided only a
-line for including the CV after the bibliography, which is currently commented out.
+In the classical setting, there are several proposals for ``imprecise
+probabilities'' \cite{Shafer1976,GilboaSchmeidler1994,Marinacci1999,JamisonLodwick2004,HuberRonchetti2009,Grabisch2016}.
+Although these proposals differ in some details, they all share the
+fact that the probability $\bar{\mu}(E)$ of an event~$E$ is generalized
+from a single \emph{real number} to an \emph{interval}~$[l,r]$,
+where~$l$ intuitively corresponds to the strength of evidence for
+the event~$E$ and~$1-r$ corresponds to the strength of evidence
+against the same event. Given a sample space~$\Omega$ and a set
+of intervals~$\mathscr{I}$, similar to a classical probability measure
+$\mu:2^{\Omega}\rightarrow\left[0,1\right]$, a classical interval-valued
+probability measure (IVPM) $\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}$
+needs to satisfy some coherent axioms. By satisfying the convexity
+axiom \cite{Shapley1971,GilboaSchmeidler1994,Marinacci1999,Grabisch2016},
+Shapley proved that there is always a classical probability measure
+consistent with the classical IVPM~$\bar{\mu}$ \cite{Shapley1971,GilboaSchmeidler1994,Grabisch2016}.
+Given any random variable, its expectation value with respect to classical
+probability measures consistent with~$\bar{\mu}$ is consistent with
+its Choquet integral \cite{Choquet1954,GilboaSchmeidler1994,Grabisch2016}
+with respect to $\bar{\mu}$ \cite{Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016}.
 
+\section{Quantum Interval-Valued Probability}
 
+The quantum extension, quantum interval-valued probability measure
+(QIVPM) $\bar{\mu}:\events\rightarrow\mathscr{I}$, is a generalization
+of both classical IVPMs $\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}$
+and conventional quantum probability measures $\mu:\events\rightarrow[0,1]$
+\cite{THOS2017}, because QIVPMs reduce to classical IVPMs when the
+space of quantum events $\events$ is restricted to mutually commuting
+events, and reduces to conventional quantum probability measures when
+mapping to infinitely precise uncountable intervals $\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$.
+While Shapley and Gleason both proved there must be a ``state''
+consistent with any given QIVPM in the reduced cases, in general there
+exists a QIVPM such that no state is consistent with it. However,
+we found a class of QIVPMs such that all QIVPMs in this class are
+consistent with a non-empty ``ball'' of quantum states whose radius
+is defined by the maximal length of the intervals, and recovers the
+original Gleason theorem asymptotically. Similarly, the conventional
+quantum expectation value and the classical Choquet integral are together
+generalized to the quantum interval-valued expectation value. This
+is used to prove an imprecise Kochen-Specker theorem \cite{BELL_1966,kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007}
+which suggests a possible resolution of the Meyer-Mermin debate on
+the impact of finite-precision measurement on the Kochen-Specker theorem
+\cite{PhysRevLett.83.3751,Mermin1999}.
 
-\section{Suggestions for additional formatting}
+\chapter{Further Questions}
 
-For longer documents, it is often easier to manage if it is broken into multiple files.  This can be done by using the
-\textbackslash include\{filename\} or \textbackslash input\{filename\} commands.  You can think of
-\textbackslash input\{filename\} as an alias for all of the text contained in filename.tex: the text contained in that file,
-simply gets inserted at the exact spot where the command \textbackslash input is used.  This means that filename.tex should not have
-\textbackslash begin\{document\}, \textbackslash end\{document\}, or a preamble, as illustrated by iuphd-doc.tex in this example.
-On the other hand, \textbackslash include\{filename\} has the additional feature of adding \textbackslash clearpage both before and after
-the text being inserted.  This has important consequences for formatting.  Say that you have a file for each chapter,
-and your first chapter is the introduction.  If you do something like this:
-\medskip
-
-\textbackslash chapter\{Introduction\}
-
-\textbackslash include\{chap1\}
-\medskip
-
-\noindent then the title is formatted on its own page, and the text in chap1.tex will start on a new page; it produces
-the same result as
-\medskip
-
-\textbackslash chapter\{Introduction\}
-
-\textbackslash clearpage
-
-\textbackslash input\{chap1\}
-\medskip
-
-\noindent To avoid having the title put on a separate page there are two options: use input instead of include
-(without \textbackslash clearpage), or use the command \textbackslash chapter\{INTRODUCTION\} inside the file chap1.tex.
-I favor the second option as illustrated in this example with iuphd-doc.tex.
-
-Many \LaTeX \ packages are already available for additional customization of the formatting which is otherwise built in.
-Some of these are listed below.  To use them, simply declare them with \textbackslash usepackage in the preamble
-and refer to the documentation files for them, which are easily available online.
-
-\begin{itemize}
- \item titlesec - for custom formatting of part, chapter, and section headings.
- \item titletoc or tocloft - for custom formatting of the table of contents.
- \item nomencl - for lists of notation (a tweak of makeindex).
- \item prettyref - for custom formatting of references (e.g. referencing equations as (1), (2), etc., instead of the default
-       1, 2, etc.).  The ams packages also have a similar feature but it is much more limited.
- \item natbib, custom-bib, or biblatex - offer additional flexibility for bibliography formatting beyond the standard used by
-       the mathematics community.
- \item setspace - contains features for resetting the global line spacing, as well as environments that can be used to change
-       spacing locally, which are compatible with the quote, quotation, and verse environments.
- \item quoting - provides a more flexible quotation environment, with options for adjusting the margins manually.  This package
-     should be used with setspace, to ensure single spacing of the quotations.
- \item enumitem or paralist - provide several more flexible list environments.
- \item titling - for custom changes to maketitle.
- \item geometry - for customizing the page layout.
-\end{itemize}
-
-%add features for block quotes, underlined titles, and different departments.
-
-The last two should not be necessary unless the standards at IU change.  However, if that happens, it would really be better to
-rewrite the iuphd document class.  Additional packages and other useful information can be found in \cite{mittelbach2004latex}.
-
-\section{quote samples}
-The quote environment:
-\begin{quote}
-``God does not play dice with the universe.'' - Albert Einstein
-\end{quote}
-The quotation environment:
-\begin{quotation}
- ``A GREAT discovery solves a great problem, but there is a grain of discovery in the solution of any problem.
- Your problem may be modest, but if it challenges your curiosity and brings into play your inventive faculties,
- and if you solve it by your own means, you may experience the tension and enjoy the triumph of discovery.''
- 
- - George P\'olya
-\end{quotation}
-The verse environment:
-\begin{verse}
-Im September ist alles aus Gold:\\ 
-die Sonne, die durch das Blau hinrollt,\\
-das Stoppelfeld,\\
-die Sonnenblume, schlafrig am Zaun,\\
-das Kreuz auf der Kirche,\\
-der Apfel im Baum.\\
-Ob er h\"alt,\\
-ob er f\"allt? \\
-Da wirft ihn geschwind\\
-der Wind\\
-in die goldene Welt.
-
-- Georg Britting
-\end{verse}
-
-\section{Troubleshooting}
-
-If you are getting an error with the TOC, you may have at least one of the following two problems:
-\begin{enumerate}
- \item you do not have textcase.sty in your latex distribution,
- \item you compiled a previous *.toc file with a different latex class (e.g. the amsbook class).
-\end{enumerate}
-Make sure you have textcase.sty, delete the *.toc file, and recompile.
+When people proved the original Gleason theorem, people usually exploited
+the geometrical structure of real 3-dimensional Hilbert space \cite{gleason1957,peres1995quantum,RichmanBridges1999,Hamhalter2013}.
+Since our finite-precision extension of the Gleason theorem only applies
+on a class of QIVPMs, we might want to ask how to modify these geometrical
+arguments to have a Gleason-type theorem for general QIVPMs. We will
+further study the tensor product structure among QIVPMs which is essential
+for defining product and entangled states, and serves the basis to
+discuss quantum nonlocality~\cite{Bell1964,Redhead1987-REDINA,peres1995quantum,Jaeger2007}
+and quantum computing with QIVPMs. Finally, we want to improve the
+discrete quantum theories to consider QIVPMs over finite fields in
+future research.
 
 \begin{comment}
  \bibliographystyle{plain}
 \bibliography{prop}
+ 
 \end{comment}
 \printbibliography
 
