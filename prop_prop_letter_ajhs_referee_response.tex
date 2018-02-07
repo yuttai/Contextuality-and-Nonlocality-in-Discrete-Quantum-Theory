@@ -179,7 +179,7 @@ common in actual experiments. Mathematically we can model this idea
 by stating that the probability of the event is in the range $\left[0,0.03\right]$
 which says that the probability of the event could be $0$, $0.01$,
 $0.02$, or $0.03$ as each the three missing records could either
-be evidence for the event or against it. We just can't nail it down
+be evidence for the event or against it. We just cannot nail it down
 given the current experimental results and therefore use a ($\delta=$)$0.03$-deterministic
 probability measure. The interesting observation is that the axioms
 of probability theory (like additivity and convexity) impose enough
@@ -234,7 +234,7 @@ which can be easily verified to be a valid QIVPM.
 
 Similar argument can be applied on the same nine observables $\mathbf{O}_{ij}$
 with $i$ and $j$ ranging over $\{0,1,2\}$ from the Mermin-Peres
-``magic square'' used to prove the Kochen-Specker theorem \cite{Mermin1990Simple,peres1995quantum,Griffiths2003}:
+``magic square'' used to prove the KS theorem \cite{Mermin1990Simple,peres1995quantum,Griffiths2003}:
 
 
 {\renewcommand{\arraystretch}{2}% 
@@ -256,31 +256,30 @@ $i=2~$ & $\sigma_{x}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\sigma_{x}$  & $\sig
 $\left\{ \mathbb{1},\sigma_{x},\sigma_{y},\sigma_{z}\right\} $ whose
 eigenvalues are all either~$1$ or $-1$ \cite{Redhead1987-REDINA,544199,Griffiths2003,Jaeger2007,Mermin2007}.
 They are arranged such that in each row and column, \emph{except the
-column $j=2$}, every observable is the product of the other two,
-and the expectation value of every observable is the product of the
-other two as well. In the $j=2$ column, we have instead that $\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$
+column $j=2$}, every observable and its expectation value is the
+product of the other two. In the $j=2$ column, we have instead that
+$\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$
 and 
 \begin{equation}
 \expval{\mathbf{O}_{02}}\expval{\mathbf{O}_{12}}=-\expval{\mathbf{O}_{22}}\,.\label{eq:j_2_expectation_value}
 \end{equation}
 
-Assume we measure each observable twice. By the Kochen-Specker theorem,
-it is impossible to get the following measurement results because
-the product of the expectation values in the $j=2$ column violate
-Eq.~(\ref{eq:j_2_expectation_value}).
+Assume we measure each observable twice. By the KS theorem, it is
+impossible to get the following measurement results because the product
+of the expectation values in the $j=2$ column violate Eq.~(\ref{eq:j_2_expectation_value}).
 \begin{center}
-\begin{tabular}{ccc}
+\begin{tabular}{cccc}
 \toprule 
 \addlinespace
-$\mathbf{O}_{ij}$  & Trial~0 & Trial~1\tabularnewline
+$\mathbf{O}_{ij}$  & \multicolumn{2}{c}{Results} & $\expval{\mathbf{O}_{ij}}$\tabularnewline
 \midrule
 \midrule 
 \addlinespace
-$\mathbf{O}_{00}$ , $\mathbf{O}_{01}$, $\mathbf{O}_{10}$ , $\mathbf{O}_{11}$  & $-1$ & $-1$\tabularnewline
+$\mathbf{O}_{00}$ , $\mathbf{O}_{01}$, $\mathbf{O}_{10}$ , $\mathbf{O}_{11}$  & $-1$ & $-1$ & $-1$\tabularnewline
 \midrule 
 \addlinespace
 $\mathbf{O}_{02}$ , $\mathbf{O}_{12}$ , $\mathbf{O}_{20}$ , $\mathbf{O}_{21}$
-, $\mathbf{O}_{22}$  & $1$ & $1$\tabularnewline
+, $\mathbf{O}_{22}$  & $1$ & $1$ & $1$\tabularnewline
 \bottomrule
 \end{tabular}
 \par\end{center}
@@ -289,35 +288,39 @@ Now consider what happens if if half of the records are missing, i.e.,
 $\delta=\frac{1}{2}$, which gives the following measurement results,
 where $\missing$ stands for missing data.
 \begin{center}
-\begin{tabular}{cccc}
+\begin{tabular}{ccccc}
 \toprule 
 \addlinespace
-$\mathbf{O}_{ij}$  & Trial~0 & Trial~1 & $\begin{aligned} & \textrm{Missing Record}\\
+$\mathbf{O}_{ij}$  & \multicolumn{2}{c}{Results} & $\begin{aligned} & \textrm{Missing}\\
+ & \textrm{Record}\\
  & \textrm{Might Be}
+\end{aligned}
+$ & $\begin{aligned} & \textrm{Possible}\\
+ & \expval{\mathbf{O}_{ij}}
 \end{aligned}
 $\tabularnewline
 \midrule
 \midrule 
 \addlinespace
-$\mathbf{O}_{00}$, $\mathbf{O}_{11}$ & $-1$ & $\missing$ & $1$\tabularnewline
+$\mathbf{O}_{00}$, $\mathbf{O}_{11}$ & $-1$ & $\missing$ & $1$ & $0$\tabularnewline
 \midrule 
 \addlinespace
-$\mathbf{O}_{01}$ , $\mathbf{O}_{10}$  & $\missing$ & $-1$ & $1$\tabularnewline
+$\mathbf{O}_{01}$ , $\mathbf{O}_{10}$  & $\missing$ & $-1$ & $1$ & $0$\tabularnewline
 \midrule 
 \addlinespace
-$\mathbf{O}_{02}$ , $\mathbf{O}_{20}$ , $\mathbf{O}_{22}$  & $1$ & $\missing$ & $-1$\tabularnewline
+$\mathbf{O}_{02}$ , $\mathbf{O}_{20}$ , $\mathbf{O}_{22}$  & $1$ & $\missing$ & $-1$ & $0$\tabularnewline
 \midrule 
 \addlinespace
-$\mathbf{O}_{12}$ , $\mathbf{O}_{21}$  & $\missing$ & $1$ & $-1$\tabularnewline
+$\mathbf{O}_{12}$ , $\mathbf{O}_{21}$  & $\missing$ & $1$ & $-1$ & $0$\tabularnewline
 \bottomrule
 \end{tabular}
 \par\end{center}
 
-Since the experimental results are missing, they might come form the
-third column. In this kind of situation, the expectation values of
-each observables is always $0$, and the product relations among these
-expectation values must be consistent with the product relations among
-observables.
+\noindent Since the experimental results are missing, they might come
+form the third column. In this kind of situation, the expectation
+values of each observables is always $0$, and the product relations
+among these expectation values must be consistent with the product
+relations among observables.
 
 We missed half of the experimental results when considering the Mermin-Peres
 ``magic square'' example, which is more than $\frac{1}{3}$ when
