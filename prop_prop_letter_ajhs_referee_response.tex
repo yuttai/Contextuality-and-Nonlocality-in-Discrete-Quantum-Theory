@@ -32,6 +32,7 @@ showkeys, longbibliography, amsmath, amssymb, floatfix]{revtex4-1}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
 \newtheorem{condition}[assumption]{Condition}
+\setcounter{thm}{2}
 
 \DeclareUnicodeCharacter{0229}{\c{e}}
 
@@ -126,12 +127,13 @@ QIVPM. We further claim that there cannot exist any $\delta$-deterministic
 QIVPM for $\delta<\frac{1}{3}$ and that there exist QIVPMs for every
 $\delta\ge\frac{1}{3}$.
 
-The referee questions the correctness of the theorem and the physical
-interpretation of $\delta$-determinism. In answer to the question
-of correctness, we attach the complete proof of our theorem which
-we verified again. In the next paragraphs, we explain the physical
-interpretation of $\delta$-determinism and provide examples that
-illustrate why $\frac{1}{3}$ is special.
+The referee questions the correctness of Thm.~\ref{cor:Kochen-Specker-IVPM}
+and the physical interpretation of $\delta$-determinism. In answer
+to the question of correctness, we attach the complete proof of Thm.~\ref{cor:Kochen-Specker-IVPM}
+which we verified again in Appendix~\ref{sec:Proof-of-Theorem}.
+In the next paragraphs, we explain the physical interpretation of
+$\delta$-determinism and provide examples that illustrate why $\frac{1}{3}$
+is special.
 
 We understand that the argument against $\delta$-determinism by the
 referee assumes that the parameter $\delta$ is \emph{exclusively}
@@ -173,10 +175,26 @@ we should be able to refute the event $100$ times and calculate that
 the probability is $0$. We might also observe the event $2$ times
 and refute it $98$ times and therefore calculate the probability
 to be $0.02$. This situation still assumes perfect measurement conditions
-however. The question we focus on is what happens if we are only able
-to refute it $97$ times and are uncertain $3$ times? This is quite
-common in actual experiments. Mathematically we can model this idea
-by stating that the probability of the event is in the range $\left[0,0.03\right]$
+however. 
+
+Let the quantum system be in state~$\ket{\psi}$ and the probability
+of some event be $0$. Assume we repeat the experiment $100$ times
+and we observe the event $1$ time. The Godsil-Zaks-Meyer approach
+interprets this by assuming that the state was actually $\ket{\psi'}$
+which is infinitesimally close to $\ket{\psi}$ and proceed to reason
+about how coloring the states with rational points relates to the
+coloring of arbitrary states. We make no such assumptions and do not
+impose any constraints on the actual state of the system. In fact
+we do not make any statements about such situations. What we are addressing
+is a situation in which our devices do not allow to make a clear determination
+of whether an event has happened or not. We model this by an uncertainty
+in the probability of the event and then reason using the axioms of
+probability theory to bound this uncertainty.
+
+The question we focus on is what happens if we are only able to refute
+it $97$ times and are uncertain $3$ times? This is quite common
+in actual experiments. Mathematically we can model this idea by stating
+that the probability of the event is in the range $\left[0,0.03\right]$
 which says that the probability of the event could be $0$, $0.01$,
 $0.02$, or $0.03$ as each the three missing records could either
 be evidence for the event or against it. We just cannot nail it down
@@ -322,15 +340,60 @@ values of each observables is always $0$, and the product relations
 among these expectation values must be consistent with the product
 relations among observables.
 
-We missed half of the experimental results when considering the Mermin-Peres
-``magic square'' example, which is more than $\frac{1}{3}$ when
-considering a three-dimensional Hilbert space. The reason is that
-while there exists a $\frac{1}{3}$-deterministic QIVPMs in a three-dimensional
-Hilbert space, we only know a $\frac{1}{2}$-deterministic QIVPMs,
-but not any $\delta$-deterministic QIVPM for $\frac{1}{3}<\delta\le\frac{1}{2}$
-in a four-dimensional Hilbert space.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliography{prop}
-\end{document}
 
+\appendix
+
+\section{\label{sec:Proof-of-Theorem}Proof of Theorem~\ref{cor:Kochen-Specker-IVPM}}
+
+\begin{thm}[Finite-precision Extension of the Kochen-Specker Theorem]
+\label{cor:Kochen-Specker-IVPM} Given a Hilbert space $\Hilb$ of
+dimension~$d\ge3$, there is no $\delta$-deterministic QIVPM for
+$\delta<\frac{1}{3}$.\end{thm}
+
+The proof is by contradiction: Suppose there is a $\delta$-deterministic
+QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$. Now use this assumed
+QIVPM to construct the following $0$-deterministic QIVPM $\bar{\mu}^{\textrm{D}}:\events\rightarrow\left\{ \imposs,\necess\right\} $:
+\begin{equation}
+\bar{\mu}^{\textrm{D}}\left(P\right)=\begin{cases}
+\imposs\,, & \textrm{ if }\bar{\mu}\left(P\right)\subseteq\left[0,\delta\right]\:;\\
+\necess\,, & \textrm{ if }\bar{\mu}\left(P\right)\subseteq\left[1-\delta,1\right]\:.
+\end{cases}
+\end{equation}
+However, since we know that $0$-deterministic QIVPMs do not exist,
+the map $\bar{\mu}^{\textrm{D}}$ cannot exist and hence $\bar{\mu}$
+does not exist. It remains to verify that $\bar{\mu}^{\textrm{D}}$
+is indeed a QIVPM by checking that for orthogonal projectors $P_{0}$
+and~$P_{1}$, 
+\begin{equation}
+\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\bar{\mu}^{\textrm{D}}\left(P_{0}\right)+\bar{\mu}^{\textrm{D}}\left(P_{1}\right)\,,\label{eq:QuantumInterval-valuedProbability-Equal}
+\end{equation}
+because Eq.~(\ref{eq:QuantumInterval-valuedProbability-Equal}) implies
+the convexity condition.
+
+When one of $\bar{\mu}^{\textrm{D}}\left(P_{0}\right)$ and $\bar{\mu}^{\textrm{D}}\left(P_{1}\right)$
+is $\necess$, say $\bar{\mu}^{\textrm{D}}\left(P_{0}\right)=\necess$
+and $\bar{\mu}^{\textrm{D}}\left(P_{1}\right)=\imposs$, we have $\bar{\mu}\left(P_{0}\right)\subseteq\left[1-\delta,1\right]$
+and $\bar{\mu}\left(P_{1}\right)\subseteq\left[0,\delta\right]$ which
+implies $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[1-\delta,1+\delta\right]$.
+Since $\bar{\mu}\left(P_{0}+P_{1}\right)$ is a subset of $\left[0,1\right]$,
+$\bar{\mu}\left(P_{0}+P_{1}\right)$ must be a subset of $\left[1-\delta,1\right]$,
+which implies $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\necess$.
+
+When $\bar{\mu}^{\textrm{D}}\left(P_{0}\right)=\bar{\mu}^{\textrm{D}}\left(P_{1}\right)=\imposs$,
+we have both $\bar{\mu}\left(P_{0}\right)$ and $\bar{\mu}\left(P_{1}\right)\subseteq\left[0,\delta\right]$
+which implies $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[0,2\delta\right]$.
+Since $\bar{\mu}\left(P_{0}+P_{1}\right)$ is a subset of either $\left[0,\delta\right]$
+or $\left[1-\delta,1\right]$ and the latter is excluded as illustrated
+in Fig.~1, then $\bar{\mu}\left(P_{0}+P_{1}\right)$ must be a subset
+of $\left[0,\delta\right]$, which implies $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\imposs$.
+\begin{widetext}
+\begin{center}
+\includegraphics[bb=50bp 100bp 900bp 300bp,clip,scale=0.5]{prop_prop_letter_ajhs_referee_response_pptx}\\
+Figure 1.~\label{fig:Show-subset}Since $\bar{\mu}\left(P_{0}+P_{1}\right)$
+and $\left[1-\delta,1\right]$ are disjoint, $\bar{\mu}\left(P_{0}+P_{1}\right)$
+is a subset of $\left[0,\delta\right]$.
+\par\end{center}
+\end{widetext}
+\end{document}
