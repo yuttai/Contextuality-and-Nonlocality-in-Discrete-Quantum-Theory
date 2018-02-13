@@ -210,19 +210,43 @@ and convexity) impose enough constraints on the structure of
 interval-valued quantum probability measures to make them robust in
 the face of small $\delta$'s.
 
-To see this idea in the context of a quantum experiment, consider a
-three-dimensional Hilbert space and an experiment repeated $12$
+To see this idea in the context of a quantum experiment, consider
+a three-dimensional Hilbert space and an experiment repeated $12$
 times. By the KS theorem, it is impossible to build a probability
 measure that maps every projection to either $0=\frac{0}{12}$ or
-$1=\frac{12}{12}$. Now consider what happens if $\frac{1}{4}$ of the
-data for every one-dimensional projector is missing. A potential
-account of this degradation is to assign to each event $P$ the entire
-range of possibilities $\bar{\mu}_{0}(P)$:
+$1=\frac{12}{12}$. That is, the following assignment~$\bar{\mu}_{0}$
+is not a QIVPM
 \begin{center}
 \begin{tabular}{cc}
 \toprule 
 \addlinespace
 $P$  & $\bar{\mu}_{0}\left(P\right)$\tabularnewline
+\midrule
+\midrule 
+\addlinespace
+$\mathbb{0}$  & $\imposs$\tabularnewline
+\midrule 
+\addlinespace
+All one-dimensional projectors  & $\left[0,0\right]$\tabularnewline
+\midrule 
+\addlinespace
+All two-dimensional projectors  & $\left[1,1\right]$\tabularnewline
+\midrule 
+\addlinespace
+$\mathbb{1}$  & $\necess$\tabularnewline
+\bottomrule
+\end{tabular}
+\par\end{center}
+
+Now consider what happens if $\frac{1}{4}$ of the data for every
+one-dimensional projector is missing. A potential account of this
+degradation is to assign to each event $P$ the entire range of possibilities
+$\bar{\mu}_{1}(P)$: 
+\begin{center}
+\begin{tabular}{cc}
+\toprule 
+\addlinespace
+$P$  & $\bar{\mu}_{1}\left(P\right)$\tabularnewline
 \midrule
 \midrule 
 \addlinespace
@@ -242,9 +266,9 @@ $\mathbb{1}$  & $\necess$\tabularnewline
 
 \noindent This measure is not a valid QIVPM because it does not satisfy
 the convexity condition: for any two orthogonal one-dimensional events
-$P_{0}$ and $P_{1}$, the convexity condition requires $\bar{\mu}_{0}\left(P_{0}+P_{1}\right)\subseteq\bar{\mu}_{0}\left(P_{0}\right)+\bar{\mu}_{0}\left(P_{1}\right)$,
-but $\bar{\mu}_{0}\left(P_{0}+P_{1}\right)=\left[\tfrac{3}{4},1\right]$
-which is not a subset of $\left[0,\tfrac{1}{2}\right]=\bar{\mu}_{0}\left(P_{0}\right)+\bar{\mu}_{0}\left(P_{1}\right)$.
+$P_{0}$ and $P_{1}$, the convexity condition requires $\bar{\mu}_{1}\left(P_{0}+P_{1}\right)\subseteq\bar{\mu}_{1}\left(P_{0}\right)+\bar{\mu}_{1}\left(P_{1}\right)$,
+but $\bar{\mu}_{1}\left(P_{0}+P_{1}\right)=\left[\tfrac{3}{4},1\right]$
+which is not a subset of $\left[0,\tfrac{1}{2}\right]=\bar{\mu}_{1}\left(P_{0}\right)+\bar{\mu}_{1}\left(P_{1}\right)$.
 Interestingly, it is impossible to find any probability measure that
 would be consistent with these observations as the interval $\left[\tfrac{3}{4},1\right]$
 is completely disjoint from the interval $\left[0,\tfrac{1}{2}\right]$
@@ -258,7 +282,7 @@ that assigns to each event the entire range of possibilities is:
 \begin{tabular}{cc}
 \toprule 
 \addlinespace
-$P$  & $\bar{\mu}_{1}\left(P\right)$\tabularnewline
+$P$  & $\bar{\mu}_{2}\left(P\right)$\tabularnewline
 \midrule
 \midrule 
 \addlinespace
@@ -277,8 +301,8 @@ $\mathbb{1}$  & $\necess$\tabularnewline
 \par\end{center}
 
 \noindent This is also not a valid probability measure by the same
-argument as above. However, in this case $\bar{\mu}_{1}\left(P_{0}+P_{1}\right)=\left[\tfrac{2}{3},1\right]$
-and $\left[0,\tfrac{2}{3}\right]=\bar{\mu}_{1}\left(P_{0}\right)+\bar{\mu}_{1}\left(P_{1}\right)$
+argument as above. However, in this case $\bar{\mu}_{2}\left(P_{0}+P_{1}\right)=\left[\tfrac{2}{3},1\right]$
+and $\left[0,\tfrac{2}{3}\right]=\bar{\mu}_{2}\left(P_{0}\right)+\bar{\mu}_{2}\left(P_{1}\right)$
 have a common point. And hence by assuming that the missing data for
 one-dimensional projectors always support the associated event, while
 those for two-dimensional projectors always refute the event, we can
@@ -288,7 +312,7 @@ valid QIVPM and which is consistent with the experimental data:
 \begin{tabular}{cc}
 \toprule 
 \addlinespace
-$P$  & $\bar{\mu}_{1}'\left(P\right)$\tabularnewline
+$P$  & $\bar{\mu}_{2}'\left(P\right)$\tabularnewline
 \midrule
 \midrule 
 \addlinespace
@@ -314,7 +338,7 @@ is already a QIVPM:
 \begin{tabular}{cc}
 \toprule 
 \addlinespace
-$P$  & $\bar{\mu}_{2}\left(P\right)$\tabularnewline
+$P$  & $\bar{\mu}_{3}\left(P\right)$\tabularnewline
 \midrule
 \midrule 
 \addlinespace
@@ -347,14 +371,31 @@ explanations for the experimental data.
 
 \subsection*{Mermin-Peres ``Magic Square''}
 
-We now use this same idea to analyze the Mermin-Peres ``magic square''
-argument. We show that when the measurements are infinitely precise,
-the Mermin-Peres ``magic square'' argument definitely demonstrates
-contextuality. But as we progressively degrade the certainty of the
-data, a transition happens in which the Mermin-Peres ``magic square''
-argument no longer demonstrates contextuality. Consider the nine observables
-$\mathbf{O}_{ij}$ with $i$ and $j$ ranging over $\{0,1,2\}$, corresponding
-to the Mermin-Peres ``magic square'' used to illustrate the KS theorem:
+We are going to phrase our results in a different way. When we see
+a set of experimental data with $\frac{1}{3}$ missing represented
+by $\bar{\mu}_{2}$, we could not determine whether the original record
+is come from a quantum mechanical $\bar{\mu}_{2}'$ or a hidden variable
+theory~$\bar{\mu}_{0}$ dispite the fact that the hidden variable
+theory~$\bar{\mu}_{0}$ is not consistent with the prediction of
+quantum mechanics at all, i.e., $\bar{\mu}_{0}$ is not a QIVPM. The
+situation changes when we miss a little less records, say $\frac{1}{4}$.
+Since we proved missing $\frac{1}{4}$ of the measurement results
+of a hidden variable theory or $0$-deterministic QIVPM cannot be
+consistent with a valid QIVPM, missing $\frac{1}{4}$ of the measurement
+results of a valid QIVPM cannot be consistent with a hidden variable
+theory.
+
+This same idea can be used to analyze the Mermin-Peres ``magic square''
+argument experimentally. Except we start from a possible quantum mechanical
+results, and show that it could be consistent with a hidden variable
+theory if missing enough records. Although the resluts could be consistent
+with a hidden variable theory missing much less data, because the
+Mermin-Peres ``magic square'' does use the full set of observables
+in a Hilbert space, it is less constraint than QIVPMs. Consider the
+nine observables $\mathbf{O}_{ij}$ with $i$ and $j$ ranging over
+$\{0,1,2\}$, corresponding to the Mermin-Peres ``magic square''
+used to illustrate the KS theorem:
+
 
 {\renewcommand{\arraystretch}{2}% 
 \begin{center} 
@@ -375,18 +416,8 @@ $i=2~$ & $\sigma_{x}\otimes\sigma_{z}$  & $\sigma_{z}\otimes\sigma_{x}$  & $\sig
 $\left\{ \mathbb{1},\sigma_{x},\sigma_{y},\sigma_{z}\right\} $ whose
 eigenvalues are all either~$1$ or $-1$. They are arranged such
 that in each row and column, \emph{except the column $j=2$}, every
-observable is the product of the other two, and its expectation value
-satisfies 
-\begin{eqnarray}
-\expval{\mathbf{O}_{i0}}\expval{\mathbf{O}_{i1}} & = & \expval{\mathbf{O}_{i2}}\,,\label{eq:i_expectation_value}\\
-\expval{\mathbf{O}_{j2}}\expval{\mathbf{O}_{j2}} & = & \expval{\mathbf{O}_{j2}}\,,\label{eq:j_0_1_expectation_value}
-\end{eqnarray}
-where $i\in\{0,1,2\}$ and $j\in\{0,1\}$. In the $j=2$ column, we
-have instead that $\mathbf{O}_{02}\mathbf{O}_{12}=-\mathbf{O}_{22}$
-and 
-\begin{equation}
-\expval{\mathbf{O}_{02}}\expval{\mathbf{O}_{12}}=-\expval{\mathbf{O}_{22}}\,.\label{eq:j_2_expectation_value}
-\end{equation}
+observable is the product of the other two. In the $j=2$ column,
+we have instead that $\left(\sigma_{z}\otimes\sigma_{z}\right)\left(\sigma_{x}\otimes\sigma_{x}\right)=-\sigma_{y}\otimes\sigma_{y}$. 
 
 Assume we measure each observable twice and get the following results
 where the ? indicates that we are uncertain about the actual outcome
