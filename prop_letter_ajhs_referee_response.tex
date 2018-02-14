@@ -104,8 +104,51 @@ that illustrate why $\frac{1}{3}$ is special.
 
 \subsection*{Expanded Proof of Thm.~3}
 
-We begin with a lemma related $\delta$-deterministic QIVPMs and
-0-deterministic QIVPMs. 
+We begin by presenting two lemmas to make the presentation more
+modular. 
+
+The first lemma shows a simpler way to prove the convexity
+condition. Recall that convexity condition for a QIVPM
+$\mu : \events \rightarrow \mathscr{I}$ states that for each pair of
+\emph{commuting} projectors~$P$ and~$P'$ with $PP'=P'P$, the following
+equation holds:
+\begin{equation}
+\bar{\mu}\left(P+P'-PP'\right)+\bar{\mu}\left(PP'\right)\subseteq\bar{\mu}\left(P\right)+\bar{\mu}\left(P'\right)\,.
+\end{equation}
+
+\begin{lemma}
+  To verify the convexity condition of a QIVPM
+  $\mu : \events \rightarrow \mathscr{I}$, it is sufficient to verify
+  that for all orthogonal projectors $P_{0}$ and~$P_{1}$, we have
+\begin{equation}
+\bar{\mu}\left(P_{0}+P_{1}\right)=\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\,.\label{amr}
+\end{equation}
+\end{lemma}
+\noindent The proof follows the outline of the proof of the classical
+inclusion-exclusion principle. From the commuting projectors $P$ and
+$P'$, we construct the following three orthogonal projectors $PP'$,
+$P(\mathbb{1}-P')$, and $(\mathbb{1}-P)P'$. Then we proceed as
+follows: {\footnotesize
+\[\begin{array}{rcl}
+&& \bar{\mu}\left(P+P'-PP'\right)+\bar{\mu}\left(PP'\right) \\
+&& \hfill(\mbox{because } P = PP' + P - PP') \\
+&=& \bar{\mu}\left(PP'+P(\mathbb{1}-P')+P'-PP'\right)+\bar{\mu}\left(PP'\right) \\
+&=& \bar{\mu}\left(P(\mathbb{1}-P')+P'\right)+\bar{\mu}\left(PP'\right) \\
+&& \hfill(\mbox{because } P' = PP' + P' - PP') \\
+&=& \bar{\mu}\left(P(\mathbb{1}-P')+PP'+(\mathbb{1}-P)P'\right)+\bar{\mu}\left(PP'\right) \\
+&& \hfill(\mbox{using Eq.~(2) twice}) \\
+&=&
+    \bar{\mu}(P(\mathbb{1}-P'))+\bar{\mu}(PP')+\bar{\mu}((\mathbb{1}-P)P')+
+    \bar{\mu}\left(PP'\right) \\
+&& \hfill(\mbox{using Eq.~(2) twice}) \\
+&=&
+    \bar{\mu}(P(\mathbb{1}-P')+PP')+\bar{\mu}((\mathbb{1}-P)P'+PP') \\
+&=&
+    \bar{\mu}(P) + \bar{\mu}(P')
+\end{array}\]}
+
+The next lemma relates $\delta$-deterministic QIVPMs with $\delta <
+\frac{1}{3}$ to 0-deterministic QIVPMs. 
 
 \begin{lemma} 
   From any $\delta$-deterministic
@@ -120,10 +163,9 @@ We begin with a lemma related $\delta$-deterministic QIVPMs and
 \end{cases}
 \end{equation}
 \end{lemma}
-The most important part of the proof is to verify the convexity
-condition for $\bar{\mu}^{\textrm{D}}$. Because
-$\bar{\mu}^{\textrm{D}}$ is 0-deterministic, it is sufficient to
-verify the following equation for orthogonal projectors $P_{0}$
+\noindent The most important part of the proof is to verify the convexity
+condition for $\bar{\mu}^{\textrm{D}}$. By Lemma~2.1, it is sufficient
+to verify the following equation for orthogonal projectors $P_{0}$
 and~$P_{1}$,
 \begin{equation}
 \bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\bar{\mu}^{\textrm{D}}\left(P_{0}\right)+\bar{\mu}^{\textrm{D}}\left(P_{1}\right)\,. \label{eq:QuantumInterval-valuedProbability-Equal}
@@ -137,7 +179,7 @@ implies $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[1-\delta,1+\delta\right
 Since $\bar{\mu}\left(P_{0}+P_{1}\right)$ is a subset of $\left[0,1\right]$,
 $\bar{\mu}\left(P_{0}+P_{1}\right)$ must be a subset of $\left[1-\delta,1\right]$,
 which implies $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)$ is also
-$\necess$ satisfying Eq.~\ref{eq:QuantumInterval-valuedProbability-Equal}.
+$\necess$ satisfying Eq.~(\ref{eq:QuantumInterval-valuedProbability-Equal}).
 
 When both
 $\bar{\mu}^{\textrm{D}}\left(P_{0}\right)=\bar{\mu}^{\textrm{D}}\left(P_{1}\right)$
@@ -154,13 +196,13 @@ $\left[0,\delta\right]$ or $\left[1-\delta,1\right]$,
 $\bar{\mu}\left(P_{0}+P_{1}\right)$ must be a subset of
 $\left[0,\delta\right]$, which implies
 $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\imposs$ and hence
-also satisfying Eq.~\ref{eq:QuantumInterval-valuedProbability-Equal}.
+also satisfying Eq.~(\ref{eq:QuantumInterval-valuedProbability-Equal}).
 
 \begin{thm}[Finite-precision Extension of the Kochen-Specker Theorem]
 \label{cor:Kochen-Specker-IVPM} Given a Hilbert space $\Hilb$ of 
 dimension~$d\ge3$, there is no $\delta$-deterministic QIVPM for 
 $\delta<\frac{1}{3}$.\end{thm}
-The proof is by contradiction: Suppose there is a $\delta$-deterministic 
+\noindent The proof is by contradiction: Suppose there is a $\delta$-deterministic 
 QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$. By the previous
 lemma, we can construct a 0-deterministic QIVPM but by Thm.~2 in the
 paper, such 0-deterministic QIVPMs do not exist. 
@@ -250,7 +292,7 @@ $\mathbb{1}$  & $\necess$\tabularnewline
 \end{tabular}
 \par\end{center}
 
-Now consider what happens if $\frac{1}{4}$ of the data for every
+Now consider what happens if $\frac{1}{4}$ of the data for \emph{every}
 one-dimensional projector is missing. A potential account of this
 degradation is to assign to each event $P$ the entire range of possibilities
 $\bar{\mu}_{1}(P)$: 
@@ -315,7 +357,7 @@ $\mathbb{1}$  & $\necess$\tabularnewline
 \noindent This is also not a valid probability measure by the same
 argument as above. However, in this case $\bar{\mu}_{2}\left(P_{0}+P_{1}\right)=\left[\tfrac{2}{3},1\right]$
 and $\left[0,\tfrac{2}{3}\right]=\bar{\mu}_{2}\left(P_{0}\right)+\bar{\mu}_{2}\left(P_{1}\right)$
-have a common point. And hence by assuming that the missing data for
+have a \emph{common point}. And hence by assuming that the missing data for
 one-dimensional projectors always support the associated event, while
 those for two-dimensional projectors always refute the event, we can
 find the following probability measure which can verified to be a
