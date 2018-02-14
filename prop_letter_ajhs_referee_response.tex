@@ -102,30 +102,32 @@ expanded proof. In the remainder of the response, we explain the
 physical interpretation of $\delta$-determinism and provide examples
 that illustrate why $\frac{1}{3}$ is special.
 
-\begin{thm}[Finite-precision Extension of the Kochen-Specker Theorem]
-\label{cor:Kochen-Specker-IVPM} Given a Hilbert space $\Hilb$ of
-dimension~$d\ge3$, there is no $\delta$-deterministic QIVPM for
-$\delta<\frac{1}{3}$.\end{thm}
+\subsection*{Expanded Proof of Thm.~3}
 
-The proof is by contradiction: Suppose there is a $\delta$-deterministic
-QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$. Now use this assumed
-QIVPM to construct the following $0$-deterministic QIVPM $\bar{\mu}^{\textrm{D}}:\events\rightarrow\left\{ \imposs,\necess\right\} $:
+We begin with a lemma related $\delta$-deterministic QIVPMs and
+0-deterministic QIVPMs. 
+
+\begin{lemma} 
+  From any $\delta$-deterministic
+  QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$ with
+  $\delta < \frac{1}{3}$, we can construct the $0$-deterministic QIVPM
+  $\bar{\mu}^{\textrm{D}}:\events\rightarrow\left\{
+    \imposs,\necess\right\}$ defined as follows:
 \begin{equation}
 \bar{\mu}^{\textrm{D}}\left(P\right)=\begin{cases}
 \imposs\,, & \textrm{ if }\bar{\mu}\left(P\right)\subseteq\left[0,\delta\right]\:;\\
 \necess\,, & \textrm{ if }\bar{\mu}\left(P\right)\subseteq\left[1-\delta,1\right]\:.
 \end{cases}
 \end{equation}
-However, since we know that $0$-deterministic QIVPMs do not exist,
-the map $\bar{\mu}^{\textrm{D}}$ cannot exist and hence $\bar{\mu}$
-does not exist. It remains to verify that $\bar{\mu}^{\textrm{D}}$
-is indeed a QIVPM by checking that for orthogonal projectors $P_{0}$
-and~$P_{1}$, 
+\end{lemma}
+The most important part of the proof is to verify the convexity
+condition for $\bar{\mu}^{\textrm{D}}$. Because
+$\bar{\mu}^{\textrm{D}}$ is 0-deterministic, it is sufficient to
+verify the following equation for orthogonal projectors $P_{0}$
+and~$P_{1}$,
 \begin{equation}
-\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\bar{\mu}^{\textrm{D}}\left(P_{0}\right)+\bar{\mu}^{\textrm{D}}\left(P_{1}\right)\,,\label{eq:QuantumInterval-valuedProbability-Equal}
+\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\bar{\mu}^{\textrm{D}}\left(P_{0}\right)+\bar{\mu}^{\textrm{D}}\left(P_{1}\right)\,. \label{eq:QuantumInterval-valuedProbability-Equal}
 \end{equation}
-because Eq.~(\ref{eq:QuantumInterval-valuedProbability-Equal}) implies
-the convexity condition.
 
 When one of $\bar{\mu}^{\textrm{D}}\left(P_{0}\right)$ and $\bar{\mu}^{\textrm{D}}\left(P_{1}\right)$
 is $\necess$, say $\bar{\mu}^{\textrm{D}}\left(P_{0}\right)=\imposs$
@@ -134,15 +136,16 @@ and $\bar{\mu}\left(P_{1}\right)\subseteq\left[1-\delta,1\right]$ which
 implies $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[1-\delta,1+\delta\right]$.
 Since $\bar{\mu}\left(P_{0}+P_{1}\right)$ is a subset of $\left[0,1\right]$,
 $\bar{\mu}\left(P_{0}+P_{1}\right)$ must be a subset of $\left[1-\delta,1\right]$,
-which implies $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\necess$.
+which implies $\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)$ is also
+$\necess$ satisfying Eq.~\ref{eq:QuantumInterval-valuedProbability-Equal}.
 
-When
-$\bar{\mu}^{\textrm{D}}\left(P_{0}\right)=\bar{\mu}^{\textrm{D}}\left(P_{1}\right)=\imposs$,
-we have both $\bar{\mu}\left(P_{0}\right)$ and
+When both
+$\bar{\mu}^{\textrm{D}}\left(P_{0}\right)=\bar{\mu}^{\textrm{D}}\left(P_{1}\right)$
+are $\imposs$, we have both $\bar{\mu}\left(P_{0}\right)$ and
 $\bar{\mu}\left(P_{1}\right)\subseteq\left[0,\delta\right]$ which
 implies
 $\bar{\mu}\left(P_{0}+P_{1}\right)\subseteq\left[0,2\delta\right]$.
-Since $\delta<\frac{1}{3}$, $\left[0,2\delta\right]$ and
+Since we assume $\delta<\frac{1}{3}$, $\left[0,2\delta\right]$ and
 $\left[1-\delta,1\right]$ are disjoint, which implies
 $\bar{\mu}\left(P_{0}+P_{1}\right)$ and $\left[1-\delta,1\right]$ are
 disjoint. Together with the fact that
@@ -150,7 +153,17 @@ $\bar{\mu}\left(P_{0}+P_{1}\right)$ is a subset of either
 $\left[0,\delta\right]$ or $\left[1-\delta,1\right]$,
 $\bar{\mu}\left(P_{0}+P_{1}\right)$ must be a subset of
 $\left[0,\delta\right]$, which implies
-$\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\imposs$.
+$\bar{\mu}^{\textrm{D}}\left(P_{0}+P_{1}\right)=\imposs$ and hence
+also satisfying Eq.~\ref{eq:QuantumInterval-valuedProbability-Equal}.
+
+\begin{thm}[Finite-precision Extension of the Kochen-Specker Theorem]
+\label{cor:Kochen-Specker-IVPM} Given a Hilbert space $\Hilb$ of 
+dimension~$d\ge3$, there is no $\delta$-deterministic QIVPM for 
+$\delta<\frac{1}{3}$.\end{thm}
+The proof is by contradiction: Suppose there is a $\delta$-deterministic 
+QIVPM~$\bar{\mu}:\events\rightarrow\mathscr{I}$. By the previous
+lemma, we can construct a 0-deterministic QIVPM but by Thm.~2 in the
+paper, such 0-deterministic QIVPMs do not exist. 
 
 \subsection*{Experimental Data and \texorpdfstring{$\delta$}{delta}-determinism} 
 
@@ -163,25 +176,24 @@ rationals nullifies the KS theorem.  In other words, Meyer attributes
 finite-precision errors to the description of the states.
 
 In addition to responses like Mermin's that argue against Meyer's
-interpretation but accept his framework, there has been responses that
-argue that the effect of finite-precision measurements on the KS
+interpretation but accept his framework, there have been responses
+that argue that the effect of finite-precision measurements on the KS
 theorem requires a different approach altogether (see for example Ax
-and Kochen as cited by Cabello 2002). Our paper, indeed, takes a
-different approach. Our approach is agnostic about attributing
-elements of reality to the state function (as Meyer). We simply
-attribute lack of certainty to the measured results through the use of
-an instrument. Thus, the parameter $\delta$ in our framework reflects
-insufficient knowledge of the experimenter, which could be due to a
-variety of reasons related to imperfections of devices. For example, a
-typical question that an experimenter may not be able to answer
-accurately would be ``did an electron land in the left half or the
-right half of the screen''? There are cases in which the electron
-would land too close to the middle of the screen for the experimenter
-to be able to determine with certainty that it was left or right of
-the center. We simply record this imprecision in the probability we
-assign to events, and use the axioms of probability theory to argue
-that a sharp transition occurs when the imprecision reaches a certain
-value.
+and Kochen as cited by Cabello 2002). Our approach is agnostic about
+attributing elements of reality to the state function (as Meyer
+did). We simply attribute lack of certainty to the measured results
+through the use of an instrument. Thus, the parameter $\delta$ in our
+framework reflects insufficient knowledge of the experimenter, which
+could be due to a variety of reasons related to imperfections of
+devices. For example, a typical question that an experimenter may not
+be able to answer accurately would be ``did an electron land in the
+left half or the right half of the screen''? There are cases in which
+the electron would land too close to the middle of the screen for the
+experimenter to be able to determine with certainty that it was left
+or right of the center. We simply record this imprecision in the
+probability we assign to events, and use the axioms of probability
+theory to argue that a sharp transition occurs when the imprecision
+reaches a certain value.
 
 In an experimental setup, $\delta$ is calculated as follows. To
 determine the probability of any event, we typically repeat an
@@ -369,6 +381,10 @@ contextuality ({\bf{\sf C}}). In the region to the right, the degradation of the
 is large and our extension of the KS theorem no longer refutes other
 explanations for the experimental data.
 
+
+\end{document}
+
+
 \subsection*{Mermin-Peres ``Magic Square''}
 
 We are going to phrase our results in a different way. Since $\bar{\mu}_{0}$
@@ -457,10 +473,8 @@ $5$ & $\mathbf{O}_{02}=1$ & $\mathbf{O}_{12}=1$ & $\mathbf{O}_{22}=?$\tabularnew
 \par\end{center}
 
 If the undetermined result $?$ is $-1$, this table is consistent
-with Eq.~(\ref{eq:j_2_expectation_value}) and the prediction of
+with Eq.~(\ref{eq:j_2_expectation_value}) and the predictions of
 quantum mechanics. If the undetermined result $?$ is $1$, every
 observable has a definite measurement result, and form a deterministic
 hidden variable theory although they are not completely consistent
 with the prediction of quantum mechanics.
-
-\end{document}
