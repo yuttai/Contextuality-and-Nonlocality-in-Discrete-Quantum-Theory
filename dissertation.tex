@@ -18,13 +18,17 @@
 \usepackage[braket,qm]{qcircuit}
 \usepackage{mathrsfs}
 \usepackage{amssymb}
+\usepackage{pdfpages}
 
 \newcommand{\says}[3]{\begin{framed}\begin{minipage}{0.9\linewidth}\color{#1}{#2 says: #3}\end{minipage}\end{framed}}
 \newcommand{\yutsung}[1]{\says{purple}{Yu-Tsung}{#1}}
 \newcommand{\muB}{\ensuremath{\mu^{B}}}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
 \newcommand{\set}[2]{\ensuremath{\left\{ {#1}\mathrel{}\middle|\mathrel{}{#2}\right\} }}
-
+\newcommand{\gmult}{*}
+\newcommand{\Fpx}[1]{\mathbb{F}_{#1}}
+\newcommand{\Fq}{\mathbb{F}_{q}}
+\newcommand{\ff}[1]{\mathbb{F}_{#1}}
 
 \begin{document}
 %data for Title Page
@@ -136,6 +140,75 @@ In another word, this state $\rho$ is the unique state consistent
 with any given quantum probability measure.
 
 \chapter{Quantum Theories and Computing over Finite Fields}
+
+\section{Fundamentals of Finite Fields\label{sec:background}}
+
+A field~$\mathbb{F}$ is an algebraic structure consisting of a set
+of elements equipped with the operations of addition, subtraction,
+multiplication, and division \cite{fieldtheory.ref,numtheory.ref}.
+Fields may contain an infinite or a finite number of elements. The
+rational~$\mathbb{Q}$, real~$\mathbb{R}$, and complex numbers~$\mathbb{C}$
+are examples of infinite fields, while the set $\mathbb{F}_{3}=\{0,1,2\}$,
+under multiplication and addition modulo $3$, is an example of a
+finite field.
+
+There are two distinguished elements in a field, the addition identity
+$0$, and the multiplication identity $1$. Given the field~$\mathbb{F}$,
+the closed operations of addition, ``$+$,'' and multiplication,
+``$\gmult$,'' satisfy the following set of axioms: 
+\begin{enumerate}
+\item $\mathbb{F}$ is an Abelian group under the addition operation~$+$
+(additive group); 
+\item The multiplication operation~$\gmult$ is associative and commutative.
+The field has a multiplicative identity and the property that every
+nonzero element has a multiplicative inverse; 
+\item Distributive laws: For all $a,b,c\in\mathbb{F}$ 
+\begin{eqnarray}
+a\gmult(b+c) & = & a\gmult b+a\gmult c\\
+(b+c)\gmult a & = & b\gmult a+c\gmult a\ .
+\end{eqnarray}
+\end{enumerate}
+\noindent From now on, unless specified, we will omit the symbol~$\gmult$
+whenever we multiply two elements of a field.
+
+Finite fields of $q$ elements, $\Fq=\{0,\ldots,q-1\}$, will play
+a special role in this work. A simple explicit example is $\mathbb{F}_{3}$
+with the following addition and multiplication tables: 
+\[
+\begin{array}{c|ccc}
++ & 0 & 1 & 2\\[0.1in]
+\hline 0 & 0 & 1 & 2\\
+1 & 1 & 2 & 0\\
+2 & 2 & 0 & 1
+\end{array}\hspace*{2cm}\begin{array}{c|ccc}
+\gmult & 0 & 1 & 2\\[0.1in]
+\hline 0 & 0 & 0 & 0\\
+1 & 0 & 1 & 2\\
+2 & 0 & 2 & 1
+\end{array}
+\]
+
+The characteristic of a field is the least positive integer~$m$
+such that $m=1+1+1+\cdots+1=0$, and if no such $m$ exists we say
+that the field has characteristic zero (which is the case for $\mathbb{R}$
+for example). It turns out that if the characteristic is non-zero
+it must be a prime~$p$. For every prime~$p$ and positive integer~$r$
+there is a finite field~$\Fpx{p^{r}}$ of size $q=p^{r}$ and characteristic~$p$,
+which is unique up to field isomorphism \cite{Artin1991,DummitFoote2004}.
+The exponent $r$ is known as the \emph{degree} of the field over
+its prime subfield\footnote{ Fields $\ff{q}$ where $q$ is a power of a prime $p$, i.e., $q=p^{r}$,
+are known as Galois fields.}~\cite{GT.ref}. If the characteristic $p$ is an arbitrary prime
+number, we call the field \emph{unrestricted}.
+
+For every $a\in\Fq$, $a\neq0$, then $a^{q-1}=1$, implying the Frobenius
+endomorphism (also a consequence of Fermat's little theorem) $a^{q}=a$,
+which in turn permits us to write the multiplicative inverse of any
+non-zero element in the field as $a^{-1}=a^{q-2}$, since $a^{q-2}a=a^{q-1}=1$.
+Every subfield of the field~$\Fq$, of size $q=p^{r}$, has $p^{r'}$
+elements with some $r'$ dividing $r$, and for a given $r'$ it is
+unique.
+
+\section{Modal Quantum Theory\label{modalquantum}}
 
 \section{Modal Quantum Theory and Computing}
 
@@ -277,5 +350,8 @@ future research.
 \end{comment}
 \printbibliography
 
-%\include{CV}
+% http://latex.org/forum/viewtopic.php?t=7312
+% http://latex.org/forum/viewtopic.php?t=17956
+\addtocontents{toc}{\noindent\contentsline{chapter}{Curriculum Vitae}{}}
+\includepdf[pages=-]{CV_thesis}
 \end{document}
