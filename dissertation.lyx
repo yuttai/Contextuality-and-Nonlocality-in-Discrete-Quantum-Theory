@@ -13,16 +13,17 @@
 \DeclareUnicodeCharacter{00A0}{~}
 \usepackage{mmap}
 \usepackage{comment}
+
 %\usepackage[basic]{complexity}
 \newcommand{\lang}[1]{{\ensuremath{\mathsf{#1}}}}
 \newcommand{\newlang}[2]{\newcommand{#1}{\lang{#2}}}
 \newlang{\usat}{UNIQUE-SAT}
+
 \usepackage[all]{xy}
 \usepackage{framed}
 \usepackage[braket,qm]{qcircuit}
 \usepackage{mathrsfs}
 \usepackage{setspace}
-
 
 \newcommand{\says}[3]{\begin{framed}\begin{minipage}{0.9\linewidth}\color{#1}{#2 says: #3}\end{minipage}\end{framed}}
 \newcommand{\muB}{\ensuremath{\mu^{B}}}
@@ -31,7 +32,10 @@
 \newcommand{\gmult}{*}
 \newcommand{\Fpx}[1]{\mathbb{F}_{#1}}
 \newcommand{\Fq}{\mathbb{F}_{q}}
-\newcommand{\ff}[1]{\mathbb{F}_{#1}}
+\newcommand{\ff}[1]{\Fpx{#1}}
+\newcommand{\VVec}[1]{\vec{\bf #1}}
+\newcommand{\mathComplex}{\mathbb{C}}
+\newcommand{\braket}[2]{\ip{#1}{#2}}
 
 \department{Department of Mathematics}
 \department{Department of Computer Science}
@@ -749,17 +753,6 @@ Conventional Quantum Theory
 
 \begin_layout Section
 Geometrical Structure of States
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Section
-Continuous Quantum Geometry
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
 name "CQC1qubitBloch.sec"
@@ -769,8 +762,8 @@ name "CQC1qubitBloch.sec"
 
 \end_layout
 
-\begin_layout Plain Layout
-Conventional quantum computation is described by the following: 
+\begin_layout Standard
+Conventional quantum theory (CQT) is described by the following: 
 \end_layout
 
 \begin_layout Enumerate
@@ -840,8 +833,8 @@ and a measurement framework.
  
 \end_layout
 
-\begin_layout Plain Layout
-We remark that there are many things that are assumed in CQC, such as the
+\begin_layout Standard
+We remark that there are many things that are assumed in CQT, such as the
  absence of zero norm states for non-zero vectors, and the decomposition
  of complex amplitudes into a pair of ordinary real numbers.
  One also typically assumes the existence of a Hilbert space with an orthonormal
@@ -852,25 +845,12 @@ We remark that there are many things that are assumed in CQC, such as the
 -qubit 
 \shape italic
 pure
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
-
 \shape default
  states in general as Hilbert space vectors with an Hermitian inner product:
  
 \begin_inset Formula 
 \begin{eqnarray}
-\ket{\Psi} & = & \sum_{i=0}^{D-1}\alpha_{i}\ket{i}\ .
+\ket{\Psi} & = & \sum_{i=0}^{D-1}\alpha_{i}\ket{i}\,.
 \end{eqnarray}
 
 \end_inset
@@ -889,16 +869,24 @@ Here
 
  is an orthonormal basis of states obeying 
 \begin_inset Formula 
-\begin{eqnarray}
-\braket{i}{k}=\delta_{ik}\ .
-\end{eqnarray}
+\begin{equation}
+\braket{i}{k}=\delta_{ik}\,,
+\end{equation}
 
 \end_inset
 
+where 
+\begin_inset Formula $\bra{i}$
+\end_inset
 
+ is called the dual vector of 
+\begin_inset Formula $\ket{i}$
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 The meaning of this is that any state 
 \begin_inset Formula $\ket{\Phi}=\sum_{i=0}^{D-1}\beta_{i}\ket{i}$
 \end_inset
@@ -910,7 +898,7 @@ The meaning of this is that any state
  by writing 
 \begin_inset Formula 
 \begin{eqnarray}
-\braket{\Phi}{\Psi} & = & \sum_{i=0}^{D-1}\beta_{i}^{*}\alpha_{i}^{\;}\ ,
+\braket{\Phi}{\Psi} & = & \sum_{i=0}^{D-1}\beta_{i}^{*}\alpha_{i}\,,
 \end{eqnarray}
 
 \end_inset
@@ -925,43 +913,19 @@ thus quantifying the proximity of the two states.
  discrete quantum geometry.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 In this paper, we focus on the discrete geometric issues raised by the propertie
-s (i) and (ii) given above for CQC, and leave for another time the important
+s (i) and (ii) given above for CQT, and leave for another time the important
  issues of (iii), (iv), and such conundrums as probabilities, zero norms,
- and dynamics in the theory of DQC.
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%% Much could be said about the state transformations as well as the
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%% states themselves, but that is not our objective here.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-To facilitate the transition to DQC carried out in later sections, we concern
+ and dynamics in the theory of DQT.
+ To facilitate the transition to DQT carried out in later sections, we concern
  ourselves first with the properties of the simplest possible abstract state
- object in CQC, the single qubit state.
+ object in CQT, the single qubit state.
 \end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
 
 \begin_layout Subsection
 The single qubit problem
@@ -2823,6 +2787,10 @@ key "gleason1957,Redhead1987-REDINA,peres1995quantum,RichmanBridges1999,Hamhalte
  is the unique state consistent with any given quantum probability measure.
 \end_layout
 
+\begin_layout Section
+Quantum Contextuality
+\end_layout
+
 \begin_layout Chapter
 Quantum Theories and Computing over Finite Fields
 \end_layout
@@ -3261,8 +3229,8 @@ key "doi:10.1142/S0217984913500644,1751-8121-47-40-405304"
 \shape italic
 unrestricted
 \shape default
- finite fields, which they call modal quantum theories or Galois field quantum
- theories.
+ finite fields, which they call modal quantum theories (MQT) or Galois field
+ quantum theories.
  Such theories retain several key quantum characteristics including notions
  of superposition, interference, entanglement, and mixed states, along with
  time evolution using invertible linear operators, complementarity of incompatib
@@ -3361,27 +3329,29 @@ n condition
  The dynamics of these one-qubit states is realized by any invertible linear
  map, i.e., by any linear map that is guaranteed never to produce the zero
  vector from a valid state.
- There are exactly 6 such maps: 
+ There are exactly 
+\begin_inset Formula $6$
+\end_inset
+
+ such maps: 
 \begin_inset Formula 
-\[
-\begin{array}{c}
-X_{0}=\begin{pmatrix}1 & 0\\
+\begin{equation}
+\begin{aligned}X_{0} & =\begin{pmatrix}1 & 0\\
 0 & 1
-\end{pmatrix},\qquad\qquad X_{1}=\begin{pmatrix}0 & 1\\
-1 & 0
-\end{pmatrix},\\
-\\
-S\!=\!\begin{pmatrix}1 & 0\\
+\end{pmatrix}\,, & S & =\begin{pmatrix}1 & 0\\
 1 & 1
-\end{pmatrix},S^{\dagger}\!=\!\begin{pmatrix}1 & 1\\
+\end{pmatrix}\,, & D_{1} & =\begin{pmatrix}0 & 1\\
+1 & 1
+\end{pmatrix}\,,\\
+X_{1} & =\begin{pmatrix}0 & 1\\
+1 & 0
+\end{pmatrix}\,, & S^{\dagger} & =\begin{pmatrix}1 & 1\\
 0 & 1
-\end{pmatrix},D_{1}\!=\!\begin{pmatrix}0 & 1\\
-1 & 1
-\end{pmatrix},D_{2}\!=\!\begin{pmatrix}1 & 1\\
+\end{pmatrix}\,, & D_{2} & =\begin{pmatrix}1 & 1\\
 1 & 0
-\end{pmatrix}.
-\end{array}
-\]
+\end{pmatrix}\,.
+\end{aligned}
+\end{equation}
 
 \end_inset
 
@@ -3400,10 +3370,6 @@ This set of maps is clearly quite impoverished compared to the full set
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
 Measurement in the standard basis is fairly straightforward: measuring 
 \begin_inset Formula $\ket{0}$
 \end_inset
@@ -3425,56 +3391,243 @@ Measurement in the standard basis is fairly straightforward: measuring
 \end_inset
 
  with no assigned probability distribution.
- In other bases, the measurement process is complicated by the fact that
- the correspondence between 
-\begin_inset Formula $\ket{\Psi}$
-\end_inset
-
- and its 
-\emph on
-dual
-\emph default
- 
-\begin_inset Formula $\bra{\Psi}$
-\end_inset
-
- is basis-dependent, and that the underlying finite field is necessarily
- cyclic.
- For example, in
+ When measuring an arbitrary state
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Formula $\ff{2}$
+\begin_inset Formula $\ket{\phi}$
 \end_inset
 
-, addition 
-\begin_inset Formula $(+)$
+ in other bases 
+\begin_inset Formula $\left\{ \ket{\psi_{0}},\ket{\psi_{1}}\right\} $
 \end_inset
 
- and multiplication 
-\begin_inset Formula $(*)$
+, we first represents 
+\begin_inset Formula $\ket{\phi}$
 \end_inset
 
- are modulo 2: 
-\begin_inset Formula $\ip{+}{+}=(\scalarO*\scalarO)+(\scalarO*\scalarO)=\scalarO+\scalarO=\scalarZ$
+ as the linear combination of the basis vectors 
+\begin_inset Formula $\beta_{0}\ket{\psi_{0}}+\beta_{1}\ket{\psi_{1}}$
 \end_inset
 
-.
- Hence, the dual of 
-\begin_inset Formula $\ket{+}$
+, and measuring 
+\begin_inset Formula $\ket{\phi}$
 \end_inset
 
- is not 
-\begin_inset Formula $\bra{+}$
+ is impossible to produce 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\ket{\psi_{i}}$
 \end_inset
 
  if 
-\begin_inset Formula $\ket{+}$
+\begin_inset Formula $\beta_{i}$
 \end_inset
 
- is part of the basis.
+ is zero, and is possible to 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+produce 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\ket{\psi_{i}}$
+\end_inset
+
+ if 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+ is non-zero.
+ Since only possibility and impossibility is predicted by the theory, the
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ modal quantum theories is named after
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ these “modal” concepts.
 \end_layout
+
+\begin_layout Standard
+Notice that the measurement process is complicated by the fact that the
+ possibility to produce a basis vector
+\begin_inset space ~
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\ket{\psi_{i}}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ depending on other measurement basis vectors.
+ This is one step further than the usual CQT, where the probability to produce
+ a basis vector
+\begin_inset space ~
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\ket{\psi_{i}}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ measuring a state
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\ket{\phi}$
+\end_inset
+
+ is completely determined by the inner products between 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\ket{\psi_{i}}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ and 
+\begin_inset Formula $\ket{\phi}$
+\end_inset
+
+; only when simulating the measurement results by a deterministic hidden
+ variable theory, other measurement basis vectors effects the measurement
+ results.
+ This kind of 
+\begin_inset Quotes eld
+\end_inset
+
+super-contextuality
+\begin_inset Quotes erd
+\end_inset
+
+ is far from CQT, and might contribute to the 
+\begin_inset Quotes eld
+\end_inset
+
+supernatural
+\begin_inset Quotes erd
+\end_inset
+
+ computational power as we will describe next.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
 
 \begin_layout Section
 Modal Quantum Computing
