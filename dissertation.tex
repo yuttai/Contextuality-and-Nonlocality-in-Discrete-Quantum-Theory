@@ -1,6 +1,24 @@
+%% LyX 2.2.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
 \documentclass[twoside]{iuphd}
 \usepackage[T1,T2A]{fontenc}
 \usepackage[utf8]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{verbatim}
+\usepackage{mathrsfs}
+\usepackage{pdfpages}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% A simple dot to overcome graphicx limitations
+\newcommand{\lyxdot}{.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage[ backend=biber]{biblatex}
 \addbibresource{prop.bib}
 \ExecuteBibliographyOptions{sorting=none,maxbibnames=10,doi=false,isbn=false,url=false}
@@ -8,16 +26,16 @@
 \DeclareUnicodeCharacter{00A0}{~}
 \usepackage{mmap}
 \usepackage{comment}
+
 %\usepackage[basic]{complexity}
 \newcommand{\lang}[1]{{\ensuremath{\mathsf{#1}}}}
 \newcommand{\newlang}[2]{\newcommand{#1}{\lang{#2}}}
 \newlang{\usat}{UNIQUE-SAT}
+
 \usepackage[all]{xy}
 \usepackage{framed}
 \usepackage[braket,qm]{qcircuit}
 \usepackage{mathrsfs}
-\usepackage{amssymb}
-\usepackage{pdfpages}
 \usepackage{setspace}
 
 \newcommand{\says}[3]{\begin{framed}\begin{minipage}{0.9\linewidth}\color{#1}{#2 says: #3}\end{minipage}\end{framed}}
@@ -25,27 +43,37 @@
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
 \newcommand{\set}[2]{\ensuremath{\left\{ {#1}\mathrel{}\middle|\mathrel{}{#2}\right\} }}
 \newcommand{\gmult}{*}
-\newcommand{\Fpx}[1]{\mathbb{F}_{#1}}
-\newcommand{\Fq}{\mathbb{F}_{q}}
-\newcommand{\ff}[1]{\mathbb{F}_{#1}}
+\newcommand{\Fpx}[1]{\mathbb{F}_{{#1}}}
+\newcommand{\Fq}{\Fpx{q}}
+\newcommand{\ff}[1]{\Fpx{#1}}
+\newcommand{\ffzx}[2]{\Fpx{#1}^{{#2}\;*}}
+\newcommand{\ffx}[2]{\Fpx{#1}^{{#2}}}
+\newcommand{\ffzd}[1]{\ffzx{#1}{d}}
+\newcommand{\ffd}[1]{\ffx{#1}{d}}
+\newcommand{\VVec}[1]{\vec{\bf #1}}
+\newcommand{\mathComplex}{\mathbb{C}}
+\newcommand{\braket}[2]{\ip{#1}{#2}}
+
+\department{Department of Mathematics}
+\department{Department of Computer Science}
+
+\makeatother
 
 \begin{document}
 %data for Title Page
-\title{Discrete Quantum Theories and Computing}
-\author{\large{Yu-Tsung Tai}}
-\date{\today}
-\department{Department of Mathematics}
-\department{Department of Computer Science}
-\maketitle
 
+\title{Discrete Quantum Theories and Computing}
+
+\author{{Yu-Tsung Tai}}
+
+\date{\today}
+
+\maketitle
 %data for Acceptance Page
-\committeeMember{Amr A. Sabry, PhD}
-\committeeMember{Dylan Paul Thurston, PhD}
-\committeeMember{Gerardo Ortiz, PhD}
-\committeeMember{Andrew J. Hanson, PhD}
-\committeeMember{Shouhong Wang, PhD}
-\defensedate{Defense Date}
-\acceptancepage
+\committeeMember{Amr A. Sabry, PhD} \committeeMember{Dylan Paul
+Thurston, PhD} \committeeMember{Gerardo Ortiz, PhD} \committeeMember{Andrew
+J. Hanson, PhD} \committeeMember{Shouhong Wang, PhD} \defensedate{Defense
+Date} \acceptancepage
 
 %data for Copyright Page
 % \cryear{2018}
@@ -54,28 +82,29 @@
 % \dedication{}
 % \dedicationpage
 
-\acknowledgements{The acknowledgments are designed to recognize people or agencies to whom you feel grateful for any academic,
-technical, financial, or personal aid in the preparation of your thesis or dissertation; as a matter of
-courtesy, you would ordinarily mention the members of your committee here, as well as institutions that
-provided funding, your typist, or anyone else who helped.}
-\acknowledgementspage
+\acknowledgements{The acknowledgments are designed to recognize
+people or agencies to whom you feel grateful for any academic, technical,
+financial, or personal aid in the preparation of your thesis or dissertation;
+as a matter of courtesy, you would ordinarily mention the members
+of your committee here, as well as institutions that provided funding,
+your typist, or anyone else who helped.} \acknowledgementspage
 
 %\preface{}
 % \prefacepage
 
-\abstract{Our primary research interest is to build a quantum computing model
-characterizing realistic quantum computers. While most of the quantum
-computing models based on uncomputable numbers, that is, the continuum
-of real numbers, most of the classical computers in our daily life
-are digital instead of analog computers. This highlight the necessity
-to investigate discrete models for quantum theory and computing. Specifically,
-we start from replacing the continuum of complex numbers by the discrete
-finite fields. Although we have fruitful results on their geometric
-implications and computing powers, their probability models are still
-not completely satisfactory. To address this issue, we further exploited
-quantum interval-valued probability, and proved an imprecise version
-of foundational results such as the Gleason and Kochen-Specker theorems.}
-\abstractpage
+\abstract{Our primary research interest is to build a quantum computing
+model characterizing realistic quantum computers. While most of the
+quantum computing models based on uncomputable numbers, that is, the
+continuum of real numbers, most of the classical computers in our
+daily life are digital instead of analog computers. This highlight
+the necessity to investigate discrete models for quantum theory and
+computing. Specifically, we start from replacing the continuum of
+complex numbers by the discrete finite fields. Although we have fruitful
+results on their geometric implications and computing powers, their
+probability models are still not completely satisfactory. To address
+this issue, we further exploited quantum interval-valued probability,
+and proved an imprecise version of foundational results such as the
+Gleason and Kochen-Specker theorems.} \abstractpage
 
 \tableofcontents{}
 
@@ -110,11 +139,403 @@ the implications of \emph{discrete quantum theories} in a systematic
 fashion. In particular, on different discrete quantum theories, we
 will present how geometrical structure of states and quantum probability
 could be, and how these mathematical structures affect the power of
-discrete quantum computing. 
+discrete quantum computing.
 
 \chapter{Conventional Quantum Theory}
 
-\section{Geometrical Structure of States}
+\section{Geometrical Structure of States\label{CQC1qubitBloch.sec}}
+
+Conventional quantum theory (CQT) is described by the following: 
+\begin{enumerate}
+\item[(i)] $D=2^{n}$ orthonormal basis vectors of an $n$-qubit state, 
+\item[(ii)] the normalized $D$ complex probability amplitude coefficients describing
+the contribution of each basis vector, 
+\item[(iii)] a set of probability-conserving unitary matrix operators that suffice
+to describe all required state transformations of a quantum circuit, 
+\item[(iv)] and a measurement framework. 
+\end{enumerate}
+We remark that there are many things that are assumed in CQT, such
+as the absence of zero norm states for non-zero vectors, and the decomposition
+of complex amplitudes into a pair of ordinary real numbers. One also
+typically assumes the existence of a Hilbert space with an orthonormal
+basis, allowing us to write $n$-qubit \textit{pure} states in general
+as Hilbert space vectors with an Hermitian inner product: 
+\begin{eqnarray}
+\ket{\Psi} & = & \sum_{i=0}^{D-1}\alpha_{i}\ket{i}\,.
+\end{eqnarray}
+Here $\alpha_{i}\in\mathComplex$ are complex probability amplitudes,
+$\VVec{\alpha}\in\mathComplex^{D}$, and the $\{\ket{i}\}$ is an
+orthonormal basis of states obeying 
+\begin{equation}
+\braket{i}{k}=\delta_{ik}\,,
+\end{equation}
+where $\bra{i}$ is called the dual vector of $\ket{i}$.
+
+The meaning of this is that any state $\ket{\Phi}=\sum_{i=0}^{D-1}\beta_{i}\ket{i}$
+can be projected onto another state $\ket{\Psi}$ by writing 
+\begin{eqnarray}
+\braket{\Phi}{\Psi} & = & \sum_{i=0}^{D-1}\beta_{i}^{*}\alpha_{i}\,,
+\end{eqnarray}
+thus quantifying the proximity of the two states. (Here $^{*}$ denotes
+complex conjugation.) This is one of many properties we take for granted
+in continuum quantum mechanics that challenge us in defining a discrete
+quantum geometry.
+
+In this paper, we focus on the discrete geometric issues raised by
+the properties (i) and (ii) given above for CQT, and leave for another
+time the important issues of (iii), (iv), and such conundrums as probabilities,
+zero norms, and dynamics in the theory of DQT. To facilitate the transition
+to DQT carried out in later sections, we concern ourselves first with
+the properties of the simplest possible abstract state object in CQT,
+the single qubit state.
+
+\begin{comment}
+
+\subsection{The single qubit problem}
+
+A single qubit already provides access to a wealth of geometric information
+and context. We write the single qubit state as 
+\begin{equation}
+\begin{array}{lr}
+\ket{\psi_{1}}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}\  & \ \alpha_{0},\alpha_{1}\in\C\end{array}\ .%%
+%%\alpha_{1}{array}
+\label{A1.eq}
+\end{equation}
+
+A convenience for probability calculations and a necessity for computing
+relative state properties is the normalization condition 
+\begin{equation}
+\|\psi_{1}\|^{2}=|\alpha_{0}|^{2}+|\alpha_{1}|^{2}=\alpha_{0}^{*}\alpha_{0}+\alpha_{1}^{*}\alpha_{1}=1\ ,\label{A2.eq}
+\end{equation}
+which identifies $\alpha_{0}$ and $\alpha_{1}$ as (complex) probability
+amplitudes and implies the conservation of probability in the closed
+world spanned by $\{\ket{0},\ket{1}\}$. Note that we distinguish
+for future use the \textit{norm\/} $\|\cdot\|$ of a vector from
+the \textit{modulus\/} $|\cdot|$ of a complex number. Continuing,
+we see that if we want only the irreducible state descriptions, we
+must supplement the process of computing \Eq{A2.eq} by finding a
+way to remove the distinction between states that differ only by an
+overall phase transformation $e^{i\phi}$, that is, 
+\begin{equation}
+(\alpha_{0},\alpha_{1})\sim(e^{i\phi}\alpha_{0},e^{i\phi}\alpha_{1})\ .\label{A3.eq}
+\end{equation}
+This can be accomplished by the Hopf fibration, which we can write
+down as follows: let 
+\begin{equation}
+\begin{array}{cc}
+\alpha_{0}=x_{0}+iy_{0}, & \alpha_{1}=x_{1}+iy_{1}\end{array}\ .\label{A4.eq}
+\end{equation}
+Then \Eq{A2.eq} becomes the condition that the four real variables
+describing a qubit denote a point on the three-sphere $\Sphere{3}$
+(a 3-manifold) embedded in $\R^{4}$: 
+\begin{equation}
+x_{0}^{\ 2}+y_{0}^{\ 2}+x_{1}^{\ 2}+y_{1}^{\ 2}=1\ .\label{A5.eq}
+\end{equation}
+
+There is a family of 6 equivalence classes of quadratic maps that
+take the remaining 3 degrees of freedom in \Eq{A5.eq} and reduce
+them to 2 degrees of freedom by effectively removing $e^{i\phi}$
+(``fibering out by the circle $\Sphere{1}$''). The standard form
+of this class of maps (``the Hopf fibration'') is 
+\begin{eqnarray}
+X & = & 2\,\mathrm{Re}\ \alpha_{0}\alpha_{1}^{*}=2x_{0}x_{1}+2y_{0}y_{1}\nonumber \\
+Y & = & 2\,\mathrm{Im}\ \alpha_{0}\alpha_{1}^{*}=2x_{1}y_{0}-2x_{0}y_{1}\\
+Z & = & |\alpha_{0}|^{2}-|\alpha_{1}|^{2}=x_{0}^{\ 2}+y_{0}^{\ 2}-x_{1}^{\ 2}-y_{1}^{\ 2}\ .\nonumber 
+\end{eqnarray}
+These transformed coordinates obey 
+\begin{equation}
+\|\Vec{X}\|^{2}=X^{2}+Y^{2}+Z^{2}=\left(|\alpha_{0}|^{2}+|\alpha_{1}|^{2}\right)^{2}=1\label{A7.eq}
+\end{equation}
+and therefore have only two remaining degrees of freedom describing
+all possible distinct one-qubit quantum states. In Figure \ref{hopfFibers.fig}
+we illustrate schematically the family of circles \textit{each one
+of which is collapsed to a point\/} $(\theta,\phi)$ on the surface
+$X^{2}+Y^{2}+Z^{2}=1$ by the Hopf map.
+
+%% (We try to list the sources of all computed figures)%% Sources for hopfFibers.fig:  dqc-geom-2012/00mathFigs/Hopf-Fiber.nb
+\begin{figure}[htb]
+\centerline{ \includegraphics[width=0.48\columnwidth,bb = 0 0 200 100, draft, type=eps]{../../../../Public/Documents/StudyInIUB/Computer Science/201209-12.M800/Manuscripts/hopfS2.pdf}\hspace{0.03in}
+\includegraphics[width=0.48\columnwidth,bb = 0 0 200 100, draft, type=eps]{../../../../Public/Documents/StudyInIUB/Computer Science/201209-12.M800/Manuscripts/hopfFibers.pdf}}
+\centerline{\hspace{1in} (a) \hfill{}(b) \hspace{1in}} \caption{(a) The sphere represented by \Eq{A7.eq}, which is the irreducible
+space of one-qubit states, along with a representative set of points
+on the sphere. (b) Representation of the Hopf fibration as a family
+of circles (the paths of $e^{i\phi}$), each corresponding to a single
+point on the sphere in (a). Points in (a) are color coded corresponding
+to circles in (b), e.g., one pole contains the red elliptical circle
+that would become an infinite-radius circle in a slightly different
+projection, and the opposite pole corresponds to the large perfectly
+round red circle at the equator.}
+\label{hopfFibers.fig} 
+\end{figure}
+
+The resulting manifold is the two-sphere $\Sphere{2}$ (a 2-manifold)
+embedded in $\R^{3}$. If we choose one of many possible coordinate
+systems describing $\Sphere{3}$ via \Eq{A5.eq} such as 
+\begin{eqnarray}
+\hspace*{-0.5cm}\left(x_{0},y_{0},x_{1},y_{1}\right) & = & \left(\cos\frac{\theta+\phi}{2}\cos\frac{\psi}{2},\,\sin\frac{\theta+\phi}{2}\cos\frac{\psi}{2},\ \right.\nonumber \\
+ &  & \left.\cos\frac{\theta-\phi}{2}\sin\frac{\psi}{2},\ \sin\frac{\theta-\phi}{2}\sin\frac{\psi}{2}\right),\label{A8a.eq}
+\end{eqnarray}
+where %% $0\leq \theta \leq 2 \pi$,  $-\pi \leq \phi \leq  \pi$, 
+$0\leq\psi\leq\pi$, with $0\leq\frac{\theta+\phi}{2}<2\pi$ and $0\leq\frac{\theta-\phi}{2}<2\pi$,
+we see that 
+\begin{eqnarray}
+\left(X,Y,Z\right)=\left(\cos\phi\sin\psi,\,\sin\phi\sin\psi,\,\cos\psi\right)\ .\label{A8b.eq}
+\end{eqnarray}
+Thus the one-qubit state is independent of $\theta$, and we can choose
+$\theta=\phi$ without loss of generality, reducing the form of the
+unique one-qubit states to 
+\begin{equation}
+\ket{\psi_{1}}=e^{i\phi}\cos\frac{\psi}{2}\ket{0}+\sin\frac{\psi}{2}\ket{1}\ ,\label{A9.eq}
+\end{equation}
+and an irreducible state can be represented as a point on a sphere,
+as shown in Figure \ref{blochSphere.fig}(a).
+
+\begin{figure}[thb]
+\begin{centering}
+\includegraphics[width=0.47\columnwidth,bb = 0 0 200 100, draft, type=eps]{../../../../Public/Documents/StudyInIUB/Computer Science/201209-12.M800/Manuscripts/blochSphere.pdf}
+\hspace{0.01in} \includegraphics[width=0.47\columnwidth,bb = 0 0 200 100, draft, type=eps]{../../../../Public/Documents/StudyInIUB/Computer Science/201209-12.M800/Manuscripts/blochSphereArc.pdf} 
+\par\end{centering}
+\centerline{\hspace{1in} (a) \hfill{}(b) \hspace{1in}} \caption{(a) The conventional Bloch sphere with a unique state represented
+by the point at the red sphere. (b) The geodesic shortest-distance
+arc connecting two one-qubit quantum states.}
+\label{blochSphere.fig} 
+\end{figure}
+
+Thus the geometry of a single qubit reduces to transformations among
+points on $\Sphere{2}$, which can be parametrized in an infinite
+one-parameter family of transformations, one of which is the geodesic
+or minimal-length transformation. Explicitly, given two one-qubit
+states denoted by points $\Vec{a}$ and $\Vec{b}$ on $\Sphere{2}$,
+the shortest rotation carrying the unit normal $\Hat{a}$ to the unit
+normal $\Hat{b}$ is the SLERP (spherical linear interpolation) 
+\begin{equation}
+S(\Hat{a},\Hat{b},t)=\Hat{a}\,\frac{\sin((1-t)\theta)}{\sin\theta}\,+\,\Hat{b}\,\frac{\sin(t\theta)}{\sin\theta}\ ,\label{slerp.eq}
+\end{equation}
+where $\Hat{a}\cdot\Hat{b}=\cos\theta$. Figure \ref{blochSphere.fig}(b)
+illustrates the path traced by a SLERP between two irreducible one-qubit
+states on the Bloch sphere. Because states in CQC are defined by infinite
+precision real numbers, it is not possible, even in principle, to
+make an exact state transition as implied by Figure \ref{blochSphere.fig}(b).
+In practice, one has to be content with approximate, typically exponentially
+expensive, transitions from state to state.
+
+%% AMR: replaced ', probabilistic, exponentially complex transitions from%% state to state' with the above
+
+\subsection{The $n$-qubit problem}
+
+For $n$ qubits, the irreducible states are encoded in a similar family
+of geometric structures known technically as the complex projective
+space $\CP{D-1}$. We obtain these structures starting with the $D=2^{n}$
+initially unnormalized complex coefficients of the $n$-qubit state
+basis 
+\begin{eqnarray}
+\ket{\Psi} & = & \sum_{i=0}^{D-1}\alpha_{i}\ket{i}\ .\label{N1.eq}
+\end{eqnarray}
+We then follow the analog of the one-qubit procedure: Conservation
+of probability requires that the norm of the vector $\VVec{\alpha}$
+be normalized to unity: 
+\begin{eqnarray}
+\braket{\Psi}{\Psi}=\|\VVec{\alpha}\|^{2} & = & \sum_{i=0}^{D-1}|\alpha_{i}|^{2}\,=\,1\ .\label{probEq1.eq}
+\end{eqnarray}
+Thus the initial equation for the geometry of a quantum state describes
+a \textit{topological sphere\/} $\Sphere{2D-1}$ embedded in $\mathReal^{2D}$.
+To see this, remember that we can write the real and imaginary parts
+of $\alpha_{i}$ as $\alpha_{i}=x_{i}+iy_{i}$, so 
+\begin{eqnarray}
+\sum_{i=0}^{D-1}|\alpha_{i}|^{2}=\sum_{i=0}^{D-1}\left(x_{i}^{\ 2}+y_{i}^{\ 2}\right)=1
+\end{eqnarray}
+describes the locus of a $2D$-dimensional real unit vector in $\mathReal^{2D}$,
+which is by definition $\Sphere{2D-1}$, the $(2D-1)$-sphere, with
+$D=2^{n}$ for an $n$-qubit state.
+
+This $\Sphere{2D-1}$ in turn is ambiguous up to the usual overall
+phase, inducing an $\Sphere{1}$ symmetry action, and identifying
+$\Sphere{2D-1}$ as an $\Sphere{1}$ bundle, whose base space is the
+$(D-1)$-complex-dimensional projective space $\CP{D-1}$. There are
+thus $2D-2$ irreducible real degrees of freedom ($D-1$ complex degrees
+of freedom) for a quantum state with a $D$-dimensional basis, $\{\ket{i}\,|\,i=0,\ldots,D-1\}$.
+
+In summary, the full space of a $D=2^{n}$-dimensional $n$-qubit
+quantum state, including its overall phase defining its relationship
+to other quantum states, is the topological space $\Sphere{2D-1}$.
+For an isolated system, the overall phase is not measurable, and eliminating
+the phase dependence in turn corresponds to identifying $\Sphere{2D-1}$
+as a circle bundle over the base space $\CP{D-1}$, and therefore
+$\CP{D-1}=\CP{2^{n}-1}$ defines the $2D-2$ intrinsic, irreducible,
+degrees of freedom of the isolated $n$-qubit state's dynamics. In
+mathematical notation, this would be written
+
+%% From Wiki: Hopf-fibration: S^1\hookrightarrow S^3 \rightarrow S^2
+\[
+\Sphere{1}\hookrightarrow\Sphere{2D-1}\rightarrow\CP{D-1}\ ,
+\]
+with $D=2^{n}$ as usual. For $n=1$, the single qubit, we have $2^{n}-1=2-1=1$,
+and the base space of the circle bundle is $\CP{1}=\Sphere{2}$, the
+usual Bloch sphere. Note that only for $n=1$ is this actually a sphere-like
+geometry due to an accident of low-dimensional topology.
+
+\subsection{Explicit $n$-qubit generalization of the Hopf fibration construction}
+
+For one qubit, we could easily solve the problem of reducing the full
+unit-norm space to its irreducible components $\Vec{X}=(X,Y,Z)$ characterizing
+the Bloch sphere. We have just argued that essentially the same process
+is possible for $n$-qubits: in the abstract argument, we simply identify
+the family of coefficients $\{\alpha_{i}\}$ as being the same if
+they differ only by an overall phase $e^{i\phi}$. However, in practice
+this is not a construction that is easy to realize in a practical
+computation. We now outline an explicit algorithm for accomplishing
+the reduction to the irreducible $n$-qubit state space $\CP{D-1}$;
+this construction will turn out to be useful for the validation of
+our discrete results to follow below.
+
+We begin by noting that a natural quantity characterizing an $n$-qubit
+system is its \textit{density matrix\/}, $\rho=\left[\alpha_{i}\alpha_{j}^{*}\right]$,
+or 
+\begin{equation}
+\rho=\left[\begin{array}{cccc}
+|\alpha_{0}|^{2} & \alpha_{0}\alpha_{1}^{*} & \cdots & \alpha_{0}\alpha_{D-1}^{*}\\
+\alpha_{1}\alpha_{0}^{*} & |\alpha_{1}|^{2} & \cdots & \alpha_{1}\alpha_{D-1}^{*}\\
+\vdots & \vdots & \ddots & \vdots\\
+\alpha_{D-1}\alpha_{0}^{*} & \cdots & \alpha_{D-1}\alpha_{D-2}^{*} & |\alpha_{D-1}|^{2}
+\end{array}\right]\ .\label{nqDensity.eq}
+\end{equation}
+
+We can now use the complex generalization of the classical Veronese
+coordinate system for projective geometry to remove the overall phase
+ambiguity $e^{i\phi}$ from the $n$-qubit states. If we take a particular
+weighting of the elements of the density matrix $\rho$, we can construct
+a \textit{unit vector\/} of real dimension $D^{2}$ with the form:
+\begin{equation}
+\Vec{X}=(|\alpha_{i}|^{2},\ldots,\sqrt{2}\,\mathrm{Re}\ \alpha_{i}\alpha_{j}^{*},\ldots,\sqrt{2}\,\mathrm{Im}\ \alpha_{i}\alpha_{j}^{*},\ldots)\ ,\label{nqCoords.eq}
+\end{equation}
+where 
+\begin{eqnarray}
+\Vec{X}\cdot\Vec{X}=\left(\sum_{i=0}^{D-1}\left|\alpha_{i}\right|^{2}\right)^{2}=1\ .
+\end{eqnarray}
+This construction gives an explicit embedding of the $(D-1)$-dimensional
+complex, or $(2D-2)=(2^{n+1}-2)$-dimensional real, object in a real
+space of dimension $D^{2}=2^{2n}$. However, this is somewhat subtle
+because the vector is of unit length, so technically the embedding
+space is a sphere of dimension $D^{2}-1=2^{2n}-1$ embedded in $\R^{D^{2}}$;
+the one-qubit irreducible states could be represented in a 4D embedding,
+but the magnitude of every coordinate would be one; furthermore, the
+object embedded in the resulting $\Sphere{3}$ is indeed $\Sphere{2}$
+because we can fix one complex coordinate to be unity, and let one
+vary, giving a total of two irreducible dimensions. In fact one must
+choose \textit{two\/} coordinate patches, one covering one pole of
+$\Sphere{2}$ with coordinates 
+\begin{eqnarray}
+\begin{array}{ccc}
+\alpha_{0} & = & 1+0i\\
+\alpha_{1} & = & x_{1}+iy_{1}
+\end{array}
+\end{eqnarray}
+and the other patch covering the other pole of $\Sphere{2}$ with
+coordinates 
+\begin{eqnarray}
+\begin{array}{ccc}
+\alpha_{0} & = & x_{0}+iy_{0}\\
+\alpha_{1} & = & 1+0i\ .
+\end{array}
+\end{eqnarray}
+
+We finally see that the irreducible $n$-qubit state space $\CP{D-1}$
+is described by $D$ projectively equivalent coordinates, one of which
+can always be scaled out to leave $(D-1)$ actual (complex) degrees
+of freedom. We must choose, in turn, $D$ different local sets of
+complex variables defined by taking the value $\alpha_{k}=1$, with
+$k=0,\ldots,D-1$, and allowing the remaining $D-1$ complex (or $2D-2$
+real) variables to run free. No single set of coordinates will work,
+since the submanifold including $\alpha_{k}=0$ is undefined and another
+coordinate system must be chosen to cover that coordinate patch. This
+is a standard feature of the topology of non-trivial manifolds such
+as $\CP{D-1}$ (see any textbook on geometry \cite{Berger}).
+
+\subsection{The geometry of entanglement}
+
+Entanglement may be regarded as one of the main characteristics distinguishing
+quantum from classical mechanics. Entanglement involves quantum correlations
+such that the measurement outcomes in one subsystem are related to
+the measurement outcomes in another one. Within the standard framework,
+given a quantum system composed of $n$ qubit subsystems, a pure state
+of the total system $\ket{\Psi}$ is said to be entangled if it cannot
+be written as a product of states of each subsystem. That is, a state
+$\ket{\Psi}$ is entangled if 
+\begin{eqnarray}
+\ket{\Psi}\ne\ket{\psi_{1}}\otimes\cdots\otimes\ket{\psi_{j}}\otimes\cdots\otimes\ket{\psi_{n}},
+\end{eqnarray}
+where $\ket{\psi_{j}}$ refers to an arbitrary state of the $j$-th
+qubit, and $\otimes$ represents the tensor product. This is equivalent
+to saying that if one calculates the reduced density operator $\rho_{j}$
+of the $j$th subsystem by tracing out all the other subsystems, $\rho_{j}={\sf tr}_{\{1,\cdots,j-1,j+1,\cdots,n\}}(\rho)$,
+with $j=1,\cdots,n$ and $\rho=\ket{\Psi}\bra{\Psi}$, the normalized
+state $\ket{\Psi}$, $\langle\Psi|\Psi\rangle=1$, is entangled if
+and only if at least one subsystem state is \textit{mixed\/}; i.e.,
+${\sf tr}_{j}(\rho_{j}^{2})<1$. For example, consider 
+\begin{eqnarray}
+\rho_{j}=\frac{1}{2}(\mathds{1}+\sum\limits _{\mu=x,y,z}\langle\sigma_{\mu}^{j}\rangle\ \sigma_{\mu}^{j}),
+\end{eqnarray}
+where $\sigma_{\mu}^{j}$, $\mu=x,y,z$, are the Pauli operators acting
+on the $j$-th spin, 
+\begin{equation}
+\sigma_{\mu}^{j}=\overbrace{\mathds{1}\otimes\mathds{1}\otimes\cdots\otimes\underbrace{\sigma_{\mu}}_{j^{th}\ \mbox{factor}}\otimes\cdots\otimes\mathds{1}}^{n\ \mbox{factors}}\;,\label{pauli3}
+\end{equation}
+with 
+\begin{eqnarray}
+\hspace*{-0.5cm}\sigma_{x}=\left(\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}\right),\sigma_{y}=\left(\begin{array}{cc}
+0 & -i\\
+i & 0
+\end{array}\right),\sigma_{z}=\left(\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right),
+\end{eqnarray}
+and $\langle\sigma_{\mu}^{j}\rangle=\langle\Psi|\sigma_{\mu}^{j}|\Psi\rangle$
+denotes the corresponding expectation value. The vectors ${\bf X}_{j}=(\langle\sigma_{x}^{j}\rangle,\langle\sigma_{y}^{j}\rangle,\langle\sigma_{y}^{j}\rangle)$,
+${\bf X}_{j}\in{\mathbb{R}}^{3}$, allow a geometric representation
+of each reduced state in ${\mathbb{R}}^{3}$, satisfying $0\le\|{\bf X}_{j}\|\le1$.
+Since ${\sf tr}_{j}(\rho_{j}^{2})=\frac{1}{2}(1+\|{\bf X}_{j}\|^{2})$,
+the state $\ket{\Psi}$ is entangled if $\|{\bf X}_{j}\|<1$ for at
+least one $j$, represented by a point {\em inside} the corresponding
+local Bloch sphere. One may therefore consider $\ket{\Psi}$ to be
+maximally entangled if $\|{\bf X}_{j}\|=0$ for all $j$. On the other
+hand, the state $\ket{\Psi}$ is unentangled (i.e., a product state)
+if $\|{\bf X}_{j}\|=1$ for all $j$, corresponding to points lying
+on the surface of the Bloch sphere.
+
+A natural geometric measure of multipartite entanglement is obtained
+by defining the {\em purity of a state relative to a set of observables}
+\cite{Barnum2003,Barnum2004}. If the set is chosen to be the set
+of {\em all local observables}, i.e., corresponding to each of
+the subsystems that compose the actual system, one recovers the standard
+notion of entanglement for multipartite systems. For example, if the
+system consists of $n$ qubits, we obtain a measure of conventional
+entanglement by calculating the purity relative to the set $\fh=\{\sigma_{x}^{1},\sigma_{y}^{1},\sigma_{z}^{1},\ldots,\sigma_{x}^{n},\sigma_{y}^{n},\sigma_{z}^{n}\}$,
+\begin{equation}
+P_{\fh}=\frac{1}{n}\sum\limits _{j=1}^{n}\sum\limits _{\mu=x,y,z}\langle\sigma_{\mu}^{j}\rangle^{2}\:,\ \ 0\leq P_{\fh}\leq1\ .\label{purityMeasure.eq}
+\end{equation}
+Since $\fh$ is a semi-simple Lie algebra, its generalized unentangled
+states are the generalized coherent states obtained by applying any
+group operation to a reference state such as $\ket{\sf0}=\ket{0}\otimes\cdots\otimes\ket{0}$.
+For the algebra $\fh$ of local observables, such group operations
+are simply local rotations on each qubit. In other words, the group
+orbit describing the generalized coherent states of $\fh$ comprises
+all the product states of the form $\ket{\Psi}=\ket{\psi_{1}}\otimes\cdots\otimes\ket{\psi_{n}}$,
+which have maximum purity (i.e., $P_{\fh}=1$). Other states such
+as the Greenberger-Horne-Zeilinger state $\ket{\Psi}=\ket{{\sf GHZ}_{n}}=\frac{1}{\sqrt{2}}(\ket{0}\otimes\cdots\otimes\ket{0}+\ket{1}\otimes\cdots\otimes\ket{1})$
+are (maximally) entangled relative to the set of local observables
+(i.e., $P_{\fh}=0$).
+
+Different entanglement measures are obtained when a set $\fh$ different
+from the local observables is chosen. An obvious example, in particular,
+is given by the set of all observables. In this case, the purity takes
+its maximum value independently of the pure quantum state \cite{Barnum2003,Barnum2004},
+expressing the fact that any state is a generalized coherent state
+of the Lie algebra of all observables.
+\end{comment}
 
 An $n$-qubit pure state in the conventional quantum theory (CQT)
 is represented as a vector in the $2^{n}$-dimensional Hilbert space.
@@ -143,6 +564,8 @@ can be induced from a mixed state $\rho$ in the Hilbert space of
 dimension $d\ge3$ according to Gleason's theorem \cite{gleason1957,Redhead1987-REDINA,peres1995quantum,RichmanBridges1999,Hamhalter2013}.
 In another word, this state $\rho$ is the unique state consistent
 with any given quantum probability measure.
+
+\section{Quantum Contextuality}
 
 \chapter{Quantum Theories and Computing over Finite Fields}
 
@@ -196,7 +619,7 @@ with the following addition and multiplication tables:
 The characteristic of a field is the least positive integer~$m$
 such that $m=1+1+1+\cdots+1=0$, and if no such $m$ exists we say
 that the field has characteristic zero (which is the case for $\mathbb{R}$
-for example). It turns out that if the characteristic is non-zero
+for example). It turns out that if the characteristic is non-zero,
 it must be a prime~$p$. For every prime~$p$ and positive integer~$r$
 there is a finite field~$\Fpx{p^{r}}$ of size $q=p^{r}$ and characteristic~$p$,
 which is unique up to field isomorphism \cite{Artin1991,DummitFoote2004}.
@@ -214,6 +637,323 @@ elements with some $r'$ dividing $r$, and for a given $r'$ it is
 unique.
 
 \section{Modal Quantum Theory\label{modalquantum}}
+
+Recently, Schumacher and Westmoreland~\cite{Schumacher2012-SCHMQT,SchumacherWestmoreland2010}
+and Chang et al.~\cite{doi:10.1142/S0217984913500644,1751-8121-47-40-405304}
+defined versions of quantum theory over \textit{unrestricted} finite
+fields, which they call modal quantum theories (MQT) or Galois field
+quantum theories. Such theories retain several key quantum characteristics
+including notions of superposition, interference, entanglement, and
+mixed states, along with time evolution using invertible linear operators,
+complementarity of incompatible observables, exclusion of local hidden
+variable theories, impossibility of cloning quantum states, and the
+presence of natural counterparts of quantum information protocols
+such as superdense coding and teleportation. These modal theories
+are obtained by collapsing the Hilbert space structure over the field
+of complex numbers to that of a vector space over an \emph{unrestricted}
+finite field. In the resulting structure, all non-zero vectors represent
+valid quantum states, and the evolution of a closed quantum system
+is described by \emph{arbitrary} invertible linear maps.
+
+Specifically, consider a one-qubit system with basis vectors $\ket{0}$
+and~$\ket{1}$. In conventional quantum theory, there exists an infinite
+number of states for a qubit of the form $\alpha_{0}\ket{0}+\alpha_{1}\ket{1}$,
+with $\alpha_{0}$ and $\alpha_{1}$ elements of the underlying field
+of complex numbers subject to the normalization condition $|\alpha_{0}|^{2}+|\alpha_{1}|^{2}=1$.
+Moving to a finite field immediately limits the set of possible states
+as the coefficients~$\alpha_{0}$ and~$\alpha_{1}$ are now drawn
+from a finite set. In particular, in the field $\ff{2}=\{0,1\}$ of
+booleans, there are exactly four possible vectors: the zero vector,
+the vector~$\ket{0}$, the vector $\ket{1}$, and the vector $\ket{0}+\ket{1}=\ket{+}$,
+where $\left\{ \ket{0},\ket{1},\ket{+}\right\} $ is denoted as $\ffzx{2}{2}$.
+Since the zero vector is considered non-physical, a one-qubit system
+can be in one of only three states. The dynamics of these one-qubit
+states is realized by any invertible linear map, i.e., by any linear
+map that is guaranteed never to produce the zero vector from a valid
+state. There are exactly $6$ such maps: 
+\begin{equation}
+\begin{aligned}X_{0} & =\begin{pmatrix}1 & 0\\
+0 & 1
+\end{pmatrix}\,, & S & =\begin{pmatrix}1 & 0\\
+1 & 1
+\end{pmatrix}\,, & D_{1} & =\begin{pmatrix}0 & 1\\
+1 & 1
+\end{pmatrix}\,,\\
+X_{1} & =\begin{pmatrix}0 & 1\\
+1 & 0
+\end{pmatrix}\,, & S^{\dagger} & =\begin{pmatrix}1 & 1\\
+0 & 1
+\end{pmatrix}\,, & D_{2} & =\begin{pmatrix}1 & 1\\
+1 & 0
+\end{pmatrix}\,.
+\end{aligned}
+\end{equation}
+This set of maps is clearly quite impoverished compared to the full
+set of one-qubit unitary maps in conventional quantum theory. In particular,
+it does not include the Hadamard transformation. However, this set
+also includes non-unitary maps such as $S$ and $S^{\dagger}$ that
+are not allowed in conventional quantum computation.
+
+Measurement in the standard basis is fairly straightforward: measuring
+$\ket{0}$ or $\ket{1}$ deterministically produces the same state
+while measuring $\ket{+}$ nondeterministically produces $\ket{0}$
+or $\ket{1}$ with no assigned probability distribution. When measuring
+an arbitrary state~$\ket{\phi}$ in other bases $\left\{ \ket{\psi_{0}},\ket{\psi_{1}}\right\} $,
+we first represents $\ket{\phi}$ as the linear combination of the
+basis vectors $\beta_{0}\ket{\psi_{0}}+\beta_{1}\ket{\psi_{1}}$,
+and measuring $\ket{\phi}$ is impossible to produce $\ket{\psi_{i}}$
+if $\beta_{i}$ is zero, and is possible to produce $\ket{\psi_{i}}$
+if $\beta_{i}$ is non-zero. Since only possibility and impossibility
+is predicted by the theory, the modal quantum theories is named after
+these “modal” concepts.
+
+Notice that the measurement process is complicated by the fact that
+the possibility to produce a basis vector~$\ket{\psi_{i}}$ depending
+on the measurement basis. This is one step further than the usual
+CQT, where the probability to produce a basis vector~$\ket{\psi_{i}}$
+measuring a state~$\ket{\phi}$ is completely determined by the inner
+products between $\ket{\psi_{i}}$ and $\ket{\phi}$; only when simulating
+the measurement results by a deterministic hidden variable theory,
+other measurement basis vectors effects the measurement results. Despite
+this kind of ``supercontextuality,'' its computational model, modal
+quantum computing (MQC), having ``supernatural'' computational power
+is also far from conventional quantum computing as we will describe
+next.
+
+\begin{comment}
+
+\section{Modal Quantum Computing}
+
+\label{modalquantumcomputing}
+
+To understand the computational implications of the modal quantum
+theory defined over the field $\ff{2}$ of booleans, we developed
+a quantum computing model and established its correspondence to a
+classical model of logical programming with a feature that has quantum-like
+behavior~\cite{qc-rel}. In a conventional logic program, answers
+produced by different execution paths are collected in a sequence
+with \emph{no} interference. However, in this modal quantum computing
+model over $\ff{2}$, these answers may interfere destructively with
+one another.
+
+Our computations with this ``toy'' modal quantum theory showed that
+it possesses ``supernatural'' computational power. For example,
+one can solve a black box version of the \usat\ problem~\cite{wsusat}
+in a way that outperforms conventional quantum computing. The classical
+\usat\ problem (also known as \texttt{USAT} or \texttt{UNAMBIGUOUS-SAT})
+is the problem of deciding whether a given boolean formula has a satisfying
+assignment, assuming that it has at most one such assignment~\cite{complexity}.
+This problem is, in a precise sense~\cite{Valiant198685}, just as
+hard as the general satisfiability problem and hence all problems
+in the~NP complexity class. Our black-box version of the \usat\ problem
+replaces the boolean formula with an arbitrary black box. Solutions
+to this generalized problem can be used to solve an unstructured database
+search of size $N$ using $O(\log{N})$ black box evaluations by binary
+search on the database. This algorithm then outperforms the known
+asymptotic bound $O(\sqrt{N})$ for unstructured database search in
+conventional quantum computing.
+
+\begin{figure}[t]
+\[
+\begin{array}{@{\!\!}c}
+\hspace*{1.35cm}\Qcircuit@C=1.3em@R=.9em{\lstick{y=\ket{0}}}\end{array}
+\]
+\caption[]{\label{fig:alg}Circuit for black box \usat\ in modal quantum theory
+over the field $\ff{2}$. $\uf$ is a Deutsch quantum black box~\cite{NCbook}
+with $\uf\ket{y}\ket{\overline{x}}~=~\ket{y\scalarPlus f(\overline{x})}\ket{\overline{x}}$,
+where $\overline{x}$ denotes a sequence $x_{1},x_{2},\ldots,x_{n}$
+of $n$ bits. For further notation see text.}
+\end{figure}
+
+We can prove the unreasonable power of the arbitrary-function \usat\ starting
+with a classical function $f:\boolt^{n}\rightarrow\boolt$ that takes
+$n$ bits and returns at most one \btrue\ result. Then we can give
+an algorithm (see Fig.~\ref{fig:alg}) taking as input such a classical
+function that decides, deterministically and in a constant number
+of black box evaluations, whether $f$ is satisfiable or not:
+
+\paragraph*{Case I: $f$ is unsatisfiable; the measurement deterministically
+produces $\ket{0}\ket{\overline{0}}$.}
+
+The state is initialized to $\ket{0}\ket{\overline{0}}$, with $\ket{\overline{0}}=\ket{0}\ket{0}\cdots\ket{0}$,
+i.e., the tensor product of $n$ $\ket{0}$ states. Applying the map
+$S$ (defined in the previous section) to each qubit in the second
+component of the state produces $\ket{0}\ket{\overline{+}}$ where
+$\ket{\overline{+}}$ denotes the sequence $\ket{+}\ldots\ket{+}$
+of length $n$. Applying $\uf$ to the entire state has no effect
+since $U_{f}$ is the identity when $f$ is unsatisfiable. Applying
+$S$ to each qubit in the second component of the state produces $\ket{0}\ket{\overline{0}}$.
+Applying $S^{\dagger}$ to the first component leaves the state unchanged.
+As the first component of the state is 0, applying the map $X_{0}$
+(which is the identity) leaves the state unchanged. Applying $S^{\dagger}$
+to the first component leaves the state unchanged. Measuring the state
+will deterministically produce $\ket{0}\ket{\overline{0}}$.
+
+\paragraph*{Case II: $f$ is satisfiable; the measurement produces some state
+other than $\ket{0}\ket{\overline{0}}$.}
+
+Assume the function $f$ is satisfiable at some input $a_{1},a_{2},\ldots,a_{n}$
+denoted $\overline{a}$, and where $\ket{\overline{a}}=\ket{a_{1}}\ldots\ket{a_{n}}$.
+In the second step, the state becomes $\ket{0}\ket{\overline{+}}$
+as above. We can write this state as $\ket{0}\ket{\overline{a}}+\Sigma_{\overline{x}\neq\overline{a}}\ket{0}\ket{\overline{x}}$.
+Applying $U_{f}$ produces $\ket{1}\ket{\overline{a}}+\Sigma_{\overline{x}\neq\overline{a}}\ket{0}\ket{\overline{x}}$.
+We can rewrite this state as $\ket{+}\ket{\overline{a}}+\Sigma_{\overline{x}}\ket{0}\ket{\overline{x}}=\ket{+}\ket{\overline{a}}+\ket{0}\ket{\overline{+}}$,
+where the summation is now over all vectors (notice that $\ket{0}\ket{\overline{a}}+\ket{0}\ket{\overline{a}}$
+is the zero vector). Applying $S$ to each qubit in the second component
+produces $\ket{+}\ket{\overline{S(a)}}+\ket{0}\ket{\overline{0}}$.
+Applying $S^{\dagger}$ to the first component produces: $\ket{1}\ket{\overline{S(a)}}+\ket{0}\ket{\overline{0}}$.
+Applying $X_{b}$, where $b$ is the first component of the state,
+to each qubit in the second component produces $\ket{1}\ket{\overline{{\sf not}(S(a))}}+\ket{0}\ket{\overline{0}}$.
+Applying $S^{\dagger}$ to the first component produces $\ket{+}\ket{\overline{{\sf not}(S(a))}}+\ket{0}\ket{\overline{0}}$.
+For the measurement of $\ket{+}\ket{\overline{{\sf not}(S(a))}}+\ket{0}\ket{\overline{0}}$
+to be guaranteed to never be $\ket{0}\ket{\overline{0}}$, we need
+to verify that $\ket{+}\ket{\overline{{\sf not}(S(a))}}$ has one
+occurrence $\ket{0}\ket{\overline{0}}$. This can be easily proved
+as follows. Since each $a_{i}$ is either 0 or 1, then each $S(a_{i})$
+is either $+$ or $1$, and hence each ${\sf not}(S(a_{i}))$ is either~$+$
+or~$0$. The result follows since any state with a combination of
+$+$ and $0$, when expressed in the standard basis, would consist
+of a superposition containing the state $\ket{0\ldots}$.
+
+%% WE have a problem with notation - what do we use for "dot product"
+%%  and/or "field norm" in the three or four instances below.
+%%  Here is Yu-Tsung's comment:
+
+% Actually, Grove didn't told about any quadratic residues, and didn't
+% defined the field norm. Grove 
+%  used "the quadratic form Q corresponding to a Hermitian form" instead
+% of "field norm." When I wrote 
+% this proof, I really read the following books:
+% [12] Stewart I 2004 Galois theory (Boca Raton: Chapman and Hall/CRC).
+% Field norm defined in almost all field theory books. In particular, in
+% page 197 in Section 18.4  [12].
+% [11] Hardy G H and Wright E M 1938 An Introduction to the Theory of
+% Numbers (Oxford: Oxford University Press).
+% Quadratic residues explained in almost all number theory books. In
+% particular, in page 69 in Chapter VI [11].
+%%  HERMITIAN (outside if needed) \define{dotprod}{dot product}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Discrete Quantum Theory (I) }
+
+\label{discretequantumtheoryI}
+
+Our next objective is to develop more realistic discrete quantum theory
+variants that exclude ``supernatural'' algorithms such as the one
+presented above. Our first such plausible framework~\cite{powerdqc}
+is based on complexifiable finite fields. To incorporate complex numbers
+for quantum amplitudes, we exploit the fact that the polynomial $x^{2}+1=0$
+is \emph{irreducible} (has no solution) over a prime field $\ff{p}$
+with $p$ odd if and only if $p$ is of the form~$4\ell+3$, with
+$\ell$ a non-negative integer. In other words, $x^{2}+1=0$ is irreducible
+over $\ff{3},\ff{7},\ff{11},\ff{19},\ldots$. We achieve our goal
+by observing that any field in this family is extensible to a field~$\ff{p^{2}}$
+whose elements can be viewed as discrete complex numbers with the
+real and imaginary parts in~$\ff{p}$. In the field~$\ff{p^{2}}$,
+the Frobenius automorphism of an element $\alpha$ (defined as $\alpha^{p}$)
+represents the usual definition of complex conjugation~\cite{fieldexample}.
+
+The next task is to examine the consequences when we attempt to construct
+$d$-dimensional vector spaces over the complexified fields $\ff{p^{2}}$
+\cite{geom1}. (For readability, instead of writing column vectors,
+we will often use the vector notation $\ket{\Psi}=(\alpha_{0}~\alpha_{1}~\ldots~\alpha_{d-1})^{T}$
+and $\ket{\Phi}=(\beta_{0}~\beta_{1}~\ldots~\beta_{d-1})^{T}$, where
+$(.)^{T}$ is the transpose of the \textit{row} vector $(.)$.) It
+can be shown~\cite{HermitianProd} that, given two vectors 
+\begin{equation}
+\ket{\Psi}=\sum_{i=0}^{d-1}~\alpha_{i}\ket{i}\ ,\ \ket{\Phi}=\sum_{i=0}^{d-1}~\beta_{i}\ket{i},
+\end{equation}
+with scalars $\alpha_{i}$ and $\beta_{i}$ drawn from the field elements,
+and orthonormal basis $\{\ket{i}\}$, the Hermitian \dotprod\ is
+always reducible to the form \vspace{-0.1in}
+ 
+\begin{equation}
+\ip{\Phi}{\Psi}=\sum_{i=0}^{d-1}~\beta_{i}^{p}~\alpha_{i}^{\;}\ .\vspace{-0.1in}\label{innerprod}
+\end{equation}
+
+This product satisfies conditions A and B below, but not~C, because
+in a finite field, addition can ``wrap around,'' making the concepts
+of positive and negative meaningless and allowing the sum of non-zero
+elements to be zero: 
+\begin{itemize}
+\item A. $\ip{\Phi}{\Psi}$ is the complex conjugate of $\ip{\Psi}{\Phi}$;
+\vspace*{-0.25cm}
+ 
+\item B. $\ip{\Phi}{\Psi}$ is conjugate linear in its first argument and
+linear in its second argument; \vspace*{-0.25cm}
+ 
+\item C. $\ip{\Psi}{\Psi}$ is always non-negative and is equal to~0 only
+if $\ket{\Psi}$ is the zero vector. 
+\end{itemize}
+With just conditions A and B, it is possible to recover unitary operators,
+and thus recover much of the relevant structure of Hilbert spaces
+over the field of complex numbers. The failure of condition C, however,
+plays havoc with the traditional notions of ordered probabilities
+as well as the geometric notions of ordered distances and angles,
+whose lengths and cosines, respectively, are normally expressed using
+the inner product~\cite{geom}. In a separate development, we explore
+the geometry of these finite fields and define a discrete version
+of the Hopf fibration extending the Bloch sphere to $n$-qubits, as
+well as determining discrete measures for the relative sizes of the
+entangled, maximally entangled, and unentangled discrete states~\cite{geom1}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\emph{Discrete Quantum Computing with Complexifiable Finite Fields. }
+%% NOTE (ajh): we decided Fp was complexifiable and Fpp was complexified.
+
+\section{Discrete Quantum Computing (I)}
+
+\label{discretequantumcomputingI}
+
+Given a complexified finite field $\ff{p^{2}}$ and its Hermitian
+\dotprod\
+(Eq.~\eqref{innerprod}) much of the structure of conventional quantum
+computing can be recovered. For example, the smallest field~$\ff{3^{2}}$
+is already rich enough to express the standard Deutsch-Jozsa~\cite{NCbook}
+algorithm, which requires only normalized versions of vectors or matrices
+with the scalars $0$, $1$, and $-1$. Similarly, other deterministic
+quantum algorithms (algorithms for which we may determine the outcome
+with certainty), such as Simon's and Bernstein-Vazirani, perform as
+desired~\cite{simon}. Algorithms such as Grover's search will not
+work in the usual way because we lack (the notion of) ordered angles
+and probability in general.
+
+\begin{figure}[t]
+\[
+\begin{array}{c}
+\hspace*{1.5cm}\Qcircuit@C=1.7em@R=.9em{\lstick{y=\ket{0}}}\end{array}
+\]
+\caption[]{Circuit for black box \usat\ in discrete quantum computing.}
+
+\label{fig:dbsearch} 
+\end{figure}
+
+It is possible, in some situations, to exploit the cyclic behavior
+of the field to creatively cancel probability amplitudes and solve
+problems with what again appears to be ``supernatural'' efficiency.
+We illustrate this behavior with the algorithm in Fig.~\ref{fig:dbsearch},
+which is a variant of the one in Fig.~\ref{fig:alg}. Unlike the
+modal quantum theory algorithm, the new algorithm does not always
+succeed deterministically using a constant number of black box evaluations.
+We can, however, show that supernatural behavior occurs if the characteristic
+$p$ of the field divides $2^{N}-1$. For a database of fixed size
+$N$, matching the conditions becomes less likely as the size of the
+field increases. Nevertheless, for a \textit{given\/} field, it is
+always possible to expand any database with dummy records to satisfy
+the divisibility property. Physically, we are taking advantage of
+additional interference processes that happen because of the possibility
+of ``wrapping around'' due to modular arithmetic. We do not know,
+in general, whether this version of discrete quantum computing actually
+enables the rapid solution of NP-complete problems.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Since forging a connection between  
+% a framework for discrete quantum computing based on complexifiable
+% finite fields and conventional quantum mechanics is blocked in the
+% general case by the violation of condition (C) on inner products, the
+% only logical alternative is to seek a way around the impasse.
+\end{comment}
 
 \section{Modal Quantum Theory and Computing}
 
@@ -254,7 +994,7 @@ Under suitable conditions, we can have deterministic quantum algorithms
 such as the algorithms of Deutsch, Simon \cite{Simon:1994:PQC:1398518.1399019,Mermin2007,Jaeger2007},
 and Bernstein-Vazirani \cite{Bernstein:1993:QCT:167088.167097,Mermin2007},
 but this still leads to excessive computational power for the unstructured
-database search problem for certain database sizes. 
+database search problem for certain database sizes.
 
 \section{Discrete Quantum Theory and Computing (II)}
 
@@ -348,16 +1088,15 @@ and quantum computing with QIVPMs. Finally, we want to improve the
 discrete quantum theories to consider QIVPMs over finite fields in
 future research.
 
-\addcontentsline{toc}{chapter}{Bibliography}
+\addcontentsline{toc}{chapter}{Bibliography} %
 \begin{comment}
  \bibliographystyle{plain}
 \bibliography{prop}
- 
 \end{comment}
 \printbibliography
 
 % http://latex.org/forum/viewtopic.php?t=7312
 % http://latex.org/forum/viewtopic.php?t=17956
-\addtocontents{toc}{\noindent\contentsline{chapter}{Curriculum Vitae}{}}
-\includepdf[pages=-]{CV_thesis}
+\addtocontents{toc}{\contentsline{chapter}{Curriculum Vitae}{}}
+\includepdf[pages=-]{CV_thesis} 
 \end{document}
