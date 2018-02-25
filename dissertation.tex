@@ -38,7 +38,6 @@
 \usepackage{mathrsfs}
 \usepackage{setspace}
 
-\newcommand{\says}[3]{\begin{framed}\begin{minipage}{0.9\linewidth}\color{#1}{#2 says: #3}\end{minipage}\end{framed}}
 \newcommand{\muB}{\ensuremath{\mu^{B}}}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
 \newcommand{\set}[2]{\ensuremath{\left\{ {#1}\mathrel{}\middle|\mathrel{}{#2}\right\} }}
@@ -53,6 +52,7 @@
 \newcommand{\VVec}[1]{\vec{\bf #1}}
 \newcommand{\mathComplex}{\mathbb{C}}
 \newcommand{\braket}[2]{\ip{#1}{#2}}
+\newcommand{\todo}[1]{\textbf{TODO.~#1}}
 
 \department{Department of Mathematics}
 \department{Department of Computer Science}
@@ -108,6 +108,8 @@ Gleason and Kochen-Specker theorems.} \abstractpage
 
 \tableofcontents{}
 
+\todo{{Table of symbols?}}
+
 \chapter{Introduction}
 
 Before diving into quantum computing, it is instructive to review
@@ -142,8 +144,6 @@ could be, and how these mathematical structures affect the power of
 discrete quantum computing.
 
 \chapter{Conventional Quantum Theory}
-
-\section{Geometrical Structure of States\label{CQC1qubitBloch.sec}}
 
 Conventional quantum theory (CQT) is described by the following: 
 \begin{enumerate}
@@ -181,13 +181,19 @@ complex conjugation.) This is one of many properties we take for granted
 in continuum quantum mechanics that challenge us in defining a discrete
 quantum geometry.
 
-In this paper, we focus on the discrete geometric issues raised by
-the properties (i) and (ii) given above for CQT, and leave for another
-time the important issues of (iii), (iv), and such conundrums as probabilities,
-zero norms, and dynamics in the theory of DQT. To facilitate the transition
-to DQT carried out in later sections, we concern ourselves first with
-the properties of the simplest possible abstract state object in CQT,
-the single qubit state.
+In Sec.~\ref{CQC1qubitBloch.sec}, we focus on the discrete geometric
+issues raised by the properties (i) and (ii) given above for CQT. 
+
+(iii)
+
+In Sec.~\ref{sec:fuzzy}, we introduces the important issues of (iv)
+and the foundations of quantum probability space and fuzzy measurement. 
+
+To facilitate the transition to DQT carried out in later sections,
+we concern ourselves first with the properties of the simplest possible
+abstract state object in CQT, the single qubit state.
+
+\section{Geometrical Structure of States\label{CQC1qubitBloch.sec}}
 
 \begin{comment}
 
@@ -547,7 +553,7 @@ can also be classified as product states and entangled states, and
 the latter one plays the essential role for pure-state algorithms
 \cite{Mermin2007,Jaeger2007}.
 
-\section{Quantum Probability}
+\section{Quantum Probability\label{sec:fuzzy}}
 
 Given a pure state~$\ket{\phi}$, when we measure an observable represented
 by an Hermitian matrix~$\mathbf{O}$, the measurement result is one
@@ -696,7 +702,7 @@ are not allowed in conventional quantum computation.
 Measurement in the standard basis is fairly straightforward: measuring
 $\ket{0}$ or $\ket{1}$ deterministically produces the same state
 while measuring $\ket{+}$ nondeterministically produces $\ket{0}$
-or $\ket{1}$ with no assigned probability distribution, . When measuring
+or $\ket{1}$ with no assigned probability distribution. When measuring
 an arbitrary state~$\ket{\phi}\in\left\{ \ket{0},\ket{1},\ket{+}\right\} $
 in other bases $\left\{ \ket{\psi_{0}},\ket{\psi_{1}}\right\} $,
 we first represents $\ket{\phi}$ as the linear combination of the
@@ -705,7 +711,7 @@ where $\beta_{0}$ and $\beta_{1}$ are elements in the field~$\ff{2}$.
 If $\beta_{i}$ is zero, measuring $\ket{\phi}$ is impossible to
 produce $\ket{\psi_{i}}$; otherwise, measuring $\ket{\phi}$ is possible
 to produce $\ket{\psi_{i}}$. Since only possibility and impossibility
-is predicted by the theory, the modal quantum theories is named after
+is predicted by the theory, modal quantum theories are named after
 these “modal” concepts.
 
 Notice that the measurement process is complicated by the fact that
@@ -716,11 +722,12 @@ but is impossible to produce $\ket{0}$ in another basis $\left\{ \ket{+},\ket{0}
 In contrast, when measuring a state~$\ket{\phi}$ in CQT, the probability
 to produce a basis vector~$\ket{\psi_{i}}$ is completely determined
 by $\ket{\psi_{i}}$ and $\ket{\phi}$ no matter $\ket{\psi_{i}}$
-is in which measurement basis. In CQT, the measurement basis matters
-only when discussing quantum contextuality. Despite this kind of ``supercontextuality''
-of MQT, its computational model, modal quantum computing (MQC), having
-``supernatural'' computational power is also far from conventional
-quantum computing as we will describe next.
+is in which measurement basis. This phenomena of the measurement basis
+dependence in CQT only exists when discussing quantum contextuality.
+Despite this kind of ``supercontextuality'' of MQT, its computational
+model, modal quantum computing (MQC), having ``supernatural'' computational
+power is also far from conventional quantum computing as we will describe
+next.
 
 \begin{comment}
 
