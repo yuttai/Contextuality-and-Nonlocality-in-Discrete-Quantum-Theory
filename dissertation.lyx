@@ -13,17 +13,16 @@
 \DeclareUnicodeCharacter{00A0}{~}
 \usepackage{mmap}
 \usepackage{comment}
-
-%\usepackage[basic]{complexity}
-\newcommand{\lang}[1]{{\ensuremath{\mathsf{#1}}}}
-\newcommand{\newlang}[2]{\newcommand{#1}{\lang{#2}}}
-\newlang{\usat}{UNIQUE-SAT}
-
 \usepackage[all]{xy}
 \usepackage{framed}
 \usepackage[braket,qm]{qcircuit}
 \usepackage{mathrsfs}
 \usepackage{setspace}
+
+%\usepackage[basic]{complexity}
+\newcommand{\lang}[1]{{\ensuremath{\mathsf{#1}}}}
+\newcommand{\newlang}[2]{\newcommand{#1}{\lang{#2}}}
+\newlang{\usat}{UNIQUE-SAT}
 
 \newcommand{\muB}{\ensuremath{\mu^{B}}}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
@@ -40,11 +39,19 @@
 \newcommand{\mathComplex}{\mathbb{C}}
 \newcommand{\braket}[2]{\ip{#1}{#2}}
 \newcommand{\todo}[1]{\textbf{TODO.~#1}}
+\newcommand{\Eq}[1]{Eq.~(\ref{#1})}
+\newcommand{\Sphere}[1]{\mathbf{S}^{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rmi}{i}
+\newcommand{\rme}{e}
 
 \department{Department of Mathematics}
 \department{Department of Computer Science}
 \end_preamble
 \use_default_options false
+\begin_modules
+enumitem
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package none
@@ -674,10 +681,7 @@ todo{
 
 \end_inset
 
-
 Table of symbols?
-\lang english
-
 \begin_inset ERT
 status collapsed
 
@@ -786,37 +790,69 @@ Conventional Quantum Theory
 \end_layout
 
 \begin_layout Standard
-Conventional quantum theory (CQT) is described by the following: 
+Conventional quantum theory (CQT) is described by the following:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Argument item:1
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-(i)
+label=(
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+roman{
+\end_layout
+
+\end_inset
+
+enumi
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \end_inset
 
 
-\begin_inset Formula $D=2^{n}$
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:-orthonormal-basis"
+
 \end_inset
 
- orthonormal basis vectors of an 
-\begin_inset Formula $n$
+
+\begin_inset Formula $D$
 \end_inset
 
--qubit state, 
+ orthonormal basis vectors for a Hilbert space of dimension
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $D$
+\end_inset
+
+, 
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Argument item:1
-status open
-
-\begin_layout Plain Layout
-(ii)
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:probability-amplitude"
 
 \end_inset
 
@@ -829,26 +865,20 @@ the normalized
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Argument item:1
-status open
-
-\begin_layout Plain Layout
-(iii)
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:unitary-matrix"
 
 \end_inset
 
 a set of probability-conserving unitary matrix operators that suffice to
- describe all required state transformations of a quantum circuit, 
+ describe all required state transformations, 
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Argument item:1
-status open
-
-\begin_layout Plain Layout
-(iv)
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:measurement-framework"
 
 \end_inset
 
@@ -860,12 +890,12 @@ and a measurement framework.
 We remark that there are many things that are assumed in CQT, such as the
  absence of zero norm states for non-zero vectors, and the decomposition
  of complex amplitudes into a pair of ordinary real numbers.
- One also typically assumes the existence of a Hilbert space with an orthonormal
- basis, allowing us to write 
-\begin_inset Formula $n$
+ One also typically assumes the existence of a 
+\begin_inset Formula $D$
 \end_inset
 
--qubit 
+-dimensional Hilbert space with an orthonormal basis, allowing us to write
+ 
 \shape italic
 pure
 \shape default
@@ -893,20 +923,12 @@ Here
  is an orthonormal basis of states obeying 
 \begin_inset Formula 
 \begin{equation}
-\braket{i}{k}=\delta_{ik}\,,
+\braket{i}{k}=\delta_{ik}\,.
 \end{equation}
 
 \end_inset
 
-where 
-\begin_inset Formula $\bra{i}$
-\end_inset
 
- is called the dual vector of 
-\begin_inset Formula $\ket{i}$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -948,17 +970,46 @@ reference "CQC1qubitBloch.sec"
 
 \end_inset
 
-, we focus on the discrete geometric issues raised by the properties (i)
- and (ii) given above for CQT.
- 
-\end_layout
+, we focus on the discrete geometric issues raised by the properties 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:-orthonormal-basis"
 
-\begin_layout Standard
-(iii)
-\end_layout
+\end_inset
 
-\begin_layout Standard
-In Sec.
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:probability-amplitude"
+
+\end_inset
+
+ given above for CQT.
+ In Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Quantum-Circuit-Model"
+
+\end_inset
+
+, we describe product and entangled 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit states used in circuit model, and the unitary matrices used to transform
+ states as addressed by by the property 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:unitary-matrix"
+
+\end_inset
+
+.
+ In Sec.
 \begin_inset space ~
 \end_inset
 
@@ -969,13 +1020,15 @@ reference "sec:fuzzy"
 
 \end_inset
 
-, we introduces the important issues of (iv) and the foundations of quantum
- probability space and fuzzy measurement.
- 
-\end_layout
+, we introduces the important issues of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:measurement-framework"
 
-\begin_layout Standard
-To facilitate the transition to DQT carried out in later sections, we concern
+\end_inset
+
+ and the foundations of quantum probability space.
+ To facilitate the transition to DQT carried out in later sections, we concern
  ourselves first with the properties of the simplest possible abstract state
  object in CQT, the single qubit state.
 \end_layout
@@ -991,32 +1044,25 @@ name "CQC1qubitBloch.sec"
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
 \begin_layout Subsection
-The single qubit problem
+The System Described by a Two-dimensional Hilbert Space
 \end_layout
 
-\begin_layout Plain Layout
-A single qubit already provides access to a wealth of geometric information
- and context.
+\begin_layout Standard
+A state in a two-dimensional Hilbert space, also called a qubit, already
+ provides access to a wealth of geometric information and context.
  We write the single qubit state as 
 \begin_inset Formula 
-\begin{equation}
-\begin{array}{lr}
-\ket{\psi_{1}}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}\  & \ \alpha_{0},\alpha_{1}\in\C\end{array}\ .%%
-%%\alpha_{1}{array}
-\label{A1.eq}
-\end{equation}
+\begin{align}
+\ket{\psi_{1}} & =\alpha_{0}\ket{0}+\alpha_{1}\ket{1} & \alpha_{0},\alpha_{1}\in\mathbb{C}\,.\label{A1.eq}
+\end{align}
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 A convenience for probability calculations and a necessity for computing
  relative state properties is the normalization condition 
 \begin_inset Formula 
@@ -1110,13 +1156,13 @@ status collapsed
 
  by finding a way to remove the distinction between states that differ only
  by an overall phase transformation 
-\begin_inset Formula $e^{i\phi}$
+\begin_inset Formula $\rme^{\rmi\phi}$
 \end_inset
 
 , that is, 
 \begin_inset Formula 
 \begin{equation}
-(\alpha_{0},\alpha_{1})\sim(e^{i\phi}\alpha_{0},e^{i\phi}\alpha_{1})\ .\label{A3.eq}
+\left(\alpha_{0},\alpha_{1}\right)\sim\left(\rme^{\rmi\phi}\alpha_{0},\rme^{\rmi\phi}\alpha_{1}\right)\,.\label{A3.eq}
 \end{equation}
 
 \end_inset
@@ -1124,10 +1170,9 @@ status collapsed
 This can be accomplished by the Hopf fibration, which we can write down
  as follows: let 
 \begin_inset Formula 
-\begin{equation}
-\begin{array}{cc}
-\alpha_{0}=x_{0}+iy_{0}, & \alpha_{1}=x_{1}+iy_{1}\end{array}\ .\label{A4.eq}
-\end{equation}
+\begin{align}
+\alpha_{0} & =x_{0}+\rmi y_{0}\,, & \alpha_{1} & =x_{1}+\rmi y_{1}\,.\label{A4.eq}
+\end{align}
 
 \end_inset
 
@@ -1175,7 +1220,7 @@ x_{0}^{\ 2}+y_{0}^{\ 2}+x_{1}^{\ 2}+y_{1}^{\ 2}=1\ .\label{A5.eq}
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 There is a family of 6 equivalence classes of quadratic maps that take the
  remaining 3 degrees of freedom in 
 \begin_inset ERT
@@ -1202,7 +1247,7 @@ status collapsed
 \end_inset
 
  and reduce them to 2 degrees of freedom by effectively removing 
-\begin_inset Formula $e^{i\phi}$
+\begin_inset Formula $\rme^{\rmi\phi}$
 \end_inset
 
  (
@@ -1281,7 +1326,7 @@ status collapsed
  by the Hopf map.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -1325,7 +1370,7 @@ centerline{
 
  
 \begin_inset Graphics
-	filename ../../../../Public/Documents/StudyInIUB/Computer Science/201209-12.M800/Manuscripts/hopfS2.pdf
+	filename hopfS2.pdf
 	width 48col%
 
 \end_inset
@@ -1337,7 +1382,7 @@ centerline{
 
  
 \begin_inset Graphics
-	filename ../../../../Public/Documents/StudyInIUB/Computer Science/201209-12.M800/Manuscripts/hopfFibers.pdf
+	filename hopfFibers.pdf
 	width 48col%
 
 \end_inset
@@ -1423,7 +1468,7 @@ status collapsed
 e set of points on the sphere.
  (b) Representation of the Hopf fibration as a family of circles (the paths
  of 
-\begin_inset Formula $e^{i\phi}$
+\begin_inset Formula $\rme^{\rmi\phi}$
 \end_inset
 
 ), each corresponding to a single point on the sphere in (a).
@@ -1450,7 +1495,7 @@ name "hopfFibers.fig"
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 The resulting manifold is the two-sphere 
 \begin_inset Formula $\Sphere{2}$
 \end_inset
@@ -1558,7 +1603,7 @@ Thus the one-qubit state is independent of
  to 
 \begin_inset Formula 
 \begin{equation}
-\ket{\psi_{1}}=e^{i\phi}\cos\frac{\psi}{2}\ket{0}+\sin\frac{\psi}{2}\ket{1}\ ,\label{A9.eq}
+\ket{\psi_{1}}=\rme^{\rmi\phi}\cos\frac{\psi}{2}\ket{0}+\sin\frac{\psi}{2}\ket{1}\ ,\label{A9.eq}
 \end{equation}
 
 \end_inset
@@ -1578,7 +1623,7 @@ reference "blochSphere.fig"
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Float figure
 placement thb
 wide false
@@ -1588,7 +1633,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../../../Public/Documents/StudyInIUB/Computer Science/201209-12.M800/Manuscripts/blochSphere.pdf
+	filename blochSphere.pdf
 	width 47col%
 
 \end_inset
@@ -1600,7 +1645,7 @@ status open
 
  
 \begin_inset Graphics
-	filename ../../../../Public/Documents/StudyInIUB/Computer Science/201209-12.M800/Manuscripts/blochSphereArc.pdf
+	filename blochSphereArc.pdf
 	width 47col%
 
 \end_inset
@@ -1673,7 +1718,7 @@ name "blochSphere.fig"
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Thus the geometry of a single qubit reduces to transformations among points
  on 
 \begin_inset Formula $\Sphere{2}$
@@ -1737,30 +1782,9 @@ reference "blochSphere.fig"
  expensive, transitions from state to state.
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%% AMR: replaced ', probabilistic, exponentially complex transitions from
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%% state to state' with the above
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_layout Standard
+\begin_inset Note Comment
+status open
 
 \begin_layout Subsection
 The 
@@ -2040,7 +2064,7 @@ For one qubit, we could easily solve the problem of reducing the full unit-norm
 \end_inset
 
  as being the same if they differ only by an overall phase 
-\begin_inset Formula $e^{i\phi}$
+\begin_inset Formula $\rme^{\rmi\phi}$
 \end_inset
 
 .
@@ -2104,7 +2128,7 @@ status collapsed
 \begin_layout Plain Layout
 We can now use the complex generalization of the classical Veronese coordinate
  system for projective geometry to remove the overall phase ambiguity 
-\begin_inset Formula $e^{i\phi}$
+\begin_inset Formula $\rme^{\rmi\phi}$
 \end_inset
 
  from the 
@@ -2299,6 +2323,73 @@ key "Berger"
 
 ).
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+An 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit pure state in the conventional quantum theory (CQT) is represented
+ as a vector in the 
+\begin_inset Formula $2^{n}$
+\end_inset
+
+-dimensional Hilbert space.
+ If we eliminate all symmetries, an irreducible state is actually a point
+ in the projective Hilbert space 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MosseriDandoloff2001,Jaeger2007"
+
+\end_inset
+
+ also known as the complex projective space
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathbb{CP}^{2^{n}-1}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hatcher2001,Bengtsson2007"
+
+\end_inset
+
+.
+ These irreducible quantum states can also be classified as product states
+ and entangled states, and the latter one plays the essential role for pure-stat
+e algorithms 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Mermin2007,Jaeger2007"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Quantum Circuit Model
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Quantum-Circuit-Model"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
 
 \begin_layout Subsection
 The geometry of entanglement
@@ -2708,53 +2799,6 @@ key "Barnum2003, Barnum2004"
 
 \end_layout
 
-\begin_layout Standard
-An 
-\begin_inset Formula $n$
-\end_inset
-
--qubit pure state in the conventional quantum theory (CQT) is represented
- as a vector in the 
-\begin_inset Formula $2^{n}$
-\end_inset
-
--dimensional Hilbert space.
- If we eliminate all symmetries, an irreducible state is actually a point
- in the projective Hilbert space 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "MosseriDandoloff2001,Jaeger2007"
-
-\end_inset
-
- also known as the complex projective space
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mathbb{CP}^{2^{n}-1}$
-\end_inset
-
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Hatcher2001,Bengtsson2007"
-
-\end_inset
-
-.
- These irreducible quantum states can also be classified as product states
- and entangled states, and the latter one plays the essential role for pure-stat
-e algorithms 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Mermin2007,Jaeger2007"
-
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Section
 Quantum Probability
 \begin_inset CommandInset label
@@ -2864,6 +2908,45 @@ key "gleason1957,Redhead1987-REDINA,peres1995quantum,RichmanBridges1999,Hamhalte
 
 \begin_layout Section
 Quantum Contextuality
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+Explain enough background knowledge to support the discussion about contextualit
+y in the end of Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "modalquantum"
+
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter

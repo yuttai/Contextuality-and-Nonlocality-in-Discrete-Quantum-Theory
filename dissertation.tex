@@ -7,9 +7,11 @@
 \setcounter{tocdepth}{3}
 \usepackage{verbatim}
 \usepackage{mathrsfs}
+\usepackage{enumitem}
 \usepackage{pdfpages}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{graphicx}
 
 \makeatletter
 
@@ -17,6 +19,9 @@
 %% A simple dot to overcome graphicx limitations
 \newcommand{\lyxdot}{.}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newlength{\lyxlabelwidth}      % auxiliary length 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage[ backend=biber]{biblatex}
@@ -26,17 +31,16 @@
 \DeclareUnicodeCharacter{00A0}{~}
 \usepackage{mmap}
 \usepackage{comment}
-
-%\usepackage[basic]{complexity}
-\newcommand{\lang}[1]{{\ensuremath{\mathsf{#1}}}}
-\newcommand{\newlang}[2]{\newcommand{#1}{\lang{#2}}}
-\newlang{\usat}{UNIQUE-SAT}
-
 \usepackage[all]{xy}
 \usepackage{framed}
 \usepackage[braket,qm]{qcircuit}
 \usepackage{mathrsfs}
 \usepackage{setspace}
+
+%\usepackage[basic]{complexity}
+\newcommand{\lang}[1]{{\ensuremath{\mathsf{#1}}}}
+\newcommand{\newlang}[2]{\newcommand{#1}{\lang{#2}}}
+\newlang{\usat}{UNIQUE-SAT}
 
 \newcommand{\muB}{\ensuremath{\mu^{B}}}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
@@ -53,6 +57,11 @@
 \newcommand{\mathComplex}{\mathbb{C}}
 \newcommand{\braket}[2]{\ip{#1}{#2}}
 \newcommand{\todo}[1]{\textbf{TODO.~#1}}
+\newcommand{\Eq}[1]{Eq.~(\ref{#1})}
+\newcommand{\Sphere}[1]{\mathbf{S}^{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rmi}{i}
+\newcommand{\rme}{e}
 
 \department{Department of Mathematics}
 \department{Department of Computer Science}
@@ -108,7 +117,7 @@ Gleason and Kochen-Specker theorems.} \abstractpage
 
 \tableofcontents{}
 
-\todo{{Table of symbols?}}
+\todo{Table of symbols?}
 
 \chapter{Introduction}
 
@@ -145,21 +154,22 @@ discrete quantum computing.
 
 \chapter{Conventional Quantum Theory}
 
-Conventional quantum theory (CQT) is described by the following: 
-\begin{enumerate}
-\item[(i)] $D=2^{n}$ orthonormal basis vectors of an $n$-qubit state, 
-\item[(ii)] the normalized $D$ complex probability amplitude coefficients describing
-the contribution of each basis vector, 
-\item[(iii)] a set of probability-conserving unitary matrix operators that suffice
-to describe all required state transformations of a quantum circuit, 
-\item[(iv)] and a measurement framework. 
+Conventional quantum theory (CQT) is described by the following:
+\begin{enumerate}[label=(\roman{enumi})]
+\item \label{enu:-orthonormal-basis}$D$ orthonormal basis vectors for
+a Hilbert space of dimension~$D$, 
+\item \label{enu:probability-amplitude}the normalized $D$ complex probability
+amplitude coefficients describing the contribution of each basis vector, 
+\item \label{enu:unitary-matrix}a set of probability-conserving unitary
+matrix operators that suffice to describe all required state transformations, 
+\item \label{enu:measurement-framework}and a measurement framework. 
 \end{enumerate}
 We remark that there are many things that are assumed in CQT, such
 as the absence of zero norm states for non-zero vectors, and the decomposition
 of complex amplitudes into a pair of ordinary real numbers. One also
-typically assumes the existence of a Hilbert space with an orthonormal
-basis, allowing us to write $n$-qubit \textit{pure} states in general
-as Hilbert space vectors with an Hermitian inner product: 
+typically assumes the existence of a $D$-dimensional Hilbert space
+with an orthonormal basis, allowing us to write \textit{pure} states
+in general as Hilbert space vectors with an Hermitian inner product:
 \begin{eqnarray}
 \ket{\Psi} & = & \sum_{i=0}^{D-1}\alpha_{i}\ket{i}\,.
 \end{eqnarray}
@@ -167,9 +177,8 @@ Here $\alpha_{i}\in\mathComplex$ are complex probability amplitudes,
 $\VVec{\alpha}\in\mathComplex^{D}$, and the $\{\ket{i}\}$ is an
 orthonormal basis of states obeying 
 \begin{equation}
-\braket{i}{k}=\delta_{ik}\,,
+\braket{i}{k}=\delta_{ik}\,.
 \end{equation}
-where $\bra{i}$ is called the dual vector of $\ket{i}$.
 
 The meaning of this is that any state $\ket{\Phi}=\sum_{i=0}^{D-1}\beta_{i}\ket{i}$
 can be projected onto another state $\ket{\Psi}$ by writing 
@@ -182,31 +191,27 @@ in continuum quantum mechanics that challenge us in defining a discrete
 quantum geometry.
 
 In Sec.~\ref{CQC1qubitBloch.sec}, we focus on the discrete geometric
-issues raised by the properties (i) and (ii) given above for CQT. 
-
-(iii)
-
-In Sec.~\ref{sec:fuzzy}, we introduces the important issues of (iv)
-and the foundations of quantum probability space and fuzzy measurement. 
-
-To facilitate the transition to DQT carried out in later sections,
-we concern ourselves first with the properties of the simplest possible
-abstract state object in CQT, the single qubit state.
+issues raised by the properties \ref{enu:-orthonormal-basis} and
+\ref{enu:probability-amplitude} given above for CQT. In Sec.~\ref{sec:Quantum-Circuit-Model},
+we describe product and entangled $n$-qubit states used in circuit
+model, and the unitary matrices used to transform states as addressed
+by by the property \ref{enu:unitary-matrix}. In Sec.~\ref{sec:fuzzy},
+we introduces the important issues of \ref{enu:measurement-framework}
+and the foundations of quantum probability space. To facilitate the
+transition to DQT carried out in later sections, we concern ourselves
+first with the properties of the simplest possible abstract state
+object in CQT, the single qubit state.
 
 \section{Geometrical Structure of States\label{CQC1qubitBloch.sec}}
 
-\begin{comment}
+\subsection{The System Described by a Two-dimensional Hilbert Space}
 
-\subsection{The single qubit problem}
-
-A single qubit already provides access to a wealth of geometric information
-and context. We write the single qubit state as 
-\begin{equation}
-\begin{array}{lr}
-\ket{\psi_{1}}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}\  & \ \alpha_{0},\alpha_{1}\in\C\end{array}\ .%%
-%%\alpha_{1}{array}
-\label{A1.eq}
-\end{equation}
+A state in a two-dimensional Hilbert space, also called a qubit, already
+provides access to a wealth of geometric information and context.
+We write the single qubit state as 
+\begin{align}
+\ket{\psi_{1}} & =\alpha_{0}\ket{0}+\alpha_{1}\ket{1} & \alpha_{0},\alpha_{1}\in\mathbb{C}\,.\label{A1.eq}
+\end{align}
 
 A convenience for probability calculations and a necessity for computing
 relative state properties is the normalization condition 
@@ -221,16 +226,15 @@ the \textit{modulus\/} $|\cdot|$ of a complex number. Continuing,
 we see that if we want only the irreducible state descriptions, we
 must supplement the process of computing \Eq{A2.eq} by finding a
 way to remove the distinction between states that differ only by an
-overall phase transformation $e^{i\phi}$, that is, 
+overall phase transformation $\rme^{\rmi\phi}$, that is, 
 \begin{equation}
-(\alpha_{0},\alpha_{1})\sim(e^{i\phi}\alpha_{0},e^{i\phi}\alpha_{1})\ .\label{A3.eq}
+\left(\alpha_{0},\alpha_{1}\right)\sim\left(\rme^{\rmi\phi}\alpha_{0},\rme^{\rmi\phi}\alpha_{1}\right)\,.\label{A3.eq}
 \end{equation}
 This can be accomplished by the Hopf fibration, which we can write
 down as follows: let 
-\begin{equation}
-\begin{array}{cc}
-\alpha_{0}=x_{0}+iy_{0}, & \alpha_{1}=x_{1}+iy_{1}\end{array}\ .\label{A4.eq}
-\end{equation}
+\begin{align}
+\alpha_{0} & =x_{0}+\rmi y_{0}\,, & \alpha_{1} & =x_{1}+\rmi y_{1}\,.\label{A4.eq}
+\end{align}
 Then \Eq{A2.eq} becomes the condition that the four real variables
 describing a qubit denote a point on the three-sphere $\Sphere{3}$
 (a 3-manifold) embedded in $\R^{4}$: 
@@ -240,7 +244,7 @@ x_{0}^{\ 2}+y_{0}^{\ 2}+x_{1}^{\ 2}+y_{1}^{\ 2}=1\ .\label{A5.eq}
 
 There is a family of 6 equivalence classes of quadratic maps that
 take the remaining 3 degrees of freedom in \Eq{A5.eq} and reduce
-them to 2 degrees of freedom by effectively removing $e^{i\phi}$
+them to 2 degrees of freedom by effectively removing $\rme^{\rmi\phi}$
 (``fibering out by the circle $\Sphere{1}$''). The standard form
 of this class of maps (``the Hopf fibration'') is 
 \begin{eqnarray}
@@ -260,15 +264,15 @@ $X^{2}+Y^{2}+Z^{2}=1$ by the Hopf map.
 
 %% (We try to list the sources of all computed figures)%% Sources for hopfFibers.fig:  dqc-geom-2012/00mathFigs/Hopf-Fiber.nb
 \begin{figure}[htb]
-\centerline{ \includegraphics[width=0.48\columnwidth,bb = 0 0 200 100, draft, type=eps]{../../../../Public/Documents/StudyInIUB/Computer Science/201209-12.M800/Manuscripts/hopfS2.pdf}\hspace{0.03in}
-\includegraphics[width=0.48\columnwidth,bb = 0 0 200 100, draft, type=eps]{../../../../Public/Documents/StudyInIUB/Computer Science/201209-12.M800/Manuscripts/hopfFibers.pdf}}
-\centerline{\hspace{1in} (a) \hfill{}(b) \hspace{1in}} \caption{(a) The sphere represented by \Eq{A7.eq}, which is the irreducible
+\centerline{ \includegraphics[width=0.48\columnwidth]{hopfS2}\hspace{0.03in}
+\includegraphics[width=0.48\columnwidth]{hopfFibers}} \centerline{\hspace{1in}
+(a) \hfill{}(b) \hspace{1in}} \caption{(a) The sphere represented by \Eq{A7.eq}, which is the irreducible
 space of one-qubit states, along with a representative set of points
 on the sphere. (b) Representation of the Hopf fibration as a family
-of circles (the paths of $e^{i\phi}$), each corresponding to a single
-point on the sphere in (a). Points in (a) are color coded corresponding
-to circles in (b), e.g., one pole contains the red elliptical circle
-that would become an infinite-radius circle in a slightly different
+of circles (the paths of $\rme^{\rmi\phi}$), each corresponding to
+a single point on the sphere in (a). Points in (a) are color coded
+corresponding to circles in (b), e.g., one pole contains the red elliptical
+circle that would become an infinite-radius circle in a slightly different
 projection, and the opposite pole corresponds to the large perfectly
 round red circle at the equator.}
 \label{hopfFibers.fig} 
@@ -291,15 +295,15 @@ Thus the one-qubit state is independent of $\theta$, and we can choose
 $\theta=\phi$ without loss of generality, reducing the form of the
 unique one-qubit states to 
 \begin{equation}
-\ket{\psi_{1}}=e^{i\phi}\cos\frac{\psi}{2}\ket{0}+\sin\frac{\psi}{2}\ket{1}\ ,\label{A9.eq}
+\ket{\psi_{1}}=\rme^{\rmi\phi}\cos\frac{\psi}{2}\ket{0}+\sin\frac{\psi}{2}\ket{1}\ ,\label{A9.eq}
 \end{equation}
 and an irreducible state can be represented as a point on a sphere,
 as shown in Figure \ref{blochSphere.fig}(a).
 
 \begin{figure}[thb]
 \begin{centering}
-\includegraphics[width=0.47\columnwidth,bb = 0 0 200 100, draft, type=eps]{../../../../Public/Documents/StudyInIUB/Computer Science/201209-12.M800/Manuscripts/blochSphere.pdf}
-\hspace{0.01in} \includegraphics[width=0.47\columnwidth,bb = 0 0 200 100, draft, type=eps]{../../../../Public/Documents/StudyInIUB/Computer Science/201209-12.M800/Manuscripts/blochSphereArc.pdf} 
+\includegraphics[width=0.47\columnwidth]{blochSphere} \hspace{0.01in}
+\includegraphics[width=0.47\columnwidth]{blochSphereArc} 
 \par\end{centering}
 \centerline{\hspace{1in} (a) \hfill{}(b) \hspace{1in}} \caption{(a) The conventional Bloch sphere with a unique state represented
 by the point at the red sphere. (b) The geodesic shortest-distance
@@ -325,7 +329,7 @@ make an exact state transition as implied by Figure \ref{blochSphere.fig}(b).
 In practice, one has to be content with approximate, typically exponentially
 expensive, transitions from state to state.
 
-%% AMR: replaced ', probabilistic, exponentially complex transitions from%% state to state' with the above
+\begin{comment}
 
 \subsection{The $n$-qubit problem}
 
@@ -387,12 +391,12 @@ unit-norm space to its irreducible components $\Vec{X}=(X,Y,Z)$ characterizing
 the Bloch sphere. We have just argued that essentially the same process
 is possible for $n$-qubits: in the abstract argument, we simply identify
 the family of coefficients $\{\alpha_{i}\}$ as being the same if
-they differ only by an overall phase $e^{i\phi}$. However, in practice
-this is not a construction that is easy to realize in a practical
-computation. We now outline an explicit algorithm for accomplishing
-the reduction to the irreducible $n$-qubit state space $\CP{D-1}$;
-this construction will turn out to be useful for the validation of
-our discrete results to follow below.
+they differ only by an overall phase $\rme^{\rmi\phi}$. However,
+in practice this is not a construction that is easy to realize in
+a practical computation. We now outline an explicit algorithm for
+accomplishing the reduction to the irreducible $n$-qubit state space
+$\CP{D-1}$; this construction will turn out to be useful for the
+validation of our discrete results to follow below.
 
 We begin by noting that a natural quantity characterizing an $n$-qubit
 system is its \textit{density matrix\/}, $\rho=\left[\alpha_{i}\alpha_{j}^{*}\right]$,
@@ -408,9 +412,10 @@ or
 
 We can now use the complex generalization of the classical Veronese
 coordinate system for projective geometry to remove the overall phase
-ambiguity $e^{i\phi}$ from the $n$-qubit states. If we take a particular
-weighting of the elements of the density matrix $\rho$, we can construct
-a \textit{unit vector\/} of real dimension $D^{2}$ with the form:
+ambiguity $\rme^{\rmi\phi}$ from the $n$-qubit states. If we take
+a particular weighting of the elements of the density matrix $\rho$,
+we can construct a \textit{unit vector\/} of real dimension $D^{2}$
+with the form: 
 \begin{equation}
 \Vec{X}=(|\alpha_{i}|^{2},\ldots,\sqrt{2}\,\mathrm{Re}\ \alpha_{i}\alpha_{j}^{*},\ldots,\sqrt{2}\,\mathrm{Im}\ \alpha_{i}\alpha_{j}^{*},\ldots)\ ,\label{nqCoords.eq}
 \end{equation}
@@ -456,6 +461,21 @@ since the submanifold including $\alpha_{k}=0$ is undefined and another
 coordinate system must be chosen to cover that coordinate patch. This
 is a standard feature of the topology of non-trivial manifolds such
 as $\CP{D-1}$ (see any textbook on geometry \cite{Berger}).
+\end{comment}
+
+An $n$-qubit pure state in the conventional quantum theory (CQT)
+is represented as a vector in the $2^{n}$-dimensional Hilbert space.
+If we eliminate all symmetries, an irreducible state is actually a
+point in the projective Hilbert space \cite{MosseriDandoloff2001,Jaeger2007}
+also known as the complex projective space~$\mathbb{CP}^{2^{n}-1}$
+\cite{Hatcher2001,Bengtsson2007}. These irreducible quantum states
+can also be classified as product states and entangled states, and
+the latter one plays the essential role for pure-state algorithms
+\cite{Mermin2007,Jaeger2007}.
+
+\section{Quantum Circuit Model\label{sec:Quantum-Circuit-Model}}
+
+\begin{comment}
 
 \subsection{The geometry of entanglement}
 
@@ -543,16 +563,6 @@ expressing the fact that any state is a generalized coherent state
 of the Lie algebra of all observables.
 \end{comment}
 
-An $n$-qubit pure state in the conventional quantum theory (CQT)
-is represented as a vector in the $2^{n}$-dimensional Hilbert space.
-If we eliminate all symmetries, an irreducible state is actually a
-point in the projective Hilbert space \cite{MosseriDandoloff2001,Jaeger2007}
-also known as the complex projective space~$\mathbb{CP}^{2^{n}-1}$
-\cite{Hatcher2001,Bengtsson2007}. These irreducible quantum states
-can also be classified as product states and entangled states, and
-the latter one plays the essential role for pure-state algorithms
-\cite{Mermin2007,Jaeger2007}.
-
 \section{Quantum Probability\label{sec:fuzzy}}
 
 Given a pure state~$\ket{\phi}$, when we measure an observable represented
@@ -572,6 +582,9 @@ In another word, this state $\rho$ is the unique state consistent
 with any given quantum probability measure.
 
 \section{Quantum Contextuality}
+
+\todo{Explain enough background knowledge to support the discussion
+about contextuality in the end of Sec.~\ref{modalquantum}.}
 
 \chapter{Quantum Theories and Computing over Finite Fields}
 
