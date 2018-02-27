@@ -42,8 +42,8 @@
 \newcommand{\Eq}[1]{Eq.~(\ref{#1})}
 \newcommand{\Sphere}[1]{\mathbf{S}^{#1}}
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\rmi}{i}
-\newcommand{\rme}{e}
+\newcommand{\rme}{\mathrm{e}}
+\newcommand{\rmi}{\mathrm{i}}
 
 \department{Department of Mathematics}
 \department{Department of Computer Science}
@@ -790,7 +790,8 @@ Conventional Quantum Theory
 \end_layout
 
 \begin_layout Standard
-Conventional quantum theory (CQT) is described by the following:
+The part of conventional quantum theory (CQT) used by quantum circuit model
+ is described by the following:
 \end_layout
 
 \begin_layout Enumerate
@@ -887,9 +888,92 @@ and a measurement framework.
 \end_layout
 
 \begin_layout Standard
-We remark that there are many things that are assumed in CQT, such as the
- absence of zero norm states for non-zero vectors, and the decomposition
- of complex amplitudes into a pair of ordinary real numbers.
+In Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "CQC1qubitBloch.sec"
+
+\end_inset
+
+, we focus on the discrete geometric issues raised by the properties 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:-orthonormal-basis"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:probability-amplitude"
+
+\end_inset
+
+ given above for CQT.
+ In Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Quantum-Circuit-Model"
+
+\end_inset
+
+, we describe product and entangled 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit states used in quantum circuit model, and the unitary matrices used
+ to build circuit as addressed by by the property 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:unitary-matrix"
+
+\end_inset
+
+.
+ In Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:fuzzy"
+
+\end_inset
+
+, we introduce the important issues of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:measurement-framework"
+
+\end_inset
+
+ and the foundations of quantum probability space.
+\end_layout
+
+\begin_layout Section
+Geometrical Structure of States
+\begin_inset CommandInset label
+LatexCommand label
+name "CQC1qubitBloch.sec"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are many things that are assumed in CQT, such as the absence of zero
+ norm states for non-zero vectors, and the decomposition of complex amplitudes
+ into a pair of ordinary real numbers.
  One also typically assumes the existence of a 
 \begin_inset Formula $D$
 \end_inset
@@ -956,92 +1040,9 @@ thus quantifying the proximity of the two states.
  denotes complex conjugation.) This is one of many properties we take for
  granted in continuum quantum mechanics that challenge us in defining a
  discrete quantum geometry.
-\end_layout
-
-\begin_layout Standard
-In Sec.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "CQC1qubitBloch.sec"
-
-\end_inset
-
-, we focus on the discrete geometric issues raised by the properties 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "enu:-orthonormal-basis"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "enu:probability-amplitude"
-
-\end_inset
-
- given above for CQT.
- In Sec.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Quantum-Circuit-Model"
-
-\end_inset
-
-, we describe product and entangled 
-\begin_inset Formula $n$
-\end_inset
-
--qubit states used in circuit model, and the unitary matrices used to transform
- states as addressed by by the property 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "enu:unitary-matrix"
-
-\end_inset
-
-.
- In Sec.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:fuzzy"
-
-\end_inset
-
-, we introduces the important issues of 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "enu:measurement-framework"
-
-\end_inset
-
- and the foundations of quantum probability space.
  To facilitate the transition to DQT carried out in later sections, we concern
  ourselves first with the properties of the simplest possible abstract state
  object in CQT, the single qubit state.
-\end_layout
-
-\begin_layout Section
-Geometrical Structure of States
-\begin_inset CommandInset label
-LatexCommand label
-name "CQC1qubitBloch.sec"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -1054,7 +1055,7 @@ A state in a two-dimensional Hilbert space, also called a qubit, already
  We write the single qubit state as 
 \begin_inset Formula 
 \begin{align}
-\ket{\psi_{1}} & =\alpha_{0}\ket{0}+\alpha_{1}\ket{1} & \alpha_{0},\alpha_{1}\in\mathbb{C}\,.\label{A1.eq}
+\ket{\psi_{1}} & =\alpha_{0}\ket{0}+\alpha_{1}\ket{1} & \alpha_{0},\alpha_{1} & \in\mathbb{C}\,.\label{A1.eq}
 \end{align}
 
 \end_inset
@@ -1167,8 +1168,14 @@ status collapsed
 
 \end_inset
 
-This can be accomplished by the Hopf fibration, which we can write down
- as follows: let 
+This can be accomplished by the Hopf fibration 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hatcher2001,MosseriDandoloff2001,Bengtsson2007"
+
+\end_inset
+
+, which we can write down as follows: let 
 \begin_inset Formula 
 \begin{align}
 \alpha_{0} & =x_{0}+\rmi y_{0}\,, & \alpha_{1} & =x_{1}+\rmi y_{1}\,.\label{A4.eq}
@@ -2329,6 +2336,17 @@ key "Berger"
 
 \end_layout
 
+\begin_layout Section
+Quantum Circuit Model
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Quantum-Circuit-Model"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 An 
 \begin_inset Formula $n$
@@ -2374,17 +2392,6 @@ key "Mermin2007,Jaeger2007"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Section
-Quantum Circuit Model
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Quantum-Circuit-Model"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

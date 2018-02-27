@@ -60,8 +60,8 @@
 \newcommand{\Eq}[1]{Eq.~(\ref{#1})}
 \newcommand{\Sphere}[1]{\mathbf{S}^{#1}}
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\rmi}{i}
-\newcommand{\rme}{e}
+\newcommand{\rme}{\mathrm{e}}
+\newcommand{\rmi}{\mathrm{i}}
 
 \department{Department of Mathematics}
 \department{Department of Computer Science}
@@ -154,7 +154,8 @@ discrete quantum computing.
 
 \chapter{Conventional Quantum Theory}
 
-Conventional quantum theory (CQT) is described by the following:
+The part of conventional quantum theory (CQT) used by quantum circuit
+model is described by the following:
 \begin{enumerate}[label=(\roman{enumi})]
 \item \label{enu:-orthonormal-basis}$D$ orthonormal basis vectors for
 a Hilbert space of dimension~$D$, 
@@ -164,9 +165,20 @@ amplitude coefficients describing the contribution of each basis vector,
 matrix operators that suffice to describe all required state transformations, 
 \item \label{enu:measurement-framework}and a measurement framework. 
 \end{enumerate}
-We remark that there are many things that are assumed in CQT, such
-as the absence of zero norm states for non-zero vectors, and the decomposition
-of complex amplitudes into a pair of ordinary real numbers. One also
+In Sec.~\ref{CQC1qubitBloch.sec}, we focus on the discrete geometric
+issues raised by the properties \ref{enu:-orthonormal-basis} and
+\ref{enu:probability-amplitude} given above for CQT. In Sec.~\ref{sec:Quantum-Circuit-Model},
+we describe product and entangled $n$-qubit states used in quantum
+circuit model, and the unitary matrices used to build circuit as addressed
+by by the property \ref{enu:unitary-matrix}. In Sec.~\ref{sec:fuzzy},
+we introduce the important issues of \ref{enu:measurement-framework}
+and the foundations of quantum probability space.
+
+\section{Geometrical Structure of States\label{CQC1qubitBloch.sec}}
+
+There are many things that are assumed in CQT, such as the absence
+of zero norm states for non-zero vectors, and the decomposition of
+complex amplitudes into a pair of ordinary real numbers. One also
 typically assumes the existence of a $D$-dimensional Hilbert space
 with an orthonormal basis, allowing us to write \textit{pure} states
 in general as Hilbert space vectors with an Hermitian inner product:
@@ -188,21 +200,10 @@ can be projected onto another state $\ket{\Psi}$ by writing
 thus quantifying the proximity of the two states. (Here $^{*}$ denotes
 complex conjugation.) This is one of many properties we take for granted
 in continuum quantum mechanics that challenge us in defining a discrete
-quantum geometry.
-
-In Sec.~\ref{CQC1qubitBloch.sec}, we focus on the discrete geometric
-issues raised by the properties \ref{enu:-orthonormal-basis} and
-\ref{enu:probability-amplitude} given above for CQT. In Sec.~\ref{sec:Quantum-Circuit-Model},
-we describe product and entangled $n$-qubit states used in circuit
-model, and the unitary matrices used to transform states as addressed
-by by the property \ref{enu:unitary-matrix}. In Sec.~\ref{sec:fuzzy},
-we introduces the important issues of \ref{enu:measurement-framework}
-and the foundations of quantum probability space. To facilitate the
-transition to DQT carried out in later sections, we concern ourselves
-first with the properties of the simplest possible abstract state
-object in CQT, the single qubit state.
-
-\section{Geometrical Structure of States\label{CQC1qubitBloch.sec}}
+quantum geometry. To facilitate the transition to DQT carried out
+in later sections, we concern ourselves first with the properties
+of the simplest possible abstract state object in CQT, the single
+qubit state.
 
 \subsection{The System Described by a Two-dimensional Hilbert Space}
 
@@ -210,7 +211,7 @@ A state in a two-dimensional Hilbert space, also called a qubit, already
 provides access to a wealth of geometric information and context.
 We write the single qubit state as 
 \begin{align}
-\ket{\psi_{1}} & =\alpha_{0}\ket{0}+\alpha_{1}\ket{1} & \alpha_{0},\alpha_{1}\in\mathbb{C}\,.\label{A1.eq}
+\ket{\psi_{1}} & =\alpha_{0}\ket{0}+\alpha_{1}\ket{1} & \alpha_{0},\alpha_{1} & \in\mathbb{C}\,.\label{A1.eq}
 \end{align}
 
 A convenience for probability calculations and a necessity for computing
@@ -230,8 +231,8 @@ overall phase transformation $\rme^{\rmi\phi}$, that is,
 \begin{equation}
 \left(\alpha_{0},\alpha_{1}\right)\sim\left(\rme^{\rmi\phi}\alpha_{0},\rme^{\rmi\phi}\alpha_{1}\right)\,.\label{A3.eq}
 \end{equation}
-This can be accomplished by the Hopf fibration, which we can write
-down as follows: let 
+This can be accomplished by the Hopf fibration \cite{Hatcher2001,MosseriDandoloff2001,Bengtsson2007},
+which we can write down as follows: let 
 \begin{align}
 \alpha_{0} & =x_{0}+\rmi y_{0}\,, & \alpha_{1} & =x_{1}+\rmi y_{1}\,.\label{A4.eq}
 \end{align}
@@ -463,6 +464,8 @@ is a standard feature of the topology of non-trivial manifolds such
 as $\CP{D-1}$ (see any textbook on geometry \cite{Berger}).
 \end{comment}
 
+\section{Quantum Circuit Model\label{sec:Quantum-Circuit-Model}}
+
 An $n$-qubit pure state in the conventional quantum theory (CQT)
 is represented as a vector in the $2^{n}$-dimensional Hilbert space.
 If we eliminate all symmetries, an irreducible state is actually a
@@ -472,8 +475,6 @@ also known as the complex projective space~$\mathbb{CP}^{2^{n}-1}$
 can also be classified as product states and entangled states, and
 the latter one plays the essential role for pure-state algorithms
 \cite{Mermin2007,Jaeger2007}.
-
-\section{Quantum Circuit Model\label{sec:Quantum-Circuit-Model}}
 
 \begin{comment}
 
