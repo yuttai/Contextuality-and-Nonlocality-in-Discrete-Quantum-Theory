@@ -742,8 +742,6 @@ model, modal quantum computing (MQC), having ``supernatural'' computational
 power is also far from conventional quantum computing as we will describe
 next.
 
-\begin{comment}
-
 \section{Modal Quantum Computing}
 
 \label{modalquantumcomputing}
@@ -775,10 +773,16 @@ search on the database. This algorithm then outperforms the known
 asymptotic bound $O(\sqrt{N})$ for unstructured database search in
 conventional quantum computing.
 
+\begin{comment}
 \begin{figure}[t]
 \[
 \begin{array}{@{\!\!}c}
-\hspace*{1.35cm}\Qcircuit@C=1.3em@R=.9em{\lstick{y=\ket{0}}}\end{array}
+\hspace*{1.35cm}\xymatrix@C=0pt{\lstick{y=\ket{0}} & \qw & \multigate{3}{\uf} & \gate{~S^{\dagger}~} & \ctrl{3} & \gate{~S^{\dagger}~} & \multimeasureD{3}{\text{measure}}\\
+\lstick{x_{1}=\ket{0}} & \multigate{2}{\otimes S} & \ghost{\uf} & \multigate{2}{\otimes S} & \targ & \qw & \ghost{\text{measure}}\\
+\lstick{\ldots} & \ghost{\otimes S} & \ghost{\uf} & \ghost{\otimes S} & \targ & \qw & \ghost{\text{measure}}\\
+\lstick{x_{n}=\ket{0}} & \ghost{\otimes S} & \ghost{\uf} & \ghost{\otimes S} & \targ & \qw & \ghost{\text{measure}}
+}
+\end{array}
 \]
 \caption[]{\label{fig:alg}Circuit for black box \usat\ in modal quantum theory
 over the field $\ff{2}$. $\uf$ is a Deutsch quantum black box~\cite{NCbook}
@@ -944,10 +948,14 @@ and probability in general.
 \begin{figure}[t]
 \[
 \begin{array}{c}
-\hspace*{1.5cm}\Qcircuit@C=1.7em@R=.9em{\lstick{y=\ket{0}}}\end{array}
+\hspace*{1.5cm}\xymatrix@C=0pt{\lstick{y=\ket{0}} & \qw & \multigate{3}{\uf} & \qw & \multimeasureD{3}{\text{measure}}\\
+\lstick{x_{1}=\ket{0}} & \multigate{2}{H} & \ghost{\uf} & \multigate{2}{H} & \ghost{\text{measure}}\\
+\lstick{\ldots} & \ghost{H} & \ghost{\uf} & \ghost{H} & \ghost{\text{measure}}\\
+\lstick{x_{n}=\ket{0}} & \ghost{H} & \ghost{\uf} & \ghost{H} & \ghost{\text{measure}}
+}
+\end{array}
 \]
 \caption[]{Circuit for black box \usat\ in discrete quantum computing.}
-
 \label{fig:dbsearch} 
 \end{figure}
 

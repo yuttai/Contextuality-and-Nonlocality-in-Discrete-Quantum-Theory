@@ -3987,15 +3987,11 @@ supernatural
  we will describe next.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
 \begin_layout Section
 Modal Quantum Computing
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "modalquantumcomputing"
@@ -4005,7 +4001,7 @@ name "modalquantumcomputing"
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 To understand the computational implications of the modal quantum theory
  defined over the field 
 \begin_inset Formula $\ff{2}$
@@ -4038,7 +4034,7 @@ no
 , these answers may interfere destructively with one another.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Our computations with this 
 \begin_inset Quotes eld
 \end_inset
@@ -4175,6 +4171,10 @@ problem replaces the boolean formula with an arbitrary black box.
  for unstructured database search in conventional quantum computing.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
 \begin_layout Plain Layout
 \begin_inset Float figure
 placement t
@@ -4186,7 +4186,12 @@ status open
 \begin_inset Formula 
 \[
 \begin{array}{@{\!\!}c}
-\hspace*{1.35cm}\Qcircuit@C=1.3em@R=.9em{\lstick{y=\ket{0}}}\end{array}
+\hspace*{1.35cm}\xymatrix@C=0pt{\lstick{y=\ket{0}} & \qw & \multigate{3}{\uf} & \gate{~S^{\dagger}~} & \ctrl{3} & \gate{~S^{\dagger}~} & \multimeasureD{3}{\text{measure}}\\
+\lstick{x_{1}=\ket{0}} & \multigate{2}{\otimes S} & \ghost{\uf} & \multigate{2}{\otimes S} & \targ & \qw & \ghost{\text{measure}}\\
+\lstick{\ldots} & \ghost{\otimes S} & \ghost{\uf} & \ghost{\otimes S} & \targ & \qw & \ghost{\text{measure}}\\
+\lstick{x_{n}=\ket{0}} & \ghost{\otimes S} & \ghost{\uf} & \ghost{\otimes S} & \targ & \qw & \ghost{\text{measure}}
+}
+\end{array}
 \]
 
 \end_inset
@@ -5395,7 +5400,12 @@ status open
 \begin_inset Formula 
 \[
 \begin{array}{c}
-\hspace*{1.5cm}\Qcircuit@C=1.7em@R=.9em{\lstick{y=\ket{0}}}\end{array}
+\hspace*{1.5cm}\xymatrix@C=0pt{\lstick{y=\ket{0}} & \qw & \multigate{3}{\uf} & \qw & \multimeasureD{3}{\text{measure}}\\
+\lstick{x_{1}=\ket{0}} & \multigate{2}{H} & \ghost{\uf} & \multigate{2}{H} & \ghost{\text{measure}}\\
+\lstick{\ldots} & \ghost{H} & \ghost{\uf} & \ghost{H} & \ghost{\text{measure}}\\
+\lstick{x_{n}=\ket{0}} & \ghost{H} & \ghost{\uf} & \ghost{H} & \ghost{\text{measure}}
+}
+\end{array}
 \]
 
 \end_inset
@@ -5436,9 +5446,6 @@ in discrete quantum computing.
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:dbsearch"
