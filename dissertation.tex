@@ -12,6 +12,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage[all]{xy}
 
 \makeatletter
 
@@ -67,6 +68,12 @@
 \newcommand{\CP}[1]{\mathbf{CP}^{#1}}  % Complex projective space
 \newcommand{\DCP}[1]{\mathbf{DCP}^{#1}} % Discrete complex projective
 \def\fh{\mathfrak{h}}
+\newcommand{\uf}{U_{\!f}}
+\newcommand{\scalarPlus}{+}
+\newcommand{\boolt}{\textsf{Bool}} 
+\newcommand{\bfalse}{\texttt{\textbf{false}}}
+\newcommand{\btrue}{\texttt{\textbf{true}}}
+\newcommand{\dotprod}{dot product}
 
 \department{Department of Mathematics}
 \department{Department of Computer Science}
@@ -742,9 +749,7 @@ model, modal quantum computing (MQC), having ``supernatural'' computational
 power is also far from conventional quantum computing as we will describe
 next.
 
-\section{Modal Quantum Computing}
-
-\label{modalquantumcomputing}
+\section{Modal Quantum Computing\label{modalquantumcomputing}}
 
 To understand the computational implications of the modal quantum
 theory defined over the field $\ff{2}$ of booleans, we developed
@@ -773,7 +778,6 @@ search on the database. This algorithm then outperforms the known
 asymptotic bound $O(\sqrt{N})$ for unstructured database search in
 conventional quantum computing.
 
-\begin{comment}
 \begin{figure}[t]
 \[
 \begin{array}{@{\!\!}c}
@@ -841,29 +845,32 @@ or~$0$. The result follows since any state with a combination of
 $+$ and $0$, when expressed in the standard basis, would consist
 of a superposition containing the state $\ket{0\ldots}$.
 
-%% WE have a problem with notation - what do we use for "dot product"
-%%  and/or "field norm" in the three or four instances below.
-%%  Here is Yu-Tsung's comment:
+\begin{comment}
 
-% Actually, Grove didn't told about any quadratic residues, and didn't
-% defined the field norm. Grove 
-%  used "the quadratic form Q corresponding to a Hermitian form" instead
-% of "field norm." When I wrote 
-% this proof, I really read the following books:
-% [12] Stewart I 2004 Galois theory (Boca Raton: Chapman and Hall/CRC).
-% Field norm defined in almost all field theory books. In particular, in
-% page 197 in Section 18.4  [12].
-% [11] Hardy G H and Wright E M 1938 An Introduction to the Theory of
-% Numbers (Oxford: Oxford University Press).
-% Quadratic residues explained in almost all number theory books. In
-% particular, in page 69 in Chapter VI [11].
-%%  HERMITIAN (outside if needed) \define{dotprod}{dot product}
+\section{Modal Quantum Theory and Computing}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Our first discrete model replaces the complex numbers by a unrestricted
+finite field~$\mathbb{F}_{q}$ \cite{Schumacher2012-SCHMQT,DQT2014,SchumacherWestmoreland2010}.
+In this model, an $n$-qubit state is a non-zero vector in $\mathbb{F}_{q}^{2^{n}}$.
+When we measure a given state~$\ket{\phi}$, an observable is replaced
+by a basis~$\mathcal{B}$ of $\mathbb{F}_{q}^{2^{n}}$. Since $\ket{\phi}$
+can be represented by the summation across a unique subset~$\mathcal{S}$
+of the basis~$\mathcal{B}$, whether it is possible or impossible
+to measure a basis vector~$\ket{i}$ depends on whether $\ket{i}$
+is in $\mathcal{S}$ or not. Because this model only predicts whether
+a result is possible or impossible, it is called the modal quantum
+theory. Its computational model, called the modal quantum computing,
+is far from conventional quantum computing. Although modal quantum
+computing can express simple algorithms such as quantum teleportation
+\cite{BennettBrassardEtAl1993,peres1995quantum,Mermin2007,Jaeger2007},
+it is so weak that it cannot express Deutsch's algorithm \cite{Deutsch1985,Mermin2007}.
+This quantum theory is, however, also so powerful that it can be used
+to solve an unstructured database search of size $N$ using $O(\log(N))$
+steps, which outperforms the known asymptotic bound $O(\sqrt{N})$
+in conventional quantum computing \cite{Grover:1996:FQM:237814.237866,BennettBernsteinBrassardVazirani1997,Mermin2007,Jaeger2007}.
+\end{comment}
 
-\section{Discrete Quantum Theory (I) }
-
-\label{discretequantumtheoryI}
+\section{Discrete Quantum Theory (I)\label{discretequantumtheoryI}}
 
 Our next objective is to develop more realistic discrete quantum theory
 variants that exclude ``supernatural'' algorithms such as the one
@@ -924,13 +931,7 @@ of the Hopf fibration extending the Bloch sphere to $n$-qubits, as
 well as determining discrete measures for the relative sizes of the
 entangled, maximally entangled, and unentangled discrete states~\cite{geom1}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\emph{Discrete Quantum Computing with Complexifiable Finite Fields. }
-%% NOTE (ajh): we decided Fp was complexifiable and Fpp was complexified.
-
-\section{Discrete Quantum Computing (I)}
-
-\label{discretequantumcomputingI}
+\section{Discrete Quantum Computing (I)\label{discretequantumcomputingI}}
 
 Given a complexified finite field $\ff{p^{2}}$ and its Hermitian
 \dotprod\
@@ -975,37 +976,10 @@ the divisibility property. Physically, we are taking advantage of
 additional interference processes that happen because of the possibility
 of ``wrapping around'' due to modular arithmetic. We do not know,
 in general, whether this version of discrete quantum computing actually
-enables the rapid solution of NP-complete problems.
+enables the rapid solution of NP-complete problems
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Since forging a connection between  
-% a framework for discrete quantum computing based on complexifiable
-% finite fields and conventional quantum mechanics is blocked in the
-% general case by the violation of condition (C) on inner products, the
-% only logical alternative is to seek a way around the impasse.
-\end{comment}
-
-\section{Modal Quantum Theory and Computing}
-
-Our first discrete model replaces the complex numbers by a unrestricted
-finite field~$\mathbb{F}_{q}$ \cite{Schumacher2012-SCHMQT,DQT2014,SchumacherWestmoreland2010}.
-In this model, an $n$-qubit state is a non-zero vector in $\mathbb{F}_{q}^{2^{n}}$.
-When we measure a given state~$\ket{\phi}$, an observable is replaced
-by a basis~$\mathcal{B}$ of $\mathbb{F}_{q}^{2^{n}}$. Since $\ket{\phi}$
-can be represented by the summation across a unique subset~$\mathcal{S}$
-of the basis~$\mathcal{B}$, whether it is possible or impossible
-to measure a basis vector~$\ket{i}$ depends on whether $\ket{i}$
-is in $\mathcal{S}$ or not. Because this model only predicts whether
-a result is possible or impossible, it is called the modal quantum
-theory. Its computational model, called the modal quantum computing,
-is far from conventional quantum computing. Although modal quantum
-computing can express simple algorithms such as quantum teleportation
-\cite{BennettBrassardEtAl1993,peres1995quantum,Mermin2007,Jaeger2007},
-it is so weak that it cannot express Deutsch's algorithm \cite{Deutsch1985,Mermin2007}.
-This quantum theory is, however, also so powerful that it can be used
-to solve an unstructured database search of size $N$ using $O(\log(N))$
-steps, which outperforms the known asymptotic bound $O(\sqrt{N})$
-in conventional quantum computing \cite{Grover:1996:FQM:237814.237866,BennettBernsteinBrassardVazirani1997,Mermin2007,Jaeger2007}.
+.%
+\begin{comment}
 
 \section{Discrete Quantum Theory and Computing (I)}
 
@@ -1025,6 +999,7 @@ such as the algorithms of Deutsch, Simon \cite{Simon:1994:PQC:1398518.1399019,Me
 and Bernstein-Vazirani \cite{Bernstein:1993:QCT:167088.167097,Mermin2007},
 but this still leads to excessive computational power for the unstructured
 database search problem for certain database sizes.
+\end{comment}
 
 \section{Discrete Quantum Theory and Computing (II)}
 
