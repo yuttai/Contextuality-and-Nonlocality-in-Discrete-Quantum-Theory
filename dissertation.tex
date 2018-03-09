@@ -65,8 +65,8 @@
 \newcommand{\R}{\mathReal}
 \newcommand{\rme}{\mathrm{e}}
 \newcommand{\rmi}{\mathrm{i}}
-\newcommand{\CP}[1]{\mathbf{CP}^{#1}}  % Complex projective space
-\newcommand{\DCP}[1]{\mathbf{DCP}^{#1}} % Discrete complex projective
+\newcommand{\CP}[1]{\mathComplex\mathbf{P}^{#1}}  % Complex projective space
+\newcommand{\DCP}[1]{\mathbf{D}\mathComplex\mathbf{P}^{#1}} % Discrete complex projective
 \def\fh{\mathfrak{h}}
 \newcommand{\uf}{U_{\!f}}
 \newcommand{\scalarPlus}{+}
@@ -220,7 +220,7 @@ in later sections, we concern ourselves first with the properties
 of the simplest possible abstract state object in CQT, the single
 qubit state.
 
-\subsection{The single qubit problem}
+\subsection{Two-dimensional Hilbert Space}
 
 A state in a two-dimensional Hilbert space, known as a qubit, already
 provides access to a wealth of geometric information and context.
@@ -342,58 +342,49 @@ make an exact state transition as implied by Fig.~\ref{blochSphere.fig}(b).
 In practice, one has to be content with approximate, typically exponentially
 expensive, transitions from state to state.
 
-\subsection{The $n$-qubit problem}
+\subsection{$D$-dimensional Hilbert Space}
 
-For $n$ qubits, the irreducible states are encoded in a similar family
-of geometric structures known technically as the complex projective
-space $\CP{D-1}$. We obtain these structures starting with the $D=2^{n}$
-initially unnormalized complex coefficients of the $n$-qubit state
-basis 
-\begin{eqnarray}
-\ket{\Psi} & = & \sum_{i=0}^{D-1}\alpha_{i}\ket{i}\ .\label{N1.eq}
-\end{eqnarray}
-We then follow the analog of the one-qubit procedure: Conservation
-of probability requires that the norm of the vector $\VVec{\alpha}$
-be normalized to unity: 
-\begin{eqnarray}
-\braket{\Psi}{\Psi}=\|\VVec{\alpha}\|^{2} & = & \sum_{i=0}^{D-1}|\alpha_{i}|^{2}\,=\,1\ .\label{probEq1.eq}
-\end{eqnarray}
+The irreducible states in a $D$-dimensional Hilbert space are encoded
+in a similar family of geometric structures known technically as the
+complex projective space $\CP{D-1}$. We obtain these structures starting
+with the $D$ initially unnormalized complex coefficients of the $D$-dimensional
+basis $\ket{\Psi}=\sum_{i=0}^{D-1}\alpha_{i}\ket{i}$. We then follow
+the analog of the two-dimensional procedure: Conservation of probability
+requires that the norm of the vector $\VVec{\alpha}$ be normalized
+to unity: 
+\begin{equation}
+\braket{\Psi}{\Psi}=\|\VVec{\alpha}\|^{2}=\sum_{i=0}^{D-1}|\alpha_{i}|^{2}=1\,.\label{probEq1.eq}
+\end{equation}
 Thus the initial equation for the geometry of a quantum state describes
-a \textit{topological sphere\/} $\Sphere{2D-1}$ embedded in $\mathReal^{2D}$.
+a \textit{topological sphere~}$\Sphere{2D-1}$ embedded in $\mathReal^{2D}$.
 To see this, remember that we can write the real and imaginary parts
-of $\alpha_{i}$ as $\alpha_{i}=x_{i}+iy_{i}$, so 
-\begin{eqnarray}
-\sum_{i=0}^{D-1}|\alpha_{i}|^{2}=\sum_{i=0}^{D-1}\left(x_{i}^{\ 2}+y_{i}^{\ 2}\right)=1
-\end{eqnarray}
+of $\alpha_{i}$ as $\alpha_{i}=x_{i}+\rmi y_{i}$, so 
+\begin{equation}
+\sum_{i=0}^{D-1}|\alpha_{i}|^{2}=\sum_{i=0}^{D-1}{x_{i}}^{2}+{y_{i}}^{2}=1
+\end{equation}
 describes the locus of a $2D$-dimensional real unit vector in $\mathReal^{2D}$,
-which is by definition $\Sphere{2D-1}$, the $(2D-1)$-sphere, with
-$D=2^{n}$ for an $n$-qubit state.
+which is by definition $\Sphere{2D-1}$, the $(2D-1)$-sphere.
 
 This $\Sphere{2D-1}$ in turn is ambiguous up to the usual overall
 phase, inducing an $\Sphere{1}$ symmetry action, and identifying
 $\Sphere{2D-1}$ as an $\Sphere{1}$ bundle, whose base space is the
 $(D-1)$-complex-dimensional projective space $\CP{D-1}$. There are
 thus $2D-2$ irreducible real degrees of freedom ($D-1$ complex degrees
-of freedom) for a quantum state with a $D$-dimensional basis, $\{\ket{i}\,|\,i=0,\ldots,D-1\}$.
+of freedom) for a quantum state with a $D$-dimensional basis, $\set{\ket{i}}{i=0,\ldots,D-1}$.
 
-In summary, the full space of a $D=2^{n}$-dimensional $n$-qubit
-quantum state, including its overall phase defining its relationship
-to other quantum states, is the topological space $\Sphere{2D-1}$.
-For an isolated system, the overall phase is not measurable, and eliminating
-the phase dependence in turn corresponds to identifying $\Sphere{2D-1}$
-as a circle bundle over the base space $\CP{D-1}$, and therefore
-$\CP{D-1}=\CP{2^{n}-1}$ defines the $2D-2$ intrinsic, irreducible,
-degrees of freedom of the isolated $n$-qubit state's dynamics. In
-mathematical notation, this would be written
-
-%% From Wiki: Hopf-fibration: S^1\hookrightarrow S^3 \rightarrow S^2
-\[
-\Sphere{1}\hookrightarrow\Sphere{2D-1}\rightarrow\CP{D-1}\ ,
-\]
-with $D=2^{n}$ as usual. For $n=1$, the single qubit, we have $2^{n}-1=2-1=1$,
-and the base space of the circle bundle is $\CP{1}=\Sphere{2}$, the
-usual Bloch sphere. Note that only for $n=1$ is this actually a sphere-like
-geometry due to an accident of low-dimensional topology.
+In summary, the full space of a $D$-dimensional quantum state, including
+its overall phase defining its relationship to other quantum states,
+is the topological space $\Sphere{2D-1}$. For an isolated system,
+the overall phase is not measurable, and eliminating the phase dependence
+in turn corresponds to identifying $\Sphere{2D-1}$ as a circle bundle
+over the base space $\CP{D-1}$, and therefore $\CP{D-1}$ defines
+the $2D-2$ intrinsic, irreducible, degrees of freedom of the isolated
+$D$-dimensional state's dynamics. In mathematical notation, this
+would be written $\Sphere{1}\hookrightarrow\Sphere{2D-1}\rightarrow\CP{D-1}$.
+For $D=2$, the single qubit, we have $2-1=1$, and the base space
+of the circle bundle is $\CP{1}=\Sphere{2}$, the usual Bloch sphere.
+Note that only for $D=2$ is this actually a sphere-like geometry
+due to an accident of low-dimensional topology.
 
 \subsection{Explicit $n$-qubit generalization of the Hopf fibration construction}
 
@@ -930,6 +921,584 @@ the geometry of these finite fields and define a discrete version
 of the Hopf fibration extending the Bloch sphere to $n$-qubits, as
 well as determining discrete measures for the relative sizes of the
 entangled, maximally entangled, and unentangled discrete states~\cite{geom1}.
+
+\begin{comment}
+
+\section{Vector Spaces over Complexified Finite Fields}
+
+In order to address the intrinsic problems induced by the notion of
+the continuum calculations of the previous section, one is led to
+replace the infinite fields of CQC by discrete computable fields.
+Accomplishing this while maintaining the essential elements of addition
+and multiplication requires a brief excursion into the theory of fields,
+and particularly the theory of finite fields.
+
+\subsection{Background}
+
+Abstract algebra deals with various kinds of algebraic structures,
+such as groups, rings, and fields, each defined by a different system
+of axioms. A field~$\mathbf{F}$ is an algebraic structure consisting
+of a set of elements equipped with the operations of addition, subtraction,
+multiplication, and division \cite{numtheory.ref}. Fields may contain
+an infinite or a finite number of elements. The rational $\mathbb{Q}$,
+real $\mathbb{R}$, and complex numbers $\mathbb{C}$ are examples
+of infinite fields, while the set $\mathbf{F}_{3}=\{0,1,2\}$ under
+the usual multiplication and modular addition is an example of a finite
+field. Finite fields are also known as Galois fields \cite{GT.ref}.
+
+There are two distinguished elements in a field, the addition identity
+$0$, and the multiplication identity $1$. Given the field $\mathbf{F}$,
+the closed operations of addition, ``$+$'', and multiplication,
+``$\gmult$'', satisfy the following set of axioms:
+\begin{enumerate}
+\item $\mathbf{F}$ is an Abelian group under the addition operation $+$
+(additive group)
+\item The multiplication operation $\gmult$ is associative and commutative.
+The field has a multiplicative identity and the property that every
+nonzero element has a multiplicative inverse
+\item Distributive laws: For all $a,b,c\in\mathbf{F}$ 
+\begin{eqnarray}
+a\gmult(b+c)=a\gmult b+a\gmult c\\
+(b+c)\gmult a=b\gmult a+c\gmult a\ .
+\end{eqnarray}
+\end{enumerate}
+{}From now on, unless specified, we will omit the symbol $\gmult$
+whenever we multiply two elements of a field.
+
+Finite fields of $q$ elements, $\Fq=\{0,\ldots,q-1\}$, will play
+a special role in this work. A simple explicit example is the following
+addition and multiplication tables for $\mathbf{F}_{3}$: 
+\[
+\begin{array}{c|ccc}
++ & 0 & 1 & 2\\[0.1in]
+\hline 0 & 0 & 1 & 2\\
+1 & 1 & 2 & 0\\
+2 & 2 & 0 & 1
+\end{array}\hspace*{2cm}\begin{array}{c|ccc}
+\gmult & 0 & 1 & 2\\[0.1in]
+\hline 0 & 0 & 0 & 0\\
+1 & 0 & 1 & 2\\
+2 & 0 & 2 & 1
+\end{array}
+\]
+
+\subsection{Cyclic Properties of Finite Fields}
+
+Finite fields are classified by size. The characteristic of a field
+is the least positive integer $m$ such that $m=1+1+1+\cdots+1\equiv0$,
+and if no such $m$ exists we say that the field has characteristic
+zero (which is the case for infinite fields such as $\mathbb{R}$).
+It turns out that if the characteristic is non-zero it must be a prime
+$p$. For every prime $p$ and positive integer $r$ there is a finite
+field $\Fpx{p^{r}}$ of cardinality $q=p^{r}$ and characteristic
+$p$ (Lagrange's theorem), which is unique up to field isomorphisms.
+For every $a\in\Fq$, $a\neq0$, then $a^{q-1}=1$, implying the Frobenius
+endomorphism (also a consequence of Fermat's little theorem) $a^{q}=a$,
+which in turn permits us to write the multiplicative inverse of any
+non-zero element in the field as $a^{-1}=a^{q-2}$, since $a^{q-2}a=a^{q-1}=1$.
+Every subfield of the field $\Fq$, of cardinality $q=p^{r}$, has
+$p^{r'}$ elements with some $r'$ dividing $r$, and for a given
+$r'$ it is unique. Notice that a fundamental difference between finite
+and infinite fields is one of topology: finite fields induce a compact
+structure because of their modular arithmetic, permitting \textit{wrapping
+around}, while that is not the case for fields of characteristic zero.
+This feature may lead to fundamental physical consequences.
+
+\subsection{Complexified Finite Fields}
+
+Consider the polynomial $x^{2}+1=0$ over a finite field $\Fp$. It
+is known that this polynomial does not have solutions in the field
+precisely when the prime $p$ is congruent to $3\imod{4}$ (see, e.g.,
+\cite{numtheory.ref}).
+
+For such primes, it is therefore possible to construct an extended
+field $\Fpp$ whose elements are of the form $\alpha=a+ib$ with $a\in\Fp$,
+$b\in\Fp$, and $i$ the root of the polynomial $x^{2}+1=0$. Since
+the field elements $a+ib$ behave like discrete versions of the complex
+numbers, we will refer to fields $\Fp$ with prime $p$ congruent
+to $3\imod{4}$ as \emph{complexifiable finite fields}, and $i$-extended
+fields $\Fpp$ with $p$ congruent to $3\imod{4}$ as \emph{complexified
+finite fields}.
+
+In a complexified finite field $\Fpp$, the Frobenius automorphism
+that maps $\alpha\in\Fpp$ to $\alpha^{p}\in\Fpp$ acts like complex
+conjugation. For example, in $\Fppx{3}$, we have $(2+i)^{3}=8+12i-6-i=2+11i$
+which, in the field, is equal to $2-i$ since $11\equiv-1\imod{3}$.
+
+We define the \emph{field norm} $\fnorm{\cdot}$ as the map from $(a+ib)\in\Fpp$
+to $a^{2}+b^{2}\in\Fp$, 
+\begin{equation}
+\fnorm{\alpha=a+ib}=a^{2}+b^{2}\ .\label{fieldnorm.eq}
+\end{equation}
+We avoid the square root in the discrete field framework because,
+unlike the continuous case, the square root does not always exist.
+
+\subsection{Vector Spaces}
+
+In this section we want to build a theory of discrete vector spaces
+that approximates as closely as possible the features of conventional
+quantum theory. Such a structure would ideally consist of the following:
+(i) a vector space over the field of complex numbers, and (ii) an
+inner product $\ip{\Phi}{\Psi}$ associating to each pair of vectors
+a complex number, and satisfying the following properties: 
+\begin{itemize}
+\item[A.] $\ip{\Phi}{\Psi}$ is the complex conjugate of $\ip{\Psi}{\Phi}$; 
+\item[B.] $\ip{\Phi}{\Psi}$ is conjugate linear in its first argument and
+linear in its second argument; 
+\item[C.] $\ip{\Psi}{\Psi}$ is always non-negative and is equal to~0 only
+if $\ket{\Psi}$ is the zero vector. 
+\end{itemize}
+It turns out that a vector space defined over a finite field cannot
+have an inner product satisfying the properties above. However, we
+will introduce an Hermitian ``dot product'' satisfying some of those
+properties.
+
+We are interested in the $n$-qubit vector space ${\cal H}$ of dimension
+$D=2^{n}$ defined over the complexified field $\Fpp$. Let $\ket{\Psi}=(\alpha_{0}~\alpha_{1}~\ldots~\alpha_{D-1})^{T}$
+and $\ket{\Phi}=(\beta_{0}~\beta_{1}~\ldots~\beta_{D-1})^{T}$ represent
+vectors in ${\cal H}$, with numbers $\alpha_{i}$ and $\beta_{i}$
+drawn from $\Fpp$, and where $(\cdot)^{T}$ is the transpose.
+
+\begin{definition}{[}Hermitian dot product{]} Given vectors $\ket{\Phi}$
+and $\ket{\Psi}\in{\cal H}$, the Hermitian dot product of these vectors
+is: 
+\begin{equation}
+\ip{\Phi}{\Psi}=\sum_{i=0}^{D-1}~\beta_{i}^{p}~\alpha_{i}^{\;}\ .
+\end{equation}
+\end{definition} Two vectors $\ket{\Phi}$ and $\ket{\Psi}\in{\cal H}$
+are said to be orthogonal if $\ip{\Phi}{\Psi}=0$. This product satisfies
+conditions A and B for inner products but violates condition C since
+in every finite field there always exists a non-zero vector $\ket{\Psi}$
+such that $\ip{\Psi}{\Psi}=0$. The reason is that addition in finite
+fields eventually ``wraps around'' (because of their cyclic or modular
+structure), allowing the sum of non-zero elements to be zero. The
+fraction of non-zero vectors satisfying $\ip{\Psi}{\Psi}=0$ decreases
+with the order $p$.
+
+For any vector $\ket{\Psi}=(\alpha_{0}~\alpha_{1}~\ldots~\alpha_{D-1})^{T}$,
+the Hermitian dot product $\ip{\Psi}{\Psi}$ is equal to $\sum_{i=0}^{D-1}~\fnorm{\alpha_{i}}$,
+which is the sum of the field norms for the complex coefficients.
+For convenience, we now extend the field norm to include vector arguments
+by defining 
+\begin{equation}
+\fnorm{\ket{\Psi}}=\ip{\Psi}{\Psi}=\sum_{i=0}^{D-1}~\fnorm{\alpha_{i}}\ .\label{fnormD.eq}
+\end{equation}
+The field norm of a vector can vanish for non-vanishing vectors.
+
+For vectors $\ket{\Psi}$ such that $\ip{\Psi}{\Psi}=\sum_{i=0}^{D-1}\alpha_{i}^{p}\,\alpha_{i}^{\;}=\sum_{i=0}^{D-1}\alpha_{i}^{p+1}=\sum_{i=0}^{D-1}|\alpha_{i}|^{2}$
+has a square root in the field, one can define the following ``norm'':
+\begin{equation}
+||\Psi||=\sqrt{\ip{\Psi}{\Psi}}\ ,\label{norm-eq}
+\end{equation}
+which is valid only on a subspace of the field norm for finite fields.
+
+%There is an alternative way of defining a proper inner product over a subset of the %field $\Fpp$. Consider prime numbers $p= 8 \prod_{l=1}^k q_l -1$, where  %$q_l$ are odd primes. This subset of the primes congruent to $3 \imod 4$ has the %special properti
+
+\section{Irreducible Discrete $n$-qubit States: Generalized Discrete Bloch
+Sphere}
+
+\label{DQCnqubitBloch.sec}
+
+In the one-qubit state with coefficients in $\Fpp$, the discrete
+analog of the Bloch sphere is constructed by exact analogy to the
+continuous case: we first require that the coefficients of the single
+qubit basis obey 
+\begin{equation}
+\|\psi_{1}\|^{2}=|\alpha_{0}|^{2}+|\alpha_{1}|^{2}=1\label{DQA2.eq}
+\end{equation}
+in the discrete field. In \ref{appU.sec}, we show that there are
+$p(p^{2}-1)$ such values. Given this requirement, which is similar
+in form to the conservation of probability, but not as useful due
+to the lack of orderable probability values, we can immediately conclude
+that the discrete analog of the Hopf fibration is again 
+\begin{eqnarray}
+X & = & 2\,\mathrm{Re}\ \alpha_{0}\alpha_{1}^{*}=2x_{0}x_{1}+2y_{0}y_{1}\nonumber \\
+Y & = & 2\,\mathrm{Im}\ \alpha_{0}\alpha_{1}^{*}=2x_{1}y_{0}-2x_{0}y_{1}\label{DQA6.eq}\\
+Z & = & |\alpha_{0}|^{2}-|\alpha_{1}|^{2}=x_{0}^{\ 2}+y_{0}^{\ 2}-x_{1}^{\ 2}-y_{1}^{\ 2}\ ,\nonumber 
+\end{eqnarray}
+but now with all computations in $(\mbox{mod}~p)$. At this point
+one simply writes down all possible discrete values for the complex
+numbers $\{\alpha_{0},\alpha_{1}\}$ satisfying Eq.~(\ref{DQA2.eq})
+and enumerates those that project to the same value of $\{X,Y,Z\}$.
+This equivalence class is the discrete analog of the circle in the
+complex plane that was eliminated in the continuous case. In \ref{appH.sec},
+we show that $p+1$ discrete values of $\{\alpha_{0},\alpha_{1}\}$
+with unit norm map to the same point under the Hopf map \Eq{DQA6.eq};
+we may think of these as discrete circles or projective lines of equivalent,
+physically indistinguishable, complex phase. The surviving $p(p-1)$
+values of $\{\alpha_{0},\alpha_{1}\}$ correspond to irreducible physical
+states of the discrete single qubit system. %% Several examples are shown in Figure \ref{bloch.fig}. %%Thus,
+for example, choosing the underlying field to be $\Fppx{3}$, there
+are exactly 6 single-qubit state vectors to populate the Bloch sphere;
+the four equivalent phase-multiples mapping to each of the six points
+on the $\Fppx{3}$ Bloch sphere are collapsed and regarded as physically
+indistinguishable. In Figure \ref{bloch.fig}, we plot the irreducible
+states on the Bloch sphere for $p=3$, $7$, and $11$. Note that
+the Cartesian lengths of the real vectors corresponding to the points
+on the Bloch sphere vary considerably due to the nature of discrete
+fields; we have artificially normalized them to a ``continuous world''
+unit radius sphere for conceptual clarity.
+
+\begin{figure}[htb]
+%\vspace{-0.2in}  %% \includegraphics[width=0.9\columnwidth]{./Bloch_sphere.pdf}%%\includegraphics[width=2.0\columnwidth]{./picA.png}%%\includegraphics[width=2.0\columnwidth]{./picB.png}
+
+\begin{centering}
+\hspace*{-0.5cm}\includegraphics[width=1.1\columnwidth]{../../../Public/Documents/StudyInIUB/Computer Science/201209-12.M800/Manuscripts/picC.png}
+%%\includegraphics[width=0.5\textwidth]{./picAB.eps}\vspace{-0.2in}
+ %% adjust blank space?
+\par\end{centering}
+\caption{Schematically normalized plots of the elements of the discrete Bloch
+sphere, the irreducible single-qubit (two-dimensional) state vectors
+with unit norm over the field $\Fpp$. We show the results for $p=3$,
+$7$, and $11$. For example, in $\Fppx{3}$, there are 24 vectors
+of unit norm, but only the 6 inequivalent classes appear in the plot.
+The $p+1=4$ equivalent vectors in each class differ only by a complex
+discrete phase.}
+\label{bloch.fig} 
+\end{figure}
+
+\subsection{Counting states on the $n$-qubit Bloch sphere}
+
+We have the unique opportunity in the finite-field approach to quantum
+computing to precisely identify and enumerate the physical states.
+In the conventional theory, as we have seen, we employ a generalized
+Hopf fibration on the normalized states to project out a circle of
+phase-equivalent states, yielding the generalized Bloch sphere.
+
+In the introduction to this section, we sketched the counting of the
+irreducible single-qubit discrete states. To count the number of inequivalent
+discrete states for the general $n$-qubit case with coefficients
+in $\Fpp$, we first must find the set of unit-norm states, and then
+determine the equivalence classes of unit-norm states under discrete
+phase transformations; we can then enumerate the list of states on
+the discrete generalized Bloch sphere. By executing computer searches
+of these spaces, we discovered an hypothesis for a closed-form solution
+for the counting of the states, and were then able to find a rigorous
+inductive proof of the enumeration, which is presented in the Appendix.
+
+This process of describing the discrete $n$-qubit irreducible states
+can again be understood geometrically by following the discrete analog
+of the Hopf fibration. First, we construct the discrete version of
+the quadratic unit-length form that automatically annihilates the
+distinction among states differing only by a discrete phase, 
+\begin{eqnarray}
+\hspace*{-0.5cm}\Vec{X}=(|\alpha_{i}|^{2},...,\sqrt{2}\ \mathrm{Re}\ \alpha_{i}\alpha_{j}^{*},\ldots,\sqrt{2}\ \mathrm{Im}\ \alpha_{i}\alpha_{j}^{*},\ldots)\ ,
+\end{eqnarray}
+where 
+\begin{eqnarray}
+\Vec{X}\cdot\Vec{X}=\left(\sum_{i=0}^{D-1}\left|\alpha_{i}\right|^{2}\right)^{2}=1\ .
+\end{eqnarray}
+{}From \ref{appH.sec}, we know that $p+1$ elements of this discrete
+$\Sphere{2\times2^{n}-1}$ structure map to the \textit{same point\/}
+in $\Vec{X}$. Each set of $(p+1)$ redundant points is, geometrically
+speaking, the \textit{discrete Hopf fibration circle\/} living above
+each \textit{irreducible\/} point of the $n$-qubit state description.
+These $p+1$ points are interpretable as the $p$ finite points plus
+the single point at infinity of the projective discrete line (see,
+e.g., \cite{Arnold}).
+
+The next part of this argument is the determination of the unit-norm
+states, effectively the space of allowed discrete partitions of unity;
+we cannot exactly call these ``probability-conserving'' sectors
+of the state coefficients since we do not have a well defined notion
+of probability, but we do have a well-defined notion of partition
+of unity. The tally of unit-norm states is $p^{2^{n}-1}(p^{2^{n}}-1)$
+(see \ref{appU.sec}) compared to the total number $p^{2\times2^{n}}$
+of possible complex integer state vectors that could be chosen. This
+unit-norm state structure is the discrete analog of $\Sphere{2\times2^{n}-1}$.
+
+Finally, we repeat the last step of the $n$-qubit continuous Hopf
+fibration process for discrete $n$-qubit states, eliminating the
+discrete set of $p+1$ equivalent points that map to the same point
+$\Vec{X}$ on the generalized $n$-qubit Bloch sphere. Dividing the
+tally $p^{2^{n}-1}(p^{2^{n}}-1)$ of unit norm states by the $p+1$
+elements of each phase-equivalent discrete circle, we find 
+\[
+\frac{p^{2^{n}-1}(p^{2^{n}}-1)}{p+1}=p^{2^{n}-1}(p-1)\,\prod_{k=1}^{n-1}(p^{2^{k}}+1)
+\]
+as the total count of unique irreducible states in a discrete $n$-qubit
+configuration (see \ref{appI.sec}). The resulting object is precisely
+the discrete version of $\CP{D-1}$, which we might call a \textit{discrete
+complex projective space\/} or $\DCP{D-1}$, where $D=2^{n}$ as
+usual.
+
+\Comment{ 
+
+\subsection{Counting states on the $n$-qubit Bloch sphere}
+
+Although we do not have a rigorous proof for the counting of discrete
+unit-norm states and the number of irreducible unit-norm states in
+the discrete generalized Bloch sphere for $n$-qubit states with coefficients
+in $\Fpp$, we have run extensive computer searches of the state features
+for a range of compatible primes $p$ and number of qubits $n$. From
+these experimental investigations, we have induced a closed-form solution
+for the counting that agrees for every possible combination of parameters
+that can be computed in reasonable time (the computational complexity
+becomes intractable very quickly).
+
+For $n$-qubit discrete states with coefficients in $\Fpp$, our calculation
+begins with an enumeration of all possible $2^{n}$-tuples of state
+coefficients in $\Fpp$; then the moduli-squared of these tuples are
+summed and compared to unity in $(\mbox{mod}~p)$. Those that survive
+are accumulated in a list of allowed discrete partitions of unity;
+we cannot exactly call these ``probability-conserving'' sectors
+of the state coefficients since we do not have a well defined notion
+of probability, but we do have a well-defined notion of partition
+of unity. The heuristic number that results for the tally of unit-norm
+states is $p^{2^{n}-1}(p^{2^{n}}-1)$, compared to the total number
+$p^{2\times2^{n}}$ of possible complex integer state vectors that
+could be chosen. This unit-norm state structure is now the discrete
+analog of $\Sphere{2\times2^{n}-1}$.
+
+Finally, we construct the discrete version of the quadratic unit-length
+form that automatically annihilates the distinction among states differing
+only by a discrete phase, 
+\begin{eqnarray}
+\hspace*{-0.5cm}\Vec{X}=\{|\alpha_{i}|^{2},...,\sqrt{2}\ \mathrm{Re}\ \alpha_{i}\alpha_{j}^{*},\ldots,\sqrt{2}\ \mathrm{Im}\ \alpha_{i}\alpha_{j}^{*},\ldots\}\ ,
+\end{eqnarray}
+where 
+\begin{eqnarray}
+\Vec{X}\cdot\Vec{X}=\left(\sum_{i=0}^{D-1}\left|\alpha_{i}\right|^{2}\right)^{2}=1\ .
+\end{eqnarray}
+Computing all the elements of the discrete $\Sphere{2\times2^{n}-1}$
+structure that map to the \textit{same point\/} in $\Vec{X}$, we
+find a $(p+1)$-fold redundancy, exactly as for the one-qubit case;
+each set of $(p+1)$ redundant points is, geometrically speaking,
+the \textit{discrete Hopf fibration circle\/} (see, e.g., Arnold
+\cite{Arnold}) living above each \textit{irreducible\/} point of
+the $n$-qubit state description.
+
+In summary, when the $n$-qubit continuous Hopf fibration process
+is repeated for the discrete analog of $n$-qubit states, we find
+that that analog of a phase ``circle'' is a discrete set $p+1$
+equivalent points that map to the same point $\Vec{X}$ on the generalized
+$n$-qubit Bloch sphere, and therefore there are a total of $p^{2^{n}-1}(p^{2^{n}}-1)/(p+1)$
+unique irreducible states in a discrete $n$-qubit configuration.
+The resulting object is precisely the discrete version of $\CP{D-1}$,
+which we might call a \textit{discrete complex projective space\/}
+or $\DCP{D-1}$. }
+
+\section{Geometry of Entangled States}
+
+Without regard to uniqueness, an $n$-qubit state with discrete complex
+coefficients in $\Fpp$ will have the total possible space of coefficients
+with dimension $p^{2\times2^{n}}$ (including the null state). Imposing
+the condition of a length-one norm %% AMR: replaced 'inner-product' by 'norm'in
+$\Fp$, this number is reduced to $p^{2^{n}-1}(p^{2^{n}}-1)$. The
+ratio of all the states to the unit-norm states is asymptotically
+$p$: 
+\begin{eqnarray}
+\frac{p^{2^{n}+1}}{p^{2^{n}}-1}\rightarrow p\ ,
+\end{eqnarray}
+so there are roughly $p$ sets of coefficients, for any number of
+qubits $n$, that are discarded for each retained unit-length state
+vector. A factor of $p+1$ more states are discarded in forming the
+discrete Bloch sphere of irreducible states. Selected plots of the
+full space compared to both the unit-norm space and the irreducible
+space for a selection of complexified finite fields are shown in Figure
+\ref{statePlot3Unit.fig} for 1, 2, 3, and 4 qubits. %Figure \ref{statePlot3Unit.fig} adds the size of the irreducible state%space at the bottom.
+
+%% Source of this is%%  ~hansona/home2/papers/dqc-geom-2012/00mathFigs/A-Test-Galois-Nqubit.nb
+
+%\begin{figure}[htb]%\begin{center}%\includegraphics[width=1.0\columnwidth]{./statePlot1.pdf}%%\vspace{-0.2in}  %% adjust blank space?%\end{center}% \caption{Logarithmic plot of the number of discrete unnormalized%states (top, in red), vs the number of normalized discrete states%(bottom, in blue) for the first 6 $\Fpp$-compatible primes,  (3, 7,%11, 19, 23, 31), for the number of qubits 1, 2, 3 and 4. }% \label{statePlotUnit.fig}%\end{figure}
+
+\begin{figure}[htb]
+\begin{centering}
+\includegraphics[width=1\columnwidth]{../../../Public/Documents/StudyInIUB/Computer Science/201209-12.M800/Manuscripts/statePlot3.pdf}
+%\vspace{-0.2in}  %% adjust blank space?
+\par\end{centering}
+\caption{Logarithmic plot of the number of discrete unnormalized states (top,
+in red), vs the number of normalized discrete states (middle, in blue),
+vs the irreducible states (bottom, in green) for the first 6 $\Fpp$-compatible
+primes, (3, 7, 11, 19, 23, 31), for the number of qubits 1, 2, 3 and
+4. }
+\label{statePlot3Unit.fig} 
+\end{figure}
+
+\subsection{Unentangled vs Entangled Discrete States}
+
+For a given $p$ and the corresponding complexified field $\Fpp$,
+the $n$-qubit discrete quantum states with coefficients in $\Fpp$
+can be classified by their degree of entanglement to a level of precision
+that is unavailable in the continuous theory. We look first at the
+unentangled $n$-qubit states, which are direct product states of
+the form 
+\begin{equation}
+\ket{\Psi}=\ket{\psi_{1}}\otimes\cdots\otimes\ket{\psi_{j}}\otimes\cdots\otimes\ket{\psi_{n}}\ .\label{dqcNqUntg.eq}
+\end{equation}
+Without regard to normalization, there are $(p^{4})^{n}$ possible
+unentangled states out of the total of $p^{2\times2^{n}}$ states
+noted above. When we normalize the individual product states to unit
+norm, the norm of the entire $n$-qubit state becomes the product
+of those unit norms, and is automatically normalized to one. We have
+already seen that each single-qubit normalized state in the tensor
+product \Eq{dqcNqUntg.eq} has precisely $p(p-1)$ irreducible components.
+
+\subsection{Completely Unentangled States and the Discrete Bloch Sphere}
+
+In effect, the irreducible states for unentangled $n$-qubit configurations
+reduce to a single Bloch sphere for each one-qubit component $\ket{\psi_{j}}$,
+and thus the whole set of states is defined by an $n$-tuple of discrete
+Bloch sphere coordinates. Since each Bloch sphere in $\Fpp$ has $p(p-1)$
+distinct irreducible components, we have 
+\[
+\mbox{{\bf Count of Unentangled States}}=p^{n}(p-1)^{n}\ .
+\]
+
+We know that the total number of irreducible states (points in the
+generalized $\DCP{2^{n}-1}$ Bloch sphere) for an $n$-qubit state
+is $p^{2^{n}-1}(p^{2^{n}}-1)/(p+1)$, and so the number of states
+containing some measure of entanglement is 
+\begin{eqnarray*}
+\mbox{{\bf Count of Entangled States}}=\frac{p^{2^{n}-1}(p^{2^{n}}-1)}{p+1}-p^{n}(p-1)^{n}\ .
+\end{eqnarray*}
+Therefore a very small fraction of the unit norm states are unentangled.
+
+\subsection{Partial entanglement}
+
+A partially entangled state can be constructed by taking individual
+component states to enter as direct products, starting by picking
+$n$ distinct single qubits to be unentangled ($n=2$ exhausts its
+freedom with one pick). Then we can choose $n(n-1)/2$ pairs of distinct
+qubits as product states ($n=3$ exhausts its freedom with one pick),
+and so on. Then, starting with $n=3$, we can pick fully entangled
+2-qubit subspaces as product spaces, combining them with single-qubit
+product components ($n=3$ has no single-qubit freedom left after
+picking any of its three 2-qubit subspaces), and so on. Precise measures
+of entanglement such as that given in \Eq{purityMeasure.eq} can
+then be applied just as in the continuous case.
+
+\subsection{Maximal entanglement}
+
+Numerical and analytic calculations of the entanglement measure \Eq{purityMeasure.eq},
+taken $(\mbox{mod}~p)$, extend to the best of our knowledge to the
+discrete case, so that the unentangled states constructed above have
+$P_{\fh}=1$. This leads us to study one final aspect of the discrete
+$n$-qubit states, namely the \textit{maximally\/} entangled states
+with $P_{\fh}=0$.
+
+Computing some examples for various $n$ and small values of $p$,
+one can verify explicitly that unit-norm unentangled states for $n=2$,
+$p=\{3,7,11,19,\ldots\}$ occur with frequency 
+\[
+(p+1)p^{2}(p-1)^{2}=\{144,14112,145200,2339280,\ldots\}\ ,
+\]
+and for general $n$, $(p+1)p^{n}(p-1)^{n}$.
+
+The irreducible state counts are reduced by $(p+1)$, giving 
+\[
+p^{2}(p-1)^{2}=\{36,1764,12100,116964,\ldots\}\ ,
+\]
+and in general for $n$-qubits, $p^{n}(p-1)^{n}$ instances of pure
+states with $P_{\fh}=1$.
+
+Repeating the computation to discover the frequency of maximally entangled
+(purity $P_{\fh}=0$ states), we find $p^{n+1}(p-1)(p+1)^{n}$ maximally
+entangled states, with example frequencies for two qubits of 
+\[
+p^{3}(p-1)(p+1)^{2}=\{864,131712,1916640,49384800,\ldots\}\ .
+\]
+
+The irreducible state counts for maximal entanglement are reduced
+by $(p+1)$, giving for $n=2$ 
+\[
+p^{3}(p^{2}-1)=\{216,16464,159720,2469240,\ldots\}\ ,
+\]
+and in general for $n$-qubits, $p^{n+1}(p-1)(p+1)^{n-1}$ instances
+of pure states with $P_{\fh}=0$.
+
+Therefore, the ratio of maximally entangled to unentangled states
+is 
+\[
+\mbox{{\bf Max Entangled/Unentangled}}=p\left(\frac{p+1}{p-1}\right)^{n-1}\ .
+\]
+
+\section{Summary}
+
+Given a discrete basis for the complex coefficients of an $n$-qubit
+quantum state, DQC permits us in principle to explicitly determine
+the relative frequencies of phases and to determine exactly the generalized
+Bloch sphere coordinates of the irreducible states. The size of the
+set of states that must be taken as equivalent to get irreducibility
+is the size of the ``circle'' or phase group, and this is $p+1$
+for any $p$ and for any $n$ (related to the size of the finite projective
+line, see \cite{Arnold}). Exploring the discrete manifestation of
+the purity measure \Eq{purityMeasure.eq}, our DQC approach can determine
+not only the size of the irreducible space of states, but also the
+relative sizes of the unentangled and entangled states for $n$ discrete
+qubits.
+
+\vspace{0.5in}
+
+\noindent \textbf{References} \vspace*{0.5cm}
+
+\bibitem{GeomQStates2008} I. Bengtsson and K. Zyczkowski, \textit{Geometry
+of Quantum States: An Introduction to Quantum Entanglement} (Cambridge
+University Press, Cambridge, 2008). 
+
+\bibitem{mosseri2001} R. Mosseri and R. Dandoloff, \textit{J. Phys.
+A: Math. Gen.} \textbf{34}, 10243 (2001). 
+
+\bibitem{Arnold} V. I. Arnold, \textit{Dynamics, Statistics and Projective
+Geometry of Galois Fields\/} (Cambridge University Press, Cambridge,
+2011). 
+
+\bibitem{Turing37} A. M. Turing, \textit{Proceedings of the London
+Mathematical Society} Series 2, \textbf{42}, 230 (1937). Errata appeared
+in Series 2, \textbf{43} 544 (1937). 
+
+\bibitem{Minsky67} M. Minsky, \textit{Computation: Finite and Infinite
+Machines} (Prentice-Hall, Englewood Cliffs, 1967). See chapter 9,
+``The Computable Real Numbers.'' 
+
+\bibitem{Chaitin} G. J. Chaitin, \textit{Thinking about Gödel and
+Turing} (World Scientific, Singapore, 2007). 
+
+\bibitem{Feynman} R. P. Feynman, \textit{Int. J. Theor. Phys.} \textbf{21},
+467 (1982). 
+
+\bibitem{Landauer} R. Landauer, \textit{Physics Letters A\/} \textbf{217},
+188 (1996). 
+
+\bibitem{SchuWest2010} B. Schumacher and M. D. Westmoreland, \textit{Found.
+Phys. \/} \textbf{42}, 918 (2012). 
+
+\bibitem{James2011} R. P. James, G. Ortiz, and A. Sabry, \texttt{http://arxiv.org/abs/1101.3764}. 
+
+\bibitem{HOSW2011} A. J. Hanson, G. Ortiz, A. Sabry, and J. Willcock,
+\texttt{http://arxiv.org/abs/1104.1630}. 
+
+\bibitem{Berger} M. Berger and B. Gostiaux, \textit{Differential
+Geometry: Manifolds, Curves, and Surfaces\/} (Springer-Verlag, New
+York, 1988). 
+
+\bibitem{numtheory.ref-1} G. H. Hardy and E. M. Wright, \textit{An
+Introduction to the Theory of Numbers\/} (Oxford University Press,
+Oxford, 2006). 
+
+\bibitem{GT.ref-1} I. Stewart, \textit{Galois theory\/} (Chapman
+and Hall/CRC, Boca Raton, 2004). \Comment{ 
+
+\bibitem{WB.ref} Wildberger N J 2005 \textit{Divine Proportions:
+Rational Trigonometry to Universal Geometry} (Sydney: Wild Egg Books) 
+
+\bibitem{OT} Ovsienko V and Tabachnikov S 2005 \textit{Projective
+Differential Geometry Old and New} (Cambridge: Cambridge University
+Press) 
+
+\bibitem{VY} Veblen O and J. W. Young J W 1946 \textit{Projective
+Geometry Vol. 2} (Blaisdell Publishing Company), pp 55–57 
+
+\bibitem{Ztransform} Campello de Souza R M, de Oliveira H M and Silva
+D 2002 The Z Transform over Finite Fields \textit{International Telecommunications
+Symposium, ITS 2002, Brazil} } 
+
+\bibitem{Barnum2003} H. Barnum, E. Knill, G. Ortiz, and L. Viola,
+\textit{Phys. Rev. A} \textbf{68}, 032308 (2003). 
+
+\bibitem{Barnum2004} H. Barnum, E. Knill, G. Ortiz, R. Somma, and
+L. Viola, \textit{Phys. Rev. Lett.} \textbf{92}, 107902 (2004). 
+\end{comment}
 
 \section{Discrete Quantum Computing (I)\label{discretequantumcomputingI}}
 

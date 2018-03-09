@@ -46,8 +46,8 @@
 \newcommand{\R}{\mathReal}
 \newcommand{\rme}{\mathrm{e}}
 \newcommand{\rmi}{\mathrm{i}}
-\newcommand{\CP}[1]{\mathbf{CP}^{#1}}  % Complex projective space
-\newcommand{\DCP}[1]{\mathbf{DCP}^{#1}} % Discrete complex projective
+\newcommand{\CP}[1]{\mathComplex\mathbf{P}^{#1}}  % Complex projective space
+\newcommand{\DCP}[1]{\mathbf{D}\mathComplex\mathbf{P}^{#1}} % Discrete complex projective
 \def\fh{\mathfrak{h}}
 \newcommand{\uf}{U_{\!f}}
 \newcommand{\scalarPlus}{+}
@@ -1083,7 +1083,7 @@ thus quantifying the proximity of the two states.
 \end_layout
 
 \begin_layout Subsection
-The single qubit problem
+Two-dimensional Hilbert Space
 \end_layout
 
 \begin_layout Standard
@@ -1896,50 +1896,46 @@ reference "blochSphere.fig"
 \end_layout
 
 \begin_layout Subsection
-The 
-\begin_inset Formula $n$
+\begin_inset Formula $D$
 \end_inset
 
--qubit problem
+-dimensional Hilbert Space
 \end_layout
 
 \begin_layout Standard
-For 
-\begin_inset Formula $n$
+The irreducible states in a 
+\begin_inset Formula $D$
 \end_inset
 
- qubits, the irreducible states are encoded in a similar family of geometric
+-dimensional Hilbert space are encoded in a similar family of geometric
  structures known technically as the complex projective space 
 \begin_inset Formula $\CP{D-1}$
 \end_inset
 
 .
  We obtain these structures starting with the 
-\begin_inset Formula $D=2^{n}$
+\begin_inset Formula $D$
 \end_inset
 
  initially unnormalized complex coefficients of the 
-\begin_inset Formula $n$
+\begin_inset Formula $D$
 \end_inset
 
--qubit state basis 
-\begin_inset Formula 
-\begin{eqnarray}
-\ket{\Psi} & = & \sum_{i=0}^{D-1}\alpha_{i}\ket{i}\ .\label{N1.eq}
-\end{eqnarray}
-
+-dimensional basis 
+\begin_inset Formula $\ket{\Psi}=\sum_{i=0}^{D-1}\alpha_{i}\ket{i}$
 \end_inset
 
-We then follow the analog of the one-qubit procedure: Conservation of probabilit
-y requires that the norm of the vector 
+.
+ We then follow the analog of the two-dimensional procedure: Conservation
+ of probability requires that the norm of the vector 
 \begin_inset Formula $\VVec{\alpha}$
 \end_inset
 
  be normalized to unity: 
 \begin_inset Formula 
-\begin{eqnarray}
-\braket{\Psi}{\Psi}=\|\VVec{\alpha}\|^{2} & = & \sum_{i=0}^{D-1}|\alpha_{i}|^{2}\,=\,1\ .\label{probEq1.eq}
-\end{eqnarray}
+\begin{equation}
+\braket{\Psi}{\Psi}=\|\VVec{\alpha}\|^{2}=\sum_{i=0}^{D-1}|\alpha_{i}|^{2}=1\,.\label{probEq1.eq}
+\end{equation}
 
 \end_inset
 
@@ -1947,21 +1943,12 @@ Thus the initial equation for the geometry of a quantum state describes
  a 
 \shape italic
 topological sphere
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
 
 \shape default
- 
+
 \begin_inset Formula $\Sphere{2D-1}$
 \end_inset
 
@@ -1976,14 +1963,14 @@ status collapsed
 \end_inset
 
  as 
-\begin_inset Formula $\alpha_{i}=x_{i}+iy_{i}$
+\begin_inset Formula $\alpha_{i}=x_{i}+\rmi y_{i}$
 \end_inset
 
 , so 
 \begin_inset Formula 
-\begin{eqnarray}
-\sum_{i=0}^{D-1}|\alpha_{i}|^{2}=\sum_{i=0}^{D-1}\left(x_{i}^{\ 2}+y_{i}^{\ 2}\right)=1
-\end{eqnarray}
+\begin{equation}
+\sum_{i=0}^{D-1}|\alpha_{i}|^{2}=\sum_{i=0}^{D-1}{x_{i}}^{2}+{y_{i}}^{2}=1
+\end{equation}
 
 \end_inset
 
@@ -2003,15 +1990,7 @@ describes the locus of a
 \begin_inset Formula $(2D-1)$
 \end_inset
 
--sphere, with 
-\begin_inset Formula $D=2^{n}$
-\end_inset
-
- for an 
-\begin_inset Formula $n$
-\end_inset
-
--qubit state.
+-sphere.
 \end_layout
 
 \begin_layout Standard
@@ -2053,7 +2032,7 @@ This
 \end_inset
 
 -dimensional basis, 
-\begin_inset Formula $\{\ket{i}\,|\,i=0,\ldots,D-1\}$
+\begin_inset Formula $\set{\ket{i}}{i=0,\ldots,D-1}$
 \end_inset
 
 .
@@ -2061,15 +2040,11 @@ This
 
 \begin_layout Standard
 In summary, the full space of a 
-\begin_inset Formula $D=2^{n}$
+\begin_inset Formula $D$
 \end_inset
 
--dimensional 
-\begin_inset Formula $n$
-\end_inset
-
--qubit quantum state, including its overall phase defining its relationship
- to other quantum states, is the topological space 
+-dimensional quantum state, including its overall phase defining its relationshi
+p to other quantum states, is the topological space 
 \begin_inset Formula $\Sphere{2D-1}$
 \end_inset
 
@@ -2084,7 +2059,7 @@ In summary, the full space of a
 \end_inset
 
 , and therefore 
-\begin_inset Formula $\CP{D-1}=\CP{2^{n}-1}$
+\begin_inset Formula $\CP{D-1}$
 \end_inset
 
  defines the 
@@ -2092,47 +2067,21 @@ In summary, the full space of a
 \end_inset
 
  intrinsic, irreducible, degrees of freedom of the isolated 
-\begin_inset Formula $n$
+\begin_inset Formula $D$
 \end_inset
 
--qubit state's dynamics.
- In mathematical notation, this would be written
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%% From Wiki: Hopf-fibration: S^1
-\backslash
-hookrightarrow S^3 
-\backslash
-rightarrow S^2
-\end_layout
-
+-dimensional state's dynamics.
+ In mathematical notation, this would be written 
+\begin_inset Formula $\Sphere{1}\hookrightarrow\Sphere{2D-1}\rightarrow\CP{D-1}$
 \end_inset
 
-
-\begin_inset Formula 
-\[
-\Sphere{1}\hookrightarrow\Sphere{2D-1}\rightarrow\CP{D-1}\ ,
-\]
-
-\end_inset
-
-with 
-\begin_inset Formula $D=2^{n}$
-\end_inset
-
- as usual.
+.
  For 
-\begin_inset Formula $n=1$
+\begin_inset Formula $D=2$
 \end_inset
 
 , the single qubit, we have 
-\begin_inset Formula $2^{n}-1=2-1=1$
+\begin_inset Formula $2-1=1$
 \end_inset
 
 , and the base space of the circle bundle is 
@@ -2141,7 +2090,7 @@ with
 
 , the usual Bloch sphere.
  Note that only for 
-\begin_inset Formula $n=1$
+\begin_inset Formula $D=2$
 \end_inset
 
  is this actually a sphere-like geometry due to an accident of low-dimensional
@@ -5092,6 +5041,3113 @@ key "geom1"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Section
+Vector Spaces over Complexified Finite Fields
+\end_layout
+
+\begin_layout Plain Layout
+In order to address the intrinsic problems induced by the notion of the
+ continuum calculations of the previous section, one is led to replace the
+ infinite fields of CQC by discrete computable fields.
+ Accomplishing this while maintaining the essential elements of addition
+ and multiplication requires a brief excursion into the theory of fields,
+ and particularly the theory of finite fields.
+\end_layout
+
+\begin_layout Subsection
+Background
+\end_layout
+
+\begin_layout Plain Layout
+Abstract algebra deals with various kinds of algebraic structures, such
+ as groups, rings, and fields, each defined by a different system of axioms.
+ A field
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathbf{F}$
+\end_inset
+
+ is an algebraic structure consisting of a set of elements equipped with
+ the operations of addition, subtraction, multiplication, and division 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "numtheory.ref"
+
+\end_inset
+
+.
+ Fields may contain an infinite or a finite number of elements.
+ The rational 
+\begin_inset Formula $\mathbb{Q}$
+\end_inset
+
+, real 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+, and complex numbers 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ are examples of infinite fields, while the set 
+\begin_inset Formula $\mathbf{F}_{3}=\{0,1,2\}$
+\end_inset
+
+ under the usual multiplication and modular addition is an example of a
+ finite field.
+ Finite fields are also known as Galois fields 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GT.ref"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+There are two distinguished elements in a field, the addition identity 
+\begin_inset Formula $0$
+\end_inset
+
+, and the multiplication identity 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Given the field 
+\begin_inset Formula $\mathbf{F}$
+\end_inset
+
+, the closed operations of addition, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $+$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, and multiplication, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\gmult$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, satisfy the following set of axioms:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathbf{F}$
+\end_inset
+
+ is an Abelian group under the addition operation 
+\begin_inset Formula $+$
+\end_inset
+
+ (additive group)
+\end_layout
+
+\begin_layout Enumerate
+The multiplication operation 
+\begin_inset Formula $\gmult$
+\end_inset
+
+ is associative and commutative.
+ The field has a multiplicative identity and the property that every nonzero
+ element has a multiplicative inverse
+\end_layout
+
+\begin_layout Enumerate
+Distributive laws: For all 
+\begin_inset Formula $a,b,c\in\mathbf{F}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{eqnarray}
+a\gmult(b+c)=a\gmult b+a\gmult c\\
+(b+c)\gmult a=b\gmult a+c\gmult a\ .
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+From now on, unless specified, we will omit the symbol 
+\begin_inset Formula $\gmult$
+\end_inset
+
+ whenever we multiply two elements of a field.
+\end_layout
+
+\begin_layout Plain Layout
+Finite fields of 
+\begin_inset Formula $q$
+\end_inset
+
+ elements, 
+\begin_inset Formula $\Fq=\{0,\ldots,q-1\}$
+\end_inset
+
+, will play a special role in this work.
+ A simple explicit example is the following addition and multiplication
+ tables for 
+\begin_inset Formula $\mathbf{F}_{3}$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\begin{array}{c|ccc}
++ & 0 & 1 & 2\\[0.1in]
+\hline 0 & 0 & 1 & 2\\
+1 & 1 & 2 & 0\\
+2 & 2 & 0 & 1
+\end{array}\hspace*{2cm}\begin{array}{c|ccc}
+\gmult & 0 & 1 & 2\\[0.1in]
+\hline 0 & 0 & 0 & 0\\
+1 & 0 & 1 & 2\\
+2 & 0 & 2 & 1
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cyclic Properties of Finite Fields
+\end_layout
+
+\begin_layout Plain Layout
+Finite fields are classified by size.
+ The characteristic of a field is the least positive integer 
+\begin_inset Formula $m$
+\end_inset
+
+ such that 
+\begin_inset Formula $m=1+1+1+\cdots+1\equiv0$
+\end_inset
+
+, and if no such 
+\begin_inset Formula $m$
+\end_inset
+
+ exists we say that the field has characteristic zero (which is the case
+ for infinite fields such as 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+).
+ It turns out that if the characteristic is non-zero it must be a prime
+ 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ For every prime 
+\begin_inset Formula $p$
+\end_inset
+
+ and positive integer 
+\begin_inset Formula $r$
+\end_inset
+
+ there is a finite field 
+\begin_inset Formula $\Fpx{p^{r}}$
+\end_inset
+
+ of cardinality 
+\begin_inset Formula $q=p^{r}$
+\end_inset
+
+ and characteristic 
+\begin_inset Formula $p$
+\end_inset
+
+ (Lagrange's theorem), which is unique up to field isomorphisms.
+ For every 
+\begin_inset Formula $a\in\Fq$
+\end_inset
+
+, 
+\begin_inset Formula $a\neq0$
+\end_inset
+
+, then 
+\begin_inset Formula $a^{q-1}=1$
+\end_inset
+
+, implying the Frobenius endomorphism (also a consequence of Fermat's little
+ theorem) 
+\begin_inset Formula $a^{q}=a$
+\end_inset
+
+, which in turn permits us to write the multiplicative inverse of any non-zero
+ element in the field as 
+\begin_inset Formula $a^{-1}=a^{q-2}$
+\end_inset
+
+, since 
+\begin_inset Formula $a^{q-2}a=a^{q-1}=1$
+\end_inset
+
+.
+ Every subfield of the field 
+\begin_inset Formula $\Fq$
+\end_inset
+
+, of cardinality 
+\begin_inset Formula $q=p^{r}$
+\end_inset
+
+, has 
+\begin_inset Formula $p^{r'}$
+\end_inset
+
+ elements with some 
+\begin_inset Formula $r'$
+\end_inset
+
+ dividing 
+\begin_inset Formula $r$
+\end_inset
+
+, and for a given 
+\begin_inset Formula $r'$
+\end_inset
+
+ it is unique.
+ Notice that a fundamental difference between finite and infinite fields
+ is one of topology: finite fields induce a compact structure because of
+ their modular arithmetic, permitting 
+\shape italic
+wrapping around
+\shape default
+, while that is not the case for fields of characteristic zero.
+ This feature may lead to fundamental physical consequences.
+\end_layout
+
+\begin_layout Subsection
+Complexified Finite Fields
+\end_layout
+
+\begin_layout Plain Layout
+Consider the polynomial 
+\begin_inset Formula $x^{2}+1=0$
+\end_inset
+
+ over a finite field 
+\begin_inset Formula $\Fp$
+\end_inset
+
+.
+ It is known that this polynomial does not have solutions in the field precisely
+ when the prime 
+\begin_inset Formula $p$
+\end_inset
+
+ is congruent to 
+\begin_inset Formula $3\imod{4}$
+\end_inset
+
+ (see, e.g., 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "numtheory.ref"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Plain Layout
+For such primes, it is therefore possible to construct an extended field
+ 
+\begin_inset Formula $\Fpp$
+\end_inset
+
+ whose elements are of the form 
+\begin_inset Formula $\alpha=a+ib$
+\end_inset
+
+ with 
+\begin_inset Formula $a\in\Fp$
+\end_inset
+
+, 
+\begin_inset Formula $b\in\Fp$
+\end_inset
+
+, and 
+\begin_inset Formula $i$
+\end_inset
+
+ the root of the polynomial 
+\begin_inset Formula $x^{2}+1=0$
+\end_inset
+
+.
+ Since the field elements 
+\begin_inset Formula $a+ib$
+\end_inset
+
+ behave like discrete versions of the complex numbers, we will refer to
+ fields 
+\begin_inset Formula $\Fp$
+\end_inset
+
+ with prime 
+\begin_inset Formula $p$
+\end_inset
+
+ congruent to 
+\begin_inset Formula $3\imod{4}$
+\end_inset
+
+ as 
+\emph on
+complexifiable finite fields
+\emph default
+, and 
+\begin_inset Formula $i$
+\end_inset
+
+-extended fields 
+\begin_inset Formula $\Fpp$
+\end_inset
+
+ with 
+\begin_inset Formula $p$
+\end_inset
+
+ congruent to 
+\begin_inset Formula $3\imod{4}$
+\end_inset
+
+ as 
+\emph on
+complexified finite fields
+\emph default
+.
+\end_layout
+
+\begin_layout Plain Layout
+In a complexified finite field 
+\begin_inset Formula $\Fpp$
+\end_inset
+
+, the Frobenius automorphism that maps 
+\begin_inset Formula $\alpha\in\Fpp$
+\end_inset
+
+ to 
+\begin_inset Formula $\alpha^{p}\in\Fpp$
+\end_inset
+
+ acts like complex conjugation.
+ For example, in 
+\begin_inset Formula $\Fppx{3}$
+\end_inset
+
+, we have 
+\begin_inset Formula $(2+i)^{3}=8+12i-6-i=2+11i$
+\end_inset
+
+ which, in the field, is equal to 
+\begin_inset Formula $2-i$
+\end_inset
+
+ since 
+\begin_inset Formula $11\equiv-1\imod{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+We define the 
+\emph on
+field norm
+\emph default
+ 
+\begin_inset Formula $\fnorm{\cdot}$
+\end_inset
+
+ as the map from 
+\begin_inset Formula $(a+ib)\in\Fpp$
+\end_inset
+
+ to 
+\begin_inset Formula $a^{2}+b^{2}\in\Fp$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{equation}
+\fnorm{\alpha=a+ib}=a^{2}+b^{2}\ .\label{fieldnorm.eq}
+\end{equation}
+
+\end_inset
+
+We avoid the square root in the discrete field framework because, unlike
+ the continuous case, the square root does not always exist.
+\end_layout
+
+\begin_layout Subsection
+Vector Spaces
+\end_layout
+
+\begin_layout Plain Layout
+In this section we want to build a theory of discrete vector spaces that
+ approximates as closely as possible the features of conventional quantum
+ theory.
+ Such a structure would ideally consist of the following: (i) a vector space
+ over the field of complex numbers, and (ii) an inner product 
+\begin_inset Formula $\ip{\Phi}{\Psi}$
+\end_inset
+
+ associating to each pair of vectors a complex number, and satisfying the
+ following properties: 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+A.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\ip{\Phi}{\Psi}$
+\end_inset
+
+ is the complex conjugate of 
+\begin_inset Formula $\ip{\Psi}{\Phi}$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+B.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\ip{\Phi}{\Psi}$
+\end_inset
+
+ is conjugate linear in its first argument and linear in its second argument;
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+C.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\ip{\Psi}{\Psi}$
+\end_inset
+
+ is always non-negative and is equal to
+\begin_inset space ~
+\end_inset
+
+0 only if 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ is the zero vector.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+It turns out that a vector space defined over a finite field cannot have
+ an inner product satisfying the properties above.
+ However, we will introduce an Hermitian 
+\begin_inset Quotes eld
+\end_inset
+
+dot product
+\begin_inset Quotes erd
+\end_inset
+
+ satisfying some of those properties.
+\end_layout
+
+\begin_layout Plain Layout
+We are interested in the 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit vector space 
+\begin_inset Formula ${\cal H}$
+\end_inset
+
+ of dimension 
+\begin_inset Formula $D=2^{n}$
+\end_inset
+
+ defined over the complexified field 
+\begin_inset Formula $\Fpp$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\ket{\Psi}=(\alpha_{0}~\alpha_{1}~\ldots~\alpha_{D-1})^{T}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{\Phi}=(\beta_{0}~\beta_{1}~\ldots~\beta_{D-1})^{T}$
+\end_inset
+
+ represent vectors in 
+\begin_inset Formula ${\cal H}$
+\end_inset
+
+, with numbers 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+ drawn from 
+\begin_inset Formula $\Fpp$
+\end_inset
+
+, and where 
+\begin_inset Formula $(\cdot)^{T}$
+\end_inset
+
+ is the transpose.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+[Hermitian dot product] Given vectors 
+\begin_inset Formula $\ket{\Phi}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{\Psi}\in{\cal H}$
+\end_inset
+
+, the Hermitian dot product of these vectors is: 
+\begin_inset Formula 
+\begin{equation}
+\ip{\Phi}{\Psi}=\sum_{i=0}^{D-1}~\beta_{i}^{p}~\alpha_{i}^{\;}\ .
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+ Two vectors 
+\begin_inset Formula $\ket{\Phi}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{\Psi}\in{\cal H}$
+\end_inset
+
+ are said to be orthogonal if 
+\begin_inset Formula $\ip{\Phi}{\Psi}=0$
+\end_inset
+
+.
+ This product satisfies conditions A and B for inner products but violates
+ condition C since in every finite field there always exists a non-zero
+ vector 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\ip{\Psi}{\Psi}=0$
+\end_inset
+
+.
+ The reason is that addition in finite fields eventually 
+\begin_inset Quotes eld
+\end_inset
+
+wraps around
+\begin_inset Quotes erd
+\end_inset
+
+ (because of their cyclic or modular structure), allowing the sum of non-zero
+ elements to be zero.
+ The fraction of non-zero vectors satisfying 
+\begin_inset Formula $\ip{\Psi}{\Psi}=0$
+\end_inset
+
+ decreases with the order 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+For any vector 
+\begin_inset Formula $\ket{\Psi}=(\alpha_{0}~\alpha_{1}~\ldots~\alpha_{D-1})^{T}$
+\end_inset
+
+, the Hermitian dot product 
+\begin_inset Formula $\ip{\Psi}{\Psi}$
+\end_inset
+
+ is equal to 
+\begin_inset Formula $\sum_{i=0}^{D-1}~\fnorm{\alpha_{i}}$
+\end_inset
+
+, which is the sum of the field norms for the complex coefficients.
+ For convenience, we now extend the field norm to include vector arguments
+ by defining 
+\begin_inset Formula 
+\begin{equation}
+\fnorm{\ket{\Psi}}=\ip{\Psi}{\Psi}=\sum_{i=0}^{D-1}~\fnorm{\alpha_{i}}\ .\label{fnormD.eq}
+\end{equation}
+
+\end_inset
+
+The field norm of a vector can vanish for non-vanishing vectors.
+\end_layout
+
+\begin_layout Plain Layout
+For vectors 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\ip{\Psi}{\Psi}=\sum_{i=0}^{D-1}\alpha_{i}^{p}\,\alpha_{i}^{\;}=\sum_{i=0}^{D-1}\alpha_{i}^{p+1}=\sum_{i=0}^{D-1}|\alpha_{i}|^{2}$
+\end_inset
+
+ has a square root in the field, one can define the following 
+\begin_inset Quotes eld
+\end_inset
+
+norm
+\begin_inset Quotes erd
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{equation}
+||\Psi||=\sqrt{\ip{\Psi}{\Psi}}\ ,\label{norm-eq}
+\end{equation}
+
+\end_inset
+
+which is valid only on a subspace of the field norm for finite fields.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%There is an alternative way of defining a proper inner product over a subset
+ of the 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%field $
+\backslash
+Fpp$.
+ Consider prime numbers $p= 8 
+\backslash
+prod_{l=1}^k q_l -1$, where  
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%$q_l$ are odd primes.
+ This subset of the primes congruent to $3 
+\backslash
+imod 4$ has the 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%special properti
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Irreducible Discrete 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit States: Generalized Discrete Bloch Sphere
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "DQCnqubitBloch.sec"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+In the one-qubit state with coefficients in 
+\begin_inset Formula $\Fpp$
+\end_inset
+
+, the discrete analog of the Bloch sphere is constructed by exact analogy
+ to the continuous case: we first require that the coefficients of the single
+ qubit basis obey 
+\begin_inset Formula 
+\begin{equation}
+\|\psi_{1}\|^{2}=|\alpha_{0}|^{2}+|\alpha_{1}|^{2}=1\label{DQA2.eq}
+\end{equation}
+
+\end_inset
+
+in the discrete field.
+ In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "appU.sec"
+
+\end_inset
+
+, we show that there are 
+\begin_inset Formula $p(p^{2}-1)$
+\end_inset
+
+ such values.
+ Given this requirement, which is similar in form to the conservation of
+ probability, but not as useful due to the lack of orderable probability
+ values, we can immediately conclude that the discrete analog of the Hopf
+ fibration is again 
+\begin_inset Formula 
+\begin{eqnarray}
+X & = & 2\,\mathrm{Re}\ \alpha_{0}\alpha_{1}^{*}=2x_{0}x_{1}+2y_{0}y_{1}\nonumber \\
+Y & = & 2\,\mathrm{Im}\ \alpha_{0}\alpha_{1}^{*}=2x_{1}y_{0}-2x_{0}y_{1}\label{DQA6.eq}\\
+Z & = & |\alpha_{0}|^{2}-|\alpha_{1}|^{2}=x_{0}^{\ 2}+y_{0}^{\ 2}-x_{1}^{\ 2}-y_{1}^{\ 2}\ ,\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+but now with all computations in 
+\begin_inset Formula $(\mbox{mod}~p)$
+\end_inset
+
+.
+ At this point one simply writes down all possible discrete values for the
+ complex numbers 
+\begin_inset Formula $\{\alpha_{0},\alpha_{1}\}$
+\end_inset
+
+ satisfying Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "DQA2.eq"
+
+\end_inset
+
+) and enumerates those that project to the same value of 
+\begin_inset Formula $\{X,Y,Z\}$
+\end_inset
+
+.
+ This equivalence class is the discrete analog of the circle in the complex
+ plane that was eliminated in the continuous case.
+ In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "appH.sec"
+
+\end_inset
+
+, we show that 
+\begin_inset Formula $p+1$
+\end_inset
+
+ discrete values of 
+\begin_inset Formula $\{\alpha_{0},\alpha_{1}\}$
+\end_inset
+
+ with unit norm map to the same point under the Hopf map 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Eq{
+\end_layout
+
+\end_inset
+
+DQA6.eq
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+; we may think of these as discrete circles or projective lines of equivalent,
+ physically indistinguishable, complex phase.
+ The surviving 
+\begin_inset Formula $p(p-1)$
+\end_inset
+
+ values of 
+\begin_inset Formula $\{\alpha_{0},\alpha_{1}\}$
+\end_inset
+
+ correspond to irreducible physical states of the discrete single qubit
+ system.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% Several examples are shown in Figure 
+\backslash
+ref{bloch.fig}.
+ %%
+\end_layout
+
+\end_inset
+
+Thus, for example, choosing the underlying field to be 
+\begin_inset Formula $\Fppx{3}$
+\end_inset
+
+, there are exactly 6 single-qubit state vectors to populate the Bloch sphere;
+ the four equivalent phase-multiples mapping to each of the six points on
+ the 
+\begin_inset Formula $\Fppx{3}$
+\end_inset
+
+ Bloch sphere are collapsed and regarded as physically indistinguishable.
+ In Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "bloch.fig"
+
+\end_inset
+
+, we plot the irreducible states on the Bloch sphere for 
+\begin_inset Formula $p=3$
+\end_inset
+
+, 
+\begin_inset Formula $7$
+\end_inset
+
+, and 
+\begin_inset Formula $11$
+\end_inset
+
+.
+ Note that the Cartesian lengths of the real vectors corresponding to the
+ points on the Bloch sphere vary considerably due to the nature of discrete
+ fields; we have artificially normalized them to a 
+\begin_inset Quotes eld
+\end_inset
+
+continuous world
+\begin_inset Quotes erd
+\end_inset
+
+ unit radius sphere for conceptual clarity.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+placement htb
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+vspace{-0.2in}  
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% 
+\backslash
+includegraphics[width=0.9
+\backslash
+columnwidth]{./Bloch_sphere.pdf}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%
+\backslash
+includegraphics[width=2.0
+\backslash
+columnwidth]{./picA.png}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%
+\backslash
+includegraphics[width=2.0
+\backslash
+columnwidth]{./picB.png}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space \hspace*{}
+\length -0.5cm
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../../Public/Documents/StudyInIUB/Computer Science/201209-12.M800/Manuscripts/picC.png
+	width 110col%
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%
+\backslash
+includegraphics[width=0.5
+\backslash
+textwidth]{./picAB.eps}
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace -0.2in
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% adjust blank space?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Schematically normalized plots of the elements of the discrete Bloch sphere,
+ the irreducible single-qubit (two-dimensional) state vectors with unit
+ norm over the field 
+\begin_inset Formula $\Fpp$
+\end_inset
+
+.
+ We show the results for 
+\begin_inset Formula $p=3$
+\end_inset
+
+, 
+\begin_inset Formula $7$
+\end_inset
+
+, and 
+\begin_inset Formula $11$
+\end_inset
+
+.
+ For example, in 
+\begin_inset Formula $\Fppx{3}$
+\end_inset
+
+, there are 24 vectors of unit norm, but only the 6 inequivalent classes
+ appear in the plot.
+ The 
+\begin_inset Formula $p+1=4$
+\end_inset
+
+ equivalent vectors in each class differ only by a complex discrete phase.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "bloch.fig"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Counting states on the 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit Bloch sphere
+\end_layout
+
+\begin_layout Plain Layout
+We have the unique opportunity in the finite-field approach to quantum computing
+ to precisely identify and enumerate the physical states.
+ In the conventional theory, as we have seen, we employ a generalized Hopf
+ fibration on the normalized states to project out a circle of phase-equivalent
+ states, yielding the generalized Bloch sphere.
+\end_layout
+
+\begin_layout Plain Layout
+In the introduction to this section, we sketched the counting of the irreducible
+ single-qubit discrete states.
+ To count the number of inequivalent discrete states for the general 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit case with coefficients in 
+\begin_inset Formula $\Fpp$
+\end_inset
+
+, we first must find the set of unit-norm states, and then determine the
+ equivalence classes of unit-norm states under discrete phase transformations;
+ we can then enumerate the list of states on the discrete generalized Bloch
+ sphere.
+ By executing computer searches of these spaces, we discovered an hypothesis
+ for a closed-form solution for the counting of the states, and were then
+ able to find a rigorous inductive proof of the enumeration, which is presented
+ in the Appendix.
+\end_layout
+
+\begin_layout Plain Layout
+This process of describing the discrete 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit irreducible states can again be understood geometrically by following
+ the discrete analog of the Hopf fibration.
+ First, we construct the discrete version of the quadratic unit-length form
+ that automatically annihilates the distinction among states differing only
+ by a discrete phase, 
+\begin_inset Formula 
+\begin{eqnarray}
+\hspace*{-0.5cm}\Vec{X}=(|\alpha_{i}|^{2},...,\sqrt{2}\ \mathrm{Re}\ \alpha_{i}\alpha_{j}^{*},\ldots,\sqrt{2}\ \mathrm{Im}\ \alpha_{i}\alpha_{j}^{*},\ldots)\ ,
+\end{eqnarray}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{eqnarray}
+\Vec{X}\cdot\Vec{X}=\left(\sum_{i=0}^{D-1}\left|\alpha_{i}\right|^{2}\right)^{2}=1\ .
+\end{eqnarray}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+From 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "appH.sec"
+
+\end_inset
+
+, we know that 
+\begin_inset Formula $p+1$
+\end_inset
+
+ elements of this discrete 
+\begin_inset Formula $\Sphere{2\times2^{n}-1}$
+\end_inset
+
+ structure map to the 
+\shape italic
+same point
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ in 
+\begin_inset Formula $\Vec{X}$
+\end_inset
+
+.
+ Each set of 
+\begin_inset Formula $(p+1)$
+\end_inset
+
+ redundant points is, geometrically speaking, the 
+\shape italic
+discrete Hopf fibration circle
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ living above each 
+\shape italic
+irreducible
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ point of the 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit state description.
+ These 
+\begin_inset Formula $p+1$
+\end_inset
+
+ points are interpretable as the 
+\begin_inset Formula $p$
+\end_inset
+
+ finite points plus the single point at infinity of the projective discrete
+ line (see, e.g., 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Arnold"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Plain Layout
+The next part of this argument is the determination of the unit-norm states,
+ effectively the space of allowed discrete partitions of unity; we cannot
+ exactly call these 
+\begin_inset Quotes eld
+\end_inset
+
+probability-conserving
+\begin_inset Quotes erd
+\end_inset
+
+ sectors of the state coefficients since we do not have a well defined notion
+ of probability, but we do have a well-defined notion of partition of unity.
+ The tally of unit-norm states is 
+\begin_inset Formula $p^{2^{n}-1}(p^{2^{n}}-1)$
+\end_inset
+
+ (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "appU.sec"
+
+\end_inset
+
+) compared to the total number 
+\begin_inset Formula $p^{2\times2^{n}}$
+\end_inset
+
+ of possible complex integer state vectors that could be chosen.
+ This unit-norm state structure is the discrete analog of 
+\begin_inset Formula $\Sphere{2\times2^{n}-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Finally, we repeat the last step of the 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit continuous Hopf fibration process for discrete 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit states, eliminating the discrete set of 
+\begin_inset Formula $p+1$
+\end_inset
+
+ equivalent points that map to the same point 
+\begin_inset Formula $\Vec{X}$
+\end_inset
+
+ on the generalized 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit Bloch sphere.
+ Dividing the tally 
+\begin_inset Formula $p^{2^{n}-1}(p^{2^{n}}-1)$
+\end_inset
+
+ of unit norm states by the 
+\begin_inset Formula $p+1$
+\end_inset
+
+ elements of each phase-equivalent discrete circle, we find 
+\begin_inset Formula 
+\[
+\frac{p^{2^{n}-1}(p^{2^{n}}-1)}{p+1}=p^{2^{n}-1}(p-1)\,\prod_{k=1}^{n-1}(p^{2^{k}}+1)
+\]
+
+\end_inset
+
+as the total count of unique irreducible states in a discrete 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit configuration (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "appI.sec"
+
+\end_inset
+
+).
+ The resulting object is precisely the discrete version of 
+\begin_inset Formula $\CP{D-1}$
+\end_inset
+
+, which we might call a 
+\shape italic
+discrete complex projective space
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ or 
+\begin_inset Formula $\DCP{D-1}$
+\end_inset
+
+, where 
+\begin_inset Formula $D=2^{n}$
+\end_inset
+
+ as usual.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Comment{
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Counting states on the 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit Bloch sphere
+\end_layout
+
+\begin_layout Plain Layout
+Although we do not have a rigorous proof for the counting of discrete unit-norm
+ states and the number of irreducible unit-norm states in the discrete generaliz
+ed Bloch sphere for 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit states with coefficients in 
+\begin_inset Formula $\Fpp$
+\end_inset
+
+, we have run extensive computer searches of the state features for a range
+ of compatible primes 
+\begin_inset Formula $p$
+\end_inset
+
+ and number of qubits 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ From these experimental investigations, we have induced a closed-form solution
+ for the counting that agrees for every possible combination of parameters
+ that can be computed in reasonable time (the computational complexity becomes
+ intractable very quickly).
+\end_layout
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit discrete states with coefficients in 
+\begin_inset Formula $\Fpp$
+\end_inset
+
+, our calculation begins with an enumeration of all possible 
+\begin_inset Formula $2^{n}$
+\end_inset
+
+-tuples of state coefficients in 
+\begin_inset Formula $\Fpp$
+\end_inset
+
+; then the moduli-squared of these tuples are summed and compared to unity
+ in 
+\begin_inset Formula $(\mbox{mod}~p)$
+\end_inset
+
+.
+ Those that survive are accumulated in a list of allowed discrete partitions
+ of unity; we cannot exactly call these 
+\begin_inset Quotes eld
+\end_inset
+
+probability-conserving
+\begin_inset Quotes erd
+\end_inset
+
+ sectors of the state coefficients since we do not have a well defined notion
+ of probability, but we do have a well-defined notion of partition of unity.
+ The heuristic number that results for the tally of unit-norm states is
+ 
+\begin_inset Formula $p^{2^{n}-1}(p^{2^{n}}-1)$
+\end_inset
+
+, compared to the total number 
+\begin_inset Formula $p^{2\times2^{n}}$
+\end_inset
+
+ of possible complex integer state vectors that could be chosen.
+ This unit-norm state structure is now the discrete analog of 
+\begin_inset Formula $\Sphere{2\times2^{n}-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Finally, we construct the discrete version of the quadratic unit-length
+ form that automatically annihilates the distinction among states differing
+ only by a discrete phase, 
+\begin_inset Formula 
+\begin{eqnarray}
+\hspace*{-0.5cm}\Vec{X}=\{|\alpha_{i}|^{2},...,\sqrt{2}\ \mathrm{Re}\ \alpha_{i}\alpha_{j}^{*},\ldots,\sqrt{2}\ \mathrm{Im}\ \alpha_{i}\alpha_{j}^{*},\ldots\}\ ,
+\end{eqnarray}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{eqnarray}
+\Vec{X}\cdot\Vec{X}=\left(\sum_{i=0}^{D-1}\left|\alpha_{i}\right|^{2}\right)^{2}=1\ .
+\end{eqnarray}
+
+\end_inset
+
+Computing all the elements of the discrete 
+\begin_inset Formula $\Sphere{2\times2^{n}-1}$
+\end_inset
+
+ structure that map to the 
+\shape italic
+same point
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ in 
+\begin_inset Formula $\Vec{X}$
+\end_inset
+
+, we find a 
+\begin_inset Formula $(p+1)$
+\end_inset
+
+-fold redundancy, exactly as for the one-qubit case; each set of 
+\begin_inset Formula $(p+1)$
+\end_inset
+
+ redundant points is, geometrically speaking, the 
+\shape italic
+discrete Hopf fibration circle
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ (see, e.g., Arnold 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Arnold"
+
+\end_inset
+
+) living above each 
+\shape italic
+irreducible
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ point of the 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit state description.
+\end_layout
+
+\begin_layout Plain Layout
+In summary, when the 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit continuous Hopf fibration process is repeated for the discrete analog
+ of 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit states, we find that that analog of a phase 
+\begin_inset Quotes eld
+\end_inset
+
+circle
+\begin_inset Quotes erd
+\end_inset
+
+ is a discrete set 
+\begin_inset Formula $p+1$
+\end_inset
+
+ equivalent points that map to the same point 
+\begin_inset Formula $\Vec{X}$
+\end_inset
+
+ on the generalized 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit Bloch sphere, and therefore there are a total of 
+\begin_inset Formula $p^{2^{n}-1}(p^{2^{n}}-1)/(p+1)$
+\end_inset
+
+ unique irreducible states in a discrete 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit configuration.
+ The resulting object is precisely the discrete version of 
+\begin_inset Formula $\CP{D-1}$
+\end_inset
+
+, which we might call a 
+\shape italic
+discrete complex projective space
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ or 
+\begin_inset Formula $\DCP{D-1}$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Geometry of Entangled States
+\end_layout
+
+\begin_layout Plain Layout
+Without regard to uniqueness, an 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit state with discrete complex coefficients in 
+\begin_inset Formula $\Fpp$
+\end_inset
+
+ will have the total possible space of coefficients with dimension 
+\begin_inset Formula $p^{2\times2^{n}}$
+\end_inset
+
+ (including the null state).
+ Imposing the condition of a length-one norm 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% AMR: replaced 'inner-product' by 'norm'
+\end_layout
+
+\end_inset
+
+in 
+\begin_inset Formula $\Fp$
+\end_inset
+
+, this number is reduced to 
+\begin_inset Formula $p^{2^{n}-1}(p^{2^{n}}-1)$
+\end_inset
+
+.
+ The ratio of all the states to the unit-norm states is asymptotically 
+\begin_inset Formula $p$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{eqnarray}
+\frac{p^{2^{n}+1}}{p^{2^{n}}-1}\rightarrow p\ ,
+\end{eqnarray}
+
+\end_inset
+
+so there are roughly 
+\begin_inset Formula $p$
+\end_inset
+
+ sets of coefficients, for any number of qubits 
+\begin_inset Formula $n$
+\end_inset
+
+, that are discarded for each retained unit-length state vector.
+ A factor of 
+\begin_inset Formula $p+1$
+\end_inset
+
+ more states are discarded in forming the discrete Bloch sphere of irreducible
+ states.
+ Selected plots of the full space compared to both the unit-norm space and
+ the irreducible space for a selection of complexified finite fields are
+ shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "statePlot3Unit.fig"
+
+\end_inset
+
+ for 1, 2, 3, and 4 qubits.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Figure 
+\backslash
+ref{statePlot3Unit.fig} adds the size of the irreducible state
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%space at the bottom.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% Source of this is
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%  ~hansona/home2/papers/dqc-geom-2012/00mathFigs/A-Test-Galois-Nqubit.nb
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+begin{figure}[htb]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+includegraphics[width=1.0
+\backslash
+columnwidth]{./statePlot1.pdf}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%
+\backslash
+vspace{-0.2in}  %% adjust blank space?
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+caption{Logarithmic plot of the number of discrete unnormalized
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%states (top, in red), vs the number of normalized discrete states
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%(bottom, in blue) for the first 6 $
+\backslash
+Fpp$-compatible primes,  (3, 7,
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%11, 19, 23, 31), for the number of qubits 1, 2, 3 and 4.
+ }
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+label{statePlotUnit.fig}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+placement htb
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../../Public/Documents/StudyInIUB/Computer Science/201209-12.M800/Manuscripts/statePlot3.pdf
+	width 100col%
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+vspace{-0.2in}  %% adjust blank space?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Logarithmic plot of the number of discrete unnormalized states (top, in
+ red), vs the number of normalized discrete states (middle, in blue), vs
+ the irreducible states (bottom, in green) for the first 6 
+\begin_inset Formula $\Fpp$
+\end_inset
+
+-compatible primes, (3, 7, 11, 19, 23, 31), for the number of qubits 1,
+ 2, 3 and 4.
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "statePlot3Unit.fig"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Unentangled vs Entangled Discrete States
+\end_layout
+
+\begin_layout Plain Layout
+For a given 
+\begin_inset Formula $p$
+\end_inset
+
+ and the corresponding complexified field 
+\begin_inset Formula $\Fpp$
+\end_inset
+
+, the 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit discrete quantum states with coefficients in 
+\begin_inset Formula $\Fpp$
+\end_inset
+
+ can be classified by their degree of entanglement to a level of precision
+ that is unavailable in the continuous theory.
+ We look first at the unentangled 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit states, which are direct product states of the form 
+\begin_inset Formula 
+\begin{equation}
+\ket{\Psi}=\ket{\psi_{1}}\otimes\cdots\otimes\ket{\psi_{j}}\otimes\cdots\otimes\ket{\psi_{n}}\ .\label{dqcNqUntg.eq}
+\end{equation}
+
+\end_inset
+
+Without regard to normalization, there are 
+\begin_inset Formula $(p^{4})^{n}$
+\end_inset
+
+ possible unentangled states out of the total of 
+\begin_inset Formula $p^{2\times2^{n}}$
+\end_inset
+
+ states noted above.
+ When we normalize the individual product states to unit norm, the norm
+ of the entire 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit state becomes the product of those unit norms, and is automatically
+ normalized to one.
+ We have already seen that each single-qubit normalized state in the tensor
+ product 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Eq{
+\end_layout
+
+\end_inset
+
+dqcNqUntg.eq
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ has precisely 
+\begin_inset Formula $p(p-1)$
+\end_inset
+
+ irreducible components.
+\end_layout
+
+\begin_layout Subsection
+Completely Unentangled States and the Discrete Bloch Sphere
+\end_layout
+
+\begin_layout Plain Layout
+In effect, the irreducible states for unentangled 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit configurations reduce to a single Bloch sphere for each one-qubit
+ component 
+\begin_inset Formula $\ket{\psi_{j}}$
+\end_inset
+
+, and thus the whole set of states is defined by an 
+\begin_inset Formula $n$
+\end_inset
+
+-tuple of discrete Bloch sphere coordinates.
+ Since each Bloch sphere in 
+\begin_inset Formula $\Fpp$
+\end_inset
+
+ has 
+\begin_inset Formula $p(p-1)$
+\end_inset
+
+ distinct irreducible components, we have 
+\begin_inset Formula 
+\[
+\mbox{{\bf Count of Unentangled States}}=p^{n}(p-1)^{n}\ .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We know that the total number of irreducible states (points in the generalized
+ 
+\begin_inset Formula $\DCP{2^{n}-1}$
+\end_inset
+
+ Bloch sphere) for an 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit state is 
+\begin_inset Formula $p^{2^{n}-1}(p^{2^{n}}-1)/(p+1)$
+\end_inset
+
+, and so the number of states containing some measure of entanglement is
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+\mbox{{\bf Count of Entangled States}}=\frac{p^{2^{n}-1}(p^{2^{n}}-1)}{p+1}-p^{n}(p-1)^{n}\ .
+\end{eqnarray*}
+
+\end_inset
+
+Therefore a very small fraction of the unit norm states are unentangled.
+\end_layout
+
+\begin_layout Subsection
+Partial entanglement
+\end_layout
+
+\begin_layout Plain Layout
+A partially entangled state can be constructed by taking individual component
+ states to enter as direct products, starting by picking 
+\begin_inset Formula $n$
+\end_inset
+
+ distinct single qubits to be unentangled (
+\begin_inset Formula $n=2$
+\end_inset
+
+ exhausts its freedom with one pick).
+ Then we can choose 
+\begin_inset Formula $n(n-1)/2$
+\end_inset
+
+ pairs of distinct qubits as product states (
+\begin_inset Formula $n=3$
+\end_inset
+
+ exhausts its freedom with one pick), and so on.
+ Then, starting with 
+\begin_inset Formula $n=3$
+\end_inset
+
+, we can pick fully entangled 2-qubit subspaces as product spaces, combining
+ them with single-qubit product components (
+\begin_inset Formula $n=3$
+\end_inset
+
+ has no single-qubit freedom left after picking any of its three 2-qubit
+ subspaces), and so on.
+ Precise measures of entanglement such as that given in 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Eq{
+\end_layout
+
+\end_inset
+
+purityMeasure.eq
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ can then be applied just as in the continuous case.
+\end_layout
+
+\begin_layout Subsection
+Maximal entanglement
+\end_layout
+
+\begin_layout Plain Layout
+Numerical and analytic calculations of the entanglement measure 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Eq{
+\end_layout
+
+\end_inset
+
+purityMeasure.eq
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, taken 
+\begin_inset Formula $(\mbox{mod}~p)$
+\end_inset
+
+, extend to the best of our knowledge to the discrete case, so that the
+ unentangled states constructed above have 
+\begin_inset Formula $P_{\fh}=1$
+\end_inset
+
+.
+ This leads us to study one final aspect of the discrete 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit states, namely the 
+\shape italic
+maximally
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ entangled states with 
+\begin_inset Formula $P_{\fh}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Computing some examples for various 
+\begin_inset Formula $n$
+\end_inset
+
+ and small values of 
+\begin_inset Formula $p$
+\end_inset
+
+, one can verify explicitly that unit-norm unentangled states for 
+\begin_inset Formula $n=2$
+\end_inset
+
+, 
+\begin_inset Formula $p=\{3,7,11,19,\ldots\}$
+\end_inset
+
+ occur with frequency 
+\begin_inset Formula 
+\[
+(p+1)p^{2}(p-1)^{2}=\{144,14112,145200,2339280,\ldots\}\ ,
+\]
+
+\end_inset
+
+and for general 
+\begin_inset Formula $n$
+\end_inset
+
+, 
+\begin_inset Formula $(p+1)p^{n}(p-1)^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+The irreducible state counts are reduced by 
+\begin_inset Formula $(p+1)$
+\end_inset
+
+, giving 
+\begin_inset Formula 
+\[
+p^{2}(p-1)^{2}=\{36,1764,12100,116964,\ldots\}\ ,
+\]
+
+\end_inset
+
+and in general for 
+\begin_inset Formula $n$
+\end_inset
+
+-qubits, 
+\begin_inset Formula $p^{n}(p-1)^{n}$
+\end_inset
+
+ instances of pure states with 
+\begin_inset Formula $P_{\fh}=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Repeating the computation to discover the frequency of maximally entangled
+ (purity 
+\begin_inset Formula $P_{\fh}=0$
+\end_inset
+
+ states), we find 
+\begin_inset Formula $p^{n+1}(p-1)(p+1)^{n}$
+\end_inset
+
+ maximally entangled states, with example frequencies for two qubits of
+ 
+\begin_inset Formula 
+\[
+p^{3}(p-1)(p+1)^{2}=\{864,131712,1916640,49384800,\ldots\}\ .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The irreducible state counts for maximal entanglement are reduced by 
+\begin_inset Formula $(p+1)$
+\end_inset
+
+, giving for 
+\begin_inset Formula $n=2$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+p^{3}(p^{2}-1)=\{216,16464,159720,2469240,\ldots\}\ ,
+\]
+
+\end_inset
+
+and in general for 
+\begin_inset Formula $n$
+\end_inset
+
+-qubits, 
+\begin_inset Formula $p^{n+1}(p-1)(p+1)^{n-1}$
+\end_inset
+
+ instances of pure states with 
+\begin_inset Formula $P_{\fh}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Therefore, the ratio of maximally entangled to unentangled states is 
+\begin_inset Formula 
+\[
+\mbox{{\bf Max Entangled/Unentangled}}=p\left(\frac{p+1}{p-1}\right)^{n-1}\ .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Plain Layout
+Given a discrete basis for the complex coefficients of an 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit quantum state, DQC permits us in principle to explicitly determine
+ the relative frequencies of phases and to determine exactly the generalized
+ Bloch sphere coordinates of the irreducible states.
+ The size of the set of states that must be taken as equivalent to get irreducib
+ility is the size of the 
+\begin_inset Quotes eld
+\end_inset
+
+circle
+\begin_inset Quotes erd
+\end_inset
+
+ or phase group, and this is 
+\begin_inset Formula $p+1$
+\end_inset
+
+ for any 
+\begin_inset Formula $p$
+\end_inset
+
+ and for any 
+\begin_inset Formula $n$
+\end_inset
+
+ (related to the size of the finite projective line, see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Arnold"
+
+\end_inset
+
+).
+ Exploring the discrete manifestation of the purity measure 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Eq{
+\end_layout
+
+\end_inset
+
+purityMeasure.eq
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, our DQC approach can determine not only the size of the irreducible space
+ of states, but also the relative sizes of the unentangled and entangled
+ states for 
+\begin_inset Formula $n$
+\end_inset
+
+ discrete qubits.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace 0.5in
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+\series bold
+References
+\series default
+ 
+\begin_inset VSpace 0.5cm*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "GeomQStates2008"
+
+\end_inset
+
+ I.
+ Bengtsson and K.
+ Zyczkowski, 
+\shape italic
+Geometry of Quantum States: An Introduction to Quantum Entanglement
+\shape default
+ (Cambridge University Press, Cambridge, 2008).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "mosseri2001"
+
+\end_inset
+
+ R.
+ Mosseri and R.
+ Dandoloff, 
+\shape italic
+J.
+ Phys.
+ A: Math.
+ Gen.
+
+\shape default
+ 
+\series bold
+34
+\series default
+, 10243 (2001).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Arnold"
+
+\end_inset
+
+ V.
+ I.
+ Arnold, 
+\shape italic
+Dynamics, Statistics and Projective Geometry of Galois Fields
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ (Cambridge University Press, Cambridge, 2011).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Turing37"
+
+\end_inset
+
+ A.
+ M.
+ Turing, 
+\shape italic
+Proceedings of the London Mathematical Society
+\shape default
+ Series 2, 
+\series bold
+42
+\series default
+, 230 (1937).
+ Errata appeared in Series 2, 
+\series bold
+43
+\series default
+ 544 (1937).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Minsky67"
+
+\end_inset
+
+ M.
+ Minsky, 
+\shape italic
+Computation: Finite and Infinite Machines
+\shape default
+ (Prentice-Hall, Englewood Cliffs, 1967).
+ See chapter 9, 
+\begin_inset Quotes eld
+\end_inset
+
+The Computable Real Numbers.
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Chaitin"
+
+\end_inset
+
+ G.
+ J.
+ Chaitin, 
+\shape italic
+Thinking about Gödel and Turing
+\shape default
+ (World Scientific, Singapore, 2007).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Feynman"
+
+\end_inset
+
+ R.
+ P.
+ Feynman, 
+\shape italic
+Int.
+ J.
+ Theor.
+ Phys.
+
+\shape default
+ 
+\series bold
+21
+\series default
+, 467 (1982).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Landauer"
+
+\end_inset
+
+ R.
+ Landauer, 
+\shape italic
+Physics Letters A
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ 
+\series bold
+217
+\series default
+, 188 (1996).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "SchuWest2010"
+
+\end_inset
+
+ B.
+ Schumacher and M.
+ D.
+ Westmoreland, 
+\shape italic
+Found.
+ Phys.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ 
+\series bold
+42
+\series default
+, 918 (2012).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "James2011"
+
+\end_inset
+
+ R.
+ P.
+ James, G.
+ Ortiz, and A.
+ Sabry, 
+\family typewriter
+http://arxiv.org/abs/1101.3764
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "HOSW2011"
+
+\end_inset
+
+ A.
+ J.
+ Hanson, G.
+ Ortiz, A.
+ Sabry, and J.
+ Willcock, 
+\family typewriter
+http://arxiv.org/abs/1104.1630
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Berger"
+
+\end_inset
+
+ M.
+ Berger and B.
+ Gostiaux, 
+\shape italic
+Differential Geometry: Manifolds, Curves, and Surfaces
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ (Springer-Verlag, New York, 1988).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "numtheory.ref-1"
+
+\end_inset
+
+ G.
+ H.
+ Hardy and E.
+ M.
+ Wright, 
+\shape italic
+An Introduction to the Theory of Numbers
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ (Oxford University Press, Oxford, 2006).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "GT.ref-1"
+
+\end_inset
+
+ I.
+ Stewart, 
+\shape italic
+Galois theory
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ (Chapman and Hall/CRC, Boca Raton, 2004).
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Comment{
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "WB.ref"
+
+\end_inset
+
+ Wildberger N J 2005 
+\shape italic
+Divine Proportions: Rational Trigonometry to Universal Geometry
+\shape default
+ (Sydney: Wild Egg Books) 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "OT"
+
+\end_inset
+
+ Ovsienko V and Tabachnikov S 2005 
+\shape italic
+Projective Differential Geometry Old and New
+\shape default
+ (Cambridge: Cambridge University Press) 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "VY"
+
+\end_inset
+
+ Veblen O and J.
+ W.
+ Young J W 1946 
+\shape italic
+Projective Geometry Vol.
+ 2
+\shape default
+ (Blaisdell Publishing Company), pp 55–57 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Ztransform"
+
+\end_inset
+
+ Campello de Souza R M, de Oliveira H M and Silva D 2002 The Z Transform
+ over Finite Fields 
+\shape italic
+International Telecommunications Symposium, ITS 2002, Brazil
+\shape default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Barnum2003"
+
+\end_inset
+
+ H.
+ Barnum, E.
+ Knill, G.
+ Ortiz, and L.
+ Viola, 
+\shape italic
+Phys.
+ Rev.
+ A
+\shape default
+ 
+\series bold
+68
+\series default
+, 032308 (2003).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Barnum2004"
+
+\end_inset
+
+ H.
+ Barnum, E.
+ Knill, G.
+ Ortiz, R.
+ Somma, and L.
+ Viola, 
+\shape italic
+Phys.
+ Rev.
+ Lett.
+
+\shape default
+ 
+\series bold
+92
+\series default
+, 107902 (2004).
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
