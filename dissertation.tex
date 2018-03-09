@@ -332,7 +332,7 @@ states denoted by points $\Hat{a}$ and $\Hat{b}$ on $\Sphere{2}$,
 the shortest rotation carrying $\Hat{a}$ to $\Hat{b}$ is the SLERP
 (spherical linear interpolation) \cite{Shoemake:1985:ARQ:325334.325242,wiki:Slerp}
 \begin{equation}
-S(\Hat{a},\Hat{b},t)=\Hat{a}\,\frac{\sin((1-t)\omega)}{\sin\omega}\,+\,\Hat{b}\,\frac{\sin(t\omega)}{\sin\omega}\ ,\label{slerp.eq}
+S\left(\Hat{a},\Hat{b},t\right)=\Hat{a}\,\frac{\sin((1-t)\omega)}{\sin\omega}\,+\,\Hat{b}\,\frac{\sin(t\omega)}{\sin\omega}\,,\label{slerp.eq}
 \end{equation}
 where $\Hat{a}\cdot\Hat{b}=\cos\omega$. Figure \ref{blochSphere.fig}(b)
 illustrates the path traced by a SLERP between two irreducible one-qubit
@@ -386,73 +386,62 @@ of the circle bundle is $\CP{1}=\Sphere{2}$, the usual Bloch sphere.
 Note that only for $D=2$ is this actually a sphere-like geometry
 due to an accident of low-dimensional topology.
 
-\subsection{Explicit $n$-qubit generalization of the Hopf fibration construction}
+\subsection{Explicit generalization of the Hopf fibration construction}
 
-For one qubit, we could easily solve the problem of reducing the full
-unit-norm space to its irreducible components $\Vec{X}=(X,Y,Z)$ characterizing
-the Bloch sphere. We have just argued that essentially the same process
-is possible for $n$-qubits: in the abstract argument, we simply identify
-the family of coefficients $\{\alpha_{i}\}$ as being the same if
-they differ only by an overall phase $\rme^{\rmi\theta}$. However,
-in practice this is not a construction that is easy to realize in
-a practical computation. We now outline an explicit algorithm for
-accomplishing the reduction to the irreducible $n$-qubit state space
-$\CP{D-1}$; this construction will turn out to be useful for the
-validation of our discrete results to follow below.
+For a two-dimensional system, we could easily solve the problem of
+reducing the full unit-norm space to its irreducible components $\Hat{a}=\left(X,Y,Z\right)$
+characterizing the Bloch sphere. We have just argued that essentially
+the same process is possible for $D$-dimensional system: in the abstract
+argument, we simply identify the family of coefficients $\left\{ \alpha_{i}\right\} $
+as being the same if they differ only by an overall phase $\rme^{\rmi\theta}$.
+However, in practice this is not a construction that is easy to realize
+in a practical computation. We now outline an explicit algorithm for
+accomplishing the reduction to the irreducible $D$-dimensional state
+space $\CP{D-1}$; this construction will turn out to be useful for
+the validation of our discrete results to follow below.
 
-We begin by noting that a natural quantity characterizing an $n$-qubit
-system is its \textit{density matrix\/}, $\rho=\left[\alpha_{i}\alpha_{j}^{*}\right]$,
-or 
+Given a normalized pure state $\ket{\Psi}=\sum_{i=0}^{D-1}\alpha_{i}\ket{i}$,
+a natural quantity characterizing an $D$-dimensional system is its
+\textit{density matrix}, $\rho=\op{\Psi}{\Psi}$, or 
 \begin{equation}
-\rho=\left[\begin{array}{cccc}
-|\alpha_{0}|^{2} & \alpha_{0}\alpha_{1}^{*} & \cdots & \alpha_{0}\alpha_{D-1}^{*}\\
+\rho=\begin{bmatrix}|\alpha_{0}|^{2} & \alpha_{0}\alpha_{1}^{*} & \cdots & \alpha_{0}\alpha_{D-1}^{*}\\
 \alpha_{1}\alpha_{0}^{*} & |\alpha_{1}|^{2} & \cdots & \alpha_{1}\alpha_{D-1}^{*}\\
 \vdots & \vdots & \ddots & \vdots\\
 \alpha_{D-1}\alpha_{0}^{*} & \cdots & \alpha_{D-1}\alpha_{D-2}^{*} & |\alpha_{D-1}|^{2}
-\end{array}\right]\ .\label{nqDensity.eq}
+\end{bmatrix}\,.\label{nqDensity.eq}
 \end{equation}
-
 We can now use the complex generalization of the classical Veronese
 coordinate system for projective geometry to remove the overall phase
-ambiguity $\rme^{\rmi\theta}$ from the $n$-qubit states. If we take
-a particular weighting of the elements of the density matrix $\rho$,
-we can construct a \textit{unit vector\/} of real dimension $D^{2}$
+ambiguity $\rme^{\rmi\theta}$ from the $D$-dimensional states. If
+we take a particular weighting of the elements of the density matrix~$\rho$,
+we can construct a \textit{unit vector} of real dimension $D^{2}$
 with the form: 
 \begin{equation}
-\Vec{X}=(|\alpha_{i}|^{2},\ldots,\sqrt{2}\,\mathrm{Re}\ \alpha_{i}\alpha_{j}^{*},\ldots,\sqrt{2}\,\mathrm{Im}\ \alpha_{i}\alpha_{j}^{*},\ldots)\ ,\label{nqCoords.eq}
+\Hat{a}=\left(|\alpha_{i}|^{2},\ldots,\sqrt{2}\,\mathrm{Re}\ \alpha_{i}\alpha_{j}^{*},\ldots,\sqrt{2}\,\mathrm{Im}\ \alpha_{i}\alpha_{j}^{*},\ldots\right)\,,\label{nqCoords.eq}
 \end{equation}
 where 
-\begin{eqnarray}
-\Vec{X}\cdot\Vec{X}=\left(\sum_{i=0}^{D-1}\left|\alpha_{i}\right|^{2}\right)^{2}=1\ .
-\end{eqnarray}
-This construction gives an explicit embedding of the $(D-1)$-dimensional
-complex, or $(2D-2)=(2^{n+1}-2)$-dimensional real, object in a real
-space of dimension $D^{2}=2^{2n}$. However, this is somewhat subtle
-because the vector is of unit length, so technically the embedding
-space is a sphere of dimension $D^{2}-1=2^{2n}-1$ embedded in $\R^{D^{2}}$;
-the one-qubit irreducible states could be represented in a 4D embedding,
-but the magnitude of every coordinate would be one; furthermore, the
-object embedded in the resulting $\Sphere{3}$ is indeed $\Sphere{2}$
+\begin{equation}
+\Hat{a}\cdot\Hat{a}=\sum_{i=0}^{D-1}\left(\left|\alpha_{i}\right|^{2}\right)^{2}+\sum_{i=0}^{D-1}\sum_{\substack{j=0\\
+j\ne i
+}
+}^{D-1}\left(\mathrm{Re}\ \alpha_{i}\alpha_{j}^{*}\right)^{2}+\left(\mathrm{Im}\ \alpha_{i}\alpha_{j}^{*}\right)^{2}=\left(\sum_{i=0}^{D-1}\left|\alpha_{i}\right|^{2}\right)\left(\sum_{j=0}^{D-1}\left|\alpha_{j}\right|^{2}\right)=1\,.
+\end{equation}
+This construction gives an explicit embedding of the $\left(D-1\right)$-dimensional
+complex, or $\left(2D-2\right)$-dimensional real, object in a real
+space of dimension $D^{2}$. However, this is somewhat subtle because
+the vector is of unit length, so technically the embedding space is
+a sphere of dimension $D^{2}-1$ embedded in $\R^{D^{2}}$. For example,
+the two-dimensional irreducible states could be represented in a four-dimensional
+embedding, but the magnitude of every coordinate would be one; furthermore,
+the object embedded in the resulting $\Sphere{3}$ is indeed $\Sphere{2}$
 because we can fix one complex coordinate to be unity, and let one
 vary, giving a total of two irreducible dimensions. In fact one must
-choose \textit{two\/} coordinate patches, one covering one pole of
-$\Sphere{2}$ with coordinates 
-\begin{eqnarray}
-\begin{array}{ccc}
-\alpha_{0} & = & 1+0i\\
-\alpha_{1} & = & x_{1}+iy_{1}
-\end{array}
-\end{eqnarray}
+choose \textit{two} coordinate patches, one covering one pole of $\Sphere{2}$
+with coordinates $\alpha_{0}=1+\rmi0$ and $\alpha_{1}=x_{1}+\rmi y_{1}$,
 and the other patch covering the other pole of $\Sphere{2}$ with
-coordinates 
-\begin{eqnarray}
-\begin{array}{ccc}
-\alpha_{0} & = & x_{0}+iy_{0}\\
-\alpha_{1} & = & 1+0i\ .
-\end{array}
-\end{eqnarray}
+coordinates $\alpha_{0}=x_{0}+\rmi y_{0}$ and $\alpha_{1}=1+\rmi0$. 
 
-We finally see that the irreducible $n$-qubit state space $\CP{D-1}$
+We finally see that the irreducible $D$-dimensional state space $\CP{D-1}$
 is described by $D$ projectively equivalent coordinates, one of which
 can always be scaled out to leave $(D-1)$ actual (complex) degrees
 of freedom. We must choose, in turn, $D$ different local sets of
@@ -462,7 +451,7 @@ real) variables to run free. No single set of coordinates will work,
 since the submanifold including $\alpha_{k}=0$ is undefined and another
 coordinate system must be chosen to cover that coordinate patch. This
 is a standard feature of the topology of non-trivial manifolds such
-as $\CP{D-1}$ (see any textbook on geometry \cite{Berger}).
+as $\CP{D-1}$ (see any textbook on geometry~\cite{Berger_1988}).
 
 \section{Quantum Circuit Model\label{sec:Quantum-Circuit-Model}}
 
@@ -1182,15 +1171,15 @@ of the Hopf fibration. First, we construct the discrete version of
 the quadratic unit-length form that automatically annihilates the
 distinction among states differing only by a discrete phase, 
 \begin{eqnarray}
-\hspace*{-0.5cm}\Vec{X}=(|\alpha_{i}|^{2},...,\sqrt{2}\ \mathrm{Re}\ \alpha_{i}\alpha_{j}^{*},\ldots,\sqrt{2}\ \mathrm{Im}\ \alpha_{i}\alpha_{j}^{*},\ldots)\ ,
+\hspace*{-0.5cm}\Hat{a}=(|\alpha_{i}|^{2},...,\sqrt{2}\ \mathrm{Re}\ \alpha_{i}\alpha_{j}^{*},\ldots,\sqrt{2}\ \mathrm{Im}\ \alpha_{i}\alpha_{j}^{*},\ldots)\ ,
 \end{eqnarray}
 where 
 \begin{eqnarray}
-\Vec{X}\cdot\Vec{X}=\left(\sum_{i=0}^{D-1}\left|\alpha_{i}\right|^{2}\right)^{2}=1\ .
+\Hat{a}\cdot\Hat{a}=\left(\sum_{i=0}^{D-1}\left|\alpha_{i}\right|^{2}\right)^{2}=1\ .
 \end{eqnarray}
 {}From \ref{appH.sec}, we know that $p+1$ elements of this discrete
 $\Sphere{2\times2^{n}-1}$ structure map to the \textit{same point\/}
-in $\Vec{X}$. Each set of $(p+1)$ redundant points is, geometrically
+in $\Hat{a}$. Each set of $(p+1)$ redundant points is, geometrically
 speaking, the \textit{discrete Hopf fibration circle\/} living above
 each \textit{irreducible\/} point of the $n$-qubit state description.
 These $p+1$ points are interpretable as the $p$ finite points plus
@@ -1210,7 +1199,7 @@ unit-norm state structure is the discrete analog of $\Sphere{2\times2^{n}-1}$.
 Finally, we repeat the last step of the $n$-qubit continuous Hopf
 fibration process for discrete $n$-qubit states, eliminating the
 discrete set of $p+1$ equivalent points that map to the same point
-$\Vec{X}$ on the generalized $n$-qubit Bloch sphere. Dividing the
+$\Hat{a}$ on the generalized $n$-qubit Bloch sphere. Dividing the
 tally $p^{2^{n}-1}(p^{2^{n}}-1)$ of unit norm states by the $p+1$
 elements of each phase-equivalent discrete circle, we find 
 \[
@@ -1254,14 +1243,14 @@ Finally, we construct the discrete version of the quadratic unit-length
 form that automatically annihilates the distinction among states differing
 only by a discrete phase, 
 \begin{eqnarray}
-\hspace*{-0.5cm}\Vec{X}=\{|\alpha_{i}|^{2},...,\sqrt{2}\ \mathrm{Re}\ \alpha_{i}\alpha_{j}^{*},\ldots,\sqrt{2}\ \mathrm{Im}\ \alpha_{i}\alpha_{j}^{*},\ldots\}\ ,
+\hspace*{-0.5cm}\Hat{a}=\{|\alpha_{i}|^{2},...,\sqrt{2}\ \mathrm{Re}\ \alpha_{i}\alpha_{j}^{*},\ldots,\sqrt{2}\ \mathrm{Im}\ \alpha_{i}\alpha_{j}^{*},\ldots\}\ ,
 \end{eqnarray}
 where 
 \begin{eqnarray}
-\Vec{X}\cdot\Vec{X}=\left(\sum_{i=0}^{D-1}\left|\alpha_{i}\right|^{2}\right)^{2}=1\ .
+\Hat{a}\cdot\Hat{a}=\left(\sum_{i=0}^{D-1}\left|\alpha_{i}\right|^{2}\right)^{2}=1\ .
 \end{eqnarray}
 Computing all the elements of the discrete $\Sphere{2\times2^{n}-1}$
-structure that map to the \textit{same point\/} in $\Vec{X}$, we
+structure that map to the \textit{same point\/} in $\Hat{a}$, we
 find a $(p+1)$-fold redundancy, exactly as for the one-qubit case;
 each set of $(p+1)$ redundant points is, geometrically speaking,
 the \textit{discrete Hopf fibration circle\/} (see, e.g., Arnold
@@ -1271,7 +1260,7 @@ the $n$-qubit state description.
 In summary, when the $n$-qubit continuous Hopf fibration process
 is repeated for the discrete analog of $n$-qubit states, we find
 that that analog of a phase ``circle'' is a discrete set $p+1$
-equivalent points that map to the same point $\Vec{X}$ on the generalized
+equivalent points that map to the same point $\Hat{a}$ on the generalized
 $n$-qubit Bloch sphere, and therefore there are a total of $p^{2^{n}-1}(p^{2^{n}}-1)/(p+1)$
 unique irreducible states in a discrete $n$-qubit configuration.
 The resulting object is precisely the discrete version of $\CP{D-1}$,
