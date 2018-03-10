@@ -134,8 +134,6 @@ Gleason and Kochen-Specker theorems.} \abstractpage
 
 \todo{The page of Bibliography is not correct?}
 
-\todo{Table of symbols?}
-
 \chapter{Introduction}
 
 Before diving into quantum computing, it is instructive to review
@@ -455,15 +453,33 @@ as $\CP{D-1}$ (see any textbook on geometry~\cite{Berger_1988}).
 
 \section{Quantum Circuit Model\label{sec:Quantum-Circuit-Model}}
 
+\begin{comment}
 An $n$-qubit pure state in the conventional quantum theory (CQT)
 is represented as a vector in the $2^{n}$-dimensional Hilbert space.
 If we eliminate all symmetries, an irreducible state is actually a
 point in the projective Hilbert space \cite{MosseriDandoloff2001,Jaeger2007}
-also known as the complex projective space~$\mathbb{CP}^{2^{n}-1}$
-\cite{Hatcher2001,Bengtsson2007}. These irreducible quantum states
-can also be classified as product states and entangled states, and
-the latter one plays the essential role for pure-state algorithms
-\cite{Mermin2007,Jaeger2007}.
+also known as the complex projective space~$\CP{2^{n}-1}$ \cite{Hatcher2001,Bengtsson2007}.
+These irreducible quantum states can also be classified as product
+states and entangled states, and the latter one plays the essential
+role for pure-state algorithms \cite{Mermin2007,Jaeger2007}.
+\end{comment}
+It has been 36 years since Feynman~\cite{Feynman1982Simulating}
+proposed the idea about quantum computation. Although there are many
+models for quantum computing, the circuit model is still one of the
+most widespread models~\cite{544199} no matter whether in theoretical
+study or in building a real quantum computation. Information in a
+quantum circuit is stored in qubits. Each qubit is a two-dimensional
+quantum system. For a two-qubit system, if the first and second qubit
+are described as the state~$\ket{\psi}=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}$
+and $\ket{\phi}=\beta_{0}\ket{0}+\beta_{1}\ket{1}$, the state of
+the whole system is their tensor product 
+\begin{equation}
+\begin{aligned} & \ket{\psi}\ket{\phi}=\ket{\psi}\otimes\ket{\phi}=\left(\alpha_{0}\ket{0}+\alpha_{1}\ket{1}\right)\otimes\left(\beta_{0}\ket{0}+\beta_{1}\ket{1}\right)\\
+= & \alpha_{0}\beta_{0}\ket{0}\otimes\ket{0}+\alpha_{0}\beta_{1}\ket{0}\otimes\ket{1}+\alpha_{1}\beta_{0}\ket{1}\otimes\ket{0}+\alpha_{1}\beta_{1}\ket{1}\otimes\ket{1}\\
+= & \alpha_{0}\beta_{0}\ket{0}\ket{0}+\alpha_{0}\beta_{1}\ket{0}\ket{1}+\alpha_{1}\beta_{0}\ket{1}\ket{0}+\alpha_{1}\beta_{1}\ket{1}\ket{1}
+\end{aligned}
+\end{equation}
+.
 
 \subsection{The geometry of entanglement}
 
@@ -474,10 +490,7 @@ the measurement outcomes in another one. Within the standard framework,
 given a quantum system composed of $n$ qubit subsystems, a pure state
 of the total system $\ket{\Psi}$ is said to be entangled if it cannot
 be written as a product of states of each subsystem. That is, a state
-$\ket{\Psi}$ is entangled if 
-\begin{eqnarray}
-\ket{\Psi}\ne\ket{\psi_{1}}\otimes\cdots\otimes\ket{\psi_{j}}\otimes\cdots\otimes\ket{\psi_{n}},
-\end{eqnarray}
+$\ket{\Psi}$ is entangled if $\ket{\Psi}\ne\ket{\psi_{1}}\otimes\cdots\otimes\ket{\psi_{j}}\otimes\cdots\otimes\ket{\psi_{n}}$,
 where $\ket{\psi_{j}}$ refers to an arbitrary state of the $j$-th
 qubit, and $\otimes$ represents the tensor product. This is equivalent
 to saying that if one calculates the reduced density operator $\rho_{j}$
@@ -549,6 +562,8 @@ is given by the set of all observables. In this case, the purity takes
 its maximum value independently of the pure quantum state \cite{Barnum2003,Barnum2004},
 expressing the fact that any state is a generalized coherent state
 of the Lie algebra of all observables.
+
+\subsection{Deutsch Algorithm}
 
 \section{Quantum Probability\label{sec:fuzzy}}
 
