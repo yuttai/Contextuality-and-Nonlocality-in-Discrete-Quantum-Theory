@@ -55,6 +55,7 @@
 \newcommand{\bfalse}{\texttt{\textbf{false}}}
 \newcommand{\btrue}{\texttt{\textbf{true}}}
 \newcommand{\dotprod}{dot product}
+\newcommand{\Tr}{\ensuremath{\mathop{\mathrm{Tr}}\nolimits}}
 
 \department{Department of Mathematics}
 \department{Department of Computer Science}
@@ -2459,10 +2460,44 @@ in the four-dimensional Hilbert space.
 \end_inset
 
 .
+ However, not all quantum system can be expressed as the tensor product
+ of its subsystems.
+ This kind of system is called entangled, and will be described in the next
+ section.
 \end_layout
 
 \begin_layout Subsection
 The geometry of entanglement
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+
+Need to define 
+\lang english
+(partial) trace and mixed state before this subsection...
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2510,8 +2545,8 @@ Entanglement may be regarded as one of the main characteristics distinguishing
 \begin_inset Formula $j$
 \end_inset
 
-th subsystem by tracing out all the other subsystems, 
-\begin_inset Formula $\rho_{j}={\sf tr}_{\{1,\cdots,j-1,j+1,\cdots,n\}}(\rho)$
+-th subsystem by tracing out all the other subsystems, 
+\begin_inset Formula $\rho_{j}=\Tr_{\{1,\cdots,j-1,j+1,\cdots,n\}}\left(\rho\right)$
 \end_inset
 
 , with 
@@ -2519,44 +2554,31 @@ th subsystem by tracing out all the other subsystems,
 \end_inset
 
  and 
-\begin_inset Formula $\rho=\ket{\Psi}\bra{\Psi}$
+\begin_inset Formula $\rho=\op{\Psi}{\Psi}$
 \end_inset
 
-, the normalized state 
+, the normalized state
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\ket{\Psi}$
 \end_inset
 
-, 
-\begin_inset Formula $\langle\Psi|\Psi\rangle=1$
-\end_inset
-
-, is entangled if and only if at least one subsystem state is 
+ is entangled if and only if at least one subsystem state is 
 \shape italic
 mixed
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
-
 \shape default
 ; i.e., 
-\begin_inset Formula ${\sf tr}_{j}(\rho_{j}^{2})<1$
+\begin_inset Formula $\Tr_{j}\left(\rho_{j}^{2}\right)<1$
 \end_inset
 
 .
  For example, consider 
 \begin_inset Formula 
-\begin{eqnarray}
-\rho_{j}=\frac{1}{2}(\mathds{1}+\sum\limits _{\mu=x,y,z}\langle\sigma_{\mu}^{j}\rangle\ \sigma_{\mu}^{j}),
-\end{eqnarray}
+\begin{equation}
+\rho_{j}=\frac{1}{2}\left(\sigma_{0}+\sum\limits _{\mu=x,y,z}\expval{\sigma_{\mu}^{j}}\sigma_{\mu}^{j}\right)\,,
+\end{equation}
 
 \end_inset
 
@@ -2572,55 +2594,69 @@ where
 \begin_inset Formula $j$
 \end_inset
 
--th spin, 
+-th spin
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "544199"
+
+\end_inset
+
+, 
 \begin_inset Formula 
 \begin{equation}
-\sigma_{\mu}^{j}=\overbrace{\mathds{1}\otimes\mathds{1}\otimes\cdots\otimes\underbrace{\sigma_{\mu}}_{j^{th}\ \mbox{factor}}\otimes\cdots\otimes\mathds{1}}^{n\ \mbox{factors}}\;,\label{pauli3}
+\sigma_{\mu}^{j}=\overbrace{\sigma_{0}\otimes\cdots\otimes\sigma_{0}\otimes\underbrace{\sigma_{\mu}}_{j^{th}\ \mbox{factor}}\otimes\sigma_{0}\otimes\cdots\otimes\sigma_{0}}^{n\ \mbox{factors}}\,,\label{pauli3}
 \end{equation}
 
 \end_inset
 
 with 
 \begin_inset Formula 
-\begin{eqnarray}
-\hspace*{-0.5cm}\sigma_{x}=\left(\begin{array}{cc}
+\begin{equation}
+\begin{aligned}\sigma_{0} & =\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)\,, & \sigma_{x} & =\left(\begin{array}{cc}
 0 & 1\\
 1 & 0
-\end{array}\right),\sigma_{y}=\left(\begin{array}{cc}
+\end{array}\right)\,, & \sigma_{y} & =\left(\begin{array}{cc}
 0 & -i\\
 i & 0
-\end{array}\right),\sigma_{z}=\left(\begin{array}{cc}
+\end{array}\right)\,, & \sigma_{z} & =\left(\begin{array}{cc}
 1 & 0\\
 0 & -1
-\end{array}\right),
-\end{eqnarray}
+\end{array}\right)\,,\end{aligned}
+\end{equation}
 
 \end_inset
 
 and 
-\begin_inset Formula $\langle\sigma_{\mu}^{j}\rangle=\langle\Psi|\sigma_{\mu}^{j}|\Psi\rangle$
+\begin_inset Formula $\expval{\sigma_{\mu}^{j}}=\melem{\Psi}{\sigma_{\mu}^{j}}{\Psi}$
 \end_inset
 
  denotes the corresponding expectation value.
  The vectors 
-\begin_inset Formula ${\bf X}_{j}=(\langle\sigma_{x}^{j}\rangle,\langle\sigma_{y}^{j}\rangle,\langle\sigma_{y}^{j}\rangle)$
+\begin_inset Formula 
+\begin{equation}
+{\bf X}_{j}=\left(\expval{\sigma_{x}^{j}},\expval{\sigma_{y}^{j}},\expval{\sigma_{y}^{j}}\right)\in\mathbb{R}^{3}
+\end{equation}
+
 \end_inset
 
-, 
-\begin_inset Formula ${\bf X}_{j}\in{\mathbb{R}}^{3}$
-\end_inset
-
-, allow a geometric representation of each reduced state in 
-\begin_inset Formula ${\mathbb{R}}^{3}$
+allow a geometric representation of each reduced state in 
+\begin_inset Formula $\mathbb{R}^{3}$
 \end_inset
 
 , satisfying 
-\begin_inset Formula $0\le\|{\bf X}_{j}\|\le1$
+\begin_inset Formula $0\le\left\Vert {\bf X}_{j}\right\Vert \le1$
 \end_inset
 
 .
  Since 
-\begin_inset Formula ${\sf tr}_{j}(\rho_{j}^{2})=\frac{1}{2}(1+\|{\bf X}_{j}\|^{2})$
+\begin_inset Formula $\Tr_{j}\left(\rho_{j}^{2}\right)=\frac{1}{2}\left(1+\left\Vert {\bf X}_{j}\right\Vert ^{2}\right)$
 \end_inset
 
 , the state 
@@ -2628,7 +2664,7 @@ and
 \end_inset
 
  is entangled if 
-\begin_inset Formula $\|{\bf X}_{j}\|<1$
+\begin_inset Formula $\left\Vert {\bf X}_{j}\right\Vert <1$
 \end_inset
 
  for at least one 
@@ -2636,47 +2672,16 @@ and
 \end_inset
 
 , represented by a point 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-em
-\end_layout
-
-\end_inset
-
- inside
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+\emph on
+inside
+\emph default
  the corresponding local Bloch sphere.
  One may therefore consider 
 \begin_inset Formula $\ket{\Psi}$
 \end_inset
 
  to be maximally entangled if 
-\begin_inset Formula $\|{\bf X}_{j}\|=0$
+\begin_inset Formula $\left\Vert {\bf X}_{j}\right\Vert =0$
 \end_inset
 
  for all 
@@ -2689,7 +2694,7 @@ status collapsed
 \end_inset
 
  is unentangled (i.e., a product state) if 
-\begin_inset Formula $\|{\bf X}_{j}\|=1$
+\begin_inset Formula $\left\Vert {\bf X}_{j}\right\Vert =1$
 \end_inset
 
  for all 
@@ -2702,83 +2707,21 @@ status collapsed
 \begin_layout Standard
 A natural geometric measure of multipartite entanglement is obtained by
  defining the 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-em
-\end_layout
-
-\end_inset
-
- purity of a state relative to a set of observables
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+\emph on
+purity of a state relative to a set of observables
+\emph default
  
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Barnum2003, Barnum2004"
+key "BKOV2003,BKOSV2004"
 
 \end_inset
 
 .
  If the set is chosen to be the set of 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-em
-\end_layout
-
-\end_inset
-
- all local observables
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+\emph on
+all local observables
+\emph default
 , i.e., corresponding to each of the subsystems that compose the actual system,
  one recovers the standard notion of entanglement for multipartite systems.
  For example, if the system consists of 
@@ -2787,13 +2730,14 @@ status collapsed
 
  qubits, we obtain a measure of conventional entanglement by calculating
  the purity relative to the set 
-\begin_inset Formula $\fh=\{\sigma_{x}^{1},\sigma_{y}^{1},\sigma_{z}^{1},\ldots,\sigma_{x}^{n},\sigma_{y}^{n},\sigma_{z}^{n}\}$
+\begin_inset Formula $\fh=\left\{ \sigma_{x}^{1},\sigma_{y}^{1},\sigma_{z}^{1},\ldots,\sigma_{x}^{n},\sigma_{y}^{n},\sigma_{z}^{n}\right\} $
 \end_inset
 
 , 
 \begin_inset Formula 
 \begin{equation}
-P_{\fh}=\frac{1}{n}\sum\limits _{j=1}^{n}\sum\limits _{\mu=x,y,z}\langle\sigma_{\mu}^{j}\rangle^{2}\:,\ \ 0\leq P_{\fh}\leq1\ .\label{purityMeasure.eq}
+\begin{aligned}P_{\fh} & =\frac{1}{n}\sum\limits _{j=1}^{n}\sum\limits _{\mu=x,y,z}\expval{\sigma_{\mu}^{j}}^{2}\,, & 0\leq P_{\fh}\leq1\,.\end{aligned}
+\label{purityMeasure.eq}
 \end{equation}
 
 \end_inset
@@ -2805,7 +2749,7 @@ Since
  is a semi-simple Lie algebra, its generalized unentangled states are the
  generalized coherent states obtained by applying any group operation to
  a reference state such as 
-\begin_inset Formula $\ket{\sf0}=\ket{0}\otimes\cdots\otimes\ket{0}$
+\begin_inset Formula $\ket{\overline{0}}=\ket{0}\otimes\cdots\otimes\ket{0}$
 \end_inset
 
 .
@@ -2830,7 +2774,7 @@ Since
 
 ).
  Other states such as the Greenberger-Horne-Zeilinger state 
-\begin_inset Formula $\ket{\Psi}=\ket{{\sf GHZ}_{n}}=\frac{1}{\sqrt{2}}(\ket{0}\otimes\cdots\otimes\ket{0}+\ket{1}\otimes\cdots\otimes\ket{1})$
+\begin_inset Formula $\ket{\Psi}=\ket{\mathsf{GHZ}_{n}}=\frac{1}{\sqrt{2}}\left(\ket{0}\otimes\cdots\otimes\ket{0}+\ket{1}\otimes\cdots\otimes\ket{1}\right)$
 \end_inset
 
  are (maximally) entangled relative to the set of local observables (i.e.,
@@ -2852,7 +2796,7 @@ Different entanglement measures are obtained when a set
  quantum state 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Barnum2003, Barnum2004"
+key "BKOV2003,BKOSV2004"
 
 \end_inset
 

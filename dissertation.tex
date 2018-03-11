@@ -74,6 +74,7 @@
 \newcommand{\bfalse}{\texttt{\textbf{false}}}
 \newcommand{\btrue}{\texttt{\textbf{true}}}
 \newcommand{\dotprod}{dot product}
+\newcommand{\Tr}{\ensuremath{\mathop{\mathrm{Tr}}\nolimits}}
 
 \department{Department of Mathematics}
 \department{Department of Computer Science}
@@ -482,9 +483,15 @@ the whole system is their tensor product
 in the four-dimensional Hilbert space. For a $n$-qubit system, if
 we describe the $j$-th qubit as the state~$\ket{\psi_{j}}$, the
 state of the whole system is tensor product of all subsystems $\ket{\Psi}=\ket{\psi_{1}}\otimes\cdots\otimes\ket{\psi_{j}}\otimes\cdots\otimes\ket{\psi_{n}}$
-in the Hilbert space of dimension $2^{n}$.
+in the Hilbert space of dimension $2^{n}$. However, not all quantum
+system can be expressed as the tensor product of its subsystems. This
+kind of system is called entangled, and will be described in the next
+section.
 
 \subsection{The geometry of entanglement}
+
+\todo{{Need to define }(partial) trace and mixed state before this
+subsection...}
 
 Entanglement may be regarded as one of the main characteristics distinguishing
 quantum from classical mechanics. Entanglement involves quantum correlations
@@ -497,72 +504,79 @@ $\ket{\Psi}$ is entangled if $\ket{\Psi}\ne\ket{\psi_{1}}\otimes\cdots\otimes\ke
 where $\ket{\psi_{j}}$ refers to an arbitrary state of the $j$-th
 qubit, and $\otimes$ represents the tensor product. This is equivalent
 to saying that if one calculates the reduced density operator $\rho_{j}$
-of the $j$th subsystem by tracing out all the other subsystems, $\rho_{j}={\sf tr}_{\{1,\cdots,j-1,j+1,\cdots,n\}}(\rho)$,
-with $j=1,\cdots,n$ and $\rho=\ket{\Psi}\bra{\Psi}$, the normalized
-state $\ket{\Psi}$, $\langle\Psi|\Psi\rangle=1$, is entangled if
-and only if at least one subsystem state is \textit{mixed\/}; i.e.,
-${\sf tr}_{j}(\rho_{j}^{2})<1$. For example, consider 
-\begin{eqnarray}
-\rho_{j}=\frac{1}{2}(\mathds{1}+\sum\limits _{\mu=x,y,z}\langle\sigma_{\mu}^{j}\rangle\ \sigma_{\mu}^{j}),
-\end{eqnarray}
-where $\sigma_{\mu}^{j}$, $\mu=x,y,z$, are the Pauli operators acting
-on the $j$-th spin, 
+of the $j$-th subsystem by tracing out all the other subsystems,
+$\rho_{j}=\Tr_{\{1,\cdots,j-1,j+1,\cdots,n\}}\left(\rho\right)$,
+with $j=1,\cdots,n$ and $\rho=\op{\Psi}{\Psi}$, the normalized state~$\ket{\Psi}$
+is entangled if and only if at least one subsystem state is \textit{mixed};
+i.e., $\Tr_{j}\left(\rho_{j}^{2}\right)<1$. For example, consider
 \begin{equation}
-\sigma_{\mu}^{j}=\overbrace{\mathds{1}\otimes\mathds{1}\otimes\cdots\otimes\underbrace{\sigma_{\mu}}_{j^{th}\ \mbox{factor}}\otimes\cdots\otimes\mathds{1}}^{n\ \mbox{factors}}\;,\label{pauli3}
+\rho_{j}=\frac{1}{2}\left(\sigma_{0}+\sum\limits _{\mu=x,y,z}\expval{\sigma_{\mu}^{j}}\sigma_{\mu}^{j}\right)\,,
+\end{equation}
+where $\sigma_{\mu}^{j}$, $\mu=x,y,z$, are the Pauli operators acting
+on the $j$-th spin~\cite{544199}, 
+\begin{equation}
+\sigma_{\mu}^{j}=\overbrace{\sigma_{0}\otimes\cdots\otimes\sigma_{0}\otimes\underbrace{\sigma_{\mu}}_{j^{th}\ \mbox{factor}}\otimes\sigma_{0}\otimes\cdots\otimes\sigma_{0}}^{n\ \mbox{factors}}\,,\label{pauli3}
 \end{equation}
 with 
-\begin{eqnarray}
-\hspace*{-0.5cm}\sigma_{x}=\left(\begin{array}{cc}
+\begin{equation}
+\begin{aligned}\sigma_{0} & =\left(\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right)\,, & \sigma_{x} & =\left(\begin{array}{cc}
 0 & 1\\
 1 & 0
-\end{array}\right),\sigma_{y}=\left(\begin{array}{cc}
+\end{array}\right)\,, & \sigma_{y} & =\left(\begin{array}{cc}
 0 & -i\\
 i & 0
-\end{array}\right),\sigma_{z}=\left(\begin{array}{cc}
+\end{array}\right)\,, & \sigma_{z} & =\left(\begin{array}{cc}
 1 & 0\\
 0 & -1
-\end{array}\right),
-\end{eqnarray}
-and $\langle\sigma_{\mu}^{j}\rangle=\langle\Psi|\sigma_{\mu}^{j}|\Psi\rangle$
-denotes the corresponding expectation value. The vectors ${\bf X}_{j}=(\langle\sigma_{x}^{j}\rangle,\langle\sigma_{y}^{j}\rangle,\langle\sigma_{y}^{j}\rangle)$,
-${\bf X}_{j}\in{\mathbb{R}}^{3}$, allow a geometric representation
-of each reduced state in ${\mathbb{R}}^{3}$, satisfying $0\le\|{\bf X}_{j}\|\le1$.
-Since ${\sf tr}_{j}(\rho_{j}^{2})=\frac{1}{2}(1+\|{\bf X}_{j}\|^{2})$,
-the state $\ket{\Psi}$ is entangled if $\|{\bf X}_{j}\|<1$ for at
-least one $j$, represented by a point {\em inside} the corresponding
+\end{array}\right)\,,\end{aligned}
+\end{equation}
+and $\expval{\sigma_{\mu}^{j}}=\melem{\Psi}{\sigma_{\mu}^{j}}{\Psi}$
+denotes the corresponding expectation value. The vectors 
+\begin{equation}
+{\bf X}_{j}=\left(\expval{\sigma_{x}^{j}},\expval{\sigma_{y}^{j}},\expval{\sigma_{y}^{j}}\right)\in\mathbb{R}^{3}
+\end{equation}
+allow a geometric representation of each reduced state in $\mathbb{R}^{3}$,
+satisfying $0\le\left\Vert {\bf X}_{j}\right\Vert \le1$. Since $\Tr_{j}\left(\rho_{j}^{2}\right)=\frac{1}{2}\left(1+\left\Vert {\bf X}_{j}\right\Vert ^{2}\right)$,
+the state $\ket{\Psi}$ is entangled if $\left\Vert {\bf X}_{j}\right\Vert <1$
+for at least one $j$, represented by a point \emph{inside} the corresponding
 local Bloch sphere. One may therefore consider $\ket{\Psi}$ to be
-maximally entangled if $\|{\bf X}_{j}\|=0$ for all $j$. On the other
-hand, the state $\ket{\Psi}$ is unentangled (i.e., a product state)
-if $\|{\bf X}_{j}\|=1$ for all $j$, corresponding to points lying
-on the surface of the Bloch sphere.
+maximally entangled if $\left\Vert {\bf X}_{j}\right\Vert =0$ for
+all $j$. On the other hand, the state $\ket{\Psi}$ is unentangled
+(i.e., a product state) if $\left\Vert {\bf X}_{j}\right\Vert =1$
+for all $j$, corresponding to points lying on the surface of the
+Bloch sphere.
 
 A natural geometric measure of multipartite entanglement is obtained
-by defining the {\em purity of a state relative to a set of observables}
-\cite{Barnum2003,Barnum2004}. If the set is chosen to be the set
-of {\em all local observables}, i.e., corresponding to each of
-the subsystems that compose the actual system, one recovers the standard
-notion of entanglement for multipartite systems. For example, if the
-system consists of $n$ qubits, we obtain a measure of conventional
-entanglement by calculating the purity relative to the set $\fh=\{\sigma_{x}^{1},\sigma_{y}^{1},\sigma_{z}^{1},\ldots,\sigma_{x}^{n},\sigma_{y}^{n},\sigma_{z}^{n}\}$,
+by defining the \emph{purity of a state relative to a set of observables}
+\cite{BKOV2003,BKOSV2004}. If the set is chosen to be the set of
+\emph{all local observables}, i.e., corresponding to each of the subsystems
+that compose the actual system, one recovers the standard notion of
+entanglement for multipartite systems. For example, if the system
+consists of $n$ qubits, we obtain a measure of conventional entanglement
+by calculating the purity relative to the set $\fh=\left\{ \sigma_{x}^{1},\sigma_{y}^{1},\sigma_{z}^{1},\ldots,\sigma_{x}^{n},\sigma_{y}^{n},\sigma_{z}^{n}\right\} $,
 \begin{equation}
-P_{\fh}=\frac{1}{n}\sum\limits _{j=1}^{n}\sum\limits _{\mu=x,y,z}\langle\sigma_{\mu}^{j}\rangle^{2}\:,\ \ 0\leq P_{\fh}\leq1\ .\label{purityMeasure.eq}
+\begin{aligned}P_{\fh} & =\frac{1}{n}\sum\limits _{j=1}^{n}\sum\limits _{\mu=x,y,z}\expval{\sigma_{\mu}^{j}}^{2}\,, & 0\leq P_{\fh}\leq1\,.\end{aligned}
+\label{purityMeasure.eq}
 \end{equation}
 Since $\fh$ is a semi-simple Lie algebra, its generalized unentangled
 states are the generalized coherent states obtained by applying any
-group operation to a reference state such as $\ket{\sf0}=\ket{0}\otimes\cdots\otimes\ket{0}$.
+group operation to a reference state such as $\ket{\overline{0}}=\ket{0}\otimes\cdots\otimes\ket{0}$.
 For the algebra $\fh$ of local observables, such group operations
 are simply local rotations on each qubit. In other words, the group
 orbit describing the generalized coherent states of $\fh$ comprises
 all the product states of the form $\ket{\Psi}=\ket{\psi_{1}}\otimes\cdots\otimes\ket{\psi_{n}}$,
 which have maximum purity (i.e., $P_{\fh}=1$). Other states such
-as the Greenberger-Horne-Zeilinger state $\ket{\Psi}=\ket{{\sf GHZ}_{n}}=\frac{1}{\sqrt{2}}(\ket{0}\otimes\cdots\otimes\ket{0}+\ket{1}\otimes\cdots\otimes\ket{1})$
+as the Greenberger-Horne-Zeilinger state $\ket{\Psi}=\ket{\mathsf{GHZ}_{n}}=\frac{1}{\sqrt{2}}\left(\ket{0}\otimes\cdots\otimes\ket{0}+\ket{1}\otimes\cdots\otimes\ket{1}\right)$
 are (maximally) entangled relative to the set of local observables
 (i.e., $P_{\fh}=0$).
 
 Different entanglement measures are obtained when a set $\fh$ different
 from the local observables is chosen. An obvious example, in particular,
 is given by the set of all observables. In this case, the purity takes
-its maximum value independently of the pure quantum state \cite{Barnum2003,Barnum2004},
+its maximum value independently of the pure quantum state \cite{BKOV2003,BKOSV2004},
 expressing the fact that any state is a generalized coherent state
 of the Lie algebra of all observables.
 
