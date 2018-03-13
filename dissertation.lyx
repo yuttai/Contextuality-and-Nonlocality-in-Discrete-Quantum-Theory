@@ -13,12 +13,15 @@
 \DeclareUnicodeCharacter{00A0}{~}
 \usepackage{mmap}
 \usepackage{comment}
-\usepackage[all]{xy}
 \usepackage{framed}
 \usepackage[braket,qm]{qcircuit}
 \usepackage{mathrsfs}
 \usepackage{setspace}
 \usepackage{dsfont}
+
+\usepackage[all]{xy}
+\newcommand{\xyR}[1]{\xymatrixrowsep={#1}}
+\newcommand{\xyC}[1]{\xymatrixcolsep={#1}}
 
 %\usepackage[basic]{complexity}
 \newcommand{\lang}[1]{{\ensuremath{\mathsf{#1}}}}
@@ -4139,13 +4142,37 @@ usat
 \end_inset
 
 problem (also known as 
-\family typewriter
-USAT
-\family default
+\begin_inset Formula $\lang{USAT}$
+\end_inset
+
  or 
-\family typewriter
-UNAMBIGUOUS-SAT
-\family default
+\begin_inset Formula $\lang{UNAMBIGUOUS-SAT}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+Add citation about where these two names come from.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
 ) is the problem of deciding whether a given boolean formula has a satisfying
  assignment, assuming that it has at most one such assignment
 \begin_inset space ~
@@ -4154,7 +4181,7 @@ UNAMBIGUOUS-SAT
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "complexity"
+key "Papadimitriou1993"
 
 \end_inset
 
@@ -4200,12 +4227,12 @@ problem replaces the boolean formula with an arbitrary black box.
 \end_inset
 
  using 
-\begin_inset Formula $O(\log{N})$
+\begin_inset Formula $O\left(\log N\right)$
 \end_inset
 
  black box evaluations by binary search on the database.
  This algorithm then outperforms the known asymptotic bound 
-\begin_inset Formula $O(\sqrt{N})$
+\begin_inset Formula $O\left(\sqrt{N}\right)$
 \end_inset
 
  for unstructured database search in conventional quantum computing.
@@ -4221,13 +4248,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset Formula 
 \[
-\begin{array}{@{\!\!}c}
-\hspace*{1.35cm}\xymatrix@C=0pt{\lstick{y=\ket{0}} & \qw & \multigate{3}{\uf} & \gate{~S^{\dagger}~} & \ctrl{3} & \gate{~S^{\dagger}~} & \multimeasureD{3}{\text{measure}}\\
+\xyR{.9em}\xyC{.6em}\entrymodifiers={@*=<0em>}\xymatrix{\lstick{y=\ket{0}} & \qw & \multigate{3}{\uf} & \gate{~S^{\dagger}~} & \ctrl{3} & \gate{~S^{\dagger}~} & \multimeasureD{3}{\text{measure}}\\
 \lstick{x_{1}=\ket{0}} & \multigate{2}{\otimes S} & \ghost{\uf} & \multigate{2}{\otimes S} & \targ & \qw & \ghost{\text{measure}}\\
 \lstick{\ldots} & \ghost{\otimes S} & \ghost{\uf} & \ghost{\otimes S} & \targ & \qw & \ghost{\text{measure}}\\
 \lstick{x_{n}=\ket{0}} & \ghost{\otimes S} & \ghost{\uf} & \ghost{\otimes S} & \targ & \qw & \ghost{\text{measure}}
 }
-\end{array}
 \]
 
 \end_inset
@@ -4236,16 +4261,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-\begin_inset Argument 1
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:alg"
@@ -4285,7 +4300,7 @@ in modal quantum theory over the field
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "NCbook"
+key "544199"
 
 \end_inset
 
@@ -8152,7 +8167,7 @@ key "VY"
 Projective Geometry Vol.
  2
 \shape default
- (Blaisdell Publishing Company), pp 55–57 
+ (Blaisdell Publishing Company), pp 55??7 
 \end_layout
 
 \begin_layout Plain Layout
@@ -8357,13 +8372,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset Formula 
 \[
-\begin{array}{c}
-\hspace*{1.5cm}\xymatrix@C=0pt{\lstick{y=\ket{0}} & \qw & \multigate{3}{\uf} & \qw & \multimeasureD{3}{\text{measure}}\\
+\xyR{.9em}\xyC{.6em}\entrymodifiers={@*=<0em>}\xymatrix{\lstick{y=\ket{0}} & \qw & \multigate{3}{\uf} & \qw & \multimeasureD{3}{\text{measure}}\\
 \lstick{x_{1}=\ket{0}} & \multigate{2}{H} & \ghost{\uf} & \multigate{2}{H} & \ghost{\text{measure}}\\
 \lstick{\ldots} & \ghost{H} & \ghost{\uf} & \ghost{H} & \ghost{\text{measure}}\\
 \lstick{x_{n}=\ket{0}} & \ghost{H} & \ghost{\uf} & \ghost{H} & \ghost{\text{measure}}
 }
-\end{array}
 \]
 
 \end_inset

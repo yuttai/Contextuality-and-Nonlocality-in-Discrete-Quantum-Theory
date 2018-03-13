@@ -32,12 +32,15 @@
 \DeclareUnicodeCharacter{00A0}{~}
 \usepackage{mmap}
 \usepackage{comment}
-\usepackage[all]{xy}
 \usepackage{framed}
 \usepackage[braket,qm]{qcircuit}
 \usepackage{mathrsfs}
 \usepackage{setspace}
 \usepackage{dsfont}
+
+\usepackage[all]{xy}
+\newcommand{\xyR}[1]{\xymatrixrowsep={#1}}
+\newcommand{\xyC}[1]{\xymatrixcolsep={#1}}
 
 %\usepackage[basic]{complexity}
 \newcommand{\lang}[1]{{\ensuremath{\mathsf{#1}}}}
@@ -784,31 +787,30 @@ Our computations with this ``toy'' modal quantum theory showed that
 it possesses ``supernatural'' computational power. For example,
 one can solve a black box version of the \usat\ problem~\cite{usat}
 in a way that outperforms conventional quantum computing. The classical
-\usat\ problem (also known as \texttt{USAT} or \texttt{UNAMBIGUOUS-SAT})
-is the problem of deciding whether a given boolean formula has a satisfying
-assignment, assuming that it has at most one such assignment~\cite{complexity}.
+\usat\ problem (also known as $\lang{USAT}$ or $\lang{UNAMBIGUOUS-SAT}$\todo{Add
+citation about where these two names come from.}) is the problem
+of deciding whether a given boolean formula has a satisfying assignment,
+assuming that it has at most one such assignment~\cite{Papadimitriou1993}.
 This problem is, in a precise sense~\cite{Valiant198685}, just as
 hard as the general satisfiability problem and hence all problems
 in the~NP complexity class. Our black-box version of the \usat\ problem
 replaces the boolean formula with an arbitrary black box. Solutions
 to this generalized problem can be used to solve an unstructured database
-search of size $N$ using $O(\log{N})$ black box evaluations by binary
-search on the database. This algorithm then outperforms the known
-asymptotic bound $O(\sqrt{N})$ for unstructured database search in
-conventional quantum computing.
+search of size $N$ using $O\left(\log N\right)$ black box evaluations
+by binary search on the database. This algorithm then outperforms
+the known asymptotic bound $O\left(\sqrt{N}\right)$ for unstructured
+database search in conventional quantum computing.
 
 \begin{figure}[t]
 \[
-\begin{array}{@{\!\!}c}
-\hspace*{1.35cm}\xymatrix@C=0pt{\lstick{y=\ket{0}} & \qw & \multigate{3}{\uf} & \gate{~S^{\dagger}~} & \ctrl{3} & \gate{~S^{\dagger}~} & \multimeasureD{3}{\text{measure}}\\
+\xyR{.9em}\xyC{.6em}\entrymodifiers={@*=<0em>}\xymatrix{\lstick{y=\ket{0}} & \qw & \multigate{3}{\uf} & \gate{~S^{\dagger}~} & \ctrl{3} & \gate{~S^{\dagger}~} & \multimeasureD{3}{\text{measure}}\\
 \lstick{x_{1}=\ket{0}} & \multigate{2}{\otimes S} & \ghost{\uf} & \multigate{2}{\otimes S} & \targ & \qw & \ghost{\text{measure}}\\
 \lstick{\ldots} & \ghost{\otimes S} & \ghost{\uf} & \ghost{\otimes S} & \targ & \qw & \ghost{\text{measure}}\\
 \lstick{x_{n}=\ket{0}} & \ghost{\otimes S} & \ghost{\uf} & \ghost{\otimes S} & \targ & \qw & \ghost{\text{measure}}
 }
-\end{array}
 \]
-\caption[]{\label{fig:alg}Circuit for black box \usat\ in modal quantum theory
-over the field $\ff{2}$. $\uf$ is a Deutsch quantum black box~\cite{NCbook}
+\caption{\label{fig:alg}Circuit for black box \usat\ in modal quantum theory
+over the field $\ff{2}$. $\uf$ is a Deutsch quantum black box~\cite{544199}
 with $\uf\ket{y}\ket{\overline{x}}~=~\ket{y\scalarPlus f(\overline{x})}\ket{\overline{x}}$,
 where $\overline{x}$ denotes a sequence $x_{1},x_{2},\ldots,x_{n}$
 of $n$ bits. For further notation see text.}
@@ -1515,7 +1517,7 @@ Differential Geometry Old and New} (Cambridge: Cambridge University
 Press) 
 
 \bibitem{VY} Veblen O and J. W. Young J W 1946 \textit{Projective
-Geometry Vol. 2} (Blaisdell Publishing Company), pp 55–57 
+Geometry Vol. 2} (Blaisdell Publishing Company), pp 55??7 
 
 \bibitem{Ztransform} Campello de Souza R M, de Oliveira H M and Silva
 D 2002 The Z Transform over Finite Fields \textit{International Telecommunications
@@ -1545,13 +1547,11 @@ and probability in general.
 
 \begin{figure}[t]
 \[
-\begin{array}{c}
-\hspace*{1.5cm}\xymatrix@C=0pt{\lstick{y=\ket{0}} & \qw & \multigate{3}{\uf} & \qw & \multimeasureD{3}{\text{measure}}\\
+\xyR{.9em}\xyC{.6em}\entrymodifiers={@*=<0em>}\xymatrix{\lstick{y=\ket{0}} & \qw & \multigate{3}{\uf} & \qw & \multimeasureD{3}{\text{measure}}\\
 \lstick{x_{1}=\ket{0}} & \multigate{2}{H} & \ghost{\uf} & \multigate{2}{H} & \ghost{\text{measure}}\\
 \lstick{\ldots} & \ghost{H} & \ghost{\uf} & \ghost{H} & \ghost{\text{measure}}\\
 \lstick{x_{n}=\ket{0}} & \ghost{H} & \ghost{\uf} & \ghost{H} & \ghost{\text{measure}}
 }
-\end{array}
 \]
 \caption[]{Circuit for black box \usat\ in discrete quantum computing.}
 \label{fig:dbsearch} 
