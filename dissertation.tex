@@ -486,7 +486,10 @@ the whole system is their tensor product
 \end{equation}
 in the four-dimensional Hilbert space. For a $n$-qubit system, if
 we describe the $j$-th qubit as the state~$\ket{\psi_{j}}$, the
-state of the whole system is tensor product of all subsystems $\ket{\Psi}=\ket{\psi_{1}}\otimes\cdots\otimes\ket{\psi_{j}}\otimes\cdots\otimes\ket{\psi_{n}}$
+state of the whole system is tensor product of all subsystems 
+\begin{equation}
+\ket{\Psi}=\ket{\psi_{1}}\otimes\cdots\otimes\ket{\psi_{j}}\otimes\cdots\otimes\ket{\psi_{n}}=\ket{\psi_{1}}\cdots\ket{\psi_{j}}\cdots\ket{\psi_{n}}
+\end{equation}
 in the Hilbert space of dimension $D=2^{n}$. However, not all quantum
 system can be expressed as the tensor product of its subsystems. This
 kind of system is called entangled, and will be described in the next
@@ -584,7 +587,7 @@ its maximum value independently of the pure quantum state \cite{BKOV2003,BKOSV20
 expressing the fact that any state is a generalized coherent state
 of the Lie algebra of all observables.
 
-\subsection{Deutsch Algorithm}
+\subsection{Quantum Circuits\label{subsec:Quantum-Circuits}}
 
 \todo{Further explain $\sigma_{\mu}^{j}$ used as a quantum circuit,
 control not, the Deutsch quantum black box~\cite{NCbook}, and maybe
@@ -717,7 +720,8 @@ Since the zero vector is considered non-physical, a one-qubit system
 can be in one of only three states. The dynamics of these one-qubit
 states is realized by any invertible linear map, i.e., by any linear
 map that is guaranteed never to produce the zero vector from a valid
-state. There are exactly $6$ such maps: 
+state. There are exactly $6$ such maps, and their matrix representation
+with respect to the standard basis are: 
 \begin{equation}
 \begin{aligned}\sigma_{0} & =\begin{pmatrix}1 & 0\\
 0 & 1
@@ -734,6 +738,24 @@ state. There are exactly $6$ such maps:
 1 & 0
 \end{pmatrix}\,.
 \end{aligned}
+\label{eq:MQT-dynamics}
+\end{equation}
+For example, 
+\begin{equation}
+\begin{aligned}S\ket{0} & =\begin{pmatrix}1 & 0\\
+1 & 1
+\end{pmatrix}\begin{pmatrix}1\\
+0
+\end{pmatrix}=\begin{pmatrix}1\\
+1
+\end{pmatrix}=\ket{+}\,, & S\ket{+} & =\begin{pmatrix}1 & 0\\
+1 & 1
+\end{pmatrix}\begin{pmatrix}1\\
+1
+\end{pmatrix}=\begin{pmatrix}1\\
+0
+\end{pmatrix}=\ket{0}\,.\end{aligned}
+\label{eq:MQT-dynamics-apply}
 \end{equation}
 This set of maps is clearly quite impoverished compared to the full
 set of one-qubit unitary maps in conventional quantum theory. In particular,
@@ -826,19 +848,24 @@ of black box evaluations, whether $f$ is satisfiable or not:
 \paragraph*{Case I: $f$ is unsatisfiable; the measurement deterministically
 produces $\ket{0}\ket{\overline{0}}$.}
 
-The state is initialized to $\ket{0}\ket{\overline{0}}$, with $\ket{\overline{0}}=\ket{0}\ket{0}\cdots\ket{0}$,
-i.e., the tensor product of $n$ $\ket{0}$ states. Applying the map
-$S$ (defined in the previous section) to each qubit in the second
-component of the state produces $\ket{0}\ket{\overline{+}}$ where
-$\ket{\overline{+}}$ denotes the sequence $\ket{+}\ldots\ket{+}$
-of length $n$. Applying $\uf$ to the entire state has no effect
-since $U_{f}$ is the identity when $f$ is unsatisfiable. Applying
-$S$ to each qubit in the second component of the state produces $\ket{0}\ket{\overline{0}}$.
+\todo{This part use $\ket{\overline{a}}=\ket{a_{1}}\ldots\ket{a_{n}}$
+while previous parts use $\ket{\Psi}=\ket{\psi_{1}}\cdots\ket{\psi_{j}}\cdots\ket{\psi_{n}}$.
+Moreover, bar is heavily used in QIVPM discussion later, so maybe
+not using bar here????}The state is initialized to $\ket{0}\ket{\overline{0}}$,
+with $\ket{\overline{0}}=\ket{0}\ket{0}\cdots\ket{0}$, i.e., the
+tensor product of $n$ $\ket{0}$ states. As Eq.~(\ref{eq:MQT-dynamics-apply}),
+applying the map $S$ to each qubit in the second component of the
+state produces $\ket{0}\ket{\overline{+}}$ where $\ket{\overline{+}}$
+denotes the sequence $\ket{+}\ldots\ket{+}$ of length $n$. Applying
+$\uf$ to the entire state has no effect since $U_{f}$ is the identity
+when $f$ is unsatisfiable. Applying $S$ to each qubit in the second
+component of the state produces $\ket{0}\ket{\overline{0}}$. Applying
+$S^{\dagger}$ to the first component leaves the state unchanged.
+As the first component of the state is $0$, applying the map $\sigma_{0}$
+(which is the identity) leaves the state unchanged.\todo{Control-not
+need to be defined and explained in Sec.~\ref{subsec:Quantum-Circuits}}
 Applying $S^{\dagger}$ to the first component leaves the state unchanged.
-As the first component of the state is 0, applying the map $X_{0}$
-(which is the identity) leaves the state unchanged. Applying $S^{\dagger}$
-to the first component leaves the state unchanged. Measuring the state
-will deterministically produce $\ket{0}\ket{\overline{0}}$.
+Measuring the state will deterministically produce $\ket{0}\ket{\overline{0}}$.
 
 \paragraph*{Case II: $f$ is satisfiable; the measurement produces some state
 other than $\ket{0}\ket{\overline{0}}$.}
