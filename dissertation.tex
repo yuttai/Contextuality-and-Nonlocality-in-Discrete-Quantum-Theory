@@ -832,18 +832,26 @@ database search in conventional quantum computing.
 }
 \]
 \caption{\label{fig:alg}Circuit for black box \usat\ in modal quantum theory
-over the field $\ff{2}$. $\uf$ is a Deutsch quantum black box~\cite{544199}
-with $\uf\ket{y}\ket{\overline{x}}~=~\ket{y\scalarPlus f(\overline{x})}\ket{\overline{x}}$,
-where $\overline{x}$ denotes a sequence $x_{1},x_{2},\ldots,x_{n}$
-of $n$ bits. For further notation see text.}
+over the field $\ff{2}$. For further notation see text.}
 \end{figure}
 
 We can prove the unreasonable power of the arbitrary-function \usat\ starting
 with a classical function $f:\boolt^{n}\rightarrow\boolt$ that takes
-$n$ bits and returns at most one \btrue\ result. Then we can give
-an algorithm (see Fig.~\ref{fig:alg}) taking as input such a classical
-function that decides, deterministically and in a constant number
-of black box evaluations, whether $f$ is satisfiable or not:
+$n$ bits and returns at most one \btrue\ result. To build a quantum
+algorithm, $f$ is first represented as the Deutsch quantum black
+box~$\uf$ with \cite{Deutsch1985,544199} 
+\begin{equation}
+\uf\ket{y}\ket{\overline{x}}=\begin{cases}
+\ket{y}\ket{\overline{x}}\,, & \textrm{if }f\left(\overline{x}\right)=\bfalse\,;\\
+\ket{\mathsf{not}\left(y\right)}\ket{\overline{x}}\,, & \textrm{if }f\left(\overline{x}\right)=\btrue\,,
+\end{cases}
+\end{equation}
+where $\overline{x}$ denotes a sequence $x_{1},x_{2},\ldots,x_{n}$
+of $n$ bits and $0$ and $1$ are identified as $\bfalse$ and $\btrue$,
+respectively. Then, we can give an algorithm (see Fig.~\ref{fig:alg})
+taking as input such a classical function that decides, deterministically
+and in a constant number of black box evaluations, whether $f$ is
+satisfiable or not:
 
 \paragraph*{Case I: $f$ is unsatisfiable; the measurement deterministically
 produces $\ket{0}\ket{\overline{0}}$.}
@@ -880,18 +888,22 @@ where the summation is now over all vectors (notice that $\ket{0}\ket{\overline{
 is the zero vector). Applying $S$ to each qubit in the second component
 produces $\ket{+}\ket{\overline{S(a)}}+\ket{0}\ket{\overline{0}}$.
 Applying $S^{\dagger}$ to the first component produces: $\ket{1}\ket{\overline{S(a)}}+\ket{0}\ket{\overline{0}}$.
-Applying $X_{b}$, where $b$ is the first component of the state,
-to each qubit in the second component produces $\ket{1}\ket{\overline{{\sf not}(S(a))}}+\ket{0}\ket{\overline{0}}$.
-Applying $S^{\dagger}$ to the first component produces $\ket{+}\ket{\overline{{\sf not}(S(a))}}+\ket{0}\ket{\overline{0}}$.
-For the measurement of $\ket{+}\ket{\overline{{\sf not}(S(a))}}+\ket{0}\ket{\overline{0}}$
+Applying control-not gate, which applying $\sigma_{0}$ or $\sigma_{x}$
+on the second component depending on the first component of the state,
+and produces 
+\begin{equation}
+\ket{1}\left(\sigma_{x}\ket{\overline{S(a)}}\right)+\ket{0}\left(\sigma_{0}\ket{\overline{0}}\right)=\ket{1}\ket{\overline{\mathsf{not}\left(S(a)\right)}}+\ket{0}\ket{\overline{0}}\,.
+\end{equation}
+Applying $S^{\dagger}$ to the first component produces $\ket{+}\ket{\overline{\mathsf{not}\left(S(a)\right)}}+\ket{0}\ket{\overline{0}}$.
+For the measurement of $\ket{+}\ket{\overline{\mathsf{not}\left(S(a)\right)}}+\ket{0}\ket{\overline{0}}$
 to be guaranteed to never be $\ket{0}\ket{\overline{0}}$, we need
-to verify that $\ket{+}\ket{\overline{{\sf not}(S(a))}}$ has one
-occurrence $\ket{0}\ket{\overline{0}}$. This can be easily proved
-as follows. Since each $a_{i}$ is either 0 or 1, then each $S(a_{i})$
-is either $+$ or $1$, and hence each ${\sf not}(S(a_{i}))$ is either~$+$
-or~$0$. The result follows since any state with a combination of
-$+$ and $0$, when expressed in the standard basis, would consist
-of a superposition containing the state $\ket{0\ldots}$.
+to verify that $\ket{+}\ket{\overline{\mathsf{not}\left(S(a)\right)}}$
+has one occurrence $\ket{0}\ket{\overline{0}}$. This can be easily
+proved as follows. Since each $a_{i}$ is either 0 or 1, then each
+$S(a_{i})$ is either $+$ or $1$, and hence each $\mathsf{not}\left(S(a_{i})\right)$
+is either~$+$ or~$0$. The result follows since any state with
+a combination of $+$ and $0$, when expressed in the standard basis,
+would consist of a superposition containing the state $\ket{0\ldots}$.
 
 \begin{comment}
 

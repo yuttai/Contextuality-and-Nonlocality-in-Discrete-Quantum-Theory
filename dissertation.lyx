@@ -4323,38 +4323,6 @@ in modal quantum theory over the field
 \end_inset
 
 .
- 
-\begin_inset Formula $\uf$
-\end_inset
-
- is a Deutsch quantum black box
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "544199"
-
-\end_inset
-
- with 
-\begin_inset Formula $\uf\ket{y}\ket{\overline{x}}~=~\ket{y\scalarPlus f(\overline{x})}\ket{\overline{x}}$
-\end_inset
-
-, where 
-\begin_inset Formula $\overline{x}$
-\end_inset
-
- denotes a sequence 
-\begin_inset Formula $x_{1},x_{2},\ldots,x_{n}$
-\end_inset
-
- of 
-\begin_inset Formula $n$
-\end_inset
-
- bits.
  For further notation see text.
 \end_layout
 
@@ -4412,7 +4380,66 @@ btrue
 \end_inset
 
 result.
- Then we can give an algorithm (see Fig.
+ To build a quantum algorithm, 
+\begin_inset Formula $f$
+\end_inset
+
+ is first represented as the Deutsch quantum black box
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\uf$
+\end_inset
+
+ with 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Deutsch1985,544199"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+\uf\ket{y}\ket{\overline{x}}=\begin{cases}
+\ket{y}\ket{\overline{x}}\,, & \textrm{if }f\left(\overline{x}\right)=\bfalse\,;\\
+\ket{\mathsf{not}\left(y\right)}\ket{\overline{x}}\,, & \textrm{if }f\left(\overline{x}\right)=\btrue\,,
+\end{cases}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\overline{x}$
+\end_inset
+
+ denotes a sequence 
+\begin_inset Formula $x_{1},x_{2},\ldots,x_{n}$
+\end_inset
+
+ of 
+\begin_inset Formula $n$
+\end_inset
+
+ bits and 
+\begin_inset Formula $0$
+\end_inset
+
+ and 
+\begin_inset Formula $1$
+\end_inset
+
+ are identified as 
+\begin_inset Formula $\bfalse$
+\end_inset
+
+ and 
+\begin_inset Formula $\btrue$
+\end_inset
+
+, respectively.
+ Then, we can give an algorithm (see Fig.
 \begin_inset space ~
 \end_inset
 
@@ -4692,31 +4719,34 @@ Assume the function
 \end_inset
 
 .
- Applying 
-\begin_inset Formula $X_{b}$
+ Applying control-not gate, which applying 
+\begin_inset Formula $\sigma_{0}$
 \end_inset
 
-, where 
-\begin_inset Formula $b$
+ or 
+\begin_inset Formula $\sigma_{x}$
 \end_inset
 
- is the first component of the state, to each qubit in the second component
- produces 
-\begin_inset Formula $\ket{1}\ket{\overline{{\sf not}(S(a))}}+\ket{0}\ket{\overline{0}}$
+ on the second component depending on the first component of the state,
+ and produces 
+\begin_inset Formula 
+\begin{equation}
+\ket{1}\left(\sigma_{x}\ket{\overline{S(a)}}\right)+\ket{0}\left(\sigma_{0}\ket{\overline{0}}\right)=\ket{1}\ket{\overline{\mathsf{not}\left(S(a)\right)}}+\ket{0}\ket{\overline{0}}\,.
+\end{equation}
+
 \end_inset
 
-.
- Applying 
+Applying 
 \begin_inset Formula $S^{\dagger}$
 \end_inset
 
  to the first component produces 
-\begin_inset Formula $\ket{+}\ket{\overline{{\sf not}(S(a))}}+\ket{0}\ket{\overline{0}}$
+\begin_inset Formula $\ket{+}\ket{\overline{\mathsf{not}\left(S(a)\right)}}+\ket{0}\ket{\overline{0}}$
 \end_inset
 
 .
  For the measurement of 
-\begin_inset Formula $\ket{+}\ket{\overline{{\sf not}(S(a))}}+\ket{0}\ket{\overline{0}}$
+\begin_inset Formula $\ket{+}\ket{\overline{\mathsf{not}\left(S(a)\right)}}+\ket{0}\ket{\overline{0}}$
 \end_inset
 
  to be guaranteed to never be 
@@ -4724,7 +4754,7 @@ Assume the function
 \end_inset
 
 , we need to verify that 
-\begin_inset Formula $\ket{+}\ket{\overline{{\sf not}(S(a))}}$
+\begin_inset Formula $\ket{+}\ket{\overline{\mathsf{not}\left(S(a)\right)}}$
 \end_inset
 
  has one occurrence 
@@ -4750,7 +4780,7 @@ Assume the function
 \end_inset
 
 , and hence each 
-\begin_inset Formula ${\sf not}(S(a_{i}))$
+\begin_inset Formula $\mathsf{not}\left(S(a_{i})\right)$
 \end_inset
 
  is either
