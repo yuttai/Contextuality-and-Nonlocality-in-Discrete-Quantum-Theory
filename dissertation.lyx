@@ -28,11 +28,18 @@
 \newcommand{\newlang}[2]{\newcommand{#1}{\lang{#2}}}
 \newlang{\usat}{UNIQUE-SAT}
 
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{definition}{}[section]
+
 \newcommand{\muB}{\ensuremath{\mu^{B}}}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
 \newcommand{\set}[2]{\ensuremath{\left\{ {#1}\mathrel{}\middle|\mathrel{}{#2}\right\} }}
 \newcommand{\gmult}{*}
 \newcommand{\Fpx}[1]{\mathbb{F}_{{#1}}}
+\newcommand{\Fp}{\Fpx{p}}
+\newcommand{\Fppx}[1]{\Fpx{{#1}^2}}
+\newcommand{\Fpp}{\Fppx{p}}
 \newcommand{\Fq}{\Fpx{q}}
 \newcommand{\ff}[1]{\Fpx{#1}}
 \newcommand{\ffzx}[2]{\Fpx{#1}^{{#2}\;*}}
@@ -59,6 +66,7 @@
 \newcommand{\btrue}{\texttt{\textbf{true}}}
 \newcommand{\dotprod}{dot product}
 \newcommand{\Tr}{\ensuremath{\mathop{\mathrm{Tr}}\nolimits}}
+\newcommand{\fnorm}[1]{\mathsf{N}(#1)}
 
 \department{Department of Mathematics}
 \department{Department of Computer Science}
@@ -3109,6 +3117,10 @@ name "sec:background"
 
 \end_layout
 
+\begin_layout Subsection
+Background
+\end_layout
+
 \begin_layout Standard
 A field
 \begin_inset space ~
@@ -3300,6 +3312,10 @@ Finite fields of
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Cyclic Properties of Finite Fields
 \end_layout
 
 \begin_layout Standard
@@ -4794,7 +4810,31 @@ Applying
 \end_inset
 
 .
- This can be easily proved as follows.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+The following need to be rewritten.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+This can be easily proved as follows.
  Since each 
 \begin_inset Formula $a_{i}$
 \end_inset
@@ -5000,6 +5040,10 @@ name "discretequantumtheoryI"
 
 \end_layout
 
+\begin_layout Subsection
+Complexified Finite Fields
+\end_layout
+
 \begin_layout Standard
 Our next objective is to develop more realistic discrete quantum theory
  variants that exclude 
@@ -5116,634 +5160,6 @@ key "fieldexample"
 \end_layout
 
 \begin_layout Standard
-The next task is to examine the consequences when we attempt to construct
- 
-\begin_inset Formula $d$
-\end_inset
-
--dimensional vector spaces over the complexified fields 
-\begin_inset Formula $\ff{p^{2}}$
-\end_inset
-
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "geom1"
-
-\end_inset
-
-.
- (For readability, instead of writing column vectors, we will often use
- the vector notation 
-\begin_inset Formula $\ket{\Psi}=(\alpha_{0}~\alpha_{1}~\ldots~\alpha_{d-1})^{T}$
-\end_inset
-
- and 
-\begin_inset Formula $\ket{\Phi}=(\beta_{0}~\beta_{1}~\ldots~\beta_{d-1})^{T}$
-\end_inset
-
-, where 
-\begin_inset Formula $(.)^{T}$
-\end_inset
-
- is the transpose of the 
-\shape italic
-row
-\shape default
- vector 
-\begin_inset Formula $(.)$
-\end_inset
-
-.) It can be shown
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "HermitianProd"
-
-\end_inset
-
- that, given two vectors 
-\begin_inset Formula 
-\begin{equation}
-\ket{\Psi}=\sum_{i=0}^{d-1}~\alpha_{i}\ket{i}\ ,\ \ket{\Phi}=\sum_{i=0}^{d-1}~\beta_{i}\ket{i},
-\end{equation}
-
-\end_inset
-
-with scalars 
-\begin_inset Formula $\alpha_{i}$
-\end_inset
-
- and 
-\begin_inset Formula $\beta_{i}$
-\end_inset
-
- drawn from the field elements, and orthonormal basis 
-\begin_inset Formula $\{\ket{i}\}$
-\end_inset
-
-, the Hermitian 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-dotprod
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \space{}
-\end_inset
-
-is always reducible to the form 
-\begin_inset VSpace -0.1in
-\end_inset
-
- 
-\begin_inset Formula 
-\begin{equation}
-\ip{\Phi}{\Psi}=\sum_{i=0}^{d-1}~\beta_{i}^{p}~\alpha_{i}^{\;}\ .\vspace{-0.1in}\label{innerprod}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-This product satisfies conditions A and B below, but not
-\begin_inset space ~
-\end_inset
-
-C, because in a finite field, addition can 
-\begin_inset Quotes eld
-\end_inset
-
-wrap around,
-\begin_inset Quotes erd
-\end_inset
-
- making the concepts of positive and negative meaningless and allowing the
- sum of non-zero elements to be zero: 
-\end_layout
-
-\begin_layout Itemize
-A.
- 
-\begin_inset Formula $\ip{\Phi}{\Psi}$
-\end_inset
-
- is the complex conjugate of 
-\begin_inset Formula $\ip{\Psi}{\Phi}$
-\end_inset
-
-; 
-\begin_inset VSpace -0.25cm*
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-B.
- 
-\begin_inset Formula $\ip{\Phi}{\Psi}$
-\end_inset
-
- is conjugate linear in its first argument and linear in its second argument;
- 
-\begin_inset VSpace -0.25cm*
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-C.
- 
-\begin_inset Formula $\ip{\Psi}{\Psi}$
-\end_inset
-
- is always non-negative and is equal to
-\begin_inset space ~
-\end_inset
-
-0 only if 
-\begin_inset Formula $\ket{\Psi}$
-\end_inset
-
- is the zero vector.
- 
-\end_layout
-
-\begin_layout Standard
-With just conditions A and B, it is possible to recover unitary operators,
- and thus recover much of the relevant structure of Hilbert spaces over
- the field of complex numbers.
- The failure of condition C, however, plays havoc with the traditional notions
- of ordered probabilities as well as the geometric notions of ordered distances
- and angles, whose lengths and cosines, respectively, are normally expressed
- using the inner product
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "geom"
-
-\end_inset
-
-.
- In a separate development, we explore the geometry of these finite fields
- and define a discrete version of the Hopf fibration extending the Bloch
- sphere to 
-\begin_inset Formula $n$
-\end_inset
-
--qubits, as well as determining discrete measures for the relative sizes
- of the entangled, maximally entangled, and unentangled discrete states
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "geom1"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Section
-Vector Spaces over Complexified Finite Fields
-\end_layout
-
-\begin_layout Plain Layout
-In order to address the intrinsic problems induced by the notion of the
- continuum calculations of the previous section, one is led to replace the
- infinite fields of CQC by discrete computable fields.
- Accomplishing this while maintaining the essential elements of addition
- and multiplication requires a brief excursion into the theory of fields,
- and particularly the theory of finite fields.
-\end_layout
-
-\begin_layout Subsection
-Background
-\end_layout
-
-\begin_layout Plain Layout
-Abstract algebra deals with various kinds of algebraic structures, such
- as groups, rings, and fields, each defined by a different system of axioms.
- A field
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mathbf{F}$
-\end_inset
-
- is an algebraic structure consisting of a set of elements equipped with
- the operations of addition, subtraction, multiplication, and division 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "numtheory.ref"
-
-\end_inset
-
-.
- Fields may contain an infinite or a finite number of elements.
- The rational 
-\begin_inset Formula $\mathbb{Q}$
-\end_inset
-
-, real 
-\begin_inset Formula $\mathbb{R}$
-\end_inset
-
-, and complex numbers 
-\begin_inset Formula $\mathbb{C}$
-\end_inset
-
- are examples of infinite fields, while the set 
-\begin_inset Formula $\mathbf{F}_{3}=\{0,1,2\}$
-\end_inset
-
- under the usual multiplication and modular addition is an example of a
- finite field.
- Finite fields are also known as Galois fields 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "GT.ref"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Plain Layout
-There are two distinguished elements in a field, the addition identity 
-\begin_inset Formula $0$
-\end_inset
-
-, and the multiplication identity 
-\begin_inset Formula $1$
-\end_inset
-
-.
- Given the field 
-\begin_inset Formula $\mathbf{F}$
-\end_inset
-
-, the closed operations of addition, 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Formula $+$
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-, and multiplication, 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Formula $\gmult$
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-, satisfy the following set of axioms:
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $\mathbf{F}$
-\end_inset
-
- is an Abelian group under the addition operation 
-\begin_inset Formula $+$
-\end_inset
-
- (additive group)
-\end_layout
-
-\begin_layout Enumerate
-The multiplication operation 
-\begin_inset Formula $\gmult$
-\end_inset
-
- is associative and commutative.
- The field has a multiplicative identity and the property that every nonzero
- element has a multiplicative inverse
-\end_layout
-
-\begin_layout Enumerate
-Distributive laws: For all 
-\begin_inset Formula $a,b,c\in\mathbf{F}$
-\end_inset
-
- 
-\begin_inset Formula 
-\begin{eqnarray}
-a\gmult(b+c)=a\gmult b+a\gmult c\\
-(b+c)\gmult a=b\gmult a+c\gmult a\ .
-\end{eqnarray}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-From now on, unless specified, we will omit the symbol 
-\begin_inset Formula $\gmult$
-\end_inset
-
- whenever we multiply two elements of a field.
-\end_layout
-
-\begin_layout Plain Layout
-Finite fields of 
-\begin_inset Formula $q$
-\end_inset
-
- elements, 
-\begin_inset Formula $\Fq=\{0,\ldots,q-1\}$
-\end_inset
-
-, will play a special role in this work.
- A simple explicit example is the following addition and multiplication
- tables for 
-\begin_inset Formula $\mathbf{F}_{3}$
-\end_inset
-
-: 
-\begin_inset Formula 
-\[
-\begin{array}{c|ccc}
-+ & 0 & 1 & 2\\[0.1in]
-\hline 0 & 0 & 1 & 2\\
-1 & 1 & 2 & 0\\
-2 & 2 & 0 & 1
-\end{array}\hspace*{2cm}\begin{array}{c|ccc}
-\gmult & 0 & 1 & 2\\[0.1in]
-\hline 0 & 0 & 0 & 0\\
-1 & 0 & 1 & 2\\
-2 & 0 & 2 & 1
-\end{array}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Cyclic Properties of Finite Fields
-\end_layout
-
-\begin_layout Plain Layout
-Finite fields are classified by size.
- The characteristic of a field is the least positive integer 
-\begin_inset Formula $m$
-\end_inset
-
- such that 
-\begin_inset Formula $m=1+1+1+\cdots+1\equiv0$
-\end_inset
-
-, and if no such 
-\begin_inset Formula $m$
-\end_inset
-
- exists we say that the field has characteristic zero (which is the case
- for infinite fields such as 
-\begin_inset Formula $\mathbb{R}$
-\end_inset
-
-).
- It turns out that if the characteristic is non-zero it must be a prime
- 
-\begin_inset Formula $p$
-\end_inset
-
-.
- For every prime 
-\begin_inset Formula $p$
-\end_inset
-
- and positive integer 
-\begin_inset Formula $r$
-\end_inset
-
- there is a finite field 
-\begin_inset Formula $\Fpx{p^{r}}$
-\end_inset
-
- of cardinality 
-\begin_inset Formula $q=p^{r}$
-\end_inset
-
- and characteristic 
-\begin_inset Formula $p$
-\end_inset
-
- (Lagrange's theorem), which is unique up to field isomorphisms.
- For every 
-\begin_inset Formula $a\in\Fq$
-\end_inset
-
-, 
-\begin_inset Formula $a\neq0$
-\end_inset
-
-, then 
-\begin_inset Formula $a^{q-1}=1$
-\end_inset
-
-, implying the Frobenius endomorphism (also a consequence of Fermat's little
- theorem) 
-\begin_inset Formula $a^{q}=a$
-\end_inset
-
-, which in turn permits us to write the multiplicative inverse of any non-zero
- element in the field as 
-\begin_inset Formula $a^{-1}=a^{q-2}$
-\end_inset
-
-, since 
-\begin_inset Formula $a^{q-2}a=a^{q-1}=1$
-\end_inset
-
-.
- Every subfield of the field 
-\begin_inset Formula $\Fq$
-\end_inset
-
-, of cardinality 
-\begin_inset Formula $q=p^{r}$
-\end_inset
-
-, has 
-\begin_inset Formula $p^{r'}$
-\end_inset
-
- elements with some 
-\begin_inset Formula $r'$
-\end_inset
-
- dividing 
-\begin_inset Formula $r$
-\end_inset
-
-, and for a given 
-\begin_inset Formula $r'$
-\end_inset
-
- it is unique.
- Notice that a fundamental difference between finite and infinite fields
- is one of topology: finite fields induce a compact structure because of
- their modular arithmetic, permitting 
-\shape italic
-wrapping around
-\shape default
-, while that is not the case for fields of characteristic zero.
- This feature may lead to fundamental physical consequences.
-\end_layout
-
-\begin_layout Subsection
-Complexified Finite Fields
-\end_layout
-
-\begin_layout Plain Layout
-Consider the polynomial 
-\begin_inset Formula $x^{2}+1=0$
-\end_inset
-
- over a finite field 
-\begin_inset Formula $\Fp$
-\end_inset
-
-.
- It is known that this polynomial does not have solutions in the field precisely
- when the prime 
-\begin_inset Formula $p$
-\end_inset
-
- is congruent to 
-\begin_inset Formula $3\imod{4}$
-\end_inset
-
- (see, e.g., 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "numtheory.ref"
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Plain Layout
-For such primes, it is therefore possible to construct an extended field
- 
-\begin_inset Formula $\Fpp$
-\end_inset
-
- whose elements are of the form 
-\begin_inset Formula $\alpha=a+ib$
-\end_inset
-
- with 
-\begin_inset Formula $a\in\Fp$
-\end_inset
-
-, 
-\begin_inset Formula $b\in\Fp$
-\end_inset
-
-, and 
-\begin_inset Formula $i$
-\end_inset
-
- the root of the polynomial 
-\begin_inset Formula $x^{2}+1=0$
-\end_inset
-
-.
- Since the field elements 
-\begin_inset Formula $a+ib$
-\end_inset
-
- behave like discrete versions of the complex numbers, we will refer to
- fields 
-\begin_inset Formula $\Fp$
-\end_inset
-
- with prime 
-\begin_inset Formula $p$
-\end_inset
-
- congruent to 
-\begin_inset Formula $3\imod{4}$
-\end_inset
-
- as 
-\emph on
-complexifiable finite fields
-\emph default
-, and 
-\begin_inset Formula $i$
-\end_inset
-
--extended fields 
-\begin_inset Formula $\Fpp$
-\end_inset
-
- with 
-\begin_inset Formula $p$
-\end_inset
-
- congruent to 
-\begin_inset Formula $3\imod{4}$
-\end_inset
-
- as 
-\emph on
-complexified finite fields
-\emph default
-.
-\end_layout
-
-\begin_layout Plain Layout
 In a complexified finite field 
 \begin_inset Formula $\Fpp$
 \end_inset
@@ -5770,13 +5186,13 @@ In a complexified finite field
 \end_inset
 
  since 
-\begin_inset Formula $11\equiv-1\imod{3}$
+\begin_inset Formula $11\equiv-1\pmod{3}$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 We define the 
 \emph on
 field norm
@@ -5809,7 +5225,7 @@ We avoid the square root in the discrete field framework because, unlike
 Vector Spaces
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 In this section we want to build a theory of discrete vector spaces that
  approximates as closely as possible the features of conventional quantum
  theory.
@@ -5887,7 +5303,7 @@ C.
  
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 It turns out that a vector space defined over a finite field cannot have
  an inner product satisfying the properties above.
  However, we will introduce an Hermitian 
@@ -5901,7 +5317,7 @@ dot product
  satisfying some of those properties.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 We are interested in the 
 \begin_inset Formula $n$
 \end_inset
@@ -5950,7 +5366,7 @@ We are interested in the
  is the transpose.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -5958,12 +5374,23 @@ status collapsed
 
 
 \backslash
-begin{definition}
+begin{definition}[
 \end_layout
 
 \end_inset
 
-[Hermitian dot product] Given vectors 
+Hermitian dot product
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ Given vectors 
 \begin_inset Formula $\ket{\Phi}$
 \end_inset
 
@@ -6037,7 +5464,7 @@ wraps around
 .
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 For any vector 
 \begin_inset Formula $\ket{\Psi}=(\alpha_{0}~\alpha_{1}~\ldots~\alpha_{D-1})^{T}$
 \end_inset
@@ -6063,89 +5490,9 @@ For any vector
 The field norm of a vector can vanish for non-vanishing vectors.
 \end_layout
 
-\begin_layout Plain Layout
-For vectors 
-\begin_inset Formula $\ket{\Psi}$
-\end_inset
-
- such that 
-\begin_inset Formula $\ip{\Psi}{\Psi}=\sum_{i=0}^{D-1}\alpha_{i}^{p}\,\alpha_{i}^{\;}=\sum_{i=0}^{D-1}\alpha_{i}^{p+1}=\sum_{i=0}^{D-1}|\alpha_{i}|^{2}$
-\end_inset
-
- has a square root in the field, one can define the following 
-\begin_inset Quotes eld
-\end_inset
-
-norm
-\begin_inset Quotes erd
-\end_inset
-
-: 
-\begin_inset Formula 
-\begin{equation}
-||\Psi||=\sqrt{\ip{\Psi}{\Psi}}\ ,\label{norm-eq}
-\end{equation}
-
-\end_inset
-
-which is valid only on a subspace of the field norm for finite fields.
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%There is an alternative way of defining a proper inner product over a subset
- of the 
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%field $
-\backslash
-Fpp$.
- Consider prime numbers $p= 8 
-\backslash
-prod_{l=1}^k q_l -1$, where  
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%$q_l$ are odd primes.
- This subset of the primes congruent to $3 
-\backslash
-imod 4$ has the 
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%special properti
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_layout Standard
+\begin_inset Note Note
+status open
 
 \begin_layout Section
 Irreducible Discrete 
@@ -8690,12 +8037,8 @@ wrapping around
 
  due to modular arithmetic.
  We do not know, in general, whether this version of discrete quantum computing
- actually enables the rapid solution of NP-complete problems
-\end_layout
-
-\begin_layout Standard
-.
-\begin_inset Note Comment
+ actually enables the rapid solution of NP-complete problems.
+\begin_inset Note Note
 status open
 
 \begin_layout Section
