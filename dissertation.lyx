@@ -30,7 +30,7 @@
 
 \usepackage{amsthm}
 \theoremstyle{definition}
-\newtheorem{definition}{}[section]
+\newtheorem{definition}{Definition}[section]
 
 \newcommand{\muB}{\ensuremath{\mu^{B}}}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
@@ -5069,14 +5069,18 @@ key "HOSW2011"
  is based on complexifiable finite fields.
  To incorporate complex numbers for quantum amplitudes, we exploit the fact
  that the polynomial 
-\begin_inset Formula $x^{2}+1=0$
+\begin_inset Formula $x^{2}+1$
 \end_inset
 
  is 
 \emph on
 irreducible
 \emph default
- (has no solution) over a prime field 
+ (
+\begin_inset Formula $x^{2}+1=0$
+\end_inset
+
+ has no solution) over a prime field 
 \begin_inset Formula $\ff{p}$
 \end_inset
 
@@ -5096,31 +5100,69 @@ irreducible
 \begin_inset Formula $\ell$
 \end_inset
 
- a non-negative integer.
- In other words, 
-\begin_inset Formula $x^{2}+1=0$
+ a non-negative integer 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Artin1991,DummitFoote2004"
+
+\end_inset
+
+.
+ For example, given any 
+\begin_inset Formula $x\in\ff{3}=\left\{ 0,\pm1\right\} $
+\end_inset
+
+, when 
+\begin_inset Formula $x=0$
+\end_inset
+
+, we have 
+\begin_inset Formula $x^{2}+1=0^{2}+1=1$
+\end_inset
+
+; when 
+\begin_inset Formula $x=\pm1$
+\end_inset
+
+, we have 
+\begin_inset Formula $x^{2}+1=\left(\pm1\right)^{2}+1=1$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $x^{2}+1$
 \end_inset
 
  is irreducible over 
 \begin_inset Formula $\ff{3}$
 \end_inset
 
-, 
-\begin_inset Formula $\ff{7}$
-\end_inset
-
-, 
-\begin_inset Formula $\ff{11}$
-\end_inset
-
-, 
-\begin_inset Formula $\ff{19}$
-\end_inset
-
-, \SpecialChar ldots
 .
- We achieve our goal by observing that any field in this family is extensible
- to a field
+ In contrast, over 
+\begin_inset Formula $\ff{5}$
+\end_inset
+
+, 
+\begin_inset Formula $2^{2}+1=0$
+\end_inset
+
+ so that 
+\begin_inset Formula $x^{2}+1$
+\end_inset
+
+ is reducible.
+\end_layout
+
+\begin_layout Standard
+We achieve our goal by observing that any field 
+\begin_inset Formula $\ff{p}$
+\end_inset
+
+ with 
+\begin_inset Formula $p=4\ell+3$
+\end_inset
+
+ is extensible to a field
 \begin_inset space ~
 \end_inset
 
@@ -5187,7 +5229,7 @@ field norm
 \end_inset
 
  as the map from 
-\begin_inset Formula $(a+ib)\in\Fpp$
+\begin_inset Formula $a+\rmi b\in\Fpp$
 \end_inset
 
  to 
@@ -5197,7 +5239,7 @@ field norm
 , 
 \begin_inset Formula 
 \begin{equation}
-\fnorm{\alpha=a+\rmi b}=a^{2}+b^{2}\,.\label{fieldnorm.eq}
+\fnorm{a+\rmi b}=a^{2}+b^{2}\,.\label{fieldnorm.eq}
 \end{equation}
 
 \end_inset
@@ -5223,12 +5265,36 @@ In this section we want to build a theory of discrete vector spaces that
  following properties: 
 \end_layout
 
-\begin_layout Itemize
-\begin_inset Argument item:1
+\begin_layout Enumerate
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-A.
+label=(
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Alph{
+\end_layout
+
+\end_inset
+
+enumi
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \end_inset
@@ -5244,17 +5310,7 @@ A.
 ; 
 \end_layout
 
-\begin_layout Itemize
-\begin_inset Argument item:1
-status open
-
-\begin_layout Plain Layout
-B.
-\end_layout
-
-\end_inset
-
-
+\begin_layout Enumerate
 \begin_inset Formula $\ip{\Phi}{\Psi}$
 \end_inset
 
@@ -5262,17 +5318,7 @@ B.
  
 \end_layout
 
-\begin_layout Itemize
-\begin_inset Argument item:1
-status open
-
-\begin_layout Plain Layout
-C.
-\end_layout
-
-\end_inset
-
-
+\begin_layout Enumerate
 \begin_inset Formula $\ip{\Psi}{\Psi}$
 \end_inset
 
@@ -5303,16 +5349,12 @@ dot product
 \end_layout
 
 \begin_layout Standard
-We are interested in the 
-\begin_inset Formula $n$
-\end_inset
-
--qubit vector space 
+We are interested in the vector space 
 \begin_inset Formula ${\cal H}$
 \end_inset
 
  of dimension 
-\begin_inset Formula $D=2^{n}$
+\begin_inset Formula $D$
 \end_inset
 
  defined over the complexified field 
@@ -5321,11 +5363,11 @@ We are interested in the
 
 .
  Let 
-\begin_inset Formula $\ket{\Psi}=(\alpha_{0}~\alpha_{1}~\ldots~\alpha_{D-1})^{T}$
+\begin_inset Formula $\ket{\Psi}=\begin{pmatrix}\alpha_{0} & \alpha_{1} & \ldots & \alpha_{D-1}\end{pmatrix}^{T}$
 \end_inset
 
  and 
-\begin_inset Formula $\ket{\Phi}=(\beta_{0}~\beta_{1}~\ldots~\beta_{D-1})^{T}$
+\begin_inset Formula $\ket{\Phi}=\begin{pmatrix}\beta_{0} & \beta_{1} & \ldots & \beta_{D-1}\end{pmatrix}^{T}$
 \end_inset
 
  represent vectors in 
@@ -5345,7 +5387,7 @@ We are interested in the
 \end_inset
 
 , and where 
-\begin_inset Formula $(\cdot)^{T}$
+\begin_inset Formula $\left(\cdot\right)^{T}$
 \end_inset
 
  is the transpose.
@@ -5386,7 +5428,7 @@ status collapsed
 , the Hermitian dot product of these vectors is: 
 \begin_inset Formula 
 \begin{equation}
-\ip{\Phi}{\Psi}=\sum_{i=0}^{D-1}~\beta_{i}^{p}~\alpha_{i}^{\;}\ .
+\ip{\Phi}{\Psi}=\sum_{i=0}^{D-1}\beta_{i}^{p}\alpha_{i}\,.
 \end{equation}
 
 \end_inset
@@ -5451,7 +5493,7 @@ wraps around
 
 \begin_layout Standard
 For any vector 
-\begin_inset Formula $\ket{\Psi}=(\alpha_{0}~\alpha_{1}~\ldots~\alpha_{D-1})^{T}$
+\begin_inset Formula $\ket{\Psi}=\begin{pmatrix}\alpha_{0} & \alpha_{1} & \ldots & \alpha_{D-1}\end{pmatrix}^{T}$
 \end_inset
 
 , the Hermitian dot product 
@@ -5459,7 +5501,7 @@ For any vector
 \end_inset
 
  is equal to 
-\begin_inset Formula $\sum_{i=0}^{D-1}~\fnorm{\alpha_{i}}$
+\begin_inset Formula $\sum_{i=0}^{D-1}\fnorm{\alpha_{i}}$
 \end_inset
 
 , which is the sum of the field norms for the complex coefficients.
@@ -5467,7 +5509,7 @@ For any vector
  by defining 
 \begin_inset Formula 
 \begin{equation}
-\fnorm{\ket{\Psi}}=\ip{\Psi}{\Psi}=\sum_{i=0}^{D-1}~\fnorm{\alpha_{i}}\ .\label{fnormD.eq}
+\fnorm{\ket{\Psi}}=\ip{\Psi}{\Psi}=\sum_{i=0}^{D-1}\fnorm{\alpha_{i}}\,.\label{fnormD.eq}
 \end{equation}
 
 \end_inset

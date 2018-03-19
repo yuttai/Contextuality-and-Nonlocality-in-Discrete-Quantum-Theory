@@ -49,7 +49,7 @@
 
 \usepackage{amsthm}
 \theoremstyle{definition}
-\newtheorem{definition}{}[section]
+\newtheorem{definition}{Definition}[section]
 
 \newcommand{\muB}{\ensuremath{\mu^{B}}}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
@@ -950,24 +950,28 @@ Our next objective is to develop more realistic discrete quantum theory
 variants that exclude ``supernatural'' algorithms such as the one
 presented above. Our first such plausible framework~\cite{HOSW2011}
 is based on complexifiable finite fields. To incorporate complex numbers
-for quantum amplitudes, we exploit the fact that the polynomial $x^{2}+1=0$
-is \emph{irreducible} (has no solution) over a prime field $\ff{p}$
-with $p$ odd if and only if $p$ is of the form $4\ell+3$, with
-$\ell$ a non-negative integer. In other words, $x^{2}+1=0$ is irreducible
-over $\ff{3}$, $\ff{7}$, $\ff{11}$, $\ff{19}$, \ldots{}. We achieve
-our goal by observing that any field in this family is extensible
-to a field~$\ff{p^{2}}$ whose elements can be viewed as discrete
-complex numbers with the real and imaginary parts in~$\ff{p}$. In
-a complexified finite field $\Fpp$, the Frobenius automorphism that
-maps $\alpha\in\Fpp$ to $\alpha^{p}\in\Fpp$ acts like complex conjugation
-\cite{Artin1991,grove2002classical,DummitFoote2004}. For example,
-in $\Fppx{3}$, we have $\left(2+\rmi\right)^{3}=8+12\rmi-6-\rmi=2+11\rmi$
+for quantum amplitudes, we exploit the fact that the polynomial $x^{2}+1$
+is \emph{irreducible} ($x^{2}+1=0$ has no solution) over a prime
+field $\ff{p}$ with $p$ odd if and only if $p$ is of the form $4\ell+3$,
+with $\ell$ a non-negative integer \cite{Artin1991,DummitFoote2004}.
+For example, given any $x\in\ff{3}=\left\{ 0,\pm1\right\} $, when
+$x=0$, we have $x^{2}+1=0^{2}+1=1$; when $x=\pm1$, we have $x^{2}+1=\left(\pm1\right)^{2}+1=1$.
+Therefore, $x^{2}+1$ is irreducible over $\ff{3}$. In contrast,
+over $\ff{5}$, $2^{2}+1=0$ so that $x^{2}+1$ is reducible.
+
+We achieve our goal by observing that any field $\ff{p}$ with $p=4\ell+3$
+is extensible to a field~$\ff{p^{2}}$ whose elements can be viewed
+as discrete complex numbers with the real and imaginary parts in~$\ff{p}$.
+In a complexified finite field $\Fpp$, the Frobenius automorphism
+that maps $\alpha\in\Fpp$ to $\alpha^{p}\in\Fpp$ acts like complex
+conjugation \cite{Artin1991,grove2002classical,DummitFoote2004}.
+For example, in $\Fppx{3}$, we have $\left(2+\rmi\right)^{3}=8+12\rmi-6-\rmi=2+11\rmi$
 which, in the field, is equal to $2-\rmi$ since $11\equiv-1\pmod{3}$.
 
-We define the \emph{field norm} $\fnorm{\cdot}$ as the map from $(a+ib)\in\Fpp$
+We define the \emph{field norm} $\fnorm{\cdot}$ as the map from $a+\rmi b\in\Fpp$
 to $a^{2}+b^{2}\in\Fp$, 
 \begin{equation}
-\fnorm{\alpha=a+\rmi b}=a^{2}+b^{2}\,.\label{fieldnorm.eq}
+\fnorm{a+\rmi b}=a^{2}+b^{2}\,.\label{fieldnorm.eq}
 \end{equation}
 We avoid the square root in the discrete field framework because,
 unlike the continuous case, the square root does not always exist.
@@ -980,29 +984,29 @@ quantum theory. Such a structure would ideally consist of the following:
 (i) a vector space over the field of complex numbers, and (ii) an
 inner product $\ip{\Phi}{\Psi}$ associating to each pair of vectors
 a complex number, and satisfying the following properties: 
-\begin{itemize}
-\item[A.] $\ip{\Phi}{\Psi}$ is the complex conjugate of $\ip{\Psi}{\Phi}$; 
-\item[B.] $\ip{\Phi}{\Psi}$ is conjugate linear in its first argument and
-linear in its second argument; 
-\item[C.] $\ip{\Psi}{\Psi}$ is always non-negative and is equal to~0 only
+\begin{enumerate}[label=(\Alph{enumi})]
+\item $\ip{\Phi}{\Psi}$ is the complex conjugate of $\ip{\Psi}{\Phi}$; 
+\item $\ip{\Phi}{\Psi}$ is conjugate linear in its first argument and linear
+in its second argument; 
+\item $\ip{\Psi}{\Psi}$ is always non-negative and is equal to~0 only
 if $\ket{\Psi}$ is the zero vector. 
-\end{itemize}
+\end{enumerate}
 It turns out that a vector space defined over a finite field cannot
 have an inner product satisfying the properties above. However, we
 will introduce an Hermitian ``dot product'' satisfying some of those
 properties.
 
-We are interested in the $n$-qubit vector space ${\cal H}$ of dimension
-$D=2^{n}$ defined over the complexified field $\Fpp$. Let $\ket{\Psi}=(\alpha_{0}~\alpha_{1}~\ldots~\alpha_{D-1})^{T}$
-and $\ket{\Phi}=(\beta_{0}~\beta_{1}~\ldots~\beta_{D-1})^{T}$ represent
-vectors in ${\cal H}$, with numbers $\alpha_{i}$ and $\beta_{i}$
-drawn from $\Fpp$, and where $(\cdot)^{T}$ is the transpose.
+We are interested in the vector space ${\cal H}$ of dimension $D$
+defined over the complexified field $\Fpp$. Let $\ket{\Psi}=\begin{pmatrix}\alpha_{0} & \alpha_{1} & \ldots & \alpha_{D-1}\end{pmatrix}^{T}$
+and $\ket{\Phi}=\begin{pmatrix}\beta_{0} & \beta_{1} & \ldots & \beta_{D-1}\end{pmatrix}^{T}$
+represent vectors in ${\cal H}$, with numbers $\alpha_{i}$ and $\beta_{i}$
+drawn from $\Fpp$, and where $\left(\cdot\right)^{T}$ is the transpose.
 
 \begin{definition}[Hermitian dot product] Given vectors $\ket{\Phi}$
 and $\ket{\Psi}\in{\cal H}$, the Hermitian dot product of these vectors
 is: 
 \begin{equation}
-\ip{\Phi}{\Psi}=\sum_{i=0}^{D-1}~\beta_{i}^{p}~\alpha_{i}^{\;}\ .
+\ip{\Phi}{\Psi}=\sum_{i=0}^{D-1}\beta_{i}^{p}\alpha_{i}\,.
 \end{equation}
 \end{definition} Two vectors $\ket{\Phi}$ and $\ket{\Psi}\in{\cal H}$
 are said to be orthogonal if $\ip{\Phi}{\Psi}=0$. This product satisfies
@@ -1014,13 +1018,13 @@ structure), allowing the sum of non-zero elements to be zero. The
 fraction of non-zero vectors satisfying $\ip{\Psi}{\Psi}=0$ decreases
 with the order $p$.
 
-For any vector $\ket{\Psi}=(\alpha_{0}~\alpha_{1}~\ldots~\alpha_{D-1})^{T}$,
-the Hermitian dot product $\ip{\Psi}{\Psi}$ is equal to $\sum_{i=0}^{D-1}~\fnorm{\alpha_{i}}$,
+For any vector $\ket{\Psi}=\begin{pmatrix}\alpha_{0} & \alpha_{1} & \ldots & \alpha_{D-1}\end{pmatrix}^{T}$,
+the Hermitian dot product $\ip{\Psi}{\Psi}$ is equal to $\sum_{i=0}^{D-1}\fnorm{\alpha_{i}}$,
 which is the sum of the field norms for the complex coefficients.
 For convenience, we now extend the field norm to include vector arguments
 by defining 
 \begin{equation}
-\fnorm{\ket{\Psi}}=\ip{\Psi}{\Psi}=\sum_{i=0}^{D-1}~\fnorm{\alpha_{i}}\ .\label{fnormD.eq}
+\fnorm{\ket{\Psi}}=\ip{\Psi}{\Psi}=\sum_{i=0}^{D-1}\fnorm{\alpha_{i}}\,.\label{fnormD.eq}
 \end{equation}
 The field norm of a vector can vanish for non-vanishing vectors.
 
