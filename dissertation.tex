@@ -985,11 +985,13 @@ quantum theory. Such a structure would ideally consist of the following:
 inner product $\ip{\Phi}{\Psi}$ associating to each pair of vectors
 a complex number, and satisfying the following properties: 
 \begin{enumerate}[label=(\Alph{enumi})]
-\item $\ip{\Phi}{\Psi}$ is the complex conjugate of $\ip{\Psi}{\Phi}$; 
-\item $\ip{\Phi}{\Psi}$ is conjugate linear in its first argument and linear
-in its second argument; 
-\item $\ip{\Psi}{\Psi}$ is always non-negative and is equal to~0 only
-if $\ket{\Psi}$ is the zero vector. 
+\item \label{enu:inner-product-complex-conjugate}$\ip{\Phi}{\Psi}$ is
+the complex conjugate of $\ip{\Psi}{\Phi}$; 
+\item \label{enu:inner-product-linear}$\ip{\Phi}{\Psi}$ is conjugate linear
+in its first argument and linear in its second argument; 
+\item \label{enu:inner-product-positive-definite}$\ip{\Psi}{\Psi}$ is
+always non-negative and is equal to~0 only if $\ket{\Psi}$ is the
+zero vector. 
 \end{enumerate}
 It turns out that a vector space defined over a finite field cannot
 have an inner product satisfying the properties above. However, we
@@ -1003,20 +1005,21 @@ represent vectors in ${\cal H}$, with numbers $\alpha_{i}$ and $\beta_{i}$
 drawn from $\Fpp$, and where $\left(\cdot\right)^{T}$ is the transpose.
 
 \begin{definition}[Hermitian dot product] Given vectors $\ket{\Phi}$
-and $\ket{\Psi}\in{\cal H}$, the Hermitian dot product of these vectors
-is: 
+and $\ket{\Psi}\in{\cal H}$, it can be shown~\cite{grove2002classical}
+the Hermitian dot product is always reducible to the form 
 \begin{equation}
 \ip{\Phi}{\Psi}=\sum_{i=0}^{D-1}\beta_{i}^{p}\alpha_{i}\,.
 \end{equation}
 \end{definition} Two vectors $\ket{\Phi}$ and $\ket{\Psi}\in{\cal H}$
 are said to be orthogonal if $\ip{\Phi}{\Psi}=0$. This product satisfies
-conditions A and B for inner products but violates condition C since
-in every finite field there always exists a non-zero vector $\ket{\Psi}$
-such that $\ip{\Psi}{\Psi}=0$. The reason is that addition in finite
-fields eventually ``wraps around'' (because of their cyclic or modular
-structure), allowing the sum of non-zero elements to be zero. The
-fraction of non-zero vectors satisfying $\ip{\Psi}{\Psi}=0$ decreases
-with the order $p$.
+conditions \ref{enu:inner-product-complex-conjugate} and \ref{enu:inner-product-linear}
+for inner products but violates condition \ref{enu:inner-product-positive-definite}
+since in every finite field there always exists a non-zero vector
+$\ket{\Psi}$ such that $\ip{\Psi}{\Psi}=0$. The reason is that addition
+in finite fields eventually ``wraps around'' (because of their cyclic
+or modular structure), allowing the sum of non-zero elements to be
+zero. The fraction of non-zero vectors satisfying $\ip{\Psi}{\Psi}=0$
+decreases with the order $p$.
 
 For any vector $\ket{\Psi}=\begin{pmatrix}\alpha_{0} & \alpha_{1} & \ldots & \alpha_{D-1}\end{pmatrix}^{T}$,
 the Hermitian dot product $\ip{\Psi}{\Psi}$ is equal to $\sum_{i=0}^{D-1}\fnorm{\alpha_{i}}$,
@@ -1027,6 +1030,189 @@ by defining
 \fnorm{\ket{\Psi}}=\ip{\Psi}{\Psi}=\sum_{i=0}^{D-1}\fnorm{\alpha_{i}}\,.\label{fnormD.eq}
 \end{equation}
 The field norm of a vector can vanish for non-vanishing vectors.
+
+\section{Irreducible Discrete $D$-dimensional States: Generalized Discrete
+Bloch Sphere\label{DQCnqubitBloch.sec}}
+
+In the one-qubit state with coefficients in $\Fpp$, the discrete
+analog of the Bloch sphere is constructed by exact analogy to the
+continuous case: we first require that the coefficients of the single
+qubit basis obey 
+\begin{equation}
+\|\psi_{1}\|^{2}=|\alpha_{0}|^{2}+|\alpha_{1}|^{2}=1\label{DQA2.eq}
+\end{equation}
+in the discrete field. In \ref{appU.sec}, we show that there are
+$p(p^{2}-1)$ such values.\todo{{Check reference...}} Given this
+requirement, which is similar in form to the conservation of probability,
+but not as useful due to the lack of orderable probability values,
+we can immediately conclude that the discrete analog of the Hopf fibration
+is again 
+\begin{eqnarray}
+X & = & 2\,\mathrm{Re}\ \alpha_{0}\alpha_{1}^{*}=2x_{0}x_{1}+2y_{0}y_{1}\,,\nonumber \\
+Y & = & 2\,\mathrm{Im}\ \alpha_{0}\alpha_{1}^{*}=2x_{1}y_{0}-2x_{0}y_{1}\,,\label{DQA6.eq}\\
+Z & = & \left|\alpha_{0}\right|^{2}-\left|\alpha_{1}\right|^{2}={x_{0}}^{2}+{y_{0}}^{2}-{x_{1}}^{2}-{y_{1}}^{2}\,.\nonumber 
+\end{eqnarray}
+but now with all computations in $\pmod{p}$. At this point one simply
+writes down all possible discrete values for the complex numbers $\left(\alpha_{0},\alpha_{1}\right)$
+satisfying Eq.~(\ref{DQA2.eq}) and enumerates those that project
+to the same value of $\{X,Y,Z\}$. This equivalence class is the discrete
+analog of the circle in the complex plane that was eliminated in the
+continuous case. In \ref{appH.sec}, we show that $p+1$ discrete
+values of $\{\alpha_{0},\alpha_{1}\}$ with unit norm map to the same
+point under the Hopf map \Eq{DQA6.eq}; we may think of these as
+discrete circles or projective lines of equivalent, physically indistinguishable,
+complex phase. The surviving $p(p-1)$ values of $\{\alpha_{0},\alpha_{1}\}$
+correspond to irreducible physical states of the discrete single qubit
+system. %% Several examples are shown in Figure \ref{bloch.fig}. %%Thus,
+for example, choosing the underlying field to be $\Fppx{3}$, there
+are exactly 6 single-qubit state vectors to populate the Bloch sphere;
+the four equivalent phase-multiples mapping to each of the six points
+on the $\Fppx{3}$ Bloch sphere are collapsed and regarded as physically
+indistinguishable. In Figure \ref{bloch.fig}, we plot the irreducible
+states on the Bloch sphere for $p=3$, $7$, and $11$. Note that
+the Cartesian lengths of the real vectors corresponding to the points
+on the Bloch sphere vary considerably due to the nature of discrete
+fields; we have artificially normalized them to a ``continuous world''
+unit radius sphere for conceptual clarity.
+
+\begin{figure}[htb]
+%\vspace{-0.2in}  %% \includegraphics[width=0.9\columnwidth]{./Bloch_sphere.pdf}%%\includegraphics[width=2.0\columnwidth]{./picA.png}%%\includegraphics[width=2.0\columnwidth]{./picB.png}
+
+\begin{centering}
+\hspace*{-0.5cm}\includegraphics[width=1.1\columnwidth]{\string"../../../Public/Documents/StudyInIUB/Computer Science/201209-12.M800/Manuscripts/picC\string".png}
+%%\includegraphics[width=0.5\textwidth]{./picAB.eps}\vspace{-0.2in}
+ %% adjust blank space?
+\par\end{centering}
+\caption{Schematically normalized plots of the elements of the discrete Bloch
+sphere, the irreducible single-qubit (two-dimensional) state vectors
+with unit norm over the field $\Fpp$. We show the results for $p=3$,
+$7$, and $11$. For example, in $\Fppx{3}$, there are 24 vectors
+of unit norm, but only the 6 inequivalent classes appear in the plot.
+The $p+1=4$ equivalent vectors in each class differ only by a complex
+discrete phase.}
+\label{bloch.fig} 
+\end{figure}
+
+\subsection{Counting states on the $n$-qubit Bloch sphere}
+
+We have the unique opportunity in the finite-field approach to quantum
+computing to precisely identify and enumerate the physical states.
+In the conventional theory, as we have seen, we employ a generalized
+Hopf fibration on the normalized states to project out a circle of
+phase-equivalent states, yielding the generalized Bloch sphere.
+
+In the introduction to this section, we sketched the counting of the
+irreducible single-qubit discrete states. To count the number of inequivalent
+discrete states for the general $n$-qubit case with coefficients
+in $\Fpp$, we first must find the set of unit-norm states, and then
+determine the equivalence classes of unit-norm states under discrete
+phase transformations; we can then enumerate the list of states on
+the discrete generalized Bloch sphere. By executing computer searches
+of these spaces, we discovered an hypothesis for a closed-form solution
+for the counting of the states, and were then able to find a rigorous
+inductive proof of the enumeration, which is presented in the Appendix.
+
+This process of describing the discrete $n$-qubit irreducible states
+can again be understood geometrically by following the discrete analog
+of the Hopf fibration. First, we construct the discrete version of
+the quadratic unit-length form that automatically annihilates the
+distinction among states differing only by a discrete phase, 
+\begin{eqnarray}
+\hspace*{-0.5cm}\Hat{a}=(|\alpha_{i}|^{2},...,\sqrt{2}\ \mathrm{Re}\ \alpha_{i}\alpha_{j}^{*},\ldots,\sqrt{2}\ \mathrm{Im}\ \alpha_{i}\alpha_{j}^{*},\ldots)\ ,
+\end{eqnarray}
+where 
+\begin{eqnarray}
+\Hat{a}\cdot\Hat{a}=\left(\sum_{i=0}^{D-1}\left|\alpha_{i}\right|^{2}\right)^{2}=1\ .
+\end{eqnarray}
+{}From \ref{appH.sec}, we know that $p+1$ elements of this discrete
+$\Sphere{2\times2^{n}-1}$ structure map to the \textit{same point\/}
+in $\Hat{a}$. Each set of $(p+1)$ redundant points is, geometrically
+speaking, the \textit{discrete Hopf fibration circle\/} living above
+each \textit{irreducible\/} point of the $n$-qubit state description.
+These $p+1$ points are interpretable as the $p$ finite points plus
+the single point at infinity of the projective discrete line (see,
+e.g., \cite{Arnold}).
+
+The next part of this argument is the determination of the unit-norm
+states, effectively the space of allowed discrete partitions of unity;
+we cannot exactly call these ``probability-conserving'' sectors
+of the state coefficients since we do not have a well defined notion
+of probability, but we do have a well-defined notion of partition
+of unity. The tally of unit-norm states is $p^{2^{n}-1}(p^{2^{n}}-1)$
+(see \ref{appU.sec}) compared to the total number $p^{2\times2^{n}}$
+of possible complex integer state vectors that could be chosen. This
+unit-norm state structure is the discrete analog of $\Sphere{2\times2^{n}-1}$.
+
+Finally, we repeat the last step of the $n$-qubit continuous Hopf
+fibration process for discrete $n$-qubit states, eliminating the
+discrete set of $p+1$ equivalent points that map to the same point
+$\Hat{a}$ on the generalized $n$-qubit Bloch sphere. Dividing the
+tally $p^{2^{n}-1}(p^{2^{n}}-1)$ of unit norm states by the $p+1$
+elements of each phase-equivalent discrete circle, we find 
+\[
+\frac{p^{2^{n}-1}(p^{2^{n}}-1)}{p+1}=p^{2^{n}-1}(p-1)\,\prod_{k=1}^{n-1}(p^{2^{k}}+1)
+\]
+as the total count of unique irreducible states in a discrete $n$-qubit
+configuration (see \ref{appI.sec}). The resulting object is precisely
+the discrete version of $\CP{D-1}$, which we might call a \textit{discrete
+complex projective space\/} or $\DCP{D-1}$, where $D=2^{n}$ as
+usual.
+
+\Comment{ 
+
+\subsection{Counting states on the $n$-qubit Bloch sphere}
+
+Although we do not have a rigorous proof for the counting of discrete
+unit-norm states and the number of irreducible unit-norm states in
+the discrete generalized Bloch sphere for $n$-qubit states with coefficients
+in $\Fpp$, we have run extensive computer searches of the state features
+for a range of compatible primes $p$ and number of qubits $n$. From
+these experimental investigations, we have induced a closed-form solution
+for the counting that agrees for every possible combination of parameters
+that can be computed in reasonable time (the computational complexity
+becomes intractable very quickly).
+
+For $n$-qubit discrete states with coefficients in $\Fpp$, our calculation
+begins with an enumeration of all possible $2^{n}$-tuples of state
+coefficients in $\Fpp$; then the moduli-squared of these tuples are
+summed and compared to unity in $(\mbox{mod}~p)$. Those that survive
+are accumulated in a list of allowed discrete partitions of unity;
+we cannot exactly call these ``probability-conserving'' sectors
+of the state coefficients since we do not have a well defined notion
+of probability, but we do have a well-defined notion of partition
+of unity. The heuristic number that results for the tally of unit-norm
+states is $p^{2^{n}-1}(p^{2^{n}}-1)$, compared to the total number
+$p^{2\times2^{n}}$ of possible complex integer state vectors that
+could be chosen. This unit-norm state structure is now the discrete
+analog of $\Sphere{2\times2^{n}-1}$.
+
+Finally, we construct the discrete version of the quadratic unit-length
+form that automatically annihilates the distinction among states differing
+only by a discrete phase, 
+\begin{eqnarray}
+\hspace*{-0.5cm}\Hat{a}=\{|\alpha_{i}|^{2},...,\sqrt{2}\ \mathrm{Re}\ \alpha_{i}\alpha_{j}^{*},\ldots,\sqrt{2}\ \mathrm{Im}\ \alpha_{i}\alpha_{j}^{*},\ldots\}\ ,
+\end{eqnarray}
+where 
+\begin{eqnarray}
+\Hat{a}\cdot\Hat{a}=\left(\sum_{i=0}^{D-1}\left|\alpha_{i}\right|^{2}\right)^{2}=1\ .
+\end{eqnarray}
+Computing all the elements of the discrete $\Sphere{2\times2^{n}-1}$
+structure that map to the \textit{same point\/} in $\Hat{a}$, we
+find a $(p+1)$-fold redundancy, exactly as for the one-qubit case;
+each set of $(p+1)$ redundant points is, geometrically speaking,
+the \textit{discrete Hopf fibration circle\/} (see, e.g., Arnold
+\cite{Arnold}) living above each \textit{irreducible\/} point of
+the $n$-qubit state description.
+
+In summary, when the $n$-qubit continuous Hopf fibration process
+is repeated for the discrete analog of $n$-qubit states, we find
+that that analog of a phase ``circle'' is a discrete set $p+1$
+equivalent points that map to the same point $\Hat{a}$ on the generalized
+$n$-qubit Bloch sphere, and therefore there are a total of $p^{2^{n}-1}(p^{2^{n}}-1)/(p+1)$
+unique irreducible states in a discrete $n$-qubit configuration.
+The resulting object is precisely the discrete version of $\CP{D-1}$,
+which we might call a \textit{discrete complex projective space\/}
+or $\DCP{D-1}$. }
 
 
 \section{Discrete Quantum Computing (I)\label{discretequantumcomputingI}}
