@@ -40,12 +40,18 @@ showkeys, longbibliography, amsmath, amssymb, floatfix]{revtex4-1}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
 \newcommand{\qevents}{\ensuremath{\mathcal{E}}}
 \newcommand{\pmeas}{\ensuremath{\mu}}
-\newcommand{\imposs}{{\text{\wesa{impossible}}}}
-\newcommand{\likely}{{\text{\wesa{likely}}}}
-\newcommand{\unlikely}{{\text{\wesa{unlikely}}}}
-\newcommand{\necess}{{\text{\wesa{certain}}}}
-\newcommand{\unknown}{{\text{\wesa{unknown}}}}
-\newcommand{\midd}{{\text{\wesa{middle}}}}
+
+\NewDocumentCommand{\newInterval}{o o o}{
+ % \newcommand{#1}{\text{\wesa{{#2}}}}
+ \newcommand{#1}{\ensuremath{\left[{#3}\right]}}
+}
+\newInterval[\imposs][impossible][0,0]
+\newInterval[\likely][likely][\tfrac{1}{2},1]
+\newInterval[\unlikely][unlikely][0,\tfrac{1}{2}]
+\newInterval[\necess][certain][1,1]
+\newInterval[\unknown][unknown][0,1]
+\newInterval[\midd][middle][\tfrac{1}{4},\tfrac{3}{4}]
+
 \newcommand{\fket}[1]{{|#1\rangle}}
 \newcommand{\fproj}[1]{|#1\rangle\langle #1|}
 \newcommand{\proj}[1]{\op{#1}{#1}}
