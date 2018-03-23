@@ -36,16 +36,17 @@
 \newcommand{\qevents}{\ensuremath{\mathcal{E}}}
 \newcommand{\pmeas}{\ensuremath{\mu}}
 
-\NewDocumentCommand{\newInterval}{o o o}{
+\NewDocumentCommand{\newInterval}{o o o o}{
  % \newcommand{#1}{\text{\wesa{{#2}}}}
  \newcommand{#1}{\ensuremath{\left[{#3}\right]}}
+ % \newcommand{#1}{\ensuremath{I\left({#4}\right)}}
 }
-\newInterval[\imposs][impossible][0,0]
-\newInterval[\likely][likely][\tfrac{1}{2},1]
-\newInterval[\unlikely][unlikely][0,\tfrac{1}{2}]
-\newInterval[\necess][certain][1,1]
-\newInterval[\unknown][unknown][0,1]
-\newInterval[\midd][middle][\tfrac{1}{4},\tfrac{3}{4}]
+\newInterval[\imposs][impossible][0,0][0]
+\newInterval[\likely][likely][\tfrac{1}{2},1][\tfrac{1}{2},1]
+\newInterval[\unlikely][unlikely][0,\tfrac{1}{2}][0,\tfrac{1}{2}]
+\newInterval[\necess][certain][1,1][1]
+\newInterval[\unknown][unknown][0,1][0,1]
+\newInterval[\midd][middle][\tfrac{1}{4},\tfrac{3}{4}][\tfrac{1}{4},\tfrac{3}{4}]
 
 \newcommand{\fket}[1]{{|#1\rangle}}
 \newcommand{\fproj}[1]{|#1\rangle\langle #1|}
@@ -78,6 +79,8 @@
 \newcommand{\andy}[1]{\says{blue}{Andy}{#1}}
 % \excludecomment{suggest}
 \NewDocumentEnvironment{suggest}{m m O{}}{#1{TEXT \##2 would go here. #3}}{#1{TEXT \##2 end here.}}
+\NewDocumentEnvironment{oldText}{m}{\clearpage{}#1{The following is old text.}}{#1{The old text end here.}}
+\NewDocumentEnvironment{newText}{m}{\columnbreak{}#1{The following is new text.}}{#1{The new text end here.}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end_preamble
