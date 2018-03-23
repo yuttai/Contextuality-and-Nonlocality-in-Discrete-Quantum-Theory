@@ -42,8 +42,8 @@ showkeys, longbibliography, amsmath, amssymb, floatfix]{revtex4-1}
 \newcommand{\pmeas}{\ensuremath{\mu}}
 
 \NewDocumentCommand{\newInterval}{o o o o}{
- % \newcommand{#1}{\text{\wesa{{#2}}}}
- \newcommand{#1}{\ensuremath{\left[{#3}\right]}}
+ \newcommand{#1}{\text{\wesa{{#2}}}}
+ % \newcommand{#1}{\ensuremath{\left[{#3}\right]}}
  % \newcommand{#1}{\ensuremath{I\left({#4}\right)}}
 }
 \newInterval[\imposs][impossible][0,0][0]
@@ -84,8 +84,9 @@ showkeys, longbibliography, amsmath, amssymb, floatfix]{revtex4-1}
 \newcommand{\andy}[1]{\says{blue}{Andy}{#1}}
 % \excludecomment{suggest}
 \NewDocumentEnvironment{suggest}{m m O{}}{#1{TEXT \##2 would go here. #3}}{#1{TEXT \##2 end here.}}
-\NewDocumentEnvironment{oldText}{m}{\clearpage{}#1{The following is old text.}}{#1{The old text ends here.}}
-\NewDocumentEnvironment{newText}{m}{\columnbreak{}#1{The following is new text.}}{#1{The new text ends here.}}
+\NewDocumentEnvironment{compare}{}{\begin{widetext}\end{widetext}}{\begin{widetext}\end{widetext}}
+\NewDocumentEnvironment{oldText}{m}{#1{The following is old text.}\noindent\begin{minipage}[t]{1\columnwidth}}{#1{The old text end here.}\end{minipage}\newpage}
+\NewDocumentEnvironment{newText}{m}{\noindent\begin{minipage}[t]{1\columnwidth}#1{The following is new text.}}{\end{minipage}#1{The new text end here.}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -1285,27 +1286,25 @@ for all~$j$. The last equation never holds, proving the theorem.
 
 The fact that a collection of poor measurements on a quantum system
 cannot reveal the underlying state is not surprising. Under certain
-conditions, we can however guarantee that the uncertainty in
-measurements is consistent with \emph{some} non-empty collection of
-quantum states. Furthermore, we can relate the uncertainty in
-measurements to the volume of quantum states such that, in the limit
-of infinitely precise measurements, the volume of states collapses to
-a single state.
+conditions, we can however guarantee that the uncertainty in measurements
+is consistent with \emph{some} non-empty collection of quantum states.
+Furthermore, we can relate the uncertainty in measurements to the
+volume of quantum states such that, in the limit of infinitely precise
+measurements, the volume of states collapses to a single state.
 
-To that end, we construct a family of QIVPMs parameterized by
-\emph{blurring} functions $f:\left[0,1\right]\rightarrow\mathscr{I}$ that
-formalize how the real-valued probabilities are mapped to
-intervals. We also introduce a notion of norm that quantifies the
-distance between (pure or mixed) states.  The norm of a pure
-state $\rho=\proj{\psi}$ is defined as usual by
-$\left\Vert \psi\right\Vert =\sqrt{\ip{\psi}{\psi}}$.  Similarly,
-given any Hermitian operator~$A$, we consider the usual operator norm
-$\left\Vert A\right\Vert =\max_{\left\Vert \psi\right\Vert
-  =1}\left\Vert A\ket{\psi}\right\Vert $, which is also known as the
-$2$-norm or the spectral
-norm~\cite{RobertsVarberg1973,peres1995quantum,GolubVanLoan1996,Foucart2012}.
-Then, a finite-precision extension of Gleason's theorem can be stated as
-follows.
+\begin{compare}
+\begin{oldText}{\yutsung}
+To that end, we construct a family of QIVPMs parameterized by \emph{blurring}
+functions $f:\left[0,1\right]\rightarrow\mathscr{I}$ that formalize
+how the real-valued probabilities are mapped to intervals. We also
+introduce a notion of norm that quantifies the distance between (pure
+or mixed) states. The norm of a pure state $\rho=\proj{\psi}$ is
+defined as usual by $\left\Vert \psi\right\Vert =\sqrt{\ip{\psi}{\psi}}$.
+Similarly, given any Hermitian operator~$A$, we consider the usual
+operator norm $\left\Vert A\right\Vert =\max_{\left\Vert \psi\right\Vert =1}\left\Vert A\ket{\psi}\right\Vert $,
+which is also known as the $2$-norm or the spectral norm~\cite{RobertsVarberg1973,peres1995quantum,GolubVanLoan1996,Foucart2012}.
+Then, a finite-precision extension of Gleason's theorem can be stated
+as follows.
 
 % the composited function~$\ultramodular\circ\mu$ satisfies the constraints
 % for IVPMs naturally no matter in classical or quantum case. Conversely,
@@ -1325,31 +1324,73 @@ follows.
 % always a QIVPM, we consider the following homomorphism-like properties
 % for~$\ultramodular$.
 
-\begin{thm}[Finite-Precision Extension of the Gleason
-  Theorem]\label{thm:Finite-precision-Gleason}Let $f$ be a blurring
-  function and let $f \circ \muB_{\rho}$ be a QIVPM, where
-  $\muB_{\rho}$ is the probability measure induced by the
-  Born rule for a given state~$\rho$. Let $\alpha$ be the maximum
-  length of intervals in its image. If a state $\rho'$ is consistent
-  with $f\circ\muB_{\rho}$ on all events, i.e.,
-  $\rho'\in\coreBorn\left(f\circ\muB_{\rho},\events\right)$,
-  then the norm of their difference is bounded by $\alpha$, i.e.,
-  $\left\Vert \rho-\rho'\right\Vert \le \alpha$.\end{thm}
+\begin{thm}[Finite-Precision Extension of the Gleason Theorem]\label{thm:Finite-precision-Gleason}Let
+$f$ be a blurring function and let $f\circ\muB_{\rho}$ be a QIVPM,
+where $\muB_{\rho}$ is the probability measure induced by the Born
+rule for a given state~$\rho$. Let $\alpha$ be the maximum length
+of intervals in its image. If a state $\rho'$ is consistent with
+$f\circ\muB_{\rho}$ on all events, i.e., $\rho'\in\coreBorn\left(f\circ\muB_{\rho},\events\right)$,
+then the norm of their difference is bounded by $\alpha$, i.e., $\left\Vert \rho-\rho'\right\Vert \le\alpha$.\end{thm}
+\end{oldText}
 
-The proof proceeds as follows. Given a state~$\rho'$ consistent with
-$f\circ\muB_{\rho}$, we have
-$\muB_{\rho'}\left(\proj{\psi}\right)\in
-f\left(\muB_{\rho}\left(\proj{\psi}\right)\right)$ for any
-one-dimensional projector $P=\proj{\psi}$. Since the maximum length of
-the intervals in $\mathscr{I}$ is $\alpha$, it is also the upper bound
-of the difference:
+\begin{newText}{\yutsung}
+To that end, we construct a family of QIVPMs parameterized by \emph{blurring}
+functions. A blurring function $f:\left[0,1\right]\rightarrow\mathscr{I}$
+maps every real-valued probability $x\in\left[0,1\right]$ to a set
+of intervals $f\left(x\right)=\left[\ell,r\right]$ containing $x$,
+where $\left[0,1\right]$ denotes the set of real-valued probabilities
+which should not be considered as the interval-valued probability
+$\unknown$. We also introduce a notion of norm that quantifies the
+distance between (pure or mixed) states. The norm of a pure state
+$\rho=\proj{\psi}$ is defined as usual by $\left\Vert \psi\right\Vert =\sqrt{\ip{\psi}{\psi}}$.
+Similarly, given any Hermitian operator~$A$, we consider the usual
+operator norm $\left\Vert A\right\Vert =\max_{\left\Vert \psi\right\Vert =1}\left\Vert A\ket{\psi}\right\Vert $,
+which is also known as the $2$-norm or the spectral norm~\cite{RobertsVarberg1973,peres1995quantum,GolubVanLoan1996,Foucart2012}.
+In fact, for any such matrix, including the density matrix~$\rho$,
+the norm is the maximum absolute value of its eigenvalue. Then, a
+finite-precision extension of Gleason's theorem can be stated as follows.
+
+% the composited function~$\ultramodular\circ\mu$ satisfies the constraints
+% for IVPMs naturally no matter in classical or quantum case. Conversely,
+% if $\ultramodular\circ\mu$ is always a IVPM, then the function~$\ultramodular$
+% is ultramodular. In other words, $\ultramodular$ is ultramodular
+% is a necessary and sufficient condition for $\ultramodular\circ\mu$
+% is always a IVPM as we next show.
+
+% When we generalized quantum probability measures to QIVPMs, we changed
+% the range from the unit interval $\left[0,1\right]$ to a set of intervals~$\mathscr{I}$.
+% This replacement suggests to find a function $\ultramodular:\left[0,1\right]\rightarrow\mathscr{I}$
+% to replace a real-valued probability $\mu\left(P\right)$ by an interval-valued 
+% one $\ultramodular\left(\mu\left(P\right)\right)$. In other words,
+% compositing $\ultramodular$ with a quantum probability measure $\mu:\events\rightarrow\left[0,1\right]$
+% produces a function $\ultramodular\circ\mu:\events\overset{\mu}{\rightarrow}\left[0,1\right]\overset{\ultramodular}{\rightarrow}\mathscr{I}$
+% with the same domain and range as a QIVPM. In order to guarantee $\ultramodular\circ\mu$
+% always a QIVPM, we consider the following homomorphism-like properties
+% for~$\ultramodular$.
+
+\begin{thm}[Finite-Precision Extension of the Gleason Theorem]\label{thm:Finite-precision-Gleason-1}Let
+$f:\left[0,1\right]\rightarrow\mathscr{I}$ be a blurring function
+and let $f\circ\muB_{\rho}$ be a QIVPM, where $\muB_{\rho}$ is the
+probability measure induced by the Born rule for a given state~$\rho$.
+Let $\alpha$ be the maximum length of intervals in $\mathscr{I}$.
+If a state $\rho'$ is consistent with $f\circ\muB_{\rho}$ on all
+events, i.e., $\rho'\in\coreBorn\left(f\circ\muB_{\rho},\events\right)$,
+then the norm of their difference is bounded by $\alpha$, i.e., $\left\Vert \rho-\rho'\right\Vert \le\alpha$.\end{thm}
+\end{newText}
+\end{compare}
+
+The proof proceeds as follows. Given a state~$\rho'$ consistent
+with $f\circ\muB_{\rho}$, we have $\muB_{\rho'}\left(\proj{\psi}\right)\in f\left(\muB_{\rho}\left(\proj{\psi}\right)\right)$
+for any one-dimensional projector $P=\proj{\psi}$. Since the maximum
+length of the intervals in $\mathscr{I}$ is $\alpha$, it is also
+the upper bound of the difference: 
 \[
-\left|\muB_{\rho'}\left(\proj{\psi}\right)-\muB_{\rho}\left(\proj{\psi}\right)\right|=\left|\melem{\psi}{\rho-\rho'}{\psi}\right|\le \alpha\,.
+\left|\muB_{\rho'}\left(\proj{\psi}\right)-\muB_{\rho}\left(\proj{\psi}\right)\right|=\left|\melem{\psi}{\rho-\rho'}{\psi}\right|\le\alpha\,.
 \]
 Since $\rho-\rho'$ is Hermitian, $\max_{\left\Vert \psi\right\Vert =1}\left|\melem{\psi}{\rho-\rho'}{\psi}\right|$
 is the maximum absolute value of the eigenvalues of $\rho-\rho'$~\cite{544199},
 and equal to $\left\Vert \rho-\rho'\right\Vert $~\cite{GolubVanLoan1996,Foucart2012}.
-Hence, $\left\Vert \rho-\rho'\right\Vert \le \alpha$.
+Hence, $\left\Vert \rho-\rho'\right\Vert \le\alpha$.
 
 %% ajh: no abbreviations as first words of sentences.
 Theorem~\ref{thm:Finite-precision-Gleason} generalizes Gleason's

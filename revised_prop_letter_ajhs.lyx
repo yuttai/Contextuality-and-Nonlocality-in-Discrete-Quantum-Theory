@@ -24,7 +24,6 @@
 \usepackage{comment}
 \usepackage{xparse}
 
-
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}\newtheorem{lemma}{Lemma}\newtheorem{cor}{Corollary}\newtheorem{assumption}{Assumption}\newtheorem{fact}{Fact}\theoremstyle{definition}
 \newtheorem{definition}{Definition}\newtheorem{condition}[assumption]{Condition}
@@ -37,8 +36,8 @@
 \newcommand{\pmeas}{\ensuremath{\mu}}
 
 \NewDocumentCommand{\newInterval}{o o o o}{
- % \newcommand{#1}{\text{\wesa{{#2}}}}
- \newcommand{#1}{\ensuremath{\left[{#3}\right]}}
+ \newcommand{#1}{\text{\wesa{{#2}}}}
+ % \newcommand{#1}{\ensuremath{\left[{#3}\right]}}
  % \newcommand{#1}{\ensuremath{I\left({#4}\right)}}
 }
 \newInterval[\imposs][impossible][0,0][0]
@@ -79,8 +78,9 @@
 \newcommand{\andy}[1]{\says{blue}{Andy}{#1}}
 % \excludecomment{suggest}
 \NewDocumentEnvironment{suggest}{m m O{}}{#1{TEXT \##2 would go here. #3}}{#1{TEXT \##2 end here.}}
-\NewDocumentEnvironment{oldText}{m}{\clearpage{}#1{The following is old text.}}{#1{The old text end here.}}
-\NewDocumentEnvironment{newText}{m}{\columnbreak{}#1{The following is new text.}}{#1{The new text end here.}}
+\NewDocumentEnvironment{compare}{}{\begin{widetext}\end{widetext}}{\begin{widetext}\end{widetext}}
+\NewDocumentEnvironment{oldText}{m}{#1{The following is old text.}\noindent\begin{minipage}[t]{1\columnwidth}}{#1{The old text end here.}\end{minipage}\newpage}
+\NewDocumentEnvironment{newText}{m}{\noindent\begin{minipage}[t]{1\columnwidth}#1{The following is new text.}}{\end{minipage}#1{The new text end here.}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end_preamble
@@ -10761,6 +10761,31 @@ some
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{compare}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{oldText}{
+\backslash
+yutsung}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 To that end, we construct a family of QIVPMs parameterized by 
 \emph on
 blurring
@@ -11243,6 +11268,589 @@ status collapsed
 
 \backslash
 end{thm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{oldText}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{newText}{
+\backslash
+yutsung}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+To that end, we construct a family of QIVPMs parameterized by 
+\emph on
+blurring
+\emph default
+ functions.
+ A blurring function 
+\begin_inset Formula $f:\left[0,1\right]\rightarrow\mathscr{I}$
+\end_inset
+
+ maps every real-valued probability 
+\begin_inset Formula $x\in\left[0,1\right]$
+\end_inset
+
+ to a set of intervals 
+\begin_inset Formula $f\left(x\right)=\left[\ell,r\right]$
+\end_inset
+
+ containing 
+\begin_inset Formula $x$
+\end_inset
+
+, where 
+\begin_inset Formula $\left[0,1\right]$
+\end_inset
+
+ denotes the set of real-valued probabilities which should not be considered
+ as the interval-valued probability 
+\begin_inset Formula $\unknown$
+\end_inset
+
+.
+ We also introduce a notion of norm that quantifies the distance between
+ (pure or mixed) states.
+ The norm of a pure state 
+\begin_inset Formula $\rho=\proj{\psi}$
+\end_inset
+
+ is defined as usual by 
+\begin_inset Formula $\left\Vert \psi\right\Vert =\sqrt{\ip{\psi}{\psi}}$
+\end_inset
+
+.
+ Similarly, given any Hermitian operator
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $A$
+\end_inset
+
+, we consider the usual operator norm 
+\begin_inset Formula $\left\Vert A\right\Vert =\max_{\left\Vert \psi\right\Vert =1}\left\Vert A\ket{\psi}\right\Vert $
+\end_inset
+
+, which is also known as the 
+\begin_inset Formula $2$
+\end_inset
+
+-norm or the spectral norm
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RobertsVarberg1973,peres1995quantum,GolubVanLoan1996,Foucart2012"
+
+\end_inset
+
+.
+ In fact, for any such matrix, including the density matrix
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\rho$
+\end_inset
+
+, the norm is the maximum absolute value of its eigenvalue.
+ Then, a finite-precision extension of Gleason's theorem can be stated as
+ follows.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% the composited function~$
+\backslash
+ultramodular
+\backslash
+circ
+\backslash
+mu$ satisfies the constraints
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% for IVPMs naturally no matter in classical or quantum case.
+ Conversely,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% if $
+\backslash
+ultramodular
+\backslash
+circ
+\backslash
+mu$ is always a IVPM, then the function~$
+\backslash
+ultramodular$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% is ultramodular.
+ In other words, $
+\backslash
+ultramodular$ is ultramodular
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% is a necessary and sufficient condition for $
+\backslash
+ultramodular
+\backslash
+circ
+\backslash
+mu$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% is always a IVPM as we next show.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% When we generalized quantum probability measures to QIVPMs, we changed
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% the range from the unit interval $
+\backslash
+left[0,1
+\backslash
+right]$ to a set of intervals~$
+\backslash
+mathscr{I}$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% This replacement suggests to find a function $
+\backslash
+ultramodular:
+\backslash
+left[0,1
+\backslash
+right]
+\backslash
+rightarrow
+\backslash
+mathscr{I}$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% to replace a real-valued probability $
+\backslash
+mu
+\backslash
+left(P
+\backslash
+right)$ by an interval-valued 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% one $
+\backslash
+ultramodular
+\backslash
+left(
+\backslash
+mu
+\backslash
+left(P
+\backslash
+right)
+\backslash
+right)$.
+ In other words,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% compositing $
+\backslash
+ultramodular$ with a quantum probability measure $
+\backslash
+mu:
+\backslash
+events
+\backslash
+rightarrow
+\backslash
+left[0,1
+\backslash
+right]$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% produces a function $
+\backslash
+ultramodular
+\backslash
+circ
+\backslash
+mu:
+\backslash
+events
+\backslash
+overset{
+\backslash
+mu}{
+\backslash
+rightarrow}
+\backslash
+left[0,1
+\backslash
+right]
+\backslash
+overset{
+\backslash
+ultramodular}{
+\backslash
+rightarrow}
+\backslash
+mathscr{I}$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% with the same domain and range as a QIVPM.
+ In order to guarantee $
+\backslash
+ultramodular
+\backslash
+circ
+\backslash
+mu$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% always a QIVPM, we consider the following homomorphism-like properties
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% for~$
+\backslash
+ultramodular$.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{thm}[
+\end_layout
+
+\end_inset
+
+Finite-Precision Extension of the Gleason Theorem
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:Finite-precision-Gleason-1"
+
+\end_inset
+
+Let 
+\begin_inset Formula $f:\left[0,1\right]\rightarrow\mathscr{I}$
+\end_inset
+
+ be a blurring function and let 
+\begin_inset Formula $f\circ\muB_{\rho}$
+\end_inset
+
+ be a QIVPM, where 
+\begin_inset Formula $\muB_{\rho}$
+\end_inset
+
+ is the probability measure induced by the Born rule for a given state
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ be the maximum length of intervals in 
+\begin_inset Formula $\mathscr{I}$
+\end_inset
+
+.
+ If a state 
+\begin_inset Formula $\rho'$
+\end_inset
+
+ is consistent with 
+\begin_inset Formula $f\circ\muB_{\rho}$
+\end_inset
+
+ on all events, i.e., 
+\begin_inset Formula $\rho'\in\coreBorn\left(f\circ\muB_{\rho},\events\right)$
+\end_inset
+
+, then the norm of their difference is bounded by 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, i.e., 
+\begin_inset Formula $\left\Vert \rho-\rho'\right\Vert \le\alpha$
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{thm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{newText}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{compare}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -14940,7 +15548,7 @@ status collapsed
 
 \end_inset
 
-* 
+
 \end_layout
 
 \begin_layout Section
