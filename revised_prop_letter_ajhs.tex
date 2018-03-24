@@ -46,12 +46,16 @@ showkeys, longbibliography, amsmath, amssymb, floatfix]{revtex4-1}
  % \newcommand{#1}{\ensuremath{\left[{#3}\right]}}
  % \newcommand{#1}{\ensuremath{I\left({#4}\right)}}
 }
-\newInterval[\imposs][impossible][0,0][0]
-\newInterval[\likely][likely][\tfrac{1}{2},1][\tfrac{1}{2},1]
-\newInterval[\unlikely][unlikely][0,\tfrac{1}{2}][0,\tfrac{1}{2}]
-\newInterval[\necess][certain][1,1][1]
-\newInterval[\unknown][unknown][0,1][0,1]
+%% \newInterval[\imposs][impossible][0,0][0]
+%% \newInterval[\likely][likely][\tfrac{1}{2},1][\tfrac{1}{2},1]
+%% \newInterval[\unlikely][unlikely][0,\tfrac{1}{2}][0,\tfrac{1}{2}]
+%% \newInterval[\necess][certain][1,1][1]
+%% \newInterval[\unknown][unknown][0,1][0,1]
 \newInterval[\midd][middle][\tfrac{1}{4},\tfrac{3}{4}][\tfrac{1}{4},\tfrac{3}{4}]
+
+\newcommand{\imposs}{\textbf{\textsf{F}}}
+\newcommand{\necess}{\textbf{\textsf{T}}}
+\newcommand{\unknown}{\textbf{\textsf{U}}}
 
 \newcommand{\fket}[1]{{|#1\rangle}}
 \newcommand{\fproj}[1]{|#1\rangle\langle #1|}
@@ -143,34 +147,36 @@ Indiana 47405, USA}
 
 In this investigation, we explore the implications of extending
 conventional quantum-mechanical probability measures to include the
-effect of imperfect measurements. 
-There are long-standing debates in the foundations of quantum
-mechanics regarding the tension between finite precision measurement
-and contextuality~\cite{BarrettKent2004,Appleby_2005}. The outcome of
-a theory that is contextual depends upon whether compatible sets of
+effect of imperfect measurements.  There are long-standing debates in
+the foundations of quantum mechanics regarding the tension between
+finite precision measurement and
+contextuality~\cite{BarrettKent2004,Appleby_2005}. The outcome of a
+theory that is contextual depends upon whether compatible sets of
 observables are measured together or separately; a non-contextual
 theory gives the same results in either case.  A classic example of
-the varying opinions on the impact of imprecision is the disagreement
-between Meyer~\cite{PhysRevLett.83.3751} and Mermin~\cite{Mermin1999}
-on whether finite-precision measurements invalidate the spirit of the
-Kochen-Specker
-theorem~\cite{BELL_1966,kochenspecker1967,Redhead1987-REDINA,Mermin1990Simple,peres1995quantum,Jaeger2007,Held2016}.
-The Kochen-Specker theorem is in essence a mathematical statement
-about contextuality, asserting that in a Hilbert space of dimension
-$d \ge 3$, it is impossible to associate determinate probabilities,
-$\mu(P_i)= 0$ or $1$, with every projection operator~$P_i$, in such a
-way that, if a set of commuting $P_i$ satisfies $\sum_i P_i = \mathbb{1}$, then
-$\sum_i \mu(P_i) = 1$.  Meyer showed that one {\it can\/} assign
-determinate probabilities $0$ or~$1$ to the measurement outcomes when
-the Hilbert space is defined over the field of rational numbers,
-therefore nullifying the theorem~\cite{PhysRevLett.83.3751}.
-However, Mermin then argued that measurement outcomes must depend
-smoothly on slight changes in the experimental configuration, leading
-him to assert that the impact of Meyer's negative result is
-``unsupportable'' on physical grounds~\cite{Mermin1999}.  The debate
-on whether contextuality is consistent with experimental outcomes
-continues to be an active topic of
+the varying opinions on the impact of imprecision is the claim by
+Meyer~\cite{PhysRevLett.83.3751} that finite-precision measurements
+invalidate the spirit of the Kochen-Specker theorem. This claim was
+countered in the same year by Havlicek et al. ~\cite{HKSS1999apsrev4}
+and Mermin~\cite{Mermin1999} and the debate continues to be an active
+topic of
 research~\cite{Kent1999,HavlicekKrennSummhammerSvozil2001,SimonBruknerZeilinger2001,Cabello2002,Larsson2002,Appleby2002,BarrettKent2004,Appleby_2005,Spekkens2005,GuehneKleinmannCabelloEtAl2010,MazurekPuseyKunjwalEtAl2016}.
+
+The Kochen-Specker
+theorem~\cite{BELL_1966,kochenspecker1967,Redhead1987-REDINA,Mermin1990Simple,peres1995quantum,Jaeger2007,Held2016}
+is in essence a mathematical statement about contextuality, asserting
+that in a Hilbert space of dimension $d \ge 3$, it is impossible to
+associate determinate probabilities, $\mu(P_i)= 0$ or $1$, with every
+projection operator~$P_i$, in such a way that, if a set of commuting
+$P_i$ satisfies $\sum_i P_i = \mathbb{1}$, then $\sum_i \mu(P_i) = 1$.
+Meyer showed that one {\it can\/} assign determinate probabilities $0$
+or~$1$ to the measurement outcomes when the Hilbert space is defined
+over the field of rational numbers, therefore nullifying the
+theorem~\cite{PhysRevLett.83.3751}.  However, Mermin then argued that
+measurement outcomes must depend smoothly on slight changes in the
+experimental configuration, leading him to assert that the impact of
+Meyer's negative result is ``unsupportable'' on physical
+grounds~\cite{Mermin1999}.  
 
 The question of how to address this controversy, and the effect of 
 finite precision on measurements in general, is therefore 
@@ -196,15 +202,42 @@ extending classical IVPMs~\cite{JamisonLodwick2004} to the quantum
 domain.  We thus begin by axiomatizing a quantum interval-valued
 probability measure (QIVPM) framework.
 
-%% ajh "begin" doubled, replace here; two missing commas
-We start our investigation with the concept of $\delta$-determinism,
+To start our investigation, we note that Meyer attributes
+finite-precision errors \emph{exclusively} to the description of the
+states defined in a general Hilbert space. Mermin's response argues
+against Meyer's interpretation but accepts his framework. Others,
+however, have argued that the effect of finite-precision measurements
+on the Kochen-Specker theorem requires a different approach altogether
+(see for example Ax and Kochen's communication cited by
+Cabello~\cite{Cabello2002}). Here, we propose such a new approach. 
+
+Our approach introduces the concept of $\delta$-determinism,
 where~$\delta$ quantifies the effect of finite-precision uncertainties
-on measurement outcomes. We recast the Kochen-Specker theorem using
+on measurement outcomes.  Our parameter $\delta$ is not necessarily
+related to the description of states; we are agnostic about
+attributing elements of reality to the state function. Instead, we
+attribute lack of certainty to the uncertain results obtained through
+the use of a measuring instrument.  Thus, the parameter~$\delta$ in
+our framework reflects insufficient knowledge of the experimenter,
+which could be due to a variety of reasons related to imperfections of
+devices. For example, a typical question that an experimenter may not
+be able to answer accurately would be ``did an electron land in the
+left half or the right half of the screen?''  There are cases in which
+the electron would land too close to the middle of the screen for the
+experimenter to be able to determine with certainty that it was left
+or right of the center.  We simply record this imprecision by
+generalizing the probabilities assigned to events to intervals of
+uncertainties.
+
+%% and use the axioms of probability theory to argue that a sharp
+%% transition occurs when the imprecision reaches a certain value.
+
+We then recast the Kochen-Specker theorem using
 $\delta$-determinism to quantify the effects of finite precision and
 imperfections on contextuality. When $\delta=0$, the generalized
 theorem reduces to the conventional one, but as $\delta$ varies from 0
 to 1 we note a transition from contextuality to non-contextuality. For
-a \emph{non-vanishing} range of $\delta$, quantum-mechanical
+a \emph{non-vanishing} range of~$\delta$, quantum-mechanical
 contextuality continues to hold, maintaining the Kochen-Specker
 result, but at a \emph{certain fixed value}, $\delta = \frac{1}{3}$,
 there is a sharp transition to \emph{non-contextuality}, parallel in
@@ -212,38 +245,6 @@ spirit to a phase transition.  These results provide a new insight
 into the Meyer-Mermin debate by presenting a theory in which there is
 a \emph{parameter} interpolating between what appeared previously to
 be irreconcilable aspects of contextuality.
-
-%The quantum-mechanical requirement for contextuality
-%continues to hold, thus maintaining the Kochen-Specker result for a
-%\emph{non-vanishing} range of $\delta$, but that at a \emph{certain
-%  fixed value} of $\delta$, there is a sharp transition, parallel in
-%its consequences to, say, a phase transition, to
-%\emph{non-contextuality}. %% ; that is, suddenly a quantum system can be
-%% simulated by a non-contextual hidden variable theory.
-%% , turning the
-%% system effectively from a quantum system into a classical system. 
-% that is, quantum mechanics suddenly fails to hold, and all variables
-% can be specified simultaneously, turning the theory effectively into a
-% classical theory that can be specified consistently by hidden
-% variables.
-% \yutsung{The part after ``that is''
-%   looks strange.
-% \begin{enumerate}
-% \item The Kochen-Specker theorem is not about quantum mechanics, is about whether
-% quantum mechanics can be simulated by a non-contextual deterministic hidden
-% variable theory or not. Hence, ``quantum mechanics suddenly fails to hold''
-% doesn't make a lot sense.
-% \item The question is whether there exist a QIVPM means ``a classical theory
-% consistently by hidden variables.'' At least, a QIVPM is not deterministic, and
-% I need to check whether it qualities as a classical probabilistic hidden variable
-% theory\ldots(?)
-% \end{enumerate}
-% }
-%These results provide a new insight into the Meyer-Mermin debate by
-%presenting a theory in which there is a \emph{parameter} interpolating
-%between what appeared previously to be irreconcilable aspects %interpretations
-%of contextuality.
-% ajh- above: I think "interpretations" is not quite right -> "aspects"?
 
 We also investigate the second key aspect of imprecise quantum
 measurement, which is its statistical nature as reflected in the
@@ -741,6 +742,8 @@ intuition~\cite{Mermin1999}:
 
 %\paragraph*{$\delta$-Determinism.} 
 
+\subsection{Finite-Precision Extension of the Kochen-Specker Theorem}
+
 The first step in our formalization is to introduce a family of QIVPMs
 parameterized by an uncertainty~$\delta$, which we call
 $\delta$-deterministic QIVPMs.
@@ -1089,8 +1092,7 @@ observable to some (quite inaccurate) probability interval, thus
 invalidating the Kochen-Specker theorem.
 
 We can summarize and illustrate the above arguments using
-Fig.~\ref{fignoname}. An additional perspective on the physical
-interpretation of the theorem is in the appendix. 
+Fig.~\ref{fignoname}. 
 
 \begin{figure}
 \begin{center}
@@ -1184,6 +1186,104 @@ of quantum mechanics.
 %   theory}. There are in fact two sources of uncertainty: one due to
 % the finite measurement resources and one due to complementarity, which
 % requires every quantum framework to be truly probabilistic.
+
+\subsection{Experimental Data and \texorpdfstring{$\delta$}{delta}-determinism} 
+
+\begin{table*}
+\caption{\label{tab:probability-measures}Possible probability measures on
+a Hilbert space of dimension~$d=3$, where $\bar{\mu}_{2}'$ and
+$\bar{\mu}_{3}$ are QIVPMs while $\bar{\mu}_{0}$, $\bar{\mu}_{1}$,
+and $\bar{\mu}_{2}$ are not. Events are listed in the column labeled
+by $P$.}
+\centering{}%
+\begin{tabular}{cccccc}
+\toprule 
+\addlinespace
+$P$  & $\bar{\mu}_{0}\left(P\right)$ & $\bar{\mu}_{1}\left(P\right)$ & $\bar{\mu}_{2}\left(P\right)$ & $\bar{\mu}_{2}'\left(P\right)$ & $\bar{\mu}_{3}\left(P\right)$\tabularnewline
+\midrule
+\midrule 
+\addlinespace
+$\mathbb{0}$  & $\imposs$ & $\imposs$ & $\imposs$ & $\imposs$ & $\imposs$\tabularnewline
+\midrule 
+\addlinespace
+All one-dimensional projectors  & $\left[0,0\right]$ & $\left[0,\tfrac{1}{4}\right]$ & $\left[0,\tfrac{1}{3}\right]$ & $\left[\tfrac{1}{3},\tfrac{1}{3}\right]$ & $\left[0,\tfrac{1}{2}\right]$\tabularnewline
+\midrule 
+\addlinespace
+All two-dimensional projectors  & $\left[1,1\right]$ & $\left[\tfrac{3}{4},1\right]$ & $\left[\tfrac{2}{3},1\right]$ & $\left[\tfrac{2}{3},\tfrac{2}{3}\right]$ & $\left[\tfrac{1}{2},1\right]$\tabularnewline
+\midrule 
+\addlinespace
+$\mathbb{1}$  & $\necess$ & $\necess$ & $\necess$ & $\necess$ & $\necess$\tabularnewline
+\bottomrule
+\end{tabular}
+\end{table*}
+
+In an experimental setup, $\delta$ is calculated as follows. To
+determine the probability of any event, we typically repeat an
+experiment $n$ times and count the number of times we witness the
+event. This assumes that for each run of the experiment we can
+determine, using our apparatus, whether the event occurred or
+not. Assume an event has an ideal mathematical probability of $0$, and
+we repeat the experiment $100$ times. In a perfect world we should be
+able to refute the event $100$ times and calculate that the
+probability is $0$. We might also observe the event $2$ times and
+refute it $98$ times and therefore calculate the probability to be
+$0.02$. Note that this situation assumes perfect measurement
+conditions and remains within the context of conventional
+(real-valued) probability theory. The question we focus on is what
+happens if we are only able to refute it $97$ times and are
+\emph{uncertain} $3$ times? This is quite common in actual
+experiments. Mathematically we can model this idea by stating that the
+probability of the event is in the range $\left[0,0.03\right]$ which
+says that the probability of the event could be $0$, $0.01$, $0.02$,
+or $0.03$ as each the three uncertain records could either be evidence
+for the event or against it. We just cannot nail it down given the
+current experimental results and therefore represent the evidence as a
+($\delta=$)$0.03$-deterministic probability measure. The interesting
+observation is that the axioms of probability theory (like additivity
+and convexity) impose enough constraints on the structure of
+interval-valued quantum probability measures to make them robust in
+the face of small non-vanishing $\delta$'s.
+
+To see this idea in the context of a quantum experiment, consider
+a three-dimensional Hilbert space with one-dimensional projectors~$P_{\rho}$,
+two-dimensional projectors $P_{\rho}+P_{\sigma}$, and an experiment
+that repeated $12$ times. By the Kochen-Specker theorem, it is impossible
+to build a probability measure that maps every projection to either
+$0=\frac{0}{12}$ or $1=\frac{12}{12}$. That is, the assignment~$\bar{\mu}_{0}$
+defined in Table~\ref{tab:probability-measures} is not a QIVPM.
+
+Now consider what happens if $\frac{1}{4}$ of the data for \emph{every}
+one-dimensional projector is uncertain. A potential account of this
+degradation is to assign to each event $P$ the entire range of possibilities
+$\bar{\mu}_{1}(P)$ as defined in Table~\ref{tab:probability-measures}.
+This measure is not a valid QIVPM because it does not satisfy
+the convexity condition: for any two orthogonal one-dimensional events
+$P_{0}$ and $P_{1}$, the convexity condition requires $\bar{\mu}_{1}\left(P_{0}+P_{1}\right)\subseteq\bar{\mu}_{1}\left(P_{0}\right)+\bar{\mu}_{1}\left(P_{1}\right)$,
+but $\bar{\mu}_{1}\left(P_{0}+P_{1}\right)=\left[\tfrac{3}{4},1\right]$
+which is not a subset of $\left[0,\tfrac{1}{2}\right]=\bar{\mu}_{1}\left(P_{0}\right)+\bar{\mu}_{1}\left(P_{1}\right)$.
+Interestingly, it is impossible to find any probability measure that
+would be consistent with these observations, as the interval $\left[\tfrac{3}{4},1\right]$
+is completely disjoint from the interval $\left[0,\tfrac{1}{2}\right]$
+and no amount of shifting of assumptions regarding the precise outcome
+of the uncertain observations could change that disjointness. However,
+as shown next, a sharp transition occurs when $\delta=\tfrac{1}{3}$.
+
+When the proportion of uncertain data reaches $\frac{1}{3}$, the probability measure
+that assigns to each event the entire range of possibilities is
+$\bar{\mu}_{2}$ defined in Table~\ref{tab:probability-measures}.
+This is also not a valid probability measure by the same
+argument as above. However, in this case $\bar{\mu}_{2}\left(P_{0}+P_{1}\right)=\left[\tfrac{2}{3},1\right]$
+and $\left[0,\tfrac{2}{3}\right]=\bar{\mu}_{2}\left(P_{0}\right)+\bar{\mu}_{2}\left(P_{1}\right)$
+have a \emph{common point}. Hence, by assuming that the uncertain data for
+one-dimensional projectors always support the associated event, while
+those for two-dimensional projectors always refute the event, we can
+find the probability measure~$\bar{\mu}_{2}'$ that can verified to be a
+valid QIVPM and is consistent with the experimental data.
+
+A similar situation happens when more than $\frac{1}{3}$ of data
+is uncertain. In particular, if half of the data is uncertain, the probability
+measure~$\bar{\mu}_{3}$ that assigns to each event the entire range of possibilities
+is already a QIVPM.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The Born Rule and Gleason's Theorem}
@@ -1292,81 +1392,21 @@ Furthermore, we can relate the uncertainty in measurements to the
 volume of quantum states such that, in the limit of infinitely precise
 measurements, the volume of states collapses to a single state.
 
-\begin{compare}
-\begin{oldText}{\yutsung}
-To that end, we construct a family of QIVPMs parameterized by \emph{blurring}
-functions $f:\left[0,1\right]\rightarrow\mathscr{I}$ that formalize
-how the real-valued probabilities are mapped to intervals. We also
-introduce a notion of norm that quantifies the distance between (pure
-or mixed) states. The norm of a pure state $\rho=\proj{\psi}$ is
-defined as usual by $\left\Vert \psi\right\Vert =\sqrt{\ip{\psi}{\psi}}$.
-Similarly, given any Hermitian operator~$A$, we consider the usual
-operator norm $\left\Vert A\right\Vert =\max_{\left\Vert \psi\right\Vert =1}\left\Vert A\ket{\psi}\right\Vert $,
-which is also known as the $2$-norm or the spectral norm~\cite{RobertsVarberg1973,peres1995quantum,GolubVanLoan1996,Foucart2012}.
-Then, a finite-precision extension of Gleason's theorem can be stated
-as follows.
-
-% the composited function~$\ultramodular\circ\mu$ satisfies the constraints
-% for IVPMs naturally no matter in classical or quantum case. Conversely,
-% if $\ultramodular\circ\mu$ is always a IVPM, then the function~$\ultramodular$
-% is ultramodular. In other words, $\ultramodular$ is ultramodular
-% is a necessary and sufficient condition for $\ultramodular\circ\mu$
-% is always a IVPM as we next show.
-
-% When we generalized quantum probability measures to QIVPMs, we changed
-% the range from the unit interval $\left[0,1\right]$ to a set of intervals~$\mathscr{I}$.
-% This replacement suggests to find a function $\ultramodular:\left[0,1\right]\rightarrow\mathscr{I}$
-% to replace a real-valued probability $\mu\left(P\right)$ by an interval-valued 
-% one $\ultramodular\left(\mu\left(P\right)\right)$. In other words,
-% compositing $\ultramodular$ with a quantum probability measure $\mu:\events\rightarrow\left[0,1\right]$
-% produces a function $\ultramodular\circ\mu:\events\overset{\mu}{\rightarrow}\left[0,1\right]\overset{\ultramodular}{\rightarrow}\mathscr{I}$
-% with the same domain and range as a QIVPM. In order to guarantee $\ultramodular\circ\mu$
-% always a QIVPM, we consider the following homomorphism-like properties
-% for~$\ultramodular$.
-
-\begin{thm}[Finite-Precision Extension of the Gleason Theorem]\label{thm:Finite-precision-Gleason}Let
-$f$ be a blurring function and let $f\circ\muB_{\rho}$ be a QIVPM,
-where $\muB_{\rho}$ is the probability measure induced by the Born
-rule for a given state~$\rho$. Let $\alpha$ be the maximum length
-of intervals in its image. If a state $\rho'$ is consistent with
-$f\circ\muB_{\rho}$ on all events, i.e., $\rho'\in\coreBorn\left(f\circ\muB_{\rho},\events\right)$,
-then the norm of their difference is bounded by $\alpha$, i.e., $\left\Vert \rho-\rho'\right\Vert \le\alpha$.\end{thm}
-\end{oldText}
-
-\begin{newText}{\yutsung}
 To that end, we construct a family of QIVPMs parameterized by \emph{blurring}
 functions. A blurring function $f:\left[0,1\right]\rightarrow\mathscr{I}$
 maps every real-valued probability $x\in\left[0,1\right]$ to a set
 of intervals $f\left(x\right)=\left[\ell,r\right]$ containing $x$,
 where $\left[0,1\right]$ denotes the set of real-valued probabilities
 which should not be considered as the interval-valued probability
-$\unknown$. We also introduce a notion of norm that quantifies the
+$\unknown$. We also need a notion of norm to quantify the
 distance between (pure or mixed) states. The norm of a pure state
 $\rho=\proj{\psi}$ is defined as usual by $\left\Vert \psi\right\Vert =\sqrt{\ip{\psi}{\psi}}$.
-Similarly, given any Hermitian operator~$A$, we consider the usual
+In addition, given any Hermitian operator~$A$, we consider the usual
 operator norm $\left\Vert A\right\Vert =\max_{\left\Vert \psi\right\Vert =1}\left\Vert A\ket{\psi}\right\Vert $,
 which is also known as the $2$-norm or the spectral norm~\cite{RobertsVarberg1973,peres1995quantum,GolubVanLoan1996,Foucart2012}.
 In fact, for any such matrix, including the density matrix~$\rho$,
 the norm is the maximum absolute value of its eigenvalue. Then, a
 finite-precision extension of Gleason's theorem can be stated as follows.
-
-% the composited function~$\ultramodular\circ\mu$ satisfies the constraints
-% for IVPMs naturally no matter in classical or quantum case. Conversely,
-% if $\ultramodular\circ\mu$ is always a IVPM, then the function~$\ultramodular$
-% is ultramodular. In other words, $\ultramodular$ is ultramodular
-% is a necessary and sufficient condition for $\ultramodular\circ\mu$
-% is always a IVPM as we next show.
-
-% When we generalized quantum probability measures to QIVPMs, we changed
-% the range from the unit interval $\left[0,1\right]$ to a set of intervals~$\mathscr{I}$.
-% This replacement suggests to find a function $\ultramodular:\left[0,1\right]\rightarrow\mathscr{I}$
-% to replace a real-valued probability $\mu\left(P\right)$ by an interval-valued 
-% one $\ultramodular\left(\mu\left(P\right)\right)$. In other words,
-% compositing $\ultramodular$ with a quantum probability measure $\mu:\events\rightarrow\left[0,1\right]$
-% produces a function $\ultramodular\circ\mu:\events\overset{\mu}{\rightarrow}\left[0,1\right]\overset{\ultramodular}{\rightarrow}\mathscr{I}$
-% with the same domain and range as a QIVPM. In order to guarantee $\ultramodular\circ\mu$
-% always a QIVPM, we consider the following homomorphism-like properties
-% for~$\ultramodular$.
 
 \begin{thm}[Finite-Precision Extension of the Gleason Theorem]\label{thm:Finite-precision-Gleason-1}Let
 $f:\left[0,1\right]\rightarrow\mathscr{I}$ be a blurring function
@@ -1376,8 +1416,6 @@ Let $\alpha$ be the maximum length of intervals in $\mathscr{I}$.
 If a state $\rho'$ is consistent with $f\circ\muB_{\rho}$ on all
 events, i.e., $\rho'\in\coreBorn\left(f\circ\muB_{\rho},\events\right)$,
 then the norm of their difference is bounded by $\alpha$, i.e., $\left\Vert \rho-\rho'\right\Vert \le\alpha$.\end{thm}
-\end{newText}
-\end{compare}
 
 The proof proceeds as follows. Given a state~$\rho'$ consistent
 with $f\circ\muB_{\rho}$, we have $\muB_{\rho'}\left(\proj{\psi}\right)\in f\left(\muB_{\rho}\left(\proj{\psi}\right)\right)$
@@ -1681,127 +1719,6 @@ precision on the Kochen-Specker
 theorem~\cite{PhysRevLett.83.3751,Mermin1999}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\appendix*
-\section{Experimental Data and \texorpdfstring{$\delta$}{delta}-determinism} 
-
-\begin{table*}
-\caption{\label{tab:probability-measures}Possible probability measures on
-a Hilbert space of dimension~$d=3$, where $\bar{\mu}_{2}'$ and
-$\bar{\mu}_{3}$ are QIVPMs while $\bar{\mu}_{0}$, $\bar{\mu}_{1}$,
-and $\bar{\mu}_{2}$ are not. Events are listed in the column labeled
-by $P$.}
-\centering{}%
-\begin{tabular}{cccccc}
-\toprule 
-\addlinespace
-$P$  & $\bar{\mu}_{0}\left(P\right)$ & $\bar{\mu}_{1}\left(P\right)$ & $\bar{\mu}_{2}\left(P\right)$ & $\bar{\mu}_{2}'\left(P\right)$ & $\bar{\mu}_{3}\left(P\right)$\tabularnewline
-\midrule
-\midrule 
-\addlinespace
-$\mathbb{0}$  & $\imposs$ & $\imposs$ & $\imposs$ & $\imposs$ & $\imposs$\tabularnewline
-\midrule 
-\addlinespace
-All one-dimensional projectors  & $\left[0,0\right]$ & $\left[0,\tfrac{1}{4}\right]$ & $\left[0,\tfrac{1}{3}\right]$ & $\left[\tfrac{1}{3},\tfrac{1}{3}\right]$ & $\left[0,\tfrac{1}{2}\right]$\tabularnewline
-\midrule 
-\addlinespace
-All two-dimensional projectors  & $\left[1,1\right]$ & $\left[\tfrac{3}{4},1\right]$ & $\left[\tfrac{2}{3},1\right]$ & $\left[\tfrac{2}{3},\tfrac{2}{3}\right]$ & $\left[\tfrac{1}{2},1\right]$\tabularnewline
-\midrule 
-\addlinespace
-$\mathbb{1}$  & $\necess$ & $\necess$ & $\necess$ & $\necess$ & $\necess$\tabularnewline
-\bottomrule
-\end{tabular}
-\end{table*}
-It is Meyer's great insight to realize that the Kochen-Specker theorem
-can be nullified by replacing the field of the reals by rational numbers.
-In other words, Meyer exclusively attributes finite-precision errors
-to the description of the states defined in a general Hilbert space.
-The response of Mermin argues against Meyer's interpretation but accepts
-his framework. More generally, there have been responses that argue
-that the effect of finite-precision measurements on the Kochen-Specker
-theorem requires a different approach altogether (see for example
-Ax and Kochen's communication cited by Cabello~\cite{Cabello2002}).
-Our approach is agnostic about attributing elements of reality to
-the state function (as Meyer did). We simply attribute lack of certainty
-to the uncertain results obtained through the use of a measuring instrument.
-Thus, the parameter~$\delta$ in our framework reflects insufficient
-knowledge of the experimenter, which could be due to a variety of
-reasons related to imperfections of devices. For example, a typical
-question that an experimenter may not be able to answer accurately
-would be ``did an electron land in the left half or the right half
-of the screen?'' There are cases in which the electron would land
-too close to the middle of the screen for the experimenter to be able
-to determine with certainty that it was left or right of the center.
-We simply record this imprecision in the probability we assign to
-events, and use the axioms of probability theory to argue that a sharp
-transition occurs when the imprecision reaches a certain value.
-
-In an experimental setup, $\delta$ is calculated as follows. To
-determine the probability of any event, we typically repeat an
-experiment $n$ times and count the number of times we witness the
-event. This assumes that for each run of the experiment we can
-determine, using our apparatus, whether the event occurred or
-not. Assume an event has an ideal mathematical probability of $0$, and
-we repeat the experiment $100$ times. In a perfect world we should be
-able to refute the event $100$ times and calculate that the
-probability is $0$. We might also observe the event $2$ times and
-refute it $98$ times and therefore calculate the probability to be
-$0.02$. Note that this situation assumes perfect measurement
-conditions and remains within the context of conventional
-(real-valued) probability theory. The question we focus on is what
-happens if we are only able to refute it $97$ times and are
-\emph{uncertain} $3$ times? This is quite common in actual
-experiments. Mathematically we can model this idea by stating that the
-probability of the event is in the range $\left[0,0.03\right]$ which
-says that the probability of the event could be $0$, $0.01$, $0.02$,
-or $0.03$ as each the three uncertain records could either be evidence
-for the event or against it. We just cannot nail it down given the
-current experimental results and therefore represent the evidence as a
-($\delta=$)$0.03$-deterministic probability measure. The interesting
-observation is that the axioms of probability theory (like additivity
-and convexity) impose enough constraints on the structure of
-interval-valued quantum probability measures to make them robust in
-the face of small non-vanishing $\delta$'s.
-
-To see this idea in the context of a quantum experiment, consider
-a three-dimensional Hilbert space with one-dimensional projectors~$P_{\rho}$,
-two-dimensional projectors $P_{\rho}+P_{\sigma}$, and an experiment
-that repeated $12$ times. By the Kochen-Specker theorem, it is impossible
-to build a probability measure that maps every projection to either
-$0=\frac{0}{12}$ or $1=\frac{12}{12}$. That is, the assignment~$\bar{\mu}_{0}$
-defined in Table~\ref{tab:probability-measures} is not a QIVPM.
-
-Now consider what happens if $\frac{1}{4}$ of the data for \emph{every}
-one-dimensional projector is uncertain. A potential account of this
-degradation is to assign to each event $P$ the entire range of possibilities
-$\bar{\mu}_{1}(P)$ as defined in Table~\ref{tab:probability-measures}.
-This measure is not a valid QIVPM because it does not satisfy
-the convexity condition: for any two orthogonal one-dimensional events
-$P_{0}$ and $P_{1}$, the convexity condition requires $\bar{\mu}_{1}\left(P_{0}+P_{1}\right)\subseteq\bar{\mu}_{1}\left(P_{0}\right)+\bar{\mu}_{1}\left(P_{1}\right)$,
-but $\bar{\mu}_{1}\left(P_{0}+P_{1}\right)=\left[\tfrac{3}{4},1\right]$
-which is not a subset of $\left[0,\tfrac{1}{2}\right]=\bar{\mu}_{1}\left(P_{0}\right)+\bar{\mu}_{1}\left(P_{1}\right)$.
-Interestingly, it is impossible to find any probability measure that
-would be consistent with these observations, as the interval $\left[\tfrac{3}{4},1\right]$
-is completely disjoint from the interval $\left[0,\tfrac{1}{2}\right]$
-and no amount of shifting of assumptions regarding the precise outcome
-of the uncertain observations could change that disjointness. However,
-as shown next, a sharp transition occurs when $\delta=\tfrac{1}{3}$.
-
-When the proportion of uncertain data reaches $\frac{1}{3}$, the probability measure
-that assigns to each event the entire range of possibilities is
-$\bar{\mu}_{2}$ defined in Table~\ref{tab:probability-measures}.
-This is also not a valid probability measure by the same
-argument as above. However, in this case $\bar{\mu}_{2}\left(P_{0}+P_{1}\right)=\left[\tfrac{2}{3},1\right]$
-and $\left[0,\tfrac{2}{3}\right]=\bar{\mu}_{2}\left(P_{0}\right)+\bar{\mu}_{2}\left(P_{1}\right)$
-have a \emph{common point}. Hence, by assuming that the uncertain data for
-one-dimensional projectors always support the associated event, while
-those for two-dimensional projectors always refute the event, we can
-find the probability measure~$\bar{\mu}_{2}'$ that can verified to be a
-valid QIVPM and is consistent with the experimental data.
-
-A similar situation happens when more than $\frac{1}{3}$ of data
-is uncertain. In particular, if half of the data is uncertain, the probability
-measure~$\bar{\mu}_{3}$ that assigns to each event the entire range of possibilities
-is already a QIVPM.
 
 % \input{revised_prop_letter_ajhs.bbl}
 \bibliography{prop}
