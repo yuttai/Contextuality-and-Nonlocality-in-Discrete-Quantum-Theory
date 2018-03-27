@@ -70,6 +70,18 @@ showkeys, longbibliography, amsmath, amssymb, floatfix]{revtex4-1}
 \newcommand{\muB}{\ensuremath{\mu^{B}}}
 \newcommand{\eventsC}{\ensuremath{\events_{C}}}
 
+% https://tex.stackexchange.com/questions/303018/minipage-reset-indent-how-can-i-set-again-to-standard
+\edef\docIndent{\the\parindent}
+\edef\docParskip{\the\parskip}
+\NewDocumentEnvironment{docParinfo}{}{%
+ \edef\currentIndent{\the\parindent}
+ \edef\currentParskip{\the\parskip}
+ \setlength{\parindent}{\docIndent}%
+ \setlength{\parskip}{\docParskip}
+}{
+ \setlength{\parindent}{\currentIndent}%
+ \setlength{\parskip}{\currentParskip}
+}
 \newcommand{\says}[3]{\begin{framed}\begin{minipage}{0.9\linewidth}\color{#1}{#2 says: #3}\end{minipage}\end{framed}}
 \newcommand{\amr}[1]{\says{green}{Amr}{#1}}
 \newcommand{\yutsung}[1]{\says{purple}{Yu-Tsung}{#1}}
@@ -77,9 +89,11 @@ showkeys, longbibliography, amsmath, amssymb, floatfix]{revtex4-1}
 \newcommand{\andy}[1]{\says{blue}{Andy}{#1}}
 % \excludecomment{suggest}
 \NewDocumentEnvironment{suggest}{m m O{}}{#1{TEXT \##2 would go here. #3}}{#1{TEXT \##2 end here.}}
-\NewDocumentEnvironment{compare}{}{\begin{widetext}\end{widetext}}{\begin{widetext}\end{widetext}}
-\NewDocumentEnvironment{oldText}{m}{\noindent\begin{minipage}[b]{1\columnwidth}#1{The following is old text.}}{#1{The old text end here.}\end{minipage}\newpage}
-\NewDocumentEnvironment{newText}{m}{\noindent\begin{minipage}[b]{1\columnwidth}#1{The following is new text.}}{#1{The new text end here.}\end{minipage}}
+\newenvironment{compare}{\begin{widetext}\end{widetext}}{\begin{widetext}\end{widetext}}
+\newenvironment{compareNextpage}{\clearpage}{\begin{widetext}\end{widetext}}
+\NewDocumentEnvironment{compareText}{m m}{\begin{minipage}[b]{1\columnwidth}#1{The following is #2 text.}\begin{docParinfo}}{\end{docParinfo}#1{The #2 text end here.}\end{minipage}}
+\newenvironment{oldText}[1]{\begin{compareText}{#1}{old}}{\end{compareText}\newpage}
+\newenvironment{newText}[1]{\begin{compareText}{#1}{new}}{\end{compareText}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -575,6 +589,28 @@ $\muB_{\rho}\left(P\right)$ to QIVPMs
 $\bar{\mu}\left(P\right)$. However, if {\color{blue}the set of events is} mutually
 commuting, the situation reverts to the classical case in which
 probabilities always determine at least one state.
+
+We now give the necessary technical definitions to prove this
+non-empty core property. {\color{blue}We say a QIVPM $\bar{\mu}$ is
+\emph{consistent} with a state $\rho$ and a projector~$P$ if the
+interval $\bar{\mu}(P)$ contains the exact probability calculated by
+the Born rule~\cite{Born1983bibTeX,Mermin2007,Jaeger2007}, i.e.,
+  \begin{equation}
+  \muB_{\rho}\left(P\right) = \Tr\left(\rho
+  P\right)\in\bar{\mu}\left(P\right)\ .
+  \end{equation}
+In contrast with classical probability spaces, there is \emph{no
+guarantee} that there exists a unique state $\rho$ consistent with a QIVPM.}
+
+We next refine the concept of consistency by introducing the idea of
+a ``core'' set of states relative to subspaces. First, we define
+$\events'$ as a \emph{subspace} of a set of events if $\events$ if
+$\events'$ contains  $\mathbb{0}$ and $\mathbb{1}$ and is closed under
+complements, sums, and products.  In particular, for any
+projector~$P\in\events'$, we have
+$\mathbb{1}-P\in\events'$ and for each pair of commuting
+projectors~$P_{0}\in\events'$ and $P_{1}\in\events'$, we have
+$P_{0}+P_{1}-P_{0}P_{1}$ and $P_{0}P_{1}\in\events'$.
 \end{oldText}
 \begin{newText}{\andy}
 Our definition of QIVPMs is consistent with classical IVPMs in the
@@ -601,13 +637,11 @@ $\bar{\mu}\left(P\right)$. However, if {\color{blue}we restrict ourselves to the
 $\eventsC$ of} mutually
 commuting, the situation reverts to the classical case in which
 probabilities always determine at least one state.
-\end{newText}
-\end{compare}
 
 We now give the necessary technical definitions to prove this
 non-empty core property.
-\begin{definition}[Consistency] We say a QIVPM $\bar{\mu}$
-is \emph{consistent} with a state $\rho$ and a projector~$P$ if the
+{\color{blue}\begin{definition}[Consistency] We say a QIVPM $\bar{\mu}$ is
+\emph{consistent} with a state $\rho$ and a projector~$P$ if the
 interval $\bar{\mu}(P)$ contains the exact probability calculated by
 the Born rule~\cite{Born1983bibTeX,Mermin2007,Jaeger2007}, i.e.,
   \begin{equation}
@@ -617,17 +651,19 @@ the Born rule~\cite{Born1983bibTeX,Mermin2007,Jaeger2007}, i.e.,
 In contrast with classical probability spaces, there is \emph{no
 guarantee} that there exists a unique state $\rho$ that satisfies
 Eq.~(\ref{eq:consistent}) and therefor is consistent with a QIVPM.
-\end{definition}
+\end{definition}}
 
 We next refine the concept of consistency by introducing the idea of
 a ``core'' set of states relative to subspaces. First, we define
 $\events'$ as a \emph{subspace} of a set of events if $\events$ if
-$\events'$ contains the projector $\mathbb{0}$ and $\mathbb{1}$ and is closed
-under complements, sums, and products.  In particular, for any
+$\events'$ contains {\color{blue}the projector} $\mathbb{0}$ and $\mathbb{1}$ and is closed under
+complements, sums, and products.  In particular, for any
 projector~$P\in\events'$, we have
 $\mathbb{1}-P\in\events'$ and for each pair of commuting
 projectors~$P_{0}\in\events'$ and $P_{1}\in\events'$, we have
 $P_{0}+P_{1}-P_{0}P_{1}$ and $P_{0}P_{1}\in\events'$.
+\end{newText}
+\end{compare}
 
 \begin{definition}[The core of a probability measure] The \emph{core}
 $\coreBorn\left(\bar{\mu},\events'\right)$ of a probability measure 
@@ -1354,15 +1390,39 @@ intervals~$\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$:
   $\coreBorn\left(\bar{\mu},\events\right)=\{\rho\}$.
   \end{thm}
 
+\begin{compareNextpage}
+\begin{oldText}{\andy}
 Now let us consider relaxing $\mathscr{I}$
 to a countable set of finite-width intervals.
 As the intervals in the image of a QIVPM become less and less sharp,
-we expect more and more states to be consistent with it. Indeed, in
+we expect more and more states to be consistent with it. {\color{blue}Indeed, in
 the limit, the intervals become \imposs, \necess, and $\unknown=\left[0,1\right]$,  and
 every state is consistent with an assignment that states that its
-projections are unknown. There is however a subtlety: as shown in the
+projections are unknown.} There is however a subtlety: as shown in the
 theorem below, it is possible for an arbitrary assignment of intervals to projectors
 to be globally inconsistent.
+\end{oldText}
+\begin{newText}{\andy}
+Now let us consider relaxing $\mathscr{I}$
+to a countable set of finite-width intervals.
+As the intervals in the image of a QIVPM become less and less sharp,
+we expect more and more states to be consistent with it. {\color{blue}In
+the limit of minimal sharpness, all states~$\rho$
+are consistent with the following QIVPM
+\begin{equation}
+\bar{\mu}\left(P\right)=\begin{cases}
+\imposs\,, & \textrm{ if }P=\mathbb{0}\:;\\
+\necess\,, & \textrm{ if }P=\mathbb{1}\:;\\
+\unknown=\left[0,1\right]\,, & \textrm{ otherwise.}
+\end{cases}
+\end{equation}
+mapping nearly all
+projections to the unknown interval.} There is however a subtlety: as shown in the
+theorem below, it is possible for an arbitrary assignment of intervals to projectors
+to be globally inconsistent.
+\end{newText}
+\end{compareNextpage}
+
 
 % \noindent For general QIVPMs mapping to imprecise intervals, we also
 % want to seek a simple rule to construct them, and to understand which
