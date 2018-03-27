@@ -91,7 +91,7 @@ showkeys, longbibliography, amsmath, amssymb, floatfix]{revtex4-1}
 \NewDocumentEnvironment{suggest}{m m O{}}{#1{TEXT \##2 would go here. #3}}{#1{TEXT \##2 end here.}}
 \newenvironment{compare}{\begin{widetext}\end{widetext}}{\begin{widetext}\end{widetext}}
 \newenvironment{compareNextpage}{\clearpage}{\begin{widetext}\end{widetext}}
-\NewDocumentEnvironment{compareText}{m m}{\begin{minipage}[b]{1\columnwidth}#1{The following is #2 text.}\begin{docParinfo}}{\end{docParinfo}#1{The #2 text end here.}\end{minipage}}
+\NewDocumentEnvironment{compareText}{m m}{\noindent\begin{minipage}[b]{1\columnwidth}#1{The following is #2 text.}\begin{docParinfo}}{\end{docParinfo}#1{The #2 text end here.}\end{minipage}}
 \newenvironment{oldText}[1]{\begin{compareText}{#1}{old}}{\end{compareText}\newpage}
 \newenvironment{newText}[1]{\begin{compareText}{#1}{new}}{\end{compareText}}
 
@@ -538,21 +538,24 @@ and conventional quantum probability measures in detail.
 \begin{oldText}{\andy}
 \noindent The first three constraints,
 Eqs.~(\ref{eq:QIVPM-constraints}), are the direct counterpart of the
-corresponding ones for classical IVPMs.  With the understanding that
+corresponding ones for classical IVPMs.  {\color{blue}Note that the possibility of negative
+intervals appearing in Eq.~(\ref{eq:interval-times})
+is a natural consequence of the minus sign appearing in
+Eq.~(\ref{eq:complement}).}  With the understanding that
 the union of classical sets $E_1\cup E_2$ is replaced by
 $P_0+P_1-P_0P_1$ in the case of quantum projection
 operators~\cite{Griffiths2003}, the last condition,
 Eq.~(\ref{eq:QuantumInterval-valuedProbability-Inclusion}), is a
 direct counterpart of the convexity condition of
 Eq.~(\ref{eq:classicalconvex}). Thus our definition of QIVPMs merges
-aspects of both classical IVPMs and quantum probability measures. 
+aspects of both classical IVPMs and quantum probability measures.
 \end{oldText}
-\begin{newText}{\andy}
+\begin{newText}{\yutsung}
 \noindent The first three constraints,
 Eqs.~(\ref{eq:QIVPM-constraints}), are the direct counterpart of the
-corresponding ones for classical IVPMs.  {\color{blue}Note that the possibility of negative
-intervals appearing in Eq.~(\ref{eq:interval-times})
-is a natural consequence of the minus sign appearing in
+corresponding ones for classical IVPMs.  {\color{purple}Note that we need to
+consider $x\le0$ case in Eq.~(\ref{eq:interval-times}) because of the minus sign
+appearing in
 Eq.~(\ref{eq:complement}).}  With the understanding that
 the union of classical sets $E_1\cup E_2$ is replaced by
 $P_0+P_1-P_0P_1$ in the case of quantum projection
@@ -1446,8 +1449,10 @@ Furthermore, we can relate the uncertainty in measurements to the
 volume of quantum states such that, in the limit of infinitely precise
 measurements, the volume of states collapses to a single state.
 
-To that end, we construct a family of QIVPMs parameterized by \emph{blurring}
-functions. A blurring function $f:\left[0,1\right]\rightarrow\mathscr{I}$
+\begin{compare}
+\begin{oldText}{\andy}
+To that end, we construct a family of QIVPMs parameterized by {\color{blue}\emph{blurring}
+functions. A blurring function} $f:\left[0,1\right]\rightarrow\mathscr{I}$
 maps every real-valued probability $x\in\left[0,1\right]$ to a set
 of intervals $f\left(x\right)=\left[\ell,r\right]$ containing $x$,
 where $\left[0,1\right]$ denotes the set of real-valued probabilities
@@ -1461,15 +1466,48 @@ which is also known as the $2$-norm or the spectral norm~\cite{RobertsVarberg197
 In fact, for any such matrix, including the density matrix~$\rho$,
 the norm is the maximum absolute value of its eigenvalue. Then, a
 finite-precision extension of Gleason's theorem can be stated as follows.
+\end{oldText}
+\begin{newText}{\andy}
+To that end, we construct a family of QIVPMs parameterized by {\color{blue}\emph{interval}
+maps. A interval map} $f:\left[0,1\right]\rightarrow\mathscr{I}$
+maps every real-valued probability $x\in\left[0,1\right]$ to a set
+of intervals $f\left(x\right)=\left[\ell,r\right]$ containing $x$,
+where $\left[0,1\right]$ denotes the set of real-valued probabilities
+which should not be considered as the interval-valued probability
+$\unknown$. We also need a notion of norm to quantify the
+distance between (pure or mixed) states. The norm of a pure state
+$\rho=\proj{\psi}$ is defined as usual by $\left\Vert \psi\right\Vert =\sqrt{\ip{\psi}{\psi}}$.
+In addition, given any Hermitian operator~$A$, we consider the usual
+operator norm $\left\Vert A\right\Vert =\max_{\left\Vert \psi\right\Vert =1}\left\Vert A\ket{\psi}\right\Vert $,
+which is also known as the $2$-norm or the spectral norm~\cite{RobertsVarberg1973,peres1995quantum,GolubVanLoan1996,Foucart2012}.
+In fact, for any such matrix, including the density matrix~$\rho$,
+the norm is the maximum absolute value of its eigenvalue. Then, a
+finite-precision extension of Gleason's theorem can be stated as follows.
+\end{newText}
+\end{compare}
 
+\begin{compareNextpage}
+\begin{oldText}{\andy}
 \begin{thm}[Finite-Precision Extension of the Gleason Theorem]\label{thm:Finite-precision-Gleason}Let
-$f:\left[0,1\right]\rightarrow\mathscr{I}$ be a blurring function
+$f:\left[0,1\right]\rightarrow\mathscr{I}$ be a {\color{blue}blurring function}
 and let $f\circ\muB_{\rho}$ be a QIVPM, where $\muB_{\rho}$ is the
 probability measure induced by the Born rule for a given state~$\rho$.
 Let $\alpha$ be the maximum length of intervals in $\mathscr{I}$.
 If a state $\rho'$ is consistent with $f\circ\muB_{\rho}$ on all
 events, i.e., $\rho'\in\coreBorn\left(f\circ\muB_{\rho},\events\right)$,
 then the norm of their difference is bounded by $\alpha$, i.e., $\left\Vert \rho-\rho'\right\Vert \le\alpha$.\end{thm}
+\end{oldText}
+\begin{newText}{\andy}
+\begin{thm}[Finite-Precision Extension of the Gleason Theorem]\label{thm:Finite-precision-Gleason}Let
+$f:\left[0,1\right]\rightarrow\mathscr{I}$ be a {\color{blue}interval map}
+and let $f\circ\muB_{\rho}$ be a QIVPM, where $\muB_{\rho}$ is the
+probability measure induced by the Born rule for a given state~$\rho$.
+Let $\alpha$ be the maximum length of intervals in $\mathscr{I}$.
+If a state $\rho'$ is consistent with $f\circ\muB_{\rho}$ on all
+events, i.e., $\rho'\in\coreBorn\left(f\circ\muB_{\rho},\events\right)$,
+then the norm of their difference is bounded by $\alpha$, i.e., $\left\Vert \rho-\rho'\right\Vert \le\alpha$.\end{thm}
+\end{newText}
+\end{compareNextpage}
 
 The proof proceeds as follows. Given a state~$\rho'$ consistent
 with $f\circ\muB_{\rho}$, we have $\muB_{\rho'}\left(\proj{\psi}\right)\in f\left(\muB_{\rho}\left(\proj{\psi}\right)\right)$
@@ -1484,21 +1522,22 @@ is the maximum absolute value of the eigenvalues of $\rho-\rho'$~\cite{544199},
 and equal to $\left\Vert \rho-\rho'\right\Vert $~\cite{GolubVanLoan1996,Foucart2012}.
 Hence, $\left\Vert \rho-\rho'\right\Vert \le\alpha$.
 
-%% ajh: no abbreviations as first words of sentences.
+\begin{compare}
+\begin{oldText}{\andy}
 Theorem~\ref{thm:Finite-precision-Gleason} generalizes Gleason's
 theorem in the sense that it accounts for a larger class of probability measures that includes
 the conventional one as a limit. The theorem is however ``special'' in
 the sense that it only applies to the particular class of QIVPMs
-constructed by composing a blurring function with a conventional
+constructed by composing a {\color{blue}blurring function} with a conventional
 quantum probability measure. QIVPMs constructed in this manner have
 some peculiar properties that we examine next.
 
-A blurring function is called \emph{ultramodular} if it satisfies
+A {\color{blue}blurring function} is called \emph{ultramodular} if it satisfies
 the following properties.
 
 \begin{definition}[Ultramodular Functions]\label{def:THOS}Given
   a collection of intervals $\mathscr{I}$ including $\imposs$ and
-  $\necess$, a blurring function
+  $\necess$, a {\color{blue}blurring function}
   $\ultramodular:\left[0,1\right]\rightarrow\mathscr{I}$ is called
   ultramodular if:
 \begin{subequations}\label{eq:iota-constraints}
@@ -1526,9 +1565,57 @@ Eq.~(\ref{eq:classicalconvex}) and
 these conditions guarantee that, for any conventional quantum
 probability measure $\mu$, the composition $\ultramodular \circ \mu$
 defines a valid QIVPM. Conversely, if for every quantum probability
-measure $\mu$, it is the case that if $f \circ \mu$ is a QIVPM, then the blurring
-function~$f$ is an ultramodular function. Formally, we have the following
+measure $\mu$, it is the case that if $f \circ \mu$ is a QIVPM, then the {\color{blue}blurring
+function}~$f$ is an ultramodular function. Formally, we have the following
 result.
+\end{oldText}
+\begin{newText}{\andy}
+Theorem~\ref{thm:Finite-precision-Gleason} generalizes Gleason's
+theorem in the sense that it accounts for a larger class of probability measures that includes
+the conventional one as a limit. The theorem is however ``special'' in
+the sense that it only applies to the particular class of QIVPMs
+constructed by composing a {\color{blue}interval map} with a conventional
+quantum probability measure. QIVPMs constructed in this manner have
+some peculiar properties that we examine next.
+
+A {\color{blue}interval map} is called \emph{ultramodular} if it satisfies
+the following properties.
+
+\begin{definition}[Ultramodular Functions]\label{def:THOS}Given
+  a collection of intervals $\mathscr{I}$ including $\imposs$ and
+  $\necess$, a {\color{blue}interval map}
+  $\ultramodular:\left[0,1\right]\rightarrow\mathscr{I}$ is called
+  ultramodular if:
+\begin{subequations}\label{eq:iota-constraints}
+\begin{eqnarray}
+ &  & \ultramodular(0)=\imposs\,,\\
+ &  & \ultramodular(1)=\necess\,,\\
+ &  & \ultramodular\left(1-x\right)=\necess-\ultramodular\left(x\right)\,,
+\end{eqnarray}
+\end{subequations}and for any three numbers~$x_{0}$, $x_{1}$, and
+$x_{2}\in\left[0,1\right]$ such that
+$y=x_{0}+x_{1}+x_{2}\in\left[0,1\right]$, we have:
+\begin{equation}
+\ultramodular\left(y\right)+\ultramodular\left(x_{2}\right)\subseteq\ultramodular\left(x_{0}+x_{2}\right)+\ultramodular\left(x_{1}+x_{2}\right)\,.\label{eq:iota-Inclusion}
+\end{equation}
+\end{definition}
+
+\noindent The first three constraints,
+Eqs.~(\ref{eq:iota-constraints}), are the direct counterpart of the
+corresponding QIVPM constraints, Eqs.~(\ref{eq:QIVPM-constraints});
+the last condition, Eq.~(\ref{eq:iota-Inclusion}), is the direct
+counterpart of the convexity conditions,
+Eq.~(\ref{eq:classicalconvex}) and
+(\ref{eq:QuantumInterval-valuedProbability-Inclusion})
+\cite{Choquet1954,Shapley1971,NgMoYeh1997,MarinacciMontrucchio2005}. Therefore,
+these conditions guarantee that, for any conventional quantum
+probability measure $\mu$, the composition $\ultramodular \circ \mu$
+defines a valid QIVPM. Conversely, if for every quantum probability
+measure $\mu$, it is the case that if $f \circ \mu$ is a QIVPM, then the {\color{blue}interval
+map}~$f$ is an ultramodular function. Formally, we have the following
+result.
+\end{newText}
+\end{compare}
 
 \begin{thm}[Equivalence of Ultramodular Functions and IVPMs]\label{thm:iota-statements}The
 following three statements are equivalent:
@@ -1572,35 +1659,21 @@ $\proj{3}$.  The restricted function
 $\mu=\muB_{\rho}|_{\eventsC}$ is then a classical probability
 measure, and the induced map $\ultramodular\circ\mu$ fails to be
 a classical IVPM for the same reason as in the quantum case.
-%% ajh: sentence "This can be done..." is somehow garbled, tried to
-%% fix.  $\eventsC$ is by DEFINITION a commuting subspace, so the
-%% original sentence does not seem to have any meaning.  Are there
-%% MORE mutually commuting projectors in $\eventsC$?  It would seem
-%% that there are no others, so this is all confusing, as that would
-%% make this sentence completely vacuous.
 
-% In contrast with the QIVPM defined in Table~\ref{tab:non-Born-QIVPM},
-% there is always a state consistent with any composite QIVPM
-% $\ultramodular\circ\muB_{\rho}$.  Moreover, the collection
-% of states consistent with $\ultramodular\circ\muB_{\rho}$
-% gets closer and closer to~$\rho$ as the intervals get narrower and
-% narrower. Eventually, the collection of states collapses to the
-% singleton set~$\left\{ \rho\right\} $ as the intervals become the
-% infinitely precise intervals~$\mathscr{I}_{\infty}$. To precisely
-% state this result, we introduce the norm of pure states and
-% operators. The norm of a pure state~$\ket{\psi}$ is defined as usual
-% $\left\Vert \psi\right\Vert =\sqrt{\ip{\psi}{\psi}}$.  Similarly,
-% given any Hermitian operator~$A$, we consider the usual operator norm
-% $\left\Vert A\right\Vert =\max_{\left\Vert \psi\right\Vert
-%   =1}\left\Vert A\ket{\psi}\right\Vert $, which is also known as the
-% $2$-norm or the spectral
-% norm~\cite{RobertsVarberg1973,peres1995quantum,GolubVanLoan1996,Foucart2012}.
-% Then, a version of Gleason's theorem can be stated as follow.
-
+\begin{compare}
+\begin{oldText}{\andy}
 In other words, essential properties of QIVPMs constructed using
-blurring functions can be gleaned from the properties of
+{\color{blue}blurring function}s can be gleaned from the properties of
 ultramodular functions. The following is a most interesting property
 in our setting. 
+\end{oldText}
+\begin{newText}{\andy}
+In other words, essential properties of QIVPMs constructed using
+{\color{blue}interval map}s can be gleaned from the properties of
+ultramodular functions. The following is a most interesting property
+in our setting. 
+\end{newText}
+\end{compare}
 
 \begin{thm}[Range of Ultramodular Functions]\label{thm:convex-uncountable}For
 any ultramodular function~$\ultramodular:\left[0,1\right]\rightarrow\mathscr{I}$,
@@ -1626,117 +1699,24 @@ either $\ultramodular$ maps every number in $\left[0,1\right]$ to the
 same interval, or the number of intervals to which $\ultramodular$ maps
 must be uncountable.
 
+\begin{compare}
+\begin{oldText}{\andy}
 To summarize, a conventional quantum probability measure has an
-uncountable range $[0,1]$. A QIVPM constructed by blurring such a
+uncountable range $[0,1]$. A QIVPM constructed by {\color{blue}blurring} such a
 conventional quantum probability measure must also have an uncountable
 range of intervals. Of course, any particular QIVPM, or any particular
 experiment, will use a fixed collection of intervals appropriate for
 the resources and precision of the particular experiment. 
-%\gerardo{We need to explain physically what it means?}
-% The essential reason for getting an uncountable number of intervals is
-% the convexity condition we imposed on QIVPMs. This condition is widely
-% used in the classical setting but it is possible that it should be
-% modified or weakened in the quantum case. If we take this approach and 
-% % Even if $\ultramodular$ has to be ultramodular to guarantee
-% % $\ultramodular\circ\mu$ a QIVPM, the composited function
-% % $\ultramodular\circ\mu$ may still be a QIVPM when $\ultramodular$ is
-% % not ultramodular. In this case, the composited function
-% % $\ultramodular\circ\mu$ could map to non-trivial finite number of
-% % intervals. For example, we can 
-% weaken the convexity condition, Eq.~(\ref{eq:iota-Inclusion}), we can
-% recover QIVPMs that only require countable and even finite collections
-% of intervals. Formally, we weaken the convexity condition to the
-% following additive condition: for any numbers $x_{0}$ and
-% $x_{1}\in\left[0,1\right]$, their sum $x_{0}+x_{1}\in\left[0,1\right]$
-% implies
-% \begin{equation}
-% \ultramodular\left(x_{0}+x_{1}\right)\subseteq\ultramodular\left(x_{0}\right)+\ultramodular\left(x_{1}\right)\,.\label{eq:iota-add}
-% \end{equation}
-% Then, given a three-dimensional Hilbert space, if $\ultramodular$
-% satisfies Eqs.~(\ref{eq:iota-constraints}) and
-% Eq.~(\ref{eq:iota-add}), then $\ultramodular\circ\mu$ is a
-% QIVPM~\cite{TaiThesis2018}.  For example, consider an orthonormal
-% basis $\{\ket{0},\ket{1},\ket{2}\}$, two states
-% $\rho_{0}=\frac{1}{3}\proj{0}+\frac{1}{3}\proj{1}+\frac{1}{3}\proj{2}$
-% and
-% $\rho_{1}=\frac{7}{24}\proj{0}+\frac{1}{3}\proj{1}+\frac{3}{8}\proj{2}$,
-% and a set of intervals:
-% \begin{equation}
-% \begin{aligned}\mathscr{I}_{2}={} & \left\{ \imposs,\left[0,\tfrac{1}{4}\right],\left[0,{\textstyle \tfrac{1}{2}}\right],\left[\tfrac{1}{4},\tfrac{3}{4}\right],\right.\\
-%  & \left.\left[\tfrac{1}{2},1\right],\left[\tfrac{3}{4},1\right],\necess\right\} \,.
-% \end{aligned}
-% \end{equation}
-% Since the interval-valued function~$\ultramodular_{2}:\left[0,1\right]\rightarrow\mathscr{I}_{2}$
-% defined in Table~\ref{tab:I_2} satisfies Eqs.~(\ref{eq:iota-constraints})
-% and Eq.~(\ref{eq:iota-add})~\cite{TaiThesis2018}, $\ultramodular_{2}\circ\muB_{\rho_{0}}$
-% and $\ultramodular_{2}\circ\muB_{\rho_{1}}$ are both
-% QIVPMs.
-% \begin{table}
-% \caption{\label{tab:I_2}A interval-valued function~$\ultramodular_{2}:\left[0,1\right]\rightarrow\mathscr{I}_{2}$.}
-
-% \hfill{}%
-% \begin{minipage}[t]{2.5cm}%
-% \begin{center}
-% \begin{tabular}{cc}
-% \toprule 
-% \addlinespace
-% $x$ & $\ultramodular_{2}\left(x\right)$\tabularnewline\addlinespace
-% \midrule
-% \midrule 
-% \addlinespace
-% $x=0$ & $\imposs$\tabularnewline\addlinespace
-% \midrule 
-% \addlinespace
-% $0<x\le\tfrac{1}{8}$ & $\left[0,\tfrac{1}{4}\right]$\tabularnewline\addlinespace
-% \midrule 
-% \addlinespace
-% $\tfrac{1}{8}<x<\tfrac{3}{8}$ & $\left[0,{\textstyle \tfrac{1}{2}}\right]$\tabularnewline\addlinespace
-% \midrule 
-% \addlinespace
-% $\tfrac{3}{8}\le x\le\tfrac{5}{8}$ & $\left[\tfrac{1}{4},\tfrac{3}{4}\right]$\tabularnewline\addlinespace
-% \bottomrule
-% \end{tabular}
-% \par\end{center}%
-% \end{minipage}\hfill{}%
-% \begin{minipage}[t]{2.5cm}%
-% \begin{center}
-% \begin{tabular}{cc}
-% \toprule 
-% \addlinespace
-% $x$ & $\ultramodular_{2}\left(x\right)$\tabularnewline\addlinespace
-% \midrule
-% \midrule 
-% \addlinespace
-% $\tfrac{5}{8}<x<\tfrac{7}{8}$ & $\left[\tfrac{1}{2},1\right]$\tabularnewline\addlinespace
-% \midrule 
-% \addlinespace
-% $\tfrac{7}{8}\le x<1$ & $\left[\tfrac{3}{4},1\right]$\tabularnewline\addlinespace
-% \midrule 
-% \addlinespace
-% $x=1$ & $\necess$\tabularnewline\addlinespace
-% \bottomrule
-% \end{tabular}
-% \par\end{center}%
-% \end{minipage}\hfill{}
-% \end{table}
-% Given any one-dimensional projector $\proj{\psi}$, we have $\muB_{\rho_{0}}\left(\proj{\psi}\right)=\frac{1}{3}$
-% so that $\ultramodular_{2}\left(\muB_{\rho_{0}}\left(\proj{\psi}\right)\right)=\left[0,{\textstyle \tfrac{1}{2}}\right]$.
-% On the other hand, 
-% \begin{eqnarray*}
-% \muB_{\rho_{1}}\left(\proj{\psi}\right) & = & \tfrac{7}{24}\left|\ip{\psi}{0}\right|^{2}+\tfrac{1}{3}\left|\ip{\psi}{1}\right|^{2}+\tfrac{3}{8}\left|\ip{\psi}{2}\right|^{2}
-% \end{eqnarray*}
-% is bounded between $\frac{7}{24}$ and $\frac{3}{8}$. Therefore,
-% $\muB_{\rho_{1}}\left(\proj{\psi}\right)\in\ultramodular_{2}\left(\muB_{\rho_{0}}\left(\proj{\psi}\right)\right)$.
-% According to the complement condition, Eq.~(\ref{eq:complement}), we
-% also have
-% $\muB_{\rho_{1}}\left(P\right)\in\ultramodular_{2}\left(\muB_{\rho_{0}}\left(P\right)\right)$
-% for any two-dimensional projector~$P$. Hence,
-% $\rho_{1}\in\coreBorn\left(\ultramodular_{2}\circ\muB_{\rho_{0}},\events\right)$,
-% and Thm.~\ref{thm:Finite-precision-Gleason} asserts that
-% $\left\Vert \rho_{0}-\rho_{1}\right\Vert $ is less than or equal to the
-% maximum length of intervals $\frac{1}{2}$.  This is true because the
-% exact value of $\left\Vert \rho_{0}-\rho_{1}\right\Vert $ is
-% $\frac{1}{24}$.
+\end{oldText}
+\begin{newText}{\andy}
+To summarize, a conventional quantum probability measure has an
+uncountable range $[0,1]$. A QIVPM constructed by {\color{blue}?????} such a
+conventional quantum probability measure must also have an uncountable
+range of intervals. Of course, any particular QIVPM, or any particular
+experiment, will use a fixed collection of intervals appropriate for
+the resources and precision of the particular experiment. 
+\end{newText}
+\end{compare}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
