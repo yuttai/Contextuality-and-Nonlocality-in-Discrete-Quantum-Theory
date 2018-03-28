@@ -554,8 +554,8 @@ aspects of both classical IVPMs and quantum probability measures.
 \noindent The first three constraints,
 Eqs.~(\ref{eq:QIVPM-constraints}), are the direct counterpart of the
 corresponding ones for classical IVPMs.  {\color{purple}Note that we need to
-consider $x\le0$ case in Eq.~(\ref{eq:interval-times}) because of the minus sign
-appearing in
+consider $x\le0$ case in Eq.~(\ref{eq:interval-times}) because the minus sign
+appears in
 Eq.~(\ref{eq:complement}).}  With the understanding that
 the union of classical sets $E_1\cup E_2$ is replaced by
 $P_0+P_1-P_0P_1$ in the case of quantum projection
@@ -588,8 +588,9 @@ in that case, one cannot guarantee non-empty cores for finite-precision
 attempts at proving Gleason's theorem by extending the Born measure
 $\muB_{\rho}\left(P\right)$ to QIVPMs
 $\bar{\mu}\left(P\right)$. However, if we restrict ourselves to the set
-$\eventsC$ of mutually
-commuting, the situation reverts to the classical case in which
+$\eventsC$ of mutually commuting, \yutsung{Since ``mutually commuting'' is the
+object of the proposition ``of'', is ``mutually commuting'' a noun?}
+the situation reverts to the classical case in which
 probabilities always determine at least one state.
 
 We now give the necessary technical definitions to prove this
@@ -625,15 +626,30 @@ Eq.~(\ref{eq:consistent}) and therefor{\color{OliveGreen}e} is consistent with a
 \end{newText}
 \end{compare}
 
+\begin{compare}
+\begin{oldText}{\yutsung}
 We next refine the concept of consistency by introducing the idea of
 a ``core'' set of states relative to subspaces. First, we define
-$\events'$ as a \emph{subspace} of a set of events if $\events$ if
+$\events'$ as a \emph{subspace} of a set of events {\color{purple}if} $\events$ if
 $\events'$ contains the projector $\mathbb{0}$ and $\mathbb{1}$ and is closed under
 complements, sums, and products.  In particular, for any
 projector~$P\in\events'$, we have
 $\mathbb{1}-P\in\events'$ and for each pair of commuting
 projectors~$P_{0}\in\events'$ and $P_{1}\in\events'$, we have
 $P_{0}+P_{1}-P_{0}P_{1}$ and $P_{0}P_{1}\in\events'$.
+\end{oldText}
+\begin{newText}{\yutsung}
+We next refine the concept of consistency by introducing the idea of
+a ``core'' set of states relative to subspaces. First, we define
+$\events'$ as a \emph{subspace} of a set of events~$\events$ if
+$\events'$ contains the projector $\mathbb{0}$ and $\mathbb{1}$ and is closed under
+complements, sums, and products.  In particular, for any
+projector~$P\in\events'$, we have
+$\mathbb{1}-P\in\events'$ and for each pair of commuting
+projectors~$P_{0}\in\events'$ and $P_{1}\in\events'$, we have
+$P_{0}+P_{1}-P_{0}P_{1}$ and $P_{0}P_{1}\in\events'$.
+\end{newText}
+\end{compare}
 
 \begin{definition}[The core of a probability measure] The \emph{core}
 $\coreBorn\left(\bar{\mu},\events'\right)$ of a probability measure 
@@ -1466,6 +1482,15 @@ which is also known as the $2$-norm or the spectral norm~\cite{RobertsVarberg197
 In fact, for any such matrix, including the density matrix~$\rho$,
 the norm is the maximum absolute value of its eigenvalue. Then, a
 finite-precision extension of Gleason's theorem can be stated as follows.
+
+\begin{thm}[Finite-Precision Extension of the Gleason Theorem]\label{thm:Finite-precision-Gleason}Let
+$f:\left[0,1\right]\rightarrow\mathscr{I}$ be a {\color{blue}blurring function}
+and let $f\circ\muB_{\rho}$ be a QIVPM, where $\muB_{\rho}$ is the
+probability measure induced by the Born rule for a given state~$\rho$.
+Let $\alpha$ be the maximum length of intervals in $\mathscr{I}$.
+If a state $\rho'$ is consistent with $f\circ\muB_{\rho}$ on all
+events, i.e., $\rho'\in\coreBorn\left(f\circ\muB_{\rho},\events\right)$,
+then the norm of their difference is bounded by $\alpha$, i.e., $\left\Vert \rho-\rho'\right\Vert \le\alpha$.\end{thm}
 \end{oldText}
 \begin{newText}{\andy}
 To that end, we construct a family of QIVPMs parameterized by {\color{blue}\emph{interval}
@@ -1483,21 +1508,7 @@ which is also known as the $2$-norm or the spectral norm~\cite{RobertsVarberg197
 In fact, for any such matrix, including the density matrix~$\rho$,
 the norm is the maximum absolute value of its eigenvalue. Then, a
 finite-precision extension of Gleason's theorem can be stated as follows.
-\end{newText}
-\end{compare}
 
-\begin{compareNextpage}
-\begin{oldText}{\andy}
-\begin{thm}[Finite-Precision Extension of the Gleason Theorem]\label{thm:Finite-precision-Gleason}Let
-$f:\left[0,1\right]\rightarrow\mathscr{I}$ be a {\color{blue}blurring function}
-and let $f\circ\muB_{\rho}$ be a QIVPM, where $\muB_{\rho}$ is the
-probability measure induced by the Born rule for a given state~$\rho$.
-Let $\alpha$ be the maximum length of intervals in $\mathscr{I}$.
-If a state $\rho'$ is consistent with $f\circ\muB_{\rho}$ on all
-events, i.e., $\rho'\in\coreBorn\left(f\circ\muB_{\rho},\events\right)$,
-then the norm of their difference is bounded by $\alpha$, i.e., $\left\Vert \rho-\rho'\right\Vert \le\alpha$.\end{thm}
-\end{oldText}
-\begin{newText}{\andy}
 \begin{thm}[Finite-Precision Extension of the Gleason Theorem]\label{thm:Finite-precision-Gleason}Let
 $f:\left[0,1\right]\rightarrow\mathscr{I}$ be a {\color{blue}interval map}
 and let $f\circ\muB_{\rho}$ be a QIVPM, where $\muB_{\rho}$ is the
@@ -1507,7 +1518,7 @@ If a state $\rho'$ is consistent with $f\circ\muB_{\rho}$ on all
 events, i.e., $\rho'\in\coreBorn\left(f\circ\muB_{\rho},\events\right)$,
 then the norm of their difference is bounded by $\alpha$, i.e., $\left\Vert \rho-\rho'\right\Vert \le\alpha$.\end{thm}
 \end{newText}
-\end{compareNextpage}
+\end{compare}
 
 The proof proceeds as follows. Given a state~$\rho'$ consistent
 with $f\circ\muB_{\rho}$, we have $\muB_{\rho'}\left(\proj{\psi}\right)\in f\left(\muB_{\rho}\left(\proj{\psi}\right)\right)$
@@ -1699,24 +1710,13 @@ either $\ultramodular$ maps every number in $\left[0,1\right]$ to the
 same interval, or the number of intervals to which $\ultramodular$ maps
 must be uncountable.
 
-\begin{compare}
-\begin{oldText}{\andy}
 To summarize, a conventional quantum probability measure has an
-uncountable range $[0,1]$. A QIVPM constructed by {\color{blue}blurring} such a
+uncountable range $[0,1]$. A QIVPM constructed by blurring \yutsung{Should we
+change this ``blurring''?} such a
 conventional quantum probability measure must also have an uncountable
 range of intervals. Of course, any particular QIVPM, or any particular
 experiment, will use a fixed collection of intervals appropriate for
 the resources and precision of the particular experiment. 
-\end{oldText}
-\begin{newText}{\andy}
-To summarize, a conventional quantum probability measure has an
-uncountable range $[0,1]$. A QIVPM constructed by {\color{blue}?????} such a
-conventional quantum probability measure must also have an uncountable
-range of intervals. Of course, any particular QIVPM, or any particular
-experiment, will use a fixed collection of intervals appropriate for
-the resources and precision of the particular experiment. 
-\end{newText}
-\end{compare}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
