@@ -89,11 +89,10 @@ showkeys, longbibliography, amsmath, amssymb, floatfix]{revtex4-1}
 \newcommand{\andy}[1]{\says{blue}{Andy}{#1}}
 % \excludecomment{suggest}
 \NewDocumentEnvironment{suggest}{m m O{}}{#1{TEXT \##2 would go here. #3}}{#1{TEXT \##2 end here.}}
-\newenvironment{compare}{\begin{widetext}\end{widetext}}{\begin{widetext}\end{widetext}}
-\newenvironment{compareNextpage}{\clearpage}{\begin{widetext}\end{widetext}}
-\NewDocumentEnvironment{compareText}{m m}{\noindent\begin{minipage}[b]{1\columnwidth}#1{The following is #2 text.}\begin{docParinfo}}{\end{docParinfo}#1{The #2 text end here.}\end{minipage}}
-\newenvironment{oldText}[1]{\begin{compareText}{#1}{old}}{\end{compareText}\penalty-10000}
-\newenvironment{newText}[1]{\begin{compareText}{#1}{new}}{\end{compareText}}
+\NewDocumentEnvironment{compare}{m}{\begin{widetext}#1{The following left column should be replaced by the right column.}\end{widetext}}{\begin{widetext}#1{End of replacement.}\end{widetext}}
+\newenvironment{compareText}{\noindent\begin{minipage}[b]{1\columnwidth}\begin{docParinfo}}{\end{docParinfo}\end{minipage}}
+\newenvironment{oldText}{\begin{compareText}}{\end{compareText}\penalty-10000}
+\newenvironment{newText}{\begin{compareText}}{\end{compareText}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
