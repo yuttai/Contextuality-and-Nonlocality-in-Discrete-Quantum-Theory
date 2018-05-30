@@ -7215,10 +7215,7 @@ literal "false"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Moreover, the subsection doesn't have a clear conclusion...
+ Moreover, the subsection doesn't have a clear conclusion...
  Therefore, I may need to either delete the whole subsection, or rewrite
  the whole subsection with a clear definition and conclusion...
 \begin_inset ERT
@@ -7297,6 +7294,262 @@ Maximal entanglement
 \end_layout
 
 \begin_layout Standard
+Equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "purityMeasure.eq"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) for 
+\begin_inset Formula $P_{\fh}$
+\end_inset
+
+ includes a normalization factor 
+\begin_inset Formula $\frac{1}{n}$
+\end_inset
+
+.
+ In the discrete case, this normalization factor is undefined when 
+\begin_inset Formula $p\mid n$
+\end_inset
+
+.
+ Equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "purityMeasure.eq"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) also includes a summation of 
+\begin_inset Formula $n$
+\end_inset
+
+ terms.
+ In the discrete case, certainly when 
+\begin_inset Formula $p\mid n$
+\end_inset
+
+ but also in other cases, this summation may vanish in the field even if
+ the individual summands are non-zero.
+ These anomalies are irrelevant for the classification of unentangled states
+ as this computation is performed by directly checking the possibility of
+ direct decomposition into product states, disregarding equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "purityMeasure.eq"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+For maximally entangled states, the purity calculation in conventional quantum
+ mechanics using equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "purityMeasure.eq"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) produces 0.
+ Given the above observations, in a discrete field, equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "purityMeasure.eq"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) may be undefined or may report a purity of 0 even for partially entangled
+ states.
+ For example, the normalized 5-qubit state 
+\begin_inset Formula $\ket{\Psi}=\left(1-\rmi\right)\left(\ket{00}+\ket{11}\right)\otimes\ket{000}$
+\end_inset
+
+ has 
+\begin_inset Formula $P_{\fh}=0$
+\end_inset
+
+ for 
+\begin_inset Formula $p=3$
+\end_inset
+
+, and is not maximally entangled because only the first two qubits are entangled.
+ In the discrete case, we therefore check for maximally entangled states
+ using the following equations, 
+\begin_inset Formula 
+\begin{equation}
+\forall j,\forall\mu,\expval{\sigma_{\mu}^{j}}^{2}=0\textrm{ ,}\label{eq:john}
+\end{equation}
+
+\end_inset
+
+which avoids the normalization factor and simply checks that each summand
+ is 0.
+\end_layout
+
+\begin_layout Standard
+We now implement these procedures to enumerate the maximally entangled states
+ for the specific cases for 
+\begin_inset Formula $n=2,3$
+\end_inset
+
+ and compare these to the counts for product states.
+ We can verify explicitly that the numbers of unit-norm product states for
+ 
+\begin_inset Formula $n=2$
+\end_inset
+
+, 
+\begin_inset Formula $p=\{3,7,11,19,\ldots\}$
+\end_inset
+
+ are 
+\begin_inset Formula 
+\begin{equation}
+(p+1)p^{2}(p-1)^{2}=\{144,14\,112,145\,200,2339\,280,\ldots\}\,,
+\end{equation}
+
+\end_inset
+
+and for general 
+\begin_inset Formula $n$
+\end_inset
+
+, 
+\begin_inset Formula $(p+1)p^{n}(p-1)^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The irreducible state counts are reduced by 
+\begin_inset Formula $(p+1)$
+\end_inset
+
+, giving 
+\begin_inset Formula 
+\begin{equation}
+p^{2}(p-1)^{2}=\{36,1764,12\,100,116\,964,\ldots\}\ ,
+\end{equation}
+
+\end_inset
+
+and in general for 
+\begin_inset Formula $n$
+\end_inset
+
+-qubits, there are 
+\begin_inset Formula $p^{n}\left(p-1\right)^{n}$
+\end_inset
+
+ instances of pure product states.
+\end_layout
+
+\begin_layout Standard
+Performing the computation using equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:john"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), we find the numbers of maximally entangled states for two qubits to be
+ 
+\begin_inset Formula 
+\begin{equation}
+p\left(p^{2}-1\right)\left(p+1\right)=\left\{ 96,2688,15\,840,136\,800,\ldots\right\} \ .
+\end{equation}
+
+\end_inset
+
+The irreducible state counts for maximal entanglement are reduced by 
+\begin_inset Formula $\left(p+1\right)$
+\end_inset
+
+, giving, for 
+\begin_inset Formula $n=2$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{equation}
+p\left(p^{2}-1\right)=\left\{ 24,336,1320,6840,\ldots\right\} \ .
+\end{equation}
+
+\end_inset
+
+For three qubits, there are 
+\begin_inset Formula $p^{3}\left(p^{4}-1\right)\left(p+1\right)$
+\end_inset
+
+ (total) and 
+\begin_inset Formula $p^{3}\left(p^{4}-1\right)$
+\end_inset
+
+ (irreducible) instances of pure maximally entangled states, while the general
+ formula for 4-qubit states remains unclear.
+\end_layout
+
+\begin_layout Standard
+Therefore, the ratio of maximally entangled to product states is 
+\begin_inset Formula 
+\begin{equation}
+\frac{\textbf{Max entangled}}{\textbf{Product}}=\frac{p+1}{p\left(p-1\right)},\,\frac{\left(p^{2}+1\right)\left(p+1\right)}{\left(p-1\right)^{2}}\ ,
+\end{equation}
+
+\end_inset
+
+for 
+\begin_inset Formula $n=2$
+\end_inset
+
+ and 
+\begin_inset Formula $3$
+\end_inset
+
+, respectively.
 \begin_inset Note Note
 status open
 
