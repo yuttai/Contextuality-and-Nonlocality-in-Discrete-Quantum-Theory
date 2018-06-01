@@ -3010,7 +3010,53 @@ mixed
 \end_inset
 
 .
- For example, consider 
+ For example, consider
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\rho_{j}$
+\end_inset
+
+ is computed by 
+\begin_inset Formula $\rho$
+\end_inset
+
+ so...
+ What is 
+\begin_inset Formula $\rho$
+\end_inset
+
+ here? Moreover, 
+\begin_inset Formula $\sigma_{0}$
+\end_inset
+
+ is a 2-by-2 matrix, but 
+\begin_inset Formula $\sigma_{\mu}^{j}$
+\end_inset
+
+ is not in general.
+ How can we add them?
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{equation}
 \rho_{j}=\frac{1}{2}\left(\sigma_{0}+\sum\limits _{\mu=x,y,z}\expval{\sigma_{\mu}^{j}}\sigma_{\mu}^{j}\right)\,,
@@ -3173,12 +3219,17 @@ all local observables
 
 , 
 \begin_inset Formula 
-\begin{align}
-P_{\fh} & =\frac{1}{n}\sum\limits _{j=1}^{n}\sum\limits _{\mu=x,y,z}\expval{\sigma_{\mu}^{j}}^{2}\,, & 0\leq P_{\fh}\leq1\,.\label{purityMeasure.eq}
-\end{align}
+\begin{equation}
+P_{\fh}=\frac{1}{n}\sum\limits _{j=1}^{n}\sum\limits _{\mu=x,y,z}\expval{\sigma_{\mu}^{j}}^{2}=\frac{1}{n}\sum\limits _{j=1}^{n}\left\Vert {\bf X}_{j}\right\Vert ^{2}\,.\label{purityMeasure.eq}
+\end{equation}
 
 \end_inset
 
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
 Since 
 \begin_inset Formula $\fh$
 \end_inset
@@ -3206,6 +3257,54 @@ Since
 \end_inset
 
 , which have maximum purity (i.e., 
+\begin_inset Formula $P_{\fh}=1$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+Since the norm of the geometric representation state 
+\begin_inset Formula $\left\Vert {\bf X}_{j}\right\Vert $
+\end_inset
+
+ is between 
+\begin_inset Formula $0$
+\end_inset
+
+ and 
+\begin_inset Formula $1$
+\end_inset
+
+, we have 
+\begin_inset Formula $0\leq P_{\fh}\leq1$
+\end_inset
+
+, where 
+\begin_inset Formula $\frac{1}{n}$
+\end_inset
+
+ in Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "purityMeasure.eq"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) is just a normalization factor.
+ All the product states of the form 
+\begin_inset Formula $\ket{\Psi}=\ket{\psi_{1}}\otimes\cdots\otimes\ket{\psi_{n}}$
+\end_inset
+
+, have maximum purity (i.e., 
 \begin_inset Formula $P_{\fh}=1$
 \end_inset
 
@@ -7125,7 +7224,7 @@ In effect, the irreducible states for unentangled
  distinct irreducible components, we have 
 \begin_inset Formula 
 \begin{equation}
-\mbox{{\bf Count of Unentangled States}}=p^{n}\left(p-1\right)^{n}\,.
+\mbox{{\bf Count of Unentangled States}}=p^{n}\left(p-1\right)^{n}\,.\label{eq:CountUnentangledStates}
 \end{equation}
 
 \end_inset
@@ -7216,7 +7315,7 @@ literal "false"
 
  because they discussed two-qubit partially entangled states.
  Since it would be a bit messy to even define partially entangled states
- here, I think it would be better to delete this subsection.
+ here, would it be better to delete this subsection?
 \begin_inset ERT
 status collapsed
 
@@ -7242,7 +7341,7 @@ A partially entangled state can be constructed by taking individual component
 
  exhausts its freedom with one pick).
  Then we can choose 
-\begin_inset Formula $n\left(n-1\right)/2$
+\begin_inset Formula $\frac{n\left(n-1\right)}{2}$
 \end_inset
 
  pairs of distinct qubits as product states (
@@ -7311,7 +7410,11 @@ noprefix "false"
 \begin_inset Formula $P_{\fh}$
 \end_inset
 
- includes a normalization factor 
+ includes a normalization factor
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\frac{1}{n}$
 \end_inset
 
@@ -7431,8 +7534,21 @@ We now implement these procedures to enumerate the maximally entangled states
 \end_inset
 
  and compare these to the counts for product states.
- We can verify explicitly that the numbers of unit-norm product states for
- 
+ We have verified explicitly in Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CountUnentangledStates"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) that the numbers of unit-norm product states for 
 \begin_inset Formula $n=2$
 \end_inset
 
@@ -7457,17 +7573,14 @@ and for general
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-The irreducible state counts are reduced by 
+ The irreducible state counts are reduced by 
 \begin_inset Formula $(p+1)$
 \end_inset
 
 , giving 
 \begin_inset Formula 
 \begin{equation}
-p^{2}(p-1)^{2}=\{36,1764,12\,100,116\,964,\ldots\}\ ,
+p^{2}(p-1)^{2}=\{36,1764,12\,100,116\,964,\ldots\}\,,
 \end{equation}
 
 \end_inset
@@ -7498,7 +7611,7 @@ noprefix "false"
  
 \begin_inset Formula 
 \begin{equation}
-p\left(p^{2}-1\right)\left(p+1\right)=\left\{ 96,2688,15\,840,136\,800,\ldots\right\} \ .
+p\left(p^{2}-1\right)\left(p+1\right)=\left\{ 96,2688,15\,840,136\,800,\ldots\right\} \,.
 \end{equation}
 
 \end_inset
@@ -7514,7 +7627,7 @@ The irreducible state counts for maximal entanglement are reduced by
 , 
 \begin_inset Formula 
 \begin{equation}
-p\left(p^{2}-1\right)=\left\{ 24,336,1320,6840,\ldots\right\} \ .
+p\left(p^{2}-1\right)=\left\{ 24,336,1320,6840,\ldots\right\} \,.
 \end{equation}
 
 \end_inset
@@ -7535,7 +7648,7 @@ For three qubits, there are
 Therefore, the ratio of maximally entangled to product states is 
 \begin_inset Formula 
 \begin{equation}
-\frac{\textbf{Max entangled}}{\textbf{Product}}=\frac{p+1}{p\left(p-1\right)},\,\frac{\left(p^{2}+1\right)\left(p+1\right)}{\left(p-1\right)^{2}}\ ,
+\frac{\textbf{Max entangled}}{\textbf{Product}}=\frac{p+1}{p\left(p-1\right)}\textrm{ and }\frac{\left(p^{2}+1\right)\left(p+1\right)}{\left(p-1\right)^{2}}
 \end{equation}
 
 \end_inset
@@ -7551,199 +7664,6 @@ for
 , respectively.
 \begin_inset Note Note
 status open
-
-\begin_layout Plain Layout
-Numerical and analytic calculations of the entanglement measure 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-Eq{
-\end_layout
-
-\end_inset
-
-purityMeasure.eq
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-, taken 
-\begin_inset Formula $(\mbox{mod}~p)$
-\end_inset
-
-, extend to the best of our knowledge to the discrete case, so that the
- unentangled states constructed above have 
-\begin_inset Formula $P_{\fh}=1$
-\end_inset
-
-.
- This leads us to study one final aspect of the discrete 
-\begin_inset Formula $n$
-\end_inset
-
--qubit states, namely the 
-\shape italic
-maximally
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
-
-\shape default
- entangled states with 
-\begin_inset Formula $P_{\fh}=0$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Plain Layout
-Computing some examples for various 
-\begin_inset Formula $n$
-\end_inset
-
- and small values of 
-\begin_inset Formula $p$
-\end_inset
-
-, one can verify explicitly that unit-norm unentangled states for 
-\begin_inset Formula $n=2$
-\end_inset
-
-, 
-\begin_inset Formula $p=\{3,7,11,19,\ldots\}$
-\end_inset
-
- occur with frequency 
-\begin_inset Formula 
-\[
-(p+1)p^{2}(p-1)^{2}=\{144,14112,145200,2339280,\ldots\}\ ,
-\]
-
-\end_inset
-
-and for general 
-\begin_inset Formula $n$
-\end_inset
-
-, 
-\begin_inset Formula $(p+1)p^{n}(p-1)^{n}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Plain Layout
-The irreducible state counts are reduced by 
-\begin_inset Formula $(p+1)$
-\end_inset
-
-, giving 
-\begin_inset Formula 
-\[
-p^{2}(p-1)^{2}=\{36,1764,12100,116964,\ldots\}\ ,
-\]
-
-\end_inset
-
-and in general for 
-\begin_inset Formula $n$
-\end_inset
-
--qubits, 
-\begin_inset Formula $p^{n}(p-1)^{n}$
-\end_inset
-
- instances of pure states with 
-\begin_inset Formula $P_{\fh}=1$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Plain Layout
-Repeating the computation to discover the frequency of maximally entangled
- (purity 
-\begin_inset Formula $P_{\fh}=0$
-\end_inset
-
- states), we find 
-\begin_inset Formula $p^{n+1}(p-1)(p+1)^{n}$
-\end_inset
-
- maximally entangled states, with example frequencies for two qubits of
- 
-\begin_inset Formula 
-\[
-p^{3}(p-1)(p+1)^{2}=\{864,131712,1916640,49384800,\ldots\}\ .
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-The irreducible state counts for maximal entanglement are reduced by 
-\begin_inset Formula $(p+1)$
-\end_inset
-
-, giving for 
-\begin_inset Formula $n=2$
-\end_inset
-
- 
-\begin_inset Formula 
-\[
-p^{3}(p^{2}-1)=\{216,16464,159720,2469240,\ldots\}\ ,
-\]
-
-\end_inset
-
-and in general for 
-\begin_inset Formula $n$
-\end_inset
-
--qubits, 
-\begin_inset Formula $p^{n+1}(p-1)(p+1)^{n-1}$
-\end_inset
-
- instances of pure states with 
-\begin_inset Formula $P_{\fh}=0$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Plain Layout
-Therefore, the ratio of maximally entangled to unentangled states is 
-\begin_inset Formula 
-\[
-\mbox{{\bf Max Entangled/Unentangled}}=p\left(\frac{p+1}{p-1}\right)^{n-1}\ .
-\]
-
-\end_inset
-
-
-\end_layout
 
 \begin_layout Section
 Summary
@@ -7818,546 +7738,6 @@ status collapsed
 \end_inset
 
  discrete qubits.
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset VSpace 0.5in
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-
-\series bold
-References
-\series default
- 
-\begin_inset VSpace 0.5cm*
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "GeomQStates2008"
-literal "true"
-
-\end_inset
-
- I.
- Bengtsson and K.
- Zyczkowski, 
-\shape italic
-Geometry of Quantum States: An Introduction to Quantum Entanglement
-\shape default
- (Cambridge University Press, Cambridge, 2008).
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "mosseri2001"
-literal "true"
-
-\end_inset
-
- R.
- Mosseri and R.
- Dandoloff, 
-\shape italic
-J.
- Phys.
- A: Math.
- Gen.
-
-\shape default
- 
-\series bold
-34
-\series default
-, 10243 (2001).
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Arnold"
-literal "true"
-
-\end_inset
-
- V.
- I.
- Arnold, 
-\shape italic
-Dynamics, Statistics and Projective Geometry of Galois Fields
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
-
-\shape default
- (Cambridge University Press, Cambridge, 2011).
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Turing37"
-literal "true"
-
-\end_inset
-
- A.
- M.
- Turing, 
-\shape italic
-Proceedings of the London Mathematical Society
-\shape default
- Series 2, 
-\series bold
-42
-\series default
-, 230 (1937).
- Errata appeared in Series 2, 
-\series bold
-43
-\series default
- 544 (1937).
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Minsky67"
-literal "true"
-
-\end_inset
-
- M.
- Minsky, 
-\shape italic
-Computation: Finite and Infinite Machines
-\shape default
- (Prentice-Hall, Englewood Cliffs, 1967).
- See chapter 9, 
-\begin_inset Quotes eld
-\end_inset
-
-The Computable Real Numbers.
-\begin_inset Quotes erd
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Chaitin"
-literal "true"
-
-\end_inset
-
- G.
- J.
- Chaitin, 
-\shape italic
-Thinking about Gödel and Turing
-\shape default
- (World Scientific, Singapore, 2007).
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Feynman"
-literal "true"
-
-\end_inset
-
- R.
- P.
- Feynman, 
-\shape italic
-Int.
- J.
- Theor.
- Phys.
-
-\shape default
- 
-\series bold
-21
-\series default
-, 467 (1982).
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Landauer"
-literal "true"
-
-\end_inset
-
- R.
- Landauer, 
-\shape italic
-Physics Letters A
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
-
-\shape default
- 
-\series bold
-217
-\series default
-, 188 (1996).
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "SchuWest2010"
-literal "true"
-
-\end_inset
-
- B.
- Schumacher and M.
- D.
- Westmoreland, 
-\shape italic
-Found.
- Phys.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
-
-\shape default
- 
-\series bold
-42
-\series default
-, 918 (2012).
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "James2011"
-literal "true"
-
-\end_inset
-
- R.
- P.
- James, G.
- Ortiz, and A.
- Sabry, 
-\family typewriter
-http://arxiv.org/abs/1101.3764
-\family default
-.
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "HOSW2011"
-literal "true"
-
-\end_inset
-
- A.
- J.
- Hanson, G.
- Ortiz, A.
- Sabry, and J.
- Willcock, 
-\family typewriter
-http://arxiv.org/abs/1104.1630
-\family default
-.
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Berger"
-literal "true"
-
-\end_inset
-
- M.
- Berger and B.
- Gostiaux, 
-\shape italic
-Differential Geometry: Manifolds, Curves, and Surfaces
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
-
-\shape default
- (Springer-Verlag, New York, 1988).
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "numtheory.ref-1"
-literal "true"
-
-\end_inset
-
- G.
- H.
- Hardy and E.
- M.
- Wright, 
-\shape italic
-An Introduction to the Theory of Numbers
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
-
-\shape default
- (Oxford University Press, Oxford, 2006).
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "GT.ref-1"
-literal "true"
-
-\end_inset
-
- I.
- Stewart, 
-\shape italic
-Galois theory
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
-
-\shape default
- (Chapman and Hall/CRC, Boca Raton, 2004).
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-Comment{
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "WB.ref"
-literal "true"
-
-\end_inset
-
- Wildberger N J 2005 
-\shape italic
-Divine Proportions: Rational Trigonometry to Universal Geometry
-\shape default
- (Sydney: Wild Egg Books) 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "OT"
-literal "true"
-
-\end_inset
-
- Ovsienko V and Tabachnikov S 2005 
-\shape italic
-Projective Differential Geometry Old and New
-\shape default
- (Cambridge: Cambridge University Press) 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "VY"
-literal "true"
-
-\end_inset
-
- Veblen O and J.
- W.
- Young J W 1946 
-\shape italic
-Projective Geometry Vol.
- 2
-\shape default
- (Blaisdell Publishing Company), pp 55??7 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Ztransform"
-literal "true"
-
-\end_inset
-
- Campello de Souza R M, de Oliveira H M and Silva D 2002 The Z Transform
- over Finite Fields 
-\shape italic
-International Telecommunications Symposium, ITS 2002, Brazil
-\shape default
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Barnum2003"
-literal "true"
-
-\end_inset
-
- H.
- Barnum, E.
- Knill, G.
- Ortiz, and L.
- Viola, 
-\shape italic
-Phys.
- Rev.
- A
-\shape default
- 
-\series bold
-68
-\series default
-, 032308 (2003).
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Barnum2004"
-literal "true"
-
-\end_inset
-
- H.
- Barnum, E.
- Knill, G.
- Ortiz, R.
- Somma, and L.
- Viola, 
-\shape italic
-Phys.
- Rev.
- Lett.
-
-\shape default
- 
-\series bold
-92
-\series default
-, 107902 (2004).
- 
 \end_layout
 
 \end_inset
