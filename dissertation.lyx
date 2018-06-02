@@ -2919,15 +2919,15 @@ Entanglement may be regarded as one of the main characteristics distinguishing
  quantum from classical mechanics.
  Entanglement involves quantum correlations such that the measurement outcomes
  in one subsystem are related to the measurement outcomes in another one.
- To discuss entanglement, we consider a quantum system composed of 
-\begin_inset Formula $n$
-\end_inset
-
--qubit subsystems in the 
+ To discuss entanglement, we consider a 
 \begin_inset Formula $D$
 \end_inset
 
--dimensional Hilbert space, where 
+-dimensional quantum system composed of 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit subsystems, i.e., 
 \begin_inset Formula $D=2^{n}$
 \end_inset
 
@@ -2973,7 +2973,11 @@ literal "false"
 
  represents the tensor product.
  This is equivalent to saying that if one calculates the reduced density
- operator 
+ operator
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\rho_{j}$
 \end_inset
 
@@ -2982,7 +2986,7 @@ literal "false"
 \end_inset
 
 -th subsystem by tracing out all the other subsystems, 
-\begin_inset Formula $\rho_{j}=\Tr_{\{1,\cdots,j-1,j+1,\cdots,n\}}\left(\rho\right)$
+\begin_inset Formula $\rho_{j}=\Tr_{\left\{ 1,\cdots,j-1,j+1,\cdots,n\right\} }\left(\rho\right)$
 \end_inset
 
 , with 
@@ -3005,12 +3009,14 @@ literal "false"
 \shape italic
 mixed
 \shape default
-; i.e., 
+, i.e., 
 \begin_inset Formula $\Tr_{j}\left(\rho_{j}^{2}\right)<1$
 \end_inset
 
 .
- For example, consider
+ The reduced density operator could be explicitly expressed by the expectation
+ value of the Pauli operators.
+ 
 \begin_inset ERT
 status collapsed
 
@@ -3023,29 +3029,35 @@ todo{
 
 \end_inset
 
-
-\begin_inset Formula $\rho_{j}$
+For example, when 
+\begin_inset Formula $n=2$
 \end_inset
 
- is computed by 
-\begin_inset Formula $\rho$
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
 \end_inset
 
- so...
- What is 
-\begin_inset Formula $\rho$
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
 \end_inset
 
- here? Moreover, 
-\begin_inset Formula $\sigma_{0}$
-\end_inset
-
- is a 2-by-2 matrix, but 
-\begin_inset Formula $\sigma_{\mu}^{j}$
-\end_inset
-
- is not in general.
- How can we add them?
+In general...
 \begin_inset ERT
 status collapsed
 
@@ -3059,13 +3071,13 @@ status collapsed
 
 \begin_inset Formula 
 \begin{equation}
-\rho_{j}=\frac{1}{2}\left(\sigma_{0}+\sum\limits _{\mu=x,y,z}\expval{\sigma_{\mu}^{j}}\sigma_{\mu}^{j}\right)\,,
+\rho_{j}=\frac{1}{2}\left(\sigma_{0}^{n}+\sum\limits _{\mu=x,y,z}\expval{\sigma_{\mu}^{n,j}}\sigma_{\mu}^{n,j}\right)\,,
 \end{equation}
 
 \end_inset
 
 where 
-\begin_inset Formula $\sigma_{\mu}^{j}$
+\begin_inset Formula $\sigma_{\mu}^{n,j}$
 \end_inset
 
 , 
@@ -3088,11 +3100,20 @@ literal "true"
 
 \end_inset
 
-, 
+ and 
+\begin_inset Formula $\sigma_{0}^{n}$
+\end_inset
+
+ is the 
+\begin_inset Formula $2^{n}\times2^{n}$
+\end_inset
+
+ identity operator, 
 \begin_inset Formula 
-\begin{equation}
-\sigma_{\mu}^{j}=\overbrace{\sigma_{0}\otimes\cdots\otimes\sigma_{0}\otimes\underbrace{\sigma_{\mu}}_{j^{\textrm{th}}\textrm{ factors}}\otimes\sigma_{0}\otimes\cdots\otimes\sigma_{0}}^{n\textrm{ factors}}\,,\label{pauli3}
-\end{equation}
+\begin{eqnarray}
+\sigma_{\mu}^{n,j} & = & \overbrace{\sigma_{0}\otimes\cdots\otimes\sigma_{0}\otimes\underbrace{\sigma_{\mu}}_{j^{\textrm{th}}\textrm{ factors}}\otimes\sigma_{0}\otimes\cdots\otimes\sigma_{0}}^{n\textrm{ factors}}\,,\label{pauli3}\\
+\sigma_{0}^{n} & = & \overbrace{\sigma_{0}\otimes\cdots\otimes\sigma_{0}\otimes\sigma_{0}\otimes\sigma_{0}\otimes\cdots\otimes\sigma_{0}}^{n\textrm{ factors}}\,,
+\end{eqnarray}
 
 \end_inset
 
@@ -3117,14 +3138,14 @@ with
 \end_inset
 
 and 
-\begin_inset Formula $\expval{\sigma_{\mu}^{j}}=\melem{\Psi}{\sigma_{\mu}^{j}}{\Psi}$
+\begin_inset Formula $\expval{\sigma_{\mu}^{n,j}}=\melem{\Psi}{\sigma_{\mu}^{n,j}}{\Psi}=\Tr\left(\sigma_{\mu}^{n,j}\rho\right)$
 \end_inset
 
  denotes the corresponding expectation value.
  The vectors 
 \begin_inset Formula 
 \begin{equation}
-{\bf X}_{j}=\left(\expval{\sigma_{x}^{j}},\expval{\sigma_{y}^{j}},\expval{\sigma_{y}^{j}}\right)\in\mathbb{R}^{3}
+{\bf X}_{j}=\left(\expval{\sigma_{x}^{n,j}},\expval{\sigma_{y}^{n,j}},\expval{\sigma_{y}^{n,j}}\right)\in\mathbb{R}^{3}
 \end{equation}
 
 \end_inset
@@ -3214,19 +3235,19 @@ all local observables
 
  qubits, we obtain a measure of conventional entanglement by calculating
  the purity relative to the set 
-\begin_inset Formula $\fh=\left\{ \sigma_{x}^{1},\sigma_{y}^{1},\sigma_{z}^{1},\ldots,\sigma_{x}^{n},\sigma_{y}^{n},\sigma_{z}^{n}\right\} $
+\begin_inset Formula $\fh=\left\{ \sigma_{x}^{n,1},\sigma_{y}^{n,1},\sigma_{z}^{n,1},\ldots,\sigma_{x}^{n,n},\sigma_{y}^{n,n},\sigma_{z}^{n,n}\right\} $
 \end_inset
 
 , 
 \begin_inset Formula 
 \begin{equation}
-P_{\fh}=\frac{1}{n}\sum\limits _{j=1}^{n}\sum\limits _{\mu=x,y,z}\expval{\sigma_{\mu}^{j}}^{2}=\frac{1}{n}\sum\limits _{j=1}^{n}\left\Vert {\bf X}_{j}\right\Vert ^{2}\,.\label{purityMeasure.eq}
+P_{\fh}=\frac{1}{n}\sum\limits _{j=1}^{n}\sum\limits _{\mu=x,y,z}\expval{\sigma_{\mu}^{n,j}}^{2}=\frac{1}{n}\sum\limits _{j=1}^{n}\left\Vert {\bf X}_{j}\right\Vert ^{2}\,.\label{purityMeasure.eq}
 \end{equation}
 
 \end_inset
 
 
-\begin_inset Note Comment
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
@@ -6933,15 +6954,15 @@ Geometry of Entangled States
 \end_layout
 
 \begin_layout Standard
-To discuss entanglement, we consider a quantum system composed of 
-\begin_inset Formula $n$
-\end_inset
-
--qubit subsystems in the 
+To discuss entanglement, we consider a 
 \begin_inset Formula $D$
 \end_inset
 
--dimensional Hilbert space, where 
+-dimensional quantum system composed of 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit subsystems, i.e., 
 \begin_inset Formula $D=2^{n}$
 \end_inset
 
