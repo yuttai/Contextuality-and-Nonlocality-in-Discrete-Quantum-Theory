@@ -79,6 +79,7 @@
 \use_default_options false
 \begin_modules
 enumitem
+multicol
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -3055,12 +3056,11 @@ literal "true"
 
 with 
 \begin_inset Formula 
-\begin{eqnarray}
-\sigma_{0} & = & \op{0}{0}+\op{1}{1}\,,\\
-\sigma_{x} & = & \op{1}{0}+\op{0}{1}\,,\\
-\sigma_{y} & = & \rmi\op{1}{0}-\rmi\op{0}{1}\,,\\
-\sigma_{z} & = & \op{0}{0}-\op{1}{1}\,,
-\end{eqnarray}
+\begin{equation}
+\begin{aligned}\sigma_{0} & =\op{0}{0}+\op{1}{1}\,, & \sigma_{y} & =\rmi\op{1}{0}-\rmi\op{0}{1}\,,\\
+\sigma_{x} & =\op{1}{0}+\op{0}{1}\,, & \sigma_{z} & =\op{0}{0}-\op{1}{1}\,,
+\end{aligned}
+\end{equation}
 
 \end_inset
 
@@ -3089,18 +3089,129 @@ and
 \end_inset
 
  denotes the corresponding expectation value.
- For example, given a normalized two-qubit system 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+I need to decide how to transit from the previous paragraph to Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:reducedDensityOperator"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), and the following two columns are different methods.
+ The left column tries to explain Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:reducedDensityOperator"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) according to an example, but the computation is long and tedious.
+ The right column tries to explain Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:reducedDensityOperator"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) by a proof, but using advanced Math which I am not completely sure and
+ hard to explain...
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\size small
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+For example, given a normalized two-qubit system 
 \begin_inset Formula $\ket{\Psi}=\alpha_{00}\ket{00}+\alpha_{01}\ket{01}+\alpha_{10}\ket{10}+\alpha_{11}\ket{11}$
 \end_inset
 
 , its expectation value of the Pauli operators are
 \begin_inset Formula 
-\begin{eqnarray}
-\expval{\sigma_{0}^{1}} & = & 1\,,\\
-\expval{\sigma_{x}^{1}} & = & \alpha_{00}\alpha_{10}^{*}+\alpha_{01}\alpha_{11}^{*}+\alpha_{10}\alpha_{00}^{*}+\alpha_{11}\alpha_{01}^{*}\,,\\
-\expval{\sigma_{y}^{1}} & = & -\alpha_{00}\alpha_{10}^{*}\rmi-\alpha_{01}\alpha_{11}^{*}\rmi+\alpha_{10}\alpha_{00}^{*}\rmi+\alpha_{11}\alpha_{01}^{*}\rmi\,,\\
-\expval{\sigma_{z}^{1}} & = & \left|\alpha_{00}\right|^{2}+\left|\alpha_{01}\right|^{2}-\left|\alpha_{10}\right|^{2}-\left|\alpha_{11}\right|^{2}\,,
-\end{eqnarray}
+\[
+\hspace{-2em}\begin{aligned}\expval{\sigma_{0}^{1}} & =1\,,\\
+\expval{\sigma_{x}^{1}} & =\alpha_{00}\alpha_{10}^{*}+\alpha_{01}\alpha_{11}^{*}+\alpha_{10}\alpha_{00}^{*}+\alpha_{11}\alpha_{01}^{*}\,,\\
+\expval{\sigma_{y}^{1}} & =-\alpha_{00}\alpha_{10}^{*}\rmi-\alpha_{01}\alpha_{11}^{*}\rmi+\alpha_{10}\alpha_{00}^{*}\rmi+\alpha_{11}\alpha_{01}^{*}\rmi\,,\\
+\expval{\sigma_{z}^{1}} & =\left|\alpha_{00}\right|^{2}+\left|\alpha_{01}\right|^{2}-\left|\alpha_{10}\right|^{2}-\left|\alpha_{11}\right|^{2}\,,
+\end{aligned}
+\]
 
 \end_inset
 
@@ -3114,15 +3225,17 @@ Then, the reduced density operator
 
  of the first qubit can be expressed as these expectation values as follow.
 \begin_inset Formula 
-\begin{eqnarray}
-\rho_{1} & = & \Tr_{\left\{ 2\right\} }\left(\op{\Psi}{\Psi}\right)\\
- & = & \left(\left|\alpha_{00}\right|^{2}+\left|\alpha_{01}\right|^{2}\right)\op{0}{0}+\left(\alpha_{00}\alpha_{10}^{*}+\alpha_{01}\alpha_{11}^{*}\right)\op{0}{1}+\left(\alpha_{10}\alpha_{00}^{*}+\alpha_{11}\alpha_{01}^{*}\right)\op{1}{0}+\left(\left|\alpha_{10}\right|^{2}+\left|\alpha_{11}\right|^{2}\right)\op{1}{1}\,.\\
- & = & \frac{1}{2}\left(\expval{\sigma_{0}^{1}}\sigma_{0}+\expval{\sigma_{x}^{1}}\sigma_{x}+\expval{\sigma_{y}^{1}}\sigma_{y}+\expval{\sigma_{z}^{1}}\sigma_{z}\right)
-\end{eqnarray}
+\[
+\hspace{-6em}\begin{aligned}\rho_{1}= & \Tr_{\left\{ 2\right\} }\left(\op{\Psi}{\Psi}\right)\\
+= & \left(\left|\alpha_{00}\right|^{2}+\left|\alpha_{01}\right|^{2}\right)\op{0}{0}+\left(\alpha_{00}\alpha_{10}^{*}+\alpha_{01}\alpha_{11}^{*}\right)\op{0}{1}\\
+ & +\left(\alpha_{10}\alpha_{00}^{*}+\alpha_{11}\alpha_{01}^{*}\right)\op{1}{0}+\left(\left|\alpha_{10}\right|^{2}+\left|\alpha_{11}\right|^{2}\right)\op{1}{1}\\
+= & \frac{1}{2}\left(\expval{\sigma_{0}^{1}}\sigma_{0}+\expval{\sigma_{x}^{1}}\sigma_{x}+\expval{\sigma_{y}^{1}}\sigma_{y}+\expval{\sigma_{z}^{1}}\sigma_{z}\right)\,.
+\end{aligned}
+\]
 
 \end_inset
 
-In general, we can express any reduced density operator
+In general, the reduced density operator
 \begin_inset space ~
 \end_inset
 
@@ -3134,10 +3247,211 @@ In general, we can express any reduced density operator
 \begin_inset Formula $j$
 \end_inset
 
--th subsystem as
+-th subsystem can be expressed as
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+columnbreak{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Since trace and tensor product are linear, the second-order function mapping
+ density operator
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\rho$
+\end_inset
+
+ to the reduced density operator in the original operator space
+\begin_inset Formula 
+\[
+\mathfrak{P}:\rho\mapsto\overbrace{\sigma_{0}\otimes\cdots\otimes\sigma_{0}\otimes\underbrace{\rho_{j}}_{j^{\textrm{th}}\textrm{ factors}}\otimes\sigma_{0}\otimes\cdots\otimes\sigma_{0}}^{n\textrm{ factors}}
+\]
+
+\end_inset
+
+is linear 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "peres1995quantum,544199,Jaeger2007"
+posttextlist "peres1995quantum	544199"
+literal "false"
+
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\mathfrak{P}\left(\mathfrak{P}\left(\rho\right)\right)=\mathfrak{P}\left(\rho\right)$
+\end_inset
+
+, the second-order function
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathfrak{P}$
+\end_inset
+
+ is a projection 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+Why?
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\mathfrak{L}$
+\end_inset
+
+ be the linear subspace 
+\begin_inset Formula $\mathfrak{P}$
+\end_inset
+
+ projecting onto.
+ Since 
+\begin_inset Formula $\left\{ \frac{\sigma_{\mu}^{1}}{\sqrt{2}}\right\} _{\mu=0,x,y,z}$
+\end_inset
+
+ is an orthonormal basis of 
+\begin_inset Formula $\mathfrak{L}$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+Why?
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ with respect to the Hilbert–Schmidt inner product on operators defined
+ by 
+\begin_inset Formula $\left\langle A,B\right\rangle =\Tr\left(A^{\dagger}B\right)$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "544199,Jaeger2007"
+posttextlist "544199"
+literal "false"
+
+\end_inset
+
+, the second-order projection
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathfrak{P}$
+\end_inset
+
+ can be expressed as
+\begin_inset Formula 
+\[
+\begin{aligned}\mathfrak{P}\left(\rho\right) & =\sum\limits _{\mu=0,x,y,z}\left\langle \rho,\frac{\sigma_{\mu}^{j}}{\sqrt{2}}\right\rangle \frac{\sigma_{\mu}^{j}}{\sqrt{2}}\\
+ & =\sum\limits _{\mu=0,x,y,z}\Tr\left(\op{\Psi}{\Psi}\frac{\sigma_{\mu}^{j}}{\sqrt{2}}\right)\frac{\sigma_{\mu}^{j}}{\sqrt{2}}\\
+ & =\overbrace{\sigma_{0}\otimes\cdots\otimes\sigma_{0}\otimes\underbrace{\frac{1}{2}\left(\sum\limits _{\mu=0,x,y,z}\expval{\sigma_{\mu}^{j}}\sigma_{\mu}\right)}_{j^{\textrm{th}}\textrm{ factors}}\otimes\sigma_{0}\otimes\cdots\otimes\sigma_{0}}^{n\textrm{ factors}}\,.
+\end{aligned}
+\]
+
+\end_inset
+
+Therefore, the reduced density operator
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\rho_{j}$
+\end_inset
+
+ of the 
+\begin_inset Formula $j$
+\end_inset
+
+-th subsystem can be expressed as
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{equation}
-\rho_{j}=\frac{1}{2}\sum\limits _{\mu=0,x,y,z}\expval{\sigma_{\mu}^{j}}\sigma_{\mu}\,,
+\rho_{j}=\frac{1}{2}\sum\limits _{\mu=0,x,y,z}\expval{\sigma_{\mu}^{j}}\sigma_{\mu}\,,\label{eq:reducedDensityOperator}
 \end{equation}
 
 \end_inset
