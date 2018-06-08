@@ -781,7 +781,15 @@ Betsy
 \begin_inset Quotes erd
 \end_inset
 
- Merceron and Kexin Chen (
+ Merceron and Kexin 
+\begin_inset Quotes eld
+\end_inset
+
+Casey
+\begin_inset Quotes erd
+\end_inset
+
+ Chen (
 \lang chinese-simplified
 谌可心
 \lang english
@@ -2987,10 +2995,14 @@ literal "false"
 \end_inset
 
 -th subsystem by tracing out all the other subsystems, 
-\begin_inset Formula $\rho_{j}=\Tr_{\left\{ 1,\cdots,j-1,j+1,\cdots,n\right\} }\left(\rho\right)$
+\begin_inset Formula 
+\begin{equation}
+\rho_{j}=\Tr_{\left\{ 1,\cdots,j-1,j+1,\cdots,n\right\} }\left(\rho\right)\,,\label{eq:partialTrace}
+\end{equation}
+
 \end_inset
 
-, with 
+with 
 \begin_inset Formula $j=1,\cdots,n$
 \end_inset
 
@@ -3030,7 +3042,21 @@ todo{
 
 \end_inset
 
-I didn't understand how previous paragraph transit to Eq.
+I am not comfortable why Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:partialTrace"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) induces Eq.
 \begin_inset space ~
 \end_inset
 
@@ -3044,25 +3070,25 @@ noprefix "false"
 
 \end_inset
 
-) while introducing Eq.
-\begin_inset space ~
-\end_inset
-
-(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:reducedDensityOperator"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-) might be important because its coefficient 
+) which might be important because the coefficient 
 \begin_inset Formula $\expval{\sigma_{\mu}^{j}}$
 \end_inset
 
- will be used in Eq.
+ in Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:reducedDensityOperator"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) will be used in Eq.
 \begin_inset space ~
 \end_inset
 
@@ -3077,12 +3103,22 @@ noprefix "false"
 \end_inset
 
 ).
- Hence, I tried the following two versions with different methods.
- Version
+ Hence, I am rewriting this part to better transit to Eq.
 \begin_inset space ~
 \end_inset
 
-1 explains Eq.
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:reducedDensityOperator"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ The first attempt explains Eq.
 \begin_inset space ~
 \end_inset
 
@@ -3112,11 +3148,7 @@ noprefix "false"
 \end_inset
 
 ) should be true in general.
- Version
-\begin_inset space ~
-\end_inset
-
-2 explains Eq.
+ Hence, I start the second attempt to try to prove Eq.
 \begin_inset space ~
 \end_inset
 
@@ -3130,10 +3162,40 @@ noprefix "false"
 
 \end_inset
 
-) by a proof, and it also has a benefit that the superscript and exponential
- are distinguished.
- However, it uses advanced Math which I am not completely sure and hard
- to explain in a way so that the reader can follow...
+) directly.
+ After working on the proof for a week, I am still not completely comfortable
+ about every details in the proof.
+ Even if I can prove Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:reducedDensityOperator"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), I don't know if I can present in a readable way...
+ Do you have any suggestion in this situation? Or I should discuss with
+ Gerardo who might be more familiar with Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:reducedDensityOperator"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)? Thanks.
 \begin_inset ERT
 status collapsed
 
@@ -3164,11 +3226,7 @@ todo{
 
 \end_inset
 
-Begin of Version
-\begin_inset space ~
-\end_inset
-
-1
+Begin of the 1st attempt
 \begin_inset ERT
 status collapsed
 
@@ -3410,11 +3468,7 @@ todo{
 
 \end_inset
 
-End of Version
-\begin_inset space ~
-\end_inset
-
-1
+End of the 1st attempt
 \begin_inset ERT
 status collapsed
 
@@ -3445,11 +3499,7 @@ todo{
 
 \end_inset
 
-Begin of Version
-\begin_inset space ~
-\end_inset
-
-2
+Begin of the 2st attempt
 \begin_inset ERT
 status collapsed
 
@@ -3523,7 +3573,7 @@ then
 \end_inset
 
 .
- We then claim that the operator function
+ It is easy to verify that the operator function
 \begin_inset space ~
 \end_inset
 
@@ -3564,6 +3614,16 @@ actually projects an operator to a subspace of operators, i.e.,
 \end_inset
 
  is linear and satisfying
+\begin_inset Formula 
+\[
+\begin{aligned}\mathfrak{P}\left(\mathfrak{P}\left(\rho\right)\right) & =\frac{1}{2^{n-1}}\left[\Tr_{\left\{ 1,\cdots,j-1,j+1,\cdots,n\right\} }\left(\overbrace{\frac{\sigma_{0}}{2}\otimes\cdots\otimes\frac{\sigma_{0}}{2}\otimes\underbrace{\rho_{j}}_{j^{\textrm{th}}\textrm{ factors}}\otimes\frac{\sigma_{0}}{2}\otimes\cdots\otimes\frac{\sigma_{0}}{2}}^{n\textrm{ factors}}\right)\right]^{\otimes j}\\
+ & =\frac{1}{2^{n-1}}\left[\overbrace{\Tr\left(\frac{\sigma_{0}}{2}\right)\cdots\Tr\left(\frac{\sigma_{0}}{2}\right)\rho_{j}\Tr\left(\frac{\sigma_{0}}{2}\right)\cdots\Tr\left(\frac{\sigma_{0}}{2}\right)}^{n\textrm{ factors}}\right]^{\otimes j}=\mathfrak{P}\left(\rho\right)\,,
+\end{aligned}
+\]
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -3576,33 +3636,23 @@ todo{
 
 \end_inset
 
-Shouldn't 
-\begin_inset Formula $\mathfrak{P}$
+However, I don't know how to verify 
+\begin_inset Formula $\mathfrak{P}^{\dagger}=\mathfrak{P}$
 \end_inset
 
- is an 
-\begin_inset Quotes eld
-\end_inset
-
-orthogonal
-\begin_inset Quotes erd
-\end_inset
-
- projection for Eq.
+, yet
 \begin_inset space ~
 \end_inset
 
-(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:densityOperatorProjection"
-plural "false"
-caps "false"
-noprefix "false"
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Griffiths2003"
+literal "true"
 
 \end_inset
 
-) to be true?
+
 \begin_inset ERT
 status collapsed
 
@@ -3613,17 +3663,8 @@ status collapsed
 
 \end_inset
 
-
-\begin_inset Formula 
-\[
-\begin{aligned}\mathfrak{P}\left(\mathfrak{P}\left(\rho\right)\right) & =\frac{1}{2^{n-1}}\left[\Tr_{\left\{ 1,\cdots,j-1,j+1,\cdots,n\right\} }\left(\overbrace{\frac{\sigma_{0}}{2}\otimes\cdots\otimes\frac{\sigma_{0}}{2}\otimes\underbrace{\rho_{j}}_{j^{\textrm{th}}\textrm{ factors}}\otimes\frac{\sigma_{0}}{2}\otimes\cdots\otimes\frac{\sigma_{0}}{2}}^{n\textrm{ factors}}\right)\right]^{\otimes j}\\
- & =\frac{1}{2^{n-1}}\left[\overbrace{\Tr\left(\frac{\sigma_{0}}{2}\right)\cdots\Tr\left(\frac{\sigma_{0}}{2}\right)\rho_{j}\Tr\left(\frac{\sigma_{0}}{2}\right)\cdots\Tr\left(\frac{\sigma_{0}}{2}\right)}^{n\textrm{ factors}}\right]^{\otimes j}=\mathfrak{P}\left(\rho\right)\,.
-\end{aligned}
-\]
-
-\end_inset
-
-Therefore, we could express the operator function
+.
+ Therefore, we could express the operator function
 \begin_inset space ~
 \end_inset
 
@@ -3826,11 +3867,7 @@ todo{
 
 \end_inset
 
-End of Version
-\begin_inset space ~
-\end_inset
-
-2
+End of the 2st attempt
 \begin_inset ERT
 status collapsed
 
