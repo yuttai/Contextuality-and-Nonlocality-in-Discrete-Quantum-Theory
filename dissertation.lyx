@@ -75,6 +75,7 @@
 
 \department{Department of Mathematics}
 \department{Department of Computer Science}
+\usepackage{xparse}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -3233,9 +3234,9 @@ status open
 
 
 \backslash
-newcommand{
+NewDocumentCommand{
 \backslash
-jthSubsystem}[2]{{#1}^{#2}}
+jthSubsystem}{m O{} m}{{#1}_{#2}^{#3}}
 \end_layout
 
 \begin_layout Plain Layout
@@ -3271,13 +3272,13 @@ literal "true"
  
 \begin_inset Formula 
 \begin{equation}
-\jthSubsystem{\sigma_{\mu}}{j}=\overbrace{\sigma_{0}\otimes\cdots\otimes\sigma_{0}\otimes\underbrace{\sigma_{\mu}}_{j^{\textrm{th}}\textrm{ factors}}\otimes\sigma_{0}\otimes\cdots\otimes\sigma_{0}}^{n\textrm{ factors}}\,,\label{pauli3}
+\jthSubsystem{\sigma}[\mu]{j}=\overbrace{\sigma_{0}\otimes\cdots\otimes\sigma_{0}\otimes\underbrace{\sigma_{\mu}}_{j^{\textrm{th}}\textrm{ factors}}\otimes\sigma_{0}\otimes\cdots\otimes\sigma_{0}}^{n\textrm{ factors}}\,,\label{pauli3}
 \end{equation}
 
 \end_inset
 
 and 
-\begin_inset Formula $\expval{\jthSubsystem{\sigma_{\mu}}{j}}=\melem{\Psi}{\jthSubsystem{\sigma_{\mu}}{j}}{\Psi}$
+\begin_inset Formula $\expval{\jthSubsystem{\sigma}[\mu]{j}}=\melem{\Psi}{\jthSubsystem{\sigma}[\mu]{j}}{\Psi}$
 \end_inset
 
  be the corresponding expectation value, where 
@@ -3309,10 +3310,10 @@ For example, given a normalized two-qubit system
 , part of its expectation values are
 \begin_inset Formula 
 \begin{equation}
-\begin{aligned}\expval{\jthSubsystem{\sigma_{0}}{1}} & =\left|\alpha_{00}\right|^{2}+\left|\alpha_{01}\right|^{2}+\left|\alpha_{10}\right|^{2}+\left|\alpha_{11}\right|^{2}=1\,,\\
-\expval{\jthSubsystem{\sigma_{x}}{1}} & =\alpha_{00}\alpha_{10}^{*}+\alpha_{01}\alpha_{11}^{*}+\alpha_{10}\alpha_{00}^{*}+\alpha_{11}\alpha_{01}^{*}\,,\\
-\expval{\jthSubsystem{\sigma_{y}}{1}} & =-\alpha_{00}\alpha_{10}^{*}\rmi-\alpha_{01}\alpha_{11}^{*}\rmi+\alpha_{10}\alpha_{00}^{*}\rmi+\alpha_{11}\alpha_{01}^{*}\rmi\,,\\
-\expval{\jthSubsystem{\sigma_{z}}{1}} & =\left|\alpha_{00}\right|^{2}+\left|\alpha_{01}\right|^{2}-\left|\alpha_{10}\right|^{2}-\left|\alpha_{11}\right|^{2}\,.
+\begin{aligned}\expval{\jthSubsystem{\sigma}[0]{1}} & =\left|\alpha_{00}\right|^{2}+\left|\alpha_{01}\right|^{2}+\left|\alpha_{10}\right|^{2}+\left|\alpha_{11}\right|^{2}=1\,,\\
+\expval{\jthSubsystem{\sigma}[x]{1}} & =\alpha_{00}\alpha_{10}^{*}+\alpha_{01}\alpha_{11}^{*}+\alpha_{10}\alpha_{00}^{*}+\alpha_{11}\alpha_{01}^{*}\,,\\
+\expval{\jthSubsystem{\sigma}[y]{1}} & =-\alpha_{00}\alpha_{10}^{*}\rmi-\alpha_{01}\alpha_{11}^{*}\rmi+\alpha_{10}\alpha_{00}^{*}\rmi+\alpha_{11}\alpha_{01}^{*}\rmi\,,\\
+\expval{\jthSubsystem{\sigma}[z]{1}} & =\left|\alpha_{00}\right|^{2}+\left|\alpha_{01}\right|^{2}-\left|\alpha_{10}\right|^{2}-\left|\alpha_{11}\right|^{2}\,.
 \end{aligned}
 \end{equation}
 
@@ -3332,7 +3333,7 @@ Then, the reduced density operator
 \begin{aligned}\rho_{1}= & \Tr_{\left\{ 2\right\} }\left(\op{\Psi}{\Psi}\right)\\
 = & \left(\left|\alpha_{00}\right|^{2}+\left|\alpha_{01}\right|^{2}\right)\op{0}{0}+\left(\alpha_{00}\alpha_{10}^{*}+\alpha_{01}\alpha_{11}^{*}\right)\op{0}{1}\\
  & +\left(\alpha_{10}\alpha_{00}^{*}+\alpha_{11}\alpha_{01}^{*}\right)\op{1}{0}+\left(\left|\alpha_{10}\right|^{2}+\left|\alpha_{11}\right|^{2}\right)\op{1}{1}\\
-= & \frac{\expval{\jthSubsystem{\sigma_{0}}{1}}\sigma_{0}+\expval{\jthSubsystem{\sigma_{x}}{1}}\sigma_{x}+\expval{\jthSubsystem{\sigma_{y}}{1}}\sigma_{y}+\expval{\jthSubsystem{\sigma_{z}}{1}}\sigma_{z}}{2}\,.
+= & \frac{\expval{\jthSubsystem{\sigma}[0]{1}}\sigma_{0}+\expval{\jthSubsystem{\sigma}[x]{1}}\sigma_{x}+\expval{\jthSubsystem{\sigma}[y]{1}}\sigma_{y}+\expval{\jthSubsystem{\sigma}[z]{1}}\sigma_{z}}{2}\,.
 \end{aligned}
 \end{equation}
 
@@ -3415,11 +3416,11 @@ status open
 
 
 \backslash
-renewcommand{
+RenewDocumentCommand{
 \backslash
-jthSubsystem}[2]{{#1}^{
+jthSubsystem}{m O{} m}{{#1}_{#2}^{
 \backslash
-otimes #2}}
+otimes #3}}
 \end_layout
 
 \begin_layout Plain Layout
@@ -3479,7 +3480,7 @@ where
 \end_inset
 
 then 
-\begin_inset Formula $\jthSubsystem{\sigma_{\mu}}{j}$
+\begin_inset Formula $\jthSubsystem{\sigma}[\mu]{j}$
 \end_inset
 
  is the Pauli operators acting on the 
@@ -3487,7 +3488,7 @@ then
 \end_inset
 
 -th spin, and their expectation values are denoted by 
-\begin_inset Formula $\expval{\jthSubsystem{\sigma_{\mu}}{j}}=\melem{\Psi}{\jthSubsystem{\sigma_{\mu}}{j}}{\Psi}$
+\begin_inset Formula $\expval{\jthSubsystem{\sigma}[\mu]{j}}=\melem{\Psi}{\jthSubsystem{\sigma}[\mu]{j}}{\Psi}$
 \end_inset
 
 .
@@ -3583,7 +3584,7 @@ status collapsed
 \end_inset
 
  can be expressed by the orthogonal basis 
-\begin_inset Formula $\left\{ \jthSubsystem{\sigma_{\mu}}{j}\right\} _{\mu=0,x,y,z}$
+\begin_inset Formula $\left\{ \jthSubsystem{\sigma}[\mu]{j}\right\} _{\mu=0,x,y,z}$
 \end_inset
 
  of the linear subspace 
@@ -3593,13 +3594,13 @@ status collapsed
  projecting onto
 \begin_inset Formula 
 \begin{equation}
-\mathfrak{P}\left(\rho\right)=\sum\limits _{\mu=0,x,y,z}\frac{\left\langle \rho,\jthSubsystem{\sigma_{\mu}}{j}\right\rangle }{\left\langle \jthSubsystem{\sigma_{\mu}}{j},\jthSubsystem{\sigma_{\mu}}{j}\right\rangle }\jthSubsystem{\sigma_{\mu}}{j}=\sum\limits _{\mu=0,x,y,z}\frac{\Tr\left(\op{\Psi}{\Psi}\jthSubsystem{\sigma_{\mu}}{j}\right)}{\Tr\left(\jthSubsystem{\sigma_{\mu}}{j}\cdot\jthSubsystem{\sigma_{\mu}}{j}\right)}\jthSubsystem{\sigma_{\mu}}{j}=\frac{1}{2^{n}}\left(\sum\limits _{\mu=0,x,y,z}\expval{\jthSubsystem{\sigma_{\mu}}{j}}\sigma_{\mu}\right)^{\otimes j}\,,\label{eq:densityOperatorProjection}
+\mathfrak{P}\left(\rho\right)=\sum\limits _{\mu=0,x,y,z}\frac{\left\langle \rho,\jthSubsystem{\sigma}[\mu]{j}\right\rangle }{\left\langle \jthSubsystem{\sigma}[\mu]{j},\jthSubsystem{\sigma}[\mu]{j}\right\rangle }\jthSubsystem{\sigma}[\mu]{j}=\sum\limits _{\mu=0,x,y,z}\frac{\Tr\left(\op{\Psi}{\Psi}\jthSubsystem{\sigma}[\mu]{j}\right)}{\Tr\left(\jthSubsystem{\sigma}[\mu]{j}\cdot\jthSubsystem{\sigma}[\mu]{j}\right)}\jthSubsystem{\sigma}[\mu]{j}=\frac{1}{2^{n}}\left(\sum\limits _{\mu=0,x,y,z}\expval{\jthSubsystem{\sigma}[\mu]{j}}\sigma_{\mu}\right)^{\otimes j}\,,\label{eq:densityOperatorProjection}
 \end{equation}
 
 \end_inset
 
 where 
-\begin_inset Formula $\left\{ \jthSubsystem{\sigma_{\mu}}{j}\right\} _{\mu=0,x,y,z}$
+\begin_inset Formula $\left\{ \jthSubsystem{\sigma}[\mu]{j}\right\} _{\mu=0,x,y,z}$
 \end_inset
 
  is orthogonal with respect to the Hilbert–Schmidt inner product on operators
@@ -3684,7 +3685,7 @@ status collapsed
 
 \begin_inset Formula 
 \begin{equation}
-\rho_{j}=\frac{1}{2}\sum\limits _{\mu=0,x,y,z}\expval{\jthSubsystem{\sigma_{\mu}}{j}}\sigma_{\mu}\,,\label{eq:reducedDensityOperator}
+\rho_{j}=\frac{1}{2}\sum\limits _{\mu=0,x,y,z}\expval{\jthSubsystem{\sigma}[\mu]{j}}\sigma_{\mu}\,,\label{eq:reducedDensityOperator}
 \end{equation}
 
 \end_inset
@@ -3692,7 +3693,7 @@ status collapsed
 and its coefficients can be summarized as the vector
 \begin_inset Formula 
 \begin{equation}
-{\bf X}_{j}=\left(\expval{\jthSubsystem{\sigma_{x}}{j}},\expval{\jthSubsystem{\sigma_{y}}{j}},\expval{\jthSubsystem{\sigma_{z}}{j}}\right)\in\mathbb{R}^{3}
+{\bf X}_{j}=\left(\expval{\jthSubsystem{\sigma}[x]{j}},\expval{\jthSubsystem{\sigma}[y]{j}},\expval{\jthSubsystem{\sigma}[z]{j}}\right)\in\mathbb{R}^{3}
 \end{equation}
 
 \end_inset
@@ -3826,13 +3827,13 @@ all local observables
 \end_inset
 
  spanned by 
-\begin_inset Formula $\left\{ \jthSubsystem{\sigma_{x}}{1},\jthSubsystem{\sigma_{y}}{1},\jthSubsystem{\sigma_{z}}{1},\ldots,\jthSubsystem{\sigma_{x}}{n},\jthSubsystem{\sigma_{y}}{n},\jthSubsystem{\sigma_{z}}{n}\right\} $
+\begin_inset Formula $\left\{ \jthSubsystem{\sigma}[x]{1},\jthSubsystem{\sigma}[y]{1},\jthSubsystem{\sigma}[z]{1},\ldots,\jthSubsystem{\sigma}[x]{n},\jthSubsystem{\sigma}[y]{n},\jthSubsystem{\sigma}[z]{n}\right\} $
 \end_inset
 
 ,
 \begin_inset Formula 
 \begin{equation}
-P_{\fh}=\frac{1}{n}\sum\limits _{j=1}^{n}\sum\limits _{\mu=x,y,z}\expval{\jthSubsystem{\sigma_{\mu}}{j}}^{2}=\frac{1}{n}\sum\limits _{j=1}^{n}\left\Vert {\bf X}_{j}\right\Vert ^{2}\,.\label{purityMeasure.eq}
+P_{\fh}=\frac{1}{n}\sum\limits _{j=1}^{n}\sum\limits _{\mu=x,y,z}\expval{\jthSubsystem{\sigma}[\mu]{j}}^{2}=\frac{1}{n}\sum\limits _{j=1}^{n}\left\Vert {\bf X}_{j}\right\Vert ^{2}\,.\label{purityMeasure.eq}
 \end{equation}
 
 \end_inset
@@ -3985,7 +3986,7 @@ todo{
 \end_inset
 
 Further explain 
-\begin_inset Formula $\jthSubsystem{\sigma_{\mu}}{j}$
+\begin_inset Formula $\jthSubsystem{\sigma}[\mu]{j}$
 \end_inset
 
  used as a quantum circuit, control not, the Deutsch quantum black box
@@ -8149,7 +8150,7 @@ literal "false"
 , 
 \begin_inset Formula 
 \begin{equation}
-\forall j,\forall\mu\in\left\{ x,y,z\right\} ,\expval{\jthSubsystem{\sigma_{\mu}}{j}}^{2}=0\textrm{ ,}\label{eq:john}
+\forall j,\forall\mu\in\left\{ x,y,z\right\} ,\expval{\jthSubsystem{\sigma}[\mu]{j}}^{2}=0\textrm{ ,}\label{eq:john}
 \end{equation}
 
 \end_inset
