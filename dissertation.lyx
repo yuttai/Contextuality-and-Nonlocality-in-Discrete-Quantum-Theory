@@ -35,7 +35,7 @@
 
 \usepackage{amsthm}
 \theoremstyle{plain}
-\newtheorem{prop}{Proposition}
+\newtheorem{prop}{Proposition}[section]
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem*{method}{Method}
@@ -6166,6 +6166,12 @@ name "discretequantumtheoryI"
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Complexified-Finite-Fields"
+
+\end_inset
+
 Complexified Finite Fields
 \end_layout
 
@@ -7639,7 +7645,7 @@ Sketch of the map from
 \end_inset
 
  non-zero elements that map onto the 
-\begin_inset Formula $\left(p-1\right)$
+\begin_inset Formula $p-1$
 \end_inset
 
  non-zero elements of 
@@ -7647,7 +7653,7 @@ Sketch of the map from
 \end_inset
 
  with multiplicity 
-\begin_inset Formula $\left(p+1\right)$
+\begin_inset Formula $p+1$
 \end_inset
 
 .
@@ -8008,12 +8014,167 @@ For any vector
 
 \end_inset
 
-The field norm of a vector can vanish for non-vanishing vectors.
- Since the field norm is not squaring a number now, the square root which
- does not always exist should be avoid when normalizing a non-zero-norm
- vector.
- Instead, we should use the inverse field norm.
- Explicitly, any non-zero element 
+
+\end_layout
+
+\begin_layout Standard
+Although the field norm of a vector can vanish for non-vanishing vectors,
+ if a vector 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ has a non-vanishing field norm
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $c$
+\end_inset
+
+, its field norm can be utilized to normalize 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+.
+ Recalled in Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Complexified-Finite-Fields"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, we defined 
+\begin_inset Formula $\fnorm*{\left\{ c\right\} }$
+\end_inset
+
+ to be the set of element whose field norm is 
+\begin_inset Formula $c$
+\end_inset
+
+.
+ Given any 
+\begin_inset Formula $\alpha\in\fnorm*{\left\{ c\right\} }$
+\end_inset
+
+, the field norm of 
+\begin_inset Formula $\frac{\ket{\Psi}}{\alpha}$
+\end_inset
+
+ is
+\begin_inset Formula 
+\begin{equation}
+\fnorm{\frac{\ket{\Psi}}{\alpha}}=\frac{\fnorm{\ket{\Psi}}}{\fnorm{\alpha}}=\frac{c}{c}=1\,,
+\end{equation}
+
+\end_inset
+
+i.e., 
+\begin_inset Formula $\frac{\ket{\Psi}}{\alpha}$
+\end_inset
+
+ is normalized.
+ However, since the size of 
+\begin_inset Formula $\fnorm*{\left\{ c\right\} }$
+\end_inset
+
+ is 
+\begin_inset Formula $p+1$
+\end_inset
+
+, we cannot identify a 
+\begin_inset Quotes eld
+\end_inset
+
+unique
+\begin_inset Quotes erd
+\end_inset
+
+ normalized for any given vector.
+\end_layout
+
+\begin_layout Standard
+Actually, the similar problem has already happened in conventional quantum
+ theory.
+ For example, assume we want to normalize 
+\begin_inset Formula $\ket{\Psi}=\ket{0}+\ket{1}$
+\end_inset
+
+.
+ Its inner product with itself is 
+\begin_inset Formula $\ip{\Psi}{\Psi}=2$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\left(\pm\sqrt{2}\right)^{2}=2$
+\end_inset
+
+, both 
+\begin_inset Formula $\frac{\ket{\Psi}}{\sqrt{2}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{\ket{\Psi}}{-\sqrt{2}}$
+\end_inset
+
+ are normalized and representing the same state
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+.
+ In this case, we systematically choose dividing the positive square root
+ as 
+\begin_inset Quotes eld
+\end_inset
+
+the
+\begin_inset Quotes erd
+\end_inset
+
+ normalized vector 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ for in conventional quantum theory.
+ In discrete case, we can also systematically choose the 
+\emph on
+principal inverse field norm
+\emph default
+ by utilizing a generator 
+\begin_inset Formula $g\in\Fpp$
+\end_inset
+
+ discussed in Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Complexified-Finite-Fields"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Because 
+\begin_inset Formula $g$
+\end_inset
+
+ is a generator, any non-zero element 
 \begin_inset Formula $c∈\ff{p}\backslash\left\{ 0\right\} $
 \end_inset
 
@@ -8025,8 +8186,16 @@ The field norm of a vector can vanish for non-vanishing vectors.
 \begin_inset Formula $k$
 \end_inset
 
- is an integer, so the inverse field norm 
-\begin_inset Formula $\fnorm*{g^{\left(p+1\right)k}}=g^{k}$
+ is an integer and 
+\begin_inset Formula $0\le k<p-1$
+\end_inset
+
+, so we can define the principal inverse field norm 
+\begin_inset Formula $\fnorm*{g^{\left(p+1\right)k}}$
+\end_inset
+
+ as 
+\begin_inset Formula $g^{k}$
 \end_inset
 
 .
@@ -8064,16 +8233,7 @@ noprefix "false"
 , it can be normalized as
 \begin_inset Formula 
 \begin{equation}
-\frac{\ket{\Psi}}{\fnorm*{-1}}=\frac{\ket{0}+\ket{1}}{1-\rmi}=\left(1+\rmi\right)\ket{0}+\left(1+\rmi\right)\ket{1}\,,
-\end{equation}
-
-\end_inset
-
-which is the directly corresponding to the normalization in the conventional
- quantum theory
-\begin_inset Formula 
-\begin{equation}
-\frac{\ket{\Psi}}{\sqrt{2}}=\frac{1}{\sqrt{2}}\ket{0}+\frac{1}{\sqrt{2}}\ket{1}\,.
+\frac{\ket{\Psi}}{\fnorm*{-1}}=\frac{\ket{0}+\ket{1}}{1-\rmi}=\left(1+\rmi\right)\ket{0}+\left(1+\rmi\right)\ket{1}\,.
 \end{equation}
 
 \end_inset
