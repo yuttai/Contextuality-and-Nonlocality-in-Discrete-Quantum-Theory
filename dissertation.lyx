@@ -5571,10 +5571,10 @@ literal "true"
  
 \begin_inset Formula 
 \begin{equation}
-\uf\ket{y}\ket{\overline{x}}=\begin{cases}
+\uf\ket{y}\ket{\overline{x}}=\ket{y\oplus f\left(\overline{x}\right)}\ket{\overline{x}}=\begin{cases}
 \ket{y}\ket{\overline{x}}\,, & \textrm{if }f\left(\overline{x}\right)=\bfalse\,;\\
 \ket{\mathsf{not}\left(y\right)}\ket{\overline{x}}\,, & \textrm{if }f\left(\overline{x}\right)=\btrue\,,
-\end{cases}
+\end{cases}\label{eq:DeutschBox}
 \end{equation}
 
 \end_inset
@@ -5591,7 +5591,11 @@ where
 \begin_inset Formula $n$
 \end_inset
 
- bits and 
+ bits, 
+\begin_inset Formula $\oplus$
+\end_inset
+
+ is exclusive disjunction, and 
 \begin_inset Formula $0$
 \end_inset
 
@@ -10138,6 +10142,9 @@ irani, perform as desired.
  as an example.
  Algorithms such as Grover's search will not work in the usual way because
  we lack (the notion of) ordered angles and probability in general.
+ However, this computational model still leads to excessive computational
+ power for the unstructured database search problem for certain database
+ sizes.
 \end_layout
 
 \begin_layout Subsection
@@ -10157,15 +10164,7 @@ Although having no realistic application, the Deutsch algorithm is the first
 \end_inset
 
  is constant or balanced.
- Therefore, we have only 
-\begin_inset Formula $4$
-\end_inset
-
- different 
-\begin_inset Formula $f$
-\end_inset
-
- as in Table
+ As listed in Table
 \begin_inset space ~
 \end_inset
 
@@ -10179,22 +10178,27 @@ noprefix "false"
 
 \end_inset
 
-, and 
+, we have only 
 \begin_inset Formula $4$
 \end_inset
 
  different 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ Then, their Deutsch black box 
 \begin_inset Formula $U_{f}$
 \end_inset
 
- in Table
+ is placed the middle of the circuit in Figure
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Possible-Deutsch-black-box"
+reference "fig:Quantum-Circuit-Deutsch"
 plural "false"
 caps "false"
 noprefix "false"
@@ -10202,6 +10206,25 @@ noprefix "false"
 \end_inset
 
 .
+ This Deutsch black box will be used to apply exclusive disjunction on the
+ first qubit as we discussed in Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:DeutschBox"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ To explain the computation in full detail, we will compute the state in
+ each step explicitly, and express the Dirac bracket notation with its matrix
+ representation in computational basis parallelly.
 \begin_inset Float table
 wide false
 sideways false
@@ -10234,7 +10257,6 @@ Possible
 \end_layout
 
 \begin_layout Plain Layout
-\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="5">
 <features booktabs="true" tabularvalignment="middle">
@@ -10436,386 +10458,54 @@ Input number
 \end_inset
 
 
-\begin_inset Float table
-wide false
-sideways false
-status open
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
 
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:Possible-Deutsch-black-box"
+
+\backslash
+todo{
+\end_layout
 
 \end_inset
 
-Possible Deutsch black box 
+We typeset 
 \begin_inset Formula $U_{f}$
 \end_inset
 
-
-\end_layout
-
+ either directly or use macro 
+\backslash
+uf, but the definition of 
+\backslash
+uf has a negative space between 
+\begin_inset Formula $U$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="5">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Input states
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $U_{f_{1}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $U_{f_{2}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $U_{f_{3}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $U_{f_{4}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{0}\ket{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{0}\ket{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{0}\ket{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{0}\ket{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{0}\ket{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{0}\ket{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{0}\ket{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{0}\ket{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{0}\ket{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{0}\ket{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{1}\ket{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{1}\ket{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{1}\ket{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{1}\ket{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{1}\ket{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{1}\ket{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{1}\ket{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{1}\ket{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{1}\ket{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ket{1}\ket{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Then, 
-\begin_inset Formula $U_{f}$
-\end_inset
-
- is used in the middle of a quantum circuit in Figure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Quantum-Circuit-Deutsch"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- in order to check whether 
+ and 
 \begin_inset Formula $f$
 \end_inset
 
- is constant of balanced.
+ which is different from U_{f}...
+ I need to understand whether the negative space is necessary or not, or
+ whether the negative space has any semantic.
+ If I want to have a negative space, I may need to put negative space in
+ 
+\begin_inset Formula $U_{f_{j}}$
+\end_inset
+
+ to make it consistent...
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Float figure
 placement t
 wide false
@@ -10828,8 +10518,8 @@ status open
 \[
 \begin{array}{c}
 \xyR{.9em}\xyC{.6em}\entrymodifiers={@*=<0em>}\xymatrix{ & \ar@{.}[ddd] &  & \ar@{.}[ddd] &  & \ar@{.}[ddd] &  & \ar@{.}[ddd]\\
-\lstick{\ket{0}} & \qw & \gate{H} & \qw & \multigate{1}{\uf} & \qw & \gate{H^{\dagger}} & \qw & \measureD{\text{measure}}\\
-\lstick{\ket{1}} & \qw & \gate{H} & \qw & \ghost{\uf} & \qw & \gate{H^{\dagger}} & \qw\\
+\lstick{\ket{1}} & \qw & \gate{H} & \qw & \multigate{1}{\uf} & \qw & \gate{H^{\dagger}} & \qw & \measureD{\text{measure}}\\
+\lstick{\ket{0}} & \qw & \gate{H} & \qw & \ghost{\uf} & \qw & \gate{H^{\dagger}} & \qw\\
  & \push{\ket{\phi_{1}}} &  & \push{\ket{\phi_{2}}} &  & \push{\ket{\phi_{3}}} &  & \push{\ket{\phi_{4}}}
 }
 \end{array}
@@ -10862,10 +10552,10 @@ Quantum Circuit for Deutsch Algorithm.
 
 \begin_layout Standard
 First, a 2-qubit pure state is initialized to 
-\begin_inset Formula $\ket{\phi_{1}}=\ket{0}\ket{1}=\begin{pmatrix}1\\
-0
-\end{pmatrix}\otimes\begin{pmatrix}0\\
+\begin_inset Formula $\ket{\phi_{1}}=\ket{1}\ket{0}=\begin{pmatrix}0\\
 1
+\end{pmatrix}\otimes\begin{pmatrix}1\\
+0
 \end{pmatrix}$
 \end_inset
 
@@ -10874,14 +10564,14 @@ First, a 2-qubit pure state is initialized to
 
 \begin_layout Standard
 Second, on both initialized qubits, we apply the Hadamard matrix 
-\begin_inset Formula $H=\frac{1}{\fnorm*{-1}}\begin{pmatrix}1 & 1\\
+\begin_inset Formula $H=\dfrac{1}{1-\rmi}\begin{pmatrix}1 & 1\\
 1 & -1
 \end{pmatrix}$
 \end_inset
 
 .
  Compare to the Hadamard matrix is 
-\begin_inset Formula $\frac{1}{\sqrt{2}}\begin{pmatrix}1 & 1\\
+\begin_inset Formula $\dfrac{1}{\sqrt{2}}\begin{pmatrix}1 & 1\\
 1 & -1
 \end{pmatrix}$
 \end_inset
@@ -10894,8 +10584,8 @@ Second, on both initialized qubits, we apply the Hadamard matrix
 \begin_inset Formula $\sqrt{2}$
 \end_inset
 
- is replaced by the inverse field norm 
-\begin_inset Formula $\fnorm*{2}=\fnorm*{-1}$
+ is replaced by the principal inverse field norm 
+\begin_inset Formula $\fnorm*{-1}=1-\rmi$
 \end_inset
 
  as we discussed in Sec.
@@ -10915,45 +10605,29 @@ noprefix "false"
 .
  The second step produces
 \begin_inset Formula 
-\begin{equation}
-\begin{aligned}\ket{\phi_{2}} & =\left(H\otimes H\right)\ket{\phi_{1}}=H\ket{0}\otimes H\ket{1}\\
- & =\left[\frac{1}{\fnorm*{-1}}\begin{pmatrix}1 & 1\\
-1 & -1
-\end{pmatrix}\begin{pmatrix}1\\
-0
-\end{pmatrix}\right]\otimes\left[\frac{1}{\fnorm*{-1}}\begin{pmatrix}1 & 1\\
+\[
+\ket{\phi_{2}}=\left(H\otimes H\right)\ket{\phi_{1}}=\left[\frac{1}{1-\rmi}\begin{pmatrix}1 & 1\\
 1 & -1
 \end{pmatrix}\begin{pmatrix}0\\
 1
-\end{pmatrix}\right]\\
- & =\frac{1}{\fnorm*{-1}}\begin{pmatrix}1\\
-1
-\end{pmatrix}\otimes\frac{1}{\fnorm*{-1}}\begin{pmatrix}1\\
--1
-\end{pmatrix}=\ket{+}\ket{-}\,,
-\end{aligned}
-\end{equation}
+\end{pmatrix}\right]\otimes\left[\frac{1}{1-\rmi}\begin{pmatrix}1 & 1\\
+1 & -1
+\end{pmatrix}\begin{pmatrix}1\\
+0
+\end{pmatrix}\right]=\ket{-}\ket{+}\,,
+\]
 
 \end_inset
 
 where
 \begin_inset Formula 
-\begin{eqnarray}
-\ket{+} & = & \frac{1}{\fnorm*{-1}}\begin{pmatrix}1\\
+\begin{align}
+\ket{+} & =\frac{1}{1-\rmi}\begin{pmatrix}1\\
 1
-\end{pmatrix}=\frac{1}{\fnorm*{-1}}\left[\begin{pmatrix}1\\
-0
-\end{pmatrix}+\begin{pmatrix}0\\
-1
-\end{pmatrix}\right]=\frac{\ket{0}+\ket{1}}{\fnorm*{-1}}\,,\\
-\ket{-} & = & \frac{1}{\fnorm*{-1}}\begin{pmatrix}1\\
+\end{pmatrix}=\frac{\ket{0}+\ket{1}}{1-\rmi}\,, & \ket{-} & =\frac{1}{1-\rmi}\begin{pmatrix}1\\
 -1
-\end{pmatrix}=\frac{1}{\fnorm*{-1}}\left[\begin{pmatrix}1\\
-0
-\end{pmatrix}-\begin{pmatrix}0\\
-1
-\end{pmatrix}\right]=\frac{\ket{0}-\ket{1}}{\fnorm*{-1}}\,.
-\end{eqnarray}
+\end{pmatrix}=\frac{\ket{0}-\ket{1}}{1-\rmi}\,.
+\end{align}
 
 \end_inset
 
@@ -10981,58 +10655,8 @@ Third, the Deutsch black box
  is applied, the state becomes
 \begin_inset Formula 
 \begin{equation}
-\begin{aligned}\ket{\phi_{3}} & =U_{f}\ket{+}\ket{-}=\frac{1}{\fnorm*{-1}}\left[U_{f}\ket{0}\ket{-}+U_{f}\ket{1}\ket{-}\right]\end{aligned}
+\begin{aligned}\ket{\phi_{3}} & =U_{f}\ket{-}\ket{+}=\frac{U_{f}\ket{-}\ket{0}+U_{f}\ket{-}\ket{1}}{1-\rmi}\end{aligned}
 \end{equation}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-todo{
-\end_layout
-
-\end_inset
-
-Check whether 
-\begin_inset Formula $U_{f}$
-\end_inset
-
- has already defined, and whether the definition is consistent with how
- we use it here...
- Besides, we typeset either directly or use macro 
-\backslash
-uf...
- I might need to decide which one should be used.
- Especially, the definition of 
-\backslash
-uf has a negative space between 
-\begin_inset Formula $U$
-\end_inset
-
- and 
-\begin_inset Formula $f$
-\end_inset
-
-...
- If I want to have a negative space, I may need to put negative space in
- 
-\begin_inset Formula $U_{f_{j}}$
-\end_inset
-
- to make it consistent...
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
 
 \end_inset
 
