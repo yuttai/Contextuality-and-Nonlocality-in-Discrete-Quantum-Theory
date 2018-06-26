@@ -10569,8 +10569,8 @@ status open
 \[
 \begin{array}{c}
 \xyR{.9em}\xyC{.6em}\entrymodifiers={@*=<0em>}\xymatrix{ & \ar@{.}[ddd] &  & \ar@{.}[ddd] &  & \ar@{.}[ddd] &  & \ar@{.}[ddd]\\
-\lstick{\ket{1}} & \qw & \gate{H} & \qw & \multigate{1}{\uf} & \qw & \gate{H^{\dagger}} & \qw & \measureD{\text{measure}}\\
-\lstick{\ket{0}} & \qw & \gate{H} & \qw & \ghost{\uf} & \qw & \gate{H^{\dagger}} & \qw\\
+\lstick{\ket{1}} & \qw & \gate{H} & \qw & \multigate{1}{\uf} & \qw & \gate{H^{\dagger}} & \qw\\
+\lstick{\ket{0}} & \qw & \gate{H} & \qw & \ghost{\uf} & \qw & \gate{H^{\dagger}} & \qw & \measureD{\vphantom{\uf}\text{measure}}\\
  & \push{\ket{\phi_{1}}} &  & \push{\ket{\phi_{2}}} &  & \push{\ket{\phi_{3}}} &  & \push{\ket{\phi_{4}}}
 }
 \end{array}
@@ -10735,7 +10735,23 @@ noprefix "false"
 \begin_inset Formula $\btrue$
 \end_inset
 
-.
+ if we identify 
+\begin_inset Formula $\bfalse$
+\end_inset
+
+ and 
+\begin_inset Formula $\btrue$
+\end_inset
+
+ as 
+\begin_inset Formula $0$
+\end_inset
+
+ and 
+\begin_inset Formula $1$
+\end_inset
+
+, respectively.
  More concretely, when 
 \begin_inset Formula $f\left(x\right)=\bfalse$
 \end_inset
@@ -10760,12 +10776,27 @@ U_{f}\ket{-}\ket{x}=\frac{\ket{\mathsf{not}\left(0\right)}-\ket{\mathsf{not}\lef
 
 \end_inset
 
-Then, the state becomes
+Hence, 
+\begin_inset Formula $U_{f}\ket{-}\ket{x}$
+\end_inset
+
+ is always 
+\begin_inset Formula $\left(-1\right)^{f\left(x\right)}\ket{-}\ket{x}$
+\end_inset
+
+, and this fact can be used to evaluate 
+\begin_inset Formula $\ket{\phi_{3}}$
+\end_inset
+
+ as follow
 \begin_inset Formula 
 \begin{equation}
 \begin{aligned}\ket{\phi_{3}} & =U_{f}\ket{-}\ket{+}=\frac{U_{f}\ket{-}\ket{0}+U_{f}\ket{-}\ket{1}}{\alpha}\\
  & =\frac{1}{\alpha}\left[\left(-1\right)^{f\left(0\right)}\ket{-}\ket{0}+\left(-1\right)^{f\left(1\right)}\ket{-}\ket{1}\right]\\
- & =\frac{1}{\alpha}\ket{-}\left[\left(-1\right)^{f\left(0\right)}\ket{0}+\left(-1\right)^{f\left(1\right)}\ket{1}\right]
+ & =\begin{cases}
+\left(-1\right)^{f\left(0\right)}\ket{-}\ket{+}\,, & \textrm{if }f\left(0\right)=f\left(1\right)\,;\\
+\left(-1\right)^{f\left(0\right)}\ket{-}\ket{-}\,, & \textrm{if }f\left(0\right)\ne f\left(1\right)\,.
+\end{cases}
 \end{aligned}
 \end{equation}
 
@@ -10775,6 +10806,7 @@ Then, the state becomes
 \end_layout
 
 \begin_layout Standard
+Finally, 
 \begin_inset Formula $\ket{\phi_{4}}$
 \end_inset
 
@@ -10785,10 +10817,23 @@ Then, the state becomes
 \end{pmatrix}$
 \end_inset
 
-:
+.
+ If 
+\begin_inset Formula $f\left(0\right)=f\left(1\right)$
+\end_inset
+
+, we have 
 \begin_inset Formula 
 \[
-\ket{\phi_{4}}=\left(H^{\dagger}\otimes H^{\dagger}\right)\ket{\phi_{3}}=
+\ket{\phi_{4}}=\left(H^{\dagger}\otimes H^{\dagger}\right)\ket{\phi_{3}}=\left(-1\right)^{f\left(0\right)}\left[\dfrac{1}{\alpha^{*}}\begin{pmatrix}1 & 1\\
+1 & -1
+\end{pmatrix}\frac{1}{\alpha}\begin{pmatrix}1\\
+-1
+\end{pmatrix}\right]\otimes\left[\dfrac{1}{\alpha^{*}}\begin{pmatrix}1 & 1\\
+1 & -1
+\end{pmatrix}\frac{1}{\alpha}\begin{pmatrix}1\\
+1
+\end{pmatrix}\right]=\left(-1\right)^{f\left(0\right)}\ket{-}\ket{+}\,,
 \]
 
 \end_inset
