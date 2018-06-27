@@ -29,7 +29,7 @@
 \newcommand{\xyC}[1]{\xymatrixcolsep={#1}}
 
 %\usepackage[basic]{complexity}
-\newcommand{\lang}[1]{{\ensuremath{\mathsf{#1}}}}
+\newcommand{\lang}[1]{{\ensuremath{\textsf{#1}}}}
 \newcommand{\newlang}[2]{\newcommand{#1}{\lang{#2}}}
 \newlang{\usat}{UNIQUE-SAT}
 
@@ -5653,7 +5653,7 @@ literal "true"
  
 \begin_inset Formula 
 \begin{equation}
-\uf\ket{y}\ket{\overline{x}}=\begin{cases}
+\uf\ket{y}\ket{\overline{x}}=\ket{y\oplus f\left(x\right)}\ket{\overline{x}}=\begin{cases}
 \ket{y}\ket{\overline{x}}\,, & \textrm{if }f\left(\overline{x}\right)=\bfalse\,;\\
 \ket{\mathsf{not}\left(y\right)}\ket{\overline{x}}\,, & \textrm{if }f\left(\overline{x}\right)=\btrue\,,
 \end{cases}\label{eq:DeutschBox}
@@ -5673,7 +5673,11 @@ where
 \begin_inset Formula $n$
 \end_inset
 
- bits and 
+ bits, 
+\begin_inset Formula $\oplus$
+\end_inset
+
+ is exclusive disjunction, and 
 \begin_inset Formula $0$
 \end_inset
 
@@ -10138,36 +10142,10 @@ Given a complexified finite field
 \end_inset
 
  and its Hermitian 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-dotprod
-\end_layout
-
+\begin_inset Formula $\dotprod$
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-(Eq.
+ (Eq.
 \begin_inset space ~
 \end_inset
 
@@ -10187,20 +10165,17 @@ reference "innerprod"
 \begin_inset Formula $\ff{3^{2}}$
 \end_inset
 
- is already rich enough to express the standard Deutsch-Jozsa
-\begin_inset space ~
-\end_inset
-
-
+ is already rich enough to express the standard Deutsch-Jozsa algorithm
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "544199"
+key "DeutschJozsa1992,544199,Jaeger2007"
 literal "true"
 
 \end_inset
 
- algorithm, which requires only normalized versions of vectors or matrices
- with the scalars 
+, which requires only normalized versions of vectors or matrices with the
+ scalars 
 \begin_inset Formula $0$
 \end_inset
 
@@ -10214,12 +10189,35 @@ literal "true"
 
 .
  Similarly, other deterministic quantum algorithms (algorithms for which
- we may determine the outcome with certainty), such as Simon's and Bernstein-Vaz
-irani, perform as desired.
+ we may determine the outcome with certainty), such as Simon's 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Simon:1994:PQC:1398518.1399019,Mermin2007,Jaeger2007"
+literal "true"
+
+\end_inset
+
+ and Bernstein-Vazirani 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bernstein:1993:QCT:167088.167097,Mermin2007"
+literal "true"
+
+\end_inset
+
+, perform as desired.
  In the following subsection, we will present the discrete Deutsch algorithm
  as an example.
- Algorithms such as Grover's search will not work in the usual way because
- we lack (the notion of) ordered angles and probability in general.
+ Algorithms such as Grover's search 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Grover:1996:FQM:237814.237866,Mermin2007,Jaeger2007"
+literal "true"
+
+\end_inset
+
+ will not work in the usual way because we lack (the notion of) ordered
+ angles and probability in general.
  However, this computational model still leads to excessive computational
  power for the unstructured database search problem for certain database
  sizes.
@@ -10232,7 +10230,15 @@ Discrete Deutsch algorithm
 \begin_layout Standard
 Although having no realistic application, the Deutsch algorithm is the first
  quantum algorithm which outperforms any possible classical algorithm for
- the Deutsch problem.
+ the Deutsch problem 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Deutsch1985,544199,Mermin2007"
+literal "true"
+
+\end_inset
+
+.
  In the Deutsch problem, the input gate is a Deutsch black box 
 \begin_inset Formula $U_{f}$
 \end_inset
@@ -10332,7 +10338,7 @@ Possible
 \begin_inset Text
 
 \begin_layout Plain Layout
-Input number
+Input
 \end_layout
 
 \end_inset
@@ -10614,30 +10620,6 @@ status collapsed
 
 \end_inset
 
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-todo{
-\end_layout
-
-\end_inset
-
-Can the table and figure placed side-by-side?
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
 
 \begin_inset Float figure
 placement t
@@ -10707,7 +10689,7 @@ Second, on both initialized qubits, we apply the Hadamard matrix
 \end_inset
 
 , where 
-\begin_inset Formula $\alpha=\fnorm*{-1}$
+\begin_inset Formula $\alpha=\fnorm*{2}$
 \end_inset
 
  is the principal inverse field norm which is used to replace the square
@@ -10796,7 +10778,23 @@ noprefix "false"
 \end_inset
 
 ), these Deutsch black box will be used to apply exclusive disjunction on
- the first qubit.
+ the first qubit, where we respectively identify 
+\begin_inset Formula $\bfalse$
+\end_inset
+
+ and 
+\begin_inset Formula $\btrue$
+\end_inset
+
+ as 
+\begin_inset Formula $0$
+\end_inset
+
+ and 
+\begin_inset Formula $1$
+\end_inset
+
+ as usual.
  Since our first qubit is 
 \begin_inset Formula $\ket{-}$
 \end_inset
@@ -10817,43 +10815,16 @@ noprefix "false"
 \begin_inset Formula $\btrue$
 \end_inset
 
- if we identify 
-\begin_inset Formula $\bfalse$
-\end_inset
 
- and 
-\begin_inset Formula $\btrue$
-\end_inset
-
- as 
-\begin_inset Formula $0$
-\end_inset
-
- and 
-\begin_inset Formula $1$
-\end_inset
-
-, respectively.
- More concretely, when 
-\begin_inset Formula $f\left(x\right)=\bfalse$
-\end_inset
-
-, we have 
 \begin_inset Formula 
 \begin{equation}
-U_{f}\ket{-}\ket{x}=\frac{\ket{0}-\ket{1}}{\alpha}\ket{x}=\frac{\ket{0}-\ket{1}}{\alpha}\ket{x}=\ket{-}\ket{x}=\left(-1\right)^{f\left(x\right)}\ket{-}\ket{x}\,;
-\end{equation}
-
-\end_inset
-
-when 
-\begin_inset Formula $f\left(x\right)=\btrue$
-\end_inset
-
-, we have
-\begin_inset Formula 
-\begin{equation}
-U_{f}\ket{-}\ket{x}=\frac{\ket{\mathsf{not}\left(0\right)}-\ket{\mathsf{not}\left(1\right)}}{\alpha}\ket{x}=\frac{\ket{1}-\ket{0}}{\alpha}\ket{x}=-\ket{-}\ket{x}=\left(-1\right)^{f\left(x\right)}\ket{-}\ket{x}\,.
+\begin{aligned}U_{f}\ket{-}\ket{x} & =\frac{\ket{0\oplus f\left(x\right)}\ket{x}-\ket{1\oplus f\left(x\right)}\ket{x}}{\alpha}\\
+ & =\begin{cases}
+\frac{\ket{0}\ket{x}-\ket{1}\ket{x}}{\alpha}\,, & \textrm{if }f\left(\overline{x}\right)=\bfalse\,;\\
+\frac{\ket{1}\ket{x}-\ket{0}\ket{x}}{\alpha}\,, & \textrm{if }f\left(\overline{x}\right)=\btrue\,,
+\end{cases}\\
+ & =\left(-1\right)^{f\left(x\right)}\ket{-}\ket{x}\,.
+\end{aligned}
 \end{equation}
 
 \end_inset
@@ -10899,15 +10870,15 @@ Finally,
 \end{pmatrix}$
 \end_inset
 
-.
+ on both qubits.
  If 
 \begin_inset Formula $f\left(0\right)=f\left(1\right)$
 \end_inset
 
 , we have 
 \begin_inset Formula 
-\[
-\ket{\phi_{4}}=\left(H^{\dagger}\otimes H^{\dagger}\right)\ket{\phi_{3}}=\left(-1\right)^{f\left(0\right)}\left[\dfrac{1}{\alpha^{*}}\begin{pmatrix}1 & 1\\
+\begin{equation}
+\ket{\phi_{4}}=\left(-1\right)^{f\left(0\right)}\left[\dfrac{1}{\alpha^{*}}\begin{pmatrix}1 & 1\\
 1 & -1
 \end{pmatrix}\frac{1}{\alpha}\begin{pmatrix}1\\
 -1
@@ -10915,12 +10886,48 @@ Finally,
 1 & -1
 \end{pmatrix}\frac{1}{\alpha}\begin{pmatrix}1\\
 1
-\end{pmatrix}\right]=\left(-1\right)^{f\left(0\right)}\ket{-}\ket{+}\,,
-\]
+\end{pmatrix}\right]=\left(-1\right)^{f\left(0\right)}\ket{1}\ket{0}\,;
+\end{equation}
 
 \end_inset
 
+if 
+\begin_inset Formula $f\left(0\right)\ne f\left(1\right)$
+\end_inset
 
+, we have 
+\begin_inset Formula 
+\begin{equation}
+\ket{\phi_{4}}=\left(-1\right)^{f\left(0\right)}\left[\dfrac{1}{\alpha^{*}}\begin{pmatrix}1 & 1\\
+1 & -1
+\end{pmatrix}\frac{1}{\alpha}\begin{pmatrix}1\\
+-1
+\end{pmatrix}\right]\otimes\left[\dfrac{1}{\alpha^{*}}\begin{pmatrix}1 & 1\\
+1 & -1
+\end{pmatrix}\frac{1}{\alpha}\begin{pmatrix}1\\
+-1
+\end{pmatrix}\right]=\left(-1\right)^{f\left(0\right)}\ket{1}\ket{1}\,.
+\end{equation}
+
+\end_inset
+
+When measuring 
+\begin_inset Formula $\ket{\phi_{4}}$
+\end_inset
+
+ in the computational basis, if the second qubit is 
+\begin_inset Formula $\ket{0}$
+\end_inset
+
+, 
+\begin_inset Formula $f$
+\end_inset
+
+ is constant; otherwise, 
+\begin_inset Formula $f$
+\end_inset
+
+ is balanced.
 \end_layout
 
 \begin_layout Subsection
