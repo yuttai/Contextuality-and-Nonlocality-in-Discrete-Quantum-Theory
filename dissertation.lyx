@@ -32,6 +32,10 @@
 \newcommand{\lang}[1]{{\ensuremath{\textsf{#1}}}}
 \newcommand{\newlang}[2]{\newcommand{#1}{\lang{#2}}}
 \newlang{\usat}{UNIQUE-SAT}
+\newcommand{\ComplexityFont}[1]{%
+{\ensuremath{\textsf{#1}}}%extra {} makes everyone happy.
+}
+\newcommand{\NP}{\ComplexityFont{NP}}
 
 \usepackage{amsthm}
 \theoremstyle{plain}
@@ -5482,11 +5486,11 @@ literal "true"
 \end_inset
 
 , just as hard as the general satisfiability problem and hence all problems
- in the
-\begin_inset space ~
+ in the 
+\begin_inset Formula $\NP$
 \end_inset
 
-NP complexity class.
+ complexity class.
  Our black-box version of the 
 \begin_inset ERT
 status collapsed
@@ -10142,7 +10146,31 @@ Given a complexified finite field
 \end_inset
 
  and its Hermitian 
-\begin_inset Formula $\dotprod$
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+dotprod
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\backslash
+ 
+\end_layout
+
 \end_inset
 
  (Eq.
@@ -10208,7 +10236,9 @@ literal "true"
 , perform as desired.
  In the following subsection, we will present the discrete Deutsch algorithm
  as an example.
- Algorithms such as Grover's search 
+ However, this quantum computing model is still different from the conventional
+ one.
+ On one hand, algorithms such as Grover's search 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Grover:1996:FQM:237814.237866,Mermin2007,Jaeger2007"
@@ -10218,8 +10248,8 @@ literal "true"
 
  will not work in the usual way because we lack (the notion of) ordered
  angles and probability in general.
- However, this computational model still leads to excessive computational
- power for the unstructured database search problem for certain database
+ On the other hand, this computational model still leads to excessive computatio
+nal power for the unstructured database search problem for certain database
  sizes.
 \end_layout
 
@@ -10239,11 +10269,7 @@ literal "true"
 \end_inset
 
 .
- In the Deutsch problem, the input gate is a Deutsch black box 
-\begin_inset Formula $U_{f}$
-\end_inset
-
- with a promise that 
+ The Deutsch problem is to decide whether a function 
 \begin_inset Formula $f:\left\{ \bfalse,\btrue\right\} →\left\{ \bfalse,\btrue\right\} $
 \end_inset
 
@@ -10270,11 +10296,42 @@ noprefix "false"
 \begin_inset Formula $f$
 \end_inset
 
-, and their Deutsch black box 
+: 
+\begin_inset Formula $2$
+\end_inset
+
+ of them are constant while another 
+\begin_inset Formula $2$
+\end_inset
+
+ are balanced.
+ Similar to our 
+\begin_inset Formula $\usat$
+\end_inset
+
+ algorithm in Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "modalquantumcomputing"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, we start by representing 
+\begin_inset Formula $f$
+\end_inset
+
+ as a Deutsch black box 
 \begin_inset Formula $U_{f}$
 \end_inset
 
- are placed the middle of the circuit in Figure
+ in the middle of the quantum circuit, Figure
 \begin_inset space ~
 \end_inset
 
@@ -10289,15 +10346,17 @@ noprefix "false"
 \end_inset
 
 .
- To explain the computation in full detail, we will compute the state in
- each step explicitly, and express the Dirac bracket notation with its matrix
- representation in computational basis parallelly.
+ To explain why this circuit solves the Deutsch problem, we then compute
+ the state in each step explicitly, and express the Dirac bracket notation
+ with its matrix representation in computational basis parallelly.
 \begin_inset Float table
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -10321,10 +10380,6 @@ Possible
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="5">
 <features booktabs="true" tabularvalignment="middle">
@@ -10603,13 +10658,7 @@ uf has a negative space between
 
  which is different from U_{f}...
  I need to understand whether the negative space is necessary or not, or
- whether the negative space has any semantic meaning.
- If I want to have a negative space, I may need to put negative space in
- 
-\begin_inset Formula $U_{f_{j}}$
-\end_inset
-
- to make it consistent...
+ whether the negative space has any semantic meaning...
 \begin_inset ERT
 status collapsed
 
@@ -10628,13 +10677,14 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
 \align center
 \begin_inset Formula 
 \[
 \begin{array}{c}
 \xyR{.9em}\xyC{.6em}\entrymodifiers={@*=<0em>}\xymatrix{ & \ar@{.}[ddd] &  & \ar@{.}[ddd] &  & \ar@{.}[ddd] &  & \ar@{.}[ddd]\\
-\lstick{\ket{1}} & \qw & \gate{H} & \qw & \multigate{1}{\uf} & \qw & \gate{H^{\dagger}} & \qw\\
-\lstick{\ket{0}} & \qw & \gate{H} & \qw & \ghost{\uf} & \qw & \gate{H^{\dagger}} & \qw & \measureD{\vphantom{\uf}\text{measure}}\\
+\lstick{\ket{1}} & \qw & \gate{H} & \qw & \multigate{1}{\uf} & \qw & \gate{H^{\dagger}} & \qw & \multimeasureD{1}{\text{measure}}\\
+\lstick{\ket{0}} & \qw & \gate{H} & \qw & \ghost{\uf} & \qw & \gate{H^{\dagger}} & \qw & \ghost{\text{measure}}\\
  & \push{\ket{\phi_{1}}} &  & \push{\ket{\phi_{2}}} &  & \push{\ket{\phi_{3}}} &  & \push{\ket{\phi_{4}}}
 }
 \end{array}
@@ -10803,7 +10853,7 @@ noprefix "false"
 \begin_inset Formula $f\left(x\right)$
 \end_inset
 
- could be move out side as a phase no matter 
+ could be move outside as a phase no matter 
 \begin_inset Formula $f\left(x\right)$
 \end_inset
 
@@ -10815,13 +10865,13 @@ noprefix "false"
 \begin_inset Formula $\btrue$
 \end_inset
 
-
+:
 \begin_inset Formula 
 \begin{equation}
-\begin{aligned}U_{f}\ket{-}\ket{x} & =\frac{\ket{0\oplus f\left(x\right)}\ket{x}-\ket{1\oplus f\left(x\right)}\ket{x}}{\alpha}\\
+\begin{aligned}U_{f}\ket{-}\ket{x} & =\tfrac{1}{\alpha}\left[\ket{0\oplus f\left(x\right)}\ket{x}-\ket{1\oplus f\left(x\right)}\ket{x}\right]\\
  & =\begin{cases}
-\frac{\ket{0}\ket{x}-\ket{1}\ket{x}}{\alpha}\,, & \textrm{if }f\left(\overline{x}\right)=\bfalse\,;\\
-\frac{\ket{1}\ket{x}-\ket{0}\ket{x}}{\alpha}\,, & \textrm{if }f\left(\overline{x}\right)=\btrue\,,
+\frac{1}{\alpha}\left[\ket{0}\ket{x}-\ket{1}\ket{x}\right]\,, & \textrm{if }f\left(x\right)=\bfalse=0\,;\\
+\frac{1}{\alpha}\left[\ket{1}\ket{x}-\ket{0}\ket{x}\right]\,, & \textrm{if }f\left(x\right)=\btrue=1\,,
 \end{cases}\\
  & =\left(-1\right)^{f\left(x\right)}\ket{-}\ket{x}\,.
 \end{aligned}
@@ -10829,23 +10879,15 @@ noprefix "false"
 
 \end_inset
 
-Hence, 
-\begin_inset Formula $U_{f}\ket{-}\ket{x}$
-\end_inset
-
- is always 
-\begin_inset Formula $\left(-1\right)^{f\left(x\right)}\ket{-}\ket{x}$
-\end_inset
-
-, and this fact can be used to evaluate 
+Then, 
 \begin_inset Formula $\ket{\phi_{3}}$
 \end_inset
 
- as follow
+ can be evaluated as follow:
 \begin_inset Formula 
 \begin{equation}
-\begin{aligned}\ket{\phi_{3}} & =U_{f}\ket{-}\ket{+}=\frac{U_{f}\ket{-}\ket{0}+U_{f}\ket{-}\ket{1}}{\alpha}\\
- & =\frac{1}{\alpha}\left[\left(-1\right)^{f\left(0\right)}\ket{-}\ket{0}+\left(-1\right)^{f\left(1\right)}\ket{-}\ket{1}\right]\\
+\begin{aligned}\ket{\phi_{3}} & =U_{f}\ket{-}\ket{+}=\tfrac{1}{\alpha}\left[U_{f}\ket{-}\ket{0}+U_{f}\ket{-}\ket{1}\right]\\
+ & =\tfrac{1}{\alpha}\left[\left(-1\right)^{f\left(0\right)}\ket{-}\ket{0}+\left(-1\right)^{f\left(1\right)}\ket{-}\ket{1}\right]\\
  & =\begin{cases}
 \left(-1\right)^{f\left(0\right)}\ket{-}\ket{+}\,, & \textrm{if }f\left(0\right)=f\left(1\right)\,;\\
 \left(-1\right)^{f\left(0\right)}\ket{-}\ket{-}\,, & \textrm{if }f\left(0\right)\ne f\left(1\right)\,.
@@ -10875,9 +10917,13 @@ Finally,
 \begin_inset Formula $f\left(0\right)=f\left(1\right)$
 \end_inset
 
-, we have 
+, i.e., 
+\begin_inset Formula $f$
+\end_inset
+
+ is constant, we have 
 \begin_inset Formula 
-\begin{equation}
+\[
 \ket{\phi_{4}}=\left(-1\right)^{f\left(0\right)}\left[\dfrac{1}{\alpha^{*}}\begin{pmatrix}1 & 1\\
 1 & -1
 \end{pmatrix}\frac{1}{\alpha}\begin{pmatrix}1\\
@@ -10887,7 +10933,7 @@ Finally,
 \end{pmatrix}\frac{1}{\alpha}\begin{pmatrix}1\\
 1
 \end{pmatrix}\right]=\left(-1\right)^{f\left(0\right)}\ket{1}\ket{0}\,;
-\end{equation}
+\]
 
 \end_inset
 
@@ -10895,9 +10941,13 @@ if
 \begin_inset Formula $f\left(0\right)\ne f\left(1\right)$
 \end_inset
 
-, we have 
+, i.e., 
+\begin_inset Formula $f$
+\end_inset
+
+ is balanced, we have 
 \begin_inset Formula 
-\begin{equation}
+\[
 \ket{\phi_{4}}=\left(-1\right)^{f\left(0\right)}\left[\dfrac{1}{\alpha^{*}}\begin{pmatrix}1 & 1\\
 1 & -1
 \end{pmatrix}\frac{1}{\alpha}\begin{pmatrix}1\\
@@ -10907,27 +10957,19 @@ if
 \end{pmatrix}\frac{1}{\alpha}\begin{pmatrix}1\\
 -1
 \end{pmatrix}\right]=\left(-1\right)^{f\left(0\right)}\ket{1}\ket{1}\,.
-\end{equation}
+\]
 
 \end_inset
 
-When measuring 
+Hence, we can decide whether 
+\begin_inset Formula $f$
+\end_inset
+
+ is constant or balanced by measuring 
 \begin_inset Formula $\ket{\phi_{4}}$
 \end_inset
 
- in the computational basis, if the second qubit is 
-\begin_inset Formula $\ket{0}$
-\end_inset
-
-, 
-\begin_inset Formula $f$
-\end_inset
-
- is constant; otherwise, 
-\begin_inset Formula $f$
-\end_inset
-
- is balanced.
+ in the computational basis.
 \end_layout
 
 \begin_layout Subsection
@@ -11042,8 +11084,8 @@ reference "fig:alg"
 \end_inset
 
 .
- Unlike the modal quantum theory algorithm, the new algorithm does not always
- succeed deterministically using a constant number of black box evaluations.
+ Unlike the modal quantum algorithm, the new algorithm does not always succeed
+ deterministically using a constant number of black box evaluations.
  We can, however, show that supernatural behavior occurs if the characteristic
  
 \begin_inset Formula $p$
@@ -11089,7 +11131,11 @@ wrapping around
 
  due to modular arithmetic.
  We do not know, in general, whether this version of discrete quantum computing
- actually enables the rapid solution of NP-complete problems.
+ actually enables the rapid solution of 
+\begin_inset Formula $\NP$
+\end_inset
+
+-complete problems.
 \begin_inset Note Note
 status open
 
