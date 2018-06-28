@@ -78,6 +78,9 @@
 \newcommand{\btrue}{\texttt{\textbf{true}}}
 \newcommand{\dotprod}{dot product}
 \newcommand{\Tr}{\ensuremath{\mathop{\mathrm{Tr}}\nolimits}}
+\newcommand{\Psibar}{\overline{\Psi}}
+\newcommand{\cardp}[2]{#1 \, \slash\!\! \slash \, #2}
+\def\round{\mathop{\rm round}\nolimits}
 
 \usepackage{xparse}
 \NewDocumentCommand{\fnorm}{s m}{\mathsf{N}\IfBooleanT{#1}{^{-1}}\left({#2}\right)}
@@ -11220,10 +11223,5950 @@ literal "true"
 \end_layout
 
 \begin_layout Section
-Discrete Quantum Theory and Computing (II)
+Discrete Quantum Theory (II): Inner Product Space
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "discretequantumtheoryIIa"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We next discuss an approach using finite complexifiable fields that conditionall
+y resolves the inner product condition
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:inner-product-positive-definite"
+
+\end_inset
+
+ discussed in Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Vector-Spaces"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, which is violated by the theory just presented.
+ A possible path is suggested by the work of Reisler and Smith
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "finitefieldmemo"
+literal "true"
+
+\end_inset
+
+.
+ The general idea is that while the cyclic properties of arithmetic in finite
+ fields make it impossible to 
+\emph on
+globally
+\emph default
+ obtain the desired properties of the conventional Hilbert space inner product,
+ it 
+\shape italic
+is
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ possible to recover them 
+\emph on
+locally
+\emph default
+, thereby restoring, with some restrictions, all the usual properties of
+ the inner product needed for conventional quantum mechanics and conventional
+ quantum computing.
+ As the size of the discrete field becomes large, the size of the locally
+ valid computational framework grows as well, leading to the 
+\emph on
+effective emergence of conventional quantum theory
+\emph default
+.
+ We next briefly outline such a context for local orderable subspaces of
+ a finite field, and introduce an improvement on the original method
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "finitefieldmemo"
+literal "true"
+
+\end_inset
+
+ suggested by recent number theory resources
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "yutsungBook"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let us first note that the range of the quadratic map, 
+\begin_inset Formula $\{x^{2}\!\ {\rm modulo}\ p~|~x\in\ff{p}\}$
+\end_inset
+
+, is always one-half of the non-zero elements of 
+\begin_inset Formula $\ff{p}$
+\end_inset
+
+, and is the set of elements with square roots in the field.
+ This is the set of 
+\emph on
+quadratic residues
+\emph default
+, and the complementary set (the other half of the non-zero field elements)
+ is the set of 
+\emph on
+quadratic non-residues
+\emph default
+.
+ For example, in 
+\begin_inset Formula $\ff{7}$
+\end_inset
+
+, the elements 
+\begin_inset Formula $\{1,2,4\}$
+\end_inset
+
+ are considered positive as they have the square roots 
+\begin_inset Formula $\{1,3,2\}$
+\end_inset
+
+ respectively; the remaining elements 
+\begin_inset Formula $\{3,5,6\}$
+\end_inset
+
+ do not have square roots in the field.
+ What is interesting is that if we have an uninterrupted sequence of numbers
+ that are all quadratic residues, then we can define a 
+\shape italic
+transitive order
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+, with 
+\begin_inset Formula $a>c$
+\end_inset
+
+ if 
+\begin_inset Formula $a>b$
+\end_inset
+
+ and 
+\begin_inset Formula $b>c$
+\end_inset
+
+, provided 
+\begin_inset Formula $a-b$
+\end_inset
+
+, 
+\begin_inset Formula $b-c$
+\end_inset
+
+, and 
+\begin_inset Formula $a-c$
+\end_inset
+
+ are all quadratic residues.
+\end_layout
+
+\begin_layout Standard
+As a concrete example, consider a finite field in which the sequential elements
+ 
+\begin_inset Formula $0,1,2,3,\ldots,k-1$
+\end_inset
+
+ are all quadratic residues (including 0).
+ Then any sequence of odd length
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $k$
+\end_inset
+
+ and centered around an arbitrary 
+\begin_inset Formula $x\in\ff{p}$
+\end_inset
+
+, i.e., 
+\begin_inset Formula $S_{x}(k)=x-(k-1)/2,\ldots,x-2,x-1,x,x+1,x+2,\ldots,x+(k-1)/2$
+\end_inset
+
+, is 
+\shape italic
+transitively ordered
+\shape default
+.
+ Indeed, we have 
+\begin_inset Formula $(x+1)-x=1$
+\end_inset
+
+ which is a quadratic residue and hence 
+\begin_inset Formula $(x+1)>x$
+\end_inset
+
+.
+ Similarly, 
+\begin_inset Formula $x-(x-1)=1$
+\end_inset
+
+ and hence 
+\begin_inset Formula $x>(x-1)$
+\end_inset
+
+.
+ Also 
+\begin_inset Formula $(x+1)-(x-1)=2$
+\end_inset
+
+ which is a quadratic residue and hence 
+\begin_inset Formula $(x+1)>(x-1)$
+\end_inset
+
+.
+ Clearly this process may be continued to show that the sequence 
+\begin_inset Formula $S_{x}(k)$
+\end_inset
+
+ is transitively ordered.
+ We can construct examples using the sequence A000229 in the encyclopedia
+ of integer sequences 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "yutsungBook,localorder"
+literal "true"
+
+\end_inset
+
+.
+ The 
+\begin_inset Formula $n$
+\end_inset
+
+th element of that sequence (which must be prime) is the least number such
+ that the 
+\begin_inset Formula $n$
+\end_inset
+
+th prime is the 
+\emph on
+least
+\emph default
+ quadratic non-residue for the given element.
+ The first few elements of this sequence are listed in the top row of Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "pseq"
+
+\end_inset
+
+.
+ The next row lists the number 
+\begin_inset Formula $k$
+\end_inset
+
+ of transitively ordered consecutive elements in that field, and 
+\begin_inset Formula $\pi(k)$
+\end_inset
+
+ in the bottom row is the prime counting function (the number of primes
+ up to 
+\begin_inset Formula $k$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{eqnarray*}
+\hspace*{-0.5cm}\begin{tabular}{c|ccccccccccc}
+ \ensuremath{p}  &  3  &  7  &  23  &  71  &  311  &  479  &  1559  &  5711  &  10559  &  18191  &  \ldots\\
+\hline  \ensuremath{k}  &  {\bf 2}  &  {\bf 3}  &  {\bf 5}  &  {\bf 7}  &  {\bf 11}  &  {\bf 13}  &  {\bf 17}  &  {\bf 19}  &  {\bf 23}  &  {\bf 29}  &  \ldots\\
+\hline  \ensuremath{\pi(k)}  &  1  &  2  &  3  &  4  &  5  &  6  &  7  &  8  &  9  &  10  &  \ldots
+\end{tabular}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Number 
+\begin_inset Formula $k$
+\end_inset
+
+ of transitively ordered elements for a given field 
+\begin_inset Formula $\ff{p}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "pseq"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As an example, consider the field 
+\begin_inset Formula $\ff{23}$
+\end_inset
+
+.
+ Looking at the squares of the numbers 
+\begin_inset Formula $\ff{23}=\{0,\ldots,22\}$
+\end_inset
+
+ modulo 23, we find the 2-centered uninterrupted sequence 
+\begin_inset Formula $S_{2}(5)=\{0,1,2,3,4\}$
+\end_inset
+
+, followed by 
+\begin_inset Formula $5$
+\end_inset
+
+, which is both the smallest quadratic non-residue and the size of the uninterru
+pted sequence of quadratic residues (including 0) of interest.
+ In particular, it is possible to construct a total order for the elements
+ 
+\begin_inset Formula $S_{0}(5)=\{-2,-1,0,1,2\}$
+\end_inset
+
+ in the fields 
+\begin_inset Formula $\ff{23}$
+\end_inset
+
+, 
+\begin_inset Formula $\ff{71}$
+\end_inset
+
+, 
+\begin_inset Formula $\ff{311}$
+\end_inset
+
+, etc., but not in the smaller fields 
+\begin_inset Formula $\ff{3}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ff{7}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{eqnarray}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+label{pseq}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+hspace*{-0.5cm}
+\backslash
+begin{tabular}{c|ccccccccccc}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $p$ & 3 & 7 & 23 & 71 & 311 & 479 & 1559 & 5711 & 10559 & 18191 & 
+\backslash
+ldots 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $k$ & {
+\backslash
+bf 2} & {
+\backslash
+bf 3} & {
+\backslash
+bf 5} & {
+\backslash
+bf 7} & {
+\backslash
+bf 11} & {
+\backslash
+bf 13} &
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% {
+\backslash
+bf 17} & {
+\backslash
+bf 19} & {
+\backslash
+bf 23} & {
+\backslash
+bf 29} & 
+\backslash
+ldots  
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+pi(k)$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 
+\backslash
+ldots  
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{tabular} .
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{eqnarray}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+vspace{-0.1in} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% The sequence is infinite (Analytic number theory + small argument)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%As an example, consider the field $
+\backslash
+ff{23}$.
+ Looking at the squares of the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%numbers $[0..22]$ modulo 23, we find that this set includes the uninterrupted
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%sequence $[0..4]$ and hence that $5$ is the smallest quadratic
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%non-residue.
+ In particular, it is possible to construct a total order for the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%elements $[-2,-1,0,1,2]$ in the fields $
+\backslash
+ff{23}$, $
+\backslash
+ff{71}$, $
+\backslash
+ff{311}$,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%etc.
+ but not in the smaller fields $
+\backslash
+ff{3}$ and $
+\backslash
+ff{7}$.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Given a 
+\begin_inset Formula $d$
+\end_inset
+
+-dimensional vector space over 
+\begin_inset Formula $\ff{p^{2}}$
+\end_inset
+
+ where
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $p$
+\end_inset
+
+ is one of the primes above, it is possible to define a 
+\emph on
+region
+\emph default
+ over which an inner product and norm can be identified.
+ Let the length of the sequence of quadratic residues be 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ The region of interest includes all vectors 
+\begin_inset Formula $\ket{\Psi}=\sum_{i=0}^{d-1}\alpha_{i}\ket{i}=(\alpha_{0}~\alpha_{1}~\ldots~\alpha_{d-1})^{T}$
+\end_inset
+
+, for which 
+\begin_inset Formula $d<p-\frac{k-1}{2}$
+\end_inset
+
+ and each 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ satisfies 
+\begin_inset Formula 
+\begin{eqnarray}
+d\,|\alpha_{i}|^{2}=d\,(a_{i}^{2}+b_{i}^{2})\leq\frac{k-1}{2}\ ,\label{eq:region}
+\end{eqnarray}
+
+\end_inset
+
+with 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{i}$
+\end_inset
+
+ drawn from the set 
+\begin_inset Formula $S_{0}(k)$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%$a_i$ and $b_i$ are drawn from the set of zero-centered ordered elements
+ $
+\backslash
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%- (k-1)/2, 
+\backslash
+ldots, -2, -1, 0, 1, 2, 
+\backslash
+ldots, (k-1)/2 
+\backslash
+}$.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Consider, for example, 
+\begin_inset Formula $\ff{311^{2}}$
+\end_inset
+
+ (
+\begin_inset Formula $p=311$
+\end_inset
+
+, 
+\begin_inset Formula $k=11$
+\end_inset
+
+).
+ We find the following situation in which we can trade off the dimension
+ 
+\begin_inset Formula $d$
+\end_inset
+
+ of the vector space against the range of probability amplitudes available
+ for each 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+begin{tabular}{c|l}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%    & allowed probability amplitudes 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%$d=1$ & 
+\backslash
+begin{minipage}{2in}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%         $
+\backslash
+{ -2, -1, 0, 1, 2, -2i, -i, i, 2i,$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%         $-1-i, -1+i, 1-i, 1+i 
+\backslash
+}$ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%         
+\backslash
+end{minipage} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%$d=2$ & $
+\backslash
+{ -1, 0, 1, -i, i, -1-i, -1+i, 1-i, 1+i 
+\backslash
+}$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%$d=3$ & $
+\backslash
+{ -1, 0, 1, -i, i 
+\backslash
+}$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%$d=4$ & $
+\backslash
+{ -1, 0, 1, -i, i 
+\backslash
+}$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%$d
+\backslash
+geq 5$ & $
+\backslash
+{ 0 
+\backslash
+}$ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+hspace*{1cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+begin{tabular}{c|l} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%    & {
+\backslash
+sf allowed probability amplitudes} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%$d=1$ & $
+\backslash
+{0,
+\backslash
+pm1,
+\backslash
+pm 2, 
+\backslash
+pm i, 
+\backslash
+pm 2 i, (
+\backslash
+pm 1 
+\backslash
+pm i) 
+\backslash
+}$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%$d=2$ & $
+\backslash
+{ 0,
+\backslash
+pm1, 
+\backslash
+pm i,  (
+\backslash
+pm 1 
+\backslash
+pm i) 
+\backslash
+}$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%$d=3$ & $
+\backslash
+{ 0,
+\backslash
+pm1, 
+\backslash
+pm i 
+\backslash
+}$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%$d=4$ & $
+\backslash
+{0,
+\backslash
+pm1, 
+\backslash
+pm i 
+\backslash
+}$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%$d
+\backslash
+geq 5$ & $
+\backslash
+{ 0 
+\backslash
+}$ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+allowed probability amplitudes
+\family default
+ 
+\begin_inset Formula $F^{d}\left(k\right)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $d=1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $F^{1}(11)=$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\{0,\pm1,\pm2,\pm i,\pm2i,(\pm1\pm i),\newline(\pm1\pm2i),(\pm2\pm i)\}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $d=2$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $F^{2}(11)=\{0,\pm1,\pm i,(\pm1\pm i)\}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $d=3$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $F^{3}(11)=\{0,\pm1,\pm i\}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $d=4$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $F^{4}(11)=\{0,\pm1,\pm i\}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $d=5$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $F^{5}(11)=\{0,\pm1,\pm i\}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $d\geq6$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $F^{d}(11)=\{0\}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Allowed probability amplitudes for different vector space dimensions 
+\begin_inset Formula $d$
+\end_inset
+
+ and 
+\begin_inset Formula $k=11$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table_allowed"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can now verify, by using Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table_allowed"
+
+\end_inset
+
+, that for any vector 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ in the selected region the value of 
+\begin_inset Formula $\ip{\Psi}{\Psi}$
+\end_inset
+
+ is 
+\begin_inset Formula $\geq0$
+\end_inset
+
+ and vanishes precisely when 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ is the zero vector.
+ Thus, in the selected region, condition (C) is established.
+ Although the set of vectors defined over that region is not closed under
+ addition, and hence the set is not a vector subspace, we can still have
+ a theory by restricting our computations.
+ In other words, 
+\emph on
+as long as our computation remains within the selected region
+\emph default
+, we may pretend to have an inner product space.
+ The salient properties of conventional quantum mechanics emerge, but the
+ price to be paid is that the state space is no longer a vector space.
+ This is basically a rigorous formulation of Schwinger's intuition
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "schwinger"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Readers with backgrounds in computer science or numerical analysis will
+ notice, significantly, that this model for discrete quantum computing is
+ reminiscent of practical computing with a classic microprocessor having
+ only integer arithmetic and a limited word length.
+ We cannot perform a division having a fractional result at all, since there
+ are no fractional representations; we do have the basic constants zero
+ and one, as well as positive and negative numbers, but multiplications
+ or additions producing results outside the integer range wrap around modulo
+ the word length and typically yield nonsense.
+ This implies that, for the local discrete model, we must accept an operational
+ world view that 
+\shape italic
+has no awareness of the value of 
+\begin_inset Formula $p$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+, and depends on having set up in advance an environment with a field size,
+ analogous to the word size of a microprocessor, that happily processes
+ 
+\shape italic
+any
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ calculation we are prepared to perform.
+ This is the key step, though it may seem strange because we are accustomed
+ to arithmetic with real numbers: we list the calculations that must be
+ performed in our theory, discover an 
+\shape italic
+adequate size of the processor word
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ — implying a possibly ridiculously large value of 
+\begin_inset Formula $p$
+\end_inset
+
+ chosen as described above — and from that point on, we calculate necessarily
+ valid values within that processor, never referring in any way to 
+\begin_inset Formula $p$
+\end_inset
+
+ itself in the sequel.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{quote} {
+\backslash
+bf Amr Note:}{
+\backslash
+it Actually I think the norm calculation is
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%     more subtle and requires one of the approximations of square roots
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%     in Sections 7, 8, or 9.
+  Only then do we get a notion of distance
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%     that satisfies the triangle inequality.
+\backslash
+/}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{quote}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%  Since forging a connection between  
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% a framework for discrete quantum computing based on complexifiable
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% finite fields and conventional quantum mechanics is blocked in the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% general case by the violation of condition (C) on inner products, the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% only logical alternative is to seek a way around the impasse.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Discrete Quantum Theory (II): Cardinal Probability
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "discretequantumtheoryIIb"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The final issue that must be addressed in the discrete theory put forward
+ in Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "discretequantumtheoryIIa"
+
+\end_inset
+
+ concerns measurement.
+ To recap, within the theory, states are 
+\begin_inset Formula $d$
+\end_inset
+
+-dimensional vectors with complex discrete-valued amplitudes drawn from
+ a totally-ordered range, 
+\begin_inset Formula $F^{d}(k)$
+\end_inset
+
+, in the underlying finite field.
+ These states possess, by construction, absolute squares having values in
+ the positive integers, and squared projections on the bases in the non-negative
+ integers, all in the ordered range of Eq.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:region"
+
+\end_inset
+
+, and hence potentially produce probabilities that can be ordered.
+ We start by applying the measurement framework of conventional quantum
+ computing to these states; we then systematically expose and isolate the
+ parts that rely on infinite precision real numbers and replace them by
+ finite approximations.
+ Our point is that, although the mathematical framework of conventional
+ quantum mechanics relies on infinite precision probabilities, it is impossible
+ in practice to measure exact equality of real numbers — we can only achieve
+ an approximation within measurement accuracy.
+ Significantly, when we use finite fields, this measurement accuracy will
+ be encoded in the size of the finite field used for measurements.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% NOTE: changing "
+\backslash
+ell" back to "i" produces 
+\backslash
+alpha_i = a + i b, which
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%   is  what we were trying to avoid...
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% ALSO: P_{
+\backslash
+Psi}(
+\backslash
+lambda_i)  looks much cleaner as P_{
+\backslash
+Psi}(i or 
+\backslash
+ell)...
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theory
+\end_layout
+
+\begin_layout Standard
+In conventional quantum theory, given an observable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula ${\cal O}$
+\end_inset
+
+ with eigenvalues 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $i=0,\cdots,d-1$
+\end_inset
+
+, and orthonormal eigenvectors 
+\begin_inset Formula $\ket{i}$
+\end_inset
+
+ (i.e., 
+\begin_inset Formula ${\cal O}\,\ket{i}=\lambda_{i}\ket{i}$
+\end_inset
+
+), the probability of measuring the (non-degenerate) eigenvalue 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ in a system characterized by the state 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ is given by: 
+\begin_inset Formula 
+\begin{eqnarray}
+P_{\Psi}(\lambda_{i})\equiv P_{\Psi}(i) & = & \frac{|\ip{i}{\Psi}|^{2}}{\ip{\Psi}{\Psi}}=\frac{|\alpha_{i}|^{2}}{\ip{\Psi}{\Psi}}\ ,\label{probOfEll.eq}
+\end{eqnarray}
+
+\end_inset
+
+where 
+\begin_inset Formula $\ket{\Psi}=(\alpha_{0}~\alpha_{1}~\ldots~\alpha_{d-1})^{T}$
+\end_inset
+
+ in the eigenbasis of 
+\begin_inset Formula ${\cal O}$
+\end_inset
+
+, that is the measurement basis.
+ Hereafter, we will simplify by calling 
+\begin_inset Formula $P_{\Psi}(i)$
+\end_inset
+
+ the probability of measuring 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The fundamental property of conventional quantum theory is that a complete
+ set of states such as 
+\begin_inset Formula $\{\ket{i}\}$
+\end_inset
+
+ induces a partition of unity in the (
+\shape italic
+real-valued
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+) probabilities, so that 
+\begin_inset Formula 
+\begin{eqnarray}
+\sum_{i=0}^{d-1}P_{\Psi}(i) & = & 1\ ,
+\end{eqnarray}
+
+\end_inset
+
+and, more importantly for our treatment, for any given system, there is
+ a 
+\shape italic
+precise ordering
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ of the set 
+\begin_inset Formula $\{P_{\Psi}(i)\}$
+\end_inset
+
+.
+ In general, this ordering can be expressed as a sequence of equalities
+ and inequalities of the following form, 
+\begin_inset Formula 
+\begin{eqnarray}
+\begin{array}{ccccccccc}
+P_{\Psi}(a) & \preceq & P_{\Psi}(b) & \preceq & \cdots & \preceq & P_{\Psi}(y) & \preceq & P_{\Psi}(z)\ ,\end{array}\label{cqt-order.eq}
+\end{eqnarray}
+
+\end_inset
+
+where we adopt the symbol 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\preceq$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ to denote 
+\shape italic
+either
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ equal (
+\begin_inset Formula $=$
+\end_inset
+
+) 
+\shape italic
+or
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ less-than (
+\begin_inset Formula $<$
+\end_inset
+
+), but 
+\shape italic
+never
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ less-than-or-equal (
+\begin_inset Formula $\leq$
+\end_inset
+
+).
+ We observe that 
+\shape italic
+in practical measurements
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+, these formal properties are meaningless, since, statistically, a poor
+ measurement could reverse the apparent order of the strictly increasing
+ theoretical inequalities; more significantly, distinguishing 
+\shape italic
+formally equal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ probabilities from a (
+\begin_inset Formula $>$
+\end_inset
+
+) or (
+\begin_inset Formula $<$
+\end_inset
+
+) ordering is impossible with an observer that has only finite resources.
+\end_layout
+
+\begin_layout Standard
+We now show that, while formal achievement of the conventional quantum probabili
+ty ordering of Eq.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "cqt-order.eq"
+
+\end_inset
+
+ is not possible in a world with finite resources modeled by our discrete
+ quantum theory, we can define a context for the definition of probabilities,
+ 
+\shape italic
+cardinal probability
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+, that is consistent with the just-noted properties of probability measurement
+ in conventional quantum theory.
+ That is, in a theory with cardinal probability, 
+\shape italic
+inequalities
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ in the conventional probability relations Eq.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "cqt-order.eq"
+
+\end_inset
+
+ can be preserved with appropriate resources (in the form of a sufficiently
+ large choice of the field), while 
+\shape italic
+equalities
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ cannot be guaranteed in the theory, and in fact can be represented as 
+\shape italic
+inequalities of any order
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+.
+ The 
+\shape italic
+set
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ of discrete theories obeying these properties is defined as a single equivalenc
+e class of cardinal probability theories.
+\end_layout
+
+\begin_layout Standard
+In order to study the explicit properties of a discrete theory, we examine
+ states of the form 
+\begin_inset Formula 
+\[
+\ket{\Psi_{m}}=(\alpha_{0}^{m}~\alpha_{1}^{m}~\ldots~\alpha_{d-1}^{m})^{T},
+\]
+
+\end_inset
+
+where the coefficients must be discrete complex numbers
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\alpha_{i}^{m}$
+\end_inset
+
+ in the field representing the resources needed by the computation, and
+ the label 
+\begin_inset Formula $m$
+\end_inset
+
+ is the 
+\begin_inset Quotes eld
+\end_inset
+
+starting value
+\begin_inset Quotes erd
+\end_inset
+
+ of the discrete norm-squared, 
+\begin_inset Formula 
+\[
+m=\ip{\Psi_{m}}{\Psi_{m}}=\sum_{i=0}^{d-1}|\alpha_{i}^{m}|^{2}\ .
+\]
+
+\end_inset
+
+(We drop the superscript 
+\begin_inset Formula $m$
+\end_inset
+
+ on the coefficients when there is no ambiguity.)
+\end_layout
+
+\begin_layout Standard
+One might hope to construct a probability object corresponding exactly to
+ the conventional quantum theory by finding a common factor that eliminated
+ the diverse denominators 
+\begin_inset Formula $\sqrt{m}$
+\end_inset
+
+ that would be used to normalize all the states to unity in the conventional
+ theory.
+ This would require rescaling 
+\begin_inset Formula 
+\[
+\frac{\ip{\Psi_{m_{1}}}{\Psi_{m_{1}}}}{m_{1}}=\frac{\ip{\Psi_{m_{2}}}{\Psi_{m_{2}}}}{m_{2}}=1\ ,
+\]
+
+\end_inset
+
+for any two vectors 
+\begin_inset Formula $\ket{\Psi_{m_{1}}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ket{\Psi_{m_{2}}}$
+\end_inset
+
+, to the form 
+\begin_inset Formula 
+\begin{equation}
+\ip{\Psi_{m_{1}}}{\Psi_{m_{1}}}\prod_{i\neq1}m_{i}=\ip{\Psi_{m_{2}}}{\Psi_{m_{2}}}\prod_{i\neq2}m_{i}=\prod_{i}m_{i}\equiv\mu\ .\label{muNorm.eq}
+\end{equation}
+
+\end_inset
+
+Can we succeed in imposing such a restriction? To determine the answer,
+ let us define an 
+\shape italic
+integer-valued
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ normalization for each of a set of states we wish to compare: let 
+\begin_inset Formula 
+\[
+\ket{\Psi_{m}}\rightarrow\ket{\Psibar_{m}}=\nu_{m}\ket{\Psi_{m}}=(x_{m}+iy_{m})\ket{\Psi_{m}}\ ,
+\]
+
+\end_inset
+
+where, from Eq.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "muNorm.eq"
+
+\end_inset
+
+, we would 
+\shape italic
+like
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ to have 
+\begin_inset Formula 
+\[
+\ip{\Psibar_{m}}{\Psibar_{m}}=\prod_{i}m_{i}=\mu\ ,
+\]
+
+\end_inset
+
+or 
+\begin_inset Formula 
+\[
+\ket{\Psibar_{m}}=\left(\prod_{m_{i}\neq m}\sqrt{m_{i}}\right)\ket{\Psi_{m}}
+\]
+
+\end_inset
+
+for 
+\shape italic
+any
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ value of 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+(
+\shape italic
+Remark:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ We will take 
+\begin_inset Formula $y_{m}=0$
+\end_inset
+
+ in general; replacing a square by a sum of squares in the norm-squared
+ value of 
+\begin_inset Formula $\ket{\Psibar_{m}}$
+\end_inset
+
+ adds a few more cases with exact solutions, but fails to make a difference
+ in the general case.)
+\end_layout
+
+\begin_layout Standard
+Then we need to show that 
+\begin_inset Formula 
+\begin{equation}
+\ip{\Psibar_{m}}{\Psibar_{m}}=m\,(x_{m})^{2}=\mu\label{sameMu.eq}
+\end{equation}
+
+\end_inset
+
+either does or does not have a solution for all 
+\begin_inset Formula $m$
+\end_inset
+
+ in any chosen set 
+\begin_inset Formula $\{\ket{\Psibar_{m}}\}$
+\end_inset
+
+.
+ The resulting condition is obviously 
+\begin_inset Formula 
+\begin{equation}
+m_{1}\,(x_{1})^{2}=m_{2}\,(x_{2})^{2}=m_{3}\,(x_{3})^{2}=\cdots\ .\label{mu-eqns.eq}
+\end{equation}
+
+\end_inset
+
+Since every 
+\begin_inset Formula $m$
+\end_inset
+
+ is a sum of at least four squares, even for a single qubit state, by Lagrange's
+ four-square theorem there is some complexified integer field that can produce
+ any arbitrary integer as the value of 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ Assume 
+\begin_inset Formula $m_{1}=2$
+\end_inset
+
+ and 
+\begin_inset Formula $m_{2}=3$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $x_{2}/x_{1}=\sqrt{2/3}$
+\end_inset
+
+; but there are no integer values of 
+\begin_inset Formula $(x_{1},\,x_{2})$
+\end_inset
+
+ that can satisfy that equation, so it is impossible in the integer domain
+ to satisfy Eq.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "mu-eqns.eq"
+
+\end_inset
+
+ in general.
+\end_layout
+
+\begin_layout Standard
+This no-go theorem leads us inevitably to consider a 
+\shape italic
+set
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ of values of 
+\begin_inset Formula $\mu_{m}=m\,(x_{m})^{2}$
+\end_inset
+
+ that defines 
+\shape italic
+approximate
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ norm-squared values that are close enough so that the values of the 
+\shape italic
+scaled
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ probabilities based on the set 
+\begin_inset Formula $\{\ket{\Psibar_{m}}\}$
+\end_inset
+
+ obey the 
+\shape italic
+cardinal order
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ of Eq.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "cqt-order.eq"
+
+\end_inset
+
+ with the following variant of Eq.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "probOfEll.eq"
+
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\bar{P}_{\Psibar_{m}}(i)=(x_{m})^{2}\,|\alpha_{i}|^{2}\ .
+\]
+
+\end_inset
+
+We notice that 
+\begin_inset Formula $m$
+\end_inset
+
+ itself does not appear, and that, since each 
+\begin_inset Formula $\alpha_{i}\rightarrow x_{m}\alpha_{i}$
+\end_inset
+
+, the original expression is now re-weighted by 
+\begin_inset Formula $(x_{m})^{2}$
+\end_inset
+
+.
+ The important point is now that 
+\shape italic
+as long as the inequalities of Eq.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "cqt-order.eq"
+
+\end_inset
+
+ are preserved, and the violation of exact equalities does not violate the
+ inequalities
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+, we have a valid instance of a cardinal probability theory.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement th!
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\begin{array}{|c||c|c|c|c|}
+\hline {\sf\mbox{Norm\ensuremath{^{2}}}}=m & \ip{\Psi_{1}}{\Psi_{1}}=1 & \ip{\Psi_{2}}{\Psi_{2}}=2 & \ip{\Psi_{3}}{\Psi_{3}}=3 & \ip{\Psi_{4}}{\Psi_{4}}=4\\
+\hline \mbox{\sf Prob.~of~}\lambda_{0} & |\ip{0}{\Psi_{1}}|^{2}=\cardp{1}{1} & |\ip{0}{\Psi_{2}}|^{2}=\cardp{1}{2} & |\ip{0}{\Psi_{3}}|^{2}=\cardp{1}{3} & |\ip{0}{\Psi_{4}}|^{2}=\cardp{2}{4}\\
+\hline {\sf Prob.~of~}\lambda_{1} & |\ip{1}{\Psi_{1}}|^{2}=\cardp{0}{1} & |\ip{1}{\Psi_{2}}|^{2}=\cardp{1}{2} & |\ip{1}{\Psi_{3}}|^{2}=\cardp{2}{3} & |\ip{1}{\Psi_{4}}|^{2}=\cardp{2}{4}
+\\\hline \end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "f11-proj.fig"
+
+\end_inset
+
+Norms-squared and probabilities for one-qubit states 
+\begin_inset Formula $\ket{\Psi_{m}}$
+\end_inset
+
+ in 
+\begin_inset Formula $F^{2}(11)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since the ordering requirements typically refer to 
+\shape italic
+sets
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ of comparisons, possibly with different states, we introduce the notation
+ 
+\begin_inset Formula 
+\begin{equation}
+\bar{P}(i)=\cardp{\{\bar{P}_{\Psibar_{m}}(i)\}}{\{\mu_{m}\}}
+\end{equation}
+
+\end_inset
+
+that expands to 
+\begin_inset Formula 
+\[
+\cardp{\{(x_{m_{1}})^{2}|\alpha_{i}^{m_{1}}|^{2},\,(x_{m_{2}})^{2}|\alpha_{i}^{m_{2}}|^{2},\,\cdots\}}{\{\mu_{m_{1}},\,\mu_{m_{2}},\,\cdots\}}.
+\]
+
+\end_inset
+
+This expression represents a 
+\shape italic
+realization
+\shape default
+ of the set of cardinal probabilities 
+\begin_inset Formula $\bar{P}_{\Psibar_{m}}(i)$
+\end_inset
+
+ with respect to the approximate normalizations 
+\begin_inset Formula $\mu_{m}=\ip{\Psibar_{m}}{\Psibar_{m}}=m\,(x_{m})^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The set 
+\begin_inset Formula $\{\mu_{m}\}$
+\end_inset
+
+ represents the scale with respect to which we are going to compare cardinal
+ probabilities of states 
+\begin_inset Formula $\{\ket{\Psibar_{m}}\}$
+\end_inset
+
+ during the measurement process.
+ The number of resources required by the observer corresponds precisely
+ to the characteristic of the field used to define the scale via the set
+ 
+\begin_inset Formula $\{\mu_{m}\}$
+\end_inset
+
+.
+ One can intuitively picture the elements of 
+\begin_inset Formula $\{\mu_{m}\}$
+\end_inset
+
+ as a set of 
+\shape italic
+rulers
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ that are 
+\begin_inset Quotes eld
+\end_inset
+
+equal
+\begin_inset Quotes erd
+\end_inset
+
+ to within a certain precision; to get more precision, one needs to buy
+ a more expensive set of rulers.
+ Alternatively, one can visualize the precision of the rulers to be controlled
+ by a set of interactive dials or sliders, with the precision (as well as
+ the cost of the resources) increasing progressively as the values are increased.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% This no-go theorem leads us inevitably to consider a {
+\backslash
+it set
+\backslash
+/} of values of
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+mu_{m}= m 
+\backslash
+, (x_m)^{2}$ that defines {
+\backslash
+it approximate
+\backslash
+/} norm-squared
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% values that are close enough so that the values of the {
+\backslash
+it scaled
+\backslash
+/}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% probabilities based on the set  $
+\backslash
+{
+\backslash
+ket{
+\backslash
+Psibar_{m}}
+\backslash
+}$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% obey the {
+\backslash
+it cardinal order
+\backslash
+/} of Eq.~
+\backslash
+eqref{cqt-order.eq} with the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% following variant of Eq.~
+\backslash
+eqref{probOfEll.eq}:
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+[ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+bar{P}_{
+\backslash
+Psibar_{m}}(i) = (x_m)^{2} 
+\backslash
+, | 
+\backslash
+alpha_{i}|^{2}  
+\backslash
+ .
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% We notice that $m$ itself does not appear, and that, since each
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% $
+\backslash
+alpha_{i} 
+\backslash
+rightarrow x_{m} 
+\backslash
+alpha_{i}$,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% the original expression is
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% now reweighted by $(x_m)^{2}$.
+  The important point is now that {
+\backslash
+it as long
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   as the inequalities of Eq.~
+\backslash
+eqref{cqt-order.eq} are preserved, and the
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   violation of exact equalities does not violate the inequalities
+\backslash
+/}, we have
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% a valid instance of a cardinal probability theory.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% We now restrict ourselves for a moment to one value of $m$,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% and introduce a notation $
+\backslash
+cardp{a_i}{
+\backslash
+mu_m}$ to denote the {
+\backslash
+it
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   realization
+\backslash
+/} of cardinal probability with $a_i=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+bar{P}_{
+\backslash
+Psibar_{m}}(i)$ defined with respect to a
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% normalization $
+\backslash
+mu_m= 
+\backslash
+ip{
+\backslash
+Psibar_{m}}{
+\backslash
+Psibar_{m}} = m 
+\backslash
+, (x_m)^{2}$: 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{eqnarray}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+label{cardp.eq}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+cardp{ 
+\backslash
+bar{P}_{
+\backslash
+Psibar_{m}}(i)}{
+\backslash
+mu_m} ,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{eqnarray}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% such that 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{eqnarray}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+label{cardpNorm.eq}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+sum_{i=0}^{d-1}
+\backslash
+bar{P}_{
+\backslash
+Psibar_{m}}(i)=
+\backslash
+mu_m .
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{eqnarray}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Since the ordering requirements typically refer to {
+\backslash
+it sets
+\backslash
+/} of
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% comparisons, possibly with different states, we generalize the notation
+ to a
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% set-wise notation
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{eqnarray*}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%  |
+\backslash
+ip{i}{
+\backslash
+Psibar}|^{2}& =& 
+\backslash
+cardp{
+\backslash
+{ 
+\backslash
+bar{P}_{
+\backslash
+Psibar_{m}}(i)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   
+\backslash
+}} {
+\backslash
+{
+\backslash
+mu_m
+\backslash
+}} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%  & & 
+\backslash
+hspace*{-1.5cm} = 
+\backslash
+cardp{
+\backslash
+{ (x_{m_1})^{2} | 
+\backslash
+alpha^{m_{1}}_{i}|^{2},
+\backslash
+,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%  (x_{m_2})^{2} | 
+\backslash
+alpha^{m_{2}}_{i}|^{2},
+\backslash
+, 
+\backslash
+cdots 
+\backslash
+}}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%   {
+\backslash
+{
+\backslash
+mu_{m_1},
+\backslash
+,
+\backslash
+mu_{m_2},
+\backslash
+, 
+\backslash
+cdots  
+\backslash
+}}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%  
+\backslash
+ .
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{eqnarray*}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Scale Determination
+\end_layout
+
+\begin_layout Standard
+We begin with some simple examples of scale determination.
+ Let 
+\begin_inset Formula $p=311$
+\end_inset
+
+, 
+\begin_inset Formula $k=11$
+\end_inset
+
+, and 
+\begin_inset Formula $d=2$
+\end_inset
+
+.
+ The permitted range of coefficients is 
+\begin_inset Formula $S_{0}(11)=\{-5,\ldots,-1,0,1,\ldots,5\}$
+\end_inset
+
+; given the dimension 
+\begin_inset Formula $d=2$
+\end_inset
+
+, the allowed probability amplitude coefficients are 
+\begin_inset Formula $F^{2}(11)=\{0,\pm1,\pm i,(\pm1\pm i)\}$
+\end_inset
+
+ (see Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table_allowed"
+
+\end_inset
+
+ above).
+ Consider a single state 
+\begin_inset Formula $\ket{\Psi_{3}}=1\ket{0}+(1+i)\ket{1}$
+\end_inset
+
+.
+ In this case there is no need to scale the state, i.e, we can take 
+\begin_inset Formula $x_{m}=1$
+\end_inset
+
+ and calculate 
+\begin_inset Formula $|1|^{2}=1$
+\end_inset
+
+, 
+\begin_inset Formula $|(1+i)|^{2}=2$
+\end_inset
+
+ and the norm-squared 
+\begin_inset Formula $\ip{\Psi_{3}}{\Psi_{3}}=3$
+\end_inset
+
+ (which is in the allowed range).
+ The probability of measuring 
+\begin_inset Formula $\lambda_{0}$
+\end_inset
+
+ is 
+\begin_inset Formula $\cardp{1}{3}$
+\end_inset
+
+ and that of measuring 
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+ is 
+\begin_inset Formula $\cardp{2}{3}$
+\end_inset
+
+.
+ These results 
+\emph on
+can
+\emph default
+ be used to infer that the probability of measuring 
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+ is greater than the probability of measuring 
+\begin_inset Formula $\lambda_{0}$
+\end_inset
+
+ but they 
+\emph on
+cannot
+\emph default
+ be used to conclude that the former event is exactly twice as likely as
+ the second.
+\end_layout
+
+\begin_layout Standard
+Now let us consider a more interesting example that involves several representat
+ive one-qubit states, 
+\begin_inset Formula 
+\[
+\begin{array}{rcl}
+\ket{\Psi_{1}} & = & 1\ket{0}\\
+\ket{\Psi_{2}} & = & 1\ket{0}+1\ket{1}\\
+\ket{\Psi_{3}} & = & 1\ket{0}+(1+i)\ket{1}\\
+\ket{\Psi_{4}} & = & (1-i)\ket{0}+(1+i)\ket{1}\ ,
+\end{array}
+\]
+
+\end_inset
+
+as explicit examples of each 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ (There are of course many equivalent vectors representing the same physical
+ state, a miniature local version of the traditional Bloch sphere mapping
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "geom1"
+literal "true"
+
+\end_inset
+
+.) Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "f11-proj.fig"
+
+\end_inset
+
+ presents the bare analogs of norms-squared and probabilities for the 
+\begin_inset Formula $\ket{\Psi_{m}}$
+\end_inset
+
+ representing the properties of the four unique norms, 
+\begin_inset Formula $m=1,\ 2,\ 3,\ {\mathrm{and}~}4$
+\end_inset
+
+.
+ (In larger fields, these numbers do not necessarily form a sequence.)
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will introduce a deterministic construction to identify approximate choices
+ for 
+\begin_inset Formula $\{\mu_{1},\mu_{2},\mu_{3},\mu_{4}\}$
+\end_inset
+
+ in a moment.
+ But first let us give a clear heuristic example of the nature of the problem
+ and the process by which we can converge towards solutions.
+ In Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "approxMu.tbl"
+
+\end_inset
+
+, we show two guesses for the values of 
+\begin_inset Formula $\{x_{1},x_{2},x_{3},x_{4}\}$
+\end_inset
+
+.
+ The first is extremely simple, but the numbers do not quite have enough
+ power to avoid a conflict with the required order corresponding to the
+ real-valued probabilities 
+\begin_inset Formula $P_{\Psi_{m}}(0)=(1,1/2,1/3,1/2)$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{\Psi_{m}}(1)=(0,1/2,2/3,1/2)$
+\end_inset
+
+.
+ The second choice, still constructed from integers that are quite small,
+ achieves the required ordering and is our first example of an instance
+ of a cardinal probability system for 
+\begin_inset Formula $\{\ket{\Psi_{1}},\,\ket{\Psi_{2}},\,\ket{\Psi_{3}},\,\ket{\Psi_{4}}\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+placement th!
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset VSpace -0.1in
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\begin{array}{|c||c||c|c|c||c||c|c|c|}
+\hline  & \multicolumn{4}{c||}{\sf Failing\ Choice} & \multicolumn{4}{c|}{\sf Successful\ Choice}\\
+\hline \textrm{Actual}~\{P_{\Psi_{m}}(0),P_{\Psi_{m}}(1)\} & m & x & \mu=mx^{2} & \{\bar{P}_{\Psibar_{m}}(0),\bar{P}_{\Psibar_{m}}(1)\} & m & x & \mu=mx^{2} & \{\bar{P}_{\Psibar_{m}}(0),\bar{P}_{\Psibar_{m}}(1)\}\rule[-.60em]{0em}{1em}\\
+\hline \{1,0\} & 1 & 4 & 16 & \{16,0\} & 1 & 16 & 256 & \{256,0\}\\
+\{1/2,1/2\} & 2 & 3 & 18 & \{9,9\} & 2 & 12 & 288 & \{144,144\}\\
+\{1/3,2/3\} & 3 & 2 & 12 & \{4,8\} & 3 & 9 & 243 & \{81,162\}\\
+\{1/2,1/2\} & 4 & 2 & 16 & \{8,8\} & 4 & 8 & 256 & \{128,128\}
+\\\hline \end{array}\vspace{-.1in}
+\]
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "approxMu.tbl"
+
+\end_inset
+
+ A failing choice (left) and a successful choice (right) for the rescaling
+ of the system 
+\begin_inset Formula $\{\ket{\Psi_{1}},\,\ket{\Psi_{2}},\,\ket{\Psi_{3}},\,\ket{\Psi_{4}}\}$
+\end_inset
+
+ to realize a cardinal probability system consistent with conventional quantum
+ mechanical probabilities.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To extend this heuristic framework toward a deterministic computation, we
+ now propose specific criteria to select the set of normalizations 
+\begin_inset Formula $\{\mu_{1},\mu_{2},\mu_{3},\mu_{4}\}$
+\end_inset
+
+ with respect to which we can compare cardinal probabilities.
+ The method relies on introducing the notion of 
+\shape italic
+square root
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ of a number drawn from a finite field.
+ In conventional quantum computing, it is possible to re-weight the four
+ states above so that all have a norm-squared of 24 as follows: 
+\begin_inset Formula 
+\[
+\begin{array}{rcl}
+\ket{\Psi_{1}} & = & 2\sqrt{6}\ (1\ket{0})\\
+\ket{\Psi_{2}} & = & 2\sqrt{3}\ (1\ket{0}+1\ket{1})\\
+\ket{\Psi_{3}} & = & 2\sqrt{2}\ (1\ket{0}+(1+i)\ket{1})\\
+\ket{\Psi_{4}} & = & \sqrt{6}\ ((1-i)\ket{0}+(1+i)\ket{1})\ .
+\end{array}
+\]
+
+\end_inset
+
+However, it is impossible to achieve this re-weighting precisely in a discrete
+ theory because the square roots cannot be calculated exactly in finite
+ fields.
+ We can, however, produce successively more accurate approximations of square
+ roots with bigger and bigger fields using a prescription suggested by Reisler
+ and Smith
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "finitefieldmemo"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% As we will demonstrate, given a crude approximation of the square roots,
+ we
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% can immediately achieve {
+\backslash
+it loose
+\backslash
+/} probability relations such as
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+begin{equation} 
+\backslash
+pr'_3(0) 
+\backslash
+leq 
+\backslash
+pr'_2(0) 
+\backslash
+leq 
+\backslash
+pr'_2(1) 
+\backslash
+leq 
+\backslash
+pr'_4(0) 
+\backslash
+leq
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+pr'_4(1) 
+\backslash
+leq 
+\backslash
+pr'_3(1) 
+\backslash
+ ,
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+label{inexactProbIneq.eq}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+end{equation} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% where the $
+\backslash
+pr'$s are the probabilities calculated using integer state vector
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% scaling based on the approximate square roots.
+ The sequence only approximates
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% the exact relationship among the probabilities; exact relationships can
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% sometimes be recovered with larger fields that have more accurate
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% representations of the square roots.
+ Our second approach exploits more
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% powerful properties of complex state vector scaling and can recover the
+ exact
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% relationships even when the approximate square root approach fails.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% We now give the full details of the approximate square root approach.
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We denote the approximate square root of 
+\begin_inset Formula $m>0$
+\end_inset
+
+ in a finite field 
+\begin_inset Formula $\ff{p}$
+\end_inset
+
+ by 
+\begin_inset Formula $\sqrt[']{m}$
+\end_inset
+
+.
+ This approximate square root is calculated by taking the usual square root
+ of the smallest element in the ordered range 
+\begin_inset Formula $S_{0}(k)$
+\end_inset
+
+ that is greater than
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $m$
+\end_inset
+
+ and that is a quadratic residue.
+ For example, in a field with more than 8 positive ordered elements, 
+\begin_inset Formula $S_{0}(k\geq19)$
+\end_inset
+
+, we have: 
+\begin_inset Formula 
+\[
+\begin{array}{rclcl}
+\sqrt[']{2} & = & \sqrt{4} & = & 2\\
+\sqrt[']{3} & = & \sqrt{4} & = & 2\\
+\sqrt[']{6} & = & \sqrt{9} & = & 3\ .
+\end{array}
+\]
+
+\end_inset
+
+Even though these approximations are crude, they can be used to re-weight
+ the vectors above to get probabilities 
+\begin_inset Formula $\bar{P}_{\Psibar_{m}}(i)$
+\end_inset
+
+ whose relationships approximate the ideal mathematical (but uncomputable
+ using finite resources) probabilities.
+ In more detail, the re-weighted vectors become: 
+\begin_inset Formula 
+\[
+\begin{array}{rcl}
+\ket{\overline{\Psi}_{1}} & = & 6~(1\ket{0})\\
+\ket{\overline{\Psi}_{2}} & = & 4~(1\ket{0}+1\ket{1})\\
+\ket{\overline{\Psi}_{3}} & = & 4~(1\ket{0}+(1+i)\ket{1})\\
+\ket{\overline{\Psi}_{4}} & = & 3~((1-i)\ket{0}+(1+i)\ket{1})\ ,
+\end{array}
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $\{\mu_{m}\}=\{36,\,32,\,48,\,36\}$
+\end_inset
+
+, and the probabilities become: 
+\begin_inset Formula 
+\[
+\begin{array}{rcl@{\qquad\qquad}rcl}
+\bar{P}_{\Psibar_{1}}(0) & = & 36 & \bar{P}_{\Psibar_{1}}(1) & = & 0\\
+\bar{P}_{\Psibar_{2}}(0) & = & 16 & \bar{P}_{\Psibar_{2}}(1) & = & 16\\
+\bar{P}_{\Psibar_{3}}(0) & = & 16 & \bar{P}_{\Psibar_{3}}(1) & = & 32\\
+\bar{P}_{\Psibar_{4}}(0) & = & 18 & \bar{P}_{\Psibar_{4}}(1) & = & 18\ ,
+\end{array}
+\]
+
+\end_inset
+
+which we express as 
+\begin_inset Formula 
+\[
+\begin{array}{rcl}
+\bar{P}(0) & = & \cardp{\{36,16,16,18\}}{\{36,32,48,36\}}\\
+\bar{P}(1) & = & \cardp{\{0,16,32,18\}}{\{36,32,48,36\}}\ .
+\end{array}
+\]
+
+\end_inset
+
+In comparison with the exact probabilities, we see that 
+\begin_inset Formula $\bar{P}_{\Psibar_{3}}(0)$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{P}_{\Psibar_{2}}(0)$
+\end_inset
+
+ collapse to a single value and 
+\begin_inset Formula $\bar{P}_{\Psibar_{4}}(0)$
+\end_inset
+
+ is approximated in a way that makes it larger than 
+\begin_inset Formula $\bar{P}_{\Psibar_{2}}(1)$
+\end_inset
+
+.
+ If we only concern ourselves with how the actual probabilities are related
+ by the 
+\begin_inset Formula $\preceq$
+\end_inset
+
+ relation, then our approximation is adequate.
+\end_layout
+
+\begin_layout Standard
+If we desire an even more accurate approximation, we can proceed as follows:
+ We choose a larger field for measurement in which the ordered ranged is
+ scaled by 100 so that the square roots get one additional digit of precision.
+ Specifically, in a field with more than 625 positive ordered elements,
+ we have 
+\begin_inset Formula 
+\[
+\begin{array}{rclcl}
+\sqrt[']{200} & = & \sqrt{225} & = & 15\\
+\sqrt[']{300} & = & \sqrt{324} & = & 18\\
+\sqrt[']{600} & = & \sqrt{625} & = & 25\ ,
+\end{array}
+\]
+
+\end_inset
+
+giving a better approximation of the square roots (scaled by 10).
+ Using these approximations, the four vectors become: 
+\begin_inset Formula 
+\[
+\begin{array}{rcl}
+\ket{\Psibar_{1}} & = & 50~(1\ket{0})\\
+\ket{\Psibar_{2}} & = & 36~(1\ket{0}+1\ket{1})\\
+\ket{\Psibar_{3}} & = & 30~(1\ket{0}+(1+i)\ket{1})\\
+\ket{\Psibar_{4}} & = & 25~((1-i)\ket{0}+(1+i)\ket{1})
+\end{array}
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $\{\mu_{m}\}=\{2500,\,2592,\,2700,\,2500\}$
+\end_inset
+
+, and the probabilities become: 
+\begin_inset Formula 
+\[
+\begin{array}{rcl@{\qquad\qquad}rcl}
+\bar{P}_{\Psibar_{1}}(0) & = & 2500 & \bar{P}_{\Psibar_{1}}(1) & = & 0\\
+\bar{P}_{\Psibar_{2}}(0) & = & 1296 & \bar{P}_{\Psibar_{2}}(1) & = & 1296\\
+\bar{P}_{\Psibar_{3}}(0) & = & 900 & \bar{P}_{\Psibar_{3}}(1) & = & 1800\\
+\bar{P}_{\Psibar_{4}}(0) & = & 1250 & \bar{P}_{\Psibar_{4}}(1) & = & 1250\ .
+\end{array}
+\]
+
+\end_inset
+
+In comparison with the exact probabilities, we see that the increase in
+ precision has reestablished the distinction between 
+\begin_inset Formula $\bar{P}_{\Psibar_{3}}(0)$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{P}_{\Psibar_{2}}(0)$
+\end_inset
+
+.
+ The two probabilities 
+\begin_inset Formula $\bar{P}_{\Psibar_{4}}(0)$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{P}_{\Psibar_{2}}(1)$
+\end_inset
+
+ are now relatively closer but they are still, however, not equal.
+ A moment's reflection shows that these two values can 
+\emph on
+never
+\emph default
+ be equal as 
+\begin_inset Formula $(\sqrt[']{2})^{2}$
+\end_inset
+
+ can never be precisely 
+\begin_inset Formula $2$
+\end_inset
+
+ no matter how many digits of the actual 
+\begin_inset Formula $\sqrt{2}$
+\end_inset
+
+ we maintain.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Discrete Quantum Computing (II)
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "discretequantumcomputingII"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We now examine two particularly important types of examples within the discrete
+ theory of the previous section: the first is the deterministic Deutsch-Jozsa
+ algorithm
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NCbook,Mermin"
+literal "true"
+
+\end_inset
+
+, which determines the balanced or unbalanced nature of an unknown function
+ with a single measurement step (
+\begin_inset Formula $O(1)$
+\end_inset
+
+), and the second is the (normally) probabilistic Grover algorithm
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NCbook,Mermin,Grover"
+literal "true"
+
+\end_inset
+
+, determining the result of an unstructured search in 
+\begin_inset Formula $O(\sqrt{N})$
+\end_inset
+
+ time.
+ In the following, we use 
+\begin_inset Formula $k$
+\end_inset
+
+ to denote the upper bound of the ordered range of integers needed to perform
+ a given calculation; this in turn is assumed to be implemented using a
+ choice of a finite prime number 
+\begin_inset Formula $p$
+\end_inset
+
+ that supports calculation in the range of
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Discrete Deutsch-Jozsa Algorithm: Deterministic
+\end_layout
+
+\begin_layout Standard
+To examine the Deutsch-Jozsa algorithm in the discrete theory of the previous
+ section, we assume we are given a classical function 
+\begin_inset Formula $f:\boolt^{n}\rightarrow\boolt$
+\end_inset
+
+, and are told that 
+\begin_inset Formula $f$
+\end_inset
+
+ is either constant or balanced
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NCbook,Mermin"
+literal "true"
+
+\end_inset
+
+.
+ The algorithm is expressed in a space of dimension 
+\begin_inset Formula $d=2^{n+1}$
+\end_inset
+
+: it begins with the 
+\begin_inset Formula $n+1$
+\end_inset
+
+ qubit state 
+\begin_inset Formula $\ket{1}\ket{\overline{0}}$
+\end_inset
+
+ where the overline denotes a sequence of length
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $n$
+\end_inset
+
+.
+ A straightforward calculation
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NCbook"
+literal "true"
+
+\end_inset
+
+ shows that the final state is
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "HadamardNote"
+literal "true"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\sum_{\overline{z}\in\left\{ 0,1\right\} ^{n}}\sum_{\overline{x}\in\left\{ 0,1\right\} ^{n}}\left(-1\right)^{f\left(\overline{x}\right)+\overline{x}\cdot\overline{z}}\left(\ket{0}\ket{\overline{z}}-\ket{1}\ket{\overline{z}}\right)\ ,
+\]
+
+\end_inset
+
+and that its norm-squared is 
+\begin_inset Formula $2^{n+1}$
+\end_inset
+
+.
+ To make sure that the algorithm works properly, we note that all the probabilit
+y amplitudes involved in the calculation are in the range 
+\begin_inset Formula $-2^{n},\ldots,2^{n}$
+\end_inset
+
+ and therefore, by Eq.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:region"
+
+\end_inset
+
+, we get the following constraint on the size of the ordered region in the
+ finite field: 
+\begin_inset Formula 
+\[
+2^{n+1}\left(2^{n}\right)^{2}\leq\frac{k-1}{2}\;\;\Leftrightarrow\;\;k\geq2^{3n+2}+1\ .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we need to choose a prime number 
+\begin_inset Formula $p$
+\end_inset
+
+ that supports calculation in the range of 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ Assume that 
+\begin_inset Formula $k$
+\end_inset
+
+ is the least prime satisfying 
+\begin_inset Formula $k\geq2^{3n+2}+1$
+\end_inset
+
+, and let 
+\begin_inset Formula $p$
+\end_inset
+
+ be the 
+\begin_inset Formula $\pi(k)$
+\end_inset
+
+th element of the sequence A000229 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "yutsungBook"
+literal "true"
+
+\end_inset
+
+.
+ We argue that no prime less than this value of 
+\begin_inset Formula $p$
+\end_inset
+
+ can support calculation in the ordered range of 
+\begin_inset Formula $k$
+\end_inset
+
+, and that this 
+\begin_inset Formula $p$
+\end_inset
+
+ is sufficient to support such calculation.
+ In particular, since 
+\begin_inset Formula $k$
+\end_inset
+
+ is the least quadratic non-residue of 
+\begin_inset Formula $p$
+\end_inset
+
+, every number less than 
+\begin_inset Formula $k$
+\end_inset
+
+ is a quadratic residue, and thus 
+\begin_inset Formula $0,1,2,3,\ldots,2^{3n+2}$
+\end_inset
+
+ are all quadratic residues.
+ Hence the numbers 
+\begin_inset Formula $-2^{n},\ldots,2^{n}$
+\end_inset
+
+ are all inside the ordered range 
+\begin_inset Formula $S_{0}(k)$
+\end_inset
+
+.
+ On the other hand, if we choose any prime smaller than 
+\begin_inset Formula $p$
+\end_inset
+
+, there is a quadratic non-residue smaller than 
+\begin_inset Formula $k$
+\end_inset
+
+, and we also know that the least quadratic non-residue is a prime 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "numtheory.ref"
+literal "true"
+
+\end_inset
+
+.
+ Thus, there is a quadratic non-residue in 
+\begin_inset Formula $0,1,2,3,\ldots,2^{3n+2}$
+\end_inset
+
+ , and therefore, for this smaller 
+\begin_inset Formula $p$
+\end_inset
+
+, there would be a number in 
+\begin_inset Formula $-2^{n},\ldots,2^{n}$
+\end_inset
+
+ that is not in the ordered range 
+\begin_inset Formula $S_{0}(k)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $f$
+\end_inset
+
+ is constant, the cardinal probability of measuring 
+\begin_inset Formula $\ket{0}\ket{\overline{0}}$
+\end_inset
+
+ or 
+\begin_inset Formula $\ket{1}\ket{\overline{0}}$
+\end_inset
+
+ is 
+\begin_inset Formula $\cardp{\left(2^{n}\right)^{2}+\left(2^{n}\right)^{2}=2^{2n+1}}{2^{2n+1}}$
+\end_inset
+
+; i.e., the cardinal probability of measuring any other state is
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\cardp{0}{2^{2n+1}}$
+\end_inset
+
+.
+ When 
+\begin_inset Formula $f$
+\end_inset
+
+ is balanced, the cardinal probability of measuring 
+\begin_inset Formula $\ket{0}\ket{\overline{0}}$
+\end_inset
+
+ or 
+\begin_inset Formula $\ket{1}\ket{\overline{0}}$
+\end_inset
+
+ is 
+\begin_inset Formula $\cardp{0}{2^{2n+1}}$
+\end_inset
+
+.
+ Therefore, if we find that the post-measurement state is either 
+\begin_inset Formula $\ket{0}\ket{\overline{0}}$
+\end_inset
+
+ or 
+\begin_inset Formula $\ket{1}\ket{\overline{0}}$
+\end_inset
+
+, we know 
+\begin_inset Formula $f$
+\end_inset
+
+ is constant; otherwise, 
+\begin_inset Formula $f$
+\end_inset
+
+ is balanced.
+\end_layout
+
+\begin_layout Standard
+For a single qubit Deutsch problem, the absolute maximum probability amplitude
+ is 
+\begin_inset Formula $2$
+\end_inset
+
+ and 
+\begin_inset Formula $d=2^{1+1}=4$
+\end_inset
+
+, so we want to have 
+\begin_inset Formula 
+\begin{eqnarray*}
+k & \geq & 2^{3\cdot1+2}+1=2^{5}+1=33\ .
+\end{eqnarray*}
+
+\end_inset
+
+The least prime satisfying the above condition is 
+\begin_inset Formula $k=37$
+\end_inset
+
+, and thus 
+\begin_inset Formula 
+\begin{eqnarray*}
+\pi\left(37\right) & = & 12\\
+p & = & 422231\ ,
+\end{eqnarray*}
+
+\end_inset
+
+where the prime counting function 
+\begin_inset Formula $\pi(k)$
+\end_inset
+
+ is taken from the extended elements in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table_long"
+
+\end_inset
+
+.
+ 
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{eqnarray*}
+\hspace*{0cm}\begin{tabular}{c|ccccccccc}
+ \ensuremath{p}  &  \ensuremath{\ldots}  &  422231  &  \ensuremath{\ldots}  &  196265095009  &  \ensuremath{\ldots}  &   &  \ensuremath{\ldots}  &   &  \ensuremath{\ldots}\\
+\hline  \ensuremath{k}  &  \ensuremath{\ldots}  &  {\bf 37}  &  \ensuremath{\ldots}  &  {\bf 131}  &  \ensuremath{\ldots}  &  {\bf 257}  &  \ensuremath{\ldots}  &  {\bf 32771}  &  \ensuremath{\ldots}\\
+\hline  \ensuremath{\pi(k)}  &  \ensuremath{\ldots}  &  12  &  \ensuremath{\ldots}  &  32  &  \ensuremath{\ldots}  &  55  &  \ensuremath{\ldots}  &  3513  &  \ensuremath{\ldots} 
+\end{tabular}\ 
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Extension of transitively ordered elements.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table_long"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the 2-qubit Deutsch-Jozsa, the computation is already quite challenging.
+ Now the absolute maximum probability amplitude is 
+\begin_inset Formula $4$
+\end_inset
+
+ and 
+\begin_inset Formula $d=2^{2+1}=8$
+\end_inset
+
+, so we need 
+\begin_inset Formula 
+\begin{eqnarray*}
+k & \geq & 2^{3\cdot2+2}+1=2^{8}+1=257\ .
+\end{eqnarray*}
+
+\end_inset
+
+Because 257 is a prime, we can pick 
+\begin_inset Formula 
+\begin{eqnarray*}
+k & = & 257\\
+\pi\left(257\right) & = & 55\ .
+\end{eqnarray*}
+
+\end_inset
+
+The actual value of 
+\begin_inset Formula $p$
+\end_inset
+
+ is already outside the range of the published tables.
+\end_layout
+
+\begin_layout Standard
+These examples illustrate that the value of 
+\begin_inset Formula $p$
+\end_inset
+
+ plays an essential role: its size grows with the numerical range of the
+ intermediate and final results of the algorithms being implemented.
+ Therefore, we naturally recover a deterministic measure of the intrinsic
+ resources required for a given level of complexity; this measure is normally
+ completely hidden in computations with real numbers, and explicitly exposing
+ it is one of the significant achievements of our discrete field analysis
+ of quantum computation.
+ This solves the conundrum that the conventional Deutsch-Jozsa algorithm
+ mysteriously continues to work for larger and larger input functions without
+ any apparent increase in resources.
+ Our analysis of this problem reveals that as the size of the input increases,
+ it is necessary to increase the size of 
+\begin_inset Formula $p$
+\end_inset
+
+ and hence the size of the underlying available numeric coefficients.
+ This observation does not fully explain the power of quantum computing
+ over classical computing, but at least it explains that some of the power
+ of quantum computing depends on increasingly larger precision in the underlying
+ field of numbers.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Discrete Grover Search: Nondeterministic
+\end_layout
+
+\begin_layout Standard
+As an example of how to apply our cardinal probability framework to a nondetermi
+nistic algorithm, consider the 
+\begin_inset Formula $N\times N$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+diffusion
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+phase rotation
+\begin_inset Quotes erd
+\end_inset
+
+ matrices for searching an unstructured database of size
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $N=2^{n}$
+\end_inset
+
+ using Grover's algorithm
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Grover"
+literal "true"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% 
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% 
+\backslash
+begin{pmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% -1 + 2/N & 2/N & 2/N & 
+\backslash
+ldots & 2/N 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% 2/N & -1 + 2/N & 2/N & 
+\backslash
+ldots & 2/N 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% 2/N & 2/N & -1 + 2/N & 
+\backslash
+ldots & 2/N 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% 
+\backslash
+ldots & 
+\backslash
+ldots & 
+\backslash
+ldots & 
+\backslash
+ldots & 
+\backslash
+ldots 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% 2/N & 2/N & 2/N & 
+\backslash
+ldots & -1 + 2/N
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% 
+\backslash
+end{pmatrix} .
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% 
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace -0.1in
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+D & = & \begin{pmatrix}1-\frac{N}{2} & 1 & 1 & \ldots & 1\\
+1 & 1-\frac{N}{2} & 1 & \ldots & 1\\
+1 & 1 & 1-\frac{N}{2} & \ldots & 1\\
+\vdots & \vdots & \vdots & \vdots & \vdots\\
+1 & 1 & 1 & \ldots & 1-\frac{N}{2}
+\end{pmatrix},\\
+R & = & \begin{pmatrix}-1 & 0 & 0 & \ldots & 0\\
+0 & 1 & 0 & \ldots & 0\\
+0 & 0 & 1 & \ldots & 0\\
+\vdots & \vdots & \vdots & \vdots & \vdots\\
+0 & 0 & 0 & \ldots & 1
+\end{pmatrix}\ ,\vspace{-0.1in}
+\end{eqnarray*}
+
+\end_inset
+
+where we have eliminated, in matrix 
+\begin_inset Formula $D$
+\end_inset
+
+, the scaling factor 
+\begin_inset Formula $2/N$
+\end_inset
+
+ to enforce the requirement that all matrix coefficients in our framework
+ are integer-valued.
+ Note that we have chosen the 
+\begin_inset Quotes eld
+\end_inset
+
+marked
+\begin_inset Quotes erd
+\end_inset
+
+ element in matrix 
+\begin_inset Formula $R$
+\end_inset
+
+ to be in the first position.
+ In the standard algorithm, the transformation 
+\begin_inset Formula $DR$
+\end_inset
+
+ is repeated 
+\begin_inset Formula $j$
+\end_inset
+
+ times, where 
+\begin_inset Formula 
+\[
+j=\round\left(\frac{\pi}{4\arccos\sqrt{1-\frac{1}{N}}}-\frac{1}{2}\right)\approx\round\left(\frac{\pi}{4}\sqrt{N}\right)\ .
+\]
+
+\end_inset
+
+In our context, we must choose a prime number that is large enough to ensure
+ that all the numbers that occur during the calculation and after measurement
+ are within the transitively-ordered subrange.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $f$
+\end_inset
+
+ be the function we want to search, and let 
+\begin_inset Formula $\overline{t}$
+\end_inset
+
+ be the target, i.e., 
+\begin_inset Formula $f\left(\overline{x}\right)=1$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $\overline{x}=\overline{t}$
+\end_inset
+
+.
+ Because the probability amplitudes of 
+\begin_inset Formula $\ket{\overline{x}}$
+\end_inset
+
+ are all the same for 
+\begin_inset Formula $\overline{x}\neq\overline{t}$
+\end_inset
+
+, we can let 
+\begin_inset Formula $a_{l}$
+\end_inset
+
+ be the probability amplitude of 
+\begin_inset Formula $\ket{\overline{t}}$
+\end_inset
+
+, with 
+\begin_inset Formula $b_{l}$
+\end_inset
+
+ the probability amplitude of each of the other possibilities, which are
+ all the same.
+ We begin at 
+\begin_inset Formula $l=0$
+\end_inset
+
+ with the information-less state, the normalization scaled to integer values
+ as usual, which we can write as 
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+a_{0}\\
+b_{0}\\
+\vdots\\
+b_{0}
+\end{array}\right)=\left(\begin{array}{c}
+1\\
+1\\
+\vdots\\
+1
+\end{array}\right)\ .
+\]
+
+\end_inset
+
+Applying the operators 
+\begin_inset Formula $DR$
+\end_inset
+
+, and denoting by 
+\begin_inset Formula $a_{l}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{l}$
+\end_inset
+
+ the two unique elements of the 
+\begin_inset Formula $N$
+\end_inset
+
+-dimensional column vector describing the evolving process, we find the
+ following recurrence relation for the successive coefficients: 
+\begin_inset Formula 
+\begin{eqnarray*}
+a_{0} & = & 1\\
+b_{0} & = & 1\\
+a_{l+1} & = & \left(\frac{N}{2}-1\right)a_{l}+(N-1)\,b_{l}\\
+b_{l+1} & = & (-1)\,a_{l}+\left(\frac{N}{2}-1\right)b_{l}\ .
+\end{eqnarray*}
+
+\end_inset
+
+We also know 
+\begin_inset Formula $\left|a_{j}\right|>\left|b_{j}\right|$
+\end_inset
+
+, so we can estimate an upper bound for the maximum cardinal probability
+ as 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%% $
+\backslash
+left|a_{j}
+\backslash
+right|^2$ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\max\left|a_{j}\right|^{2}\leq2\left(\frac{N}{2}\right)^{2j+1}\ .
+\]
+
+\end_inset
+
+By applying Eq.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:region"
+
+\end_inset
+
+ with 
+\begin_inset Formula $d=N=2^{n}$
+\end_inset
+
+, we can estimate
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $k$
+\end_inset
+
+ using 
+\begin_inset VSpace -0.1in
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+k\geq8\left(\frac{N}{2}\right)^{2j+2}+1\ .\vspace{-0.1in}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If we pick a prime 
+\begin_inset Formula $k$
+\end_inset
+
+ satisfying the above condition, then choosing the 
+\begin_inset Formula $\pi(k)$
+\end_inset
+
+th prime in the sequence represented by Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "pseq"
+
+\end_inset
+
+ guarantees that every number we need for the computation is within the
+ transitively ordered range 
+\begin_inset Formula $F^{d}(k)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For the 2-qubit Grover search, we have 
+\begin_inset Formula $N=d=4$
+\end_inset
+
+ and 
+\begin_inset Formula $j=1$
+\end_inset
+
+, with the maximum cardinal probability 
+\begin_inset Formula 
+\[
+\max\left|a_{j}\right|^{2}\leq2\left(\frac{4}{2}\right)^{2+1}=16\ ,
+\]
+
+\end_inset
+
+so we need 
+\begin_inset Formula 
+\begin{eqnarray*}
+k & \geq & 8\left(\frac{4}{2}\right)^{2\cdot1+2}+1=8\cdot2^{4}+1=129\ .
+\end{eqnarray*}
+
+\end_inset
+
+The least prime 
+\begin_inset Formula $k$
+\end_inset
+
+ satisfying the above condition is 
+\begin_inset Formula $k=131$
+\end_inset
+
+, and so 
+\begin_inset Formula 
+\begin{eqnarray*}
+\pi\left(131\right) & = & 32\\
+p & = & 196265095009\ .
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $p=196265095009$
+\end_inset
+
+, we assume that 
+\begin_inset Formula $f\left(\overline{x}\right)=1$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $\ket{\overline{x}}=\ket{0}\!\ket{0}$
+\end_inset
+
+, and so the final state is 
+\begin_inset Formula $(4,0,\cdots,0)^{T}$
+\end_inset
+
+ with norm-squared of 
+\begin_inset Formula $16$
+\end_inset
+
+.
+ Then, the cardinal probability of obtaining 
+\begin_inset Formula $\ket{0}\!\ket{0}$
+\end_inset
+
+ as the post-measurement state is 
+\begin_inset Formula $\cardp{16}{16}$
+\end_inset
+
+, and it is 
+\begin_inset Formula $\cardp{0}{16}$
+\end_inset
+
+ for the rest of the states.
+\end_layout
+
+\begin_layout Standard
+For the 3-qubit Grover search, we have 
+\begin_inset Formula $N=d=8$
+\end_inset
+
+ and 
+\begin_inset Formula $j=2$
+\end_inset
+
+, with an upper bound 
+\begin_inset Formula $\max\left|a_{j}\right|^{2}\leq2\left(\frac{8}{2}\right)^{4+1}=2048$
+\end_inset
+
+ on the cardinal probability.
+ Thus 
+\begin_inset Formula 
+\begin{eqnarray*}
+k & \ge & 8\left(\frac{8}{2}\right)^{6}+1=32769\ .
+\end{eqnarray*}
+
+\end_inset
+
+The nearest prime greater than this number is 32771, so we can pick 
+\begin_inset Formula 
+\begin{eqnarray*}
+k & = & 32771\\
+\pi(32771) & = & 3513\ ,
+\end{eqnarray*}
+
+\end_inset
+
+and so if we use the 3513
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+th
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ prime, we can implement Grover's algorithm for a database of size 8.
+\end_layout
+
+\begin_layout Standard
+Continuing with the 3-qubit Grover example, we show how the cardinal probabiliti
+es evolve to single out the target state.
+ First, assume that 
+\begin_inset Formula $f\left(\overline{x}\right)=1$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $\ket{\overline{x}}=\ket{0}\!\ket{0}\!\ket{0}$
+\end_inset
+
+.
+ The initial information-less 8-dimensional state vector evolves under the
+ application of 
+\begin_inset Formula $DR$
+\end_inset
+
+ as follows: 
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+1\\
+1\\
+\vdots\\
+1
+\end{array}\right)\rightarrow\left(\begin{array}{c}
+10\\
+2\\
+\vdots\\
+2
+\end{array}\right)\rightarrow\left(\begin{array}{c}
+44\\
+-4\\
+\vdots\\
+-4
+\end{array}\right)\ .
+\]
+
+\end_inset
+
+These states have differing norm-squared, so we multiply the first and second
+ states by 
+\begin_inset Formula $16$
+\end_inset
+
+ and 
+\begin_inset Formula $4$
+\end_inset
+
+, respectively, to force them to have the same value of 
+\begin_inset Formula $2048$
+\end_inset
+
+.
+ The now-consistently-normalized states become 
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+16\\
+16\\
+\vdots\\
+16
+\end{array}\right)\rightarrow\left(\begin{array}{c}
+40\\
+8\\
+\vdots\\
+8
+\end{array}\right)\rightarrow\left(\begin{array}{c}
+44\\
+-4\\
+\vdots\\
+-4
+\end{array}\right)\ .
+\]
+
+\end_inset
+
+Therefore, the cardinal probabilities of measuring 
+\begin_inset Formula $\ket{0}\!\ket{0}\!\ket{0}$
+\end_inset
+
+ in each state are 
+\begin_inset Formula 
+\[
+\begin{array}{c@{\qquad}c@{\qquad}c}
+\cardp{256}{2048} & \cardp{1600}{2048} & \cardp{1936}{2048}\ ,\end{array}
+\]
+
+\end_inset
+
+while the cardinal probabilities of measuring the other states become 
+\begin_inset Formula 
+\[
+\begin{array}{c@{\qquad}c@{\qquad}c}
+\cardp{256}{2048} & \cardp{64}{2048} & \cardp{16}{2048}\ .\end{array}
+\]
+
+\end_inset
+
+We may thus conclude that the cardinal probability of measuring the satisfying
+ assignment of 
+\begin_inset Formula $f$
+\end_inset
+
+ increases as we apply the diffusion 
+\begin_inset Formula $D$
+\end_inset
+
+ and phase rotation 
+\begin_inset Formula $R$
+\end_inset
+
+ matrices repeatedly.
+\end_layout
+
+\begin_layout Standard
+Clearly, the required size of 
+\begin_inset Formula $k$
+\end_inset
+
+ increases systematically with the problem size, and the corresponding size
+ of the required prime number 
+\begin_inset Formula $p$
+\end_inset
+
+ defining the discrete field increases in the fashion illustrated in Tables
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "pseq"
+
+\end_inset
+
+ and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table_long"
+
+\end_inset
+
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Section
+Discrete Quantum Theory and Computing (II)
+\end_layout
+
+\begin_layout Plain Layout
 Our third model, discrete quantum theory (II)
 \begin_inset space ~
 \end_inset
@@ -11261,6 +17204,11 @@ literal "true"
 \end_inset
 
 .
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
