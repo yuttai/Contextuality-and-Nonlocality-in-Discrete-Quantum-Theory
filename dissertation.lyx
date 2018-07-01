@@ -40,6 +40,7 @@
 \newcommand{\proj}[1]{\op{#1}{#1}}
 
 \newcommand{\muB}{\ensuremath{\mu^{B}}}
+\newcommand{\muC}{\ensuremath{\mu^{C}}}
 \newcommand{\events}{\ensuremath{\mathcal{E}}}
 \newcommand{\set}[2]{\ensuremath{\left\{ {#1}\mathrel{}\middle|\mathrel{}{#2}\right\} }}
 \newcommand{\gmult}{*}
@@ -9392,7 +9393,7 @@ In the one-qubit state with coefficients in
  qubit basis obey 
 \begin_inset Formula 
 \begin{equation}
-\fnorm{\psi_{1}}=\fnorm{\alpha_{0}}+\fnorm{\alpha_{1}}=1\label{DQA2.eq}
+\fnorm{\ket{\psi_{1}}}=\fnorm{\alpha_{0}}+\fnorm{\alpha_{1}}=1\label{DQA2.eq}
 \end{equation}
 
 \end_inset
@@ -12513,7 +12514,7 @@ reference "pseq"
 \begin_inset Formula $k$
 \end_inset
 
-):
+).
 \begin_inset Float table
 wide false
 sideways false
@@ -13558,7 +13559,8 @@ reference "eq:region"
 \end_layout
 
 \begin_layout Standard
-Recall in Sec.
+Although we can measure on every projector and observable as discussed in
+ Sec.
 \begin_inset space ~
 \end_inset
 
@@ -13572,15 +13574,112 @@ noprefix "false"
 
 \end_inset
 
-, we discussed a measurement framework on every projector and observable.
- 
+, our previous quantum circuits in Figures
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:alg"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Quantum-Circuit-Deutsch"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:dbsearch"
+
+\end_inset
+
+ always measure in the computational basis 
+\begin_inset Formula $\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+\end_inset
+
+ in a 
+\begin_inset Formula $D$
+\end_inset
+
+-dimensional Hilbert space, because measuring in other basis is the same
+ as applying a quantum gate and measuring in the computational basis.
+ Following this idea, we can simplify the Born rule for pure states, Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Born"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), as
+\begin_inset Formula 
+\begin{equation}
+\muB_{\Psi}\left(\proj{i}\right)\equiv\muB_{\Psi}\left(i\right)=\frac{\ip{\Psi}{i}\ip{i}{\Psi}}{\ip{\Psi}{\Psi}}=\frac{\left|\ip{i}{\Psi}\right|^{2}}{\ip{\Psi}{\Psi}}=\frac{\left|\alpha_{i}\right|^{2}}{\ip{\Psi}{\Psi}}\,,\label{eq:Born-ComputationalBasis}
+\end{equation}
+
+\end_inset
+
+called the probability of measuring 
+\begin_inset Formula $i$
+\end_inset
+
+, where 
+\begin_inset Formula $\ket{\Psi}=\sum_{i=0}^{D-1}\alpha_{i}\ket{i}=\begin{pmatrix}\alpha_{0} & \alpha_{1} & \ldots & \alpha_{D-1}\end{pmatrix}^{T}$
+\end_inset
+
+.
 \end_layout
+
+\begin_layout Standard
+Although a division required in Eq.(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Born-ComputationalBasis"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) cannot be performed within an ordered region, we could follow the standard
+ Mathematics and Computer Science procedure 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Artin1991,DummitFoote2004,hottbook2013,Wolfram2016"
+posttextlist "Artin1991"
+literal "false"
+
+\end_inset
+
+ to define the result of a discrete Born rule as an order pair
+\begin_inset Formula 
+\begin{equation}
+\muC_{\Psi}\left(i\right)=\cardp{\fnorm{\alpha_{i}}}{\fnorm{\ket{\Psi}}}\,.
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
 
 \begin_layout Subsection
 Theory
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 In conventional quantum theory, given an observable
 \begin_inset space ~
 \end_inset
@@ -13616,7 +13715,7 @@ In conventional quantum theory, given an observable
  is given by: 
 \begin_inset Formula 
 \begin{eqnarray}
-P_{\Psi}(\lambda_{i})\equiv P_{\Psi}(i) & = & \frac{\fnorm{\ip{i}{\Psi}}}{\ip{\Psi}{\Psi}}=\frac{\fnorm{\alpha_{i}}}{\ip{\Psi}{\Psi}}\ ,\label{probOfEll.eq}
+P_{\Psi}(\lambda_{i})\equiv P_{\Psi}(i) & = & \frac{\left|\ip{i}{\Psi}\right|^{2}}{\ip{\Psi}{\Psi}}=\frac{\left|\alpha_{i}\right|^{2}}{\ip{\Psi}{\Psi}}\ ,\label{probOfEll.eq}
 \end{eqnarray}
 
 \end_inset
@@ -13641,7 +13740,7 @@ where
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The fundamental property of conventional quantum theory is that a complete
  set of states such as 
 \begin_inset Formula $\{\ket{i}\}$
@@ -13828,7 +13927,7 @@ status collapsed
 ) ordering is impossible with an observer that has only finite resources.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 We now show that, while formal achievement of the conventional quantum probabili
 ty ordering of Eq.
 \begin_inset space ~
@@ -13947,7 +14046,7 @@ status collapsed
 e class of cardinal probability theories.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 In order to study the explicit properties of a discrete theory, we examine
  states of the form 
 \begin_inset Formula 
@@ -13993,7 +14092,7 @@ m=\ip{\Psi_{m}}{\Psi_{m}}=\sum_{i=0}^{D-1}\fnorm{\alpha_{i}^{m}}\ .
  on the coefficients when there is no ambiguity.)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 One might hope to construct a probability object corresponding exactly to
  the conventional quantum theory by finding a common factor that eliminated
  the diverse denominators 
@@ -14120,7 +14219,7 @@ status collapsed
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 (
 \shape italic
 Remark:
@@ -14151,7 +14250,7 @@ status collapsed
  in the general case.)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Then we need to show that 
 \begin_inset Formula 
 \begin{equation}
@@ -14220,7 +14319,7 @@ reference "mu-eqns.eq"
  in general.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 This no-go theorem leads us inevitably to consider a 
 \shape italic
 set
@@ -14372,7 +14471,7 @@ status collapsed
 , we have a valid instance of a cardinal probability theory.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Float table
 placement th!
 wide true
@@ -14432,7 +14531,7 @@ Norms-squared and probabilities for one-qubit states
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Since the ordering requirements typically refer to 
 \shape italic
 sets
@@ -14482,7 +14581,7 @@ realization
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The set 
 \begin_inset Formula $\{\eta_{m}\}$
 \end_inset
@@ -14540,7 +14639,7 @@ equal
 Scale Determination
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -14591,7 +14690,7 @@ The procedure is itself fuzzy.
  approximation”… 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -14605,7 +14704,7 @@ status collapsed
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 We begin with some simple examples of scale determination.
  Let 
 \begin_inset Formula $p=311$
@@ -14699,7 +14798,7 @@ cannot
  the second.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Now let us consider a more interesting example that involves several representat
 ive one-qubit states, 
 \begin_inset Formula 
@@ -14752,14 +14851,14 @@ reference "f11-proj.fig"
  (In larger fields, these numbers do not necessarily form a sequence.)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset VSpace bigskip
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 We will introduce a deterministic construction to identify approximate choices
  for 
 \begin_inset Formula $\{\eta_{1},\eta_{2},\eta_{3},\eta_{4}\}$
@@ -14804,7 +14903,7 @@ reference "approxMu.tbl"
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -14884,14 +14983,14 @@ name "approxMu.tbl"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset VSpace bigskip
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 To extend this heuristic framework toward a deterministic computation, we
  now propose specific criteria to select the set of normalizations 
 \begin_inset Formula $\{\eta_{1},\eta_{2},\eta_{3},\eta_{4}\}$
@@ -14950,7 +15049,7 @@ literal "true"
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -15204,7 +15303,7 @@ status collapsed
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 We denote the approximate square root of 
 \begin_inset Formula $m>0$
 \end_inset
@@ -15321,7 +15420,7 @@ In comparison with the exact probabilities, we see that
  relation, then our approximation is adequate.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 If we desire an even more accurate approximation, we can proceed as follows:
  We choose a larger field for measurement in which the ordered ranged is
  scaled by 100 so that the square roots get one additional digit of precision.
@@ -15407,7 +15506,7 @@ never
  we maintain.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -15417,6 +15516,11 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
