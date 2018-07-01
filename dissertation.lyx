@@ -2485,7 +2485,7 @@ The irreducible states in a
  be normalized to unity: 
 \begin_inset Formula 
 \begin{equation}
-\braket{\Psi}{\Psi}=\|\VVec{\alpha}\|^{2}=\sum_{i=0}^{D-1}|\alpha_{i}|^{2}=1\,.\label{probEq1.eq}
+\braket{\Psi}{\Psi}=\left\Vert \VVec{\alpha}\right\Vert ^{2}=\sum_{i=0}^{D-1}|\alpha_{i}|^{2}=1\,.\label{probEq1.eq}
 \end{equation}
 
 \end_inset
@@ -3289,7 +3289,8 @@ where the subscript
 
 \begin_layout Standard
 A conventional quantum probability measure can easily be constructed using
- the Born rule if one knows the current pure normalized quantum state 
+ the Born rule if one knows the current pure unnormalized quantum state
+ 
 \begin_inset Formula $\ket{\Phi}\in\mathcal{H}$
 \end_inset
 
@@ -3298,6 +3299,32 @@ A conventional quantum probability measure can easily be constructed using
 \end_inset
 
  defined as 
+\begin_inset Formula 
+\begin{equation}
+\muB_{\Phi}(P)=\frac{\melem{\Phi}{P}{\Phi}}{\ip{\Phi}{\Phi}}\,.\label{eq:Born}
+\end{equation}
+
+\end_inset
+
+If 
+\begin_inset Formula $\ket{\Phi}$
+\end_inset
+
+ is normalized, Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Born"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) could be simplified as 
 \begin_inset Formula $\muB_{\Phi}(P)=\melem{\Phi}{P}{\Phi}$
 \end_inset
 
@@ -9365,7 +9392,7 @@ In the one-qubit state with coefficients in
  qubit basis obey 
 \begin_inset Formula 
 \begin{equation}
-\|\psi_{1}\|^{2}=|\alpha_{0}|^{2}+|\alpha_{1}|^{2}=1\label{DQA2.eq}
+\fnorm{\psi_{1}}=\fnorm{\alpha_{0}}+\fnorm{\alpha_{1}}=1\label{DQA2.eq}
 \end{equation}
 
 \end_inset
@@ -9398,7 +9425,7 @@ noprefix "false"
 \begin{eqnarray}
 X & = & 2\,\mathrm{Re}\ \alpha_{0}\alpha_{1}^{*}=2x_{0}x_{1}+2y_{0}y_{1}\,,\nonumber \\
 Y & = & 2\,\mathrm{Im}\ \alpha_{0}\alpha_{1}^{*}=2x_{1}y_{0}-2x_{0}y_{1}\,,\label{DQA6.eq}\\
-Z & = & \left|\alpha_{0}\right|^{2}-\left|\alpha_{1}\right|^{2}={x_{0}}^{2}+{y_{0}}^{2}-{x_{1}}^{2}-{y_{1}}^{2}\,.\nonumber 
+Z & = & \fnorm{\alpha_{0}}-\fnorm{\alpha_{1}}={x_{0}}^{2}+{y_{0}}^{2}-{x_{1}}^{2}-{y_{1}}^{2}\,.\nonumber 
 \end{eqnarray}
 
 \end_inset
@@ -9702,7 +9729,7 @@ This process of describing the discrete
  by a discrete phase, 
 \begin_inset Formula 
 \begin{equation}
-\Hat{a}=\left(|\alpha_{i}|^{2},\ldots,\sqrt{2}\,\mathrm{Re}\ \alpha_{i}\alpha_{j}^{*},\ldots,\sqrt{2}\,\mathrm{Im}\ \alpha_{i}\alpha_{j}^{*},\ldots\right)\,,
+\Hat{a}=\left(\fnorm{\alpha_{i}},\ldots,\sqrt{2}\,\mathrm{Re}\ \alpha_{i}\alpha_{j}^{*},\ldots,\sqrt{2}\,\mathrm{Im}\ \alpha_{i}\alpha_{j}^{*},\ldots\right)\,,
 \end{equation}
 
 \end_inset
@@ -9710,7 +9737,7 @@ This process of describing the discrete
 where 
 \begin_inset Formula 
 \begin{equation}
-\Hat{a}\cdot\Hat{a}=\left(\sum_{i=0}^{D-1}\left|\alpha_{i}\right|^{2}\right)^{2}=1\,.
+\Hat{a}\cdot\Hat{a}=\left(\sum_{i=0}^{D-1}\fnorm{\alpha_{i}}\right)^{2}=1\,.
 \end{equation}
 
 \end_inset
@@ -13075,7 +13102,7 @@ region
  satisfies 
 \begin_inset Formula 
 \begin{equation}
-D\,\left|\alpha_{i}\right|^{2}=D\,\left(a_{i}^{2}+b_{i}^{2}\right)\leq\frac{k-1}{2}\,,\label{eq:region}
+D\,\fnorm{\alpha_{i}}=D\,\left(a_{i}^{2}+b_{i}^{2}\right)\leq\frac{k-1}{2}\,,\label{eq:region}
 \end{equation}
 
 \end_inset
@@ -13631,7 +13658,7 @@ In conventional quantum theory, given an observable
  is given by: 
 \begin_inset Formula 
 \begin{eqnarray}
-P_{\Psi}(\lambda_{i})\equiv P_{\Psi}(i) & = & \frac{|\ip{i}{\Psi}|^{2}}{\ip{\Psi}{\Psi}}=\frac{|\alpha_{i}|^{2}}{\ip{\Psi}{\Psi}}\ ,\label{probOfEll.eq}
+P_{\Psi}(\lambda_{i})\equiv P_{\Psi}(i) & = & \frac{\fnorm{\ip{i}{\Psi}}}{\ip{\Psi}{\Psi}}=\frac{\fnorm{\alpha_{i}}}{\ip{\Psi}{\Psi}}\ ,\label{probOfEll.eq}
 \end{eqnarray}
 
 \end_inset
@@ -13996,7 +14023,7 @@ starting value
  of the discrete norm-squared, 
 \begin_inset Formula 
 \[
-m=\ip{\Psi_{m}}{\Psi_{m}}=\sum_{i=0}^{D-1}|\alpha_{i}^{m}|^{2}\ .
+m=\ip{\Psi_{m}}{\Psi_{m}}=\sum_{i=0}^{D-1}\fnorm{\alpha_{i}^{m}}\ .
 \]
 
 \end_inset
@@ -14337,7 +14364,7 @@ reference "probOfEll.eq"
 : 
 \begin_inset Formula 
 \[
-\bar{P}_{\Psibar_{m}}(i)=(x_{m})^{2}\,|\alpha_{i}|^{2}\ .
+\bar{P}_{\Psibar_{m}}(i)=(x_{m})^{2}\,\fnorm{\alpha_{i}}\ .
 \]
 
 \end_inset
@@ -14399,8 +14426,8 @@ status open
 \[
 \begin{array}{|c||c|c|c|c|}
 \hline {\sf\mbox{Norm\ensuremath{^{2}}}}=m & \ip{\Psi_{1}}{\Psi_{1}}=1 & \ip{\Psi_{2}}{\Psi_{2}}=2 & \ip{\Psi_{3}}{\Psi_{3}}=3 & \ip{\Psi_{4}}{\Psi_{4}}=4\\
-\hline \mbox{\sf Prob.~of~}\lambda_{0} & |\ip{0}{\Psi_{1}}|^{2}=\cardp{1}{1} & |\ip{0}{\Psi_{2}}|^{2}=\cardp{1}{2} & |\ip{0}{\Psi_{3}}|^{2}=\cardp{1}{3} & |\ip{0}{\Psi_{4}}|^{2}=\cardp{2}{4}\\
-\hline {\sf Prob.~of~}\lambda_{1} & |\ip{1}{\Psi_{1}}|^{2}=\cardp{0}{1} & |\ip{1}{\Psi_{2}}|^{2}=\cardp{1}{2} & |\ip{1}{\Psi_{3}}|^{2}=\cardp{2}{3} & |\ip{1}{\Psi_{4}}|^{2}=\cardp{2}{4}
+\hline \mbox{\sf Prob.~of~}\lambda_{0} & \fnorm{\ip{0}{\Psi_{1}}}=\cardp{1}{1} & \fnorm{\ip{0}{\Psi_{2}}}=\cardp{1}{2} & \fnorm{\ip{0}{\Psi_{3}}}=\cardp{1}{3} & \fnorm{\ip{0}{\Psi_{4}}}=\cardp{2}{4}\\
+\hline {\sf Prob.~of~}\lambda_{1} & \fnorm{\ip{1}{\Psi_{1}}}=\cardp{0}{1} & \fnorm{\ip{1}{\Psi_{2}}}=\cardp{1}{2} & \fnorm{\ip{1}{\Psi_{3}}}=\cardp{2}{3} & \fnorm{\ip{1}{\Psi_{4}}}=\cardp{2}{4}
 \\\hline \end{array}
 \]
 
@@ -14477,7 +14504,7 @@ status collapsed
 that expands to 
 \begin_inset Formula 
 \[
-\cardp{\{(x_{m_{1}})^{2}|\alpha_{i}^{m_{1}}|^{2},\,(x_{m_{2}})^{2}|\alpha_{i}^{m_{2}}|^{2},\,\cdots\}}{\{\eta_{m_{1}},\,\eta_{m_{2}},\,\cdots\}}.
+\cardp{\{(x_{m_{1}})^{2}\fnorm{\alpha_{i}^{m_{1}}},\,(x_{m_{2}})^{2}\fnorm{\alpha_{i}^{m_{2}}},\,\cdots\}}{\{\eta_{m_{1}},\,\eta_{m_{2}},\,\cdots\}}.
 \]
 
 \end_inset
@@ -14665,11 +14692,11 @@ reference "table_allowed"
 \end_inset
 
  and calculate 
-\begin_inset Formula $|1|^{2}=1$
+\begin_inset Formula $\fnorm{1}=1$
 \end_inset
 
 , 
-\begin_inset Formula $|(1+\rmi)|^{2}=2$
+\begin_inset Formula $\fnorm{1+\rmi}=2$
 \end_inset
 
  and the norm-squared 
@@ -16373,28 +16400,9 @@ We also know
 
 , so we can estimate an upper bound for the maximum cardinal probability
  as 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%% $
-\backslash
-left|a_{j}
-\backslash
-right|^2$ 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \begin_inset Formula 
 \[
-\max\left|a_{j}\right|^{2}\leq2\left(\frac{N}{2}\right)^{2j+1}\ .
+\max\fnorm{a_{j}}\leq2\left(\frac{N}{2}\right)^{2j+1}\ .
 \]
 
 \end_inset
@@ -16473,7 +16481,7 @@ For the 2-qubit Grover search, we have
 , with the maximum cardinal probability 
 \begin_inset Formula 
 \[
-\max\left|a_{j}\right|^{2}\leq2\left(\frac{4}{2}\right)^{2+1}=16\ ,
+\max\fnorm{a_{j}}\leq2\left(\frac{4}{2}\right)^{2+1}=16\ ,
 \]
 
 \end_inset
@@ -16553,7 +16561,7 @@ For the 3-qubit Grover search, we have
 \end_inset
 
 , with an upper bound 
-\begin_inset Formula $\max\left|a_{j}\right|^{2}\leq2\left(\frac{8}{2}\right)^{4+1}=2048$
+\begin_inset Formula $\max\fnorm{a_{j}}\leq2\left(\frac{8}{2}\right)^{4+1}=2048$
 \end_inset
 
  on the cardinal probability.
