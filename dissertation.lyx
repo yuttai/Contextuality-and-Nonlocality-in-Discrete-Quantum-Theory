@@ -13555,10 +13555,6 @@ reference "eq:region"
 \end_inset
 
 , and hence potentially produce probabilities that can be ordered.
- We start by applying the measurement framework of conventional quantum
- computing to these states; we then systematically expose and isolate the
- parts that rely on infinite precision real numbers and replace them by
- finite approximations.
  Our point is that, although the mathematical framework of conventional
  quantum mechanics relies on infinite precision probabilities, it is impossible
  in practice to measure exact equality of real numbers — we can only achieve
@@ -13614,15 +13610,14 @@ reference "fig:dbsearch"
 \end_inset
 
  always measure in the computational basis 
-\begin_inset Formula $\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+\begin_inset Formula $\left\{ \ket{0},\ldots,\ket{i},\ldots,\ket{D-1}\right\} $
 \end_inset
 
 .
  Indeed, it is sufficient to only consider measuring in the computational
  basis because measuring in another basis is the same as applying a quantum
  gate and measuring in the computational basis.
- If we only measure a state in the computational basis, the Born rule for
- pure states, Eq.
+ In this situation, the Born rule for pure states, Eq.
 \begin_inset space ~
 \end_inset
 
@@ -13654,14 +13649,14 @@ where
 \end_inset
 
  the probability of measuring 
-\begin_inset Formula $\proj{i}$
+\begin_inset Formula $\ket{i}$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-Although a division required in Eq.(
+Although the fraction resulting from Eq.(
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:Born-ComputationalBasis"
@@ -13671,8 +13666,9 @@ noprefix "false"
 
 \end_inset
 
-) cannot be performed within an ordered region, we could follow the standard
- algebra and computer science procedure 
+) can never inside the an ordered region, we could follow the standard algebra
+ and computer science procedure to define the resulting fraction as an order
+ pair 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Artin1991,DummitFoote2004,hottbook2013,Wolfram2016"
@@ -13681,15 +13677,19 @@ literal "false"
 
 \end_inset
 
- to define the resulting fraction of a discrete Born rule as an order pair
+:
 \begin_inset Formula 
 \begin{equation}
-\muC_{\Psi}\left(i\right)=\cardp{\fnorm{\alpha_{i}}}{\fnorm{\ket{\Psi}}}\,.
+\muC_{\Psi}\left(i\right)=\cardp{\fnorm{\alpha_{i}}}{\fnorm{\ket{\Psi}}}\,,
 \end{equation}
 
 \end_inset
 
-Notice that both 
+where every coefficient 
+\begin_inset Formula $\alpha_{i}\in F^{D}\left(k\right)$
+\end_inset
+
+ so that both 
 \begin_inset Formula $\fnorm{\alpha_{i}}$
 \end_inset
 
@@ -13701,8 +13701,16 @@ Notice that both
 \begin_inset Formula $S_{0}\left(k\right)$
 \end_inset
 
-, since every coefficient 
-\begin_inset Formula $\alpha_{i}\in F^{D}\left(k\right)$
+, and 
+\begin_inset Formula $\muC_{\Psi}\left(i\right)$
+\end_inset
+
+ is called the 
+\emph on
+cardinal probability
+\emph default
+ of measuring 
+\begin_inset Formula $\ket{i}$
 \end_inset
 
 .
@@ -13815,6 +13823,87 @@ Norms-squared and probabilities for one-qubit states
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+In a theory with cardinal probability, 
+\shape italic
+inequalities
+\shape default
+ can be preserved with appropriate resources (in the form of a sufficiently
+ large choice of the field), while 
+\shape italic
+equalities
+\shape default
+ cannot be guaranteed in the theory, and in fact can be represented as 
+\shape italic
+inequalities of any order
+\shape default
+.
+ That is, given two cardinal probabilities 
+\begin_inset Formula $\cardp{\fnorm{\alpha_{i}}}{\fnorm{\ket{\Psi}}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\cardp{\fnorm{\alpha_{j}}}{\fnorm{\ket{\Psi}}}$
+\end_inset
+
+ with the same 
+\begin_inset Quotes eld
+\end_inset
+
+denominator
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Formula $\fnorm{\alpha_{i}}>\fnorm{\alpha_{j}}$
+\end_inset
+
+ physically means it is more likely to measure 
+\begin_inset Formula $\ket{i}$
+\end_inset
+
+ than 
+\begin_inset Formula $\ket{j}$
+\end_inset
+
+ if we have enough resource; 
+\begin_inset Formula $\fnorm{\alpha_{i}}=\fnorm{\alpha_{j}}$
+\end_inset
+
+ means the experimental results might not always favor 
+\begin_inset Formula $\ket{i}$
+\end_inset
+
+ or 
+\begin_inset Formula $\ket{j}$
+\end_inset
+
+ no matter how much resource we use.
+ The same principle can also apply to two cardinal probabilities with the
+ different 
+\begin_inset Quotes eld
+\end_inset
+
+denominator
+\begin_inset Quotes erd
+\end_inset
+
+ which can be compared according to the standard algebra and computer science
+ procedure about fraction as well 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Artin1991,DummitFoote2004,hottbook2013,Wolfram2016"
+posttextlist "Artin1991"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
