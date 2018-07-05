@@ -16959,23 +16959,18 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Extension of transitively ordered elements.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
 name "table_long"
 
 \end_inset
 
- 
+Extension of transitively ordered elements.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17129,11 +17124,11 @@ To solve Grover's problem, we represent the search states as
 \begin_inset Formula $U_{f}$
 \end_inset
 
-, we represent 
+, 
 \begin_inset Formula $f$
 \end_inset
 
- as the 
+ is represented as the 
 \begin_inset Formula $N\times N$
 \end_inset
 
@@ -17167,7 +17162,7 @@ marked
 \end_inset
 
  element is in the first position.
- Besides of 
+ Beside 
 \begin_inset Formula $R$
 \end_inset
 
@@ -17217,7 +17212,7 @@ where we have eliminated, in matrix
  repeatedly 
 \begin_inset Formula 
 \begin{equation}
-j=\round\left(\frac{\pi}{4\arccos\sqrt{1-\frac{1}{N}}}-\frac{1}{2}\right)\approx\round\left(\frac{\pi}{4}\sqrt{N}\right)\,,
+j=\round\left(\frac{\pi}{4\arccos\sqrt{1-\frac{1}{N}}}-\frac{1}{2}\right)\approx\round\left(\frac{\pi}{4}\sqrt{N}\right)
 \end{equation}
 
 \end_inset
@@ -17237,7 +17232,8 @@ times, we can find the target element
 \end_layout
 
 \begin_layout Standard
-Let's walk through in each stage to make sure the algorithm works.
+Let's walk through the state in each iteration to make sure the algorithm
+ works.
  Because the probability amplitudes of 
 \begin_inset Formula $\ket{\overline{x}}$
 \end_inset
@@ -17259,55 +17255,76 @@ Let's walk through in each stage to make sure the algorithm works.
 \end_inset
 
  the probability amplitude of each of the other possibilities, which are
- all the same.
- We begin at 
+ all the same, after the operators 
+\begin_inset Formula $\Delta R$
+\end_inset
+
+ is applied 
+\begin_inset Formula $l$
+\end_inset
+
+ times.
+ Beginning at 
 \begin_inset Formula $l=0$
 \end_inset
 
  with the information-less state, the normalization scaled to integer values
- as usual, which we can write as 
+ as usual, the state after 
+\begin_inset Formula $l$
+\end_inset
+
+th iteration can written as
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+Verify the computation??
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
-\[
-\left(\begin{array}{c}
-a_{0}\\
-b_{0}\\
+\begin{equation}
+\begin{pmatrix}a_{l}\\
+b_{l}\\
 \vdots\\
-b_{0}
-\end{array}\right)=\left(\begin{array}{c}
-1\\
+b_{l}
+\end{pmatrix}=\left(\Delta R\right)^{l}\begin{pmatrix}1\\
 1\\
 \vdots\\
 1
-\end{array}\right)\ .
-\]
+\end{pmatrix}=\Delta R\begin{pmatrix}a_{l-1}\\
+b_{l-1}\\
+\vdots\\
+b_{l-1}
+\end{pmatrix}\,.
+\end{equation}
 
 \end_inset
 
-Applying the operators 
-\begin_inset Formula $\Delta R$
-\end_inset
-
-, and denoting by 
-\begin_inset Formula $a_{l}$
-\end_inset
-
- and 
-\begin_inset Formula $b_{l}$
-\end_inset
-
- the two unique elements of the 
-\begin_inset Formula $N$
-\end_inset
-
--dimensional column vector describing the evolving process, we find the
- following recurrence relation for the successive coefficients: 
+We can solve the above iteration by the following recurrence relation for
+ the successive coefficients: 
 \begin_inset Formula 
-\begin{eqnarray*}
-a_{0} & = & 1\\
-b_{0} & = & 1\\
-a_{l+1} & = & \left(\frac{N}{2}-1\right)a_{l}+(N-1)\,b_{l}\\
-b_{l+1} & = & (-1)\,a_{l}+\left(\frac{N}{2}-1\right)b_{l}\ .
-\end{eqnarray*}
+\begin{equation}
+\begin{aligned}a_{0} & =1\,, & a_{l+1} & =\left(\frac{N}{2}-1\right)a_{l}+\left(N-1\right)b_{l}\,,\\
+b_{0} & =1\,, & b_{l+1} & =\left(-1\right)a_{l}+\left(\frac{N}{2}-1\right)b_{l}\,.
+\end{aligned}
+\end{equation}
 
 \end_inset
 
@@ -17317,14 +17334,11 @@ We also know
 
 , so we can estimate an upper bound for the maximum cardinal probability
  as 
-\begin_inset Formula 
-\[
-\max\fnorm{a_{j}}\leq2\left(\frac{N}{2}\right)^{2j+1}\ .
-\]
-
+\begin_inset Formula $\max\fnorm{a_{j}}\leq2\left(\frac{N}{2}\right)^{2j+1}$
 \end_inset
 
-By applying Eq.
+.
+ By applying Eq.
 \begin_inset space ~
 \end_inset
 
@@ -17348,46 +17362,43 @@ reference "eq:region"
 \end_inset
 
  using 
-\begin_inset VSpace -0.1in
+\begin_inset Formula $k\geq8\left(\frac{N}{2}\right)^{2j+2}+1$
 \end_inset
 
- 
-\begin_inset Formula 
-\[
-k\geq8\left(\frac{N}{2}\right)^{2j+2}+1\ .\vspace{-0.1in}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-If we pick a prime 
+.
+ We can then pick a prime 
 \begin_inset Formula $k$
 \end_inset
 
- satisfying the above condition, then choosing the 
+, and choose the 
 \begin_inset Formula $\pi\left(k\right)$
 \end_inset
 
-th prime in the sequence represented by Table 
+th prime in the sequence represented by Table
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "pseq"
 
 \end_inset
 
- guarantees that every number we need for the computation is within the
+ guaranteeing that every number we need for the computation is within the
  transitively ordered range 
-\begin_inset Formula $F^{D}(k)$
+\begin_inset Formula $F^{D}\left(k\right)$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-For the 2-qubit Grover search, we have 
+For the 
+\begin_inset Formula $2$
+\end_inset
+
+-qubit Grover search, we have 
 \begin_inset Formula $N=D=4$
 \end_inset
 
@@ -17397,17 +17408,17 @@ For the 2-qubit Grover search, we have
 
 , with the maximum cardinal probability 
 \begin_inset Formula 
-\[
-\max\fnorm{a_{j}}\leq2\left(\frac{4}{2}\right)^{2+1}=16\ ,
-\]
+\begin{equation}
+\max\fnorm{a_{j}}\leq2\left(\frac{4}{2}\right)^{2+1}=16\,,
+\end{equation}
 
 \end_inset
 
 so we need 
 \begin_inset Formula 
-\begin{eqnarray*}
-k & \geq & 8\left(\frac{4}{2}\right)^{2\cdot1+2}+1=8\cdot2^{4}+1=129\ .
-\end{eqnarray*}
+\begin{equation}
+k\geq8\left(\frac{4}{2}\right)^{2\cdot1+2}+1=8\cdot2^{4}+1=129\,.
+\end{equation}
 
 \end_inset
 
@@ -17420,15 +17431,14 @@ The least prime
 \end_inset
 
 , and so 
-\begin_inset Formula 
-\begin{eqnarray*}
-\pi\left(131\right) & = & 32\\
-p & = & 196265095009\ .
-\end{eqnarray*}
-
+\begin_inset Formula $\pi\left(131\right)=32$
 \end_inset
 
+ and 
+\begin_inset Formula $p=196265095009$
+\end_inset
 
+.
 \end_layout
 
 \begin_layout Standard
@@ -17445,10 +17455,10 @@ When
 \end_inset
 
 , and so the final state is 
-\begin_inset Formula $(4,0,\cdots,0)^{T}$
+\begin_inset Formula $\begin{pmatrix}4 & 0 & \ldots & 0\end{pmatrix}^{T}$
 \end_inset
 
- with field norm of 
+ with the field norm of 
 \begin_inset Formula $16$
 \end_inset
 
@@ -17469,7 +17479,11 @@ When
 \end_layout
 
 \begin_layout Standard
-For the 3-qubit Grover search, we have 
+For the 
+\begin_inset Formula $3$
+\end_inset
+
+-qubit Grover search, we have 
 \begin_inset Formula $N=D=8$
 \end_inset
 
@@ -17484,33 +17498,73 @@ For the 3-qubit Grover search, we have
  on the cardinal probability.
  Thus 
 \begin_inset Formula 
-\begin{eqnarray*}
-k & \ge & 8\left(\frac{8}{2}\right)^{6}+1=32769\ .
-\end{eqnarray*}
+\begin{eqnarray}
+k & \ge & 8\left(\frac{8}{2}\right)^{6}+1=32769\,.
+\end{eqnarray}
 
 \end_inset
 
-The nearest prime greater than this number is 32771, so we can pick 
-\begin_inset Formula 
-\begin{eqnarray*}
-k & = & 32771\\
-\pi(32771) & = & 3513\ ,
-\end{eqnarray*}
-
+The nearest prime greater than this number is 
+\begin_inset Formula $32771$
 \end_inset
 
-and so if we use the 3513
+, so we can pick 
+\begin_inset Formula $k=32771$
+\end_inset
+
+ and 
+\begin_inset Formula $\pi\left(32771\right)=3513$
+\end_inset
+
+, and so if we use the 
+\begin_inset Formula $3513$
+\end_inset
+
+th prime, we can implement Grover's algorithm for a database of size 
+\begin_inset Formula $8$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Continuing with the 
+\begin_inset Formula $3$
+\end_inset
+
+-qubit Grover example, we show how the cardinal probabilities evolve to
+ single out the target state.
+ First, assume that 
+\begin_inset Formula $f\left(\overline{x}\right)=1$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $\ket{\overline{x}}=\ket{0}\!\ket{0}\!\ket{0}$
+\end_inset
+
+.
+ The initial information-less 
+\begin_inset Formula $8$
+\end_inset
+
+-dimensional state vector evolves under the application of 
+\begin_inset Formula $\Delta R$
+\end_inset
+
+ as follows:
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+
+\backslash
+todo{
 \end_layout
 
 \end_inset
 
-th
+Change the whole paragraph to a table?
 \begin_inset ERT
 status collapsed
 
@@ -17521,51 +17575,30 @@ status collapsed
 
 \end_inset
 
- prime, we can implement Grover's algorithm for a database of size 8.
-\end_layout
 
-\begin_layout Standard
-Continuing with the 3-qubit Grover example, we show how the cardinal probabiliti
-es evolve to single out the target state.
- First, assume that 
-\begin_inset Formula $f\left(\overline{x}\right)=1$
-\end_inset
-
- if and only if 
-\begin_inset Formula $\ket{\overline{x}}=\ket{0}\!\ket{0}\!\ket{0}$
-\end_inset
-
-.
- The initial information-less 8-dimensional state vector evolves under the
- application of 
-\begin_inset Formula $\Delta R$
-\end_inset
-
- as follows: 
 \begin_inset Formula 
-\[
-\left(\begin{array}{c}
-1\\
+\begin{equation}
+\begin{pmatrix}1\\
 1\\
 \vdots\\
 1
-\end{array}\right)\rightarrow\left(\begin{array}{c}
-10\\
+\end{pmatrix}\rightarrow\begin{pmatrix}10\\
 2\\
 \vdots\\
 2
-\end{array}\right)\rightarrow\left(\begin{array}{c}
-44\\
+\end{pmatrix}\rightarrow\begin{pmatrix}44\\
 -4\\
 \vdots\\
 -4
-\end{array}\right)\ .
-\]
+\end{pmatrix}\,.
+\end{equation}
 
 \end_inset
 
-These states have differing field norm, so we multiply the first and second
- states by 
+These states have differing field norm so we cannot compare their cardinal
+ probability directly.
+ Since states differ by only scalar multiplication representing the same
+ state, if we multiply the first and second states by 
 \begin_inset Formula $16$
 \end_inset
 
@@ -17573,31 +17606,28 @@ These states have differing field norm, so we multiply the first and second
 \begin_inset Formula $4$
 \end_inset
 
-, respectively, to force them to have the same value of 
+, respectively, their field norms become the same value of 
 \begin_inset Formula $2048$
 \end_inset
 
 .
  The now-consistently-normalized states become 
 \begin_inset Formula 
-\[
-\left(\begin{array}{c}
-16\\
+\begin{equation}
+\begin{pmatrix}16\\
 16\\
 \vdots\\
 16
-\end{array}\right)\rightarrow\left(\begin{array}{c}
-40\\
+\end{pmatrix}\rightarrow\begin{pmatrix}40\\
 8\\
 \vdots\\
 8
-\end{array}\right)\rightarrow\left(\begin{array}{c}
-44\\
+\end{pmatrix}\rightarrow\begin{pmatrix}44\\
 -4\\
 \vdots\\
 -4
-\end{array}\right)\ .
-\]
+\end{pmatrix}\,.
+\end{equation}
 
 \end_inset
 
@@ -17607,19 +17637,17 @@ Therefore, the cardinal probabilities of measuring
 
  in each state are 
 \begin_inset Formula 
-\[
-\begin{array}{c@{\qquad}c@{\qquad}c}
-\cardp{256}{2048} & \cardp{1600}{2048} & \cardp{1936}{2048}\ ,\end{array}
-\]
+\begin{align}
+\cardp{256}{2048} &  & \cardp{1600}{2048} &  & \cardp{1936}{2048} & ,
+\end{align}
 
 \end_inset
 
 while the cardinal probabilities of measuring the other states become 
 \begin_inset Formula 
-\[
-\begin{array}{c@{\qquad}c@{\qquad}c}
-\cardp{256}{2048} & \cardp{64}{2048} & \cardp{16}{2048}\ .\end{array}
-\]
+\begin{align}
+\cardp{256}{2048} &  & \cardp{64}{2048} &  & \cardp{16}{2048} & .
+\end{align}
 
 \end_inset
 
