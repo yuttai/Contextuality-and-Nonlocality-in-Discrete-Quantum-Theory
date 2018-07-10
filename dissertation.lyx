@@ -4238,7 +4238,7 @@ end{prop}
 
 \family roman
 \size normal
-The final property is that it be basis independent
+The final property is that the born rule is basis independent
 \family default
 \size default
 
@@ -4333,6 +4333,30 @@ end{prop}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+In Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Toward-IVPM"
+
+\end_inset
+
+, we will use an analog of Gleason's theorem and these two properties to
+ deduce that there is no 
+\begin_inset Quotes eld
+\end_inset
+
+sensible
+\begin_inset Quotes erd
+\end_inset
+
+ real-valued Born rule over finite fields.
 \end_layout
 
 \begin_layout Subsection
@@ -18307,11 +18331,19 @@ literal "true"
 
 \end_inset
 
-, don't localize the numbers they used in a small region.
+, don't localize their numbers in a small region.
  Moreover, we still haven't found how to manipulate the resulting cardinal
- probabilities to further define the mixed states and expectation values.
- To overcome these issues, we want to try an different approach and define
- the probability over finite fields axiomatically.
+ probabilities, and hence has little idea how to define the mixed states
+ and expectation values.
+ To overcome these issues, we try an different approach to define a 
+\begin_inset Quotes eld
+\end_inset
+
+conventional
+\begin_inset Quotes erd
+\end_inset
+
+ probability over finite fields axiomatically.
 \end_layout
 
 \begin_layout Standard
@@ -18348,7 +18380,8 @@ reference "sec:fuzzy"
 \end_inset
 
  to define events and probability measures, and see whether we could have
- a Gleason-like theorem which induces a discrete Born rule.
+ a Gleason-like theorem which induces a correspondence between states and
+ probability measures qualified as a discrete Born rule.
 \end_layout
 
 \begin_layout Standard
@@ -18393,72 +18426,86 @@ name "def:QPMFF"
 
 \end_inset
 
-Assume a collection of intervals 
-\begin_inset Formula $\mathscr{I}$
+Given a vector space 
+\begin_inset Formula $\mathcal{H}$
 \end_inset
 
- including 
-\begin_inset Formula $\imposs$
+ of dimension 
+\begin_inset Formula $D$
+\end_inset
+
+ defined over the complexified field 
+\begin_inset Formula $\Fpp$
+\end_inset
+
+, the set of events 
+\begin_inset Formula $\events\left(\Fpp\right)$
+\end_inset
+
+ are recursively defined as follows: 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathbb{0}$
 \end_inset
 
  and 
-\begin_inset Formula $\necess$
+\begin_inset Formula $\mathbb{1}\in\events\left(\Fpp\right)$
 \end_inset
 
- with addition and scalar multiplication defined as follows: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{subequations}
+.
 \end_layout
 
+\begin_layout Itemize
+If 
+\begin_inset Formula $\ket{\Psi}$
+\end_inset
+
+ is a non-zero-norm vector in 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+, then the projector of the form 
+\begin_inset Formula $\proj{\Psi}\in\events\left(\Fpp\right)$
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "eq:interval-operations"
-
-\end_inset
-
- 
-\begin_inset Formula 
-\begin{eqnarray}
- &  & [\ell_{1},r_{1}]+[\ell_{2},r_{2}]=[\ell_{1}+\ell_{2},r_{1}+r_{2}]\textrm{ and}\\
- &  & x[\ell,r]=\begin{cases}
-[x\ell,xr] & \textrm{for }x\ge0\,;\\{}
-[xr,x\ell] & \textrm{for }x\le0\,.
-\end{cases}\label{eq:interval-times}
-\end{eqnarray}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{subequations}
 \end_layout
 
+\begin_layout Itemize
+For each pair of 
+\emph on
+orthogonal
+\emph default
+ events 
+\begin_inset Formula $P_{0}\in\events\left(\Fpp\right)$
 \end_inset
 
- Then we take a QIVPM
-\begin_inset space ~
+ and 
+\begin_inset Formula $P_{1}\in\events\left(\Fpp\right)$
 \end_inset
 
-
-\begin_inset Formula $\bar{\mu}$
+, i.e., 
+\begin_inset Formula $P_{0}P_{1}=\mathbb{0}$
 \end_inset
 
- to be an assignment of an interval to each event (projection operator
+, their sum is 
+\begin_inset Formula $P_{0}+P_{1}$
+\end_inset
+
+ is an event, i.e., 
+\begin_inset Formula $P_{0}+P_{1}\in\events\left(\Fpp\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Then we take a quantum probability measure over finite field 
+\begin_inset Formula $\mu:\events\left(\Fpp\right)\rightarrow\left[0,1\right]$
+\end_inset
+
+ to be an assignment of a probability to each event (projection operator
 \begin_inset space ~
 \end_inset
 
@@ -18489,9 +18536,8 @@ name "eq:QPMFF-constraints"
  
 \begin_inset Formula 
 \begin{eqnarray}
- &  & \bar{\mu}(\mathbb{0})=\imposs\,,\\
- &  & \bar{\mu}(\mathbb{1})=\necess\,,\label{eq:necess}\\
- &  & \bar{\mu}\left(\mathbb{1}-P\right)=\necess-\bar{\mu}\left(P\right)\,,\label{eq:complement}
+ &  & \mu(\mathbb{0})=0\,,\\
+ &  & \mu(\mathbb{1})=1\,,
 \end{eqnarray}
 
 \end_inset
@@ -18511,32 +18557,20 @@ end{subequations}
 
  and satisfying for each pair of 
 \emph on
-commuting
+orthogonal
 \emph default
- projectors
-\begin_inset space ~
-\end_inset
-
-
+ events 
 \begin_inset Formula $P_{0}$
 \end_inset
 
- and
-\begin_inset space ~
-\end_inset
-
-
+ and 
 \begin_inset Formula $P_{1}$
-\end_inset
-
- with 
-\begin_inset Formula $P_{0}P_{1}=P_{1}P_{0}$
 \end_inset
 
 , 
 \begin_inset Formula 
 \begin{equation}
-\bar{\mu}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\,.\label{eq:QuantumInterval-valuedProbability-Inclusion}
+\mu\left(P_{0}+P_{1}\right)=\mu\left(P_{0}\right)+\mu\left(P_{1}\right)\,.\label{eq:QuantumProbability-Addition-FiniteFields}
 \end{equation}
 
 \end_inset
@@ -18555,6 +18589,64 @@ end{definition}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+There are some correspondence qualified as 
+\begin_inset Quotes eld
+\end_inset
+
+the discrete Born rule
+\begin_inset Quotes erd
+\end_inset
+
+ when 
+\begin_inset Formula $p=D=3$
+\end_inset
+
+.
+ However, when 
+\begin_inset Formula $D=3$
+\end_inset
+
+ and 
+\begin_inset Formula $p=7$
+\end_inset
+
+, we have numerical verified that the unique quantum probability measure
+ over finite field 
+\begin_inset Formula $\mu:\events\left(\ff{7^{2}}\right)\rightarrow\left[0,1\right]$
+\end_inset
+
+ is
+\begin_inset Formula 
+\begin{equation}
+\mu\left(P\right)=\begin{cases}
+0\,, & \textrm{if }P=\mathbb{0}\,;\\
+\frac{1}{3}\,, & \textrm{if }P\textrm{ is a one-dimensional projector;}\\
+\frac{2}{3}\,, & \textrm{if }P\textrm{ is a two-dimensional projector;}\\
+1\,, & \textrm{if }P=\mathbb{1}\,.
+\end{cases}
+\end{equation}
+
+\end_inset
+
+Since we don't have enough quantum probability measure over finite field
+ to correspond even pure states in 
+\begin_inset Formula $\ff{p^{2}}^{3}$
+\end_inset
+
+, there is no discrete Born rule in this case.
+ In general, we conjecture that the quantum probability measure over finite
+ field are always unique for 
+\begin_inset Formula $D\ge3$
+\end_inset
+
+ except 
+\begin_inset Formula $D=p=3$
+\end_inset
+
+ without a solid proof.
 \end_layout
 
 \begin_layout Standard
