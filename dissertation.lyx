@@ -83,6 +83,11 @@
 \newcommand{\Hilb}{\mathcal{H}}
 \def\C{{\mathbb{C}}}
 
+\newcommand{\interval}[1]{{\normalfont\textsf{\textbf{#1}}}}
+\newcommand{\imposs}{\interval{F}}
+\newcommand{\necess}{\interval{T}}
+\newcommand{\unknown}{\interval{U}}
+
 \usepackage{xparse}
 \NewDocumentCommand{\fnorm}{s m}{\mathsf{N}\IfBooleanT{#1}{^{-1}}\left({#2}\right)}
 
@@ -3947,6 +3952,13 @@ Two fragments of valid probability measures
 
 \begin_layout Subsection
 Gleason's Theorem and the properties of the Born rule
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Gleason's-Theorem-and"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4805,13 +4817,46 @@ and
 \begin_inset Formula $z$
 \end_inset
 
-, and 
+, and
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
-\begin{equation}
-\begin{aligned}\sigma_{0} & =\op{0}{0}+\op{1}{1}\,, & \sigma_{x} & =\op{1}{0}+\op{0}{1}\,,\\
+\begin{align}
+\sigma_{0} & =\op{0}{0}+\op{1}{1}\,, & \sigma_{x} & =\op{1}{0}+\op{0}{1}\,,\\
 \sigma_{y} & =\rmi\op{1}{0}-\rmi\op{0}{1}\,, & \sigma_{z} & =\op{0}{0}-\op{1}{1}\,.
-\end{aligned}
-\end{equation}
+\end{align}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subequations}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -14053,7 +14098,7 @@ cardinal probability
  as a pair of order-region elements as well:
 \begin_inset Formula 
 \begin{equation}
-\muC_{\Psi}\left(i\right)=\cardp{\fnorm{\ip{i}{\Psi}}}{\fnorm{\ket{\Psi}}}=\cardp{\fnorm{\alpha_{i}}}{\fnorm{\ket{\Psi}}}\,,
+\muC_{\Psi}\left(i\right)=\cardp{\fnorm{\ip{i}{\Psi}}}{\fnorm{\ket{\Psi}}}=\cardp{\fnorm{\alpha_{i}}}{\fnorm{\ket{\Psi}}}\,,\label{eq:cardinalProbability}
 \end{equation}
 
 \end_inset
@@ -17681,13 +17726,46 @@ b_{l-1}
 \end_inset
 
 We can solve the above iteration by the following recurrence relation for
- the successive coefficients: 
+ the successive coefficients:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
-\begin{equation}
-\begin{aligned}a_{0} & =1\,, & a_{l+1} & =\left(\frac{N}{2}-1\right)a_{l}+\left(N-1\right)b_{l}\,,\\
+\begin{align}
+a_{0} & =1\,, & a_{l+1} & =\left(\frac{N}{2}-1\right)a_{l}+\left(N-1\right)b_{l}\,,\\
 b_{0} & =1\,, & b_{l+1} & =\left(-1\right)a_{l}+\left(\frac{N}{2}-1\right)b_{l}\,.
-\end{aligned}
-\end{equation}
+\end{align}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subequations}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -18116,7 +18194,7 @@ literal "true"
 \end_layout
 
 \begin_layout Section
-Toward Discrete Quantum Probability
+Quantum Probability Measures over Finite Fields
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Toward-IVPM"
@@ -18187,6 +18265,299 @@ literal "true"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The cardinal probability over finite fields defined in Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:cardinalProbability"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) is based on the conventional Born rule, Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Born-ComputationalBasis"
+
+\end_inset
+
+).
+ Although they are valid inside an ordered region, some quantum algorithms,
+ like Shor's
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shor1999,Mermin2007,Jaeger2007"
+literal "true"
+
+\end_inset
+
+, don't localize the numbers they used in a small region.
+ Moreover, we still haven't found how to manipulate the resulting cardinal
+ probabilities to further define the mixed states and expectation values.
+ To overcome these issues, we want to try an different approach and define
+ the probability over finite fields axiomatically.
+\end_layout
+
+\begin_layout Standard
+Recall Gleason's theorem in Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Gleason's-Theorem-and"
+
+\end_inset
+
+ states that every quantum probability measure is induced by the Born rule
+ in a Hilbert space 
+\begin_inset Formula $\Hilb$
+\end_inset
+
+ of dimension 
+\begin_inset Formula $D\geq3$
+\end_inset
+
+.
+ To find a Born rule over finite fields, we could follow the steps in Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:fuzzy"
+
+\end_inset
+
+ to define events and probability measures, and see whether we could have
+ a Gleason-like theorem which induces a discrete Born rule.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+Quantum Probability Measures over Finite Fields
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "def:QPMFF"
+
+\end_inset
+
+Assume a collection of intervals 
+\begin_inset Formula $\mathscr{I}$
+\end_inset
+
+ including 
+\begin_inset Formula $\imposs$
+\end_inset
+
+ and 
+\begin_inset Formula $\necess$
+\end_inset
+
+ with addition and scalar multiplication defined as follows: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "eq:interval-operations"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{eqnarray}
+ &  & [\ell_{1},r_{1}]+[\ell_{2},r_{2}]=[\ell_{1}+\ell_{2},r_{1}+r_{2}]\textrm{ and}\\
+ &  & x[\ell,r]=\begin{cases}
+[x\ell,xr] & \textrm{for }x\ge0\,;\\{}
+[xr,x\ell] & \textrm{for }x\le0\,.
+\end{cases}\label{eq:interval-times}
+\end{eqnarray}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subequations}
+\end_layout
+
+\end_inset
+
+ Then we take a QIVPM
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ to be an assignment of an interval to each event (projection operator
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $P$
+\end_inset
+
+) subject to the following constraints: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "eq:QPMFF-constraints"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{eqnarray}
+ &  & \bar{\mu}(\mathbb{0})=\imposs\,,\\
+ &  & \bar{\mu}(\mathbb{1})=\necess\,,\label{eq:necess}\\
+ &  & \bar{\mu}\left(\mathbb{1}-P\right)=\necess-\bar{\mu}\left(P\right)\,,\label{eq:complement}
+\end{eqnarray}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subequations}
+\end_layout
+
+\end_inset
+
+ and satisfying for each pair of 
+\emph on
+commuting
+\emph default
+ projectors
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $P_{1}$
+\end_inset
+
+ with 
+\begin_inset Formula $P_{0}P_{1}=P_{1}P_{0}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{equation}
+\bar{\mu}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\,.\label{eq:QuantumInterval-valuedProbability-Inclusion}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
