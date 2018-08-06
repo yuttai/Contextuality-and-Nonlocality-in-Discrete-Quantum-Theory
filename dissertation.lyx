@@ -14,7 +14,6 @@
 \usepackage{dsfont}
 \usepackage{xeCJK}
 \setCJKmainfont{新細明體}
-\usepackage{unicode-math}
 
 \usepackage[all]{xy}
 \newcommand{\xyR}[1]{\xymatrixrowsep={#1}}
@@ -41,15 +40,23 @@
 \usepackage[braket,qm]{qcircuit}
 \newcommand{\proj}[1]{\op{#1}{#1}}
 
-\newcommand{\muB}{\ensuremath{\mu^{\mathrm{B}}}}
-\newcommand{\muC}{\ensuremath{\mu^{\mathrm{C}}}}
-\newcommand{\muF}{\ensuremath{\mu^{\mathrm{F}}}}
-\newcommand{\barmuD}{\ensuremath{\bar{\mu}^{\mathrm{D}}}}
-\newcommand{\events}{\ensuremath{\mathcal{E}}}
+\usepackage{unicode-math}
+\RequirePackage{ifthen}
+\@ifpackageloaded{unicode-math}{}{
+ \newcommand{\symbf}{\mathbf}
+ \newcommand{\symrm}{\mathrm}
+ \newcommand{\symcal}{\mathcal}
+ \newcommand{\symbb}{\mathbb}
+}
+\newcommand{\muB}{\ensuremath{\mu^{\symrm{B}}}}
+\newcommand{\muC}{\ensuremath{\mu^{\symrm{C}}}}
+\newcommand{\muF}{\ensuremath{\mu^{\symrm{F}}}}
+\newcommand{\barmuD}{\ensuremath{\bar{\mu}^{\symrm{D}}}}
+\newcommand{\events}{\ensuremath{\symcal{E}}}
 \newcommand{\eventsC}{\ensuremath{\events_{C}}}
 \newcommand{\set}[2]{\ensuremath{\left\{ {#1}\mathrel{}\middle|\mathrel{}{#2}\right\} }}
 \newcommand{\gmult}{*}
-\newcommand{\Fpx}[1]{\mathbb{F}_{{#1}}}
+\newcommand{\Fpx}[1]{\symbb{F}_{{#1}}}
 \newcommand{\Fp}{\Fpx{p}}
 \newcommand{\Fppx}[1]{\Fpx{{#1}^2}}
 \newcommand{\Fpp}{\Fppx{p}}
@@ -60,17 +67,17 @@
 \newcommand{\ffzd}[1]{\ffzx{#1}{d}}
 \newcommand{\ffd}[1]{\ffx{#1}{d}}
 \newcommand{\VVec}[1]{\vec{\symbf{#1}}}
-\newcommand{\mathReal}{\mathbb{R}}
-\newcommand{\mathComplex}{\mathbb{C}}
+\newcommand{\mathReal}{\symbb{R}}
+\newcommand{\mathComplex}{\symbb{C}}
 \newcommand{\braket}[2]{\ip{#1}{#2}}
 \newcommand{\todo}[1]{\textbf{TODO.~#1}}
 \newcommand{\Eq}[1]{Eq.~(\ref{#1})}
-\newcommand{\Sphere}[1]{\mathbf{S}^{#1}}
+\newcommand{\Sphere}[1]{\symbf{S}^{#1}}
 \newcommand{\R}{\mathReal}
-\newcommand{\rme}{\mathrm{e}}
-\newcommand{\rmi}{\mathrm{i}}
-\newcommand{\CP}[1]{\mathComplex\mathbf{P}^{#1}}  % Complex projective space
-\newcommand{\DCP}[1]{\mathbf{D}\mathComplex\mathbf{P}^{#1}} % Discrete complex projective
+\newcommand{\rme}{\symrm{e}}
+\newcommand{\rmi}{\symrm{i}}
+\newcommand{\CP}[1]{\mathComplex\symbf{P}^{#1}} % Complex projective space
+\newcommand{\DCP}[1]{\symbf{D}\mathComplex\symbf{P}^{#1}} % Discrete complex projective
 \def\fh{\mathfrak{h}}
 \newcommand{\uf}{U_{\!f}}
 \newcommand{\scalarPlus}{+}
@@ -84,10 +91,10 @@
 \def\round{\mathop{\rm round}\nolimits}
 \newcommand{\ps}{\texttt{+}}
 \newcommand{\ms}{\texttt{-}}
-\newcommand{\Hilb}{\mathcal{H}}
+\newcommand{\Hilb}{\symcal{H}}
 \newcommand{\coreBorn}{\ensuremath{\overline{\Hilb}}}
-\def\C{{\mathbb{C}}}
-\newcommand{\ultramodular}{\mathcal{M}}
+\def\C{{\symbb{C}}}
+\newcommand{\ultramodular}{\symcal{M}}
 \newcommand{\ultramodularL}[1][]{\ensuremath{\ultramodular^{L{#1}}}}
 \newcommand{\ultramodularR}[1][]{\ensuremath{\ultramodular^{R{#1}}}}
 
