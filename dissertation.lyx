@@ -76,6 +76,7 @@
 \newcommand{\R}{\mathReal}
 \newcommand{\rme}{\symrm{e}}
 \newcommand{\rmi}{\symrm{i}}
+\newcommand{\rmd}{\symrm{d}}
 \newcommand{\CP}[1]{\mathComplex\symbf{P}^{#1}} % Complex projective space
 \newcommand{\DCP}[1]{\symbf{D}\mathComplex\symbf{P}^{#1}} % Discrete complex projective
 \def\fh{\mathfrak{h}}
@@ -3360,19 +3361,15 @@ literal "true"
 \end_inset
 
  is the set of all events, (i.e., projectors on a given Hilbert space), subject
- to the following constraints: 
-\begin_inset Formula $\mu\left(\mathbb{0}\right)=0$
+ to the following constraints:
+\begin_inset Formula 
+\begin{align}
+\mu\left(\mathbb{0}\right) & =0\,, & \mu\left(\mathbb{1}\right) & =1\,, & \mu\left(\mathbb{1}-P\right) & =1-\mu\left(P\right)\,,\label{eq:QuantumProbability}
+\end{align}
+
 \end_inset
 
-, 
-\begin_inset Formula $\mu\left(\mathbb{1}\right)=1$
-\end_inset
-
-, 
-\begin_inset Formula $\mu\left(\mathbb{1}-P\right)=1-\mu\left(P\right)$
-\end_inset
-
-, and for each pair of 
+and for each pair of 
 \emph on
 orthogonal
 \emph default
@@ -3413,14 +3410,10 @@ Given a Hilbert space
 \end_inset
 
  having spectral decomposition 
-\begin_inset Formula 
-\begin{equation}
-\mathbf{O}=\sum_{i=1}^{D}\lambda_{i}P_{i}\,,\label{eq:spectrum-decomposition-distinct}
-\end{equation}
-
+\begin_inset Formula $\mathbf{O}=\sum_{i=0}^{D-1}\lambda_{i}P_{i}$
 \end_inset
 
-with eigenvalues 
+, with eigenvalues 
 \begin_inset Formula $\lambda_{i}\in\mathbb{R}$
 \end_inset
 
@@ -3435,7 +3428,7 @@ literal "true"
 : 
 \begin_inset Formula 
 \begin{equation}
-\expval{\mathbf{O}}_{\mu}=\sum_{i=1}^{D}\lambda_{i}\mu\left(P_{i}\right)\,,\label{eq:quantum-expectation}
+\expval{\mathbf{O}}_{\mu}=\sum_{i=0}^{D-1}\lambda_{i}\mu\left(P_{i}\right)\,,\label{eq:quantum-expectation}
 \end{equation}
 
 \end_inset
@@ -21065,6 +21058,53 @@ Therefore, the function
 \end_inset
 
 , and is a classical IVPM naturally.
+ Moreover, 
+\family roman
+\size normal
+given a quantum probability measure 
+\family default
+\size default
+
+\begin_inset Formula $\mu:\events\rightarrow\left[0,1\right]$
+\end_inset
+
+ satisfying Eqs.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:QuantumProbability"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:QuantumProbability-Addition"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), the pullback of 
+\begin_inset Formula $\mu$
+\end_inset
+
+, 
+\begin_inset Formula $\varphi^{*}\mu:2^{\Omega}\rightarrow\left[0,1\right]$
+\end_inset
+
+ can be defined by precomposition 
+\begin_inset Formula $\left(\varphi^{*}\mu\right)\left(E\right)=\mu\left(\varphi\left(E\right)\right)$
+\end_inset
+
+ as well.
 \end_layout
 
 \begin_layout Subsubsection
@@ -22682,7 +22722,7 @@ name "def:observable2random-variable"
 
 \end_inset
 
-Given an observable
+Consider an observable
 \begin_inset space ~
 \end_inset
 
@@ -22690,58 +22730,40 @@ Given an observable
 \begin_inset Formula $\mathbf{O}$
 \end_inset
 
- with its 
+ 
 \family default
 \size default
-spectral decomposition
+diagonalized by a orthonormal basis 
+\begin_inset Formula $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+\end_inset
+
+, i.e., 
+\family roman
+\size normal
+
+\begin_inset Formula $\mathbf{O}=\sum_{k=0}^{D-1}\lambda_{k}\proj{k}$
+\end_inset
+
+, and 
+\family default
+\size default
+follow Eq.
 \begin_inset space ~
 \end_inset
 
 (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:spectrum-decomposition-distinct"
+reference "eq:upsilon"
 
 \end_inset
 
-) and its inducing subspace of events 
-\begin_inset Formula $\eventsC^{\mathbf{O}}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-set
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\Omega$
-\end_inset
-
-, and function
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\tau:\events'\rightarrow2^{\Omega}$
+) to define 
+\begin_inset Formula $\varphi:2^{\Omega}\rightarrow\events$
 \end_inset
 
 .
- Then, the random variable
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $X:\Omega\rightarrow\mathbb{R}$
-\end_inset
-
- defined by 
-\begin_inset Formula $X=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\mathbf{1}_{\tau\left(P_{i}^{s}\right)}$
-\end_inset
-
- is called the random variable induced by 
+ Then, the pullback of 
 \family roman
 \size normal
 
@@ -22751,7 +22773,34 @@ set
 
 \family default
 \size default
-.
+ by 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is the random variable 
+\begin_inset Formula $\varphi^{*}\mathbf{O}:\Omega\rightarrow\mathbb{R}$
+\end_inset
+
+ defined by 
+\begin_inset Formula $\varphi^{*}\mathbf{O}=\sum_{k=0}^{d-1}\lambda_{k}\mathbf{1}_{\left\{ \ket{k}\right\} }$
+\end_inset
+
+, where 
+\begin_inset Formula $\mathbf{1}_{E}$
+\end_inset
+
+ is the indicator function defined by
+\begin_inset Formula 
+\begin{equation}
+\mathbf{1}_{E}\left(x\right)=\begin{cases}
+1 & \textrm{if }x\in E\,;\\
+0 & \textrm{if }x\notin E\,.
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -22760,6 +22809,155 @@ status collapsed
 
 \backslash
 end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This previous definition make sense because the pullback preserves the expectati
+on values.
+ Before we state the lemma, we need to recall the definition of expectation
+ value of a classical random variable.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lemma}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lemma:real-expectation-value-between-classical-quantum"
+
+\end_inset
+
+
+\family roman
+\size normal
+Consider an observable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+ 
+\family default
+\size default
+diagonalized by a orthonormal basis 
+\begin_inset Formula $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+\end_inset
+
+ with 
+\begin_inset Formula $\varphi:2^{\Omega}\rightarrow\events$
+\end_inset
+
+ defined by Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:upsilon"
+
+\end_inset
+
+), and 
+\family roman
+\size normal
+a quantum probability measure 
+\family default
+\size default
+
+\begin_inset Formula $\mu:\events\rightarrow\left[0,1\right]$
+\end_inset
+
+ satisfying Eqs.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:QuantumProbability"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:QuantumProbability-Addition"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Then, the expectation values of 
+\family roman
+\size normal
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+ with respect to 
+\family default
+\size default
+
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\family roman
+\size normal
+ is
+\family default
+\size default
+ exactly the expectation values of the pullback of 
+\family roman
+\size normal
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+ respect to 
+\family default
+\size default
+the pullback of 
+\begin_inset Formula $\mu$
+\end_inset
+
+, i.e., 
+\begin_inset Formula $\expval{\mathbf{O}}_{\mu}=\int\left(\varphi^{*}\mathbf{O}\right)\rmd\left(\varphi^{*}\mu\right)$
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lemma}
 \end_layout
 
 \end_inset
