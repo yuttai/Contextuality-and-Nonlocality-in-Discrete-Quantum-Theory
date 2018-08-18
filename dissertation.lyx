@@ -51,6 +51,8 @@
 \newcommand{\muB}{\ensuremath{\mu^{\symrm{B}}}}
 \newcommand{\muC}{\ensuremath{\mu^{\symrm{C}}}}
 \newcommand{\muF}{\ensuremath{\mu^{\symrm{F}}}}
+\newcommand{\mul}[1][]{\ensuremath{\mu^{\symrm{L{#1}}}}}
+\newcommand{\mur}[1][]{\ensuremath{\mu^{\symrm{R{#1}}}}}
 \newcommand{\barmuD}{\ensuremath{\bar{\mu}^{\symrm{D}}}}
 \newcommand{\events}{\ensuremath{\symcal{E}}}
 \newcommand{\eventsC}{\ensuremath{\events_{\symrm{C}}}}
@@ -21545,6 +21547,48 @@ end{definition}
 \end_layout
 
 \begin_layout Standard
+In contrast with classical Thm.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:Shapley-classical"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, there is 
+\emph on
+no guarantee
+\emph default
+ that there exists a state 
+\begin_inset Formula $\rho$
+\end_inset
+
+ that satisfies Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:hbar"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) and therefore is the core of a QIVPM.
+ We then proceed the following lemma to build the correspondence between
+ classical and quantum core.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -21552,7 +21596,7 @@ status collapsed
 
 
 \backslash
-begin{thm}
+begin{lemma}
 \end_layout
 
 \end_inset
@@ -21595,7 +21639,13 @@ reference "eq:upsilon"
  have the following relations.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:classical-to-quantum-core"
+
+\end_inset
+
 Given any 
 \begin_inset Formula $\mu\in\mathrm{core}\left(\varphi^{*}\bar{\mu}\right)$
 \end_inset
@@ -21604,7 +21654,81 @@ Given any
 \begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},\eventsC\right)$
 \end_inset
 
- such that .
+ such that 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\begin{equation}
+\left(\varphi^{*}\muB_{\rho}\right)\left(E\right)=\muB_{\rho}\left(\varphi\left(E\right)\right)=\mu\left(E\right)\label{eq:density-matrix-pullback}
+\end{equation}
+
+\end_inset
+
+
+\xout off
+for all 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $E\subseteq\Omega$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:quantum-to-classical-core"
+
+\end_inset
+
+Given any density matrix 
+\begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},\eventsC\right)$
+\end_inset
+
+, there is a 
+\begin_inset Formula $\mu\in\mathrm{core}\left(\varphi^{*}\bar{\mu}\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula $\muB_{\rho}\left(P\right)=\mu\left(\varphi^{-1}\left(P\right)\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $P\in\eventsC$
+\end_inset
+
+, where 
+\begin_inset Formula $\varphi^{-1}\left(P\right)\subseteq\Omega$
+\end_inset
+
+ is the classical event with 
+\begin_inset Formula $\varphi\left(E\right)=P$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -21615,7 +21739,7 @@ status collapsed
 
 
 \backslash
-end{thm}
+end{lemma}
 \end_layout
 
 \end_inset
@@ -21624,45 +21748,302 @@ end{thm}
 \end_layout
 
 \begin_layout Standard
-In contrast with classical Thm.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+Proof of Part
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "thm:Shapley-classical"
-plural "false"
-caps "false"
-noprefix "false"
+reference "enu:classical-to-quantum-core"
 
 \end_inset
 
-, there is 
-\emph on
-no guarantee
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+Consider 
+\begin_inset Formula $\rho=\sum_{j=0}^{D-1}\mu\left(\left\{ \ket{j}\right\} \right)\proj{j}$
+\end_inset
+
+ which is a density matrix because
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "544199"
+literal "true"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\Tr\left(\rho\right)=\sum_{j=0}^{D-1}\mu\left(\left\{ \ket{j}\right\} \right)\Tr\left(\proj{j}\right)=1\,.
+\end{equation}
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Then, the inductive proof of 
+\family default
+\series default
+\shape default
+\size default
 \emph default
- that there exists a state 
-\begin_inset Formula $\rho$
-\end_inset
-
- that satisfies Eq.
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+Eq.
 \begin_inset space ~
 \end_inset
 
 (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:hbar"
-plural "false"
-caps "false"
-noprefix "false"
+reference "eq:density-matrix-pullback"
 
 \end_inset
 
-) and therefore is the core of a QIVPM.
- However, for the special case of commuting events, a QIVPM will always
- have a non-empty core.
+)
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ can proceed by verifying the validity of the base case
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+:
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ for all 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $i$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{equation}
+\muB_{\rho}\left(\proj{i}\right)=\sum_{j=0}^{D-1}\mu\left(\left\{ \ket{j}\right\} \right)\muB_{\ket{j}}\left(\proj{i}\right)=\mu\left(\left\{ \ket{i}\right\} \right)\,,
+\end{equation}
+
+\end_inset
+
+combined with the following verification of the induction case: for all
+ 
+\begin_inset Formula $E_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $E_{1}\subseteq\Omega$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{equation}
+\muB_{\rho}\left(\varphi\left(E_{0}\right)\right)+\muB_{\rho}\left(\varphi\left(E_{1}\right)\right)\overset{\textrm{IH}}{=}\mu\left(E_{0}\right)+\mu\left(E_{1}\right)=\mu\left(E_{0}+E_{1}\right)\,.
+\end{equation}
+
+\end_inset
+
+Finally, since 
+\begin_inset Formula $\mu\in\mathrm{core}\left(\varphi^{*}\bar{\mu}\right)$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\begin{equation}
+\muB_{\rho}\left(\varphi\left(E\right)\right)=\mu\left(E\right)\in\left(\varphi^{*}\bar{\mu}\right)\left(E\right)=\bar{\mu}\left(\varphi\left(E\right)\right)\,.
+\end{equation}
+
+\end_inset
+
+Together with the fact that the image of 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ contains 
+\begin_inset Formula $\eventsC$
+\end_inset
+
+, we have 
+\begin_inset Formula $\muB_{\rho}\left(P\right)\in\bar{\mu}\left(P\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $P\in\eventsC$
+\end_inset
+
+, i.e., 
+\begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},\eventsC\right)$
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+Proof of Part
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:quantum-to-classical-core"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+However, for the special case of commuting events, a QIVPM will always have
+ a non-empty core
 \end_layout
 
 \begin_layout Standard
@@ -21866,38 +22247,7 @@ noprefix "false"
 
 \end_inset
 
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
-for all 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-
-\begin_inset Formula $E\subseteq\Omega$
-\end_inset
-
-.
- If we can construct a density matrix
+If we can construct a density matrix
 \begin_inset space ~
 \end_inset
 
@@ -21905,39 +22255,7 @@ for all
 \begin_inset Formula $\rho$
 \end_inset
 
- such that 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula 
-\begin{equation}
-\muB_{\rho}\left(\varphi\left(E\right)\right)=\pmeas\left(E\right)\label{eq:density-matrix-pullback}
-\end{equation}
-
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-for all 
+ such that for all 
 \begin_inset Formula $E\subseteq\Omega$
 \end_inset
 
@@ -21990,145 +22308,7 @@ reference "eq:density-matrix-pullback"
 \end_inset
 
 ).
- Consider 
-\begin_inset Formula $\rho=\sum_{j=0}^{D-1}\pmeas\left(\left\{ \ket{j}\right\} \right)\proj{j}$
-\end_inset
-
- which is a density matrix because
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "544199"
-literal "true"
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{equation}
-\Tr\left(\rho\right)=\sum_{j=0}^{D-1}\pmeas\left(\left\{ \ket{j}\right\} \right)\Tr\left(\proj{j}\right)=1\,.
-\end{equation}
-
-\end_inset
-
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-Then, the inductive proof of 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-Eq.
-\begin_inset space ~
-\end_inset
-
-(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:density-matrix-pullback"
-
-\end_inset
-
-)
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- can proceed by verifying the validity of the base case
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-:
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
- for all 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-
-\begin_inset Formula $i$
-\end_inset
-
-,
-\begin_inset Formula 
-\begin{equation}
-\muB_{\rho}\left(\proj{i}\right)=\sum_{j=0}^{D-1}\pmeas\left(\left\{ \ket{j}\right\} \right)\muB_{\ket{j}}\left(\proj{i}\right)=\pmeas\left(\left\{ \ket{i}\right\} \right)\,,
-\end{equation}
-
-\end_inset
-
-combined with the following verification of the induction case: for all
  
-\begin_inset Formula $E_{0}$
-\end_inset
-
- and 
-\begin_inset Formula $E_{1}\subseteq\Omega$
-\end_inset
-
-,
-\begin_inset Formula 
-\begin{equation}
-\muB_{\rho}\left(\varphi\left(E_{0}\right)\right)+\muB_{\rho}\left(\varphi\left(E_{1}\right)\right)\overset{\textrm{IH}}{=}\pmeas\left(E_{0}\right)+\pmeas\left(E_{1}\right)=\pmeas\left(E_{0}+E_{1}\right)\,.
-\end{equation}
-
-\end_inset
-
-
 \begin_inset ERT
 status collapsed
 
