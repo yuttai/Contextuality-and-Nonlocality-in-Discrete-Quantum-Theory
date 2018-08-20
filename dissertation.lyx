@@ -3229,10 +3229,10 @@ literal "true"
 \end_inset
 
 , and 
-\begin_inset Formula $\mu\left(E_{0}+E_{1}\right)=\mu\left(E_{0}\right)+\mu\left(E_{1}\right)$
+\begin_inset Formula $\mu\left(E_{0}\cup E_{1}\right)=\mu\left(E_{0}\right)+\mu\left(E_{1}\right)$
 \end_inset
 
- for each pair of events 
+ for each pair of disjoint events 
 \begin_inset Formula $E_{0}\subseteq\Omega$
 \end_inset
 
@@ -3505,10 +3505,6 @@ noprefix "false"
 \end_inset
 
  defined as 
-\begin_inset Formula $\muB_{\rho}\left(P\right)=\Tr\left(\rho P\right)=\sum_{j=1}^{N}q_{j}\muB_{\Phi_{j}}\left(P\right)$
-\end_inset
-
- 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Born1983,Mermin2007,Jaeger2007"
@@ -3517,7 +3513,15 @@ literal "true"
 
 \end_inset
 
-.
+
+\begin_inset Formula 
+\begin{equation}
+\muB_{\rho}\left(P\right)=\Tr\left(\rho P\right)=\sum_{j=1}^{N}q_{j}\muB_{\Phi_{j}}\left(P\right)\,.\label{eq:mixed-Born}
+\end{equation}
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard
@@ -21106,6 +21110,12 @@ noprefix "false"
 \begin_inset Formula $\left(\varphi^{*}\mu\right)\left(E\right)=\mu\left(\varphi\left(E\right)\right)$
 \end_inset
 
+, and is a classical 
+\family roman
+\size normal
+probability measure
+\family default
+\size default
  as well.
 \end_layout
 
@@ -21636,7 +21646,7 @@ reference "eq:upsilon"
 \begin_inset Formula $\mathrm{core}\left(\varphi^{*}\bar{\mu}\right)$
 \end_inset
 
- have the following relations.
+ have the following relations:
 \end_layout
 
 \begin_layout Enumerate
@@ -21899,7 +21909,7 @@ reference "eq:density-matrix-pullback"
 \end_inset
 
 .
- The base case
+
 \family default
 \series default
 \shape default
@@ -21911,7 +21921,50 @@ reference "eq:density-matrix-pullback"
 \uwave default
 \noun default
 \color inherit
- is valid because
+ By the generalized Born rule, Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mixed-Born"
+
+\end_inset
+
+), we have 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+the base case
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\begin{equation}
+\muB_{\rho}\left(\varphi\left(\left\{ \ket{i}\right\} \right)\right)=\sum_{j=0}^{D-1}\mu\left(\left\{ \ket{j}\right\} \right)\muB_{\ket{j}}\left(\proj{i}\right)=\mu\left(\left\{ \ket{i}\right\} \right)
+\end{equation}
+
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -21924,7 +21977,7 @@ reference "eq:density-matrix-pullback"
 \uwave off
 \noun off
 \color none
- for all 
+for all 
 \family default
 \series default
 \shape default
@@ -21941,15 +21994,16 @@ reference "eq:density-matrix-pullback"
 \begin_inset Formula $i$
 \end_inset
 
-,
+.
+ The induction case is also valid because
 \begin_inset Formula 
 \begin{equation}
-\muB_{\rho}\left(\proj{i}\right)=\sum_{j=0}^{D-1}\mu\left(\left\{ \ket{j}\right\} \right)\muB_{\ket{j}}\left(\proj{i}\right)=\mu\left(\left\{ \ket{i}\right\} \right)\,.
+\muB_{\rho}\left(\varphi\left(E_{0}\right)\right)+\muB_{\rho}\left(\varphi\left(E_{1}\right)\right)\overset{\textrm{IH}}{=}\mu\left(E_{0}\right)+\mu\left(E_{1}\right)=\mu\left(E_{0}\cup E_{1}\right)
 \end{equation}
 
 \end_inset
 
-The induction case is valid because for all 
+for all disjoint events 
 \begin_inset Formula $E_{0}$
 \end_inset
 
@@ -21957,15 +22011,8 @@ The induction case is valid because for all
 \begin_inset Formula $E_{1}\subseteq\Omega$
 \end_inset
 
-,
-\begin_inset Formula 
-\begin{equation}
-\muB_{\rho}\left(\varphi\left(E_{0}\right)\right)+\muB_{\rho}\left(\varphi\left(E_{1}\right)\right)\overset{\textrm{IH}}{=}\mu\left(E_{0}\right)+\mu\left(E_{1}\right)=\mu\left(E_{0}+E_{1}\right)\,.
-\end{equation}
-
-\end_inset
-
-Finally, since 
+.
+ Finally, since 
 \begin_inset Formula $\mu\in\mathrm{core}\left(\varphi^{*}\bar{\mu}\right)$
 \end_inset
 
