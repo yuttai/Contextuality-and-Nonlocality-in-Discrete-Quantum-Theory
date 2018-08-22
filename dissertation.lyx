@@ -21647,7 +21647,14 @@ begin{lemma}
 
 \end_inset
 
-Given a QIVPM 
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lemma:density-matrix-pullback"
+
+\end_inset
+
+Consider a QIVPM 
 \begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
 \end_inset
 
@@ -21674,7 +21681,8 @@ reference "eq:upsilon"
 
 \end_inset
 
-), for any classical probability measure
+).
+ For any classical probability measure
 \begin_inset space ~
 \end_inset
 
@@ -21682,8 +21690,8 @@ reference "eq:upsilon"
 \begin_inset Formula $\mu$
 \end_inset
 
- consistent with 
-\begin_inset Formula $\varphi^{*}\bar{\mu}$
+ consistent with the pullback of 
+\begin_inset Formula $\bar{\mu}$
 \end_inset
 
 , i.e., 
@@ -21710,8 +21718,8 @@ reference "eq:upsilon"
 \begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},\eventsC\right)$
 \end_inset
 
- such that 
-\begin_inset Formula $\varphi^{*}\muB_{\rho}$
+ such that the pullback of 
+\begin_inset Formula $\muB_{\rho}$
 \end_inset
 
  is 
@@ -21819,7 +21827,11 @@ Consider
 \begin_inset Formula $\rho=\sum_{j=0}^{D-1}\mu\left(\left\{ \ket{j}\right\} \right)\proj{j}$
 \end_inset
 
- which is a density matrix because
+ which is a density matrix because 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is a positive operator and has trace equal to one
 \begin_inset space ~
 \end_inset
 
@@ -21831,7 +21843,7 @@ literal "true"
 
 \end_inset
 
-
+:
 \begin_inset Formula 
 \begin{equation}
 \Tr\left(\rho\right)=\sum_{j=0}^{D-1}\mu\left(\left\{ \ket{j}\right\} \right)\Tr\left(\proj{j}\right)=1\,.
@@ -21977,20 +21989,40 @@ for all
 \end_inset
 
 .
- The induction case is also valid because
+ The 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+inductive
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ case is also valid because
 \begin_inset Formula 
 \begin{equation}
-\muB_{\rho}\left(\varphi\left(E_{0}\right)\right)+\muB_{\rho}\left(\varphi\left(E_{1}\right)\right)\overset{\textrm{IH}}{=}\mu\left(E_{0}\right)+\mu\left(E_{1}\right)=\mu\left(E_{0}\cup E_{1}\right)
+\muB_{\rho}\left(\varphi\left(E\cup\left\{ \ket{i}\right\} \right)\right)=\muB_{\rho}\left(\varphi\left(E\right)\right)+\muB_{\rho}\left(\varphi\left(\left\{ \ket{i}\right\} \right)\right)\overset{\textrm{IH}}{=}\mu\left(E\right)+\mu\left(\left\{ \ket{i}\right\} \right)=\mu\left(E\cup\left\{ \ket{i}\right\} \right)
 \end{equation}
 
 \end_inset
 
-for all disjoint events 
-\begin_inset Formula $E_{0}$
-\end_inset
-
- and 
-\begin_inset Formula $E_{1}\subseteq\Omega$
+for all 
+\begin_inset Formula $i\notin E$
 \end_inset
 
 .
@@ -22043,7 +22075,21 @@ end{proof}
 \end_layout
 
 \begin_layout Standard
-a QIVPM will always have a non-empty core
+Then, the quantum version of Thm.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:Shapley-classical"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is a natural consequence of the previous lemma.
 \end_layout
 
 \begin_layout Standard
@@ -22239,76 +22285,26 @@ noprefix "false"
 \begin_inset Formula $\varphi^{*}\bar{\mu}$
 \end_inset
 
-, and thus
-\begin_inset Formula 
-\begin{equation}
-\pmeas\left(E\right)\in\left(\varphi^{*}\bar{\mu}\right)\left(E\right)=\bar{\mu}\left(\varphi\left(E\right)\right)\label{eq:consistent-classical-quantum}
-\end{equation}
-
-\end_inset
-
-If we can construct a density matrix
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\rho$
-\end_inset
-
- such that for all 
-\begin_inset Formula $E\subseteq\Omega$
-\end_inset
-
-, we have 
-\begin_inset Formula $\muB_{\rho}\left(\varphi\left(E\right)\right)\in\bar{\mu}\left(\varphi\left(E\right)\right)$
-\end_inset
-
-.
- Together with the fact that the image of 
-\begin_inset Formula $\varphi$
-\end_inset
-
- contains 
-\begin_inset Formula $\eventsC$
-\end_inset
-
-, we have 
-\begin_inset Formula $\muB_{\rho}\left(P\right)\in\bar{\mu}\left(P\right)$
-\end_inset
-
- for all 
-\begin_inset Formula $P\in\eventsC$
-\end_inset
-
-, i.e., 
+, and thus there must be a density matrix 
 \begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},\eventsC\right)$
 \end_inset
 
-, and the theorem is proven.
-\end_layout
+ satisfying 
+\begin_inset Formula $\varphi^{*}\muB_{\rho}=\pmeas$
+\end_inset
 
-\begin_layout Standard
-Now we want to find a density matrix
+ according to Lemma
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Formula $\rho$
-\end_inset
-
- satisfying Eq.
-\begin_inset space ~
-\end_inset
-
-(
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:density-matrix-pullback"
+reference "lemma:density-matrix-pullback"
 
 \end_inset
 
-).
- 
+.
 \begin_inset ERT
 status collapsed
 
