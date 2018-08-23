@@ -22700,7 +22700,7 @@ For our convenience to define the Choquet integral later, we order these
  as follow: 
 \begin_inset Formula 
 \begin{equation}
-X=\sum_{i=1}^{N^{-}}x_{i}^{-}\mathbf{1}_{E_{i}^{-}}+\sum_{i=1}^{N^{+}}x_{i}^{+}\mathbf{1}_{E_{i}^{+}}\,,\label{eq:classical-decomposition}
+X=\sum_{i=1}^{N^{-}}x_{i}^{-}\mathbf{1}_{E_{i}^{-}}+\sum_{i=1}^{N^{+}}x_{i}^{+}\mathbf{1}_{E_{i}^{+}}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\mathbf{1}_{E_{i}^{s}}\,,\label{eq:classical-decomposition}
 \end{equation}
 
 \end_inset
@@ -22721,24 +22721,44 @@ where
 \end_layout
 
 \begin_layout Itemize
-Consider a classical IVPM
-\begin_inset space ~
+Given a classical probability measure 
+\begin_inset Formula $\pmeas:2^{\Omega}\rightarrow\left[0,1\right]$
 \end_inset
 
-
-\begin_inset Formula $\bar{\mu}$
+, the expectation value of 
+\begin_inset Formula $X$
 \end_inset
 
- such that 
-\begin_inset Formula $\mul:\events\rightarrow\left[0,1\right]$
+ is 
+\begin_inset Formula 
+\begin{eqnarray}
+\int X\rmd\pmeas & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\pmeas\left(E_{j}^{s}\right)\,,\label{eq:expectation}
+\end{eqnarray}
+
+\end_inset
+
+which is a weighted average of the measure of the disjoint sets 
+\begin_inset Formula $\left\{ E_{i}^{-}\right\} _{i=1}^{N^{-}}$
 \end_inset
 
  and 
-\begin_inset Formula $\mur:\events\rightarrow\left[0,1\right]$
+\begin_inset Formula $\left\{ E_{i}^{+}\right\} _{i=1}^{N^{+}}$
 \end_inset
 
- are the left-end and the right-end of 
-\begin_inset Formula $\bar{\mu}$
+.
+\end_layout
+
+\begin_layout Itemize
+Consider a classical IVPM 
+\begin_inset Formula $\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}$
+\end_inset
+
+ with its left-end and right-end denoted by 
+\begin_inset Formula $\mul:2^{\Omega}\rightarrow\left[0,1\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\mur:2^{\Omega}\rightarrow\left[0,1\right]$
 \end_inset
 
 , respectively, i.e., 
@@ -22746,30 +22766,45 @@ Consider a classical IVPM
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Itemize
-Let 
-\begin_inset Formula $E_{i}^{s\prime}=\bigcup_{j\ge i}E_{j}^{s}$
+ Let 
+\begin_inset Formula $s$
 \end_inset
 
- and 
-\begin_inset Formula $\Delta\mu^{*}\left(E_{i}^{s\prime}\right)=\mu^{*}\left(E_{i}^{s\prime}\right)-\mu^{*}\left(E_{i+1}^{s\prime}\right)$
+ be either 
+\begin_inset Formula $+$
+\end_inset
+
+ or 
+\begin_inset Formula $-$
+\end_inset
+
+ in the superscript in the following discussion.
+ We denote 
+\begin_inset Formula $E_{i\uparrow}^{s}$
+\end_inset
+
+ as the accumulative sets on the sub-index 
+\begin_inset Formula $i$
+\end_inset
+
+, i.e., 
+\begin_inset Formula $E_{i\uparrow}^{s}=\bigcup_{j\ge i}E_{j}^{s}$
+\end_inset
+
+, and 
+\begin_inset Formula $\Delta\mu^{*}\left(E_{i\uparrow}^{s}\right)$
+\end_inset
+
+ as the difference of the measure of these accumulative sets, i.e., 
+\begin_inset Formula $\Delta\mu^{*}\left(E_{i\uparrow}^{s}\right)=\mu^{*}\left(E_{i\uparrow}^{s}\right)-\mu^{*}\left(E_{\left(i+1\right)\uparrow}^{s}\right)$
 \end_inset
 
 , where 
-\begin_inset Formula $s\in\left\{ +,-\right\} $
-\end_inset
-
- and 
 \begin_inset Formula $\mu^{*}\in\left\{ \mul,\mur\right\} $
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Then, the Choquet integral of 
+ Then, the Choquet integral of 
 \begin_inset Formula $X$
 \end_inset
 
@@ -22778,17 +22813,18 @@ Then, the Choquet integral of
 \end_inset
 
  is
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\int X\rmd\bar{\mu}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\mul\left(E_{i}^{s\prime}\right),\Delta\mur\left(E_{i}^{s\prime}\right)\right]\,.\label{eq:interval-expectation}
+\int X\rmd\bar{\mu}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\mul\left(E_{i\uparrow}^{s}\right),\Delta\mur\left(E_{i\uparrow}^{s}\right)\right]\,,\label{eq:interval-expectation}
 \end{equation}
 
 \end_inset
 
+which is another weighted average of the difference of the measure of these
+ accumulative sets.
+\end_layout
 
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -22814,7 +22850,7 @@ todo{
 
 \end_inset
 
-Simplify this part of the definition?
+Simplify this definition while keep parallel to the quantum one?
 \begin_inset ERT
 status collapsed
 
@@ -22856,27 +22892,15 @@ literal "true"
 
 \end_inset
 
-For every classical IVPM
-\begin_inset space ~
-\end_inset
-
-
+For every classical IVPM 
 \begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
 \end_inset
 
- and any random variable
-\begin_inset space ~
-\end_inset
-
-
+ and any random variable 
 \begin_inset Formula $X:\Omega\rightarrow\mathbb{R}$
 \end_inset
 
-, 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- is convex if and only if
+, we have
 \begin_inset Formula 
 \begin{equation}
 \int X\rmd\bar{\mu}=\left[\min_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu,\max_{\mu\in\mathrm{core}\left(\bar{\mu}\right)}\int X\rmd\mu\right]\,.\label{eq:Rosenmuller}
