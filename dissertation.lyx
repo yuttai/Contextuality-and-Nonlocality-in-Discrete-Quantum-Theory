@@ -21212,7 +21212,7 @@ true
 \begin_inset Quotes erd
 \end_inset
 
- probability, 
+ probabilities, 
 \begin_inset Formula $\mu\left(E\right)$
 \end_inset
 
@@ -21248,7 +21248,7 @@ true
  satisfying 
 \begin_inset Formula 
 \begin{align}
-\mu\left(E\right) & \in\left[0.2,0.3\right]=\bar{\mu}\left(E\right)\,, & \mu\left(\overline{E}\right) & \in\left[0.2,0.3\right]=\bar{\mu}\left(\overline{E}\right)\,.
+\mu\left(E\right) & \in\left[0.2,0.3\right]=\bar{\mu}\left(E\right)\,, & \mu\left(\overline{E}\right) & \in\left[0.7,0.8\right]=\bar{\mu}\left(\overline{E}\right)\,.
 \end{align}
 
 \end_inset
@@ -21271,7 +21271,7 @@ true
 
  probability of each event is belong to the interval probability of the
  corresponding event.
- This gives the following definition of core.
+ This conclusion gives the following definition of core.
 \begin_inset Note Note
 status open
 
@@ -21437,8 +21437,11 @@ end{definition}
 
 \begin_layout Standard
 One fundamental question of these imprecise interval-valued probabilities
- is whether there is always a underlying precise probabilities for every
- imprecise IVPM.
+ is whether they 
+\emph on
+always
+\emph default
+ have a underlying precise probabilities.
  The following theorem gives the positive answer.
 \end_layout
 
@@ -21503,19 +21506,14 @@ Although it is
 \emph on
 impossible
 \emph default
- in the classical world for experiments to result in probabilities that
- are inconsistent with 
-\emph on
-every
-\emph default
- state of the system under consideration, it is possible in the quantum
- world for the probabilities associated with some events to be inconsistent
- with 
+ in the classical world to have an empty core, it is possible in the quantum
+ world for the imprecise probabilities associated with some events to be
+ inconsistent with 
 \emph on
 any
 \emph default
- quantum state.
- That is, a QIVPM might have an empty core as we will show in Sec.
+ quantum state, i.e., a QIVPM might have an empty core as we will show in
+ Sec.
 \begin_inset space ~
 \end_inset
 
@@ -22731,9 +22729,7 @@ end{definition}
 \end_layout
 
 \begin_layout Standard
-Let's start from how to sensibly define the classical expectation value
- relative to IVPMs.
- Similar to Secs.
+Similar to pulling backing classical idea to the quantum world in Secs.
 \begin_inset space ~
 \end_inset
 
@@ -22751,7 +22747,8 @@ reference "subsec:States-Consistent-with-IVPMs"
 
 \end_inset
 
-, we start from a classical IVPM 
+, we start from defining the classical expectation value relative to IVPMs.
+ Given a classical IVPM 
 \begin_inset Formula $\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}$
 \end_inset
 
@@ -22760,14 +22757,14 @@ reference "subsec:States-Consistent-with-IVPMs"
 \end_inset
 
  such that 
-\begin_inset Formula $\bar{\mu}\left(E\right)=\left[0.2,0.3\right]$
+\begin_inset Formula 
+\begin{align}
+\bar{\mu}\left(E\right) & =\left[0.2,0.3\right]\,, & \bar{\mu}\left(\overline{E}\right) & =\left[0.7,0.8\right]\,,\label{eq:IVPM_example}
+\end{align}
+
 \end_inset
 
- and 
-\begin_inset Formula $\bar{\mu}\left(\overline{E}\right)=\left[0.7,0.8\right]$
-\end_inset
-
-, but this time we also consider a random variable 
+and consider a random variable 
 \begin_inset Formula $X:\Omega\rightarrow\mathbb{R}$
 \end_inset
 
@@ -22777,7 +22774,7 @@ reference "subsec:States-Consistent-with-IVPMs"
 X\left(\omega\right)=\begin{cases}
 1 & \textrm{if }\omega\in E\,;\\
 2 & \textrm{if }\omega\notin E\,.
-\end{cases}
+\end{cases}\label{eq:random_variable_example}
 \end{equation}
 
 \end_inset
@@ -22851,7 +22848,7 @@ In another word, as long as
 \begin_inset Formula $X$
 \end_inset
 
- is in 
+ belongs to 
 \begin_inset Formula $\left[1.7,1.8\right]$
 \end_inset
 
@@ -22879,7 +22876,15 @@ Although defining the expectation value as the minimum and maximum bounds
 
  is intuitive, the core of a general IVPM is hard to be described and computed.
  Fortunately, the above description is equivalent to the well-known Choquet
- integral, which can be computed step-by-step as a weighted average as follow.
+ integral 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016"
+literal "true"
+
+\end_inset
+
+, which can be computed step-by-step as a weighted average.
 \end_layout
 
 \begin_layout Standard
@@ -22896,18 +22901,6 @@ begin{definition}[
 \end_inset
 
 Classical Expectation Values
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Vitali1925,Choquet1954,GilboaSchmeidler1994,Grabisch2016"
-literal "true"
-
-\end_inset
-
-
 \begin_inset ERT
 status collapsed
 
@@ -22976,10 +22969,6 @@ X=\sum_{i=1}^{N^{-}}x_{i}^{-}\mathbf{1}_{E_{i}^{-}}+\sum_{i=1}^{N^{+}}x_{i}^{+}\
 \end_inset
 
 where 
-\begin_inset Formula $x_{N^{-}}^{-}<\ldots<x_{1}^{-}<0\le x_{1}^{+}<\ldots<x_{N^{+}}^{+}$
-\end_inset
-
- and 
 \begin_inset Formula $\left\{ E_{i}^{-}\right\} _{i=1}^{N^{-}}$
 \end_inset
 
@@ -22987,7 +22976,11 @@ where
 \begin_inset Formula $\left\{ E_{i}^{+}\right\} _{i=1}^{N^{+}}$
 \end_inset
 
- are all disjoint.
+ are all disjoint and 
+\begin_inset Formula $x_{N^{-}}^{-}<\ldots<x_{1}^{-}<0\le x_{1}^{+}<\ldots<x_{N^{+}}^{+}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -22999,7 +22992,11 @@ Given a classical probability measure
 \begin_inset Formula $X$
 \end_inset
 
- is 
+ with respect to 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is
 \begin_inset Formula 
 \begin{eqnarray}
 \int X\rmd\pmeas & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\pmeas\left(E_{j}^{s}\right)\,,\label{eq:expectation}
@@ -23152,7 +23149,23 @@ name "table:Choquet"
 
 \end_inset
 
+This table demonstrates how to compute the Choquet integral 
+\begin_inset Formula $\int X\rmd\bar{\mu}$
+\end_inset
 
+ according to Def.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Choquet"
+
+\end_inset
+
+.
+ In this case, 
 \begin_inset Formula $\int X\rmd\bar{\mu}=\left[1\cdot0.3+2\cdot0.7,1\cdot0.2+2\cdot0.8\right]=\left[1.7,1.8\right]\,.$
 \end_inset
 
@@ -23562,18 +23575,7 @@ name "table:Choquet"
 
 \end_inset
 
-Table
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "table:Choquet"
-
-\end_inset
-
- follows Def.
+To demonstrate how the Choquet integral in Def.
 \begin_inset space ~
 \end_inset
 
@@ -23584,15 +23586,90 @@ reference "def:Choquet"
 
 \end_inset
 
- to compute the Choquet integral 
+ consistent with our previous intuition, we are going to compute 
 \begin_inset Formula $\int X\rmd\bar{\mu}$
 \end_inset
 
- which gives the same interval 
+ which should give the same expectation interval 
 \begin_inset Formula $\left[1.7,1.8\right]$
 \end_inset
 
- as the intuitively computed expectation value.
+ for the same 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ and 
+\begin_inset Formula $X$
+\end_inset
+
+ defined in Eqs.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:IVPM_example"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:random_variable_example"
+
+\end_inset
+
+).
+ First 
+\begin_inset Formula $X$
+\end_inset
+
+ can be represented as the sum 
+\begin_inset Formula $1\cdot\mathbf{1}_{E}+2\cdot\mathbf{1}_{\overline{E}}$
+\end_inset
+
+ so that we don't have the negative part and 
+\begin_inset Formula $N^{-}=0$
+\end_inset
+
+.
+ For the positive part, we have 
+\begin_inset Formula $N^{+}=2$
+\end_inset
+
+, 
+\begin_inset Formula $x_{1}^{+}=1$
+\end_inset
+
+, 
+\begin_inset Formula $E_{1}^{+}=E$
+\end_inset
+
+, 
+\begin_inset Formula $x_{2}^{+}=2$
+\end_inset
+
+, and 
+\begin_inset Formula $E_{2}^{+}=\overline{E}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+to build Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:Choquet"
+
+\end_inset
+
+.
  This is generally true according to the following theorem.
 \end_layout
 
