@@ -23029,16 +23029,16 @@ Consider a classical IVPM
 \begin_inset Formula $\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}$
 \end_inset
 
- .
+.
  The expectation value of 
 \begin_inset Formula $X$
 \end_inset
 
  relative to 
-\begin_inset Formula $\mu$
+\begin_inset Formula $\bar{\mu}$
 \end_inset
 
- is still an weighted average of
+ still looks like an weighted average of
 \begin_inset space ~
 \end_inset
 
@@ -23046,12 +23046,29 @@ Consider a classical IVPM
 \begin_inset Formula $x_{i}^{s}$
 \end_inset
 
-, where the weights should be computed by first separating the left-end
- and right-end of 
-\begin_inset Formula $\bar{\mu}$
+, but this time the 
+\begin_inset Quotes eld
 \end_inset
 
-.
+weights
+\begin_inset Quotes erd
+\end_inset
+
+ are not just the measures of their step functions 
+\begin_inset Formula $\pmeas\left(E_{i}^{s}\right)$
+\end_inset
+
+, instead they are the difference of the measures of the accumulative sets.
+ Since 
+\begin_inset Formula $\bar{\mu}\left(E\right)$
+\end_inset
+
+ is an interval, we compute these differences of the left-end and right-end
+ of 
+\begin_inset Formula $\bar{\mu}\left(E\right)$
+\end_inset
+
+ separately.
  Let 
 \begin_inset Formula $\bar{\mu}\left(E\right)=\left[\mul\left(E\right),\mur\left(E\right)\right]$
 \end_inset
@@ -23081,7 +23098,7 @@ Consider a classical IVPM
 \begin_inset Formula $-$
 \end_inset
 
- in the superscript in the following discussion.
+ in the superscript in the following definition.
  We denote 
 \begin_inset Formula $E_{i\uparrow}^{s}$
 \end_inset
@@ -23123,8 +23140,15 @@ Consider a classical IVPM
 
 \end_inset
 
-which is another weighted average of the difference of the measure of these
- accumulative sets.
+which looks like another 
+\begin_inset Quotes eld
+\end_inset
+
+weighted
+\begin_inset Quotes erd
+\end_inset
+
+ average of the difference of the measure of these accumulative sets.
 \end_layout
 
 \begin_layout Standard
@@ -23185,7 +23209,7 @@ name "table:Choquet"
 
 \end_inset
 
-This table demonstrates how to compute the Choquet integral 
+This table lists the immediate values to compute the Choquet integral 
 \begin_inset Formula $\int X\rmd\bar{\mu}$
 \end_inset
 
@@ -23201,11 +23225,6 @@ reference "def:Choquet"
 \end_inset
 
 .
- In this case, 
-\begin_inset Formula $\int X\rmd\bar{\mu}=\left[1\cdot0.3+2\cdot0.7,1\cdot0.2+2\cdot0.8\right]=\left[1.7,1.8\right]\,.$
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -23263,7 +23282,7 @@ reference "def:Choquet"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $E_{i}^{+\prime}$
+\begin_inset Formula $E_{i\uparrow}^{+}$
 \end_inset
 
 
@@ -23275,7 +23294,7 @@ reference "def:Choquet"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mul\left(E_{i}^{+\prime}\right)$
+\begin_inset Formula $\mul\left(E_{i\uparrow}^{+}\right)$
 \end_inset
 
 
@@ -23287,7 +23306,7 @@ reference "def:Choquet"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\Delta\mul\left(E_{i}^{+\prime}\right)$
+\begin_inset Formula $\Delta\mul\left(E_{i\uparrow}^{+}\right)$
 \end_inset
 
 
@@ -23299,7 +23318,7 @@ reference "def:Choquet"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mur\left(E_{i}^{+\prime}\right)$
+\begin_inset Formula $\mur\left(E_{i\uparrow}^{+}\right)$
 \end_inset
 
 
@@ -23311,7 +23330,7 @@ reference "def:Choquet"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\Delta\mur\left(E_{i}^{+\prime}\right)$
+\begin_inset Formula $\Delta\mur\left(E_{i\uparrow}^{+}\right)$
 \end_inset
 
 
@@ -23657,20 +23676,24 @@ reference "eq:random_variable_example"
 \end_inset
 
 ).
- First 
+ To compute 
+\begin_inset Formula $\int X\rmd\bar{\mu}$
+\end_inset
+
+, we first represent 
 \begin_inset Formula $X$
 \end_inset
 
- can be represented as the sum 
+ as the sum 
 \begin_inset Formula $1\cdot\mathbf{1}_{E}+2\cdot\mathbf{1}_{\overline{E}}$
 \end_inset
 
 .
- Since the coefficients are all positive, 
+ Since the coefficients are all positive, we have 
 \begin_inset Formula $N^{-}=0$
 \end_inset
 
-; 
+, 
 \begin_inset Formula $N^{+}=2$
 \end_inset
 
@@ -23690,11 +23713,7 @@ reference "eq:random_variable_example"
 \begin_inset Formula $E_{2}^{+}=\overline{E}$
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Standard
-to build Table
+ as listed in Table
 \begin_inset space ~
 \end_inset
 
@@ -23706,7 +23725,35 @@ reference "table:Choquet"
 \end_inset
 
 .
- This is generally true according to the following theorem.
+ This table then step-by-step computes the accumulative sets
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $E_{i\uparrow}^{+}$
+\end_inset
+
+, their measure 
+\begin_inset Formula $\mu^{*}\left(E_{i\uparrow}^{+}\right)$
+\end_inset
+
+, and their difference 
+\begin_inset Formula $\Delta\mu^{*}\left(E_{i\uparrow}^{s}\right)$
+\end_inset
+
+.
+ Then, the Choquet integral should be 
+\begin_inset Formula 
+\begin{align}
+\int X\rmd\bar{\mu} & =x_{1}^{+}\left[\Delta\mul\left(E_{1\uparrow}^{+}\right),\Delta\mur\left(E_{1\uparrow}^{+}\right)\right]+x_{2}^{+}\left[\Delta\mul\left(E_{2\uparrow}^{+}\right),\Delta\mur\left(E_{2\uparrow}^{+}\right)\right]\\
+ & =1\cdot\left[0.3,0.2\right]+2\cdot\left[0.7,0.8\right]=\left[1.7,1.8\right]\,.\nonumber 
+\end{align}
+
+\end_inset
+
+In general, the Choquet integral is always equal to the minimum and maximum
+ of expectation values relative to a probability measure in the core according
+ to the following theorem.
 \end_layout
 
 \begin_layout Standard
