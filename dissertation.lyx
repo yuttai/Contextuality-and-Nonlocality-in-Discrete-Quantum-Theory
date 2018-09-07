@@ -22934,7 +22934,7 @@ Consider a classical sample space
 \begin_inset Formula $X$
 \end_inset
 
- can always be decomposed into step functions
+ can always be decomposed into the sum of step functions
 \begin_inset space ~
 \end_inset
 
@@ -22962,7 +22962,7 @@ For our convenience to define the Choquet integral later, we order these
  as follow: 
 \begin_inset Formula 
 \begin{equation}
-X=\sum_{i=1}^{N^{-}}x_{i}^{-}\mathbf{1}_{E_{i}^{-}}+\sum_{i=1}^{N^{+}}x_{i}^{+}\mathbf{1}_{E_{i}^{+}}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\mathbf{1}_{E_{i}^{s}}\,,\label{eq:classical-decomposition}
+X=x_{N^{-}}^{-}\mathbf{1}_{E_{N^{-}}^{-}}+\cdots+x_{1}^{-}\mathbf{1}_{E_{1}^{-}}+x_{1}^{+}\mathbf{1}_{E_{1}^{+}}+\cdots+x_{N^{+}}^{+}\mathbf{1}_{E_{N^{+}}^{+}}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\mathbf{1}_{E_{i}^{s}}\,,\label{eq:classical-decomposition}
 \end{equation}
 
 \end_inset
@@ -23058,39 +23058,17 @@ weights
 \begin_inset Formula $\pmeas\left(E_{i}^{s}\right)$
 \end_inset
 
-, instead they are the difference of the measures of the accumulative sets.
- Since 
-\begin_inset Formula $\bar{\mu}\left(E\right)$
-\end_inset
-
- is an interval, we compute these differences of the left-end and right-end
- of 
-\begin_inset Formula $\bar{\mu}\left(E\right)$
-\end_inset
-
- separately.
- Let 
-\begin_inset Formula $\bar{\mu}\left(E\right)=\left[\mul\left(E\right),\mur\left(E\right)\right]$
+.
+ Instead, they are the difference of the measures of the accumulative sets,
+ 
+\begin_inset Formula $\Delta\mu^{*}\left(E_{i\uparrow}^{s}\right)$
 \end_inset
 
 , where 
-\begin_inset Formula $\mul:2^{\Omega}\rightarrow\left[0,1\right]$
-\end_inset
-
- and 
-\begin_inset Formula $\mur:2^{\Omega}\rightarrow\left[0,1\right]$
-\end_inset
-
- are both-ends of 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
-.
- Consider 
 \begin_inset Formula $s$
 \end_inset
 
- be either 
+ is either 
 \begin_inset Formula $+$
 \end_inset
 
@@ -23098,29 +23076,48 @@ weights
 \begin_inset Formula $-$
 \end_inset
 
- in the superscript in the following definition.
- We denote 
+; 
 \begin_inset Formula $E_{i\uparrow}^{s}$
 \end_inset
 
- as the accumulative sets on the sub-index 
-\begin_inset Formula $i$
+ is the union of 
+\begin_inset Formula $E_{j}^{s}$
+\end_inset
+
+ with 
+\begin_inset Formula $j\ge i$
+\end_inset
+
+, 
+\begin_inset Formula $\bigcup_{j\ge i}E_{j}^{s}$
+\end_inset
+
+; 
+\begin_inset Formula $\mu^{*}\left(E_{i\uparrow}^{s}\right)$
+\end_inset
+
+ is either the left-end 
+\begin_inset Formula $\mul\left(E_{i\uparrow}^{s}\right)$
+\end_inset
+
+ or right-end 
+\begin_inset Formula $\mur\left(E_{i\uparrow}^{s}\right)$
+\end_inset
+
+ of 
+\begin_inset Formula $\bar{\mu}\left(E_{i\uparrow}^{s}\right)$
 \end_inset
 
 , i.e., 
-\begin_inset Formula $E_{i\uparrow}^{s}=\bigcup_{j\ge i}E_{j}^{s}$
+\begin_inset Formula $\bar{\mu}\left(E_{i\uparrow}^{s}\right)=\left[\mul\left(E_{i\uparrow}^{s}\right),\mur\left(E_{i\uparrow}^{s}\right)\right]$
 \end_inset
 
-, and 
+; and 
 \begin_inset Formula $\Delta\mu^{*}\left(E_{i\uparrow}^{s}\right)$
 \end_inset
 
- as the difference of the measure of these accumulative sets, i.e., 
+ is the difference of the measure of these accumulative sets, i.e., 
 \begin_inset Formula $\Delta\mu^{*}\left(E_{i\uparrow}^{s}\right)=\mu^{*}\left(E_{i\uparrow}^{s}\right)-\mu^{*}\left(E_{\left(i+1\right)\uparrow}^{s}\right)$
-\end_inset
-
-, where 
-\begin_inset Formula $\mu^{*}\in\left\{ \mul,\mur\right\} $
 \end_inset
 
 .
@@ -23742,12 +23739,24 @@ reference "table:Choquet"
 \end_inset
 
 .
- Then, the Choquet integral should be 
+ According to Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:interval-expectation"
+
+\end_inset
+
+), the Choquet integral should then be 
 \begin_inset Formula 
-\begin{align}
-\int X\rmd\bar{\mu} & =x_{1}^{+}\left[\Delta\mul\left(E_{1\uparrow}^{+}\right),\Delta\mur\left(E_{1\uparrow}^{+}\right)\right]+x_{2}^{+}\left[\Delta\mul\left(E_{2\uparrow}^{+}\right),\Delta\mur\left(E_{2\uparrow}^{+}\right)\right]\\
- & =1\cdot\left[0.3,0.2\right]+2\cdot\left[0.7,0.8\right]=\left[1.7,1.8\right]\,.\nonumber 
-\end{align}
+\begin{equation}
+\begin{aligned}\int X\rmd\bar{\mu} & =x_{1}^{+}\left[\Delta\mul\left(E_{1\uparrow}^{+}\right),\Delta\mur\left(E_{1\uparrow}^{+}\right)\right]+x_{2}^{+}\left[\Delta\mul\left(E_{2\uparrow}^{+}\right),\Delta\mur\left(E_{2\uparrow}^{+}\right)\right]\\
+ & =1\cdot\left[0.3,0.2\right]+2\cdot\left[0.7,0.8\right]=\left[1.7,1.8\right]\,.
+\end{aligned}
+\end{equation}
 
 \end_inset
 
@@ -23817,9 +23826,9 @@ end{thm}
 \end_layout
 
 \begin_layout Standard
-After we defined the expectation values of random variables with respect
- to classical IVPMs, we can parallelly define the expectation values of
- observables with respect to QIVPMs as follow.
+After we defined the expectation values of random variables relative to
+ classical IVPMs, we can parallelly define the expectation values of observables
+ relative to QIVPMs as follow.
 \end_layout
 
 \begin_layout Standard
@@ -23835,7 +23844,7 @@ begin{definition}[
 
 \end_inset
 
-Expectation Values with respect to QIVPMs
+Expectation Values relative to QIVPMs
 \begin_inset ERT
 status collapsed
 
