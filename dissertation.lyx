@@ -23077,19 +23077,15 @@ weights
 \end_inset
 
 ; 
-\begin_inset Formula $E_{i\uparrow}^{s}$
+\begin_inset Formula $E_{i\uparrow}^{s}=\bigcup_{j\ge i}E_{j}^{s}$
 \end_inset
 
- is the union of 
+ is just the union of 
 \begin_inset Formula $E_{j}^{s}$
 \end_inset
 
  with 
 \begin_inset Formula $j\ge i$
-\end_inset
-
-, 
-\begin_inset Formula $\bigcup_{j\ge i}E_{j}^{s}$
 \end_inset
 
 ; 
@@ -23722,7 +23718,7 @@ reference "table:Choquet"
 \end_inset
 
 .
- This table then step-by-step computes the accumulative sets
+ Step-by-step we compute the accumulative sets
 \begin_inset space ~
 \end_inset
 
@@ -23739,7 +23735,7 @@ reference "table:Choquet"
 \end_inset
 
 .
- According to Eq.
+ These values can then be plugged into Eq.
 \begin_inset space ~
 \end_inset
 
@@ -23750,7 +23746,7 @@ reference "eq:interval-expectation"
 
 \end_inset
 
-), the Choquet integral should then be 
+) giving the Choquet integral 
 \begin_inset Formula 
 \begin{equation}
 \begin{aligned}\int X\rmd\bar{\mu} & =x_{1}^{+}\left[\Delta\mul\left(E_{1\uparrow}^{+}\right),\Delta\mur\left(E_{1\uparrow}^{+}\right)\right]+x_{2}^{+}\left[\Delta\mul\left(E_{2\uparrow}^{+}\right),\Delta\mur\left(E_{2\uparrow}^{+}\right)\right]\\
@@ -23762,7 +23758,15 @@ reference "eq:interval-expectation"
 
 In general, the Choquet integral is always equal to the minimum and maximum
  of expectation values relative to a probability measure in the core according
- to the following theorem.
+ to the following theorem 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016"
+literal "true"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -23785,16 +23789,8 @@ name "thm:Rosenmuller"
 
 \end_inset
 
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016"
-literal "true"
-
-\end_inset
-
 For every classical IVPM 
-\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
+\begin_inset Formula $\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}$
 \end_inset
 
  and any random variable 
@@ -23863,7 +23859,7 @@ name "def:expectation-values-QIVPM"
 \end_inset
 
 Since we want to define the expectation value of observables with respect
- to QIVPMs parallel to the classical definition
+ to QIVPMs parallel to classical definition
 \begin_inset space ~
 \end_inset
 
@@ -23891,7 +23887,7 @@ reference "def:Choquet"
  and consider the spectral decomposition as follow.
 \begin_inset Formula 
 \begin{equation}
-\mathbf{O}=\sum_{i=1}^{N^{-}}\lambda_{i}^{-}P_{i}^{-}+\sum_{i=1}^{N^{+}}\lambda_{i}^{+}P_{i}^{+}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}P_{i}^{s}\,,\label{eq:spectrum-decomposition-distinct}
+\mathbf{O}=\lambda_{N^{-}}^{-}P_{N^{-}}^{-}+\cdots+\lambda_{1}^{-}P_{1}^{-}+\lambda_{1}^{+}P_{1}^{+}+\cdots+\lambda_{N^{+}}^{+}P_{N^{+}}^{+}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}P_{i}^{s}\,,\label{eq:spectrum-decomposition-distinct}
 \end{equation}
 
 \end_inset
@@ -23903,11 +23899,11 @@ where
 
 \family roman
 \size normal
- and 
+ and each 
 \begin_inset Formula $P_{i}^{s}$
 \end_inset
 
- is the projector onto the eigenspace of each distinct eigenvalue
+ is the projector onto the eigenspace of distinct eigenvalue
 \begin_inset space ~
 \end_inset
 
@@ -23916,23 +23912,23 @@ where
 \end_inset
 
 .
-\end_layout
 
-\begin_layout Itemize
-Consider a classical IVPM 
-\begin_inset Formula $\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}$
+\family default
+\size default
+ Consider a QIVPM 
+\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
 \end_inset
 
  with its left-end and right-end denoted by 
-\begin_inset Formula $\mul:2^{\Omega}\rightarrow\left[0,1\right]$
+\begin_inset Formula $\mul:\events\rightarrow\left[0,1\right]$
 \end_inset
 
  and 
-\begin_inset Formula $\mur:2^{\Omega}\rightarrow\left[0,1\right]$
+\begin_inset Formula $\mur:\events\rightarrow\left[0,1\right]$
 \end_inset
 
 , respectively, i.e., 
-\begin_inset Formula $\bar{\mu}\left(E\right)=\left[\mul\left(E\right),\mur\left(E\right)\right]$
+\begin_inset Formula $\bar{\mu}\left(P\right)=\left[\mul\left(P\right),\mur\left(P\right)\right]$
 \end_inset
 
 .
@@ -23950,23 +23946,24 @@ Consider a classical IVPM
 
  in the superscript in the following discussion.
  We denote 
-\begin_inset Formula $E_{i\uparrow}^{s}$
+\begin_inset Formula $P_{i\uparrow}^{s}$
 \end_inset
 
- as the accumulative sets on the sub-index 
+ as the accumulative projectors on the sub-index 
 \begin_inset Formula $i$
 \end_inset
 
 , i.e., 
-\begin_inset Formula $E_{i\uparrow}^{s}=\bigcup_{j\ge i}E_{j}^{s}$
+\begin_inset Formula $P_{i\uparrow}^{s}=\sum_{j\ge i}P_{j}^{s}$
 \end_inset
 
 , and 
-\begin_inset Formula $\Delta\mu^{*}\left(E_{i\uparrow}^{s}\right)$
+\begin_inset Formula $\Delta\mu^{*}\left(P_{i\uparrow}^{s}\right)$
 \end_inset
 
- as the difference of the measure of these accumulative sets, i.e., 
-\begin_inset Formula $\Delta\mu^{*}\left(E_{i\uparrow}^{s}\right)=\mu^{*}\left(E_{i\uparrow}^{s}\right)-\mu^{*}\left(E_{\left(i+1\right)\uparrow}^{s}\right)$
+ as the difference of the measure of these accumulative projectors, i.e.,
+ 
+\begin_inset Formula $\Delta\mu^{*}\left(P_{i\uparrow}^{s}\right)=\mu^{*}\left(P_{i\uparrow}^{s}\right)-\mu^{*}\left(P_{\left(i+1\right)\uparrow}^{s}\right)$
 \end_inset
 
 , where 
@@ -23974,27 +23971,24 @@ Consider a classical IVPM
 \end_inset
 
 .
- Then, the Choquet integral of 
-\begin_inset Formula $X$
+ Then, the expectation values of 
+\begin_inset Formula $\mathbf{O}$
 \end_inset
 
- with respect to 
+ relative to 
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
  is
 \begin_inset Formula 
 \begin{equation}
-\int X\rmd\bar{\mu}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\mul\left(E_{i\uparrow}^{s}\right),\Delta\mur\left(E_{i\uparrow}^{s}\right)\right]\,,\label{eq:interval-expectation-1}
+\expval{\mathbf{O}}_{\mu}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i\uparrow}^{s}\right),\Delta\mur\left(P_{i\uparrow}^{s}\right)\right]\,,\label{eq:interval-expectation-quantum}
 \end{equation}
 
 \end_inset
 
-which is another weighted average of the difference of the measure of these
- accumulative sets.
-\end_layout
-
-\begin_layout Standard
+which looks like a weighted average of the difference of the measure of
+ these accumulative projectors.
 \begin_inset ERT
 status collapsed
 
@@ -24008,6 +24002,10 @@ end{definition}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+——————————————–
 \end_layout
 
 \begin_layout Standard
