@@ -23015,9 +23015,9 @@ Given a classical probability measure
 
 , i.e., 
 \begin_inset Formula 
-\begin{eqnarray}
-\int X\rmd\pmeas & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\pmeas\left(E_{i}^{s}\right)\,.\label{eq:expectation}
-\end{eqnarray}
+\begin{equation}
+\int X\rmd\pmeas=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\pmeas\left(E_{i}^{s}\right)\,.\label{eq:expectation}
+\end{equation}
 
 \end_inset
 
@@ -23046,6 +23046,18 @@ Consider a classical IVPM
 \begin_inset Formula $x_{i}^{s}$
 \end_inset
 
+, where 
+\begin_inset Formula $s$
+\end_inset
+
+ is either 
+\begin_inset Formula $+$
+\end_inset
+
+ or 
+\begin_inset Formula $-$
+\end_inset
+
 , but this time the 
 \begin_inset Quotes eld
 \end_inset
@@ -23059,36 +23071,20 @@ weights
 \end_inset
 
 .
- Instead, they are the difference of the measures of the accumulative sets,
- 
-\begin_inset Formula $\Delta\mu^{*}\left(E_{i\uparrow}^{s}\right)$
-\end_inset
-
-, where 
-\begin_inset Formula $s$
-\end_inset
-
- is either 
-\begin_inset Formula $+$
-\end_inset
-
- or 
-\begin_inset Formula $-$
-\end_inset
-
-; 
+ Instead, we compute the accumulative sets 
 \begin_inset Formula $E_{i\uparrow}^{s}=\bigcup_{j\ge i}E_{j}^{s}$
 \end_inset
 
- is just the union of 
-\begin_inset Formula $E_{j}^{s}$
+, compute their interval-valued probabilities 
+\begin_inset Formula $\bar{\mu}\left(E_{i\uparrow}^{s}\right)$
 \end_inset
 
- with 
-\begin_inset Formula $j\ge i$
+, and compute the differences of these probabilities on the both-end of
+ the intervals respectively, i.e., 
+\begin_inset Formula $\Delta\mu^{*}\left(E_{i\uparrow}^{s}\right)=\mu^{*}\left(E_{i\uparrow}^{s}\right)-\mu^{*}\left(E_{\left(i+1\right)\uparrow}^{s}\right)$
 \end_inset
 
-; 
+, where 
 \begin_inset Formula $\mu^{*}\left(E_{i\uparrow}^{s}\right)$
 \end_inset
 
@@ -23100,20 +23096,8 @@ weights
 \begin_inset Formula $\mur\left(E_{i\uparrow}^{s}\right)$
 \end_inset
 
- of 
-\begin_inset Formula $\bar{\mu}\left(E_{i\uparrow}^{s}\right)$
-\end_inset
-
-, i.e., 
+ and 
 \begin_inset Formula $\bar{\mu}\left(E_{i\uparrow}^{s}\right)=\left[\mul\left(E_{i\uparrow}^{s}\right),\mur\left(E_{i\uparrow}^{s}\right)\right]$
-\end_inset
-
-; and 
-\begin_inset Formula $\Delta\mu^{*}\left(E_{i\uparrow}^{s}\right)$
-\end_inset
-
- is the difference of the measure of these accumulative sets, i.e., 
-\begin_inset Formula $\Delta\mu^{*}\left(E_{i\uparrow}^{s}\right)=\mu^{*}\left(E_{i\uparrow}^{s}\right)-\mu^{*}\left(E_{\left(i+1\right)\uparrow}^{s}\right)$
 \end_inset
 
 .
@@ -23158,26 +23142,90 @@ end{definition}
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-todo{
 \end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ is just a real-valued probability measure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\pmeas$
+\end_inset
+
+, i.e., 
+\begin_inset Formula $\bar{\mu}\left(E\right)=\left[\pmeas\left(E\right),\pmeas\left(E\right)\right]$
+\end_inset
+
+ for all 
+\begin_inset Formula $E$
+\end_inset
+
+.
+ Since the 
+\begin_inset Quotes eld
+\end_inset
+
+weights
+\begin_inset Quotes erd
+\end_inset
+
+ in Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:interval-expectation"
 
 \end_inset
 
-Simplify this definition while keep parallel to the quantum one?
-\begin_inset ERT
-status collapsed
+) are the difference on the probability of the accumulative sets, they have
+ the same magnitude as ones in Eq.
+\begin_inset space ~
+\end_inset
 
-\begin_layout Plain Layout
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:expectation"
 
-}
-\end_layout
+\end_inset
+
+), and the right-hand side of Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:interval-expectation"
+
+\end_inset
+
+) can be easily simplified as Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:expectation"
+
+\end_inset
+
+) as follow.
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\int X\rmd\bar{\mu} & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\pmeas\left(E_{i\uparrow}^{s}\right),\Delta\pmeas\left(E_{i\uparrow}^{s}\right)\right]\\
+ & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\pmeas\left(E_{i\uparrow}^{s}\right),\Delta\pmeas\left(E_{i\uparrow}^{s}\right)\right]
+\end{aligned}
+\end{equation}
 
 \end_inset
 
@@ -23185,6 +23233,102 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+To demonstrate how the Choquet integral in Def.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Choquet"
+
+\end_inset
+
+ consistent with our previous intuition, we are going to compute 
+\begin_inset Formula $\int X\rmd\bar{\mu}$
+\end_inset
+
+ which should give the same expectation interval 
+\begin_inset Formula $\left[1.7,1.8\right]$
+\end_inset
+
+ for 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ and 
+\begin_inset Formula $X$
+\end_inset
+
+ defined in Eqs.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:IVPM_example"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:random_variable_example"
+
+\end_inset
+
+).
+ To compute 
+\begin_inset Formula $\int X\rmd\bar{\mu}$
+\end_inset
+
+, we first represent 
+\begin_inset Formula $X$
+\end_inset
+
+ as the sum 
+\begin_inset Formula $1\cdot\mathbf{1}_{E}+2\cdot\mathbf{1}_{\overline{E}}$
+\end_inset
+
+.
+ Since the coefficients are all positive, we have 
+\begin_inset Formula $N^{-}=0$
+\end_inset
+
+, 
+\begin_inset Formula $N^{+}=2$
+\end_inset
+
+, 
+\begin_inset Formula $x_{1}^{+}=1$
+\end_inset
+
+, 
+\begin_inset Formula $E_{1}^{+}=E$
+\end_inset
+
+, 
+\begin_inset Formula $x_{2}^{+}=2$
+\end_inset
+
+, and 
+\begin_inset Formula $E_{2}^{+}=\overline{E}$
+\end_inset
+
+ as listed in Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:Choquet"
+
+\end_inset
+
+.
+ 
 \begin_inset Float table
 wide false
 sideways false
@@ -23623,102 +23767,7 @@ reference "def:Choquet"
 
 \end_inset
 
-To demonstrate how the Choquet integral in Def.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Choquet"
-
-\end_inset
-
- consistent with our previous intuition, we are going to compute 
-\begin_inset Formula $\int X\rmd\bar{\mu}$
-\end_inset
-
- which should give the same expectation interval 
-\begin_inset Formula $\left[1.7,1.8\right]$
-\end_inset
-
- for the same 
-\begin_inset Formula $\bar{\mu}$
-\end_inset
-
- and 
-\begin_inset Formula $X$
-\end_inset
-
- defined in Eqs.
-\begin_inset space ~
-\end_inset
-
-(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:IVPM_example"
-
-\end_inset
-
-) and (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:random_variable_example"
-
-\end_inset
-
-).
- To compute 
-\begin_inset Formula $\int X\rmd\bar{\mu}$
-\end_inset
-
-, we first represent 
-\begin_inset Formula $X$
-\end_inset
-
- as the sum 
-\begin_inset Formula $1\cdot\mathbf{1}_{E}+2\cdot\mathbf{1}_{\overline{E}}$
-\end_inset
-
-.
- Since the coefficients are all positive, we have 
-\begin_inset Formula $N^{-}=0$
-\end_inset
-
-, 
-\begin_inset Formula $N^{+}=2$
-\end_inset
-
-, 
-\begin_inset Formula $x_{1}^{+}=1$
-\end_inset
-
-, 
-\begin_inset Formula $E_{1}^{+}=E$
-\end_inset
-
-, 
-\begin_inset Formula $x_{2}^{+}=2$
-\end_inset
-
-, and 
-\begin_inset Formula $E_{2}^{+}=\overline{E}$
-\end_inset
-
- as listed in Table
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "table:Choquet"
-
-\end_inset
-
-.
- Step-by-step we compute the accumulative sets
+Step-by-step we compute the accumulative sets
 \begin_inset space ~
 \end_inset
 
@@ -23726,11 +23775,11 @@ reference "table:Choquet"
 \begin_inset Formula $E_{i\uparrow}^{+}$
 \end_inset
 
-, their measure 
+, their measures 
 \begin_inset Formula $\mu^{*}\left(E_{i\uparrow}^{+}\right)$
 \end_inset
 
-, and their difference 
+, and their differences 
 \begin_inset Formula $\Delta\mu^{*}\left(E_{i\uparrow}^{s}\right)$
 \end_inset
 
@@ -23757,7 +23806,7 @@ reference "eq:interval-expectation"
 \end_inset
 
 In general, the Choquet integral is always equal to the minimum and maximum
- of expectation values relative to a probability measure in the core according
+ of expectation values relative to probability measures in the core according
  to the following theorem 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -23884,7 +23933,7 @@ reference "def:Choquet"
 
 \family default
 \size default
- and consider the spectral decomposition as follow.
+ in the spectral decomposition as follow.
 \begin_inset Formula 
 \begin{equation}
 \mathbf{O}=\lambda_{N^{-}}^{-}P_{N^{-}}^{-}+\cdots+\lambda_{1}^{-}P_{1}^{-}+\lambda_{1}^{+}P_{1}^{+}+\cdots+\lambda_{N^{+}}^{+}P_{N^{+}}^{+}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}P_{i}^{s}\,,\label{eq:spectrum-decomposition-distinct}
@@ -23982,7 +24031,7 @@ where
  is
 \begin_inset Formula 
 \begin{equation}
-\expval{\mathbf{O}}_{\mu}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i\uparrow}^{s}\right),\Delta\mur\left(P_{i\uparrow}^{s}\right)\right]\,,\label{eq:interval-expectation-quantum}
+\expval{\mathbf{O}}_{\bar{\mu}}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}\left[\Delta\mul\left(P_{i\uparrow}^{s}\right),\Delta\mur\left(P_{i\uparrow}^{s}\right)\right]\,,\label{eq:interval-expectation-quantum}
 \end{equation}
 
 \end_inset
@@ -23997,6 +24046,67 @@ status collapsed
 
 \backslash
 end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The immediately consequence of the parallel definitions.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lemma}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lemma:expectation-singleton"
+
+\end_inset
+
+Given a Hilbert space of 
+\begin_inset Formula $d\ge3$
+\end_inset
+
+, when 
+\begin_inset Formula $\mul:\events\rightarrow\left[0,1\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\mur:\events\rightarrow\left[0,1\right]$
+\end_inset
+
+ are real-valued probability measures, we have 
+\begin_inset Formula $\mul=\mur=\mu$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula $\expval{\mathbf{O}}_{\bar{\mu}}=\left\{ \expval{\mathbf{O}}_{\mu}\right\} $
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lemma}
 \end_layout
 
 \end_inset
