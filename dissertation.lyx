@@ -23009,7 +23009,7 @@ Given a classical probability measure
 \begin_inset Formula $x_{i}^{s}$
 \end_inset
 
- with the weight being the measures of their step functions 
+ with the weight being the measure of their step functions 
 \begin_inset Formula $\pmeas\left(E_{i}^{s}\right)$
 \end_inset
 
@@ -23071,16 +23071,24 @@ weights
 \end_inset
 
 .
- Instead, we compute the accumulative sets 
+ Instead, by computing the accumulative sets 
 \begin_inset Formula $E_{i\uparrow}^{s}=\bigcup_{j\ge i}E_{j}^{s}$
 \end_inset
 
-, compute their interval-valued probabilities 
+ and their interval-valued probabilities 
 \begin_inset Formula $\bar{\mu}\left(E_{i\uparrow}^{s}\right)$
 \end_inset
 
-, and compute the differences of these probabilities on the both-end of
- the intervals respectively, i.e., 
+, the 
+\begin_inset Quotes eld
+\end_inset
+
+weights
+\begin_inset Quotes erd
+\end_inset
+
+ are the differences of these probabilities on the both-end of the intervals
+ respectively, i.e., 
 \begin_inset Formula $\Delta\mu^{*}\left(E_{i\uparrow}^{s}\right)=\mu^{*}\left(E_{i\uparrow}^{s}\right)-\mu^{*}\left(E_{\left(i+1\right)\uparrow}^{s}\right)$
 \end_inset
 
@@ -23096,7 +23104,11 @@ weights
 \begin_inset Formula $\mur\left(E_{i\uparrow}^{s}\right)$
 \end_inset
 
- and 
+ of 
+\begin_inset Formula $\bar{\mu}\left(E_{i\uparrow}^{s}\right)$
+\end_inset
+
+, that is, 
 \begin_inset Formula $\bar{\mu}\left(E_{i\uparrow}^{s}\right)=\left[\mul\left(E_{i\uparrow}^{s}\right),\mur\left(E_{i\uparrow}^{s}\right)\right]$
 \end_inset
 
@@ -23109,23 +23121,27 @@ weights
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
- is
+ is averaging 
+\begin_inset Formula $x_{i}^{s}$
+\end_inset
+
+ with the given 
+\begin_inset Quotes eld
+\end_inset
+
+weights,
+\begin_inset Quotes erd
+\end_inset
+
+
 \begin_inset Formula 
 \begin{equation}
-\int X\rmd\bar{\mu}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\mul\left(E_{i\uparrow}^{s}\right),\Delta\mur\left(E_{i\uparrow}^{s}\right)\right]\,,\label{eq:interval-expectation}
+\int X\rmd\bar{\mu}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\mul\left(E_{i\uparrow}^{s}\right),\Delta\mur\left(E_{i\uparrow}^{s}\right)\right]\,.\label{eq:interval-expectation}
 \end{equation}
 
 \end_inset
 
-which looks like another 
-\begin_inset Quotes eld
-\end_inset
 
-weighted
-\begin_inset Quotes erd
-\end_inset
-
- average of the difference of the measure of these accumulative sets.
 \end_layout
 
 \begin_layout Standard
@@ -23208,7 +23224,7 @@ reference "eq:interval-expectation"
 
 \end_inset
 
-) can be easily simplified as Eq.
+) can be easily simplified to Eq.
 \begin_inset space ~
 \end_inset
 
@@ -23221,11 +23237,13 @@ reference "eq:expectation"
 
 ) as follow.
 \begin_inset Formula 
-\begin{equation}
-\begin{aligned}\int X\rmd\bar{\mu} & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\pmeas\left(E_{i\uparrow}^{s}\right),\Delta\pmeas\left(E_{i\uparrow}^{s}\right)\right]\\
- & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\pmeas\left(E_{i\uparrow}^{s}\right),\Delta\pmeas\left(E_{i\uparrow}^{s}\right)\right]
-\end{aligned}
-\end{equation}
+\begin{align*}
+\int X\rmd\bar{\mu} & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\pmeas\left(E_{i\uparrow}^{s}\right),\Delta\pmeas\left(E_{i\uparrow}^{s}\right)\right]\\
+ & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\mu\left(E_{i\uparrow}^{s}\right)-\mu\left(E_{\left(i+1\right)\uparrow}^{s}\right),\mu\left(E_{i\uparrow}^{s}\right)-\mu\left(E_{\left(i+1\right)\uparrow}^{s}\right)\right]\\
+ & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\mu\left(\bigcup_{j\ge i}E_{j}^{s}\right)-\mu\left(\bigcup_{j\ge i+1}E_{j}^{s}\right),\mu\left(\bigcup_{j\ge i}E_{j}^{s}\right)-\mu\left(\bigcup_{j\ge i+1}E_{j}^{s}\right)\right]\\
+ & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\sum_{j\ge i}\mu\left(E_{j}^{s}\right)-\sum_{j\ge i+1}\mu\left(E_{j}^{s}\right),\sum_{j\ge i}\mu\left(E_{j}^{s}\right)-\sum_{j\ge i+1}\mu\left(E_{j}^{s}\right)\right]\\
+ & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\mu\left(E_{i}^{s}\right),\mu\left(E_{i}^{s}\right)\right]=\left[\int X\rmd\mu,\int X\rmd\mu\right]
+\end{align*}
 
 \end_inset
 
@@ -23233,26 +23251,30 @@ reference "eq:expectation"
 \end_layout
 
 \begin_layout Standard
-To demonstrate how the Choquet integral in Def.
+The Choquet integral defined in Eq.
 \begin_inset space ~
 \end_inset
 
-
+(
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "def:Choquet"
+reference "eq:interval-expectation"
 
 \end_inset
 
- consistent with our previous intuition, we are going to compute 
-\begin_inset Formula $\int X\rmd\bar{\mu}$
+) is consistent with not only Eq.
+\begin_inset space ~
 \end_inset
 
- which should give the same expectation interval 
-\begin_inset Formula $\left[1.7,1.8\right]$
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:expectation"
+
 \end_inset
 
- for 
+) but also our previous intuition.
+ For example, if 
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
@@ -23278,12 +23300,20 @@ reference "eq:random_variable_example"
 
 \end_inset
 
-).
- To compute 
+) have an intuitive expectation interval 
+\begin_inset Formula $\left[1.7,1.8\right]$
+\end_inset
+
+, their Choquet integral 
 \begin_inset Formula $\int X\rmd\bar{\mu}$
 \end_inset
 
-, we first represent 
+ should give the same interval 
+\begin_inset Formula $\left[1.7,1.8\right]$
+\end_inset
+
+.
+ To verify our idea, we first represent 
 \begin_inset Formula $X$
 \end_inset
 
@@ -23907,8 +23937,8 @@ name "def:expectation-values-QIVPM"
 
 \end_inset
 
-Since we want to define the expectation value of observables with respect
- to QIVPMs parallel to classical definition
+Since we want to define the expectation value of observables relative to
+ QIVPMs parallel to classical definition
 \begin_inset space ~
 \end_inset
 
@@ -23933,7 +23963,7 @@ reference "def:Choquet"
 
 \family default
 \size default
- in the spectral decomposition as follow.
+ in the spectral decomposition from the smallest to the largest as well
 \begin_inset Formula 
 \begin{equation}
 \mathbf{O}=\lambda_{N^{-}}^{-}P_{N^{-}}^{-}+\cdots+\lambda_{1}^{-}P_{1}^{-}+\lambda_{1}^{+}P_{1}^{+}+\cdots+\lambda_{N^{+}}^{+}P_{N^{+}}^{+}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}P_{i}^{s}\,,\label{eq:spectrum-decomposition-distinct}
