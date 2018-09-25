@@ -21828,31 +21828,6 @@ end{lemma}
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-todo{
-\end_layout
-
-\end_inset
-
-How to provide the other side of the lemma so that this lemma is strong
- enough to support the theorem of quantum expectation value?
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -25068,11 +25043,29 @@ Consider an observable
 \begin_inset Formula $\mathbf{O}$
 \end_inset
 
- 
+ and a QIVPM 
 \family default
 \size default
-expressed in a spectral decomposition specialized to compute the expectation
- values relative to a QIVPM, 
+
+\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Express 
+\family roman
+\size normal
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+
+\family default
+\size default
+ in a spectral decomposition specialized to compute the expectation values
+ relative to a QIVPM, 
 \begin_inset Formula $\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}P_{i}^{s}$
 \end_inset
 
@@ -25099,11 +25092,11 @@ expressed in a spectral decomposition specialized to compute the expectation
 
 \family default
 \size default
- Let 
-\begin_inset Formula $\eventsC$
+ Given a commuting subspace of events 
+\begin_inset Formula $\events_{\mathbf{O}}$
 \end_inset
 
- be a commuting subspace of events containing all projectors 
+ containing all projectors 
 \begin_inset Formula $P_{i}^{s}$
 \end_inset
 
@@ -25126,26 +25119,18 @@ reference "eq:pullback-function"
 
 \end_inset
 
-).
- Given 
-\family roman
-\size normal
-a QIVPM 
-\family default
-\size default
-
-\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
-\end_inset
-
-, we have
+), we have
 \begin_inset Formula 
 \begin{equation}
-\expval{\mathbf{O}}_{\bar{\mu}}\subseteq\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\eventsC\right)}\expval{\mathbf{O}}_{\muB_{\rho}},\max_{\rho\in\coreBorn\left(\bar{\mu},\eventsC\right)}\expval{\mathbf{O}}_{\muB_{\rho}}\right]\,.\label{eq:quantum-interval-expectation-core}
+\expval{\mathbf{O}}_{\bar{\mu}}\subseteq\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events_{\mathbf{O}}\right)}\expval{\mathbf{O}}_{\muB_{\rho}},\max_{\rho\in\coreBorn\left(\bar{\mu},\events_{\mathbf{O}}\right)}\expval{\mathbf{O}}_{\muB_{\rho}}\right]\,.\label{eq:quantum-interval-expectation-core}
 \end{equation}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
 \begin_inset ERT
 status collapsed
 
@@ -25158,7 +25143,7 @@ todo{
 
 \end_inset
 
-Is the other side of the inclusion hold or find a counter example?
+Can we prove the this part of the theorem easily? Can we improve it further?
 \begin_inset ERT
 status collapsed
 
@@ -25170,6 +25155,54 @@ status collapsed
 \end_inset
 
 
+\family roman
+\size normal
+If 
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+ can be 
+\family default
+\size default
+diagonalized by an orthonormal basis 
+\begin_inset Formula $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+\end_inset
+
+ with 
+\begin_inset Formula $\varphi:2^{\Omega}\rightarrow\events$
+\end_inset
+
+ defined by Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pullback-function"
+
+\end_inset
+
+), and 
+\begin_inset Formula $\events_{\Omega}$
+\end_inset
+
+ be a commuting subspace of events containing 
+\begin_inset Formula $\left\{ \proj{0},\proj{1},\ldots,\proj{D-1}\right\} $
+\end_inset
+
+, we have
+\begin_inset Formula 
+\begin{equation}
+\expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events_{\Omega}\right)}\expval{\mathbf{O}}_{\muB_{\rho}},\max_{\rho\in\coreBorn\left(\bar{\mu},\events_{\Omega}\right)}\expval{\mathbf{O}}_{\muB_{\rho}}\right]\,.\label{eq:quantum-interval-expectation-core-equal}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -25257,6 +25290,33 @@ reference "thm:Rosenmuller"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Paragraph*
+Proof
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:quantum-interval-expectation-core"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
 According to Lemma
 \begin_inset space ~
 \end_inset
@@ -25273,7 +25333,7 @@ reference "lemma:density-matrix-pullback"
 \end_inset
 
 , there is a density matrix 
-\begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},\eventsC\right)$
+\begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},\events_{\mathbf{O}}\right)$
 \end_inset
 
  such that 
@@ -25284,8 +25344,8 @@ reference "lemma:density-matrix-pullback"
  Therefore, 
 \begin_inset Formula 
 \begin{eqnarray}
- &  & \min_{\mu\in\mathrm{core}\left(\varphi^{*}\bar{\mu}\right)}\int\left(\varphi^{*}\mathbf{O}\right)\rmd\mu\ge\min_{\rho\in\coreBorn\left(\bar{\mu},\eventsC\right)}\int\left(\varphi^{*}\mathbf{O}\right)\rmd\left(\varphi^{*}\muB_{\rho}\right)=\min_{\rho\in\coreBorn\left(\bar{\mu},\eventsC\right)}\expval{\mathbf{O}}_{\muB_{\rho}}\,,\\
- &  & \max_{\mu\in\mathrm{core}\left(\varphi^{*}\bar{\mu}\right)}\int\left(\varphi^{*}\mathbf{O}\right)\rmd\mu\le\max_{\rho\in\coreBorn\left(\bar{\mu},\eventsC\right)}\int\left(\varphi^{*}\mathbf{O}\right)\rmd\left(\varphi^{*}\muB_{\rho}\right)=\max_{\rho\in\coreBorn\left(\bar{\mu},\eventsC\right)}\expval{\mathbf{O}}_{\muB_{\rho}}\,,
+ &  & \min_{\mu\in\mathrm{core}\left(\varphi^{*}\bar{\mu}\right)}\int\left(\varphi^{*}\mathbf{O}\right)\rmd\mu\ge\min_{\rho\in\coreBorn\left(\bar{\mu},\events_{\mathbf{O}}\right)}\int\left(\varphi^{*}\mathbf{O}\right)\rmd\left(\varphi^{*}\muB_{\rho}\right)=\min_{\rho\in\coreBorn\left(\bar{\mu},\events_{\mathbf{O}}\right)}\expval{\mathbf{O}}_{\muB_{\rho}}\,,\\
+ &  & \max_{\mu\in\mathrm{core}\left(\varphi^{*}\bar{\mu}\right)}\int\left(\varphi^{*}\mathbf{O}\right)\rmd\mu\le\max_{\rho\in\coreBorn\left(\bar{\mu},\events_{\mathbf{O}}\right)}\int\left(\varphi^{*}\mathbf{O}\right)\rmd\left(\varphi^{*}\muB_{\rho}\right)=\max_{\rho\in\coreBorn\left(\bar{\mu},\events_{\mathbf{O}}\right)}\expval{\mathbf{O}}_{\muB_{\rho}}\,,
 \end{eqnarray}
 
 \end_inset
@@ -25302,6 +25362,142 @@ reference "eq:quantum-interval-expectation-core"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Paragraph*
+Proof
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:quantum-interval-expectation-core-equal"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+Clean up until here...
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Express 
+\family roman
+\size normal
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+
+\family default
+\size default
+ in a spectral decomposition specialized to compute the expectation values
+ relative to a QIVPM, 
+\begin_inset Formula $\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}P_{i}^{s}$
+\end_inset
+
+, where 
+\begin_inset Formula $\lambda_{N^{-}}^{-}<\cdots<\lambda_{1}^{-}<0\le\lambda_{1}^{+}<\cdots<\lambda_{N^{+}}^{+}$
+\end_inset
+
+
+\family roman
+\size normal
+ and each 
+\begin_inset Formula $P_{i}^{s}$
+\end_inset
+
+ is the projector onto the eigenspace of distinct eigenvalue
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\lambda_{i}^{s}$
+\end_inset
+
+.
+
+\family default
+\size default
+ Since 
+\family roman
+\size normal
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+ 
+\family default
+\size default
+can be diagonalized by 
+\begin_inset Formula $\Omega$
+\end_inset
+
+, 
+\begin_inset Formula $\events_{\Omega}$
+\end_inset
+
+ contains all projectors 
+\begin_inset Formula $P_{i}^{s}$
+\end_inset
+
+ which implies
+\begin_inset Formula 
+\begin{equation}
+\expval{\mathbf{O}}_{\bar{\mu}}\subseteq\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events_{\Omega}\right)}\expval{\mathbf{O}}_{\muB_{\rho}},\max_{\rho\in\coreBorn\left(\bar{\mu},\events_{\Omega}\right)}\expval{\mathbf{O}}_{\muB_{\rho}}\right]
+\end{equation}
+
+\end_inset
+
+by Thm.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:quantum-Rosenmuller"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
