@@ -25125,15 +25125,11 @@ Express
 
 \family roman
 \size normal
-If
+Let 
 \family default
 \size default
- 
-\begin_inset Formula $\events_{\Omega}$
-\end_inset
 
- be the commuting subspace of events containing 
-\begin_inset Formula $\left\{ \proj{0},\proj{1},\ldots,\proj{D-1}\right\} $
+\begin_inset Formula $\events_{\Omega}=\set{\varphi\left(E\right)}{E\subseteq\Omega}$
 \end_inset
 
 , we have
@@ -25145,6 +25141,9 @@ If
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -25157,38 +25156,29 @@ todo{
 
 \end_inset
 
-Can we prove Eq.
+Can we find a example that Eq.
 \begin_inset space ~
 \end_inset
 
 (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:quantum-interval-expectation-core-equal"
+reference "eq:quantum-interval-expectation-core"
 
 \end_inset
 
-) easily? Notice that Eq.
+) be a proper inclusion? Or prove the two sides in Eq.
 \begin_inset space ~
 \end_inset
 
 (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:quantum-interval-expectation-core-equal"
+reference "eq:quantum-interval-expectation-core"
 
 \end_inset
 
-) depends on the orthonormal basis 
-\begin_inset Formula $\Omega$
-\end_inset
-
-.
- Can we have a formula without 
-\begin_inset Formula $\Omega$
-\end_inset
-
-?
+) are actually equal?
 \begin_inset ERT
 status collapsed
 
@@ -25200,9 +25190,6 @@ status collapsed
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -25481,30 +25468,65 @@ reference "eq:quantum-interval-expectation-core-supseteq"
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
+Given a density matrix 
+\begin_inset Formula $\rho\in\coreBorn\left(\bar{\mu},\events_{\Omega}\right)$
+\end_inset
 
-\begin_layout Plain Layout
+, it must satisfy 
+\begin_inset Formula $\muB_{\rho}\left(P\right)\in\bar{\mu}\left(P\right)$
+\end_inset
 
+ for all 
+\begin_inset Formula $P\in\events_{\Omega}$
+\end_inset
 
-\backslash
-todo{
-\end_layout
+.
+ Therefore, for all 
+\begin_inset Formula $E\subseteq\Omega$
+\end_inset
+
+, we have 
+\begin_inset Formula $\varphi\left(E\right)\in\events_{\Omega}$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\begin{equation}
+\left(\varphi^{*}\muB_{\rho}\right)\left(E\right)=\muB_{\rho}\left(\varphi\left(E\right)\right)\in\bar{\mu}\left(\varphi\left(E\right)\right)=\left(\varphi^{*}\bar{\mu}\right)\left(E\right)\,,
+\end{equation}
 
 \end_inset
 
-Clean up until here...
-\begin_inset ERT
-status collapsed
+i.e., 
+\begin_inset Formula $\varphi^{*}\muB_{\rho}\in\mathrm{core}\left(\varphi^{*}\bar{\mu}\right)$
+\end_inset
 
-\begin_layout Plain Layout
-
-}
+.
+ 
 \end_layout
+
+\begin_layout Standard
+The previous paragraph implies 
+\begin_inset Formula 
+\begin{eqnarray}
+ &  & \min_{\mu\in\mathrm{core}\left(\varphi^{*}\bar{\mu}\right)}\int\left(\varphi^{*}\mathbf{O}\right)\rmd\mu\le\min_{\rho\in\coreBorn\left(\bar{\mu},\events_{\Omega}\right)}\int\left(\varphi^{*}\mathbf{O}\right)\rmd\left(\varphi^{*}\muB_{\rho}\right)=\min_{\rho\in\coreBorn\left(\bar{\mu},\events_{\Omega}\right)}\expval{\mathbf{O}}_{\muB_{\rho}}\,,\\
+ &  & \max_{\mu\in\mathrm{core}\left(\varphi^{*}\bar{\mu}\right)}\int\left(\varphi^{*}\mathbf{O}\right)\rmd\mu\ge\max_{\rho\in\coreBorn\left(\bar{\mu},\events_{\Omega}\right)}\int\left(\varphi^{*}\mathbf{O}\right)\rmd\left(\varphi^{*}\muB_{\rho}\right)=\max_{\rho\in\coreBorn\left(\bar{\mu},\events_{\Omega}\right)}\expval{\mathbf{O}}_{\muB_{\rho}}\,,
+\end{eqnarray}
 
 \end_inset
 
+which implies Eq.
+\begin_inset space ~
+\end_inset
 
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:quantum-interval-expectation-core-supseteq"
+
+\end_inset
+
+).
 \begin_inset ERT
 status collapsed
 
