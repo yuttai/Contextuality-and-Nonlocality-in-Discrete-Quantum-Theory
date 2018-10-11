@@ -31822,10 +31822,7 @@ When
 \begin_inset Formula $E_{0}\cap E_{1}=\left\{ \ket{2}\right\} $
 \end_inset
 
-.
- Notice that since one minus an interval maps this interval to its mirror
- image, and reflection preserves the subset relations, the convexity condition
- Eq.
+, proving equivalence conditions for the convexity condition, Eq.
 \begin_inset space ~
 \end_inset
 
@@ -31836,10 +31833,13 @@ reference "eq:QuantumInterval-valuedProbability-Inclusion"
 
 \end_inset
 
-) holds if and only if
+), is easier than proving it directly.
+ Since one minus an interval maps this interval to its mirror image, and
+ reflection preserves the subset relations, the convexity condition holds
+ if and only if
 \begin_inset Formula 
 \begin{equation}
-1-\bar{\mu}\left(P_{0}P_{1}\right)+1-\bar{\mu}\left(P_{0}+P_{1}-P_{0}P_{1}\right)\subseteq1-\bar{\mu}\left(P_{0}\right)+1-\bar{\mu}\left(P_{1}\right)
+\necess-\bar{\mu}\left(P_{0}P_{1}\right)+\necess-\bar{\mu}\left(P_{0}+P_{1}-P_{0}P_{1}\right)\subseteq\necess-\bar{\mu}\left(P_{0}\right)+\necess-\bar{\mu}\left(P_{1}\right)
 \end{equation}
 
 \end_inset
@@ -31878,10 +31878,8 @@ reference "amr-1"
 ) on the following chain of equations:
 \begin_inset Formula 
 \begin{equation}
-\begin{aligned} & \bar{\mu}\left(\mathbb{1}-P_{0}P_{1}\right)+\bar{\mu}\left(\mathbb{1}-\left(P_{0}+P_{1}-P_{0}P_{1}\right)\right)\\
-={} & \bar{\mu}\left(\proj{0}+\proj{1}\right)+\bar{\mu}\left(\mathbb{0}\right)\\
-\subseteq{} & \bar{\mu}\left(\proj{0}\right)+\bar{\mu}\left(\proj{1}\right)\\
-={} & \bar{\mu}\left(\mathbb{1}-P_{0}\right)+\bar{\mu}\left(\mathbb{1}-P_{1}\right)\,.
+\begin{aligned} & \bar{\mu}\left(\mathbb{1}-P_{0}P_{1}\right)+\bar{\mu}\left(\mathbb{1}-\left(P_{0}+P_{1}-P_{0}P_{1}\right)\right)=\bar{\mu}\left(\proj{0}+\proj{1}\right)+\bar{\mu}\left(\mathbb{0}\right)\\
+\subseteq{} & \bar{\mu}\left(\proj{0}\right)+\bar{\mu}\left(\proj{1}\right)=\bar{\mu}\left(\mathbb{1}-P_{0}\right)+\bar{\mu}\left(\mathbb{1}-P_{1}\right)\,.
 \end{aligned}
 \end{equation}
 
@@ -31891,11 +31889,11 @@ reference "amr-1"
 \end_layout
 
 \begin_layout Standard
-Therefore, 
+Since the convexity condition holds for all three possibilities, 
 \begin_inset Formula $\bar{\mu}$
 \end_inset
 
- is convex.
+ is a QIVPM.
 \begin_inset ERT
 status collapsed
 
@@ -32282,16 +32280,37 @@ Since
 \begin_inset Formula $\ket{\ps'}$
 \end_inset
 
- are not orthogonal to each other, we have 
+ are not orthogonal to each other, at least one of 
+\begin_inset Formula $\bar{\mu}\left(\proj{\psi'}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{\mu}\left(\proj{\psi''}\right)$
+\end_inset
+
+ is unknown
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\unknown$
+\end_inset
+
+, which implies 
 \begin_inset Formula $\unknown\subseteq\bar{\mu}\left(\proj{\psi'}\right)+\bar{\mu}\left(\proj{\psi''}\right)$
 \end_inset
 
 .
- Together with the fact that 
-\begin_inset Formula $\bar{\mu}\left(\proj{\psi'}+\proj{\psi''}\right)\subseteq\unknown$
+ Together with the fact that every interval we considered is contained in
+ unknown
+\begin_inset space ~
 \end_inset
 
- is always true, Eq.
+
+\begin_inset Formula $\unknown=\left[0,1\right]$
+\end_inset
+
+, Eq.
 \begin_inset space ~
 \end_inset
 
@@ -32563,41 +32582,14 @@ noprefix "false"
 \end_inset
 
 , and thus 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{subequations}
-\end_layout
-
-\end_inset
-
- 
 \begin_inset Formula 
-\begin{eqnarray}
- &  & \ip{1}{\phi_{j}}=\sqrt{2}\ip{\ps}{\phi_{j}}-\ip{0}{\phi_{j}}=0\,,\\
- &  & \ip{2}{\phi_{j}}=\sqrt{2}\ip{\ps'}{\phi_{j}}-\ip{0}{\phi_{j}}=0\,.
-\end{eqnarray}
+\begin{align}
+\ip{1}{\phi_{j}}=\sqrt{2}\ip{\ps}{\phi_{j}}-\ip{0}{\phi_{j}}=0\,, &  & \ip{2}{\phi_{j}}=\sqrt{2}\ip{\ps'}{\phi_{j}}-\ip{0}{\phi_{j}}=0\,.
+\end{align}
 
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{subequations}
-\end_layout
-
-\end_inset
-
- The above equations imply 
+The above equations imply 
 \begin_inset Formula $\ket{\phi_{j}}=\ket{0}\ip{0}{\phi_{j}}+\ket{1}\ip{1}{\phi_{j}}+\ket{2}\ip{2}{\phi_{j}}=0$
 \end_inset
 
@@ -32720,7 +32712,7 @@ literal "true"
 
 , this norm is the maximum absolute value of its eigenvalues.
  Then, a finite-precision extension of Gleason's theorem can be stated as
- follows:
+ follows.
 \end_layout
 
 \begin_layout Standard
@@ -32832,6 +32824,18 @@ end{thm}
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
 The proof proceeds as follows.
  Given a state
 \begin_inset space ~
@@ -32864,9 +32868,9 @@ The proof proceeds as follows.
 
 , it is also the upper bound of the difference: 
 \begin_inset Formula 
-\[
+\begin{equation}
 \left|\muB_{\rho'}\left(\proj{\psi}\right)-\muB_{\rho}\left(\proj{\psi}\right)\right|=\left|\melem{\psi}{\rho-\rho'}{\psi}\right|\le\alpha\,.
-\]
+\end{equation}
 
 \end_inset
 
@@ -32916,6 +32920,19 @@ literal "true"
 \end_inset
 
 .
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -33020,45 +33037,10 @@ Given a collection of intervals
 \end_inset
 
  is called ultramodular if: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{subequations}
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "eq:iota-constraints"
-
-\end_inset
-
- 
 \begin_inset Formula 
-\begin{eqnarray}
- &  & \ultramodular(0)=\imposs\,,\\
- &  & \ultramodular(1)=\necess\,,\\
- &  & \ultramodular\left(1-x\right)=\necess-\ultramodular\left(x\right)\,,
-\end{eqnarray}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{subequations}
-\end_layout
+\begin{align}
+\ultramodular(0)=\imposs\,, &  & \ultramodular(1)=\necess\,, &  & \ultramodular\left(1-x\right)=\necess-\ultramodular\left(x\right)\,,\label{eq:iota-constraints}
+\end{align}
 
 \end_inset
 
@@ -33324,20 +33306,12 @@ name "enu:iota-mu-CIVPM"
 
 \end_inset
 
-The composite function
-\begin_inset space ~
+The composite function 
+\begin_inset Formula $\ultramodular\circ\mu:2^{\Omega}\rightarrow\mathscr{I}$
 \end_inset
 
-
-\begin_inset Formula $\ultramodular\circ\mu:\eventsC\rightarrow\mathscr{I}$
-\end_inset
-
- is a classical IVPM for all classical probability measures
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mu:\eventsC\rightarrow\left[0,1\right]$
+ is a classical IVPM for all classical probability measures 
+\begin_inset Formula $\mu:2^{\Omega}\rightarrow\left[0,1\right]$
 \end_inset
 
 .
@@ -33364,19 +33338,11 @@ name "enu:iota-mu-QIVPM"
 
 \end_inset
 
-The composite function
-\begin_inset space ~
-\end_inset
-
-
+The composite function 
 \begin_inset Formula $\ultramodular\circ\mu:\events\rightarrow\mathscr{I}$
 \end_inset
 
- is a QIVPM for all quantum probability measures
-\begin_inset space ~
-\end_inset
-
-
+ is a QIVPM for all quantum probability measures 
 \begin_inset Formula $\mu:\events\rightarrow\left[0,1\right]$
 \end_inset
 
@@ -33411,6 +33377,18 @@ end{thm}
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
 Statement
 \begin_inset space ~
 \end_inset
@@ -33500,9 +33478,9 @@ noprefix "false"
 ).
  Consider the state: 
 \begin_inset Formula 
-\[
+\begin{equation}
 \rho=x_{0}\proj{0}+x_{1}\proj{1}+x_{2}\proj{2}+\left(1-y\right)\proj{3}\,.
-\]
+\end{equation}
 
 \end_inset
 
@@ -33538,13 +33516,17 @@ noprefix "false"
 
 .
  In other words, this induced map fails to be a QIVPM.
- For the classical case, if 
+ 
+\end_layout
+
+\begin_layout Standard
+For the classical case, if 
 \begin_inset Formula $\ultramodular$
 \end_inset
 
  is not ultramodular, we also want to find a classical probability measure
  
-\begin_inset Formula $\mu:\eventsC\rightarrow\left[0,1\right]$
+\begin_inset Formula $\mu:2^{\Omega}\rightarrow\left[0,1\right]$
 \end_inset
 
  such that 
@@ -33552,47 +33534,84 @@ noprefix "false"
 \end_inset
 
  is not a classical IVPM.
- This can be done by restricting our previous quantum probability measure
- 
+ Consider an orthonormal basis 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ containing 
+\begin_inset Formula $\ket{0}$
+\end_inset
+
+, 
+\begin_inset Formula $\ket{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\ket{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\ket{3}$
+\end_inset
+
+, \SpecialChar ldots
+, and 
+\begin_inset Formula $\varphi:2^{\Omega}\rightarrow\events$
+\end_inset
+
+ is defined by Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pullback-function"
+
+\end_inset
+
+).
+ Notice that the pullback of our previous quantum probability measure 
 \begin_inset Formula $\muB_{\rho}$
 \end_inset
 
- to the space of events 
-\begin_inset Formula $\eventsC$
-\end_inset
-
- generated by the mutually commuting projectors 
-\begin_inset Formula $\proj{0}$
-\end_inset
-
 , 
-\begin_inset Formula $\proj{1}$
+\begin_inset Formula $\varphi^{*}\muB_{\rho}$
 \end_inset
 
-, 
-\begin_inset Formula $\proj{2}$
+, is a classical probability measure.
+ If we pick 
+\begin_inset Formula $\mu$
 \end_inset
 
-, and 
-\begin_inset Formula $\proj{3}$
+ as 
+\begin_inset Formula $\varphi^{*}\muB_{\rho}$
 \end_inset
 
-.
- The restricted function 
-\begin_inset Formula $\mu=\muB_{\rho}|_{\eventsC}$
-\end_inset
-
- is then a classical probability measure, and the induced map 
+, then the induced map 
 \begin_inset Formula $\ultramodular\circ\mu$
 \end_inset
 
  fails to be a classical IVPM for the same reason as in the quantum case.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 In other words, essential properties of QIVPMs constructed using interval
  maps can be gleaned from the properties of ultramodular functions.
- The following is a most interesting property in our setting:
+ The following is a most interesting property in our setting.
 \end_layout
 
 \begin_layout Standard
@@ -33684,6 +33703,18 @@ end{thm}
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
 Since 
 \begin_inset Formula $\ultramodular$
 \end_inset
@@ -33726,9 +33757,9 @@ literal "true"
 
 , i.e., 
 \begin_inset Formula 
-\[
+\begin{equation}
 \ultramodularL\left(y\right)+\ultramodularL\left(x_{2}\right)\ge\ultramodularL\left(x_{0}+x_{2}\right)+\ultramodularL\left(x_{1}+x_{2}\right)
-\]
+\end{equation}
 
 \end_inset
 
@@ -33799,6 +33830,19 @@ literal "true"
 \end_inset
 
  maps must be uncountable.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
