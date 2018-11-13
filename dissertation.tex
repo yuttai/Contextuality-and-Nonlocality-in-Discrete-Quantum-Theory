@@ -723,9 +723,9 @@ of uncertain events \cites{Kolmogorov1950}{544199}{Griffiths2003}{Grabisch2016}.
 Given a finite sample space~$\Omega$ representing all possible outcomes,
 and its power set $2^{\Omega}$ as the classical event space, a classical
 probability measure~$\mu$ maps an event~$E$ to a number $\mu\left(E\right)\in\left[0,1\right]$
-specifying how likely one of the outcome~$\omega\in E$ actually
-happens. To maintain the coherence, we want $\mu$ subject to the
-following constraints: $\mu\left(\emptyset\right)=0$, $\mu\left(\Omega\right)=1$,
+specifying how likely one of the outcome in $E$ actually happens.
+To maintain the coherence, we want $\mu$ subject to the following
+constraints: $\mu\left(\emptyset\right)=0$, $\mu\left(\Omega\right)=1$,
 $\mu\left(\overline{E}\right)=1-\mu\left(E\right)$, and $\mu\left(E_{0}\cup E_{1}\right)=\mu\left(E_{0}\right)+\mu\left(E_{1}\right)$
 for each pair of disjoint events $E_{0}\subseteq\Omega$ and $E_{1}\subseteq\Omega$.
 
@@ -738,10 +738,8 @@ of \emph{orthogonal} projectors~$P_{0}$ and~$P_{1}$ with $P_{0}P_{1}=\mathbb{0}$
 and products of \emph{commuting} projectors $P_{0}$ and~$P_{1}$
 with $P_{0}P_{1}=P_{1}P_{0}$. In a quantum probability space \cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010,Abramsky2012},
 the set of all events is the set of all projectors on a given Hilbert
-space denoted by $\events$. After the measurement, if the system
-transits to a state $\ket{\Phi}$ and we call an event $P\in\events$
-happen when .
-
+space denoted by $\events$. \todo{Use the same idea as the classical
+probability measure to explain the meaning of $\mu\left(P\right)$.}
 each event~$P_{i}$ is mapped to a probability~$\mu\left(P_{i}\right)$
 using a probability measure $\mu:\events\rightarrow\left[0,1\right]$
 subject to the following constraints:
@@ -763,10 +761,12 @@ as \cite{544199,Jaeger2007}:
 where the subscript $\mu$ might be omitted if it is clear according
 to the context.
 
-A conventional quantum probability measure can easily be constructed
-using the Born rule if one knows the current pure unnormalized quantum
-state $\ket{\Phi}\in\mathcal{H}$; then the Born rule induces a probability
-measure $\muB_{\Phi}$ defined as 
+\todo{Rewrite the beginng of this paragraph to explain the meaning
+of the Born rule... Maybe move Gleason's Theorem here?} A conventional
+quantum probability measure can easily be constructed using the Born
+rule if one knows the current pure unnormalized quantum state $\ket{\Phi}\in\mathcal{H}$;
+then the Born rule induces a probability measure $\muB_{\Phi}$ defined
+as 
 \begin{equation}
 \muB_{\Phi}(P)=\frac{\melem{\Phi}{P}{\Phi}}{\ip{\Phi}{\Phi}}\,.\label{eq:Born}
 \end{equation}
@@ -816,6 +816,8 @@ $\mu_{2}\left(\proj{\Psi}\right)$ & $\frac{1}{2}$ & $0$ & $\frac{1}{2}$ & $\frac
 
 \subsection{Gleason's Theorem and the properties of the Born rule\label{subsec:Gleason's-Theorem-and}}
 
+\todo{Make the meaning of Gleason's Theorem more clear? So that we
+can explain the motivation of the question in Chapter~\ref{chap:Further-Discussion}}
 A conventional quantum probability measure can be easily constructed
 from a state $\rho$ according to the Born rule; conversely, this
 is the only way to obtain a conventional quantum probability measure
@@ -3567,15 +3569,14 @@ physics: the Kochen-Specker theorem \cite{BELL_1966,kochenspecker1967,Redhead198
 Our finite-precision extension of that theorem will suggest a resolution
 to the debate initiated by Meyer and Mermin on the relevance of the
 Kochen-Specker to experimental, and hence finite-precision, quantum
-measurements \cites{PhysRevLett.83.3751}{HKSS1999}{Mermin1999}{Kent1999}{SimonBruknerZeilinger2001}{Cabello2002}{Larsson2002}{Appleby2002}{BarrettKent2004}{Appleby_2005}{Spekkens2005}{GuehneKleinmannCabelloEtAl2010}{MazurekPuseyKunjwalEtAl2016}.
-Specifically, the original Kochen-Specker theorem is formulated using
-a model quantum mechanical system that has \emph{definite values at
-all times}~\cite{Held2016}, i.e., its observables have infinitely
-precise values at all times. Our interval-valued probability framework
-will allow us to state, and prove, a stronger version of the theorem
-that holds even if the observables have values that are only definite
-up to some precision specified by a parameter $\delta$. Our approach
-provides a quantitative realization of Mermin's intuition~\cite{Mermin1999}: 
+measurements . Specifically, the original Kochen-Specker theorem
+is formulated using a model quantum mechanical system that has \emph{definite
+values at all times}~\cite{Held2016}, i.e., its observables have
+infinitely precise values at all times. Our interval-valued probability
+framework will allow us to state, and prove, a stronger version of
+the theorem that holds even if the observables have values that are
+only definite up to some precision specified by a parameter $\delta$.
+Our approach provides a quantitative realization of Mermin's intuition~\cite{Mermin1999}: 
 \begin{quote}
 \ldots although the outcomes deduced from such imperfect measurements
 will occasionally differ dramatically from those allowed in the ideal
@@ -4418,12 +4419,13 @@ intervals. Of course, any particular QIVPM, or any particular experiment,
 will use a fixed collection of intervals appropriate for the resources
 and precision of the particular experiment.
 
-\chapter{Further Discussion}
+\chapter{Further Discussion\label{chap:Further-Discussion}}
 
-Almost all QIVPMs in Chapter~\ref{chap:QIVPM} are closely related
-to quantum probability measures. For example, given a $\delta$-deterministic
-QIVPM, Lemma~\ref{lemma:delta2zero} provides a way to derive a $0$-deterministic
-QIVPM $\barmuD:\events\rightarrow\left\{ \imposs,\necess\right\} $
+\todo{After updating Sec.~\ref{sec:fuzzy}, update this chapter
+by starting from the meaning of Gleason's Theorem.} Almost all QIVPMs
+in Chapter~\ref{chap:QIVPM} are closely related to quantum probability
+measures. For example, given a $\delta$-deterministic QIVPM, Lemma~\ref{lemma:delta2zero}
+provides a way to derive a $0$-deterministic QIVPM $\barmuD:\events\rightarrow\left\{ \imposs,\necess\right\} $
 which is essential a quantum probability measure $\mu:\events\rightarrow\left[0,1\right]$
 satisfying $\mu\left(P\right)$ is either $0$ or $1$. Moreover,
 an interval map $f:\left[0,1\right]\rightarrow\mathscr{I}$ in Sec.~\ref{sec:Gleason}
