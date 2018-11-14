@@ -2,7 +2,6 @@
 %% Do not edit unless you really know what you are doing.
 \documentclass[11pt,twoside]{iuphd}
 \usepackage{amsmath}
-\usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{fontspec}
 \setmainfont[Mapping=tex-text]{Times New Roman}
@@ -306,7 +305,7 @@ is correct.
 an efficient classical factoring algorithm. 
 \item \label{enu:extended-Church-Turing-Thesis}The extended Church-Turing
 thesis — that probabilistic Turing machines can efficiently simulate
-any physically realizable model of computation — is correct \cites{Bernstein:1993:QCT:167088.167097}{Kaye2007}. 
+any physically realizable model of computation — is correct \cite{Bernstein:1993:QCT:167088.167097,Kaye2007}. 
 \end{enumerate}
 There is overwhelming evidence to support each of these statements.
 The theoretical framework of quantum mechanics \ref{enu:Textbook-quantum-mechanics}
@@ -368,11 +367,10 @@ generally three or four significant figures~\cite{wiki:AnalogComputer}.
 For example, Blum, Cucker, Shub, and Smale modeled their machine to
 allow the operations of deciding whether a number is greater or equal
 to zero over real numbers and whether a number is exactly zero over
-complex numbers \cites{BSS1989}{Ziegler2007}{blum2012complexity}.
-Since no physical analog computer could branch in these operations
-based on a few significant figures, the theoretical prediction of
-Blum-Cucker-Shub-Smale (BCSS) machine cannot fully apply on physical
-devices.
+complex numbers \cite{BSS1989,Ziegler2007,blum2012complexity}. Since
+no physical analog computer could branch in these operations based
+on a few significant figures, the theoretical prediction of Blum-Cucker-Shub-Smale
+(BCSS) machine cannot fully apply on physical devices.
 
 Being aware that symbols within a computation should not differ to
 an arbitrarily small extent~\cite{Turing_1937}, Turing defined his
@@ -719,7 +717,7 @@ as $\CP{D-1}$ (see any textbook on geometry~\cite{Berger_1988}).
 
 A \emph{probability space} is a mathematical abstraction specifying
 the necessary conditions for reasoning coherently about collections
-of uncertain events \cites{Kolmogorov1950}{544199}{Griffiths2003}{Grabisch2016}.
+of uncertain events \cite{Kolmogorov1950,544199,Griffiths2003,Grabisch2016}.
 Given a finite sample space~$\Omega$ representing all possible outcomes,
 and its power set $2^{\Omega}$ as the classical event space, a classical
 probability measure~$\mu$ maps an event~$E$ to a number $\mu\left(E\right)\in\left[0,1\right]$
@@ -739,10 +737,12 @@ and products of \emph{commuting} projectors $P_{0}$ and~$P_{1}$
 with $P_{0}P_{1}=P_{1}P_{0}$. In a quantum probability space \cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010,Abramsky2012},
 the set of all events is the set of all projectors on a given Hilbert
 space denoted by $\events$. \todo{Use the same idea as the classical
-probability measure to explain the meaning of $\mu\left(P\right)$.}
-each event~$P_{i}$ is mapped to a probability~$\mu\left(P_{i}\right)$
-using a probability measure $\mu:\events\rightarrow\left[0,1\right]$
-subject to the following constraints:
+probability measure to explain the meaning of $\mu\left(P\right)$.
+Maybe move the structure preserving function $\varphi:2^{\Omega}\rightarrow\events$
+defined in Eq.~\ref{eq:pullback-function} here.} each event~$P_{i}$
+is mapped to a probability~$\mu\left(P_{i}\right)$ using a probability
+measure $\mu:\events\rightarrow\left[0,1\right]$ subject to the following
+constraints:
 \begin{align}
 \mu\left(\mathbb{0}\right) & =0\,, & \mu\left(\mathbb{1}\right) & =1\,, & \mu\left(\mathbb{1}-P\right) & =1-\mu\left(P\right)\,,\label{eq:QuantumProbability}
 \end{align}
@@ -774,7 +774,7 @@ If $\ket{\Phi}$ is normalized, Eq.~(\ref{eq:Born}) could be simplified
 as $\muB_{\Phi}(P)=\melem{\Phi}{P}{\Phi}$. For mixed states $\rho=\sum_{j=1}^{N}q_{j}\proj{\Phi_{j}}$,
 where $\ket{\Phi_{j}}\in\mathcal{H}$ are normalized, $q_{j}>0$,
 and $\sum_{j=1}^{N}q_{j}=1$, the generalized Born rule induces a
-probability measure $\muB_{\rho}$ defined as \cites{Born1983}{Mermin2007}{Jaeger2007}
+probability measure $\muB_{\rho}$ defined as \cite{Born1983,Mermin2007,Jaeger2007}
 \begin{equation}
 \muB_{\rho}\left(P\right)=\Tr\left(\rho P\right)=\sum_{j=1}^{N}q_{j}\muB_{\Phi_{j}}\left(P\right)\,.\label{eq:mixed-Born}
 \end{equation}
@@ -914,7 +914,7 @@ the measurement outcomes in another one. To discuss entanglement,
 we consider a $D$-dimensional quantum system composed of $n$-qubit
 subsystems, i.e., $D=2^{n}$. A pure state of the total system $\ket{\Psi}$
 is said to be entangled if it cannot be written as a product of states
-of each subsystem \cites{peres1995quantum}{544199}{Jaeger2007}. That
+of each subsystem \cite{peres1995quantum,544199,Jaeger2007}. That
 is, a state $\ket{\Psi}$ is entangled if $\ket{\Psi}\ne\ket{\psi_{1}}\otimes\cdots\otimes\ket{\psi_{j}}\otimes\cdots\otimes\ket{\psi_{n}}$,
 where $\ket{\psi_{j}}$ refers to an arbitrary state of the $j$-th
 qubit, and $\otimes$ represents the tensor product. This is equivalent
@@ -925,7 +925,7 @@ of the $j$-th subsystem by tracing out all the other subsystems,
 \end{equation}
 with $j=1,\cdots,n$ and $\rho=\op{\Psi}{\Psi}$, the normalized state~$\ket{\Psi}$
 is entangled if and only if at least one subsystem state is \textit{mixed},
-i.e., $\Tr_{j}\left(\rho_{j}^{2}\right)<1$ \cites{544199}{Jaeger2007}.\NewDocumentCommand{\jthSubsystem}{m O{} m}{{#1}_{#2}^{#3}}
+i.e., $\Tr_{j}\left(\rho_{j}^{2}\right)<1$ \cite{544199,Jaeger2007}.\NewDocumentCommand{\jthSubsystem}{m O{} m}{{#1}_{#2}^{#3}}
 
 The reduced density operator could be expressed explicitly by the
 expectation value of the Pauli operators. Therefore, we can decide
@@ -1021,7 +1021,7 @@ is a generalized coherent state of the Lie algebra of all observables.
 
 A field~$\mathbb{F}$ is an algebraic structure consisting of a set
 of elements equipped with the operations of addition, subtraction,
-multiplication, and division \cites{DummitFoote2004}{fieldtheory.ref}{numtheory.ref}.
+multiplication, and division \cite{DummitFoote2004,fieldtheory.ref,numtheory.ref}.
 Fields may contain an infinite or a finite number of elements. The
 rational~$\mathbb{Q}$, real~$\mathbb{R}$, and complex numbers~$\mathbb{C}$
 are examples of infinite fields, while the set $\mathbb{F}_{3}=\{0,1,2\}$,
@@ -2273,7 +2273,7 @@ the probability of measuring $\ket{i}$.
 
 Although division is not an allowed operation for the elements in
 the an ordered region, following the standard procedure to define
-a conventional fraction as a pair of integers \cites{Artin1991}{DummitFoote2004}{hottbook2013}{Wolfram2016},
+a conventional fraction as a pair of integers \cite{Artin1991,DummitFoote2004,hottbook2013,Wolfram2016},
 we could define a \emph{cardinal probability} as a pair of order-region
 elements as well:
 \begin{equation}
@@ -2325,7 +2325,7 @@ the experimental results might not always favor $\ket{i}$ or $\ket{j}$
 no matter how much resource we use. The same principle can also apply
 to two cardinal probabilities with the different “denominator”.
 The details of the comparison can easily formulated by following the
-standard procedure \cites{Artin1991}{DummitFoote2004}{hottbook2013}{Wolfram2016}
+standard procedure \cite{Artin1991,DummitFoote2004,hottbook2013,Wolfram2016}
 and will left as an exercise for the readers.
 
 \section{Discrete Quantum Computing (II)}
@@ -2873,7 +2873,7 @@ events $E_{0}$ and~$E_{1}$, not necessarily disjoint, we have:
 \end{equation}
 which is a generalization of the classical inclusion-exclusion principle
 that uses $\subseteq$ instead of $=$ for the same reason as before.
-The new condition, known as \emph{convexity}~\cites{Shapley1971}{GilboaSchmeidler1994}{NgMoYeh1997Chinese}{Marinacci1999}{MarinacciMontrucchio2005}{Grabisch2016},
+The new condition, known as \emph{convexity} \cite{Shapley1971,GilboaSchmeidler1994,NgMoYeh1997Chinese,Marinacci1999,MarinacciMontrucchio2005,Grabisch2016},
 reduces to the previously motivated Eq.~(\ref{eq:disjoint}) when
 the events are disjoint, i.e., when $\mu(E_{0}\cap E_{1})=0$.
 
@@ -3032,7 +3032,7 @@ One fundamental question of these imprecise interval-valued probabilities
 is whether they \emph{always} have underlying precise probabilities.
 A positive answer is given by the following theorem.
 
-\begin{thm}[Shapley \cites{Shapley1971}{GilboaSchmeidler1994}{NgMoYeh1997Chinese}{Grabisch2016}]\label{thm:Shapley-classical}Every
+\begin{thm}[Shapley \cite{Shapley1971,GilboaSchmeidler1994,NgMoYeh1997Chinese,Grabisch2016}]\label{thm:Shapley-classical}Every
 classical IVPM has a non-empty core.\end{thm}
 
 Although it is \emph{impossible} in the classical world to have an
@@ -3053,7 +3053,7 @@ this non-empty core property.
 \begin{definition}[Quantum Consistency and Core]\label{def:Consistency}
 We say a QIVPM $\bar{\mu}$ is \emph{consistent} with a state $\rho$
 on a projector~$P$ if the interval $\bar{\mu}(P)$ contains the
-exact probability calculated by the Born rule \cites{Born1983}{Mermin2007}{Jaeger2007},
+exact probability calculated by the Born rule \cite{Born1983,Mermin2007,Jaeger2007},
 i.e., 
 \begin{equation}
 \muB_{\rho}\left(P\right)=\Tr\left(\rho P\right)\in\bar{\mu}\left(P\right)\,.\label{eq:consistent}
@@ -4068,7 +4068,7 @@ entire range of possibilities is already a QIVPM.
 \label{sec:Gleason}
 
 A conventional quantum probability measure can be easily constructed
-from a state $\rho$ according to the Born rule \cites{Born1983}{Mermin2007}{Jaeger2007}.
+from a state $\rho$ according to the Born rule \cite{Born1983,Mermin2007,Jaeger2007}.
 According to Gleason's theorem~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum},
 this state $\rho$ is also the unique state consistent with any possible
 probability measure.
@@ -4339,7 +4339,7 @@ such that $y=x_{0}+x_{1}+x_{2}\in\left[0,1\right]$, we have:
 are the direct counterpart of the corresponding QIVPM constraints,
 Eqs.~(\ref{eq:QIVPM-constraints}); the last condition, Eq.~(\ref{eq:iota-Inclusion}),
 is the direct counterpart of the convexity conditions, Eqs.~(\ref{eq:classicalconvex})
-and (\ref{eq:QuantumInterval-valuedProbability-Inclusion}) \cites{Choquet1954}{Shapley1971}{NgMoYeh1997Chinese}{MarinacciMontrucchio2005}.
+and (\ref{eq:QuantumInterval-valuedProbability-Inclusion}) \cite{Choquet1954,Shapley1971,NgMoYeh1997Chinese,MarinacciMontrucchio2005}.
 Therefore, these conditions guarantee that, for any conventional quantum
 probability measure $\mu$, the composition $\ultramodular\circ\mu$
 defines a valid QIVPM. Conversely, if for every quantum probability
