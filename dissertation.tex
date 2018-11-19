@@ -718,21 +718,64 @@ as $\CP{D-1}$ (see any textbook on geometry~\cite{Berger_1988}).
 A \emph{probability space} is a mathematical abstraction specifying
 the necessary conditions for reasoning coherently about collections
 of uncertain events \cite{Kolmogorov1950,544199,Griffiths2003,Grabisch2016}.
-Given a finite sample space~$\Omega$ representing all possible outcomes,
-and its power set $2^{\Omega}$ as the classical event space, a classical
-probability measure~$\mu$ maps an event~$E$ to a number $\mu\left(E\right)\in\left[0,1\right]$
-specifying how likely one of the outcome in $E$ actually happens.
-To maintain the coherence, we want $\mu$ subject to the following
-constraints. When $E$ contains no outcome, $E$ is the least likely
-to happen, i.e., $\mu\left(\emptyset\right)=0$. When $E$ contains
-all outcomes, $E$ is the most likely to happen, i.e., $\mu\left(\Omega\right)=1$.
-If we know the likelihood of an event, $\mu\left(E\right)$, it is
-natural to assume the likelihood of the event’s complement is just
-the opposite of $\mu\left(E\right)$, i.e., $\mu\left(\overline{E}\right)=1-\mu\left(E\right)$.
+Given a finite sample space~$\Omega$ representing all possible outcomes
+of a process, and its power set $2^{\Omega}$ as the classical event
+space, a classical probability measure~$\mu$ maps an event~$E$
+to a number $\mu\left(E\right)\in\left[0,1\right]$ specifying how
+likely one of the outcome in $E$ actually happens. To maintain the
+coherence, we want $\mu$ subject to the following constraints. When
+$E$ contains no outcome, $E$ is the least likely to happen, i.e.,
+$\mu\left(\emptyset\right)=0$. When $E$ contains all outcomes, $E$
+is the most likely to happen, i.e., $\mu\left(\Omega\right)=1$. If
+we know the likelihood of an event, $\mu\left(E\right)$, it is natural
+to assume the likelihood of the event’s complement is just the opposite
+of $\mu\left(E\right)$, i.e., $\mu\left(\overline{E}\right)=1-\mu\left(E\right)$.
 For each pair of disjoint events $E_{0}\subseteq\Omega$ and $E_{1}\subseteq\Omega$,
 the likelihood of the union event is additive, $\mu\left(E_{0}\cup E_{1}\right)=\mu\left(E_{0}\right)+\mu\left(E_{1}\right)$.
 
-The previous abstraction
+Since the previous abstraction disregards the underlying process generating
+the outcomes, this process might be a quantum measurement. Let us
+prepare a beam of a kind of spin~$1$ particles. In principle, we
+can preform a Stern-Gerlach type experiment to splits the beam according
+to the eigenvalues of the observable $\mathbf{O}_{0}=0\,\proj{0}+1\,\proj{1}+2\,\proj{2}$
+\cite{:/content/aip/journal/jmp/21/1/10.1063/1.524312,peres1995quantum}.
+If we only send one particle instead of a beam, it could be in three
+possible states after the experiment, i.e., the outcome of this process
+is $\Omega_{0}=\left\{ \ket{0},\ket{1},\ket{2}\right\} $. All possible
+events are $\emptyset$, $\left\{ \ket{0}\right\} $, $\left\{ \ket{1}\right\} $,
+$\left\{ \ket{2}\right\} $, $\left\{ \ket{0},\ket{1}\right\} $,
+$\left\{ \ket{0},\ket{2}\right\} $, $\left\{ \ket{1},\ket{2}\right\} $,
+and $\Omega$. Given any particle, it specifies the likelihood of
+each event $\mu_{0}\left(E\right)$, and the function $\mu_{0}:2^{\Omega}\rightarrow\left[0,1\right]$
+is a probability measure satisfying the conditions listed in previous
+paragraph.
+
+The different of the quantum world is that the probability of previous
+experiment is correlated to the other experiment if we use the same
+particle, but change the beam splitter. Consider a beam splitter corresponding
+to the observable $\mathbf{O}_{1}=0\,\proj{\ps}+1\,\proj{\ms}+2\,\proj{2}$,
+where $\ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$ and $\ket{\ms}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}$.
+The outcome of this process is $\Omega_{1}=\left\{ \ket{\ps},\ket{\ms},\ket{2}\right\} $.
+All possible events are $\emptyset$, $\left\{ \ket{\ps}\right\} $,
+$\left\{ \ket{\ms}\right\} $, $\left\{ \ket{2}\right\} $, $\left\{ \ket{\ps},\ket{\ms}\right\} $,
+$\left\{ \ket{\ps},\ket{2}\right\} $, $\left\{ \ket{\ms},\ket{2}\right\} $,
+and $\Omega_{1}$. When we can formulate the likelihood of each event
+as another probability measure $\mu_{1}:2^{\Omega}\rightarrow\left[0,1\right]$,
+we found the likelihood of the same event of these two experiments
+are the same if we use the same particle, i.e., $\mu_{0}\left(\emptyset\right)=\mu_{1}\left(\emptyset\right)$
+and $\mu_{0}\left(\left\{ \ket{2}\right\} \right)=\mu_{1}\left(\left\{ \ket{2}\right\} \right)$.
+
+Since the probability is always the same if the particle and the event
+are the same no matter which beam splitter is actually used. It is
+more natural to define the set of quantum event~$\events$ as all
+possible events using different beam splitters. Since we are focus
+on the probability instead of outcome, and the probabilities of events
+$\left\{ \ket{0},\ket{1}\right\} $ and $\left\{ \ket{\ps},\ket{\ms}\right\} $
+are always the same, it is reasonable to identify them as the same
+event. 
+
+, and consider the quantum probability measure $\mu:\events\rightarrow\left[0,1\right]$
+as a function assigning the likelihood to every quantum event
 
 In the quantum case, the events of interest are specified by \emph{projection
 operators} $P$ satisfying the condition $P^{2}=P$. These include
