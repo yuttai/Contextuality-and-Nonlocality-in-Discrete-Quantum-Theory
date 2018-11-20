@@ -3712,6 +3712,10 @@ name "sec:fuzzy"
 
 \end_layout
 
+\begin_layout Subsection
+Classical and Quantum Probability Spaces
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Note
 status open
@@ -3896,7 +3900,7 @@ literal "false"
 \end_inset
 
 .
-  Moreover, 
+  Moreover, we require 
 \begin_inset Formula $\mu\left(E_{0}\cup E_{1}\right)=\mu\left(E_{0}\right)+\mu\left(E_{1}\right)$
 \end_inset
 
@@ -4048,13 +4052,19 @@ One special feature of quantum experiments is that the probabilities in
 
  is defined.
  Although the sample spaces and the probability measures are different,
- these two experiments may produce the same outcome state.
- Moreover, the probability of the same event in different experiments are
- experimentally found to be the same, i.e., 
-\begin_inset Formula $\mu_{0}\left(\emptyset\right)=\mu_{1}\left(\emptyset\right)$
+ these two experiments may produce the same outcome state
+\begin_inset space ~
 \end_inset
 
- and 
+
+\begin_inset Formula $\ket{2}$
+\end_inset
+
+, and the probability of the common event 
+\begin_inset Formula $\left\{ \ket{2}\right\} $
+\end_inset
+
+ is experimentally found to be the same, i.e., 
 \begin_inset Formula $\mu_{0}\left(\left\{ \ket{2}\right\} \right)=\mu_{1}\left(\left\{ \ket{2}\right\} \right)$
 \end_inset
 
@@ -4062,8 +4072,8 @@ One special feature of quantum experiments is that the probabilities in
  In general, as long as sending the same particle, the probability of the
  same event in different experiments are always the same.
  This fact is equivalent to the fact that commuting observables could be
- measured simultaneous, and the latter fact is essential to define contextuality
- which will be explained later.
+ measured simultaneously, and the latter fact is essential to define contextuali
+ty which will be explained later.
 \end_layout
 
 \begin_layout Standard
@@ -4076,8 +4086,7 @@ Since the probability induced by the different beam splitters are correlated,
 \begin_inset Formula $\events$
 \end_inset
 
- as the union of all possible event spaces using different beam splitters
- on a given Hilbert space.
+ as the union of all possible event spaces using different beam splitters.
  Because we are focus on the probability instead of outcome, and the probabiliti
 es of events 
 \begin_inset Formula $\left\{ \ket{0},\ket{1}\right\} $
@@ -4116,8 +4125,8 @@ If we follow the convention
 \begin_inset Formula $\varphi\left(\emptyset\right)=\mathbb{0}$
 \end_inset
 
-, not only the same projector must have the same probability, but this function
- 
+, not only the events mapping to the same projector must have the same probabili
+ty, but this function 
 \begin_inset Formula $\varphi$
 \end_inset
 
@@ -4172,7 +4181,7 @@ commuting
 \end_inset
 
 .
- Moreover, 
+ Moreover, the events 
 \begin_inset Formula $E_{0}$
 \end_inset
 
@@ -4180,7 +4189,7 @@ commuting
 \begin_inset Formula $E_{1}$
 \end_inset
 
- also satisfy the following properties: 
+ in the same sample space also satisfy the following properties: 
 \begin_inset Formula 
 \begin{align}
 \varphi\left(E_{0}\cap E_{1}\right) & =\varphi\left(E_{0}\right)\varphi\left(E_{1}\right)\,, & \varphi\left(E_{0}\cup E_{1}\right) & =\varphi\left(E_{0}\right)+\varphi\left(E_{1}\right)-\varphi\left(E_{0}\right)\varphi\left(E_{1}\right)\,.\label{eq:pullback-properties}
@@ -4224,7 +4233,7 @@ orthogonal
 \end_layout
 
 \begin_layout Standard
-After we define the set of all events
+After we define the set of all quantum events
 \begin_inset space ~
 \end_inset
 
@@ -4237,11 +4246,11 @@ After we define the set of all events
 \begin_inset Formula $\events$
 \end_inset
 
- together with a probability measure 
+ together with a quantum probability measure 
 \begin_inset Formula $\mu:\events\rightarrow\left[0,1\right]$
 \end_inset
 
- subject to the following constraints 
+ subject to the corresponding constraints 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010,Abramsky2012"
@@ -4257,11 +4266,7 @@ literal "true"
 
 \end_inset
 
-and for each pair of 
-\emph on
-orthogonal
-\emph default
- projectors 
+and for each pair of orthogonal projectors 
 \begin_inset Formula $P_{0}$
 \end_inset
 
@@ -4277,6 +4282,40 @@ orthogonal
 
 \end_inset
 
+By defining in this way, given any orthonormal basis
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\Omega$
+\end_inset
+
+, the restricted function 
+\begin_inset Formula $\varphi:2^{\Omega}\rightarrow\events$
+\end_inset
+
+ can pull 
+\begin_inset Formula $\mu$
+\end_inset
+
+ back to a classical 
+\family roman
+\size normal
+probability measure
+\family default
+\size default
+ 
+\begin_inset Formula $\varphi^{*}\mu:2^{\Omega}\rightarrow\left[0,1\right]$
+\end_inset
+
+ by precomposition 
+\begin_inset Formula $\left(\varphi^{*}\mu\right)\left(E\right)=\mu\left(\varphi\left(E\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 Given a Hilbert space 
 \begin_inset Formula $\mathcal{H}$
 \end_inset
@@ -4326,6 +4365,323 @@ where the subscript
 \end_inset
 
  might be omitted if it is clear according to the context.
+ This definition is also consistent with the classical expectation values
+ because we can pullback an observable to a classical random variable, and
+ the expectation values are invariant.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{definition}[
+\end_layout
+
+\end_inset
+
+Pullback of 
+\family roman
+\size normal
+Observables
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "def:observable2random-variable"
+
+\end_inset
+
+Consider an observable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+ 
+\family default
+\size default
+diagonalizable by an orthonormal basis 
+\begin_inset Formula $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+\end_inset
+
+ so that 
+\family roman
+\size normal
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+
+\family default
+\size default
+ has spectral decomposition
+\family roman
+\size normal
+ 
+\begin_inset Formula $\mathbf{O}=\sum_{i=0}^{D-1}\lambda_{i}\proj{i}$
+\end_inset
+
+.
+ If we 
+\family default
+\size default
+restrict 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ on the classical event space
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $2^{\Omega}$
+\end_inset
+
+ and consider 
+\begin_inset Formula $\varphi:2^{\Omega}\rightarrow\events$
+\end_inset
+
+, then the pullback of 
+\family roman
+\size normal
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+
+\family default
+\size default
+ by 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is a random variable 
+\begin_inset Formula $\varphi^{*}\mathbf{O}:\Omega\rightarrow\mathbb{R}$
+\end_inset
+
+ defined by 
+\begin_inset Formula $\varphi^{*}\mathbf{O}=\sum_{i=0}^{D-1}\lambda_{i}\mathbf{1}_{\left\{ \ket{i}\right\} }$
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lemma}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lemma:real-expectation-value-between-classical-quantum"
+
+\end_inset
+
+
+\family roman
+\size normal
+Consider an observable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+ 
+\family default
+\size default
+diagonalizable by an orthonormal basis 
+\begin_inset Formula $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+\end_inset
+
+ with 
+\begin_inset Formula $\varphi:2^{\Omega}\rightarrow\events$
+\end_inset
+
+ defined by Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pullback-function"
+
+\end_inset
+
+).
+ 
+\family roman
+\size normal
+Given a quantum probability measure 
+\family default
+\size default
+
+\begin_inset Formula $\mu:\events\rightarrow\left[0,1\right]$
+\end_inset
+
+, the expectation value of 
+\family roman
+\size normal
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+
+\family default
+\size default
+ relative to 
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\family roman
+\size normal
+ is
+\family default
+\size default
+ exactly the expectation value of the pullback of 
+\family roman
+\size normal
+
+\begin_inset Formula $\mathbf{O}$
+\end_inset
+
+
+\family default
+\size default
+ relative to
+\family roman
+\size normal
+ 
+\family default
+\size default
+the pullback of 
+\begin_inset Formula $\mu$
+\end_inset
+
+, i.e., 
+\begin_inset Formula 
+\begin{equation}
+\expval{\mathbf{O}}_{\mu}=\int\left(\varphi^{*}\mathbf{O}\right)\rmd\left(\varphi^{*}\mu\right)\,.\label{eq:real-expectation-value-between-classical-quantum}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lemma}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
+By Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:quantum-expectation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), we have
+\begin_inset Formula 
+\[
+\expval{\mathbf{O}}_{\mu}=\sum_{i=0}^{D-1}\lambda_{i}\mu\left(\proj{i}\right)=\sum_{i=0}^{D-1}\lambda_{i}\mu\left(\varphi\left(\left\{ \ket{i}\right\} \right)\right)=\sum_{i=0}^{D-1}\lambda_{i}\left(\varphi^{*}\mu\right)\left(\left\{ \ket{i}\right\} \right)=\int\left(\varphi^{*}\mathbf{O}\right)\rmd\left(\varphi^{*}\mu\right)\,.
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The Born Rule and Gleason's Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Gleason's-Theorem-and"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4981,17 +5337,6 @@ Two fragments of valid probability measures
 
 \end_layout
 
-\begin_layout Subsection
-Gleason's Theorem and the properties of the Born rule
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Gleason's-Theorem-and"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset ERT
 status collapsed
@@ -5432,7 +5777,7 @@ sensible
 \end_layout
 
 \begin_layout Subsection
-Issues about Measurements and Contextuality
+The Kochen-Specker Theorem and Contextuality
 \end_layout
 
 \begin_layout Standard
@@ -22582,65 +22927,6 @@ given a QIVPM
 \end_inset
 
 , and is a classical IVPM naturally.
- Moreover, 
-\family roman
-\size normal
-if 
-\family default
-\size default
-
-\begin_inset Formula $\mu:\events\rightarrow\left[0,1\right]$
-\end_inset
-
-
-\family roman
-\size normal
- is a quantum probability measure
-\family default
-\size default
- satisfying Eqs.
-\begin_inset space ~
-\end_inset
-
-(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:QuantumProbability"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-) and (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:QuantumProbability-Addition"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-), the pullback of 
-\begin_inset Formula $\mu$
-\end_inset
-
-, 
-\begin_inset Formula $\varphi^{*}\mu:2^{\Omega}\rightarrow\left[0,1\right]$
-\end_inset
-
-, can also be defined by precomposition 
-\begin_inset Formula $\left(\varphi^{*}\mu\right)\left(E\right)=\mu\left(\varphi\left(E\right)\right)$
-\end_inset
-
-, and is a classical 
-\family roman
-\size normal
-probability measure
-\family default
-\size default
- as well.
 \end_layout
 
 \begin_layout Standard
@@ -25756,11 +26042,7 @@ reference "thm:Rosenmuller"
 \end_inset
 
 .
- Although we previously only pull back probability measures, this time we
- also need to pull back observables.
-\end_layout
-
-\begin_layout Standard
+ 
 \begin_inset ERT
 status collapsed
 
@@ -25768,124 +26050,47 @@ status collapsed
 
 
 \backslash
-begin{definition}[
+todo{
 \end_layout
 
 \end_inset
 
-Pullback of 
-\family roman
-\size normal
-Observables
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "def:observable2random-variable"
-
-\end_inset
-
-Consider an observable
+Review this part because Def.
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Formula $\mathbf{O}$
-\end_inset
-
- 
-\family default
-\size default
-diagonalizable by an orthonormal basis 
-\begin_inset Formula $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
-\end_inset
-
- so that 
-\family roman
-\size normal
-
-\begin_inset Formula $\mathbf{O}$
-\end_inset
-
-
-\family default
-\size default
- has spectral decomposition
-\family roman
-\size normal
- 
-\begin_inset Formula $\mathbf{O}=\sum_{i=0}^{D-1}\lambda_{i}\proj{i}$
-\end_inset
-
-.
- If we 
-\family default
-\size default
-follow Eq.
-\begin_inset space ~
-\end_inset
-
-(
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:pullback-function"
+reference "def:observable2random-variable"
 
 \end_inset
 
-) to define 
-\begin_inset Formula $\varphi:2^{\Omega}\rightarrow\events$
-\end_inset
-
-, then the pullback of 
-\family roman
-\size normal
-
-\begin_inset Formula $\mathbf{O}$
+ is moved to Sec.
+\begin_inset space ~
 \end_inset
 
 
-\family default
-\size default
- by 
-\begin_inset Formula $\varphi$
-\end_inset
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:fuzzy"
 
- is a random variable 
-\begin_inset Formula $\varphi^{*}\mathbf{O}:\Omega\rightarrow\mathbb{R}$
-\end_inset
-
- defined by 
-\begin_inset Formula $\varphi^{*}\mathbf{O}=\sum_{i=0}^{D-1}\lambda_{i}\mathbf{1}_{\left\{ \ket{i}\right\} }$
 \end_inset
 
 .
+ 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-
-\backslash
-end{definition}
+}
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-While both observables and probability measures can be pulled back from
- quantum to classical, these pullbacks keep the expectation value invariant.
+While both observables and IVPMs can be pulled back from quantum to classical,
+ these pullbacks keep the expectation value invariant.
 \end_layout
 
 \begin_layout Standard
@@ -25942,72 +26147,7 @@ reference "eq:pullback-function"
 \end_inset
 
 ).
-\end_layout
-
-\begin_layout Itemize
-
-\family roman
-\size normal
-Given a quantum probability measure 
-\family default
-\size default
-
-\begin_inset Formula $\mu:\events\rightarrow\left[0,1\right]$
-\end_inset
-
-, the expectation value of 
-\family roman
-\size normal
-
-\begin_inset Formula $\mathbf{O}$
-\end_inset
-
-
-\family default
-\size default
- relative to 
-\begin_inset Formula $\mu$
-\end_inset
-
-
-\family roman
-\size normal
- is
-\family default
-\size default
- exactly the expectation value of the pullback of 
-\family roman
-\size normal
-
-\begin_inset Formula $\mathbf{O}$
-\end_inset
-
-
-\family default
-\size default
- relative to
-\family roman
-\size normal
- 
-\family default
-\size default
-the pullback of 
-\begin_inset Formula $\mu$
-\end_inset
-
-, i.e., 
-\begin_inset Formula 
-\begin{equation}
-\expval{\mathbf{O}}_{\mu}=\int\left(\varphi^{*}\mathbf{O}\right)\rmd\left(\varphi^{*}\mu\right)\,.\label{eq:real-expectation-value-between-classical-quantum}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Given 
+ Given 
 \family roman
 \size normal
 a QIVPM 
@@ -26072,9 +26212,6 @@ the pullback of
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -26091,75 +26228,6 @@ end{lemma}
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{proof}[
-\end_layout
-
-\end_inset
-
-Proof of Eq.
-\begin_inset space ~
-\end_inset
-
-(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:real-expectation-value-between-classical-quantum"
-
-\end_inset
-
-)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-By Eq.
-\begin_inset space ~
-\end_inset
-
-(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:quantum-expectation"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-), we have
-\begin_inset Formula 
-\[
-\expval{\mathbf{O}}_{\mu}=\sum_{i=0}^{D-1}\lambda_{i}\mu\left(\proj{i}\right)=\sum_{i=0}^{D-1}\lambda_{i}\mu\left(\varphi\left(\left\{ \ket{i}\right\} \right)\right)=\sum_{i=0}^{D-1}\lambda_{i}\left(\varphi^{*}\mu\right)\left(\left\{ \ket{i}\right\} \right)=\int\left(\varphi^{*}\mathbf{O}\right)\rmd\left(\varphi^{*}\mu\right)\,.
-\]
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{proof}
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -26171,29 +26239,7 @@ status collapsed
 
 
 \backslash
-begin{proof}[
-\end_layout
-
-\end_inset
-
-Proof of Eq.
-\begin_inset space ~
-\end_inset
-
-(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:interval-expectation-value-between-classical-quantum"
-
-\end_inset
-
-)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
+begin{proof}
 \end_layout
 
 \end_inset
