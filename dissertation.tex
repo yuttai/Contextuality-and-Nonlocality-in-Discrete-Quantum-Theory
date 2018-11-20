@@ -723,52 +723,71 @@ of a process, and its power set $2^{\Omega}$ as the classical event
 space, a classical probability measure~$\mu$ maps an event~$E$
 to a number $\mu\left(E\right)\in\left[0,1\right]$ specifying how
 likely one of the outcome in $E$ actually happens. To maintain the
-coherence, we want $\mu$ subject to the following constraints: $\mu\left(\emptyset\right)=0$,
+coherence, $\mu$ is subject to the following constraints: $\mu\left(\emptyset\right)=0$,
 $\mu\left(\Omega\right)=1$, $\mu\left(\overline{E}\right)=1-\mu\left(E\right)$,
 and $\mu\left(E_{0}\cup E_{1}\right)=\mu\left(E_{0}\right)+\mu\left(E_{1}\right)$
 for each pair of disjoint events $E_{0}\subseteq\Omega$ and $E_{1}\subseteq\Omega$.
 
-Since the previous abstraction disregards the process generating the
-outcomes, this process might be a quantum experiment. Let us prepare
-a beam of one kind of spin~$1$ particles. In principle, we can preform
-a Stern-Gerlach type experiment to splits the beam according to the
-eigenvalues of the observable $\mathbf{O}_{0}=0\,\proj{0}+1\,\proj{1}+2\,\proj{2}$
-\cite{:/content/aip/journal/jmp/21/1/10.1063/1.524312,peres1995quantum}.
-If we only send one particle instead of a beam, the state after the
-experiment could be $\ket{0}$, $\ket{1}$, or $\ket{2}$. In another
-word, the outcome of this process is $\Omega_{0}=\left\{ \ket{0},\ket{1},\ket{2}\right\} $,
-and all possible events are $\emptyset$, $\left\{ \ket{0}\right\} $,
+Since the previous abstraction doesn't specify how to generate the
+outcomes, the generating process could well be a quantum experiment.
+Let us prepare a beam of one kind of spin~$1$ particles with basis
+vectors $\ket{0}$, $\ket{1}$, and $\ket{2}$. In principle, this
+beam can be split by a Stern-Gerlach type experiment according to
+the eigenvalues of the observable $\mathbf{O}_{0}=0\,\proj{0}+1\,\proj{1}+2\,\proj{2}$,
+and the states corresponding to the split beam are $\ket{0}$, $\ket{1}$,
+and $\ket{2}$ \cite{:/content/aip/journal/jmp/21/1/10.1063/1.524312,peres1995quantum}.
+Instead of a beam, if only one particle is sent to the beam splitter,
+the state after the experiment is one of $\ket{0}$, $\ket{1}$, and
+$\ket{2}$, and each state has a probability. In the language of our
+previous abstraction, the set of outcomes is $\Omega_{0}=\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
+All possible events are $\emptyset$, $\left\{ \ket{0}\right\} $,
 $\left\{ \ket{1}\right\} $, $\left\{ \ket{2}\right\} $, $\left\{ \ket{0},\ket{1}\right\} $,
 $\left\{ \ket{0},\ket{2}\right\} $, $\left\{ \ket{1},\ket{2}\right\} $,
-and $\Omega_{0}$. Sending any particular particle specifies the likelihood
-of each event $\mu_{0}\left(E\right)$, and the function $\mu_{0}:2^{\Omega}\rightarrow\left[0,1\right]$
-is a classical probability measure.
+and $\Omega_{0}$. This experiment defines a classical probability
+measure $\mu_{0}:2^{\Omega_{0}}\rightarrow\left[0,1\right]$.
 
 One special feature of quantum experiments is that the probabilities
 in different experiments are correlated. Consider another experiment
-similar to the previous one. This experiment send exactly the same
-particle, but we use a beam splitter corresponding to the observable
+similar to the previous one. While this experiment send exactly the
+same particle, we use a beam splitter corresponding to the observable
 $\mathbf{O}_{1}=0\,\proj{\ps}+1\,\proj{\ms}+2\,\proj{2}$, where $\ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$
 and $\ket{\ms}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}$. The outcome of
-this process is $\Omega_{1}=\left\{ \ket{\ps},\ket{\ms},\ket{2}\right\} $,
-and all possible events are $\emptyset$, $\left\{ \ket{\ps}\right\} $,
-$\left\{ \ket{\ms}\right\} $, $\left\{ \ket{2}\right\} $, $\left\{ \ket{\ps},\ket{\ms}\right\} $,
-$\left\{ \ket{\ps},\ket{2}\right\} $, $\left\{ \ket{\ms},\ket{2}\right\} $,
-and $\Omega_{1}$. When we formulate the likelihood of each event
-as another probability measure $\mu_{1}:2^{\Omega}\rightarrow\left[0,1\right]$,
-the likelihood of the same event of these two experiments are experimentally
-found to be the same, i.e., $\mu_{0}\left(\emptyset\right)=\mu_{1}\left(\emptyset\right)$
+this experiment is $\Omega_{1}=\left\{ \ket{\ps},\ket{\ms},\ket{2}\right\} $,
+and it defines another probability measure $\mu_{1}:2^{\Omega_{1}}\rightarrow\left[0,1\right]$.
+Although $\mu_{0}$ and $\mu_{1}$ are different probability measures,
+the probability of the same event are experimentally found to be the
+same, i.e., $\mu_{0}\left(\emptyset\right)=\mu_{1}\left(\emptyset\right)$
 and $\mu_{0}\left(\left\{ \ket{2}\right\} \right)=\mu_{1}\left(\left\{ \ket{2}\right\} \right)$.
 In general, when the particle and the event are the same, so does
-their probability.
+their probability no matter how we set up the beam splitters.
 
 Since the probability induced by the different beam splitters are
 correlated, it is more natural to define the set of quantum event~$\events$
-as all possible events using different beam splitters. Since we are
-focus on the probability instead of outcome, and the probabilities
-of events $\left\{ \ket{0},\ket{1}\right\} $ and $\left\{ \ket{\ps},\ket{\ms}\right\} $
+as the union of all possible event spaces using different beam splitters.
+Since we are focus on the probability instead of outcome, and the
+probabilities of events $\left\{ \ket{0},\ket{1}\right\} $ and $\left\{ \ket{\ps},\ket{\ms}\right\} $
 are always the same, it is reasonable to identify them as the same
-event. 
+event. To simplify the notation, given any classical event $E\subseteq\Omega$,
+its corresponding quantum event is defined by 
+\begin{equation}
+\varphi\left(E\right)=\sum_{\ket{j}\in E}\proj{j}\,.\label{eq:pullback-function}
+\end{equation}
+Following this definition, it is easy to check that not only 
+\begin{equation}
+\varphi\left(\left\{ \ket{0},\ket{1}\right\} \right)=\proj{0}+\proj{1}=\proj{\ps}+\proj{\ms}=\varphi\left(\left\{ \ket{\ps},\ket{\ms}\right\} \right)
+\end{equation}
+but every classical event mapping the same projector must also have
+the same probability. If we follow the convention $\varphi\left(\emptyset\right)=\mathbb{0}$,
+this function $\varphi$ naturally sends the set operations to the
+corresponding projector operations: $\varphi\left(\Omega\right)=\mathbb{1}$,
+$\varphi\left(\overline{E}\right)=\mathbb{1}-\varphi\left(E\right)$.
+For each pair of set $E_{0}\subseteq\Omega$ and $E_{1}\subseteq\Omega$,
+\begin{align}
+\varphi\left(E_{0}\cap E_{1}\right) & =\varphi\left(E_{0}\right)\varphi\left(E_{1}\right)\,, & \varphi\left(E_{0}\cup E_{1}\right) & =\varphi\left(E_{0}\right)+\varphi\left(E_{1}\right)-\varphi\left(E_{0}\right)\varphi\left(E_{1}\right)\,.\label{eq:pullback-properties}
+\end{align}
+If $E_{0}$ and $E_{1}$ are disjoint, then $\varphi\left(E_{0}\right)$
+and $\varphi\left(E_{1}\right)$ are orthogonal, where two projectors
+$P_{0}$ and $P_{1}$ are called \emph{orthogonal} if $P_{0}P_{1}=\mathbb{0}$.
 
 , and consider the quantum probability measure $\mu:\events\rightarrow\left[0,1\right]$
 as a function assigning the likelihood to every quantum event
@@ -3014,21 +3033,10 @@ we have $P_{0}P_{1}$ and $P_{0}+P_{1}-P_{0}P_{1}\in\events'$. Given
 a mutually commuting subspace~$\eventsC$ whose elements are diagonalizable
 by a common orthonormal basis $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $,
 we define the function $\varphi:2^{\Omega}\rightarrow\events$ maps
-any set~$E$ to the sum of the projectors formed by elements in $E$,
-i.e., 
-\begin{equation}
-\varphi\left(E\right)=\sum_{\ket{j}\in E}\proj{j}\,.\label{eq:pullback-function}
-\end{equation}
-If we follow the convention $\varphi\left(\emptyset\right)=\mathbb{0}$,
-this function $\varphi$ naturally sends the set operations to the
-corresponding projector operations: $\varphi\left(\Omega\right)=\mathbb{1}$,
-$\varphi\left(\overline{E}\right)=\mathbb{1}-\varphi\left(E\right)$,
-and
-\begin{align}
-\varphi\left(E_{0}\cap E_{1}\right) & =\varphi\left(E_{0}\right)\varphi\left(E_{1}\right)\,, & \varphi\left(E_{0}\cup E_{1}\right) & =\varphi\left(E_{0}\right)+\varphi\left(E_{1}\right)-\varphi\left(E_{0}\right)\varphi\left(E_{1}\right)\label{eq:pullback-properties}
-\end{align}
-for each pair of set $E_{0}\subseteq\Omega$ and $E_{1}\subseteq\Omega$.
-Therefore, given a QIVPM~$\bar{\mu}$, the function $\varphi^{*}\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}$
+any set~$E$ to the sum of the projectors formed by elements in $E$
+as in Eq.~(\ref{eq:pullback-function}). \todo{Review this part
+because Eq.~(\ref{eq:pullback-function}) is moved to Sec.~\ref{sec:fuzzy}.
+}Therefore, given a QIVPM~$\bar{\mu}$, the function $\varphi^{*}\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}$
 defined by precomposition $\left(\varphi^{*}\bar{\mu}\right)\left(E\right)=\bar{\mu}\left(\varphi\left(E\right)\right)$
 is the pullback of $\bar{\mu}$ by $\varphi$, and is a classical
 IVPM naturally. Moreover, if $\mu:\events\rightarrow\left[0,1\right]$
