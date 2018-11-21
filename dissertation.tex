@@ -436,22 +436,21 @@ model is described by the following:
 \begin{enumerate}[label=(\roman{enumi})]
 \item \label{enu:-orthonormal-basis}$D$ orthonormal basis vectors for
 a Hilbert space of dimension~$D$, 
-\item \label{enu:probability-amplitude}the normalized $D$ complex probability
-amplitude coefficients describing the contribution of each basis vector, 
+\item \label{enu:probability-amplitude}$D$ complex probability amplitude
+coefficients describing the contribution of each basis vector, 
 \item \label{enu:unitary-matrix}a set of probability-conserving unitary
 matrix operators that suffice to describe all required state transformations
 of a quantum circuit, 
 \item \label{enu:measurement-framework}and a measurement framework. 
 \end{enumerate}
-In Sec.~\ref{CQC1qubitBloch.sec}, we focus on the discrete geometric
-issues raised by the properties \ref{enu:-orthonormal-basis} and
-\ref{enu:probability-amplitude} given above for CQT. In Sec.~\ref{sec:fuzzy},
-we introduce the important issues of \ref{enu:measurement-framework}
-and the foundations of quantum probability space. The observables
-and expectation values defined in Sec.~\ref{sec:fuzzy} will be used
-to understand the geometry of entangled states in Sec.~\ref{sec:The-geometry-of}.
-The property~\ref{enu:unitary-matrix} directly related to quantum
-circuit will be introduced later in Chapter~\ref{chap:DQT=000026DQC}
+In Sec.~\ref{CQC1qubitBloch.sec}, we focus on the geometric issues
+raised by the properties \ref{enu:-orthonormal-basis} and \ref{enu:probability-amplitude}
+given above for CQT. In Sec.~\ref{sec:fuzzy}, we introduce the important
+issues of \ref{enu:measurement-framework} and the foundations of
+quantum probability space. The observables and expectation values
+defined in Sec.~\ref{sec:fuzzy} will be used to understand the geometry
+of entangled states in Sec.~\ref{sec:The-geometry-of}. The property~\ref{enu:unitary-matrix}
+directly related to quantum circuit will be introduced later in Chapter~\ref{chap:DQT=000026DQC}
 when we dive into quantum algorithms.
 
 \section{Geometrical Structure of States\label{CQC1qubitBloch.sec}}
@@ -462,18 +461,18 @@ complex amplitudes into a pair of ordinary real numbers. One also
 typically assumes the existence of a $D$-dimensional Hilbert space
 with an orthonormal basis, allowing us to write \textit{pure} states
 in general as Hilbert space vectors with an Hermitian inner product:
-\begin{eqnarray}
-\ket{\Psi} & = & \sum_{i=0}^{D-1}\alpha_{i}\ket{i}\,.
-\end{eqnarray}
+\begin{equation}
+\ket{\Psi}=\sum_{i=0}^{D-1}\alpha_{i}\ket{i}\,.
+\end{equation}
 Here $\alpha_{i}\in\mathComplex$ are complex probability amplitudes,
 $\VVec{\alpha}\in\mathComplex^{D}$, and the $\{\ket{i}\}$ is an
 orthonormal basis of states obeying $\braket{i}{k}=\delta_{ik}$.
 
 The meaning of this is that any state $\ket{\Phi}=\sum_{i=0}^{D-1}\beta_{i}\ket{i}$
 can be projected onto another state $\ket{\Psi}$ by writing 
-\begin{eqnarray}
-\braket{\Phi}{\Psi} & = & \sum_{i=0}^{D-1}\beta_{i}^{*}\alpha_{i}\,,
-\end{eqnarray}
+\begin{equation}
+\braket{\Phi}{\Psi}=\sum_{i=0}^{D-1}\beta_{i}^{*}\alpha_{i}\,,
+\end{equation}
 thus quantifying the proximity of the two states. (Here $^{*}$ denotes
 complex conjugation.) This is one of many properties we take for granted
 in continuum quantum mechanics that challenge us in defining a discrete
@@ -518,9 +517,9 @@ freedom by effectively removing $\rme^{\rmi\theta}$ (“fibering
 out by the circle $\Sphere{1}$”). The standard form of this maps
 (“the Hopf fibration”) is 
 \begin{eqnarray}
-X & = & 2\,\mathrm{Re}\ \alpha_{0}\alpha_{1}^{*}=2x_{0}x_{1}+2y_{0}y_{1}\,,\nonumber \\
-Y & = & 2\,\mathrm{Im}\ \alpha_{0}\alpha_{1}^{*}=2x_{1}y_{0}-2x_{0}y_{1}\,,\label{eq:HopfFibration}\\
-Z & = & \left|\alpha_{0}\right|^{2}-\left|\alpha_{1}\right|^{2}={x_{0}}^{2}+{y_{0}}^{2}-{x_{1}}^{2}-{y_{1}}^{2}\,.\nonumber 
+ &  & X=2\,\mathrm{Re}\ \alpha_{0}\alpha_{1}^{*}=2x_{0}x_{1}+2y_{0}y_{1}\,,\nonumber \\
+ &  & Y=2\,\mathrm{Im}\ \alpha_{0}\alpha_{1}^{*}=2x_{1}y_{0}-2x_{0}y_{1}\,,\label{eq:HopfFibration}\\
+ &  & Z=\left|\alpha_{0}\right|^{2}-\left|\alpha_{1}\right|^{2}={x_{0}}^{2}+{y_{0}}^{2}-{x_{1}}^{2}-{y_{1}}^{2}\,.\nonumber 
 \end{eqnarray}
 By denoting the three-dimensional vector~$\left(X,Y,Z\right)$ as
 $\Hat{a}$, \Eq{A5.eq} implies these transformed coordinates obeying
@@ -888,6 +887,31 @@ $\mu$, i.e.,
 
 \subsection{The Born Rule and Gleason's Theorem\label{subsec:Gleason's-Theorem-and}}
 
+After introducing quantum probability measures, we might follow the
+convention to introduce the Born rule which is the only way to construct
+quantum probability measures in CQT. However, since the variants of
+quantum probability measures in Sec.~\ref{sec:Toward-IVPM} and Chapter~\ref{chap:QIVPM}
+could not be constructed by the Born rule easily, it is instructive
+to search for a Born rule here, and we will actually find the unique
+one.
+
+Although quantum probability measures constructed by gluing classical
+probability measures in the previous section looks complex, it could
+actually be constructed by operators according to Gleason's theorem.
+
+\begin{thm}[Gleason's theorem]\label{cor:Gleason's}In a Hilbert
+space $\Hilb$ of dimension $D\geq3$, given a quantum probability
+measure $\mu:\events\rightarrow\left[0,1\right]$, there exists a
+unique mixed state~$\rho$ such that $\mu\left(P\right)=\Tr\left(\rho P\right)$
+for any $D$-dimensional projector~$P$.\end{thm}
+
+\noindent In another word, when sending a particle to a Stern-Gerlach
+type experiment, we will get a quantum probability measure of the
+form $\Tr\left(\rho P\right)$ for some operator~$\rho$.
+
+Recall in Sec.~\ref{CQC1qubitBloch.sec}, the status of our system
+can be characterized by 
+
 \todo{Rewrite the beginning of this paragraph to explain the meaning
 of the Born rule... Maybe move Gleason's Theorem here?} A conventional
 quantum probability measure can easily be constructed using the Born
@@ -946,11 +970,6 @@ A conventional quantum probability measure can be easily constructed
 from a state $\rho$ according to the Born rule; conversely, this
 is the only way to obtain a conventional quantum probability measure
 according to Gleason's theorem~\cite{gleason1957,Redhead1987-REDINA,peres1995quantum}.
-
-\begin{thm}[Gleason's theorem]\label{cor:Gleason's}In a Hilbert
-space $\Hilb$ of dimension $D\geq3$, given a quantum probability
-measure $\mu:\events\rightarrow\left[0,1\right]$, there exists a
-unique mixed state~$\rho$ such that $\mu=\muB_{\rho}$.\end{thm}
 
 Although the Born rule is widely be considered a postulate of quantum
 theory, it could be derived from a smaller set of abstract definitions
