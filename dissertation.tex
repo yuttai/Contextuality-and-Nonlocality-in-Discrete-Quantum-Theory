@@ -449,10 +449,10 @@ In Sec.~\ref{CQC1qubitBloch.sec}, we focus on the geometric issues
 raised by the properties \ref{enu:-orthonormal-basis} and \ref{enu:probability-amplitude}
 given above for CQT. In Sec.~\ref{sec:fuzzy}, we introduce the important
 issues of \ref{enu:measurement-framework} and the foundations of
-quantum probability space. The observables and expectation values
-defined in Sec.~\ref{sec:fuzzy} will be used to understand the geometry
-of entangled states in Sec.~\ref{sec:The-geometry-of}. The property~\ref{enu:unitary-matrix}
-directly related to quantum circuit will be introduced later in Chapter~\ref{chap:DQT=000026DQC}
+quantum probability space. The expectation values defined in Sec.~\ref{sec:fuzzy}
+will be used to understand the geometry of entangled states in Sec.~\ref{sec:The-geometry-of}.
+The property~\ref{enu:unitary-matrix} directly related to quantum
+circuits will be introduced later in Chapter~\ref{chap:DQT=000026DQC}
 when we dive into quantum algorithms.
 
 \section{Geometrical Structure of States\label{CQC1qubitBloch.sec}}
@@ -726,8 +726,8 @@ Given a finite sample space~$\Omega$ representing all possible outcomes
 of a process, and its power set $2^{\Omega}$ as the classical event
 space, a classical probability measure~$\mu$ maps an event~$E$
 to a number $\mu\left(E\right)\in\left[0,1\right]$ specifying how
-likely one of the outcome in $E$ actually happens. To maintain the
-coherence, $\mu$ is subject to the following constraints: $\mu\left(\emptyset\right)=0$,
+likely one of the outcome in $E$ will actually happen. To maintain
+the coherence, $\mu$ is subject to the following constraints: $\mu\left(\emptyset\right)=0$,
 $\mu\left(\Omega\right)=1$, and $\mu\left(\overline{E}\right)=1-\mu\left(E\right)$,
 where $\overline{E}$ is the complement of $E$.  Moreover, we require
 $\mu\left(E_{0}\cup E_{1}\right)=\mu\left(E_{0}\right)+\mu\left(E_{1}\right)$
@@ -735,30 +735,32 @@ for each pair of disjoint events $E_{0}\subseteq\Omega$ and $E_{1}\subseteq\Omeg
 
 Since the previous abstraction doesn't specify the process to generate
 the outcomes, this process could well be a quantum experiment. Let
-us prepare a beam of one kind of spin~$1$ particles with basis vectors
-$\ket{0}$, $\ket{1}$, and $\ket{2}$. In principle, this beam can
-be split by a Stern-Gerlach type experiment according to the eigenvalues
-of the observable $\mathbf{O}_{0}$ with with spectral decomposition
+us prepare a beam of one kind of spin~$1$ particles whose state
+can be characterized by a vector in three-dimensional Hilbert space
+with basis vectors $\ket{0}$, $\ket{1}$, and $\ket{2}$. In principle,
+this beam can be split by a Stern-Gerlach type experiment according
+to the eigenvalues of the observable $\mathbf{O}_{0}$ with spectral
+decomposition 
 \begin{equation}
 \mathbf{O}_{0}=0\,\proj{0}+1\,\proj{1}+2\,\proj{2}\,,\label{eq:observable}
 \end{equation}
 and the states corresponding to the split beams are $\ket{0}$, $\ket{1}$,
 and $\ket{2}$ \cite{:/content/aip/journal/jmp/21/1/10.1063/1.524312,peres1995quantum}.
-Instead of sending a beam, if only one particle is sent to the beam
-splitter, the state after the experiment is one of $\ket{0}$, $\ket{1}$,
-and $\ket{2}$, and there is a probability for each post-experimental
-state. In the language of our abstraction, the set of outcomes is
-$\Omega_{0}=\left\{ \ket{0},\ket{1},\ket{2}\right\} $. All possible
-events are $\emptyset$, $\left\{ \ket{0}\right\} $, $\left\{ \ket{1}\right\} $,
-$\left\{ \ket{2}\right\} $, $\left\{ \ket{0},\ket{1}\right\} $,
+Instead of sending a beam of particles, if only one particle is sent
+to the beam splitter, the state of the particle after the experiment
+is one of $\ket{0}$, $\ket{1}$, and $\ket{2}$, and there is a probability
+to get each post-experimental state. In the language of our abstraction,
+the set of outcomes is $\Omega_{0}=\left\{ \ket{0},\ket{1},\ket{2}\right\} $.
+All possible events are $\emptyset$, $\left\{ \ket{0}\right\} $,
+$\left\{ \ket{1}\right\} $, $\left\{ \ket{2}\right\} $, $\left\{ \ket{0},\ket{1}\right\} $,
 $\left\{ \ket{0},\ket{2}\right\} $, $\left\{ \ket{1},\ket{2}\right\} $,
 and $\Omega_{0}$. And this experiment defines a classical probability
 measure $\mu_{0}:2^{\Omega_{0}}\rightarrow\left[0,1\right]$.
 
 One special feature of quantum experiments is that the probabilities
 in different experiments are correlated. Consider another experiment
-similar to the previous one. While sending exactly the same particle,
-we use a different beam splitter corresponding to the observable $\mathbf{O}_{1}$
+sending exactly the same particle as the previous one, but using a
+different beam splitter corresponding to the observable $\mathbf{O}_{1}$
 with spectral decomposition $\mathbf{O}_{1}=0\,\proj{\ps}+1\,\proj{\ms}+2\,\proj{2}$,
 where 
 \begin{align}
@@ -770,56 +772,43 @@ defined by this experiment is different from the previous one, these
 two experiments may produce the same post-experimental state~$\ket{2}$,
 and the probability of the common event $\left\{ \ket{2}\right\} $
 is believed to be the same, i.e., $\mu_{0}\left(\left\{ \ket{2}\right\} \right)=\mu_{1}\left(\left\{ \ket{2}\right\} \right)$.
-The general situation can be summarized as the following postulate.
-
-\begin{postulate}Given two quantum experiments, their post-experimental
-states are two orthonormal bases, and $E$ is a event for both of
-the experiments. Assume we send the same particle into these two experiments,
-then the probability of $E$ in these two experiments are the same.\end{postulate}
-
-\noindent This postulate is actually equivalent to the fact that commuting
-observables could be measured simultaneously. The latter fact is essential
-to define contextuality which will be explained later in Sec.~\ref{sec:Kochen-Specker}.
+In general, as long as sending the same particle, the probability
+of the same event in different experiments should always be the same.
+This fact is equivalent to the fact that commuting observables could
+be measured simultaneously which is essential to define contextuality
+and will be explained in Sec.~\ref{sec:Kochen-Specker}.
 
 Since the probability induced by the different beam splitters are
 correlated, it is more natural to define one quantum event space~$\events$
 containing all possible classical event spaces using different beam
 splitters. However, simply taking the union of all event spaces is
-bad because two events might appear different but representing the
-same situation. For example, if we take the complement on the both
-sides of $\mu_{0}\left(\left\{ \ket{2}\right\} \right)=\mu_{1}\left(\left\{ \ket{2}\right\} \right)$,
+a bad idea because two events might appear different but representing
+the same situation. For example, if we take the complement on the
+both sides of $\mu_{0}\left(\left\{ \ket{2}\right\} \right)=\mu_{1}\left(\left\{ \ket{2}\right\} \right)$,
 we will have
 \begin{equation}
 \mu_{0}\left(\left\{ \ket{0},\ket{1}\right\} \right)=1-\mu_{0}\left(\left\{ \ket{2}\right\} \right)=1-\mu_{1}\left(\left\{ \ket{2}\right\} \right)=\mu_{1}\left(\left\{ \ket{\ps},\ket{\ms}\right\} \right)\,,
 \end{equation}
 that is, the probabilities of events $\left\{ \ket{0},\ket{1}\right\} $
-and $\left\{ \ket{\ps},\ket{\ms}\right\} $ are always the same. To
-simplify our discussion, we want to identify two classical events
-$\left\{ \ket{0},\ket{1}\right\} $ and $\left\{ \ket{\ps},\ket{\ms}\right\} $
-as the same quantum event. Since the projectors generated by these
-two events are equal as operators, i.e., $\proj{0}+\proj{1}=\proj{\ps}+\proj{\ms}$,
-given any classical event~$E$, we can follow the same idea to define
-its quantum event as the projector generated by $E$
+and $\left\{ \ket{\ps},\ket{\ms}\right\} $ are always the same, and
+should be identified as the same quantum event to simplify our discussion.
+Since the projectors generated by these two events are equal as operators,
+i.e., $\proj{0}+\proj{1}=\proj{\ps}+\proj{\ms}$, given any classical
+event~$E$, we can follow the same idea to define its quantum event
+as the projector generated by $E$
 \begin{equation}
 \varphi\left(E\right)=\sum_{\ket{j}\in E}\proj{j}\label{eq:pullback-function}
 \end{equation}
 with the convention $\varphi\left(\emptyset\right)=\mathbb{0}$. This
 function $\varphi$ well glues all classical event spaces into one
 quantum event space~$\events$, the set of all projectors on a given
-Hilbert space, because of the following lemma.
+Hilbert space, because it is easy to inductively prove that if two
+classical events~$E$ and $E'$ corresponding to the same quantum
+event, i.e., $\varphi\left(E\right)=\varphi\left(E'\right)$, then
+the probability of $E$ is the same as the probability of $E'$.
 
-\begin{lemma}Given two quantum experiments, their post-experimental
-states are two orthonormal bases $\Omega$ and $\Omega'$, and $E\subseteq\Omega$
-and $E'\subseteq\Omega'$ are two events with $\varphi\left(E\right)=\varphi\left(E'\right)$.
-Assume we send the same particle into these two experiments, then
-the probability of $E$ is the same as the probability of $E'$.\end{lemma}
-
-\begin{proof}This lemma is obvious if we consider the third orthonormal
-bases $\Omega''=E\cup\left(\Omega'\backslash E'\right)$ and induction
-on the basis vectors.\end{proof}
-
-\noindent Moreover, this function $\varphi$ also naturally sends
-the set structure to the corresponding projector structure: $\varphi\left(\Omega\right)=\mathbb{1}$
+Moreover, this function $\varphi$ also naturally sends the set structure
+to the corresponding projector structure: $\varphi\left(\Omega\right)=\mathbb{1}$
 and $\varphi\left(\overline{E}\right)=\mathbb{1}-\varphi\left(E\right)$.
 Given a sample space $\Omega$ and a pair of event $E_{0}\subseteq\Omega$
 and $E_{1}\subseteq\Omega$, their corresponding quantum events $\varphi\left(E_{0}\right)$
