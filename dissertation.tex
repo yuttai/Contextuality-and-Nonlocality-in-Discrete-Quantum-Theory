@@ -717,11 +717,20 @@ as $\CP{D-1}$ (see any textbook on geometry~\cite{Berger_1988}).
 
 \section{Quantum Probability\label{sec:fuzzy}}
 
-\subsection{Classical and Quantum Probability Spaces}
-
 A \emph{probability space} is a mathematical abstraction specifying
 the necessary conditions for reasoning coherently about collections
 of uncertain events \cite{Kolmogorov1950,544199,Griffiths2003,Grabisch2016}.
+Although they can be used to describe an individual quantum experiment,
+to describe a family of quantum experiments, we would like to glue
+the corresponding family of classical probability space together to
+define a quantum probability space. The glued quantum probability
+space is well-behaved since not only we can define the expectation
+values, but the quantum probability measure define on the whole space
+can be simply induced by the Born rule according to Gleason's theorem
+\cite{gleason1957,Redhead1987-REDINA,peres1995quantum,RichmanBridges1999,Hamhalter2013}.
+
+\subsection{Classical and Quantum Probability Spaces}
+
 Given a finite sample space~$\Omega$ representing all possible outcomes
 of a process, and its power set $2^{\Omega}$ as the classical event
 space, a classical probability measure~$\mu$ maps an event~$E$
@@ -804,31 +813,31 @@ with the convention $\varphi\left(\emptyset\right)=\mathbb{0}$ because
 In general, if two classical events~$E$ and $E'$ mapped the same
 projector, i.e., $\varphi\left(E\right)=\varphi\left(E'\right)$,
 then the probability of $E$ is the same as the probability of $E'$.
-the function $\varphi$ well glues all classical event spaces into
-one quantum event space~$\events$.
+Because of these good properties, the projector $\varphi\left(E\right)$
+is called the quantum event corresponding to $E$, and the set of
+all projectors on a given Hilbert space is called a quantum event
+space~$\events$.
 
-Moreover, this function $\varphi$ also naturally sends the set structure
-to the corresponding projector structure: $\varphi\left(\Omega\right)=\mathbb{1}$
+This function $\varphi$ also naturally sends the set structure to
+the corresponding projector structure: $\varphi\left(\Omega\right)=\mathbb{1}$
 and $\varphi\left(\overline{E}\right)=\mathbb{1}-\varphi\left(E\right)$.
-Given a sample space $\Omega$ and a pair of event $E_{0}\subseteq\Omega$
-and $E_{1}\subseteq\Omega$, their corresponding quantum events $\varphi\left(E_{0}\right)$
-and $\varphi\left(E_{1}\right)$ are commuting and vice versa, where
-two projectors $P_{0}$ and~$P_{1}$ are \emph{commuting} if $P_{0}P_{1}=P_{1}P_{0}$.
-Moreover, the events $E_{0}$ and $E_{1}$ in the same sample space
-also satisfy the following properties: 
+Given two \emph{commuting} projectors $P_{0}$ and~$P_{1}$, there
+exists a sample space $\Omega$ and a pair of event $E_{0}\subseteq\Omega$
+and $E_{1}\subseteq\Omega$ such that $P_{0}=\varphi\left(E_{0}\right)$
+and $P_{1}=\varphi\left(E_{1}\right)$. Conversely, given a pair of
+event $E_{0}\subseteq\Omega$ and $E_{1}\subseteq\Omega$, their corresponding
+quantum events $\varphi\left(E_{0}\right)$ and $\varphi\left(E_{1}\right)$
+are commuting and satisfying the following properties: 
 \begin{align}
 \varphi\left(E_{0}\cap E_{1}\right) & =\varphi\left(E_{0}\right)\varphi\left(E_{1}\right)\,, & \varphi\left(E_{0}\cup E_{1}\right) & =\varphi\left(E_{0}\right)+\varphi\left(E_{1}\right)-\varphi\left(E_{0}\right)\varphi\left(E_{1}\right)\,.\label{eq:pullback-properties}
 \end{align}
-If $E_{0}$ and $E_{1}$ are disjoint, then $\varphi\left(E_{0}\right)$
-and $\varphi\left(E_{1}\right)$ are orthogonal and vice versa, where
-two projectors $P_{0}$ and $P_{1}$ are called \emph{orthogonal}
-if $P_{0}P_{1}=\mathbb{0}$.
+Moreover, $E_{0}$ and $E_{1}$ are disjoint if and only if $\varphi\left(E_{0}\right)$
+and $\varphi\left(E_{1}\right)$ are orthogonal, where two projectors
+$P_{0}$ and $P_{1}$ are called \emph{orthogonal} if $P_{0}P_{1}=\mathbb{0}$.
 
-After we define the set of all quantum events~$\events$ as the set
-of all projectors on a given Hilbert space, a quantum probability
-space can be defined by $\events$ together with a quantum probability
-measure $\mu:\events\rightarrow\left[0,1\right]$ subject to the corresponding
-constraints \cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010,Abramsky2012}:
+Then, a quantum probability space can be defined by a quantum event
+space~$\events$ together with a quantum probability measure $\mu:\events\rightarrow\left[0,1\right]$
+subject to the corresponding constraints \cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010,Abramsky2012}:
 \begin{align}
 \mu\left(\mathbb{0}\right) & =0\,, & \mu\left(\mathbb{1}\right) & =1\,, & \mu\left(\mathbb{1}-P\right) & =1-\mu\left(P\right)\,,\label{eq:QuantumProbability}
 \end{align}
