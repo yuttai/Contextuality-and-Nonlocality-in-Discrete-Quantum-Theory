@@ -3731,9 +3731,8 @@ literal "false"
 
 .
  Although they can be used to describe an individual quantum experiment,
- to describe a family of quantum experiments, we would like to glue the
- corresponding family of classical probability space together to define
- a quantum probability space.
+ to describe a family of quantum experiments, we would like to glue their
+ probability spaces together to define a quantum probability space.
  The glued quantum probability space is well-behaved since not only we can
  define the expectation values, but the quantum probability measure define
  on the whole space can be simply induced by the Born rule according to
@@ -3892,7 +3891,7 @@ Given a finite sample space
 \begin_inset Formula $\mu\left(E\right)\in\left[0,1\right]$
 \end_inset
 
- specifying how likely one of the outcome in 
+ specifying how likely one of the outcomes in 
 \begin_inset Formula $E$
 \end_inset
 
@@ -4070,14 +4069,15 @@ One special feature of quantum experiments is that the probabilities in
 \end_inset
 
 , where 
-\begin_inset Formula 
-\begin{align}
-\ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}\,, &  & \ket{\ms}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}\,.\label{eq:psms}
-\end{align}
-
+\begin_inset Formula $\ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$
 \end_inset
 
-Although the sample space 
+ and 
+\begin_inset Formula $\ket{\ms}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}$
+\end_inset
+
+.
+ Although the sample space 
 \begin_inset Formula $\Omega_{1}=\left\{ \ket{\ps},\ket{\ms},\ket{2}\right\} $
 \end_inset
 
@@ -4200,7 +4200,7 @@ In general, if two classical events
 \begin_inset Formula $E'$
 \end_inset
 
- mapped the same projector, i.e., 
+ are mapped to the same projector, i.e., 
 \begin_inset Formula $\varphi\left(E\right)=\varphi\left(E'\right)$
 \end_inset
 
@@ -4213,12 +4213,16 @@ In general, if two classical events
 \end_inset
 
 .
- Because of these good properties, the projector 
-\begin_inset Formula $\varphi\left(E\right)$
+ Therefore, for any classical event
+\begin_inset space ~
 \end_inset
 
- is called the quantum event corresponding to 
+
 \begin_inset Formula $E$
+\end_inset
+
+, its corresponding quantum event is defined to be the projector 
+\begin_inset Formula $\varphi\left(E\right)$
 \end_inset
 
 , and the set of all projectors on a given Hilbert space is called a quantum
@@ -4238,8 +4242,8 @@ This function
 \begin_inset Formula $\varphi$
 \end_inset
 
- also naturally sends the set structure to the corresponding projector structure
-: 
+ not only respects the probability of events but also naturally sends the
+ set structure to the corresponding projector structure: 
 \begin_inset Formula $\varphi\left(\Omega\right)=\mathbb{1}$
 \end_inset
 
@@ -4268,7 +4272,7 @@ commuting
 \begin_inset Formula $\Omega$
 \end_inset
 
- and a pair of event 
+ and a pair of events 
 \begin_inset Formula $E_{0}\subseteq\Omega$
 \end_inset
 
@@ -4285,12 +4289,20 @@ commuting
 \end_inset
 
 .
- Conversely, given a pair of event 
-\begin_inset Formula $E_{0}\subseteq\Omega$
+ Conversely, given a pair of events 
+\begin_inset Formula $E_{0}$
 \end_inset
 
  and 
-\begin_inset Formula $E_{1}\subseteq\Omega$
+\begin_inset Formula $E_{1}$
+\end_inset
+
+ in the same sample space
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\Omega$
 \end_inset
 
 , their corresponding quantum events 
@@ -4389,34 +4401,38 @@ and for each pair of orthogonal projectors
 
 \end_inset
 
-By defining in this way, given any orthonormal basis
-\begin_inset space ~
+Because 
+\begin_inset Formula $\varphi$
 \end_inset
 
-
-\begin_inset Formula $\Omega$
+ respects the probability of events, if we restrict 
+\begin_inset Formula $\varphi$
 \end_inset
 
-, the restricted function 
-\begin_inset Formula $\varphi:2^{\Omega}\rightarrow\events$
+ on an event space 
+\begin_inset Formula $2^{\Omega}$
 \end_inset
 
- can pull 
-\begin_inset Formula $\mu$
-\end_inset
-
- back to a classical 
-\family roman
-\size normal
-probability measure
-\family default
-\size default
- 
+, the function 
 \begin_inset Formula $\varphi^{*}\mu:2^{\Omega}\rightarrow\left[0,1\right]$
 \end_inset
 
- by precomposition 
+ defined by precomposition 
 \begin_inset Formula $\left(\varphi^{*}\mu\right)\left(E\right)=\mu\left(\varphi\left(E\right)\right)$
+\end_inset
+
+ is a classical 
+\family roman
+\size normal
+probability measure and called the pullback of 
+\family default
+\size default
+
+\begin_inset Formula $\mu$
+\end_inset
+
+ by 
+\begin_inset Formula $\varphi:2^{\Omega}\rightarrow\events$
 \end_inset
 
 .
@@ -4794,7 +4810,7 @@ name "subsec:Gleason's-Theorem-and"
 \begin_layout Standard
 After introducing quantum probability measures, we might follow the convention
  to introduce the Born rule which is the only way corresponding a state
- to construct quantum probability measures in CQT.
+ to a quantum probability measure in CQT.
  However, since the 
 \family roman
 variants of 
@@ -4821,13 +4837,37 @@ reference "chap:QIVPM"
 
 \end_inset
 
- could not be constructed by the Born rule easily, it is instructive to
- search for a Born rule here, and we will actually find the unique one.
+ could not be constructed by the Born rule easily, searching for a Born
+ rule step-by-step here might provide a idea what we should do in Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Toward-IVPM"
+
+\end_inset
+
+ and Chapter
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:QIVPM"
+
+\end_inset
+
+.
+ While the situations will become more delicate in the later sections, we
+ will fortunately find the unique Born rule in CQT here.
 \end_layout
 
 \begin_layout Standard
-Although quantum probability measures constructed by gluing together the
- classical ones looks complex, they could all be induced by operators according
+Although a quantum probability measure constructed by gluing together the
+ classical ones looks complex, it could be induced by an operator according
  to Gleason's theorem.
 \end_layout
 
@@ -4916,6 +4956,13 @@ end{thm}
 
 \begin_layout Standard
 Although Gleason's theorem can correspond every quantum probability measure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mu$
+\end_inset
+
  to a unique mixed state
 \begin_inset space ~
 \end_inset
@@ -4924,15 +4971,30 @@ Although Gleason's theorem can correspond every quantum probability measure
 \begin_inset Formula $\rho$
 \end_inset
 
-, it doesn't explain whether this state 
+, if we follow the Stern-Gerlach type experiment interpretation in previous
+ section, we can find Gleason's theorem doesn't specify whether this state
+ 
 \begin_inset Formula $\rho$
 \end_inset
 
- characterizing the state of particle sending to a Stern-Gerlach type experiment.
- For example, in contrast with CQT, if a quantum theory always ignore the
- input state and predict the experimental outcomes are equally probable,
- even if this quantum theory maps every input state to a quantum probability
- measure, it is still not very sensible.
+ characterizing the state of particle sending to the quantum experiment.
+ For example, in contrast with CQT, a quantum theory could basically ignore
+ the input state and predict the experimental outcomes are equally probable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1142/S0217984913500644,1751-8121-47-40-405304"
+literal "true"
+
+\end_inset
+
+.
+ Even if a version of Bell's inequality could be proved in this quantum
+ theory, its prediction might be different from the prediction of CQT enough
+ that it is easily distinguish them experimentally.
 \end_layout
 
 \begin_layout Standard
@@ -4954,7 +5016,7 @@ Let a pure unnormalized state
 \begin_inset Formula $\ket{\Phi}$
 \end_inset
 
- is one of the outcome of a quantum event
+ is one of the outcomes of a quantum event
 \begin_inset space ~
 \end_inset
 
@@ -4993,12 +5055,12 @@ an unitary map
 \begin_inset Formula $U$
 \end_inset
 
-, we should have
+, we should have 
 \begin_inset Formula $\muF_{U\ket{\Phi}}\left(UPU^{\dagger}\right)=\muF_{\Phi}\left(P\right)$
 \end_inset
 
 .
- It is easy to check the 
+ It is easy to check that the 
 \family default
 \size default
 correspondence satisfying the conditions in this paragraph is unique, 
@@ -5123,21 +5185,10 @@ noprefix "false"
 .
  By the Born rule, the first probability measure corresponds to the quantum
  system being in the pure state 
-\begin_inset Formula $\ket{\ps}$
+\begin_inset Formula $\ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$
 \end_inset
 
- defined in Eq.
-\begin_inset space ~
-\end_inset
-
-(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:psms"
-
-\end_inset
-
-) and the second corresponds to the quantum system being in the state 
+ and the second corresponds to the quantum system being in the state 
 \begin_inset Formula $\frac{\proj{0}+\proj{2}}{2}$
 \end_inset
 

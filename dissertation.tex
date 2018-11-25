@@ -722,12 +722,11 @@ the necessary conditions for reasoning coherently about collections
 of uncertain events \cite{Kolmogorov1950,544199,Griffiths2003,Grabisch2016}.
 Although they can be used to describe an individual quantum experiment,
 to describe a family of quantum experiments, we would like to glue
-the corresponding family of classical probability space together to
-define a quantum probability space. The glued quantum probability
-space is well-behaved since not only we can define the expectation
-values, but the quantum probability measure define on the whole space
-can be simply induced by the Born rule according to Gleason's theorem
-\cite{gleason1957,Redhead1987-REDINA,peres1995quantum,RichmanBridges1999,Hamhalter2013}.
+their probability spaces together to define a quantum probability
+space. The glued quantum probability space is well-behaved since not
+only we can define the expectation values, but the quantum probability
+measure define on the whole space can be simply induced by the Born
+rule according to Gleason's theorem \cite{gleason1957,Redhead1987-REDINA,peres1995quantum,RichmanBridges1999,Hamhalter2013}.
 
 \subsection{Classical and Quantum Probability Spaces}
 
@@ -735,7 +734,7 @@ Given a finite sample space~$\Omega$ representing all possible outcomes
 of a process, and its power set $2^{\Omega}$ as the classical event
 space, a classical probability measure~$\mu$ maps an event~$E$
 to a number $\mu\left(E\right)\in\left[0,1\right]$ specifying how
-likely one of the outcome in $E$ will actually happen. To maintain
+likely one of the outcomes in $E$ will actually happen. To maintain
 the coherence, $\mu$ is subject to the following constraints: $\mu\left(\emptyset\right)=0$,
 $\mu\left(\Omega\right)=1$, and $\mu\left(\overline{E}\right)=1-\mu\left(E\right)$,
 where $\overline{E}$ is the complement of $E$.  Moreover, we require
@@ -771,10 +770,7 @@ in different experiments are correlated. Consider another experiment
 sending exactly the same particle as the previous one, but using a
 different beam splitter corresponding to the observable $\mathbf{O}_{1}$
 with spectral decomposition $\mathbf{O}_{1}=0\,\proj{\ps}+1\,\proj{\ms}+2\,\proj{2}$,
-where 
-\begin{align}
-\ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}\,, &  & \ket{\ms}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}\,.\label{eq:psms}
-\end{align}
+where $\ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$ and $\ket{\ms}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}$.
 Although the sample space $\Omega_{1}=\left\{ \ket{\ps},\ket{\ms},\ket{2}\right\} $
 and the probability measure $\mu_{1}:2^{\Omega_{1}}\rightarrow\left[0,1\right]$
 defined by this experiment is different from the previous one, these
@@ -810,24 +806,25 @@ with the convention $\varphi\left(\emptyset\right)=\mathbb{0}$ because
 \begin{equation}
 \varphi\left(\left\{ \ket{0},\ket{1}\right\} \right)=\proj{0}+\proj{1}=\proj{\ps}+\proj{\ms}=\varphi\left(\left\{ \ket{\ps},\ket{\ms}\right\} \right)\,.
 \end{equation}
-In general, if two classical events~$E$ and $E'$ mapped the same
-projector, i.e., $\varphi\left(E\right)=\varphi\left(E'\right)$,
+In general, if two classical events~$E$ and $E'$ are mapped to
+the same projector, i.e., $\varphi\left(E\right)=\varphi\left(E'\right)$,
 then the probability of $E$ is the same as the probability of $E'$.
-Because of these good properties, the projector $\varphi\left(E\right)$
-is called the quantum event corresponding to $E$, and the set of
-all projectors on a given Hilbert space is called a quantum event
-space~$\events$.
+Therefore, for any classical event~$E$, its corresponding quantum
+event is defined to be the projector $\varphi\left(E\right)$, and
+the set of all projectors on a given Hilbert space is called a quantum
+event space~$\events$.
 
-This function $\varphi$ also naturally sends the set structure to
-the corresponding projector structure: $\varphi\left(\Omega\right)=\mathbb{1}$
-and $\varphi\left(\overline{E}\right)=\mathbb{1}-\varphi\left(E\right)$.
+This function $\varphi$ not only respects the probability of events
+but also naturally sends the set structure to the corresponding projector
+structure: $\varphi\left(\Omega\right)=\mathbb{1}$ and $\varphi\left(\overline{E}\right)=\mathbb{1}-\varphi\left(E\right)$.
 Given two \emph{commuting} projectors $P_{0}$ and~$P_{1}$, there
-exists a sample space $\Omega$ and a pair of event $E_{0}\subseteq\Omega$
+exists a sample space $\Omega$ and a pair of events $E_{0}\subseteq\Omega$
 and $E_{1}\subseteq\Omega$ such that $P_{0}=\varphi\left(E_{0}\right)$
 and $P_{1}=\varphi\left(E_{1}\right)$. Conversely, given a pair of
-event $E_{0}\subseteq\Omega$ and $E_{1}\subseteq\Omega$, their corresponding
-quantum events $\varphi\left(E_{0}\right)$ and $\varphi\left(E_{1}\right)$
-are commuting and satisfying the following properties: 
+events $E_{0}$ and $E_{1}$ in the same sample space~$\Omega$,
+their corresponding quantum events $\varphi\left(E_{0}\right)$ and
+$\varphi\left(E_{1}\right)$ are commuting and satisfying the following
+properties: 
 \begin{align}
 \varphi\left(E_{0}\cap E_{1}\right) & =\varphi\left(E_{0}\right)\varphi\left(E_{1}\right)\,, & \varphi\left(E_{0}\cup E_{1}\right) & =\varphi\left(E_{0}\right)+\varphi\left(E_{1}\right)-\varphi\left(E_{0}\right)\varphi\left(E_{1}\right)\,.\label{eq:pullback-properties}
 \end{align}
@@ -845,10 +842,11 @@ and for each pair of orthogonal projectors $P_{0}$ and $P_{1}$:
 \begin{equation}
 \mu\left(P_{0}+P_{1}\right)=\mu\left(P_{0}\right)+\mu\left(P_{1}\right)\,.\label{eq:QuantumProbability-Addition}
 \end{equation}
-By defining in this way, given any orthonormal basis~$\Omega$, the
-restricted function $\varphi:2^{\Omega}\rightarrow\events$ can pull
-$\mu$ back to a classical probability measure $\varphi^{*}\mu:2^{\Omega}\rightarrow\left[0,1\right]$
-by precomposition $\left(\varphi^{*}\mu\right)\left(E\right)=\mu\left(\varphi\left(E\right)\right)$.
+Because $\varphi$ respects the probability of events, if we restrict
+$\varphi$ on an event space $2^{\Omega}$, the function $\varphi^{*}\mu:2^{\Omega}\rightarrow\left[0,1\right]$
+defined by precomposition $\left(\varphi^{*}\mu\right)\left(E\right)=\mu\left(\varphi\left(E\right)\right)$
+is a classical probability measure and called the pullback of $\mu$
+by $\varphi:2^{\Omega}\rightarrow\events$.
 
 Given a Hilbert space $\mathcal{H}$ of dimension $D$ and a probability
 assignment for every projector $P$, we can define the expectation
@@ -895,14 +893,16 @@ $\mu$, i.e.,
 
 After introducing quantum probability measures, we might follow the
 convention to introduce the Born rule which is the only way corresponding
-a state to construct quantum probability measures in CQT. However,
-since the variants of quantum probability measures in Sec.~\ref{sec:Toward-IVPM}
+a state to a quantum probability measure in CQT. However, since the
+variants of quantum probability measures in Sec.~\ref{sec:Toward-IVPM}
 and Chapter~\ref{chap:QIVPM} could not be constructed by the Born
-rule easily, it is instructive to search for a Born rule here, and
-we will actually find the unique one.
+rule easily, searching for a Born rule step-by-step here might provide
+a idea what we should do in Sec.~\ref{sec:Toward-IVPM} and Chapter~\ref{chap:QIVPM}.
+While the situations will become more delicate in the later sections,
+we will fortunately find the unique Born rule in CQT here.
 
-Although quantum probability measures constructed by gluing together
-the classical ones looks complex, they could all be induced by operators
+Although a quantum probability measure constructed by gluing together
+the classical ones looks complex, it could be induced by an operator
 according to Gleason's theorem.
 
 \begin{thm}[Gleason's theorem]\label{cor:Gleason's}In a Hilbert
@@ -912,27 +912,30 @@ unique mixed state~$\rho$ such that $\mu\left(P\right)=\Tr\left(\rho P\right)$
 for any $D$-dimensional projector~$P$.\end{thm}
 
 Although Gleason's theorem can correspond every quantum probability
-measure to a unique mixed state~$\rho$, it doesn't explain whether
-this state $\rho$ characterizing the state of particle sending to
-a Stern-Gerlach type experiment. For example, in contrast with CQT,
-if a quantum theory always ignore the input state and predict the
-experimental outcomes are equally probable, even if this quantum theory
-maps every input state to a quantum probability measure, it is still
-not very sensible.
+measure~$\mu$ to a unique mixed state~$\rho$, if we follow the
+Stern-Gerlach type experiment interpretation in previous section,
+we can find Gleason's theorem doesn't specify whether this state $\rho$
+characterizing the state of particle sending to the quantum experiment.
+For example, in contrast with CQT, a quantum theory could basically
+ignore the input state and predict the experimental outcomes are equally
+probable~\cite{doi:10.1142/S0217984913500644,1751-8121-47-40-405304}.
+Even if a version of Bell's inequality could be proved in this quantum
+theory, its prediction might be different from the prediction of CQT
+enough that it is easily distinguish them experimentally.
 
 Let a pure unnormalized state $\ket{\Phi}\in\mathcal{H}$ characterize
 the particle sending to a Stern-Gerlach type experiment, and $\muB_{\Phi}$
 be the corresponding quantum probability measure of the resulting
 events. To define a sensible correspondence, we hope that if the state~$\ket{\Phi}$
-is one of the outcome of a quantum event~$P$, i.e., $P\ket{\Phi}=\ket{\Phi}$,
+is one of the outcomes of a quantum event~$P$, i.e., $P\ket{\Phi}=\ket{\Phi}$,
 then the event~$P$ always happens, $\muB_{\Phi}\left(P\right)=1$
 and vice versa. Moreover, since the physical phenomena exists and
 should be the same no matter how we describe them, the probability
 of an event should be invariant despite how we choose the basis. Because
 changing to another basis is the same as applying an unitary map~$U$,
-we should have$\muF_{U\ket{\Phi}}\left(UPU^{\dagger}\right)=\muF_{\Phi}\left(P\right)$.
-It is easy to check the correspondence satisfying the conditions in
-this paragraph is unique, 
+we should have $\muF_{U\ket{\Phi}}\left(UPU^{\dagger}\right)=\muF_{\Phi}\left(P\right)$.
+It is easy to check that the correspondence satisfying the conditions
+in this paragraph is unique, 
 \begin{equation}
 \muB_{\Phi}(P)=\frac{\melem{\Phi}{P}{\Phi}}{\ip{\Phi}{\Phi}}\label{eq:Born}
 \end{equation}
@@ -953,7 +956,7 @@ $\mathbf{O}_{0}$ defined in Eq.~(\ref{eq:observable}). Two fragments
 of valid probability measures~$\mu_{1}$ and $\mu_{2}$ that can
 be associated with this space are defined in Table~\ref{tab:quantum-probability-measure}.
 By the Born rule, the first probability measure corresponds to the
-quantum system being in the pure state $\ket{\ps}$ defined in Eq.~(\ref{eq:psms})
+quantum system being in the pure state $\ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$
 and the second corresponds to the quantum system being in the state
 $\frac{\proj{0}+\proj{2}}{2}$. The expectation values of the observable
 $\mathbf{O}$, $\expval{\mathbf{O}}_{\mu_{1,2}}$, are $1.5$ in the
