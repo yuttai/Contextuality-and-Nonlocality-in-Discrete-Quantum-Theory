@@ -293,23 +293,21 @@ measures, but also allows us to establish bounds on the validity of
 the Kochen-Specker and Gleason theorems in realistic experimental
 environments.\end{abstract*}
 
-\tableofcontents{}\todo{Split Chapter~\ref{chap:DQT=000026DQC}
-into ``Quantum Theories and Computing over Unrestricted Finite Fields''
-and ``Quantum Theories and Computing over $\ff{p^{2}}$'' two chapters.
-}
+\tableofcontents{}
 
 \chapter{Introduction\label{chap:Introduction}}
 
 \todo{Write a story so that physicists will also be interested in
 this thesis. For example, quantum simulation problem and how to apply
 these to other physicists work (say two more pages?). Check our previous
-papers. Explicitly say what question we wan to solve. In particular,
+papers. Explicitly say what question we want to solve. In particular,
 merging quantum mechanics and computer science is too broad for a
-thesis. }The marriage of quantum mechanics and computer science first
-envisioned and popularized by Feynman has created an awkward, but
-opportune, moment. This embarrassing dilemma was concisely summarized
-by Prof.~Aaronson that one of the the following three statements
-is false \cite{AaronsonArkhipov2011,BFRDARW2013}:
+thesis. }
+
+The marriage of quantum mechanics and computer science first envisioned
+and popularized by Feynman has created an awkward, but opportune,
+moment. This embarrassing dilemma was concisely summarized by Prof.~Aaronson
+that one of the the following three statements is false \cite{AaronsonArkhipov2011,BFRDARW2013}:
 \begin{enumerate}[label=(\roman{enumi})]
 \item \label{enu:Textbook-quantum-mechanics}Textbook quantum mechanics
 is correct. 
@@ -394,19 +392,29 @@ memory and time.
 
 \begin{table}
 \noindent \centering{}\caption{\label{tab:Comparison}Comparison between the classical computational
-models and their physical realizations \todo{Update this table to
-include }}
+models and their physical realizations\todo{Put the third row in
+the middle alignment.}}
 \begin{tabularx}{\linewidth}{ccX}
 \toprule 
 \addlinespace
- & Model & Physical Realization\tabularnewline\addlinespace
+ & Discrete & Continuum\tabularnewline\addlinespace
 \midrule
 \addlinespace
+\midrule
 \addlinespace
-Continuum & BCSS machine & The precision of an analog computer was limited so that an analog computer may not reproduce the theoretical prediction reliably.\tabularnewline\addlinespace
+Theoretical  Model & Turing machine & BCSS machine\tabularnewline\addlinespace
 \addlinespace
+\midrule
 \addlinespace
-Discrete & Turing machine & A digital computer can be reliably repeated with exact equivalence.\tabularnewline\addlinespace
+Physical Realization & Digital Computer & Analog Computer\tabularnewline\addlinespace
+\addlinespace
+\midrule
+\addlinespace
+How the models realize? & Reliably & Not Reliably:
+\begin{itemize}
+\item The quality might be quantized.
+\item The precision of an analog computer is low.
+\end{itemize}\tabularnewline\addlinespace
 \bottomrule
 \addlinespace
 \end{tabularx}
@@ -428,17 +436,54 @@ theories from the usual ones, the usual ones will be called the ``conventional
 quantum theory'' where necessary and it will be reviewed in Chapter~\ref{chap:Conventional-Quantum-Theory}~\footnote{Alternative terminology in the literature includes ``actual,'' ``standard,''
 and ``ordinary'' quantum theory.}.
 
-Since conventional probability amplitude is in the field of complex
-numbers, and the field structure is essential to compute the probability
-from some probability amplitudes, we in Chapter~\ref{chap:DQT=000026DQC}
-tried to build discrete quantum theories and computing by considering
-them over finite fields. 
+\todo{Beginning of Merge Left}Since conventional probability amplitude
+is in the field of complex numbers, and the field structure is essential
+to compute the probability from some probability amplitudes, we in
+Chapter~\ref{chap:DQT=000026DQC} tried to build discrete quantum
+theories and computing by considering them over finite fields. 
 
 Since error analysis technique cannot always compensate the inevitable
 problem of measurement precision, we then incorporate the idea of
 finite precision measurement into the quantum theory in Chapter~\ref{chap:QIVPM},
 and hope it could describe the physical reality and computability
-more faithful.
+more faithful.\todo{End of Merge Left}
+
+\todo{Beginning of Merge Right}We begin by replacing the continuum
+of complex numbers by discrete finite fields in quantum theory. The
+simplest theory, defined over unrestricted finite fields, is so weak
+that it only predict whether the measure result is possible or impossible.
+Its computational model is also weak that it cannot express Deutsch's
+algorithm, but, paradoxically, is also so powerful that it can be
+used to solve the $\usat$ problem, which is as hard as a general
+$\NP$-complete problem. 
+
+Our second framework employs only finite fields over prime numbers
+of the form $4\ell+3$, which possess no solutions to $x^{2}+1=0$,
+and thus permit an elegant complex representation of the finite field
+by adjoining $\rmi=\sqrt{-1}$. Because the states of a discrete $n$-qubit
+system are in principle enumerable, we can count the number of states,
+and determine the proportions of entangled and unentangled states.
+We tried define its measurement process in three different approaches.
+For the model only predicting possible or impossible, we have solutions
+to deterministic quantum algorithms such as Deutsch's algorithm, but
+unnaturally strong computational power may still occur. In an improved
+model, the cardinal probability of measurement results could be predicted
+locally. In the local ordered region, the unnaturally computational
+power is ruled out and the probabilistic Grover search algorithm can
+be implemented. However, lacking arithmetic operations on cardinal
+probabilities, expectation values cannot be defined easily. Since
+arithmetic operations works with conventional probability measures,
+we consider quantum probability measures over finite fields, but we
+haven't found a consistent way to treat them in general.
+
+Finally, we shift our attention to consider quantum interval-valued
+probability measures (IVPMs), which potentially embody both finite
+precision measurement and a sensible correspondence to standard quantum
+probability. This interval-valued framework not only provides a natural
+generalization of both classical IVPMs and conventional quantum probability
+measures, but also allows us to establish bounds on the validity of
+the Kochen-Specker and Gleason theorems in realistic experimental
+environments.\todo{End of Merge Right}
 
 
 \chapter{Conventional Quantum Theory\label{chap:Conventional-Quantum-Theory}}
@@ -1122,7 +1167,7 @@ the purity takes its maximum value independently of the pure quantum
 state \cite{BKOV2003,BKOSV2004}, expressing the fact that any state
 is a generalized coherent state of the Lie algebra of all observables.
 
-\chapter{Quantum Theories and Computing over Finite Fields\label{chap:DQT=000026DQC}}
+\chapter{Quantum Theories and Computing over Unrestricted Finite Fields}
 
 \todo{Add some introductory text...}
 
@@ -1439,6 +1484,8 @@ steps, which outperforms the known asymptotic bound $O(\sqrt{N})$
 in conventional quantum computing \cite{Grover:1996:FQM:237814.237866,BennettBernsteinBrassardVazirani1997,Mermin2007,Jaeger2007}.
 \end{comment}
 
+
+\chapter{Quantum Theories and Computing over Complexified Finite Fields\label{chap:DQT=000026DQC}}
 
 \section{Discrete Quantum Theory (I)\label{discretequantumtheoryI}}
 
