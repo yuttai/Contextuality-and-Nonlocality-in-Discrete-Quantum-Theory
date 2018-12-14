@@ -304,56 +304,137 @@ Since we as human cannot distinguish quantities differing only by
 an arbitrarily small extent \cite{Turing_1937,Gisin2017}, the quantum
 mechanical model based on the continuum of complex numbers may not
 capture our ability of predicting quantum phenomenon and the power
-of quantum computation. Being agnostic about whether the reality is
-ultimately discrete or continuous, we considered two types of quantum
-models to incorporate our limitation of distinguishability. By assuming
-the quantum states are ultimately quantized and distinguishable, our
-first type of quantum theories replaces the complex numbers by discrete
-finite fields. We then focus on the limitation of distinguishability
-itself, incorporate the finite precision measurement into our model,
-and consider quantum interval-valued probability measures.
+of realistic quantum computers. To incorporate our limitation of distinguishability,
+but agnostic about whether the reality is ultimately discrete or continuous,
+we considered two types of quantum models. By assuming the quantum
+states are ultimately discrete and distinguishable, our first type
+of quantum theories replaces the complex numbers by finite fields.
+We then focus on the limitation of distinguishability itself, incorporate
+the finite precision measurement into our model, and consider quantum
+interval-valued probability measures.
 
-After first suggesting by Richard Feynman 40 years ago~\cite{Feynman1982Simulating},
+After first suggested by Richard Feynman 40 years ago~\cite{Feynman1982Simulating},
 IBM, \textitalian{Rigetti}, Google, Microsoft, and many other companies
 and countries start to build realistic quantum computers recently
 \cite{Shieber2018,Kahn2019}, and seek more efficient ways to simulate
 chemical molecules and to break down RSA \cite{boneh1999twenty,wiki:RSAFactoring}.
 No matter whether we use classical or quantum computers to solve these
-two tasks, we notice that they require two different types of quantities.
-The quantities required by RSA are discrete, and it is beyond our
+two tasks, they require two different types of quantities. The question
+and answer of RSA are both discrete integers, but it is beyond our
 ability to distinguish whether the quantities required by simulating
 molecules are discrete or not. Before we dive into the discussion
 of these quantities in quantum computation, it is instructive to review
 how classical quantities are characterized and computed. 
 
-Discrete quantities can be easily characterized by whole numbers~\cite{ParkerBaldridge2004}.
-Even if the proportion of whole numbers are fractions, the operations
-among fractions are essentially the same as those among whole numbers
-over the common denominator. In general, discrete computation can
-be reliably repeated with exact equivalence, and any digital computer
-can faithfully simulate a Turing machine limited only by the available
-memory and time~\cite{Turing_1937}. 
+Discrete quantities can be easily characterized by integers~\cite{ParkerBaldridge2004}.
+Even if the proportion of integers are fractions, the operations among
+fractions are essentially the same as those among integers over the
+common denominator. In general, discrete computation can be reliably
+repeated with exact equivalence, and any digital computer can faithfully
+simulate a Turing machine limited only by the available memory and
+time~\cite{Turing_1937}. 
 
 In contrast, the non-apparently discrete quantities confused many
-cultures since very beginning. On one hand, the ancient Chinese philosopher
+cultures since very beginning. For example, the ancient Chinese philosopher
 Chuang-tzu (庄子) didn't believe these quantities have a minimum unit,
 and expressed ``If a one-foot-long stick is cut into halves every
 day, the cutting will never come to an end''\footnote{``一尺之棰，日取其半，萬世不竭。'' in Chinese \cite{Zhuangzi1999,Liu2018}.}.
-On the other hand, Greek mathematicians in the school of Pythagoras
-believed every mathematical model must be ultimately discrete. They
-believed so much that they in legend murdered Hippasus because he
-found there is no minimum unit between a side of a square and its
-diagonal. Comparing the idea that the length of a square's diagonal
-is not a physical quantity or there is no square physically, working
-with a mathematical model without minimum unit seems more appealing.
-Since the mathematical model is continuous, their corresponding physical
-quantities are also assumed to be continuous. Later, these continuous
-quantities becomes the basic component of analog computers. After
-logarithm was discovered, a slide rule, also known as a slipstick,
-is used to compute multiplication, division, and more complex operations
-as a mechanical analog computer~\cite{wiki:SlideRule}. Charge amplifiers
-is used to build electrical analog computers and compute the integration
-in calculus \cite{wiki:Integrator,wiki:ChargeAmplifier}. 
+As another example, Greek mathematicians in the school of Pythagoras
+believed every mathematical model must be ultimately discrete, and
+they in legend murdered Hippasus because he proved there is no minimum
+unit between a side of a square and its diagonal. Comparing the idea
+that the length of a square's diagonal is not a physical quantity
+or there is no square physically, working with a mathematical model
+without minimum unit seems more appealing. Since the mathematical
+model is continuous, their corresponding physical quantities are naturally
+assumed to be continuous. Later, these continuous quantities becomes
+the basic component of analog computers. After logarithm was discovered,
+a slide rule, also known as a slipstick, is used to compute multiplication,
+division, and more complex operations as a mechanical analog computer~\cite{wiki:SlideRule}.
+Charge amplifiers are used to build electrical analog computers and
+compute the integration in calculus \cite{wiki:Integrator,wiki:ChargeAmplifier}.
+
+Although assuming physical quantities is as continuous as their mathematical
+models are convenience, the physical quantities discussed in previous
+paragraph are not simply real numbers. Chuang-tzu's stick are made
+by molecules and cannot be cut in halves endlessly. The input charge
+of an integrator an must actually be an integer multiple of the elementary
+charge. A prefect square cannot be draw physically. It is beyond our
+ability to decide whether a prefect square exists in the space because
+whether space itself is ultimately discrete or continuous is still
+an solved question. Even if it exists, human have no ability to distinguish
+them from an almost prefect square differing only by an arbitrarily
+small extent. Similar situation applying to the length of a slide
+rule, it is beyond our ability to decide whether its length is ultimately
+discrete or continuous. Even if it is continuous, there is no way
+to identify which real number represents the length of a slide rule.
+As the results, even if analog computers really store real numbers,
+they cannot be read, write, and use to its exact value to branch the
+computation. The opposite of the last condition sometimes is assumed
+by real computational models. For example, Blum, Cucker, Shub, and
+Smale modeled their BCSS machine to allow the operations of deciding
+whether a number is greater or equal to zero over real numbers and
+whether a number is exactly zero over complex numbers \cite{BSS1989,Ziegler2007,blum2012complexity}.
+Therefore, the computational power of analog computers is far weaker
+than their theoretical prediction.
+
+\begin{table}
+\caption{\label{tab:Comparison}Comparison between the classical quantities
+and their mathematical models}
+
+\centering{}%
+\begin{tabular}{cccc}
+\toprule 
+\addlinespace
+Physical quantities & Discrete & %
+\begin{tabular}{c}
+\noalign{\vskip\doublerulesep}
+Discrete with\tabularnewline[\doublerulesep]
+\noalign{\vskip\doublerulesep}
+\noalign{\vskip\doublerulesep}
+extreme small unit\tabularnewline[\doublerulesep]
+\noalign{\vskip\doublerulesep}
+\end{tabular} & We don't know\tabularnewline\addlinespace
+\addlinespace
+\addlinespace
+Computational devices & Digital computer & Analog computer & Analog computer\tabularnewline\addlinespace
+\midrule
+\addlinespace
+\addlinespace
+\begin{tabular}{c}
+\noalign{\vskip\doublerulesep}
+Mathematical\tabularnewline[\doublerulesep]
+\noalign{\vskip\doublerulesep}
+\noalign{\vskip\doublerulesep}
+representation\tabularnewline[\doublerulesep]
+\noalign{\vskip\doublerulesep}
+\end{tabular} & Integers & Real numbers & Real numbers\tabularnewline\addlinespace
+\addlinespace
+\addlinespace
+Computational model  & Turing machine & BCSS machine & BCSS machine\tabularnewline\addlinespace
+\midrule
+\addlinespace
+\addlinespace
+How the models realize? & Reliably & Not reliably & Not reliably\tabularnewline\addlinespace
+\bottomrule
+\addlinespace
+\end{tabular}
+\end{table}
+The situations for classical quantities and the computational power
+above them are summarized in Table~\ref{tab:Comparison}, and similar
+situations could potentially be applied to quantum mechanics and computation.
+The physical quantity manipulated by the quantum circuit model, the
+most widely used model of quantum computing, is the probability amplitudes
+of states. \todo{Introduction Cleaned up until here. }Because we
+are agnostic about whether probability amplitude is quantized or can
+really be valued in the continuum of complex numbers, we tried to
+develop two different types of models: the quantum theories and computing
+over finite fields are discrete models, and the quantum interval-valued
+probability measures incorporate the idea of measurement precision
+into the quantum theory. To distinguish the modified quantum theories
+from the usual ones, the usual ones will be called the ``conventional
+quantum theory'' where necessary and it will be reviewed in Chapter~\ref{chap:Conventional-Quantum-Theory}~\footnote{Alternative terminology in the literature includes ``actual,'' ``standard,''
+and ``ordinary'' quantum theory.}.
 
 \begin{sidewaystable}
 \caption{Comparison among our models, where the upper half of the table lists
@@ -457,18 +538,6 @@ value\tabularnewline[\doublerulesep]
 \noalign{\vskip\doublerulesep}
 \end{tabular} & Defined & Undefined & Undefined & Undefined &  & Defined\tabularnewline\addlinespace
 \addlinespace
-\addlinespace
-Contextuality & Yes & Supercontextuality &  &  &  & %
-\begin{tabular}{c}
-\noalign{\vskip\doublerulesep}
-Yes when measuring\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-precise enough\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\end{tabular}\tabularnewline\addlinespace
-\midrule
-\addlinespace
 \midrule 
 \addlinespace
  &  & Sec.~\ref{modalquantumcomputing} & Sec.~\ref{discretequantumcomputingI} & Sec.~\ref{discretequantumcomputingII} &  & \tabularnewline\addlinespace
@@ -518,174 +587,6 @@ algorithm\tabularnewline[\doublerulesep]
 \addlinespace
 \end{tabular}
 \end{sidewaystable}
-\todo{Introduction Cleaned up until here.}
-
-\todo{Write a story so that physicists will also be interested in
-this thesis. For example, quantum simulation problem and how to apply
-these to other physicists work (say two more pages?). Check our previous
-papers. Explicitly say what question we want to solve. In particular,
-merging quantum mechanics and computer science is too broad for a
-thesis. }
-
-\todo{Maybe start with this kind of sentence “We want a more faithful
-quantum theory not only because the current quantum theory don't take
-into account of the measurement precision, but also because its computational
-model doesn't fit the current development of computer science.”
-}\todo{See if we can cite this paper~\cite{Gisin2017} for finite
-precision measurement. }
-
-\todo{新的大綱：主旨：probability amplitude到底是離散還是連續的？
-\begin{itemize}
-\item Some quantities are obvious discrete, but how to model other quantities
-which we don't know?
-\begin{itemize}
-\item 一尺之槌，日取其半，萬世不竭。
-\item Zeno 追龜的故事
-\item $\sqrt{2}$是無理數謀殺案(物理量？)
-\item Euclid?(物理量？)
-\end{itemize}
-當我們的儀器不足以分辨出最小單位時，假設沒有最小單位很合理，而且可以很好的解釋我們觀察到的現象。
-\item 很多大家本來相信是連續的物理量最後被證明是離散的：
-\begin{itemize}
-\item “一尺之槌，日取其半，萬世不竭。”是錯的。
-\item 光電效應
-\item 角動量(角度？)
-\end{itemize}
-\end{itemize}
-}
-
-The marriage of quantum mechanics and computer science first envisioned
-and popularized by Feynman has created an awkward, but opportune,
-moment. This embarrassing dilemma was concisely summarized by Prof.~Aaronson
-that one of the the following three statements is false \cite{AaronsonArkhipov2011,BFRDARW2013}:
-\begin{enumerate}[label=(\roman{enumi})]
-\item \label{enu:Textbook-quantum-mechanics}Textbook quantum mechanics
-is correct. 
-\item \label{enu:no-efficient-classical-factoring}There does not exist
-an efficient classical factoring algorithm. 
-\item \label{enu:extended-Church-Turing-Thesis}The extended Church-Turing
-thesis — that probabilistic Turing machines can efficiently simulate
-any physically realizable model of computation — is correct \cite{Bernstein:1993:QCT:167088.167097,Kaye2007}. 
-\end{enumerate}
-There is overwhelming evidence to support each of these statements.
-The theoretical framework of quantum mechanics \ref{enu:Textbook-quantum-mechanics}
-has withstood decades of experimental confirmation. Entire industries
-are founded on the assumption \ref{enu:no-efficient-classical-factoring}
-that algorithms like RSA are secure and they also have withstood years
-of attempted attacks \cite{boneh1999twenty,wiki:RSAFactoring}. Finally
-the entire field of complexity theory in computer science which has
-also withstood years of field testing rests, in essence, on assumption
-\ref{enu:extended-Church-Turing-Thesis} \cite{Aaronson2005,Piccinini2015}.
-And yet at least one of these three statements \emph{must be false}!
-Indeed if there is a corresponding efficient classical factoring algorithm,
-then we concede \ref{enu:no-efficient-classical-factoring}. If it
-is correct that Shor's efficient factoring algorithm is realizable,
-and we can prove there is no efficient classical factoring algorithm,
-then we concede \ref{enu:extended-Church-Turing-Thesis}. Otherwise,
-if we cannot implement Shor's algorithm no matter how hard we try,
-textbook quantum mechanics, i.e., \ref{enu:Textbook-quantum-mechanics}
-may need to be improved by a better theory. It is unlikely that there
-will be a simple resolution to this awkward situation. It is more
-likely that the resolution will emerge from deep and careful analyses
-of the foundations of each field.
-
-When we check the compatibility between quantum mechanics and computer
-science, we found one of the biggest difference is that the success
-of digital computers is based on discrete computation while quantum
-physics is usually based on the continuum of real and complex numbers.
-This suggests whether the computational model is discrete or continuous
-may be another important factor parallel to \todo{Find a phrase better
-than ``parallel to''. }whether the model is classical or quantum.
-\todo{Add discussion about randomness, like: ``Another big difference
-is that randomness in quantum computing is inherited from its underlying
-quantum physics while randomness in probabilistic Turing machine is
-an addition feature acquired by adding random bits to a Turing machine.''
-}Although building a realistic quantum computer is an ongoing project~\cite{Shieber2018},
-reviewing the challenge posed by classical discrete and continuous
-models might provide what we are facing when moving on to the quantum
-world.
-
-There was a long history that human believe they can compute with
-the continuum of real numbers. If the length of a line segment represents
-a real number, Euclid thought he could use an unmarked ruler and a
-compass to compute the real numbers about 300 B.C~\cite{MCC2006}.
-After logarithm was discovered, a slide rule, also known as a slipstick,
-is used to compute multiplication, division, and more complex operations
-as a mechanical analog computer~\cite{wiki:SlideRule}. Although
-more and more complex analog computers, like integrators \cite{wiki:Integrator,wiki:ChargeAmplifier},
-is used, there is still a gap between the computation preformed in
-an analog computer and the idealized operations among real numbers.
-One problem is that the quality computed by an analog computer might
-actually be quantized. For example, charge amplifier is believed to
-produce the integrated value of the input current~\cite{wiki:ChargeAmplifier}
-although the input charge must actually be an integer multiple of
-the elementary charge~\cite{wiki:ElementaryCharge}. Even for the
-qualities which doesn't known to be quantized, the observed computational
-power of an analog computer might still be weaker than the theoretical
-prediction because the precision of an analog computer is limited
-generally three or four significant figures~\cite{wiki:AnalogComputer}.
-For example, Blum, Cucker, Shub, and Smale modeled their machine to
-allow the operations of deciding whether a number is greater or equal
-to zero over real numbers and whether a number is exactly zero over
-complex numbers \cite{BSS1989,Ziegler2007,blum2012complexity}. Since
-no physical analog computer could branch in these operations based
-on a few significant figures, the theoretical prediction of Blum-Cucker-Shub-Smale
-(BCSS) machine cannot fully apply on physical devices.
-
-Being aware that symbols within a computation should not differ to
-an arbitrarily small extent~\cite{Turing_1937}, Turing defined his
-machine with only finite number of symbols and configurations. One
-of the benefit of discrete computation is that it can be reliably
-repeated with exact equivalence. Therefore, any digital computer can
-faithfully simulate a Turing machine limited only by the available
-memory and time. 
-
-\begin{table}
-\noindent \centering{}\caption{\label{tab:Comparison}Comparison between the classical computational
-models and their physical realizations\todo{Put the third row in
-the middle alignment.}}
-\begin{tabularx}{\linewidth}{ccX}
-\toprule 
-\addlinespace
- & Discrete & Continuum\tabularnewline\addlinespace
-\midrule
-\addlinespace
-\midrule
-\addlinespace
-Theoretical  Model & Turing machine & BCSS machine\tabularnewline\addlinespace
-\addlinespace
-\midrule
-\addlinespace
-Physical Realization & Digital Computer & Analog Computer\tabularnewline\addlinespace
-\addlinespace
-\midrule
-\addlinespace
-How the models realize? & Reliably & Not Reliably:
-\begin{itemize}
-\item The quality might be quantized.
-\item The precision of an analog computer is low.
-\end{itemize}\tabularnewline\addlinespace
-\bottomrule
-\addlinespace
-\end{tabularx}
-\end{table}
-The situations for classical computation is summarized in Table~\ref{tab:Comparison},
-and similar situations could potentially be applied to quantum computation.
-\todo{Introduction cleaning up until here. }Similar to classical
-analog computers manipulating, say, the position of substance, the
-most widely used model of quantum computing, the quantum circuit model,
-manipulates the probability amplitudes to do the computation. \todo{Play
-with some cloud quantum computers to see if I can find more support
-evidence. }Because we are agnostic about whether probability amplitude
-is quantized or can really be valued in the continuum of complex numbers,
-we tried to develop two different types of models: the quantum theories
-and computing over finite fields are discrete models, and the quantum
-interval-valued probability measures incorporate the idea of measurement
-precision into the quantum theory. To distinguish the modified quantum
-theories from the usual ones, the usual ones will be called the ``conventional
-quantum theory'' where necessary and it will be reviewed in Chapter~\ref{chap:Conventional-Quantum-Theory}~\footnote{Alternative terminology in the literature includes ``actual,'' ``standard,''
-and ``ordinary'' quantum theory.}.
-
 \todo{Beginning of Merge Left}Since conventional probability amplitude
 is in the field of complex numbers, and the field structure is essential
 to compute the probability from some probability amplitudes, we in
