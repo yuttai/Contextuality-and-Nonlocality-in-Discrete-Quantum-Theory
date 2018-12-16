@@ -156,6 +156,7 @@
 \yearGranted{\the\year}
 
 \usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\doublespacing\arraybackslash}X}
 
 \@ifundefined{showcaptionsetup}{}{%
  \PassOptionsToPackage{caption=false}{subfig}}
@@ -301,29 +302,30 @@ environments.\end{abstract*}
 \chapter{Introduction\label{chap:Introduction}}
 
 Since we as human cannot distinguish quantities differing only by
-an arbitrarily small extent \cite{Turing_1937,Gisin2017}, the quantum
-mechanical model based on the continuum of complex numbers may not
-capture our ability of predicting quantum phenomenon and the power
-of realistic quantum computers. To incorporate our limitation of distinguishability,
-but agnostic about whether the reality is ultimately discrete or continuous,
-we considered two types of quantum models. By assuming the quantum
-states are ultimately discrete and distinguishable, our first type
-of quantum theories replaces the complex numbers by finite fields.
-We then focus on the limitation of distinguishability itself, incorporate
-the finite precision measurement into our model, and consider quantum
-interval-valued probability measures.
+an arbitrarily small extent \cite{Turing_1937,Gisin2017}, we want
+to incorporate this limitation into our quantum mechanical model to
+better capture our ability of predicting quantum phenomenon and the
+power of realistic quantum computers. Since we are agnostic about
+whether the reality is ultimately discrete or continuous, we considered
+two types of quantum models. By assuming the quantum states are ultimately
+discrete and distinguishable, our first type of quantum theories replaces
+the complex numbers by finite fields. We then focus on the limitation
+of distinguishability itself, incorporate the finite precision measurement
+into our model, and consider quantum interval-valued probability measures.
 
 After first suggested by Richard Feynman 40 years ago~\cite{Feynman1982Simulating},
 IBM, \textitalian{Rigetti}, Google, Microsoft, and many other companies
 and countries start to build realistic quantum computers recently
 \cite{Shieber2018,Kahn2019}, and seek more efficient ways to simulate
 chemical molecules and to break down RSA \cite{boneh1999twenty,wiki:RSAFactoring}.
-No matter whether we use classical or quantum computers to solve these
-two tasks, they require two different types of quantities. The question
-and answer of RSA are both discrete integers, but it is beyond our
-ability to distinguish whether the quantities required by simulating
-molecules are discrete or not. Before we dive into the discussion
-of these quantities in quantum computation, it is instructive to review
+No matter how, classical or quantum, to attack these two tasks, they
+require two different types of quantities. On one hand, the question
+and answer of RSA are both discrete integers. On the other hand, even
+if the quantities describing molecules are considered as continuous,
+we want to argue that it is beyond our ability to decide these quantities,
+including the coordinate of the wave functions, are ultimately discrete
+or continuous. To better understand this issue without struggling
+with their meaning in the quantum theory, it is instructive to review
 how classical quantities are characterized and computed. 
 
 Discrete quantities can be easily characterized by integers~\cite{ParkerBaldridge2004}.
@@ -347,30 +349,32 @@ that the length of a square's diagonal is not a physical quantity
 or there is no square physically, working with a mathematical model
 without minimum unit seems more appealing. Since the mathematical
 model is continuous, their corresponding physical quantities are naturally
-assumed to be continuous. Later, these continuous quantities becomes
+assumed to be continuous. Later, these continuous quantities become
 the basic component of analog computers. After logarithm was discovered,
 a slide rule, also known as a slipstick, is used to compute multiplication,
 division, and more complex operations as a mechanical analog computer~\cite{wiki:SlideRule}.
 Charge amplifiers are used to build electrical analog computers and
 compute the integration in calculus \cite{wiki:Integrator,wiki:ChargeAmplifier}.
 
-Although assuming physical quantities is as continuous as their mathematical
-models are convenience, the physical quantities discussed in previous
-paragraph are not simply real numbers. Chuang-tzu's stick are made
-by molecules and cannot be cut in halves endlessly. The input charge
-of an integrator an must actually be an integer multiple of the elementary
-charge. A prefect square cannot be draw physically. It is beyond our
-ability to decide whether a prefect square exists in the space because
-whether space itself is ultimately discrete or continuous is still
-an solved question. Even if it exists, human have no ability to distinguish
-them from an almost prefect square differing only by an arbitrarily
-small extent. Similar situation applying to the length of a slide
-rule, it is beyond our ability to decide whether its length is ultimately
-discrete or continuous. Even if it is continuous, there is no way
-to identify which real number represents the length of a slide rule.
+Although it is convenient to assume physical quantities is as continuous
+as their mathematical models, the physical quantities discussed in
+previous paragraph may not simply represented by real numbers. Chuang-tzu's
+stick are made by molecules and cannot be cut in halves endlessly.
+The input charge of an integrator must actually be an integer multiple
+of the elementary charge. A prefect square cannot be draw physically.
+Even we don't draw it, but merely asking whether it exists in the
+space is still beyond our ability to answer because whether the space
+itself is ultimately discrete or continuous is still an unsolved question.
+Even if it exists, it cannot be distinguished by human from an almost
+prefect square differing only by an arbitrarily small extent. Similar
+situation applying to the length of a slide rule, it is beyond our
+ability to decide whether its length is ultimately discrete or continuous.
+Even if it is continuous, identifying which real number represents
+its length requires infinite precision, but the precision in reality
+is limited generally three or four significant figures~\cite{wiki:AnalogComputer}.
 As the results, even if analog computers really store real numbers,
 they cannot be read, write, and use to its exact value to branch the
-computation. The opposite of the last condition sometimes is assumed
+computation. The opposite of the last condition is sometimes assumed
 by real computational models. For example, Blum, Cucker, Shub, and
 Smale modeled their BCSS machine to allow the operations of deciding
 whether a number is greater or equal to zero over real numbers and
@@ -378,48 +382,36 @@ whether a number is exactly zero over complex numbers \cite{BSS1989,Ziegler2007,
 Therefore, the computational power of analog computers is far weaker
 than their theoretical prediction.
 
-\begin{table}
+\begin{sidewaystable}
 \caption{\label{tab:Comparison}Comparison between the classical quantities
-and their mathematical models}
+and their mathematical models. \todo{Add the quantum case, and center
+entries vertically.}}
 
-\centering{}%
-\begin{tabular}{cccc}
+\centering{}\centering{}%
+\begin{tabularx}{\linewidth}{YcYY}
 \toprule 
 \addlinespace
-Physical quantities & Discrete & %
-\begin{tabular}{c}
-\noalign{\vskip\doublerulesep}
-Discrete with\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-extreme small unit\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\end{tabular} & We don't know\tabularnewline\addlinespace
+Physical quantities & Discrete & Discrete with extreme small unit & Continuous?\tabularnewline\addlinespace
 \addlinespace
 \addlinespace
 Computational devices & Digital computer & Analog computer & Analog computer\tabularnewline\addlinespace
+\addlinespace
 \midrule
 \addlinespace
-\addlinespace
-\begin{tabular}{c}
-\noalign{\vskip\doublerulesep}
-Mathematical\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-representation\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\end{tabular} & Integers & Real numbers & Real numbers\tabularnewline\addlinespace
+Mathematical representation & Integers & Real numbers & Real numbers\tabularnewline\addlinespace
 \addlinespace
 \addlinespace
 Computational model  & Turing machine & BCSS machine & BCSS machine\tabularnewline\addlinespace
+\addlinespace
 \midrule
 \addlinespace
-\addlinespace
-How the models realize? & Reliably & Not reliably & Not reliably\tabularnewline\addlinespace
+How the models realize? & Reliably & 
+Not reliably, but could be represented by a faithful discrete model when the minimum unit could be manipulated with a better technology. & 
+Not reliably, because precision can never be high enough. \tabularnewline\addlinespace
 \bottomrule
 \addlinespace
-\end{tabular}
-\end{table}
+\end{tabularx}
+\end{sidewaystable}
 The situations for classical quantities and the computational power
 above them are summarized in Table~\ref{tab:Comparison}, and similar
 situations could potentially be applied to quantum mechanics and computation.
@@ -441,151 +433,47 @@ and ``ordinary'' quantum theory.}.
 their quantum mechanical definitions and properties, and the lower
 half of the table lists their computational power.}
 
-\centering{}%
-\begin{tabular}{ccccccc}
+\begin{tabularx}{\linewidth}{YYYYYYY}
 \toprule 
 \addlinespace
  & Conventional & Modal & Discrete (I) & Discrete (II) & QPMFF & QIVPM\tabularnewline\addlinespace
-\midrule
 \addlinespace
+\midrule
 \midrule 
 \addlinespace
  & Chapter~\ref{chap:Conventional-Quantum-Theory} & Sec.~\ref{modalquantum} & Sec.~\ref{discretequantumtheoryI} to \ref{sec:Geometry-of-Entangled-States} & Sec.~\ref{sec:Discrete-Quantum-Theory-(II)} & Sec.~\ref{sec:Toward-IVPM} & Chapter~\ref{chap:QIVPM}\tabularnewline\addlinespace
+\addlinespace
 \midrule
 \addlinespace
+States space & $\mathbb{C}^{D}$ & $\Fq^{D}$ & $\Fpp^{D}$ & Local region in $\Fpp^{D}$ & $\Fpp^{D}$ & $\mathbb{C}^{D}$\tabularnewline\addlinespace
 \addlinespace
-States space & $\mathbb{C}^{D}$ & $\Fq^{D}$ & $\Fpp^{D}$ & %
-\begin{tabular}{c}
-\noalign{\vskip\doublerulesep}
-Local region\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-in $\Fpp^{D}$\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\end{tabular} & $\Fpp^{D}$ & $\mathbb{C}^{D}$\tabularnewline\addlinespace
+\midrule
 \addlinespace
+Likelihood of events is predicted by & Real-valued probability & Possible or impossible & Possible or impossible & Cardinal probability & Real-valued probability, but no sensible Born rule & Interval-valued probability\tabularnewline\addlinespace
 \addlinespace
-\begin{tabular}{c}
-\noalign{\vskip\doublerulesep}
-Likelihood\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-of events is\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-predicted by\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\end{tabular} & %
-\begin{tabular}{c}
-\noalign{\vskip\doublerulesep}
-Real-valued\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-probability\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\end{tabular} & %
-\begin{tabular}{c}
-\noalign{\vskip\doublerulesep}
-Possible or\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-impossible\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\end{tabular} & %
-\begin{tabular}{c}
-\noalign{\vskip\doublerulesep}
-Possible or\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-impossible\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\end{tabular} & %
-\begin{tabular}{c}
-\noalign{\vskip\doublerulesep}
-Cardinal\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-probability\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\end{tabular} & %
-\begin{tabular}{c}
-\noalign{\vskip\doublerulesep}
-Real-valued\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-probability, but no\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-sensible Born rule\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\end{tabular} & %
-\begin{tabular}{c}
-\noalign{\vskip\doublerulesep}
-Interval-valued\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-probability\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\end{tabular}\tabularnewline\addlinespace
+\midrule
 \addlinespace
+Expectation value & Defined & Undefined & Undefined & Undefined &  & Defined\tabularnewline\addlinespace
 \addlinespace
-\begin{tabular}{c}
-\noalign{\vskip\doublerulesep}
-Expectation\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-value\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\end{tabular} & Defined & Undefined & Undefined & Undefined &  & Defined\tabularnewline\addlinespace
-\addlinespace
+\midrule
 \midrule 
 \addlinespace
  &  & Sec.~\ref{modalquantumcomputing} & Sec.~\ref{discretequantumcomputingI} & Sec.~\ref{discretequantumcomputingII} &  & \tabularnewline\addlinespace
+\addlinespace
 \midrule
 \addlinespace
+Hadamard transformation & Included & May not be included & Included & Included &  & \tabularnewline\addlinespace
 \addlinespace
-\begin{tabular}{c}
-\noalign{\vskip\doublerulesep}
-Hadamard\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-transformation\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\end{tabular} & Included & %
-\begin{tabular}{c}
-\noalign{\vskip\doublerulesep}
-May not be\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-included\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\end{tabular} & Included & Included &  & \tabularnewline\addlinespace
+\midrule
 \addlinespace
+Solve $\usat$ efficiently & Unlikely & Yes & Partially & Unlikely &  & \tabularnewline\addlinespace
 \addlinespace
-\begin{tabular}{c}
-\noalign{\vskip\doublerulesep}
-Solve\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-$\usat$\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-efficiently\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\end{tabular} & Unlikely & Yes & Partially & Unlikely &  & \tabularnewline\addlinespace
+\midrule
 \addlinespace
-\addlinespace
-\begin{tabular}{c}
-\noalign{\vskip\doublerulesep}
-Grover search\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\noalign{\vskip\doublerulesep}
-algorithm\tabularnewline[\doublerulesep]
-\noalign{\vskip\doublerulesep}
-\end{tabular} & Yes &  &  & Yes &  & \tabularnewline\addlinespace
+Grover search algorithm & Yes &  &  & Yes &  & \tabularnewline\addlinespace
 \bottomrule
 \addlinespace
-\end{tabular}
+\end{tabularx}
 \end{sidewaystable}
 \todo{Beginning of Merge Left}Since conventional probability amplitude
 is in the field of complex numbers, and the field structure is essential
