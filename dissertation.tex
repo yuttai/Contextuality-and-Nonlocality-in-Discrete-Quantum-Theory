@@ -318,15 +318,15 @@ IBM, \textitalian{Rigetti}, Google, Microsoft, and many other companies
 and countries start to build realistic quantum computers recently
 \cite{Shieber2018,Kahn2019}, and seek more efficient ways to simulate
 chemical molecules and to break down RSA \cite{boneh1999twenty,wiki:RSAFactoring}.
-No matter how, classical or quantum, to attack these two tasks, they
+No matter how to, classical or quantum, attack these two tasks, they
 require two different types of quantities. On one hand, the question
 and answer of RSA are both discrete integers. On the other hand, even
-if the quantities describing molecules are considered as continuous,
-we want to argue that it is beyond our ability to decide these quantities,
-including the coordinate of the wave functions, are ultimately discrete
-or continuous. To better understand this issue without struggling
-with their meaning in the quantum theory, it is instructive to review
-how classical quantities are characterized and computed. 
+if the quantities describing molecules, like their positions, are
+considered as continuous, we want to argue that it is beyond our ability
+to decide whether these quantities are ultimately discrete or continuous.
+To better understand this issue without struggling with the quantum
+theory, it is instructive to review how classical quantities are characterized
+and computed. 
 
 Discrete quantities can be easily characterized by integers~\cite{ParkerBaldridge2004}.
 Even if the proportion of integers are fractions, the operations among
@@ -348,47 +348,49 @@ unit between a side of a square and its diagonal. Comparing the idea
 that the length of a square's diagonal is not a physical quantity
 or there is no square physically, working with a mathematical model
 without minimum unit seems more appealing. Since the mathematical
-model is continuous, their corresponding physical quantities are naturally
-assumed to be continuous. Later, these continuous quantities become
-the basic component of analog computers. After logarithm was discovered,
-a slide rule, also known as a slipstick, is used to compute multiplication,
-division, and more complex operations as a mechanical analog computer~\cite{wiki:SlideRule}.
-Charge amplifiers are used to build electrical analog computers and
-compute the integration in calculus \cite{wiki:Integrator,wiki:ChargeAmplifier}.
+models are continuous, their corresponding physical quantities are
+naturally assumed to be continuous. Later, these continuous quantities
+become the basic component of analog computers. After logarithm was
+discovered, a slide rule, also known as a slipstick, is used to compute
+multiplication, division, and more complex operations as a mechanical
+analog computer~\cite{wiki:SlideRule}. Charge amplifiers are used
+to build electrical analog computers and compute the integration in
+calculus \cite{wiki:Integrator,wiki:ChargeAmplifier}.
 
 Although it is convenient to assume physical quantities is as continuous
 as their mathematical models, the physical quantities discussed in
-previous paragraph may not simply represented by real numbers. Chuang-tzu's
-stick are made by molecules and cannot be cut in halves endlessly.
-The input charge of an integrator must actually be an integer multiple
-of the elementary charge. A prefect square cannot be draw physically.
-Even we don't draw it, but merely asking whether it exists in the
-space is still beyond our ability to answer because whether the space
-itself is ultimately discrete or continuous is still an unsolved question.
-Even if it exists, it cannot be distinguished by human from an almost
-prefect square differing only by an arbitrarily small extent. Similar
-situation applying to the length of a slide rule, it is beyond our
-ability to decide whether its length is ultimately discrete or continuous.
-Even if it is continuous, identifying which real number represents
+the previous paragraph should not simply represented by real numbers.
+Chuang-tzu's stick are made by molecules and cannot be cut in halves
+endlessly. The input charge of an integrator must actually be an integer
+multiple of the elementary charge. A prefect square cannot be draw
+physically. Even we don't draw it, but merely asking whether it exists
+in the space is still beyond our ability to answer because whether
+the space itself is ultimately discrete or continuous is still an
+unsolved question. Even if a prefect square exists physically, we
+cannot decide whether it is really a prefect square or an almost prefect
+one differing only by an arbitrarily small extent. Similar situation
+applying to the length of a slide rule, it is beyond our ability to
+decide whether its length is ultimately discrete or continuous. Even
+if its length is continuous, identifying which real number represents
 its length requires infinite precision, but the precision in reality
 is limited generally three or four significant figures~\cite{wiki:AnalogComputer}.
 As the results, even if analog computers really store real numbers,
-they cannot be read, write, and use to its exact value to branch the
-computation. The opposite of the last condition is sometimes assumed
-by real computational models. For example, Blum, Cucker, Shub, and
-Smale modeled their BCSS machine to allow the operations of deciding
+they cannot be read, written, and used to branch the computation based
+on their exact values. The opposite of the last statement is sometimes
+assumed by real computational models. For example, Blum, Cucker, Shub,
+and Smale modeled their BCSS machine to allow the operations of deciding
 whether a number is greater or equal to zero over real numbers and
 whether a number is exactly zero over complex numbers \cite{BSS1989,Ziegler2007,blum2012complexity}.
 Therefore, the computational power of analog computers is far weaker
-than their theoretical prediction.
+than the prediction based on this kind of theoretical models.
 
 \begin{sidewaystable}
 \caption{\label{tab:Comparison}Comparison between the classical quantities
-and their mathematical models. \todo{Add the quantum case, and center
-entries vertically.}}
+and their mathematical models with their inspired quantum models.
+\todo{Center entries vertically.}}
 
 \centering{}\centering{}%
-\begin{tabularx}{\linewidth}{YcYY}
+\begin{tabularx}{\linewidth}{ccYY}
 \toprule 
 \addlinespace
 Physical quantities & Discrete & Discrete with extreme small unit & Continuous?\tabularnewline\addlinespace
@@ -406,26 +408,30 @@ Computational model  & Turing machine & BCSS machine & BCSS machine\tabularnewli
 \midrule
 \addlinespace
 How the models realize? & Reliably & 
-Not reliably, but could be represented by a faithful discrete model when the minimum unit could be manipulated with a better technology. & 
+Not reliably, but after we have a better technology to manipulate the minimum units, we can predict the physical phenomenon and their computation model by a better discrete model. & 
 Not reliably, because precision can never be high enough. \tabularnewline\addlinespace
-\bottomrule
 \addlinespace
+\midrule
+\addlinespace
+Inspired quantum models &  & Quantum Theories and Computing over Finite Fields & Quantum Interval-Valued Probability Measures (QIVPM)\tabularnewline\addlinespace
+\addlinespace
+\bottomrule
 \end{tabularx}
 \end{sidewaystable}
 The situations for classical quantities and the computational power
-above them are summarized in Table~\ref{tab:Comparison}, and similar
-situations could potentially be applied to quantum mechanics and computation.
-The physical quantity manipulated by the quantum circuit model, the
-most widely used model of quantum computing, is the probability amplitudes
-of states. \todo{Introduction Cleaned up until here. }Because we
-are agnostic about whether probability amplitude is quantized or can
-really be valued in the continuum of complex numbers, we tried to
-develop two different types of models: the quantum theories and computing
-over finite fields are discrete models, and the quantum interval-valued
-probability measures incorporate the idea of measurement precision
-into the quantum theory. To distinguish the modified quantum theories
-from the usual ones, the usual ones will be called the ``conventional
-quantum theory'' where necessary and it will be reviewed in Chapter~\ref{chap:Conventional-Quantum-Theory}~\footnote{Alternative terminology in the literature includes ``actual,'' ``standard,''
+above them are summarized in Table~\ref{tab:Comparison} with their
+inspired quantum models. The physical quantity manipulated by the
+quantum circuit model, the most widely used model of quantum computing,
+is the probability amplitudes of states. \todo{Introduction Cleaned
+up until here. }Because we are agnostic about whether probability
+amplitude is quantized or can really be valued in the continuum of
+complex numbers, we tried to develop two different types of models:
+the quantum theories and computing over finite fields are discrete
+models, and the quantum interval-valued probability measures incorporate
+the idea of measurement precision into the quantum theory. To distinguish
+the modified quantum theories from the usual ones, the usual ones
+will be called the ``conventional quantum theory'' where necessary
+and it will be reviewed in Chapter~\ref{chap:Conventional-Quantum-Theory}~\footnote{Alternative terminology in the literature includes ``actual,'' ``standard,''
 and ``ordinary'' quantum theory.}.
 
 \begin{sidewaystable}
@@ -471,8 +477,8 @@ Solve $\usat$ efficiently & Unlikely & Yes & Partially & Unlikely &  & \tabularn
 \midrule
 \addlinespace
 Grover search algorithm & Yes &  &  & Yes &  & \tabularnewline\addlinespace
-\bottomrule
 \addlinespace
+\bottomrule
 \end{tabularx}
 \end{sidewaystable}
 \todo{Beginning of Merge Left}Since conventional probability amplitude
