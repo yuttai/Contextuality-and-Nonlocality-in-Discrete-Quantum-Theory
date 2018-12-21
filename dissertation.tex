@@ -321,14 +321,14 @@ chemical molecules and to break down RSA \cite{boneh1999twenty,wiki:RSAFactoring
 No matter how to, classical or quantum, attack these two tasks, they
 require two different types of quantities. On one hand, a question
 and its answer of RSA are both discrete integers. On the other hand,
-even if the quantities describing molecules, like the domain of their
-position wave functions or the probability amplitudes of a wave function,
-are considered as continuous, we want to argue that these quantities
-might later be discovered as discrete. Even if they were not discrete,
-this fact may never be proved and the exact value of these quantities
-may never be pinned down. To better understand this issue without
-struggling with the quantum theory, it is instructive to review how
-classical quantities are characterized and computed.
+molecules are described by quantities including the domain of their
+position wave functions or the probability amplitudes of a wave function.
+Even if these quantities look like continuous, we want to argue that
+these quantities might later be discovered to be discrete. Even if
+they were not discrete, this fact may never be proved and the exact
+value of these quantities may never be pinned down. To better understand
+this issue without struggling with the quantum theory, it is instructive
+to review how classical quantities are characterized and computed.
 
 Discrete quantities can be easily characterized by integers~\cite{ParkerBaldridge2004}.
 Even if the proportion of integers are fractions, the operations among
@@ -369,7 +369,7 @@ square cannot be draw physically. Even we don't draw it, but merely
 ask whether it exists in the space. This question is still beyond
 our ability to answer because whether the space itself is ultimately
 discrete or continuous is still an unsolved question. Even if a prefect
-square exists physically, we may not able to decide whether the “square”
+square exists physically, we may not able to decide whether the ``square''
 we discussed is really prefect or almost prefect differing only by
 an arbitrarily small extent. Similar situation applying to the length
 of a slide rule, it is beyond our ability to decide whether its length
@@ -384,13 +384,17 @@ For example, Blum, Cucker, Shub, and Smale modeled their BCSS machine
 to allow the operations of deciding whether a number is greater or
 equal to zero over real numbers and whether a number is exactly zero
 over complex numbers \cite{BSS1989,Ziegler2007,blum2012complexity}.
-Therefore, the computational power of analog computers is far weaker
-than the prediction based on this kind of theoretical models.
+Hence, even if the inputs of an analog computer and a BCSS machine
+are close to each other, their computational results might be completely
+different, like the butterfly effect, and may not be compensated by
+error analysis techniques. Therefore, the computational power of analog
+computers is far weaker than the prediction based on this kind of
+theoretical models.
 
 \begin{sidewaystable}
 \caption{\label{tab:Comparison}Comparison between the classical quantities
-and their mathematical models with their inspired quantum models.
-\todo{Center entries vertically.}}
+and their mathematical models with the inspired quantum models. \todo{Center
+entries vertically.}}
 
 \centering{}\centering{}%
 \begin{tabularx}{\linewidth}{ccYY}
@@ -412,7 +416,7 @@ Computational model  & Turing machine & BCSS machine & BCSS machine\tabularnewli
 \addlinespace
 How the models realize? & Reliably & 
 Not reliably, but after we have a better technology to manipulate the minimum units, we can predict the physical phenomenon and their computational power by a better discrete model. & 
-Not reliably, because precision can never be high enough. \tabularnewline\addlinespace
+Not reliably, because precision can never be high enough, and the difference between their computational power might not be compensated by error analysis techniques. \tabularnewline\addlinespace
 \addlinespace
 \midrule
 \addlinespace
@@ -421,54 +425,78 @@ Inspired quantum models &  & Quantum Theories and Computing over Finite Fields &
 \bottomrule
 \end{tabularx}
 \end{sidewaystable}
-The situations for classical quantities, the computational power above
-them, and their inspired quantum models are summarized in Table~\ref{tab:Comparison}.
-Similar to classical analog computers, the quantum circuit model,
-the most widely used model of quantum computing, manipulates quantities
-which are not discrete apparently: the probability amplitudes of quantum
-states. It is reasonable to expect the similar inconsistency between
-classical classical quantities and their mathematical representation
-applies to the quantum case as well. To address this issue, we will
-start from the ``conventional quantum theory'' reviewed in Chapter~\ref{chap:Conventional-Quantum-Theory}\footnote{Alternative terminology in the literature includes ``actual,'' ``standard,''
+The situations for classical quantities and the computational power
+above them are summarized in Table~\ref{tab:Comparison}, and the
+two possibilities dealing with real-valued models inspires us two
+types of quantum models. Similar to classical analog computers, the
+quantum circuit model, the most widely used model of quantum computing,
+manipulates quantities which are not discrete apparently: the probability
+amplitudes of quantum states. To address the similar inconsistency,
+we first review the ``conventional quantum theory'' in Chapter~\ref{chap:Conventional-Quantum-Theory}\footnote{Alternative terminology in the literature includes ``actual,'' ``standard,''
 and ``ordinary'' quantum theory.}, where the probability amplitudes are in the field of complex numbers.
-On one hand, if the probability amplitudes are assumed to be ultimately
-discrete, we replace the field of complex numbers by discrete finite
-fields and consider the quantum theories and computing over finite
-fields. On the other hand, if the probability amplitudes are never
-quantized no matter how hard we try, we still should not be able to
-access their exactly values. This inaccessibility is essentially the
-same as the measurement precision should only be finite, which will
-be incorporated into the quantum theory by our quantum interval-valued
-probability measures (QIVPM) framework.
+If the probability amplitudes are assumed to be ultimately discrete,
+we replace the field of complex numbers by discrete finite fields
+and consider the quantum theories and computing over finite fields.
+Another possibilities could be that the probability amplitudes are
+never quantized no matter how hard we try, and we could never access
+their exactly values. Notice that the probability amplitudes can never
+be accessed directly in an experiment, the accessible properties of
+a quantum system is its measurement results and the probability of
+an event. Hence, to incorporate the finite precision measurement into
+the quantum theory, we consider a framework called quantum interval-valued
+probability measures (QIVPM).
 
-\todo{Introduction Cleaned up until here. }Because we are agnostic
-about whether probability amplitude is quantized or can really be
-valued in the continuum of complex numbers, we tried to develop two
-different types of models: the quantum theories and computing over
-finite fields are discrete models, and the quantum interval-valued
-probability measures incorporate the idea of measurement precision
-into the quantum theory. .
+\begin{comment}
+Our first discrete model replaces the complex numbers by a unrestricted
+finite field~$\mathbb{F}_{q}$ \cite{Schumacher2012-SCHMQT,DQT2014,SchumacherWestmoreland2010}.
+In this model, an $n$-qubit state is a non-zero vector in $\mathbb{F}_{q}^{2^{n}}$.
+When we measure a given state~$\ket{\Phi}$, an observable is replaced
+by a basis~$\mathcal{B}$ of $\mathbb{F}_{q}^{2^{n}}$. Since $\ket{\Phi}$
+can be represented by the summation across a unique subset~$\mathcal{S}$
+of the basis~$\mathcal{B}$, whether it is possible or impossible
+to measure a basis vector~$\ket{i}$ depends on whether $\ket{i}$
+is in $\mathcal{S}$ or not. Because this model only predicts whether
+a result is possible or impossible, it is called the modal quantum
+theory. Its computational model, called the modal quantum computing,
+is far from conventional quantum computing. Although modal quantum
+computing can express simple algorithms such as quantum teleportation
+\cite{BennettBrassardEtAl1993,peres1995quantum,Mermin2007,Jaeger2007},
+it is so weak that it cannot express Deutsch's algorithm \cite{Deutsch1985,Mermin2007}.
+This quantum theory is, however, also so powerful that it can be used
+to solve an unstructured database search of size $N$ using $O(\log(N))$
+steps, which outperforms the known asymptotic bound $O(\sqrt{N})$
+in conventional quantum computing \cite{Grover:1996:FQM:237814.237866,BennettBernsteinBrassardVazirani1997,Mermin2007,Jaeger2007}.
+\end{comment}
+When replacing the continuum of complex numbers by discrete finite
+fields, we first doesn't restrict our quantum theory and computing
+over which finite fields in Chapter~\ref{chap:Unrestricted-Finite-Fields}
+\cite{Schumacher2012-SCHMQT,DQT2014,SchumacherWestmoreland2010}.
+This theory is called modal quantum theory because it is so weak that
+it only predict whether the measure result is possible or impossible,
+and even the expectation value of an observable is not able to be
+defined. Although a version of quantum theory defined over a two-valued
+field can express simple algorithms such as quantum teleportation
+\cite{BennettBrassardEtAl1993,peres1995quantum,Mermin2007,Jaeger2007},
+it is so weak that it cannot express Deutsch's algorithm \cite{Deutsch1985,Mermin2007}.
+This quantum theory is, however, also so powerful that it can be used
+to solve the $\usat$ problem, which is as hard as a general $\NP$-complete
+problem.
 
-\todo{Beginning of Merge Left}Since conventional probability amplitude
-is in the field of complex numbers, and the field structure is essential
-to compute the probability from some probability amplitudes, we in
-Chapter~\ref{chap:DQT=000026DQC} tried to build discrete quantum
-theories and computing by considering them over finite fields. 
-
-Since error analysis technique cannot always compensate the inevitable
-problem of measurement precision, we then incorporate the idea of
-finite precision measurement into the quantum theory in Chapter~\ref{chap:QIVPM},
-and hope it could describe the physical reality and computability
-more faithful.\todo{End of Merge Left}
-
-\todo{Beginning of Merge Right}We begin by replacing the continuum
-of complex numbers by discrete finite fields in quantum theory. The
-simplest theory, defined over unrestricted finite fields, is so weak
-that it only predict whether the measure result is possible or impossible.
-Its computational model is also weak that it cannot express Deutsch's
-algorithm, but, paradoxically, is also so powerful that it can be
-used to solve the $\usat$ problem, which is as hard as a general
-$\NP$-complete problem. 
+\todo{Introduction Cleaned up until here. }Next, in Sec.~\ref{discretequantumtheoryI}
+to \ref{sec:Geometry-of-Entangled-States}, we improve on this by
+showing that for finite fields of order $p^{2}$, with the prime $p$
+of the form $4\ell+3$ ($\ell$ a non-negative integer), the complex
+numbers have extremely compelling and natural discrete analogs that
+permit a great many of the standard requirements of quantum computing
+to be preserved. Under suitable conditions, we have amplitude-based
+partitions of unity, unitary transformations, and entanglement, as
+well as solutions to deterministic quantum algorithms such as the
+algorithms of Deutsch, Simon, and Bernstein-Vazirani, though still
+with some bothersome shortcomings. Because of the modular nature of
+arithmetic in the finite complex field, it is not possible to define
+an inner product in the usual sense, and we show in Sec.~\ref{subsec:Partial-Algorithm}
+that this leads to excessive computational power for the unstructured
+database search problem for certain database sizes.
 
 Our second framework employs only finite fields over prime numbers
 of the form $4\ell+3$, which possess no solutions to $x^{2}+1=0$,
@@ -496,7 +524,7 @@ probability. This interval-valued framework not only provides a natural
 generalization of both classical IVPMs and conventional quantum probability
 measures, but also allows us to establish bounds on the validity of
 the Kochen-Specker and Gleason theorems in realistic experimental
-environments.\todo{End of Merge Right}
+environments.
 
 \begin{sidewaystable}
 \caption{Comparison among our models, where the upper half of the table lists
@@ -532,7 +560,7 @@ Expectation value & Defined & Undefined & Undefined & Undefined &  & Defined\tab
 \addlinespace
 \midrule
 \addlinespace
-Hadamard transformation & Included & May not be included & Included & Included &  & \tabularnewline\addlinespace
+Deutsch's algorithm & Yes & Maybe no & Yes & Yes &  & \tabularnewline\addlinespace
 \addlinespace
 \midrule
 \addlinespace
@@ -1227,9 +1255,7 @@ the purity takes its maximum value independently of the pure quantum
 state \cite{BKOV2003,BKOSV2004}, expressing the fact that any state
 is a generalized coherent state of the Lie algebra of all observables.
 
-\chapter{Quantum Theories and Computing over Unrestricted Finite Fields}
-
-\todo{Add some introductory text...}
+\chapter{Quantum Theories and Computing over Unrestricted Finite Fields\label{chap:Unrestricted-Finite-Fields}}
 
 \section{Fundamentals of Finite Fields\label{sec:background}}
 
@@ -1518,32 +1544,7 @@ each $a_{i}$ is either 0 or 1, then each $S(a_{i})$ is either $+$
 or $1$, and hence each $\mathsf{not}\left(S(a_{i})\right)$ is either~$+$
 or~$0$. The result follows since any state with a combination of
 $+$ and $0$, when expressed in the standard basis, would consist
-of a superposition containing the state $\ket{0\ldots}$.\end{proof}%
-\begin{comment}
-
-\section{Modal Quantum Theory and Computing}
-
-Our first discrete model replaces the complex numbers by a unrestricted
-finite field~$\mathbb{F}_{q}$ \cite{Schumacher2012-SCHMQT,DQT2014,SchumacherWestmoreland2010}.
-In this model, an $n$-qubit state is a non-zero vector in $\mathbb{F}_{q}^{2^{n}}$.
-When we measure a given state~$\ket{\Phi}$, an observable is replaced
-by a basis~$\mathcal{B}$ of $\mathbb{F}_{q}^{2^{n}}$. Since $\ket{\Phi}$
-can be represented by the summation across a unique subset~$\mathcal{S}$
-of the basis~$\mathcal{B}$, whether it is possible or impossible
-to measure a basis vector~$\ket{i}$ depends on whether $\ket{i}$
-is in $\mathcal{S}$ or not. Because this model only predicts whether
-a result is possible or impossible, it is called the modal quantum
-theory. Its computational model, called the modal quantum computing,
-is far from conventional quantum computing. Although modal quantum
-computing can express simple algorithms such as quantum teleportation
-\cite{BennettBrassardEtAl1993,peres1995quantum,Mermin2007,Jaeger2007},
-it is so weak that it cannot express Deutsch's algorithm \cite{Deutsch1985,Mermin2007}.
-This quantum theory is, however, also so powerful that it can be used
-to solve an unstructured database search of size $N$ using $O(\log(N))$
-steps, which outperforms the known asymptotic bound $O(\sqrt{N})$
-in conventional quantum computing \cite{Grover:1996:FQM:237814.237866,BennettBernsteinBrassardVazirani1997,Mermin2007,Jaeger2007}.
-\end{comment}
-
+of a superposition containing the state $\ket{0\ldots}$.\end{proof}
 
 \chapter{Quantum Theories and Computing over Complexified Finite Fields\label{chap:DQT=000026DQC}}
 
@@ -2248,7 +2249,7 @@ we have
 Hence, we can decide whether $f$ is constant or balanced by measuring
 $\ket{\Phi_{4}}$ in the computational basis.
 
-\subsection{Partial \usat\ Algorithm}
+\subsection{Partial \usat\ Algorithm\label{subsec:Partial-Algorithm}}
 
 \begin{figure}[t]
 \centering{}

@@ -1375,10 +1375,11 @@ literal "true"
  No matter how to, classical or quantum, attack these two tasks, they require
  two different types of quantities.
  On one hand, a question and its answer of RSA are both discrete integers.
- On the other hand, even if the quantities describing molecules, like the
+ On the other hand, molecules are described by quantities including the
  domain of their position wave functions or the probability amplitudes of
- a wave function, are considered as continuous, we want to argue that these
- quantities might later be discovered as discrete.
+ a wave function.
+ Even if these quantities look like continuous, we want to argue that these
+ quantities might later be discovered to be discrete.
  Even if they were not discrete, this fact may never be proved and the exact
  value of these quantities may never be pinned down.
  To better understand this issue without struggling with the quantum theory,
@@ -1556,11 +1557,25 @@ Chuang-tzu
  question.
  Even if a prefect square exists physically, we may not able to decide whether
  the 
-\begin_inset Quotes eld
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+``
+\end_layout
+
 \end_inset
 
 square
-\begin_inset Quotes erd
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+''
+\end_layout
+
 \end_inset
 
  we discussed is really prefect or almost prefect differing only by an arbitrari
@@ -1598,6 +1613,10 @@ literal "false"
 \end_inset
 
 .
+ Hence, even if the inputs of an analog computer and a BCSS machine are
+ close to each other, their computational results might be completely different,
+ like the butterfly effect, and may not be compensated by error analysis
+ techniques.
  Therefore, the computational power of analog computers is far weaker than
  the prediction based on this kind of theoretical models.
 \end_layout
@@ -1619,7 +1638,7 @@ name "tab:Comparison"
 \end_inset
 
 Comparison between the classical quantities and their mathematical models
- with their inspired quantum models.
+ with the inspired quantum models.
  
 \begin_inset ERT
 status collapsed
@@ -1808,7 +1827,9 @@ Not reliably, but after we have a better technology to manipulate the minimum
 
 \begin_layout Plain Layout
 
-Not reliably, because precision can never be high enough.
+Not reliably, because precision can never be high enough, and the difference
+ between their computational power might not be compensated by error analysis
+ techniques.
  
 \backslash
 tabularnewline
@@ -2332,8 +2353,8 @@ end{tabularx}
 
 \end_inset
 
-The situations for classical quantities, the computational power above them,
- and their inspired quantum models are summarized in Table
+The situations for classical quantities and the computational power above
+ them are summarized in Table
 \begin_inset space ~
 \end_inset
 
@@ -2344,14 +2365,12 @@ reference "tab:Comparison"
 
 \end_inset
 
-.
+, and the two possibilities dealing with real-valued models inspires us
+ two types of quantum models.
  Similar to classical analog computers, the quantum circuit model, the most
  widely used model of quantum computing, manipulates quantities which are
  not discrete apparently: the probability amplitudes of quantum states.
- It is reasonable to expect the similar inconsistency between classical
- classical quantities and their mathematical representation applies to the
- quantum case as well.
- To address this issue, we will start from the 
+ To address the similar inconsistency, we first review the 
 \begin_inset ERT
 status collapsed
 
@@ -2373,7 +2392,7 @@ status collapsed
 
 \end_inset
 
- reviewed in Chapter
+ in Chapter
 \begin_inset space ~
 \end_inset
 
@@ -2464,18 +2483,611 @@ status collapsed
 \end_inset
 
 , where the probability amplitudes are in the field of complex numbers.
- On one hand, if the probability amplitudes are assumed to be ultimately
- discrete, we replace the field of complex numbers by discrete finite fields
- and consider the quantum theories and computing over finite fields.
- On the other hand, if the probability amplitudes are never quantized no
- matter how hard we try, we still should not be able to access their exactly
+ If the probability amplitudes are assumed to be ultimately discrete, we
+ replace the field of complex numbers by discrete finite fields and consider
+ the quantum theories and computing over finite fields.
+ Another possibilities could be that the probability amplitudes are never
+ quantized no matter how hard we try, and we could never access their exactly
  values.
- This inaccessibility is essentially the same as the measurement precision
- should only be finite, which will be incorporated into the quantum theory
- by our quantum interval-valued probability measures (QIVPM) framework.
+ Notice that the probability amplitudes can never be accessed directly in
+ an experiment, the accessible properties of a quantum system is its measurement
+ results and the probability of an event.
+ Hence, to incorporate the finite precision measurement into the quantum
+ theory, we consider a framework called quantum interval-valued probability
+ measures (QIVPM).
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Our first discrete model replaces the complex numbers by a unrestricted
+ finite field
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathbb{F}_{q}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Schumacher2012-SCHMQT,DQT2014,SchumacherWestmoreland2010"
+literal "true"
+
+\end_inset
+
+.
+ In this model, an 
+\begin_inset Formula $n$
+\end_inset
+
+-qubit state is a non-zero vector in 
+\begin_inset Formula $\mathbb{F}_{q}^{2^{n}}$
+\end_inset
+
+.
+ When we measure a given state
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\ket{\Phi}$
+\end_inset
+
+, an observable is replaced by a basis
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ of 
+\begin_inset Formula $\mathbb{F}_{q}^{2^{n}}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\ket{\Phi}$
+\end_inset
+
+ can be represented by the summation across a unique subset
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathcal{S}$
+\end_inset
+
+ of the basis
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+, whether it is possible or impossible to measure a basis vector
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\ket{i}$
+\end_inset
+
+ depends on whether 
+\begin_inset Formula $\ket{i}$
+\end_inset
+
+ is in 
+\begin_inset Formula $\mathcal{S}$
+\end_inset
+
+ or not.
+ Because this model only predicts whether a result is possible or impossible,
+ it is called the modal quantum theory.
+ Its computational model, called the modal quantum computing, is far from
+ conventional quantum computing.
+ Although modal quantum computing can express simple algorithms such as
+ quantum teleportation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BennettBrassardEtAl1993,peres1995quantum,Mermin2007,Jaeger2007"
+literal "true"
+
+\end_inset
+
+, it is so weak that it cannot express Deutsch's algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Deutsch1985,Mermin2007"
+literal "true"
+
+\end_inset
+
+.
+ This quantum theory is, however, also so powerful that it can be used to
+ solve an unstructured database search of size 
+\begin_inset Formula $N$
+\end_inset
+
+ using 
+\begin_inset Formula $O(\log(N))$
+\end_inset
+
+ steps, which outperforms the known asymptotic bound 
+\begin_inset Formula $O(\sqrt{N})$
+\end_inset
+
+ in conventional quantum computing 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Grover:1996:FQM:237814.237866,BennettBernsteinBrassardVazirani1997,Mermin2007,Jaeger2007"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+When replacing the continuum of complex numbers by discrete finite fields,
+ we first doesn't restrict our quantum theory and computing over which finite
+ fields in Chapter
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Unrestricted-Finite-Fields"
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Schumacher2012-SCHMQT,DQT2014,SchumacherWestmoreland2010"
+literal "true"
+
+\end_inset
+
+.
+ This theory is called modal quantum theory because it is so weak that it
+ only predict whether the measure result is possible or impossible, and
+ even the expectation value of an observable is not able to be defined.
+ Although a version of quantum theory defined over a two-valued field can
+ express simple algorithms such as quantum teleportation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BennettBrassardEtAl1993,peres1995quantum,Mermin2007,Jaeger2007"
+literal "true"
+
+\end_inset
+
+, it is so weak that it cannot express Deutsch
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+'
+\end_layout
+
+\end_inset
+
+s algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Deutsch1985,Mermin2007"
+literal "true"
+
+\end_inset
+
+.
+ This quantum theory is, however, also so powerful that it can be used to
+ solve the 
+\begin_inset Formula $\usat$
+\end_inset
+
+ problem, which is as hard as a general 
+\begin_inset Formula $\NP$
+\end_inset
+
+-complete problem.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+After a review of finite fields in Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:background"
+
+\end_inset
+
+, we proceed with a sequence of finite-field approaches that lead more and
+ more closely to the properties of conventional quantum computing.
+ In Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "modalquantum"
+
+\end_inset
+
+, we examine previously-introduced quantum theories defined over unrestricted
+ finite fields and show in Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "modalquantumcomputing"
+
+\end_inset
+
+ that this approach leads to theories with such bizarre powers that they
+ are probably unphysical.
+ Although a version of quantum theory defined over a two-valued field can
+ express simple algorithms such as quantum teleportation, it is so weak
+ that it cannot express Deutsch's algorithm.
+ This quantum theory is, however, also so powerful that it can be used to
+ solve an unstructured database search of size 
+\begin_inset Formula $N$
+\end_inset
+
+ using 
+\begin_inset Formula $O(\log(N))$
+\end_inset
+
+ steps, which outperforms the known asymptotic bound 
+\begin_inset Formula $O(\sqrt{N})$
+\end_inset
+
+ in conventional quantum computing.
+\end_layout
+
+\begin_layout Plain Layout
+Next, in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "discretequantumtheoryI"
+
+\end_inset
+
+, we improve on this by showing that for finite fields of order 
+\begin_inset Formula $p^{2}$
+\end_inset
+
+, with the prime 
+\begin_inset Formula $p$
+\end_inset
+
+ of the form 
+\begin_inset Formula $4\ell+3$
+\end_inset
+
+ (
+\begin_inset Formula $\ell$
+\end_inset
+
+ a non-negative integer), the complex numbers have extremely compelling
+ and natural discrete analogs that permit a great many of the standard requireme
+nts of quantum computing to be preserved.
+ Under suitable conditions, we have amplitude-based partitions of unity,
+ unitary transformations, and entanglement, as well as solutions to deterministi
+c quantum algorithms such as the algorithms of Deutsch, Simon, and Bernstein-Vaz
+irani
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NCbook,Mermin"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, though still with some bothersome shortcomings.
+ Because of the modular nature of arithmetic in the finite complex field,
+ it is not possible to define an inner product in the usual sense, and we
+ show in Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "discretequantumcomputingI"
+
+\end_inset
+
+ that this leads to excessive computational power for the unstructured database
+ search problem for certain database sizes.
+\end_layout
+
+\begin_layout Plain Layout
+We are led, in Sections
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "discretequantumtheoryIIa"
+
+\end_inset
+
+ and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "discretequantumtheoryIIb"
+
+\end_inset
+
+, to develop a framework with further restrictions on
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $p$
+\end_inset
+
+ that 
+\emph on
+locally
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\emph default
+ recovers the structure and expected properties of conventional quantum
+ theory.
+ Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "discretequantumtheoryIIa"
+
+\end_inset
+
+ locally recovers the inner product space and Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "discretequantumtheoryIIb"
+
+\end_inset
+
+ locally recovers a notion of probability.
+ The development in both sections exploits the fact that longer sequences
+ of 
+\shape italic
+ordered
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+ numbers appear in the quadratic residues (numbers with square-roots in
+ the field) as the size of the field increases.
+ Discrete quantum computations whose calculations are confined to numbers
+ in this ordered sequence resemble conventional quantum computations.
+ The size of the field 
+\begin_inset Formula $p$
+\end_inset
+
+ plays an important role in describing the resources needed for the computation
+ as larger problem sizes require a larger field size to represent all intermedia
+te numerical values.
+ A significant feature of our framework is that the resources needed for
+ the measurement process can be separated from the resources needed by the
+ evolution of the system being modeled.
+ This interplay between the resources used by the system under study and
+ the resources used for the observation process is a significant concept
+ that is nonexistent in conventional quantum computing and is exposed by
+ our careful accounting of resources.
+\end_layout
+
+\begin_layout Plain Layout
+We note that the conventional mathematical framework based on the real numbers
+ allows one to distinguish states whose measurement outcomes differ by infinites
+imally small probabilities, e.g., 
+\begin_inset Formula $10^{-100}$
+\end_inset
+
+ vs.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $0$
+\end_inset
+
+.
+ In the proposed framework of discrete quantum computing, the finite size
+ of the field implies a maximum precision for measurement: a 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+``
+\end_layout
+
+\end_inset
+
+small
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+''
+\end_layout
+
+\end_inset
+
+ field represents limited resources with which it becomes impossible to
+ distinguish states whose measurement outcomes differ by an amount less
+ than the resolution afforded by the field.
+ It is possible, however, to discriminate between such states at the cost
+ of moving to a larger field, i.e., by investing more resources in the measurement
+ process.
+ We formalize this approach to measurement using the novel notion of 
+\shape italic
+cardinal probability
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+/
+\end_layout
+
+\end_inset
+
+
+\shape default
+, with numerical labels corresponding to 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+``
+\end_layout
+
+\end_inset
+
+more probable, the same, or less probable,
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+''
+\end_layout
+
+\end_inset
+
+ rather than a percentage-based likelihood measure.
+ In cardinal probability, relative outcomes are associated with intervals
+ of ambiguity that get smaller and more precise as the size of the field
+ increases.
+\end_layout
+
+\begin_layout Plain Layout
+Finally, in Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "discretequantumcomputingII"
+
+\end_inset
+
+, we apply our discrete quantum theory to the study of two representative
+ algorithms, the deterministic Deutsch-Jozsa algorithm and the probabilistic
+ Grover algorithm
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NCbook,Mermin"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ The first algorithm highlights the role played by the size of the field
+ 
+\begin_inset Formula $p$
+\end_inset
+
+ in determining the actual resources required for computation as the number
+ of input bits 
+\begin_inset Formula $n$
+\end_inset
+
+ increases, a concept nonexistent in conventional quantum computing.
+ The second algorithm highlights, in addition, the dependence of the precision
+ of measurement (via cardinal probabilities) on the size of the field, another
+ nonexistent concept in conventional quantum computing.
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -2500,33 +3112,65 @@ status collapsed
 
 \end_inset
 
+Next, in Sec.
+\begin_inset space ~
+\end_inset
 
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "discretequantumtheoryI"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Geometry-of-Entangled-States"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, we improve on this by showing that for finite fields of order 
+\begin_inset Formula $p^{2}$
+\end_inset
+
+, with the prime 
+\begin_inset Formula $p$
+\end_inset
+
+ of the form 
+\begin_inset Formula $4\ell+3$
+\end_inset
+
+ (
+\begin_inset Formula $\ell$
+\end_inset
+
+ a non-negative integer), the complex numbers have extremely compelling
+ and natural discrete analogs that permit a great many of the standard requireme
+nts of quantum computing to be preserved.
+ Under suitable conditions, we have amplitude-based partitions of unity,
+ unitary transformations, and entanglement, as well as solutions to deterministi
+c quantum algorithms such as the algorithms of Deutsch, Simon, and Bernstein-Vaz
+irani
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-todo{
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
-Play with some cloud quantum computers to see if I can find more support
- evidence.
- 
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-}
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NCbook,Mermin"
+literal "true"
 
 \end_inset
 
@@ -2535,139 +3179,22 @@ status collapsed
 
 \end_inset
 
-Because we are agnostic about whether probability amplitude is quantized
- or can really be valued in the continuum of complex numbers, we tried to
- develop two different types of models: the quantum theories and computing
- over finite fields are discrete models, and the quantum interval-valued
- probability measures incorporate the idea of measurement precision into
- the quantum theory.
- .
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-todo{
-\end_layout
-
-\end_inset
-
-Beginning of Merge Left
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-Since conventional probability amplitude is in the field of complex numbers,
- and the field structure is essential to compute the probability from some
- probability amplitudes, we in Chapter
+, though still with some bothersome shortcomings.
+ Because of the modular nature of arithmetic in the finite complex field,
+ it is not possible to define an inner product in the usual sense, and we
+ show in Sec.
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:DQT&DQC"
+reference "subsec:Partial-Algorithm"
 
 \end_inset
 
- tried to build discrete quantum theories and computing by considering them
- over finite fields.
- 
-\end_layout
-
-\begin_layout Standard
-Since error analysis technique cannot always compensate the inevitable problem
- of measurement precision, we then incorporate the idea of finite precision
- measurement into the quantum theory in Chapter
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:QIVPM"
-
-\end_inset
-
-, and hope it could describe the physical reality and computability more
- faithful.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-todo{
-\end_layout
-
-\end_inset
-
-End of Merge Left
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-todo{
-\end_layout
-
-\end_inset
-
-Beginning of Merge Right
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-We begin by replacing the continuum of complex numbers by discrete finite
- fields in quantum theory.
- The simplest theory, defined over unrestricted finite fields, is so weak
- that it only predict whether the measure result is possible or impossible.
- Its computational model is also weak that it cannot express Deutsch's algorithm
-, but, paradoxically, is also so powerful that it can be used to solve the
- 
-\begin_inset Formula $\usat$
-\end_inset
-
- problem, which is as hard as a general 
-\begin_inset Formula $\NP$
-\end_inset
-
--complete problem.
- 
+ that this leads to excessive computational power for the unstructured database
+ search problem for certain database sizes.
 \end_layout
 
 \begin_layout Standard
@@ -2715,6 +3242,13 @@ Finally, we shift our attention to consider quantum interval-valued probability
  of both classical IVPMs and conventional quantum probability measures,
  but also allows us to establish bounds on the validity of the Kochen-Specker
  and Gleason theorems in realistic experimental environments.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -2727,13 +3261,75 @@ todo{
 
 \end_inset
 
-End of Merge Right
+Beginning of Merge Left
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
 }
+\end_layout
+
+\end_inset
+
+Since conventional probability amplitude is in the field of complex numbers,
+ and the field structure is essential to compute the probability from some
+ probability amplitudes, we in Chapter
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:DQT&DQC"
+
+\end_inset
+
+ tried to build discrete quantum theories and computing by considering them
+ over finite fields.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Since error analysis technique cannot always compensate the inevitable problem
+ of measurement precision, we then incorporate the idea of finite precision
+ measurement into the quantum theory in Chapter
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:QIVPM"
+
+\end_inset
+
+, and hope it could describe the physical reality and computability more
+ faithful.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+End of Merge Left
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3018,8 +3614,7 @@ addlinespace
 
 \begin_layout Plain Layout
 
-Hadamard transformation & Included & May not be included & Included & Included
- &  & 
+Deutsch's algorithm & Yes & Maybe no & Yes & Yes &  & 
 \backslash
 tabularnewline
 \backslash
@@ -4332,14 +4927,28 @@ todo{
 \end_inset
 
 Maybe start with this kind of sentence 
-\begin_inset Quotes eld
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+``
+\end_layout
+
 \end_inset
 
 We want a more faithful quantum theory not only because the current quantum
  theory don't take into account of the measurement precision, but also because
  its computational model doesn't fit the current development of computer
  science.
-\begin_inset Quotes erd
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+''
+\end_layout
+
 \end_inset
 
  
@@ -4445,11 +5054,25 @@ Euclid?(物理量？)
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Quotes eld
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+``
+\end_layout
+
 \end_inset
 
 一尺之槌，日取其半，萬世不竭。
-\begin_inset Quotes erd
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+''
+\end_layout
+
 \end_inset
 
 是錯的。
@@ -10627,415 +11250,9 @@ literal "true"
 
 \begin_layout Chapter
 Quantum Theories and Computing over Unrestricted Finite Fields
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-todo{
-\end_layout
-
-\end_inset
-
-Add some introductory text...
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-After a review of finite fields in Section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:background"
-
-\end_inset
-
-, we proceed with a sequence of finite-field approaches that lead more and
- more closely to the properties of conventional quantum computing.
- In Section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "modalquantum"
-
-\end_inset
-
-, we examine previously-introduced quantum theories defined over unrestricted
- finite fields and show in Section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "modalquantumcomputing"
-
-\end_inset
-
- that this approach leads to theories with such bizarre powers that they
- are probably unphysical.
- Although a version of quantum theory defined over a two-valued field can
- express simple algorithms such as quantum teleportation, it is so weak
- that it cannot express Deutsch's algorithm.
- This quantum theory is, however, also so powerful that it can be used to
- solve an unstructured database search of size 
-\begin_inset Formula $N$
-\end_inset
-
- using 
-\begin_inset Formula $O(\log(N))$
-\end_inset
-
- steps, which outperforms the known asymptotic bound 
-\begin_inset Formula $O(\sqrt{N})$
-\end_inset
-
- in conventional quantum computing.
-\end_layout
-
-\begin_layout Plain Layout
-Next, in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "discretequantumtheoryI"
-
-\end_inset
-
-, we improve on this by showing that for finite fields of order 
-\begin_inset Formula $p^{2}$
-\end_inset
-
-, with the prime 
-\begin_inset Formula $p$
-\end_inset
-
- of the form 
-\begin_inset Formula $4\ell+3$
-\end_inset
-
- (
-\begin_inset Formula $\ell$
-\end_inset
-
- a non-negative integer), the complex numbers have extremely compelling
- and natural discrete analogs that permit a great many of the standard requireme
-nts of quantum computing to be preserved.
- Under suitable conditions, we have amplitude-based partitions of unity,
- unitary transformations, and entanglement, as well as solutions to deterministi
-c quantum algorithms such as the algorithms of Deutsch, Simon, and Bernstein-Vaz
-irani
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "NCbook,Mermin"
-literal "true"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-, though still with some bothersome shortcomings.
- Because of the modular nature of arithmetic in the finite complex field,
- it is not possible to define an inner product in the usual sense, and we
- show in Section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "discretequantumcomputingI"
-
-\end_inset
-
- that this leads to excessive computational power for the unstructured database
- search problem for certain database sizes.
-\end_layout
-
-\begin_layout Plain Layout
-We are led, in Sections
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "discretequantumtheoryIIa"
-
-\end_inset
-
- and
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "discretequantumtheoryIIb"
-
-\end_inset
-
-, to develop a framework with further restrictions on
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $p$
-\end_inset
-
- that 
-\emph on
-locally
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
-
-\emph default
- recovers the structure and expected properties of conventional quantum
- theory.
- Section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "discretequantumtheoryIIa"
-
-\end_inset
-
- locally recovers the inner product space and Section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "discretequantumtheoryIIb"
-
-\end_inset
-
- locally recovers a notion of probability.
- The development in both sections exploits the fact that longer sequences
- of 
-\shape italic
-ordered
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
-
-\shape default
- numbers appear in the quadratic residues (numbers with square-roots in
- the field) as the size of the field increases.
- Discrete quantum computations whose calculations are confined to numbers
- in this ordered sequence resemble conventional quantum computations.
- The size of the field 
-\begin_inset Formula $p$
-\end_inset
-
- plays an important role in describing the resources needed for the computation
- as larger problem sizes require a larger field size to represent all intermedia
-te numerical values.
- A significant feature of our framework is that the resources needed for
- the measurement process can be separated from the resources needed by the
- evolution of the system being modeled.
- This interplay between the resources used by the system under study and
- the resources used for the observation process is a significant concept
- that is nonexistent in conventional quantum computing and is exposed by
- our careful accounting of resources.
-\end_layout
-
-\begin_layout Plain Layout
-We note that the conventional mathematical framework based on the real numbers
- allows one to distinguish states whose measurement outcomes differ by infinites
-imally small probabilities, e.g., 
-\begin_inset Formula $10^{-100}$
-\end_inset
-
- vs.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $0$
-\end_inset
-
-.
- In the proposed framework of discrete quantum computing, the finite size
- of the field implies a maximum precision for measurement: a 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-``
-\end_layout
-
-\end_inset
-
-small
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-''
-\end_layout
-
-\end_inset
-
- field represents limited resources with which it becomes impossible to
- distinguish states whose measurement outcomes differ by an amount less
- than the resolution afforded by the field.
- It is possible, however, to discriminate between such states at the cost
- of moving to a larger field, i.e., by investing more resources in the measurement
- process.
- We formalize this approach to measurement using the novel notion of 
-\shape italic
-cardinal probability
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
-
-\shape default
-, with numerical labels corresponding to 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-``
-\end_layout
-
-\end_inset
-
-more probable, the same, or less probable,
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-''
-\end_layout
-
-\end_inset
-
- rather than a percentage-based likelihood measure.
- In cardinal probability, relative outcomes are associated with intervals
- of ambiguity that get smaller and more precise as the size of the field
- increases.
-\end_layout
-
-\begin_layout Plain Layout
-Finally, in Section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "discretequantumcomputingII"
-
-\end_inset
-
-, we apply our discrete quantum theory to the study of two representative
- algorithms, the deterministic Deutsch-Jozsa algorithm and the probabilistic
- Grover algorithm
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "NCbook,Mermin"
-literal "true"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-.
- The first algorithm highlights the role played by the size of the field
- 
-\begin_inset Formula $p$
-\end_inset
-
- in determining the actual resources required for computation as the number
- of input bits 
-\begin_inset Formula $n$
-\end_inset
-
- increases, a concept nonexistent in conventional quantum computing.
- The second algorithm highlights, in addition, the dependence of the precision
- of measurement (via cardinal probabilities) on the size of the field, another
- nonexistent concept in conventional quantum computing.
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Unrestricted-Finite-Fields"
 
 \end_inset
 
@@ -13080,148 +13297,6 @@ status collapsed
 
 \backslash
 end{proof}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Comment
-status open
-
-\begin_layout Section
-Modal Quantum Theory and Computing
-\end_layout
-
-\begin_layout Plain Layout
-Our first discrete model replaces the complex numbers by a unrestricted
- finite field
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mathbb{F}_{q}$
-\end_inset
-
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Schumacher2012-SCHMQT,DQT2014,SchumacherWestmoreland2010"
-literal "true"
-
-\end_inset
-
-.
- In this model, an 
-\begin_inset Formula $n$
-\end_inset
-
--qubit state is a non-zero vector in 
-\begin_inset Formula $\mathbb{F}_{q}^{2^{n}}$
-\end_inset
-
-.
- When we measure a given state
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\ket{\Phi}$
-\end_inset
-
-, an observable is replaced by a basis
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mathcal{B}$
-\end_inset
-
- of 
-\begin_inset Formula $\mathbb{F}_{q}^{2^{n}}$
-\end_inset
-
-.
- Since 
-\begin_inset Formula $\ket{\Phi}$
-\end_inset
-
- can be represented by the summation across a unique subset
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mathcal{S}$
-\end_inset
-
- of the basis
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\mathcal{B}$
-\end_inset
-
-, whether it is possible or impossible to measure a basis vector
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\ket{i}$
-\end_inset
-
- depends on whether 
-\begin_inset Formula $\ket{i}$
-\end_inset
-
- is in 
-\begin_inset Formula $\mathcal{S}$
-\end_inset
-
- or not.
- Because this model only predicts whether a result is possible or impossible,
- it is called the modal quantum theory.
- Its computational model, called the modal quantum computing, is far from
- conventional quantum computing.
- Although modal quantum computing can express simple algorithms such as
- quantum teleportation 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "BennettBrassardEtAl1993,peres1995quantum,Mermin2007,Jaeger2007"
-literal "true"
-
-\end_inset
-
-, it is so weak that it cannot express Deutsch's algorithm 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Deutsch1985,Mermin2007"
-literal "true"
-
-\end_inset
-
-.
- This quantum theory is, however, also so powerful that it can be used to
- solve an unstructured database search of size 
-\begin_inset Formula $N$
-\end_inset
-
- using 
-\begin_inset Formula $O(\log(N))$
-\end_inset
-
- steps, which outperforms the known asymptotic bound 
-\begin_inset Formula $O(\sqrt{N})$
-\end_inset
-
- in conventional quantum computing 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Grover:1996:FQM:237814.237866,BennettBernsteinBrassardVazirani1997,Mermin2007,Jaeger2007"
-literal "true"
-
-\end_inset
-
-.
 \end_layout
 
 \end_inset
@@ -18182,6 +18257,13 @@ usat
 \end_inset
 
 Algorithm
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Partial-Algorithm"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
