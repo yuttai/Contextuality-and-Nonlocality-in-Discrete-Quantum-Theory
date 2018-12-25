@@ -1,4 +1,4 @@
-%% LyX 2.3.1-1 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.3.2-1 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[11pt,twoside]{iuphd}
 \usepackage{amsmath}
@@ -20,6 +20,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
 \providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+\let\@@LyX\LyX
+\def\LyX{\@ensure@LTR{\@@LyX}}
 %% Because html converters don't know tabularnewline
 \providecommand{\tabularnewline}{\\}
 %% A simple dot to overcome graphicx limitations
@@ -322,7 +324,7 @@ No matter how to, classical or quantum, attack these two tasks, they
 require two different types of quantities. On one hand, a question
 and its answer of RSA are both discrete integers. On the other hand,
 molecules are described by quantities including the domain of their
-position wave functions or the probability amplitudes of a wave function.
+position wave functions and the probability amplitudes of a wave function.
 Even if these quantities look like continuous, we want to argue that
 either these quantities might later be discovered to be discrete,
 or the exact value of these continuous quantities may never be pinned
@@ -336,7 +338,7 @@ fractions are essentially the same as those among integers over the
 common denominator. In general, discrete computation can be reliably
 repeated with exact equivalence, and any digital computer can faithfully
 simulate a Turing machine limited only by the available memory and
-time~\cite{Turing_1937}. 
+time~\cite{Turing_1937}.
 
 In contrast, the non-apparently discrete quantities confused many
 cultures since very beginning. For example, the ancient Chinese philosopher
@@ -386,12 +388,13 @@ equal to zero over real numbers and whether a number is exactly zero
 over complex numbers \cite{BSS1989,Ziegler2007,blum2012complexity}.
 Hence, when the quantities used to branch the computation is closed
 to zero, the branch chosen by a BCSS machine cannot reliably predict
-the branch chosen by an analog computer. Since two branches of computations
-may not have any relations, the later computational path may be completely
-different like the butterfly effect, and this kind of difference cannot
-be compensated by error analysis techniques easily. Therefore, the
-computational power of analog computers might be far weaker than the
-prediction based on this kind of theoretical models.
+the branch chosen by a realistic analog computer. Since two branches
+of computations may not have any relations, the following computational
+path may be completely different like the butterfly effect, and this
+kind of difference cannot be compensated by error analysis techniques
+easily. Therefore, the computational power of analog computers might
+be far weaker than the prediction based on this kind of theoretical
+models. \todo{Maybe extended to consider probabilistic model? }
 
 \begin{sidewaystable}
 \caption{\label{tab:Comparison}Comparison between the classical quantities
@@ -428,13 +431,13 @@ Inspired quantum models &  & Quantum Theories and Computing over Finite Fields &
 \end{tabularx}
 \end{sidewaystable}
 The situations for classical quantities and the computational power
-above them are summarized in Table~\ref{tab:Comparison}, and the
-two possibilities dealing with real-valued models inspires us two
-types of quantum models. Similar to classical analog computers, the
-quantum circuit model, the most widely used model of quantum computing,
-manipulates quantities which are not discrete apparently: the probability
-amplitudes of quantum states. To address the similar inconsistency,
-we first review the ``conventional quantum theory''\footnote{Alternative terminology in the literature includes ``actual,'' ``standard,''
+above them are summarized in Table~\ref{tab:Comparison}, and two
+possibilities dealing with real-valued models inspires us two types
+of quantum models. Similar to classical analog computers, the quantum
+circuit model, the most widely used model of quantum computing, manipulates
+quantities which are not discrete apparently: the probability amplitudes
+of quantum states. To address the similar inconsistency, we first
+review the ``conventional quantum theory''\footnote{Alternative terminology in the literature includes ``actual,'' ``standard,''
 and ``ordinary'' quantum theory.} in Chapter~\ref{chap:Conventional-Quantum-Theory}, where the probability
 amplitudes are in the field of complex numbers. If the probability
 amplitudes are assumed to be ultimately discrete, we replace the field
@@ -576,6 +579,7 @@ Grover search algorithm & Yes &  &  & Yes &  & \tabularnewline\addlinespace
 \end{tabularx}
 \end{sidewaystable}
 
+
 \chapter{Conventional Quantum Theory\label{chap:Conventional-Quantum-Theory}}
 
 The part of conventional quantum theory (CQT) used by quantum circuit
@@ -700,6 +704,7 @@ $\Sphere{3}$ in $\R^{3}$, and the opposite pole corresponds to the
 large perfectly round red circle at the equator.}
 \label{hopfFibers.fig} 
 \end{figure}
+
 The resulting manifold is the two-sphere $\Sphere{2}$ (a 2-manifold)
 embedded in $\R^{3}$. If we choose one of many possible coordinate
 systems describing $\Sphere{3}$ via \Eq{A5.eq} such as 
@@ -730,6 +735,7 @@ by the point at the red sphere. (b) The geodesic shortest-distance
 arc connecting two one-qubit quantum states.}
 \label{blochSphere.fig} 
 \end{figure}
+
 Thus the geometry of a single qubit reduces to transformations among
 points on $\Sphere{2}$, which can be parametrized in an infinite
 one-parameter family of transformations, one of which is the geodesic
@@ -1140,6 +1146,7 @@ $\mu_{2}\left(\proj{\Psi}\right)$ & $\frac{1}{2}$ & $0$ & $\frac{1}{2}$ & $\frac
 \end{tabular}
 \end{table}
 
+
 \section{The geometry of entanglement\label{sec:The-geometry-of}}
 
 \begin{comment}
@@ -1477,6 +1484,7 @@ database search in conventional quantum computing.
 \caption{\label{fig:alg}Circuit for black box \usat\ in modal quantum theory
 over the field $\ff{2}$. For further notation see text.}
 \end{figure}
+
 We can prove the unreasonable power of the arbitrary-function \usat\ starting
 with a classical function $f:\boolt^{n}\rightarrow\boolt$ that takes
 $n$ bits and returns at most one \btrue\ result. To build a quantum
@@ -1605,6 +1613,7 @@ $\left(-1-\rmi\right)^{j}$ & $1$ & $-1-\rmi$ & $-\rmi$ & $-1+\rmi$ & $-1$ & $1+\
 \addlinespace
 \end{tabular}
 \end{table}
+
 In Table~\ref{tab:Generators-in-F9}, one can notice that $\left(a+b\rmi\right)^{3}=a-b\rmi$.
 In general, the $p$-th power $\left(a+b\rmi\right)^{p}=a-b\rmi$
 is called the \emph{Frobenius automorphism} acts like complex conjugation
@@ -1800,6 +1809,7 @@ $1$ & $0$ & $0$ & $1$\tabularnewline\addlinespace
 \end{tabular}
 \end{table}
 
+
 \section{Discrete Quantum Theory (I): Irreducible Discrete $D$-dimensional
 States\label{DQCnqubitBloch.sec}}
 
@@ -1857,6 +1867,7 @@ The $p+1=4$ equivalent vectors in each class differ only by a complex
 discrete phase.}
 \label{bloch.fig} 
 \end{figure}
+
 
 \subsection{Counting states on the discrete Bloch sphere}
 
@@ -1974,6 +1985,7 @@ primes, ($3$, $7$, $11$, $19$, $23$, $31$), for the number of
 qubits $1$, $2$, $3$, and $4$. }
 \label{statePlot3Unit.fig} 
 \end{figure}
+
 
 \subsection{Unentangled vs Entangled Discrete States}
 
@@ -2158,6 +2170,7 @@ space has any semantic meaning... }
 \]
 \caption{\label{fig:Quantum-Circuit-Deutsch}Quantum Circuit for Deutsch Algorithm.}
 \end{figure}
+
 First, a 2-qubit pure state is initialized to $\ket{\Phi_{1}}=\ket{1}\ket{0}=\left(\begin{smallmatrix}0\\
 1
 \end{smallmatrix}\right)\otimes\left(\begin{smallmatrix}1\\
@@ -2367,6 +2380,7 @@ $\pi\left(k\right)$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $10$
 \addlinespace
 \end{tabular}
 \end{table}
+
 As an example, consider the field $\ff{23}$. Looking at the squares
 of the numbers $\ff{23}=\left\{ 0,\ldots,22\right\} $ modulo 23,
 we find the $2$-centered uninterrupted sequence $S_{2}\left(5\right)=\left\{ 0,1,2,3,4\right\} $,
@@ -2421,6 +2435,7 @@ $D\geq6$  & $F^{D}\left(11\right)=\left\{ 0\right\} $ \tabularnewline\addlinespa
 \addlinespace
 \end{tabular}
 \end{table}
+
 We can now verify, by using Table~\ref{table_allowed}, that for
 any vector $\ket{\Psi}$ in the selected region the value of $\ip{\Psi}{\Psi}$
 is $\geq0$ and vanishes precisely when $\ket{\Psi}$ is the zero
@@ -2533,6 +2548,7 @@ $(1-\rmi)\ket{0}+(1+\rmi)\ket{1}$ & $2$ & $2$ & $4$ & $\cardp{2}{4}$ & $\cardp{2
 \addlinespace
 \end{tabular}
 \end{table}
+
 When measuring cardinal probabilities, \textit{inequalities} can be
 preserved with appropriate resources (in the form of a sufficiently
 large choice of the field), while \textit{equalities} cannot be guaranteed
@@ -2648,6 +2664,7 @@ $\pi\left(k\right)$ & \ldots{} & $12$ & \ldots{} & $32$ & \ldots{} & $55$ & \ldo
 \addlinespace
 \end{tabular}
 \end{table}
+
 For the $2$-qubit Deutsch-Jozsa, the computation is already quite
 challenging. Now the probability amplitudes are between $-4$ and
 $4$, and the dimension $D=2^{2+1}=8$, so we need 
@@ -4148,6 +4165,7 @@ is large and our extension of the KS theorem no longer refutes other
 explanations for the experimental data.}
 \label{fignoname} 
 \end{figure}
+
 As is the case for conventional, infinitely-precise, quantum probability
 measures, the theorem is only applicable to dimensions $D\geq3$.
 Indeed when the Hilbert space has dimension 2, it is straightforward
