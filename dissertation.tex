@@ -325,11 +325,10 @@ require two different types of quantities. On one hand, a question
 and its answer of RSA are both discrete integers. On the other hand,
 molecules are described by quantities including the domain of their
 position wave functions and the probability amplitudes of these wave
-functions, which look like continuous at first sight. However, we
-want to argue that either these quantities might later be discovered
-to be discrete, or the exact values of these continuous quantities
-may never be pinned down. Hence, modeling quantum computing based
-on the exact values of continuous quantities cannot really describe
+functions, which look like continuous at first sight. Indeed, either
+these quantities might later be discovered to be discrete, or their
+exact values may never be pinned down. Hence, modeling quantum computing
+based on the exact values of continuous quantities cannot really describe
 the computational power of a realistic quantum computer. To better
 understand this issue without struggling with the quantum theory,
 it is instructive to review how classical quantities are characterized
@@ -393,16 +392,18 @@ Hence, when the quantities used to branch the computation is closed
 to zero, the branch chosen by a BCSS machine cannot reliably predict
 the branch chosen by a realistic analog computer. Since two branches
 of computations may not have any relations, the follow-up computational
-paths may be significantly different, and may not be compensated by
-error analysis techniques easily like the butterfly effect. Therefore,
-the computational power of analog computers might be far weaker than
-the prediction based on this kind of theoretical models. \todo{Maybe
-extended to consider probabilistic model? }
+paths may be significantly different. These difference may not be
+compensated by error analysis techniques easily like the butterfly
+effect. Therefore, the computational power of analog computers might
+be far weaker than the prediction based on this kind of theoretical
+models.%
+\begin{comment}
+\todo{Maybe extended to consider probabilistic model? }
+\end{comment}
 
 \begin{sidewaystable}
 \caption{\label{tab:Comparison}Comparison between the classical quantities
-and their mathematical models with the inspired quantum models. \todo{Center
-entries vertically.}}
+and their mathematical models with the inspired quantum models.}
 
 \centering{}\centering{}%
 \begin{tabularx}{\linewidth}{ccYY}
@@ -433,26 +434,55 @@ Inspired quantum models &  & Quantum Theories and Computing over Finite Fields &
 \bottomrule
 \end{tabularx}
 \end{sidewaystable}
+\begin{comment}
+Given a pure state~$\ket{\Phi}$, when we measure an observable represented
+by an Hermitian matrix~$\mathbf{O}$, the measurement result is one
+of the eigenvalues of $\mathbf{O}$. The probability of getting a
+particular eigenvalue~$\lambda$ is $\melem{\Phi}{P}{\Phi}$, where
+$P$ is the projection operator onto the eigenspace of $\lambda$.
+This rule of computing the probability is called the Born rule \cite{Born1983,Mermin2007,Jaeger2007},
+which is used when we want to extract information from a quantum computer.
+For any mixed state~$\rho$, the generalized Born rule induces a
+conventional quantum probability measure $\muB_{\rho}:\events\rightarrow[0,1]$,
+where $\events$ is the set of all projection operators on a given
+Hilbert space. Conversely, any quantum probability measure $\mu:\events\rightarrow[0,1]$
+can be induced from a mixed state $\rho$ in the Hilbert space of
+dimension $D\ge3$ according to Gleason's theorem \cite{gleason1957,Redhead1987-REDINA,peres1995quantum,RichmanBridges1999,Hamhalter2013}.
+In another word, this state $\rho$ is the unique state consistent
+with any given quantum probability measure.
+\end{comment}
+\begin{comment}
+An $n$-qubit pure state in the conventional quantum theory (CQT)
+is represented as a vector in the $2^{n}$-dimensional Hilbert space.
+If we eliminate all symmetries, an irreducible state is actually a
+point in the projective Hilbert space \cite{MosseriDandoloff2001,Jaeger2007}
+also known as the complex projective space~$\CP{2^{n}-1}$ \cite{Hatcher2001,Bengtsson2007}.
+These irreducible quantum states can also be classified as product
+states and entangled states, and the latter one plays the essential
+role for pure-state algorithms \cite{Mermin2007,Jaeger2007}.
+\end{comment}
 The situations for classical quantities and the computational power
-above them are summarized in Table~\ref{tab:Comparison}, and two
-possibilities dealing with real-valued models inspires us two types
-of quantum models. Similar to classical analog computers, the quantum
-circuit model, the most widely used model of quantum computing, manipulates
-quantities which are not discrete apparently: the probability amplitudes
-of quantum states. To address the similar inconsistency, we first
-review the ``conventional quantum theory''\footnote{Alternative terminology in the literature includes ``actual,'' ``standard,''
+above them are summarized in Table~\ref{tab:Comparison}, and the
+two possibilities dealing with real-valued models inspires us two
+types of quantum models. Similar to classical analog computers, the
+quantum circuit model, the most widely used model of quantum computing,
+manipulates quantities which are not discrete apparently: the probability
+amplitudes of quantum states. To address the similar inconsistency,
+we first review the ``conventional quantum theory''\footnote{Alternative terminology in the literature includes ``actual,'' ``standard,''
 and ``ordinary'' quantum theory.} in Chapter~\ref{chap:Conventional-Quantum-Theory}, where the probability
 amplitudes are in the field of complex numbers. If the probability
 amplitudes are assumed to be ultimately discrete, we replace the field
 of complex numbers by discrete finite fields and consider the quantum
-theories and computing over finite fields. Another possibilities could
-be that the probability amplitudes are never quantized no matter how
-hard we try, and we could never access their exactly values. Notice
-that the probability amplitudes can never be accessed directly in
-an experiment, the accessible properties of a quantum system is its
-measurement results and the probability of an event. Hence, to incorporate
-the finite precision measurement into the quantum theory, we consider
-a framework called quantum interval-valued probability measures (QIVPM).
+theories and computing over finite fields in Chapter~\ref{chap:Unrestricted-Finite-Fields}
+and \ref{chap:DQT=000026DQC}. Another possibilities could be that
+the probability amplitudes would never be quantized no matter how
+hard we try, but we could never access their exactly values as well.
+Notice that the probability amplitudes can never be accessed directly
+in an experiment, the accessible properties of a quantum system is
+its measurement results and the probability of an event. Hence, to
+incorporate the finite precision measurement into the quantum theory,
+we consider a framework called quantum interval-valued probability
+measures (QIVPM) in Chapter~\ref{chap:QIVPM}.
 
 \begin{comment}
 Our first discrete model replaces the complex numbers by a unrestricted
@@ -476,20 +506,35 @@ steps, which outperforms the known asymptotic bound $O(\sqrt{N})$
 in conventional quantum computing \cite{Grover:1996:FQM:237814.237866,BennettBernsteinBrassardVazirani1997,Mermin2007,Jaeger2007}.
 \end{comment}
 When replacing the continuum of complex numbers by discrete finite
-fields, we first doesn't restrict our quantum theory and computing
-over which finite fields in Chapter~\ref{chap:Unrestricted-Finite-Fields}
+fields, we first doesn't restrict the chosen finite fields in Chapter~\ref{chap:Unrestricted-Finite-Fields}
 \cite{Schumacher2012-SCHMQT,DQT2014,SchumacherWestmoreland2010}.
-This theory is called modal quantum theory because it is so weak that
-it only predict whether the measure result is possible or impossible,
-and even the expectation value of an observable is not able to be
-defined. Although a version of quantum theory defined over a two-valued
-field can express simple algorithms such as quantum teleportation
-\cite{BennettBrassardEtAl1993,peres1995quantum,Mermin2007,Jaeger2007},
+This theory is called modal quantum theory because it can only predict
+whether a measure result is possible or impossible, but not its probability.
+Although a version of quantum theory defined over a two-valued field
+can express simple algorithms such as quantum teleportation \cite{BennettBrassardEtAl1993,peres1995quantum,Mermin2007,Jaeger2007},
 it is so weak that it cannot express Deutsch's algorithm \cite{Deutsch1985,Mermin2007}.
 This quantum theory is, however, also so powerful that it can be used
-to solve the $\usat$ problem, which is as hard as a general $\NP$-complete
-problem.
+to solve the $\usat$ problem~\cite{Papadimitriou1993}, which is
+as hard as a general $\NP$-complete problem~\cite{Valiant198685}.
 
+\begin{comment}
+Our second model called discrete quantum theory (I) considers only
+finite fields of order $p^{2}$, with the prime $p$ of the form $4\ell+3$
+($\ell$ a non-negative integer) \cite{geometry2013,DQT2014}. In
+this model, an irreducible state is a vector in $\mathbb{F}_{p^{2}}^{2^{n}}$,
+and can be reduced to a point in the discrete complex projective space~$\mathbb{DCP}^{2^{n}-1}$.
+Among these irreducible states, the product states and entangled states
+can not only be identified as in CQT but also be counted for different
+$p$. Although the state space is a natural discrete analog to CQT,
+this model still only predicts whether a measurement result is possible
+or impossible, because it is not possible to define an inner product
+in the usual sense due to the modular arithmetic~\cite{grove2002classical}.
+Under suitable conditions, we can have deterministic quantum algorithms
+such as the algorithms of Deutsch, Simon \cite{Simon:1994:PQC:1398518.1399019,Mermin2007,Jaeger2007},
+and Bernstein-Vazirani \cite{Bernstein:1993:QCT:167088.167097,Mermin2007},
+but this still leads to excessive computational power for the unstructured
+database search problem for certain database sizes.
+\end{comment}
 \todo{Introduction Cleaned up until here. }Next, in Sec.~\ref{discretequantumtheoryI}
 to \ref{sec:Geometry-of-Entangled-States}, we improve on this by
 showing that for finite fields of order $p^{2}$, with the prime $p$
@@ -499,10 +544,11 @@ permit a great many of the standard requirements of quantum computing
 to be preserved. Under suitable conditions, we have amplitude-based
 partitions of unity, unitary transformations, and entanglement, as
 well as solutions to deterministic quantum algorithms such as the
-algorithms of Deutsch, Simon, and Bernstein-Vazirani, though still
-with some bothersome shortcomings. Because of the modular nature of
-arithmetic in the finite complex field, it is not possible to define
-an inner product in the usual sense, and we show in Sec.~\ref{subsec:Partial-Algorithm}
+algorithms of Deutsch, Simon \cite{Simon:1994:PQC:1398518.1399019,Mermin2007,Jaeger2007},
+and Bernstein-Vazirani \cite{Bernstein:1993:QCT:167088.167097,Mermin2007},
+though still with some bothersome shortcomings. Because of the modular
+nature of arithmetic in the finite complex field, it is not possible
+to define an inner product in the usual sense, and we show in Sec.~\ref{subsec:Partial-Algorithm}
 that this leads to excessive computational power for the unstructured
 database search problem for certain database sizes.
 
@@ -525,6 +571,14 @@ arithmetic operations works with conventional probability measures,
 we consider quantum probability measures over finite fields, but we
 haven't found a consistent way to treat them in general.
 
+\begin{comment}
+Our third model, discrete quantum theory (II)~\cite{DQT2014}, restricts
+states in some local region of $\mathbb{F}_{p^{2}}^{2^{n}}$. Within
+a local region, a notion of inner product and probability could be
+recovered. Its discrete quantum computing can be further applied to
+the deterministic Deutsch-Jozsa algorithm \cite{DeutschJozsa1992,Jaeger2007}
+and the probabilistic Grover algorithm \cite{Grover:1996:FQM:237814.237866,Mermin2007,Jaeger2007}.
+\end{comment}
 Finally, we shift our attention to consider quantum interval-valued
 probability measures (IVPMs), which potentially embody both finite
 precision measurement and a sensible correspondence to standard quantum
@@ -591,10 +645,10 @@ model is described by the following:
 \item \label{enu:-orthonormal-basis}$D$ orthonormal basis vectors for
 a Hilbert space of dimension~$D$, 
 \item \label{enu:probability-amplitude}$D$ complex probability amplitude
-coefficients describing the contribution of each basis vector, 
+coefficients describing the contribution of each basis vector,
 \item \label{enu:unitary-matrix}a set of probability-conserving unitary
 matrix operators that suffice to describe all required state transformations
-of a quantum circuit, 
+of a quantum circuit,
 \item \label{enu:measurement-framework}and a measurement framework. 
 \end{enumerate}
 In Sec.~\ref{CQC1qubitBloch.sec}, we focus on the geometric issues
@@ -1152,17 +1206,6 @@ $\mu_{2}\left(\proj{\Psi}\right)$ & $\frac{1}{2}$ & $0$ & $\frac{1}{2}$ & $\frac
 
 \section{The geometry of entanglement\label{sec:The-geometry-of}}
 
-\begin{comment}
-An $n$-qubit pure state in the conventional quantum theory (CQT)
-is represented as a vector in the $2^{n}$-dimensional Hilbert space.
-If we eliminate all symmetries, an irreducible state is actually a
-point in the projective Hilbert space \cite{MosseriDandoloff2001,Jaeger2007}
-also known as the complex projective space~$\CP{2^{n}-1}$ \cite{Hatcher2001,Bengtsson2007}.
-These irreducible quantum states can also be classified as product
-states and entangled states, and the latter one plays the essential
-role for pure-state algorithms \cite{Mermin2007,Jaeger2007}.
-\end{comment}
-
 Entanglement may be regarded as one of the main characteristics distinguishing
 quantum from classical mechanics. Entanglement involves quantum correlations
 such that the measurement outcomes in one subsystem are related to
@@ -1291,7 +1334,7 @@ the closed operations of addition, ``$+$,'' and multiplication,
 (additive group); 
 \item The multiplication operation~$\gmult$ is associative and commutative.
 The field has a multiplicative identity and the property that every
-nonzero element has a multiplicative inverse; 
+nonzero element has a multiplicative inverse;
 \item Distributive laws: For all $a,b,c\in\mathbb{F}$ 
 \begin{align}
 a\gmult(b+c) & =a\gmult b+a\gmult c\,, & (b+c)\gmult a & =b\gmult a+c\gmult a\,.
