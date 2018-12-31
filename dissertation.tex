@@ -392,8 +392,8 @@ Hence, when the quantities used to branch the computation closes to
 zero, the branch chosen by a BCSS machine cannot reliably predict
 the branch chosen by a realistic analog computer. Since two branches
 of computations may not have any relations, the follow-up computational
-paths may be significantly different, and these difference may not
-be compensated by error analysis techniques easily like the butterfly
+paths may be significantly different, and these difference is unlikely
+to be compensated by error analysis techniques easily like the butterfly
 effect. Therefore, the computational power of analog computers might
 be far weaker than the prediction based on this kind of theoretical
 models.%
@@ -409,7 +409,7 @@ and their mathematical models with the inspired quantum models.}
 \begin{tabularx}{\linewidth}{ccYY}
 \toprule 
 \addlinespace
-Physical quantities & Discrete & Discrete with extreme small unit & Continuous, but unlikely to verify they really are\tabularnewline\addlinespace
+Physical quantities & Discrete & Discrete with extreme small unit & Continuous, or no evidence to support they are discrete\tabularnewline\addlinespace
 \addlinespace
 \addlinespace
 Computational devices & Digital computer & Analog computer & Analog computer\tabularnewline\addlinespace
@@ -441,7 +441,7 @@ types of quantum models. Similar to classical analog computers, the
 quantum circuit model, the most widely used model of quantum computing,
 manipulates quantities which are not discrete apparently: the probability
 amplitudes of quantum states. To address the similar inconsistency,
-we first review the ``conventional quantum theory''\footnote{Alternative terminology in the literature includes ``actual,'' ``standard,''
+we first review the ``conventional quantum theory'' (CQT)\footnote{Alternative terminology in the literature includes ``actual,'' ``standard,''
 and ``ordinary'' quantum theory.} in Chapter~\ref{chap:Conventional-Quantum-Theory}, where the probability
 amplitudes are in the field of complex numbers. If the probability
 amplitudes are assumed to be ultimately discrete, we replace the field
@@ -449,14 +449,12 @@ of complex numbers by discrete finite fields and consider the quantum
 theories and computing over finite fields in Chapter~\ref{chap:Unrestricted-Finite-Fields}
 and \ref{chap:DQT=000026DQC}. Another possibilities could be that
 the probability amplitudes would never be quantized no matter how
-hard we try. Notice that the probability amplitudes can never be accessed
-directly in an experiment, the accessible properties of a quantum
-system is its measurement results and the probability of an event.
-Hence, to incorporate the finite precision measurement into the quantum
-theory, we assume the probability of an event
-
-, and consider a framework called quantum interval-valued probability
-measures (QIVPM) in Chapter~\ref{chap:QIVPM}.
+hard we try. Notice that the probability amplitudes is unlikely to
+be accessed directly while the probability of an event can be deduced
+after a series of experiments. To achieve a coherent formulation of
+finite-resource quantum mechanics, we extend classical interval-valued
+probability measures to quantum domain, and consider quantum interval-valued
+probability measures (QIVPM) in Chapter~\ref{chap:QIVPM}.
 
 \begin{comment}
 After a review of finite fields in Section~\ref{sec:background},
@@ -489,8 +487,7 @@ dimension $D\ge3$ according to Gleason's theorem \cite{gleason1957,Redhead1987-R
 In another word, this state $\rho$ is the unique state consistent
 with any given quantum probability measure.
 \end{comment}
-The review of CQT in Chapter~\ref{chap:Conventional-Quantum-Theory}
-starts from the geometrical structure of states in Sec.~\ref{CQC1qubitBloch.sec},
+The geometrical structure of states in CQT is first reviewed in Sec.~\ref{CQC1qubitBloch.sec},
 where a pure state is represented as a vector in the Hilbert space,
 and an irreducible state is actually a point in the projective Hilbert
 space \cite{MosseriDandoloff2001,Jaeger2007} also known as the complex
@@ -499,9 +496,9 @@ we will construct a quantum probability space based on classical probability
 space, apply Gleason's theorem \cite{gleason1957,Redhead1987-REDINA,peres1995quantum,RichmanBridges1999,Hamhalter2013}
 to recover the Born rule \cite{Born1983,Mermin2007,Jaeger2007}, and
 define the expectation value of an observable. These expectation values
-will be used to defined purity which provides an easy way to decide
-whether a state is entangled or not and to defined the maximum entangled
-states.
+in Sec.~\ref{sec:The-geometry-of} will be used to defined purity
+which provides an easy way to decide whether a state is entangled
+or not and to defined the maximum entangled states.
 
 \begin{comment}
 In Section~\ref{modalquantum}, we examine previously-introduced
@@ -537,11 +534,10 @@ to solve an unstructured database search of size $N$ using $O(\log(N))$
 steps, which outperforms the known asymptotic bound $O(\sqrt{N})$
 in conventional quantum computing \cite{Grover:1996:FQM:237814.237866,BennettBernsteinBrassardVazirani1997,Mermin2007,Jaeger2007}.
 \end{comment}
-When replacing the continuum of complex numbers by discrete finite
-fields, we first doesn't restrict the chosen finite fields in Chapter~\ref{chap:Unrestricted-Finite-Fields}
-\cite{Schumacher2012-SCHMQT,DQT2014,SchumacherWestmoreland2010}.
-This theory is called modal quantum theory because it can only predict
-whether a measure result is possible or impossible, but not its probability.
+In Chapter~\ref{chap:Unrestricted-Finite-Fields}, we examine previously-introduced
+quantum theories defined over unrestricted finite fields \cite{Schumacher2012-SCHMQT,DQT2014,SchumacherWestmoreland2010}.
+It is called modal quantum theory because it can only predict whether
+a measure result is possible or impossible, but not its probability.
 Although a version of quantum theory defined over the two-valued field
 can express simple algorithms such as quantum teleportation \cite{BennettBrassardEtAl1993,peres1995quantum,Mermin2007,Jaeger2007},
 it is so weak that it cannot express Deutsch's algorithm \cite{Deutsch1985,Mermin2007}.
@@ -583,45 +579,26 @@ and Bernstein-Vazirani \cite{Bernstein:1993:QCT:167088.167097,Mermin2007},
 but this still leads to excessive computational power for the unstructured
 database search problem for certain database sizes.
 \end{comment}
-Next, in Sec.~\ref{discretequantumtheoryI} to \ref{sec:Geometry-of-Entangled-States},
+In Sec.~\ref{discretequantumtheoryI} to \ref{discretequantumcomputingI},
 we improve on this by showing that for finite fields of order $p^{2}$,
 $\Fpp$, with the prime $p$ of the form $4\ell+3$ ($\ell$ a non-negative
 integer), the complex numbers have extremely compelling and natural
 discrete analogs that permit a great many of the standard requirements
 of quantum computing to be preserved. In this model, the states of
 a discrete $d$-dimensional system is a vector in the $d$-dimensional
-vector space over $\Fpp$. \todo{Introduction Cleaned up until here.
-} Because the states of a discrete $n$-qubit system are in principle
-enumerable, we can count the number of states, and determine the proportions
-of entangled and unentangled states. Under suitable conditions, we
-have amplitude-based partitions of unity, unitary transformations,
-and entanglement, as well as solutions to deterministic quantum algorithms
-such as the algorithms of Deutsch, Simon \cite{Simon:1994:PQC:1398518.1399019,Mermin2007,Jaeger2007},
+vector space over $\Fpp$, and can be reduced to a point in the discrete
+complex projective space. Among these irreducible states, the product
+states and entangled states can not only be identified as in CQT but
+also be counted for different $p$. Although the state space is a
+natural discrete analog to CQT, this model still only predicts whether
+a measurement result is possible or impossible, because it is not
+possible to define an inner product in the usual sense due to the
+modular arithmetic~\cite{grove2002classical}. Under suitable conditions,
+we can have deterministic quantum algorithms such as the algorithms
+of Deutsch, Simon \cite{Simon:1994:PQC:1398518.1399019,Mermin2007,Jaeger2007},
 and Bernstein-Vazirani \cite{Bernstein:1993:QCT:167088.167097,Mermin2007},
-though still with some bothersome shortcomings. Because of the modular
-nature of arithmetic in the finite complex field, it is not possible
-to define an inner product in the usual sense, and we show in Sec.~\ref{subsec:Partial-Algorithm}
-that this leads to excessive computational power for the unstructured
-database search problem for certain database sizes.
-
-Our second framework employs only finite fields over prime numbers
-of the form $4\ell+3$, which possess no solutions to $x^{2}+1=0$,
-and thus permit an elegant complex representation of the finite field
-by adjoining $\rmi=\sqrt{-1}$. Because the states of a discrete $n$-qubit
-system are in principle enumerable, we can count the number of states,
-and determine the proportions of entangled and unentangled states.
-We tried define its measurement process in three different approaches.
-For the model only predicting possible or impossible, we have solutions
-to deterministic quantum algorithms such as Deutsch's algorithm, but
-unnaturally strong computational power may still occur. In an improved
-model, the cardinal probability of measurement results could be predicted
-locally. In the local ordered region, the unnaturally computational
-power is ruled out and the probabilistic Grover search algorithm can
-be implemented. However, lacking arithmetic operations on cardinal
-probabilities, expectation values cannot be defined easily. Since
-arithmetic operations works with conventional probability measures,
-we consider quantum probability measures over finite fields, but we
-haven't found a consistent way to treat them in general.
+but this still leads to excessive computational power for partially
+solving the $\usat$ problem.
 
 \begin{comment}
 We are led, in Sections~\ref{discretequantumtheoryIIa} and~\ref{discretequantumtheoryIIb},
@@ -681,6 +658,90 @@ a local region, a notion of inner product and probability could be
 recovered. Its discrete quantum computing can be further applied to
 the deterministic Deutsch-Jozsa algorithm \cite{DeutschJozsa1992,Jaeger2007}
 and the probabilistic Grover algorithm \cite{Grover:1996:FQM:237814.237866,Mermin2007,Jaeger2007}.
+\end{comment}
+Since many important quantum algorithms are probabilistic, we want
+to find a notion of probability for quantum theory over finite fields.
+The cardinal probability is defined in Sec.~\ref{sec:Discrete-Quantum-Theory-(II)}
+by restricting states in some local region of the vector spaces. Within
+a local region, a notion of inner product and probability could be
+recovered. In Sec.~\ref{discretequantumcomputingII}, this discrete
+quantum theory is applied on two representative algorithms, the deterministic
+Deutsch-Jozsa algorithm \cite{DeutschJozsa1992,Jaeger2007} and the
+probabilistic Grover algorithm \cite{Grover:1996:FQM:237814.237866,Mermin2007,Jaeger2007}.
+\begin{comment}
+When people tried to define quantum probability over finite fields,
+people tended to treat the original Born rule as an axiom, and tried
+to modify it to get a discrete Born rule \cite{Schumacher2012-SCHMQT,doi:10.1142/S0217984913500644,DQT2014,Ellerman2016a}.
+However, any modified Born rule could hardly work on the whole vector
+space, since there is no inner product on the whole vector space over
+finite fields. Instead of treating the Born rule as an axiom, the
+Born rule can actually be deduced from a set of abstract definitions
+and axioms according to Gleason's theorem. Although we might hope
+to deduce a discrete Born rule directly from a similar set of definitions
+and axioms, no discrete Born rule satisfies certain properties motivated
+by Gleason's theorem with infinitely precise real-number probability~\cite{Gardiner2014}.
+Since the state spaces are now discrete and finite, this suggests
+us to consider a discrete Born rule mapping to finite number of intervals
+called interval-valued probability~\cite{JamisonLodwick2004,THOS2017}.
+To adopting the idea of interval-valued probability step-by-step,
+before attempting to study quantum interval-valued probability over
+finite fields, we will first review the classical interval-valued
+probability, and extend it with the conventional quantum theory.
+\end{comment}
+Despite the great success of cardinal probabilities, lacking arithmetic
+operations on them provides some difficulties to define expectation
+values. By attempting to define expectation values, we consider quantum
+probability measures over finite fields (QPMFF) in Sec.~\ref{sec:Toward-IVPM}.
+However, we cannot find a discrete Born rule to satisfy the Gleason-like
+conditions. \todo{Introduction Cleaned up until here. }
+
+\begin{comment}
+
+\section{Classical Interval-Valued Probability}
+
+In the classical setting, there are several proposals for ``imprecise
+probabilities'' \cite{Shafer1976,GilboaSchmeidler1994,Marinacci1999,JamisonLodwick2004,HuberRonchetti2009,Grabisch2016}.
+Although these proposals differ in some details, they all share the
+fact that the probability $\bar{\mu}(E)$ of an event~$E$ is generalized
+from a single \emph{real number} to an \emph{interval}~$[l,r]$,
+where~$l$ intuitively corresponds to the strength of evidence for
+the event~$E$ and~$1-r$ corresponds to the strength of evidence
+against the same event. Given a sample space~$\Omega$ and a set
+of intervals~$\mathscr{I}$, similar to a classical probability measure
+$\mu:2^{\Omega}\rightarrow\left[0,1\right]$, a classical interval-valued
+probability measure (IVPM) $\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}$
+needs to satisfy some coherent axioms. By satisfying the convexity
+axiom \cite{Shapley1971,GilboaSchmeidler1994,Marinacci1999,Grabisch2016},
+Shapley proved that there is always a classical probability measure
+consistent with the classical IVPM~$\bar{\mu}$ \cite{Shapley1971,GilboaSchmeidler1994,Grabisch2016}.
+Given any random variable, its expectation value with respect to classical
+probability measures consistent with~$\bar{\mu}$ is consistent with
+its Choquet integral \cite{Choquet1954,GilboaSchmeidler1994,Grabisch2016}
+with respect to $\bar{\mu}$ \cite{Rosenmuller1971,GilboaSchmeidler1994,Grabisch2016}.
+
+\section{Quantum Interval-Valued Probability}
+
+The quantum extension, quantum interval-valued probability measure
+(QIVPM) $\bar{\mu}:\events\rightarrow\mathscr{I}$, is a generalization
+of both classical IVPMs $\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}$
+and conventional quantum probability measures $\mu:\events\rightarrow[0,1]$
+\cite{THOS2017}, because QIVPMs reduce to classical IVPMs when the
+space of quantum events $\events$ is restricted to mutually commuting
+events, and reduces to conventional quantum probability measures when
+mapping to infinitely precise uncountable intervals $\mathscr{I}_{\infty}=\set{\left[x,x\right]}{x\in\left[0,1\right]}$.
+While Shapley and Gleason both proved there must be a ``state''
+consistent with any given QIVPM in the reduced cases, in general there
+exists a QIVPM such that no state is consistent with it. However,
+we found a class of QIVPMs such that all QIVPMs in this class are
+consistent with a non-empty ``ball'' of quantum states whose radius
+is defined by the maximal length of the intervals, and recovers the
+original Gleason theorem asymptotically. Similarly, the conventional
+quantum expectation value and the classical Choquet integral are together
+generalized to the quantum interval-valued expectation value. This
+is used to prove an imprecise Kochen-Specker theorem \cite{BELL_1966,kochenspecker1967,Redhead1987-REDINA,peres1995quantum,Jaeger2007}
+which suggests a possible resolution of the Meyer-Mermin debate on
+the impact of finite-precision measurement on the Kochen-Specker theorem
+\cite{PhysRevLett.83.3751,Mermin1999}.
 \end{comment}
 Finally, we shift our attention to consider quantum interval-valued
 probability measures (IVPMs), which potentially embody both finite
@@ -752,7 +813,7 @@ coefficients describing the contribution of each basis vector,
 \item \label{enu:unitary-matrix}a set of probability-conserving unitary
 matrix operators that suffice to describe all required state transformations
 of a quantum circuit,
-\item \label{enu:measurement-framework}and a measurement framework. 
+\item \label{enu:measurement-framework}and a measurement framework.
 \end{enumerate}
 In Sec.~\ref{CQC1qubitBloch.sec}, we focus on the geometric issues
 raised by the properties \ref{enu:-orthonormal-basis} and \ref{enu:probability-amplitude}
@@ -3054,7 +3115,7 @@ as a discrete Born rule.
 \begin{definition}[Quantum Probability Measures over Finite Fields]\label{def:QPMFF}Given
 a vector space $\mathcal{H}$ of dimension $D$ over the complexified
 field $\Fpp$, the set of events $\events_{p^{2}}$ is recursively
-defined as follows: 
+defined as follows:
 \begin{itemize}
 \item $\mathbb{0}$ and $\mathbb{1}\in\events_{p^{2}}$.
 \item If $\ket{\Psi}$ is a unit-norm state in $\mathcal{H}$, i.e., $\ket{\Psi}\in\mathcal{H}$
