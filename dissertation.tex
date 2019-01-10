@@ -254,9 +254,19 @@ here.\end{acknowledgments*}
 \begin{itemize}
 \item The latest version of this thesis is in GitHub: \code{https://git.io/fxbuG}
 \item Its source code is typeset using \LyX ~\cite{LyX} in: \code{https://git.io/fxbuE}
+and the exported \LaTeX{} is in \code{https://git.io/fhZBW}.
 \item Any comments can be left in the Issue part of the GitHub Repository:
 \code{https://git.io/fxbug}
 \end{itemize}
+Following explains how to compile the PDF from the source:
+\begin{enumerate}
+\item Clone the document class \code{https://github.com/yuttai/iuphd} in
+a location where the system can find.
+\item Run \code{xelatex dissertation.tex}.
+\item Run \code{biber dissertation}.
+\item Run \code{xelatex dissertation.tex} several times until all the references
+are resolved.
+\end{enumerate}
 \end{preface*}
 
 \begin{abstract*}Most quantum computing models are based on the continuum
@@ -4893,14 +4903,14 @@ As we discussed in the previous section, the finite-precision extension
 of the Gleason theorem, Thm.~\ref{thm:Finite-precision-Gleason},
 only applies on the QIVPMs composted by interval maps $f:\left[0,1\right]\rightarrow\mathscr{I}$
 and quantum probability measures $\muB_{\rho}:\events\rightarrow\left[0,1\right]$,
-where the maximum length of intervals in $\mathscr{I}$ is an important
-. In this case, the states consistent with the composition $f\circ\muB_{\rho}$
-is bounded by . While the QIVPM defined in Table~\ref{tab:non-Born-QIVPM}
-is not in this class, it is too wild to have a non-empty core, and
-the maximum length of its intervals $\mathscr{I}_{0}$ is $1$, the
-longest length of all possible intervals. This suggests us to ask
-if we shirk the maximum length of intervals alone, whether this ill-behaved
-QIVPMs disappears. More precisely, we have the following question.
+and the states consistent with the composition $f\circ\muB_{\rho}$
+converges to $\rho$ as the maximum length of intervals in $\mathscr{I}$
+shrinking to $0$. In contrast, the wildest QIVPM defined in Table~\ref{tab:non-Born-QIVPM}
+is not in this class and the maximum length of its intervals $\mathscr{I}_{0}$
+is $1$, the longest length of all possible intervals. This doesn't
+rule out the possibility that shirking the maximum length of intervals
+itself could result QIVPMs with non-empty cores. More precisely, we
+have the following question.
 
 \begin{question}In a Hilbert space $\Hilb$ of dimension $D\geq3$,
 given a QIVPM $\bar{\mu}:\events\rightarrow\mathscr{I}$, $\alpha$
@@ -4925,6 +4935,7 @@ are exact, Gleason's theorem asserts that a quantum probability measure
 can essentially induced by the Born rule, but they can be wild when
 we move on to interval-valued situation! }
 \end{comment}
+To understand how difficult this question could be, 
 
 
 \clearpageAddContentsChapter{Bibliography} %
