@@ -135,6 +135,8 @@
 \newcommand{\ultramodular}{\symcal{M}}
 \newcommand{\ultramodularL}[1][]{\ensuremath{\ultramodular^{L{#1}}}}
 \newcommand{\ultramodularR}[1][]{\ensuremath{\ultramodular^{R{#1}}}}
+\newcommand{\frameL}[1][]{\ensuremath{f^{L{#1}}}}
+\newcommand{\frameR}[1][]{\ensuremath{f^{R{#1}}}}
 \newcommand{\pmeas}{\ensuremath{\mu}}
 \newcommand{\nb}{\nolinebreak[3] }
 
@@ -252,22 +254,27 @@ here.\end{acknowledgments*}
 
 \begin{preface*}
 \begin{itemize}
-\item The latest version of this thesis is in GitHub: \code{https://git.io/fxbuG}
-\item Its source code is typeset using \LyX ~\cite{LyX} in: \code{https://git.io/fxbuE}
-and the exported \LaTeX{} is in \code{https://git.io/fhZBW}.
-\item Any comments can be left in the Issue part of the GitHub Repository:
-\code{https://git.io/fxbug}
+\item The latest PDF version of this thesis is in GitHub: \code{https://git.io/fxbuG}.
+\item Its source code is typeset using \LyX ~\cite{LyX} in \code{https://git.io/fxbuE}
+and the exported \LaTeX{} file is in \code{https://git.io/fhZBW}.
+\item Any comments can be left in the Issue part of the GitHub repository:
+\code{https://git.io/fxbug}.
 \end{itemize}
-Following explains how to compile the PDF from the source:
+Following explains how to compile the PDF from the \LaTeX{} source:
 \begin{enumerate}
-\item Clone the document class \code{https://github.com/yuttai/iuphd} in
-a location where the system can find.
-\item Run \code{xelatex dissertation.tex}.
+\item \label{enu:Clone-the-git}Clone the git repository of this thesis
+\code{https://git.io/fhZP5} into your local directory and the thesis
+document class \code{https://github.com/yuttai/iuphd} in a location
+where the system can find.
+\item In the local directory of this thesis, run \code{xelatex dissertation.tex}.
 \item Run \code{biber dissertation}.
 \item Run \code{xelatex dissertation.tex} several times until all the references
 are resolved.
 \end{enumerate}
-\end{preface*}
+The previous steps only tested in Microsoft Windows. Please report
+me if there is any difficulty compile it in the other system. Besides,
+to compile the PDF file from \LyX{} source, just finish step~\ref{enu:Clone-the-git}
+and click the toolbar button \includegraphics[width=1em]{buffer-view}.\end{preface*}
 
 \begin{abstract*}Most quantum computing models are based on the continuum
 of real numbers, while classical digital computers faithfully realize
@@ -1971,7 +1978,7 @@ a complex number, and satisfying the following properties:
 \item \label{enu:inner-product-complex-conjugate}$\ip{\Phi}{\Psi}$ is
 the complex conjugate of $\ip{\Psi}{\Phi}$;
 \item \label{enu:inner-product-linear}$\ip{\Phi}{\Psi}$ is conjugate linear
-in its first argument and linear in its second argument; 
+in its first argument and linear in its second argument;
 \item \label{enu:inner-product-positive-definite}$\ip{\Psi}{\Psi}$ is
 always non-negative and is equal to $0$ only if $\ket{\Psi}$ is
 the zero vector. 
@@ -4772,7 +4779,7 @@ is the maximum absolute value of the eigenvalues of $\rho-\rho'$~\cite{544199},
 and equal to $\left\Vert \rho-\rho'\right\Vert $~\cite{GolubVanLoan1996,Foucart2012}.
 Hence, $\left\Vert \rho-\rho'\right\Vert \le\alpha$.\end{proof}
 
-\subsection{Ultramodular Functions}
+\subsection{Ultramodular Functions\label{subsec:Ultramodular-Functions}}
 
 Theorem~\ref{thm:Finite-precision-Gleason} generalizes Gleason's
 theorem in the sense that it accounts for a larger class of probability
@@ -4902,23 +4909,21 @@ future research.
 As we discussed in the previous section, the finite-precision extension
 of the Gleason theorem, Thm.~\ref{thm:Finite-precision-Gleason},
 only applies on the QIVPMs composted by interval maps $f:\left[0,1\right]\rightarrow\mathscr{I}$
-and quantum probability measures $\muB_{\rho}:\events\rightarrow\left[0,1\right]$,
-and the states consistent with the composition $f\circ\muB_{\rho}$
-converges to $\rho$ as the maximum length of intervals in $\mathscr{I}$
-shrinking to $0$. In contrast, the wildest QIVPM defined in Table~\ref{tab:non-Born-QIVPM}
-is not in this class and the maximum length of its intervals $\mathscr{I}_{0}$
-is $1$, the longest length of all possible intervals. This doesn't
-rule out the possibility that shirking the maximum length of intervals
-itself could result QIVPMs with non-empty cores. More precisely, we
-have the following question.
+and quantum probability measures $\muB_{\rho}:\events\rightarrow\left[0,1\right]$;
+the states consistent with the composition $f\circ\muB_{\rho}$ converges
+to $\rho$ as the maximum length of intervals in $\mathscr{I}$ shrinking
+to $0$. In contrast, the wildest QIVPM defined in Table~\ref{tab:non-Born-QIVPM}
+maps to $\mathscr{I}_{0}$ whose intervals' maximum length is $1$,
+the longest possible length. This provides another possibility that
+shirking the maximum length of intervals itself could result QIVPMs
+with non-empty cores. More precisely, we have the following question.
 
 \begin{question}In a Hilbert space $\Hilb$ of dimension $D\geq3$,
-given a QIVPM $\bar{\mu}:\events\rightarrow\mathscr{I}$, $\alpha$
-be the maximum length of intervals in $\mathscr{I}$, is there an
-$\varepsilon>0$ such that $\coreBorn\left(\bar{\mu},\events\right)\ne\emptyset$
+given a QIVPM $\bar{\mu}:\events\rightarrow\mathscr{I}$ with $\alpha$
+being the maximum length of intervals in $\mathscr{I}$, is there
+an $\varepsilon>0$ such that $\coreBorn\left(\bar{\mu},\events\right)\ne\emptyset$
 for $\alpha<\varepsilon$.\end{question}
 
-\noindent %
 \begin{comment}
 
 \chapter{Conclusion\label{chap:Conclusion}}
@@ -4935,12 +4940,47 @@ are exact, Gleason's theorem asserts that a quantum probability measure
 can essentially induced by the Born rule, but they can be wild when
 we move on to interval-valued situation! }
 \end{comment}
-To understand how difficult this question could be, 
+To better understand this question, we start from the dimension $D=3$.
+This case is simpler than the general situation because any two-dimensional
+projectors can be expressed as the complement of a one-dimensional
+projector, $\mathbb{1}-\ket{\psi}$. Together with Eq.~\ref{eq:QIVPM-complement},
+the interval-valued probability of any two-dimensional projectors,
+$\bar{\mu}\left(\mathbb{1}-\ket{\psi}\right)$, can also be expressed
+as the complement of the latter, $\necess-\bar{\mu}\left(\ket{\psi}\right)$.
+Since the one-dimensional projectors are one-to-one corresponding
+to the irreducible states in the complex projective space $\CP{2}$
+as discussed in Sec.~\ref{subsec:Explicit-generalization-of}, QIVPMs
+$\bar{\mu}:\events\rightarrow\mathscr{I}$ are one-to-one corresponding
+to interval-valued frame functions $\bar{f}:\CP{2}\rightarrow\mathscr{I}$
+according to the following lemma.
+
+\begin{lemma}\label{thm:interval-valued-frame-function}Given a QIVPM
+$\bar{\mu}:\events\rightarrow\mathscr{I}$, the function $\bar{f}:\CP{2}\rightarrow\mathscr{I}$
+by $\bar{f}\left(\ket{\psi}\right)=\bar{\mu}\left(\proj{\psi}\right)$
+are called an interval-valued frame function, and satisfies
+\begin{equation}
+\left[1,1\right]-\bar{f}\left(\ket{\psi_{0}}\right)\subseteq\bar{f}\left(\ket{\psi_{1}}\right)+\bar{f}\left(\ket{\psi_{2}}\right)\label{eq:interval-valued-frame-function}
+\end{equation}
+for any orthonormal basis $\left\{ \ket{\psi_{i}}\right\} _{i=0}^{2}$.
+Conversely, if a function $\bar{f}:\CP{2}\rightarrow\mathscr{I}$
+satisfies Eq.~\ref{eq:interval-valued-frame-function}, $\bar{f}$
+must be an interval-valued frame function.\end{lemma}
+
+\begin{proof}This lemma is the direct consequence of Lemma~\ref{thm:convex-3-1}.\end{proof}
+
+Similar to the ultramodular functions in Sec.~\ref{subsec:Ultramodular-Functions},
+we can also decompose an interval-valued frame function into its left-end
+and right-end, where $\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]=\bar{f}\left(\ket{\psi}\right)$.
+Then, Eq.~\ref{eq:interval-valued-frame-function} can be rephrased
+as
+\begin{equation}
+\left[1,1\right]-\bar{f}\left(\ket{\psi_{0}}\right)\subseteq\bar{f}\left(\ket{\psi_{1}}\right)+\bar{f}\left(\ket{\psi_{2}}\right)\label{eq:two-ends-frame-function}
+\end{equation}
 
 
 \clearpageAddContentsChapter{Bibliography} %
 \begin{comment}
- \printbibliography
+\printbibliography
 \end{comment}
 \printbibliography
 
