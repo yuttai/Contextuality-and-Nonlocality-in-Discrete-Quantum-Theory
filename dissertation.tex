@@ -272,8 +272,8 @@ where the system can find.
 are resolved.
 \end{enumerate}
 The previous steps only tested in Microsoft Windows. Please report
-me if there is any difficulty compile it in the other system. Besides,
-to compile the PDF file from \LyX{} source, just finish step~\ref{enu:Clone-the-git}
+me if there is any difficulty to compile it. Besides, to compile a
+PDF file from the \LyX{} source, just finish step~\ref{enu:Clone-the-git}
 and click the toolbar button \includegraphics[width=1em]{buffer-view}.\end{preface*}
 
 \begin{abstract*}Most quantum computing models are based on the continuum
@@ -4908,21 +4908,23 @@ future research.
 \end{comment}
 As we discussed in the previous section, the finite-precision extension
 of the Gleason theorem, Thm.~\ref{thm:Finite-precision-Gleason},
-only applies on the QIVPMs composted by interval maps $f:\left[0,1\right]\rightarrow\mathscr{I}$
-and quantum probability measures $\muB_{\rho}:\events\rightarrow\left[0,1\right]$;
+only applies on the QIVPMs composed by interval maps $f:\left[0,1\right]\rightarrow\mathscr{I}$
+and quantum probability measures $\muB_{\rho}:\events\rightarrow\left[0,1\right]$:
 the states consistent with the composition $f\circ\muB_{\rho}$ converges
 to $\rho$ as the maximum length of intervals in $\mathscr{I}$ shrinking
 to $0$. In contrast, the wildest QIVPM defined in Table~\ref{tab:non-Born-QIVPM}
 maps to $\mathscr{I}_{0}$ whose intervals' maximum length is $1$,
 the longest possible length. This provides another possibility that
-shirking the maximum length of intervals itself could result QIVPMs
-with non-empty cores. More precisely, we have the following question.
+shirking the maximum length of intervals itself could result the QIVPMs
+mapping to these intervals having non-empty cores. More precisely,
+we have the following question.
 
-\begin{question}In a Hilbert space $\Hilb$ of dimension $D\geq3$,
-given a QIVPM $\bar{\mu}:\events\rightarrow\mathscr{I}$ with $\alpha$
-being the maximum length of intervals in $\mathscr{I}$, is there
-an $\varepsilon>0$ such that $\coreBorn\left(\bar{\mu},\events\right)\ne\emptyset$
-for $\alpha<\varepsilon$.\end{question}
+\begin{question}\label{question:approximation-Gleason}Given a Hilbert
+space $\Hilb$ of dimension $D\geq3$, is there an $\varepsilon>0$
+such that for all QIVPM $\bar{\mu}:\events\rightarrow\mathscr{I}$
+satisfying the maximum length of intervals in $\mathscr{I}$ less
+than $\varepsilon$, $\bar{\mu}$ must have an non-empty core, i.e.,
+$\coreBorn\left(\bar{\mu},\events\right)\ne\emptyset$.\end{question}
 
 \begin{comment}
 
@@ -4940,42 +4942,70 @@ are exact, Gleason's theorem asserts that a quantum probability measure
 can essentially induced by the Born rule, but they can be wild when
 we move on to interval-valued situation! }
 \end{comment}
-To better understand this question, we start from the dimension $D=3$.
-This case is simpler than the general situation because any two-dimensional
-projectors can be expressed as the complement of a one-dimensional
-projector, $\mathbb{1}-\ket{\psi}$. Together with Eq.~\ref{eq:QIVPM-complement},
-the interval-valued probability of any two-dimensional projectors,
-$\bar{\mu}\left(\mathbb{1}-\ket{\psi}\right)$, can also be expressed
-as the complement of the latter, $\necess-\bar{\mu}\left(\ket{\psi}\right)$.
-Since the one-dimensional projectors are one-to-one corresponding
-to the irreducible states in the complex projective space $\CP{2}$
-as discussed in Sec.~\ref{subsec:Explicit-generalization-of}, QIVPMs
-$\bar{\mu}:\events\rightarrow\mathscr{I}$ are one-to-one corresponding
-to interval-valued frame functions $\bar{f}:\CP{2}\rightarrow\mathscr{I}$
-according to the following lemma.
-
-\begin{lemma}\label{thm:interval-valued-frame-function}Given a QIVPM
-$\bar{\mu}:\events\rightarrow\mathscr{I}$, the function $\bar{f}:\CP{2}\rightarrow\mathscr{I}$
-by $\bar{f}\left(\ket{\psi}\right)=\bar{\mu}\left(\proj{\psi}\right)$
-are called an interval-valued frame function, and satisfies
+To better understand this question, consider the $D=3$ situation
+which is largely simplified by the fact that any two-dimensional projectors
+can be expressed as the complement of a one-dimensional projector,
+and by Eq.~(\ref{eq:QIVPM-complement}) so does their interval-valued
+probabilities, i.e., $\bar{\mu}\left(\mathbb{1}-\proj{\psi}\right)=\necess-\bar{\mu}\left(\proj{\psi}\right)$.
+Hence, a QIVPM is completely determined by its values on the one-dimensional
+projectors which are one-to-one corresponding to the irreducible states,
+and these irreducible states are encoded in the complex projective
+space $\CP{2}$ as discussed in Sec.~\ref{subsec:Explicit-generalization-of}.
+To further simplify the question, for any state $\ket{\psi}\in\CP{2}$,
+we can decompose interval-valued probabilities on these states into
+its left-end and right-end, where $\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]=\bar{\mu}\left(\proj{\psi}\right)$.
+According to Lemma~\ref{thm:convex-3-1}, $\bar{\mu}:\events\rightarrow\mathscr{I}$
+is a QIVPM if and only if the pair of functions $\frameL:\CP{2}\rightarrow\left[0,1\right]$
+and $\frameR:\CP{2}\rightarrow\left[0,1\right]$ satisfying the following
+interval-inclusion
 \begin{equation}
-\left[1,1\right]-\bar{f}\left(\ket{\psi_{0}}\right)\subseteq\bar{f}\left(\ket{\psi_{1}}\right)+\bar{f}\left(\ket{\psi_{2}}\right)\label{eq:interval-valued-frame-function}
+\left[1,1\right]-\left[\frameL\left(\ket{\psi_{0}}\right),\frameR\left(\ket{\psi_{0}}\right)\right]\subseteq\left[\frameL\left(\ket{\psi_{1}}\right),\frameR\left(\ket{\psi_{1}}\right)\right]+\left[\frameL\left(\ket{\psi_{2}}\right),\frameR\left(\ket{\psi_{2}}\right)\right]\label{eq:interval-valued-frame-function}
 \end{equation}
 for any orthonormal basis $\left\{ \ket{\psi_{i}}\right\} _{i=0}^{2}$.
-Conversely, if a function $\bar{f}:\CP{2}\rightarrow\mathscr{I}$
-satisfies Eq.~\ref{eq:interval-valued-frame-function}, $\bar{f}$
-must be an interval-valued frame function.\end{lemma}
-
-\begin{proof}This lemma is the direct consequence of Lemma~\ref{thm:convex-3-1}.\end{proof}
-
-Similar to the ultramodular functions in Sec.~\ref{subsec:Ultramodular-Functions},
-we can also decompose an interval-valued frame function into its left-end
-and right-end, where $\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]=\bar{f}\left(\ket{\psi}\right)$.
-Then, Eq.~\ref{eq:interval-valued-frame-function} can be rephrased
-as
+This interval-inclusion can be rephrased as a long inequality
 \begin{equation}
-\left[1,1\right]-\bar{f}\left(\ket{\psi_{0}}\right)\subseteq\bar{f}\left(\ket{\psi_{1}}\right)+\bar{f}\left(\ket{\psi_{2}}\right)\label{eq:two-ends-frame-function}
+\frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)\le1-\frameR\left(\ket{\psi_{0}}\right)\le1-\frameL\left(\ket{\psi_{0}}\right)\le\frameR\left(\ket{\psi_{1}}\right)+\frameR\left(\ket{\psi_{2}}\right)\,.
 \end{equation}
+Since the maximum length of intervals in $\mathscr{I}$ is less than
+$\varepsilon$, $\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]\in\mathscr{I}$
+implies $\frameR\left(\ket{\psi}\right)-\frameL\left(\ket{\psi}\right)<\varepsilon$.
+Then, the largest term in the previous inequality $\frameR\left(\ket{\psi_{1}}\right)+\frameR\left(\ket{\psi_{2}}\right)$
+is bounded by $\frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)+2\varepsilon$.
+In another word, the left-end function satisfies the following inequalities
+\begin{subequations}
+\begin{eqnarray}
+ &  & \frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)\le1-\frameL\left(\ket{\psi_{0}}\right)\le\frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)+2\varepsilon\,.\\
+ & \Leftrightarrow & 1-2\varepsilon\le\sum_{i=0}^{2}\frameL\left(\ket{\psi_{i}}\right)\le1\,.\label{eq:left-end-frame-function}
+\end{eqnarray}
+\end{subequations}
+In this language, Gleason's theorem basically states that when $\varepsilon=0$,
+given any function $\frameL:\CP{2}\rightarrow\left[0,1\right]$ satisfying
+Eq.~(\ref{eq:left-end-frame-function}), there exists a unique mixed
+state $\rho=\sum_{j=1}^{N}q_{j}\proj{\Phi_{j}}$ such that 
+\begin{equation}
+\frameL\left(\ket{\psi}\right)=\melem{\psi}{\rho}{\psi}\label{eq:Gleason-for-CP2}
+\end{equation}
+for any $D$-dimensional projector~$P$, where $\ket{\Phi_{j}}\in\mathcal{H}$
+are normalized, $q_{j}>0$, and $\sum_{j=1}^{N}q_{j}=1$. Our Question~\ref{question:approximation-Gleason}
+ask what $\frameL$ would look like with a positive $\varepsilon$.
+
+With different settings, whether there is an approximate version of
+Gleason's theorem in general was asked by Sam Sanders in constructivenews~\cite{Sanders2013},
+and there is no clear answer for his question as far as I understand.
+To have an idea how hard this question could be, recall in Sec.~\ref{sec:fuzzy}
+we state that a quantum probability space is glued by a family of
+classical probability spaces. This is similar to the situation that
+a manifold is glued by many local coordinates. When the curvature
+of each small piece is ``exactly'' the same and positive, Killing-Hopf
+theorem asserts this manifold is a sphere, but little can we say even
+if the curvature has only small deviation from constant. Similar situation
+might happen when approximating Gleason's theorem. Since the sum of
+$\frameL$ on each local classical probability space is ``exactly''
+the same and equal to $1$, Gleason's theorem can assert $\frameL$
+can be expressed as Eq.~\ref{eq:Gleason-for-CP2}. However, when
+each local classical probability space becomes imprecise, a general
+$\frameL$ might be as wild as we can image, and we might say little
+about its global property.
 
 
 \clearpageAddContentsChapter{Bibliography} %

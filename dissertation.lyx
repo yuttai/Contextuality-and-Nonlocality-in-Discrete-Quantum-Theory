@@ -140,6 +140,7 @@
 enumitem
 multicol
 logicalmkup
+subequations
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -1275,8 +1276,8 @@ xelatex dissertation.tex
 
 \begin_layout Standard
 The previous steps only tested in Microsoft Windows.
- Please report me if there is any difficulty compile it in the other system.
- Besides, to compile the PDF file from \SpecialChar LyX
+ Please report me if there is any difficulty to compile it.
+ Besides, to compile a PDF file from the \SpecialChar LyX
  source, just finish step
 \begin_inset space ~
 \end_inset
@@ -39517,7 +39518,7 @@ reference "thm:Finite-precision-Gleason"
 
 \end_inset
 
-, only applies on the QIVPMs composted by interval maps 
+, only applies on the QIVPMs composed by interval maps 
 \begin_inset Formula $f:\left[0,1\right]\rightarrow\mathscr{I}$
 \end_inset
 
@@ -39525,7 +39526,7 @@ reference "thm:Finite-precision-Gleason"
 \begin_inset Formula $\muB_{\rho}:\events\rightarrow\left[0,1\right]$
 \end_inset
 
-; the states consistent with the composition 
+: the states consistent with the composition 
 \begin_inset Formula $f\circ\muB_{\rho}$
 \end_inset
 
@@ -39566,7 +39567,8 @@ noprefix "false"
 
 , the longest possible length.
  This provides another possibility that shirking the maximum length of intervals
- itself could result QIVPMs with non-empty cores.
+ itself could result the QIVPMs mapping to these intervals having non-empty
+ cores.
  More precisely, we have the following question.
 \end_layout
 
@@ -39583,7 +39585,14 @@ begin{question}
 
 \end_inset
 
-In a Hilbert space 
+
+\begin_inset CommandInset label
+LatexCommand label
+name "question:approximation-Gleason"
+
+\end_inset
+
+Given a Hilbert space 
 \begin_inset Formula $\Hilb$
 \end_inset
 
@@ -39591,28 +39600,28 @@ In a Hilbert space
 \begin_inset Formula $D\geq3$
 \end_inset
 
-, given a QIVPM 
-\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
-\end_inset
-
- with 
-\begin_inset Formula $\alpha$
-\end_inset
-
- being the maximum length of intervals in 
-\begin_inset Formula $\mathscr{I}$
-\end_inset
-
 , is there an 
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
- such that 
-\begin_inset Formula $\coreBorn\left(\bar{\mu},\events\right)\ne\emptyset$
+ such that for all QIVPM 
+\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
 \end_inset
 
- for 
-\begin_inset Formula $\alpha<\varepsilon$
+ satisfying the maximum length of intervals in 
+\begin_inset Formula $\mathscr{I}$
+\end_inset
+
+ less than 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+, 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ must have an non-empty core, i.e., 
+\begin_inset Formula $\coreBorn\left(\bar{\mu},\events\right)\ne\emptyset$
 \end_inset
 
 .
@@ -39744,40 +39753,32 @@ status collapsed
 
 \end_inset
 
-To better understand this question, we start from the dimension 
+To better understand this question, consider the 
 \begin_inset Formula $D=3$
 \end_inset
 
-.
- This case is simpler than the general situation because any two-dimensional
+ situation which is largely simplified by the fact that any two-dimensional
  projectors can be expressed as the complement of a one-dimensional projector,
- 
-\begin_inset Formula $\mathbb{1}-\ket{\psi}$
-\end_inset
-
-.
- Together with Eq.
+ and by Eq.
 \begin_inset space ~
 \end_inset
 
-
+(
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:QIVPM-complement"
 
 \end_inset
 
-, the interval-valued probability of any two-dimensional projectors, 
-\begin_inset Formula $\bar{\mu}\left(\mathbb{1}-\ket{\psi}\right)$
-\end_inset
-
-, can also be expressed as the complement of the latter, 
-\begin_inset Formula $\necess-\bar{\mu}\left(\ket{\psi}\right)$
+) so does their interval-valued probabilities, i.e., 
+\begin_inset Formula $\bar{\mu}\left(\mathbb{1}-\proj{\psi}\right)=\necess-\bar{\mu}\left(\proj{\psi}\right)$
 \end_inset
 
 .
- Since the one-dimensional projectors are one-to-one corresponding to the
- irreducible states in the complex projective space 
+ Hence, a QIVPM is completely determined by its values on the one-dimensional
+ projectors which are one-to-one corresponding to the irreducible states,
+ and these irreducible states are encoded in the complex projective space
+ 
 \begin_inset Formula $\CP{2}$
 \end_inset
 
@@ -39792,111 +39793,18 @@ reference "subsec:Explicit-generalization-of"
 
 \end_inset
 
-, QIVPMs 
-\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
+.
+ To further simplify the question, for any state 
+\begin_inset Formula $\ket{\psi}\in\CP{2}$
 \end_inset
 
- are one-to-one corresponding to interval-valued frame functions 
-\begin_inset Formula $\bar{f}:\CP{2}\rightarrow\mathscr{I}$
-\end_inset
-
- according to the following lemma.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{lemma}
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "thm:interval-valued-frame-function"
-
-\end_inset
-
-Given a QIVPM 
-\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
-\end_inset
-
-, the function 
-\begin_inset Formula $\bar{f}:\CP{2}\rightarrow\mathscr{I}$
-\end_inset
-
- by 
-\begin_inset Formula $\bar{f}\left(\ket{\psi}\right)=\bar{\mu}\left(\proj{\psi}\right)$
-\end_inset
-
- are called an interval-valued frame function, and satisfies
-\begin_inset Formula 
-\begin{equation}
-\left[1,1\right]-\bar{f}\left(\ket{\psi_{0}}\right)\subseteq\bar{f}\left(\ket{\psi_{1}}\right)+\bar{f}\left(\ket{\psi_{2}}\right)\label{eq:interval-valued-frame-function}
-\end{equation}
-
-\end_inset
-
-for any orthonormal basis 
-\begin_inset Formula $\left\{ \ket{\psi_{i}}\right\} _{i=0}^{2}$
+, we can decompose interval-valued probabilities on these states into its
+ left-end and right-end, where 
+\begin_inset Formula $\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]=\bar{\mu}\left(\proj{\psi}\right)$
 \end_inset
 
 .
- Conversely, if a function 
-\begin_inset Formula $\bar{f}:\CP{2}\rightarrow\mathscr{I}$
-\end_inset
-
- satisfies Eq.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:interval-valued-frame-function"
-
-\end_inset
-
-, 
-\begin_inset Formula $\bar{f}$
-\end_inset
-
- must be an interval-valued frame function.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{lemma}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{proof}
-\end_layout
-
-\end_inset
-
-This lemma is the direct consequence of Lemma
+ According to Lemma
 \begin_inset space ~
 \end_inset
 
@@ -39907,60 +39815,273 @@ reference "thm:convex-3-1"
 
 \end_inset
 
+, 
+\begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
+\end_inset
+
+ is a QIVPM if and only if the pair of functions 
+\begin_inset Formula $\frameL:\CP{2}\rightarrow\left[0,1\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\frameR:\CP{2}\rightarrow\left[0,1\right]$
+\end_inset
+
+ satisfying the following interval-inclusion
+\begin_inset Formula 
+\begin{equation}
+\left[1,1\right]-\left[\frameL\left(\ket{\psi_{0}}\right),\frameR\left(\ket{\psi_{0}}\right)\right]\subseteq\left[\frameL\left(\ket{\psi_{1}}\right),\frameR\left(\ket{\psi_{1}}\right)\right]+\left[\frameL\left(\ket{\psi_{2}}\right),\frameR\left(\ket{\psi_{2}}\right)\right]\label{eq:interval-valued-frame-function}
+\end{equation}
+
+\end_inset
+
+for any orthonormal basis 
+\begin_inset Formula $\left\{ \ket{\psi_{i}}\right\} _{i=0}^{2}$
+\end_inset
+
 .
+ This interval-inclusion can be rephrased as a long inequality
+\begin_inset Formula 
+\begin{equation}
+\frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)\le1-\frameR\left(\ket{\psi_{0}}\right)\le1-\frameL\left(\ket{\psi_{0}}\right)\le\frameR\left(\ket{\psi_{1}}\right)+\frameR\left(\ket{\psi_{2}}\right)\,.
+\end{equation}
+
+\end_inset
+
+Since the maximum length of intervals in 
+\begin_inset Formula $\mathscr{I}$
+\end_inset
+
+ is less than 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+, 
+\begin_inset Formula $\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]\in\mathscr{I}$
+\end_inset
+
+ implies 
+\begin_inset Formula $\frameR\left(\ket{\psi}\right)-\frameL\left(\ket{\psi}\right)<\varepsilon$
+\end_inset
+
+.
+ Then, the largest term in the previous inequality 
+\begin_inset Formula $\frameR\left(\ket{\psi_{1}}\right)+\frameR\left(\ket{\psi_{2}}\right)$
+\end_inset
+
+ is bounded by 
+\begin_inset Formula $\frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)+2\varepsilon$
+\end_inset
+
+.
+ In another word, the left-end function satisfies the following inequalities
+\begin_inset Flex Subequations
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{eqnarray}
+ &  & \frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)\le1-\frameL\left(\ket{\psi_{0}}\right)\le\frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)+2\varepsilon\,.\\
+ & \Leftrightarrow & 1-2\varepsilon\le\sum_{i=0}^{2}\frameL\left(\ket{\psi_{i}}\right)\le1\,.\label{eq:left-end-frame-function}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+In this language, Gleason's theorem basically states that when 
+\begin_inset Formula $\varepsilon=0$
+\end_inset
+
+, given any function 
+\begin_inset Formula $\frameL:\CP{2}\rightarrow\left[0,1\right]$
+\end_inset
+
+ satisfying Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:left-end-frame-function"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), there exists a unique mixed state 
+\begin_inset Formula $\rho=\sum_{j=1}^{N}q_{j}\proj{\Phi_{j}}$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\begin{equation}
+\frameL\left(\ket{\psi}\right)=\melem{\psi}{\rho}{\psi}\label{eq:Gleason-for-CP2}
+\end{equation}
+
+\end_inset
+
+for any 
+\begin_inset Formula $D$
+\end_inset
+
+-dimensional projector
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $P$
+\end_inset
+
+, where 
+\begin_inset Formula $\ket{\Phi_{j}}\in\mathcal{H}$
+\end_inset
+
+ are normalized, 
+\begin_inset Formula $q_{j}>0$
+\end_inset
+
+, and 
+\begin_inset Formula $\sum_{j=1}^{N}q_{j}=1$
+\end_inset
+
+.
+ Our Question
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "question:approximation-Gleason"
+
+\end_inset
+
+ ask what 
+\begin_inset Formula $\frameL$
+\end_inset
+
+ would look like with a positive 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+With different settings, whether there is an approximate version of Gleason's
+ theorem in general was asked by Sam Sanders in constructivenews
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Sanders2013"
+literal "false"
+
+\end_inset
+
+, and there is no clear answer for his question as far as I understand.
+ To have an idea how hard this question could be, recall in Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:fuzzy"
+
+\end_inset
+
+ we state that a quantum probability space is glued by a family of classical
+ probability spaces.
+ This is similar to the situation that a manifold is glued by many local
+ coordinates.
+ When the curvature of each small piece is 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-
-\backslash
-end{proof}
+``
 \end_layout
 
 \end_inset
 
+exactly
+\begin_inset ERT
+status collapsed
 
+\begin_layout Plain Layout
+
+''
 \end_layout
 
-\begin_layout Standard
-Similar to the ultramodular functions in Sec.
+\end_inset
+
+ the same and positive, Killing-Hopf theorem asserts this manifold is a
+ sphere, but little can we say even if the curvature has only small deviation
+ from constant.
+ Similar situation might happen when approximating Gleason's theorem.
+ Since the sum of 
+\begin_inset Formula $\frameL$
+\end_inset
+
+ on each local classical probability space is 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+``
+\end_layout
+
+\end_inset
+
+exactly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+''
+\end_layout
+
+\end_inset
+
+ the same and equal to 
+\begin_inset Formula $1$
+\end_inset
+
+, Gleason's theorem can assert 
+\begin_inset Formula $\frameL$
+\end_inset
+
+ can be expressed as Eq.
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Ultramodular-Functions"
+reference "eq:Gleason-for-CP2"
 
-\end_inset
-
-, we can also decompose an interval-valued frame function into its left-end
- and right-end, where 
-\begin_inset Formula $\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]=\bar{f}\left(\ket{\psi}\right)$
 \end_inset
 
 .
- Then, Eq.
-\begin_inset space ~
+ However, when each local classical probability space becomes imprecise,
+ a general 
+\begin_inset Formula $\frameL$
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:interval-valued-frame-function"
-
-\end_inset
-
- can be rephrased as
-\begin_inset Formula 
-\begin{equation}
-\left[1,1\right]-\bar{f}\left(\ket{\psi_{0}}\right)\subseteq\bar{f}\left(\ket{\psi_{1}}\right)+\bar{f}\left(\ket{\psi_{2}}\right)\label{eq:two-ends-frame-function}
-\end{equation}
-
-\end_inset
-
-
+ might be as wild as we can image, and we might say little about its global
+ property.
 \end_layout
 
 \begin_layout Standard
