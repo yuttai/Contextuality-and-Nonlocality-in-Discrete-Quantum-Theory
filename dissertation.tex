@@ -4747,10 +4747,12 @@ map $f:\left[0,1\right]\rightarrow\mathscr{I}$ maps every real-valued
 probability $x\in\left[0,1\right]$ to a set of intervals $f\left(x\right)=\left[\ell,r\right]$
 containing $x$, where $\left[0,1\right]$ denotes the set of real-valued
 probabilities (this should not be confused with the interval-valued
-probability $\unknown$). Let $\left|\mathscr{I}\right|$ be the maximum
-length of intervals in $\mathscr{I}$. We also need a notion of \emph{norm}
-to quantify the distance between (pure or mixed) states. The norm
-of a pure state $\rho=\proj{\psi}$ is defined as usual by $\left\Vert \psi\right\Vert =\sqrt{\ip{\psi}{\psi}}$.
+probability $\unknown$). We also need a notion of \emph{norm} to
+quantify the uncertainty in measurements and the distance between
+(pure or mixed) states. The norm of a collection of intervals $\mathscr{I}$,
+$\left\Vert \mathscr{I}\right\Vert $, is defined by the maximum length
+of intervals in it. The norm of a pure state $\rho=\proj{\psi}$ is
+defined as usual by $\left\Vert \psi\right\Vert =\sqrt{\ip{\psi}{\psi}}$.
 For any given Hermitian operator~$A$, we choose the operator norm
 $\left\Vert A\right\Vert =\max_{\left\Vert \psi\right\Vert =1}\left\Vert A\ket{\psi}\right\Vert $,
 which is also known as the $2$-norm or the spectral norm~\cite{RobertsVarberg1973,peres1995quantum,GolubVanLoan1996,Foucart2012}.
@@ -4765,21 +4767,21 @@ let the composition $f\circ\muB_{\rho}$ be a QIVPM, where $\muB_{\rho}$
 is the probability measure induced by the Born rule for a given state~$\rho$.
 If a state $\rho'$ is consistent with $f\circ\muB_{\rho}$ on all
 events, i.e., $\rho'\in\coreBorn\left(f\circ\muB_{\rho},\events\right)$,
-then the norm of their difference is bounded by $\left|\mathscr{I}\right|$,
-i.e., $\left\Vert \rho-\rho'\right\Vert \le\left|\mathscr{I}\right|$.\end{thm}
+then the norm of their difference is bounded by $\left\Vert \mathscr{I}\right\Vert $,
+i.e., $\left\Vert \rho-\rho'\right\Vert \le\left\Vert \mathscr{I}\right\Vert $.\end{thm}
 
 \begin{proof}Given a state~$\rho'$ consistent with $f\circ\muB_{\rho}$,
 we have $\muB_{\rho'}\left(\proj{\psi}\right)\in f\left(\muB_{\rho}\left(\proj{\psi}\right)\right)$
 for any one-dimensional projector $P=\proj{\psi}$. Since the maximum
-length of the intervals in $\mathscr{I}$ is $\left|\mathscr{I}\right|$,
+length of the intervals in $\mathscr{I}$ is $\left\Vert \mathscr{I}\right\Vert $,
 it is also the upper bound of the difference: 
 \begin{equation}
-\left|\muB_{\rho'}\left(\proj{\psi}\right)-\muB_{\rho}\left(\proj{\psi}\right)\right|=\left|\melem{\psi}{\rho-\rho'}{\psi}\right|\le\left|\mathscr{I}\right|\,.
+\left|\muB_{\rho'}\left(\proj{\psi}\right)-\muB_{\rho}\left(\proj{\psi}\right)\right|=\left|\melem{\psi}{\rho-\rho'}{\psi}\right|\le\left\Vert \mathscr{I}\right\Vert \,.
 \end{equation}
 Since $\rho-\rho'$ is Hermitian, $\max_{\left\Vert \psi\right\Vert =1}\left|\melem{\psi}{\rho-\rho'}{\psi}\right|$
 is the maximum absolute value of the eigenvalues of $\rho-\rho'$~\cite{544199},
 and equal to $\left\Vert \rho-\rho'\right\Vert $~\cite{GolubVanLoan1996,Foucart2012}.
-Hence, $\left\Vert \rho-\rho'\right\Vert \le\left|\mathscr{I}\right|$.\end{proof}
+Hence, $\left\Vert \rho-\rho'\right\Vert \le\left\Vert \mathscr{I}\right\Vert $.\end{proof}
 
 \subsection{Ultramodular Functions\label{subsec:Ultramodular-Functions}}
 
@@ -4911,23 +4913,23 @@ discrete quantum theories to consider QIVPMs over finite fields in
 future research.
 \end{comment}
 Recall in previous section, we denote the maximum length of intervals
-in $\mathscr{I}$ as $\left|\mathscr{I}\right|$. The finite-precision
+in $\mathscr{I}$ as $\left\Vert \mathscr{I}\right\Vert $. The finite-precision
 extension of the Gleason theorem, Thm.~\ref{thm:Finite-precision-Gleason},
 only applies on the QIVPMs of the form $f\circ\muB_{\rho}$ and states
-that as $\left|\mathscr{I}\right|$ shrinks to $0$, the composition
-$f\circ\muB_{\rho}$ would be better in the sense that the states
-consistent with the composition $f\circ\muB_{\rho}$ converges to
-$\rho$. In contrast, the wildest QIVPM defined in Table~\ref{tab:non-Born-QIVPM}
-has the range~$\mathscr{I}_{0}$ with $\left|\mathscr{I}_{0}\right|=1$,
+that as $\left\Vert \mathscr{I}\right\Vert $ shrinks to $0$, the
+composition $f\circ\muB_{\rho}$ would be better in the sense that
+the states consistent with the composition $f\circ\muB_{\rho}$ converges
+to $\rho$. In contrast, the wildest QIVPM defined in Table~\ref{tab:non-Born-QIVPM}
+has the range~$\mathscr{I}_{0}$ with $\left\Vert \mathscr{I}_{0}\right\Vert =1$,
 the longest possible length. This suggests that shrinking the length
-$\left|\mathscr{I}\right|$ might regularize QIVPMs mapping to $\mathscr{I}$
-as the following question.
+$\left\Vert \mathscr{I}\right\Vert $ might regularize QIVPMs mapping
+to $\mathscr{I}$ as the following question.
 
 \begin{question}\label{question:approximation-Gleason}Given a Hilbert
 space $\Hilb$ of dimension $D\geq3$, is there an $\varepsilon>0$
 such that for all QIVPM $\bar{\mu}:\events\rightarrow\mathscr{I}$
-satisfying $\left|\mathscr{I}\right|<\varepsilon$, $\bar{\mu}$ must
-have an non-empty core, i.e., $\coreBorn\left(\bar{\mu},\events\right)\ne\emptyset$.\end{question}
+satisfying $\left\Vert \mathscr{I}\right\Vert <\varepsilon$, $\bar{\mu}$
+must have an non-empty core, i.e., $\coreBorn\left(\bar{\mu},\events\right)\ne\emptyset$.\end{question}
 
 \begin{comment}
 
@@ -4969,8 +4971,8 @@ This interval-inclusion can be rephrased as a long inequality
 \begin{equation}
 \frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)\le1-\frameR\left(\ket{\psi_{0}}\right)\le1-\frameL\left(\ket{\psi_{0}}\right)\le\frameR\left(\ket{\psi_{1}}\right)+\frameR\left(\ket{\psi_{2}}\right)\,.
 \end{equation}
-Since $\left|\mathscr{I}\right|<\varepsilon$, the length of every
-interval $\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]$
+Since $\left\Vert \mathscr{I}\right\Vert <\varepsilon$, the length
+of every interval $\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]$
 is bounded by $\varepsilon$ as well, which implies the largest term
 in the previous inequality $\frameR\left(\ket{\psi_{1}}\right)+\frameR\left(\ket{\psi_{2}}\right)$
 is bounded by $\frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)+2\varepsilon$.
