@@ -271,10 +271,11 @@ where the system can find.
 \item Run \code{xelatex dissertation.tex} several times until all the references
 are resolved.
 \end{enumerate}
-The previous steps only tested in Microsoft Windows. Please report
-me if there is any difficulty to compile it. Besides, to compile a
-PDF file from the \LyX{} source, just finish step~\ref{enu:Clone-the-git}
-and click the toolbar button \includegraphics[width=1em]{buffer-view}.\end{preface*}
+The previous steps only tested in Microsoft Windows with MiK\TeX ~2.9.
+Please report me if there is any difficulty to compile it. Besides,
+to compile a PDF file from the \LyX{} source, just finish step~\ref{enu:Clone-the-git},
+open \code{dissertation.lyx} in \LyX , and click the toolbar button
+\includegraphics[width=1em]{buffer-view}.\end{preface*}
 
 \begin{abstract*}Most quantum computing models are based on the continuum
 of real numbers, while classical digital computers faithfully realize
@@ -4746,9 +4747,10 @@ map $f:\left[0,1\right]\rightarrow\mathscr{I}$ maps every real-valued
 probability $x\in\left[0,1\right]$ to a set of intervals $f\left(x\right)=\left[\ell,r\right]$
 containing $x$, where $\left[0,1\right]$ denotes the set of real-valued
 probabilities (this should not be confused with the interval-valued
-probability $\unknown$). We also need a notion of \emph{norm} to
-quantify the distance between (pure or mixed) states. The norm of
-a pure state $\rho=\proj{\psi}$ is defined as usual by $\left\Vert \psi\right\Vert =\sqrt{\ip{\psi}{\psi}}$.
+probability $\unknown$). Let $\left|\mathscr{I}\right|$ be the maximum
+length of intervals in $\mathscr{I}$. We also need a notion of \emph{norm}
+to quantify the distance between (pure or mixed) states. The norm
+of a pure state $\rho=\proj{\psi}$ is defined as usual by $\left\Vert \psi\right\Vert =\sqrt{\ip{\psi}{\psi}}$.
 For any given Hermitian operator~$A$, we choose the operator norm
 $\left\Vert A\right\Vert =\max_{\left\Vert \psi\right\Vert =1}\left\Vert A\ket{\psi}\right\Vert $,
 which is also known as the $2$-norm or the spectral norm~\cite{RobertsVarberg1973,peres1995quantum,GolubVanLoan1996,Foucart2012}.
@@ -4761,23 +4763,23 @@ follows.
 $f:\left[0,1\right]\rightarrow\mathscr{I}$ be an interval map and
 let the composition $f\circ\muB_{\rho}$ be a QIVPM, where $\muB_{\rho}$
 is the probability measure induced by the Born rule for a given state~$\rho$.
-Let $\alpha$ be the maximum length of intervals in $\mathscr{I}$.
 If a state $\rho'$ is consistent with $f\circ\muB_{\rho}$ on all
 events, i.e., $\rho'\in\coreBorn\left(f\circ\muB_{\rho},\events\right)$,
-then the norm of their difference is bounded by $\alpha$, i.e., $\left\Vert \rho-\rho'\right\Vert \le\alpha$.\end{thm}
+then the norm of their difference is bounded by $\left|\mathscr{I}\right|$,
+i.e., $\left\Vert \rho-\rho'\right\Vert \le\left|\mathscr{I}\right|$.\end{thm}
 
 \begin{proof}Given a state~$\rho'$ consistent with $f\circ\muB_{\rho}$,
 we have $\muB_{\rho'}\left(\proj{\psi}\right)\in f\left(\muB_{\rho}\left(\proj{\psi}\right)\right)$
 for any one-dimensional projector $P=\proj{\psi}$. Since the maximum
-length of the intervals in $\mathscr{I}$ is $\alpha$, it is also
-the upper bound of the difference: 
+length of the intervals in $\mathscr{I}$ is $\left|\mathscr{I}\right|$,
+it is also the upper bound of the difference: 
 \begin{equation}
-\left|\muB_{\rho'}\left(\proj{\psi}\right)-\muB_{\rho}\left(\proj{\psi}\right)\right|=\left|\melem{\psi}{\rho-\rho'}{\psi}\right|\le\alpha\,.
+\left|\muB_{\rho'}\left(\proj{\psi}\right)-\muB_{\rho}\left(\proj{\psi}\right)\right|=\left|\melem{\psi}{\rho-\rho'}{\psi}\right|\le\left|\mathscr{I}\right|\,.
 \end{equation}
 Since $\rho-\rho'$ is Hermitian, $\max_{\left\Vert \psi\right\Vert =1}\left|\melem{\psi}{\rho-\rho'}{\psi}\right|$
 is the maximum absolute value of the eigenvalues of $\rho-\rho'$~\cite{544199},
 and equal to $\left\Vert \rho-\rho'\right\Vert $~\cite{GolubVanLoan1996,Foucart2012}.
-Hence, $\left\Vert \rho-\rho'\right\Vert \le\alpha$.\end{proof}
+Hence, $\left\Vert \rho-\rho'\right\Vert \le\left|\mathscr{I}\right|$.\end{proof}
 
 \subsection{Ultramodular Functions\label{subsec:Ultramodular-Functions}}
 
@@ -4893,6 +4895,8 @@ and precision of the particular experiment.
 
 \chapter{Further Discussion\label{chap:Further-Discussion}}
 
+\section{Gleason's Theorem for General QIVPMs}
+
 \begin{comment}
 When people proved the original Gleason theorem, people usually exploited
 the geometrical structure of real 3-dimensional Hilbert space \cite{gleason1957,peres1995quantum,RichmanBridges1999,Hamhalter2013}.
@@ -4906,25 +4910,24 @@ and quantum computing with QIVPMs. Finally, we want to improve the
 discrete quantum theories to consider QIVPMs over finite fields in
 future research.
 \end{comment}
-As we discussed in the previous section, the finite-precision extension
-of the Gleason theorem, Thm.~\ref{thm:Finite-precision-Gleason},
-only applies on the QIVPMs composed by interval maps $f:\left[0,1\right]\rightarrow\mathscr{I}$
-and quantum probability measures $\muB_{\rho}:\events\rightarrow\left[0,1\right]$:
-the states consistent with the composition $f\circ\muB_{\rho}$ converges
-to $\rho$ as the maximum length of intervals in $\mathscr{I}$ shrinking
-to $0$. In contrast, the wildest QIVPM defined in Table~\ref{tab:non-Born-QIVPM}
-maps to $\mathscr{I}_{0}$ whose intervals' maximum length is $1$,
-the longest possible length. This provides another possibility that
-shirking the maximum length of intervals itself could result the QIVPMs
-mapping to these intervals having non-empty cores. More precisely,
-we have the following question.
+Recall in previous section, we denote the maximum length of intervals
+in $\mathscr{I}$ as $\left|\mathscr{I}\right|$. The finite-precision
+extension of the Gleason theorem, Thm.~\ref{thm:Finite-precision-Gleason},
+only applies on the QIVPMs of the form $f\circ\muB_{\rho}$ and states
+that as $\left|\mathscr{I}\right|$ shrinks to $0$, the composition
+$f\circ\muB_{\rho}$ would be better in the sense that the states
+consistent with the composition $f\circ\muB_{\rho}$ converges to
+$\rho$. In contrast, the wildest QIVPM defined in Table~\ref{tab:non-Born-QIVPM}
+has the range~$\mathscr{I}_{0}$ with $\left|\mathscr{I}_{0}\right|=1$,
+the longest possible length. This suggests that shrinking the length
+$\left|\mathscr{I}\right|$ might regularize QIVPMs mapping to $\mathscr{I}$
+as the following question.
 
 \begin{question}\label{question:approximation-Gleason}Given a Hilbert
 space $\Hilb$ of dimension $D\geq3$, is there an $\varepsilon>0$
 such that for all QIVPM $\bar{\mu}:\events\rightarrow\mathscr{I}$
-satisfying the maximum length of intervals in $\mathscr{I}$ less
-than $\varepsilon$, $\bar{\mu}$ must have an non-empty core, i.e.,
-$\coreBorn\left(\bar{\mu},\events\right)\ne\emptyset$.\end{question}
+satisfying $\left|\mathscr{I}\right|<\varepsilon$, $\bar{\mu}$ must
+have an non-empty core, i.e., $\coreBorn\left(\bar{\mu},\events\right)\ne\emptyset$.\end{question}
 
 \begin{comment}
 
@@ -4942,18 +4945,18 @@ are exact, Gleason's theorem asserts that a quantum probability measure
 can essentially induced by the Born rule, but they can be wild when
 we move on to interval-valued situation! }
 \end{comment}
-To better understand this question, consider the $D=3$ situation
-which is largely simplified by the fact that any two-dimensional projectors
-can be expressed as the complement of a one-dimensional projector,
-and by Eq.~(\ref{eq:QIVPM-complement}) so does their interval-valued
-probabilities, i.e., $\bar{\mu}\left(\mathbb{1}-\proj{\psi}\right)=\necess-\bar{\mu}\left(\proj{\psi}\right)$.
+To better understand this question, consider the $D=3$ situation,
+where any two-dimensional projectors can be expressed as the complement
+of a one-dimensional projector, and by Eq.~(\ref{eq:QIVPM-complement})
+so does their interval-valued probabilities, i.e., $\bar{\mu}\left(\mathbb{1}-\proj{\psi}\right)=\necess-\bar{\mu}\left(\proj{\psi}\right)$.
 Hence, a QIVPM is completely determined by its values on the one-dimensional
 projectors which are one-to-one corresponding to the irreducible states,
 and these irreducible states are encoded in the complex projective
 space $\CP{2}$ as discussed in Sec.~\ref{subsec:Explicit-generalization-of}.
 To further simplify the question, for any state $\ket{\psi}\in\CP{2}$,
-we can decompose interval-valued probabilities on these states into
-its left-end and right-end, where $\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]=\bar{\mu}\left(\proj{\psi}\right)$.
+we can decompose the interval-valued probabilities on its projectors
+$\proj{\psi}$ into the left-end and right-end on $\ket{\psi}$, i.e.,
+$\bar{\mu}\left(\proj{\psi}\right)=\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]$.
 According to Lemma~\ref{thm:convex-3-1}, $\bar{\mu}:\events\rightarrow\mathscr{I}$
 is a QIVPM if and only if the pair of functions $\frameL:\CP{2}\rightarrow\left[0,1\right]$
 and $\frameR:\CP{2}\rightarrow\left[0,1\right]$ satisfying the following
@@ -4966,10 +4969,10 @@ This interval-inclusion can be rephrased as a long inequality
 \begin{equation}
 \frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)\le1-\frameR\left(\ket{\psi_{0}}\right)\le1-\frameL\left(\ket{\psi_{0}}\right)\le\frameR\left(\ket{\psi_{1}}\right)+\frameR\left(\ket{\psi_{2}}\right)\,.
 \end{equation}
-Since the maximum length of intervals in $\mathscr{I}$ is less than
-$\varepsilon$, $\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]\in\mathscr{I}$
-implies $\frameR\left(\ket{\psi}\right)-\frameL\left(\ket{\psi}\right)<\varepsilon$.
-Then, the largest term in the previous inequality $\frameR\left(\ket{\psi_{1}}\right)+\frameR\left(\ket{\psi_{2}}\right)$
+Since $\left|\mathscr{I}\right|<\varepsilon$, the length of every
+interval $\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]$
+is bounded by $\varepsilon$ as well, which implies the largest term
+in the previous inequality $\frameR\left(\ket{\psi_{1}}\right)+\frameR\left(\ket{\psi_{2}}\right)$
 is bounded by $\frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)+2\varepsilon$.
 In another word, the left-end function satisfies the following inequalities
 \begin{subequations}
@@ -4985,9 +4988,9 @@ state $\rho=\sum_{j=1}^{N}q_{j}\proj{\Phi_{j}}$ such that
 \begin{equation}
 \frameL\left(\ket{\psi}\right)=\melem{\psi}{\rho}{\psi}\label{eq:Gleason-for-CP2}
 \end{equation}
-for any $D$-dimensional projector~$P$, where $\ket{\Phi_{j}}\in\mathcal{H}$
+for any state $\ket{\psi}\in\CP{2}$, where $\ket{\Phi_{j}}\in\mathcal{H}$
 are normalized, $q_{j}>0$, and $\sum_{j=1}^{N}q_{j}=1$. Our Question~\ref{question:approximation-Gleason}
-ask what $\frameL$ would look like with a positive $\varepsilon$.
+then ask what $\frameL$ would look like with a positive $\varepsilon$.
 
 With different settings, whether there is an approximate version of
 Gleason's theorem in general was asked by Sam Sanders in constructivenews~\cite{Sanders2013},
@@ -4995,17 +4998,19 @@ and there is no clear answer for his question as far as I understand.
 To have an idea how hard this question could be, recall in Sec.~\ref{sec:fuzzy}
 we state that a quantum probability space is glued by a family of
 classical probability spaces. This is similar to the situation that
-a manifold is glued by many local coordinates. When the curvature
-of each small piece is ``exactly'' the same and positive, Killing-Hopf
+a manifold is glued by many local coordinates. When each small piece
+has \emph{exactly} the same and positive curvature, the Killing-Hopf
 theorem asserts this manifold is a sphere, but little can we say even
 if the curvature has only small deviation from constant. Similar situation
 might happen when approximating Gleason's theorem. Since the sum of
-$\frameL$ on each local classical probability space is ``exactly''
-the same and equal to $1$, Gleason's theorem can assert $\frameL$
-can be expressed as Eq.~\ref{eq:Gleason-for-CP2}. However, when
-each local classical probability space becomes imprecise, a general
-$\frameL$ might be as wild as we can image, and we might say little
-about its global property.
+$\frameL$ on each ``local'' classical probability space, $\sum_{i=0}^{2}\frameL\left(\ket{\psi_{i}}\right)$,
+is \emph{exactly} the same and equal to $1$, Gleason's theorem can
+assert $\frameL$ can be expressed as Eq.~(\ref{eq:Gleason-for-CP2}).
+However, when each local classical probability space becomes imprecise,
+a general $\frameL$ might be as wild as we can imagine, and we might
+say little about its global property.
+
+\section{And Beyond\ldots}
 
 
 \clearpageAddContentsChapter{Bibliography} %
