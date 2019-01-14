@@ -4912,23 +4912,23 @@ and quantum computing with QIVPMs. Finally, we want to improve the
 discrete quantum theories to consider QIVPMs over finite fields in
 future research.
 \end{comment}
-Recall in previous section, we denote the maximum length of intervals
-in $\mathscr{I}$ as $\left\Vert \mathscr{I}\right\Vert $. The finite-precision
-extension of the Gleason theorem, Thm.~\ref{thm:Finite-precision-Gleason},
-only applies on the QIVPMs of the form $f\circ\muB_{\rho}$ and states
-that as $\left\Vert \mathscr{I}\right\Vert $ shrinks to $0$, the
-composition $f\circ\muB_{\rho}$ would be better in the sense that
-the states consistent with the composition $f\circ\muB_{\rho}$ converges
-to $\rho$. In contrast, the wildest QIVPM defined in Table~\ref{tab:non-Born-QIVPM}
-has the range~$\mathscr{I}_{0}$ with $\left\Vert \mathscr{I}_{0}\right\Vert =1$,
-the longest possible length. This suggests that shrinking the length
-$\left\Vert \mathscr{I}\right\Vert $ might regularize QIVPMs mapping
-to $\mathscr{I}$ as the following question.
+As we discussed in the previous section, Thm.~\ref{thm:Finite-precision-Gleason}
+only applies to the QIVPMs constructed by composing an interval map~$f$
+with a conventional quantum probability measure~$\muB_{\rho}$, and
+the states consistent with the composition $f\circ\muB_{\rho}$ collapses
+to a single state as the maximum length of intervals in $\mathscr{I}$,
+$\left\Vert \mathscr{I}\right\Vert $, shrinks to $0$. In contrast,
+the globally inconsistent QIVPM defined in Table~\ref{tab:non-Born-QIVPM}
+has the minimal sharp range~$\mathscr{I}_{0}$ with $\left\Vert \mathscr{I}_{0}\right\Vert =1$.
+This suggests that even for general QIVPMs, shrinking the length $\left\Vert \mathscr{I}\right\Vert $
+might help to regularize them. In another word, if $\left\Vert \mathscr{I}\right\Vert $
+is shorter than a number, all QIVPMs map to $\mathscr{I}$ might have
+an non-empty core.
 
 \begin{question}\label{question:approximation-Gleason}Given a Hilbert
 space $\Hilb$ of dimension $D\geq3$, is there an $\varepsilon>0$
 such that for all QIVPM $\bar{\mu}:\events\rightarrow\mathscr{I}$
-satisfying $\left\Vert \mathscr{I}\right\Vert <\varepsilon$, $\bar{\mu}$
+satisfying $\left\Vert \mathscr{I}\right\Vert \le\varepsilon$, $\bar{\mu}$
 must have an non-empty core, i.e., $\coreBorn\left(\bar{\mu},\events\right)\ne\emptyset$.\end{question}
 
 \begin{comment}
@@ -4955,28 +4955,34 @@ Hence, a QIVPM is completely determined by its values on the one-dimensional
 projectors which are one-to-one corresponding to the irreducible states,
 and these irreducible states are encoded in the complex projective
 space $\CP{2}$ as discussed in Sec.~\ref{subsec:Explicit-generalization-of}.
-To further simplify the question, for any state $\ket{\psi}\in\CP{2}$,
-we can decompose the interval-valued probabilities on its projectors
-$\proj{\psi}$ into the left-end and right-end on $\ket{\psi}$, i.e.,
-$\bar{\mu}\left(\proj{\psi}\right)=\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]$.
-According to Lemma~\ref{thm:convex-3-1}, $\bar{\mu}:\events\rightarrow\mathscr{I}$
-is a QIVPM if and only if the pair of functions $\frameL:\CP{2}\rightarrow\left[0,1\right]$
-and $\frameR:\CP{2}\rightarrow\left[0,1\right]$ satisfying the following
-interval-inclusion
+Therefore, to study a QIVPM~$\bar{\mu}$, we can just study a pair
+of functions $\frameL:\CP{2}\rightarrow\left[0,1\right]$ and $\frameR:\CP{2}\rightarrow\left[0,1\right]$
+defined by $\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]=\bar{\mu}\left(\proj{\psi}\right)$
+for $\ket{\psi}\in\CP{2}$. According to Lemma~\ref{thm:convex-3-1},
+$\bar{\mu}:\events\rightarrow\mathscr{I}$ is a QIVPM if and only
+if Eqs.~(\ref{eq:QIVPM-constraints}) and
 \begin{equation}
-\left[1,1\right]-\left[\frameL\left(\ket{\psi_{0}}\right),\frameR\left(\ket{\psi_{0}}\right)\right]\subseteq\left[\frameL\left(\ket{\psi_{1}}\right),\frameR\left(\ket{\psi_{1}}\right)\right]+\left[\frameL\left(\ket{\psi_{2}}\right),\frameR\left(\ket{\psi_{2}}\right)\right]\label{eq:interval-valued-frame-function}
+\bar{\mu}\left(\proj{\psi_{1}}+\proj{\psi_{2}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{1}}\right)+\bar{\mu}\left(\proj{\psi_{2}}\right)\label{eq:interval-valued-inclusion}
 \end{equation}
-for any orthonormal basis $\left\{ \ket{\psi_{i}}\right\} _{i=0}^{2}$.
+holds for any orthonormal basis $\left\{ \ket{\psi_{i}}\right\} _{i=0}^{2}$.
+By applying Eq.~(\ref{eq:QIVPM-complement}) on the left-hand side,
+Eq.~(\ref{eq:interval-valued-inclusion}) is equivalent to the following
+interval-inclusion
+\begin{eqnarray}
+ &  & \necess-\left[\frameL\left(\ket{\psi_{0}}\right),\frameR\left(\ket{\psi_{0}}\right)\right]\subseteq\left[\frameL\left(\ket{\psi_{1}}\right),\frameR\left(\ket{\psi_{1}}\right)\right]+\left[\frameL\left(\ket{\psi_{2}}\right),\frameR\left(\ket{\psi_{2}}\right)\right]\label{eq:interval-valued-frame-function}\\
+ & \Leftrightarrow & \left[1-\frameR\left(\ket{\psi_{0}}\right),1-\frameL\left(\ket{\psi_{0}}\right)\right]\subseteq\left[\frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right),\frameR\left(\ket{\psi_{1}}\right)+\frameR\left(\ket{\psi_{2}}\right)\right]\,.\nonumber 
+\end{eqnarray}
 This interval-inclusion can be rephrased as a long inequality
 \begin{equation}
 \frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)\le1-\frameR\left(\ket{\psi_{0}}\right)\le1-\frameL\left(\ket{\psi_{0}}\right)\le\frameR\left(\ket{\psi_{1}}\right)+\frameR\left(\ket{\psi_{2}}\right)\,.
 \end{equation}
-Since $\left\Vert \mathscr{I}\right\Vert <\varepsilon$, the length
+Since $\left\Vert \mathscr{I}\right\Vert \le\varepsilon$, the length
 of every interval $\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]$
 is bounded by $\varepsilon$ as well, which implies the largest term
 in the previous inequality $\frameR\left(\ket{\psi_{1}}\right)+\frameR\left(\ket{\psi_{2}}\right)$
 is bounded by $\frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)+2\varepsilon$.
-In another word, the left-end function satisfies the following inequalities
+In another word, the left-end function~$\frameL$ satisfies the following
+inequalities
 \begin{subequations}
 \begin{eqnarray}
  &  & \frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)\le1-\frameL\left(\ket{\psi_{0}}\right)\le\frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)+2\varepsilon\,.\\
@@ -4986,33 +4992,48 @@ In another word, the left-end function satisfies the following inequalities
 In this language, Gleason's theorem basically states that when $\varepsilon=0$,
 given any function $\frameL:\CP{2}\rightarrow\left[0,1\right]$ satisfying
 Eq.~(\ref{eq:left-end-frame-function}), there exists a unique mixed
-state $\rho=\sum_{j=1}^{N}q_{j}\proj{\Phi_{j}}$ such that 
+state~$\rho$ such that 
 \begin{equation}
 \frameL\left(\ket{\psi}\right)=\melem{\psi}{\rho}{\psi}\label{eq:Gleason-for-CP2}
 \end{equation}
-for any state $\ket{\psi}\in\CP{2}$, where $\ket{\Phi_{j}}\in\mathcal{H}$
-are normalized, $q_{j}>0$, and $\sum_{j=1}^{N}q_{j}=1$. Our Question~\ref{question:approximation-Gleason}
+for any state $\ket{\psi}\in\CP{2}$. Our Question~\ref{question:approximation-Gleason}
 then ask what $\frameL$ would look like with a positive $\varepsilon$.
 
 With different settings, whether there is an approximate version of
-Gleason's theorem in general was asked by Sam Sanders in constructivenews~\cite{Sanders2013},
-and there is no clear answer for his question as far as I understand.
-To have an idea how hard this question could be, recall in Sec.~\ref{sec:fuzzy}
-we state that a quantum probability space is glued by a family of
-classical probability spaces. This is similar to the situation that
-a manifold is glued by many local coordinates. When each small piece
-has \emph{exactly} the same and positive curvature, the Killing-Hopf
-theorem asserts this manifold is a sphere, but little can we say even
-if the curvature has only small deviation from constant. Similar situation
-might happen when approximating Gleason's theorem. Since the sum of
-$\frameL$ on each ``local'' classical probability space, $\sum_{i=0}^{2}\frameL\left(\ket{\psi_{i}}\right)$,
-is \emph{exactly} the same and equal to $1$, Gleason's theorem can
-assert $\frameL$ can be expressed as Eq.~(\ref{eq:Gleason-for-CP2}).
-However, when each local classical probability space becomes imprecise,
-a general $\frameL$ might be as wild as we can imagine, and we might
-say little about its global property.
+Gleason's theorem was asked by Sam Sanders in constructivenews on
+2013~\cite{Sanders2013}, and there is no clear answer for his question
+as far as I understand. To have an idea how hard this question could
+be, recall in Sec.~\ref{sec:fuzzy} we state that a quantum probability
+space is glued by a family of classical probability spaces. This is
+similar to the situation that a manifold is glued by many local coordinates.
+When each small piece has \emph{exactly} the same and positive curvature,
+the Killing-Hopf theorem asserts this manifold is a sphere, but little
+can we say even if the curvature has only small deviation from constant.
+Similar situation might happen when approximating Gleason's theorem.
+When the sum of $\frameL$ on each ``local'' classical probability
+space, $\sum_{i=0}^{2}\frameL\left(\ket{\psi_{i}}\right)$, is \emph{exactly}
+the same and equal to $1$, Gleason's theorem can assert $\frameL$
+can be expressed as Eq.~(\ref{eq:Gleason-for-CP2}). However, when
+each local classical probability space becomes imprecise, a general
+$\frameL$ might be as wild as we can imagine, and we might need to
+know a little bit more, like the function is of the form $f\circ\muB_{\rho}$,
+to deduce its global property.
 
 \section{And Beyond\ldots}
+
+After we build the quantum interval-valued probability models, we
+might think how powerful a quantum computer could be based on this
+model. Since the conventional quantum circuit model manipulates the
+probability amplitudes of quantum states, to build a quantum computing
+model above QIVPMs, we might either consider evolving the states in
+the core of a QIVPM, or find a way to evolve QIVPMs directly. Both
+strategies are not straightforward. As we proved in Thm.~\ref{thm:Non-extensible-of-Gleason's},
+a QIVPM might have an empty core which cannot be evolved over time.
+If we want to evolve and compute QIVPMs directly, we need to get the
+QIVPM of the whole system from the QIVPM for each subsystem or qubit.
+However, there is no straightforward way to define the tensor product
+among QIVPMs because we cannot summarize a probability measure into
+a state as we did in conventional quantum theory.
 
 
 \clearpageAddContentsChapter{Bibliography} %
