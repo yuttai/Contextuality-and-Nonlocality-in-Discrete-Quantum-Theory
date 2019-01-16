@@ -4750,7 +4750,7 @@ probabilities (this should not be confused with the interval-valued
 probability $\unknown$). We also need a notion of \emph{norm} to
 quantify the uncertainty in measurements and the distance between
 (pure or mixed) states. The norm of a collection of intervals $\mathscr{I}$,
-$\left\Vert \mathscr{I}\right\Vert $, is defined by the maximum length
+$\left\Vert \mathscr{I}\right\Vert $, is defined as the maximum length
 of intervals in it. The norm of a pure state $\rho=\proj{\psi}$ is
 defined as usual by $\left\Vert \psi\right\Vert =\sqrt{\ip{\psi}{\psi}}$.
 For any given Hermitian operator~$A$, we choose the operator norm
@@ -4913,17 +4913,17 @@ discrete quantum theories to consider QIVPMs over finite fields in
 future research.
 \end{comment}
 As we discussed in the previous section, Thm.~\ref{thm:Finite-precision-Gleason}
-only applies to the QIVPMs constructed by composing an interval map~$f$
-with a conventional quantum probability measure~$\muB_{\rho}$, and
-the states consistent with the composition $f\circ\muB_{\rho}$ collapses
-to a single state as the maximum length of intervals in $\mathscr{I}$,
-$\left\Vert \mathscr{I}\right\Vert $, shrinks to $0$. In contrast,
-the globally inconsistent QIVPM defined in Table~\ref{tab:non-Born-QIVPM}
-has the minimal sharp range~$\mathscr{I}_{0}$ with $\left\Vert \mathscr{I}_{0}\right\Vert =1$.
-This suggests that even for general QIVPMs, shrinking the length $\left\Vert \mathscr{I}\right\Vert $
-might help to regularize them. In another word, if $\left\Vert \mathscr{I}\right\Vert $
+only applies to the QIVPMs constructed by composing an interval map
+with a conventional quantum probability measure, and the states consistent
+with the composite QIVPM collapses to a single state as the maximum
+length of intervals in $\mathscr{I}$, $\left\Vert \mathscr{I}\right\Vert $,
+shrinks to $0$. In contrast, the globally inconsistent QIVPM defined
+in Table~\ref{tab:non-Born-QIVPM} has the least sharp range~$\mathscr{I}_{0}$
+with $\left\Vert \mathscr{I}_{0}\right\Vert =1$. This suggests a
+possibility that shrinking the length $\left\Vert \mathscr{I}\right\Vert $
+might help to regularize general QIVPMs, and when $\left\Vert \mathscr{I}\right\Vert $
 is shorter than a number, all QIVPMs map to $\mathscr{I}$ might have
-an non-empty core.
+non-empty cores.
 
 \begin{question}\label{question:approximation-Gleason}Given a Hilbert
 space $\Hilb$ of dimension $D\geq3$, is there an $\varepsilon>0$
@@ -4950,7 +4950,10 @@ we move on to interval-valued situation! }
 To better understand this question, consider the $D=3$ situation,
 where any two-dimensional projectors can be expressed as the complement
 of a one-dimensional projector, and by Eq.~(\ref{eq:QIVPM-complement})
-so does their interval-valued probabilities, i.e., $\bar{\mu}\left(\mathbb{1}-\proj{\psi}\right)=\necess-\bar{\mu}\left(\proj{\psi}\right)$.
+so does their interval-valued probabilities, i.e., 
+\begin{equation}
+\bar{\mu}\left(\mathbb{1}-\proj{\psi}\right)=\necess-\bar{\mu}\left(\proj{\psi}\right)\,.\label{eq:QIVPM-complement-states}
+\end{equation}
 Hence, a QIVPM is completely determined by its values on the one-dimensional
 projectors which are one-to-one corresponding to the irreducible states,
 and these irreducible states are encoded in the complex projective
@@ -4958,14 +4961,15 @@ space $\CP{2}$ as discussed in Sec.~\ref{subsec:Explicit-generalization-of}.
 Therefore, to study a QIVPM~$\bar{\mu}$, we can just study a pair
 of functions $\frameL:\CP{2}\rightarrow\left[0,1\right]$ and $\frameR:\CP{2}\rightarrow\left[0,1\right]$
 defined by $\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]=\bar{\mu}\left(\proj{\psi}\right)$
-for $\ket{\psi}\in\CP{2}$. According to Lemma~\ref{thm:convex-3-1},
+for any irreducible state $\ket{\psi}\in\CP{2}$. According to Lemma~\ref{thm:convex-3-1},
 $\bar{\mu}:\events\rightarrow\mathscr{I}$ is a QIVPM if and only
-if Eqs.~(\ref{eq:QIVPM-constraints}) and
+if $\bar{\mu}$ satisfies Eqs.~(\ref{eq:QIVPM-constraints}) and
 \begin{equation}
 \bar{\mu}\left(\proj{\psi_{1}}+\proj{\psi_{2}}\right)\subseteq\bar{\mu}\left(\proj{\psi_{1}}\right)+\bar{\mu}\left(\proj{\psi_{2}}\right)\label{eq:interval-valued-inclusion}
 \end{equation}
-holds for any orthonormal basis $\left\{ \ket{\psi_{i}}\right\} _{i=0}^{2}$.
-By applying Eq.~(\ref{eq:QIVPM-complement}) on the left-hand side,
+for all orthonormal basis $\left\{ \ket{\psi_{i}}\right\} _{i=0}^{2}$.
+By applying $\proj{\psi_{1}}+\proj{\psi_{2}}=\mathbb{1}-\proj{\psi_{0}}$
+and Eq.~(\ref{eq:QIVPM-complement-states}) on the left-hand side,
 Eq.~(\ref{eq:interval-valued-inclusion}) is equivalent to the following
 interval-inclusion
 \begin{eqnarray}
@@ -5012,12 +5016,12 @@ can we say even if the curvature has only small deviation from constant.
 Similar situation might happen when approximating Gleason's theorem.
 When the sum of $\frameL$ on each ``local'' classical probability
 space, $\sum_{i=0}^{2}\frameL\left(\ket{\psi_{i}}\right)$, is \emph{exactly}
-the same and equal to $1$, Gleason's theorem can assert $\frameL$
+the same and equal to $1$, Gleason's theorem assert that $\frameL$
 can be expressed as Eq.~(\ref{eq:Gleason-for-CP2}). However, when
 each local classical probability space becomes imprecise, a general
 $\frameL$ might be as wild as we can imagine, and we might need to
-know a little bit more, like the function is of the form $f\circ\muB_{\rho}$,
-to deduce its global property.
+know a little bit more, like its QIVPM is a composite function, to
+deduce its global property.
 
 \section{And Beyond\ldots}
 
@@ -5025,15 +5029,38 @@ After we build the quantum interval-valued probability models, we
 might think how powerful a quantum computer could be based on this
 model. Since the conventional quantum circuit model manipulates the
 probability amplitudes of quantum states, to build a quantum computing
-model above QIVPMs, we might either consider evolving the states in
-the core of a QIVPM, or find a way to evolve QIVPMs directly. Both
-strategies are not straightforward. As we proved in Thm.~\ref{thm:Non-extensible-of-Gleason's},
-a QIVPM might have an empty core which cannot be evolved over time.
-If we want to evolve and compute QIVPMs directly, we need to get the
-QIVPM of the whole system from the QIVPM for each subsystem or qubit.
-However, there is no straightforward way to define the tensor product
-among QIVPMs because we cannot summarize a probability measure into
-a state as we did in conventional quantum theory.
+model above QIVPMs, we might consider either manipulating the states
+in the core of a QIVPM, or finding a way to manipulate QIVPMs directly.
+However, both strategies are not straightforward. As we proved in
+Thm.~\ref{thm:Non-extensible-of-Gleason's}, a QIVPM might have an
+empty core which cannot be evolved over time. If we want to manipulate
+and compute QIVPMs directly for multi-qubit algorithms, we need to
+glue the QIVPM for each qubit or subsystem together to get the QIVPM
+of the whole system, and this is not straightforward either.
+
+A successful interval-valued theory might be further extended to the
+quantum theory over finite fields, and consider the following quantum
+interval-valued probability measures over finite fields.
+
+\begin{definition}[Quantum Interval-valued Probability Measures
+over Finite Fields]\label{def:QIVPMFF}Given a vector space~$\mathcal{H}$
+of dimension~$D$ over the complexified field~$\Fpp$, the set of
+events~$\events_{p^{2}}$ is defined as in Def.~\ref{def:QPMFF},
+and $\mathscr{I}$ is a collection of intervals. Then, a quantum interval-valued
+probability measure over finite field $\bar{\mu}:\events_{p^{2}}\rightarrow\mathscr{I}$
+assigns a probability to each event (projection operator~$P$) subject
+to $\bar{\mu}(\mathbb{0})=\imposs$, $\bar{\mu}(\mathbb{1})=\necess$,
+$\bar{\mu}\left(\mathbb{1}-P\right)=\necess-\bar{\mu}\left(P\right)$,
+and satisfying for each pair of \emph{commuting} projectors~$P_{0}$
+and~$P_{1}$ with $P_{0}P_{1}=P_{1}P_{0}$, 
+\begin{equation}
+\bar{\mu}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\,.\label{eq:QuantumInterval-valuedProbability-Inclusion-Finite-Field}
+\end{equation}
+\end{definition}
+
+\noindent Understanding the properties of these probability measures
+and whether we could define any ``sensible'' Born upon them will
+be the next natural extension for seeking a computable quantum theory.
 
 
 \clearpageAddContentsChapter{Bibliography} %

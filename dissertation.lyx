@@ -38266,7 +38266,7 @@ norm
 \begin_inset Formula $\left\Vert \mathscr{I}\right\Vert $
 \end_inset
 
-, is defined by the maximum length of intervals in it.
+, is defined as the maximum length of intervals in it.
  The norm of a pure state 
 \begin_inset Formula $\rho=\proj{\psi}$
 \end_inset
@@ -39538,27 +39538,10 @@ reference "thm:Finite-precision-Gleason"
 
 \end_inset
 
- only applies to the QIVPMs constructed by composing an interval map
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $f$
-\end_inset
-
- with a conventional quantum probability measure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\muB_{\rho}$
-\end_inset
-
-, and the states consistent with the composition 
-\begin_inset Formula $f\circ\muB_{\rho}$
-\end_inset
-
- collapses to a single state as the maximum length of intervals in 
+ only applies to the QIVPMs constructed by composing an interval map with
+ a conventional quantum probability measure, and the states consistent with
+ the composite QIVPM collapses to a single state as the maximum length of
+ intervals in 
 \begin_inset Formula $\mathscr{I}$
 \end_inset
 
@@ -39585,7 +39568,7 @@ noprefix "false"
 
 \end_inset
 
- has the minimal sharp range
+ has the least sharp range
 \begin_inset space ~
 \end_inset
 
@@ -39598,12 +39581,11 @@ noprefix "false"
 \end_inset
 
 .
- This suggests that even for general QIVPMs, shrinking the length 
+ This suggests a possibility that shrinking the length 
 \begin_inset Formula $\left\Vert \mathscr{I}\right\Vert $
 \end_inset
 
- might help to regularize them.
- In another word, if 
+ might help to regularize general QIVPMs, and when 
 \begin_inset Formula $\left\Vert \mathscr{I}\right\Vert $
 \end_inset
 
@@ -39611,7 +39593,7 @@ noprefix "false"
 \begin_inset Formula $\mathscr{I}$
 \end_inset
 
- might have an non-empty core.
+ might have non-empty cores.
 \end_layout
 
 \begin_layout Standard
@@ -39680,6 +39662,8 @@ end{question}
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang chinese-traditional
 那個論壇上的問題需要用論文中沒提到的方法把 QIVPM 和 QRVPM 連在一起？所以如果要提到，還要再新寫一節太久了...
  >"<
 \end_layout
@@ -39808,11 +39792,14 @@ reference "eq:QIVPM-complement"
 \end_inset
 
 ) so does their interval-valued probabilities, i.e., 
-\begin_inset Formula $\bar{\mu}\left(\mathbb{1}-\proj{\psi}\right)=\necess-\bar{\mu}\left(\proj{\psi}\right)$
+\begin_inset Formula 
+\begin{equation}
+\bar{\mu}\left(\mathbb{1}-\proj{\psi}\right)=\necess-\bar{\mu}\left(\proj{\psi}\right)\,.\label{eq:QIVPM-complement-states}
+\end{equation}
+
 \end_inset
 
-.
- Hence, a QIVPM is completely determined by its values on the one-dimensional
+Hence, a QIVPM is completely determined by its values on the one-dimensional
  projectors which are one-to-one corresponding to the irreducible states,
  and these irreducible states are encoded in the complex projective space
  
@@ -39851,7 +39838,7 @@ reference "subsec:Explicit-generalization-of"
 \begin_inset Formula $\left[\frameL\left(\ket{\psi}\right),\frameR\left(\ket{\psi}\right)\right]=\bar{\mu}\left(\proj{\psi}\right)$
 \end_inset
 
- for 
+ for any irreducible state 
 \begin_inset Formula $\ket{\psi}\in\CP{2}$
 \end_inset
 
@@ -39871,7 +39858,11 @@ reference "thm:convex-3-1"
 \begin_inset Formula $\bar{\mu}:\events\rightarrow\mathscr{I}$
 \end_inset
 
- is a QIVPM if and only if Eqs.
+ is a QIVPM if and only if 
+\begin_inset Formula $\bar{\mu}$
+\end_inset
+
+ satisfies Eqs.
 \begin_inset space ~
 \end_inset
 
@@ -39890,19 +39881,23 @@ reference "eq:QIVPM-constraints"
 
 \end_inset
 
-holds for any orthonormal basis 
+for all orthonormal basis 
 \begin_inset Formula $\left\{ \ket{\psi_{i}}\right\} _{i=0}^{2}$
 \end_inset
 
 .
- By applying Eq.
+ By applying 
+\begin_inset Formula $\proj{\psi_{1}}+\proj{\psi_{2}}=\mathbb{1}-\proj{\psi_{0}}$
+\end_inset
+
+ and Eq.
 \begin_inset space ~
 \end_inset
 
 (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:QIVPM-complement"
+reference "eq:QIVPM-complement-states"
 
 \end_inset
 
@@ -40122,7 +40117,7 @@ exactly
 \begin_inset Formula $1$
 \end_inset
 
-, Gleason's theorem can assert 
+, Gleason's theorem assert that 
 \begin_inset Formula $\frameL$
 \end_inset
 
@@ -40144,11 +40139,8 @@ reference "eq:Gleason-for-CP2"
 \end_inset
 
  might be as wild as we can imagine, and we might need to know a little
- bit more, like the function is of the form 
-\begin_inset Formula $f\circ\muB_{\rho}$
-\end_inset
-
-, to deduce its global property.
+ bit more, like its QIVPM is a composite function, to deduce its global
+ property.
 \end_layout
 
 \begin_layout Section
@@ -40161,9 +40153,9 @@ After we build the quantum interval-valued probability models, we might
  think how powerful a quantum computer could be based on this model.
  Since the conventional quantum circuit model manipulates the probability
  amplitudes of quantum states, to build a quantum computing model above
- QIVPMs, we might either consider evolving the states in the core of a QIVPM,
- or find a way to evolve QIVPMs directly.
- Both strategies are not straightforward.
+ QIVPMs, we might consider either manipulating the states in the core of
+ a QIVPM, or finding a way to manipulate QIVPMs directly.
+ However, both strategies are not straightforward.
  As we proved in Thm.
 \begin_inset space ~
 \end_inset
@@ -40176,11 +40168,206 @@ reference "thm:Non-extensible-of-Gleason's"
 \end_inset
 
 , a QIVPM might have an empty core which cannot be evolved over time.
- If we want to evolve and compute QIVPMs directly, we need to get the QIVPM
- of the whole system from the QIVPM for each subsystem or qubit.
- However, there is no straightforward way to define the tensor product among
- QIVPMs because we cannot summarize a probability measure into a state as
- we did in conventional quantum theory.
+ If we want to manipulate and compute QIVPMs directly for multi-qubit algorithms
+, we need to glue the QIVPM for each qubit or subsystem together to get
+ the QIVPM of the whole system, and this is not straightforward either.
+\end_layout
+
+\begin_layout Standard
+A successful interval-valued theory might be further extended to the quantum
+ theory over finite fields, and consider the following quantum interval-valued
+ probability measures over finite fields.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+Quantum Interval-valued Probability Measures over Finite Fields
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "def:QIVPMFF"
+
+\end_inset
+
+Given a vector space
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ of dimension
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $D$
+\end_inset
+
+ over the complexified field
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\Fpp$
+\end_inset
+
+, the set of events
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\events_{p^{2}}$
+\end_inset
+
+ is defined as in Def.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:QPMFF"
+
+\end_inset
+
+, and 
+\begin_inset Formula $\mathscr{I}$
+\end_inset
+
+ is a collection of intervals.
+ Then, a quantum interval-valued probability measure over finite field 
+\begin_inset Formula $\bar{\mu}:\events_{p^{2}}\rightarrow\mathscr{I}$
+\end_inset
+
+ assigns a probability to each event (projection operator
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $P$
+\end_inset
+
+) subject to 
+\begin_inset Formula $\bar{\mu}(\mathbb{0})=\imposs$
+\end_inset
+
+, 
+\begin_inset Formula $\bar{\mu}(\mathbb{1})=\necess$
+\end_inset
+
+, 
+\begin_inset Formula $\bar{\mu}\left(\mathbb{1}-P\right)=\necess-\bar{\mu}\left(P\right)$
+\end_inset
+
+, and satisfying for each pair of 
+\emph on
+commuting
+\emph default
+ projectors
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $P_{1}$
+\end_inset
+
+ with 
+\begin_inset Formula $P_{0}P_{1}=P_{1}P_{0}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{equation}
+\bar{\mu}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\,.\label{eq:QuantumInterval-valuedProbability-Inclusion-Finite-Field}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Understanding the properties of these probability measures and whether we
+ could define any 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+``
+\end_layout
+
+\end_inset
+
+sensible
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+''
+\end_layout
+
+\end_inset
+
+ Born upon them will be the next natural extension for seeking a computable
+ quantum theory.
 \end_layout
 
 \begin_layout Standard
