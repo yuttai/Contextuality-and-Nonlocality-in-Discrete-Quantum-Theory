@@ -139,6 +139,7 @@
 \newcommand{\frameR}[1][]{\ensuremath{f^{R{#1}}}}
 \newcommand{\pmeas}{\ensuremath{\mu}}
 \newcommand{\nb}{\nolinebreak[3] }
+\NewDocumentCommand{\jthSubsystem}{m O{} m}{{#1}_{#2}^{#3}}
 
 \newcommand{\interval}[1]{{\normalfont\textsf{\textbf{#1}}}}
 \newcommand{\imposs}{\interval{F}}
@@ -261,7 +262,7 @@ support and sharing information\ldots}
 \item My other roommates,
 
 \item Hao-Chun Lee (李浩君) and Hsien-Ching Kao (高憲慶) for discussing
-what I did in the prospective of a general PhD. in Physics, and working
+what I did in the prospective of a general PhD. in Physics and working
 later in more computational industry.
 
 \end{itemize}
@@ -403,12 +404,12 @@ as their mathematical models, each physical quantity discussed in
 the previous paragraph could not have a simple one-to-one correspondence
 with a real number. Chuang-tzu's stick are made by molecules and cannot
 be cut in halves endlessly. The input charge of an integrator must
-actually be an integer multiple of the elementary charge. A prefect
-square cannot be draw physically. Even we don't draw it, but merely
-ask whether it exists in the space. This question is still beyond
-our ability to answer because whether the space itself is ultimately
-discrete or continuous is still an unsolved question. Even if a prefect
-square exists physically, we may not able to decide whether the ``square''
+be an integer multiple of the elementary charge. A prefect square
+cannot be draw physically. Even we don't draw it, but merely ask whether
+it exists in the space. This question is still beyond our ability
+to answer because whether the space itself is ultimately discrete
+or continuous is still an unsolved question. Even if a prefect square
+exists physically, we may not able to decide whether the ``square''
 we discussed is really prefect or almost prefect differing only by
 an arbitrarily small extent. Similar situation applying to the length
 of a slide rule, it is beyond our ability to decide whether its length
@@ -427,7 +428,7 @@ Hence, when the quantities used to branch the computation closes to
 zero, the branch chosen by a BCSS machine cannot reliably predict
 the branch chosen by a realistic analog computer. Since two branches
 of computations may not have any relations, the follow-up computational
-paths may be significantly different, and these difference is unlikely
+paths may be significantly different, and this difference is unlikely
 to be compensated by error analysis techniques easily like the butterfly
 effect. Therefore, the computational power of analog computers might
 be far weaker than the prediction based on this kind of theoretical
@@ -473,8 +474,8 @@ Inspired quantum model &  & Quantum theories and computing over finite fields & 
 The situations for classical quantities and the computational power
 above them are summarized in Table~\ref{tab:Comparison}, and two
 possibilities for classical quantities inspires two types of quantum
-models. Similar to its classical counterparts, quantum circuit model,
-the most widely used model of quantum computing, manipulates quantities
+models. Like its classical counterparts, quantum circuit model, the
+most widely used model of quantum computing, manipulates quantities
 which are not discrete apparently: the probability amplitudes of quantum
 states. To address the similar inconsistency, we first review the
 ``conventional quantum theory'' (CQT)\footnote{Alternative terminology in the literature includes ``actual,'' ``standard,''
@@ -487,12 +488,11 @@ the required operations since the complex numbers form a field. On
 the other hand, based on finite fields, we will define the fraction-like
 cardinal probability which has extremely small units when the size
 of the field is extremely large. Alternatively, even if the probability
-amplitudes might never be found quantized, taking into account the
-precision of quantities could still result in a better model. However,
-comparing to the precision of probability amplitudes, it is easier
-to consider the precision of their inducing probabilities because
-the idea of ``imprecise probabilities'' have well-studied classically
-\cite{Shafer1976,GilboaSchmeidler1994,Marinacci1999,JamisonLodwick2004,HuberRonchetti2009,Grabisch2016}.
+amplitudes might never be found quantized, considering the precision
+of quantities could still result in a better model. However, comparing
+to the precision of probability amplitudes, it is easier to consider
+the precision of their inducing probabilities because the idea of
+``imprecise probabilities'' have well-studied classically \cite{Shafer1976,GilboaSchmeidler1994,Marinacci1999,JamisonLodwick2004,HuberRonchetti2009,Grabisch2016}.
 \todo{Make sure whether realistic quantum computers could branch
 their computation based on their probability amplitudes or measured
 probabilities? If they can only branch on their measured probabilities,
@@ -717,10 +717,10 @@ to modify it to get a discrete Born rule \cite{Schumacher2012-SCHMQT,doi:10.1142
 However, any modified Born rule could hardly work on the whole vector
 space, since there is no inner product on the whole vector space over
 finite fields. Instead of treating the Born rule as an axiom, the
-Born rule can actually be deduced from a set of abstract definitions
-and axioms according to Gleason's theorem. Although we might hope
-to deduce a discrete Born rule directly from a similar set of definitions
-and axioms, no discrete Born rule satisfies certain properties motivated
+Born rule can be deduced from a set of abstract definitions and axioms
+according to Gleason's theorem. Although we might hope to deduce a
+discrete Born rule directly from a similar set of definitions and
+axioms, no discrete Born rule satisfies certain properties motivated
 by Gleason's theorem with infinitely precise real-number probability~\cite{Gardiner2014}.
 Since the state spaces are now discrete and finite, this suggests
 us to consider a discrete Born rule mapping to finite number of intervals
@@ -728,7 +728,7 @@ called interval-valued probability~\cite{JamisonLodwick2004,THOS2017}.
 To adopting the idea of interval-valued probability step-by-step,
 before attempting to study quantum interval-valued probability over
 finite fields, we will first review the classical interval-valued
-probability, and extend it with the conventional quantum theory.
+probability and extend it with the conventional quantum theory.
 \end{comment}
 Despite the great success of cardinal probabilities, it is difficult
 to define their arithmetic operations and expectation values. Since
@@ -752,7 +752,7 @@ from a single \emph{real number} to an \emph{interval}~$[l,r]$,
 where~$l$ intuitively corresponds to the strength of evidence for
 the event~$E$ and~$1-r$ corresponds to the strength of evidence
 against the same event. Given a sample space~$\Omega$ and a set
-of intervals~$\mathscr{I}$, similar to a classical probability measure
+of intervals~$\mathscr{I}$, like a classical probability measure
 $\mu:2^{\Omega}\rightarrow\left[0,1\right]$, a classical interval-valued
 probability measure (IVPM) $\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}$
 needs to satisfy some coherent axioms. By satisfying the convexity
@@ -777,7 +777,7 @@ consistent with any given QIVPM in the reduced cases, in general there
 exists a QIVPM such that no state is consistent with it. However,
 we found a class of QIVPMs such that all QIVPMs in this class are
 consistent with a non-empty ``ball'' of quantum states whose radius
-is defined by the maximal length of the intervals, and recovers the
+is defined by the maximal length of the intervals and recovers the
 original Gleason theorem asymptotically. Similarly, the conventional
 quantum expectation value and the classical Choquet integral are together
 generalized to the quantum interval-valued expectation value. This
@@ -1047,7 +1047,7 @@ illustrates the path traced by a SLERP between two irreducible one-qubit
 states on the Bloch sphere. Because states in CQC are defined by infinite
 precision real numbers, it is not possible, even in principle, to
 make an exact state transition as implied by Fig.~\ref{blochSphere.fig}~(b).
-In practice, one has to be content with approximate, typically exponentially
+In practice, one must be content with approximate, typically exponentially
 expensive, transitions from state to state.
 
 \subsection{$D$-dimensional Hilbert Space}
@@ -1148,7 +1148,7 @@ choose \textit{two} coordinate patches, one covering one pole of $\Sphere{2}$
 with coordinates $\alpha_{0}=1+\rmi0$ and $\alpha_{1}=x_{1}+\rmi y_{1}$,
 and the other patch covering the other pole of $\Sphere{2}$ with
 coordinates $\alpha_{0}=x_{0}+\rmi y_{0}$ and $\alpha_{1}=1+\rmi0$.
-\todo{Explain the last part more clear or add a picture.}
+\todo{Explain the last part clearer or add a picture.}
 
 We finally see that the irreducible $D$-dimensional state space $\CP{D-1}$
 is described by $D$ projectively equivalent coordinates, one of which
@@ -1181,8 +1181,8 @@ Given a finite sample space~$\Omega$ representing all possible outcomes
 of a process, and its power set $2^{\Omega}$ as the classical event
 space, a classical probability measure~$\mu$ maps every event $E\subseteq\Omega$
 to a number $\mu\left(E\right)\in\left[0,1\right]$ specifying how
-likely one of the outcomes in $E$ will actually happen. To maintain
-the coherence, $\mu$ is subject to the following constraints: $\mu\left(\emptyset\right)=0$,
+likely one of the outcomes in $E$ will happen. To maintain the coherence,
+$\mu$ is subject to the following constraints: $\mu\left(\emptyset\right)=0$,
 $\mu\left(\Omega\right)=1$, and $\mu\left(\overline{E}\right)=1-\mu\left(E\right)$,
 where $\overline{E}$ is the complement of $E$.  Moreover, we require
 $\mu\left(E_{0}\cup E_{1}\right)=\mu\left(E_{0}\right)+\mu\left(E_{1}\right)$
@@ -1214,7 +1214,7 @@ measure $\mu_{0}:2^{\Omega_{0}}\rightarrow\left[0,1\right]$.
 
 One special feature of quantum experiments is that the probabilities
 in different experiments are correlated. Consider another experiment
-sending exactly the same particle as the previous one, but using a
+sending exactly the same particle as the previous one but using a
 different beam splitter corresponding to the observable $\mathbf{O}_{1}$
 with spectral decomposition $\mathbf{O}_{1}=0\,\proj{\ps}+1\,\proj{\ms}+2\,\proj{2}$,
 where $\ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$ and $\ket{\ms}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}$.
@@ -1262,7 +1262,7 @@ Therefore, for any classical event~$E$, its corresponding quantum
 event is defined to be the projector $\varphi\left(E\right)$, and
 the set of all projectors on a given Hilbert space is called a quantum
 event space~$\events$. \todo{Check the citation of this part. Did
-von Neumann really think about this when he use projectors to formulate
+von Neumann really think about this when he uses projectors to formulate
 quantum theory?}
 
 This function $\varphi$ not only respects the probability of events
@@ -1418,7 +1418,7 @@ and the second corresponds to the quantum system being in the state
 $\frac{\proj{0}+\proj{2}}{2}$. The expectation values of the observable
 $\mathbf{O}$, $\expval{\mathbf{O}}_{\mu_{1,2}}$, are $1.5$ in the
 first case and $2$ in the second. The quantum expectation value can
-also used to decide whether a state is entangled or not for multipartite
+also use to decide whether a state is entangled or not for multipartite
 systems as we describe in the following section.
 \begin{table}
 \noindent \begin{centering}
@@ -1463,7 +1463,7 @@ of the $j$-th subsystem by tracing out all the other subsystems,
 \end{equation}
 with $j=1,\ldots,n$ and $\rho=\op{\Psi}{\Psi}$, the normalized state~$\ket{\Psi}$
 is entangled if and only if at least one subsystem state is \textit{mixed},
-i.e., $\Tr_{j}\left(\rho_{j}^{2}\right)<1$ \cite{544199,Jaeger2007}.\NewDocumentCommand{\jthSubsystem}{m O{} m}{{#1}_{#2}^{#3}}
+i.e., $\Tr_{j}\left(\rho_{j}^{2}\right)<1$ \cite{544199,Jaeger2007}.
 
 The reduced density operator could be expressed explicitly by the
 expectation value of the Pauli operators. Therefore, we can decide
@@ -1543,11 +1543,11 @@ are (maximally) entangled relative to the set of local observables
 (i.e., $P_{\fh}=0$).
 
 Different entanglement measures are obtained when an algebra~$\fh$
-different from the local observables is chosen. An obvious example,
-in particular, is given by the set of all observables. In this case,
-the purity takes its maximum value independently of the pure quantum
-state \cite{BKOV2003,BKOSV2004}, expressing the fact that any state
-is a generalized coherent state of the Lie algebra of all observables.
+different from the local observables is chosen. An obvious example
+is given by the set of all observables. In this case, the purity takes
+its maximum value independently of the pure quantum state \cite{BKOV2003,BKOSV2004},
+expressing the fact that any state is a generalized coherent state
+of the Lie algebra of all observables.
 
 \chapter{Quantum Theories and Computing over Unrestricted Finite Fields\label{chap:Unrestricted-Finite-Fields}}
 
@@ -1649,7 +1649,7 @@ of complex numbers subject to the normalization condition $|\alpha_{0}|^{2}+|\al
 Moving to a finite field immediately limits the set of possible states
 as the coefficients~$\alpha_{0}$ and~$\alpha_{1}$ are now drawn
 from a finite set. In particular, in the field $\ff{2}=\{0,1\}$ of
-booleans, there are exactly four possible vectors: the zero vector,
+Booleans, there are exactly four possible vectors: the zero vector,
 the vector~$\ket{0}$, the vector $\ket{1}$, and the vector $\ket{0}+\ket{1}=\ket{+}$.
 Since the zero vector is considered non-physical, a one-qubit system
 can be in one of only three states. The dynamics of these one-qubit
@@ -1698,15 +1698,15 @@ it does not include the Hadamard transformation. However, this set
 also includes non-unitary maps such as $S$ and $S^{\dagger}$ that
 are not allowed in conventional quantum computation.
 
-Measurement in the standard basis is fairly straightforward: measuring
-$\ket{0}$ or $\ket{1}$ deterministically produces the same state
-while measuring $\ket{+}$ nondeterministically produces $\ket{0}$
-or $\ket{1}$ with no assigned probability distribution. When measuring
-an arbitrary state~$\ket{\phi}\in\left\{ \ket{0},\ket{1},\ket{+}\right\} $
-in other bases $\left\{ \ket{\psi_{0}},\ket{\psi_{1}}\right\} $,
-we first represents $\ket{\phi}$ as the linear combination of the
-basis vectors $\beta_{0}\ket{\psi_{0}}+\beta_{1}\ket{\psi_{1}}$,
-where $\beta_{0}$ and $\beta_{1}$ are elements in the field~$\ff{2}$.
+Measurement in the standard basis is straightforward: measuring $\ket{0}$
+or $\ket{1}$ deterministically produces the same state while measuring
+$\ket{+}$ nondeterministically produces $\ket{0}$ or $\ket{1}$
+with no assigned probability distribution. When measuring an arbitrary
+state~$\ket{\phi}\in\left\{ \ket{0},\ket{1},\ket{+}\right\} $ in
+other bases $\left\{ \ket{\psi_{0}},\ket{\psi_{1}}\right\} $, we
+first represent $\ket{\phi}$ as the linear combination of the basis
+vectors $\beta_{0}\ket{\psi_{0}}+\beta_{1}\ket{\psi_{1}}$, where
+$\beta_{0}$ and $\beta_{1}$ are elements in the field~$\ff{2}$.
 If $\beta_{i}$ is zero, measuring $\ket{\phi}$ is impossible to
 produce $\ket{\psi_{i}}$; otherwise, measuring $\ket{\phi}$ is possible
 to produce $\ket{\psi_{i}}$. Since only possibility and impossibility
@@ -1731,7 +1731,7 @@ next.
 \section{Modal Quantum Computing\label{modalquantumcomputing}}
 
 To understand the computational implications of the modal quantum
-theory defined over the field $\ff{2}$ of booleans, we developed
+theory defined over the field $\ff{2}$ of Booleans, we developed
 a quantum computing model and established its correspondence to a
 classical model of logical programming with a feature that has quantum-like
 behavior~\cite{finiteQC}. In a conventional logic program, answers
@@ -1746,12 +1746,12 @@ one can solve a black box version of the \usat\ problem~\cite{usat}
 in a way that outperforms conventional quantum computing. The classical
 \usat\ problem (also known as $\lang{USAT}$ or $\lang{UNAMBIGUOUS-SAT}$)
 \todo{Add citation about where these two names come from. }is the
-problem of deciding whether a given boolean formula has a satisfying
+problem of deciding whether a given Boolean formula has a satisfying
 assignment, assuming that it has at most one such assignment~\cite{Papadimitriou1993}.
 This problem is, in a precise sense~\cite{Valiant198685}, just as
 hard as the general satisfiability problem and hence all problems
 in the $\NP$ complexity class. Our black-box version of the \usat\ problem
-replaces the boolean formula with an arbitrary black box. Solutions
+replaces the Boolean formula with an arbitrary black box. Solutions
 to this generalized problem can be used to solve an unstructured database
 search of size $N$ using $O\left(\log N\right)$ black box evaluations
 by binary search on the database. This algorithm then outperforms
@@ -1870,9 +1870,8 @@ of any finite field is cyclic~\cite{Artin1991}, there is a generator
 $g\in\ff{p^{2}}$ such that every non-zero element $a+b\rmi$ can
 also be represented as the power of a generator, i.e., $a+b\rmi=g^{j}$
 for some $j$. For example, $1-\rmi$ is a generator in $\Fppx{3}$
-means a particular element $1+\rmi\in\Fppx{3}$ can be expressed as
-$1+\rmi=1-3\rmi-3+\rmi=\left(1-\rmi\right)^{3}$. All possible choices
-of generators in $\ff{3^{2}}$ is listed in Table~\ref{tab:Generators-in-F9}.
+so another element $1+\rmi\in\Fppx{3}$ can be expressed as $1+\rmi=1-3\rmi-3+\rmi=\left(1-\rmi\right)^{3}$.
+All possible choices of generators in $\ff{3^{2}}$ is listed in Table~\ref{tab:Generators-in-F9}.
 \begin{table}
 \caption{\label{tab:Generators-in-F9}Generators in $\ff{3^{2}}$}
 
@@ -1916,7 +1915,7 @@ quantum theory. For example, the field norm of every generator~$g$
 in Table~\ref{tab:Generators-in-F9} is the same number $\fnorm{g}=g^{3+1}=-1$.
 In fact, these four generators are the only elements in $\ff{3^{2}}$
 whose field norm is $-1\in\ff{3}$. Generally, given any $c\in\Fp$,
-let $\fnorm*{\left\{ c\right\} }$ denote the set of element whose
+let $\fnorm*{\left\{ c\right\} }$ denote the set of elements whose
 field norm is $c$, i.e., $\fnorm*{\left\{ c\right\} }=\set{\alpha\in\Fpp}{\fnorm{\alpha}=c}$.
 The set $\fnorm*{\left\{ c\right\} }$ is the discrete analog of phase-equivalence
 under the modulus-preserving transformation $z\rightarrow\rme^{\rmi\phi}z$,
@@ -1954,8 +1953,8 @@ we have~\cite{DummitFoote2004}
 \end{equation}
 so that $f\left(\alpha\right)\in\fnorm*{\left\{ c_{0}\right\} }$.
 Since $\fnorm{a+b\rmi}=0$ only for $a=b=0$, $\alpha_{0}$ is non-zero,
-and $f$ is actually a bijection between $\fnorm*{\left\{ 1\right\} }$
-and $\fnorm*{\left\{ c_{0}\right\} }$. This means the number of elements
+and $f$ is a bijection between $\fnorm*{\left\{ 1\right\} }$ and
+$\fnorm*{\left\{ c_{0}\right\} }$. This means the number of elements
 in $\fnorm*{\left\{ 1\right\} }$ and $\fnorm*{\left\{ c_{0}\right\} }$
 are the same. Because $c_{0}$ can be any non-zero element, the number
 of elements in the equivalence classes $\fnorm*{\left\{ c\right\} }$
@@ -1971,8 +1970,8 @@ each (non-zero) image element in $\Fp$. We illustrate this graphically
 in Figure~\ref{proof1.fig}. Thus the Hopf circle always has size
 $p+1$, corresponding essentially to a discrete projective line, and
 that is the size of each equivalence class of the map $\fnorm{\alpha}$
-for non-vanishing $\alpha$, including in particular the map to the
-unit norm value $c=1\in\Fp$.
+for non-vanishing $\alpha$, including the map to the unit norm value
+$c=1\in\Fp$.
 \begin{figure}
 \noindent \centering{}\includegraphics[width=3.6in]{Fpp2Fp}\label{proof1.fig}\caption{Sketch of the map from $\Fpp$ to $\Fp$ using $\fnorm{\alpha}$,
 showing the decomposition of $\Fpp$ into the zero element $\left(0,0\right)$
@@ -2046,7 +2045,7 @@ Although the field norm of a vector can vanish for non-vanishing vectors,
 if a vector $\ket{\Psi}$ has a non-vanishing field norm~$c$, then
 $\ket{\Psi}$ can be normalized by utilizing its field norm. Recalled
 in Sec.~\ref{subsec:Complexified-Finite-Fields}, we defined $\fnorm*{\left\{ c\right\} }$
-to be the set of element whose field norm is $c$. Given any $\alpha\in\fnorm*{\left\{ c\right\} }$,
+to be the set of elements whose field norm is $c$. Given any $\alpha\in\fnorm*{\left\{ c\right\} }$,
 the field norm of $\frac{\ket{\Psi}}{\alpha}$ is
 \begin{equation}
 \fnorm{\frac{\ket{\Psi}}{\alpha}}=\frac{\fnorm{\ket{\Psi}}}{\fnorm{\alpha}}=\frac{c}{c}=1\,,
@@ -2055,8 +2054,8 @@ i.e., $\frac{\ket{\Psi}}{\alpha}$ is normalized. However, since the
 size of $\fnorm*{\left\{ c\right\} }$ is $p+1$, we cannot identify
 a ``unique'' way to normalize any given vector.
 
-Actually, the similar problem has already happened in conventional
-quantum theory. For example, assume we want to normalize $\ket{\Psi}=\ket{0}+\ket{1}$.
+The similar problem has already happened in conventional quantum theory.
+For example, assume we want to normalize $\ket{\Psi}=\ket{0}+\ket{1}$.
 Its inner product with itself is $\ip{\Psi}{\Psi}=2$. Since $\left(\pm\sqrt{2}\right)^{2}=2$,
 both $\frac{\ket{\Psi}}{\sqrt{2}}$ and $\frac{\ket{\Psi}}{-\sqrt{2}}$
 are normalized and representing the same state as $\ket{\Psi}$. In
@@ -2174,7 +2173,7 @@ and then determine the equivalence classes of unit-norm states under
 discrete phase transformations; we can then enumerate the list of
 states on the discrete generalized Bloch sphere. By executing computer
 searches of these spaces, we discovered an hypothesis for a closed-form
-solution for the counting of the states, and find a rigorous proof
+solution for the counting of the states and find a rigorous proof
 of the enumeration.
 
 This process of describing the discrete $D$-dimensional irreducible
@@ -2201,7 +2200,7 @@ at infinity of the projective discrete line (see, e.g.,~\cite{arnold_2010}).
 The next part of this argument is the determination of the unit-norm
 states, effectively the space of allowed discrete partitions of unity;
 we cannot exactly call these ``probability-conserving'' sectors
-of the state coefficients since we do not have a well defined notion
+of the state coefficients since we do not have a well-defined notion
 of probability, but we do have a well-defined notion of partition
 of unity. Compared to the total number $p^{2D}$ of possible complex
 integer state vectors that could be chosen, the number of unit-norm
@@ -2289,7 +2288,7 @@ Without regard to normalization, there are $\left(p^{4}\right)^{n}$
 possible unentangled states out of the total of $p^{2\times2^{n}}$
 states noted above. When we normalize the individual product states
 to unit norm, the norm of the entire $n$-qubit state becomes the
-product of those unit norms, and is automatically normalized to one.
+product of those unit norms and is automatically normalized to one.
 We have already seen that each single-qubit normalized state in the
 tensor product \Eq{dqcNqUntg.eq} has precisely $p\left(p-1\right)$
 irreducible components due to $D=2$ case in Eq.~(\ref{eq:numberOfIrreducibleStates}).
@@ -2737,7 +2736,7 @@ region}, we may pretend to have an inner product space. The salient
 properties of conventional quantum mechanics emerge, but the price
 to be paid is that the state space is no longer a vector space. This
 is basically a rigorous formulation of Schwinger's intuition (See,
-in particular, Chapter~1, Section~1.16. in \cite{schwinger2001quantum}).
+Chapter~1, Section~1.16. in \cite{schwinger2001quantum}).
 
 Readers with backgrounds in computer science or numerical analysis
 will notice, significantly, that this model for discrete quantum computing
@@ -2903,17 +2902,17 @@ $k\geq2^{3n+2}+1$, and let $p$ be the $\pi\left(k\right)$th element
 of the sequence A000229~\cite{Sloane2005}. We argue that no prime
 less than this value of $p$ can support calculation in the ordered
 range of $k$, and that this $p$ is sufficient to support such calculation.
-In particular, since $k$ is the least quadratic non-residue of $p$,
-every number less than $k$ is a quadratic residue, and thus $0$,
-$1$, $2$, $3$, \ldots , $2^{3n+2}$ are all quadratic residues.
-Hence the numbers $-2^{n}$, \ldots , $2^{n}$ are all inside the
-ordered range $S_{0}\left(k\right)$. On the other hand, if we choose
-any prime smaller than $p$, there is a quadratic non-residue smaller
-than $k$, and we also know that the least quadratic non-residue is
-a prime~\cite{numtheory.ref}. Thus, there is a quadratic non-residue
-in $0$, $1$, $2$, $3$, \ldots , $2^{3n+2}$, and therefore, for
-this smaller $p$, there would be a number in $-2^{n}$, \ldots ,
-$2^{n}$ that is not in the ordered range $S_{0}\left(k\right)$.
+Since $k$ is the least quadratic non-residue of $p$, every number
+less than $k$ is a quadratic residue, and thus $0$, $1$, $2$,
+$3$, \ldots , $2^{3n+2}$ are all quadratic residues. Hence the numbers
+$-2^{n}$, \ldots , $2^{n}$ are all inside the ordered range $S_{0}\left(k\right)$.
+On the other hand, if we choose any prime smaller than $p$, there
+is a quadratic non-residue smaller than $k$, and we also know that
+the least quadratic non-residue is a prime~\cite{numtheory.ref}.
+Thus, there is a quadratic non-residue in $0$, $1$, $2$, $3$,
+\ldots , $2^{3n+2}$, and therefore, for this smaller $p$, there
+would be a number in $-2^{n}$, \ldots , $2^{n}$ that is not in the
+ordered range $S_{0}\left(k\right)$.
 
 When $f$ is constant, the cardinal probability of measuring $\ket{0}\ket{\overline{0}}$
 or $\ket{1}\ket{\overline{0}}$ is $\cardp{\left(2^{n}\right)^{2}+\left(2^{n}\right)^{2}=2^{2n+1}}{2^{2n+1}}$;
@@ -3036,8 +3035,8 @@ be the probability amplitude of $\ket{\overline{0}}$, with $b_{l}$
 the probability amplitude of each of the other possibilities, which
 are all the same, after the operators $\Delta R$ is applied $l$
 times. Beginning at $l=0$ with the information-less state, the normalization
-scaled to integer values as usual, the state after $l$th iteration
-can written as \todo{Verify the computation??}
+scaled to integer values as usual, the state after $l$-th iteration
+can be written as \todo{Verify the computation??}
 \begin{equation}
 \begin{pmatrix}a_{l}\\
 b_{l}\\
@@ -3179,7 +3178,7 @@ states that every quantum probability measure is induced a mixed state
 in a Hilbert space $\Hilb$ of dimension $D\geq3$ according to the
 Born rule. To find a Born rule over finite fields, we could follow
 the steps in Sec.~\ref{sec:fuzzy} to define events and probability
-measures, and see whether we could have a Gleason-like theorem which
+measures and see whether we could have a Gleason-like theorem which
 induces a correspondence between states and probability measures qualified
 as a discrete Born rule.
 
@@ -3203,7 +3202,7 @@ each pair of \emph{orthogonal} events $P_{0}$ and $P_{1}$, $\mu\left(P_{0}+P_{1}
 
 After defining a QPMFF~$\mu$, we would like to follow the idea of
 Gleason's theorem to see whether we might trace back from $\mu$ to
-a pure or mixed state, and summarize this correspondence as a discrete
+a pure or mixed state and summarize this correspondence as a discrete
 Born rule. When $p=D=3$, there are indeed some correspondence between
 QPMFFs and states. However, when $D=3$ and $p=7$, we have numerical
 verified that the only QPMFF $\mu:\events_{7^{2}}\rightarrow\left[0,1\right]$
@@ -3221,7 +3220,7 @@ number of unique irreducible pure states in $\ff{7^{2}}^{3}$ is
 \begin{equation}
 \frac{7^{3-1}\left(7^{3}-\left(-1\right)^{3}\right)}{7+1}=2107\label{eq:numberOfIrreducibleStates-7-3}
 \end{equation}
-which is much more then one, the number of QPMFF\@. Since we don't
+which is much more than one, the number of QPMFF\@. Since we don't
 have enough QPMFF to correspond even pure states, there is no discrete
 Born rule in this case. In general, we conjecture that QPMFF is always
 unique for $D\ge3$ except $D=p=3$.
@@ -3247,7 +3246,7 @@ a QPMFF;
 \end{equation}
 where $U$ is any unitary map.\end{thm}
 
-\begin{proof}\footnote{This proof assume $p\ge7$, and there is a simpler proof for $D\ge4$
+\begin{proof}\footnote{This proof assumes $p\ge7$, and there is a simpler proof for $D\ge4$
 applying to $p=3$ case~\cite{Gardiner2014}.}Assume such a map $\muF$ satisfying all properties exists, we will
 use the listed properties to build a contradiction. Consider the computational
 basis $\left\{ \ket{0},\ket{1},\ket{2},\ldots\right\} $, and the
@@ -3268,8 +3267,7 @@ Since $P'\ket{\oplus}=\ket{\oplus}$, Eq.~(\ref{eq:zero}) implies
 \end{equation}
 and thus for $i=0$, $1$, and $2$, we always have $\muF_{\oplus}\left(P_{i}\right)=\frac{1}{3}$.
 
-Similar to the previous paragraph, we now compute the QPMFF induced
-by $\ket{\Phi'}=U'\ket{\oplus}=\frac{2\alpha}{\gamma}\ket{0}+\frac{1}{\gamma}\ket{2}$,
+Like the previous paragraph, we now compute the QPMFF induced by $\ket{\Phi'}=U'\ket{\oplus}=\frac{2\alpha}{\gamma}\ket{0}+\frac{1}{\gamma}\ket{2}$,
 where $\alpha=\fnorm*{\frac{1}{2}}\in\ff{p^{2}}$ and
 \begin{equation}
 U'=\begin{pmatrix}\alpha & \alpha & 0\\
@@ -3297,8 +3295,7 @@ U''=\begin{pmatrix}1 & 0 & 0\\
 Because $\ket{\Phi''}$ is invariant under $U_{1}$, invoking Eq.~(\ref{eq:basis-independent})
 in $\muF_{\Phi''}\left(P_{1}\right)=\muF_{U_{1}\ket{\Phi''}}\left(U_{1}P_{1}U_{1}^{\dagger}\right)=\muF_{\Phi''}\left(P_{0}\right)$,
 we know $\muF_{\Phi''}\left(P_{1}\right)$ and $\muF_{\Phi''}\left(P_{0}\right)$
-are same. Actually, they are both equal to $\tfrac{2}{3}$ because
-$\muF_{\Phi''}\left(P_{0}\right)=\muF_{U''\ket{\Phi'}}\left(U''P_{0}U''\right)=\muF_{\Phi'}\left(P_{0}\right)=\tfrac{2}{3}$
+are same. They are both equal to $\tfrac{2}{3}$ because $\muF_{\Phi''}\left(P_{0}\right)=\muF_{U''\ket{\Phi'}}\left(U''P_{0}U''\right)=\muF_{\Phi'}\left(P_{0}\right)=\tfrac{2}{3}$
 by Eqs.~(\ref{eq:basis-independent}) and (\ref{eq:prob23}). Since
 $P'\ket{\Phi''}=\ket{\Phi''}$, Eq.~(\ref{eq:zero}) implies
 \begin{equation}
@@ -3316,7 +3313,7 @@ called interval-valued probability~\cite{JamisonLodwick2004,THOS2018}.
 To adopting the idea of interval-valued probability step-by-step,
 before attempting to study quantum interval-valued probability over
 finite fields, we will first review the classical interval-valued
-probability, and extend it with the conventional quantum theory in
+probability and extend it with the conventional quantum theory in
 the next chapter.
 
 \chapter{Toward a Quantum Measurement Theory with Error: Quantum Interval-Valued
@@ -3513,8 +3510,8 @@ we discussed the ``true'' probabilities, $\mu\left(E\right)$ and
 $\mu\left(\overline{E}\right)$, can be anywhere in the range $\left[0.2,0.3\right]$
 and $\left[0.7,0.8\right]$, respectively, as long as they satisfy
 $\mu\left(E\right)+\mu\left(\overline{E}\right)=1$. These ``true''
-probabilities can actually be summarized as a probability measure
-$\mu:2^{\Omega}\rightarrow\left[0,1\right]$ satisfying 
+probabilities can be summarized as a probability measure $\mu:2^{\Omega}\rightarrow\left[0,1\right]$
+satisfying 
 \begin{align}
 \mu\left(E\right) & \in\left[0.2,0.3\right]=\bar{\mu}\left(E\right)\,, & \mu\left(\overline{E}\right) & \in\left[0.7,0.8\right]=\bar{\mu}\left(\overline{E}\right)\,.
 \end{align}
@@ -3529,7 +3526,7 @@ the following definition of core.
 \begin{definition}[Classical Consistency and Core]\label{def:Consistency-classical}
 We say an IVPM $\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}$ is \emph{consistent}
 with a probability measure $\mu:2^{\Omega}\rightarrow\left[0,1\right]$
-on a event~$E\subseteq\Omega$ if the interval $\bar{\mu}(E)$ contains
+on an event~$E\subseteq\Omega$ if the interval $\bar{\mu}(E)$ contains
 the precise probability calculated by $\mu$, i.e., $\mu\left(E\right)\in\bar{\mu}\left(E\right)$.
 The \emph{core} of a IVPM~$\bar{\mu}$, $\mathrm{core}\left(\bar{\mu}\right)$,
 is the collection of all probability measures~$\mu$ that are \emph{consistent}
@@ -3658,7 +3655,7 @@ this expectation value should be bounded by an interval. We will start
 from the classical notion of the \emph{Choquet integral} which is
 used to calculate the expectation value of random variables as a weighted
 average \cite{Choquet1954,GilboaSchmeidler1994,Grabisch2016}. Then,
-we will generalize this notation from classical IVPMs to QIVPMs, and
+we will generalize this notation from classical IVPMs to QIVPMs and
 prove the generalized definition consistent with our intuition. For
 example, if $\bar{\mu}$ is a conventional (Born) probability measure
 induced by a state $\rho$, then the interval expectation value collapses
@@ -3670,11 +3667,11 @@ minimum and maximum bounds of the probability intervals associated
 with each state~$\rho$ that is consistent with~$\bar{\mu}$ on
 every projector in the spectral decomposition of the observable.
 
-Similar to how we pull back classical ideas to the quantum world in
-Secs.~\ref{subsec:Definitions-of-IVPMs} and~\ref{subsec:States-Consistent-with-IVPMs},
-we start from defining the classical expectation value relative to
-IVPMs. Consider a classical IVPM $\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}$
-and an event $E\subseteq\Omega$ such that 
+Like how we pull back classical ideas to the quantum world in Secs.~\ref{subsec:Definitions-of-IVPMs}
+and~\ref{subsec:States-Consistent-with-IVPMs}, we start from defining
+the classical expectation value relative to IVPMs. Consider a classical
+IVPM $\bar{\mu}:2^{\Omega}\rightarrow\mathscr{I}$ and an event $E\subseteq\Omega$
+such that 
 \begin{align}
 \bar{\mu}\left(E\right) & =\left[0.2,0.3\right]\,, & \bar{\mu}\left(\overline{E}\right) & =\left[0.7,0.8\right]\,,\label{eq:IVPM_example}
 \end{align}
@@ -3697,9 +3694,9 @@ value of $X$ relative to $\mu$ is
 \begin{equation}
 1\cdot\mu\left(E\right)+2\cdot\mu\left(\overline{E}\right)=1\cdot0.3+2\cdot0.7=1.7\,.
 \end{equation}
-In another word, as long as $\mu$ is in the core of $\bar{\mu}$,
-the expectation value of $X$ belongs to $\left[1.7,1.8\right]$ which
-should be the expectation value of $X$ with respect to $\bar{\mu}$.
+In another word, if $\mu$ is in the core of $\bar{\mu}$, the expectation
+value of $X$ belongs to $\left[1.7,1.8\right]$ which should be the
+expectation value of $X$ with respect to $\bar{\mu}$.
 
 \todo{See if we could delete from here to Thm.~\ref{thm:Rosenmuller},
 and make Thm.~\ref{thm:Rosenmuller} the definition of classical
@@ -3895,7 +3892,7 @@ to the pullback of $\bar{\mu}$, i.e.,
 \end{equation}
 \end{lemma}
 
-\begin{proof}Consider to express the observable~$\mathbf{O}$ in
+\begin{proof}Consider expressing the observable~$\mathbf{O}$ in
 the spectral decomposition specialized to compute the expectation
 value relative to a QIVPM, $\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\lambda_{i}^{s}P_{i}^{s}$,
 where $\lambda_{N^{-}}^{-}<\cdots<\lambda_{1}^{-}<0\le\lambda_{1}^{+}<\cdots<\lambda_{N^{+}}^{+}$
@@ -3932,7 +3929,7 @@ combined into the pullback of $\bar{\mu}$ as follows:
 \end{equation}
 for all $E\subseteq\Omega$.
 
-To compute the expectation value, we also need to know the the pullback
+To compute the expectation value, we also need to know the pullback
 of $\mathbf{O}$. Since $\mathbf{O}$ can be expressed as the sum
 of one-dimensional projectors 
 \begin{equation}
@@ -3979,7 +3976,7 @@ $\set{\varphi\left(E\right)}{E\subseteq\Omega}$, we have
 \expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events_{\Omega}\right)}\expval{\mathbf{O}}_{\muB_{\rho}},\max_{\rho\in\coreBorn\left(\bar{\mu},\events_{\Omega}\right)}\expval{\mathbf{O}}_{\muB_{\rho}}\right]\,.\label{eq:quantum-interval-expectation-core-equal}
 \end{equation}
 \end{itemize}
-\todo{Can we find a example where Eq.~(\ref{eq:quantum-interval-expectation-core})
+\todo{Can we find an example where Eq.~(\ref{eq:quantum-interval-expectation-core})
 is a proper inclusion? Or prove the two sides in Eq.~(\ref{eq:quantum-interval-expectation-core})
 are always equal? Also, see if the proof can be simplified if we prove
 Eqs.~(\ref{eq:quantum-interval-expectation-core}) and (\ref{eq:quantum-interval-expectation-core-equal})
@@ -3999,7 +3996,7 @@ it is sufficient to prove
 \end{equation}
 Since $\events_{\Omega}$ contains all projectors $P_{i}^{s}$ no
 matter how $\Omega$ is picked, $\events_{\Omega}$ is one of the
-possible choice of $\eventsC$. Thus, if Eq.~(\ref{eq:quantum-interval-expectation-core-1})
+possible choices of $\eventsC$. Thus, if Eq.~(\ref{eq:quantum-interval-expectation-core-1})
 is true, and we can also prove
 \begin{equation}
 \left[\min_{\mu\in\mathrm{core}\left(\varphi^{*}\bar{\mu}\right)}\int\left(\varphi^{*}\mathbf{O}\right)\rmd\mu,\max_{\mu\in\mathrm{core}\left(\varphi^{*}\bar{\mu}\right)}\int\left(\varphi^{*}\mathbf{O}\right)\rmd\mu\right]\supseteq\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events_{\Omega}\right)}\expval{\mathbf{O}}_{\muB_{\rho}},\max_{\rho\in\coreBorn\left(\bar{\mu},\events_{\Omega}\right)}\expval{\mathbf{O}}_{\muB_{\rho}}\right]\,,\label{eq:quantum-interval-expectation-core-supseteq}
@@ -4052,13 +4049,13 @@ to the debate initiated by Meyer and Mermin on the relevance of the
 Kochen-Specker to experimental, and hence finite-precision, quantum
 measurements \cite{PhysRevLett.83.3751,HKSS1999,Mermin1999,Kent1999,SimonBruknerZeilinger2001,Cabello2002,Larsson2002,Appleby2002,BarrettKent2004,Appleby_2005,Spekkens2005,GuehneKleinmannCabelloEtAl2010,MazurekPuseyKunjwalEtAl2016}.
 Specifically, the original Kochen-Specker theorem is formulated using
-a model quantum mechanical system that has \emph{definite values at
-all times}~\cite{Held2016}, i.e., its observables have infinitely
-precise values at all times. Our interval-valued probability framework
-will allow us to state, and prove, a stronger version of the theorem
-that holds even if the observables have values that are only definite
-up to some precision specified by a parameter $\delta$. Our approach
-provides a quantitative realization of Mermin's intuition~\cite{Mermin1999}: 
+a model quantum mechanical system that \emph{always has definite values}~\cite{Held2016},
+i.e., its observables have infinitely precise values at all times.
+Our interval-valued probability framework will allow us to state,
+and prove, a stronger version of the theorem that holds even if the
+observables have values that are only definite up to some precision
+specified by a parameter $\delta$. Our approach provides a quantitative
+realization of Mermin's intuition~\cite{Mermin1999}: 
 \begin{quote}
 \ldots although the outcomes deduced from such imperfect measurements
 will occasionally differ dramatically from those allowed in the ideal
@@ -4174,7 +4171,7 @@ is defined to be the product of their elements, $\left[\prod_{j}\lambda_{j,\nece
 
 We can now proceed with the main technical result of this section.
 We first observe that the original Kochen-Specker theorem is a statement
-regarding the non-existence of a $0$-deterministic QIVPM, and generalize
+regarding the non-existence of a $0$-deterministic QIVPM and generalize
 to a corresponding statement about $\delta$-deterministic QIVPMs.
 
 \begin{thm}[0-Deterministic Variant of the Kochen-Specker Theorem]\label{thm:Kochen-Specker}Given
@@ -4432,7 +4429,7 @@ The bound $\delta<\frac{1}{3}$ is tight as it is possible to construct
 a $\frac{1}{3}$-deterministic QIVPM $\bar{\mu}:\events\rightarrow\mathscr{I}$.
 For example, $\bar{\mu}_{2}'$ defined in Table~\ref{tab:probability-measures}
 is a valid $\frac{1}{3}$-deterministic QIVPM\@. When $\delta\geq\frac{1}{3}$,
-i.e, when the uncertainty in measurements becomes so large, it becomes
+i.e., when the uncertainty in measurements becomes so large, it becomes
 possible to map every observable to some (quite inaccurate) probability
 interval, thus invalidating the Kochen-Specker theorem. We can summarize
 and illustrate the above arguments using Fig.~\ref{fignoname}.
@@ -4443,10 +4440,10 @@ and illustrate the above arguments using Fig.~\ref{fignoname}.
 \par\end{centering}
 \caption{\label{fignoname}The region to the left of the vertical line at $\delta=\frac{1}{3}$
 is where we assume small measurement degradation; in that region our
-extension of the KS theorem definitely demonstrates contextuality
-(\textsf{C}). In the region to the right, the degradation of the data
-is large and our extension of the KS theorem no longer refutes other
-explanations for the experimental data.}
+extension of the KS theorem demonstrates contextuality (\textsf{C}).
+In the region to the right, the degradation of the data is large,
+and our extension of the KS theorem no longer refutes other explanations
+for the experimental data.}
 \end{figure}
 
 As is the case for conventional, infinitely-precise, quantum probability
@@ -4454,8 +4451,8 @@ measures, the theorem is only applicable to dimensions $D\geq3$.
 Indeed when the Hilbert space has dimension 2, it is straightforward
 to construct a 0-deterministic QIVPM as follows. Consider a non-contextual
 hidden variable model for $D=2$ (e.g., as proposed by Bell or Kochen-Specker~\cite{BELL_1966,kochenspecker1967}).
-Such a two-dimensional model assigns definite values to all observables
-at all times, and hence assigns a \emph{determinate} probability (0
+Such a two-dimensional model always assigns definite values to all
+observables, and hence assigns a \emph{determinate} probability (0
 or 1) to each event. This probability measure directly induces a 0-deterministic
 QIVPM by changing 0 to $\imposs$ and 1 to $\necess$. It follows
 that every 0-deterministic QIVPM is $\delta$-deterministic.
@@ -4532,7 +4529,7 @@ have a \emph{common point}. Hence, by assuming that the uncertain
 data for one-dimensional projectors always support the associated
 event, while those for two-dimensional projectors always refute the
 event, we can find the probability measure~$\bar{\mu}_{2}'$ that
-can verified to be a valid QIVPM and is consistent with the experimental
+can be verified as a valid QIVPM and is consistent with the experimental
 data.
 
 A similar situation happens when more than $\frac{1}{3}$ of data
@@ -4587,8 +4584,8 @@ be globally inconsistent.
 % projectors. Indeed we can formally prove that, in general, there may
 % be \emph{no} state consistent with some arbitrary QIVPM.
 
-Similar to how we proved Thm.~\ref{cor:Kochen-Specker-IVPM}, we
-need other two lemmas to simplify the proof of the convexity condition.
+Like how we proved Thm.~\ref{cor:Kochen-Specker-IVPM}, we need other
+two lemmas to simplify the proof of the convexity condition.
 
 \begin{lemma}\label{thm:convex-3}Given a Hilbert space~$\Hilb$
 of dimension~$3$, to verify $\bar{\mu}:\events\rightarrow\mathscr{I}$
@@ -4612,8 +4609,8 @@ possibilities. The first possibility is that one of them is a subset
 of the other one, $E_{0}\subseteq E_{1}$ or $E_{1}\subseteq E_{0}$.
 The second possibility is that they are disjoint, $E_{0}\cap E_{1}=\emptyset$.
 If neither of the previous possibilities is true, i.e., they have
-some intersections, but not a subset relation, then all of $E_{0}\cap E_{1}$,
-$E_{0}\backslash E_{1}$, and $E_{1}\backslash E_{0}$ are non-empties.
+some intersections, but not a subset relation, then $E_{0}\cap E_{1}$,
+$E_{0}\backslash E_{1}$, and $E_{1}\backslash E_{0}$ are all non-empties.
 Together with the fact that $\Omega$ has only three elements, they
 are all singleton sets.
 \begin{itemize}
@@ -4724,7 +4721,7 @@ All other projectors  & $\unknown$\tabularnewline\addlinespace
 \addlinespace
 \end{tabular}
 \end{table}
-Next we will prove by contradiction that $\coreBorn\left(\bar{\mu},\events\right)$
+Next, we will prove by contradiction that $\coreBorn\left(\bar{\mu},\events\right)$
 is the empty set. Suppose there is a state $\rho=\sum_{j=1}^{N}q_{j}\proj{\phi_{j}}\in\coreBorn\left(\bar{\mu},\events\right)$,
 where $\sum_{j=1}^{N}q_{j}=1$ and $q_{j}>0$. Since we assumed the
 core $\coreBorn\left(\bar{\mu},\events\right)$ is non-empty, so $\muB_{\rho}(P)\in\bar{\mu}(P)$,
@@ -4946,7 +4943,7 @@ must have an non-empty core, i.e., $\coreBorn\left(\bar{\mu},\events\right)\ne\e
 \todo{Add a two-page conclusion chapter which could include further
 discussion, but it can be only a few sentences? }\todo{Discrete
 \textgerman[variant=german,spelling=new,babelshorthands=true]{Schrödinger}
-equation? And its relation with Grover's algorithm? }\todo{Notice
+equation? And its relationship with Grover's algorithm? }\todo{Notice
 that in differential geometry, Killing–Hopf theorem asserts that having
 positive constant curvature guarantees a manifold is essentially a
 sphere, but say little things even if the curvature has only small
@@ -5018,7 +5015,7 @@ Gleason's theorem was asked by Sam Sanders in constructivenews on
 as far as I understand. To have an idea how hard this question could
 be, recall in Sec.~\ref{sec:fuzzy} we state that a quantum probability
 space is glued by a family of classical probability spaces. This is
-similar to the situation that a manifold is glued by many local coordinates.
+like the situation that a manifold is glued by many local coordinates.
 When each small piece has \emph{exactly} the same and positive curvature,
 the Killing-Hopf theorem asserts this manifold is a sphere, but little
 can we say even if the curvature has only small deviation from constant.
@@ -5026,7 +5023,7 @@ Similar situation might happen when approximating Gleason's theorem,
 but this time the whole space is glued by ``local'' classical probability
 space defined by each orthonormal basis $\left\{ \ket{\psi_{i}}\right\} _{i=0}^{2}$.
 When the sum of $\frameL$, $\sum_{i=0}^{2}\frameL\left(\ket{\psi_{i}}\right)$,
-is \emph{exactly} the same and equal to $1$, Gleason's theorem assert
+is \emph{exactly} the same and equal to $1$, Gleason's theorem asserts
 that $\frameL$ can be expressed as Eq.~(\ref{eq:Gleason-for-CP2}).
 However, when each local classical probability space becomes imprecise,
 a general $\frameL$ might be as wild as we can imagine, and we might
@@ -5040,7 +5037,7 @@ want to know how powerful a quantum computer could be based on this
 model. Since the conventional quantum circuit model manipulates the
 probability amplitudes instead of the measured probability, a quantum
 computing model above QIVPMs might either need to manipulate the states
-in the core of a QIVPM, or find a way to manipulate QIVPMs directly.
+in the core of a QIVPM or find a way to manipulate QIVPMs directly.
 However, both strategies are not straightforward. On one hand, a QIVPM
 might have an empty core which cannot be evolved over time as we proved
 in Thm.~\ref{thm:Non-extensible-of-Gleason's}. On the other hand,
@@ -5070,7 +5067,7 @@ and~$P_{1}$ with $P_{0}P_{1}=P_{1}P_{0}$,
 \noindent Understanding the properties of these probability measures
 and whether we could define a ``sensible'' Born upon them combine
 two approaches for dealing with the continuous quantities used in
-the conventional quantum theory, and will be the next natural extension
+the conventional quantum theory and will be the next natural extension
 for our discrete quantum theories and computing.
 
 
