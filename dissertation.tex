@@ -4930,7 +4930,7 @@ with $\left\Vert \mathscr{I}_{0}\right\Vert =1$. This suggests a
 possibility that shrinking the length $\left\Vert \mathscr{I}\right\Vert $
 might help to regularize general QIVPMs, and it is natural to ask
 whether there is a short enough length~$\varepsilon$ such that QIVPMs
-mapping to intervals shorter than $\varepsilon$ always have non-empty
+mapping to intervals bounded by $\varepsilon$ always have non-empty
 cores.
 
 \begin{question}\label{question:approximation-Gleason}Given a Hilbert
@@ -5000,7 +5000,7 @@ In other word, the left-end function~$\frameL$ satisfies the following
 inequalities
 \begin{subequations}
 \begin{eqnarray}
- &  & \frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)\le1-\frameL\left(\ket{\psi_{0}}\right)\le\frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)+2\varepsilon\,.\\
+ &  & \frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)\le1-\frameL\left(\ket{\psi_{0}}\right)\le\frameL\left(\ket{\psi_{1}}\right)+\frameL\left(\ket{\psi_{2}}\right)+2\varepsilon\\
  & \Leftrightarrow & 1-2\varepsilon\le\sum_{i=0}^{2}\frameL\left(\ket{\psi_{i}}\right)\le1\,.\label{eq:left-end-frame-function}
 \end{eqnarray}
 \end{subequations}
@@ -5012,7 +5012,7 @@ a unique mixed state~$\rho$ such that
 \frameL\left(\ket{\psi}\right)=\melem{\psi}{\rho}{\psi}\label{eq:Gleason-for-CP2}
 \end{equation}
 for any state $\ket{\psi}\in\CP{2}$. Our Question~\ref{question:approximation-Gleason}
-then ask what $\frameL$ would look like with a positive $\varepsilon$.
+then ask how $\frameL$ would look like with a positive $\varepsilon$.
 
 With different settings, whether there is an approximate version of
 Gleason's theorem was asked by Sam Sanders in constructivenews on
@@ -5020,16 +5020,17 @@ Gleason's theorem was asked by Sam Sanders in constructivenews on
 as far as I understand. To have an idea of how hard this question
 could be, recall in Sec.~\ref{sec:fuzzy} we state that a quantum
 probability space is glued by a family of classical probability spaces.
-This is like the situation that a manifold is glued by many local
-coordinates. When each small piece has \emph{exactly} the same and
-positive curvature, the Killing-Hopf theorem asserts this manifold
-is a sphere, but little can we say even if the curvature has an only
-small deviation from constant. A similar situation might happen when
-approximating Gleason's theorem, but this time the whole space is
-glued by ``local'' classical probability space defined by each orthonormal
-basis $\left\{ \ket{\psi_{i}}\right\} _{i=0}^{2}$. When the sum of
-$\frameL$, $\sum_{i=0}^{2}\frameL\left(\ket{\psi_{i}}\right)$, is
-\emph{exactly} the same and equal to $1$, Gleason's theorem asserts
+\todo{Check the differential geometry analog with Andy, since I don't
+really understand the differential geometry\ldots{} }This is like
+the situation that a manifold is glued by many local coordinates.
+When each small piece has \emph{exactly} the same and positive curvature,
+the Killing-Hopf theorem asserts this manifold is a sphere, but little
+can we say even if the curvature has a small deviation from constant.
+A similar situation might happen when approximating Gleason's theorem,
+but this time the whole space is glued by ``local'' classical probability
+space defined by each orthonormal basis $\left\{ \ket{\psi_{i}}\right\} _{i=0}^{2}$.
+When the sum of $\frameL$, $\sum_{i=0}^{2}\frameL\left(\ket{\psi_{i}}\right)$,
+is \emph{exactly} the same and equal to $1$, Gleason's theorem asserts
 that $\frameL$ can be expressed as Eq.~(\ref{eq:Gleason-for-CP2}).
 However, when each local classical probability space becomes imprecise,
 a general $\frameL$ might be as wild as we can imagine, and we might
@@ -5041,16 +5042,16 @@ to deduce its global property.
 After we build the quantum interval-valued probability model, we might
 want to know how powerful a quantum computer could be based on this
 model. Since the conventional quantum circuit model manipulates the
-probability amplitudes instead of the measured probability, a quantum
-computing model above QIVPMs might either need to manipulate the states
-in the core of a QIVPM or find a way to manipulate QIVPMs directly.
-However, both strategies are not straightforward. On one hand, a QIVPM
-might have an empty core which cannot be evolved over time as we proved
-in Thm.~\ref{thm:Non-extensible-of-Gleason's}. On the other hand,
-if we want to manipulate and compute QIVPMs directly for multi-qubit
-algorithms, we need to glue the QIVPM for each qubit or subsystem
-together to get the QIVPM of the whole system, and this is not straightforward
-either.
+probability amplitudes instead of the measured probability, either
+a quantum computing model above QIVPMs needs to manipulate the states
+in the core of a QIVPM, or we need to find a way to manipulate QIVPMs
+directly. However, both strategies are not straightforward. On one
+hand, as we proved in Thm.~\ref{thm:Non-extensible-of-Gleason's},
+a QIVPM might have an empty core which cannot be evolved over time.
+On the other hand, if we want to manipulate and compute QIVPMs directly
+for multi-qubit algorithms, we need to glue the QIVPM for each qubit
+or subsystem together to get the QIVPM of the whole system, and this
+is not straightforward either.
 
 A successful interval-valued theory might be further extended to the
 quantum theory over finite fields as follow.
@@ -5063,7 +5064,7 @@ a collection of intervals~$\mathscr{I}$. A quantum interval-valued
 probability measure over finite field $\bar{\mu}\colon\events_{p^{2}}\rightarrow\mathscr{I}$
 assigns an interval to each event~$P$ subject to $\bar{\mu}(\mathbb{0})=\imposs$,
 $\bar{\mu}(\mathbb{1})=\necess$, $\bar{\mu}\left(\mathbb{1}-P\right)=\necess-\bar{\mu}\left(P\right)$,
-and satisfying for each pair of \emph{commuting} projectors~$P_{0}$
+and satisfying for each pair of \emph{commuting} events~$P_{0}$
 and~$P_{1}$ with $P_{0}P_{1}=P_{1}P_{0}$, 
 \begin{equation}
 \bar{\mu}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\subseteq\bar{\mu}\left(P_{0}\right)+\bar{\mu}\left(P_{1}\right)\,.\label{eq:QuantumInterval-valuedProbability-Inclusion-Finite-Field}
