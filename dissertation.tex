@@ -3823,13 +3823,14 @@ In other word, if $\mu$ is in the core of $\bar{\mu}$, the expectation
 value of $X$ belongs to $\left[1.7,1.8\right]$ which should be the
 expectation value of $X$ with respect to $\bar{\mu}$.
 
+\begin{comment}
 \todo{See if we could delete from here to Thm.~\ref{thm:Rosenmuller},
 and make Thm.~\ref{thm:Rosenmuller} the definition of classical
 expectation value. Then, delete Def.~\ref{def:expectation-values-QIVPM}
 and make Eq.~(\ref{eq:interval-expectation-value-between-classical-quantum})
 the definition of quantum expectation value. After that, see if everything
 can be preceded smoothly in this way\ldots}
-
+\end{comment}
 Although it is intuitive to define the expectation value as the minimum
 and maximum bounds of the probability intervals associated with each
 probability measure in the core of~$\bar{\mu}$, the core of a general
@@ -3887,13 +3888,15 @@ have the same magnitude as ones in Eq.~(\ref{eq:expectation}), and
 the right-hand side of Eq.~(\ref{eq:interval-expectation}) can be
 easily simplified to the right-hand side of Eq.~(\ref{eq:expectation})
 as follow.
-\begin{eqnarray*}
-\int X\rmd\bar{\mu} & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\pmeas\left(E_{i\uparrow}^{s}\right),\Delta\pmeas\left(E_{i\uparrow}^{s}\right)\right]\\
- & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\mu\left(E_{i\uparrow}^{s}\right)-\mu\left(E_{\left(i+1\right)\uparrow}^{s}\right),\mu\left(E_{i\uparrow}^{s}\right)-\mu\left(E_{\left(i+1\right)\uparrow}^{s}\right)\right]\\
- & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\mu\left(\bigcup_{j\ge i}E_{j}^{s}\right)-\mu\left(\bigcup_{j\ge i+1}E_{j}^{s}\right),\mu\left(\bigcup_{j\ge i}E_{j}^{s}\right)-\mu\left(\bigcup_{j\ge i+1}E_{j}^{s}\right)\right]\\
- & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\sum_{j\ge i}\mu\left(E_{j}^{s}\right)-\sum_{j\ge i+1}\mu\left(E_{j}^{s}\right),\sum_{j\ge i}\mu\left(E_{j}^{s}\right)-\sum_{j\ge i+1}\mu\left(E_{j}^{s}\right)\right]\\
- & = & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\mu\left(E_{i}^{s}\right),\mu\left(E_{i}^{s}\right)\right]=\left[\int X\rmd\mu,\int X\rmd\mu\right]
-\end{eqnarray*}
+\begin{equation}
+\begin{aligned}\int X\rmd\bar{\mu} & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\pmeas\left(E_{i\uparrow}^{s}\right),\Delta\pmeas\left(E_{i\uparrow}^{s}\right)\right]\\
+ & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\mu\left(E_{i\uparrow}^{s}\right)-\mu\left(E_{\left(i+1\right)\uparrow}^{s}\right),\mu\left(E_{i\uparrow}^{s}\right)-\mu\left(E_{\left(i+1\right)\uparrow}^{s}\right)\right]\\
+ & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\mu\left(\bigcup_{j\ge i}E_{j}^{s}\right)-\mu\left(\bigcup_{j\ge i+1}E_{j}^{s}\right),\mu\left(\bigcup_{j\ge i}E_{j}^{s}\right)-\mu\left(\bigcup_{j\ge i+1}E_{j}^{s}\right)\right]\\
+ & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\sum_{j\ge i}\mu\left(E_{j}^{s}\right)-\sum_{j\ge i+1}\mu\left(E_{j}^{s}\right),\sum_{j\ge i}\mu\left(E_{j}^{s}\right)-\sum_{j\ge i+1}\mu\left(E_{j}^{s}\right)\right]\\
+ & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\mu\left(E_{i}^{s}\right),\mu\left(E_{i}^{s}\right)\right]=\left[\int X\rmd\mu,\int X\rmd\mu\right]
+\end{aligned}
+\label{eq:classical-real-interval-Choquet}
+\end{equation}
 
 The Choquet integral defined in Eq.~(\ref{eq:interval-expectation})
 is consistent with not only Eq.~(\ref{eq:expectation}) but also
@@ -3950,8 +3953,10 @@ have
 \end{thm}
 
 After we defined the expectation values of random variables relative
-to classical IVPMs, we can parallelly define the expectation values
-of observables relative to QIVPMs as follow.
+to classical IVPMs, we can merge this definition with the expectation
+values to quantum probability measures, Eq.~(\ref{eq:quantum-expectation}),
+and define the expectation values of observables relative to QIVPMs
+as follow.
 
 \begin{definition}[Expectation Values relative to QIVPMs]\label{def:expectation-values-QIVPM}Since
 we want to define the expectation value of observables relative to
@@ -3980,26 +3985,10 @@ value of $\mathbf{O}$ relative to $\bar{\mu}$ is
 which looks like a weighted average of the difference of the measure
 of these accumulative projectors.\end{definition}
 
-Parallel to the similarity between Eqs.~(\ref{eq:expectation}) and
-(\ref{eq:interval-expectation}), Eq.~(\ref{eq:interval-expectation-quantum})
-can be simplified to Eq.~(\ref{eq:quantum-expectation}) if $\bar{\mu}$
-is essentially real-valued.
-
-\begin{thm}\label{lemma:expectation-singleton}Given a quantum probability
-measure $\mu\colon\events\rightarrow\left[0,1\right]$ satisfying
-Eqs.~(\ref{eq:QuantumProbability}) and (\ref{eq:QuantumProbability-Addition}),
-if we define a QIVPM $\bar{\mu}\colon\events\rightarrow\mathscr{I}$
-by $\bar{\mu}\left(P\right)=\left[\mu\left(P\right),\mu\left(P\right)\right]$
-for all projectors~$P$, then the expectation value of any observable~$\mathbf{O}$
-relative to $\bar{\mu}$, $\expval{\mathbf{O}}_{\bar{\mu}}$, is just
-$\left[\expval{\mathbf{O}}_{\mu},\expval{\mathbf{O}}_{\mu}\right]$.\end{thm}
-
-We then want to show the expectation value relative to a QIVPM generalizes
-the one relative to a classical IVPM by proving a quantum version
-of Thm.~\ref{thm:Rosenmuller}. \todo{Review this part because Def.~\ref{def:observable2random-variable}
-is moved to Sec.~\ref{sec:fuzzy}. }While both observables and IVPMs
-can be pulled back from quantum to classical, these pullbacks keep
-the expectation value invariant.
+Recall Lemma~\ref{lemma:real-expectation-value-between-classical-quantum}
+proved real expectation values are invariant when pulling back observables
+and probability measures. The following lemma shows interval expectation
+values are invariant under pullback as well.
 
 \begin{lemma}\label{lemma:expectation-value-between-classical-quantum}Consider
 an observable~$\mathbf{O}$ diagonalizable by an orthonormal basis
@@ -4073,8 +4062,27 @@ and (\ref{eq:pullback-observables})
 \end{equation}
 \end{proof}
 
-After we have required lemmas, we are in a good position to prove
-a quantum analog of Thm.~\ref{thm:Rosenmuller}. However, since Lemma~\ref{lemma:density-matrix-pullback}
+Since Def.~\ref{def:expectation-values-QIVPM} is an extension of
+both quantum real expectation value and classical interval expectation
+value, not only the property of quantum real expectation value could
+be extended to the previous lemma, but the properties of classical
+interval expectation value, like Eq.~(\ref{eq:classical-real-interval-Choquet})
+and Thm.~\ref{thm:Rosenmuller}, could be extended to quantum interval
+expectation value as well. In particular, Eq.~(\ref{eq:classical-real-interval-Choquet})
+can be extended to the following lemma.
+
+\begin{thm}\label{lemma:expectation-singleton}Given a quantum probability
+measure $\mu\colon\events\rightarrow\left[0,1\right]$ satisfying
+Eqs.~(\ref{eq:QuantumProbability}) and (\ref{eq:QuantumProbability-Addition}),
+if we define a QIVPM $\bar{\mu}\colon\events\rightarrow\mathscr{I}$
+by $\bar{\mu}\left(P\right)=\left[\mu\left(P\right),\mu\left(P\right)\right]$
+for all projectors~$P$, then the expectation value of any observable~$\mathbf{O}$
+relative to $\bar{\mu}$, $\expval{\mathbf{O}}_{\bar{\mu}}$, is just
+$\left[\expval{\mathbf{O}}_{\mu},\expval{\mathbf{O}}_{\mu}\right]$.\end{thm}
+
+We then want to show the expectation value relative to a QIVPM generalizes
+the one relative to a classical IVPM by proving a quantum version
+of Thm.~\ref{thm:Rosenmuller}. However, since Lemma~\ref{lemma:density-matrix-pullback}
 hasn't established enough correspondence between classical and quantum
 cores, this theorem is weaker than its classical counterpart.
 
@@ -4097,11 +4105,14 @@ $\set{\varphi\left(E\right)}{E\subseteq\Omega}$, we have
 \expval{\mathbf{O}}_{\bar{\mu}}=\left[\min_{\rho\in\coreBorn\left(\bar{\mu},\events_{\Omega}\right)}\expval{\mathbf{O}}_{\muB_{\rho}},\max_{\rho\in\coreBorn\left(\bar{\mu},\events_{\Omega}\right)}\expval{\mathbf{O}}_{\muB_{\rho}}\right]\,.\label{eq:quantum-interval-expectation-core-equal}
 \end{equation}
 \end{itemize}
+\begin{comment}
 \todo{Can we find an example where Eq.~(\ref{eq:quantum-interval-expectation-core})
 is a proper inclusion? Or prove the two sides in Eq.~(\ref{eq:quantum-interval-expectation-core})
 are always equal? Also, see if the proof can be simplified if we prove
 Eqs.~(\ref{eq:quantum-interval-expectation-core}) and (\ref{eq:quantum-interval-expectation-core-equal})
-separately\ldots}\end{thm}
+separately\ldots}
+\end{comment}
+\end{thm}
 
 \begin{proof}By Eq.~(\ref{eq:interval-expectation-value-between-classical-quantum})
 and Thm.~\ref{thm:Rosenmuller}, we have
@@ -4176,7 +4187,7 @@ Our interval-valued probability framework will allow us to state and
 prove, a stronger version of the theorem that holds even if the observables
 have values that are only definite up to some precision specified
 by a parameter $\delta$. Our approach provides a quantitative realization
-of Mermin's intuition~\cite{Mermin1999}: 
+of Mermin's intuition~\cite{Mermin1999}:
 \begin{quote}
 \ldots although the outcomes deduced from such imperfect measurements
 will occasionally differ dramatically from those allowed in the ideal
