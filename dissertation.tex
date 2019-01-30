@@ -1330,7 +1330,10 @@ about this when he uses projectors to formulate the quantum theory?}
 
 This function $\varphi$ not only respects the probability of events
 but also naturally sends the set structure to the corresponding projector
-structure: $\varphi\left(\Omega\right)=\mathbb{1}$ and $\varphi\left(\overline{E}\right)=\mathbb{1}-\varphi\left(E\right)$.
+structure:
+\begin{align}
+\varphi\left(\Omega\right) & =\mathbb{1}\,, & \varphi\left(\overline{E}\right) & =\mathbb{1}-\varphi\left(E\right)\,.\label{eq:pullback-properties-basic}
+\end{align}
 Given two \emph{commuting} projectors $P_{0}$ and~$P_{1}$, there
 exists a pair of events $E_{0}$ and $E_{1}$ in the same sample space~$\Omega$
 such that $P_{0}=\varphi\left(E_{0}\right)$ and $P_{1}=\varphi\left(E_{1}\right)$.
@@ -1358,7 +1361,10 @@ and for each pair of orthogonal projectors $P_{0}$ and $P_{1}$:
 Because $\varphi$ respects the probability of events, if we restrict
 the domain of $\varphi$ on a classical event space $2^{\Omega}$,
 the function $\varphi^{*}\mu\colon2^{\Omega}\rightarrow\left[0,1\right]$
-defined by precomposition $\left(\varphi^{*}\mu\right)\left(E\right)=\mu\left(\varphi\left(E\right)\right)$
+defined by precomposition 
+\begin{equation}
+\left(\varphi^{*}\mu\right)\left(E\right)=\mu\left(\varphi\left(E\right)\right)\label{eq:classical-pullback}
+\end{equation}
 is a classical probability measure and called the pullback of $\mu$
 by $\varphi\colon2^{\Omega}\rightarrow\events$.
 
@@ -3597,34 +3603,23 @@ and quantum probability measures.
 
 Our definition of QIVPMs is consistent with classical IVPMs in the
 sense that a restriction of QIVPMs to mutually commuting events, $\eventsC$,
-recovers the definition of classical IVPMs.  To see this, note that
-the commuting projectors in $\eventsC$ can be diagonalized by a common
-orthonormal basis $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $.
-Since $\Omega$ is a finite set, it can be the sample space of a classical
-probability space with the classical event space $2^{\Omega}$. Because
-a QIVPM $\bar{\mu}\colon\events\rightarrow\mathscr{I}$ and a classical
-IVPM $\bar{\mu}'\colon2^{\Omega}\rightarrow\mathscr{I}$ only differ
-on their domains, if we can find a function $\varphi\colon2^{\Omega}\rightarrow\events$
-preserving the structure, we can pullback~\cite{wiki:Pullback} any
-QIVPM~$\bar{\mu}$ to $\varphi^{*}\bar{\mu}\colon2^{\Omega}\rightarrow\mathscr{I}$
-such that $\left(\varphi^{*}\bar{\mu}\right)\left(E\right)=\bar{\mu}\left(\varphi\left(E\right)\right)$
-for any $E\subseteq\Omega$ and $\varphi^{*}\bar{\mu}$ should be
-a classical IVPM\@.
-
-We now explicitly define $\varphi$. First, $\events'$ is called
-a \emph{subspace} of the set of events~$\events$ if $\events'$
-contains the projectors $\mathbb{0}$ and $\mathbb{1}$ and is closed
-under complements, sums, and products. In particular, for any projector
-$P\in\events'$, we have $\mathbb{1}-P\in\events'$ and for each pair
-of commuting projectors $P_{0}\in\events'$ and $P_{1}\in\events'$,
-we have $P_{0}P_{1}$ and $P_{0}+P_{1}-P_{0}P_{1}\in\events'$. Given
-a mutually commuting subspace~$\eventsC$ whose elements are diagonalizable
-by a common orthonormal basis $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $,
-we define the function $\varphi\colon2^{\Omega}\rightarrow\events$
-maps any set~$E$ to the sum of the projectors formed by elements
-in $E$ as in Eq.~(\ref{eq:pullback-function}). \todo{Review this
-part because Eq.~(\ref{eq:pullback-function}) is moved to Sec.~\ref{sec:fuzzy}.
-}Therefore, given a QIVPM~$\bar{\mu}$, the function $\varphi^{*}\bar{\mu}\colon2^{\Omega}\rightarrow\mathscr{I}$
+recovers the definition of classical IVPMs.  To see this, first,
+$\events'$ is called a \emph{subspace} of the set of events~$\events$
+if $\events'$ contains the projectors $\mathbb{0}$ and $\mathbb{1}$
+and is closed under complements, sums, and products. In particular,
+for any projector $P\in\events'$, we have $\mathbb{1}-P\in\events'$
+and for each pair of commuting projectors $P_{0}\in\events'$ and
+$P_{1}\in\events'$, we have $P_{0}P_{1}$ and $P_{0}+P_{1}-P_{0}P_{1}\in\events'$.
+Given a mutually commuting subspace~$\eventsC$ whose elements are
+diagonalizable by a common orthonormal basis $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $,
+the function $\varphi\colon2^{\Omega}\rightarrow\eventsC$ defined
+in in Eq.~(\ref{eq:pullback-function}) maps any set~$E$ to the
+sum of the projectors formed by elements in $E$, and preserve all
+operations used to defined classical and quantum IVPMs as in Eqs.~(\ref{eq:pullback-properties-basic})
+and~(\ref{eq:pullback-properties}). According to the same reason
+as the classical counterpart, Eq.~(\ref{eq:classical-pullback}),
+given a QIVPM~$\bar{\mu}\colon\events\rightarrow\mathscr{I}$, the
+function $\varphi^{*}\bar{\mu}\colon2^{\Omega}\rightarrow\mathscr{I}$
 defined by precomposition $\left(\varphi^{*}\bar{\mu}\right)\left(E\right)=\bar{\mu}\left(\varphi\left(E\right)\right)$
 is the pullback of $\bar{\mu}$ by $\varphi$ and is a classical IVPM
 naturally.
