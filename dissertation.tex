@@ -936,8 +936,8 @@ hard to recover Gleason's theorem for general QIVPMs.
 
 \chapter{Conventional Quantum Theory\label{chap:Conventional-Quantum-Theory}}
 
-The part of the conventional quantum theory (CQT) used by quantum
-circuit model is described by the following:
+The part of conventional quantum theory (CQT) used by quantum circuit
+model is described by the following:
 \begin{enumerate}[label=(\roman{enumi})]
 \item \label{enu:-orthonormal-basis}$D$ orthonormal basis vectors for
 a Hilbert space of dimension~$D$,
@@ -955,8 +955,8 @@ important issues of~\ref{enu:measurement-framework} and the foundations
 of quantum probability space. The expectation values defined in Sec.~\ref{sec:fuzzy}
 will be used to understand the geometry of entangled states in Sec.~\ref{sec:The-geometry-of}.
 The property~\ref{enu:unitary-matrix} directly related to quantum
-circuits will be introduced later in Chapter~\ref{chap:DQT=000026DQC}
-when we dive into quantum algorithms.
+circuits will be introduced later in Chapters~\ref{chap:Unrestricted-Finite-Fields}
+and~\ref{chap:DQT=000026DQC} when we dive into quantum algorithms.
 
 \section{Geometrical Structure of States\label{CQC1qubitBloch.sec}}
 
@@ -1161,7 +1161,7 @@ characterizing the Bloch sphere. We have just argued that essentially
 the same process is possible for $D$-dimensional system: in the abstract
 argument, we simply identify the family of coefficients $\left\{ \alpha_{i}\right\} $
 as being the same if they differ only by an overall phase $\rme^{\rmi\theta}$.
-However, in practice, this is not a construction that is easy to realize
+However in practice, this is not a construction that is easy to realize
 in a practical computation. We now outline an explicit algorithm for
 accomplishing the reduction to the irreducible $D$-dimensional state
 space $\CP{D-1}$; this construction will turn out to be useful for
@@ -1199,7 +1199,7 @@ space of dimension $D^{2}$. However, this is somewhat subtle because
 the vector is of unit length, so technically the embedding space is
 a sphere of dimension $D^{2}-1$ embedded in $\R^{D^{2}}$. For example,
 the two-dimensional irreducible states could be represented in a four-dimensional
-embedding, but the magnitude of every coordinate would be one; furthermore,
+embedding, but the magnitude of every coordinate would be one. Furthermore,
 the object embedded in the resulting $\Sphere{3}$ is indeed $\Sphere{2}$
 because we can fix one complex coordinate to be unity, and let one
 vary, giving a total of two irreducible dimensions. In fact, one must
@@ -1284,7 +1284,10 @@ and the probability measure $\mu_{1}\colon2^{\Omega_{1}}\rightarrow\left[0,1\rig
 defined by this experiment is different from the previous one, these
 two experiments may produce the same post-experimental state~$\ket{2}$,
 and the probability of the common event $\left\{ \ket{2}\right\} $
-is believed to be the same, i.e., $\mu_{0}\left(\left\{ \ket{2}\right\} \right)=\mu_{1}\left(\left\{ \ket{2}\right\} \right)$.
+is believed to be the same, i.e., 
+\begin{equation}
+\mu_{0}\left(\left\{ \ket{2}\right\} \right)=\mu_{1}\left(\left\{ \ket{2}\right\} \right)\,.\label{eq:mu0-equal-mu1}
+\end{equation}
 In general, as long as sending the same particle, the probability
 of the same event in different experiments should always be the same.
 This fact is equivalent to the fact that commuting observables could
@@ -1297,8 +1300,7 @@ containing all possible classical event spaces using different beam
 splitters. However, simply taking the union of all event spaces is
 a bad idea because two events might appear different but representing
 the same situation. For example, if we take the complement on both
-sides of $\mu_{0}\left(\left\{ \ket{2}\right\} \right)=\mu_{1}\left(\left\{ \ket{2}\right\} \right)$,
-we will have
+sides of Eq.~(\ref{eq:mu0-equal-mu1}), we will have
 \begin{equation}
 \mu_{0}\left(\left\{ \ket{0},\ket{1}\right\} \right)=1-\mu_{0}\left(\left\{ \ket{2}\right\} \right)=1-\mu_{1}\left(\left\{ \ket{2}\right\} \right)=\mu_{1}\left(\left\{ \ket{\ps},\ket{\ms}\right\} \right)\,,
 \end{equation}
@@ -1417,7 +1419,8 @@ $\mu$, i.e.,
 \end{equation}
 \end{lemma}
 
-\begin{proof}By Eq.~(\ref{eq:quantum-expectation}), we have
+\begin{proof}By Eqs.~(\ref{eq:quantum-expectation}), (\ref{eq:pullback-function}),
+and (\ref{eq:classical-pullback}), we have
 \[
 \expval{\mathbf{O}}_{\mu}=\sum_{i=0}^{D-1}\lambda_{i}\mu\left(\proj{i}\right)=\sum_{i=0}^{D-1}\lambda_{i}\mu\left(\varphi\left(\left\{ \ket{i}\right\} \right)\right)=\sum_{i=0}^{D-1}\lambda_{i}\left(\varphi^{*}\mu\right)\left(\left\{ \ket{i}\right\} \right)=\int\left(\varphi^{*}\mathbf{O}\right)\rmd\left(\varphi^{*}\mu\right)\,.
 \]
@@ -1429,11 +1432,11 @@ After introducing quantum probability measures, we might follow the
 convention to introduce the Born rule which is the only way corresponding
 a state to a quantum probability measure in CQT\@. However, since
 the variants of quantum probability measures in Sec.~\ref{sec:Toward-IVPM}
-and Chapter~\ref{chap:QIVPM} could not be constructed by the Born
-rule easily, searching for a Born rule step-by-step here might provide
-a better idea of what we should do in Sec.~\ref{sec:Toward-IVPM}
+and Chapter~\ref{chap:QIVPM} could not be constructed by a ``Born
+rule'' easily, searching for a Born rule step-by-step here might
+provide a better idea of what we should do in Sec.~\ref{sec:Toward-IVPM}
 and Chapter~\ref{chap:QIVPM}. While the situations will become more
-delicate in the later sections, we will, fortunately, find the unique
+delicate in the later sections, we will fortunately find the unique
 Born rule for CQT here.
 
 Although the quantum probability measure constructed by gluing together
@@ -1464,12 +1467,18 @@ be the quantum probability measure of the resulting events sensibly
 corresponding to $\ket{\Phi}$. For a correspondence $\ket{\Phi}\mapsto\muB_{\Phi}$
 to be sensible, we hope that if the state~$\ket{\Phi}$ is one of
 the outcomes of a quantum event~$P$, $P\ket{\Phi}=\ket{\Phi}$,
-then the event~$P$ always happens, $\muB_{\Phi}\left(P\right)=1$,
+then the event~$P$ always happens, 
+\begin{equation}
+\muB_{\Phi}\left(P\right)=1\,,\label{eq:Born-probability-one}
+\end{equation}
 and vice versa. Moreover, since the physical phenomena exist and should
 be the same no matter how we describe them, the probability of an
 event should be invariant despite how we choose the basis. Because
 changing to another basis is the same as applying a unitary map~$U$,
-we should have $\muB_{U\ket{\Phi}}\left(UPU^{\dagger}\right)=\muB_{\Phi}\left(P\right)$.
+we should have 
+\begin{equation}
+\muB_{U\ket{\Phi}}\left(UPU^{\dagger}\right)=\muB_{\Phi}\left(P\right)\,.\label{eq:Born-unitary-invariant}
+\end{equation}
 It is easy to check that the correspondence satisfying these conditions
 is unique, 
 \begin{equation}
@@ -1499,7 +1508,7 @@ and the second corresponds to the quantum system being in the state
 $\frac{\proj{0}+\proj{2}}{2}$. The expectation values of the observable
 $\mathbf{O}$, $\expval{\mathbf{O}}_{\mu_{1,2}}$, are $1.5$ in the
 first case and $2$ in the second. The quantum expectation value can
-also use to decide whether a state is entangled or not for multipartite
+also be used to decide whether a state is entangled or not for multipartite
 systems as we describe in the following section.
 \begin{table}
 \noindent \begin{centering}
@@ -1598,7 +1607,7 @@ that allows a geometric representation of each reduced state in $\mathbb{R}^{3}$
 satisfying $0\le\left\Vert {\bf X}_{j}\right\Vert \le1$. Since $\Tr_{j}\left(\rho_{j}^{2}\right)=\frac{1}{2}\left(1+\left\Vert {\bf X}_{j}\right\Vert ^{2}\right)$,
 the state $\ket{\Psi}$ is entangled if $\left\Vert {\bf X}_{j}\right\Vert <1$
 for at least one $j$, represented by a point \emph{inside} the corresponding
-local Bloch sphere embedded in $\mathbb{R}^{3}$. One may, therefore,
+local Bloch sphere embedded in $\mathbb{R}^{3}$. Therefore, one may
 consider $\ket{\Psi}$ to be maximally entangled if $\left\Vert {\bf X}_{j}\right\Vert =0$
 for all $j$. On the other hand, the state $\ket{\Psi}$ is unentangled
 (i.e., a product state) if $\left\Vert {\bf X}_{j}\right\Vert =1$
@@ -2220,13 +2229,14 @@ Y & = & 2\,\mathrm{Im}\ \alpha_{0}\alpha_{1}^{*}=2x_{1}y_{0}-2x_{0}y_{1}\,,\labe
 Z & = & \fnorm{\alpha_{0}}-\fnorm{\alpha_{1}}={x_{0}}^{2}+{y_{0}}^{2}-{x_{1}}^{2}-{y_{1}}^{2}\,.\nonumber 
 \end{eqnarray}
 but now with all computations in\hspace{0bp}$\pmod{p}$. At this
-point, one simply writes down all possible discrete values for the
-complex numbers $\left(\alpha_{0},\alpha_{1}\right)$ satisfying Eq.~(\ref{DQA2.eq})
-and enumerates those that project to the same value of $\left(X,Y,Z\right)$.
-This equivalence class is the discrete analog of the circle in the
-complex plane that was eliminated in the continuous case. In Proposition~\ref{appH.sec},
-we show that $p+1$ discrete values of $\left(\alpha_{0},\alpha_{1}\right)$
-with unit norm map to the same point under the Hopf map \Eq{DQA6.eq};
+point, one can simply write down all possible discrete values for
+the complex numbers $\left(\alpha_{0},\alpha_{1}\right)$ satisfying
+Eq.~(\ref{DQA2.eq}) and enumerate those that project to the same
+value of $\left(X,Y,Z\right)$. This equivalence class is the discrete
+analog of the circle in the complex plane that was eliminated in the
+continuous case. In Proposition~\ref{appH.sec}, we show that $p+1$
+discrete values of $\left(\alpha_{0},\alpha_{1}\right)$ with unit
+norm map to the same point under the Hopf map \Eq{DQA6.eq}; %
 \begin{comment}
 \todo{Does Proposition~\ref{appH.sec} really show this? }
 \end{comment}
@@ -2460,7 +2470,7 @@ counts are reduced by $(p+1)$, giving
 \begin{equation}
 p^{2}(p-1)^{2}=\{36,1764,12\,100,116\,964,\ldots\}\,,
 \end{equation}
-and in general, for $n$-qubits, there are $p^{n}\left(p-1\right)^{n}$
+and in general for $n$-qubits, there are $p^{n}\left(p-1\right)^{n}$
 instances of pure product states.
 
 Performing the computation using equation (\ref{eq:john}), we find
@@ -2524,15 +2534,15 @@ another $2$ are balanced. Similar to our $\usat$ algorithm in Sec.~\ref{modalqua
 we start by representing $f$ as a Deutsch black box $U_{f}$ in the
 middle of the quantum circuit, Figure~\ref{fig:Quantum-Circuit-Deutsch}.
 To explain why this circuit solves the Deutsch problem, we then compute
-the state in each step explicitly and express the Dirac bracket notation
-with its matrix representation in the computational basis $\left\{ \ket{00},\ket{01},\ket{10},\ket{11}\right\} $
-parallelly. 
+the state in each step explicitly and express them in the Dirac bracket
+notation and its matrix representation in the computational basis
+$\left\{ \ket{00},\ket{01},\ket{10},\ket{11}\right\} $. 
 \begin{table}
-\noindent \centering{}\caption{\label{tab:Possible-f}Possible $f$ for Deutsch black box $U_{f}$}
+\noindent \centering{}\caption{\label{tab:Possible-f}All Possible $f\colon\boolt\rightarrow\boolt$.}
 \begin{tabular}{ccccc}
 \toprule 
 \addlinespace
-Input & $f_{1}$ & $f_{2}$ & $f_{3}$ & $f_{4}$\tabularnewline\addlinespace
+$x$ & $f_{1}\left(x\right)$ & $f_{2}\left(x\right)$ & $f_{3}\left(x\right)$ & $f_{4}\left(x\right)$\tabularnewline\addlinespace
 \midrule
 \addlinespace
 \addlinespace
@@ -2566,7 +2576,8 @@ space has any semantic meaning\ldots{} }
 }
 \end{array}
 \]
-\caption{\label{fig:Quantum-Circuit-Deutsch}Quantum Circuit for Deutsch Algorithm.}
+\caption{\label{fig:Quantum-Circuit-Deutsch}Quantum Circuit for the Deutsch
+Algorithm.}
 \end{figure}
 
 First, a 2-qubit pure state is initialized to $\ket{\Phi_{1}}=\ket{1}\ket{0}=\left(\begin{smallmatrix}0\\
@@ -2721,8 +2732,8 @@ is always one-half of the non-zero elements of $\ff{p}$, and is the
 set of elements with square roots in the field. This is the set of
 \emph{quadratic residues}, and the complementary set (the other half
 of the non-zero field elements) is the set of \emph{quadratic non-residues}.
-For example, in $\ff{7}$, the elements $\left\{ 1,2,4\right\} $
-are considered positive as they have the square roots $\left\{ 1,3,2\right\} $
+For example in $\ff{7}$, the elements $\left\{ 1,2,4\right\} $ are
+considered positive as they have the square roots $\left\{ 1,3,2\right\} $
 respectively; the remaining elements $\left\{ 3,5,6\right\} $ do
 not have square roots in the field. What is interesting is that if
 we have a uninterrupted sequence of numbers that are all quadratic
@@ -2895,21 +2906,21 @@ an observable as discussed in Sec.~\ref{sec:fuzzy}, our previous
 quantum circuits in Figures~\ref{fig:alg}, \ref{fig:Quantum-Circuit-Deutsch},
 and~\ref{fig:dbsearch} always measure in the computational basis
 $\left\{ \ket{0},\ldots,\ket{i},\ldots,\ket{D-1}\right\} $. Indeed,
-it is sufficient to only consider measuring in the computational basis
-because measuring in another basis is the same as applying a quantum
-gate and measuring in the computational basis. In this situation,
-the Born rule for pure states, Eq.~(\ref{eq:Born}), can be simplified
-as
+it is sufficient to only consider measuring a quantum circuit in the
+computational basis because measuring in another basis is the same
+as applying a quantum gate and measuring in the computational basis.
+In this situation, the Born rule for pure states, Eq.~(\ref{eq:Born}),
+can be simplified as
 \begin{equation}
 \muB_{\Psi}\left(\proj{i}\right)\equiv\muB_{\Psi}\left(i\right)=\frac{\ip{\Psi}{i}\ip{i}{\Psi}}{\ip{\Psi}{\Psi}}=\frac{\left|\ip{i}{\Psi}\right|^{2}}{\ip{\Psi}{\Psi}}=\frac{\left|\alpha_{i}\right|^{2}}{\ip{\Psi}{\Psi}}\,,\label{eq:Born-ComputationalBasis}
 \end{equation}
 where $\ket{\Psi}=\begin{pmatrix}\alpha_{0} & \alpha_{1} & \cdots & \alpha_{D-1}\end{pmatrix}^{T}$
-is an unnormalized state. Hereafter, we will simplify by calling $\muB_{\Psi}\left(i\right)$
+is an unnormalized state. Hereafter, we will simply call $\muB_{\Psi}\left(i\right)$
 the probability of measuring $\ket{i}$.
 
-Although the division is not an allowed operation for the elements
-in an ordered region, following the standard procedure to define a
-conventional fraction as a pair of integers \cite{Artin1991,DummitFoote2004,hottbook2013,Wolfram2016},
+Although division is not an allowed operation for the elements in
+an ordered region, following the standard procedure to define a conventional
+fraction as a pair of integers \cite{Artin1991,DummitFoote2004,hottbook2013,Wolfram2016},
 we could define a \emph{cardinal probability} as a pair of order-region
 elements as well:
 \begin{equation}
@@ -3284,28 +3295,23 @@ in Tables~\ref{pseq} and~\ref{table_long}.
 
 \section{Quantum Probability Measures over Finite Fields\label{sec:Toward-IVPM}}
 
-The cardinal probability over finite fields defined in Eq.~(\ref{eq:cardinalProbability})
-is based on the conventional Born rule, Eq.~(\ref{eq:Born-ComputationalBasis}).
+Although cardinal probabilities can be ordered as discussed in \ref{discretequantumtheoryIIb},
+it is still unclear how to define their arithmetic operations, which
+is required to further define the mixed states and expectation values.
+Notice that the cardinal probability over finite fields defined in
+Eq.~(\ref{eq:cardinalProbability}) is based on the conventional
+Born rule, Eq.~(\ref{eq:Born-ComputationalBasis}) which could be
+derived axiomatically according to Gleason's theorem as in Sec.~\ref{subsec:Gleason's-Theorem-and}.
 \begin{comment}
 Although they are valid inside an ordered region, some quantum algorithms,
 like Shor's~\cite{Shor1999,Mermin2007,Jaeger2007}, don't localize
 their computation in a small region. \todo{Remove the discussion
 of Shor's algorithm if I cannot verify it on DQT~(I) on time. }Moreover, 
 \end{comment}
-Since we haven't found a way to manipulate the resulting cardinal
-probabilities, we have little idea how to define the mixed states
-and expectation values. To overcome these issues, we try a different
-approach to define a ``conventional'' probability over finite fields
-axiomatically.
-
-Recall Gleason's theorem in Sec.~\ref{subsec:Gleason's-Theorem-and}
-states that every quantum probability measure is induced a mixed state
-in a Hilbert space $\Hilb$ of dimension $D\geq3$ according to the
-Born rule. To find a Born rule over finite fields, we could follow
-the steps in Sec.~\ref{sec:fuzzy} to define events and probability
-measures and see whether we could have a Gleason-like theorem which
-induces a correspondence between states and probability measures qualified
-as a discrete Born rule.
+To overcome these issues, we want to follow the steps in Sec.~\ref{sec:fuzzy}
+to define events and probability measures, and see whether we could
+have a Gleason-like theorem which induces a correspondence between
+states and probability measures qualified as a discrete Born rule.
 
 \begin{definition}[Quantum Probability Measures over Finite Fields]\label{def:QPMFF}Given
 a vector space $\mathcal{H}$ of dimension $D$ over the complexified
@@ -3355,8 +3361,8 @@ unique for $D\ge3$ except $D=p=3$.
 
 Although we couldn't prove there is no discrete Born rule by investigating
 QPMFFs alone, we could prove there is no ``sensible'' Born rule
-which also satisfies an analog of Proposition~\ref{prop:Born-probability-one}
-and~\ref{prop:Born-unitary-invariant}. %
+which also satisfies an analog of Eqs.~(\ref{eq:Born-probability-one})
+and~(\ref{eq:Born-unitary-invariant}). %
 \begin{comment}
 \todo{Notice that the notation here and previous is a little bit
 different because we dealt with mixed states previously, but pure
@@ -3398,7 +3404,8 @@ Since $P'\ket{\oplus}=\ket{\oplus}$, Eq.~(\ref{eq:zero}) implies
 \end{equation}
 and thus for $i=0$, $1$, and $2$, we always have $\muF_{\oplus}\left(P_{i}\right)=\frac{1}{3}$.
 
-Like the previous paragraph, we now compute the QPMFF induced by $\ket{\Phi'}=U'\ket{\oplus}=\frac{2\alpha}{\gamma}\ket{0}+\frac{1}{\gamma}\ket{2}$,
+Following the similar computation to the previous paragraph, we now
+compute the probabilities induced by $\ket{\Phi'}=U'\ket{\oplus}=\frac{2\alpha}{\gamma}\ket{0}+\frac{1}{\gamma}\ket{2}$,
 where $\alpha=\fnorm*{\frac{1}{2}}\in\ff{p^{2}}$ and
 \begin{equation}
 U'=\begin{pmatrix}\alpha & \alpha & 0\\
@@ -3602,20 +3609,21 @@ and quantum probability measures.
 \subsection{States Consistent with Classical and Quantum IVPMs\label{subsec:States-Consistent-with-IVPMs}}
 
 Our definition of QIVPMs is consistent with classical IVPMs in the
-sense that a restriction of QIVPMs to mutually commuting events, $\eventsC$,
-recovers the definition of classical IVPMs.  To see this, first,
-$\events'$ is called a \emph{subspace} of the set of events~$\events$
-if $\events'$ contains the projectors $\mathbb{0}$ and $\mathbb{1}$
-and is closed under complements, sums, and products. In particular,
-for any projector $P\in\events'$, we have $\mathbb{1}-P\in\events'$
-and for each pair of commuting projectors $P_{0}\in\events'$ and
-$P_{1}\in\events'$, we have $P_{0}P_{1}$ and $P_{0}+P_{1}-P_{0}P_{1}\in\events'$.
-Given a mutually commuting subspace~$\eventsC$ whose elements are
-diagonalizable by a common orthonormal basis $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $,
-the function $\varphi\colon2^{\Omega}\rightarrow\eventsC$ defined
-in in Eq.~(\ref{eq:pullback-function}) maps any set~$E$ to the
-sum of the projectors formed by elements in $E$, and preserve all
-operations used to defined classical and quantum IVPMs as in Eqs.~(\ref{eq:pullback-properties-basic})
+sense that a restriction of QIVPMs to mutually commuting subspace
+of events, $\eventsC$, recovers the definition of classical IVPMs.
+ To see this, we first define the idea of subspace of events. $\events'$
+is called a \emph{subspace} of the set of events~$\events$ if $\events'$
+contains the projectors $\mathbb{0}$ and $\mathbb{1}$ and is closed
+under complements, sums, and products. In particular, for any projector
+$P\in\events'$, we have $\mathbb{1}-P\in\events'$ and for each pair
+of commuting projectors $P_{0}\in\events'$ and $P_{1}\in\events'$,
+we have $P_{0}P_{1}$ and $P_{0}+P_{1}-P_{0}P_{1}\in\events'$. Given
+a mutually commuting subspace~$\eventsC$ whose elements are diagonalizable
+by a common orthonormal basis $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $,
+the function $\varphi\colon2^{\Omega}\rightarrow\events$ defined
+in Eq.~(\ref{eq:pullback-function}) maps any set~$E$ to the sum
+of the projectors formed by elements in $E$, and preserve all operations
+used to defined classical and quantum IVPMs as in Eqs.~(\ref{eq:pullback-properties-basic})
 and~(\ref{eq:pullback-properties}). According to the same reason
 as the classical counterpart, Eq.~(\ref{eq:classical-pullback}),
 given a QIVPM~$\bar{\mu}\colon\events\rightarrow\mathscr{I}$, the
@@ -3634,7 +3642,7 @@ and $\bar{\mu}\left(\overline{E}\right)=\left[0.7,0.8\right]$, we
 discussed the ``true'' probabilities, $\mu\left(E\right)$ and $\mu\left(\overline{E}\right)$,
 can be anywhere in the range $\left[0.2,0.3\right]$ and $\left[0.7,0.8\right]$,
 respectively, as long as they satisfy $\mu\left(E\right)+\mu\left(\overline{E}\right)=1$.
-These ``true'' probabilities can be summarized as a probability
+These ``true'' probabilities can be represented as a probability
 measure $\mu\colon2^{\Omega}\rightarrow\left[0,1\right]$ satisfying
 \begin{align}
 \mu\left(E\right) & \in\left[0.2,0.3\right]=\bar{\mu}\left(E\right)\,, & \mu\left(\overline{E}\right) & \in\left[0.7,0.8\right]=\bar{\mu}\left(\overline{E}\right)\,.
@@ -3716,8 +3724,7 @@ For any classical probability measure~$\mu$ consistent with the
 pullback of $\bar{\mu}$, i.e., $\mu\in\mathrm{core}\left(\varphi^{*}\bar{\mu}\right)$,
 there is a density matrix~$\rho$ consistent with $\bar{\mu}$ relative
 to $\eventsC$, $\rho\in\coreBorn\left(\bar{\mu},\eventsC\right)$,
-such that the pullback of $\muB_{\rho}$ is $\mu$ in the following
-sense:
+such that the pullback of $\muB_{\rho}$ is $\mu$, i.e.,
 \begin{equation}
 \left(\varphi^{*}\muB_{\rho}\right)\left(E\right)=\muB_{\rho}\left(\varphi\left(E\right)\right)=\mu\left(E\right)\label{eq:density-matrix-pullback}
 \end{equation}
@@ -3791,7 +3798,7 @@ minimum and maximum bounds of the probability intervals associated
 with each state~$\rho$ that is consistent with~$\bar{\mu}$ on
 every projector in the spectral decomposition of the observable.
 
-Like how we pull back classical ideas to the quantum world in Secs.~\ref{subsec:Definitions-of-IVPMs}
+Like how we pulled back classical ideas to the quantum world in Secs.~\ref{subsec:Definitions-of-IVPMs}
 and~\ref{subsec:States-Consistent-with-IVPMs}, we start from defining
 the classical expectation value relative to IVPMs. Consider a classical
 IVPM $\bar{\mu}\colon2^{\Omega}\rightarrow\mathscr{I}$ and an event
@@ -3887,13 +3894,13 @@ are the difference on the probability of the accumulative sets, they
 have the same magnitude as ones in Eq.~(\ref{eq:expectation}), and
 the right-hand side of Eq.~(\ref{eq:interval-expectation}) can be
 easily simplified to the right-hand side of Eq.~(\ref{eq:expectation})
-as follow.
+as follow:
 \begin{equation}
-\begin{aligned}\int X\rmd\bar{\mu} & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\pmeas\left(E_{i\uparrow}^{s}\right),\Delta\pmeas\left(E_{i\uparrow}^{s}\right)\right]\\
- & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\mu\left(E_{i\uparrow}^{s}\right)-\mu\left(E_{\left(i+1\right)\uparrow}^{s}\right),\mu\left(E_{i\uparrow}^{s}\right)-\mu\left(E_{\left(i+1\right)\uparrow}^{s}\right)\right]\\
- & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\mu\left(\bigcup_{j\ge i}E_{j}^{s}\right)-\mu\left(\bigcup_{j\ge i+1}E_{j}^{s}\right),\mu\left(\bigcup_{j\ge i}E_{j}^{s}\right)-\mu\left(\bigcup_{j\ge i+1}E_{j}^{s}\right)\right]\\
- & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\sum_{j\ge i}\mu\left(E_{j}^{s}\right)-\sum_{j\ge i+1}\mu\left(E_{j}^{s}\right),\sum_{j\ge i}\mu\left(E_{j}^{s}\right)-\sum_{j\ge i+1}\mu\left(E_{j}^{s}\right)\right]\\
- & =\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\mu\left(E_{i}^{s}\right),\mu\left(E_{i}^{s}\right)\right]=\left[\int X\rmd\mu,\int X\rmd\mu\right]
+\begin{aligned} & \int X\rmd\bar{\mu}=\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\Delta\pmeas\left(E_{i\uparrow}^{s}\right),\Delta\pmeas\left(E_{i\uparrow}^{s}\right)\right]\\
+={} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\mu\left(E_{i\uparrow}^{s}\right)-\mu\left(E_{\left(i+1\right)\uparrow}^{s}\right),\mu\left(E_{i\uparrow}^{s}\right)-\mu\left(E_{\left(i+1\right)\uparrow}^{s}\right)\right]\\
+={} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\mu\left(\bigcup_{j\ge i}E_{j}^{s}\right)-\mu\left(\bigcup_{j\ge i+1}E_{j}^{s}\right),\mu\left(\bigcup_{j\ge i}E_{j}^{s}\right)-\mu\left(\bigcup_{j\ge i+1}E_{j}^{s}\right)\right]\\
+={} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\sum_{j\ge i}\mu\left(E_{j}^{s}\right)-\sum_{j\ge i+1}\mu\left(E_{j}^{s}\right),\sum_{j\ge i}\mu\left(E_{j}^{s}\right)-\sum_{j\ge i+1}\mu\left(E_{j}^{s}\right)\right]\\
+={} & \sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}x_{i}^{s}\left[\mu\left(E_{i}^{s}\right),\mu\left(E_{i}^{s}\right)\right]=\left[\int X\rmd\mu,\int X\rmd\mu\right]\,.
 \end{aligned}
 \label{eq:classical-real-interval-Choquet}
 \end{equation}
