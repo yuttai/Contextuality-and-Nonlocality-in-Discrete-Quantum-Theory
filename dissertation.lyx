@@ -137,6 +137,15 @@
 \renewcommand{\tabularxcolumn}[1]{m{#1}}
 \newcolumntype{Y}{>{\centering\doublespacing\arraybackslash}X}
 \newcolumntype{M}[1]{>{\centering\doublespacing\arraybackslash}m{\widthof{#1}}}
+
+% https://tex.stackexchange.com/questions/19094/allowing-line-break-at-in-inline-math-mode-breaks-citations/19100#19100
+\AtBeginDocument{%
+  \mathchardef\mathcomma\mathcode`\,
+  \mathcode`\,="8000 
+}
+{\catcode`,=\active
+  \gdef,{\mathcomma\nolinebreak[3]}
+}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -9086,7 +9095,7 @@ Consider an observable
 \family default
 \size default
 diagonalizable by an orthonormal basis 
-\begin_inset Formula $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+\begin_inset Formula $\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$
 \end_inset
 
  so that 
@@ -9247,7 +9256,7 @@ Consider an observable
 \family default
 \size default
 diagonalizable by an orthonormal basis 
-\begin_inset Formula $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+\begin_inset Formula $\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$
 \end_inset
 
  with 
@@ -11867,7 +11876,7 @@ all local observables
 \end_inset
 
  spanned by 
-\begin_inset Formula $\left\{ \jthSubsystem{\sigma}[x]{1},\jthSubsystem{\sigma}[y]{1},\jthSubsystem{\sigma}[z]{1},\ldots,\jthSubsystem{\sigma}[x]{n},\jthSubsystem{\sigma}[y]{n},\jthSubsystem{\sigma}[z]{n}\right\} $
+\begin_inset Formula $\{\jthSubsystem{\sigma}[x]{1},\jthSubsystem{\sigma}[y]{1},\jthSubsystem{\sigma}[z]{1},\ldots,\jthSubsystem{\sigma}[x]{n},\jthSubsystem{\sigma}[y]{n},\jthSubsystem{\sigma}[z]{n}\}$
 \end_inset
 
 ,
@@ -17098,7 +17107,7 @@ The number of unit-norm states described by a
 \end_inset
 
 -dimensional vector 
-\begin_inset Formula $\left(\alpha_{0},\ldots,\alpha_{D-1}\right)$
+\begin_inset Formula $(\alpha_{0},\ldots,\alpha_{D-1})$
 \end_inset
 
  with coefficients 
@@ -17176,7 +17185,7 @@ literal "false"
 \end_inset
 
 -dimensional vector 
-\begin_inset Formula $\left(\alpha_{0},\ldots,\alpha_{D-1}\right)$
+\begin_inset Formula $(\alpha_{0},\ldots,\alpha_{D-1})$
 \end_inset
 
 .
@@ -20223,7 +20232,7 @@ As an example, consider the field
 
 .
  Looking at the squares of the numbers 
-\begin_inset Formula $\ff{23}=\left\{ 0,\ldots,22\right\} $
+\begin_inset Formula $\ff{23}=\{0,\ldots,22\}$
 \end_inset
 
  modulo 23, we find the 
@@ -20817,7 +20826,7 @@ reference "fig:dbsearch"
 \end_inset
 
  always measure in the computational basis 
-\begin_inset Formula $\left\{ \ket{0},\ldots,\ket{i},\ldots,\ket{D-1}\right\} $
+\begin_inset Formula $\{\ket{0},\ldots,\ket{i},\ldots,\ket{D-1}\}$
 \end_inset
 
 .
@@ -20924,7 +20933,7 @@ where every probability amplitude
 
 .
  The permitted range is 
-\begin_inset Formula $S_{0}\left(11\right)=\left\{ -5,\ldots,-1,0,1,\ldots,5\right\} $
+\begin_inset Formula $S_{0}\left(11\right)=\{-5,\ldots,-1,0,1,\ldots,5\}$
 \end_inset
 
 , given the dimension 
@@ -24414,7 +24423,7 @@ where we identify
 \end_inset
 
  as usual, and 
-\begin_inset Formula $\overline{0}=\left(0,\ldots,0\right)$
+\begin_inset Formula $\overline{0}=(0,\ldots,0)$
 \end_inset
 
 .
@@ -25809,7 +25818,7 @@ Assume such a map
  satisfying all properties exists, we will use the listed properties to
  build a contradiction.
  Consider the computational basis 
-\begin_inset Formula $\left\{ \ket{0},\ket{1},\ket{2},\ldots\right\} $
+\begin_inset Formula $\{\ket{0},\ket{1},\ket{2},\ldots\}$
 \end_inset
 
 , and the projectors formed by these vectors, 
@@ -27536,7 +27545,7 @@ subspace
 \end_inset
 
  whose elements are diagonalizable by a common orthonormal basis 
-\begin_inset Formula $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+\begin_inset Formula $\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$
 \end_inset
 
 , the function 
@@ -28291,7 +28300,7 @@ Consider a QIVPM
 \end_inset
 
  diagonalizable by a common orthonormal basis 
-\begin_inset Formula $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+\begin_inset Formula $\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$
 \end_inset
 
  with the function 
@@ -28897,7 +28906,7 @@ Since
 
  is a set of mutually commuting projections, they can be diagonalized by
  a common orthonormal basis 
-\begin_inset Formula $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+\begin_inset Formula $\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$
 \end_inset
 
 .
@@ -30770,7 +30779,7 @@ Consider an observable
 \family default
 \size default
 diagonalizable by an orthonormal basis 
-\begin_inset Formula $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+\begin_inset Formula $\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$
 \end_inset
 
  with 
@@ -30929,7 +30938,7 @@ Consider expressing the observable
 \family default
 \size default
 can be diagonalized by an orthonormal basis 
-\begin_inset Formula $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+\begin_inset Formula $\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$
 \end_inset
 
 , each 
@@ -31515,7 +31524,7 @@ Consider an observable
 \family default
 \size default
 diagonalizable by an orthonormal basis 
-\begin_inset Formula $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+\begin_inset Formula $\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$
 \end_inset
 
 
@@ -33186,7 +33195,7 @@ The expectation value of an observable
 
  of that observable.
  To see this, note that given an orthonormal basis 
-\begin_inset Formula $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+\begin_inset Formula $\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$
 \end_inset
 
 , a 0-deterministic QIVPM must map exactly one of the projectors 
@@ -33387,7 +33396,7 @@ Given a Hilbert space
 
  is a sequence of commuting observables, they can be diagonalized by a common
  orthonormal basis 
-\begin_inset Formula $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+\begin_inset Formula $\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$
 \end_inset
 
  with spectral decompositions 

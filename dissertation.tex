@@ -165,6 +165,15 @@
 \newcolumntype{Y}{>{\centering\doublespacing\arraybackslash}X}
 \newcolumntype{M}[1]{>{\centering\doublespacing\arraybackslash}m{\widthof{#1}}}
 
+% https://tex.stackexchange.com/questions/19094/allowing-line-break-at-in-inline-math-mode-breaks-citations/19100#19100
+\AtBeginDocument{%
+  \mathchardef\mathcomma\mathcode`\,
+  \mathcode`\,="8000 
+}
+{\catcode`,=\active
+  \gdef,{\mathcomma\nolinebreak[3]}
+}
+
 \@ifundefined{showcaptionsetup}{}{%
  \PassOptionsToPackage{caption=false}{subfig}}
 \usepackage{subfig}
@@ -1388,8 +1397,8 @@ random variable, and the expectation values are invariant.%
 
 \begin{definition}[Pullback of Observables]\label{def:observable2random-variable}Consider
 an observable~$\mathbf{O}$ diagonalizable by an orthonormal basis
-$\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $ so that
-$\mathbf{O}$ has spectral decomposition $\mathbf{O}=\sum_{i=0}^{D-1}\lambda_{i}\proj{i}$.
+$\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$ so that $\mathbf{O}$
+has spectral decomposition $\mathbf{O}=\sum_{i=0}^{D-1}\lambda_{i}\proj{i}$.
 If we restrict $\varphi$ on the classical event space~$2^{\Omega}$
 and consider $\varphi\colon2^{\Omega}\rightarrow\events$, then the
 pullback of $\mathbf{O}$ by $\varphi$ is a random variable $\varphi^{*}\mathbf{O}\colon\Omega\rightarrow\mathbb{R}$
@@ -1408,7 +1417,7 @@ where $\mathbf{1}_{E}$ is the indicator function defined by
 
 \begin{lemma}\label{lemma:real-expectation-value-between-classical-quantum}Consider
 an observable~$\mathbf{O}$ diagonalizable by an orthonormal basis
-$\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $ with $\varphi\colon2^{\Omega}\rightarrow\events$
+$\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$ with $\varphi\colon2^{\Omega}\rightarrow\events$
 defined by Eq.~(\ref{eq:pullback-function}). Given a quantum probability
 measure $\mu\colon\events\rightarrow\left[0,1\right]$, the expectation
 value of $\mathbf{O}$ relative to $\mu$ is exactly the expectation
@@ -1622,7 +1631,7 @@ that compose the actual system, one recovers the standard notion of
 entanglement for multipartite systems. For example, if the system
 consists of $n$ qubits, we obtain a measure of conventional entanglement
 by calculating the purity relative to the semi-simple Lie algebra~$\fh$
-spanned by $\left\{ \jthSubsystem{\sigma}[x]{1},\jthSubsystem{\sigma}[y]{1},\jthSubsystem{\sigma}[z]{1},\ldots,\jthSubsystem{\sigma}[x]{n},\jthSubsystem{\sigma}[y]{n},\jthSubsystem{\sigma}[z]{n}\right\} $,
+spanned by $\{\jthSubsystem{\sigma}[x]{1},\jthSubsystem{\sigma}[y]{1},\jthSubsystem{\sigma}[z]{1},\ldots,\jthSubsystem{\sigma}[x]{n},\jthSubsystem{\sigma}[y]{n},\jthSubsystem{\sigma}[z]{n}\}$,
 \begin{equation}
 P_{\fh}=\frac{1}{n}\sum\limits _{j=1}^{n}\sum\limits _{\eta=x,y,z}\expval{\jthSubsystem{\sigma}[\eta]{j}}^{2}=\frac{1}{n}\sum\limits _{j=1}^{n}\left\Vert {\bf X}_{j}\right\Vert ^{2}\,.\label{purityMeasure.eq}
 \end{equation}
@@ -2323,13 +2332,13 @@ states is given by the following proposition. This unit-norm state
 structure is the discrete analog of $\Sphere{2D-1}$.
 
 \begin{prop}\label{appU.sec}The number of unit-norm states described
-by a $D$-dimensional vector $\left(\alpha_{0},\ldots,\alpha_{D-1}\right)$
-with coefficients $\alpha_{i}\in\Fpp$ is $p^{D-1}\left(p^{D}-\left(-1\right)^{D}\right)$.\end{prop}
+by a $D$-dimensional vector $(\alpha_{0},\ldots,\alpha_{D-1})$ with
+coefficients $\alpha_{i}\in\Fpp$ is $p^{D-1}\left(p^{D}-\left(-1\right)^{D}\right)$.\end{prop}
 
 \begin{proof}Proposition~11.27 in Grove~\cite{grove2002classical}
 provides the count of the zero-norm states $\zeta\left(D,p\right)=p^{D-1}\left(p^{D}+\left(-1\right)^{D}\left(p-1\right)\right)$.
 Since there are $p^{2}$ elements $\alpha\in\Fpp$, we must have $\left(p^{2}\right)^{D}=p^{2D}$
-possible values of a $D$-dimensional vector $\left(\alpha_{0},\ldots,\alpha_{D-1}\right)$.
+possible values of a $D$-dimensional vector $(\alpha_{0},\ldots,\alpha_{D-1})$.
 There are $p^{2}-1$ non-zero values of $\alpha\in\Fpp$, and we showed
 in Proposition~\ref{appH.sec} that $\fnorm{\alpha}$ maps exactly
 $p+1$ values in that set to each of the $p-1$ non-zero values in
@@ -2793,8 +2802,8 @@ $\pi\left(k\right)$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $10$
 \end{table}
 
 As an example, consider the field $\ff{23}$. Looking at the squares
-of the numbers $\ff{23}=\left\{ 0,\ldots,22\right\} $ modulo 23,
-we find the $2$-centered uninterrupted sequence $S_{2}\left(5\right)=\left\{ 0,1,2,3,4\right\} $,
+of the numbers $\ff{23}=\{0,\ldots,22\}$ modulo 23, we find the $2$-centered
+uninterrupted sequence $S_{2}\left(5\right)=\left\{ 0,1,2,3,4\right\} $,
 followed by $5$, which is both the smallest quadratic non-residue
 and the size of the uninterrupted sequence of quadratic residues (including
 $0$) of interest. In particular, it is possible to construct a total
@@ -2905,12 +2914,12 @@ although we can measure the probability for every eigenprojector of
 an observable as discussed in Sec.~\ref{sec:fuzzy}, our previous
 quantum circuits in Figures~\ref{fig:alg}, \ref{fig:Quantum-Circuit-Deutsch},
 and~\ref{fig:dbsearch} always measure in the computational basis
-$\left\{ \ket{0},\ldots,\ket{i},\ldots,\ket{D-1}\right\} $. Indeed,
-it is sufficient to only consider measuring a quantum circuit in the
-computational basis because measuring in another basis is the same
-as applying a quantum gate and measuring in the computational basis.
-In this situation, the Born rule for pure states, Eq.~(\ref{eq:Born}),
-can be simplified as
+$\{\ket{0},\ldots,\ket{i},\ldots,\ket{D-1}\}$. Indeed, it is sufficient
+to only consider measuring a quantum circuit in the computational
+basis because measuring in another basis is the same as applying a
+quantum gate and measuring in the computational basis. In this situation,
+the Born rule for pure states, Eq.~(\ref{eq:Born}), can be simplified
+as
 \begin{equation}
 \muB_{\Psi}\left(\proj{i}\right)\equiv\muB_{\Psi}\left(i\right)=\frac{\ip{\Psi}{i}\ip{i}{\Psi}}{\ip{\Psi}{\Psi}}=\frac{\left|\ip{i}{\Psi}\right|^{2}}{\ip{\Psi}{\Psi}}=\frac{\left|\alpha_{i}\right|^{2}}{\ip{\Psi}{\Psi}}\,,\label{eq:Born-ComputationalBasis}
 \end{equation}
@@ -2930,7 +2939,7 @@ where every probability amplitude $\alpha_{i}\in F^{D}\left(k\right)$
 so that both $\fnorm{\alpha_{i}}$ and $\fnorm{\ket{\Psi}}$ are within
 the order range $S_{0}\left(k\right)$, and $\muC_{\Psi}\left(i\right)$
 is called the cardinal probability of measuring $\ket{i}$. For example,
-let $p=311$, $k=11$, and $D=2$. The permitted range is $S_{0}\left(11\right)=\left\{ -5,\ldots,-1,0,1,\ldots,5\right\} $,
+let $p=311$, $k=11$, and $D=2$. The permitted range is $S_{0}\left(11\right)=\{-5,\ldots,-1,0,1,\ldots,5\}$,
 given the dimension $D=2$, the allowed probability amplitude coefficients
 are $F^{2}\left(11\right)=\left\{ 0,\pm1,\pm\rmi,\left(\pm1\pm\rmi\right)\right\} $
 (see Table~\ref{table_allowed}). Now the cardinal probabilities
@@ -3122,7 +3131,7 @@ f\left(\overline{x}\right)=\begin{cases}
 \end{cases}
 \end{equation}
 where we identify $\bfalse$ and $\btrue$ as $0$ and $1$ as usual,
-and $\overline{0}=\left(0,\ldots,0\right)$.
+and $\overline{0}=(0,\ldots,0)$.
 
 To solve Grover's problem, we represent the search states as $n$-qubit
 states as usual. However, instead of the Deutsch black box~$U_{f}$,
@@ -3386,11 +3395,11 @@ where $U$ is any unitary map.\end{thm}
 \begin{proof}\footnote{This proof assumes $p\ge7$, and there is a simpler proof for $D\ge4$
 applying to $p=3$ case~\cite{Gardiner2014}.}Assume such a map $\muF$ satisfying all properties exists, we will
 use the listed properties to build a contradiction. Consider the computational
-basis $\left\{ \ket{0},\ket{1},\ket{2},\ldots\right\} $, and the
-projectors formed by these vectors, $P_{0}=\proj{0}$, $P_{1}=\proj{1}$,
-and $P_{2}=\proj{2}$. Since $p\ge7$, $1+1+1$ is not $0$ in $\ff{p^{2}}$,
-and has the principal inverse field norm $\gamma=\fnorm*{3}$ as defined
-in Sec.~\ref{subsec:Vector-Spaces}. The unit-norm state $\ket{\oplus}=\frac{1}{\gamma}\left[\ket{0}+\ket{1}+\ket{2}\right]$
+basis $\{\ket{0},\ket{1},\ket{2},\ldots\}$, and the projectors formed
+by these vectors, $P_{0}=\proj{0}$, $P_{1}=\proj{1}$, and $P_{2}=\proj{2}$.
+Since $p\ge7$, $1+1+1$ is not $0$ in $\ff{p^{2}}$, and has the
+principal inverse field norm $\gamma=\fnorm*{3}$ as defined in Sec.~\ref{subsec:Vector-Spaces}.
+The unit-norm state $\ket{\oplus}=\frac{1}{\gamma}\left[\ket{0}+\ket{1}+\ket{2}\right]$
 can then be used as a parameter of $\muF$ and induces a QPMFF $\muF_{\oplus}$.
 To compute the probability values of $\muF_{\oplus}$, we want to
 utilize Eq.~(\ref{eq:basis-independent}) by letting $U_{i}$ be
@@ -3619,7 +3628,7 @@ $P\in\events'$, we have $\mathbb{1}-P\in\events'$ and for each pair
 of commuting projectors $P_{0}\in\events'$ and $P_{1}\in\events'$,
 we have $P_{0}P_{1}$ and $P_{0}+P_{1}-P_{0}P_{1}\in\events'$. Given
 a mutually commuting subspace~$\eventsC$ whose elements are diagonalizable
-by a common orthonormal basis $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $,
+by a common orthonormal basis $\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$,
 the function $\varphi\colon2^{\Omega}\rightarrow\events$ defined
 in Eq.~(\ref{eq:pullback-function}) maps any set~$E$ to the sum
 of the projectors formed by elements in $E$, and preserve all operations
@@ -3718,13 +3727,13 @@ classical Thm.~\ref{thm:Shapley-classical}.
 \begin{lemma}\label{lemma:density-matrix-pullback}Consider a QIVPM
 $\bar{\mu}\colon\events\rightarrow\mathscr{I}$ and a commuting subspace
 of events $\eventsC$ diagonalizable by a common orthonormal basis
-$\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $ with the
-function $\varphi\colon2^{\Omega}\rightarrow\events$ defined by Eq.~(\ref{eq:pullback-function}).
-For any classical probability measure~$\mu$ consistent with the
-pullback of $\bar{\mu}$, i.e., $\mu\in\mathrm{core}\left(\varphi^{*}\bar{\mu}\right)$,
-there is a density matrix~$\rho$ consistent with $\bar{\mu}$ relative
-to $\eventsC$, $\rho\in\coreBorn\left(\bar{\mu},\eventsC\right)$,
-such that the pullback of $\muB_{\rho}$ is $\mu$, i.e.,
+$\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$ with the function $\varphi\colon2^{\Omega}\rightarrow\events$
+defined by Eq.~(\ref{eq:pullback-function}). For any classical probability
+measure~$\mu$ consistent with the pullback of $\bar{\mu}$, i.e.,
+$\mu\in\mathrm{core}\left(\varphi^{*}\bar{\mu}\right)$, there is
+a density matrix~$\rho$ consistent with $\bar{\mu}$ relative to
+$\eventsC$, $\rho\in\coreBorn\left(\bar{\mu},\eventsC\right)$, such
+that the pullback of $\muB_{\rho}$ is $\mu$, i.e.,
 \begin{equation}
 \left(\varphi^{*}\muB_{\rho}\right)\left(E\right)=\muB_{\rho}\left(\varphi\left(E\right)\right)=\mu\left(E\right)\label{eq:density-matrix-pullback}
 \end{equation}
@@ -3767,7 +3776,7 @@ every QIVPM $\bar{\mu}\colon\events\rightarrow\mathscr{I}$, if a
 subspace of events $\eventsC\subseteq\events$ commutes, then $\coreBorn\left(\bar{\mu},\eventsC\right)\ne\emptyset$.\end{thm}
 
 \begin{proof}Since $\eventsC$ is a set of mutually commuting projections,
-they can be diagonalized by a common orthonormal basis $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $.
+they can be diagonalized by a common orthonormal basis $\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$.
 We can then follow Eq.~(\ref{eq:pullback-function}) to define $\varphi\colon2^{\Omega}\rightarrow\events$
 such that the pullback of $\bar{\mu}$ by $\varphi$, $\varphi^{*}\bar{\mu}$,
 is a classical IVPM\@. By Thm.~\ref{thm:Shapley-classical}, there
@@ -3999,7 +4008,7 @@ values are invariant under pullback as well.
 
 \begin{lemma}\label{lemma:expectation-value-between-classical-quantum}Consider
 an observable~$\mathbf{O}$ diagonalizable by an orthonormal basis
-$\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $ with $\varphi\colon2^{\Omega}\rightarrow\events$
+$\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$ with $\varphi\colon2^{\Omega}\rightarrow\events$
 defined by Eq.~(\ref{eq:pullback-function}). Given a QIVPM $\bar{\mu}\colon\events\rightarrow\mathscr{I}$,
 the expectation value of $\mathbf{O}$ relative to $\bar{\mu}$ is
 exactly the expectation value of the pullback of $\mathbf{O}$ relative
@@ -4015,7 +4024,7 @@ value relative to a QIVPM, $\sum_{s\in\left\{ +,-\right\} }\sum_{i=1}^{N^{s}}\la
 where $\lambda_{N^{-}}^{-}<\cdots<\lambda_{1}^{-}<0\le\lambda_{1}^{+}<\cdots<\lambda_{N^{+}}^{+}$
 and each $P_{i}^{s}$ is the projector onto the eigenspace of distinct
 eigenvalue~$\lambda_{i}^{s}$. Since $\mathbf{O}$ can be diagonalized
-by an orthonormal basis $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $,
+by an orthonormal basis $\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$,
 each $P_{i}^{s}$ can be expressed as the sum of some projectors formed
 by the elements in $\Omega$, i.e., there is a subset $E_{i}^{s}\subseteq\Omega$
 such that $P_{i}^{s}=\sum_{\ket{j}\in E_{i}^{s}}\proj{j}=\varphi\left(E_{i}^{s}\right)$.
@@ -4094,7 +4103,7 @@ hasn't established enough correspondence between classical and quantum
 cores, this theorem is weaker than its classical counterpart.
 
 \begin{thm}\label{thm:quantum-Rosenmuller}Consider an observable~$\mathbf{O}$
-diagonalizable by an orthonormal basis $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+diagonalizable by an orthonormal basis $\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$
 and a QIVPM $\bar{\mu}\colon\events\rightarrow\mathscr{I}$.
 \begin{itemize}
 \item Express $\mathbf{O}$ in the spectral decomposition specialized to
@@ -4267,7 +4276,7 @@ The expectation value of an observable $\mathbf{O}$ in a Hilbert
 space ${\cal H}$ of dimension $D$ relative to a 0-deterministic
 QIVPM is fully determinate and is equal to one of the eigenvalues
 $\lambda_{i}$ of that observable. To see this, note that given an
-orthonormal basis $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $,
+orthonormal basis $\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$,
 a 0-deterministic QIVPM must map exactly one of the projectors $\proj{i}$
 to $\necess$ and all others to $\imposs$. This is because, by Eq.~(\ref{eq:QIVPM-necess}),
 we have $\bar{\mu}\left(\sum_{j=0}^{D-1}{\proj{j}}\right)=\necess$
@@ -4290,7 +4299,7 @@ value of the product of a sequence of commuting observables $\left\{ \mathbf{O}_
 relative to the 0-deterministic QIVPM~$\bar{\mu}$ is the product
 of the expectation value of individual $\mathbf{O}_{j}$. Since $\left\{ \mathbf{O}_{j}\right\} $
 is a sequence of commuting observables, they can be diagonalized by
-a common orthonormal basis $\Omega=\left\{ \ket{0},\ket{1},\ldots,\ket{D-1}\right\} $
+a common orthonormal basis $\Omega=\{\ket{0},\ket{1},\ldots,\ket{D-1}\}$
 with spectral decompositions 
 \begin{equation}
 \mathbf{O}_{j}=\sum_{i=0}^{D-1}\lambda_{j,i}\proj{i}\,.\label{eq:spectral-decomposition}
