@@ -160,7 +160,22 @@
 \monthGranted{\DTMmonthname{\month}}
 \yearGranted{\the\year}
 
+% https://wiki.lyx.org/LyX/Tables#tabularx
+%% Hack by Heiko Oberdiek (on de.comp.text.tex)
 \usepackage{tabularx}
+
+%% Redefine the standard table
+\let\ORIGtabular\tabular
+\let\ORIGendtabular\endtabular
+\let\ORIGtabularx\tabularx
+\renewcommand*{\tabularx}{%
+  \def\tabular{%
+    \let\endtabular\ORIGendtabular
+    \ORIGtabular
+  }%
+  \ORIGtabularx
+}
+
 \renewcommand{\tabularxcolumn}[1]{m{#1}}
 \newcolumntype{Y}{>{\centering\doublespacing\arraybackslash}X}
 \newcolumntype{M}[1]{>{\centering\doublespacing\arraybackslash}m{\widthof{#1}}}
@@ -215,10 +230,10 @@ briefly read the Acknowledgments in other theses \cite{Chih2013,Sun2015,Lee2013,
 \begin{acknowledgments*}
 \begin{sidewaystable}
 \noindent \begin{centering}
-\caption{\label{tab:acknowledgments}I want to thank the professors co-authored
-with me, suggested me as a committee member, and taught me, and the
-collaboration or supervised works or studies become the basis of or
-inspire this dissertation.}
+\caption{\label{tab:committee}I want to thank the professors co-authored with
+me, suggested me as a committee member, and taught me, and the collaboration
+or supervised works or studies become the basis of or inspire this
+dissertation.}
 \par\end{centering}
 \noindent \centering{}\noindent \centering{}%
 \begin{tabularx}{\linewidth}{M{MATH-M781}M{Co-author}M{(\textarabic{عمرو صبري})}M{Co-author}M{Thurston}M{Shouhong}M{Lawrence}Y}
@@ -268,11 +283,12 @@ are cited in Sec.~\ref{modalquantum}.\tabularnewline\addlinespace
 \bottomrule
 \end{tabularx}
 \end{sidewaystable}
-I want to thanks all my professors co-authored with me, suggested
-me as a committee members, and taught me so that our work or studies
-became the bases or inspired any part of my dissertation as listed
-in Table~\ref{tab:acknowledgments}. Especially, Prof.\ Andrew J.
-Hanson, Prof.\ Gerardo Ortiz, and Prof.\ Amr A. Sabry\ (\textarabic{عمرو صبري})
+I want to thanks the professors served in all my committees. These
+professors advised me as committee members and taught me while we
+wrote papers together and when I took their courses. Most of my dissertation
+is either based on these papers or inspired by the studies supervised
+by them as listed in Table~\ref{tab:committee}. Especially, Prof.\ Andrew
+J. Hanson, Prof.\ Gerardo Ortiz, and Prof.\ Amr A. Sabry\ (\textarabic{عمرو صبري})
 meet me weekly for the pass few years, read and tried to understand
 what I typed which sometimes even myself cannot understand, taught
 me how to organize them in ``English'' so that general audience
@@ -287,23 +303,72 @@ and the quantum interpretation discussed with Prof.\ Shouhong Wang
 (汪守宏) also broadened my understanding on discrete and conventional
 quantum theories. I would like express my appreciation to all of these.
 
+\begin{sidewaystable}
+\noindent \begin{centering}
+\caption{\label{tab:teacher}The knowledge I learned from teachers in other
+courses help me consolidate this dissertation, where IUB stands for
+Indiana University Bloomington and NTU stands for National Taiwan
+University.}
+\par\end{centering}
+%% ERT block 1 (before LyX tabular)
+\renewcommand{\tabular}{\tabularx{\linewidth}}
+\renewcommand{\endtabular}{\endtabularx} 
+\begin{tabular}{ccM{MATH-M522}M{English~for~International~Graduate~Students:}Y}
+\toprule 
+\addlinespace
+Instructor & School & Course & Title & Relation with the dissertation\tabularnewline\addlinespace
+\midrule
+\addlinespace
+\midrule 
+\addlinespace
+Tom Lewis & IUB & SLST-T501 & English for International Graduate Students:\linebreak[3] Academic
+Writing & Sec.~\ref{subsec:Discrete-Deutsch-algorithm} is based on the term
+paper.\tabularnewline\addlinespace
+\addlinespace
+\midrule 
+\addlinespace
+Michael A. Mandell & IUB & MATH-M522 & Topology II & The textbook~\cite{Hatcher2001} is cited in Chapters~\ref{chap:Introduction}
+and~\ref{chap:Conventional-Quantum-Theory}.\tabularnewline\addlinespace
+\addlinespace
+\midrule 
+\addlinespace
+Steven Myers & IUB & CSCI-B502 & Computational Complexity & The textbook~\cite{AroraBarak2009} is cited in Sec.~\ref{modalquantumcomputing}.\tabularnewline\addlinespace
+\addlinespace
+\midrule 
+\addlinespace
+Valery Lunts & IUB & MATH-M501 & Survey of Algebra & The textbook~\cite{DummitFoote2004} is cited in Sec.~\ref{sec:background},
+\ref{discretequantumtheoryI}, and~\ref{sec:Discrete-Quantum-Theory-(II)}.\tabularnewline\addlinespace
+\addlinespace
+\midrule 
+\addlinespace
+Huah Chu (朱樺\textenglish[variant=american]{)} & NTU & 221~U3830\linebreak[3] 221~U3840 & Algebra(I)\linebreak[3] Algebra(II) & The textbook~\cite{Artin1991} is cited in Sec.~\ref{CQC1qubitBloch.sec},
+\ref{sec:background}, \ref{discretequantumtheoryI}, and~\ref{sec:Discrete-Quantum-Theory-(II)}.\tabularnewline\addlinespace
+\midrule
+\addlinespace
+\addlinespace
+Jin-Tzu Chen (陳金次) & NTU & 201~31300 & Functions of a Complex Variable & The textbook~\cite{GAMELIN2003} is cited in Sec.~\ref{subsec:Vector-Spaces}.\tabularnewline\addlinespace
+\bottomrule
+\addlinespace
+\end{tabular}% ERT block 2 (after LyX tabular)
+\renewcommand{\tabular}{\ORIGtabular}
+\renewcommand{\endtabular}{\ORIGendtabular} 
+\end{sidewaystable}
 To have the current the content of the dissertation, I would also
 like to thank John Gardiner for some inspiring discussion about quantum
 probability measures over finite fields~\cite{Gardiner2014}. His
 results were improved and motivated the transition from DQT to QIVPM
-in Sec.~\ref{sec:Toward-IVPM}. Also, the unpublished computation
-for the discrete Deutsch algorithm \cite{Deutsch1985,544199,Mermin2007}
-is organized in the term paper for SLST-T501 Academic Writing course.
-I want to thank Prof.\ Tom Lewis for proof-reading them, and they
-become the bases of Sec.~\ref{subsec:Discrete-Deutsch-algorithm}.
+in Sec.~\ref{sec:Toward-IVPM}. Besides of my committee members,
+the knowledge I learned from teachers in other courses help me consolidate
+this dissertation as listed in Table~\ref{tab:teacher}.
+
 Besides of Prof.\ Tom Lewis, my other English teachers, especially
 Traci Nagle, Elizabeth ``Betsy'' Merceron, and Kexin ``Casey''
 Chen (谌可心), taught me a lot on how to communicate in English as well.
 Others who help me indirectly on the content of the dissertation including
-Kin Wai Chan, Prof.\ Huah Chu (朱樺), Weihua Liu (刘伟华), Caren Liu
-(劉鈺平), Meng-Wei Chen (陳孟瑋), Hao-Chun Lee (李浩君), Chao-Hong Chen
-(陳昭宏)\ldots , etc. This could be listed on and on. I still thank
-you even if your name is not listed here, and sorry for my bad memory.
+Kin Wai Chan, Weihua Liu (刘伟华), Caren Liu (劉鈺平), Meng-Wei Chen
+(陳孟瑋), Hao-Chun Lee (李浩君), Chao-Hong Chen (陳昭宏)\ldots , etc. This
+could be listed on and on. I still thank you even if your name is
+not listed here, and sorry for my bad memory.
 
 Many people in both the departments of Mathematics and Computer Science
 have done everything to make my double-major smooth. \todo{Acknowledgments
@@ -1847,7 +1912,8 @@ Our computations with this ``toy'' modal quantum theory showed that
 it possesses ``supernatural'' computational power. For example,
 one can solve a black box version of the \usat\ problem~\cite{usat}
 in a way that outperforms conventional quantum computing. The classical
-\usat\ problem (also known as $\lang{USAT}$ or $\lang{UNAMBIGUOUS-SAT}$)
+\usat\ problem (also known as $\lang{USAT}$~\cite{AroraBarak2009}
+or $\lang{UNAMBIGUOUS-SAT}$) %
 \begin{comment}
 \todo{Add citation about where these two names come from. }
 \end{comment}
