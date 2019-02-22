@@ -3669,8 +3669,8 @@ and quantum probability measures.
 
 Our definition of QIVPMs is consistent with classical IVPMs in the
 sense that a restriction of QIVPMs to mutually commuting subspace
-of events, $\eventsC$, recovers the definition of classical IVPMs.
- To see this, we first define a subspace of events. $\events'$ is
+of events~$\eventsC$ recovers the definition of classical IVPMs.
+ To see this, we first define a subspace of events: $\events'$ is
 called a \emph{subspace} of the set of events~$\events$ if $\events'$
 contains the projectors $\mathbb{0}$ and $\mathbb{1}$ and is closed
 under complements, sums, and products. In particular, for any projector
@@ -3697,22 +3697,23 @@ mutually commuting events~$\eventsC$, and one of them is \emph{core}.
 Recall in Sec.~\ref{subsec:Definitions-of-IVPMs}, given a classical
 IVPM $\bar{\mu}\colon2^{\Omega}\rightarrow\mathscr{I}$ and an event
 $E\subseteq\Omega$ such that $\bar{\mu}\left(E\right)=\left[0.2,0.3\right]$
-and $\bar{\mu}\left(\overline{E}\right)=\left[0.7,0.8\right]$, we
-discussed the ``true'' probabilities, $\mu\left(E\right)$ and $\mu\left(\overline{E}\right)$,
+and $\bar{\mu}\left(E\right)=\left[0.7,0.8\right]$, we discussed
+the ``true'' probabilities, $\mu\left(E\right)$ and $\mu\left(\overline{E}\right)$,
 can be anywhere in the range $\left[0.2,0.3\right]$ and $\left[0.7,0.8\right]$,
-respectively, as long as they satisfy $\mu\left(E\right)+\mu\left(\overline{E}\right)=1$.
-These ``true'' probabilities can be represented as a probability
-measure $\mu\colon2^{\Omega}\rightarrow\left[0,1\right]$ satisfying
+respectively, as long as they satisfy 
+\begin{equation}
+\mu\left(E\right)+\mu\left(\overline{E}\right)=1\,.\label{eq:total-probability}
+\end{equation}
+Eq.~(\ref{eq:total-probability}) guarantees the function mapping
+an event to its ``true'' probabilities, $\mu\colon2^{\Omega}\rightarrow\left[0,1\right]$,
+is a probability measure. Requiring the ``true'' probability of
+each event should be in the range spanned by the interval-valued probability
+of the same event, i.e., 
 \begin{align}
-\mu\left(E\right) & \in\left[0.2,0.3\right]=\bar{\mu}\left(E\right)\,, & \mu\left(\overline{E}\right) & \in\left[0.7,0.8\right]=\bar{\mu}\left(\overline{E}\right)\,.
-\end{align}
-Together with the trivial fact
-\begin{align}
+\mu\left(E\right) & \in\left[0.2,0.3\right]=\bar{\mu}\left(E\right)\,, & \mu\left(\overline{E}\right) & \in\left[0.7,0.8\right]=\bar{\mu}\left(\overline{E}\right)\,,\\
 \mu\left(\emptyset\right) & =0\in\imposs=\bar{\mu}\left(\emptyset\right)\,, & \mu\left(\Omega\right) & =1\in\necess=\bar{\mu}\left(\Omega\right)\,,
 \end{align}
-we conclude the ``true'' probability of each event belongs to the
-interval probability of the corresponding event. This conclusion gives
-the following definition of core.
+gives the following definition of core.
 
 \begin{definition}[Classical Consistency and Core]\label{def:Consistency-classical}
 We say an IVPM $\bar{\mu}\colon2^{\Omega}\rightarrow\mathscr{I}$
@@ -3878,16 +3879,17 @@ measure $\mu\colon2^{\Omega}\rightarrow\left[0,1\right]$ consistent
 with $\bar{\mu}$ on every event. On one extreme case, $\mu\left(E\right)=0.2$,
 the expectation value of $X$ relative to $\mu$ is 
 \begin{equation}
-1\cdot\mu\left(E\right)+2\cdot\mu\left(\overline{E}\right)=1\cdot0.2+2\cdot0.8=1.8\,.
+\int X\rmd\pmeas=1\cdot\mu\left(E\right)+2\cdot\mu\left(\overline{E}\right)=1\cdot0.2+2\cdot0.8=1.8\,.
 \end{equation}
 On the other extreme case, $\mu\left(E\right)=0.3$, the expectation
 value of $X$ relative to $\mu$ is
 \begin{equation}
-1\cdot\mu\left(E\right)+2\cdot\mu\left(\overline{E}\right)=1\cdot0.3+2\cdot0.7=1.7\,.
+\int X\rmd\pmeas=1\cdot\mu\left(E\right)+2\cdot\mu\left(\overline{E}\right)=1\cdot0.3+2\cdot0.7=1.7\,.
 \end{equation}
 In other words, if $\mu$ is in the core of $\bar{\mu}$, the expectation
-value of $X$ belongs to $\left[1.7,1.8\right]$ which should be the
-expectation value of $X$ with respect to $\bar{\mu}$.
+value of $X$ relative to $\mu$, $\int X\rmd\pmeas$, belongs to
+$\left[1.7,1.8\right]$ which should be the expectation value of $X$
+relative to $\bar{\mu}$.
 
 \begin{comment}
 \todo{See if we could delete from here to Thm.~\ref{thm:Rosenmuller},
