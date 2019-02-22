@@ -3201,17 +3201,16 @@ R=\begin{pmatrix}-1 & 0 & 0 & \cdots & 0\\
 where the ``marked'' element is in the first position. Beside $R$,
 we also need the $N\times N$ ``diffusion'' matrix
 \begin{equation}
-\Delta=\begin{pmatrix}1-\frac{N}{2} & 1 & 1 & \cdots & 1\\
+V=\begin{pmatrix}1-\frac{N}{2} & 1 & 1 & \cdots & 1\\
 1 & 1-\frac{N}{2} & 1 & \cdots & 1\\
 1 & 1 & 1-\frac{N}{2} & \cdots & 1\\
 \vdots & \vdots & \vdots & \ddots & \vdots\\
 1 & 1 & 1 & \cdots & 1-\frac{N}{2}
 \end{pmatrix}\,,
 \end{equation}
-where we have eliminated, in matrix~$\Delta$, the scaling factor
-$\frac{2}{N}$ to enforce the requirement that all matrix coefficients
-in our framework are integer-valued. By applying the transformation
-$\Delta R$ repeatedly 
+where we have eliminated, in matrix~$V$, the scaling factor $\frac{2}{N}$
+to enforce the requirement that all matrix coefficients in our framework
+are integer-valued. By applying the transformation $VR$ repeatedly
 \begin{equation}
 j=\round\left(\frac{\pi}{4\arccos\sqrt{1-\frac{1}{N}}}-\frac{1}{2}\right)\approx\round\left(\frac{\pi}{4}\sqrt{N}\right)
 \end{equation}
@@ -3225,10 +3224,10 @@ works. Because the probability amplitudes of $\ket{\overline{x}}$
 are all the same for $\overline{x}\neq\overline{0}$, we can let $a_{l}$
 be the probability amplitude of $\ket{\overline{0}}$, with $b_{l}$
 the probability amplitude of each of the other possibilities, which
-are all the same, after the operators $\Delta R$ is applied $l$
-times. Beginning at $l=0$ with the information-less state and the
-normalization scaled to integer values as usual, the state after $l$-th
-iteration can be written as %
+are all the same, after the operators $VR$ is applied $l$ times.
+Beginning at $l=0$ with the information-less state and the normalization
+scaled to integer values as usual, the state after $l$-th iteration
+can be written as %
 \begin{comment}
 \todo{Verify the computation??}
 \end{comment}
@@ -3237,11 +3236,11 @@ iteration can be written as %
 b_{l}\\
 \vdots\\
 b_{l}
-\end{pmatrix}=\left(\Delta R\right)^{l}\begin{pmatrix}1\\
+\end{pmatrix}=\left(VR\right)^{l}\begin{pmatrix}1\\
 1\\
 \vdots\\
 1
-\end{pmatrix}=\Delta R\begin{pmatrix}a_{l-1}\\
+\end{pmatrix}=VR\begin{pmatrix}a_{l-1}\\
 b_{l-1}\\
 \vdots\\
 b_{l-1}
@@ -3298,7 +3297,7 @@ Continuing with the $3$-qubit Grover example, we show how the cardinal
 probabilities evolve to single out the target state. First, assume
 that $f\left(\overline{x}\right)=1$ if and only if $\ket{\overline{x}}=\ket{0}\!\ket{0}\!\ket{0}$.
 The initial information-less $8$-dimensional state vector evolves
-under the application of $\Delta R$ as follows: %
+under the application of $VR$ as follows: %
 \begin{comment}
 \todo{Change the whole paragraph to a table?}
 \end{comment}
@@ -3348,8 +3347,8 @@ while the cardinal probabilities of measuring the other states become
 \cardp{256}{2048} &  & \cardp{64}{2048} &  & \cardp{16}{2048} & .
 \end{align}
 We may thus conclude that the cardinal probability of measuring the
-satisfying assignment of $f$ increases as we apply the diffusion
-$\Delta$ and phase rotation $R$ matrices repeatedly.
+satisfying assignment of $f$ increases as we apply the diffusion~$V$
+and phase rotation~$R$ matrices repeatedly.
 
 Clearly, the required size of $k$ increases systematically with the
 problem size, and the corresponding size of the required prime number
