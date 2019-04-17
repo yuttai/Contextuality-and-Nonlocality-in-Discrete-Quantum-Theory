@@ -5082,75 +5082,61 @@ and precision of the particular experiment.
 
 \section{Summary}
 
-Conventional quantum theory is defined over the continuum of complex
-numbers, but we cannot distinguish two arbitrary complex numbers without
-unbounded resources. To explore alternative versions of quantum theory
-incorporating our limitation of distinguishability, two types of discrete
-quantum theories have been described in this thesis: quantum theories
-and computing over finite fields and quantum interval-valued probability
-measures. Examining the computational and physical consequences of
-such frameworks can yield new insights into not only the subtle properties
-of conventional quantum theory but also the power and capacity of
-quantum computing.
+Conventional quantum theory is based on the continuum of complex numbers,
+but we cannot distinguish two arbitrary complex numbers without unbounded
+resources. To explore alternative versions of quantum theory incorporating
+our limitation of distinguishability, two types of discrete quantum
+theories were described: \emph{quantum theories and computing over
+finite fields} and \emph{quantum interval-valued probability measures
+(QIVPMs)}. Examining the computational and physical consequences of
+such frameworks could yield new insights into not only the subtle
+properties of conventional quantum theory but also the power and capacity
+of quantum computing.
 
 The theories over finite fields started with unrestricted discrete
 fields (Chapter~\ref{chap:Unrestricted-Finite-Fields}), then advanced
 to a more reasonable framework based on complexifiable discrete fields
 (Sec.~\ref{discretequantumtheoryI} to~\ref{discretequantumcomputingI}),
-which lacks a notion of probability and supports unnaturally efficient
+which lacked a notion of probability and supported unnaturally efficient
 deterministic quantum algorithms. A still more plausible discrete
-theory with cardinal probabilities is proposed (Sec.~\ref{sec:Discrete-Quantum-Theory-(II)}
+theory with cardinal probabilities was proposed (Sec.~\ref{sec:Discrete-Quantum-Theory-(II)}
 and~\ref{discretequantumcomputingII}), where conventional quantum
-theory and computing emerge in a local sense, but lacking arithmetic
+theory and computing emerged in a local sense, but lacking arithmetic
 operations among cardinal probabilities still posed difficulty to
-define expectation values. One attempt to address this issue was to
-switch to an axiomatic approach and following Gleason's theorem to
-deduce a Born rule over finite fields (Sec.~\ref{sec:Toward-IVPM}).
-However, quantum theories over finite fields looked unlikely to compatible
-with infinitely precise real-valued probability; we thus extended
-the classical imprecise interval-valued probability to quantum domain,
-and defined quantum interval-valued probability measures (QIVPMs).
+define expectation values. Since the axiomatic approach looked unlikely
+to provide ``sensible'' real-valued probability measures over finite
+fields (Sec.~\ref{sec:Toward-IVPM}), we shifted our attention to
+directly embed our limitation of distinguishability into the theory
+to define QIVPM.
 
 \begin{figure}[b]
-\centering{}$\xymatrix{\textrm{Classical Probability Measure}\ar[d]\ar[r] & \textrm{Quantum Probability Measure}\ar[d]\\
-\textrm{Classical IVPM}\ar[r] & \textrm{QIVPM}
+\centering{}$\xymatrix{\textrm{Classical Probability Measure}\ar[d]_{\textrm{blur probability}}\ar[r]^{\textrm{glue events}} & \textrm{Quantum Probability Measure}\ar[d]^{\textrm{blur probability}}\\
+\textrm{Classical IVPM}\ar[r]_{\textrm{glue events}} & \textrm{QIVPM}
 }
-$\caption{\label{fig:commutative-diagrams}Quantum IVPMs inherited from both
-quantum probability measures and classical IVPMs. Since Quantum IVPMs
-inherited from classical probability measures in two different paths,
-it is natural to ask whether this diagram commutes.}
+$\caption{\label{fig:commutative-diagrams}QIVPMs inherited from both quantum
+probability measures and classical IVPMs.\todo{The first arrow is
+too short!}}
 \end{figure}
 As a natural extension of both convention quantum probability measures
 and classical interval-valued probability measures (IVPMs) illustrated
 in Fig.~\ref{fig:commutative-diagrams}, QIVPMs inherited definitions
-and properties from the both sides. While the core and expectation
-values of QIVPMs can be pulled back to the classical cases and consistent
+and properties from the both sides. While the expectation values of
+QIVPMs could be pulled back to the classical cases and consistent
 with those of quantum probability measures in the infinitely precise
 limit (Sec.~\ref{sec:Interval-Uncertainty}), foundational concepts
 in quantum mechanics, such as the Kochen-Specker and Gleason theorems,
-extended to QIVPMs in subtle ways. \todo{Clean up until here\ldots}
+extended to QIVPMs in subtle ways. By carefully specifying experimental
+uncertainties, we established rigorous bounds on the validity of the
+Kochen-Specker theorem (Sec.~\ref{sec:Kochen-Specker}). While there
+is a QIVPM not consistent with Gleason's unique state~$\rho$ on
+all projectors, we constructed a class of QIVPMs for which the original
+Gleason theorem could be recovered asymptotically (Sec.~\ref{sec:Gleason}).
 
-Similar to gluing a family of classical probability spaces together
-to form a conventional quantum probability space (Sec.~\ref{sec:fuzzy}),
-a family of classical IVPMs can be glued to get a quantum IVPM. Although
-most of structures above classical IVPMs can be extended to the quantum
-case (Sec.~\ref{sec:Interval-Uncertainty}), .
-
-....
-
-Before discussing the further extension, let's summarize what we have
-done previously. In Chapter~\ref{chap:Conventional-Quantum-Theory},
-we reviewed what was established in CQT. In particular, Sec.~\ref{CQC1qubitBloch.sec}
-studied the geometrical structure of quantum states to prepare replacing
-the conventional Hilbert space~$\mathComplex^{D}$ or projective
-Hilbert space~$\CP{D-1}$ by its discrete analog in Chapter~\ref{chap:Unrestricted-Finite-Fields}
-and~\ref{chap:DQT=000026DQC}. In Chapter~\ref{chap:Unrestricted-Finite-Fields},
-the field of complex numbers~$\mathComplex$ is replaced by unrestricted
-finite fields~$\Fq$. Although this modal theory is
-
-, and a valid pure state can be represented as any non-zero vector
-in $\Fq^{D}$ and a measure scheme could be defined which only predicts
-whether an measurement result is possible or not. \todo{Keep writing\ldots}
+In the following further discussion, we will briefly explain why we
+can only recover Gleason's on a class of QIVPM, the possibility to
+further build a computational model over QIVPMs, and the possibility
+to combine two approaches to consider quantum interval-valued probability
+measures over finite fields.
 
 \section{Gleason's Theorem for General QIVPMs}
 
@@ -5167,7 +5153,7 @@ and quantum computing with QIVPMs. Finally, we want to improve the
 discrete quantum theories to consider QIVPMs over finite fields in
 future research.
 \end{comment}
-As we discussed in the previous section, Thm.~\ref{thm:Finite-precision-Gleason}
+As we discussed in Sec.~\ref{sec:Gleason}, Thm.~\ref{thm:Finite-precision-Gleason}
 only applies to the QIVPMs constructed by composing an interval map
 with a conventional quantum probability measure, and the states consistent
 with the composite QIVPM collapse to a single state as the maximum
