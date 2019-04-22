@@ -11,6 +11,7 @@
 \usepackage{rotfloat}
 \usepackage{booktabs}
 \usepackage{mathrsfs}
+\usepackage{url}
 \usepackage{enumitem}
 \usepackage{pdfpages}
 \usepackage{graphicx}
@@ -463,17 +464,17 @@ and helping me control myself in general.\end{acknowledgments*}
 
 \begin{preface*}
 \begin{itemize}
-\item The latest PDF version of this thesis is in GitHub: \code{https://git.io/fxbuG}.
-\item Its source code is typeset using \LyX{} \cite{LyX} in \code{https://git.io/fxbuE}
-and the exported \LaTeX{} file is in \code{https://git.io/fhZBW}.
+\item The latest PDF version of this thesis is in GitHub: \url{https://git.io/fxbuG}.
+\item Its source code is typeset using \LyX{} \cite{LyX} in \url{https://git.io/fxbuE}
+and the exported \LaTeX{} file is in \url{https://git.io/fhZBW}.
 \item Any comments can be left in the Issue part of the GitHub repository:
-\code{https://git.io/fxbug}.
+\url{https://git.io/fxbug}.
 \end{itemize}
 Following explains how to compile the PDF from the \LaTeX{} source:
 \begin{enumerate}
 \item \label{enu:Clone-the-git}Clone the git repository of this thesis
-\code{https://git.io/fhZP5} into your local directory and the thesis
-document class \code{https://github.com/yuttai/iuphd} in a location
+\url{https://git.io/fhZP5} into your local directory and the thesis
+document class \url{https://github.com/yuttai/iuphd} in a location
 where the system can find.
 \item In the local directory of this thesis, run \code{xelatex dissertation.tex}.
 \item Run \code{biber dissertation}.
@@ -3617,7 +3618,7 @@ defined as follows: \begin{subequations}\label{eq:interval-operations}
 \end{eqnarray}
 \end{subequations} Given a finite sample space~$\Omega$, and its
 power set~$2^{\Omega}$ as the classical event space, a classical
-IVPM~$\bar{\mu}\colon2^{\Omega}\rightarrow\mathscr{I}$ is a function
+IVPM $\bar{\mu}\colon2^{\Omega}\rightarrow\mathscr{I}$ is a function
 subject to the following constraints:\begin{subequations}\label{eq:CIVPM-constraints}
 \begin{eqnarray}
  &  & \bar{\mu}(\emptyset)=\imposs\,,\\
@@ -4522,7 +4523,16 @@ inclusion-exclusion principle. From the commuting projectors $P_{0}$
 and $P_{1}$, we construct the following three orthogonal projectors:
 $P_{0}P_{1}$, $P_{0}\left(\mathbb{1}-P_{1}\right)$, and $\left(\mathbb{1}-P_{0}\right)P_{1}$.
 Then we proceed as follows:
-
+\begin{align*}
+ & \bar{\mu}\left(P_{0}+P_{1}-P_{0}P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\\
+={} & \bar{\mu}\left(P_{0}P_{1}+P_{0}(\mathbb{1}-P_{1})+P_{1}-P_{0}P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right) & (\mbox{because }P_{0}=P_{0}P_{1}+P_{0}(\mathbb{1}-P_{1}))\\
+={} & \bar{\mu}\left(P_{0}(\mathbb{1}-P_{1})+P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right)\\
+={} & \bar{\mu}\left(P_{0}(\mathbb{1}-P_{1})+P_{0}P_{1}+(\mathbb{1}-P_{0})P_{1}\right)+\bar{\mu}\left(P_{0}P_{1}\right) & (\mbox{because }P_{1}=P_{0}P_{1}+(\mathbb{1}-P_{0})P_{1})\\
+={} & \bar{\mu}(P_{0}(\mathbb{1}-P_{1}))+\bar{\mu}(P_{0}P_{1})+\bar{\mu}((\mathbb{1}-P_{0})P_{1})+\bar{\mu}\left(P_{0}P_{1}\right) & (\mbox{using Eq.~(\ref{amr}) twice})\\
+={} & \bar{\mu}(P_{0}(\mathbb{1}-P_{1})+P_{0}P_{1})+\bar{\mu}((\mathbb{1}-P_{0})P_{1}+P_{0}P_{1}) & (\mbox{using Eq.~(\ref{amr}) twice})\\
+={} & \bar{\mu}(P_{0})+\bar{\mu}(P_{1})
+\end{align*}
+\begin{comment}
 \noindent 
 \begin{equation*} 
 \begin{aligned} 
@@ -4538,6 +4548,7 @@ Then we proceed as follows:
 =~~& \bar{\mu}(P_{0}) + \bar{\mu}(P_{1}) 
 \end{aligned} 
 \end{equation*}
+\end{comment}
 \end{proof}
 
 \noindent The next lemma relates $\delta$-deterministic QIVPMs with
@@ -4582,7 +4593,7 @@ and $\left[1-\delta,1\right]$ are disjoint, which implies $\bar{\mu}\left(P'+P''
 and $\left[1-\delta,1\right]$ are disjoint. Together with the fact
 that $\bar{\mu}\left(P'+P''\right)$ is a subset of either $\left[0,\delta\right]$
 or $\left[1-\delta,1\right]$, $\bar{\mu}\left(P'+P''\right)$ must
-be a subset of $\left[0,\delta\right]$, which implies $\barmuD\left(P'+P''\right)=\imposs$,
+be a subset of $\left[0,\delta\right]$, which implies $\barmuD(P'+P'')=\imposs$,
 and hence also Eq.~(\ref{eq:QuantumInterval-valuedProbability-Equal})
 is again satisfied.\end{proof}
 
