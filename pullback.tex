@@ -207,10 +207,23 @@ $E\in2^{\Omega}$ to a quantum event $\varphi\left(E\right)\in\events$.
 Then, for any quantum probability measure $\mu\colon\events\rightarrow\left[0,1\right]$,
 the function $\left(\lambda E.\mu\left(\varphi\left(E\right)\right)\right)\colon2^{\Omega}\rightarrow\left[0,1\right]$
 defined by precomposition is a classical probability measure because
-\begin{align}
-\mu\left(\mathbb{0}\right) & =0\,, & \mu\left(\mathbb{1}\right) & =1\,, & \mu\left(\mathbb{1}-P\right) & =1-\mu\left(P\right)\,,\label{eq:QuantumProbability-1}
-\end{align}
-. Since that ``precomposition'' is called ``pullback'' in differential
+\begin{subequations}\label{eq:CPM-constraints}
+\begin{eqnarray}
+ &  & \mu\left(\varphi(\Omega)\right)=\mu\left(\mathbb{1}\right)\overset{\textrm{Eq.~(\ref{eq:QuantumProbability})}}{=}1\,,\label{eq:CPM-necess}\\
+ &  & \mu\left(\varphi\left(\overline{E}\right)\right)=\mu\left(\mathbb{1}-\varphi\left(E\right)\right)\overset{\textrm{Eq.~(\ref{eq:QuantumProbability})}}{=}1-\mu\left(\varphi\left(E\right)\right)\,,\label{eq:CPM-complement}\\
+ &  & \mu\left(\varphi(\emptyset)\right)\overset{\textrm{Eq.~(\ref{eq:CPM-complement})}}{=}1-\mu\left(\varphi\left(\Omega\right)\right)\overset{\textrm{Eq.~(\ref{eq:CPM-necess})}}{=}0\,,\label{eq:CPM-imposs}
+\end{eqnarray}
+\end{subequations}
+and for each pair of disjoin $E_{0}$ and $E_{1}$: 
+\begin{equation}
+\begin{aligned} & \mu\left(\varphi\left(E_{0}\cup E_{1}\right)\right)\\
+\overset{\textrm{Eq.~(\ref{eq:pullback-properties})}}{=}{} & \mu\left(\varphi\left(E_{0}\right)+\varphi\left(E_{1}\right)-\varphi\left(\emptyset\right)\right)\\
+\overset{\textrm{Eq.~(\ref{eq:pullback-properties-basic})}}{=}{} & \mu\left(\varphi\left(E_{0}\right)+\varphi\left(E_{1}\right)-\left(\mathbb{1}-\mathbb{1}\right)\right)\\
+\overset{\textrm{Eq.~(\ref{eq:QuantumProbability-Addition})}}{=}{} & \mu\left(\varphi\left(E_{0}\right)\right)+\mu\left(\varphi\left(E_{1}\right)\right)\,.
+\end{aligned}
+\label{eq:Probability-Addition}
+\end{equation}
+Since that ``precomposition'' is called ``pullback'' in differential
 geometry~\cite{wiki:Pullback}\footnote{Whether this kind of ``pullback'' is categorical will need further
 investigate.}, we will use their notation and write the precomposition $\left(\lambda E.\mu\left(\varphi\left(E\right)\right)\right)$
 as $\lambda E.\left(\varphi^{*}\mu\right)\left(E\right)$, i.e., $\left(\varphi^{*}\mu\right)\left(E\right)=\mu\left(\varphi\left(E\right)\right)$,
@@ -229,7 +242,7 @@ cases}
 Name & Classical & Quantum & How does the structure preserve?\tabularnewline
 \midrule
 \midrule 
-Event & $E\in2^{\Omega}$ & $\varphi\left(E\right)=\sum_{\ket{j}\in E}\proj{j}\in\events$ & Eqs.~(\ref{eq:pullback-properties-basic}) and (\ref{eq:pullback-properties})\tabularnewline
+Event & $E\in2^{\Omega}$ & $\varphi\left(E\right)=\sum_{\ket{j}\in E}\proj{j}\in\events$ & Eqs.~(\ref{eq:pullback-properties-basic}) and~(\ref{eq:pullback-properties})\tabularnewline
 \midrule 
 Probability measure & $\begin{array}{cccc}
 \varphi^{*}\mu\colon & 2^{\Omega} & \rightarrow & \left[0,1\right]\\
@@ -237,7 +250,7 @@ Probability measure & $\begin{array}{cccc}
 \end{array}$ & $\begin{array}{cccc}
 \mu\colon & \events & \rightarrow & \left[0,1\right]\\
  & P & \mapsto & \mu\left(P\right)
-\end{array}$ & \tabularnewline
+\end{array}$ & Eqs.~(\ref{eq:CPM-constraints}) and~(\ref{eq:Probability-Addition})\tabularnewline
 \midrule
 \midrule 
 Possible measured values & $\lambda_{i}\in\mathbb{R}$ & $\lambda_{i}\in\mathbb{R}$ & Equal\tabularnewline
