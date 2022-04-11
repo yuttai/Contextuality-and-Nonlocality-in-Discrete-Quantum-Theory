@@ -2,7 +2,6 @@
 %% Do not edit unless you really know what you are doing.
 \documentclass[11pt,english]{article}
 \usepackage[T1,T2A]{fontenc}
-\usepackage[utf8]{inputenc}
 \usepackage{verbatim}
 \usepackage{booktabs}
 \usepackage{mathrsfs}
@@ -66,7 +65,7 @@
 \usepackage[braket,qm]{qcircuit}
 \newcommand{\proj}[1]{\op{#1}{#1}}
 
-%\usepackage{unicode-math}
+\usepackage{unicode-math}
 \RequirePackage{ifthen}
 \@ifpackageloaded{unicode-math}{}{
  \newcommand{\symbf}{\mathbf}
@@ -207,8 +206,11 @@ in Eq.~(\ref{eq:pullback-function}) which sends a classical event
 $E\in2^{\Omega}$ to a quantum event $\varphi\left(E\right)\in\events$.
 Then, for any quantum probability measure $\mu\colon\events\rightarrow\left[0,1\right]$,
 the function $\left(\lambda E.\mu\left(\varphi\left(E\right)\right)\right)\colon2^{\Omega}\rightarrow\left[0,1\right]$
-defined by precomposition is a classical probability measure. Since
-that ``precomposition'' is called ``pullback'' in differential
+defined by precomposition is a classical probability measure because
+\begin{align}
+\mu\left(\mathbb{0}\right) & =0\,, & \mu\left(\mathbb{1}\right) & =1\,, & \mu\left(\mathbb{1}-P\right) & =1-\mu\left(P\right)\,,\label{eq:QuantumProbability-1}
+\end{align}
+. Since that ``precomposition'' is called ``pullback'' in differential
 geometry~\cite{wiki:Pullback}\footnote{Whether this kind of ``pullback'' is categorical will need further
 investigate.}, we will use their notation and write the precomposition $\left(\lambda E.\mu\left(\varphi\left(E\right)\right)\right)$
 as $\lambda E.\left(\varphi^{*}\mu\right)\left(E\right)$, i.e., $\left(\varphi^{*}\mu\right)\left(E\right)=\mu\left(\varphi\left(E\right)\right)$,
@@ -235,7 +237,7 @@ Probability measure & $\begin{array}{cccc}
 \end{array}$ & $\begin{array}{cccc}
 \mu\colon & \events & \rightarrow & \left[0,1\right]\\
  & P & \mapsto & \mu\left(P\right)
-\end{array}$ & Eqs.~(\ref{eq:QuantumProbability}) and (\ref{eq:QuantumProbability-Addition})\tabularnewline
+\end{array}$ & \tabularnewline
 \midrule
 \midrule 
 Possible measured values & $\lambda_{i}\in\mathbb{R}$ & $\lambda_{i}\in\mathbb{R}$ & Equal\tabularnewline
@@ -654,9 +656,9 @@ In some cases, this is indeed a sensible definition. For example,
 if $\mu(E_{0})=[0.1,0.2]$ and $\mu(E_{1})=[0.3,0.4]$ we get $\mu(E_{0}\cup E_{1})=[0.4,0.6]$.
 But consider an event $E$ such that $\mu(E)=[0.2,0.3]$ and hence
 $\mu\left(\overline{E}\right)=[0.7,0.8]$. The two events $E$ and
-$\overline{E}$ are disjoint; the naïve addition of intervals would
-give $\mu\left(E\cup\overline{E}\right)=[0.9,1.1]$, which is not
-a valid probability interval. Moreover, the event $E\cup\overline{E}$
+$\overline{E}$ are disjoint; the na\"{\i}ve addition of intervals
+would give $\mu\left(E\cup\overline{E}\right)=[0.9,1.1]$, which is
+not a valid probability interval. Moreover, the event $E\cup\overline{E}$
 is the entire space; its probability interval should be $\necess$
 which is sharper than $[0.9,1.1]$. The problem is that the two intervals
 are correlated: there is more information in the combined event than
@@ -2256,9 +2258,9 @@ must have a non-empty core, i.e., $\coreBorn\left(\bar{\mu},\events\right)\ne\em
 ?\end{question}
 
 \begin{comment}
-\todo{Discrete \foreignlanguage{ngerman}{Schrödinger} equation? And
-its relationship with Grover's algorithm? }\todo{Notice that in
-differential geometry, the Killing-Hopf theorem asserts that having
+\todo{Discrete \foreignlanguage{ngerman}{Schr\"{o}dinger} equation?
+And its relationship with Grover's algorithm? }\todo{Notice that
+in differential geometry, the Killing-Hopf theorem asserts that having
 positive constant curvature guarantees a manifold is essentially a
 sphere, but say little things even if the curvature has an only small
 deviation from constant. Since a quantum probability measure is glued
