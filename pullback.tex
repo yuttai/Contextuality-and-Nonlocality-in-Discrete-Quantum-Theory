@@ -206,26 +206,31 @@ in Eq.~(\ref{eq:pullback-function}) which sends a classical event
 $E\in2^{\Omega}$ to a quantum event $\varphi\left(E\right)\in\events$.
 Then, for any quantum probability measure $\mu\colon\events\rightarrow\left[0,1\right]$,
 the function $\left(\lambda E.\mu\left(\varphi\left(E\right)\right)\right)\colon2^{\Omega}\rightarrow\left[0,1\right]$
-defined by precomposition is a classical probability measure because
+defined by precomposition is a classical probability measure\footnote{\begin{proof}
 \begin{subequations}\label{eq:CPM-constraints}
 \begin{eqnarray}
- &  & \mu\left(\varphi(\Omega)\right)=\mu\left(\mathbb{1}\right)\overset{\textrm{Eq.~(\ref{eq:QuantumProbability})}}{=}1\,,\label{eq:CPM-necess}\\
- &  & \mu\left(\varphi\left(\overline{E}\right)\right)=\mu\left(\mathbb{1}-\varphi\left(E\right)\right)\overset{\textrm{Eq.~(\ref{eq:QuantumProbability})}}{=}1-\mu\left(\varphi\left(E\right)\right)\,,\label{eq:CPM-complement}\\
+ &  & \mu\left(\varphi(\Omega)\right)\overset{\textrm{Eq.~(\ref{eq:pullback-properties-basic})}}{=}\mu\left(\mathbb{1}\right)\overset{\textrm{Eq.~(\ref{eq:QuantumProbability})}}{=}1\,,\label{eq:CPM-necess}\\
+ &  & \mu\left(\varphi\left(\overline{E}\right)\right)\overset{\textrm{Eq.~(\ref{eq:pullback-properties-basic})}}{=}\mu\left(\mathbb{1}-\varphi\left(E\right)\right)\overset{\textrm{Eq.~(\ref{eq:QuantumProbability})}}{=}1-\mu\left(\varphi\left(E\right)\right)\,,\label{eq:CPM-complement}\\
  &  & \mu\left(\varphi(\emptyset)\right)\overset{\textrm{Eq.~(\ref{eq:CPM-complement})}}{=}1-\mu\left(\varphi\left(\Omega\right)\right)\overset{\textrm{Eq.~(\ref{eq:CPM-necess})}}{=}0\,,\label{eq:CPM-imposs}
 \end{eqnarray}
 \end{subequations}
-and for each pair of disjoin $E_{0}$ and $E_{1}$: 
+and for each pair of disjoint $E_{0}$ and $E_{1}$, we have 
+\[
+\varphi\left(E_{0}\right)\varphi\left(E_{1}\right)\overset{\textrm{Eq.~(\ref{eq:pullback-properties})}}{=}\varphi\left(\emptyset\right)\overset{\textrm{Eq.~(\ref{eq:pullback-properties-basic})}}{=}\mathbb{0}\,,
+\]
+i.e., $\varphi\left(E_{0}\right)$ and $\varphi\left(E_{1}\right)$
+are orthogonal, and then: 
 \begin{equation}
 \begin{aligned} & \mu\left(\varphi\left(E_{0}\cup E_{1}\right)\right)\\
 \overset{\textrm{Eq.~(\ref{eq:pullback-properties})}}{=}{} & \mu\left(\varphi\left(E_{0}\right)+\varphi\left(E_{1}\right)-\varphi\left(\emptyset\right)\right)\\
-\overset{\textrm{Eq.~(\ref{eq:pullback-properties-basic})}}{=}{} & \mu\left(\varphi\left(E_{0}\right)+\varphi\left(E_{1}\right)-\left(\mathbb{1}-\mathbb{1}\right)\right)\\
+\overset{\textrm{Eq.~(\ref{eq:pullback-properties-basic})}}{=}{} & \mu\left(\varphi\left(E_{0}\right)+\varphi\left(E_{1}\right)\right)\\
 \overset{\textrm{Eq.~(\ref{eq:QuantumProbability-Addition})}}{=}{} & \mu\left(\varphi\left(E_{0}\right)\right)+\mu\left(\varphi\left(E_{1}\right)\right)\,.
 \end{aligned}
 \label{eq:Probability-Addition}
 \end{equation}
-Since that ``precomposition'' is called ``pullback'' in differential
+\end{proof}}. Since that ``precomposition'' is called ``pullback'' in differential
 geometry~\cite{wiki:Pullback}\footnote{Whether this kind of ``pullback'' is categorical will need further
-investigate.}, we will use their notation and write the precomposition $\left(\lambda E.\mu\left(\varphi\left(E\right)\right)\right)$
+investigate.}, we will use their notation, write the precomposition $\left(\lambda E.\mu\left(\varphi\left(E\right)\right)\right)$
 as $\lambda E.\left(\varphi^{*}\mu\right)\left(E\right)$, i.e., $\left(\varphi^{*}\mu\right)\left(E\right)=\mu\left(\varphi\left(E\right)\right)$,
 call $\varphi^{*}\mu\colon2^{\Omega}\rightarrow\left[0,1\right]$
 the pullback of $\mu$ by $\varphi$, and summarize how ``pullback''
@@ -264,9 +269,9 @@ Summarize the measurement process as & random variable $\varphi^{*}\mathbf{O}=\s
 Expectation value & $\int\left(\varphi^{*}\mathbf{O}\right)\rmd\left(\varphi^{*}\mu\right)=\sum_{i=0}^{D-1}\lambda_{i}\left(\varphi^{*}\mu\right)\left(E_{i}\right)$ & $\expval{\mathbf{O}}_{\mu}=\sum_{i=0}^{D-1}\lambda_{i}\mu\left(\varphi\left(E_{i}\right)\right)$ & Equal, and proved in Lemma~\ref{lemma:real-expectation-value-between-classical-quantum}\tabularnewline
 \midrule
 \midrule 
-Probability measure could be simplified as & probability mass function $m:\Omega\rightarrow[0,1]$ such that $\left(\varphi^{*}\mu\right)(E)=\sum_{\omega\in E}m(\omega)$ & mixed state $\rho=\sum_{j=1}^{N}q_{j}\proj{\Phi_{j}}$ such that $\mu\left(P\right)=\Tr\left(\rho P\right)$ & \tabularnewline
+Probability measure could be simplified as & probability mass function $m:\Omega\rightarrow[0,1]$ such that $\left(\varphi^{*}\mu\right)\left(E\right)=\sum_{\omega\in E}m\left(\omega\right)$ & mixed state $\rho=\sum_{j=1}^{N}q_{j}\proj{\Phi_{j}}$ such that $\mu\left(P\right)=\Tr\left(\rho P\right)$ & \tabularnewline
 \midrule 
- & Need a notation for $\varphi^{*}\mu\mapsto m$ to keep going & Need a notation for $\mu\mapsto\rho$ to keep going & We may draw commuting diagram (?) here\tabularnewline
+ & Need a notation for $\varphi^{*}\mu\mapsto m$ to keep going & Need a notation for $\mu\mapsto\rho$ to keep going & We may draw commuting diagram here?\tabularnewline
 \midrule 
 The probability that the measured value is $\lambda_{i}$ &  &  & \tabularnewline
 \midrule 
@@ -283,17 +288,18 @@ We can then extend this table to compare between the classical and
 quantum measurement processes to get real numbers. It is clear that
 each step of the measurement process is exactly equal or just mapped
 by $\varphi$ except we summarize classical measurement process as
-random variable, but summarize quantum measurement process as an observable.
+random variable, but summarize quantum measurement process as observable.
 Notice that after we fix an orthonormal basis~$\Omega$, $\varphi$
 is actually an invertible map so that given an observable $\mathbf{O}=\sum_{i=0}^{D-1}\lambda_{i}P_{i}$,
 we can define an unique random variable $\sum_{i=0}^{D-1}\lambda_{i}\mathbf{1}_{\varphi^{-1}\left(P_{i}\right)}$
 corresponding to $\mathbf{O}$. Therefore, we call this random variable
 as the pullback of $\mathbf{O}$ by $\varphi$, and denoted by $\varphi^{*}\mathbf{O}$.\footnote{We might also choose the other way around so that each random variable
-has a push forward observable. This is better in the sense that we
-don't have the ambiguity that $\varphi^{*}\mathbf{O}$ is might be
-different for different orthonormal basis, but every theorem for IVPMs
-starts from the quantum part with an observable, so we need the ambiguous
-$\varphi^{*}\mathbf{O}$ for each different orthonormal basis anyway.} According to Gleason's theorem, the table could be extended to simplify
+has a push forward observable. This is better in a sense that we don't
+have the ambiguity that $\varphi^{*}\mathbf{O}$ is might be different
+for different orthonormal bases, but every theorem for IVPMs starts
+from the quantum part with an observable, so we need the notation
+$\varphi^{*}\mathbf{O}$ and fixing an orthonormal basis to disambiguate
+$\varphi^{*}\mathbf{O}$ anyway.} According to Gleason's theorem, the table could be extended to simplify
 the formula computing expectation values and the the post-measurement-state
 postulates after we define a notation to send probability measures
 to states and the other way around.
