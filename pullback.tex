@@ -4,6 +4,7 @@
 \usepackage[T1,T2A]{fontenc}
 \usepackage{verbatim}
 \usepackage{booktabs}
+\usepackage{textcomp}
 \usepackage{mathrsfs}
 \usepackage{enumitem}
 \usepackage{amsmath}
@@ -16,6 +17,9 @@
 \makeatletter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\newcommand{\lyxmathsym}[1]{\ifmmode\begingroup\def\b@ld{bold}
+  \text{\ifx\math@version\b@ld\bfseries\fi#1}\endgroup\else#1\fi}
+
 %% Because html converters don't know tabularnewline
 \providecommand{\tabularnewline}{\\}
 
@@ -198,100 +202,13 @@
 measures?}
 
 \maketitle
-As discussed in Sec.~\ref{subsec:Classical-and-Quantum}, the quantum
-probability spaces could be thought as a big space glued by ``local''
-classical probability space defined by each orthonormal basis~$\Omega$
-according to the map $\varphi:2^{\Omega}\rightarrow\events$ defined
-in Eq.~(\ref{eq:pullback-function}) which sends a classical event
-$E\in2^{\Omega}$ to a quantum event $\varphi\left(E\right)\in\events$.
-Then, for any quantum probability measure $\mu\colon\events\rightarrow\left[0,1\right]$,
-the function $\left(\lambda E.\mu\left(\varphi\left(E\right)\right)\right)\colon2^{\Omega}\rightarrow\left[0,1\right]$
-defined by precomposition is a classical probability measure\footnote{\begin{proof}
-\begin{subequations}\label{eq:CPM-constraints}
-\begin{eqnarray}
- &  & \mu\left(\varphi(\Omega)\right)\overset{\textrm{Eq.~(\ref{eq:pullback-properties-basic})}}{=}\mu\left(\mathbb{1}\right)\overset{\textrm{Eq.~(\ref{eq:QuantumProbability})}}{=}1\,,\label{eq:CPM-necess}\\
- &  & \mu\left(\varphi\left(\overline{E}\right)\right)\overset{\textrm{Eq.~(\ref{eq:pullback-properties-basic})}}{=}\mu\left(\mathbb{1}-\varphi\left(E\right)\right)\overset{\textrm{Eq.~(\ref{eq:QuantumProbability})}}{=}1-\mu\left(\varphi\left(E\right)\right)\,,\label{eq:CPM-complement}\\
- &  & \mu\left(\varphi(\emptyset)\right)\overset{\textrm{Eq.~(\ref{eq:CPM-complement})}}{=}1-\mu\left(\varphi\left(\Omega\right)\right)\overset{\textrm{Eq.~(\ref{eq:CPM-necess})}}{=}0\,,\label{eq:CPM-imposs}
-\end{eqnarray}
-\end{subequations}
-and for each pair of disjoint $E_{0}$ and $E_{1}$, we have 
-\[
-\varphi\left(E_{0}\right)\varphi\left(E_{1}\right)\overset{\textrm{Eq.~(\ref{eq:pullback-properties})}}{=}\varphi\left(\emptyset\right)\overset{\textrm{Eq.~(\ref{eq:pullback-properties-basic})}}{=}\mathbb{0}\,,
-\]
-i.e., $\varphi\left(E_{0}\right)$ and $\varphi\left(E_{1}\right)$
-are orthogonal, and then: 
-\begin{equation}
-\begin{aligned} & \mu\left(\varphi\left(E_{0}\cup E_{1}\right)\right)\\
-\overset{\textrm{Eq.~(\ref{eq:pullback-properties})}}{=}{} & \mu\left(\varphi\left(E_{0}\right)+\varphi\left(E_{1}\right)-\varphi\left(\emptyset\right)\right)\\
-\overset{\textrm{Eq.~(\ref{eq:pullback-properties-basic})}}{=}{} & \mu\left(\varphi\left(E_{0}\right)+\varphi\left(E_{1}\right)\right)\\
-\overset{\textrm{Eq.~(\ref{eq:QuantumProbability-Addition})}}{=}{} & \mu\left(\varphi\left(E_{0}\right)\right)+\mu\left(\varphi\left(E_{1}\right)\right)\,.
-\end{aligned}
-\label{eq:Probability-Addition}
-\end{equation}
-\end{proof}}. Since that ``precomposition'' is called ``pullback'' in differential
-geometry~\cite{wiki:Pullback}\footnote{Whether this kind of ``pullback'' is categorical will need further
-investigate.}, we will use their notation, write the precomposition $\left(\lambda E.\mu\left(\varphi\left(E\right)\right)\right)$
-as $\lambda E.\left(\varphi^{*}\mu\right)\left(E\right)$, i.e., $\left(\varphi^{*}\mu\right)\left(E\right)=\mu\left(\varphi\left(E\right)\right)$,
-call $\varphi^{*}\mu\colon2^{\Omega}\rightarrow\left[0,1\right]$
-the pullback of $\mu$ by $\varphi$, and summarize how ``pullback''
-preserves their structures in Table~\ref{tab:Comparison}. 
-\begin{sidewaystable}
-\noindent \centering{}\caption{\label{tab:Comparison}Comparison between the classical and quantum
-measurement processes with real-valued probability for finite dimensional
-cases}
-%% ERT block 1 (before LyX tabular)
-\renewcommand{\tabular}{\tabularx{\linewidth}}
-\renewcommand{\endtabular}{\endtabularx} 
-\begin{tabular}{YYYY}
-\toprule 
-Name & Classical & Quantum & How does the structure preserve?\tabularnewline
-\midrule
-\midrule 
-Event & $E\in2^{\Omega}$ & $\varphi\left(E\right)=\sum_{\ket{j}\in E}\proj{j}\in\events$ & Eqs.~(\ref{eq:pullback-properties-basic}) and~(\ref{eq:pullback-properties})\tabularnewline
-\midrule 
-Probability measure & $\begin{array}{cccc}
-\varphi^{*}\mu\colon & 2^{\Omega} & \rightarrow & \left[0,1\right]\\
- & E & \mapsto & \mu\left(\varphi\left(E\right)\right)
-\end{array}$ & $\begin{array}{cccc}
-\mu\colon & \events & \rightarrow & \left[0,1\right]\\
- & P & \mapsto & \mu\left(P\right)
-\end{array}$ & Eqs.~(\ref{eq:CPM-constraints}) and~(\ref{eq:Probability-Addition})\tabularnewline
-\midrule
-\midrule 
-Possible measured values & $\lambda_{i}\in\mathbb{R}$ & $\lambda_{i}\in\mathbb{R}$ & Equal\tabularnewline
-\midrule 
-The event to measure $\lambda_{i}$ & $E_{i}\in2^{\Omega}$ & $\varphi\left(E_{i}\right)\in\events$ & Mapped by $\varphi$\tabularnewline
-\midrule 
-The probability that the measured value is $\lambda_{i}$ & $\left(\varphi^{*}\mu\right)\left(E_{i}\right)=\mu\left(\varphi\left(E_{i}\right)\right)\in\left[0,1\right]$ & $\mu\left(\varphi\left(E_{i}\right)\right)\in\left[0,1\right]$ & Equal\tabularnewline
-\midrule 
-Summarize the measurement process as & random variable $\varphi^{*}\mathbf{O}=\sum_{i=0}^{D-1}\lambda_{i}\mathbf{1}_{E_{i}}$ & observable $\mathbf{O}=\sum_{i=0}^{D-1}\lambda_{i}\varphi\left(E_{i}\right)$ & \tabularnewline
-\midrule 
-Expectation value & $\int\left(\varphi^{*}\mathbf{O}\right)\rmd\left(\varphi^{*}\mu\right)=\sum_{i=0}^{D-1}\lambda_{i}\left(\varphi^{*}\mu\right)\left(E_{i}\right)$ & $\expval{\mathbf{O}}_{\mu}=\sum_{i=0}^{D-1}\lambda_{i}\mu\left(\varphi\left(E_{i}\right)\right)$ & Equal, and proved in Lemma~\ref{lemma:real-expectation-value-between-classical-quantum}\tabularnewline
-\midrule
-\midrule 
-Probability measure could be simplified as & probability mass function $m:\Omega\rightarrow[0,1]$ such that $\left(\varphi^{*}\mu\right)\left(E\right)=\sum_{\omega\in E}m\left(\omega\right)$ & mixed state $\rho=\sum_{j=1}^{N}q_{j}\proj{\Phi_{j}}$ such that $\mu\left(P\right)=\Tr\left(\rho P\right)$ & \tabularnewline
-\midrule 
- & Need a notation for $\varphi^{*}\mu\mapsto m$ to keep going & Need a notation for $\mu\mapsto\rho$ to keep going & We may draw commuting diagram here?\tabularnewline
-\midrule 
-The probability that the measured value is $\lambda_{i}$ &  &  & \tabularnewline
-\midrule 
-Expectation value &  &  & \tabularnewline
-\midrule
-\midrule 
-Post-measurement state &  &  & \tabularnewline
-\bottomrule
-\end{tabular}% ERT block 2 (after LyX tabular)
-\renewcommand{\tabular}{\ORIGtabular}
-\renewcommand{\endtabular}{\ORIGendtabular} 
-\end{sidewaystable}
-We can then extend this table to compare between the classical and
-quantum measurement processes to get real numbers. It is clear that
-each step of the measurement process is exactly equal or just mapped
-by $\varphi$ except we summarize classical measurement process as
-random variable, but summarize quantum measurement process as observable.
-Notice that after we fix an orthonormal basis~$\Omega$, $\varphi$
-is actually an invertible map so that given an observable $\mathbf{O}=\sum_{i=0}^{D-1}\lambda_{i}P_{i}$,
-we can define an unique random variable $\sum_{i=0}^{D-1}\lambda_{i}\mathbf{1}_{\varphi^{-1}\left(P_{i}\right)}$
+It is clear that each step of the measurement process is exactly equal
+or just mapped by $\varphi$ except we summarize classical measurement
+process as random variable, but summarize quantum measurement process
+as observable. Notice that after we fix an orthonormal basis~$\Omega$,
+$\varphi$ is actually an invertible map so that given an observable
+$\mathbf{O}=\sum_{i=0}^{D-1}\lambda_{i}P_{i}$, we can define an unique
+random variable $\sum_{i=0}^{D-1}\lambda_{i}\mathbf{1}_{\varphi^{-1}\left(P_{i}\right)}$
 corresponding to $\mathbf{O}$. Therefore, we call this random variable
 as the pullback of $\mathbf{O}$ by $\varphi$, and denoted by $\varphi^{*}\mathbf{O}$.\footnote{We might also choose the other way around so that each random variable
 has a push forward observable. This is better in a sense that we don't
@@ -349,7 +266,7 @@ only we can define the expectation values, but the quantum probability
 measure defined on the whole space can be simply induced by the Born
 rule according to Gleason's theorem \cite{gleason1957,Redhead1987-REDINA,peres1995quantum,RichmanBridges1999,Hamhalter2013}.
 
-\subsection{Classical and Quantum Probability Spaces\label{subsec:Classical-and-Quantum}}
+\subsection{Classical Probability Space\label{subsec:Classical-and-Quantum}}
 
 Given a finite sample space~$\Omega$ representing all possible outcomes
 of a process, and its power set $2^{\Omega}$ as the classical event
@@ -364,48 +281,67 @@ for each pair of disjoint events $E_{0}\subseteq\Omega$ and $E_{1}\subseteq\Omeg
 
 Since the previous abstraction doesn't specify the process to generate
 the outcomes, this process could well be a quantum experiment. Let
-us prepare a beam of one kind of spin~$1$ particles whose state
-can be characterized by a vector in three-dimen\-sional Hilbert space
-with basis vectors $\ket{0}$, $\ket{1}$, and $\ket{2}$. In principle,
-this beam can be split by a Stern-Gerlach type experiment according
-to the eigenvalues of the observable $\mathbf{O}_{0}$ with spectral
-decomposition 
-\begin{equation}
-\mathbf{O}_{0}=0\,\proj{0}+1\,\proj{1}+2\,\proj{2}\,,\label{eq:observable}
-\end{equation}
-and the states corresponding to the split beams are $\ket{0}$, $\ket{1}$,
-and $\ket{2}$ \cite{:/content/aip/journal/jmp/21/1/10.1063/1.524312,peres1995quantum}.
-Instead of sending a beam of particles, if only one particle is sent
-to the beam splitter, the state of the particle after the experiment
-is one of $\ket{0}$, $\ket{1}$, and $\ket{2}$, and there is a probability
-to get each post-experimental state. In the language of our abstraction,
-the set of outcomes is $\Omega_{0}=\{\ket{0},\ket{1},\ket{2}\}$.
-All possible events are $\emptyset$, $\left\{ \ket{0}\right\} $,
-$\left\{ \ket{1}\right\} $, $\left\{ \ket{2}\right\} $, $\left\{ \ket{0},\ket{1}\right\} $,
+us prepare a beam of one kind of spin~$1$ particles, and split it
+by an inhomogeneous magnetic field along the $z$-axis as a well-known
+Stern-Gerlach type experiment \cite{:/content/aip/journal/jmp/21/1/10.1063/1.524312,peres1995quantum}.
+This beam will be split into three beams, and we will call the outcome
+beams bent up as $\ket{0}$, bent down as $\ket{1}$, and not-bent
+as $\ket{2}$. Instead of sending a beam of particles, if only one
+particle is sent to the beam splitter, we will only get one of the
+outcomes $\ket{0}$, $\ket{1}$, and $\ket{2}$, and there is a probability
+to get each outcome. In the language of our abstraction, the set of
+outcomes is $\Omega_{0}=\{\ket{0},\ket{1},\ket{2}\}$. All possible
+events are $\emptyset$, $\left\{ \ket{0}\right\} $, $\left\{ \ket{1}\right\} $,
+$\left\{ \ket{2}\right\} $, $\left\{ \ket{0},\ket{1}\right\} $,
 $\left\{ \ket{0},\ket{2}\right\} $, $\left\{ \ket{1},\ket{2}\right\} $,
-and $\Omega_{0}$. And this experiment defines a classical probability
-measure $\mu_{0}\colon2^{\Omega_{0}}\rightarrow\left[0,1\right]$.
+and $\Omega_{0}$. Each time we perform this experiment, it induces
+a classical probability measure $\mu_{0}\colon2^{\Omega_{0}}\rightarrow\left[0,1\right]$.
+Moreover, if we prepare the particles in the ``same'' way as the
+particle inducing $\mu_{0}$, they will induce the same classical
+probability measure $\mu_{0}$.
 
 One special feature of quantum experiments is that the probabilities
 in different experiments are correlated. Consider another experiment
-sending exactly the same particle as the previous one but using a
-different beam splitter corresponding to the observable $\mathbf{O}_{1}$
-with spectral decomposition $\mathbf{O}_{1}=0\,\proj{\ps}+1\,\proj{\ms}+2\,\proj{2}$,
-where $\ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$ and $\ket{\ms}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}$.
-Although the sample space $\Omega_{1}=\left\{ \ket{\ps},\ket{\ms},\ket{2}\right\} $
+sending the ``same'' particle as the previous one, but we rotate
+the inhomogeneous magnetic field $90\lyxmathsym{\textdegree}$ and
+now along the $x$-axis. This time we call the outcome beams bent
+left as $\ket{\ps}$, bent right as $\ket{\ms}$, and not-bent still
+as $\ket{2}$. Although the sample space $\Omega_{1}=\left\{ \ket{\ps},\ket{\ms},\ket{2}\right\} $
 and the probability measure $\mu_{1}\colon2^{\Omega_{1}}\rightarrow\left[0,1\right]$
-defined by this experiment is different from the previous one, these
-two experiments may produce the same post-experimental state~$\ket{2}$,
-and the probability of the common event $\left\{ \ket{2}\right\} $
-is believed to be the same, i.e., 
+defined by this experiment is different from the previous one, they
+all produce a not-bent outcome~$\ket{2}$, and the probability of
+the common event $\left\{ \ket{2}\right\} $ is believed to be the
+same, i.e., 
 \begin{equation}
 \mu_{0}\left(\left\{ \ket{2}\right\} \right)=\mu_{1}\left(\left\{ \ket{2}\right\} \right)\,.\label{eq:mu0-equal-mu1}
 \end{equation}
-In general, as long as sending the same particle, the probability
-of the same event in different experiments should always be the same.
-This fact is equivalent to the fact that commuting observables could
+
+Since we may rotate the inhomogeneous magnetic field any degree~$\theta$,
+it is nature to represent the two bent outcomes as $\sin\theta\ket{0}+\cos\theta\ket{1}$
+and $\cos\theta\ket{0}-\sin\theta\ket{1}$. Then, $\ket{\ps}$ and
+$\ket{\ms}$ can be represented as $\ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$
+and $\ket{\ms}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}$. Conventionally
+\cite{peres1995quantum}, we will then postulate any normalized complex
+vector spanned by $\ket{0}$, $\ket{1}$, and $\ket{2}$ could be
+a measurement outcome, any orthonormal basis form a sample space,
+and sending a particle to this orthonormal basis inducing a classical
+probability measure. In general, as long as sending the same particle,
+the probability of the same event in different experiments should
+always be the same, i.e., giving two induced classical probability
+measures $\mu'\colon2^{\Omega'}\rightarrow\left[0,1\right]$ and $\mu''\colon2^{\Omega''}\rightarrow\left[0,1\right]$,
+the probabilities of getting $E\subseteq\Omega'\cap\Omega''$ are
+the same
+\begin{equation}
+\mu'\left(E\right)=\mu''\left(E\right)\,.\label{eq:mu-equal-same-event}
+\end{equation}
+\footnote{This fact is equivalent to the fact that commuting observables could
 be measured simultaneously which is essential to define contextuality
-and will be explained in Sec.~\ref{sec:Kochen-Specker}.
+and will be explained in Sec.~\ref{sec:Kochen-Specker}... Or maybe
+there is a gap between outcomes in a few types of experiments and
+every normalized vector in a Hilbert space could be an outcome, but
+inducing latter from axioms seems a bit too much here\ldots}
+
+\subsection{Quantum Probability Space}
 
 Since the probability induced by the different beam splitters are
 correlated, it is more natural to define one quantum event space~$\events$
@@ -421,7 +357,7 @@ that is, the probabilities of events $\left\{ \ket{0},\ket{1}\right\} $
 and $\left\{ \ket{\ps},\ket{\ms}\right\} $ are always the same, and
 these events should be identified as the same quantum event to simplify
 our discussion. This identification can be achieved by mapping a classical
-event~$E$ to the projector generated by $E$,
+event~$E$ to the projector generated by $E$,\footnote{Should we prove whether there is no other way to identify?}
 \begin{equation}
 \varphi\left(E\right)=\sum_{\ket{j}\in E}\proj{j}\label{eq:pullback-function}
 \end{equation}
@@ -431,17 +367,9 @@ $\varphi\left(\left\{ \ket{\ps},\ket{\ms}\right\} \right)$ as operators,
 \begin{equation}
 \varphi\left(\left\{ \ket{0},\ket{1}\right\} \right)=\proj{0}+\proj{1}=\proj{\ps}+\proj{\ms}=\varphi\left(\left\{ \ket{\ps},\ket{\ms}\right\} \right)\,.
 \end{equation}
-In general, if two classical events~$E$ and $E'$ are mapped to
-the same projector, i.e., $\varphi\left(E\right)=\varphi\left(E'\right)$,
-then the probability of $E$ is the same as the probability of $E'$.
-Therefore, for any classical event~$E$, its corresponding quantum
-event is defined to be the projector $\varphi\left(E\right)$, and
-the set of all projectors on a given Hilbert space is called a quantum
-event space~$\events$. 
 
-This function $\varphi$ not only respects the probability of events
-but also naturally sends the set structure to the corresponding projector
-structure:
+In general, this function $\varphi$ naturally sends the set structure
+to the corresponding projector structure:
 \begin{align}
 \varphi\left(\Omega\right) & =\mathbb{1}\,, & \varphi\left(\overline{E}\right) & =\mathbb{1}-\varphi\left(E\right)\,.\label{eq:pullback-properties-basic}
 \end{align}
@@ -458,9 +386,36 @@ following properties:
 Moreover, $E_{0}$ and $E_{1}$ are disjoint if and only if $\varphi\left(E_{0}\right)$
 and $\varphi\left(E_{1}\right)$ are orthogonal, where two projectors
 $P_{0}$ and $P_{1}$ are called \emph{orthogonal} if $P_{0}P_{1}=\mathbb{0}$.
+Because the structure is preserved by $\varphi$, so does the probability
+of events.
 
-Then, a quantum probability space can be defined as a quantum event
-space~$\events$ together with a quantum probability measure $\mu\colon\events\rightarrow\left[0,1\right]$
+\begin{lemma}Consider two classical events $E'\subseteq\Omega'$
+and $E''\subseteq\Omega''$ are mapped to the same projector, i.e.,
+$\varphi\left(E'\right)=\varphi\left(E''\right)$. Even if their experimental
+outcomes $\Omega'$ and $\Omega''$ may be different, when sending
+the ``same'' particle to these two experiments, and inducing two
+classical probability measures $\mu'\colon2^{\Omega'}\rightarrow\left[0,1\right]$
+and $\mu''\colon2^{\Omega''}\rightarrow\left[0,1\right]$, the probability
+of getting $E'$ is the same as the probability of getting $E''$,
+i.e., $\mu'\left(E'\right)=\mu''\left(E''\right)$.\end{lemma}
+
+\begin{proof}Consider the outcomes in the complement event of $E''$,
+$\Omega''\backslash E''$. Because $\varphi\left(E'\right)=\varphi\left(E''\right)$,
+every outcomes in $\Omega''\backslash E''$ is orthogonal to $E'$,
+and $\Omega'''=E'\cup\left(\Omega''\backslash E''\right)$ is an orthonormal
+basis. Consider its inducing classical probability measure $\mu'''\colon2^{\Omega'''}\rightarrow\left[0,1\right]$,
+we have
+\[
+\mu'\left(E'\right)\overset{\textrm{Eq.~(\ref{eq:mu-equal-same-event})}}{=}\mu'''\left(E'\right)=1-\mu'''\left(\Omega''\backslash E''\right)\overset{\textrm{Eq.~(\ref{eq:mu-equal-same-event})}}{=}1-\mu''\left(\Omega''\backslash E''\right)=\mu''\left(E''\right)\,.
+\]
+\end{proof}
+
+Therefore, for any classical event~$E$, its corresponding quantum
+event is defined to be the projector $\varphi\left(E\right)$, and
+the set of all projectors on a given Hilbert space is called a quantum
+event space~$\events$. Then, a quantum probability space can be
+defined as a quantum event space~$\events$ together with a quantum
+probability measure $\mu\colon\events\rightarrow\left[0,1\right]$
 subject to the corresponding constraints \cite{10.2307/2308516,gleason1957,Redhead1987-REDINA,Maassen2010,Abramsky2012}:
 \begin{align}
 \mu\left(\mathbb{0}\right) & =0\,, & \mu\left(\mathbb{1}\right) & =1\,, & \mu\left(\mathbb{1}-P\right) & =1-\mu\left(P\right)\,,\label{eq:QuantumProbability}
@@ -469,16 +424,102 @@ and for each pair of orthogonal projectors $P_{0}$ and $P_{1}$:
 \begin{equation}
 \mu\left(P_{0}+P_{1}\right)=\mu\left(P_{0}\right)+\mu\left(P_{1}\right)\,.\label{eq:QuantumProbability-Addition}
 \end{equation}
-Because $\varphi$ respects the probability of events, if we restrict
-the domain of $\varphi$ on a classical event space $2^{\Omega}$,
-the function $\varphi^{*}\mu\colon2^{\Omega}\rightarrow\left[0,1\right]$
+Because $\varphi$ respects the structure of events, it also respects
+probability measures according to precomposition.
+
+\begin{lemma}If we restrict the domain of $\varphi$ on a classical
+event space $2^{\Omega}$, the function $\varphi^{*}\mu\colon2^{\Omega}\rightarrow\left[0,1\right]$
 defined by precomposition 
 \begin{equation}
 \left(\varphi^{*}\mu\right)\left(E\right)=\mu\left(\varphi\left(E\right)\right)\label{eq:classical-pullback}
 \end{equation}
-is a classical probability measure and called the pullback of $\mu$
-by $\varphi\colon2^{\Omega}\rightarrow\events$.
+is a classical probability measure.\end{lemma}
 
+\begin{proof}
+\begin{subequations}\label{eq:CPM-constraints}
+\begin{eqnarray}
+ &  & \mu\left(\varphi(\Omega)\right)\overset{\textrm{Eq.~(\ref{eq:pullback-properties-basic})}}{=}\mu\left(\mathbb{1}\right)\overset{\textrm{Eq.~(\ref{eq:QuantumProbability})}}{=}1\,,\label{eq:CPM-necess}\\
+ &  & \mu\left(\varphi\left(\overline{E}\right)\right)\overset{\textrm{Eq.~(\ref{eq:pullback-properties-basic})}}{=}\mu\left(\mathbb{1}-\varphi\left(E\right)\right)\overset{\textrm{Eq.~(\ref{eq:QuantumProbability})}}{=}1-\mu\left(\varphi\left(E\right)\right)\,,\label{eq:CPM-complement}\\
+ &  & \mu\left(\varphi(\emptyset)\right)\overset{\textrm{Eq.~(\ref{eq:CPM-complement})}}{=}1-\mu\left(\varphi\left(\Omega\right)\right)\overset{\textrm{Eq.~(\ref{eq:CPM-necess})}}{=}0\,,\label{eq:CPM-imposs}
+\end{eqnarray}
+\end{subequations}
+and for each pair of disjoint $E_{0}$ and $E_{1}$, we have 
+\[
+\varphi\left(E_{0}\right)\varphi\left(E_{1}\right)\overset{\textrm{Eq.~(\ref{eq:pullback-properties})}}{=}\varphi\left(\emptyset\right)\overset{\textrm{Eq.~(\ref{eq:pullback-properties-basic})}}{=}\mathbb{0}\,,
+\]
+i.e., $\varphi\left(E_{0}\right)$ and $\varphi\left(E_{1}\right)$
+are orthogonal, and then: 
+\begin{equation}
+\begin{aligned} & \mu\left(\varphi\left(E_{0}\cup E_{1}\right)\right)\\
+\overset{\textrm{Eq.~(\ref{eq:pullback-properties})}}{=}{} & \mu\left(\varphi\left(E_{0}\right)+\varphi\left(E_{1}\right)-\varphi\left(\emptyset\right)\right)\\
+\overset{\textrm{Eq.~(\ref{eq:pullback-properties-basic})}}{=}{} & \mu\left(\varphi\left(E_{0}\right)+\varphi\left(E_{1}\right)\right)\\
+\overset{\textrm{Eq.~(\ref{eq:QuantumProbability-Addition})}}{=}{} & \mu\left(\varphi\left(E_{0}\right)\right)+\mu\left(\varphi\left(E_{1}\right)\right)\,.
+\end{aligned}
+\label{eq:Probability-Addition}
+\end{equation}
+\end{proof}
+
+We denote the precomposition as $\varphi^{*}\mu$, because that ``precomposition''
+is called ``pullback'' in differential geometry and they use this
+notation~\cite{wiki:Pullback}\footnote{Whether this kind of ``pullback'' is categorical will need further
+investigate.}, and we will also follow their convention to call $\varphi^{*}\mu\colon2^{\Omega}\rightarrow\left[0,1\right]$
+the pullback of $\mu$ by $\varphi$, and summarize how ``pullback''
+preserves their structures in Table~\ref{tab:Comparison}.
+\begin{sidewaystable}
+\noindent \centering{}\caption{\label{tab:Comparison}Comparison between the classical and quantum
+measurement processes with real-valued probability for finite dimensional
+cases}
+%% ERT block 1 (before LyX tabular)
+\renewcommand{\tabular}{\tabularx{\linewidth}}
+\renewcommand{\endtabular}{\endtabularx} 
+\begin{tabular}{YYYY}
+\toprule 
+Name & Classical & Quantum & How does the structure preserve?\tabularnewline
+\midrule
+\midrule 
+Event & $E\in2^{\Omega}$ & $\varphi\left(E\right)=\sum_{\ket{j}\in E}\proj{j}\in\events$ & Eqs.~(\ref{eq:pullback-properties-basic}) and~(\ref{eq:pullback-properties})\tabularnewline
+\midrule 
+Probability measure & $\begin{array}{cccc}
+\varphi^{*}\mu\colon & 2^{\Omega} & \rightarrow & \left[0,1\right]\\
+ & E & \mapsto & \mu\left(\varphi\left(E\right)\right)
+\end{array}$ & $\begin{array}{cccc}
+\mu\colon & \events & \rightarrow & \left[0,1\right]\\
+ & P & \mapsto & \mu\left(P\right)
+\end{array}$ & Eqs.~(\ref{eq:CPM-constraints}) and~(\ref{eq:Probability-Addition})\tabularnewline
+\midrule
+\midrule 
+Possible measured values & $\lambda_{i}\in\mathbb{R}$ & $\lambda_{i}\in\mathbb{R}$ & Equal\tabularnewline
+\midrule 
+The event to measure $\lambda_{i}$ & $E_{i}\in2^{\Omega}$ & $\varphi\left(E_{i}\right)\in\events$ & Mapped by $\varphi$\tabularnewline
+\midrule 
+The probability that the measured value is $\lambda_{i}$ & $\left(\varphi^{*}\mu\right)\left(E_{i}\right)=\mu\left(\varphi\left(E_{i}\right)\right)\in\left[0,1\right]$ & $\mu\left(\varphi\left(E_{i}\right)\right)\in\left[0,1\right]$ & Equal\tabularnewline
+\midrule 
+Summarize the measurement process as & random variable $\varphi^{*}\mathbf{O}=\sum_{i=0}^{D-1}\lambda_{i}\mathbf{1}_{E_{i}}$ & observable $\mathbf{O}=\sum_{i=0}^{D-1}\lambda_{i}\varphi\left(E_{i}\right)$ & \tabularnewline
+\midrule 
+Expectation value & $\int\left(\varphi^{*}\mathbf{O}\right)\rmd\left(\varphi^{*}\mu\right)=\sum_{i=0}^{D-1}\lambda_{i}\left(\varphi^{*}\mu\right)\left(E_{i}\right)$ & $\expval{\mathbf{O}}_{\mu}=\sum_{i=0}^{D-1}\lambda_{i}\mu\left(\varphi\left(E_{i}\right)\right)$ & Equal, and proved in Lemma~\ref{lemma:real-expectation-value-between-classical-quantum}\tabularnewline
+\midrule
+\midrule 
+Probability measure could be simplified as & probability mass function $m:\Omega\rightarrow[0,1]$ such that $\left(\varphi^{*}\mu\right)\left(E\right)=\sum_{\omega\in E}m\left(\omega\right)$ & mixed state $\rho=\sum_{j=1}^{N}q_{j}\proj{\Phi_{j}}$ such that $\mu\left(P\right)=\Tr\left(\rho P\right)$ & \tabularnewline
+\midrule 
+ & Need a notation for $\varphi^{*}\mu\mapsto m$ to keep going & Need a notation for $\mu\mapsto\rho$ to keep going & We may draw commuting diagram here?\tabularnewline
+\midrule 
+The probability that the measured value is $\lambda_{i}$ &  &  & \tabularnewline
+\midrule 
+Expectation value &  &  & \tabularnewline
+\midrule
+\midrule 
+Post-measurement state &  &  & \tabularnewline
+\bottomrule
+\end{tabular}% ERT block 2 (after LyX tabular)
+\renewcommand{\tabular}{\ORIGtabular}
+\renewcommand{\endtabular}{\ORIGendtabular} 
+\end{sidewaystable}
+
+
+\subsection{Measurement Process and Expectation Values}
+
+We can then extend Table~\ref{tab:Comparison} to compare between
+the classical and quantum measurement processes to get real numbers.
 Given a Hilbert space $\mathcal{H}$ of dimension $D$ and a probability
 assignment for every projector $P$, we can define the expectation
 value of an observable~$\mathbf{O}$ having spectral decomposition
