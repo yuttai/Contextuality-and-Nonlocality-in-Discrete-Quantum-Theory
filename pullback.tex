@@ -202,55 +202,6 @@
 measures?}
 
 \maketitle
-It is clear that each step of the measurement process is exactly equal
-or just mapped by $\varphi$ except we summarize classical measurement
-process as random variable, but summarize quantum measurement process
-as observable. Notice that after we fix an orthonormal basis~$\Omega$,
-$\varphi$ is actually an invertible map so that given an observable
-$\mathbf{O}=\sum_{i=0}^{D-1}\lambda_{i}P_{i}$, we can define an unique
-random variable $\sum_{i=0}^{D-1}\lambda_{i}\mathbf{1}_{\varphi^{-1}\left(P_{i}\right)}$
-corresponding to $\mathbf{O}$. Therefore, we call this random variable
-as the pullback of $\mathbf{O}$ by $\varphi$, and denoted by $\varphi^{*}\mathbf{O}$.\footnote{We might also choose the other way around so that each random variable
-has a push forward observable. This is better in a sense that we don't
-have the ambiguity that $\varphi^{*}\mathbf{O}$ is might be different
-for different orthonormal bases, but every theorem for IVPMs starts
-from the quantum part with an observable, so we need the notation
-$\varphi^{*}\mathbf{O}$ and fixing an orthonormal basis to disambiguate
-$\varphi^{*}\mathbf{O}$ anyway.} According to Gleason's theorem, the table could be extended to simplify
-the formula computing expectation values and the the post-measurement-state
-postulates after we define a notation to send probability measures
-to states and the other way around.
-
-By following the same process, Sec.~\ref{sec:Interval-Uncertainty}
-showed the corresponding results for interval-valued probability.
-For any QIVPM $\bar{\mu}\colon\events\rightarrow\mathscr{I}$, the
-function $\varphi^{*}\bar{\mu}\colon2^{\Omega}\rightarrow\mathscr{I}$
-defined by $\left(\varphi^{*}\bar{\mu}\right)\left(E\right)=\bar{\mu}\left(\varphi\left(E\right)\right)$
-is a classical IVPM.
-\begin{sidewaystable}
-\noindent \centering{}\caption{\label{tab:Comparison-interval}Comparison between the classical and
-quantum measurement processes with interval-valued probability for
-finite dimensional cases}
-%% ERT block 1 (before LyX tabular)
-\renewcommand{\tabular}{\tabularx{\linewidth}}
-\renewcommand{\endtabular}{\endtabularx} 
-\begin{tabular}{YYYY}
-\toprule 
-Name & Classical & Quantum & How does the structure preserve?\tabularnewline
-\midrule
-\midrule 
-Probability measure & $\begin{array}{cccc}
-\varphi^{*}\bar{\mu}\colon & 2^{\Omega} & \rightarrow & \mathscr{I}\\
- & E & \mapsto & \bar{\mu}\left(\varphi\left(E\right)\right)
-\end{array}$ & $\begin{array}{cccc}
-\bar{\mu}\colon & \events & \rightarrow & \mathscr{I}\\
- & E & \mapsto & \bar{\mu}\left(E\right)
-\end{array}$ & \tabularnewline
-\bottomrule
-\end{tabular}% ERT block 2 (after LyX tabular)
-\renewcommand{\tabular}{\ORIGtabular}
-\renewcommand{\endtabular}{\ORIGendtabular} 
-\end{sidewaystable}
 
 
 \section{Quantum Probability\label{sec:fuzzy}}
@@ -274,9 +225,10 @@ space, a classical probability measure~$\mu$ maps every event $E\subseteq\Omega$
 to a number $\mu\left(E\right)\in\left[0,1\right]$ specifying how
 likely one of the outcomes in $E$ will happen. To maintain the coherence,
 $\mu$ is subject to the following constraints: $\mu\left(\emptyset\right)=0$,
-$\mu\left(\Omega\right)=1$, and $\mu\left(\overline{E}\right)=1-\mu\left(E\right)$,
-where $\overline{E}$ is the complement of $E$.  Moreover, we require
-$\mu\left(E_{0}\cup E_{1}\right)=\mu\left(E_{0}\right)+\mu\left(E_{1}\right)$
+$\mu\left(\Omega\right)=1$, and $\mu\left(\Omega\backslash E\right)=\mu\left(\overline{E}\right)=1-\mu\left(E\right)$,
+where $\Omega\backslash E$ is the complement of $E$, and we may
+simply write $\overline{E}$ if the sample space~$\Omega$ is clear
+from the context.  Moreover, we require $\mu\left(E_{0}\cup E_{1}\right)=\mu\left(E_{0}\right)+\mu\left(E_{1}\right)$
 for each pair of disjoint events $E_{0}\subseteq\Omega$ and $E_{1}\subseteq\Omega$.
 
 Since the previous abstraction doesn't specify the process to generate
@@ -321,13 +273,13 @@ it is nature to represent the two bent outcomes as $\sin\theta\ket{0}+\cos\theta
 and $\cos\theta\ket{0}-\sin\theta\ket{1}$. Then, $\ket{\ps}$ and
 $\ket{\ms}$ can be represented as $\ket{\ps}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$
 and $\ket{\ms}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}$. Conventionally
-\cite{peres1995quantum}, we will then postulate any normalized complex
-vector spanned by $\ket{0}$, $\ket{1}$, and $\ket{2}$ could be
-a measurement outcome, any orthonormal basis form a sample space,
-and sending a particle to this orthonormal basis inducing a classical
-probability measure. In general, as long as sending the same particle,
-the probability of the same event in different experiments should
-always be the same, i.e., giving two induced classical probability
+\cite{peres1995quantum,schwinger2001quantum}, we will then postulate
+any normalized complex vector spanned by $\ket{0}$, $\ket{1}$, and
+$\ket{2}$ could be a measurement outcome, any orthonormal basis form
+a sample space, and sending a particle to this orthonormal basis inducing
+a classical probability measure. In general, as long as sending the
+same particle, the probability of the same event in different experiments
+should always be the same, i.e., giving two induced classical probability
 measures $\mu'\colon2^{\Omega'}\rightarrow\left[0,1\right]$ and $\mu''\colon2^{\Omega''}\rightarrow\left[0,1\right]$,
 the probabilities of getting $E\subseteq\Omega'\cap\Omega''$ are
 the same
